@@ -7,7 +7,7 @@ slot3 = "CoreInputProvider"
 core.import(slot1, core)
 
 Feeder = Feeder or class()
-Feeder.init = function (self, engine_controller, input_layer_descriptions)
+function Feeder:init(engine_controller, input_layer_descriptions)
 	self._engine_controller = engine_controller
 	slot5 = self._engine_controller
 	self._device_type = self._engine_controller.type(slot4)
@@ -17,10 +17,10 @@ Feeder.init = function (self, engine_controller, input_layer_descriptions)
 
 	return 
 end
-Feeder.input_provider = function (self)
+function Feeder:input_provider()
 	return self._input_provider
 end
-Feeder.update = function (self, t, dt)
+function Feeder:update(t, dt)
 	slot5 = self._input_provider
 	local target_input_context = self._input_provider.context(slot4)
 

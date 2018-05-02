@@ -6,7 +6,7 @@ end
 SlowMotionElement = slot0
 SlowMotionElement.SAVE_UNIT_POSITION = false
 SlowMotionElement.SAVE_UNIT_ROTATION = false
-SlowMotionElement.init = function (self, unit)
+function SlowMotionElement:init(unit)
 	slot5 = unit
 
 	SlowMotionElement.super.init(slot3, self)
@@ -18,7 +18,7 @@ SlowMotionElement.init = function (self, unit)
 
 	return 
 end
-SlowMotionElement._build_panel = function (self, panel, panel_sizer)
+function SlowMotionElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

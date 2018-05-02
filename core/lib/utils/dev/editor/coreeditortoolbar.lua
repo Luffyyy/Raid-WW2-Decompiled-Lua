@@ -1,4 +1,4 @@
-CoreEditor.build_toolbar = function (self)
+function CoreEditor:build_toolbar()
 	local icons_path = managers.database.base_path(slot2) .. "core\\lib\\utils\\dev\\editor\\icons\\"
 	slot7 = "TB_FLAT,TB_NODIVIDER"
 	self._toolbar = EWS.ToolBar(managers.database, EWS, Global.frame, "")
@@ -342,7 +342,7 @@ CoreEditor.build_toolbar = function (self)
 
 	return 
 end
-CoreEditor.set_widget = function (self, data, event)
+function CoreEditor:set_widget(data, event)
 	local id = event.get_id(slot4)
 	slot8 = true
 
@@ -368,7 +368,7 @@ CoreEditor.set_widget = function (self, data, event)
 
 	return 
 end
-CoreEditor.set_snap_rotation_axis = function (self, data, event)
+function CoreEditor:set_snap_rotation_axis(data, event)
 	local id = event.get_id(slot4)
 	slot8 = true
 
@@ -382,7 +382,7 @@ CoreEditor.set_snap_rotation_axis = function (self, data, event)
 
 	return 
 end
-CoreEditor.change_snaprot_axis = function (self, data)
+function CoreEditor:change_snaprot_axis(data)
 	if self._snap_rotation_axis == "x" then
 		self._snap_rotation_axis = "y"
 		slot6 = true
@@ -414,28 +414,28 @@ CoreEditor.change_snaprot_axis = function (self, data)
 
 	return 
 end
-CoreEditor.on_move_transform_type_in = function (self)
+function CoreEditor:on_move_transform_type_in()
 	slot4 = true
 
 	self._move_transform_type_in.set_visible(slot2, self._move_transform_type_in)
 
 	return 
 end
-CoreEditor.on_rotate_transform_type_in = function (self)
+function CoreEditor:on_rotate_transform_type_in()
 	slot4 = true
 
 	self._rotate_transform_type_in.set_visible(slot2, self._rotate_transform_type_in)
 
 	return 
 end
-CoreEditor.on_camera_transform_type_in = function (self)
+function CoreEditor:on_camera_transform_type_in()
 	slot4 = true
 
 	self._camera_transform_type_in.set_visible(slot2, self._camera_transform_type_in)
 
 	return 
 end
-CoreEditor.build_ref_coordinate_system = function (self)
+function CoreEditor:build_ref_coordinate_system()
 	slot7 = "CB_DROPDOWN,CB_READONLY"
 	self._ref_coordinate_system = EWS.ComboBox(slot2, EWS, self._toolbar, "", "")
 	slot8 = "toggle_coordinate_system"
@@ -492,7 +492,7 @@ CoreEditor.build_ref_coordinate_system = function (self)
 
 	return 
 end
-CoreEditor.build_grid_sizes = function (self, icons_path)
+function CoreEditor:build_grid_sizes(icons_path)
 	slot6 = "change_grid_size"
 	local tip = "Grid Sizes (" .. self.ctrl_binding(slot4, self) .. ")"
 	slot9 = "world_editor\\grid_sizes_10x16.png"
@@ -564,7 +564,7 @@ CoreEditor.build_grid_sizes = function (self, icons_path)
 
 	return 
 end
-CoreEditor.build_snap_rotations = function (self)
+function CoreEditor:build_snap_rotations()
 	slot5 = "change_snaprot"
 	local tip = "Snap Rotations (" .. self.ctrl_binding(slot3, self) .. ")"
 	slot8 = "world_editor\\snap_rotations_10x16.png"
@@ -636,7 +636,7 @@ CoreEditor.build_snap_rotations = function (self)
 
 	return 
 end
-CoreEditor.build_rotation_speed = function (self)
+function CoreEditor:build_rotation_speed()
 	local tip = "Free rotation speed (+/-)"
 	slot8 = "world_editor\\rotation_speed_10x16.png"
 	slot8 = "NO_BORDER"
@@ -685,13 +685,13 @@ CoreEditor.build_rotation_speed = function (self)
 
 	return 
 end
-CoreEditor.update_rot_speed = function (self, rotation_speed)
+function CoreEditor:update_rot_speed(rotation_speed)
 	slot4 = rotation_speed
 	self._rotation_speed = rotation_speed.get_value(slot3)
 
 	return 
 end
-CoreEditor.update_rot_speed_trg = function (self, data)
+function CoreEditor:update_rot_speed_trg(data)
 	slot7 = data.ctrlr
 	slot5 = data.ctrlr.get_value(slot6) + data.value
 
@@ -702,7 +702,7 @@ CoreEditor.update_rot_speed_trg = function (self, data)
 
 	return 
 end
-CoreEditor.change_combo_box = function (self, data)
+function CoreEditor:change_combo_box(data)
 	slot4 = self[data.value]
 
 	if tonumber(slot3) then
@@ -728,7 +728,7 @@ CoreEditor.change_combo_box = function (self, data)
 
 	return 
 end
-CoreEditor.change_combo_box_trg = function (self, data)
+function CoreEditor:change_combo_box_trg(data)
 	local next_i = nil
 
 	for i = 1, #self[data.t], 1 do
@@ -763,7 +763,7 @@ CoreEditor.change_combo_box_trg = function (self, data)
 
 	return 
 end
-CoreEditor.set_combobox_value = function (self, data, event)
+function CoreEditor:set_combobox_value(data, event)
 	if data.choice then
 		slot6 = data.choice
 
@@ -781,28 +781,28 @@ CoreEditor.set_combobox_value = function (self, data, event)
 
 	return 
 end
-CoreEditor.on_select_by_name = function (self)
+function CoreEditor:on_select_by_name()
 	slot5 = "SelectByName"
 
 	self.show_dialog(slot2, self, "select_by_name")
 
 	return 
 end
-CoreEditor.on_unit_tree_browser = function (self)
+function CoreEditor:on_unit_tree_browser()
 	slot5 = "UnitTreeBrowser"
 
 	self.show_dialog(slot2, self, "unit_tree_browser")
 
 	return 
 end
-CoreEditor.on_global_select_unit = function (self)
+function CoreEditor:on_global_select_unit()
 	slot5 = "GlobalSelectUnit"
 
 	self.show_dialog(slot2, self, "global_select_unit")
 
 	return 
 end
-CoreEditor.on_unit_list = function (self)
+function CoreEditor:on_unit_list()
 	if not self._unit_list then
 		slot3 = UnitList
 		self._unit_list = UnitList.new(slot2)
@@ -814,21 +814,21 @@ CoreEditor.on_unit_list = function (self)
 
 	return 
 end
-CoreEditor.on_unhide_by_name = function (self)
+function CoreEditor:on_unhide_by_name()
 	slot5 = "UnhideByName"
 
 	self.show_dialog(slot2, self, "unhide_by_name")
 
 	return 
 end
-CoreEditor.on_hide_by_name = function (self)
+function CoreEditor:on_hide_by_name()
 	slot5 = "HideByName"
 
 	self.show_dialog(slot2, self, "hide_by_name")
 
 	return 
 end
-CoreEditor.build_widgets_icons = function (self, panel, sizer, icons_path)
+function CoreEditor:build_widgets_icons(panel, sizer, icons_path)
 	slot10 = ""
 	local select = EWSRadioBitmapButton.new(slot5, EWSRadioBitmapButton, panel, icons_path .. "widget_select_checked.bmp", "")
 	slot8 = icons_path .. "widget_select.bmp"

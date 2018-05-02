@@ -11,7 +11,7 @@ PlayerBase.INGAME_HUD_SAFERECT = Idstring(slot2)
 slot3 = "guis/ingame_hud_fullscreen"
 PlayerBase.INGAME_HUD_FULLSCREEN = Idstring(slot2)
 PlayerBase.USE_GRENADES = true
-PlayerBase.init = function (self, unit)
+function PlayerBase:init(unit)
 	slot6 = false
 
 	UnitBase.init(slot3, self, unit)
@@ -40,7 +40,7 @@ PlayerBase.init = function (self, unit)
 
 	return 
 end
-PlayerBase.post_init = function (self)
+function PlayerBase:post_init()
 	slot3 = self._unit
 	slot3 = self._unit.movement(slot2)
 
@@ -81,7 +81,7 @@ PlayerBase.post_init = function (self)
 
 	return 
 end
-PlayerBase.update = function (self, unit, t, dt)
+function PlayerBase:update(unit, t, dt)
 	if self._wanted_controller_enabled_t then
 		if self._wanted_controller_enabled_t <= 0 then
 			if self._wanted_controller_enabled then
@@ -104,7 +104,7 @@ PlayerBase.update = function (self, unit, t, dt)
 
 	return 
 end
-PlayerBase._setup_suspicion_and_detection_data = function (self)
+function PlayerBase:_setup_suspicion_and_detection_data()
 	slot3 = tweak_data.player.suspicion
 	self._suspicion_settings = deep_clone(slot2)
 	self._suspicion_settings.multipliers = {}
@@ -122,7 +122,7 @@ PlayerBase._setup_suspicion_and_detection_data = function (self)
 
 	return 
 end
-PlayerBase.setup_hud_offset = function (self, peer)
+function PlayerBase:setup_hud_offset(peer)
 	if not self._suspicion_settings then
 		return 
 	end
@@ -142,13 +142,13 @@ PlayerBase.setup_hud_offset = function (self, peer)
 
 	return 
 end
-PlayerBase.stats_screen_visible = function (self)
+function PlayerBase:stats_screen_visible()
 	return self._stats_screen_visible
 end
-PlayerBase.set_stats_screen_visible = function (self, visible)
+function PlayerBase:set_stats_screen_visible(visible)
 	return 
 end
-PlayerBase.set_enabled = function (self, enabled)
+function PlayerBase:set_enabled(enabled)
 	slot7 = "movement"
 	slot6 = enabled
 
@@ -156,7 +156,7 @@ PlayerBase.set_enabled = function (self, enabled)
 
 	return 
 end
-PlayerBase.set_visible = function (self, visible)
+function PlayerBase:set_visible(visible)
 	slot5 = visible
 
 	self._unit.set_visible(slot3, self._unit)
@@ -181,10 +181,10 @@ PlayerBase.set_visible = function (self, visible)
 
 	return 
 end
-PlayerBase._equip_default_weapon = function (self)
+function PlayerBase:_equip_default_weapon()
 	return 
 end
-PlayerBase._setup_controller = function (self)
+function PlayerBase:_setup_controller()
 	slot7 = self._id
 	self._controller = managers.controller.create_controller(slot2, managers.controller, "player_" .. tostring(slot6), nil)
 	slot5 = self._rumble_pos_callback
@@ -202,7 +202,7 @@ PlayerBase._setup_controller = function (self)
 
 	return 
 end
-PlayerBase.controller_hotswap_triggered = function (self)
+function PlayerBase:controller_hotswap_triggered()
 	slot7 = self._id
 	slot6 = false
 	self._controller = managers.controller.create_controller(slot2, managers.controller, "player_" .. tostring(slot6), nil)
@@ -228,17 +228,17 @@ PlayerBase.controller_hotswap_triggered = function (self)
 
 	return 
 end
-PlayerBase.id = function (self)
+function PlayerBase:id()
 	return self._id
 end
-PlayerBase.nick_name = function (self)
+function PlayerBase:nick_name()
 	slot3 = managers.network
 	slot3 = managers.network.session(slot2)
 	slot3 = managers.network.session(slot2).local_peer(slot2)
 
 	return managers.network.session(slot2).local_peer(slot2).name(slot2)
 end
-PlayerBase.set_controller_enabled = function (self, enabled)
+function PlayerBase:set_controller_enabled(enabled)
 	if not self._controller then
 		return 
 	end
@@ -261,14 +261,14 @@ PlayerBase.set_controller_enabled = function (self, enabled)
 
 	return 
 end
-PlayerBase.controller = function (self)
+function PlayerBase:controller()
 	return self._controller
 end
 slot2 = "metal"
 local on_ladder_footstep_material = Idstring(function (self)
 	return self._controller
 end)
-PlayerBase.anim_data_clbk_footstep = function (self, foot)
+function PlayerBase:anim_data_clbk_footstep(foot)
 	slot4 = self._unit
 	local obj = self._unit.orientation_object(slot3)
 	local proj_dir = math.UP
@@ -294,12 +294,12 @@ PlayerBase.anim_data_clbk_footstep = function (self, foot)
 
 	return 
 end
-PlayerBase.get_rumble_position = function (self)
+function PlayerBase:get_rumble_position()
 	slot3 = self._unit
 
 	return self._unit.position(slot2) + math.UP * 100
 end
-PlayerBase.replenish = function (self)
+function PlayerBase:replenish()
 	slot5 = self._unit
 	slot5 = self._unit.inventory(slot4)
 
@@ -327,13 +327,13 @@ PlayerBase.replenish = function (self)
 
 	return 
 end
-PlayerBase.suspicion_settings = function (self)
+function PlayerBase:suspicion_settings()
 	return self._suspicion_settings
 end
-PlayerBase.detection_settings = function (self)
+function PlayerBase:detection_settings()
 	return self._detection_settings
 end
-PlayerBase.set_suspicion_multiplier = function (self, reason, multiplier)
+function PlayerBase:set_suspicion_multiplier(reason, multiplier)
 	self._suspicion_settings.multipliers[reason] = multiplier
 	local buildup_mul = self._suspicion_settings.init_buildup_mul
 	local range_mul = self._suspicion_settings.init_range_mul
@@ -353,7 +353,7 @@ PlayerBase.set_suspicion_multiplier = function (self, reason, multiplier)
 
 	return 
 end
-PlayerBase.set_detection_multiplier = function (self, reason, multiplier)
+function PlayerBase:set_detection_multiplier(reason, multiplier)
 	self._detection_settings.multipliers[reason] = multiplier
 	local delay_mul = self._detection_settings.init_delay_mul
 	local range_mul = self._detection_settings.init_range_mul
@@ -370,10 +370,10 @@ PlayerBase.set_detection_multiplier = function (self, reason, multiplier)
 
 	return 
 end
-PlayerBase.arrest_settings = function (self)
+function PlayerBase:arrest_settings()
 	return tweak_data.player.arrest
 end
-PlayerBase._unregister = function (self)
+function PlayerBase:_unregister()
 	if not self._unregistered then
 		slot3 = self._unit
 		slot3 = self._unit.movement(slot2)
@@ -391,7 +391,7 @@ PlayerBase._unregister = function (self)
 
 	return 
 end
-PlayerBase.pre_destroy = function (self, unit)
+function PlayerBase:pre_destroy(unit)
 	slot4 = self
 
 	self._unregister(slot3)

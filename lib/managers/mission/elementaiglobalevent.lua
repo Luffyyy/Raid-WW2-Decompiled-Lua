@@ -42,7 +42,7 @@ ElementAiGlobalEvent._blames = {
 	"police_alerted",
 	"csgo_gunfire"
 }
-ElementAiGlobalEvent.init = function (self, ...)
+function ElementAiGlobalEvent:init(...)
 	slot3 = self
 
 	ElementAiGlobalEvent.super.init(slot2, ...)
@@ -58,7 +58,7 @@ ElementAiGlobalEvent.init = function (self, ...)
 
 	return 
 end
-ElementAiGlobalEvent._finalize_values = function (self, values)
+function ElementAiGlobalEvent:_finalize_values(values)
 	slot5 = values.wave_mode
 	values.wave_mode = table.index_of(slot3, self._wave_modes)
 	slot5 = values.AI_event
@@ -68,7 +68,7 @@ ElementAiGlobalEvent._finalize_values = function (self, values)
 
 	return 
 end
-ElementAiGlobalEvent.on_executed = function (self, instigator)
+function ElementAiGlobalEvent:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

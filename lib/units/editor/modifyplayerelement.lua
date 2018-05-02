@@ -4,7 +4,7 @@ if not ModifyPlayerElement then
 end
 
 ModifyPlayerElement = slot0
-ModifyPlayerElement.init = function (self, unit)
+function ModifyPlayerElement:init(unit)
 	slot5 = unit
 
 	ModifyPlayerElement.super.init(slot3, self)
@@ -21,7 +21,7 @@ ModifyPlayerElement.init = function (self, unit)
 
 	return 
 end
-ModifyPlayerElement._build_panel = function (self, panel, panel_sizer)
+function ModifyPlayerElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

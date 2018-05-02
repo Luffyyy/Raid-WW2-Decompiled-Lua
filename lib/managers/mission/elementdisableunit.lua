@@ -8,7 +8,7 @@ if not ElementDisableUnit then
 end
 
 ElementDisableUnit = slot0
-ElementDisableUnit.init = function (self, ...)
+function ElementDisableUnit:init(...)
 	slot3 = self
 
 	ElementDisableUnit.super.init(slot2, ...)
@@ -17,7 +17,7 @@ ElementDisableUnit.init = function (self, ...)
 
 	return 
 end
-ElementDisableUnit.on_script_activated = function (self)
+function ElementDisableUnit:on_script_activated()
 	local elementBroken = false
 	slot4 = self._values.unit_ids
 
@@ -41,21 +41,21 @@ ElementDisableUnit.on_script_activated = function (self)
 
 	return 
 end
-ElementDisableUnit._load_unit = function (self, unit)
+function ElementDisableUnit:_load_unit(unit)
 	slot5 = unit
 
 	table.insert(slot3, self._units)
 
 	return 
 end
-ElementDisableUnit.client_on_executed = function (self, ...)
+function ElementDisableUnit:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementDisableUnit.on_executed = function (self, instigator)
+function ElementDisableUnit:on_executed(instigator)
 	self._has_executed = true
 
 	if not self._values.enabled then
@@ -86,14 +86,14 @@ ElementDisableUnit.on_executed = function (self, instigator)
 
 	return 
 end
-ElementDisableUnit.save = function (self, data)
+function ElementDisableUnit:save(data)
 	data.save_me = true
 	data.enabled = self._values.enabled
 	data.executed = self._has_executed
 
 	return 
 end
-ElementDisableUnit.load = function (self, data)
+function ElementDisableUnit:load(data)
 	if not self._has_fetched_units then
 		slot4 = self
 

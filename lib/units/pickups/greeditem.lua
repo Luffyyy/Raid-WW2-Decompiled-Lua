@@ -1,19 +1,19 @@
 GreedItem = GreedItem or class()
-GreedItem.init = function (self, unit)
+function GreedItem:init(unit)
 	self._unit = unit
 	self._value = 0
 
 	return 
 end
-GreedItem.set_value = function (self, value)
+function GreedItem:set_value(value)
 	self._value = value
 
 	return 
 end
-GreedItem.value = function (self)
+function GreedItem:value()
 	return self._value
 end
-GreedItem.on_load_complete = function (self)
+function GreedItem:on_load_complete()
 	if not self._dont_register then
 		slot6 = self._unit
 		slot4 = self._unit.unit_data(slot5).unit_id

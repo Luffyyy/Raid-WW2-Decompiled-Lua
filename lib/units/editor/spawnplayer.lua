@@ -4,7 +4,7 @@ if not SpawnPlayerHubElement then
 end
 
 SpawnPlayerHubElement = slot0
-SpawnPlayerHubElement.init = function (self, unit)
+function SpawnPlayerHubElement:init(unit)
 	slot5 = unit
 
 	HubElement.init(slot3, self)

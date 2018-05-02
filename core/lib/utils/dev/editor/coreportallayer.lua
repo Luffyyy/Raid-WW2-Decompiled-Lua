@@ -26,7 +26,7 @@ if not PortalLayer then
 end
 
 PortalLayer = slot0
-PortalLayer.init = function (self, owner)
+function PortalLayer:init(owner)
 	slot8 = "portal_layer"
 
 	PortalLayer.super.init(slot3, self, owner, "portal", {
@@ -48,10 +48,10 @@ PortalLayer.init = function (self, owner)
 
 	return 
 end
-PortalLayer.get_layer_name = function (self)
+function PortalLayer:get_layer_name()
 	return "Portal"
 end
-PortalLayer.load = function (self, world_holder, offset)
+function PortalLayer:load(world_holder, offset)
 	slot8 = offset
 	local portal_data = world_holder.create_world(slot4, world_holder, "world", self._save_name)
 	slot7 = portal_data
@@ -123,7 +123,7 @@ PortalLayer.load = function (self, world_holder, offset)
 
 	return 
 end
-PortalLayer._old_load = function (self, portal)
+function PortalLayer:_old_load(portal)
 	if not portal._portal_shapes then
 		return false
 	end
@@ -178,7 +178,7 @@ PortalLayer._old_load = function (self, portal)
 
 	return true
 end
-PortalLayer.save = function (self, save_params)
+function PortalLayer:save(save_params)
 	local portals = {}
 	local unit_groups = managers.portal.save_level_data(slot4)
 	slot6 = self._portal_shapes
@@ -227,10 +227,10 @@ PortalLayer.save = function (self, save_params)
 
 	return 
 end
-PortalLayer.get_portal_shapes = function (self)
+function PortalLayer:get_portal_shapes()
 	return self._portal_shapes
 end
-PortalLayer.update = function (self, time, rel_time)
+function PortalLayer:update(time, rel_time)
 	if not self._dont_draw then
 		if not self._only_draw_selected then
 			slot7 = managers.portal
@@ -273,7 +273,7 @@ PortalLayer.update = function (self, time, rel_time)
 
 	return 
 end
-PortalLayer.update_portal_shape = function (self, time, rel_time)
+function PortalLayer:update_portal_shape(time, rel_time)
 	slot5 = self
 
 	self.draw_limit(slot4)
@@ -284,7 +284,7 @@ PortalLayer.update_portal_shape = function (self, time, rel_time)
 
 	return 
 end
-PortalLayer.draw_limit = function (self)
+function PortalLayer:draw_limit()
 	slot3 = self._portal_shapes
 
 	for n, data in pairs(slot2) do
@@ -295,7 +295,7 @@ PortalLayer.draw_limit = function (self)
 
 	return 
 end
-PortalLayer.draw_portal = function (self, data)
+function PortalLayer:draw_portal(data)
 	if self._only_draw_selected and data.portal ~= self._current_portal then
 		return 
 	end
@@ -362,7 +362,7 @@ PortalLayer.draw_portal = function (self, data)
 
 	return 
 end
-PortalLayer._draw_units_in_no_portal = function (self)
+function PortalLayer:_draw_units_in_no_portal()
 	slot3 = self._portal_brush
 	slot9 = 0
 
@@ -395,7 +395,7 @@ PortalLayer._draw_units_in_no_portal = function (self)
 
 	return 
 end
-PortalLayer._draw_units_in_not_current_portal = function (self)
+function PortalLayer:_draw_units_in_not_current_portal()
 	if not self._current_group then
 		return 
 	end
@@ -432,7 +432,7 @@ PortalLayer._draw_units_in_not_current_portal = function (self)
 
 	return 
 end
-PortalLayer._auto_fill = function (self)
+function PortalLayer:_auto_fill()
 	if not self._current_group then
 		return 
 	end
@@ -478,7 +478,7 @@ PortalLayer._auto_fill = function (self)
 
 	return 
 end
-PortalLayer.toggle_portal_system = function (self)
+function PortalLayer:toggle_portal_system()
 	self._use_portal_system = not self._use_portal_system
 
 	if self._use_portal_system then
@@ -494,7 +494,7 @@ PortalLayer.toggle_portal_system = function (self)
 
 	return 
 end
-PortalLayer.build_panel = function (self, notebook)
+function PortalLayer:build_panel(notebook)
 	slot5 = notebook
 
 	PortalLayer.super.build_panel(slot3, self)
@@ -857,14 +857,14 @@ PortalLayer.build_panel = function (self, notebook)
 
 	return self._ews_panel
 end
-PortalLayer.on_only_draw_current = function (self)
+function PortalLayer:on_only_draw_current()
 	slot3 = self
 
 	self.set_unit_visible_state(slot2)
 
 	return 
 end
-PortalLayer.set_unit_visible_state = function (self)
+function PortalLayer:set_unit_visible_state()
 	slot3 = self._portal_shapes
 
 	for n, data in pairs(slot2) do
@@ -880,7 +880,7 @@ PortalLayer.set_unit_visible_state = function (self)
 
 	return 
 end
-PortalLayer.change_draw_base = function (self, draw_base)
+function PortalLayer:change_draw_base(draw_base)
 	slot4 = self._ctrlrs.portals
 	local i = self._ctrlrs.portals.selected_index(slot3)
 
@@ -896,7 +896,7 @@ PortalLayer.change_draw_base = function (self, draw_base)
 
 	return 
 end
-PortalLayer.update_spin = function (self, data)
+function PortalLayer:update_spin(data)
 	slot4 = self._ctrlrs.portals
 	local i = self._ctrlrs.portals.selected_index(slot3)
 
@@ -912,7 +912,7 @@ PortalLayer.update_spin = function (self, data)
 
 	return 
 end
-PortalLayer.set_height = function (self, data)
+function PortalLayer:set_height(data)
 	slot4 = self._ctrlrs.portals
 	local i = self._ctrlrs.portals.selected_index(slot3)
 
@@ -931,14 +931,14 @@ PortalLayer.set_height = function (self, data)
 
 	return 
 end
-PortalLayer.clone = function (self)
+function PortalLayer:clone()
 	slot4 = "Clone not yet supported in Portals layer"
 
 	managers.editor.output(slot2, managers.editor)
 
 	return 
 end
-PortalLayer.click_select_unit = function (self)
+function PortalLayer:click_select_unit()
 	slot3 = self._ctrl
 	slot6 = "add_to_portal_unit_group"
 
@@ -965,7 +965,7 @@ PortalLayer.click_select_unit = function (self)
 
 	return 
 end
-PortalLayer.set_select_unit = function (self, unit)
+function PortalLayer:set_select_unit(unit)
 	slot4 = self._portal_shapes
 
 	for name, data in pairs(slot3) do
@@ -1008,7 +1008,7 @@ PortalLayer.set_select_unit = function (self, unit)
 
 	return 
 end
-PortalLayer.do_spawn_unit = function (self, name, pos, rot)
+function PortalLayer:do_spawn_unit(name, pos, rot)
 	if name == self._portal_point_unit and not self._current_portal then
 		slot7 = "Create or select a portal first!"
 
@@ -1061,7 +1061,7 @@ PortalLayer.do_spawn_unit = function (self, name, pos, rot)
 
 	return unit
 end
-PortalLayer.set_portal_shape_gui = function (self)
+function PortalLayer:set_portal_shape_gui()
 	if self._current_shape_panel then
 		slot3 = self._current_shape_panel
 
@@ -1097,14 +1097,14 @@ PortalLayer.set_portal_shape_gui = function (self)
 
 	return 
 end
-PortalLayer.create_portal_point = function (self, unit, pos)
+function PortalLayer:create_portal_point(unit, pos)
 	slot6 = unit
 
 	table.insert(slot4, self._current_portal)
 
 	return 
 end
-PortalLayer.new_portal = function (self, portals)
+function PortalLayer:new_portal(portals)
 	local name = "portal1"
 	local i = 1
 
@@ -1144,7 +1144,7 @@ PortalLayer.new_portal = function (self, portals)
 
 	return 
 end
-PortalLayer.delete_portal = function (self, portals)
+function PortalLayer:delete_portal(portals)
 	slot4 = portals
 	local i = portals.selected_index(slot3)
 
@@ -1186,7 +1186,7 @@ PortalLayer.delete_portal = function (self, portals)
 
 	return 
 end
-PortalLayer.update_shapes_listbox = function (self, portals)
+function PortalLayer:update_shapes_listbox(portals)
 	slot4 = portals
 
 	portals.clear(slot3)
@@ -1201,7 +1201,7 @@ PortalLayer.update_shapes_listbox = function (self, portals)
 
 	return 
 end
-PortalLayer.set_selection_shapes_listbox = function (self, portals, name)
+function PortalLayer:set_selection_shapes_listbox(portals, name)
 	slot6 = portals
 
 	for i = 0, portals.nr_items(slot5) - 1, 1 do
@@ -1216,7 +1216,7 @@ PortalLayer.set_selection_shapes_listbox = function (self, portals, name)
 
 	return 
 end
-PortalLayer.select_portal = function (self)
+function PortalLayer:select_portal()
 	slot3 = self._ctrlrs.portals
 	local i = self._ctrlrs.portals.selected_index(slot2)
 
@@ -1255,7 +1255,7 @@ PortalLayer.select_portal = function (self)
 
 	return 
 end
-PortalLayer.select_group = function (self)
+function PortalLayer:select_group()
 	slot3 = self._ctrlrs.groups
 	local i = self._ctrlrs.groups.selected_index(slot2)
 
@@ -1274,7 +1274,7 @@ PortalLayer.select_group = function (self)
 
 	return 
 end
-PortalLayer.new_group = function (self)
+function PortalLayer:new_group()
 	local name = managers.portal.group_name(slot2)
 	slot13 = 0
 	slot10 = true
@@ -1303,7 +1303,7 @@ PortalLayer.new_group = function (self)
 
 	return 
 end
-PortalLayer.rename_group = function (self)
+function PortalLayer:rename_group()
 	local groups = self._ctrlrs.groups
 	slot4 = groups
 	local i = groups.selected_index(slot3)
@@ -1345,7 +1345,7 @@ PortalLayer.rename_group = function (self)
 
 	return 
 end
-PortalLayer.delete_group = function (self)
+function PortalLayer:delete_group()
 	local groups = self._ctrlrs.groups
 	slot4 = groups
 	local i = groups.selected_index(slot3)
@@ -1401,7 +1401,7 @@ PortalLayer.delete_group = function (self)
 
 	return 
 end
-PortalLayer.add_unit_list_btn = function (self)
+function PortalLayer:add_unit_list_btn()
 	local groups = self._ctrlrs.groups
 	slot4 = groups
 	local i = groups.selected_index(slot3)
@@ -1432,7 +1432,7 @@ PortalLayer.add_unit_list_btn = function (self)
 
 	return 
 end
-PortalLayer.remove_unit_list_btn = function (self)
+function PortalLayer:remove_unit_list_btn()
 	local groups = self._ctrlrs.groups
 	slot4 = groups
 	local i = groups.selected_index(slot3)
@@ -1463,7 +1463,7 @@ PortalLayer.remove_unit_list_btn = function (self)
 
 	return 
 end
-PortalLayer.update_groups_listbox = function (self)
+function PortalLayer:update_groups_listbox()
 	slot3 = self._ctrlrs.groups
 
 	self._ctrlrs.groups.clear(slot2)
@@ -1478,7 +1478,7 @@ PortalLayer.update_groups_listbox = function (self)
 
 	return 
 end
-PortalLayer.set_selection_groups_listbox = function (self, name)
+function PortalLayer:set_selection_groups_listbox(name)
 	local groups = self._ctrlrs.groups
 	slot6 = groups
 
@@ -1494,7 +1494,7 @@ PortalLayer.set_selection_groups_listbox = function (self, name)
 
 	return 
 end
-PortalLayer.delete_unit = function (self, unit)
+function PortalLayer:delete_unit(unit)
 	slot5 = self._portal_point_unit
 
 	if unit.name(slot3) == Idstring(unit) then
@@ -1528,7 +1528,7 @@ PortalLayer.delete_unit = function (self, unit)
 
 	return 
 end
-PortalLayer.calc_mid_point = function (self)
+function PortalLayer:calc_mid_point()
 	if not self._current_portal then
 		return 
 	end
@@ -1565,7 +1565,7 @@ PortalLayer.calc_mid_point = function (self)
 
 	return 
 end
-PortalLayer.insert = function (self)
+function PortalLayer:insert()
 
 	-- Decompilation error in this vicinity:
 	slot3 = self._selected_unit
@@ -1583,14 +1583,14 @@ PortalLayer.insert = function (self)
 
 	return 
 end
-PortalLayer.replace_unit = function (self)
+function PortalLayer:replace_unit()
 	slot4 = "Can't replace or reload portal units."
 
 	managers.editor.output_error(slot2, managers.editor)
 
 	return 
 end
-PortalLayer.update_unit_settings = function (self)
+function PortalLayer:update_unit_settings()
 	slot3 = self
 
 	PortalLayer.super.update_unit_settings(slot2)
@@ -1601,7 +1601,7 @@ PortalLayer.update_unit_settings = function (self)
 
 	return 
 end
-PortalLayer.clear = function (self)
+function PortalLayer:clear()
 	self._portal_shapes = {}
 	slot4 = self._shapes_listbox
 
@@ -1626,7 +1626,7 @@ PortalLayer.clear = function (self)
 
 	return 
 end
-PortalLayer.add_triggers = function (self)
+function PortalLayer:add_triggers()
 	PortalLayer.super.add_triggers(slot2)
 
 	local vc = self._editor_data.virtual_controller

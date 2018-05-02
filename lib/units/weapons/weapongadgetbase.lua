@@ -5,7 +5,7 @@ end
 
 WeaponGadgetBase = slot0
 WeaponGadgetBase.GADGET_TYPE = ""
-WeaponGadgetBase.init = function (self, unit)
+function WeaponGadgetBase:init(unit)
 	slot5 = unit
 
 	WeaponGadgetBase.super.init(slot3, self)
@@ -14,10 +14,10 @@ WeaponGadgetBase.init = function (self, unit)
 
 	return 
 end
-WeaponGadgetBase.set_npc = function (self)
+function WeaponGadgetBase:set_npc()
 	return 
 end
-WeaponGadgetBase.set_state = function (self, on, sound_source)
+function WeaponGadgetBase:set_state(on, sound_source)
 	slot5 = self
 
 	if not self.is_bipod(slot4) then
@@ -36,10 +36,10 @@ WeaponGadgetBase.set_state = function (self, on, sound_source)
 
 	return 
 end
-WeaponGadgetBase.is_usable = function (self)
+function WeaponGadgetBase:is_usable()
 	return true
 end
-WeaponGadgetBase.set_on = function (self)
+function WeaponGadgetBase:set_on()
 	self._on = true
 	slot3 = self
 
@@ -47,7 +47,7 @@ WeaponGadgetBase.set_on = function (self)
 
 	return 
 end
-WeaponGadgetBase.set_off = function (self)
+function WeaponGadgetBase:set_off()
 	self._on = false
 	slot3 = self
 
@@ -55,7 +55,7 @@ WeaponGadgetBase.set_off = function (self)
 
 	return 
 end
-WeaponGadgetBase.toggle = function (self)
+function WeaponGadgetBase:toggle()
 	self._on = not self._on
 	slot3 = self
 
@@ -63,19 +63,19 @@ WeaponGadgetBase.toggle = function (self)
 
 	return 
 end
-WeaponGadgetBase.is_on = function (self)
+function WeaponGadgetBase:is_on()
 	return self._on
 end
-WeaponGadgetBase.toggle_requires_stance_update = function (self)
+function WeaponGadgetBase:toggle_requires_stance_update()
 	return false
 end
-WeaponGadgetBase._check_state = function (self)
+function WeaponGadgetBase:_check_state()
 	return 
 end
-WeaponGadgetBase.is_bipod = function (self)
+function WeaponGadgetBase:is_bipod()
 	return false
 end
-WeaponGadgetBase.destroy = function (self, unit)
+function WeaponGadgetBase:destroy(unit)
 	slot5 = unit
 
 	WeaponGadgetBase.super.pre_destroy(slot3, self)

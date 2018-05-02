@@ -1,5 +1,5 @@
 CampCustomizationTweakData = CampCustomizationTweakData or class()
-function CampCustomizationTweakData:init()
+CampCustomizationTweakData.init = function (self)
 	slot3 = self
 
 	self._setup_camp_assets(slot2)
@@ -10,7 +10,7 @@ function CampCustomizationTweakData:init()
 
 	return 
 end
-function CampCustomizationTweakData:_setup_camp_assets()
+CampCustomizationTweakData._setup_camp_assets = function (self)
 	self.camp_upgrades_automatic = {
 		gold_pile = {
 			gold = {
@@ -346,7 +346,7 @@ function CampCustomizationTweakData:_setup_camp_assets()
 
 	return 
 end
-function CampCustomizationTweakData:_setup_default_camp_list()
+CampCustomizationTweakData._setup_default_camp_list = function (self)
 	self.default_camp = {
 		{
 			upgrade = "gold_pile"
@@ -407,7 +407,7 @@ function CampCustomizationTweakData:_setup_default_camp_list()
 
 	return 
 end
-function CampCustomizationTweakData:get_applyable_upgrades()
+CampCustomizationTweakData.get_applyable_upgrades = function (self)
 	local upgrades = {}
 	slot4 = self.camp_upgrades
 
@@ -430,7 +430,7 @@ function CampCustomizationTweakData:get_applyable_upgrades()
 
 	return upgrades
 end
-function CampCustomizationTweakData:is_upgrade_applyable(upgrade, upgrade_slot_name, upgrade_level)
+CampCustomizationTweakData.is_upgrade_applyable = function (self, upgrade, upgrade_slot_name, upgrade_level)
 	slot8 = upgrade_level
 
 	if self.is_default_upgrade(slot5, self, upgrade_slot_name) then
@@ -451,7 +451,7 @@ function CampCustomizationTweakData:is_upgrade_applyable(upgrade, upgrade_slot_n
 
 	return false
 end
-function CampCustomizationTweakData:is_upgrade_unlocked(upgrade)
+CampCustomizationTweakData.is_upgrade_unlocked = function (self, upgrade)
 	if not upgrade.dlc and upgrade.gold_price then
 		return true
 	end
@@ -466,7 +466,7 @@ function CampCustomizationTweakData:is_upgrade_unlocked(upgrade)
 
 	return false
 end
-function CampCustomizationTweakData:is_default_upgrade(upgrade_slot_name, upgrade_level)
+CampCustomizationTweakData.is_default_upgrade = function (self, upgrade_slot_name, upgrade_level)
 	slot6 = upgrade_slot_name
 
 	if upgrade_level == self.get_default_upgrade_level(slot4, self) and 0 < upgrade_level then
@@ -475,7 +475,7 @@ function CampCustomizationTweakData:is_default_upgrade(upgrade_slot_name, upgrad
 
 	return false
 end
-function CampCustomizationTweakData:get_default_upgrade_level(upgrade_slot_name)
+CampCustomizationTweakData.get_default_upgrade_level = function (self, upgrade_slot_name)
 	slot4 = self.default_camp
 
 	for key, upgrade in pairs(slot3) do

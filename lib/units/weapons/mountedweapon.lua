@@ -1,6 +1,6 @@
 MountedWeapon = MountedWeapon or class()
 MountedWeapon.SEQUENCE_FIRE = "fire"
-MountedWeapon.init = function (self, unit)
+function MountedWeapon:init(unit)
 	self._unit = unit
 	slot7 = "mounted_weapon"
 
@@ -29,7 +29,7 @@ MountedWeapon.init = function (self, unit)
 
 	return 
 end
-MountedWeapon.set_cannon_sound_source = function (self)
+function MountedWeapon:set_cannon_sound_source()
 	self._main_cannon_soundsource = nil
 	local snd_main_cannon = nil
 	slot4 = self._unit
@@ -55,7 +55,7 @@ MountedWeapon.set_cannon_sound_source = function (self)
 
 	return 
 end
-MountedWeapon.set_tweak_data = function (self, data)
+function MountedWeapon:set_tweak_data(data)
 	self._tweak_data = data
 
 	if self._tweak_data.turret then
@@ -72,14 +72,14 @@ MountedWeapon.set_tweak_data = function (self, data)
 
 	return 
 end
-MountedWeapon.update = function (self, unit, t, dt)
+function MountedWeapon:update(unit, t, dt)
 	slot8 = dt
 
 	self.update_turret(slot5, self, t)
 
 	return 
 end
-MountedWeapon.main_cannon_fire = function (self)
+function MountedWeapon:main_cannon_fire()
 	if self._main_cannon_cooldown < self._main_cannon_cooldown_counter then
 		slot3 = self._unit
 		slot8 = self._unit
@@ -130,7 +130,7 @@ MountedWeapon.main_cannon_fire = function (self)
 
 	return 
 end
-MountedWeapon.set_turret_target_rot = function (self, rot, dt)
+function MountedWeapon:set_turret_target_rot(rot, dt)
 	slot6 = rot
 	self._turret.target_rot_yaw = rot.yaw(slot5)
 	slot6 = rot
@@ -153,7 +153,7 @@ MountedWeapon.set_turret_target_rot = function (self, rot, dt)
 
 	return 
 end
-MountedWeapon.update_turret = function (self, t, dt)
+function MountedWeapon:update_turret(t, dt)
 	if not self._turret or not self._turret.object then
 		return 
 	end
@@ -265,7 +265,7 @@ MountedWeapon.update_turret = function (self, t, dt)
 
 	return 
 end
-MountedWeapon._update_tank_input = function (self, dt)
+function MountedWeapon:_update_tank_input(dt)
 	local move_d = self._controller.get_input_axis(slot3, self._controller)
 	local forced_gear = -1
 	local vehicle_state = self._vehicle.get_state("drive")
@@ -340,7 +340,7 @@ MountedWeapon._update_tank_input = function (self, dt)
 
 	return 
 end
-MountedWeapon._tank_main_cannon_hit_explosion = function (self, raycast, hit_position)
+function MountedWeapon:_tank_main_cannon_hit_explosion(raycast, hit_position)
 	local pos = hit_position
 	local normal = raycast.normal
 	local damage_radius = self._tweak_data.turret.damage_radius or 1000
@@ -374,7 +374,7 @@ MountedWeapon._tank_main_cannon_hit_explosion = function (self, raycast, hit_pos
 
 	return 
 end
-MountedWeapon._tank_main_cannon_hit_explosion_on_client = function (self, position, radius, damage, player_damage, curve_pow)
+function MountedWeapon:_tank_main_cannon_hit_explosion_on_client(position, radius, damage, player_damage, curve_pow)
 	local sound_event = "grenade_explode"
 	local damage_radius = radius or self._tweak_data.turret.damage_radius or 1000
 	local custom_params = {

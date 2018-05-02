@@ -3,7 +3,7 @@
 AchievmentManager = AchievmentManager or class()
 AchievmentManager.PATH = "gamedata/achievments"
 AchievmentManager.FILE_EXTENSION = "achievment"
-function AchievmentManager:init()
+AchievmentManager.init = function (self)
 	self.exp_awards = {
 		b = 1500,
 		a = 500,
@@ -127,7 +127,7 @@ function AchievmentManager:init()
 
 	return 
 end
-function AchievmentManager:init_finalize()
+AchievmentManager.init_finalize = function (self)
 	slot3 = managers.savefile
 	slot8 = "_load_done"
 
@@ -135,7 +135,7 @@ function AchievmentManager:init_finalize()
 
 	return 
 end
-function AchievmentManager:fetch_trophies()
+AchievmentManager.fetch_trophies = function (self)
 
 	-- Decompilation error in this vicinity:
 	slot4 = "PS3"
@@ -187,7 +187,7 @@ AchievmentManager.fetch_achievments = function (error_str)
 
 	return 
 end
-function AchievmentManager:_load_done()
+AchievmentManager._load_done = function (self)
 	slot4 = "XB1"
 
 	if SystemInfo.platform(slot2) == Idstring(SystemInfo) then
@@ -202,7 +202,7 @@ function AchievmentManager:_load_done()
 
 	return 
 end
-function AchievmentManager:_achievments_loaded(achievment_list)
+AchievmentManager._achievments_loaded = function (self, achievment_list)
 	slot7 = achievment_list and #achievment_list
 	slot4 = "[AchievmentManager] Achievment loaded: " .. tostring(slot6)
 
@@ -241,7 +241,7 @@ function AchievmentManager:_achievments_loaded(achievment_list)
 
 	return 
 end
-function AchievmentManager:on_user_signout()
+AchievmentManager.on_user_signout = function (self)
 	slot4 = "XB1"
 
 	if SystemInfo.platform(slot2) == Idstring(SystemInfo) then
@@ -259,7 +259,7 @@ function AchievmentManager:on_user_signout()
 
 	return 
 end
-function AchievmentManager:_parse_achievments(platform)
+AchievmentManager._parse_achievments = function (self, platform)
 	slot5 = self.FILE_EXTENSION.id(slot6)
 	slot8 = self.PATH
 	local list = PackageManager.script_data(slot3, PackageManager, self.PATH.id(self.FILE_EXTENSION))
@@ -290,26 +290,26 @@ function AchievmentManager:_parse_achievments(platform)
 
 	return 
 end
-function AchievmentManager:get_script_data(id)
+AchievmentManager.get_script_data = function (self, id)
 	return self.script_data[id]
 end
-function AchievmentManager:set_script_data(id, data)
+AchievmentManager.set_script_data = function (self, id, data)
 	self.script_data[id] = data
 
 	return 
 end
-function AchievmentManager:exists(id)
+AchievmentManager.exists = function (self, id)
 	return self.achievments[id] ~= nil
 end
-function AchievmentManager:get_info(id)
+AchievmentManager.get_info = function (self, id)
 	return self.achievments[id]
 end
-function AchievmentManager:total_amount()
+AchievmentManager.total_amount = function (self)
 	slot3 = self.achievments
 
 	return table.size(slot2)
 end
-function AchievmentManager:total_unlocked()
+AchievmentManager.total_unlocked = function (self)
 	local i = 0
 	slot4 = self.achievments
 
@@ -321,7 +321,7 @@ function AchievmentManager:total_unlocked()
 
 	return i
 end
-function AchievmentManager:award(id)
+AchievmentManager.award = function (self, id)
 	slot7 = id
 
 	Application.debug(slot3, Application, "[AchievmentManager:award] Awarding achievement", "id")
@@ -354,7 +354,7 @@ function AchievmentManager:award(id)
 
 	return 
 end
-function AchievmentManager:_give_reward(id)
+AchievmentManager._give_reward = function (self, id)
 	slot5 = id
 	local data = self.get_info(slot3, self)
 	data.awarded = true
@@ -367,7 +367,7 @@ function AchievmentManager:_give_reward(id)
 
 	return 
 end
-function AchievmentManager:award_progress(stat, value)
+AchievmentManager.award_progress = function (self, stat, value)
 	slot5 = Application
 
 	if Application.editor(slot4) then
@@ -394,7 +394,7 @@ function AchievmentManager:award_progress(stat, value)
 
 	return 
 end
-function AchievmentManager:get_stat(stat)
+AchievmentManager.get_stat = function (self, stat)
 	slot5 = "WIN32"
 
 	if SystemInfo.platform(slot3) == Idstring(SystemInfo) then
@@ -405,14 +405,14 @@ function AchievmentManager:get_stat(stat)
 
 	return false
 end
-function AchievmentManager:award_none(id)
+AchievmentManager.award_none = function (self, id)
 	slot6 = id
 
 	Application.debug(slot3, Application, "[AchievmentManager:award_none] Awarded achievment")
 
 	return 
 end
-function AchievmentManager:award_steam(id)
+AchievmentManager.award_steam = function (self, id)
 	slot4 = self.handler
 
 	if not self.handler.initialized(slot3) then
@@ -438,7 +438,7 @@ function AchievmentManager:award_steam(id)
 
 	return 
 end
-function AchievmentManager:clear_steam(id)
+AchievmentManager.clear_steam = function (self, id)
 	slot4 = self.handler
 
 	if not self.handler.initialized(slot3) then
@@ -460,7 +460,7 @@ function AchievmentManager:clear_steam(id)
 
 	return 
 end
-function AchievmentManager:reset_achievements()
+AchievmentManager.reset_achievements = function (self)
 	slot3 = managers.achievment
 
 	managers.achievment.clear_all_steam(slot2)
@@ -476,7 +476,7 @@ function AchievmentManager:reset_achievements()
 
 	return 
 end
-function AchievmentManager:clear_all_steam()
+AchievmentManager.clear_all_steam = function (self)
 	slot3 = "[AchievmentManager:clear_all_steam]"
 
 	print(slot2)
@@ -514,7 +514,7 @@ AchievmentManager.steam_unlock_result = function (achievment)
 
 	return 
 end
-function AchievmentManager:award_x360(id)
+AchievmentManager.award_x360 = function (self, id)
 	slot5 = id
 
 	print(slot3, "[AchievmentManager:award_x360] Awarded X360 achievment")
@@ -540,7 +540,7 @@ function AchievmentManager:award_x360(id)
 
 	return 
 end
-function AchievmentManager:award_psn(id)
+AchievmentManager.award_psn = function (self, id)
 	slot9 = id
 	slot6 = self.get_info(slot7, self).id
 
@@ -576,7 +576,7 @@ AchievmentManager.psn_unlock_result = function (request, error_str)
 
 	return 
 end
-function AchievmentManager:chk_install_trophies()
+AchievmentManager.chk_install_trophies = function (self)
 	slot3 = Trophies
 
 	if Trophies.is_installed(slot2) then
@@ -609,7 +609,7 @@ function AchievmentManager:chk_install_trophies()
 
 	return 
 end
-function AchievmentManager:clbk_install_trophies(result)
+AchievmentManager.clbk_install_trophies = function (self, result)
 	slot5 = result
 
 	print(slot3, "[AchievmentManager:clbk_install_trophies]")
@@ -623,7 +623,7 @@ function AchievmentManager:clbk_install_trophies(result)
 
 	return 
 end
-function AchievmentManager:check_achievement_complete_raid_with_4_different_classes()
+AchievmentManager.check_achievement_complete_raid_with_4_different_classes = function (self)
 	slot3 = managers.network
 	slot3 = managers.network.session(slot2)
 	local peers = managers.network.session(slot2).all_peers(slot2)
@@ -654,7 +654,7 @@ function AchievmentManager:check_achievement_complete_raid_with_4_different_clas
 
 	return 
 end
-function AchievmentManager:check_achievement_complete_raid_with_no_kills()
+AchievmentManager.check_achievement_complete_raid_with_no_kills = function (self)
 	if managers.statistics._global.session.killed.total.count == 0 then
 		slot4 = "ach_complete_raid_with_no_kills"
 
@@ -663,7 +663,7 @@ function AchievmentManager:check_achievement_complete_raid_with_no_kills()
 
 	return 
 end
-function AchievmentManager:check_achievement_kill_30_enemies_with_vehicle_on_bank_level()
+AchievmentManager.check_achievement_kill_30_enemies_with_vehicle_on_bank_level = function (self)
 	local is_bank_level = false
 	slot4 = managers.raid_job
 	local current_job = managers.raid_job.current_job(slot3)
@@ -684,7 +684,7 @@ function AchievmentManager:check_achievement_kill_30_enemies_with_vehicle_on_ban
 
 	return 
 end
-function AchievmentManager:check_achievement_operation_clear_sky_hardest(operation_save_data)
+AchievmentManager.check_achievement_operation_clear_sky_hardest = function (self, operation_save_data)
 	slot4 = Network
 
 	if Network.is_server(slot3) and operation_save_data.difficulty_id == tweak_data.hardest_difficulty.id and operation_save_data.current_job.job_id == "clear_skies" then
@@ -700,7 +700,7 @@ function AchievmentManager:check_achievement_operation_clear_sky_hardest(operati
 
 	return 
 end
-function AchievmentManager:check_achievement_operation_clear_sky_no_bleedout(operation_save_data)
+AchievmentManager.check_achievement_operation_clear_sky_no_bleedout = function (self, operation_save_data)
 	slot4 = Network
 
 	if Network.is_server(slot3) then
@@ -749,7 +749,7 @@ function AchievmentManager:check_achievement_operation_clear_sky_no_bleedout(ope
 
 	return 
 end
-function AchievmentManager:check_achievement_operation_burn_hardest(operation_save_data)
+AchievmentManager.check_achievement_operation_burn_hardest = function (self, operation_save_data)
 	slot4 = Network
 
 	if Network.is_server(slot3) and operation_save_data.difficulty_id == tweak_data.hardest_difficulty.id and operation_save_data.current_job.job_id == "oper_flamable" then
@@ -765,7 +765,7 @@ function AchievmentManager:check_achievement_operation_burn_hardest(operation_sa
 
 	return 
 end
-function AchievmentManager:check_achievement_operation_burn_no_bleedout(operation_save_data)
+AchievmentManager.check_achievement_operation_burn_no_bleedout = function (self, operation_save_data)
 	slot4 = Network
 
 	if Network.is_server(slot3) then
@@ -814,7 +814,7 @@ function AchievmentManager:check_achievement_operation_burn_no_bleedout(operatio
 
 	return 
 end
-function AchievmentManager:check_achievement_group_bring_them_home(current_job_data)
+AchievmentManager.check_achievement_group_bring_them_home = function (self, current_job_data)
 	if current_job_data and current_job_data.job_type and current_job_data.job_type == OperationsTweakData.JOB_TYPE_RAID then
 		if current_job_data.job_id == "flakturm" then
 			slot5 = "ach_bring_them_home_flak"

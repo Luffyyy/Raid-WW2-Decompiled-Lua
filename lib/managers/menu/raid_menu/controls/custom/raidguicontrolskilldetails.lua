@@ -20,7 +20,7 @@ RaidGUIControlSkillDetails.DESCRIPTION_COLOR = tweak_data.gui.colors.raid_grey
 RaidGUIControlSkillDetails.ACTIVE_LEVEL_COLOR = tweak_data.gui.colors.raid_grey
 RaidGUIControlSkillDetails.PENDING_LEVEL_COLOR = tweak_data.gui.colors.raid_red
 RaidGUIControlSkillDetails.INACTIVE_LEVEL_COLOR = tweak_data.gui.colors.raid_dark_grey
-RaidGUIControlSkillDetails.init = function (self, parent, params)
+function RaidGUIControlSkillDetails:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlSkillDetails.super.init(slot4, self, parent)
@@ -48,7 +48,7 @@ RaidGUIControlSkillDetails.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlSkillDetails._create_control_panel = function (self)
+function RaidGUIControlSkillDetails:_create_control_panel()
 	local control_params = clone(slot2)
 	control_params.name = control_params.name .. "_customization_panel"
 	slot4 = self._panel
@@ -61,7 +61,7 @@ RaidGUIControlSkillDetails._create_control_panel = function (self)
 
 	return 
 end
-RaidGUIControlSkillDetails._create_skill_title = function (self)
+function RaidGUIControlSkillDetails:_create_skill_title()
 	local skill_title_params = {
 		vertical = "center",
 		name = "skill_title",
@@ -82,7 +82,7 @@ RaidGUIControlSkillDetails._create_skill_title = function (self)
 
 	return 
 end
-RaidGUIControlSkillDetails._create_skill_description = function (self)
+function RaidGUIControlSkillDetails:_create_skill_description()
 	local description_text_params = {
 		name = "skill_description",
 		wrap = true,
@@ -102,14 +102,14 @@ RaidGUIControlSkillDetails._create_skill_description = function (self)
 
 	return 
 end
-RaidGUIControlSkillDetails.set_skill = function (self, skill, title, description, color_changes)
+function RaidGUIControlSkillDetails:set_skill(skill, title, description, color_changes)
 
 	-- Decompilation error in this vicinity:
 	slot7 = self._title
 
 	return 
 end
-RaidGUIControlSkillDetails._animate_skill_change = function (self, skill_title_label, new_title, new_description, color_changes)
+function RaidGUIControlSkillDetails:_animate_skill_change(skill_title_label, new_title, new_description, color_changes)
 	local t = 0
 	slot8 = self._title._object
 	local starting_alpha = self._title._object.alpha(slot7)

@@ -8,7 +8,7 @@ if not EditUnitDialog then
 end
 
 EditUnitDialog = slot0
-EditUnitDialog.init = function (self, toolbar, btn)
+function EditUnitDialog:init(toolbar, btn)
 	slot13 = 0
 	slot14 = 0
 	slot11 = "DEFAULT_DIALOG_STYLE,RESIZE_BORDER,MINIMIZE_BOX,MAXIMIZE_BOX"
@@ -45,7 +45,7 @@ EditUnitDialog.init = function (self, toolbar, btn)
 
 	return 
 end
-EditUnitDialog.add_page = function (self, data)
+function EditUnitDialog:add_page(data)
 	local name = data.name
 	local start_page = data.start_page
 	local class = data.class
@@ -80,7 +80,7 @@ EditUnitDialog.add_page = function (self, data)
 
 	return panel, sizer
 end
-EditUnitDialog.set_enabled = function (self, unit, units)
+function EditUnitDialog:set_enabled(unit, units)
 	slot5 = self._pages
 
 	for _, page in ipairs(slot4) do
@@ -103,7 +103,7 @@ EditUnitDialog.set_enabled = function (self, unit, units)
 
 	return 
 end
-EditUnitDialog.update = function (self, t, dt)
+function EditUnitDialog:update(t, dt)
 	slot5 = self
 	local current_page = self._current_page(slot4)
 
@@ -115,7 +115,7 @@ EditUnitDialog.update = function (self, t, dt)
 
 	return 
 end
-EditUnitDialog._current_page = function (self)
+function EditUnitDialog:_current_page()
 	slot3 = self._dialog
 
 	if not self._dialog.visible(slot2) then
@@ -134,7 +134,7 @@ EditUnitDialog._current_page = function (self)
 
 	return 
 end
-EditUnitDialog.dialog_closed = function (self, data, event)
+function EditUnitDialog:dialog_closed(data, event)
 	slot5 = self._pages
 
 	for _, page in ipairs(slot4) do
@@ -152,7 +152,7 @@ EditUnitDialog.dialog_closed = function (self, data, event)
 	return 
 end
 EditUnitBase = EditUnitBase or class()
-EditUnitBase.init = function (self)
+function EditUnitBase:init()
 	self._debug = false
 	slot3 = Draw
 	self._brush = Draw.brush(slot2)
@@ -161,13 +161,13 @@ EditUnitBase.init = function (self)
 
 	return 
 end
-EditUnitBase.update = function (self)
+function EditUnitBase:update()
 	return 
 end
-EditUnitBase.dialog_closed = function (self)
+function EditUnitBase:dialog_closed()
 	return 
 end
-EditUnitBase.update_debug = function (self, ctrlr)
+function EditUnitBase:update_debug(ctrlr)
 	slot4 = ctrlr
 	self._debug = ctrlr.get_value(slot3)
 

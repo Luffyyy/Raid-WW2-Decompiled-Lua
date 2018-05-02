@@ -4,14 +4,14 @@ if not VehicleStateSecured then
 end
 
 VehicleStateSecured = slot0
-VehicleStateSecured.init = function (self, unit)
+function VehicleStateSecured:init(unit)
 	slot5 = unit
 
 	BaseVehicleState.init(slot3, self)
 
 	return 
 end
-VehicleStateSecured.enter = function (self, state_data, enter_data)
+function VehicleStateSecured:enter(state_data, enter_data)
 	slot5 = self._unit
 	slot5 = self._unit.vehicle_driving(slot4)
 
@@ -33,7 +33,7 @@ VehicleStateSecured.enter = function (self, state_data, enter_data)
 
 	return 
 end
-VehicleStateSecured.adjust_interactions = function (self)
+function VehicleStateSecured:adjust_interactions()
 	slot3 = self
 
 	VehicleStateSecured.super.adjust_interactions(slot2)
@@ -92,7 +92,7 @@ VehicleStateSecured.adjust_interactions = function (self)
 
 	return 
 end
-VehicleStateSecured.stop_vehicle = function (self)
+function VehicleStateSecured:stop_vehicle()
 	return true
 end
 

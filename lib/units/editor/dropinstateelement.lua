@@ -4,7 +4,7 @@ if not DropinStateElement then
 end
 
 DropinStateElement = slot0
-DropinStateElement.init = function (self, unit)
+function DropinStateElement:init(unit)
 	slot5 = unit
 
 	DropinStateElement.super.init(slot3, self)
@@ -16,7 +16,7 @@ DropinStateElement.init = function (self, unit)
 
 	return 
 end
-DropinStateElement._build_panel = function (self, panel, panel_sizer)
+function DropinStateElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

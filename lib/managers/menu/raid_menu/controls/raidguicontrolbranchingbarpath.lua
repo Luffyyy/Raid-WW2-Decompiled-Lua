@@ -8,7 +8,7 @@ RaidGUIControlBranchingBarPath.STATE_LOCKED = "STATE_LOCKED"
 RaidGUIControlBranchingBarPath.STATE_FULL = "STATE_FULL"
 RaidGUIControlBranchingBarPath.STATE_ACTIVE = "STATE_ACTIVE"
 RaidGUIControlBranchingBarPath.STATE_DISABLED = "STATE_DISABLED"
-RaidGUIControlBranchingBarPath.init = function (self, parent, params)
+function RaidGUIControlBranchingBarPath:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlBranchingBarPath.super.init(slot4, self, parent)
@@ -22,33 +22,33 @@ RaidGUIControlBranchingBarPath.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlBranchingBarPath.set_locked = function (self)
+function RaidGUIControlBranchingBarPath:set_locked()
 	return 
 end
-RaidGUIControlBranchingBarPath.set_active = function (self)
+function RaidGUIControlBranchingBarPath:set_active()
 	return 
 end
-RaidGUIControlBranchingBarPath.set_full = function (self)
+function RaidGUIControlBranchingBarPath:set_full()
 	return 
 end
-RaidGUIControlBranchingBarPath.set_disabled = function (self)
+function RaidGUIControlBranchingBarPath:set_disabled()
 	return 
 end
-RaidGUIControlBranchingBarPath.set_progress = function (self, progress)
+function RaidGUIControlBranchingBarPath:set_progress(progress)
 	self._progress = progress
 
 	return 
 end
-RaidGUIControlBranchingBarPath.state = function (self)
+function RaidGUIControlBranchingBarPath:state()
 	return self._state
 end
-RaidGUIControlBranchingBarPath.endpoints = function (self)
+function RaidGUIControlBranchingBarPath:endpoints()
 	return {
 		self._starting_point_index,
 		self._ending_point_index
 	}
 end
-RaidGUIControlBranchingBarPath.init_to_state = function (self, state)
+function RaidGUIControlBranchingBarPath:init_to_state(state)
 	return 
 end
 

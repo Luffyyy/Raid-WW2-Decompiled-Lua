@@ -7,7 +7,7 @@ end
 
 RaidGUIControlWeaponStats = slot0
 RaidGUIControlWeaponStats.TAB_HEIGHT = 96
-RaidGUIControlWeaponStats.init = function (self, parent, params)
+function RaidGUIControlWeaponStats:init(parent, params)
 	params.item_class = RaidGUIControlTabWeaponStats
 	slot5 = self
 
@@ -22,7 +22,7 @@ RaidGUIControlWeaponStats.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlWeaponStats._create_items = function (self)
+function RaidGUIControlWeaponStats:_create_items()
 	if self._params.tabs_params then
 		slot3 = self._params.tabs_params
 
@@ -38,7 +38,7 @@ RaidGUIControlWeaponStats._create_items = function (self)
 
 	return 
 end
-RaidGUIControlWeaponStats._set_default_values = function (self)
+function RaidGUIControlWeaponStats:_set_default_values()
 	slot7 = true
 	slot7 = true
 	slot7 = true
@@ -80,7 +80,7 @@ RaidGUIControlWeaponStats._set_default_values = function (self)
 
 	return 
 end
-RaidGUIControlWeaponStats._get_tabs_params = function (self)
+function RaidGUIControlWeaponStats:_get_tabs_params()
 	local tabs_params = {
 		{
 			name = "damage",
@@ -122,7 +122,7 @@ RaidGUIControlWeaponStats._get_tabs_params = function (self)
 
 	return tabs_params
 end
-RaidGUIControlWeaponStats.set_modified_stats = function (self, params)
+function RaidGUIControlWeaponStats:set_modified_stats(params)
 	self._values.damage.modified_value = params.damage_modified_value
 	self._values.magazine.modified_value = params.magazine_modified_value
 	self._values.total_ammo.modified_value = params.total_ammo_modified_value
@@ -163,7 +163,7 @@ RaidGUIControlWeaponStats.set_modified_stats = function (self, params)
 
 	return 
 end
-RaidGUIControlWeaponStats.set_applied_stats = function (self, params)
+function RaidGUIControlWeaponStats:set_applied_stats(params)
 	self._values.damage.applied_value = params.damage_applied_value
 	self._values.magazine.applied_value = params.magazine_applied_value
 	self._values.total_ammo.applied_value = params.total_ammo_applied_value
@@ -173,26 +173,26 @@ RaidGUIControlWeaponStats.set_applied_stats = function (self, params)
 
 	return 
 end
-RaidGUIControlWeaponStats.refresh_data = function (self)
+function RaidGUIControlWeaponStats:refresh_data()
 	slot4 = "[RaidGUIControlWeaponStats:refresh_data]"
 
 	Application.trace(slot2, Application)
 
 	return 
 end
-RaidGUIControlWeaponStats._create_bottom_line = function (self)
+function RaidGUIControlWeaponStats:_create_bottom_line()
 	return 
 end
-RaidGUIControlWeaponStats._initial_tab_selected = function (self, tab_idx)
+function RaidGUIControlWeaponStats:_initial_tab_selected(tab_idx)
 	return 
 end
-RaidGUIControlWeaponStats._tab_selected = function (self, tab_idx, callback_param)
+function RaidGUIControlWeaponStats:_tab_selected(tab_idx, callback_param)
 	return 
 end
-RaidGUIControlWeaponStats._unselect_all = function (self)
+function RaidGUIControlWeaponStats:_unselect_all()
 	return 
 end
-RaidGUIControlWeaponStats.set_selected = function (self, value)
+function RaidGUIControlWeaponStats:set_selected(value)
 	slot5 = "[RaidGUIControlWeaponStats:set_selected] weapon stats control can't be selected"
 
 	Application.error(slot3, Application)
@@ -201,25 +201,25 @@ RaidGUIControlWeaponStats.set_selected = function (self, value)
 
 	return 
 end
-RaidGUIControlWeaponStats.move_up = function (self)
+function RaidGUIControlWeaponStats:move_up()
 	return 
 end
-RaidGUIControlWeaponStats.move_down = function (self)
+function RaidGUIControlWeaponStats:move_down()
 	return 
 end
-RaidGUIControlWeaponStats.move_left = function (self)
+function RaidGUIControlWeaponStats:move_left()
 	return 
 end
-RaidGUIControlWeaponStats.move_right = function (self)
+function RaidGUIControlWeaponStats:move_right()
 	return 
 end
-RaidGUIControlWeaponStats.highlight_on = function (self)
+function RaidGUIControlWeaponStats:highlight_on()
 	return 
 end
-RaidGUIControlWeaponStats.highlight_off = function (self)
+function RaidGUIControlWeaponStats:highlight_off()
 	return 
 end
-RaidGUIControlWeaponStats.mouse_released = function (self, o, button, x, y)
+function RaidGUIControlWeaponStats:mouse_released(o, button, x, y)
 	return false
 end
 

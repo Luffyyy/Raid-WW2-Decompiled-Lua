@@ -8,14 +8,14 @@ if not ElementStatisticsJobs then
 end
 
 ElementStatisticsJobs = slot0
-ElementStatisticsJobs.init = function (self, ...)
+function ElementStatisticsJobs:init(...)
 	slot3 = self
 
 	ElementStatisticsJobs.super.init(slot2, ...)
 
 	return 
 end
-ElementStatisticsJobs.on_executed = function (self, instigator)
+function ElementStatisticsJobs:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -33,14 +33,14 @@ ElementStatisticsJobs.on_executed = function (self, instigator)
 
 	return 
 end
-ElementStatisticsJobs.client_on_executed = function (self, ...)
+function ElementStatisticsJobs:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementStatisticsJobs._completed_job_data = function (self, job_id, state, difficulty, prof, dropin)
+function ElementStatisticsJobs:_completed_job_data(job_id, state, difficulty, prof, dropin)
 	local count = 0
 
 	if not difficulty then

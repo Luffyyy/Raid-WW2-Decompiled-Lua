@@ -16,14 +16,14 @@ if not PlayEffectUnitElement then
 end
 
 PlayEffectUnitElement = slot0
-PlayEffectUnitElement.init = function (self, ...)
+function PlayEffectUnitElement:init(...)
 	slot3 = self
 
 	CorePlayEffectUnitElement.init(slot2, ...)
 
 	return 
 end
-CorePlayEffectUnitElement.init = function (self, unit)
+function CorePlayEffectUnitElement:init(unit)
 	slot5 = unit
 
 	MissionElement.init(slot3, self)
@@ -55,7 +55,7 @@ CorePlayEffectUnitElement.init = function (self, unit)
 
 	return 
 end
-CorePlayEffectUnitElement.test_element = function (self)
+function CorePlayEffectUnitElement:test_element()
 	if self._hed.effect ~= "none" then
 		slot3 = self
 
@@ -88,7 +88,7 @@ CorePlayEffectUnitElement.test_element = function (self)
 
 	return 
 end
-CorePlayEffectUnitElement.stop_test_element = function (self)
+function CorePlayEffectUnitElement:stop_test_element()
 	if self._effect then
 		slot3 = World
 		slot4 = self._effect
@@ -100,7 +100,7 @@ CorePlayEffectUnitElement.stop_test_element = function (self)
 
 	return 
 end
-CorePlayEffectUnitElement._effect_options = function (self)
+function CorePlayEffectUnitElement:_effect_options()
 	local effect_options = {
 		"none"
 	}
@@ -114,7 +114,7 @@ CorePlayEffectUnitElement._effect_options = function (self)
 
 	return effect_options
 end
-CorePlayEffectUnitElement._build_panel = function (self, panel, panel_sizer)
+function CorePlayEffectUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -167,7 +167,7 @@ Be sure not to use a looping effect when using repeat or the effects will add to
 
 	return 
 end
-CorePlayEffectUnitElement.add_to_mission_package = function (self)
+function CorePlayEffectUnitElement:add_to_mission_package()
 	if self._hed.effect and self._hed.effect ~= "none" then
 		slot4 = {
 			category = "effects",
@@ -195,14 +195,14 @@ if not StopEffectUnitElement then
 end
 
 StopEffectUnitElement = slot0
-StopEffectUnitElement.init = function (self, ...)
+function StopEffectUnitElement:init(...)
 	slot3 = self
 
 	CoreStopEffectUnitElement.init(slot2, ...)
 
 	return 
 end
-CoreStopEffectUnitElement.init = function (self, unit)
+function CoreStopEffectUnitElement:init(unit)
 	slot5 = unit
 
 	MissionElement.init(slot3, self)
@@ -219,7 +219,7 @@ CoreStopEffectUnitElement.init = function (self, unit)
 
 	return 
 end
-CoreStopEffectUnitElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function CoreStopEffectUnitElement:draw_links(t, dt, selected_unit, all_units)
 	slot10 = selected_unit
 
 	MissionElement.draw_links(slot6, self, t, dt)
@@ -245,7 +245,7 @@ CoreStopEffectUnitElement.draw_links = function (self, t, dt, selected_unit, all
 
 	return 
 end
-CoreStopEffectUnitElement.get_links_to_unit = function (self, ...)
+function CoreStopEffectUnitElement:get_links_to_unit(...)
 	slot3 = self
 
 	CoreStopEffectUnitElement.super.get_links_to_unit(slot2, ...)
@@ -256,10 +256,10 @@ CoreStopEffectUnitElement.get_links_to_unit = function (self, ...)
 
 	return 
 end
-CoreStopEffectUnitElement.update_editing = function (self)
+function CoreStopEffectUnitElement:update_editing()
 	return 
 end
-CoreStopEffectUnitElement.add_element = function (self)
+function CoreStopEffectUnitElement:add_element()
 	slot4 = {
 		ray_type = "editor",
 		mask = 10
@@ -289,7 +289,7 @@ CoreStopEffectUnitElement.add_element = function (self)
 
 	return 
 end
-CoreStopEffectUnitElement.remove_links = function (self, unit)
+function CoreStopEffectUnitElement:remove_links(unit)
 	slot5 = unit
 
 	MissionElement.remove_links(slot3, self)
@@ -308,7 +308,7 @@ CoreStopEffectUnitElement.remove_links = function (self, unit)
 
 	return 
 end
-CoreStopEffectUnitElement.add_triggers = function (self, vc)
+function CoreStopEffectUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "add_element"
 
@@ -316,7 +316,7 @@ CoreStopEffectUnitElement.add_triggers = function (self, vc)
 
 	return 
 end
-CoreStopEffectUnitElement._build_panel = function (self, panel, panel_sizer)
+function CoreStopEffectUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

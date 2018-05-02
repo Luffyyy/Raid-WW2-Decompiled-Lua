@@ -26,7 +26,7 @@
 --   Code may be incomplete or incorrect.
 slot2 = CivilianLogicBase
 CivilianLogicFlee = class(slot1)
-CivilianLogicFlee.enter = function (data, new_logic_name, enter_params)
+function CivilianLogicFlee.enter(data, new_logic_name, enter_params)
 	local my_data = {
 		unit = data.unit
 	}
@@ -199,7 +199,7 @@ CivilianLogicFlee.enter = function (data, new_logic_name, enter_params)
 
 	return 
 end
-CivilianLogicFlee.exit = function (data, new_logic_name, enter_params)
+function CivilianLogicFlee.exit(data, new_logic_name, enter_params)
 	slot7 = enter_params
 
 	CopLogicBase.exit(slot4, data, new_logic_name)
@@ -244,7 +244,7 @@ CivilianLogicFlee.exit = function (data, new_logic_name, enter_params)
 
 	return 
 end
-CivilianLogicFlee.update = function (data)
+function CivilianLogicFlee.update(data)
 	local exit_state = nil
 	local unit = data.unit
 	local my_data = data.internal_data
@@ -378,7 +378,7 @@ CivilianLogicFlee.update = function (data)
 
 	return 
 end
-CivilianLogicFlee._upd_detection = function (data)
+function CivilianLogicFlee._upd_detection(data)
 
 	-- Decompilation error in this vicinity:
 	local my_data = data.internal_data
@@ -418,7 +418,7 @@ CivilianLogicFlee._upd_detection = function (data)
 
 	return 
 end
-CivilianLogicFlee._update_pathing = function (data, my_data)
+function CivilianLogicFlee._update_pathing(data, my_data)
 	if data.pathing_results then
 		local pathing_results = data.pathing_results
 		data.pathing_results = nil
@@ -441,7 +441,7 @@ CivilianLogicFlee._update_pathing = function (data, my_data)
 
 	return 
 end
-CivilianLogicFlee.on_action_completed = function (data, action)
+function CivilianLogicFlee.on_action_completed(data, action)
 	local my_data = data.internal_data
 	slot5 = action
 
@@ -499,7 +499,7 @@ CivilianLogicFlee.on_action_completed = function (data, action)
 
 	return 
 end
-CivilianLogicFlee.on_alert = function (data, alert_data)
+function CivilianLogicFlee.on_alert(data, alert_data)
 	local my_data = data.internal_data
 
 	if my_data.coarse_path then
@@ -577,7 +577,7 @@ CivilianLogicFlee.on_alert = function (data, alert_data)
 
 	return 
 end
-CivilianLogicFlee._run_away_from_alert = function (data, alert_data)
+function CivilianLogicFlee._run_away_from_alert(data, alert_data)
 	local my_data = data.internal_data
 	local avoid_pos = nil
 
@@ -615,7 +615,7 @@ CivilianLogicFlee._run_away_from_alert = function (data, alert_data)
 
 	return 
 end
-CivilianLogicFlee.post_react_alert_clbk = function (shait, params)
+function CivilianLogicFlee.post_react_alert_clbk(shait, params)
 
 	-- Decompilation error in this vicinity:
 	local data = params.data
@@ -721,13 +721,13 @@ CivilianLogicFlee.post_react_alert_clbk = function (shait, params)
 		data = data
 	}
 end
-CivilianLogicFlee._flee_coarse_path_verify_clbk = function (shait, nav_seg)
+function CivilianLogicFlee._flee_coarse_path_verify_clbk(shait, nav_seg)
 	slot4 = managers.groupai
 	slot5 = nav_seg
 
 	return managers.groupai.state(slot3).is_nav_seg_safe(slot3, managers.groupai.state(slot3))
 end
-CivilianLogicFlee.on_intimidated = function (data, amount, aggressor_unit)
+function CivilianLogicFlee.on_intimidated(data, amount, aggressor_unit)
 
 	-- Decompilation error in this vicinity:
 	local my_data = data.internal_data
@@ -750,7 +750,7 @@ CivilianLogicFlee.on_intimidated = function (data, amount, aggressor_unit)
 
 	return 
 end
-CivilianLogicFlee._delayed_intimidate_clbk = function (ignore_this, params)
+function CivilianLogicFlee._delayed_intimidate_clbk(ignore_this, params)
 	local data = params[1]
 	local my_data = data.internal_data
 	slot7 = my_data.delayed_intimidate_id
@@ -770,7 +770,7 @@ CivilianLogicFlee._delayed_intimidate_clbk = function (ignore_this, params)
 
 	return 
 end
-CivilianLogicFlee._cancel_pathing = function (data, my_data)
+function CivilianLogicFlee._cancel_pathing(data, my_data)
 	slot4 = data.unit
 	slot4 = data.unit.brain(slot3)
 
@@ -786,7 +786,7 @@ CivilianLogicFlee._cancel_pathing = function (data, my_data)
 
 	return 
 end
-CivilianLogicFlee._find_hide_cover = function (data)
+function CivilianLogicFlee._find_hide_cover(data)
 	local my_data = data.internal_data
 	my_data.cover_search_task_key = nil
 	slot4 = data.unit
@@ -882,7 +882,7 @@ CivilianLogicFlee._find_hide_cover = function (data)
 
 	return 
 end
-CivilianLogicFlee._start_moving_to_cover = function (data, my_data)
+function CivilianLogicFlee._start_moving_to_cover(data, my_data)
 	slot4 = data.unit
 	slot6 = true
 
@@ -918,7 +918,7 @@ CivilianLogicFlee._start_moving_to_cover = function (data, my_data)
 
 	return 
 end
-CivilianLogicFlee._add_delayed_rescue_SO = function (data, my_data)
+function CivilianLogicFlee._add_delayed_rescue_SO(data, my_data)
 	if my_data.rescue_active then
 		return 
 	end
@@ -969,7 +969,7 @@ CivilianLogicFlee._add_delayed_rescue_SO = function (data, my_data)
 
 	return 
 end
-CivilianLogicFlee.register_rescue_SO = function (ignore_this, data)
+function CivilianLogicFlee.register_rescue_SO(ignore_this, data)
 	local my_data = data.internal_data
 	slot6 = my_data.delayed_rescue_SO_id
 
@@ -1097,7 +1097,7 @@ CivilianLogicFlee.register_rescue_SO = function (ignore_this, data)
 
 	return 
 end
-CivilianLogicFlee._unregister_rescue_SO = function (data, my_data)
+function CivilianLogicFlee._unregister_rescue_SO(data, my_data)
 	if my_data.rescuer then
 		local rescuer = my_data.rescuer
 		my_data.rescuer = nil
@@ -1130,7 +1130,7 @@ CivilianLogicFlee._unregister_rescue_SO = function (data, my_data)
 
 	return 
 end
-CivilianLogicFlee.on_rescue_SO_administered = function (ignore_this, data, receiver_unit)
+function CivilianLogicFlee.on_rescue_SO_administered(ignore_this, data, receiver_unit)
 	slot5 = managers.groupai
 
 	managers.groupai.state(slot4).on_civilian_try_freed(slot4)
@@ -1145,7 +1145,7 @@ CivilianLogicFlee.on_rescue_SO_administered = function (ignore_this, data, recei
 
 	return 
 end
-CivilianLogicFlee.rescue_SO_verification = function (ignore_this, params, unit)
+function CivilianLogicFlee.rescue_SO_verification(ignore_this, params, unit)
 
 	-- Decompilation error in this vicinity:
 	local areas = params.areas
@@ -1165,7 +1165,7 @@ CivilianLogicFlee.rescue_SO_verification = function (ignore_this, params, unit)
 
 	return 
 end
-CivilianLogicFlee.on_rescue_SO_failed = function (ignore_this, data)
+function CivilianLogicFlee.on_rescue_SO_failed(ignore_this, data)
 	local my_data = data.internal_data
 
 	if my_data.rescuer then
@@ -1178,7 +1178,7 @@ CivilianLogicFlee.on_rescue_SO_failed = function (ignore_this, data)
 
 	return 
 end
-CivilianLogicFlee.on_rescue_SO_completed = function (ignore_this, data, good_pig)
+function CivilianLogicFlee.on_rescue_SO_completed(ignore_this, data, good_pig)
 	if data.internal_data.rescuer then
 		slot6 = data.internal_data.rescuer
 
@@ -1246,7 +1246,7 @@ CivilianLogicFlee.on_rescue_SO_completed = function (ignore_this, data, good_pig
 
 	return 
 end
-CivilianLogicFlee._get_coarse_flee_path = function (data)
+function CivilianLogicFlee._get_coarse_flee_path(data)
 	slot3 = managers.groupai
 	slot3 = managers.groupai.state(slot2)
 	slot6 = data.unit
@@ -1289,30 +1289,30 @@ CivilianLogicFlee._get_coarse_flee_path = function (data)
 
 	return true
 end
-CivilianLogicFlee.on_new_objective = function (data, old_objective)
+function CivilianLogicFlee.on_new_objective(data, old_objective)
 	slot5 = old_objective
 
 	CivilianLogicIdle.on_new_objective(slot3, data)
 
 	return 
 end
-CivilianLogicFlee.on_rescue_allowed_state = function (data, state)
+function CivilianLogicFlee.on_rescue_allowed_state(data, state)
 	return 
 end
-CivilianLogicFlee.wants_rescue = function (data)
+function CivilianLogicFlee.wants_rescue(data)
 	return data.internal_data.rescue_SO_id
 end
-CivilianLogicFlee._get_all_paths = function (data)
+function CivilianLogicFlee._get_all_paths(data)
 	return {
 		flee_path = data.internal_data.flee_path
 	}
 end
-CivilianLogicFlee._set_verified_paths = function (data, verified_paths)
+function CivilianLogicFlee._set_verified_paths(data, verified_paths)
 	data.internal_data.flee_path = verified_paths.flee_path
 
 	return 
 end
-CivilianLogicFlee.reset_actions = function (data)
+function CivilianLogicFlee.reset_actions(data)
 	slot3 = data.unit
 	local walk_action = data.unit.movement(slot2)._active_actions[2]
 
@@ -1333,7 +1333,7 @@ CivilianLogicFlee.reset_actions = function (data)
 
 	return 
 end
-CivilianLogicFlee._chk_add_delayed_rescue_SO = function (data, my_data)
+function CivilianLogicFlee._chk_add_delayed_rescue_SO(data, my_data)
 	if not my_data.exiting then
 		slot4 = data.unit
 	elseif my_data.rescue_active then
@@ -1344,7 +1344,7 @@ CivilianLogicFlee._chk_add_delayed_rescue_SO = function (data, my_data)
 
 	return 
 end
-CivilianLogicFlee.clbk_chk_run_away = function (ignore_this, data)
+function CivilianLogicFlee.clbk_chk_run_away(ignore_this, data)
 	local my_data = data.internal_data
 	slot6 = my_data.run_away_clbk_id
 
@@ -1372,7 +1372,7 @@ CivilianLogicFlee.clbk_chk_run_away = function (ignore_this, data)
 
 	return 
 end
-CivilianLogicFlee.schedule_run_away_clbk = function (data)
+function CivilianLogicFlee.schedule_run_away_clbk(data)
 	local my_data = data.internal_data
 
 	if my_data.run_away_clbk_id or not data.char_tweak.run_away_delay then
@@ -1394,7 +1394,7 @@ CivilianLogicFlee.schedule_run_away_clbk = function (data)
 
 	return 
 end
-CivilianLogicFlee.clbk_chk_call_the_police = function (ignore_this, data)
+function CivilianLogicFlee.clbk_chk_call_the_police(ignore_this, data)
 	local my_data = data.internal_data
 	slot6 = my_data.call_police_clbk_id
 
@@ -1447,7 +1447,7 @@ CivilianLogicFlee.clbk_chk_call_the_police = function (ignore_this, data)
 
 	return 
 end
-CivilianLogicFlee._say_call_the_police = function (data, my_data)
+function CivilianLogicFlee._say_call_the_police(data, my_data)
 	slot4 = data.unit
 	slot7 = false
 
@@ -1455,7 +1455,7 @@ CivilianLogicFlee._say_call_the_police = function (data, my_data)
 
 	return 
 end
-CivilianLogicFlee.on_police_call_success = function (data)
+function CivilianLogicFlee.on_police_call_success(data)
 	data.internal_data.called_the_police = true
 
 	return 

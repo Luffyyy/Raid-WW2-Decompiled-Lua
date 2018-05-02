@@ -22,7 +22,7 @@ if not EditUnitSettings then
 end
 
 EditUnitSettings = slot0
-EditUnitSettings.init = function (self, editor)
+function EditUnitSettings:init(editor)
 	local panel, sizer = editor or managers.editor.add_unit_edit_page(slot3, editor or managers.editor)
 	slot7 = "HORIZONTAL"
 	local horizontal_sizer = EWS.BoxSizer({
@@ -126,7 +126,7 @@ EditUnitSettings.init = function (self, editor)
 
 	return 
 end
-EditUnitSettings.add_cutscene_actor = function (self)
+function EditUnitSettings:add_cutscene_actor()
 	slot12 = 0
 	slot9 = true
 	local name = EWS.get_text_from_user(slot2, EWS, Global.frame_panel, "Enter name for cutscene actor:", "Add cutscene actor", "", Vector3(slot9, -1, -1))
@@ -155,7 +155,7 @@ EditUnitSettings.add_cutscene_actor = function (self)
 
 	return 
 end
-EditUnitSettings.remove_cutscene_actor = function (self)
+function EditUnitSettings:remove_cutscene_actor()
 	slot4 = self._ctrls.unit
 
 	managers.cutscene.unregister_cutscene_actor(slot2, managers.cutscene)
@@ -168,7 +168,7 @@ EditUnitSettings.remove_cutscene_actor = function (self)
 
 	return 
 end
-EditUnitSettings.set_disable_shadows = function (self)
+function EditUnitSettings:set_disable_shadows()
 	slot3 = self._ctrls.units
 
 	for _, unit in ipairs(slot2) do
@@ -186,7 +186,7 @@ EditUnitSettings.set_disable_shadows = function (self)
 
 	return 
 end
-EditUnitSettings.set_hide_on_projection_light = function (self)
+function EditUnitSettings:set_hide_on_projection_light()
 	slot3 = self._ctrls.units
 
 	for _, unit in ipairs(slot2) do
@@ -200,7 +200,7 @@ EditUnitSettings.set_hide_on_projection_light = function (self)
 
 	return 
 end
-EditUnitSettings.set_disable_on_ai_graph = function (self)
+function EditUnitSettings:set_disable_on_ai_graph()
 	slot3 = self._ctrls.units
 
 	for _, unit in ipairs(slot2) do
@@ -214,7 +214,7 @@ EditUnitSettings.set_disable_on_ai_graph = function (self)
 
 	return 
 end
-EditUnitSettings.is_editable = function (self, unit, units)
+function EditUnitSettings:is_editable(unit, units)
 	slot5 = unit
 
 	if alive(slot4) then

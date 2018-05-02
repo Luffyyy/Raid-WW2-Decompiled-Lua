@@ -3,7 +3,7 @@ MetalDetector.DEFAULT_RANGE = 5000
 MetalDetector.DEFAULT_SOUND_START = "transmission_sound"
 MetalDetector.DEFAULT_SOUND_STOP = "transmission_sound_stop"
 MetalDetector.DEFAULT_RTPC = "distance"
-MetalDetector.init = function (self, unit)
+function MetalDetector:init(unit)
 	self._unit = unit
 
 	if not self._max_range then
@@ -36,7 +36,7 @@ MetalDetector.init = function (self, unit)
 
 	return 
 end
-MetalDetector.update = function (self, unit, t, dt)
+function MetalDetector:update(unit, t, dt)
 	slot6 = self
 	local dist = self.poll_min_distances(slot5)
 
@@ -75,7 +75,7 @@ MetalDetector.update = function (self, unit, t, dt)
 
 	return 
 end
-MetalDetector.poll_min_distances = function (self)
+function MetalDetector:poll_min_distances()
 	local pos = self._unit.position(slot2)
 	slot5 = pos
 	local min_dist = managers.mission.find_closest_metal_object_position(self._unit, managers.mission)

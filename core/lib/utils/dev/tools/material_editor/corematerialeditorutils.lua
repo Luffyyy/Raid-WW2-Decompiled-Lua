@@ -335,7 +335,7 @@
 --- BLOCK #0 1-3, warpins: 1 ---
 slot0 = CoreMaterialEditor or class()
 CoreMaterialEditor = slot0
-CoreMaterialEditor.live_update_parameter = function (self, name, param_type, param_ui_type, value)
+function CoreMaterialEditor:live_update_parameter(name, param_type, param_ui_type, value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -373,7 +373,7 @@ CoreMaterialEditor.live_update_parameter = function (self, name, param_type, par
 
 
 end
-CoreMaterialEditor._get_node = function (self, node, name)
+function CoreMaterialEditor:_get_node(node, name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -431,7 +431,7 @@ CoreMaterialEditor._get_node = function (self, node, name)
 
 
 end
-CoreMaterialEditor._get_all_nodes = function (self, node, name)
+function CoreMaterialEditor:_get_all_nodes(node, name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -492,7 +492,7 @@ CoreMaterialEditor._get_all_nodes = function (self, node, name)
 
 
 end
-CoreMaterialEditor._find_node = function (self, node, name, key, value)
+function CoreMaterialEditor:_find_node(node, name, key, value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -549,7 +549,7 @@ CoreMaterialEditor._find_node = function (self, node, name, key, value)
 
 
 end
-CoreMaterialEditor._find_all_nodes = function (self, node, name, key, value)
+function CoreMaterialEditor:_find_all_nodes(node, name, key, value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -607,7 +607,7 @@ CoreMaterialEditor._find_all_nodes = function (self, node, name, key, value)
 
 
 end
-CoreMaterialEditor._read_config = function (self)
+function CoreMaterialEditor:_read_config()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-16, warpins: 1 ---
@@ -728,7 +728,7 @@ CoreMaterialEditor._read_config = function (self)
 
 
 end
-CoreMaterialEditor._write_config = function (self)
+function CoreMaterialEditor:_write_config()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-18, warpins: 1 ---
@@ -772,7 +772,7 @@ CoreMaterialEditor._write_config = function (self)
 
 
 end
-CoreMaterialEditor._freeze_frame = function (self)
+function CoreMaterialEditor:_freeze_frame()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -786,7 +786,7 @@ CoreMaterialEditor._freeze_frame = function (self)
 
 
 end
-CoreMaterialEditor._unfreeze_frame = function (self)
+function CoreMaterialEditor:_unfreeze_frame()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -808,7 +808,7 @@ CoreMaterialEditor._unfreeze_frame = function (self)
 
 
 end
-CoreMaterialEditor._freeze_output = function (self)
+function CoreMaterialEditor:_freeze_output()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -820,7 +820,7 @@ CoreMaterialEditor._freeze_output = function (self)
 
 
 end
-CoreMaterialEditor._unfreeze_output = function (self)
+function CoreMaterialEditor:_unfreeze_output()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -832,7 +832,7 @@ CoreMaterialEditor._unfreeze_output = function (self)
 
 
 end
-CoreMaterialEditor._remot_compile = function (self)
+function CoreMaterialEditor:_remot_compile()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -926,7 +926,7 @@ CoreMaterialEditor._remot_compile = function (self)
 
 
 end
-CoreMaterialEditor._create_make_file = function (self, rebuild)
+function CoreMaterialEditor:_create_make_file(rebuild)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-26, warpins: 1 ---
@@ -1125,7 +1125,7 @@ CoreMaterialEditor._create_make_file = function (self, rebuild)
 
 
 end
-CoreMaterialEditor._run_compiler = function (self)
+function CoreMaterialEditor:_run_compiler()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-71, warpins: 1 ---
@@ -1213,7 +1213,7 @@ CoreMaterialEditor._run_compiler = function (self)
 
 
 end
-CoreMaterialEditor._get_make_params = function (self)
+function CoreMaterialEditor:_get_make_params()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-155, warpins: 1 ---
@@ -1258,7 +1258,7 @@ CoreMaterialEditor._get_make_params = function (self)
 
 
 end
-CoreMaterialEditor._insert_libs_in_database = function (self, temp_params, make_params)
+function CoreMaterialEditor:_insert_libs_in_database(temp_params, make_params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-20, warpins: 1 ---
@@ -1278,7 +1278,7 @@ CoreMaterialEditor._insert_libs_in_database = function (self, temp_params, make_
 
 
 end
-CoreMaterialEditor._copy_to_remote_client = function (self)
+function CoreMaterialEditor:_copy_to_remote_client()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -1288,7 +1288,7 @@ CoreMaterialEditor._copy_to_remote_client = function (self)
 
 
 end
-CoreMaterialEditor._find_unit_material = function (self, unit)
+function CoreMaterialEditor:_find_unit_material(unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -1343,7 +1343,7 @@ CoreMaterialEditor._find_unit_material = function (self, unit)
 
 
 end
-CoreMaterialEditor._find_selected_unit = function (self)
+function CoreMaterialEditor:_find_selected_unit()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -1442,7 +1442,7 @@ CoreMaterialEditor._find_selected_unit = function (self)
 
 
 end
-CoreMaterialEditor._get_material = function (self)
+function CoreMaterialEditor:_get_material()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -1504,7 +1504,7 @@ CoreMaterialEditor._get_material = function (self)
 
 
 end
-CoreMaterialEditor._create_rt_name = function (self, rt)
+function CoreMaterialEditor:_create_rt_name(rt)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -1554,7 +1554,7 @@ CoreMaterialEditor._create_rt_name = function (self, rt)
 
 
 end
-CoreMaterialEditor._try_convert_parameter = function (self, mat, child, rt)
+function CoreMaterialEditor:_try_convert_parameter(mat, child, rt)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -1621,7 +1621,7 @@ CoreMaterialEditor._try_convert_parameter = function (self, mat, child, rt)
 
 
 end
-CoreMaterialEditor._version_error = function (self, mat)
+function CoreMaterialEditor:_version_error(mat)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-15, warpins: 1 ---
@@ -1716,7 +1716,7 @@ CoreMaterialEditor._version_error = function (self, mat)
 
 
 end
-CoreMaterialEditor._update_material = function (self, param)
+function CoreMaterialEditor:_update_material(param)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -1824,7 +1824,7 @@ CoreMaterialEditor._update_material = function (self, param)
 
 
 end
-CoreMaterialEditor._live_update = function (self)
+function CoreMaterialEditor:_live_update()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -1894,7 +1894,7 @@ CoreMaterialEditor._live_update = function (self)
 
 
 end
-CoreMaterialEditor._check_valid_xml_on_save = function (self, node)
+function CoreMaterialEditor:_check_valid_xml_on_save(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -2028,7 +2028,7 @@ CoreMaterialEditor._check_valid_xml_on_save = function (self, node)
 
 
 end
-CoreMaterialEditor._set_channels_default_texture = function (self, node)
+function CoreMaterialEditor:_set_channels_default_texture(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---

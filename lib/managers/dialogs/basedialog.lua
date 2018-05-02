@@ -65,7 +65,7 @@ core.import(slot1, core)
 
 slot0 = BaseDialog or class()
 BaseDialog = slot0
-function BaseDialog:init(manager, data)
+BaseDialog.init = function (self, manager, data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -98,7 +98,7 @@ function BaseDialog:init(manager, data)
 
 
 end
-function BaseDialog:id()
+BaseDialog.id = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -108,7 +108,7 @@ function BaseDialog:id()
 
 
 end
-function BaseDialog:priority()
+BaseDialog.priority = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -137,7 +137,7 @@ function BaseDialog:priority()
 
 
 end
-function BaseDialog:get_platform_id()
+BaseDialog.get_platform_id = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -168,7 +168,7 @@ function BaseDialog:get_platform_id()
 
 
 end
-function BaseDialog:is_generic()
+BaseDialog.is_generic = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -178,7 +178,7 @@ function BaseDialog:is_generic()
 
 
 end
-function BaseDialog:fade_in()
+BaseDialog.fade_in = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -188,7 +188,7 @@ function BaseDialog:fade_in()
 
 
 end
-function BaseDialog:fade_out_close()
+BaseDialog.fade_out_close = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -202,7 +202,7 @@ function BaseDialog:fade_out_close()
 
 
 end
-function BaseDialog:fade_out()
+BaseDialog.fade_out = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -216,7 +216,7 @@ function BaseDialog:fade_out()
 
 
 end
-function BaseDialog:force_close()
+BaseDialog.force_close = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -226,7 +226,7 @@ function BaseDialog:force_close()
 
 
 end
-function BaseDialog:close()
+BaseDialog.close = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -240,7 +240,7 @@ function BaseDialog:close()
 
 
 end
-function BaseDialog:is_closing()
+BaseDialog.is_closing = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -250,7 +250,7 @@ function BaseDialog:is_closing()
 
 
 end
-function BaseDialog:show()
+BaseDialog.show = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -264,7 +264,7 @@ function BaseDialog:show()
 
 
 end
-function BaseDialog:_get_ws()
+BaseDialog._get_ws = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -274,7 +274,7 @@ function BaseDialog:_get_ws()
 
 
 end
-function BaseDialog:_get_controller()
+BaseDialog._get_controller = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -284,7 +284,7 @@ function BaseDialog:_get_controller()
 
 
 end
-function BaseDialog:to_string()
+BaseDialog.to_string = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-19, warpins: 1 ---
@@ -299,7 +299,7 @@ function BaseDialog:to_string()
 
 
 end
-function BaseDialog:blocks_exec()
+BaseDialog.blocks_exec = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---

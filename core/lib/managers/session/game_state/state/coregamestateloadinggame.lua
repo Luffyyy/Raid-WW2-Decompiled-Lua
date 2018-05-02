@@ -11,7 +11,7 @@ slot3 = "CoreGameStateInGame"
 core.import(slot1, core)
 
 LoadingGame = LoadingGame or class()
-LoadingGame.init = function (self)
+function LoadingGame:init()
 	slot3 = self.game_state._session_manager
 	self._debug_time = self.game_state._session_manager._debug_time(slot2)
 	slot6 = "all"
@@ -58,10 +58,10 @@ LoadingGame.init = function (self)
 
 	return 
 end
-LoadingGame.destroy = function (self)
+function LoadingGame:destroy()
 	return 
 end
-LoadingGame.transition = function (self)
+function LoadingGame:transition()
 	slot3 = self.game_state._session_manager
 	local current_time = self.game_state._session_manager._debug_time(slot2)
 

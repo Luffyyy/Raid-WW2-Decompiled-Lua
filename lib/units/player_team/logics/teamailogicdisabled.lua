@@ -9,7 +9,7 @@ require(slot1)
 slot2 = TeamAILogicAssault
 TeamAILogicDisabled = class(slot1)
 TeamAILogicDisabled.on_long_dis_interacted = TeamAILogicIdle.on_long_dis_interacted
-TeamAILogicDisabled.enter = function (data, new_logic_name, enter_params)
+function TeamAILogicDisabled.enter(data, new_logic_name, enter_params)
 	local my_data = {
 		unit = data.unit
 	}
@@ -91,7 +91,7 @@ TeamAILogicDisabled.enter = function (data, new_logic_name, enter_params)
 
 	return 
 end
-TeamAILogicDisabled.exit = function (data, new_logic_name, enter_params)
+function TeamAILogicDisabled.exit(data, new_logic_name, enter_params)
 	slot7 = enter_params
 
 	TeamAILogicBase.exit(slot4, data, new_logic_name)
@@ -122,7 +122,7 @@ TeamAILogicDisabled.exit = function (data, new_logic_name, enter_params)
 
 	return 
 end
-TeamAILogicDisabled._upd_enemy_detection = function (data)
+function TeamAILogicDisabled._upd_enemy_detection(data)
 	slot3 = TimerManager
 	data.t = TimerManager.game(slot2).time(slot2)
 	local my_data = data.internal_data
@@ -144,10 +144,10 @@ TeamAILogicDisabled._upd_enemy_detection = function (data)
 
 	return 
 end
-TeamAILogicDisabled.on_intimidated = function (data, amount, aggressor_unit)
+function TeamAILogicDisabled.on_intimidated(data, amount, aggressor_unit)
 	return 
 end
-TeamAILogicDisabled._consider_surrender = function (data, my_data)
+function TeamAILogicDisabled._consider_surrender(data, my_data)
 	slot4 = TimerManager
 	slot4 = TimerManager.game(slot3)
 	my_data.stay_cool_chk_t = TimerManager.game(slot3).time(slot3)
@@ -216,7 +216,7 @@ TeamAILogicDisabled._consider_surrender = function (data, my_data)
 
 	return 
 end
-TeamAILogicDisabled._upd_aim = function (data, my_data)
+function TeamAILogicDisabled._upd_aim(data, my_data)
 	local shoot, aim = nil
 	local focus_enemy = data.attention_obj
 
@@ -307,7 +307,7 @@ TeamAILogicDisabled._upd_aim = function (data, my_data)
 
 	return 
 end
-TeamAILogicDisabled.on_recovered = function (data, reviving_unit)
+function TeamAILogicDisabled.on_recovered(data, reviving_unit)
 	local my_data = data.internal_data
 
 	if reviving_unit and my_data.rescuer then
@@ -324,7 +324,7 @@ TeamAILogicDisabled.on_recovered = function (data, reviving_unit)
 
 	return 
 end
-TeamAILogicDisabled._register_revive_SO = function (data, my_data, rescue_type)
+function TeamAILogicDisabled._register_revive_SO(data, my_data, rescue_type)
 	local followup_objective = {
 		scan = true,
 		type = "act",
@@ -395,7 +395,7 @@ TeamAILogicDisabled._register_revive_SO = function (data, my_data, rescue_type)
 
 	return 
 end
-TeamAILogicDisabled._unregister_revive_SO = function (my_data)
+function TeamAILogicDisabled._unregister_revive_SO(my_data)
 	if my_data.deathguard_SO_id then
 		slot3 = my_data.deathguard_SO_id
 
@@ -429,10 +429,10 @@ TeamAILogicDisabled._unregister_revive_SO = function (my_data)
 
 	return 
 end
-TeamAILogicDisabled.is_available_for_assignment = function (data, new_objective)
+function TeamAILogicDisabled.is_available_for_assignment(data, new_objective)
 	return false
 end
-TeamAILogicDisabled.damage_clbk = function (data, damage_info)
+function TeamAILogicDisabled.damage_clbk(data, damage_info)
 	local my_data = data.internal_data
 	slot5 = data.unit
 	slot5 = data.unit.character_damage(slot4)
@@ -463,14 +463,14 @@ TeamAILogicDisabled.damage_clbk = function (data, damage_info)
 
 	return 
 end
-TeamAILogicDisabled.on_revive_SO_administered = function (ignore_this, data, receiver_unit)
+function TeamAILogicDisabled.on_revive_SO_administered(ignore_this, data, receiver_unit)
 	local my_data = data.internal_data
 	my_data.rescuer = receiver_unit
 	my_data.SO_id = nil
 
 	return 
 end
-TeamAILogicDisabled.on_revive_SO_failed = function (ignore_this, data)
+function TeamAILogicDisabled.on_revive_SO_failed(ignore_this, data)
 	local my_data = data.internal_data
 
 	if my_data.rescuer then
@@ -480,7 +480,7 @@ TeamAILogicDisabled.on_revive_SO_failed = function (ignore_this, data)
 
 	return 
 end
-TeamAILogicDisabled.on_new_objective = function (data, old_objective)
+function TeamAILogicDisabled.on_new_objective(data, old_objective)
 	slot5 = old_objective
 
 	TeamAILogicBase.on_new_objective(slot3, data)

@@ -3,13 +3,13 @@ slot3 = "CoreLocalUserHandler"
 core.module(slot1, core)
 
 LocalUser = LocalUser or class()
-LocalUser.player_assigned = function (self, player)
+function LocalUser:player_assigned(player)
 	return 
 end
-LocalUser.player_removed = function (self)
+function LocalUser:player_removed()
 	return 
 end
-LocalUser.profile_data_loaded = function (self)
+function LocalUser:profile_data_loaded()
 	return 
 end
 

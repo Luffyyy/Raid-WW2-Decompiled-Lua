@@ -10,19 +10,19 @@ if not TeamAILogicBase then
 end
 
 TeamAILogicBase = slot0
-TeamAILogicBase.on_long_dis_interacted = function (data, other_unit)
+function TeamAILogicBase.on_long_dis_interacted(data, other_unit)
 	return 
 end
-TeamAILogicBase.on_cop_neutralized = function (data, cop_key)
+function TeamAILogicBase.on_cop_neutralized(data, cop_key)
 	return 
 end
-TeamAILogicBase.on_recovered = function (data, reviving_unit)
+function TeamAILogicBase.on_recovered(data, reviving_unit)
 	return 
 end
-TeamAILogicBase.clbk_heat = function (data)
+function TeamAILogicBase.clbk_heat(data)
 	return 
 end
-TeamAILogicBase.on_objective_unit_destroyed = function (data, unit)
+function TeamAILogicBase.on_objective_unit_destroyed(data, unit)
 	if not data.objective then
 		return 
 	end
@@ -35,7 +35,7 @@ TeamAILogicBase.on_objective_unit_destroyed = function (data, unit)
 
 	return 
 end
-TeamAILogicBase._get_logic_state_from_reaction = function (data, reaction)
+function TeamAILogicBase._get_logic_state_from_reaction(data, reaction)
 	if not reaction or reaction <= AIAttentionObject.REACT_SCARED then
 		return "idle"
 	else
@@ -44,7 +44,7 @@ TeamAILogicBase._get_logic_state_from_reaction = function (data, reaction)
 
 	return 
 end
-TeamAILogicBase._set_attention_obj = function (data, new_att_obj, new_reaction)
+function TeamAILogicBase._set_attention_obj(data, new_att_obj, new_reaction)
 	local old_att_obj = data.attention_obj
 	data.attention_obj = new_att_obj
 
@@ -75,10 +75,10 @@ TeamAILogicBase._set_attention_obj = function (data, new_att_obj, new_reaction)
 
 	return 
 end
-TeamAILogicBase._chk_nearly_visible_chk_needed = function (data, attention_info, u_key)
+function TeamAILogicBase._chk_nearly_visible_chk_needed(data, attention_info, u_key)
 	return not data.attention_obj or data.attention_obj.key == u_key
 end
-TeamAILogicBase._chk_reaction_to_attention_object = function (data, attention_data, stationary)
+function TeamAILogicBase._chk_reaction_to_attention_object(data, attention_data, stationary)
 
 	-- Decompilation error in this vicinity:
 	local att_unit = attention_data.unit
@@ -97,14 +97,14 @@ TeamAILogicBase._chk_reaction_to_attention_object = function (data, attention_da
 
 	return 
 end
-TeamAILogicBase.on_new_objective = function (data, old_objective)
+function TeamAILogicBase.on_new_objective(data, old_objective)
 	slot5 = old_objective
 
 	CopLogicBase.update_follow_unit(slot3, data)
 
 	return 
 end
-TeamAILogicBase.on_intimidated = function (data, amount, aggressor_unit)
+function TeamAILogicBase.on_intimidated(data, amount, aggressor_unit)
 	return 
 end
 

@@ -8,21 +8,21 @@ if not ElementExplosionDamage then
 end
 
 ElementExplosionDamage = slot0
-ElementExplosionDamage.init = function (self, ...)
+function ElementExplosionDamage:init(...)
 	slot3 = self
 
 	ElementExplosionDamage.super.init(slot2, ...)
 
 	return 
 end
-ElementExplosionDamage.client_on_executed = function (self, ...)
+function ElementExplosionDamage:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementExplosionDamage.on_executed = function (self, instigator)
+function ElementExplosionDamage:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

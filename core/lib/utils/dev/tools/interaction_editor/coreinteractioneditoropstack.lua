@@ -11,7 +11,7 @@ slot3 = "CoreCode"
 core.import(slot1, core)
 
 InteractionEditorOpStack = InteractionEditorOpStack or CoreClass.class()
-InteractionEditorOpStack.init = function (self)
+function InteractionEditorOpStack:init()
 	self._stack = {}
 	self._redo_stack = {}
 	self._ops = {
@@ -22,12 +22,12 @@ InteractionEditorOpStack.init = function (self)
 
 	return 
 end
-InteractionEditorOpStack.has_unsaved_changes = function (self)
+function InteractionEditorOpStack:has_unsaved_changes()
 	local size = #self._stack
 
 	return 0 < size and self._stack[size].op.name ~= "save"
 end
-InteractionEditorOpStack.new_op_type = function (self, name, undo_cb, redo_cb)
+function InteractionEditorOpStack:new_op_type(name, undo_cb, redo_cb)
 	self._ops[name] = {
 		name = name,
 		undo_cb = undo_cb,
@@ -36,14 +36,14 @@ InteractionEditorOpStack.new_op_type = function (self, name, undo_cb, redo_cb)
 
 	return 
 end
-InteractionEditorOpStack.mark_save = function (self)
+function InteractionEditorOpStack:mark_save()
 	slot4 = "save"
 
 	self.new_op(slot2, self)
 
 	return 
 end
-InteractionEditorOpStack.new_op = function (self, name, ...)
+function InteractionEditorOpStack:new_op(name, ...)
 	slot5 = {
 		op = assert(slot7),
 		params = {
@@ -58,7 +58,7 @@ InteractionEditorOpStack.new_op = function (self, name, ...)
 
 	return 
 end
-InteractionEditorOpStack.undo = function (self)
+function InteractionEditorOpStack:undo()
 	local size = #self._stack
 
 	if 0 < size then
@@ -84,7 +84,7 @@ InteractionEditorOpStack.undo = function (self)
 
 	return 
 end
-InteractionEditorOpStack.redo = function (self)
+function InteractionEditorOpStack:redo()
 	local size = #self._redo_stack
 
 	if 0 < size then

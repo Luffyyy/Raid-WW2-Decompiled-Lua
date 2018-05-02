@@ -24,13 +24,13 @@ local function safe_divide(a, b)
 end
 
 CameraMixer = CameraMixer or CoreClass.class()
-CameraMixer.init = function (self, name)
+function CameraMixer:init(name)
 	self._name = name
 	self._cameras = {}
 
 	return 
 end
-CameraMixer.destroy = function (self)
+function CameraMixer:destroy()
 	slot3 = self._cameras
 
 	for index, camera in ipairs(slot2) do
@@ -43,7 +43,7 @@ CameraMixer.destroy = function (self)
 
 	return 
 end
-CameraMixer.add_camera = function (self, camera, blend_time)
+function CameraMixer:add_camera(camera, blend_time)
 	slot6 = {
 		time = 0,
 		camera = camera,
@@ -54,7 +54,7 @@ CameraMixer.add_camera = function (self, camera, blend_time)
 
 	return 
 end
-CameraMixer.stop = function (self)
+function CameraMixer:stop()
 	slot3 = self._cameras
 
 	for index, camera in ipairs(slot2) do
@@ -67,7 +67,7 @@ CameraMixer.stop = function (self)
 
 	return 
 end
-CameraMixer.update = function (self, cud, cud_class, time, dt)
+function CameraMixer:update(cud, cud_class, time, dt)
 	slot7 = self._cameras
 
 	for index, camera in ipairs(slot6) do
@@ -147,7 +147,7 @@ CameraMixer.update = function (self, cud, cud_class, time, dt)
 
 	return 
 end
-CameraMixer.debug_render = function (self, t, dt)
+function CameraMixer:debug_render(t, dt)
 	slot11 = 1
 	local pen = Draw.pen(slot4, Color(slot7, 0.05, 0, 0))
 	slot6 = self._cameras
@@ -174,7 +174,7 @@ CameraMixer.debug_render = function (self, t, dt)
 
 	return 
 end
-CameraMixer.active_camera = function (self)
+function CameraMixer:active_camera()
 	local camera_count = #self._cameras
 
 	if camera_count == 0 then
@@ -183,7 +183,7 @@ CameraMixer.active_camera = function (self)
 
 	return self._cameras[camera_count].camera
 end
-CameraMixer.cameras = function (self)
+function CameraMixer:cameras()
 	local cameras = {}
 	slot4 = self._cameras
 

@@ -6,7 +6,7 @@ end
 GameEventElement = slot0
 GameEventElement.SAVE_UNIT_POSITION = false
 GameEventElement.SAVE_UNIT_ROTATION = false
-GameEventElement.init = function (self, unit)
+function GameEventElement:init(unit)
 	slot5 = unit
 
 	MissionElement.init(slot3, self)
@@ -24,7 +24,7 @@ GameEventElement.init = function (self, unit)
 
 	return 
 end
-GameEventElement._build_panel = function (self, panel, panel_sizer)
+function GameEventElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

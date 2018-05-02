@@ -8,14 +8,14 @@ if not ElementGameEventIsDone then
 end
 
 ElementGameEventIsDone = slot0
-ElementGameEventIsDone.init = function (self, ...)
+function ElementGameEventIsDone:init(...)
 	slot3 = self
 
 	ElementGameEventIsDone.super.init(slot2, ...)
 
 	return 
 end
-ElementGameEventIsDone.on_executed = function (self, instigator)
+function ElementGameEventIsDone:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -32,7 +32,7 @@ ElementGameEventIsDone.on_executed = function (self, instigator)
 
 	return 
 end
-ElementGameEventIsDone.client_on_executed = function (self, ...)
+function ElementGameEventIsDone:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)

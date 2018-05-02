@@ -18,7 +18,7 @@ end
 ElementPlayEffect = slot0
 slot3 = "effect"
 ElementPlayEffect.IDS_EFFECT = Idstring(slot2)
-ElementPlayEffect.init = function (self, ...)
+function ElementPlayEffect:init(...)
 	slot3 = self
 
 	ElementPlayEffect.super.init(slot2, ...)
@@ -40,14 +40,14 @@ ElementPlayEffect.init = function (self, ...)
 
 	return 
 end
-ElementPlayEffect.client_on_executed = function (self, ...)
+function ElementPlayEffect:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementPlayEffect.on_executed = function (self, instigator)
+function ElementPlayEffect:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -62,7 +62,7 @@ ElementPlayEffect.on_executed = function (self, instigator)
 
 	return 
 end
-ElementPlayEffect.play_effect = function (self)
+function ElementPlayEffect:play_effect()
 	if self._values.effect ~= "none" then
 		local params = {}
 		slot4 = self._values.effect
@@ -90,7 +90,7 @@ ElementPlayEffect.play_effect = function (self)
 
 	return 
 end
-ElementPlayEffect.kill = function (self)
+function ElementPlayEffect:kill()
 	slot3 = managers.environment_effects
 	slot6 = self
 
@@ -98,7 +98,7 @@ ElementPlayEffect.kill = function (self)
 
 	return 
 end
-ElementPlayEffect.fade_kill = function (self)
+function ElementPlayEffect:fade_kill()
 	slot3 = managers.environment_effects
 	slot6 = self
 
@@ -113,21 +113,21 @@ if not ElementStopEffect then
 end
 
 ElementStopEffect = slot0
-ElementStopEffect.init = function (self, ...)
+function ElementStopEffect:init(...)
 	slot3 = self
 
 	ElementStopEffect.super.init(slot2, ...)
 
 	return 
 end
-ElementStopEffect.client_on_executed = function (self, ...)
+function ElementStopEffect:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementStopEffect.on_executed = function (self, instigator)
+function ElementStopEffect:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

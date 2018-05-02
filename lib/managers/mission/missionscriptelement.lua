@@ -14,17 +14,17 @@ if not MissionScriptElement then
 end
 
 MissionScriptElement = slot0
-MissionScriptElement.init = function (self, ...)
+function MissionScriptElement:init(...)
 	slot3 = self
 
 	MissionScriptElement.super.init(slot2, ...)
 
 	return 
 end
-MissionScriptElement.client_on_executed = function (self)
+function MissionScriptElement:client_on_executed()
 	return 
 end
-MissionScriptElement.on_executed = function (self, ...)
+function MissionScriptElement:on_executed(...)
 	slot3 = Network
 
 	if Network.is_client(slot2) then

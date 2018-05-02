@@ -7,7 +7,7 @@ slot3 = "CoreDebug"
 core.import(slot1, core)
 
 ToolHub = ToolHub or class()
-ToolHub.init = function (self)
+function ToolHub:init()
 	self._main_frame = nil
 	self._shed = {}
 	self._init = {}
@@ -27,7 +27,7 @@ ToolHub.init = function (self)
 
 	return 
 end
-ToolHub.destroy = function (self)
+function ToolHub:destroy()
 	slot3 = self._main_frame
 
 	if alive(slot2) then
@@ -56,7 +56,7 @@ ToolHub.destroy = function (self)
 
 	return 
 end
-ToolHub.update = function (self, time, rel_time)
+function ToolHub:update(time, rel_time)
 	local kb = Input.keyboard(slot4)
 	slot6 = kb
 	slot9 = "f4"
@@ -112,7 +112,7 @@ ToolHub.update = function (self, time, rel_time)
 
 	return 
 end
-ToolHub.end_update = function (self, time, delta_time)
+function ToolHub:end_update(time, delta_time)
 	slot5 = self._tools
 
 	for key, value in pairs(slot4) do
@@ -125,14 +125,14 @@ ToolHub.end_update = function (self, time, delta_time)
 
 	return 
 end
-ToolHub.paused_update = function (self, time, rel_time)
+function ToolHub:paused_update(time, rel_time)
 	slot7 = rel_time
 
 	self.update(slot4, self, time)
 
 	return 
 end
-ToolHub.create = function (self)
+function ToolHub:create()
 	slot9 = 0
 	slot10 = 0
 	slot8 = Global.application_window
@@ -165,7 +165,7 @@ ToolHub.create = function (self)
 
 	return 
 end
-ToolHub.get_tool_menu = function (self, frame)
+function ToolHub:get_tool_menu(frame)
 	local sortkeys = {}
 	slot5 = self._shed
 
@@ -193,7 +193,7 @@ ToolHub.get_tool_menu = function (self, frame)
 
 	return tool_menu
 end
-ToolHub.buildmenu = function (self)
+function ToolHub:buildmenu()
 	local menu_bar = EWS.MenuBar(slot2)
 	local file_menu = EWS.Menu(EWS, EWS)
 	local sortkeys = {}
@@ -477,7 +477,7 @@ ToolHub.buildmenu = function (self)
 
 	return 
 end
-ToolHub.change_visualization = function (self, viz)
+function ToolHub:change_visualization(viz)
 	slot6 = managers.viewport
 
 	for _, vp in ipairs(managers.viewport.viewports(slot5)) do
@@ -488,28 +488,28 @@ ToolHub.change_visualization = function (self, viz)
 
 	return 
 end
-ToolHub.toggle_fullscreen = function (self)
+function ToolHub:toggle_fullscreen()
 	slot4 = not RenderSettings.fullscreen
 
 	managers.viewport.set_fullscreen(slot2, managers.viewport)
 
 	return 
 end
-ToolHub.change_resolution = function (self, custom_data, event_object)
+function ToolHub:change_resolution(custom_data, event_object)
 	slot6 = custom_data
 
 	managers.viewport.set_resolution(slot4, managers.viewport)
 
 	return 
 end
-ToolHub.change_aspect_ratio = function (self, custom_data, event_object)
+function ToolHub:change_aspect_ratio(custom_data, event_object)
 	slot6 = custom_data
 
 	managers.viewport.set_aspect_ratio(slot4, managers.viewport)
 
 	return 
 end
-ToolHub.menu_showcommands = function (self)
+function ToolHub:menu_showcommands()
 	slot5 = "show_gui"
 
 	self.register_showcommand(slot2, self, "show_gui")
@@ -656,7 +656,7 @@ ToolHub.menu_showcommands = function (self)
 
 	return 
 end
-ToolHub.menu_statsommands = function (self)
+function ToolHub:menu_statsommands()
 	slot5 = "atombatcher"
 
 	self.register_statscommands(slot2, self, "atombatcher")
@@ -731,7 +731,7 @@ ToolHub.menu_statsommands = function (self)
 
 	return 
 end
-ToolHub.register_statscommands = function (self, commandname, text)
+function ToolHub:register_statscommands(commandname, text)
 	slot8 = ""
 
 	self._statsmenu.append_check_item(slot4, self._statsmenu, "TB_" .. commandname, text)
@@ -742,7 +742,7 @@ ToolHub.register_statscommands = function (self, commandname, text)
 
 	return 
 end
-ToolHub.register_showcommand = function (self, commandname, text)
+function ToolHub:register_showcommand(commandname, text)
 	slot8 = ""
 
 	self._dbgmenu.append_check_item(slot4, self._dbgmenu, "TB_" .. commandname, text)
@@ -753,7 +753,7 @@ ToolHub.register_showcommand = function (self, commandname, text)
 
 	return 
 end
-ToolHub.hide = function (self)
+function ToolHub:hide()
 	slot3 = Global.frame
 
 	Global.frame.set_focus(slot2)
@@ -766,7 +766,7 @@ ToolHub.hide = function (self)
 
 	return 
 end
-ToolHub.show = function (self)
+function ToolHub:show()
 	slot4 = true
 
 	self._main_frame.set_visible(slot2, self._main_frame)
@@ -779,20 +779,20 @@ ToolHub.show = function (self)
 
 	return 
 end
-ToolHub.on_close = function (self)
+function ToolHub:on_close()
 	slot3 = self
 
 	self.hide(slot2)
 
 	return 
 end
-ToolHub.add = function (self, name, tool_class, init_args)
+function ToolHub:add(name, tool_class, init_args)
 	self._shed[name] = tool_class
 	self._init[name] = init_args or {}
 
 	return 
 end
-ToolHub.open = function (self, name)
+function ToolHub:open(name)
 	local tool = self._tools[name]
 
 	if not tool then
@@ -807,7 +807,7 @@ ToolHub.open = function (self, name)
 
 	return 
 end
-ToolHub.close = function (self, name)
+function ToolHub:close(name)
 	self._closelist[name] = true
 	slot5 = "ToolHub: Tool '" .. name .. "' added to close down list."
 
@@ -815,7 +815,7 @@ ToolHub.close = function (self, name)
 
 	return 
 end
-ToolHub.prepare = function (self, name)
+function ToolHub:prepare(name)
 	local tool_class = self._shed[name]
 
 	if tool_class then
@@ -828,7 +828,7 @@ ToolHub.prepare = function (self, name)
 
 	return nil
 end
-ToolHub.on_opentool = function (self, gaa, commandevent)
+function ToolHub:on_opentool(gaa, commandevent)
 	slot9 = commandevent
 	slot6 = "Should Open Toool: " .. commandevent.get_id(commandevent)
 
@@ -840,7 +840,7 @@ ToolHub.on_opentool = function (self, gaa, commandevent)
 
 	return 
 end
-ToolHub.on_stats = function (self, gaa, commandevent)
+function ToolHub:on_stats(gaa, commandevent)
 	slot7 = commandevent
 	slot5 = commandevent.get_id(slot6)
 	slot6 = 4
@@ -855,7 +855,7 @@ ToolHub.on_stats = function (self, gaa, commandevent)
 
 	return 
 end
-ToolHub.on_gaaa = function (self, gaa, commandevent)
+function ToolHub:on_gaaa(gaa, commandevent)
 	slot8 = commandevent
 	local ischecked = self._dbgmenu.is_checked(slot4, commandevent.get_id(slot7))
 	slot8 = commandevent
@@ -873,7 +873,7 @@ ToolHub.on_gaaa = function (self, gaa, commandevent)
 
 	return 
 end
-ToolHub.on_catprint = function (self, gaa, commandevent)
+function ToolHub:on_catprint(gaa, commandevent)
 	slot9 = commandevent
 	slot6 = "Should Toogle Catprint: " .. commandevent.get_id(commandevent)
 
@@ -892,7 +892,7 @@ ToolHub.on_catprint = function (self, gaa, commandevent)
 
 	return 
 end
-ToolHub.on_catprint_save = function (self, gaa, commandevent)
+function ToolHub:on_catprint_save(gaa, commandevent)
 	slot6 = "Should Save Catprint"
 
 	cat_print(slot4, "debug")
@@ -900,7 +900,7 @@ ToolHub.on_catprint_save = function (self, gaa, commandevent)
 
 	return 
 end
-ToolHub.on_catprint_drawdebug = function (self, gaa, commandevent)
+function ToolHub:on_catprint_drawdebug(gaa, commandevent)
 	if Global.render_debug == nil then
 		return 
 	end
@@ -913,7 +913,7 @@ ToolHub.on_catprint_drawdebug = function (self, gaa, commandevent)
 
 	return 
 end
-ToolHub.set_screen = function (self, gaa, commandevent)
+function ToolHub:set_screen(gaa, commandevent)
 	slot9 = commandevent
 	slot6 = "Should set_screen: " .. commandevent.get_id(slot8)
 
@@ -939,7 +939,7 @@ ToolHub.set_screen = function (self, gaa, commandevent)
 
 	return 
 end
-ToolHub.getscreenpos = function (self, screen)
+function ToolHub:getscreenpos(screen)
 	if screen == "primary" then
 		slot6 = 0
 

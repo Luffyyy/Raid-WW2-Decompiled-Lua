@@ -11,14 +11,14 @@ if not PhysicsPushUnitElement then
 end
 
 PhysicsPushUnitElement = slot0
-PhysicsPushUnitElement.init = function (self, ...)
+function PhysicsPushUnitElement:init(...)
 	slot3 = self
 
 	CorePhysicsPushUnitElement.init(slot2, ...)
 
 	return 
 end
-CorePhysicsPushUnitElement.init = function (self, unit)
+function CorePhysicsPushUnitElement:init(unit)
 	slot5 = unit
 
 	MissionElement.init(slot3, self)
@@ -40,7 +40,7 @@ CorePhysicsPushUnitElement.init = function (self, unit)
 
 	return 
 end
-CorePhysicsPushUnitElement.update_selected = function (self)
+function CorePhysicsPushUnitElement:update_selected()
 	slot6 = self._unit
 	slot8 = 0
 
@@ -48,7 +48,7 @@ CorePhysicsPushUnitElement.update_selected = function (self)
 
 	return 
 end
-CorePhysicsPushUnitElement._build_panel = function (self, panel, panel_sizer)
+function CorePhysicsPushUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -138,7 +138,7 @@ CorePhysicsPushUnitElement._build_panel = function (self, panel, panel_sizer)
 
 	return 
 end
-CorePhysicsPushUnitElement.add_to_mission_package = function (self)
+function CorePhysicsPushUnitElement:add_to_mission_package()
 	slot4 = {
 		name = "core/physic_effects/hubelement_push",
 		category = "physic_effects",

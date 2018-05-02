@@ -39,7 +39,7 @@ slot3 = "CoreDebug"
 core.import(slot1, core)
 
 SessionManager = SessionManager or class()
-SessionManager.init = function (self, session_factory, input_manager)
+function SessionManager:init(session_factory, input_manager)
 	if not session_factory then
 		return 
 	end
@@ -90,20 +90,20 @@ SessionManager.init = function (self, session_factory, input_manager)
 
 	return 
 end
-SessionManager.destroy = function (self)
+function SessionManager:destroy()
 	return 
 end
-SessionManager._main_systems_are_stable_for_loading = function (self)
+function SessionManager:_main_systems_are_stable_for_loading()
 	slot4 = self._state_machines_except_menu_and_game
 
 	return self._check_if_stable_for_loading(slot2, self)
 end
-SessionManager.all_systems_are_stable_for_loading = function (self)
+function SessionManager:all_systems_are_stable_for_loading()
 	slot4 = self._state_machines
 
 	return self._check_if_stable_for_loading(slot2, self)
 end
-SessionManager._check_if_stable_for_loading = function (self, collection)
+function SessionManager:_check_if_stable_for_loading(collection)
 	slot4 = collection
 
 	for _, state in pairs(slot3) do
@@ -121,7 +121,7 @@ SessionManager._check_if_stable_for_loading = function (self, collection)
 
 	return true
 end
-SessionManager._update = function (self, t, dt)
+function SessionManager:_update(t, dt)
 	if not self._factory then
 		return 
 	end
@@ -147,7 +147,7 @@ SessionManager._update = function (self, t, dt)
 
 	return 
 end
-SessionManager.end_update = function (self, t, dt)
+function SessionManager:end_update(t, dt)
 	if not self._factory then
 		return 
 	end
@@ -164,27 +164,27 @@ SessionManager.end_update = function (self, t, dt)
 
 	return 
 end
-SessionManager.update = function (self, t, dt)
+function SessionManager:update(t, dt)
 	slot7 = dt
 
 	self._update(slot4, self, t)
 
 	return 
 end
-SessionManager.paused_update = function (self, t, dt)
+function SessionManager:paused_update(t, dt)
 	slot7 = dt
 
 	self._update(slot4, self, t)
 
 	return 
 end
-SessionManager.player_slots = function (self)
+function SessionManager:player_slots()
 	return self._player_slots
 end
-SessionManager.session = function (self)
+function SessionManager:session()
 	return self._session_state
 end
-SessionManager._debug_time = function (self)
+function SessionManager:_debug_time()
 	return self._debug_timer
 end
 

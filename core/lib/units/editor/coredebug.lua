@@ -13,14 +13,14 @@ end
 DebugUnitElement = slot0
 DebugUnitElement.SAVE_UNIT_POSITION = false
 DebugUnitElement.SAVE_UNIT_ROTATION = false
-DebugUnitElement.init = function (self, ...)
+function DebugUnitElement:init(...)
 	slot3 = self
 
 	CoreDebugUnitElement.init(slot2, ...)
 
 	return 
 end
-CoreDebugUnitElement.init = function (self, unit)
+function CoreDebugUnitElement:init(unit)
 	slot5 = unit
 
 	MissionElement.init(slot3, self)
@@ -52,7 +52,7 @@ CoreDebugUnitElement.init = function (self, unit)
 
 	return 
 end
-CoreDebugUnitElement._build_panel = function (self, panel, panel_sizer)
+function CoreDebugUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -90,7 +90,7 @@ CoreDebugUnitElement._build_panel = function (self, panel, panel_sizer)
 
 	return 
 end
-CoreDebugUnitElement.update_editing = function (self)
+function CoreDebugUnitElement:update_editing()
 	slot4 = {
 		ray_type = "editor",
 		sample = true,
@@ -107,7 +107,7 @@ CoreDebugUnitElement.update_editing = function (self)
 
 	return 
 end
-CoreDebugUnitElement.add_triggers = function (self, vc)
+function CoreDebugUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "add_monitored_unit"
 
@@ -115,7 +115,7 @@ CoreDebugUnitElement.add_triggers = function (self, vc)
 
 	return 
 end
-CoreDebugUnitElement.add_monitored_unit = function (self)
+function CoreDebugUnitElement:add_monitored_unit()
 	slot4 = {
 		ray_type = "editor",
 		mask = managers.slot.get_mask(slot6, managers.slot)
@@ -152,7 +152,7 @@ CoreDebugUnitElement.add_monitored_unit = function (self)
 
 	return 
 end
-CoreDebugUnitElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function CoreDebugUnitElement:draw_links(t, dt, selected_unit, all_units)
 	slot10 = selected_unit
 
 	CoreDebugUnitElement.super.draw_links(slot6, self, t, dt)
@@ -178,14 +178,14 @@ CoreDebugUnitElement.draw_links = function (self, t, dt, selected_unit, all_unit
 
 	return 
 end
-CoreDebugUnitElement.on_delete = function (self)
+function CoreDebugUnitElement:on_delete()
 	slot4 = "CoreDebugUnitElement:on_delete()"
 
 	Application.trace(slot2, Application)
 
 	return 
 end
-CoreDebugUnitElement.register_monitor = function (self, unit)
+function CoreDebugUnitElement:register_monitor(unit)
 	slot4 = unit
 
 	if unit.mission_element(slot3).register_debug_output_unit then
@@ -198,7 +198,7 @@ CoreDebugUnitElement.register_monitor = function (self, unit)
 
 	return 
 end
-CoreDebugUnitElement.unregister_monitor = function (self, unit)
+function CoreDebugUnitElement:unregister_monitor(unit)
 	slot4 = unit
 
 	if unit.mission_element(slot3).unregister_debug_output_unit then

@@ -26,7 +26,7 @@ if not CoreMaterialEditorColor3 then
 	local CoreMaterialEditorColor3 = class(slot2)
 end
 
-CoreMaterialEditorColor3.init = function (self, parent, editor, parameter_info, parameter_node)
+function CoreMaterialEditorColor3:init(parent, editor, parameter_info, parameter_node)
 	slot11 = parameter_node
 
 	CoreMaterialEditorParameter.init(slot6, self, parent, editor, parameter_info)
@@ -50,7 +50,7 @@ CoreMaterialEditorColor3.init = function (self, parent, editor, parameter_info, 
 
 	return 
 end
-CoreMaterialEditorColor3.update = function (self, t, dt)
+function CoreMaterialEditorColor3:update(t, dt)
 	slot7 = dt
 
 	CoreMaterialEditorParameter.update(slot4, self, t)
@@ -61,14 +61,14 @@ CoreMaterialEditorColor3.update = function (self, t, dt)
 
 	return 
 end
-CoreMaterialEditorColor3.destroy = function (self)
+function CoreMaterialEditorColor3:destroy()
 	slot3 = self
 
 	CoreMaterialEditorParameter.destroy(slot2)
 
 	return 
 end
-CoreMaterialEditorColor3.on_toggle_customize = function (self)
+function CoreMaterialEditorColor3:on_toggle_customize()
 	self._customize = not self._customize
 	slot3 = self
 
@@ -93,7 +93,7 @@ CoreMaterialEditorColor3.on_toggle_customize = function (self)
 
 	return 
 end
-CoreMaterialEditorColor3._on_color = function (self, sender, color)
+function CoreMaterialEditorColor3:_on_color(sender, color)
 	slot7 = color.b
 	self._value = Vector3(slot4, color.r, color.g)
 	slot6 = "value"

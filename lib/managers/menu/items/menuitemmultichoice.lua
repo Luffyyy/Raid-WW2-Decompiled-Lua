@@ -15,7 +15,7 @@ end
 
 MenuItemMultiChoice = slot0
 MenuItemMultiChoice.TYPE = "multi_choice"
-MenuItemMultiChoice.init = function (self, data_node, parameters)
+function MenuItemMultiChoice:init(data_node, parameters)
 	slot7 = parameters
 
 	CoreMenuItem.Item.init(slot4, self, data_node)
@@ -55,7 +55,7 @@ MenuItemMultiChoice.init = function (self, data_node, parameters)
 
 	return 
 end
-MenuItemMultiChoice.set_enabled = function (self, enabled)
+function MenuItemMultiChoice:set_enabled(enabled)
 	self._enabled = enabled
 	slot4 = self
 
@@ -63,14 +63,14 @@ MenuItemMultiChoice.set_enabled = function (self, enabled)
 
 	return 
 end
-MenuItemMultiChoice.set_callback_handler = function (self, callback_handler)
+function MenuItemMultiChoice:set_callback_handler(callback_handler)
 	slot5 = callback_handler
 
 	MenuItemMultiChoice.super.set_callback_handler(slot3, self)
 
 	return 
 end
-MenuItemMultiChoice.visible = function (self, ...)
+function MenuItemMultiChoice:visible(...)
 	slot4 = self._callback_handler
 
 	self._show_options(slot2, self)
@@ -79,7 +79,7 @@ MenuItemMultiChoice.visible = function (self, ...)
 
 	return MenuItemMultiChoice.super.visible(slot2, ...)
 end
-MenuItemMultiChoice._show_options = function (self, callback_handler)
+function MenuItemMultiChoice:_show_options(callback_handler)
 	slot4 = self
 
 	if self.selected_option(slot3) then
@@ -127,28 +127,28 @@ MenuItemMultiChoice._show_options = function (self, callback_handler)
 
 	return 
 end
-MenuItemMultiChoice.add_option = function (self, option)
+function MenuItemMultiChoice:add_option(option)
 	slot5 = option
 
 	table.insert(slot3, self._all_options)
 
 	return 
 end
-MenuItemMultiChoice.clear_options = function (self)
+function MenuItemMultiChoice:clear_options()
 	self._all_options = {}
 
 	return 
 end
-MenuItemMultiChoice.options = function (self)
+function MenuItemMultiChoice:options()
 	return self._options
 end
-MenuItemMultiChoice.selected_option = function (self)
+function MenuItemMultiChoice:selected_option()
 	return self._options[self._current_index]
 end
-MenuItemMultiChoice.current_index = function (self)
+function MenuItemMultiChoice:current_index()
 	return self._current_index
 end
-MenuItemMultiChoice.set_current_index = function (self, index)
+function MenuItemMultiChoice:set_current_index(index)
 	self._current_index = index
 	slot4 = self
 
@@ -156,7 +156,7 @@ MenuItemMultiChoice.set_current_index = function (self, index)
 
 	return 
 end
-MenuItemMultiChoice.set_value = function (self, value)
+function MenuItemMultiChoice:set_value(value)
 	slot4 = self._options
 
 	for i, option in ipairs(slot3) do
@@ -175,7 +175,7 @@ MenuItemMultiChoice.set_value = function (self, value)
 
 	return 
 end
-MenuItemMultiChoice.value = function (self)
+function MenuItemMultiChoice:value()
 	local value = ""
 	slot4 = self
 	local selected_option = self.selected_option(slot3)
@@ -187,7 +187,7 @@ MenuItemMultiChoice.value = function (self)
 
 	return value
 end
-MenuItemMultiChoice._highest_option_index = function (self)
+function MenuItemMultiChoice:_highest_option_index()
 	local index = 1
 	slot4 = self._options
 
@@ -201,7 +201,7 @@ MenuItemMultiChoice._highest_option_index = function (self)
 
 	return index
 end
-MenuItemMultiChoice._lowest_option_index = function (self)
+function MenuItemMultiChoice:_lowest_option_index()
 	slot3 = self._options
 
 	for i, option in ipairs(slot2) do
@@ -214,7 +214,7 @@ MenuItemMultiChoice._lowest_option_index = function (self)
 
 	return 
 end
-MenuItemMultiChoice.next = function (self)
+function MenuItemMultiChoice:next()
 	if not self._enabled then
 		return 
 	end
@@ -236,7 +236,7 @@ MenuItemMultiChoice.next = function (self)
 
 	return true
 end
-MenuItemMultiChoice.previous = function (self)
+function MenuItemMultiChoice:previous()
 	if not self._enabled then
 		return 
 	end
@@ -258,20 +258,20 @@ MenuItemMultiChoice.previous = function (self)
 
 	return true
 end
-MenuItemMultiChoice.left_arrow_visible = function (self)
+function MenuItemMultiChoice:left_arrow_visible()
 	slot4 = self
 
 	return self._lowest_option_index(slot3) < self._current_index and self._enabled
 end
-MenuItemMultiChoice.right_arrow_visible = function (self)
+function MenuItemMultiChoice:right_arrow_visible()
 	slot4 = self
 
 	return self._current_index < self._highest_option_index(slot3) and self._enabled
 end
-MenuItemMultiChoice.arrow_visible = function (self)
+function MenuItemMultiChoice:arrow_visible()
 	return 1 < #self._options
 end
-MenuItemMultiChoice.setup_gui = function (self, node, row_item)
+function MenuItemMultiChoice:setup_gui(node, row_item)
 	local right_align = node._right_align(slot4)
 	slot7 = {
 		w = node.item_panel.w(slot9)
@@ -373,7 +373,7 @@ MenuItemMultiChoice.setup_gui = function (self, node, row_item)
 
 	return true
 end
-MenuItemMultiChoice.reload = function (self, row_item, node)
+function MenuItemMultiChoice:reload(row_item, node)
 	if not row_item then
 		return 
 	end
@@ -491,7 +491,7 @@ MenuItemMultiChoice.reload = function (self, row_item, node)
 
 	return true
 end
-MenuItemMultiChoice.highlight_row_item = function (self, node, row_item, mouse_over)
+function MenuItemMultiChoice:highlight_row_item(node, row_item, mouse_over)
 	slot7 = row_item.color
 
 	row_item.gui_text.set_color(slot5, row_item.gui_text)
@@ -569,7 +569,7 @@ MenuItemMultiChoice.highlight_row_item = function (self, node, row_item, mouse_o
 
 	return true
 end
-MenuItemMultiChoice.fade_row_item = function (self, node, row_item, mouse_over)
+function MenuItemMultiChoice:fade_row_item(node, row_item, mouse_over)
 	slot7 = row_item.color
 
 	row_item.gui_text.set_color(slot5, row_item.gui_text)
@@ -648,7 +648,7 @@ MenuItemMultiChoice.fade_row_item = function (self, node, row_item, mouse_over)
 	return true
 end
 local xl_pad = 64
-MenuItemMultiChoice._layout = function (self, node, row_item)
+function MenuItemMultiChoice:_layout(node, row_item)
 	local safe_rect = managers.gui_data.scaled_size(slot4)
 	local right_align = node._right_align(managers.gui_data)
 	local left_align = node._left_align(node)
@@ -841,7 +841,7 @@ if not MenuItemMultiChoiceWithIcon then
 end
 
 MenuItemMultiChoiceWithIcon = slot1
-MenuItemMultiChoiceWithIcon.init = function (self, data_node, parameters, ...)
+function MenuItemMultiChoiceWithIcon:init(data_node, parameters, ...)
 	slot7 = parameters
 
 	MenuItemMultiChoiceWithIcon.super.init(slot4, self, data_node, ...)
@@ -850,7 +850,7 @@ MenuItemMultiChoiceWithIcon.init = function (self, data_node, parameters, ...)
 
 	return 
 end
-MenuItemMultiChoiceWithIcon.setup_gui = function (self, node, row_item, ...)
+function MenuItemMultiChoiceWithIcon:setup_gui(node, row_item, ...)
 	slot7 = row_item
 
 	MenuItemMultiChoiceWithIcon.super.setup_gui(slot4, self, node, ...)
@@ -891,7 +891,7 @@ MenuItemMultiChoiceWithIcon.setup_gui = function (self, node, row_item, ...)
 		return true
 	end
 end
-MenuItemMultiChoiceWithIcon.set_icon_visible = function (self, state)
+function MenuItemMultiChoiceWithIcon:set_icon_visible(state)
 	slot5 = state
 
 	self._icon.set_visible(slot3, self._icon)

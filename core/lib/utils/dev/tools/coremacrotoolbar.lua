@@ -1,5 +1,5 @@
 CoreMacroToolbar = CoreMacroToolbar or class()
-CoreMacroToolbar.init = function (self, toolbar_panel, toolbar_box, default_icon, macro_file, self_str)
+function CoreMacroToolbar:init(toolbar_panel, toolbar_box, default_icon, macro_file, self_str)
 	self._toolbar_panel = toolbar_panel
 	self._toolbar_box = toolbar_box
 	self._default_icon = default_icon
@@ -11,7 +11,7 @@ CoreMacroToolbar.init = function (self, toolbar_panel, toolbar_box, default_icon
 
 	return 
 end
-CoreMacroToolbar.reload_macros = function (self)
+function CoreMacroToolbar:reload_macros()
 	if self._macros then
 		slot3 = self._macros
 
@@ -66,7 +66,7 @@ CoreMacroToolbar.reload_macros = function (self)
 
 	return 
 end
-CoreMacroToolbar.trigger_event = function (self, event_name)
+function CoreMacroToolbar:trigger_event(event_name)
 	if self._macros then
 		slot4 = self._macros
 

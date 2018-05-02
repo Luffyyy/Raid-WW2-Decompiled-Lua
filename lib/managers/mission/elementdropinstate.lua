@@ -8,21 +8,21 @@ if not ElementDropinState then
 end
 
 ElementDropinState = slot0
-ElementDropinState.init = function (self, ...)
+function ElementDropinState:init(...)
 	slot3 = self
 
 	ElementDropinState.super.init(slot2, ...)
 
 	return 
 end
-ElementDropinState.client_on_executed = function (self, ...)
+function ElementDropinState:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementDropinState.on_executed = function (self, instigator)
+function ElementDropinState:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

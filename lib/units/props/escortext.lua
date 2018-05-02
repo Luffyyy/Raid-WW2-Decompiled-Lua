@@ -3,7 +3,7 @@
 -- WARNING: Error occurred during decompilation.
 --   Code may be incomplete or incorrect.
 EscortExt = EscortExt or class()
-EscortExt.init = function (self, unit)
+function EscortExt:init(unit)
 	self._unit = unit
 	slot6 = 120
 	self._wp_offset = Vector3(slot3, 0, 0)
@@ -44,7 +44,7 @@ EscortExt.init = function (self, unit)
 
 	return 
 end
-EscortExt.set_logic = function (self)
+function EscortExt:set_logic()
 
 	-- Decompilation error in this vicinity:
 	slot3 = Network
@@ -58,7 +58,7 @@ EscortExt.set_logic = function (self)
 
 	return 
 end
-EscortExt.destroy = function (self)
+function EscortExt:destroy()
 	slot3 = self
 
 	self.remove_health_bar(slot2)
@@ -69,7 +69,7 @@ EscortExt.destroy = function (self)
 
 	return 
 end
-EscortExt._setup_health_bar = function (self)
+function EscortExt:_setup_health_bar()
 	slot3 = self._ws
 	slot4 = {}
 	self._health_panel = self._ws.panel(slot2).panel(slot2, self._ws.panel(slot2))
@@ -131,7 +131,7 @@ EscortExt._setup_health_bar = function (self)
 
 	return 
 end
-EscortExt.update_health_bar = function (self)
+function EscortExt:update_health_bar()
 	slot3 = self._health_panel
 
 	if not alive(slot2) then
@@ -147,7 +147,7 @@ EscortExt.update_health_bar = function (self)
 
 	return 
 end
-EscortExt.remove_health_bar = function (self)
+function EscortExt:remove_health_bar()
 	slot3 = self._health_panel
 
 	if not alive(slot2) then
@@ -165,7 +165,7 @@ EscortExt.remove_health_bar = function (self)
 
 	return 
 end
-EscortExt.set_health_bar_visible = function (self, visible)
+function EscortExt:set_health_bar_visible(visible)
 	slot4 = self._health_panel
 
 	if not alive(slot3) then
@@ -180,10 +180,10 @@ EscortExt.set_health_bar_visible = function (self, visible)
 
 	return 
 end
-EscortExt.has_waypoint = function (self)
+function EscortExt:has_waypoint()
 	return self._has_waypoint
 end
-EscortExt.add_waypoint = function (self)
+function EscortExt:add_waypoint()
 	if self._has_waypoint then
 		slot3 = self
 
@@ -223,7 +223,7 @@ EscortExt.add_waypoint = function (self)
 
 	return 
 end
-EscortExt.remove_waypoint = function (self)
+function EscortExt:remove_waypoint()
 	if not self._has_waypoint then
 		return 
 	end
@@ -240,7 +240,7 @@ EscortExt.remove_waypoint = function (self)
 
 	return 
 end
-EscortExt.is_safe = function (self)
+function EscortExt:is_safe()
 	local someone_close = false
 	slot5 = self._unit
 	local char_tweak = tweak_data.character[self._unit.base(slot4)._tweak_table]
@@ -265,7 +265,7 @@ end
 local health_pos = Vector3()
 local health_dir = Vector3()
 local cam_dir = Vector3()
-EscortExt.update = function (self, t, dt)
+function EscortExt:update(t, dt)
 	if self._has_waypoint then
 		slot6 = self._unit.position(slot7) + self._wp_offset
 
@@ -357,7 +357,7 @@ EscortExt.update = function (self, t, dt)
 
 	return 
 end
-EscortExt.set_waypoint_safe = function (self, safe)
+function EscortExt:set_waypoint_safe(safe)
 	slot6 = (safe and self._safe_color) or self._unsafe_color
 
 	managers.hud.change_waypoint_distance_color(slot3, managers.hud, self._icon_id)
@@ -372,7 +372,7 @@ EscortExt.set_waypoint_safe = function (self, safe)
 
 	return 
 end
-EscortExt.set_active = function (self, active)
+function EscortExt:set_active(active)
 	self._active = active
 
 	if active then
@@ -409,10 +409,10 @@ EscortExt.set_active = function (self, active)
 
 	return 
 end
-EscortExt.active = function (self)
+function EscortExt:active()
 	return self._active
 end
-EscortExt.save = function (self, data)
+function EscortExt:save(data)
 	data.escort = {}
 
 	if self._has_waypoint then
@@ -424,7 +424,7 @@ EscortExt.save = function (self, data)
 
 	return 
 end
-EscortExt.load = function (self, data)
+function EscortExt:load(data)
 	if data.escort.has_waypoint then
 		slot4 = self
 

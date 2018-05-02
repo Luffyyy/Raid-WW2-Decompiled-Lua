@@ -755,7 +755,7 @@ if not CoreEffectPropertyContainer then
 end
 
 CoreEffectPropertyContainer = slot0
-CoreEffectPropertyContainer.init = function (self, name)
+function CoreEffectPropertyContainer:init(name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -769,7 +769,7 @@ CoreEffectPropertyContainer.init = function (self, name)
 
 
 end
-CoreEffectPropertyContainer.ui_name = function (self)
+function CoreEffectPropertyContainer:ui_name()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -809,7 +809,7 @@ CoreEffectPropertyContainer.ui_name = function (self)
 
 
 end
-CoreEffectPropertyContainer.properties = function (self)
+function CoreEffectPropertyContainer:properties()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -819,7 +819,7 @@ CoreEffectPropertyContainer.properties = function (self)
 
 
 end
-CoreEffectPropertyContainer.add_property = function (self, p)
+function CoreEffectPropertyContainer:add_property(p)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -833,7 +833,7 @@ CoreEffectPropertyContainer.add_property = function (self, p)
 
 
 end
-CoreEffectPropertyContainer.get_property = function (self, name)
+function CoreEffectPropertyContainer:get_property(name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -891,7 +891,7 @@ CoreEffectPropertyContainer.get_property = function (self, name)
 
 
 end
-CoreEffectPropertyContainer.validate_properties = function (self)
+function CoreEffectPropertyContainer:validate_properties()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -954,7 +954,7 @@ CoreEffectPropertyContainer.validate_properties = function (self)
 
 
 end
-CoreEffectPropertyContainer.set_description = function (self, d)
+function CoreEffectPropertyContainer:set_description(d)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -966,7 +966,7 @@ CoreEffectPropertyContainer.set_description = function (self, d)
 
 
 end
-CoreEffectPropertyContainer.description = function (self)
+function CoreEffectPropertyContainer:description()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -976,7 +976,7 @@ CoreEffectPropertyContainer.description = function (self)
 
 
 end
-CoreEffectPropertyContainer.name = function (self)
+function CoreEffectPropertyContainer:name()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -986,7 +986,7 @@ CoreEffectPropertyContainer.name = function (self)
 
 
 end
-CoreEffectPropertyContainer.set_name = function (self, n)
+function CoreEffectPropertyContainer:set_name(n)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -998,7 +998,7 @@ CoreEffectPropertyContainer.set_name = function (self, n)
 
 
 end
-CoreEffectPropertyContainer.save_properties = function (self, node)
+function CoreEffectPropertyContainer:save_properties(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -1047,7 +1047,7 @@ CoreEffectPropertyContainer.save_properties = function (self, node)
 
 
 end
-CoreEffectPropertyContainer.load_properties = function (self, node)
+function CoreEffectPropertyContainer:load_properties(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -1096,7 +1096,7 @@ CoreEffectPropertyContainer.load_properties = function (self, node)
 
 
 end
-CoreEffectPropertyContainer.fill_property_container_sheet = function (self, window, view)
+function CoreEffectPropertyContainer:fill_property_container_sheet(window, view)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-45, warpins: 1 ---
@@ -1270,7 +1270,7 @@ CoreEffectPropertyContainer.fill_property_container_sheet = function (self, wind
 end
 slot0 = CoreEffectProperty or class()
 CoreEffectProperty = slot0
-CoreEffectProperty.init = function (self, name, ptype, value, help)
+function CoreEffectProperty:init(name, ptype, value, help)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-27, warpins: 1 ---
@@ -1314,7 +1314,7 @@ CoreEffectProperty.init = function (self, name, ptype, value, help)
 
 
 end
-CoreEffectProperty.set_custom_validator = function (self, f)
+function CoreEffectProperty:set_custom_validator(f)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -1326,7 +1326,7 @@ CoreEffectProperty.set_custom_validator = function (self, f)
 
 
 end
-CoreEffectProperty.set_range = function (self, a, b)
+function CoreEffectProperty:set_range(a, b)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1339,7 +1339,7 @@ CoreEffectProperty.set_range = function (self, a, b)
 
 
 end
-CoreEffectProperty.set_min_max_name = function (self, a, b)
+function CoreEffectProperty:set_min_max_name(a, b)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1352,7 +1352,7 @@ CoreEffectProperty.set_min_max_name = function (self, a, b)
 
 
 end
-CoreEffectProperty.set_presets = function (self, t)
+function CoreEffectProperty:set_presets(t)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -1364,7 +1364,7 @@ CoreEffectProperty.set_presets = function (self, t)
 
 
 end
-CoreEffectProperty.set_key_type = function (self, t)
+function CoreEffectProperty:set_key_type(t)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -1433,7 +1433,7 @@ CoreEffectProperty.set_key_type = function (self, t)
 
 
 end
-CoreEffectProperty.set_min_max = function (self, mi, ma)
+function CoreEffectProperty:set_min_max(mi, ma)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-15, warpins: 1 ---
@@ -1446,7 +1446,7 @@ CoreEffectProperty.set_min_max = function (self, mi, ma)
 
 
 end
-CoreEffectProperty.add_key = function (self, k)
+function CoreEffectProperty:add_key(k)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -1460,7 +1460,7 @@ CoreEffectProperty.add_key = function (self, k)
 
 
 end
-CoreEffectProperty.set_min_max_keys = function (self, mi, ma)
+function CoreEffectProperty:set_min_max_keys(mi, ma)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1473,7 +1473,7 @@ CoreEffectProperty.set_min_max_keys = function (self, mi, ma)
 
 
 end
-CoreEffectProperty.set_save_to_child = function (self, b)
+function CoreEffectProperty:set_save_to_child(b)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -1485,7 +1485,7 @@ CoreEffectProperty.set_save_to_child = function (self, b)
 
 
 end
-CoreEffectProperty.set_can_be_infinite = function (self, b)
+function CoreEffectProperty:set_can_be_infinite(b)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1497,7 +1497,7 @@ CoreEffectProperty.set_can_be_infinite = function (self, b)
 
 
 end
-CoreEffectProperty.set_silent = function (self, b)
+function CoreEffectProperty:set_silent(b)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -1509,7 +1509,7 @@ CoreEffectProperty.set_silent = function (self, b)
 
 
 end
-CoreEffectProperty.set_object = function (self, name, p)
+function CoreEffectProperty:set_object(name, p)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1521,7 +1521,7 @@ CoreEffectProperty.set_object = function (self, name, p)
 
 
 end
-CoreEffectProperty.set_compound_container = function (self, p)
+function CoreEffectProperty:set_compound_container(p)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -1533,7 +1533,7 @@ CoreEffectProperty.set_compound_container = function (self, p)
 
 
 end
-CoreEffectProperty.validate = function (self)
+function CoreEffectProperty:validate()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -2289,7 +2289,7 @@ CoreEffectProperty.validate = function (self)
 
 
 end
-CoreEffectProperty.name = function (self)
+function CoreEffectProperty:name()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -2299,7 +2299,7 @@ CoreEffectProperty.name = function (self)
 
 
 end
-CoreEffectProperty.add_value = function (self, v)
+function CoreEffectProperty:add_value(v)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -2313,7 +2313,7 @@ CoreEffectProperty.add_value = function (self, v)
 
 
 end
-CoreEffectProperty.add_variant = function (self, name, prop)
+function CoreEffectProperty:add_variant(name, prop)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -2325,7 +2325,7 @@ CoreEffectProperty.add_variant = function (self, name, prop)
 
 
 end
-CoreEffectProperty.on_change = function (self, widget_view)
+function CoreEffectProperty:on_change(widget_view)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -2335,7 +2335,7 @@ CoreEffectProperty.on_change = function (self, widget_view)
 
 
 end
-CoreEffectProperty.on_commit = function (self, widget_view)
+function CoreEffectProperty:on_commit(widget_view)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -2389,7 +2389,7 @@ CoreEffectProperty.on_commit = function (self, widget_view)
 
 
 end
-CoreEffectProperty.on_set_variant = function (self, widget_view_variant)
+function CoreEffectProperty:on_set_variant(widget_view_variant)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-57, warpins: 1 ---
@@ -2458,7 +2458,7 @@ CoreEffectProperty.on_set_variant = function (self, widget_view_variant)
 
 
 end
-CoreEffectProperty.set_timeline_init_callback_name = function (self, c)
+function CoreEffectProperty:set_timeline_init_callback_name(c)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -3332,7 +3332,7 @@ function topdown_layout(w)
 
 end
 
-CoreEffectProperty.create_widget = function (self, parent, view)
+function CoreEffectProperty:create_widget(parent, view)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -4368,7 +4368,7 @@ CoreEffectProperty.create_widget = function (self, parent, view)
 
 
 end
-CoreEffectProperty.help = function (self)
+function CoreEffectProperty:help()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -4378,7 +4378,7 @@ CoreEffectProperty.help = function (self)
 
 
 end
-CoreEffectProperty.save = function (self, node)
+function CoreEffectProperty:save(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -4671,7 +4671,7 @@ CoreEffectProperty.save = function (self, node)
 
 
 end
-CoreEffectProperty.load = function (self, node)
+function CoreEffectProperty:load(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -5192,7 +5192,7 @@ CoreEffectProperty.load = function (self, node)
 
 
 end
-CoreEffectProperty.value = function (self)
+function CoreEffectProperty:value()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---

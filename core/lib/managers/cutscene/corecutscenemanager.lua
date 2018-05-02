@@ -40,10 +40,10 @@ if not CoreCutsceneManager then
 end
 
 CoreCutsceneManager = slot0
-CoreCutsceneManager.cutscene_actor_unit_type = function (self, original_unit_type)
+function CoreCutsceneManager:cutscene_actor_unit_type(original_unit_type)
 	return (Global.__CutsceneManager__replaced_actor_unit_types and Global.__CutsceneManager__replaced_actor_unit_types[original_unit_type]) or original_unit_type
 end
-CoreCutsceneManager.replace_cutscene_actor_unit_type = function (self, original_unit_type, replacement_unit_type)
+function CoreCutsceneManager:replace_cutscene_actor_unit_type(original_unit_type, replacement_unit_type)
 	slot9 = original_unit_type
 	slot5 = DB.has(slot6, DB, "unit")
 	slot8 = "Unrecognized Unit \"%s\"."
@@ -87,7 +87,7 @@ CoreCutsceneManager.replace_cutscene_actor_unit_type = function (self, original_
 
 	return 
 end
-CoreCutsceneManager.init = function (self)
+function CoreCutsceneManager:init()
 	slot5 = {
 		"cutscene"
 	}
@@ -107,14 +107,14 @@ CoreCutsceneManager.init = function (self)
 
 	return 
 end
-CoreCutsceneManager.post_init = function (self)
+function CoreCutsceneManager:post_init()
 	slot3 = self
 
 	self._prime_cutscenes_in_world(slot2)
 
 	return 
 end
-CoreCutsceneManager.destroy = function (self)
+function CoreCutsceneManager:destroy()
 	if self._player then
 		slot3 = self._player
 
@@ -162,10 +162,10 @@ CoreCutsceneManager.destroy = function (self)
 
 	return 
 end
-CoreCutsceneManager.timer = function (self)
+function CoreCutsceneManager:timer()
 	return self._timer
 end
-CoreCutsceneManager.set_timer = function (self, timer)
+function CoreCutsceneManager:set_timer(timer)
 	slot5 = "Must supply a timer."
 	self._timer = assert(slot3, timer)
 
@@ -195,7 +195,7 @@ CoreCutsceneManager.set_timer = function (self, timer)
 
 	return 
 end
-CoreCutsceneManager.register_unit_with_cutscene_data_extension = function (self, unit)
+function CoreCutsceneManager:register_unit_with_cutscene_data_extension(unit)
 	self._units_with_cutscene_data_extension = self._units_with_cutscene_data_extension or {}
 	slot5 = unit
 
@@ -203,7 +203,7 @@ CoreCutsceneManager.register_unit_with_cutscene_data_extension = function (self,
 
 	return 
 end
-CoreCutsceneManager.unregister_unit_with_cutscene_data_extension = function (self, unit)
+function CoreCutsceneManager:unregister_unit_with_cutscene_data_extension(unit)
 	if self._units_with_cutscene_data_extension then
 		slot5 = unit
 
@@ -216,7 +216,7 @@ CoreCutsceneManager.unregister_unit_with_cutscene_data_extension = function (sel
 
 	return 
 end
-CoreCutsceneManager._prime_cutscenes_in_world = function (self)
+function CoreCutsceneManager:_prime_cutscenes_in_world()
 	slot1 = ipairs
 	slot3 = self._units_with_cutscene_data_extension or {}
 
@@ -240,7 +240,7 @@ CoreCutsceneManager._prime_cutscenes_in_world = function (self)
 
 	return 
 end
-CoreCutsceneManager._destroy_units_with_cutscene_data_extension = function (self)
+function CoreCutsceneManager:_destroy_units_with_cutscene_data_extension()
 	slot3 = self._units_with_cutscene_data_extension or {}
 	local units_to_destroy = table.list_copy(slot2)
 	slot4 = units_to_destroy
@@ -271,7 +271,7 @@ CoreCutsceneManager._destroy_units_with_cutscene_data_extension = function (self
 
 	return 
 end
-CoreCutsceneManager.register_cutscene_actor = function (self, unit)
+function CoreCutsceneManager:register_cutscene_actor(unit)
 	slot6 = unit
 	slot5 = "Zombie unit registered as cutscene actor."
 
@@ -303,7 +303,7 @@ CoreCutsceneManager.register_cutscene_actor = function (self, unit)
 
 	return true
 end
-CoreCutsceneManager.unregister_cutscene_actor = function (self, unit)
+function CoreCutsceneManager:unregister_cutscene_actor(unit)
 	slot6 = unit
 	slot5 = "Zombie unit unregistered as cutscene actor."
 
@@ -334,7 +334,7 @@ CoreCutsceneManager.unregister_cutscene_actor = function (self, unit)
 
 	return true
 end
-CoreCutsceneManager.cutscene_actors_in_world = function (self)
+function CoreCutsceneManager:cutscene_actors_in_world()
 	if self._cutscene_actors == nil then
 		return {}
 	end
@@ -354,10 +354,10 @@ CoreCutsceneManager.cutscene_actors_in_world = function (self)
 
 	return self._cutscene_actors
 end
-CoreCutsceneManager.actor_database = function (self)
+function CoreCutsceneManager:actor_database()
 	return self._actor_database
 end
-CoreCutsceneManager.debug_next_exec = function (self, scene_name)
+function CoreCutsceneManager:debug_next_exec(scene_name)
 	slot4 = self
 
 	self.delay_cutscene_debug(slot3)
@@ -366,12 +366,12 @@ CoreCutsceneManager.debug_next_exec = function (self, scene_name)
 
 	return 
 end
-CoreCutsceneManager.delay_cutscene_debug = function (self)
+function CoreCutsceneManager:delay_cutscene_debug()
 	self._delay_cutscene_debug = true
 
 	return 
 end
-CoreCutsceneManager.start_delayed_cutscene = function (self)
+function CoreCutsceneManager:start_delayed_cutscene()
 	if not Global.debug_cutscene then
 		slot3 = "-debugcs"
 		local debug_scene = arg_value(slot2)
@@ -403,7 +403,7 @@ CoreCutsceneManager.start_delayed_cutscene = function (self)
 
 	return 
 end
-CoreCutsceneManager.update = function (self)
+function CoreCutsceneManager:update()
 	return 
 
 	local time = self._timer.time(slot2)
@@ -478,14 +478,14 @@ CoreCutsceneManager.update = function (self)
 
 	return 
 end
-CoreCutsceneManager.paused_update = function (self)
+function CoreCutsceneManager:paused_update()
 	slot3 = self
 
 	self.update(slot2)
 
 	return 
 end
-CoreCutsceneManager.play_overlay_effect = function (self, effect_data)
+function CoreCutsceneManager:play_overlay_effect(effect_data)
 	slot4 = self
 
 	self.stop_overlay_effect(slot3)
@@ -498,17 +498,17 @@ CoreCutsceneManager.play_overlay_effect = function (self, effect_data)
 
 	return 
 end
-CoreCutsceneManager.stop_overlay_effect = function (self, fade_out)
+function CoreCutsceneManager:stop_overlay_effect(fade_out)
 	if self.__overlay_effect_id then
 		slot2 = assert
 	end
 
 	return 
 end
-CoreCutsceneManager._create_gui_workspace = function (self)
+function CoreCutsceneManager:_create_gui_workspace()
 	return nil
 end
-CoreCutsceneManager._create_video_workspace = function (self)
+function CoreCutsceneManager:_create_video_workspace()
 	local res = RenderSettings.resolution
 	slot4 = Overlay
 	slot9 = managers.viewport
@@ -520,23 +520,23 @@ CoreCutsceneManager._create_video_workspace = function (self)
 
 	return workspace
 end
-CoreCutsceneManager.input_controller = function (self)
+function CoreCutsceneManager:input_controller()
 	return self._input_controller
 end
-CoreCutsceneManager.gui_workspace = function (self)
+function CoreCutsceneManager:gui_workspace()
 	return self._gui_workspace
 end
-CoreCutsceneManager.video_workspace = function (self)
+function CoreCutsceneManager:video_workspace()
 	return self._video_workspace
 end
-CoreCutsceneManager._video = function (self)
+function CoreCutsceneManager:_video()
 
 	-- Decompilation error in this vicinity:
 	slot3 = self
 	local panel = self.video_workspace(slot2).panel(slot2)
 	slot4 = panel
 end
-CoreCutsceneManager.set_gui_visible = function (self, visible)
+function CoreCutsceneManager:set_gui_visible(visible)
 	slot4 = self
 
 	if not self.gui_workspace(slot3) then
@@ -559,12 +559,12 @@ CoreCutsceneManager.set_gui_visible = function (self, visible)
 
 	return 
 end
-CoreCutsceneManager.get_cutscene_names = function (self)
+function CoreCutsceneManager:get_cutscene_names()
 	slot4 = "cutscene"
 
 	return managers.database.list_entries_of_type(slot2, managers.database)
 end
-CoreCutsceneManager.prime = function (self, name, time)
+function CoreCutsceneManager:prime(name, time)
 	time = time or 0
 	slot6 = name
 	local cutscene = self.get_cutscene(slot4, self)
@@ -591,7 +591,7 @@ CoreCutsceneManager.prime = function (self, name, time)
 
 	return 
 end
-CoreCutsceneManager._player_for_cutscene = function (self, cutscene)
+function CoreCutsceneManager:_player_for_cutscene(cutscene)
 	slot4 = cutscene
 	local orientation_unit = cutscene.find_spawned_orientation_unit(slot3)
 
@@ -616,7 +616,7 @@ CoreCutsceneManager._player_for_cutscene = function (self, cutscene)
 
 	return 
 end
-CoreCutsceneManager.play_cutscene = function (self, name)
+function CoreCutsceneManager:play_cutscene(name)
 	if not self._manager_locked then
 		slot5 = name
 
@@ -629,7 +629,7 @@ CoreCutsceneManager.play_cutscene = function (self, name)
 
 	return 
 end
-CoreCutsceneManager.play = function (self)
+function CoreCutsceneManager:play()
 	if self._player ~= nil then
 		slot3 = self._player
 
@@ -652,7 +652,7 @@ CoreCutsceneManager.play = function (self)
 
 	return 
 end
-CoreCutsceneManager.stop = function (self, disable_events)
+function CoreCutsceneManager:stop(disable_events)
 	self._start_playback = nil
 	self._stop_playback = true
 	self._paused = nil
@@ -660,7 +660,7 @@ CoreCutsceneManager.stop = function (self, disable_events)
 
 	return 
 end
-CoreCutsceneManager.skip = function (self)
+function CoreCutsceneManager:skip()
 	if self._player then
 		slot3 = self._player
 
@@ -673,7 +673,7 @@ CoreCutsceneManager.skip = function (self)
 
 	return 
 end
-CoreCutsceneManager._cleanup = function (self, called_from_prime)
+function CoreCutsceneManager:_cleanup(called_from_prime)
 	if self._is_overriding_user_music then
 		slot5 = false
 
@@ -733,7 +733,7 @@ CoreCutsceneManager._cleanup = function (self, called_from_prime)
 
 	return 
 end
-CoreCutsceneManager.pause = function (self)
+function CoreCutsceneManager:pause()
 	self._paused = true
 	slot3 = self
 
@@ -758,7 +758,7 @@ CoreCutsceneManager.pause = function (self)
 
 	return 
 end
-CoreCutsceneManager.resume = function (self)
+function CoreCutsceneManager:resume()
 	slot3 = self
 
 	if self.is_paused(slot2) then
@@ -770,7 +770,7 @@ CoreCutsceneManager.resume = function (self)
 
 	return 
 end
-CoreCutsceneManager.evaluate_at_time = function (self, name, time)
+function CoreCutsceneManager:evaluate_at_time(name, time)
 	slot7 = time
 
 	self.prime(slot4, self, name)
@@ -781,7 +781,7 @@ CoreCutsceneManager.evaluate_at_time = function (self, name, time)
 
 	return 
 end
-CoreCutsceneManager.evaluate_at_frame = function (self, name, frame)
+function CoreCutsceneManager:evaluate_at_frame(name, frame)
 	slot10 = name
 	slot9 = self.get_cutscene(slot8, self)
 	slot7 = frame / self.get_cutscene(slot8, self).frames_per_second(slot8)
@@ -790,7 +790,7 @@ CoreCutsceneManager.evaluate_at_frame = function (self, name, frame)
 
 	return 
 end
-CoreCutsceneManager.is_playing_cutscene = function (self, name)
+function CoreCutsceneManager:is_playing_cutscene(name)
 	slot4 = self
 
 	if self.is_playing(slot3) then
@@ -799,14 +799,14 @@ CoreCutsceneManager.is_playing_cutscene = function (self, name)
 		return self._player.cutscene_name(slot3) == name
 	end
 end
-CoreCutsceneManager.is_playing = function (self)
+function CoreCutsceneManager:is_playing()
 end
-CoreCutsceneManager.is_paused = function (self)
+function CoreCutsceneManager:is_paused()
 
 	-- Decompilation error in this vicinity:
 	return self._paused ~= nil
 end
-CoreCutsceneManager.add_playing_changed_callback = function (self, object, func_or_name)
+function CoreCutsceneManager:add_playing_changed_callback(object, func_or_name)
 
 	-- Decompilation error in this vicinity:
 	slot5 = func_or_name
@@ -820,7 +820,7 @@ CoreCutsceneManager.add_playing_changed_callback = function (self, object, func_
 
 	return 
 end
-CoreCutsceneManager.get_cutscene = function (self, name)
+function CoreCutsceneManager:get_cutscene(name)
 	local cutscene = self._cutscenes and self._cutscenes[name]
 
 	if cutscene == nil then
@@ -852,13 +852,13 @@ CoreCutsceneManager.get_cutscene = function (self, name)
 
 	return cutscene
 end
-CoreCutsceneManager._on_playback_started = function (self, cutscene_name)
+function CoreCutsceneManager:_on_playback_started(cutscene_name)
 	return 
 end
-CoreCutsceneManager._on_playback_finished = function (self, cutscene_name)
+function CoreCutsceneManager:_on_playback_finished(cutscene_name)
 	return 
 end
-CoreCutsceneManager._debug_persistent_keys_per_cutscene = function (self)
+function CoreCutsceneManager:_debug_persistent_keys_per_cutscene()
 	local persistent_keys_per_cutscene = {}
 	slot6 = self
 
@@ -872,7 +872,7 @@ CoreCutsceneManager._debug_persistent_keys_per_cutscene = function (self)
 
 	return persistent_keys_per_cutscene
 end
-CoreCutsceneManager._debug_persistent_keys_report = function (self)
+function CoreCutsceneManager:_debug_persistent_keys_report()
 	local output_string = "Persistent Cutscene Keys Report\n"
 	output_string = output_string .. "-------------------------------\n"
 	slot6 = self
@@ -892,7 +892,7 @@ CoreCutsceneManager._debug_persistent_keys_report = function (self)
 
 	return output_string
 end
-CoreCutsceneManager._debug_dump_persistent_keys_report = function (self, path)
+function CoreCutsceneManager:_debug_dump_persistent_keys_report(path)
 	if path then
 		slot6 = "w"
 		local file = SystemFS.open(slot3, SystemFS, path)
@@ -921,84 +921,84 @@ CoreCutsceneManager._debug_dump_persistent_keys_report = function (self, path)
 
 	return 
 end
-CoreCutsceneManager.set_active_camera = function (self)
+function CoreCutsceneManager:set_active_camera()
 	slot3 = "CoreCutsceneManager:set_active_camera() is deprecated. The camera is now kept in CoreCutscenePlayer, but is not exposed here."
 
 	error(slot2)
 
 	return 
 end
-CoreCutsceneManager.attempt_switch_to_active_camera = function (self)
+function CoreCutsceneManager:attempt_switch_to_active_camera()
 	slot3 = "CoreCutsceneManager:attempt_switch_to_active_camera() is deprecated. The camera is now kept in CoreCutscenePlayer, but is not exposed here."
 
 	error(slot2)
 
 	return 
 end
-CoreCutsceneManager.set_cutscene_camera_enabled = function (self)
+function CoreCutsceneManager:set_cutscene_camera_enabled()
 	slot3 = "CoreCutsceneManager:set_cutscene_camera_enabled() is deprecated. The camera is now kept in CoreCutscenePlayer, but is not exposed here."
 
 	error(slot2)
 
 	return 
 end
-CoreCutsceneManager.set_listener_enabled = function (self)
+function CoreCutsceneManager:set_listener_enabled()
 	slot3 = "CoreCutsceneManager:set_listener_enabled() is deprecated. The listener is now kept in CoreCutscenePlayer, but is not exposed here."
 
 	error(slot2)
 
 	return 
 end
-CoreCutsceneManager.set_camera_attribute = function (self)
+function CoreCutsceneManager:set_camera_attribute()
 	slot3 = "CoreCutsceneManager:set_camera_attribute() is deprecated. The camera is now kept in CoreCutscenePlayer, but is not exposed here."
 
 	error(slot2)
 
 	return 
 end
-CoreCutsceneManager.play_camera_shake = function (self)
+function CoreCutsceneManager:play_camera_shake()
 	slot3 = "CoreCutsceneManager:play_camera_shake() is deprecated. The camera is now kept in CoreCutscenePlayer, but is not exposed here."
 
 	error(slot2)
 
 	return 
 end
-CoreCutsceneManager.load = function (self)
+function CoreCutsceneManager:load()
 	slot4 = "CoreCutsceneManager:load() is deprecated. There is no need to call it."
 
 	Application.stack_dump_error(slot2, Application)
 
 	return 
 end
-CoreCutsceneManager.save = function (self)
+function CoreCutsceneManager:save()
 	slot3 = "CoreCutsceneManager:save() is deprecated. The new Cutscene Editor uses CoreCutsceneEditorProjects."
 
 	error(slot2)
 
 	return 
 end
-CoreCutsceneManager.save_all = function (self)
+function CoreCutsceneManager:save_all()
 	slot3 = "CoreCutsceneManager:save_all() is deprecated. The new Cutscene Editor uses CoreCutsceneEditorProjects."
 
 	error(slot2)
 
 	return 
 end
-CoreCutsceneManager.pre_load_cutscene_units = function (self)
+function CoreCutsceneManager:pre_load_cutscene_units()
 	slot4 = "CoreCutsceneManager:pre_load_cutscene_units() is deprecated. There is no need to call it."
 
 	Application.stack_dump_error(slot2, Application)
 
 	return 
 end
-CoreCutsceneManager.internal_load = function (self)
+function CoreCutsceneManager:internal_load()
 	slot4 = "CoreCutsceneManager:internal_load() is deprecated. There is no need to call it."
 
 	Application.stack_dump_error(slot2, Application)
 
 	return 
 end
-CoreCutsceneManager.stop_cutscene = function (self)
+function CoreCutsceneManager:stop_cutscene()
 	slot4 = "CoreCutsceneManager:stop_cutscene() is deprecated. Use CoreCutsceneManager:stop() instead."
 
 	Application.stack_dump_error(slot2, Application)
@@ -1009,35 +1009,35 @@ CoreCutsceneManager.stop_cutscene = function (self)
 
 	return 
 end
-CoreCutsceneManager.set_stop_at_end = function (self)
+function CoreCutsceneManager:set_stop_at_end()
 	slot4 = "CoreCutsceneManager:set_stop_at_end() is deprecated. There is no need to call it."
 
 	Application.stack_dump_error(slot2, Application)
 
 	return 
 end
-CoreCutsceneManager.get_current_frame_nr = function (self)
+function CoreCutsceneManager:get_current_frame_nr()
 	slot3 = "CoreCutsceneManager:get_current_frame_nr() is deprecated. The playhead state is kept in CoreCutscenePlayer, but is not exposed here."
 
 	error(slot2)
 
 	return 
 end
-CoreCutsceneManager.get_frame_count = function (self)
+function CoreCutsceneManager:get_frame_count()
 	slot3 = "CoreCutsceneManager:get_frame_count() is deprecated. The frame count is part of the CoreCutscene, but is not exposed here."
 
 	error(slot2)
 
 	return 
 end
-CoreCutsceneManager.move_to_frame = function (self)
+function CoreCutsceneManager:move_to_frame()
 	slot3 = "CoreCutsceneManager:move_to_frame() is deprecated. The playhead state is kept in CoreCutscenePlayer, but is not exposed here."
 
 	error(slot2)
 
 	return 
 end
-CoreCutsceneManager.evaluate_current_frame = function (self)
+function CoreCutsceneManager:evaluate_current_frame()
 	slot3 = "CoreCutsceneManager:evaluate_current_frame() is deprecated. The playhead state is kept in CoreCutscenePlayer, but is not exposed here."
 
 	error(slot2)

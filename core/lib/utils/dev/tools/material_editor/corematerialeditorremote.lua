@@ -1,14 +1,14 @@
 CoreMaterialEditorRemote = CoreMaterialEditorRemote or class()
 CoreMaterialEditorRemote.PORT = 11332
 CoreMaterialEditorRemote.TEMP_PATH = "core/temp/"
-CoreMaterialEditorRemote.init = function (self)
+function CoreMaterialEditorRemote:init()
 	slot5 = self
 
 	Network.bind(slot2, Network, self.PORT)
 
 	return 
 end
-CoreMaterialEditorRemote.reload_shader_libs = function (self)
+function CoreMaterialEditorRemote:reload_shader_libs()
 	slot4 = self.TEMP_PATH .. "temp_rt.xml"
 
 	Application.update_filesystem_index(slot2, Application)

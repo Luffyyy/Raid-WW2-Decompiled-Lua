@@ -31,10 +31,10 @@ mixin(slot1, get_core_or_local(slot4))
 CoreCutscenePlayer.BLACK_BAR_GUI_LAYER = 29
 CoreCutscenePlayer.BLACK_BAR_TOP_GUI_NAME = "__CutscenePlayer__black_bar_top"
 CoreCutscenePlayer.BLACK_BAR_BOTTOM_GUI_NAME = "__CutscenePlayer__black_bar_bottom"
-CoreCutscenePlayer._all_keys_sorted_by_time = function (self)
+function CoreCutscenePlayer:_all_keys_sorted_by_time()
 	return self._owned_cutscene_keys
 end
-CoreCutscenePlayer.init = function (self, cutscene, optional_shared_viewport, optional_shared_cast)
+function CoreCutscenePlayer:init(cutscene, optional_shared_viewport, optional_shared_cast)
 	slot7 = "No cutscene supplied."
 	self._cutscene = assert(slot5, cutscene)
 
@@ -81,7 +81,7 @@ CoreCutscenePlayer.init = function (self, cutscene, optional_shared_viewport, op
 
 	return 
 end
-CoreCutscenePlayer._create_future_camera = function (self)
+function CoreCutscenePlayer:_create_future_camera()
 	slot9 = 0
 	slot5 = Vector3("core/units/locator/locator", 0, 0)
 	self._future_camera_locator = World.spawn_unit(slot2, World, Idstring(slot5), Rotation())
@@ -107,7 +107,7 @@ CoreCutscenePlayer._create_future_camera = function (self)
 
 	return 
 end
-CoreCutscenePlayer.add_keys = function (self, key_collection)
+function CoreCutscenePlayer:add_keys(key_collection)
 	key_collection = key_collection or self._cutscene
 	slot6 = key_collection
 
@@ -136,7 +136,7 @@ CoreCutscenePlayer.add_keys = function (self, key_collection)
 
 	return 
 end
-CoreCutscenePlayer._is_driving_sound_key = function (self, cutscene_key)
+function CoreCutscenePlayer:_is_driving_sound_key(cutscene_key)
 	if cutscene_key.ELEMENT_NAME == CoreSoundCutsceneKey.ELEMENT_NAME then
 		slot4 = cutscene_key
 	else
@@ -149,7 +149,7 @@ CoreCutscenePlayer._is_driving_sound_key = function (self, cutscene_key)
 
 	return slot2
 end
-CoreCutscenePlayer._set_driving_sound_from_key = function (self, cutscene_key)
+function CoreCutscenePlayer:_set_driving_sound_from_key(cutscene_key)
 	slot4 = "cutscene"
 	slot11 = cutscene_key
 
@@ -164,7 +164,7 @@ CoreCutscenePlayer._set_driving_sound_from_key = function (self, cutscene_key)
 
 	return 
 end
-CoreCutscenePlayer.set_timer = function (self, timer)
+function CoreCutscenePlayer:set_timer(timer)
 	slot5 = timer
 
 	self._cast.set_timer(slot3, self._cast)
@@ -188,20 +188,20 @@ CoreCutscenePlayer.set_timer = function (self, timer)
 
 	return 
 end
-CoreCutscenePlayer.viewport = function (self)
+function CoreCutscenePlayer:viewport()
 	return self._viewport
 end
-CoreCutscenePlayer.cutscene_name = function (self)
+function CoreCutscenePlayer:cutscene_name()
 	slot3 = self._cutscene
 
 	return self._cutscene.name(slot2)
 end
-CoreCutscenePlayer.cutscene_duration = function (self)
+function CoreCutscenePlayer:cutscene_duration()
 	slot3 = self._cutscene
 
 	return self._cutscene.duration(slot2)
 end
-CoreCutscenePlayer.camera_attributes = function (self)
+function CoreCutscenePlayer:camera_attributes()
 	slot3 = self
 	local camera = self._camera(slot2)
 	local attributes = {}
@@ -224,10 +224,10 @@ CoreCutscenePlayer.camera_attributes = function (self)
 
 	return attributes
 end
-CoreCutscenePlayer.depth_of_field_attributes = function (self)
+function CoreCutscenePlayer:depth_of_field_attributes()
 	return self._dof_attributes
 end
-CoreCutscenePlayer.prime = function (self)
+function CoreCutscenePlayer:prime()
 	if not self._primed then
 		slot4 = self._cutscene
 
@@ -283,10 +283,10 @@ CoreCutscenePlayer.prime = function (self)
 
 	return 
 end
-CoreCutscenePlayer.is_primed = function (self)
+function CoreCutscenePlayer:is_primed()
 	return self._primed == true
 end
-CoreCutscenePlayer._driving_sound_offset = function (self)
+function CoreCutscenePlayer:_driving_sound_offset()
 	slot3 = self._driving_sound_instance
 
 	if alive(slot2) then
@@ -316,7 +316,7 @@ CoreCutscenePlayer._driving_sound_offset = function (self)
 
 	return nil
 end
-CoreCutscenePlayer._master_driving_sound_instance = function (self, sound_instance)
+function CoreCutscenePlayer:_master_driving_sound_instance(sound_instance)
 	self._driving_sound_instance_map = self._driving_sound_instance_map or {}
 	local master_instance = self._driving_sound_instance_map[sound_instance]
 
@@ -333,12 +333,12 @@ CoreCutscenePlayer._master_driving_sound_instance = function (self, sound_instan
 
 	return master_instance
 end
-CoreCutscenePlayer.is_presentable = function (self)
+function CoreCutscenePlayer:is_presentable()
 	slot4 = self._cutscene
 
 	return self._cast.is_ready(slot2, self._cast) and 0 < slot1
 end
-CoreCutscenePlayer.is_viewport_enabled = function (self)
+function CoreCutscenePlayer:is_viewport_enabled()
 	if managers.viewport and self._viewport then
 		slot3 = self._viewport
 		slot1 = self._viewport.active(slot2)
@@ -346,7 +346,7 @@ CoreCutscenePlayer.is_viewport_enabled = function (self)
 
 	return slot1
 end
-CoreCutscenePlayer.unload = function (self)
+function CoreCutscenePlayer:unload()
 	slot3 = self
 
 	self.stop(slot2)
@@ -367,7 +367,7 @@ CoreCutscenePlayer.unload = function (self)
 
 	return 
 end
-CoreCutscenePlayer.destroy = function (self)
+function CoreCutscenePlayer:destroy()
 	slot3 = "cutscene"
 	slot6 = "[CoreCutscenePlayer] Destroying CutscenePlayer for \"%s\"."
 	slot9 = self
@@ -473,7 +473,7 @@ CoreCutscenePlayer.destroy = function (self)
 
 	return 
 end
-CoreCutscenePlayer.update = function (self, time, delta_time)
+function CoreCutscenePlayer:update(time, delta_time)
 	local done = false
 	slot6 = self
 
@@ -523,7 +523,7 @@ CoreCutscenePlayer.update = function (self, time, delta_time)
 
 	return not done
 end
-CoreCutscenePlayer.refresh = function (self)
+function CoreCutscenePlayer:refresh()
 	slot3 = self
 
 	if self._camera_has_cut(slot2) and managers.environment then
@@ -538,7 +538,7 @@ CoreCutscenePlayer.refresh = function (self)
 
 	return 
 end
-CoreCutscenePlayer.evaluate_current_frame = function (self)
+function CoreCutscenePlayer:evaluate_current_frame()
 	self._last_evaluated_time = self._last_evaluated_time or -1
 	slot4 = true
 
@@ -572,7 +572,7 @@ CoreCutscenePlayer.evaluate_current_frame = function (self)
 
 	return 
 end
-CoreCutscenePlayer.preroll_cutscene_keys = function (self)
+function CoreCutscenePlayer:preroll_cutscene_keys()
 	if 0 < self._time then
 		return 
 	end
@@ -595,10 +595,10 @@ CoreCutscenePlayer.preroll_cutscene_keys = function (self)
 
 	return 
 end
-CoreCutscenePlayer.is_playing = function (self)
+function CoreCutscenePlayer:is_playing()
 	return self._playing or false
 end
-CoreCutscenePlayer.play = function (self)
+function CoreCutscenePlayer:play()
 	self._playing = true
 	slot5 = self
 
@@ -612,7 +612,7 @@ CoreCutscenePlayer.play = function (self)
 
 	return 
 end
-CoreCutscenePlayer.pause = function (self)
+function CoreCutscenePlayer:pause()
 	self._playing = nil
 	slot5 = self
 
@@ -626,7 +626,7 @@ CoreCutscenePlayer.pause = function (self)
 
 	return 
 end
-CoreCutscenePlayer.stop = function (self)
+function CoreCutscenePlayer:stop()
 	self._playing = nil
 	self._driving_sound_instance = nil
 	slot4 = false
@@ -635,7 +635,7 @@ CoreCutscenePlayer.stop = function (self)
 
 	return 
 end
-CoreCutscenePlayer.skip_to_end = function (self)
+function CoreCutscenePlayer:skip_to_end()
 	slot5 = math.huge
 
 	for key in self.keys_between(slot2, self, self._time) do
@@ -660,7 +660,7 @@ CoreCutscenePlayer.skip_to_end = function (self)
 
 	return 
 end
-CoreCutscenePlayer.seek = function (self, time, skip_evaluation)
+function CoreCutscenePlayer:seek(time, skip_evaluation)
 	slot8 = time
 	slot5 = math.max(slot6, 0)
 	slot8 = self
@@ -674,7 +674,7 @@ CoreCutscenePlayer.seek = function (self, time, skip_evaluation)
 
 	return self._time == time
 end
-CoreCutscenePlayer.distance_from_camera = function (self, unit_name, object_name)
+function CoreCutscenePlayer:distance_from_camera(unit_name, object_name)
 	slot7 = object_name
 	local object = self._actor_object(slot4, self, unit_name)
 
@@ -687,7 +687,7 @@ CoreCutscenePlayer.distance_from_camera = function (self, unit_name, object_name
 
 	return distance
 end
-CoreCutscenePlayer.set_camera = function (self, camera)
+function CoreCutscenePlayer:set_camera(camera)
 	slot2 = assert
 
 	if camera ~= nil then
@@ -707,7 +707,7 @@ CoreCutscenePlayer.set_camera = function (self, camera)
 
 	return 
 end
-CoreCutscenePlayer.set_camera_attribute = function (self, attribute_name, value)
+function CoreCutscenePlayer:set_camera_attribute(attribute_name, value)
 	local camera = self._camera(slot4)
 	slot7 = "Invalid camera attribute."
 	local func = assert(self, camera["set_" .. attribute_name])
@@ -721,7 +721,7 @@ CoreCutscenePlayer.set_camera_attribute = function (self, attribute_name, value)
 
 	return 
 end
-CoreCutscenePlayer.set_camera_depth_of_field = function (self, near, far)
+function CoreCutscenePlayer:set_camera_depth_of_field(near, far)
 	local range = far - near
 	self._dof_attributes = self._dof_attributes or {}
 	slot8 = near - range * 0.33
@@ -733,7 +733,7 @@ CoreCutscenePlayer.set_camera_depth_of_field = function (self, near, far)
 
 	return 
 end
-CoreCutscenePlayer.play_camera_shake = function (self, shake_name, amplitude, frequency, offset)
+function CoreCutscenePlayer:play_camera_shake(shake_name, amplitude, frequency, offset)
 	slot7 = self._viewport
 	slot7 = self._viewport.director(slot6)
 	slot11 = offset
@@ -749,10 +749,10 @@ CoreCutscenePlayer.play_camera_shake = function (self, shake_name, amplitude, fr
 		return 
 	end
 end
-CoreCutscenePlayer.has_gui = function (self, gui_name)
+function CoreCutscenePlayer:has_gui(gui_name)
 	return self._owned_gui_objects ~= nil and self._owned_gui_objects[gui_name] ~= nil
 end
-CoreCutscenePlayer.load_gui = function (self, gui_name)
+function CoreCutscenePlayer:load_gui(gui_name)
 	local preload = true
 	slot5 = Overlay
 	slot6 = gui_name
@@ -769,7 +769,7 @@ CoreCutscenePlayer.load_gui = function (self, gui_name)
 
 	return 
 end
-CoreCutscenePlayer.set_gui_visible = function (self, gui_name, visible)
+function CoreCutscenePlayer:set_gui_visible(gui_name, visible)
 	local panel = self._gui_panel(slot4, self)
 	slot7 = panel
 
@@ -785,7 +785,7 @@ CoreCutscenePlayer.set_gui_visible = function (self, gui_name, visible)
 
 	return 
 end
-CoreCutscenePlayer.invoke_callback_in_gui = function (self, gui_name, function_name, ...)
+function CoreCutscenePlayer:invoke_callback_in_gui(gui_name, function_name, ...)
 	local gui_object = self._owned_gui_objects and self._owned_gui_objects[gui_name]
 	slot6 = gui_object
 
@@ -806,7 +806,7 @@ CoreCutscenePlayer.invoke_callback_in_gui = function (self, gui_name, function_n
 
 	return 
 end
-CoreCutscenePlayer._gui_panel = function (self, gui_name, preloading)
+function CoreCutscenePlayer:_gui_panel(gui_name, preloading)
 	slot5 = self._workspace
 	slot6 = gui_name
 	local panel = self._workspace.panel(slot4).child(slot4, self._workspace.panel(slot4))
@@ -839,7 +839,7 @@ CoreCutscenePlayer._gui_panel = function (self, gui_name, preloading)
 
 	return panel
 end
-CoreCutscenePlayer.set_viewport_enabled = function (self, enabled)
+function CoreCutscenePlayer:set_viewport_enabled(enabled)
 	slot4 = self._viewport
 	local is_enabled = self._viewport.active(slot3)
 
@@ -882,7 +882,7 @@ CoreCutscenePlayer.set_viewport_enabled = function (self, enabled)
 
 	return 
 end
-CoreCutscenePlayer.set_widescreen = function (self, enabled)
+function CoreCutscenePlayer:set_widescreen(enabled)
 	self._widescreen = enabled or nil
 	slot4 = self
 
@@ -890,12 +890,12 @@ CoreCutscenePlayer.set_widescreen = function (self, enabled)
 
 	return 
 end
-CoreCutscenePlayer.set_key_handler = function (self, delegate)
+function CoreCutscenePlayer:set_key_handler(delegate)
 	self._key_handler = delegate
 
 	return 
 end
-CoreCutscenePlayer.prime_cutscene_key = function (self, key, cast)
+function CoreCutscenePlayer:prime_cutscene_key(key, cast)
 	local delegate = self._key_handler
 
 	if delegate and delegate.prime_cutscene_key then
@@ -910,7 +910,7 @@ CoreCutscenePlayer.prime_cutscene_key = function (self, key, cast)
 
 	return 
 end
-CoreCutscenePlayer.evaluate_cutscene_key = function (self, key, time, last_evaluated_time)
+function CoreCutscenePlayer:evaluate_cutscene_key(key, time, last_evaluated_time)
 	local delegate = self._key_handler
 
 	if delegate and delegate.evaluate_cutscene_key then
@@ -925,7 +925,7 @@ CoreCutscenePlayer.evaluate_cutscene_key = function (self, key, time, last_evalu
 
 	return 
 end
-CoreCutscenePlayer.revert_cutscene_key = function (self, key, time, last_evaluated_time)
+function CoreCutscenePlayer:revert_cutscene_key(key, time, last_evaluated_time)
 	local delegate = self._key_handler
 
 	if delegate and delegate.revert_cutscene_key then
@@ -940,7 +940,7 @@ CoreCutscenePlayer.revert_cutscene_key = function (self, key, time, last_evaluat
 
 	return 
 end
-CoreCutscenePlayer.update_cutscene_key = function (self, key, time, last_evaluated_time)
+function CoreCutscenePlayer:update_cutscene_key(key, time, last_evaluated_time)
 	local delegate = self._key_handler
 
 	if delegate and delegate.update_cutscene_key then
@@ -955,7 +955,7 @@ CoreCutscenePlayer.update_cutscene_key = function (self, key, time, last_evaluat
 
 	return 
 end
-CoreCutscenePlayer.skip_cutscene_key = function (self, key)
+function CoreCutscenePlayer:skip_cutscene_key(key)
 	local delegate = self._key_handler
 
 	if delegate and delegate.skip_cutscene_key then
@@ -970,7 +970,7 @@ CoreCutscenePlayer.skip_cutscene_key = function (self, key)
 
 	return 
 end
-CoreCutscenePlayer.time_in_relation_to_cutscene_key = function (self, key)
+function CoreCutscenePlayer:time_in_relation_to_cutscene_key(key)
 	local delegate = self._key_handler
 
 	if delegate and delegate.time_in_relation_to_cutscene_key then
@@ -985,14 +985,14 @@ CoreCutscenePlayer.time_in_relation_to_cutscene_key = function (self, key)
 
 	return 
 end
-CoreCutscenePlayer._set_visible = function (self, visible)
+function CoreCutscenePlayer:_set_visible(visible)
 	slot6 = visible
 
 	self._cast.set_cutscene_visible(slot3, self._cast, self._cutscene)
 
 	return 
 end
-CoreCutscenePlayer._set_listener_enabled = function (self, enabled)
+function CoreCutscenePlayer:_set_listener_enabled(enabled)
 	if enabled then
 		if not self._listener_activation_id then
 			slot6 = "cutscene"
@@ -1010,7 +1010,7 @@ CoreCutscenePlayer._set_listener_enabled = function (self, enabled)
 
 	return 
 end
-CoreCutscenePlayer._set_depth_of_field_enabled = function (self, enabled)
+function CoreCutscenePlayer:_set_depth_of_field_enabled(enabled)
 	if enabled then
 		slot4 = managers.environment
 
@@ -1027,10 +1027,10 @@ CoreCutscenePlayer._set_depth_of_field_enabled = function (self, enabled)
 
 	return 
 end
-CoreCutscenePlayer._viewport_rect = function (self)
+function CoreCutscenePlayer:_viewport_rect()
 	return slot1
 end
-CoreCutscenePlayer._full_viewport_rect = function (self)
+function CoreCutscenePlayer:_full_viewport_rect()
 	local resolution = RenderSettings.resolution
 
 	return {
@@ -1044,7 +1044,7 @@ CoreCutscenePlayer._full_viewport_rect = function (self)
 		ph = resolution.y
 	}
 end
-CoreCutscenePlayer._wide_viewport_rect = function (self)
+function CoreCutscenePlayer:_wide_viewport_rect()
 	local resolution = RenderSettings.resolution
 	slot4 = managers.viewport
 	local resolution_aspect = 1 / managers.viewport.aspect_ratio(slot3)
@@ -1067,7 +1067,7 @@ CoreCutscenePlayer._wide_viewport_rect = function (self)
 
 	return rect
 end
-CoreCutscenePlayer._camera = function (self)
+function CoreCutscenePlayer:_camera()
 
 	-- Decompilation error in this vicinity:
 	slot3 = self._viewport
@@ -1079,7 +1079,7 @@ CoreCutscenePlayer._camera = function (self)
 
 	return slot1
 end
-CoreCutscenePlayer._camera_controller = function (self)
+function CoreCutscenePlayer:_camera_controller()
 	slot3 = self._viewport
 	slot3 = self._viewport.director(slot2)
 	local controller = self._viewport.director(slot2).camera(slot2)
@@ -1091,7 +1091,7 @@ CoreCutscenePlayer._camera_controller = function (self)
 
 	return slot2
 end
-CoreCutscenePlayer._camera_object = function (self)
+function CoreCutscenePlayer:_camera_object()
 	if self._camera_name then
 		slot5 = "locator"
 		slot1 = self._actor_object(slot2, self, self._camera_name)
@@ -1099,7 +1099,7 @@ CoreCutscenePlayer._camera_object = function (self)
 
 	return slot1
 end
-CoreCutscenePlayer._actor_object = function (self, unit_name, object_name)
+function CoreCutscenePlayer:_actor_object(unit_name, object_name)
 	slot7 = self._cutscene
 	local unit = self._cast.actor_unit(slot4, self._cast, unit_name)
 
@@ -1115,7 +1115,7 @@ CoreCutscenePlayer._actor_object = function (self, unit_name, object_name)
 
 	return slot4
 end
-CoreCutscenePlayer._clear_workspace = function (self)
+function CoreCutscenePlayer:_clear_workspace()
 	slot3 = self._workspace
 
 	if alive(slot2) then
@@ -1164,7 +1164,7 @@ CoreCutscenePlayer._clear_workspace = function (self)
 
 	return 
 end
-CoreCutscenePlayer._create_viewport = function (self)
+function CoreCutscenePlayer:_create_viewport()
 	slot3 = self._owned_viewport == nil
 
 	assert(slot2)
@@ -1174,7 +1174,7 @@ CoreCutscenePlayer._create_viewport = function (self)
 
 	return self._owned_viewport
 end
-CoreCutscenePlayer._configure_viewport = function (self)
+function CoreCutscenePlayer:_configure_viewport()
 	slot4 = "aspect_ratio"
 	slot7 = managers.viewport
 
@@ -1256,7 +1256,7 @@ CoreCutscenePlayer._configure_viewport = function (self)
 
 	return 
 end
-CoreCutscenePlayer._create_camera = function (self)
+function CoreCutscenePlayer:_create_camera()
 	slot3 = self._owned_camera == nil
 
 	assert(slot2)
@@ -1273,7 +1273,7 @@ CoreCutscenePlayer._create_camera = function (self)
 
 	return self._owned_camera
 end
-CoreCutscenePlayer._initialize_camera = function (self, camera)
+function CoreCutscenePlayer:_initialize_camera(camera)
 	slot5 = CoreZoomCameraCutsceneKey.DEFAULT_CAMERA_FOV
 
 	camera.set_fov(slot3, camera)
@@ -1292,7 +1292,7 @@ CoreCutscenePlayer._initialize_camera = function (self, camera)
 
 	return 
 end
-CoreCutscenePlayer._create_camera_controller = function (self)
+function CoreCutscenePlayer:_create_camera_controller()
 	slot3 = self._owned_camera_controller == nil
 
 	assert(slot2)
@@ -1312,7 +1312,7 @@ CoreCutscenePlayer._create_camera_controller = function (self)
 
 	return self._owned_camera_controller
 end
-CoreCutscenePlayer._create_cast = function (self)
+function CoreCutscenePlayer:_create_cast()
 	slot3 = self._owned_cast == nil
 
 	assert(slot2)
@@ -1322,14 +1322,14 @@ CoreCutscenePlayer._create_cast = function (self)
 
 	return self._owned_cast
 end
-CoreCutscenePlayer._evaluate_animations = function (self)
+function CoreCutscenePlayer:_evaluate_animations()
 	slot5 = self._time
 
 	self._cast.evaluate_cutscene_at_time(slot2, self._cast, self._cutscene)
 
 	return 
 end
-CoreCutscenePlayer._notify_discontinuity = function (self)
+function CoreCutscenePlayer:_notify_discontinuity()
 	slot5 = self._cutscene
 
 	for unit_name, _ in pairs(self._cutscene.controlled_unit_types(slot4)) do
@@ -1361,7 +1361,7 @@ CoreCutscenePlayer._notify_discontinuity = function (self)
 
 	return 
 end
-CoreCutscenePlayer._resume_discontinuity = function (self)
+function CoreCutscenePlayer:_resume_discontinuity()
 	if self._disabled_bodies then
 		slot3 = self._disabled_bodies
 
@@ -1376,7 +1376,7 @@ CoreCutscenePlayer._resume_discontinuity = function (self)
 
 	return 
 end
-CoreCutscenePlayer._process_discontinuity_cutscene_keys_between = function (self, start_time, end_time)
+function CoreCutscenePlayer:_process_discontinuity_cutscene_keys_between(start_time, end_time)
 	slot8 = CoreDiscontinuityCutsceneKey.ELEMENT_NAME
 
 	for key in self.keys_between(slot4, self, start_time, end_time) do
@@ -1387,7 +1387,7 @@ CoreCutscenePlayer._process_discontinuity_cutscene_keys_between = function (self
 
 	return 
 end
-CoreCutscenePlayer._process_camera_cutscene_keys_between = function (self, start_time, end_time)
+function CoreCutscenePlayer:_process_camera_cutscene_keys_between(start_time, end_time)
 	slot8 = CoreChangeCameraCutsceneKey.ELEMENT_NAME
 
 	for key in self.keys_between(slot4, self, start_time, end_time) do
@@ -1414,7 +1414,7 @@ CoreCutscenePlayer._process_camera_cutscene_keys_between = function (self, start
 
 	return 
 end
-CoreCutscenePlayer._process_non_camera_cutscene_keys_between = function (self, start_time, end_time)
+function CoreCutscenePlayer:_process_non_camera_cutscene_keys_between(start_time, end_time)
 	slot7 = end_time
 
 	for key in self.keys_between(slot4, self, start_time) do
@@ -1445,7 +1445,7 @@ CoreCutscenePlayer._process_non_camera_cutscene_keys_between = function (self, s
 
 	return 
 end
-CoreCutscenePlayer._reparent_camera = function (self)
+function CoreCutscenePlayer:_reparent_camera()
 	if self._camera_name then
 		slot3 = self._camera_object(slot4)
 		slot7 = self._camera_name
@@ -1476,7 +1476,7 @@ CoreCutscenePlayer._reparent_camera = function (self)
 
 	return 
 end
-CoreCutscenePlayer._update_future_camera = function (self)
+function CoreCutscenePlayer:_update_future_camera()
 	slot3 = self._cutscene
 
 	if self._cutscene.is_optimized(slot2) then
@@ -1499,7 +1499,7 @@ CoreCutscenePlayer._update_future_camera = function (self)
 
 	return 
 end
-CoreCutscenePlayer._camera_has_cut = function (self)
+function CoreCutscenePlayer:_camera_has_cut()
 
 	-- Decompilation error in this vicinity:
 	if not self._last_frame_camera_position then

@@ -4,7 +4,7 @@ if not CoreEffectStackMember then
 end
 
 CoreEffectStackMember = slot0
-CoreEffectStackMember.init = function (self, name, stacktype, ui_name)
+function CoreEffectStackMember:init(name, stacktype, ui_name)
 	slot7 = name
 
 	self.super.init(slot5, self)
@@ -14,7 +14,7 @@ CoreEffectStackMember.init = function (self, name, stacktype, ui_name)
 
 	return 
 end
-CoreEffectStackMember.save = function (self, node)
+function CoreEffectStackMember:save(node)
 	slot7 = self
 	local n = node.make_child(slot3, self.name(slot6))
 	slot6 = n
@@ -23,7 +23,7 @@ CoreEffectStackMember.save = function (self, node)
 
 	return 
 end
-CoreEffectStackMember.access = function (self)
+function CoreEffectStackMember:access()
 	local ret = {}
 
 	if self._stacktype == "initializer" then
@@ -61,7 +61,7 @@ CoreEffectStackMember.access = function (self)
 
 	return ret
 end
-CoreEffectStackMember.reads_writes = function (self)
+function CoreEffectStackMember:reads_writes()
 	local reads = {}
 	local writes = {}
 	local access = self.access(slot4)
@@ -90,33 +90,33 @@ CoreEffectStackMember.reads_writes = function (self)
 	return reads, writes
 end
 CoreEffectStack = CoreEffectStack or class()
-CoreEffectStack.init = function (self, stacktype)
+function CoreEffectStack:init(stacktype)
 	self._type = stacktype
 	self._stack = {}
 
 	return 
 end
-CoreEffectStack.stack = function (self)
+function CoreEffectStack:stack()
 	return self._stack
 end
-CoreEffectStack.member = function (self, i)
+function CoreEffectStack:member(i)
 	return self._stack[i]
 end
-CoreEffectStack.add_member = function (self, member)
+function CoreEffectStack:add_member(member)
 	slot5 = member
 
 	table.insert(slot3, self._stack)
 
 	return 
 end
-CoreEffectStack.insert_member = function (self, member, i)
+function CoreEffectStack:insert_member(member, i)
 	slot7 = member
 
 	table.insert(slot4, self._stack, i)
 
 	return 
 end
-CoreEffectStack.move_down = function (self, idx)
+function CoreEffectStack:move_down(idx)
 	if idx == #self._stack then
 		return 
 	end
@@ -132,7 +132,7 @@ CoreEffectStack.move_down = function (self, idx)
 
 	return 
 end
-CoreEffectStack.move_up = function (self, idx)
+function CoreEffectStack:move_up(idx)
 	if idx == 1 then
 		return 
 	end
@@ -148,14 +148,14 @@ CoreEffectStack.move_up = function (self, idx)
 
 	return 
 end
-CoreEffectStack.remove = function (self, idx)
+function CoreEffectStack:remove(idx)
 	slot5 = idx
 
 	table.remove(slot3, self._stack)
 
 	return 
 end
-CoreEffectStack.validate = function (self, channels)
+function CoreEffectStack:validate(channels)
 	local ret = {
 		valid = true,
 		message = "",
@@ -248,7 +248,7 @@ CoreEffectStack.validate = function (self, channels)
 
 	return ret
 end
-CoreEffectStack.save = function (self, node)
+function CoreEffectStack:save(node)
 	slot5 = self._type .. "stack"
 	local stack = node.make_child(slot3, node)
 	slot5 = self._stack
@@ -261,7 +261,7 @@ CoreEffectStack.save = function (self, node)
 
 	return 
 end
-CoreEffectStack.load = function (self, node)
+function CoreEffectStack:load(node)
 	slot4 = node
 
 	for child1 in node.children(slot3) do
@@ -300,7 +300,7 @@ if not CoreEffectAtom then
 end
 
 CoreEffectAtom = slot0
-CoreEffectAtom.init = function (self, name)
+function CoreEffectAtom:init(name)
 	slot5 = name
 
 	self.super.init(slot3, self)
@@ -878,7 +878,7 @@ the effect will be culled while still visible]]
 
 	return 
 end
-CoreEffectAtom.collect_stack_time_events = function (self)
+function CoreEffectAtom:collect_stack_time_events()
 	local ret = {}
 
 	local function traverse_property(pref, ret, p)
@@ -941,7 +941,7 @@ CoreEffectAtom.collect_stack_time_events = function (self)
 
 	return ret
 end
-CoreEffectAtom.collect_time_events = function (self)
+function CoreEffectAtom:collect_time_events()
 	slot4 = "random_start_time"
 	local start_time = self.get_property(slot2, self)._variants.false
 	slot5 = "lifetime"
@@ -984,7 +984,7 @@ CoreEffectAtom.collect_time_events = function (self)
 
 	return ret
 end
-CoreEffectAtom.scale_timeline = function (self, istart, iend, tstart, tend)
+function CoreEffectAtom:scale_timeline(istart, iend, tstart, tend)
 	local events = self.collect_stack_time_events(slot6)
 	slot9 = "random_start_time"
 	local start_time = self.get_property(self, self)._variants.false
@@ -1052,7 +1052,7 @@ CoreEffectAtom.scale_timeline = function (self, istart, iend, tstart, tend)
 
 	return 
 end
-CoreEffectAtom.extend_timeline = function (self, istart, iend, tstart, tend)
+function CoreEffectAtom:extend_timeline(istart, iend, tstart, tend)
 	local events = self.collect_stack_time_events(slot6)
 	slot9 = "random_start_time"
 	local start_time = self.get_property(self, self)._variants.false
@@ -1112,7 +1112,7 @@ CoreEffectAtom.extend_timeline = function (self, istart, iend, tstart, tend)
 
 	return 
 end
-CoreEffectAtom.validate = function (self)
+function CoreEffectAtom:validate()
 	local ret = {
 		valid = true,
 		message = "",
@@ -1181,10 +1181,10 @@ CoreEffectAtom.validate = function (self)
 
 	return ret
 end
-CoreEffectAtom.stack = function (self, stacktype)
+function CoreEffectAtom:stack(stacktype)
 	return self._stacks[stacktype]
 end
-CoreEffectAtom.save = function (self, node)
+function CoreEffectAtom:save(node)
 	slot5 = "atom"
 	local a = node.make_child(slot3, node)
 	slot6 = "name"
@@ -1210,7 +1210,7 @@ CoreEffectAtom.save = function (self, node)
 
 	return 
 end
-CoreEffectAtom.load = function (self, node)
+function CoreEffectAtom:load(node)
 	slot5 = "name"
 	self._name = node.parameter(slot3, node)
 	slot5 = node
@@ -1238,7 +1238,7 @@ if not CoreEffectDefinition then
 end
 
 CoreEffectDefinition = slot0
-CoreEffectDefinition.init = function (self)
+function CoreEffectDefinition:init()
 	slot4 = ""
 
 	self.super.init(slot2, self)
@@ -1311,7 +1311,7 @@ CoreEffectDefinition.init = function (self)
 
 	return 
 end
-CoreEffectDefinition.find_atom = function (self, name)
+function CoreEffectDefinition:find_atom(name)
 	slot4 = self._atoms
 
 	for _, atom in ipairs(slot3) do
@@ -1324,21 +1324,21 @@ CoreEffectDefinition.find_atom = function (self, name)
 
 	return nil
 end
-CoreEffectDefinition.add_atom = function (self, atom)
+function CoreEffectDefinition:add_atom(atom)
 	slot5 = atom
 
 	table.insert(slot3, self._atoms)
 
 	return 
 end
-CoreEffectDefinition.remove_atom = function (self, atom)
+function CoreEffectDefinition:remove_atom(atom)
 	slot5 = atom
 
 	table.delete(slot3, self._atoms)
 
 	return 
 end
-CoreEffectDefinition.validate = function (self)
+function CoreEffectDefinition:validate()
 	local ret = {
 		valid = true,
 		message = "",
@@ -1371,7 +1371,7 @@ CoreEffectDefinition.validate = function (self)
 
 	return ret
 end
-CoreEffectDefinition.save = function (self, n)
+function CoreEffectDefinition:save(n)
 	slot5 = n
 
 	self.save_properties(slot3, self)
@@ -1386,7 +1386,7 @@ CoreEffectDefinition.save = function (self, n)
 
 	return 
 end
-CoreEffectDefinition.load = function (self, n)
+function CoreEffectDefinition:load(n)
 	slot5 = n
 
 	self.load_properties(slot3, self)

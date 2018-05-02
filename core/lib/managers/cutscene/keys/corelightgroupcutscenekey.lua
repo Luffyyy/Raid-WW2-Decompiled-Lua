@@ -22,21 +22,21 @@ slot4 = "enable"
 
 CoreLightGroupCutsceneKey.attribute_affects("Light Group", CoreLightGroupCutsceneKey, "group")
 
-CoreLightGroupCutsceneKey.__tostring = function (self)
+function CoreLightGroupCutsceneKey:__tostring()
 	slot6 = self
 	slot4 = self.group(slot5)
 	slot9 = self
 
 	return string.format(slot2, "Change light group, %s stateto %s.", tostring(self.enable(slot8)))
 end
-CoreLightGroupCutsceneKey.prime = function (self)
+function CoreLightGroupCutsceneKey:prime()
 	slot3 = self
 
 	self._build_group_cache(slot2)
 
 	return 
 end
-CoreLightGroupCutsceneKey.evaluate = function (self)
+function CoreLightGroupCutsceneKey:evaluate()
 	slot6 = self
 	slot4 = "Could not find group!"
 	local group = assert(slot2, self._light_groups(slot4)[self.group(self)])
@@ -51,7 +51,7 @@ CoreLightGroupCutsceneKey.evaluate = function (self)
 
 	return 
 end
-CoreLightGroupCutsceneKey.revert = function (self)
+function CoreLightGroupCutsceneKey:revert()
 	slot4 = {
 		group = self.group(slot6)
 	}
@@ -77,7 +77,7 @@ CoreLightGroupCutsceneKey.revert = function (self)
 
 	return 
 end
-CoreLightGroupCutsceneKey.unload = function (self)
+function CoreLightGroupCutsceneKey:unload()
 	slot5 = self
 
 	for group_name, group in pairs(self._light_groups(slot4)) do
@@ -92,10 +92,10 @@ CoreLightGroupCutsceneKey.unload = function (self)
 
 	return 
 end
-CoreLightGroupCutsceneKey.can_evaluate_with_player = function (self, player)
+function CoreLightGroupCutsceneKey:can_evaluate_with_player(player)
 	return true
 end
-CoreLightGroupCutsceneKey.is_valid_group = function (self, name)
+function CoreLightGroupCutsceneKey:is_valid_group(name)
 	slot6 = self
 
 	for group_name, _ in pairs(self._light_groups(slot5)) do
@@ -106,10 +106,10 @@ CoreLightGroupCutsceneKey.is_valid_group = function (self, name)
 
 	return 
 end
-CoreLightGroupCutsceneKey.is_valid_enable = function (self)
+function CoreLightGroupCutsceneKey:is_valid_enable()
 	return true
 end
-CoreLightGroupCutsceneKey.on_attribute_changed = function (self, attribute_name, value, previous_value)
+function CoreLightGroupCutsceneKey:on_attribute_changed(attribute_name, value, previous_value)
 	if attribute_name == "group" or (attribute_name == "enable" and not value) then
 		slot6 = self
 
@@ -118,7 +118,7 @@ CoreLightGroupCutsceneKey.on_attribute_changed = function (self, attribute_name,
 
 	return 
 end
-CoreLightGroupCutsceneKey._light_groups = function (self)
+function CoreLightGroupCutsceneKey:_light_groups()
 	if not self._light_groups_cache then
 		slot3 = self
 
@@ -127,7 +127,7 @@ CoreLightGroupCutsceneKey._light_groups = function (self)
 
 	return self._light_groups_cache
 end
-CoreLightGroupCutsceneKey._enable_lights = function (self, unit, enabled)
+function CoreLightGroupCutsceneKey:_enable_lights(unit, enabled)
 	slot6 = "light"
 	local lights = unit.get_objects_by_type(slot4, unit)
 
@@ -148,7 +148,7 @@ CoreLightGroupCutsceneKey._enable_lights = function (self, unit, enabled)
 
 	return 
 end
-CoreLightGroupCutsceneKey._build_group_cache = function (self)
+function CoreLightGroupCutsceneKey:_build_group_cache()
 	self._light_groups_cache = {}
 	slot5 = managers.cutscene
 
@@ -173,7 +173,7 @@ CoreLightGroupCutsceneKey._build_group_cache = function (self)
 
 	return 
 end
-CoreLightGroupCutsceneKey._eval_prev_group = function (self)
+function CoreLightGroupCutsceneKey:_eval_prev_group()
 	slot4 = {
 		group = self.group(slot6)
 	}
@@ -192,7 +192,7 @@ CoreLightGroupCutsceneKey._eval_prev_group = function (self)
 
 	return 
 end
-CoreLightGroupCutsceneKey.refresh_control_for_group = function (self, control)
+function CoreLightGroupCutsceneKey:refresh_control_for_group(control)
 	slot4 = control
 
 	control.freeze(slot3)
@@ -223,7 +223,7 @@ CoreLightGroupCutsceneKey.refresh_control_for_group = function (self, control)
 
 	return 
 end
-CoreLightGroupCutsceneKey.check_box_control = function (self, parent_frame, callback_func)
+function CoreLightGroupCutsceneKey:check_box_control(parent_frame, callback_func)
 	slot9 = ""
 	local control = EWS.CheckBox(slot4, EWS, parent_frame, "Enable", "")
 	slot6 = control
@@ -238,7 +238,7 @@ CoreLightGroupCutsceneKey.check_box_control = function (self, parent_frame, call
 
 	return control
 end
-CoreLightGroupCutsceneKey.refresh_control_for_enable = function (self, control)
+function CoreLightGroupCutsceneKey:refresh_control_for_enable(control)
 	slot4 = control
 	slot7 = self
 

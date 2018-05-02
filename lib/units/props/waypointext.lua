@@ -9,14 +9,14 @@
 -- WARNING: Error occurred during decompilation.
 --   Code may be incomplete or incorrect.
 WaypointExt = WaypointExt or class()
-WaypointExt.init = function (self, unit)
+function WaypointExt:init(unit)
 	self._unit = unit
 	WaypointExt.debug_ext = self
 	self._is_active = false
 
 	return 
 end
-WaypointExt.add_waypoint = function (self, icon_name, pos_z_offset, pos_locator, map_icon, show_on_hud)
+function WaypointExt:add_waypoint(icon_name, pos_z_offset, pos_locator, map_icon, show_on_hud)
 
 	-- Decompilation error in this vicinity:
 	if self._is_active then
@@ -63,7 +63,7 @@ WaypointExt.add_waypoint = function (self, icon_name, pos_z_offset, pos_locator,
 
 	return 
 end
-WaypointExt.remove_waypoint = function (self)
+function WaypointExt:remove_waypoint()
 	if self._icon_id then
 		slot4 = self._icon_id
 
@@ -82,7 +82,7 @@ WaypointExt.remove_waypoint = function (self)
 
 	return 
 end
-WaypointExt.update = function (self, t, dt)
+function WaypointExt:update(t, dt)
 	if self._icon_pos then
 
 		-- Decompilation error in this vicinity:
@@ -98,7 +98,7 @@ WaypointExt.update = function (self, t, dt)
 
 	return 
 end
-WaypointExt.save = function (self, save_data)
+function WaypointExt:save(save_data)
 	save_data.Waypoint = {
 		active = self._is_active,
 		icon_name = self._icon_name,
@@ -110,7 +110,7 @@ WaypointExt.save = function (self, save_data)
 
 	return 
 end
-WaypointExt.load = function (self, save_data)
+function WaypointExt:load(save_data)
 	if save_data.Waypoint then
 		if save_data.Waypoint.active and not self._is_active then
 			local icon_name = save_data.Waypoint.icon_name

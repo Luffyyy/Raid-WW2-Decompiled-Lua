@@ -7,7 +7,7 @@ slot3 = "CoreDebug"
 core.import(slot1, core)
 
 FiniteStateMachine = FiniteStateMachine or class()
-function FiniteStateMachine:init(state_class, object_name, object)
+FiniteStateMachine.init = function (self, state_class, object_name, object)
 	self._object = object
 	self._object_name = object_name
 
@@ -21,7 +21,7 @@ function FiniteStateMachine:init(state_class, object_name, object)
 
 	return 
 end
-function FiniteStateMachine:load(data)
+FiniteStateMachine.load = function (self, data)
 	local class = _G[data.class_name]
 	slot5 = class
 
@@ -29,25 +29,25 @@ function FiniteStateMachine:load(data)
 
 	return 
 end
-function FiniteStateMachine:save(data)
+FiniteStateMachine.save = function (self, data)
 	slot4 = self._state_class
 	data.class_name = class_name(slot3)
 
 	return 
 end
-function FiniteStateMachine:set_debug(debug_enabled)
+FiniteStateMachine.set_debug = function (self, debug_enabled)
 	self._debug = debug_enabled
 
 	return 
 end
-function FiniteStateMachine:destroy()
+FiniteStateMachine.destroy = function (self)
 	slot3 = self
 
 	self._destroy_current_state(slot2)
 
 	return 
 end
-function FiniteStateMachine:transition()
+FiniteStateMachine.transition = function (self)
 	slot3 = self._state
 
 	assert(slot2)
@@ -67,19 +67,19 @@ function FiniteStateMachine:transition()
 
 	return 
 end
-function FiniteStateMachine:state()
+FiniteStateMachine.state = function (self)
 	slot3 = self._state
 
 	assert(slot2)
 
 	return self._state
 end
-function FiniteStateMachine:_class_name(state_class)
+FiniteStateMachine._class_name = function (self, state_class)
 	slot4 = state_class
 
 	return CoreDebug.full_class_name(slot3)
 end
-function FiniteStateMachine:_destroy_current_state()
+FiniteStateMachine._destroy_current_state = function (self)
 	if self._state and self._state.destroy then
 		slot3 = self._state
 
@@ -90,7 +90,7 @@ function FiniteStateMachine:_destroy_current_state()
 
 	return 
 end
-function FiniteStateMachine:_set_state(new_state_class, ...)
+FiniteStateMachine._set_state = function (self, new_state_class, ...)
 	if self._debug then
 		slot11 = new_state_class
 		slot5 = "transitions from '" .. self._class_name(slot7, self) .. "' to '" .. self._class_name(self._state_class, self) .. "'"

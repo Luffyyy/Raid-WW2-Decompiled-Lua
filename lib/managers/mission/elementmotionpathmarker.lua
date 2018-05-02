@@ -24,7 +24,7 @@ if not ElementMotionpathMarker then
 end
 
 ElementMotionpathMarker = slot0
-ElementMotionpathMarker.init = function (self, ...)
+function ElementMotionpathMarker:init(...)
 	slot3 = self
 
 	ElementMotionpathMarker.super.init(slot2, ...)
@@ -37,37 +37,37 @@ ElementMotionpathMarker.init = function (self, ...)
 
 	return 
 end
-ElementMotionpathMarker.on_script_activated = function (self)
+function ElementMotionpathMarker:on_script_activated()
 	slot4 = self._id
 
 	self._mission_script.add_save_state_cb(slot2, self._mission_script)
 
 	return 
 end
-ElementMotionpathMarker.client_on_executed = function (self, ...)
+function ElementMotionpathMarker:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementMotionpathMarker.on_executed = function (self, instigator)
+function ElementMotionpathMarker:on_executed(instigator)
 	slot5 = instigator
 
 	ElementMotionpathMarker.super.on_executed(slot3, self)
 
 	return 
 end
-ElementMotionpathMarker.operation_remove = function (self)
+function ElementMotionpathMarker:operation_remove()
 	return 
 end
-ElementMotionpathMarker.save = function (self, data)
+function ElementMotionpathMarker:save(data)
 	data.enabled = self._values.enabled
 	data.motion_state = self._values.motion_state
 
 	return 
 end
-ElementMotionpathMarker.load = function (self, data)
+function ElementMotionpathMarker:load(data)
 	slot5 = data.enabled
 
 	self.set_enabled(slot3, self)
@@ -76,33 +76,33 @@ ElementMotionpathMarker.load = function (self, data)
 
 	return 
 end
-ElementMotionpathMarker.add_trigger = function (self, trigger_id, outcome, callback)
+function ElementMotionpathMarker:add_trigger(trigger_id, outcome, callback)
 	slot12 = callback
 
 	motion_path.add_trigger(slot6, motion_path, self._id, self._values.path_id, trigger_id, outcome)
 
 	return 
 end
-ElementMotionpathMarker.motion_operation_goto_marker = function (self, checkpoint_marker_id, goto_marker_id)
+function ElementMotionpathMarker:motion_operation_goto_marker(checkpoint_marker_id, goto_marker_id)
 	slot8 = goto_marker_id
 
 	motion_path.operation_goto_marker(slot5, motion_path, checkpoint_marker_id)
 
 	return 
 end
-ElementMotionpathMarker.motion_operation_teleport_to_marker = function (self, checkpoint_marker_id, teleport_to_marker_id)
+function ElementMotionpathMarker:motion_operation_teleport_to_marker(checkpoint_marker_id, teleport_to_marker_id)
 	slot8 = teleport_to_marker_id
 
 	motion_path.operation_teleport_to_marker(slot5, motion_path, checkpoint_marker_id)
 
 	return 
 end
-ElementMotionpathMarker.motion_operation_set_motion_state = function (self, state)
+function ElementMotionpathMarker:motion_operation_set_motion_state(state)
 	self._values.motion_state = state
 
 	return 
 end
-ElementMotionpathMarker.motion_operation_set_rotation = function (self, operator_id)
+function ElementMotionpathMarker:motion_operation_set_rotation(operator_id)
 	slot7 = operator_id
 
 	motion_path.operation_set_unit_target_rotation(slot4, motion_path, self._id)

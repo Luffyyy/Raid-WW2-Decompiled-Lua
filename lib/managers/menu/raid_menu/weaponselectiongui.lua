@@ -49,7 +49,7 @@ local function f2s(value)
 	return 
 end
 
-WeaponSelectionGui.init = function (self, ws, fullscreen_ws, node, component_name)
+function WeaponSelectionGui:init(ws, fullscreen_ws, node, component_name)
 	slot11 = component_name
 
 	WeaponSelectionGui.super.init(slot6, self, ws, fullscreen_ws, node)
@@ -68,7 +68,7 @@ WeaponSelectionGui.init = function (self, ws, fullscreen_ws, node, component_nam
 
 	return 
 end
-WeaponSelectionGui._setup_properties = function (self)
+function WeaponSelectionGui:_setup_properties()
 	slot3 = self
 
 	WeaponSelectionGui.super._setup_properties(slot2)
@@ -78,7 +78,7 @@ WeaponSelectionGui._setup_properties = function (self)
 
 	return 
 end
-WeaponSelectionGui._set_initial_data = function (self)
+function WeaponSelectionGui:_set_initial_data()
 	slot4 = "menu_header_weapons_screen_name"
 
 	self._node.components.raid_menu_header.set_screen_name(slot2, self._node.components.raid_menu_header)
@@ -88,7 +88,7 @@ WeaponSelectionGui._set_initial_data = function (self)
 
 	return 
 end
-WeaponSelectionGui._set_screen_state = function (self, state)
+function WeaponSelectionGui:_set_screen_state(state)
 	self._screen_state = state
 	slot4 = managers.raid_menu
 	slot9 = "back_pressed"
@@ -97,10 +97,10 @@ WeaponSelectionGui._set_screen_state = function (self, state)
 
 	return 
 end
-WeaponSelectionGui.update = function (self, t, dt)
+function WeaponSelectionGui:update(t, dt)
 	return 
 end
-WeaponSelectionGui.close = function (self)
+function WeaponSelectionGui:close()
 	if self._parts_being_loaded then
 		slot4 = self._parts_being_loaded
 
@@ -189,7 +189,7 @@ WeaponSelectionGui.close = function (self)
 
 	return 
 end
-WeaponSelectionGui._layout = function (self)
+function WeaponSelectionGui:_layout()
 	slot3 = self
 
 	WeaponSelectionGui.super._layout(slot2)
@@ -264,7 +264,7 @@ WeaponSelectionGui._layout = function (self)
 
 	return 
 end
-WeaponSelectionGui.set_weapon_select_allowed = function (self, value)
+function WeaponSelectionGui:set_weapon_select_allowed(value)
 	self._weapon_select_allowed = value
 	slot5 = not value
 
@@ -276,7 +276,7 @@ WeaponSelectionGui.set_weapon_select_allowed = function (self, value)
 
 	return 
 end
-WeaponSelectionGui._layout_use_weapon_parts_as_cosmetics = function (self)
+function WeaponSelectionGui:_layout_use_weapon_parts_as_cosmetics()
 	local weapon_parts_toggle_params = {
 		name = "toggle_weapon_parts",
 		h = 66,
@@ -296,7 +296,7 @@ WeaponSelectionGui._layout_use_weapon_parts_as_cosmetics = function (self)
 
 	return 
 end
-WeaponSelectionGui._layout_left_side_panels = function (self)
+function WeaponSelectionGui:_layout_left_side_panels()
 	slot4 = {
 		name = "weapon_selection_panel",
 		h = 924,
@@ -319,7 +319,7 @@ WeaponSelectionGui._layout_left_side_panels = function (self)
 
 	return 
 end
-WeaponSelectionGui._layout_category_tabs = function (self)
+function WeaponSelectionGui:_layout_category_tabs()
 	local category_tabs_params = {
 		tab_align = "center",
 		name = "category_tabs",
@@ -409,7 +409,7 @@ WeaponSelectionGui._layout_category_tabs = function (self)
 
 	return 
 end
-WeaponSelectionGui._layout_lists = function (self)
+function WeaponSelectionGui:_layout_lists()
 	local weapon_list_scrollable_area_params = {
 		name = "weapon_list_scrollable_area",
 		h = 456,
@@ -447,7 +447,7 @@ WeaponSelectionGui._layout_lists = function (self)
 
 	return 
 end
-WeaponSelectionGui._layout_weapon_stats = function (self)
+function WeaponSelectionGui:_layout_weapon_stats()
 	local weapon_stats_params = {
 		selection_enabled = false,
 		name = "weapon_stats",
@@ -484,7 +484,7 @@ WeaponSelectionGui._layout_weapon_stats = function (self)
 
 	return 
 end
-WeaponSelectionGui._layout_equip_button = function (self)
+function WeaponSelectionGui:_layout_equip_button()
 	local equip_button_params = {
 		name = "equip_button",
 		visible = false,
@@ -531,7 +531,7 @@ WeaponSelectionGui._layout_equip_button = function (self)
 
 	return 
 end
-WeaponSelectionGui._layout_skill_panel = function (self)
+function WeaponSelectionGui:_layout_skill_panel()
 	local weapon_skills_params = {
 		name = "weapon_skills",
 		h = 440,
@@ -623,7 +623,7 @@ WeaponSelectionGui._layout_skill_panel = function (self)
 
 	return 
 end
-WeaponSelectionGui._layout_rotate_unit = function (self)
+function WeaponSelectionGui:_layout_rotate_unit()
 	local params_rotate_weapon = {
 		x = 470,
 		name = "rotate_weapon",
@@ -641,7 +641,7 @@ WeaponSelectionGui._layout_rotate_unit = function (self)
 
 	return 
 end
-WeaponSelectionGui._layout_scope_switch = function (self)
+function WeaponSelectionGui:_layout_scope_switch()
 	local scope_switch_params = {
 		name = "scope_switch",
 		h = 66,
@@ -661,21 +661,21 @@ WeaponSelectionGui._layout_scope_switch = function (self)
 
 	return 
 end
-WeaponSelectionGui.toggle_scope_switch = function (self)
+function WeaponSelectionGui:toggle_scope_switch()
 	slot3 = self._scope_switch
 
 	self._scope_switch.confirm_pressed(slot2)
 
 	return 
 end
-WeaponSelectionGui.toggle_weapon_parts = function (self)
+function WeaponSelectionGui:toggle_weapon_parts()
 	slot3 = self._weapon_parts_toggle
 
 	self._weapon_parts_toggle.confirm_pressed(slot2)
 
 	return 
 end
-WeaponSelectionGui._layout_available_points = function (self)
+function WeaponSelectionGui:_layout_available_points()
 	local available_points_params = {
 		w = 192,
 		name = "available_points_label",
@@ -699,7 +699,7 @@ WeaponSelectionGui._layout_available_points = function (self)
 
 	return 
 end
-WeaponSelectionGui._layout_upgrade_button = function (self)
+function WeaponSelectionGui:_layout_upgrade_button()
 	local upgrade_button_params = {
 		name = "upgrade_button",
 		y = 806,
@@ -718,7 +718,7 @@ WeaponSelectionGui._layout_upgrade_button = function (self)
 
 	return 
 end
-WeaponSelectionGui._show_weapon_list_panel = function (self)
+function WeaponSelectionGui:_show_weapon_list_panel()
 	slot3 = self._weapon_selection_panel
 
 	self._weapon_selection_panel.show(slot2)
@@ -759,7 +759,7 @@ WeaponSelectionGui._show_weapon_list_panel = function (self)
 
 	return 
 end
-WeaponSelectionGui._layout_weapon_name = function (self)
+function WeaponSelectionGui:_layout_weapon_name()
 	local weapon_name_params = {
 		name = "weapon_name",
 		vertical = "bottom",
@@ -786,7 +786,7 @@ WeaponSelectionGui._layout_weapon_name = function (self)
 
 	return 
 end
-WeaponSelectionGui._update_scope_switch = function (self)
+function WeaponSelectionGui:_update_scope_switch()
 	slot5 = "can_use_scope"
 
 	if managers.player.upgrade_value(slot2, managers.player, "player") == true then
@@ -799,7 +799,7 @@ WeaponSelectionGui._update_scope_switch = function (self)
 
 	return 
 end
-WeaponSelectionGui.on_toggle_weapon_parts_click = function (self)
+function WeaponSelectionGui:on_toggle_weapon_parts_click()
 	slot4 = "[WeaponSelectionGui:on_toggle_weapon_parts_click] "
 	slot7 = self._weapon_parts_toggle
 
@@ -820,7 +820,7 @@ WeaponSelectionGui.on_toggle_weapon_parts_click = function (self)
 
 	return 
 end
-WeaponSelectionGui.on_weapon_category_selected = function (self, selected_category)
+function WeaponSelectionGui:on_weapon_category_selected(selected_category)
 	if selected_category == WeaponInventoryManager.BM_CATEGORY_PRIMARY_ID or selected_category == WeaponInventoryManager.BM_CATEGORY_SECONDARY_ID then
 		slot4 = self._upgrade_button
 
@@ -868,7 +868,7 @@ WeaponSelectionGui.on_weapon_category_selected = function (self, selected_catego
 
 	return 
 end
-WeaponSelectionGui._get_weapon_id_from_selected_category = function (self)
+function WeaponSelectionGui:_get_weapon_id_from_selected_category()
 	slot3 = self._weapon_list
 	local data = self._weapon_list.get_data(slot2)
 	local result = nil
@@ -887,7 +887,7 @@ WeaponSelectionGui._get_weapon_id_from_selected_category = function (self)
 
 	return result
 end
-WeaponSelectionGui.on_click_filter_equippable = function (self, selected_filter)
+function WeaponSelectionGui:on_click_filter_equippable(selected_filter)
 	self._selected_filter = selected_filter
 	slot4 = self._equip_button
 
@@ -911,7 +911,7 @@ WeaponSelectionGui.on_click_filter_equippable = function (self, selected_filter)
 
 	return 
 end
-WeaponSelectionGui.on_item_clicked_weapon_list = function (self, weapon_data)
+function WeaponSelectionGui:on_item_clicked_weapon_list(weapon_data)
 	if not self._weapon_select_allowed then
 		return 
 	end
@@ -922,7 +922,7 @@ WeaponSelectionGui.on_item_clicked_weapon_list = function (self, weapon_data)
 
 	return 
 end
-WeaponSelectionGui.on_item_selected_weapon_list = function (self, weapon_data)
+function WeaponSelectionGui:on_item_selected_weapon_list(weapon_data)
 	if not self._weapon_select_allowed then
 		return 
 	end
@@ -933,14 +933,14 @@ WeaponSelectionGui.on_item_selected_weapon_list = function (self, weapon_data)
 
 	return 
 end
-WeaponSelectionGui.on_item_double_click = function (self)
+function WeaponSelectionGui:on_item_double_click()
 	slot3 = self
 
 	self.on_equip_button_click(slot2)
 
 	return 
 end
-WeaponSelectionGui.data_source_weapon_list = function (self)
+function WeaponSelectionGui:data_source_weapon_list()
 	local result = {}
 	local temp_result = {}
 
@@ -1108,7 +1108,7 @@ WeaponSelectionGui.data_source_weapon_list = function (self)
 
 	table.sort(slot5, result)
 end
-WeaponSelectionGui.on_equip_button_click = function (self)
+function WeaponSelectionGui:on_equip_button_click()
 	slot3 = self._weapon_list
 	slot3 = self._weapon_list.selected_item(slot2)
 
@@ -1127,7 +1127,7 @@ WeaponSelectionGui.on_equip_button_click = function (self)
 
 	return 
 end
-WeaponSelectionGui.on_enable_scope_click = function (self)
+function WeaponSelectionGui:on_enable_scope_click()
 	local checked = self._scope_switch.get_value(slot2)
 	slot6 = checked
 
@@ -1148,7 +1148,7 @@ WeaponSelectionGui.on_enable_scope_click = function (self)
 
 	return 
 end
-WeaponSelectionGui.on_upgrade_button_click = function (self)
+function WeaponSelectionGui:on_upgrade_button_click()
 	if not self._weapon_select_allowed then
 		return 
 	end
@@ -1214,7 +1214,7 @@ WeaponSelectionGui.on_upgrade_button_click = function (self)
 
 	return 
 end
-WeaponSelectionGui.on_apply_button_click = function (self)
+function WeaponSelectionGui:on_apply_button_click()
 	slot3 = self._apply_button
 
 	self._apply_button.disable(slot2)
@@ -1234,7 +1234,7 @@ WeaponSelectionGui.on_apply_button_click = function (self)
 
 	return 
 end
-WeaponSelectionGui._on_click_weapon_skill_callback = function (self, button, data)
+function WeaponSelectionGui:_on_click_weapon_skill_callback(button, data)
 	slot8 = button._name
 	slot11 = data
 
@@ -1293,7 +1293,7 @@ WeaponSelectionGui._on_click_weapon_skill_callback = function (self, button, dat
 
 	return 
 end
-WeaponSelectionGui._add_temp_points = function (self, value)
+function WeaponSelectionGui:_add_temp_points(value)
 	local temp_weapon_points = self._weapon_skills.get_temp_points(slot3)
 	temp_weapon_points = temp_weapon_points + value
 	slot6 = temp_weapon_points
@@ -1302,7 +1302,7 @@ WeaponSelectionGui._add_temp_points = function (self, value)
 
 	return 
 end
-WeaponSelectionGui._refresh_available_points = function (self)
+function WeaponSelectionGui:_refresh_available_points()
 	local available_points = self._weapon_skills.get_available_points(slot2)
 	slot5 = "" .. available_points
 
@@ -1310,7 +1310,7 @@ WeaponSelectionGui._refresh_available_points = function (self)
 
 	return 
 end
-WeaponSelectionGui._selected_weapon_skill_button = function (self, button, data, tier)
+function WeaponSelectionGui:_selected_weapon_skill_button(button, data, tier)
 	if data and data.value then
 		slot7 = data
 
@@ -1347,7 +1347,7 @@ WeaponSelectionGui._selected_weapon_skill_button = function (self, button, data,
 
 	return 
 end
-WeaponSelectionGui._unselected_weapon_skill_button = function (self, button, data)
+function WeaponSelectionGui:_unselected_weapon_skill_button(button, data)
 	slot5 = button
 	local button_state = button.get_state(slot4)
 
@@ -1385,35 +1385,35 @@ WeaponSelectionGui._unselected_weapon_skill_button = function (self, button, dat
 
 	return 
 end
-WeaponSelectionGui._on_mouse_enter_weapon_skill_button = function (self, button, data)
+function WeaponSelectionGui:_on_mouse_enter_weapon_skill_button(button, data)
 	slot7 = data
 
 	self._selected_weapon_skill_button(slot4, self, button)
 
 	return 
 end
-WeaponSelectionGui._on_mouse_exit_weapon_skill_button = function (self, button, data)
+function WeaponSelectionGui:_on_mouse_exit_weapon_skill_button(button, data)
 	slot7 = data
 
 	self._unselected_weapon_skill_button(slot4, self, button)
 
 	return 
 end
-WeaponSelectionGui._on_selected_weapon_skill_callback = function (self, button, data, tier)
+function WeaponSelectionGui:_on_selected_weapon_skill_callback(button, data, tier)
 	slot8 = data
 
 	self._selected_weapon_skill_button(slot5, self, button)
 
 	return 
 end
-WeaponSelectionGui._on_unselected_weapon_skill_callback = function (self, button, data)
+function WeaponSelectionGui:_on_unselected_weapon_skill_callback(button, data)
 	slot7 = data
 
 	self._unselected_weapon_skill_button(slot4, self, button)
 
 	return 
 end
-WeaponSelectionGui._add_weapon_skill_to_temp_skills = function (self, data_value, view_part_only)
+function WeaponSelectionGui:_add_weapon_skill_to_temp_skills(data_value, view_part_only)
 	slot5 = self._weapon_skills
 	local temp_skills = self._weapon_skills.get_temp_skills(slot4)
 
@@ -1429,7 +1429,7 @@ WeaponSelectionGui._add_weapon_skill_to_temp_skills = function (self, data_value
 
 	return 
 end
-WeaponSelectionGui._remove_weapon_skill_from_temp_skills = function (self, data_value, view_part_only)
+function WeaponSelectionGui:_remove_weapon_skill_from_temp_skills(data_value, view_part_only)
 	slot5 = self._weapon_skills
 	local temp_skills = self._weapon_skills.get_temp_skills(slot4)
 
@@ -1445,12 +1445,12 @@ WeaponSelectionGui._remove_weapon_skill_from_temp_skills = function (self, data_
 
 	return 
 end
-WeaponSelectionGui._on_weapon_part_unit_loaded = function (self, params)
+function WeaponSelectionGui:_on_weapon_part_unit_loaded(params)
 	self._preloaded_weapon_part_names[params] = true
 
 	return 
 end
-WeaponSelectionGui._update_weapon_stats = function (self, reset_applied_stats)
+function WeaponSelectionGui:_update_weapon_stats(reset_applied_stats)
 	local result = {}
 	slot5 = self._weapon_list
 	slot5 = self._weapon_list.selected_item(slot4)
@@ -1542,7 +1542,7 @@ WeaponSelectionGui._update_weapon_stats = function (self, reset_applied_stats)
 
 	return 
 end
-WeaponSelectionGui._recreate_and_show_weapon_parts = function (self, temp_skills)
+function WeaponSelectionGui:_recreate_and_show_weapon_parts(temp_skills)
 	local position = self._rotate_weapon.current_position(slot3)
 	local rotation = self._rotate_weapon.current_rotation(self._rotate_weapon)
 	slot10 = false
@@ -1561,7 +1561,7 @@ WeaponSelectionGui._recreate_and_show_weapon_parts = function (self, temp_skills
 
 	return 
 end
-WeaponSelectionGui._get_marked_row_skill_button = function (self, i_skill)
+function WeaponSelectionGui:_get_marked_row_skill_button(i_skill)
 	slot4 = self._weapon_skills
 	local weapon_skills_row = self._weapon_skills.get_rows(slot3)[i_skill]
 	local max_skill_value = 0
@@ -1589,7 +1589,7 @@ WeaponSelectionGui._get_marked_row_skill_button = function (self, i_skill)
 
 	return weapon_skill_button
 end
-WeaponSelectionGui._equip_weapon = function (self)
+function WeaponSelectionGui:_equip_weapon()
 	slot3 = self._weapon_list
 	slot3 = self._weapon_list.selected_item(slot2)
 	local selected_weapon_data = self._weapon_list.selected_item(slot2).data(slot2).value
@@ -1640,7 +1640,7 @@ WeaponSelectionGui._equip_weapon = function (self)
 
 	return 
 end
-WeaponSelectionGui._select_weapon = function (self, weapon_id, weapon_category_switched)
+function WeaponSelectionGui:_select_weapon(weapon_id, weapon_category_switched)
 
 	-- Decompilation error in this vicinity:
 	slot7 = weapon_id
@@ -1849,7 +1849,7 @@ WeaponSelectionGui._select_weapon = function (self, weapon_id, weapon_category_s
 
 	return 
 end
-WeaponSelectionGui._reselect_weapons_in_list = function (self)
+function WeaponSelectionGui:_reselect_weapons_in_list()
 	local selected_weapon_id = self._selected_weapon_id
 	slot4 = self._weapon_list
 	local selected_weapon_data = self._weapon_list.selected_item(slot3).data(slot3)
@@ -1875,7 +1875,7 @@ WeaponSelectionGui._reselect_weapons_in_list = function (self)
 
 	return 
 end
-WeaponSelectionGui.destroy_weapon = function (self)
+function WeaponSelectionGui:destroy_weapon()
 	if self._spawned_unit then
 		slot3 = self._spawned_unit
 
@@ -1888,7 +1888,7 @@ WeaponSelectionGui.destroy_weapon = function (self)
 
 	return 
 end
-WeaponSelectionGui.destroy_weapon_parts = function (self)
+function WeaponSelectionGui:destroy_weapon_parts()
 	if self._spawned_weapon_parts then
 		slot3 = self._spawned_weapon_parts
 
@@ -1905,14 +1905,14 @@ WeaponSelectionGui.destroy_weapon_parts = function (self)
 
 	return 
 end
-WeaponSelectionGui.pix_to_screen = function (self, px_x, px_y)
+function WeaponSelectionGui:pix_to_screen(px_x, px_y)
 	local sx = (2 * px_x) / self._root_panel.w(slot5) - 1
 	slot7 = self._root_panel
 	local sy = (2 * px_y) / self._root_panel.h(self._root_panel) - 1
 
 	return sx, sy
 end
-WeaponSelectionGui._show_weapon = function (self, weapon_id, pre_created_blueprint, weapon_switched)
+function WeaponSelectionGui:_show_weapon(weapon_id, pre_created_blueprint, weapon_switched)
 	slot6 = self
 
 	self.destroy_weapon_parts(slot5)
@@ -1961,7 +1961,7 @@ WeaponSelectionGui._show_weapon = function (self, weapon_id, pre_created_bluepri
 
 	return 
 end
-WeaponSelectionGui._unit_loading_complete = function (self, params)
+function WeaponSelectionGui:_unit_loading_complete(params)
 	self._loading_units[params.unit_path] = nil
 	local camera = managers.viewport.get_current_camera(params.unit_path)
 	slot5 = camera
@@ -2039,7 +2039,7 @@ WeaponSelectionGui._unit_loading_complete = function (self, params)
 
 	return 
 end
-WeaponSelectionGui._preload_blueprint_completed = function (self, params)
+function WeaponSelectionGui:_preload_blueprint_completed(params)
 	slot13 = "_assemble_completed"
 	slot10 = false
 	local parts, blueprint = managers.weapon_factory.assemble_from_blueprint(slot3, managers.weapon_factory, params.weapon_factory_id, self._spawned_unit, params.weapon_blueprint, false, callback(slot10, self, self))
@@ -2051,7 +2051,7 @@ WeaponSelectionGui._preload_blueprint_completed = function (self, params)
 
 	return 
 end
-WeaponSelectionGui._assemble_completed = function (self)
+function WeaponSelectionGui:_assemble_completed()
 	slot8 = self._spawned_unit_screen_offset
 
 	self._rotate_weapon.set_unit(slot2, self._rotate_weapon, self._spawned_unit, self._spawned_unit_position, 90, self._spawned_unit_offset)
@@ -2064,7 +2064,7 @@ WeaponSelectionGui._assemble_completed = function (self)
 
 	return 
 end
-WeaponSelectionGui._show_unit = function (self, weapon_id)
+function WeaponSelectionGui:_show_unit(weapon_id)
 	slot4 = self
 
 	self.destroy_weapon(slot3)
@@ -2141,7 +2141,7 @@ WeaponSelectionGui._show_unit = function (self, weapon_id)
 
 	return 
 end
-WeaponSelectionGui._despawn_parts = function (self, parts)
+function WeaponSelectionGui:_despawn_parts(parts)
 	if parts then
 		slot4 = parts
 
@@ -2158,7 +2158,7 @@ WeaponSelectionGui._despawn_parts = function (self, parts)
 
 	return 
 end
-WeaponSelectionGui.bind_controller_inputs_choose_weapon = function (self)
+function WeaponSelectionGui:bind_controller_inputs_choose_weapon()
 	local bindings = {}
 	slot5 = "menu_controller_shoulder_left"
 	slot7 = "_on_weapon_category_tab_left"
@@ -2262,7 +2262,7 @@ WeaponSelectionGui.bind_controller_inputs_choose_weapon = function (self)
 
 	return 
 end
-WeaponSelectionGui.bind_controller_inputs_choose_weapon_no_upgrade = function (self)
+function WeaponSelectionGui:bind_controller_inputs_choose_weapon_no_upgrade()
 	local bindings = {}
 	slot5 = "menu_controller_shoulder_left"
 	slot7 = "_on_weapon_category_tab_left"
@@ -2336,7 +2336,7 @@ WeaponSelectionGui.bind_controller_inputs_choose_weapon_no_upgrade = function (s
 
 	return 
 end
-WeaponSelectionGui.bind_controller_inputs_upgrade_weapon = function (self)
+function WeaponSelectionGui:bind_controller_inputs_upgrade_weapon()
 	local bindings = {}
 	slot5 = "menu_controller_face_top"
 	slot7 = "_on_apply_weapon_skills_click"
@@ -2373,7 +2373,7 @@ WeaponSelectionGui.bind_controller_inputs_upgrade_weapon = function (self)
 
 	return 
 end
-WeaponSelectionGui.bind_controller_inputs_upgrade_weapon_upgrade_forbiden = function (self)
+function WeaponSelectionGui:bind_controller_inputs_upgrade_weapon_upgrade_forbiden()
 	local bindings = {}
 
 	self.set_controller_bindings(slot3, self, bindings)
@@ -2397,56 +2397,56 @@ WeaponSelectionGui.bind_controller_inputs_upgrade_weapon_upgrade_forbiden = func
 
 	return 
 end
-WeaponSelectionGui._on_weapon_category_tab_left = function (self)
+function WeaponSelectionGui:_on_weapon_category_tab_left()
 	slot3 = self._list_tabs
 
 	self._list_tabs._move_left(slot2)
 
 	return true, nil
 end
-WeaponSelectionGui._on_weapon_category_tab_right = function (self)
+function WeaponSelectionGui:_on_weapon_category_tab_right()
 	slot3 = self._list_tabs
 
 	self._list_tabs._move_right(slot2)
 
 	return true, nil
 end
-WeaponSelectionGui._on_equipable_tab_left = function (self)
+function WeaponSelectionGui:_on_equipable_tab_left()
 	slot3 = self._equippable_filters_tabs
 
 	self._equippable_filters_tabs._move_left(slot2)
 
 	return true, nil
 end
-WeaponSelectionGui._on_equipable_tab_right = function (self)
+function WeaponSelectionGui:_on_equipable_tab_right()
 	slot3 = self._equippable_filters_tabs
 
 	self._equippable_filters_tabs._move_right(slot2)
 
 	return true, nil
 end
-WeaponSelectionGui._on_upgrade_weapon_click = function (self)
+function WeaponSelectionGui:_on_upgrade_weapon_click()
 	slot3 = self
 
 	self.on_upgrade_button_click(slot2)
 
 	return true, nil
 end
-WeaponSelectionGui._on_apply_weapon_skills_click = function (self)
+function WeaponSelectionGui:_on_apply_weapon_skills_click()
 	slot3 = self
 
 	self.on_apply_button_click(slot2)
 
 	return true, nil
 end
-WeaponSelectionGui._on_select_weapon_skills_click = function (self)
+function WeaponSelectionGui:_on_select_weapon_skills_click()
 	slot3 = self._weapon_skills
 
 	self._weapon_skills.confirm_pressed(slot2)
 
 	return true, nil
 end
-WeaponSelectionGui.confirm_pressed = function (self)
+function WeaponSelectionGui:confirm_pressed()
 	slot3 = self._weapon_selection_panel
 
 	if self._weapon_selection_panel.visible(slot2) then
@@ -2463,7 +2463,7 @@ WeaponSelectionGui.confirm_pressed = function (self)
 
 	return true
 end
-WeaponSelectionGui._upgrade_status = function (self)
+function WeaponSelectionGui:_upgrade_status()
 	if self._selected_weapon_category_id == WeaponInventoryManager.BM_CATEGORY_PRIMARY_ID or self._selected_weapon_category_id == WeaponInventoryManager.BM_CATEGORY_SECONDARY_ID then
 		slot3 = self
 
@@ -2476,7 +2476,7 @@ WeaponSelectionGui._upgrade_status = function (self)
 
 	return 
 end
-WeaponSelectionGui.back_pressed = function (self)
+function WeaponSelectionGui:back_pressed()
 	slot3 = managers.raid_menu
 
 	if not managers.raid_menu.is_pc_controller(slot2) then

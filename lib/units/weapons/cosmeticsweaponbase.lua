@@ -7,7 +7,7 @@
 local mvec1 = Vector3()
 local mvec2 = Vector3()
 local mvec3 = Vector3()
-NewRaycastWeaponBase.change_cosmetics = function (self, cosmetics, async_clbk)
+function NewRaycastWeaponBase:change_cosmetics(cosmetics, async_clbk)
 	slot6 = cosmetics
 
 	self.set_cosmetics_data(slot4, self)
@@ -20,7 +20,7 @@ NewRaycastWeaponBase.change_cosmetics = function (self, cosmetics, async_clbk)
 
 	return 
 end
-NewRaycastWeaponBase.set_cosmetics_data = function (self, cosmetics)
+function NewRaycastWeaponBase:set_cosmetics_data(cosmetics)
 	slot6 = (cosmetics and cosmetics.id) or "NONE"
 
 	print(slot3, "NewRaycastWeaponBase:set_cosmetics_data", "cosmetics_id")
@@ -41,19 +41,19 @@ NewRaycastWeaponBase.set_cosmetics_data = function (self, cosmetics)
 
 	return 
 end
-NewRaycastWeaponBase.get_cosmetics_bonus = function (self)
+function NewRaycastWeaponBase:get_cosmetics_bonus()
 	return self._cosmetics_bonus
 end
-NewRaycastWeaponBase.get_cosmetics_quality = function (self)
+function NewRaycastWeaponBase:get_cosmetics_quality()
 	return self._cosmetics_quality
 end
-NewRaycastWeaponBase.get_cosmetics_id = function (self)
+function NewRaycastWeaponBase:get_cosmetics_id()
 	return self._cosmetics_id
 end
-NewRaycastWeaponBase.get_cosmetics_data = function (self)
+function NewRaycastWeaponBase:get_cosmetics_data()
 	return self._cosmetics_data
 end
-NewRaycastWeaponBase._material_config_name = function (self, part_id, unit_name, use_cc_material_config)
+function NewRaycastWeaponBase:_material_config_name(part_id, unit_name, use_cc_material_config)
 	slot6 = self
 
 	if self.is_npc(slot5) then
@@ -81,7 +81,7 @@ NewRaycastWeaponBase._material_config_name = function (self, part_id, unit_name,
 
 	return Idstring(slot5)
 end
-NewRaycastWeaponBase._update_materials = function (self)
+function NewRaycastWeaponBase:_update_materials()
 	if not self._parts then
 		return 
 	end
@@ -211,7 +211,7 @@ local material_variables = {
 }
 slot8 = Application
 material_variables.wear_and_tear = (Application.production_build(slot7) and "wear_tear_value") or nil
-NewRaycastWeaponBase._apply_cosmetics = function (self, async_clbk)
+function NewRaycastWeaponBase:_apply_cosmetics(async_clbk)
 
 	-- Decompilation error in this vicinity:
 	slot4 = self
@@ -337,7 +337,7 @@ NewRaycastWeaponBase._apply_cosmetics = function (self, async_clbk)
 
 	return 
 end
-NewRaycastWeaponBase.clbk_texture_loaded = function (self, async_clbk, tex_name)
+function NewRaycastWeaponBase:clbk_texture_loaded(async_clbk, tex_name)
 	slot5 = self._unit
 
 	if not alive(slot4) then
@@ -357,7 +357,7 @@ NewRaycastWeaponBase.clbk_texture_loaded = function (self, async_clbk, tex_name)
 
 	return 
 end
-NewRaycastWeaponBase._chk_load_complete = function (self, async_clbk)
+function NewRaycastWeaponBase:_chk_load_complete(async_clbk)
 	if self._requesting then
 		return 
 	end
@@ -380,7 +380,7 @@ NewRaycastWeaponBase._chk_load_complete = function (self, async_clbk)
 
 	return 
 end
-NewRaycastWeaponBase._set_material_textures = function (self)
+function NewRaycastWeaponBase:_set_material_textures()
 
 	-- Decompilation error in this vicinity:
 	slot3 = self

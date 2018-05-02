@@ -8,7 +8,7 @@ end
 MenuNodeCreditsGui = slot0
 MenuNodeCreditsGui.PATH = "gamedata/"
 MenuNodeCreditsGui.FILE_EXTENSION = "credits"
-MenuNodeCreditsGui.init = function (self, node, layer, parameters)
+function MenuNodeCreditsGui:init(node, layer, parameters)
 	MenuNodeCreditsGui.super.init(slot5, self, node, layer)
 
 	slot7 = "layer      "
@@ -26,7 +26,7 @@ MenuNodeCreditsGui.init = function (self, node, layer, parameters)
 
 	return 
 end
-MenuNodeCreditsGui._build_credits_panel = function (self, file)
+function MenuNodeCreditsGui:_build_credits_panel(file)
 	slot4 = SystemInfo
 	slot4 = SystemInfo.language(slot3)
 	local lang_key = SystemInfo.language(slot3).key(slot3)
@@ -356,42 +356,42 @@ MenuNodeCreditsGui._build_credits_panel = function (self, file)
 
 	return 
 end
-MenuNodeCreditsGui._setup_panels = function (self, node)
+function MenuNodeCreditsGui:_setup_panels(node)
 	slot5 = node
 
 	MenuNodeCreditsGui.super._setup_panels(slot3, self)
 
 	return 
 end
-MenuNodeCreditsGui._create_menu_item = function (self, row_item)
+function MenuNodeCreditsGui:_create_menu_item(row_item)
 	slot5 = row_item
 
 	MenuNodeCreditsGui.super._create_menu_item(slot3, self)
 
 	return 
 end
-MenuNodeCreditsGui._setup_item_panel_parent = function (self, safe_rect)
+function MenuNodeCreditsGui:_setup_item_panel_parent(safe_rect)
 	slot5 = safe_rect
 
 	MenuNodeCreditsGui.super._setup_item_panel_parent(slot3, self)
 
 	return 
 end
-MenuNodeCreditsGui._setup_item_panel = function (self, safe_rect, res)
+function MenuNodeCreditsGui:_setup_item_panel(safe_rect, res)
 	slot7 = res
 
 	MenuNodeCreditsGui.super._setup_item_panel(slot4, self, safe_rect)
 
 	return 
 end
-MenuNodeCreditsGui.resolution_changed = function (self)
+function MenuNodeCreditsGui:resolution_changed()
 	slot3 = self
 
 	MenuNodeCreditsGui.super.resolution_changed(slot2)
 
 	return 
 end
-MenuNodeCreditsGui.set_visible = function (self, visible)
+function MenuNodeCreditsGui:set_visible(visible)
 	slot5 = visible
 
 	MenuNodeCreditsGui.super.set_visible(slot3, self)
@@ -408,7 +408,7 @@ MenuNodeCreditsGui.set_visible = function (self, visible)
 
 	return 
 end
-MenuNodeCreditsGui.close = function (self, ...)
+function MenuNodeCreditsGui:close(...)
 	slot4 = self._credits_panel_thread
 
 	self._credits_panel.stop(slot2, self._credits_panel)
@@ -428,41 +428,41 @@ MenuNodeCreditsGui.close = function (self, ...)
 
 	return 
 end
-MenuNodeCreditsGui.mouse_moved = function (self, o, x, y)
+function MenuNodeCreditsGui:mouse_moved(o, x, y)
 	return true
 end
-MenuNodeCreditsGui.mouse_released = function (self, o, button, x, y)
+function MenuNodeCreditsGui:mouse_released(o, button, x, y)
 	return true
 end
-MenuNodeCreditsGui.mouse_pressed = function (self, button, x, y)
+function MenuNodeCreditsGui:mouse_pressed(button, x, y)
 	return true
 end
-MenuNodeCreditsGui.mouse_clicked = function (self, button, x, y)
+function MenuNodeCreditsGui:mouse_clicked(button, x, y)
 	return true
 end
-MenuNodeCreditsGui.mouse_double_click = function (self, o, button, x, y)
+function MenuNodeCreditsGui:mouse_double_click(o, button, x, y)
 	return true
 end
-MenuNodeCreditsGui.confirm_pressed = function (self)
+function MenuNodeCreditsGui:confirm_pressed()
 	return true
 end
-MenuNodeCreditsGui.back_pressed = function (self)
+function MenuNodeCreditsGui:back_pressed()
 	slot3 = managers.raid_menu
 
 	managers.raid_menu.on_escape(slot2)
 
 	return true
 end
-MenuNodeCreditsGui.move_up = function (self)
+function MenuNodeCreditsGui:move_up()
 	return true
 end
-MenuNodeCreditsGui.move_down = function (self)
+function MenuNodeCreditsGui:move_down()
 	return true
 end
-MenuNodeCreditsGui.move_left = function (self)
+function MenuNodeCreditsGui:move_left()
 	return true
 end
-MenuNodeCreditsGui.move_right = function (self)
+function MenuNodeCreditsGui:move_right()
 	return true
 end
 

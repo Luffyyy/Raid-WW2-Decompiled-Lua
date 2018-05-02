@@ -11,14 +11,14 @@ if not CounterResetUnitElement then
 end
 
 CounterResetUnitElement = slot0
-CounterResetUnitElement.init = function (self, ...)
+function CounterResetUnitElement:init(...)
 	slot3 = self
 
 	CoreCounterResetUnitElement.init(slot2, ...)
 
 	return 
 end
-CoreCounterResetUnitElement.init = function (self, unit)
+function CoreCounterResetUnitElement:init(unit)
 	slot5 = unit
 
 	MissionElement.init(slot3, self)
@@ -35,7 +35,7 @@ CoreCounterResetUnitElement.init = function (self, unit)
 
 	return 
 end
-CoreCounterResetUnitElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function CoreCounterResetUnitElement:draw_links(t, dt, selected_unit, all_units)
 	slot10 = selected_unit
 
 	MissionElement.draw_links(slot6, self, t, dt)
@@ -61,10 +61,10 @@ CoreCounterResetUnitElement.draw_links = function (self, t, dt, selected_unit, a
 
 	return 
 end
-CoreCounterResetUnitElement.update_editing = function (self)
+function CoreCounterResetUnitElement:update_editing()
 	return 
 end
-CoreCounterResetUnitElement.add_element = function (self)
+function CoreCounterResetUnitElement:add_element()
 	slot4 = {
 		ray_type = "editor",
 		mask = 10
@@ -94,7 +94,7 @@ CoreCounterResetUnitElement.add_element = function (self)
 
 	return 
 end
-CoreCounterResetUnitElement.remove_links = function (self, unit)
+function CoreCounterResetUnitElement:remove_links(unit)
 	slot5 = unit
 
 	MissionElement.remove_links(slot3, self)
@@ -113,7 +113,7 @@ CoreCounterResetUnitElement.remove_links = function (self, unit)
 
 	return 
 end
-CoreCounterResetUnitElement.add_triggers = function (self, vc)
+function CoreCounterResetUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "add_element"
 
@@ -121,7 +121,7 @@ CoreCounterResetUnitElement.add_triggers = function (self, vc)
 
 	return 
 end
-CoreCounterResetUnitElement._build_panel = function (self, panel, panel_sizer)
+function CoreCounterResetUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

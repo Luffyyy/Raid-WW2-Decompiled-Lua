@@ -1,5 +1,5 @@
 CoreEnvEditor = CoreEnvEditor or class()
-CoreEnvEditor.lerp_formula = function (value, v)
+function CoreEnvEditor.lerp_formula(value, v)
 	slot9 = 1
 	slot6 = v or 0.5
 

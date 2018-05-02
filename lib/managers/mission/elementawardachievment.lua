@@ -10,28 +10,28 @@ if not ElementAwardAchievment then
 end
 
 ElementAwardAchievment = slot0
-ElementAwardAchievment.init = function (self, ...)
+function ElementAwardAchievment:init(...)
 	slot3 = self
 
 	ElementAwardAchievment.super.init(slot2, ...)
 
 	return 
 end
-ElementAwardAchievment.client_on_executed_end_screen = function (self, ...)
+function ElementAwardAchievment:client_on_executed_end_screen(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementAwardAchievment.client_on_executed = function (self, ...)
+function ElementAwardAchievment:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementAwardAchievment.on_executed = function (self, instigator)
+function ElementAwardAchievment:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

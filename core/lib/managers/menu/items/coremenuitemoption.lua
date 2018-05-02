@@ -3,7 +3,7 @@ slot3 = "CoreMenuItemOption"
 core.module(slot1, core)
 
 ItemOption = ItemOption or class()
-ItemOption.init = function (self, data_node, parameters)
+function ItemOption:init(data_node, parameters)
 	local params = parameters or {}
 
 	if data_node then
@@ -26,13 +26,13 @@ ItemOption.init = function (self, data_node, parameters)
 
 	return 
 end
-ItemOption.value = function (self)
+function ItemOption:value()
 	return self._parameters.value
 end
-ItemOption.parameters = function (self)
+function ItemOption:parameters()
 	return self._parameters
 end
-ItemOption.set_parameters = function (self, parameters)
+function ItemOption:set_parameters(parameters)
 	self._parameters = parameters
 
 	return 

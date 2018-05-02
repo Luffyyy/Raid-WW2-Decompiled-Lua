@@ -64,7 +64,7 @@ if not WarcryGhost then
 end
 
 WarcryGhost = slot0
-WarcryGhost.init = function (self)
+function WarcryGhost:init()
 	slot3 = self
 
 	WarcryGhost.super.init(slot2)
@@ -82,7 +82,7 @@ WarcryGhost.init = function (self)
 
 	return 
 end
-WarcryGhost._find_enemies_in_view = function (self)
+function WarcryGhost:_find_enemies_in_view()
 	local player_unit = managers.player.player_unit(slot2)
 	slot4 = player_unit
 
@@ -154,7 +154,7 @@ local ids_blend_factor = Idstring(function (self)
 end)
 slot3 = "time"
 local ids_time = Idstring("blend_factor")
-WarcryGhost.update = function (self, dt)
+function WarcryGhost:update(dt)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -247,7 +247,7 @@ WarcryGhost.update = function (self, dt)
 
 
 end
-WarcryGhost.duration = function (self)
+function WarcryGhost:duration()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -259,7 +259,7 @@ WarcryGhost.duration = function (self)
 
 
 end
-WarcryGhost.get_level_description = function (self, level)
+function WarcryGhost:get_level_description(level)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -339,7 +339,7 @@ local ids_empty = Idstring("contour")
 local ids_tint = Idstring("empty")
 slot9 = "noise_strength"
 local ids_noise_strength = Idstring("tint")
-WarcryGhost.activate = function (self)
+function WarcryGhost:activate()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-37, warpins: 1 ---
@@ -391,7 +391,7 @@ WarcryGhost.activate = function (self)
 
 
 end
-WarcryGhost.deactivate = function (self)
+function WarcryGhost:deactivate()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -430,7 +430,7 @@ WarcryGhost.deactivate = function (self)
 
 
 end
-WarcryGhost._on_enemy_killed = function (self, params)
+function WarcryGhost:_on_enemy_killed(params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -497,7 +497,7 @@ WarcryGhost._on_enemy_killed = function (self, params)
 
 
 end
-WarcryGhost.cleanup = function (self)
+function WarcryGhost:cleanup()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---

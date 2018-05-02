@@ -4,7 +4,7 @@ if not RaidGUIControlDialogTest then
 end
 
 RaidGUIControlDialogTest = slot0
-RaidGUIControlDialogTest.init = function (self, parent, params)
+function RaidGUIControlDialogTest:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlDialogTest.super.init(slot4, self, parent)
@@ -118,12 +118,12 @@ RaidGUIControlDialogTest.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlDialogTest.get_new_profile_name = function (self)
+function RaidGUIControlDialogTest:get_new_profile_name()
 	slot3 = self._input_box
 
 	return self._input_box.get_text(slot2)
 end
-RaidGUIControlDialogTest.confirm_pressed = function (self)
+function RaidGUIControlDialogTest:confirm_pressed()
 	return true
 end
 

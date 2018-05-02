@@ -4,7 +4,7 @@ if not SpecialObjectiveTriggerUnitElement then
 end
 
 SpecialObjectiveTriggerUnitElement = slot0
-SpecialObjectiveTriggerUnitElement.init = function (self, unit)
+function SpecialObjectiveTriggerUnitElement:init(unit)
 	slot5 = unit
 
 	MissionElement.init(slot3, self)
@@ -38,7 +38,7 @@ SpecialObjectiveTriggerUnitElement.init = function (self, unit)
 
 	return 
 end
-SpecialObjectiveTriggerUnitElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function SpecialObjectiveTriggerUnitElement:draw_links(t, dt, selected_unit, all_units)
 	slot10 = selected_unit
 
 	MissionElement.draw_links(slot6, self, t, dt)
@@ -64,10 +64,10 @@ SpecialObjectiveTriggerUnitElement.draw_links = function (self, t, dt, selected_
 
 	return 
 end
-SpecialObjectiveTriggerUnitElement.update_editing = function (self)
+function SpecialObjectiveTriggerUnitElement:update_editing()
 	return 
 end
-SpecialObjectiveTriggerUnitElement.add_element = function (self)
+function SpecialObjectiveTriggerUnitElement:add_element()
 	slot4 = {
 		ray_type = "editor",
 		mask = 10
@@ -97,7 +97,7 @@ SpecialObjectiveTriggerUnitElement.add_element = function (self)
 
 	return 
 end
-SpecialObjectiveTriggerUnitElement._correct_unit = function (self, u_name)
+function SpecialObjectiveTriggerUnitElement:_correct_unit(u_name)
 	local names = {
 		"point_special_objective",
 		"ai_so_group",
@@ -115,7 +115,7 @@ SpecialObjectiveTriggerUnitElement._correct_unit = function (self, u_name)
 
 	return false
 end
-SpecialObjectiveTriggerUnitElement.remove_links = function (self, unit)
+function SpecialObjectiveTriggerUnitElement:remove_links(unit)
 	slot4 = self._hed.elements
 
 	for _, id in ipairs(slot3) do
@@ -130,7 +130,7 @@ SpecialObjectiveTriggerUnitElement.remove_links = function (self, unit)
 
 	return 
 end
-SpecialObjectiveTriggerUnitElement.add_triggers = function (self, vc)
+function SpecialObjectiveTriggerUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "add_element"
 
@@ -138,7 +138,7 @@ SpecialObjectiveTriggerUnitElement.add_triggers = function (self, vc)
 
 	return 
 end
-SpecialObjectiveTriggerUnitElement._build_panel = function (self, panel, panel_sizer)
+function SpecialObjectiveTriggerUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

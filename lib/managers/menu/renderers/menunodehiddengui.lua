@@ -4,7 +4,7 @@ if not MenuNodeHiddenGui then
 end
 
 MenuNodeHiddenGui = slot0
-MenuNodeHiddenGui._create_menu_item = function (self, row_item)
+function MenuNodeHiddenGui:_create_menu_item(row_item)
 	slot5 = row_item
 
 	MenuNodeHiddenGui.super._create_menu_item(slot3, self)

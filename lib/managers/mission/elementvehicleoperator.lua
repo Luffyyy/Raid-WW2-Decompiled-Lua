@@ -4,28 +4,28 @@ if not ElementVehicleOperator then
 end
 
 ElementVehicleOperator = slot0
-ElementVehicleOperator.init = function (self, ...)
+function ElementVehicleOperator:init(...)
 	slot3 = self
 
 	ElementVehicleOperator.super.init(slot2, ...)
 
 	return 
 end
-ElementVehicleOperator.client_on_executed = function (self, ...)
+function ElementVehicleOperator:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementVehicleOperator._get_unit = function (self, unit_id)
+function ElementVehicleOperator:_get_unit(unit_id)
 	slot6 = nil
 	slot9 = self._mission_script
 	local unit = managers.worldcollection.get_unit_with_id(slot3, managers.worldcollection, unit_id, self._mission_script.sync_id(slot8))
 
 	return unit
 end
-ElementVehicleOperator._apply_operator = function (self, unit)
+function ElementVehicleOperator:_apply_operator(unit)
 	if unit then
 		slot4 = unit
 
@@ -62,7 +62,7 @@ ElementVehicleOperator._apply_operator = function (self, unit)
 
 	return 
 end
-ElementVehicleOperator.on_executed = function (self, instigator)
+function ElementVehicleOperator:on_executed(instigator)
 	slot5 = "ElementVehicleOperator:on_executed"
 
 	Application.debug(slot3, Application)

@@ -4,10 +4,10 @@ if not SpecialInteractionExt then
 end
 
 SpecialInteractionExt = slot0
-SpecialInteractionExt._interact_blocked = function (self, player)
+function SpecialInteractionExt:_interact_blocked(player)
 	return false
 end
-SpecialInteractionExt.interact = function (self, player)
+function SpecialInteractionExt:interact(player)
 	slot5 = player
 
 	if not self.can_interact(slot3, self) then
@@ -46,7 +46,7 @@ SpecialInteractionExt.interact = function (self, player)
 
 	return true
 end
-SpecialInteractionExt.special_interaction_done = function (self)
+function SpecialInteractionExt:special_interaction_done()
 	slot4 = self._player
 
 	SpecialInteractionExt.super.interact(slot2, self)
@@ -58,7 +58,7 @@ SpecialInteractionExt.special_interaction_done = function (self)
 
 	return 
 end
-SpecialInteractionExt.set_special_interaction_done = function (self)
+function SpecialInteractionExt:set_special_interaction_done()
 	slot4 = "[SpecialInteractionExt:set_special_interaction_done()]"
 
 	Application.debug(slot2, Application)

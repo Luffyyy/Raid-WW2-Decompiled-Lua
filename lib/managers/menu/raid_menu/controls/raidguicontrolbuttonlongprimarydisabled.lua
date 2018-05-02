@@ -8,7 +8,7 @@ RaidGUIControlButtonLongPrimaryDisabled.ICON = "btn_dissabled_256"
 RaidGUIControlButtonLongPrimaryDisabled.HOVER_ICON = "btn_dissabled_256_hover"
 RaidGUIControlButtonLongPrimaryDisabled.W = tweak_data.gui.icons[RaidGUIControlButtonLongPrimaryDisabled.ICON].texture_rect[3]
 RaidGUIControlButtonLongPrimaryDisabled.H = tweak_data.gui.icons[RaidGUIControlButtonLongPrimaryDisabled.ICON].texture_rect[4]
-RaidGUIControlButtonLongPrimaryDisabled.init = function (self, parent, params)
+function RaidGUIControlButtonLongPrimaryDisabled:init(parent, params)
 	if not params then
 		slot6 = "Trying to create a long primary disabled button without parameters!"
 
@@ -35,7 +35,7 @@ RaidGUIControlButtonLongPrimaryDisabled.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlButtonLongPrimaryDisabled.show = function (self)
+function RaidGUIControlButtonLongPrimaryDisabled:show()
 	slot3 = self
 
 	RaidGUIControlButtonLongPrimaryDisabled.super.show(slot2)
@@ -45,7 +45,7 @@ RaidGUIControlButtonLongPrimaryDisabled.show = function (self)
 
 	return 
 end
-RaidGUIControlButtonLongPrimaryDisabled.hide = function (self)
+function RaidGUIControlButtonLongPrimaryDisabled:hide()
 	slot3 = self
 
 	RaidGUIControlButtonLongPrimaryDisabled.super.hide(slot2)

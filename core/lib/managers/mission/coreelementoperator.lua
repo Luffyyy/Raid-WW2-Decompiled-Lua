@@ -12,21 +12,21 @@ if not ElementOperator then
 end
 
 ElementOperator = slot0
-ElementOperator.init = function (self, ...)
+function ElementOperator:init(...)
 	slot3 = self
 
 	ElementOperator.super.init(slot2, ...)
 
 	return 
 end
-ElementOperator.client_on_executed = function (self, ...)
+function ElementOperator:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementOperator.on_executed = function (self, instigator)
+function ElementOperator:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

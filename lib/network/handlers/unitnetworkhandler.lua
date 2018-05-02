@@ -2840,7 +2840,7 @@ if not UnitNetworkHandler then
 end
 
 UnitNetworkHandler = slot1
-function UnitNetworkHandler:set_unit(unit, character_name, outfit_string, outfit_version, peer_id, team_id)
+UnitNetworkHandler.set_unit = function (self, unit, character_name, outfit_string, outfit_version, peer_id, team_id)
 	slot13 = peer_id
 
 	Application.trace(slot8, Application, "[UnitNetworkHandler:set_unit]", unit, character_name)
@@ -2907,7 +2907,7 @@ function UnitNetworkHandler:set_unit(unit, character_name, outfit_string, outfit
 
 	return 
 end
-function UnitNetworkHandler:set_character_customization(unit, outfit_string, outfit_version, peer_id)
+UnitNetworkHandler.set_character_customization = function (self, unit, outfit_string, outfit_version, peer_id)
 	slot7 = unit
 
 	if not alive(slot6) then
@@ -2943,7 +2943,7 @@ function UnitNetworkHandler:set_character_customization(unit, outfit_string, out
 
 	return 
 end
-function UnitNetworkHandler:set_equipped_weapon(unit, send_equipped_weapon_type, equipped_weapon_category_id, equipped_weapon_identifier, blueprint_string, cosmetics_string, sender)
+UnitNetworkHandler.set_equipped_weapon = function (self, unit, send_equipped_weapon_type, equipped_weapon_category_id, equipped_weapon_identifier, blueprint_string, cosmetics_string, sender)
 
 	-- Decompilation error in this vicinity:
 	slot10 = unit
@@ -2967,7 +2967,7 @@ function UnitNetworkHandler:set_equipped_weapon(unit, send_equipped_weapon_type,
 
 	return 
 end
-function UnitNetworkHandler:set_weapon_gadget_state(unit, gadget_state, sender)
+UnitNetworkHandler.set_weapon_gadget_state = function (self, unit, gadget_state, sender)
 	slot7 = sender
 
 	if not self._verify_character_and_sender(slot5, unit) then
@@ -2981,7 +2981,7 @@ function UnitNetworkHandler:set_weapon_gadget_state(unit, gadget_state, sender)
 
 	return 
 end
-function UnitNetworkHandler:set_look_dir(unit, yaw_in, pitch_in, sender)
+UnitNetworkHandler.set_look_dir = function (self, unit, yaw_in, pitch_in, sender)
 	slot8 = sender
 
 	if not self._verify_character_and_sender(slot6, unit) then
@@ -3005,7 +3005,7 @@ function UnitNetworkHandler:set_look_dir(unit, yaw_in, pitch_in, sender)
 
 	return 
 end
-function UnitNetworkHandler:action_walk_start(unit, first_nav_point, nav_link_yaw, nav_link_act_index, from_idle, haste_code, end_yaw, no_walk, no_strafe, end_pose_code)
+UnitNetworkHandler.action_walk_start = function (self, unit, first_nav_point, nav_link_yaw, nav_link_act_index, from_idle, haste_code, end_yaw, no_walk, no_strafe, end_pose_code)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -3246,7 +3246,7 @@ function UnitNetworkHandler:action_walk_start(unit, first_nav_point, nav_link_ya
 
 
 end
-function UnitNetworkHandler:action_walk_nav_point(unit, nav_point, sender)
+UnitNetworkHandler.action_walk_nav_point = function (self, unit, nav_point, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -3270,7 +3270,7 @@ function UnitNetworkHandler:action_walk_nav_point(unit, nav_point, sender)
 
 
 end
-function UnitNetworkHandler:action_walk_stop(unit)
+UnitNetworkHandler.action_walk_stop = function (self, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -3294,7 +3294,7 @@ function UnitNetworkHandler:action_walk_stop(unit)
 
 
 end
-function UnitNetworkHandler:action_walk_nav_link(unit, pos, yaw, anim_index, from_idle)
+UnitNetworkHandler.action_walk_nav_link = function (self, unit, pos, yaw, anim_index, from_idle)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -3319,7 +3319,7 @@ function UnitNetworkHandler:action_walk_nav_link(unit, pos, yaw, anim_index, fro
 
 
 end
-function UnitNetworkHandler:action_change_pose(unit, pose_code, pos)
+UnitNetworkHandler.action_change_pose = function (self, unit, pose_code, pos)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -3343,7 +3343,7 @@ function UnitNetworkHandler:action_change_pose(unit, pose_code, pos)
 
 
 end
-function UnitNetworkHandler:skill_action_knockdown(unit, hit_position, direction, sender)
+UnitNetworkHandler.skill_action_knockdown = function (self, unit, hit_position, direction, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -3379,7 +3379,7 @@ function UnitNetworkHandler:skill_action_knockdown(unit, hit_position, direction
 
 
 end
-function UnitNetworkHandler:action_warp_start(unit, has_pos, pos, has_rot, yaw, sender)
+UnitNetworkHandler.action_warp_start = function (self, unit, has_pos, pos, has_rot, yaw, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -3450,7 +3450,7 @@ function UnitNetworkHandler:action_warp_start(unit, has_pos, pos, has_rot, yaw, 
 
 
 end
-function UnitNetworkHandler:friendly_fire_hit(subject_unit)
+UnitNetworkHandler.friendly_fire_hit = function (self, subject_unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -3474,7 +3474,7 @@ function UnitNetworkHandler:friendly_fire_hit(subject_unit)
 
 
 end
-function UnitNetworkHandler:damage_bullet(subject_unit, attacker_unit, damage, i_body, height_offset, death, sender)
+UnitNetworkHandler.damage_bullet = function (self, subject_unit, attacker_unit, damage, i_body, height_offset, death, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -3507,7 +3507,7 @@ function UnitNetworkHandler:damage_bullet(subject_unit, attacker_unit, damage, i
 
 
 end
-function UnitNetworkHandler:damage_knockdown(subject_unit, attacker_unit, damage, i_body, height_offset, death, sender)
+UnitNetworkHandler.damage_knockdown = function (self, subject_unit, attacker_unit, damage, i_body, height_offset, death, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -3540,7 +3540,7 @@ function UnitNetworkHandler:damage_knockdown(subject_unit, attacker_unit, damage
 
 
 end
-function UnitNetworkHandler:damage_explosion_fire(subject_unit, attacker_unit, damage, i_attack_variant, death, direction, sender)
+UnitNetworkHandler.damage_explosion_fire = function (self, subject_unit, attacker_unit, damage, i_attack_variant, death, direction, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -3603,7 +3603,7 @@ function UnitNetworkHandler:damage_explosion_fire(subject_unit, attacker_unit, d
 
 
 end
-function UnitNetworkHandler:damage_fire(subject_unit, attacker_unit, damage, start_dot_dance_antimation, death, direction, weapon_type, weapon_unit, sender)
+UnitNetworkHandler.damage_fire = function (self, subject_unit, attacker_unit, damage, start_dot_dance_antimation, death, direction, weapon_type, weapon_unit, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -3636,7 +3636,7 @@ function UnitNetworkHandler:damage_fire(subject_unit, attacker_unit, damage, sta
 
 
 end
-function UnitNetworkHandler:damage_dot(subject_unit, attacker_unit, damage, death, variant, hurt_animation, sender)
+UnitNetworkHandler.damage_dot = function (self, subject_unit, attacker_unit, damage, death, variant, hurt_animation, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -3669,7 +3669,7 @@ function UnitNetworkHandler:damage_dot(subject_unit, attacker_unit, damage, deat
 
 
 end
-function UnitNetworkHandler:damage_tase(subject_unit, attacker_unit, damage, variant, death, sender)
+UnitNetworkHandler.damage_tase = function (self, subject_unit, attacker_unit, damage, variant, death, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -3702,7 +3702,7 @@ function UnitNetworkHandler:damage_tase(subject_unit, attacker_unit, damage, var
 
 
 end
-function UnitNetworkHandler:damage_melee(subject_unit, attacker_unit, damage, damage_effect, i_body, height_offset, variant, death, sender)
+UnitNetworkHandler.damage_melee = function (self, subject_unit, attacker_unit, damage, damage_effect, i_body, height_offset, variant, death, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -3735,7 +3735,7 @@ function UnitNetworkHandler:damage_melee(subject_unit, attacker_unit, damage, da
 
 
 end
-function UnitNetworkHandler:sync_part_dismemberment(subject_unit, part_name, variant, sender)
+UnitNetworkHandler.sync_part_dismemberment = function (self, subject_unit, part_name, variant, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -3759,7 +3759,7 @@ function UnitNetworkHandler:sync_part_dismemberment(subject_unit, part_name, var
 
 
 end
-function UnitNetworkHandler:from_server_damage_bullet(subject_unit, attacker_unit, hit_offset_height, result_index, sender)
+UnitNetworkHandler.from_server_damage_bullet = function (self, subject_unit, attacker_unit, hit_offset_height, result_index, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -3792,7 +3792,7 @@ function UnitNetworkHandler:from_server_damage_bullet(subject_unit, attacker_uni
 
 
 end
-function UnitNetworkHandler:from_server_damage_explosion_fire(subject_unit, attacker_unit, result_index, i_attack_variant, sender)
+UnitNetworkHandler.from_server_damage_explosion_fire = function (self, subject_unit, attacker_unit, result_index, i_attack_variant, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -3855,7 +3855,7 @@ function UnitNetworkHandler:from_server_damage_explosion_fire(subject_unit, atta
 
 
 end
-function UnitNetworkHandler:from_server_damage_melee(subject_unit, attacker_unit, hit_offset_height, result_index, sender)
+UnitNetworkHandler.from_server_damage_melee = function (self, subject_unit, attacker_unit, hit_offset_height, result_index, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -3888,7 +3888,7 @@ function UnitNetworkHandler:from_server_damage_melee(subject_unit, attacker_unit
 
 
 end
-function UnitNetworkHandler:from_server_damage_incapacitated(subject_unit, sender)
+UnitNetworkHandler.from_server_damage_incapacitated = function (self, subject_unit, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -3912,7 +3912,7 @@ function UnitNetworkHandler:from_server_damage_incapacitated(subject_unit, sende
 
 
 end
-function UnitNetworkHandler:from_server_damage_bleeding(subject_unit)
+UnitNetworkHandler.from_server_damage_bleeding = function (self, subject_unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -3936,7 +3936,7 @@ function UnitNetworkHandler:from_server_damage_bleeding(subject_unit)
 
 
 end
-function UnitNetworkHandler:from_server_damage_tase(subject_unit)
+UnitNetworkHandler.from_server_damage_tase = function (self, subject_unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -3960,7 +3960,7 @@ function UnitNetworkHandler:from_server_damage_tase(subject_unit)
 
 
 end
-function UnitNetworkHandler:from_server_unit_recovered(subject_unit)
+UnitNetworkHandler.from_server_unit_recovered = function (self, subject_unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -3984,7 +3984,7 @@ function UnitNetworkHandler:from_server_unit_recovered(subject_unit)
 
 
 end
-function UnitNetworkHandler:shot_blank(shooting_unit, impact, sender)
+UnitNetworkHandler.shot_blank = function (self, shooting_unit, impact, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -4008,7 +4008,7 @@ function UnitNetworkHandler:shot_blank(shooting_unit, impact, sender)
 
 
 end
-function UnitNetworkHandler:sync_start_auto_fire_sound(shooting_unit, sender)
+UnitNetworkHandler.sync_start_auto_fire_sound = function (self, shooting_unit, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -4032,7 +4032,7 @@ function UnitNetworkHandler:sync_start_auto_fire_sound(shooting_unit, sender)
 
 
 end
-function UnitNetworkHandler:sync_stop_auto_fire_sound(shooting_unit, sender)
+UnitNetworkHandler.sync_stop_auto_fire_sound = function (self, shooting_unit, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -4056,7 +4056,7 @@ function UnitNetworkHandler:sync_stop_auto_fire_sound(shooting_unit, sender)
 
 
 end
-function UnitNetworkHandler:shot_blank_reliable(shooting_unit, impact, sender)
+UnitNetworkHandler.shot_blank_reliable = function (self, shooting_unit, impact, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -4080,7 +4080,7 @@ function UnitNetworkHandler:shot_blank_reliable(shooting_unit, impact, sender)
 
 
 end
-function UnitNetworkHandler:reload_weapon(unit, sender)
+UnitNetworkHandler.reload_weapon = function (self, unit, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -4104,7 +4104,7 @@ function UnitNetworkHandler:reload_weapon(unit, sender)
 
 
 end
-function UnitNetworkHandler:run_mission_element(mission_id, id, unit, orientation_element_index)
+UnitNetworkHandler.run_mission_element = function (self, mission_id, id, unit, orientation_element_index)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -4168,7 +4168,7 @@ function UnitNetworkHandler:run_mission_element(mission_id, id, unit, orientatio
 
 
 end
-function UnitNetworkHandler:run_mission_element_no_instigator(mission_id, id, orientation_element_index)
+UnitNetworkHandler.run_mission_element_no_instigator = function (self, mission_id, id, orientation_element_index)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -4232,7 +4232,7 @@ function UnitNetworkHandler:run_mission_element_no_instigator(mission_id, id, or
 
 
 end
-function UnitNetworkHandler:sync_client_hud_timer_command(mission_id, id, orientation_element_index, command, command_value)
+UnitNetworkHandler.sync_client_hud_timer_command = function (self, mission_id, id, orientation_element_index, command, command_value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -4246,7 +4246,7 @@ function UnitNetworkHandler:sync_client_hud_timer_command(mission_id, id, orient
 
 
 end
-function UnitNetworkHandler:to_server_mission_element_trigger(mission_id, id, unit)
+UnitNetworkHandler.to_server_mission_element_trigger = function (self, mission_id, id, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -4281,7 +4281,7 @@ function UnitNetworkHandler:to_server_mission_element_trigger(mission_id, id, un
 
 
 end
-function UnitNetworkHandler:to_server_area_event(event_id, mission_id, id, unit)
+UnitNetworkHandler.to_server_area_event = function (self, event_id, mission_id, id, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -4316,7 +4316,7 @@ function UnitNetworkHandler:to_server_area_event(event_id, mission_id, id, unit)
 
 
 end
-function UnitNetworkHandler:to_server_access_camera_trigger(mission_id, id, trigger, instigator)
+UnitNetworkHandler.to_server_access_camera_trigger = function (self, mission_id, id, trigger, instigator)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -4351,7 +4351,7 @@ function UnitNetworkHandler:to_server_access_camera_trigger(mission_id, id, trig
 
 
 end
-function UnitNetworkHandler:sync_body_damage_bullet(body, attacker, normal_yaw, normal_pitch, position, direction_yaw, direction_pitch, damage, sender)
+UnitNetworkHandler.sync_body_damage_bullet = function (self, body, attacker, normal_yaw, normal_pitch, position, direction_yaw, direction_pitch, damage, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -4503,7 +4503,7 @@ function UnitNetworkHandler:sync_body_damage_bullet(body, attacker, normal_yaw, 
 
 
 end
-function UnitNetworkHandler:sync_body_damage_lock(body, damage, sender)
+UnitNetworkHandler.sync_body_damage_lock = function (self, body, damage, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -4629,7 +4629,7 @@ function UnitNetworkHandler:sync_body_damage_lock(body, damage, sender)
 
 
 end
-function UnitNetworkHandler:sync_body_damage_explosion(body, attacker, normal, position, direction, damage, armor_piercing, sender)
+UnitNetworkHandler.sync_body_damage_explosion = function (self, body, attacker, normal, position, direction, damage, armor_piercing, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -4760,7 +4760,7 @@ function UnitNetworkHandler:sync_body_damage_explosion(body, attacker, normal, p
 
 
 end
-function UnitNetworkHandler:sync_body_damage_explosion_no_attacker(body, normal, position, direction, damage, armor_piercing, sender)
+UnitNetworkHandler.sync_body_damage_explosion_no_attacker = function (self, body, normal, position, direction, damage, armor_piercing, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -4774,7 +4774,7 @@ function UnitNetworkHandler:sync_body_damage_explosion_no_attacker(body, normal,
 
 
 end
-function UnitNetworkHandler:sync_body_damage_fire(body, attacker, normal, position, direction, damage, sender)
+UnitNetworkHandler.sync_body_damage_fire = function (self, body, attacker, normal, position, direction, damage, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -4905,7 +4905,7 @@ function UnitNetworkHandler:sync_body_damage_fire(body, attacker, normal, positi
 
 
 end
-function UnitNetworkHandler:sync_body_damage_fire_no_attacker(body, normal, position, direction, damage, sender)
+UnitNetworkHandler.sync_body_damage_fire_no_attacker = function (self, body, normal, position, direction, damage, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -4919,7 +4919,7 @@ function UnitNetworkHandler:sync_body_damage_fire_no_attacker(body, normal, posi
 
 
 end
-function UnitNetworkHandler:sync_body_damage_melee(body, attacker, normal, position, direction, damage, sender)
+UnitNetworkHandler.sync_body_damage_melee = function (self, body, attacker, normal, position, direction, damage, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -5045,7 +5045,7 @@ function UnitNetworkHandler:sync_body_damage_melee(body, attacker, normal, posit
 
 
 end
-function UnitNetworkHandler:sync_interacted(unit, unit_id, tweak_setting, status, sender)
+UnitNetworkHandler.sync_interacted = function (self, unit, unit_id, tweak_setting, status, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -5167,7 +5167,7 @@ function UnitNetworkHandler:sync_interacted(unit, unit_id, tweak_setting, status
 
 
 end
-function UnitNetworkHandler:sync_multiple_equipment_bag_interacted(unit, amount_wanted, sender)
+UnitNetworkHandler.sync_multiple_equipment_bag_interacted = function (self, unit, amount_wanted, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -5264,7 +5264,7 @@ function UnitNetworkHandler:sync_multiple_equipment_bag_interacted(unit, amount_
 
 
 end
-function UnitNetworkHandler:sync_interaction_info_id(unit, info_id, sender)
+UnitNetworkHandler.sync_interaction_info_id = function (self, unit, info_id, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -5352,7 +5352,7 @@ function UnitNetworkHandler:sync_interaction_info_id(unit, info_id, sender)
 
 
 end
-function UnitNetworkHandler:sync_interacted_by_id(unit_id, tweak_setting, sender)
+UnitNetworkHandler.sync_interacted_by_id = function (self, unit_id, tweak_setting, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -5424,7 +5424,7 @@ function UnitNetworkHandler:sync_interacted_by_id(unit_id, tweak_setting, sender
 
 
 end
-function UnitNetworkHandler:sync_interaction_reply(status)
+UnitNetworkHandler.sync_interaction_reply = function (self, status)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -5480,7 +5480,7 @@ function UnitNetworkHandler:sync_interaction_reply(status)
 
 
 end
-function UnitNetworkHandler:interaction_set_active(unit, u_id, active, tweak_data, flash, sender)
+UnitNetworkHandler.interaction_set_active = function (self, unit, u_id, active, tweak_data, flash, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -5574,7 +5574,7 @@ function UnitNetworkHandler:interaction_set_active(unit, u_id, active, tweak_dat
 
 
 end
-function UnitNetworkHandler:sync_teammate_start_progress(timer, interact_unit, sender)
+UnitNetworkHandler.sync_teammate_start_progress = function (self, timer, interact_unit, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -5621,7 +5621,7 @@ function UnitNetworkHandler:sync_teammate_start_progress(timer, interact_unit, s
 
 
 end
-function UnitNetworkHandler:sync_teammate_cancel_progress(sender)
+UnitNetworkHandler.sync_teammate_cancel_progress = function (self, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -5661,7 +5661,7 @@ function UnitNetworkHandler:sync_teammate_cancel_progress(sender)
 
 
 end
-function UnitNetworkHandler:sync_teammate_complete_progress(sender)
+UnitNetworkHandler.sync_teammate_complete_progress = function (self, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -5701,7 +5701,7 @@ function UnitNetworkHandler:sync_teammate_complete_progress(sender)
 
 
 end
-function UnitNetworkHandler:action_aim_state(cop)
+UnitNetworkHandler.action_aim_state = function (self, cop)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -5730,7 +5730,7 @@ function UnitNetworkHandler:action_aim_state(cop)
 
 
 end
-function UnitNetworkHandler:action_aim_end(cop)
+UnitNetworkHandler.action_aim_end = function (self, cop)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -5754,7 +5754,7 @@ function UnitNetworkHandler:action_aim_end(cop)
 
 
 end
-function UnitNetworkHandler:action_hurt_end(unit)
+UnitNetworkHandler.action_hurt_end = function (self, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -5778,7 +5778,7 @@ function UnitNetworkHandler:action_hurt_end(unit)
 
 
 end
-function UnitNetworkHandler:set_attention(unit, target_unit, reaction, sender)
+UnitNetworkHandler.set_attention = function (self, unit, target_unit, reaction, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -5949,7 +5949,7 @@ function UnitNetworkHandler:set_attention(unit, target_unit, reaction, sender)
 
 
 end
-function UnitNetworkHandler:cop_set_attention_pos(unit, pos)
+UnitNetworkHandler.cop_set_attention_pos = function (self, unit, pos)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -5976,7 +5976,7 @@ function UnitNetworkHandler:cop_set_attention_pos(unit, pos)
 
 
 end
-function UnitNetworkHandler:set_allow_fire(unit, state)
+UnitNetworkHandler.set_allow_fire = function (self, unit, state)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -6000,7 +6000,7 @@ function UnitNetworkHandler:set_allow_fire(unit, state)
 
 
 end
-function UnitNetworkHandler:set_stance(unit, stance_code, instant, execute_queued, sender)
+UnitNetworkHandler.set_stance = function (self, unit, stance_code, instant, execute_queued, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -6024,7 +6024,7 @@ function UnitNetworkHandler:set_stance(unit, stance_code, instant, execute_queue
 
 
 end
-function UnitNetworkHandler:set_pose(unit, pose_code, sender)
+UnitNetworkHandler.set_pose = function (self, unit, pose_code, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -6048,7 +6048,7 @@ function UnitNetworkHandler:set_pose(unit, pose_code, sender)
 
 
 end
-function UnitNetworkHandler:long_dis_interaction(target_unit, amount, aggressor_unit)
+UnitNetworkHandler.long_dis_interaction = function (self, target_unit, amount, aggressor_unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -6299,7 +6299,7 @@ function UnitNetworkHandler:long_dis_interaction(target_unit, amount, aggressor_
 
 
 end
-function UnitNetworkHandler:alarm_pager_interaction(u_id, tweak_table, status, sender)
+UnitNetworkHandler.alarm_pager_interaction = function (self, u_id, tweak_table, status, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -6438,7 +6438,7 @@ function UnitNetworkHandler:alarm_pager_interaction(u_id, tweak_table, status, s
 
 
 end
-function UnitNetworkHandler:remove_corpse_by_id(u_id, carry_bodybag, peer_id, sender)
+UnitNetworkHandler.remove_corpse_by_id = function (self, u_id, carry_bodybag, peer_id, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -6473,7 +6473,7 @@ function UnitNetworkHandler:remove_corpse_by_id(u_id, carry_bodybag, peer_id, se
 
 
 end
-function UnitNetworkHandler:unit_tied(unit, aggressor)
+UnitNetworkHandler.unit_tied = function (self, unit, aggressor)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -6497,7 +6497,7 @@ function UnitNetworkHandler:unit_tied(unit, aggressor)
 
 
 end
-function UnitNetworkHandler:unit_traded(unit, trader)
+UnitNetworkHandler.unit_traded = function (self, unit, trader)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -6521,7 +6521,7 @@ function UnitNetworkHandler:unit_traded(unit, trader)
 
 
 end
-function UnitNetworkHandler:hostage_trade(unit, enable, trade_success)
+UnitNetworkHandler.hostage_trade = function (self, unit, enable, trade_success)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -6544,7 +6544,7 @@ function UnitNetworkHandler:hostage_trade(unit, enable, trade_success)
 
 
 end
-function UnitNetworkHandler:set_unit_invulnerable(unit, enable)
+UnitNetworkHandler.set_unit_invulnerable = function (self, unit, enable)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -6568,7 +6568,7 @@ function UnitNetworkHandler:set_unit_invulnerable(unit, enable)
 
 
 end
-function UnitNetworkHandler:set_trade_countdown(enable)
+UnitNetworkHandler.set_trade_countdown = function (self, enable)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -6603,7 +6603,7 @@ function UnitNetworkHandler:set_trade_countdown(enable)
 
 
 end
-function UnitNetworkHandler:set_trade_death(criminal_name, respawn_penalty, hostages_killed)
+UnitNetworkHandler.set_trade_death = function (self, criminal_name, respawn_penalty, hostages_killed)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -6638,7 +6638,7 @@ function UnitNetworkHandler:set_trade_death(criminal_name, respawn_penalty, host
 
 
 end
-function UnitNetworkHandler:set_trade_spawn(criminal_name)
+UnitNetworkHandler.set_trade_spawn = function (self, criminal_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -6673,7 +6673,7 @@ function UnitNetworkHandler:set_trade_spawn(criminal_name)
 
 
 end
-function UnitNetworkHandler:set_trade_replace(replace_ai, criminal_name1, criminal_name2, respawn_penalty)
+UnitNetworkHandler.set_trade_replace = function (self, replace_ai, criminal_name1, criminal_name2, respawn_penalty)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -6708,7 +6708,7 @@ function UnitNetworkHandler:set_trade_replace(replace_ai, criminal_name1, crimin
 
 
 end
-function UnitNetworkHandler:action_idle_start(unit, body_part, sender)
+UnitNetworkHandler.action_idle_start = function (self, unit, body_part, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -6735,7 +6735,7 @@ function UnitNetworkHandler:action_idle_start(unit, body_part, sender)
 
 
 end
-function UnitNetworkHandler:action_act_start(unit, act_index, blocks_hurt, clamp_to_graph, needs_full_blend)
+UnitNetworkHandler.action_act_start = function (self, unit, act_index, blocks_hurt, clamp_to_graph, needs_full_blend)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -6747,7 +6747,7 @@ function UnitNetworkHandler:action_act_start(unit, act_index, blocks_hurt, clamp
 
 
 end
-function UnitNetworkHandler:action_act_start_align(unit, act_index, blocks_hurt, clamp_to_graph, needs_full_blend, start_yaw, start_pos)
+UnitNetworkHandler.action_act_start_align = function (self, unit, act_index, blocks_hurt, clamp_to_graph, needs_full_blend, start_yaw, start_pos)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -6793,7 +6793,7 @@ function UnitNetworkHandler:action_act_start_align(unit, act_index, blocks_hurt,
 
 
 end
-function UnitNetworkHandler:action_act_end(unit)
+UnitNetworkHandler.action_act_end = function (self, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -6817,7 +6817,7 @@ function UnitNetworkHandler:action_act_end(unit)
 
 
 end
-function UnitNetworkHandler:action_dodge_start(unit, body_part, variation, side, rotation, speed, shoot_acc)
+UnitNetworkHandler.action_dodge_start = function (self, unit, body_part, variation, side, rotation, speed, shoot_acc)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -6841,7 +6841,7 @@ function UnitNetworkHandler:action_dodge_start(unit, body_part, variation, side,
 
 
 end
-function UnitNetworkHandler:action_dodge_end(unit)
+UnitNetworkHandler.action_dodge_end = function (self, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -6865,7 +6865,7 @@ function UnitNetworkHandler:action_dodge_end(unit)
 
 
 end
-function UnitNetworkHandler:action_tase_event(taser_unit, event_id, sender)
+UnitNetworkHandler.action_tase_event = function (self, taser_unit, event_id, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -6985,7 +6985,7 @@ function UnitNetworkHandler:action_tase_event(taser_unit, event_id, sender)
 
 
 end
-function UnitNetworkHandler:alert(alerted_unit, aggressor)
+UnitNetworkHandler.alert = function (self, alerted_unit, aggressor)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -7070,7 +7070,7 @@ function UnitNetworkHandler:alert(alerted_unit, aggressor)
 
 
 end
-function UnitNetworkHandler:revive_player(revive_health_level, revive_damage_reduction, sender)
+UnitNetworkHandler.revive_player = function (self, revive_health_level, revive_damage_reduction, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -7183,7 +7183,7 @@ function UnitNetworkHandler:revive_player(revive_health_level, revive_damage_red
 
 
 end
-function UnitNetworkHandler:pause_downed_teammate_timer(peer_id, pause, sender)
+UnitNetworkHandler.pause_downed_teammate_timer = function (self, peer_id, pause, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -7239,7 +7239,7 @@ function UnitNetworkHandler:pause_downed_teammate_timer(peer_id, pause, sender)
 
 
 end
-function UnitNetworkHandler:start_revive_player(timer, sender)
+UnitNetworkHandler.start_revive_player = function (self, timer, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -7297,7 +7297,7 @@ function UnitNetworkHandler:start_revive_player(timer, sender)
 
 
 end
-function UnitNetworkHandler:interupt_revive_player(sender)
+UnitNetworkHandler.interupt_revive_player = function (self, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -7355,7 +7355,7 @@ function UnitNetworkHandler:interupt_revive_player(sender)
 
 
 end
-function UnitNetworkHandler:start_free_player(sender)
+UnitNetworkHandler.start_free_player = function (self, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -7413,7 +7413,7 @@ function UnitNetworkHandler:start_free_player(sender)
 
 
 end
-function UnitNetworkHandler:interupt_free_player(sender)
+UnitNetworkHandler.interupt_free_player = function (self, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -7471,7 +7471,7 @@ function UnitNetworkHandler:interupt_free_player(sender)
 
 
 end
-function UnitNetworkHandler:pause_arrested_timer(unit, sender)
+UnitNetworkHandler.pause_arrested_timer = function (self, unit, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -7497,7 +7497,7 @@ function UnitNetworkHandler:pause_arrested_timer(unit, sender)
 
 
 end
-function UnitNetworkHandler:unpause_arrested_timer(unit, sender)
+UnitNetworkHandler.unpause_arrested_timer = function (self, unit, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -7523,7 +7523,7 @@ function UnitNetworkHandler:unpause_arrested_timer(unit, sender)
 
 
 end
-function UnitNetworkHandler:revive_unit(unit, reviving_unit)
+UnitNetworkHandler.revive_unit = function (self, unit, reviving_unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -7547,7 +7547,7 @@ function UnitNetworkHandler:revive_unit(unit, reviving_unit)
 
 
 end
-function UnitNetworkHandler:pause_bleed_out(unit, sender)
+UnitNetworkHandler.pause_bleed_out = function (self, unit, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -7573,7 +7573,7 @@ function UnitNetworkHandler:pause_bleed_out(unit, sender)
 
 
 end
-function UnitNetworkHandler:unpause_bleed_out(unit, sender)
+UnitNetworkHandler.unpause_bleed_out = function (self, unit, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -7599,7 +7599,7 @@ function UnitNetworkHandler:unpause_bleed_out(unit, sender)
 
 
 end
-function UnitNetworkHandler:interaction_set_waypoint_paused(unit, paused, sender)
+UnitNetworkHandler.interaction_set_waypoint_paused = function (self, unit, paused, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -7665,7 +7665,7 @@ function UnitNetworkHandler:interaction_set_waypoint_paused(unit, paused, sender
 
 
 end
-function UnitNetworkHandler:from_server_ecm_jammer_place_result(unit, rpc)
+UnitNetworkHandler.from_server_ecm_jammer_place_result = function (self, unit, rpc)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -7796,7 +7796,7 @@ function UnitNetworkHandler:from_server_ecm_jammer_place_result(unit, rpc)
 
 
 end
-function UnitNetworkHandler:from_server_ecm_jammer_rejected(rpc)
+UnitNetworkHandler.from_server_ecm_jammer_rejected = function (self, rpc)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -7852,7 +7852,7 @@ function UnitNetworkHandler:from_server_ecm_jammer_rejected(rpc)
 
 
 end
-function UnitNetworkHandler:sync_unit_event_id_16(unit, ext_name, event_id, rpc)
+UnitNetworkHandler.sync_unit_event_id_16 = function (self, unit, ext_name, event_id, rpc)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -7902,7 +7902,7 @@ function UnitNetworkHandler:sync_unit_event_id_16(unit, ext_name, event_id, rpc)
 
 
 end
-function UnitNetworkHandler:sync_tank_cannon_explosion(unit, position, range, damage, player_damage, curve_pow, rpc)
+UnitNetworkHandler.sync_tank_cannon_explosion = function (self, unit, position, range, damage, player_damage, curve_pow, rpc)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -7927,7 +7927,7 @@ function UnitNetworkHandler:sync_tank_cannon_explosion(unit, position, range, da
 
 
 end
-function UnitNetworkHandler:sync_ai_tank_singleshot_blank(unit, position, normal, rpc)
+UnitNetworkHandler.sync_ai_tank_singleshot_blank = function (self, unit, position, normal, rpc)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -7952,7 +7952,7 @@ function UnitNetworkHandler:sync_ai_tank_singleshot_blank(unit, position, normal
 
 
 end
-function UnitNetworkHandler:sync_ai_tank_grenade_explosion(unit, position, range, damage, player_damage, curve_pow, rpc)
+UnitNetworkHandler.sync_ai_tank_grenade_explosion = function (self, unit, position, range, damage, player_damage, curve_pow, rpc)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -7977,7 +7977,7 @@ function UnitNetworkHandler:sync_ai_tank_grenade_explosion(unit, position, range
 
 
 end
-function UnitNetworkHandler:m79grenade_explode_on_client(position, normal, user, damage, range, curve_pow, sender)
+UnitNetworkHandler.m79grenade_explode_on_client = function (self, position, normal, user, damage, range, curve_pow, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -8000,7 +8000,7 @@ function UnitNetworkHandler:m79grenade_explode_on_client(position, normal, user,
 
 
 end
-function UnitNetworkHandler:element_explode_on_client(position, normal, damage, range, curve_pow, sender)
+UnitNetworkHandler.element_explode_on_client = function (self, position, normal, damage, range, curve_pow, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -8023,7 +8023,7 @@ function UnitNetworkHandler:element_explode_on_client(position, normal, damage, 
 
 
 end
-function UnitNetworkHandler:place_sentry_gun(pos, rot, ammo_multiplier, armor_multiplier, damage_multiplier, equipment_selection_index, user_unit, rpc)
+UnitNetworkHandler.place_sentry_gun = function (self, pos, rot, ammo_multiplier, armor_multiplier, damage_multiplier, equipment_selection_index, user_unit, rpc)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -8181,7 +8181,7 @@ function UnitNetworkHandler:place_sentry_gun(pos, rot, ammo_multiplier, armor_mu
 
 
 end
-function UnitNetworkHandler:from_server_sentry_gun_place_result(owner_peer_id, equipment_selection_index, sentry_gun_unit, rot_speed_mul, spread_mul, shield, rpc)
+UnitNetworkHandler.from_server_sentry_gun_place_result = function (self, owner_peer_id, equipment_selection_index, sentry_gun_unit, rot_speed_mul, spread_mul, shield, rpc)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -8284,7 +8284,7 @@ function UnitNetworkHandler:from_server_sentry_gun_place_result(owner_peer_id, e
 
 
 end
-function UnitNetworkHandler:place_ammo_bag(pos, rot, ammo_upgrade_lvl, rpc)
+UnitNetworkHandler.place_ammo_bag = function (self, pos, rot, ammo_upgrade_lvl, rpc)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -8312,7 +8312,7 @@ function UnitNetworkHandler:place_ammo_bag(pos, rot, ammo_upgrade_lvl, rpc)
 
 
 end
-function UnitNetworkHandler:special_interaction_done(unit)
+UnitNetworkHandler.special_interaction_done = function (self, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -8369,7 +8369,7 @@ function UnitNetworkHandler:special_interaction_done(unit)
 
 
 end
-function UnitNetworkHandler:greed_cache_item_interacted_with(unit, amount)
+UnitNetworkHandler.greed_cache_item_interacted_with = function (self, unit, amount)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -8422,7 +8422,7 @@ function UnitNetworkHandler:greed_cache_item_interacted_with(unit, amount)
 
 
 end
-function UnitNetworkHandler:greed_item_picked_up(unit, amount)
+UnitNetworkHandler.greed_item_picked_up = function (self, unit, amount)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -8475,7 +8475,7 @@ function UnitNetworkHandler:greed_item_picked_up(unit, amount)
 
 
 end
-function UnitNetworkHandler:sentrygun_ammo(unit, ammo_ratio)
+UnitNetworkHandler.sentrygun_ammo = function (self, unit, ammo_ratio)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -8511,7 +8511,7 @@ function UnitNetworkHandler:sentrygun_ammo(unit, ammo_ratio)
 
 
 end
-function UnitNetworkHandler:sentrygun_health(unit, health_ratio)
+UnitNetworkHandler.sentrygun_health = function (self, unit, health_ratio)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -8547,7 +8547,7 @@ function UnitNetworkHandler:sentrygun_health(unit, health_ratio)
 
 
 end
-function UnitNetworkHandler:turret_idle_state(unit, state)
+UnitNetworkHandler.turret_idle_state = function (self, unit, state)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -8583,7 +8583,7 @@ function UnitNetworkHandler:turret_idle_state(unit, state)
 
 
 end
-function UnitNetworkHandler:turret_update_shield_smoke_level(unit, ratio, up)
+UnitNetworkHandler.turret_update_shield_smoke_level = function (self, unit, ratio, up)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -8619,7 +8619,7 @@ function UnitNetworkHandler:turret_update_shield_smoke_level(unit, ratio, up)
 
 
 end
-function UnitNetworkHandler:turret_repair(unit)
+UnitNetworkHandler.turret_repair = function (self, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -8655,7 +8655,7 @@ function UnitNetworkHandler:turret_repair(unit)
 
 
 end
-function UnitNetworkHandler:turret_complete_repairing(unit)
+UnitNetworkHandler.turret_complete_repairing = function (self, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -8691,7 +8691,7 @@ function UnitNetworkHandler:turret_complete_repairing(unit)
 
 
 end
-function UnitNetworkHandler:turret_repair_shield(unit)
+UnitNetworkHandler.turret_repair_shield = function (self, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -8727,7 +8727,7 @@ function UnitNetworkHandler:turret_repair_shield(unit)
 
 
 end
-function UnitNetworkHandler:sync_unit_module(parent_unit, module_unit, align_obj_name, module_id, parent_extension_name)
+UnitNetworkHandler.sync_unit_module = function (self, parent_unit, module_unit, align_obj_name, module_id, parent_extension_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -8772,7 +8772,7 @@ function UnitNetworkHandler:sync_unit_module(parent_unit, module_unit, align_obj
 
 
 end
-function UnitNetworkHandler:run_unit_module_function(parent_unit, module_id, parent_extension_name, module_extension_name, func_name, params)
+UnitNetworkHandler.run_unit_module_function = function (self, parent_unit, module_id, parent_extension_name, module_extension_name, func_name, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -8831,7 +8831,7 @@ function UnitNetworkHandler:run_unit_module_function(parent_unit, module_id, par
 
 
 end
-function UnitNetworkHandler:sync_equipment_setup(unit, upgrade_lvl, peer_id)
+UnitNetworkHandler.sync_equipment_setup = function (self, unit, upgrade_lvl, peer_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -8855,7 +8855,7 @@ function UnitNetworkHandler:sync_equipment_setup(unit, upgrade_lvl, peer_id)
 
 
 end
-function UnitNetworkHandler:sync_ammo_bag_ammo_taken(unit, amount, sender)
+UnitNetworkHandler.sync_ammo_bag_ammo_taken = function (self, unit, amount, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -8879,7 +8879,7 @@ function UnitNetworkHandler:sync_ammo_bag_ammo_taken(unit, amount, sender)
 
 
 end
-function UnitNetworkHandler:sync_grenade_crate_grenade_taken(unit, amount, sender)
+UnitNetworkHandler.sync_grenade_crate_grenade_taken = function (self, unit, amount, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -8903,7 +8903,7 @@ function UnitNetworkHandler:sync_grenade_crate_grenade_taken(unit, amount, sende
 
 
 end
-function UnitNetworkHandler:place_deployable_bag(class_name, pos, rot, upgrade_lvl, rpc)
+UnitNetworkHandler.place_deployable_bag = function (self, class_name, pos, rot, upgrade_lvl, rpc)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -8987,7 +8987,7 @@ function UnitNetworkHandler:place_deployable_bag(class_name, pos, rot, upgrade_l
 
 
 end
-function UnitNetworkHandler:used_deployable(rpc)
+UnitNetworkHandler.used_deployable = function (self, rpc)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -9023,7 +9023,7 @@ function UnitNetworkHandler:used_deployable(rpc)
 
 
 end
-function UnitNetworkHandler:sync_doctor_bag_taken(unit, amount, sender)
+UnitNetworkHandler.sync_doctor_bag_taken = function (self, unit, amount, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -9047,7 +9047,7 @@ function UnitNetworkHandler:sync_doctor_bag_taken(unit, amount, sender)
 
 
 end
-function UnitNetworkHandler:sync_money_wrap_money_taken(unit, sender)
+UnitNetworkHandler.sync_money_wrap_money_taken = function (self, unit, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -9071,7 +9071,7 @@ function UnitNetworkHandler:sync_money_wrap_money_taken(unit, sender)
 
 
 end
-function UnitNetworkHandler:sync_pickup(unit, sender)
+UnitNetworkHandler.sync_pickup = function (self, unit, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -9135,7 +9135,7 @@ function UnitNetworkHandler:sync_pickup(unit, sender)
 
 
 end
-function UnitNetworkHandler:unit_sound_play(unit, event_id, source, sender)
+UnitNetworkHandler.unit_sound_play = function (self, unit, event_id, source, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -9179,7 +9179,7 @@ function UnitNetworkHandler:unit_sound_play(unit, event_id, source, sender)
 
 
 end
-function UnitNetworkHandler:corpse_sound_play(unit_id, event_id, source)
+UnitNetworkHandler.corpse_sound_play = function (self, unit_id, event_id, source)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -9282,7 +9282,7 @@ function UnitNetworkHandler:corpse_sound_play(unit_id, event_id, source)
 
 
 end
-function UnitNetworkHandler:say(unit, event_id, sender)
+UnitNetworkHandler.say = function (self, unit, event_id, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -9336,7 +9336,7 @@ function UnitNetworkHandler:say(unit, event_id, sender)
 
 
 end
-function UnitNetworkHandler:sync_remove_one_teamAI(name, replace_with_player)
+UnitNetworkHandler.sync_remove_one_teamAI = function (self, name, replace_with_player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -9372,7 +9372,7 @@ function UnitNetworkHandler:sync_remove_one_teamAI(name, replace_with_player)
 
 
 end
-function UnitNetworkHandler:sync_smoke_grenade(detonate_pos, shooter_pos, duration, flashbang)
+UnitNetworkHandler.sync_smoke_grenade = function (self, detonate_pos, shooter_pos, duration, flashbang)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -9408,7 +9408,7 @@ function UnitNetworkHandler:sync_smoke_grenade(detonate_pos, shooter_pos, durati
 
 
 end
-function UnitNetworkHandler:sync_smoke_grenade_kill()
+UnitNetworkHandler.sync_smoke_grenade_kill = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -9444,7 +9444,7 @@ function UnitNetworkHandler:sync_smoke_grenade_kill()
 
 
 end
-function UnitNetworkHandler:sync_cs_grenade(detonate_pos, shooter_pos, duration)
+UnitNetworkHandler.sync_cs_grenade = function (self, detonate_pos, shooter_pos, duration)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -9480,7 +9480,7 @@ function UnitNetworkHandler:sync_cs_grenade(detonate_pos, shooter_pos, duration)
 
 
 end
-function UnitNetworkHandler:sync_cs_grenade_kill()
+UnitNetworkHandler.sync_cs_grenade_kill = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -9516,7 +9516,7 @@ function UnitNetworkHandler:sync_cs_grenade_kill()
 
 
 end
-function UnitNetworkHandler:sync_hostage_headcount(value)
+UnitNetworkHandler.sync_hostage_headcount = function (self, value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -9552,7 +9552,7 @@ function UnitNetworkHandler:sync_hostage_headcount(value)
 
 
 end
-function UnitNetworkHandler:play_distance_interact_redirect(unit, redirect, sender)
+UnitNetworkHandler.play_distance_interact_redirect = function (self, unit, redirect, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -9576,7 +9576,7 @@ function UnitNetworkHandler:play_distance_interact_redirect(unit, redirect, send
 
 
 end
-function UnitNetworkHandler:start_timer_gui(unit, timer, sender)
+UnitNetworkHandler.start_timer_gui = function (self, unit, timer, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -9600,7 +9600,7 @@ function UnitNetworkHandler:start_timer_gui(unit, timer, sender)
 
 
 end
-function UnitNetworkHandler:give_equipment(equipment, amount, transfer, sender)
+UnitNetworkHandler.give_equipment = function (self, equipment, amount, transfer, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -9627,7 +9627,7 @@ function UnitNetworkHandler:give_equipment(equipment, amount, transfer, sender)
 
 
 end
-function UnitNetworkHandler:killzone_set_unit(type)
+UnitNetworkHandler.killzone_set_unit = function (self, type)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -9663,7 +9663,7 @@ function UnitNetworkHandler:killzone_set_unit(type)
 
 
 end
-function UnitNetworkHandler:dangerzone_set_level(level)
+UnitNetworkHandler.dangerzone_set_level = function (self, level)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -9700,7 +9700,7 @@ function UnitNetworkHandler:dangerzone_set_level(level)
 
 
 end
-function UnitNetworkHandler:set_player_level(unit, level, unit_id_str)
+UnitNetworkHandler.set_player_level = function (self, unit, level, unit_id_str)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -9797,7 +9797,7 @@ function UnitNetworkHandler:set_player_level(unit, level, unit_id_str)
 
 
 end
-function UnitNetworkHandler:set_player_nationality(unit, nationality, unit_id_str)
+UnitNetworkHandler.set_player_nationality = function (self, unit, nationality, unit_id_str)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -9857,7 +9857,7 @@ function UnitNetworkHandler:set_player_nationality(unit, nationality, unit_id_st
 
 
 end
-function UnitNetworkHandler:set_player_class(unit, class, unit_id_str)
+UnitNetworkHandler.set_player_class = function (self, unit, class, unit_id_str)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -9917,7 +9917,7 @@ function UnitNetworkHandler:set_player_class(unit, class, unit_id_str)
 
 
 end
-function UnitNetworkHandler:set_active_warcry(unit, warcry_name, fill_percentage, unit_id_str)
+UnitNetworkHandler.set_active_warcry = function (self, unit, warcry_name, fill_percentage, unit_id_str)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -10081,7 +10081,7 @@ function UnitNetworkHandler:set_active_warcry(unit, warcry_name, fill_percentage
 
 
 end
-function UnitNetworkHandler:sync_player_movement_state(unit, state, down_time, unit_id_str)
+UnitNetworkHandler.sync_player_movement_state = function (self, unit, state, down_time, unit_id_str)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -10173,7 +10173,7 @@ function UnitNetworkHandler:sync_player_movement_state(unit, state, down_time, u
 
 
 end
-function UnitNetworkHandler:sync_waiting_for_player_start(variant, soundtrack)
+UnitNetworkHandler.sync_waiting_for_player_start = function (self, variant, soundtrack)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -10209,7 +10209,7 @@ function UnitNetworkHandler:sync_waiting_for_player_start(variant, soundtrack)
 
 
 end
-function UnitNetworkHandler:sync_waiting_for_player_skip()
+UnitNetworkHandler.sync_waiting_for_player_skip = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -10245,7 +10245,7 @@ function UnitNetworkHandler:sync_waiting_for_player_skip()
 
 
 end
-function UnitNetworkHandler:criminal_hurt(criminal_unit, attacker_unit, damage_ratio, sender)
+UnitNetworkHandler.criminal_hurt = function (self, criminal_unit, attacker_unit, damage_ratio, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -10278,7 +10278,7 @@ function UnitNetworkHandler:criminal_hurt(criminal_unit, attacker_unit, damage_r
 
 
 end
-function UnitNetworkHandler:arrested(unit)
+UnitNetworkHandler.arrested = function (self, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -10314,7 +10314,7 @@ function UnitNetworkHandler:arrested(unit)
 
 
 end
-function UnitNetworkHandler:suspect_uncovered(enemy_unit, sender)
+UnitNetworkHandler.suspect_uncovered = function (self, enemy_unit, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -10393,7 +10393,7 @@ function UnitNetworkHandler:suspect_uncovered(enemy_unit, sender)
 
 
 end
-function UnitNetworkHandler:clear_synced_team_upgrades(sender)
+UnitNetworkHandler.clear_synced_team_upgrades = function (self, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -10430,7 +10430,7 @@ function UnitNetworkHandler:clear_synced_team_upgrades(sender)
 
 
 end
-function UnitNetworkHandler:add_synced_team_upgrade(category, upgrade, level, sender)
+UnitNetworkHandler.add_synced_team_upgrade = function (self, category, upgrade, level, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -10467,7 +10467,7 @@ function UnitNetworkHandler:add_synced_team_upgrade(category, upgrade, level, se
 
 
 end
-function UnitNetworkHandler:sync_deployable_equipment(deployable, amount, sender)
+UnitNetworkHandler.sync_deployable_equipment = function (self, deployable, amount, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -10503,7 +10503,7 @@ function UnitNetworkHandler:sync_deployable_equipment(deployable, amount, sender
 
 
 end
-function UnitNetworkHandler:sync_peer_world_data(world_id, stage_prepare, stage_load, stage_load_finished, sender)
+UnitNetworkHandler.sync_peer_world_data = function (self, world_id, stage_prepare, stage_load, stage_load_finished, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -10566,7 +10566,7 @@ function UnitNetworkHandler:sync_peer_world_data(world_id, stage_prepare, stage_
 
 
 end
-function UnitNetworkHandler:sync_cable_ties(amount, sender)
+UnitNetworkHandler.sync_cable_ties = function (self, amount, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -10603,7 +10603,7 @@ function UnitNetworkHandler:sync_cable_ties(amount, sender)
 
 
 end
-function UnitNetworkHandler:sync_grenades(grenade, amount, sender)
+UnitNetworkHandler.sync_grenades = function (self, grenade, amount, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -10640,7 +10640,7 @@ function UnitNetworkHandler:sync_grenades(grenade, amount, sender)
 
 
 end
-function UnitNetworkHandler:sync_ammo_amount(selection_index, max_clip, current_clip, current_left, max, sender)
+UnitNetworkHandler.sync_ammo_amount = function (self, selection_index, max_clip, current_clip, current_left, max, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -10677,7 +10677,7 @@ function UnitNetworkHandler:sync_ammo_amount(selection_index, max_clip, current_
 
 
 end
-function UnitNetworkHandler:sync_bipod(bipod_pos, body_pos, sender)
+UnitNetworkHandler.sync_bipod = function (self, bipod_pos, body_pos, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -10713,7 +10713,7 @@ function UnitNetworkHandler:sync_bipod(bipod_pos, body_pos, sender)
 
 
 end
-function UnitNetworkHandler:sync_carry(carry_id, multiplier, dye_initiated, has_dye_pack, dye_value_multiplier, sender)
+UnitNetworkHandler.sync_carry = function (self, carry_id, multiplier, dye_initiated, has_dye_pack, dye_value_multiplier, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -10749,7 +10749,7 @@ function UnitNetworkHandler:sync_carry(carry_id, multiplier, dye_initiated, has_
 
 
 end
-function UnitNetworkHandler:sync_remove_carry(sender)
+UnitNetworkHandler.sync_remove_carry = function (self, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -10785,7 +10785,7 @@ function UnitNetworkHandler:sync_remove_carry(sender)
 
 
 end
-function UnitNetworkHandler:server_drop_carry(carry_id, carry_multiplier, dye_initiated, has_dye_pack, dye_value_multiplier, position, rotation, dir, throw_distance_multiplier_upgrade_level, zipline_unit, sender)
+UnitNetworkHandler.server_drop_carry = function (self, carry_id, carry_multiplier, dye_initiated, has_dye_pack, dye_value_multiplier, position, rotation, dir, throw_distance_multiplier_upgrade_level, zipline_unit, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -10821,7 +10821,7 @@ function UnitNetworkHandler:server_drop_carry(carry_id, carry_multiplier, dye_in
 
 
 end
-function UnitNetworkHandler:sync_carry_data(unit, carry_id, carry_multiplier, dye_initiated, has_dye_pack, dye_value_multiplier, position, dir, throw_distance_multiplier_upgrade_level, zipline_unit, peer_id, sender)
+UnitNetworkHandler.sync_carry_data = function (self, unit, carry_id, carry_multiplier, dye_initiated, has_dye_pack, dye_value_multiplier, position, dir, throw_distance_multiplier_upgrade_level, zipline_unit, peer_id, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -10844,7 +10844,7 @@ function UnitNetworkHandler:sync_carry_data(unit, carry_id, carry_multiplier, dy
 
 
 end
-function UnitNetworkHandler:request_throw_projectile(projectile_type, position, dir, cooking_t, sender)
+UnitNetworkHandler.request_throw_projectile = function (self, projectile_type, position, dir, cooking_t, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -10915,7 +10915,7 @@ function UnitNetworkHandler:request_throw_projectile(projectile_type, position, 
 
 
 end
-function UnitNetworkHandler:sync_throw_projectile(unit, pos, dir, projectile_type, peer_id, parent_projectile_id, sender)
+UnitNetworkHandler.sync_throw_projectile = function (self, unit, pos, dir, projectile_type, peer_id, parent_projectile_id, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -11191,7 +11191,7 @@ function UnitNetworkHandler:sync_throw_projectile(unit, pos, dir, projectile_typ
 
 
 end
-function UnitNetworkHandler:sync_detonate_molotov_grenade(unit, ext_name, event_id, normal, rpc)
+UnitNetworkHandler.sync_detonate_molotov_grenade = function (self, unit, ext_name, event_id, normal, rpc)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -11241,7 +11241,7 @@ function UnitNetworkHandler:sync_detonate_molotov_grenade(unit, ext_name, event_
 
 
 end
-function UnitNetworkHandler:sync_fall_position(unit, pos, rot)
+UnitNetworkHandler.sync_fall_position = function (self, unit, pos, rot)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -11296,7 +11296,7 @@ function UnitNetworkHandler:sync_fall_position(unit, pos, rot)
 
 
 end
-function UnitNetworkHandler:sync_add_doted_enemy(enemy_unit, fire_damage_received_time, weapon_unit, dot_length, dot_damage, rpc)
+UnitNetworkHandler.sync_add_doted_enemy = function (self, enemy_unit, fire_damage_received_time, weapon_unit, dot_length, dot_damage, rpc)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-15, warpins: 1 ---
@@ -11311,7 +11311,7 @@ function UnitNetworkHandler:sync_add_doted_enemy(enemy_unit, fire_damage_receive
 
 
 end
-function UnitNetworkHandler:server_secure_loot(carry_id, multiplier_level, sender)
+UnitNetworkHandler.server_secure_loot = function (self, carry_id, multiplier_level, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -11347,7 +11347,7 @@ function UnitNetworkHandler:server_secure_loot(carry_id, multiplier_level, sende
 
 
 end
-function UnitNetworkHandler:sync_secure_loot(carry_id, multiplier_level, silent, sender)
+UnitNetworkHandler.sync_secure_loot = function (self, carry_id, multiplier_level, silent, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -11370,7 +11370,7 @@ function UnitNetworkHandler:sync_secure_loot(carry_id, multiplier_level, silent,
 
 
 end
-function UnitNetworkHandler:sync_small_loot_taken(unit, sender)
+UnitNetworkHandler.sync_small_loot_taken = function (self, unit, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -11394,7 +11394,7 @@ function UnitNetworkHandler:sync_small_loot_taken(unit, sender)
 
 
 end
-function UnitNetworkHandler:sync_heist_time(time, sender)
+UnitNetworkHandler.sync_heist_time = function (self, time, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -11417,7 +11417,7 @@ function UnitNetworkHandler:sync_heist_time(time, sender)
 
 
 end
-function UnitNetworkHandler:set_teammate_hud(unit, percent, id, sender)
+UnitNetworkHandler.set_teammate_hud = function (self, unit, percent, id, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -11640,7 +11640,7 @@ function UnitNetworkHandler:set_teammate_hud(unit, percent, id, sender)
 
 
 end
-function UnitNetworkHandler:set_armor(unit, percent, sender)
+UnitNetworkHandler.set_armor = function (self, unit, percent, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -11701,7 +11701,7 @@ function UnitNetworkHandler:set_armor(unit, percent, sender)
 
 
 end
-function UnitNetworkHandler:set_health(unit, percent, sender)
+UnitNetworkHandler.set_health = function (self, unit, percent, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -11783,7 +11783,7 @@ function UnitNetworkHandler:set_health(unit, percent, sender)
 
 
 end
-function UnitNetworkHandler:sync_equipment_possession(peer_id, equipment, amount, sender)
+UnitNetworkHandler.sync_equipment_possession = function (self, peer_id, equipment, amount, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -11806,7 +11806,7 @@ function UnitNetworkHandler:sync_equipment_possession(peer_id, equipment, amount
 
 
 end
-function UnitNetworkHandler:sync_remove_equipment_possession(peer_id, equipment, sender)
+UnitNetworkHandler.sync_remove_equipment_possession = function (self, peer_id, equipment, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -11856,7 +11856,7 @@ function UnitNetworkHandler:sync_remove_equipment_possession(peer_id, equipment,
 
 
 end
-function UnitNetworkHandler:sync_start_anticipation()
+UnitNetworkHandler.sync_start_anticipation = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -11891,7 +11891,7 @@ function UnitNetworkHandler:sync_start_anticipation()
 
 
 end
-function UnitNetworkHandler:sync_start_anticipation_music()
+UnitNetworkHandler.sync_start_anticipation_music = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -11926,7 +11926,7 @@ function UnitNetworkHandler:sync_start_anticipation_music()
 
 
 end
-function UnitNetworkHandler:sync_start_assault()
+UnitNetworkHandler.sync_start_assault = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -11961,7 +11961,7 @@ function UnitNetworkHandler:sync_start_assault()
 
 
 end
-function UnitNetworkHandler:sync_end_assault(result)
+UnitNetworkHandler.sync_end_assault = function (self, result)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -11996,7 +11996,7 @@ function UnitNetworkHandler:sync_end_assault(result)
 
 
 end
-function UnitNetworkHandler:sync_contour_state(unit, u_id, type, state, multiplier, damage_multiplier, sender)
+UnitNetworkHandler.sync_contour_state = function (self, unit, u_id, type, state, multiplier, damage_multiplier, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -12115,7 +12115,7 @@ function UnitNetworkHandler:sync_contour_state(unit, u_id, type, state, multipli
 
 
 end
-function UnitNetworkHandler:mark_minion(unit, minion_owner_peer_id, convert_enemies_health_multiplier_level, passive_convert_enemies_health_multiplier_level, sender)
+UnitNetworkHandler.mark_minion = function (self, unit, minion_owner_peer_id, convert_enemies_health_multiplier_level, passive_convert_enemies_health_multiplier_level, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -12214,7 +12214,7 @@ function UnitNetworkHandler:mark_minion(unit, minion_owner_peer_id, convert_enem
 
 
 end
-function UnitNetworkHandler:count_down_player_minions()
+UnitNetworkHandler.count_down_player_minions = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -12249,7 +12249,7 @@ function UnitNetworkHandler:count_down_player_minions()
 
 
 end
-function UnitNetworkHandler:sync_teammate_helped_hint(hint, helped_unit, helping_unit, sender)
+UnitNetworkHandler.sync_teammate_helped_hint = function (self, hint, helped_unit, helping_unit, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -12272,7 +12272,7 @@ function UnitNetworkHandler:sync_teammate_helped_hint(hint, helped_unit, helping
 
 
 end
-function UnitNetworkHandler:sync_assault_mode(enabled)
+UnitNetworkHandler.sync_assault_mode = function (self, enabled)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -12308,7 +12308,7 @@ function UnitNetworkHandler:sync_assault_mode(enabled)
 
 
 end
-function UnitNetworkHandler:sync_hostage_killed_warning(warning)
+UnitNetworkHandler.sync_hostage_killed_warning = function (self, warning)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -12344,7 +12344,7 @@ function UnitNetworkHandler:sync_hostage_killed_warning(warning)
 
 
 end
-function UnitNetworkHandler:set_interaction_voice(unit, voice, sender)
+UnitNetworkHandler.set_interaction_voice = function (self, unit, voice, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -12388,7 +12388,7 @@ function UnitNetworkHandler:set_interaction_voice(unit, voice, sender)
 
 
 end
-function UnitNetworkHandler:sync_teammate_comment(message, pos, pos_based, radius, sender)
+UnitNetworkHandler.sync_teammate_comment = function (self, message, pos, pos_based, radius, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -12412,7 +12412,7 @@ function UnitNetworkHandler:sync_teammate_comment(message, pos, pos_based, radiu
 
 
 end
-function UnitNetworkHandler:sync_teammate_comment_instigator(unit, message)
+UnitNetworkHandler.sync_teammate_comment_instigator = function (self, unit, message)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -12436,7 +12436,7 @@ function UnitNetworkHandler:sync_teammate_comment_instigator(unit, message)
 
 
 end
-function UnitNetworkHandler:begin_gameover_fadeout()
+UnitNetworkHandler.begin_gameover_fadeout = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -12472,7 +12472,7 @@ function UnitNetworkHandler:begin_gameover_fadeout()
 
 
 end
-function UnitNetworkHandler:send_statistics(total_kills, total_specials_kills, total_head_shots, accuracy, downs, revives, sender)
+UnitNetworkHandler.send_statistics = function (self, total_kills, total_specials_kills, total_head_shots, accuracy, downs, revives, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -12530,7 +12530,7 @@ function UnitNetworkHandler:send_statistics(total_kills, total_specials_kills, t
 
 
 end
-function UnitNetworkHandler:sync_statistics_result(top_stat_1_id, top_stat_1_peer_id, top_stat_1_peer_name, top_stat_1_score, top_stat_2_id, top_stat_2_peer_id, top_stat_2_peer_name, top_stat_2_score, top_stat_3_id, top_stat_3_peer_id, top_stat_3_peer_name, top_stat_3_score, bottom_stat_1_id, bottom_stat_1_peer_id, bottom_stat_1_peer_name, bottom_stat_1_score, bottom_stat_2_id, bottom_stat_2_peer_id, bottom_stat_2_peer_name, bottom_stat_2_score, bottom_stat_3_id, bottom_stat_3_peer_id, bottom_stat_3_peer_name, bottom_stat_3_score)
+UnitNetworkHandler.sync_statistics_result = function (self, top_stat_1_id, top_stat_1_peer_id, top_stat_1_peer_name, top_stat_1_score, top_stat_2_id, top_stat_2_peer_id, top_stat_2_peer_name, top_stat_2_score, top_stat_3_id, top_stat_3_peer_id, top_stat_3_peer_name, top_stat_3_score, bottom_stat_1_id, bottom_stat_1_peer_id, bottom_stat_1_peer_name, bottom_stat_1_score, bottom_stat_2_id, bottom_stat_2_peer_id, bottom_stat_2_peer_name, bottom_stat_2_score, bottom_stat_3_id, bottom_stat_3_peer_id, bottom_stat_3_peer_name, bottom_stat_3_score)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-43, warpins: 1 ---
@@ -12552,7 +12552,7 @@ function UnitNetworkHandler:sync_statistics_result(top_stat_1_id, top_stat_1_pee
 
 
 end
-function UnitNetworkHandler:statistics_tied(name, sender)
+UnitNetworkHandler.statistics_tied = function (self, name, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -12562,7 +12562,7 @@ function UnitNetworkHandler:statistics_tied(name, sender)
 
 
 end
-function UnitNetworkHandler:bain_comment(bain_line, sender)
+UnitNetworkHandler.bain_comment = function (self, bain_line, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -12626,7 +12626,7 @@ function UnitNetworkHandler:bain_comment(bain_line, sender)
 
 
 end
-function UnitNetworkHandler:is_inside_point_of_no_return(is_inside, sender)
+UnitNetworkHandler.is_inside_point_of_no_return = function (self, is_inside, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -12664,7 +12664,7 @@ function UnitNetworkHandler:is_inside_point_of_no_return(is_inside, sender)
 
 
 end
-function UnitNetworkHandler:mission_ended(win, num_is_inside, sender)
+UnitNetworkHandler.mission_ended = function (self, win, num_is_inside, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -12774,7 +12774,7 @@ function UnitNetworkHandler:mission_ended(win, num_is_inside, sender)
 
 
 end
-function UnitNetworkHandler:sync_character_level(level, sender)
+UnitNetworkHandler.sync_character_level = function (self, level, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -12810,7 +12810,7 @@ function UnitNetworkHandler:sync_character_level(level, sender)
 
 
 end
-function UnitNetworkHandler:sync_character_class_nationality(character_class_name, character_nation_name, sender)
+UnitNetworkHandler.sync_character_class_nationality = function (self, character_class_name, character_nation_name, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -12846,7 +12846,7 @@ function UnitNetworkHandler:sync_character_class_nationality(character_class_nam
 
 
 end
-function UnitNetworkHandler:update_matchmake_attributes(sender)
+UnitNetworkHandler.update_matchmake_attributes = function (self, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -12901,7 +12901,7 @@ function UnitNetworkHandler:update_matchmake_attributes(sender)
 
 
 end
-function UnitNetworkHandler:sync_disable_shout(unit, state, sender)
+UnitNetworkHandler.sync_disable_shout = function (self, unit, state, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -12924,7 +12924,7 @@ function UnitNetworkHandler:sync_disable_shout(unit, state, sender)
 
 
 end
-function UnitNetworkHandler:sync_run_sequence_char(unit, seq, sender)
+UnitNetworkHandler.sync_run_sequence_char = function (self, unit, seq, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -12947,7 +12947,7 @@ function UnitNetworkHandler:sync_run_sequence_char(unit, seq, sender)
 
 
 end
-function UnitNetworkHandler:sync_player_kill_statistic(tweak_table_name, is_headshot, weapon_unit, variant, stats_name, sender)
+UnitNetworkHandler.sync_player_kill_statistic = function (self, tweak_table_name, is_headshot, weapon_unit, variant, stats_name, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -12982,7 +12982,7 @@ function UnitNetworkHandler:sync_player_kill_statistic(tweak_table_name, is_head
 
 
 end
-function UnitNetworkHandler:set_attention_enabled(unit, setting_index, state, sender)
+UnitNetworkHandler.set_attention_enabled = function (self, unit, setting_index, state, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -13034,7 +13034,7 @@ function UnitNetworkHandler:set_attention_enabled(unit, setting_index, state, se
 
 
 end
-function UnitNetworkHandler:link_attention_no_rot(parent_unit, attention_object, parent_object, local_pos, sender)
+UnitNetworkHandler.link_attention_no_rot = function (self, parent_unit, attention_object, parent_object, local_pos, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -13058,7 +13058,7 @@ function UnitNetworkHandler:link_attention_no_rot(parent_unit, attention_object,
 
 
 end
-function UnitNetworkHandler:unlink_attention(attention_object, sender)
+UnitNetworkHandler.unlink_attention = function (self, attention_object, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -13082,7 +13082,7 @@ function UnitNetworkHandler:unlink_attention(attention_object, sender)
 
 
 end
-function UnitNetworkHandler:suspicion(suspect_peer_id, susp_value, sender)
+UnitNetworkHandler.suspicion = function (self, suspect_peer_id, susp_value, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -13209,7 +13209,7 @@ function UnitNetworkHandler:suspicion(suspect_peer_id, susp_value, sender)
 
 
 end
-function UnitNetworkHandler:suspicion_hud(suspect_unit, observer_unit, status, suspect_id)
+UnitNetworkHandler.suspicion_hud = function (self, suspect_unit, observer_unit, status, suspect_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -13387,7 +13387,7 @@ function UnitNetworkHandler:suspicion_hud(suspect_unit, observer_unit, status, s
 
 
 end
-function UnitNetworkHandler:spotter_hud(suspect_unit, observer_unit, status)
+UnitNetworkHandler.spotter_hud = function (self, suspect_unit, observer_unit, status)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -13467,7 +13467,7 @@ function UnitNetworkHandler:spotter_hud(suspect_unit, observer_unit, status)
 
 
 end
-function UnitNetworkHandler:sync_suspicion_icon(unit, icon_type, status)
+UnitNetworkHandler.sync_suspicion_icon = function (self, unit, icon_type, status)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -13562,7 +13562,7 @@ function UnitNetworkHandler:sync_suspicion_icon(unit, icon_type, status)
 
 
 end
-function UnitNetworkHandler:group_ai_event(event_id, blame_id, sender)
+UnitNetworkHandler.group_ai_event = function (self, event_id, blame_id, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -13598,7 +13598,7 @@ function UnitNetworkHandler:group_ai_event(event_id, blame_id, sender)
 
 
 end
-function UnitNetworkHandler:start_timespeed_effect(effect_id, timer_name, affect_timer_names_str, speed, fade_in, sustain, fade_out, sender)
+UnitNetworkHandler.start_timespeed_effect = function (self, effect_id, timer_name, affect_timer_names_str, speed, fade_in, sustain, fade_out, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -13650,7 +13650,7 @@ function UnitNetworkHandler:start_timespeed_effect(effect_id, timer_name, affect
 
 
 end
-function UnitNetworkHandler:stop_timespeed_effect(effect_id, fade_out_duration, sender)
+UnitNetworkHandler.stop_timespeed_effect = function (self, effect_id, fade_out_duration, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -13673,7 +13673,7 @@ function UnitNetworkHandler:stop_timespeed_effect(effect_id, fade_out_duration, 
 
 
 end
-function UnitNetworkHandler:sync_upgrade(unit, upgrade_category, upgrade_name, upgrade_level, unit_id_str)
+UnitNetworkHandler.sync_upgrade = function (self, unit, upgrade_category, upgrade_name, upgrade_level, unit_id_str)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -13734,7 +13734,7 @@ function UnitNetworkHandler:sync_upgrade(unit, upgrade_category, upgrade_name, u
 
 
 end
-function UnitNetworkHandler:suppression(unit, ratio, sender)
+UnitNetworkHandler.suppression = function (self, unit, ratio, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -13863,7 +13863,7 @@ function UnitNetworkHandler:suppression(unit, ratio, sender)
 
 
 end
-function UnitNetworkHandler:suppressed_state(unit, state, sender)
+UnitNetworkHandler.suppressed_state = function (self, unit, state, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -13887,7 +13887,7 @@ function UnitNetworkHandler:suppressed_state(unit, state, sender)
 
 
 end
-function UnitNetworkHandler:camera_yaw_pitch(cam_unit, yaw_255, pitch_255)
+UnitNetworkHandler.camera_yaw_pitch = function (self, cam_unit, yaw_255, pitch_255)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -13913,7 +13913,7 @@ function UnitNetworkHandler:camera_yaw_pitch(cam_unit, yaw_255, pitch_255)
 
 
 end
-function UnitNetworkHandler:loot_link(loot_unit, parent_unit, sender)
+UnitNetworkHandler.loot_link = function (self, loot_unit, parent_unit, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -13967,7 +13967,7 @@ function UnitNetworkHandler:loot_link(loot_unit, parent_unit, sender)
 
 
 end
-function UnitNetworkHandler:remove_unit(unit, sender)
+UnitNetworkHandler.remove_unit = function (self, unit, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -14025,7 +14025,7 @@ function UnitNetworkHandler:remove_unit(unit, sender)
 
 
 end
-function UnitNetworkHandler:sync_gui_net_event(unit, event_id, value, sender)
+UnitNetworkHandler.sync_gui_net_event = function (self, unit, event_id, value, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -14049,7 +14049,7 @@ function UnitNetworkHandler:sync_gui_net_event(unit, event_id, value, sender)
 
 
 end
-function UnitNetworkHandler:sync_proximity_activation(unit, proximity_name, range_data_string, sender)
+UnitNetworkHandler.sync_proximity_activation = function (self, unit, proximity_name, range_data_string, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -14073,7 +14073,7 @@ function UnitNetworkHandler:sync_proximity_activation(unit, proximity_name, rang
 
 
 end
-function UnitNetworkHandler:sync_inflict_body_damage(body, unit, normal, position, direction, damage, velocity, sender)
+UnitNetworkHandler.sync_inflict_body_damage = function (self, body, unit, normal, position, direction, damage, velocity, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -14211,7 +14211,7 @@ function UnitNetworkHandler:sync_inflict_body_damage(body, unit, normal, positio
 
 
 end
-function UnitNetworkHandler:sync_team_relation(team_index_1, team_index_2, relation_code)
+UnitNetworkHandler.sync_team_relation = function (self, team_index_1, team_index_2, relation_code)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -14320,7 +14320,7 @@ function UnitNetworkHandler:sync_team_relation(team_index_1, team_index_2, relat
 
 
 end
-function UnitNetworkHandler:sync_char_team(unit, team_index, sender)
+UnitNetworkHandler.sync_char_team = function (self, unit, team_index, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -14381,7 +14381,7 @@ function UnitNetworkHandler:sync_char_team(unit, team_index, sender)
 
 
 end
-function UnitNetworkHandler:sync_vehicle_driving(action, unit, player)
+UnitNetworkHandler.sync_vehicle_driving = function (self, action, unit, player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -14480,7 +14480,7 @@ function UnitNetworkHandler:sync_vehicle_driving(action, unit, player)
 
 
 end
-function UnitNetworkHandler:sync_vehicle_set_input(unit, accelerate, steer, brake, handbrake, gear_up, gear_down, forced_gear)
+UnitNetworkHandler.sync_vehicle_set_input = function (self, unit, accelerate, steer, brake, handbrake, gear_up, gear_down, forced_gear)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -14516,7 +14516,7 @@ function UnitNetworkHandler:sync_vehicle_set_input(unit, accelerate, steer, brak
 
 
 end
-function UnitNetworkHandler:sync_vehicle_state(unit, position, rotation, velocity)
+UnitNetworkHandler.sync_vehicle_state = function (self, unit, position, rotation, velocity)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -14552,7 +14552,7 @@ function UnitNetworkHandler:sync_vehicle_state(unit, position, rotation, velocit
 
 
 end
-function UnitNetworkHandler:sync_enter_vehicle_host(vehicle, seat_name, peer_id, player)
+UnitNetworkHandler.sync_enter_vehicle_host = function (self, vehicle, seat_name, peer_id, player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -14587,7 +14587,7 @@ function UnitNetworkHandler:sync_enter_vehicle_host(vehicle, seat_name, peer_id,
 
 
 end
-function UnitNetworkHandler:sync_vehicle_player(action, vehicle, peer_id, player, seat_name, prev_seat_name)
+UnitNetworkHandler.sync_vehicle_player = function (self, action, vehicle, peer_id, player, seat_name, prev_seat_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -14658,7 +14658,7 @@ function UnitNetworkHandler:sync_vehicle_player(action, vehicle, peer_id, player
 
 
 end
-function UnitNetworkHandler:sync_vehicle_player_swithc_seat(action, vehicle, peer_id, player, seat_name, previous_seat_name, previous_occupant)
+UnitNetworkHandler.sync_vehicle_player_swithc_seat = function (self, action, vehicle, peer_id, player, seat_name, previous_seat_name, previous_occupant)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -14672,7 +14672,7 @@ function UnitNetworkHandler:sync_vehicle_player_swithc_seat(action, vehicle, pee
 
 
 end
-function UnitNetworkHandler:sync_move_to_next_seat(vehicle, peer_id, player, seat_name)
+UnitNetworkHandler.sync_move_to_next_seat = function (self, vehicle, peer_id, player, seat_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -14686,7 +14686,7 @@ function UnitNetworkHandler:sync_move_to_next_seat(vehicle, peer_id, player, sea
 
 
 end
-function UnitNetworkHandler:sync_vehicle_skin(vehicle, skin_name)
+UnitNetworkHandler.sync_vehicle_skin = function (self, vehicle, skin_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -14722,7 +14722,7 @@ function UnitNetworkHandler:sync_vehicle_skin(vehicle, skin_name)
 
 
 end
-function UnitNetworkHandler:sync_vehicle_data(vehicle, state_name, occupant_driver, occupant_left, occupant_back_left, occupant_back_right, is_trunk_open, vehicle_health)
+UnitNetworkHandler.sync_vehicle_data = function (self, vehicle, state_name, occupant_driver, occupant_left, occupant_back_left, occupant_back_right, is_trunk_open, vehicle_health)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -14757,7 +14757,7 @@ function UnitNetworkHandler:sync_vehicle_data(vehicle, state_name, occupant_driv
 
 
 end
-function UnitNetworkHandler:sync_npc_vehicle_data(vehicle, state_name, target_unit)
+UnitNetworkHandler.sync_npc_vehicle_data = function (self, vehicle, state_name, target_unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -14792,7 +14792,7 @@ function UnitNetworkHandler:sync_npc_vehicle_data(vehicle, state_name, target_un
 
 
 end
-function UnitNetworkHandler:sync_vehicle_loot(vehicle, carry_id1, multiplier1, carry_id2, multiplier2, carry_id3, multiplier3)
+UnitNetworkHandler.sync_vehicle_loot = function (self, vehicle, carry_id1, multiplier1, carry_id2, multiplier2, carry_id3, multiplier3)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -14827,7 +14827,7 @@ function UnitNetworkHandler:sync_vehicle_loot(vehicle, carry_id1, multiplier1, c
 
 
 end
-function UnitNetworkHandler:sync_ai_vehicle_action(action, vehicle, data, unit)
+UnitNetworkHandler.sync_ai_vehicle_action = function (self, action, vehicle, data, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -14955,7 +14955,7 @@ function UnitNetworkHandler:sync_ai_vehicle_action(action, vehicle, data, unit)
 
 
 end
-function UnitNetworkHandler:server_store_loot_in_vehicle(vehicle, loot_bag)
+UnitNetworkHandler.server_store_loot_in_vehicle = function (self, vehicle, loot_bag)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -14979,7 +14979,7 @@ function UnitNetworkHandler:server_store_loot_in_vehicle(vehicle, loot_bag)
 
 
 end
-function UnitNetworkHandler:sync_vehicle_change_stance(shooting_unit, stance)
+UnitNetworkHandler.sync_vehicle_change_stance = function (self, shooting_unit, stance)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -15015,7 +15015,7 @@ function UnitNetworkHandler:sync_vehicle_change_stance(shooting_unit, stance)
 
 
 end
-function UnitNetworkHandler:sync_store_loot_in_vehicle(vehicle, loot_bag, carry_id, multiplier)
+UnitNetworkHandler.sync_store_loot_in_vehicle = function (self, vehicle, loot_bag, carry_id, multiplier)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -15039,7 +15039,7 @@ function UnitNetworkHandler:sync_store_loot_in_vehicle(vehicle, loot_bag, carry_
 
 
 end
-function UnitNetworkHandler:server_give_vehicle_loot_to_player(vehicle, peer_id)
+UnitNetworkHandler.server_give_vehicle_loot_to_player = function (self, vehicle, peer_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -15054,7 +15054,7 @@ function UnitNetworkHandler:server_give_vehicle_loot_to_player(vehicle, peer_id)
 
 
 end
-function UnitNetworkHandler:sync_give_vehicle_loot_to_player(vehicle, carry_id, multiplier, peer_id)
+UnitNetworkHandler.sync_give_vehicle_loot_to_player = function (self, vehicle, carry_id, multiplier, peer_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -15069,7 +15069,7 @@ function UnitNetworkHandler:sync_give_vehicle_loot_to_player(vehicle, carry_id, 
 
 
 end
-function UnitNetworkHandler:sync_vehicle_interact_trunk(vehicle, peer_id)
+UnitNetworkHandler.sync_vehicle_interact_trunk = function (self, vehicle, peer_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -15084,7 +15084,7 @@ function UnitNetworkHandler:sync_vehicle_interact_trunk(vehicle, peer_id)
 
 
 end
-function UnitNetworkHandler:sync_remote_position(unit, head_pos, pos)
+UnitNetworkHandler.sync_remote_position = function (self, unit, head_pos, pos)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -15099,7 +15099,7 @@ function UnitNetworkHandler:sync_remote_position(unit, head_pos, pos)
 
 
 end
-function UnitNetworkHandler:sync_vehicle_loot_enabled(vehicle, enabled)
+UnitNetworkHandler.sync_vehicle_loot_enabled = function (self, vehicle, enabled)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -15162,7 +15162,7 @@ function UnitNetworkHandler:sync_vehicle_loot_enabled(vehicle, enabled)
 
 
 end
-function UnitNetworkHandler:sync_vehicle_accepting_loot(vehicle, enabled)
+UnitNetworkHandler.sync_vehicle_accepting_loot = function (self, vehicle, enabled)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -15225,7 +15225,7 @@ function UnitNetworkHandler:sync_vehicle_accepting_loot(vehicle, enabled)
 
 
 end
-function UnitNetworkHandler:sync_unit_data(unit, world_id, editor_id)
+UnitNetworkHandler.sync_unit_data = function (self, unit, world_id, editor_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -15271,7 +15271,7 @@ function UnitNetworkHandler:sync_unit_data(unit, world_id, editor_id)
 
 
 end
-function UnitNetworkHandler:sync_vehicle_turret_rot(vehicle, rotation)
+UnitNetworkHandler.sync_vehicle_turret_rot = function (self, vehicle, rotation)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -15309,7 +15309,7 @@ function UnitNetworkHandler:sync_vehicle_turret_rot(vehicle, rotation)
 
 
 end
-function UnitNetworkHandler:sync_damage_reduction_buff(damage_reduction)
+UnitNetworkHandler.sync_damage_reduction_buff = function (self, damage_reduction)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -15368,7 +15368,7 @@ function UnitNetworkHandler:sync_damage_reduction_buff(damage_reduction)
 
 
 end
-function UnitNetworkHandler:sync_assault_endless(enabled)
+UnitNetworkHandler.sync_assault_endless = function (self, enabled)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -15404,7 +15404,7 @@ function UnitNetworkHandler:sync_assault_endless(enabled)
 
 
 end
-function UnitNetworkHandler:action_jump(unit, pos, jump_vec, sender)
+UnitNetworkHandler.action_jump = function (self, unit, pos, jump_vec, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -15449,7 +15449,7 @@ function UnitNetworkHandler:action_jump(unit, pos, jump_vec, sender)
 
 
 end
-function UnitNetworkHandler:action_jump_middle(unit, pos, sender)
+UnitNetworkHandler.action_jump_middle = function (self, unit, pos, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -15494,7 +15494,7 @@ function UnitNetworkHandler:action_jump_middle(unit, pos, sender)
 
 
 end
-function UnitNetworkHandler:action_land(unit, pos, sender)
+UnitNetworkHandler.action_land = function (self, unit, pos, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -15539,7 +15539,7 @@ function UnitNetworkHandler:action_land(unit, pos, sender)
 
 
 end
-function UnitNetworkHandler:sync_fall_position(unit, pos, rot)
+UnitNetworkHandler.sync_fall_position = function (self, unit, pos, rot)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -15594,7 +15594,7 @@ function UnitNetworkHandler:sync_fall_position(unit, pos, rot)
 
 
 end
-function UnitNetworkHandler:sync_ground_turret_rot(player_rotation, turret_unit, sender)
+UnitNetworkHandler.sync_ground_turret_rot = function (self, player_rotation, turret_unit, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -15649,7 +15649,7 @@ function UnitNetworkHandler:sync_ground_turret_rot(player_rotation, turret_unit,
 
 
 end
-function UnitNetworkHandler:sync_ground_turret_activate(turret_unit, sender)
+UnitNetworkHandler.sync_ground_turret_activate = function (self, turret_unit, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -15704,7 +15704,7 @@ function UnitNetworkHandler:sync_ground_turret_activate(turret_unit, sender)
 
 
 end
-function UnitNetworkHandler:sync_ground_turret_start_autofire(turret_unit, sender)
+UnitNetworkHandler.sync_ground_turret_start_autofire = function (self, turret_unit, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -15759,7 +15759,7 @@ function UnitNetworkHandler:sync_ground_turret_start_autofire(turret_unit, sende
 
 
 end
-function UnitNetworkHandler:sync_ground_turret_stop_autofire(turret_unit, sender)
+UnitNetworkHandler.sync_ground_turret_stop_autofire = function (self, turret_unit, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -15814,7 +15814,7 @@ function UnitNetworkHandler:sync_ground_turret_stop_autofire(turret_unit, sender
 
 
 end
-function UnitNetworkHandler:sync_ground_turret_trigger_held(turret_unit, blanks, expend_ammo, shoot_player, target_unit, damage_multiplier, sender)
+UnitNetworkHandler.sync_ground_turret_trigger_held = function (self, turret_unit, blanks, expend_ammo, shoot_player, target_unit, damage_multiplier, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -15869,7 +15869,7 @@ function UnitNetworkHandler:sync_ground_turret_trigger_held(turret_unit, blanks,
 
 
 end
-function UnitNetworkHandler:sync_ground_turret_activate_as_module(turret_unit, sender)
+UnitNetworkHandler.sync_ground_turret_activate_as_module = function (self, turret_unit, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -15924,7 +15924,7 @@ function UnitNetworkHandler:sync_ground_turret_activate_as_module(turret_unit, s
 
 
 end
-function UnitNetworkHandler:sync_ground_turret_husk(husk_pos, turret_rot, enter_animation, exit_animation, turret_unit, sender)
+UnitNetworkHandler.sync_ground_turret_husk = function (self, husk_pos, turret_rot, enter_animation, exit_animation, turret_unit, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -15960,7 +15960,7 @@ function UnitNetworkHandler:sync_ground_turret_husk(husk_pos, turret_rot, enter_
 
 
 end
-function UnitNetworkHandler:sync_ground_turret_SO_completed(turret_unit, puppet_unit, sender)
+UnitNetworkHandler.sync_ground_turret_SO_completed = function (self, turret_unit, puppet_unit, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -16052,7 +16052,7 @@ function UnitNetworkHandler:sync_ground_turret_SO_completed(turret_unit, puppet_
 
 
 end
-function UnitNetworkHandler:sync_ground_turret_SO_administered(turret_unit, administered_unit, sender)
+UnitNetworkHandler.sync_ground_turret_SO_administered = function (self, turret_unit, administered_unit, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -16107,7 +16107,7 @@ function UnitNetworkHandler:sync_ground_turret_SO_administered(turret_unit, admi
 
 
 end
-function UnitNetworkHandler:sync_ground_turret_create_SO(turret_unit, sender)
+UnitNetworkHandler.sync_ground_turret_create_SO = function (self, turret_unit, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -16162,7 +16162,7 @@ function UnitNetworkHandler:sync_ground_turret_create_SO(turret_unit, sender)
 
 
 end
-function UnitNetworkHandler:sync_ground_turret_cancel_SO(turret_unit, sender)
+UnitNetworkHandler.sync_ground_turret_cancel_SO = function (self, turret_unit, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -16217,7 +16217,7 @@ function UnitNetworkHandler:sync_ground_turret_cancel_SO(turret_unit, sender)
 
 
 end
-function UnitNetworkHandler:sync_ground_turret_activate_triggers(turret_unit, sender)
+UnitNetworkHandler.sync_ground_turret_activate_triggers = function (self, turret_unit, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -16272,7 +16272,7 @@ function UnitNetworkHandler:sync_ground_turret_activate_triggers(turret_unit, se
 
 
 end
-function UnitNetworkHandler:sync_player_on(turret_unit, player_on, sender)
+UnitNetworkHandler.sync_player_on = function (self, turret_unit, player_on, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -16327,7 +16327,7 @@ function UnitNetworkHandler:sync_player_on(turret_unit, player_on, sender)
 
 
 end
-function UnitNetworkHandler:sync_ground_turret_exit_triggers(turret_unit, sender)
+UnitNetworkHandler.sync_ground_turret_exit_triggers = function (self, turret_unit, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -16382,7 +16382,7 @@ function UnitNetworkHandler:sync_ground_turret_exit_triggers(turret_unit, sender
 
 
 end
-function UnitNetworkHandler:sync_ground_turret_puppet_damaged(turret_unit, attacker_unit, sender)
+UnitNetworkHandler.sync_ground_turret_puppet_damaged = function (self, turret_unit, attacker_unit, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -16437,7 +16437,7 @@ function UnitNetworkHandler:sync_ground_turret_puppet_damaged(turret_unit, attac
 
 
 end
-function UnitNetworkHandler:sync_ground_turret_puppet_death(turret_unit, sender)
+UnitNetworkHandler.sync_ground_turret_puppet_death = function (self, turret_unit, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -16492,7 +16492,7 @@ function UnitNetworkHandler:sync_ground_turret_puppet_death(turret_unit, sender)
 
 
 end
-function UnitNetworkHandler:sync_ground_turret_deactivate(turret_unit, sender)
+UnitNetworkHandler.sync_ground_turret_deactivate = function (self, turret_unit, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -16547,7 +16547,7 @@ function UnitNetworkHandler:sync_ground_turret_deactivate(turret_unit, sender)
 
 
 end
-function UnitNetworkHandler:sync_ground_turret_shell_explosion(unit, position, range, damage, player_damage, curve_pow, rpc)
+UnitNetworkHandler.sync_ground_turret_shell_explosion = function (self, unit, position, range, damage, player_damage, curve_pow, rpc)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -16572,7 +16572,7 @@ function UnitNetworkHandler:sync_ground_turret_shell_explosion(unit, position, r
 
 
 end
-function UnitNetworkHandler:register_grenades_pickup(pickup_unit, number_of_grenades, sender)
+UnitNetworkHandler.register_grenades_pickup = function (self, pickup_unit, number_of_grenades, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -16597,7 +16597,7 @@ function UnitNetworkHandler:register_grenades_pickup(pickup_unit, number_of_gren
 
 
 end
-function UnitNetworkHandler:sync_character_nationality_switch(unit, character_nationality, sender)
+UnitNetworkHandler.sync_character_nationality_switch = function (self, unit, character_nationality, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -16666,7 +16666,7 @@ function UnitNetworkHandler:sync_character_nationality_switch(unit, character_na
 
 
 end
-function UnitNetworkHandler:sync_distance_to_target(unit, distance)
+UnitNetworkHandler.sync_distance_to_target = function (self, unit, distance)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -16700,7 +16700,7 @@ function UnitNetworkHandler:sync_distance_to_target(unit, distance)
 
 
 end
-function UnitNetworkHandler:sync_loot_value(unit, value, sender)
+UnitNetworkHandler.sync_loot_value = function (self, unit, value, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -16764,7 +16764,7 @@ function UnitNetworkHandler:sync_loot_value(unit, value, sender)
 
 
 end
-function UnitNetworkHandler:sync_warp_position(unit, pos, rot)
+UnitNetworkHandler.sync_warp_position = function (self, unit, pos, rot)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -16819,7 +16819,7 @@ function UnitNetworkHandler:sync_warp_position(unit, pos, rot)
 
 
 end
-function UnitNetworkHandler:sync_stored_pos(unit, allow_sync, pos, rot)
+UnitNetworkHandler.sync_stored_pos = function (self, unit, allow_sync, pos, rot)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -16874,7 +16874,7 @@ function UnitNetworkHandler:sync_stored_pos(unit, allow_sync, pos, rot)
 
 
 end
-function UnitNetworkHandler:sync_spawn_ammo_bag(pos, dir, level_idx, sender)
+UnitNetworkHandler.sync_spawn_ammo_bag = function (self, pos, dir, level_idx, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -16890,7 +16890,7 @@ function UnitNetworkHandler:sync_spawn_ammo_bag(pos, dir, level_idx, sender)
 
 
 end
-function UnitNetworkHandler:sync_throw_ammo_bag(unit, dir, sender)
+UnitNetworkHandler.sync_throw_ammo_bag = function (self, unit, dir, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -16904,7 +16904,7 @@ function UnitNetworkHandler:sync_throw_ammo_bag(unit, dir, sender)
 
 
 end
-function UnitNetworkHandler:sync_ammo_bag_level(unit, level_index, sender)
+UnitNetworkHandler.sync_ammo_bag_level = function (self, unit, level_index, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -16918,7 +16918,7 @@ function UnitNetworkHandler:sync_ammo_bag_level(unit, level_index, sender)
 
 
 end
-function UnitNetworkHandler:sync_ammo_bag_hit_player(player_unit, ammo_bag_unit, bag_owner_peer_id, sender)
+UnitNetworkHandler.sync_ammo_bag_hit_player = function (self, player_unit, ammo_bag_unit, bag_owner_peer_id, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-18, warpins: 1 ---
@@ -16935,7 +16935,7 @@ function UnitNetworkHandler:sync_ammo_bag_hit_player(player_unit, ammo_bag_unit,
 
 
 end
-function UnitNetworkHandler:ammo_bag_pickup_response(ammo_bag_unit, picked_up, sender)
+UnitNetworkHandler.ammo_bag_pickup_response = function (self, ammo_bag_unit, picked_up, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -17005,7 +17005,7 @@ end
 local gui_notification = {
 	warcry_dmg_func
 }
-function UnitNetworkHandler:sync_warcry(source_unit, radius_idx, effect_name_idx, effect_data_idx, time_idx, gui_notification_idx, sender)
+UnitNetworkHandler.sync_warcry = function (self, source_unit, radius_idx, effect_name_idx, effect_data_idx, time_idx, gui_notification_idx, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -17086,7 +17086,7 @@ function UnitNetworkHandler:sync_warcry(source_unit, radius_idx, effect_name_idx
 
 
 end
-function UnitNetworkHandler:sync_unit_spawn(parent_unit, spawn_unit, align_obj_name, unit_id, parent_extension_name)
+UnitNetworkHandler.sync_unit_spawn = function (self, parent_unit, spawn_unit, align_obj_name, unit_id, parent_extension_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -17136,7 +17136,7 @@ function UnitNetworkHandler:sync_unit_spawn(parent_unit, spawn_unit, align_obj_n
 
 
 end
-function UnitNetworkHandler:run_spawn_unit_sequence(parent_unit, parent_extension_name, unit_id, sequence_name)
+UnitNetworkHandler.run_spawn_unit_sequence = function (self, parent_unit, parent_extension_name, unit_id, sequence_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -17193,7 +17193,7 @@ function UnitNetworkHandler:run_spawn_unit_sequence(parent_unit, parent_extensio
 
 
 end
-function UnitNetworkHandler:run_local_push_child_unit(parent_unit, parent_extension_name, unit_id, mass, pow, vec3_a, vec3_b)
+UnitNetworkHandler.run_local_push_child_unit = function (self, parent_unit, parent_extension_name, unit_id, mass, pow, vec3_a, vec3_b)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -17250,7 +17250,7 @@ function UnitNetworkHandler:run_local_push_child_unit(parent_unit, parent_extens
 
 
 end
-function UnitNetworkHandler:leave_flamethrower_patch(subject_unit, sender)
+UnitNetworkHandler.leave_flamethrower_patch = function (self, subject_unit, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -17273,7 +17273,7 @@ function UnitNetworkHandler:leave_flamethrower_patch(subject_unit, sender)
 
 
 end
-function UnitNetworkHandler:sync_camp_asset(unit, level, sender)
+UnitNetworkHandler.sync_camp_asset = function (self, unit, level, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -17328,7 +17328,7 @@ function UnitNetworkHandler:sync_camp_asset(unit, level, sender)
 
 
 end
-function UnitNetworkHandler:sync_automatic_camp_asset(unit, level, sender)
+UnitNetworkHandler.sync_automatic_camp_asset = function (self, unit, level, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -17383,7 +17383,7 @@ function UnitNetworkHandler:sync_automatic_camp_asset(unit, level, sender)
 
 
 end
-function UnitNetworkHandler:sync_foxhole_state(unit, foxhole, state)
+UnitNetworkHandler.sync_foxhole_state = function (self, unit, foxhole, state)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -17449,7 +17449,7 @@ function UnitNetworkHandler:sync_foxhole_state(unit, foxhole, state)
 
 
 end
-function UnitNetworkHandler:set_escort_active(unit, active)
+UnitNetworkHandler.set_escort_active = function (self, unit, active)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -17515,7 +17515,7 @@ function UnitNetworkHandler:set_escort_active(unit, active)
 
 
 end
-function UnitNetworkHandler:sync_ai_interaction_start(unit, duration, sender)
+UnitNetworkHandler.sync_ai_interaction_start = function (self, unit, duration, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -17571,7 +17571,7 @@ function UnitNetworkHandler:sync_ai_interaction_start(unit, duration, sender)
 
 
 end
-function UnitNetworkHandler:sync_ai_interaction_cancel(unit, sender)
+UnitNetworkHandler.sync_ai_interaction_cancel = function (self, unit, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -17627,7 +17627,7 @@ function UnitNetworkHandler:sync_ai_interaction_cancel(unit, sender)
 
 
 end
-function UnitNetworkHandler:sync_ai_interaction_complete(unit, sender)
+UnitNetworkHandler.sync_ai_interaction_complete = function (self, unit, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -17683,7 +17683,7 @@ function UnitNetworkHandler:sync_ai_interaction_complete(unit, sender)
 
 
 end
-function UnitNetworkHandler:sync_camp_trophy(unit, level, sender)
+UnitNetworkHandler.sync_camp_trophy = function (self, unit, level, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -17737,7 +17737,7 @@ function UnitNetworkHandler:sync_camp_trophy(unit, level, sender)
 
 
 end
-function UnitNetworkHandler:sync_revive_pumpkin_destroyed(pumpkin, sender)
+UnitNetworkHandler.sync_revive_pumpkin_destroyed = function (self, pumpkin, sender)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---

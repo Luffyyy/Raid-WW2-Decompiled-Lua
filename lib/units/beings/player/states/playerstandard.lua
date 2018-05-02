@@ -3213,7 +3213,7 @@ PlayerStandard.IDS_FALLING = Idstring(slot9)
 PlayerStandard.ALT_ENTER_FULLSCREEN_SWITCH_COOLDOWN = 2
 PlayerStandard.THROW_GRENADE_COOLDOWN = 1
 PlayerStandard.debug_bipod = nil
-PlayerStandard.init = function (self, unit)
+function PlayerStandard:init(unit)
 	slot5 = unit
 
 	PlayerMovementState.init(slot3, self)
@@ -3280,7 +3280,7 @@ PlayerStandard.init = function (self, unit)
 
 	return 
 end
-PlayerStandard.enter = function (self, state_data, enter_data)
+function PlayerStandard:enter(state_data, enter_data)
 
 	-- Decompilation error in this vicinity:
 	slot7 = enter_data
@@ -3404,7 +3404,7 @@ PlayerStandard.enter = function (self, state_data, enter_data)
 
 	return 
 end
-PlayerStandard._enter = function (self, enter_data)
+function PlayerStandard:_enter(enter_data)
 	slot4 = self._unit
 	slot6 = 2
 
@@ -3476,7 +3476,7 @@ PlayerStandard._enter = function (self, enter_data)
 
 	return 
 end
-PlayerStandard.exit = function (self, state_data, new_state_name)
+function PlayerStandard:exit(state_data, new_state_name)
 	slot6 = state_data
 
 	PlayerMovementState.exit(slot4, self)
@@ -3555,7 +3555,7 @@ PlayerStandard.exit = function (self, state_data, new_state_name)
 
 	return exit_data
 end
-PlayerStandard._activate_mover = function (self, mover, velocity)
+function PlayerStandard:_activate_mover(mover, velocity)
 	slot7 = velocity
 
 	self._unit.activate_mover(slot4, self._unit, mover)
@@ -3588,7 +3588,7 @@ PlayerStandard._activate_mover = function (self, mover, velocity)
 
 	return 
 end
-PlayerStandard.interaction_blocked = function (self)
+function PlayerStandard:interaction_blocked()
 	slot3 = self
 
 	if not self.is_deploying(slot2) then
@@ -3598,11 +3598,11 @@ PlayerStandard.interaction_blocked = function (self)
 
 	return slot1
 end
-PlayerStandard.bleed_out_blocked = function (self)
+function PlayerStandard:bleed_out_blocked()
 	return false
 end
 local tmp_vec1 = Vector3()
-PlayerStandard.update = function (self, t, dt)
+function PlayerStandard:update(t, dt)
 
 	-- Decompilation error in this vicinity:
 	slot5 = self._unit
@@ -3677,13 +3677,13 @@ PlayerStandard.update = function (self, t, dt)
 
 	return 
 end
-PlayerStandard.in_air = function (self)
+function PlayerStandard:in_air()
 	return self._state_data.in_air
 end
-PlayerStandard.in_steelsight = function (self)
+function PlayerStandard:in_steelsight()
 	return self._state_data.in_steelsight
 end
-PlayerStandard.is_reticle_aim = function (self)
+function PlayerStandard:is_reticle_aim()
 	if self._state_data.reticle_obj then
 		slot3 = self._camera_unit
 		slot3 = self._camera_unit.base(slot2)
@@ -3697,7 +3697,7 @@ PlayerStandard.is_reticle_aim = function (self)
 
 	return slot1
 end
-PlayerStandard.get_fire_weapon_position = function (self)
+function PlayerStandard:get_fire_weapon_position()
 	slot3 = self
 
 	if self.is_reticle_aim(slot2) then
@@ -3712,7 +3712,7 @@ PlayerStandard.get_fire_weapon_position = function (self)
 
 	return 
 end
-PlayerStandard.get_fire_weapon_direction = function (self)
+function PlayerStandard:get_fire_weapon_direction()
 	slot3 = self
 
 	if self.is_reticle_aim(slot2) then
@@ -3728,7 +3728,7 @@ PlayerStandard.get_fire_weapon_direction = function (self)
 	return 
 end
 local temp_vec1 = Vector3()
-PlayerStandard._upd_nav_data = function (self)
+function PlayerStandard:_upd_nav_data()
 	slot4 = self._pos
 
 	if 1 < mvec3_dis_sq(slot2, self._m_pos) then
@@ -3811,7 +3811,7 @@ PlayerStandard._upd_nav_data = function (self)
 
 	return 
 end
-PlayerStandard._calculate_standard_variables = function (self, t, dt)
+function PlayerStandard:_calculate_standard_variables(t, dt)
 	self._gnd_ray = nil
 	self._gnd_ray_chk = nil
 	slot6 = self._pos
@@ -3878,7 +3878,7 @@ local tmp_ground_from_vec = Vector3()
 local tmp_ground_to_vec = Vector3()
 local up_offset_vec = math.UP * 30
 local down_offset_vec = math.UP * -40
-PlayerStandard._update_ground_ray = function (self)
+function PlayerStandard:_update_ground_ray()
 	local hips_pos = tmp_ground_from_vec
 	local down_pos = tmp_ground_to_vec
 	slot6 = self._pos
@@ -3914,7 +3914,7 @@ PlayerStandard._update_ground_ray = function (self)
 
 	return 
 end
-PlayerStandard._update_fwd_ray = function (self)
+function PlayerStandard:_update_fwd_ray()
 
 	-- Decompilation error in this vicinity:
 	slot3 = self._equipped_unit
@@ -3929,7 +3929,7 @@ PlayerStandard._update_fwd_ray = function (self)
 
 	return 
 end
-PlayerStandard._create_on_controller_disabled_input = function (self)
+function PlayerStandard:_create_on_controller_disabled_input()
 	if not Global.game_settings.single_player then
 		slot3 = managers.menu
 		slot4 = "interact"
@@ -3964,7 +3964,7 @@ local win32 = SystemInfo.platform(function (self)
 
 	return input
 end) == Idstring(SystemInfo)
-PlayerStandard._get_input = function (self, t, dt)
+function PlayerStandard:_get_input(t, dt)
 	slot6 = self._controller
 
 	if self._state_data.controller_enabled ~= self._controller.enabled(slot5) then
@@ -4457,7 +4457,7 @@ PlayerStandard._get_input = function (self, t, dt)
 
 	return input
 end
-PlayerStandard._determine_move_direction = function (self)
+function PlayerStandard:_determine_move_direction()
 	slot4 = "move"
 	self._stick_move = self._controller.get_input_axis(slot2, self._controller)
 
@@ -4553,7 +4553,7 @@ PlayerStandard._determine_move_direction = function (self)
 
 	return 
 end
-PlayerStandard.update_check_actions_paused = function (self, t, dt)
+function PlayerStandard:update_check_actions_paused(t, dt)
 	slot8 = Application
 	slot7 = 0.1
 
@@ -4561,7 +4561,7 @@ PlayerStandard.update_check_actions_paused = function (self, t, dt)
 
 	return 
 end
-PlayerStandard._update_check_actions = function (self, t, dt)
+function PlayerStandard:_update_check_actions(t, dt)
 	slot7 = dt
 	local input = self._get_input(slot4, self, t)
 	slot6 = self
@@ -4759,7 +4759,7 @@ end
 local mvec_pos_new = Vector3()
 local mvec_achieved_walk_vel = Vector3()
 local mvec_move_dir_normalized = Vector3()
-PlayerStandard._update_movement = function (self, t, dt)
+function PlayerStandard:_update_movement(t, dt)
 	slot5 = self._unit
 	local anim_data = self._unit.anim_data(slot4)
 	local pos_new = nil
@@ -4982,12 +4982,12 @@ PlayerStandard._update_movement = function (self, t, dt)
 
 	return 
 end
-PlayerStandard.is_network_move_allowed = function (self)
+function PlayerStandard:is_network_move_allowed()
 	slot3 = self
 
 	return not self._on_zipline(slot2) and not self._is_jumping
 end
-PlayerStandard._get_walk_headbob = function (self)
+function PlayerStandard:_get_walk_headbob()
 	slot4 = "use_headbob"
 
 	if not managers.user.get_setting(slot2, managers.user) then
@@ -5006,7 +5006,7 @@ PlayerStandard._get_walk_headbob = function (self)
 
 	return 0.025
 end
-PlayerStandard._update_foley = function (self, t, input)
+function PlayerStandard:_update_foley(t, input)
 	if self._state_data.on_zipline then
 		return 
 	end
@@ -5083,7 +5083,7 @@ PlayerStandard._update_foley = function (self, t, input)
 
 	return 
 end
-PlayerStandard._check_step = function (self, t)
+function PlayerStandard:_check_step(t)
 	if self._state_data.in_air then
 		return 
 	end
@@ -5105,7 +5105,7 @@ PlayerStandard._check_step = function (self, t)
 
 	return 
 end
-PlayerStandard._update_aim_speed = function (self, t, dt)
+function PlayerStandard:_update_aim_speed(t, dt)
 	if not self._previous_aim_direction then
 		slot7 = self._ext_camera
 		self._previous_aim_direction = mvector3.copy(self._ext_camera.forward(slot6))
@@ -5122,7 +5122,7 @@ PlayerStandard._update_aim_speed = function (self, t, dt)
 
 	return 
 end
-PlayerStandard._update_check_sweep_aim_assist = function (self, t, dt)
+function PlayerStandard:_update_check_sweep_aim_assist(t, dt)
 
 	-- Decompilation error in this vicinity:
 	slot5 = self._equipped_unit
@@ -5146,7 +5146,7 @@ PlayerStandard._update_check_sweep_aim_assist = function (self, t, dt)
 
 	return 
 end
-PlayerStandard.reset_aim_assist_look_multiplier = function (self)
+function PlayerStandard:reset_aim_assist_look_multiplier()
 	slot3 = self._camera_unit
 	slot3 = self._camera_unit.base(slot2)
 
@@ -5156,7 +5156,7 @@ PlayerStandard.reset_aim_assist_look_multiplier = function (self)
 
 	return 
 end
-PlayerStandard._update_crosshair_offset = function (self, t)
+function PlayerStandard:_update_crosshair_offset(t)
 	return 
 
 	slot4 = self._equipped_unit
@@ -5205,7 +5205,7 @@ PlayerStandard._update_crosshair_offset = function (self, t)
 
 	return 
 end
-PlayerStandard._stance_entered = function (self, unequipped)
+function PlayerStandard:_stance_entered(unequipped)
 
 	-- Decompilation error in this vicinity:
 	slot4 = self._equipped_unit
@@ -5259,7 +5259,7 @@ PlayerStandard._stance_entered = function (self, unequipped)
 
 	return 
 end
-PlayerStandard._get_weapon_lens_distortion = function (self)
+function PlayerStandard:_get_weapon_lens_distortion()
 	slot3 = self._equipped_unit
 	local weapon = self._equipped_unit.base(slot2)
 
@@ -5273,7 +5273,7 @@ PlayerStandard._get_weapon_lens_distortion = function (self)
 
 	return managers.environment_controller.get_lens_distortion_value(slot3)
 end
-PlayerStandard.update_fov_external = function (self)
+function PlayerStandard:update_fov_external()
 	slot3 = self._equipped_unit
 
 	if not alive(slot2) then
@@ -5294,7 +5294,7 @@ PlayerStandard.update_fov_external = function (self)
 
 	return 
 end
-PlayerStandard._get_max_walk_speed = function (self, t)
+function PlayerStandard:_get_max_walk_speed(t)
 	local speed_tweak = self._tweak_data.movement.speed
 	local movement_speed = speed_tweak.WALKING_SPEED
 	local speed_state = "walk"
@@ -5349,7 +5349,7 @@ PlayerStandard._get_max_walk_speed = function (self, t)
 
 	return movement_speed * multiplier
 end
-PlayerStandard._start_action_steelsight = function (self, t)
+function PlayerStandard:_start_action_steelsight(t)
 
 	-- Decompilation error in this vicinity:
 	slot4 = self
@@ -5420,7 +5420,7 @@ PlayerStandard._start_action_steelsight = function (self, t)
 
 	return 
 end
-PlayerStandard._end_action_steelsight = function (self, t)
+function PlayerStandard:_end_action_steelsight(t)
 
 	-- Decompilation error in this vicinity:
 	slot4 = managers.warcry
@@ -5470,7 +5470,7 @@ PlayerStandard._end_action_steelsight = function (self, t)
 
 	return 
 end
-PlayerStandard._need_to_play_idle_redirect = function (self)
+function PlayerStandard:_need_to_play_idle_redirect()
 
 	-- Decompilation error in this vicinity:
 	slot3 = self._camera_unit
@@ -5478,7 +5478,7 @@ PlayerStandard._need_to_play_idle_redirect = function (self)
 
 	return 
 end
-PlayerStandard._interupt_action_steelsight = function (self, t)
+function PlayerStandard:_interupt_action_steelsight(t)
 	self._steelsight_wanted = false
 
 	if self._state_data.in_steelsight then
@@ -5489,7 +5489,7 @@ PlayerStandard._interupt_action_steelsight = function (self, t)
 
 	return 
 end
-PlayerStandard._update_steelsight_timers = function (self, t, dt)
+function PlayerStandard:_update_steelsight_timers(t, dt)
 	if self._state_data.steelsight_weight_target then
 		self._state_data.steelsight_weight = self._state_data.steelsight_weight or 0
 		slot8 = dt * 5
@@ -5512,7 +5512,7 @@ PlayerStandard._update_steelsight_timers = function (self, t, dt)
 
 	return 
 end
-PlayerStandard._start_action_running = function (self, t)
+function PlayerStandard:_start_action_running(t)
 
 	-- Decompilation error in this vicinity:
 	if not self._move_dir then
@@ -5589,7 +5589,7 @@ PlayerStandard._start_action_running = function (self, t)
 
 	return 
 end
-PlayerStandard._end_action_running = function (self, t)
+function PlayerStandard:_end_action_running(t)
 	if not self._end_running_expire_t then
 		slot4 = self._equipped_unit
 		slot4 = self._equipped_unit.base(slot3)
@@ -5602,7 +5602,7 @@ PlayerStandard._end_action_running = function (self, t)
 
 	return 
 end
-PlayerStandard._interupt_action_running = function (self, t)
+function PlayerStandard:_interupt_action_running(t)
 	if self._running and not self._end_running_expire_t then
 		slot5 = t
 
@@ -5611,7 +5611,7 @@ PlayerStandard._interupt_action_running = function (self, t)
 
 	return 
 end
-PlayerStandard._start_action_ducking = function (self, t)
+function PlayerStandard:_start_action_ducking(t)
 
 	-- Decompilation error in this vicinity:
 	slot4 = self
@@ -5648,7 +5648,7 @@ PlayerStandard._start_action_ducking = function (self, t)
 
 	return 
 end
-PlayerStandard._end_action_ducking = function (self, t, skip_can_stand_check)
+function PlayerStandard:_end_action_ducking(t, skip_can_stand_check)
 	if not skip_can_stand_check then
 		slot5 = self
 
@@ -5696,7 +5696,7 @@ PlayerStandard._end_action_ducking = function (self, t, skip_can_stand_check)
 
 	return 
 end
-PlayerStandard._interupt_action_ducking = function (self, t, skip_can_stand_check)
+function PlayerStandard:_interupt_action_ducking(t, skip_can_stand_check)
 	if self._state_data.ducking then
 		slot7 = skip_can_stand_check
 
@@ -5705,7 +5705,7 @@ PlayerStandard._interupt_action_ducking = function (self, t, skip_can_stand_chec
 
 	return 
 end
-PlayerStandard.forward_collision = function (self)
+function PlayerStandard:forward_collision()
 	local offset = 100
 	local radius = 50
 	local hips_offset = 100
@@ -5725,7 +5725,7 @@ PlayerStandard.forward_collision = function (self)
 
 	return nil
 end
-PlayerStandard._can_stand = function (self, ignored_bodies)
+function PlayerStandard:_can_stand(ignored_bodies)
 	local offset = 50
 	local radius = 30
 	slot6 = self._obj_com
@@ -5786,7 +5786,7 @@ PlayerStandard._can_stand = function (self, ignored_bodies)
 
 	return true
 end
-PlayerStandard._can_run_directional = function (self)
+function PlayerStandard:_can_run_directional()
 	slot5 = "can_free_run"
 
 	if managers.player.has_category_upgrade(slot2, managers.player, "player") then
@@ -5799,7 +5799,7 @@ PlayerStandard._can_run_directional = function (self)
 
 	return mvector3.angle(slot3, self._stick_move) <= running_angle
 end
-PlayerStandard._start_action_equip = function (self, redirect, extra_time)
+function PlayerStandard:_start_action_equip(redirect, extra_time)
 	slot5 = self._equipped_unit
 	local tweak_data = self._equipped_unit.base(slot4).weapon_tweak_data(slot4)
 	slot6 = managers.player
@@ -5823,7 +5823,7 @@ PlayerStandard._start_action_equip = function (self, redirect, extra_time)
 
 	return 
 end
-PlayerStandard._check_action_throw_projectile = function (self, t, input)
+function PlayerStandard:_check_action_throw_projectile(t, input)
 	slot5 = managers.player
 
 	if not managers.player.can_throw_grenade(slot4) then
@@ -5882,7 +5882,7 @@ PlayerStandard._check_action_throw_projectile = function (self, t, input)
 
 	return true
 end
-PlayerStandard.interupt_all_actions = function (self)
+function PlayerStandard:interupt_all_actions()
 	slot3 = TimerManager
 	local t = TimerManager.game(slot2).time(slot2)
 	slot5 = t
@@ -5931,7 +5931,7 @@ PlayerStandard.interupt_all_actions = function (self)
 
 	return 
 end
-PlayerStandard._start_action_throw_projectile = function (self, t, input)
+function PlayerStandard:_start_action_throw_projectile(t, input)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-45, warpins: 1 ---
@@ -6118,7 +6118,7 @@ PlayerStandard._start_action_throw_projectile = function (self, t, input)
 
 
 end
-PlayerStandard._is_throwing_projectile = function (self)
+function PlayerStandard:_is_throwing_projectile()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -6171,7 +6171,7 @@ PlayerStandard._is_throwing_projectile = function (self)
 
 
 end
-PlayerStandard.in_throw_projectile = function (self)
+function PlayerStandard:in_throw_projectile()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -6200,7 +6200,7 @@ PlayerStandard.in_throw_projectile = function (self)
 
 
 end
-PlayerStandard._projectile_repeat_allowed = function (self)
+function PlayerStandard:_projectile_repeat_allowed()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -6249,7 +6249,7 @@ PlayerStandard._projectile_repeat_allowed = function (self)
 
 
 end
-PlayerStandard._do_action_throw_projectile = function (self, t, input, drop_projectile)
+function PlayerStandard:_do_action_throw_projectile(t, input, drop_projectile)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-50, warpins: 1 ---
@@ -6313,7 +6313,7 @@ PlayerStandard._do_action_throw_projectile = function (self, t, input, drop_proj
 
 
 end
-PlayerStandard._interupt_action_throw_projectile = function (self, t)
+function PlayerStandard:_interupt_action_throw_projectile(t)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -6377,7 +6377,7 @@ PlayerStandard._interupt_action_throw_projectile = function (self, t)
 
 
 end
-PlayerStandard._update_throw_projectile_timers = function (self, t, input)
+function PlayerStandard:_update_throw_projectile_timers(t, input)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -6551,7 +6551,7 @@ PlayerStandard._update_throw_projectile_timers = function (self, t, input)
 
 
 end
-PlayerStandard._check_action_throw_grenade = function (self, t, input)
+function PlayerStandard:_check_action_throw_grenade(t, input)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -6788,7 +6788,7 @@ PlayerStandard._check_action_throw_grenade = function (self, t, input)
 
 
 end
-PlayerStandard._start_action_throw_grenade = function (self, t, input, primary)
+function PlayerStandard:_start_action_throw_grenade(t, input, primary)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -6961,7 +6961,7 @@ PlayerStandard._start_action_throw_grenade = function (self, t, input, primary)
 
 
 end
-PlayerStandard._update_throw_grenade_timers = function (self, t, input)
+function PlayerStandard:_update_throw_grenade_timers(t, input)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -7044,7 +7044,7 @@ PlayerStandard._update_throw_grenade_timers = function (self, t, input)
 
 
 end
-PlayerStandard._interupt_action_throw_grenade = function (self, t, input)
+function PlayerStandard:_interupt_action_throw_grenade(t, input)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -7089,7 +7089,7 @@ PlayerStandard._interupt_action_throw_grenade = function (self, t, input)
 
 
 end
-PlayerStandard._is_throwing_grenade = function (self)
+function PlayerStandard:_is_throwing_grenade()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -7127,7 +7127,7 @@ PlayerStandard._is_throwing_grenade = function (self)
 
 
 end
-PlayerStandard._check_drag_body = function (self)
+function PlayerStandard:_check_drag_body()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-21, warpins: 1 ---
@@ -7179,7 +7179,7 @@ PlayerStandard._check_drag_body = function (self)
 
 
 end
-PlayerStandard._check_action_interact = function (self, t, input)
+function PlayerStandard:_check_action_interact(t, input)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -7434,7 +7434,7 @@ PlayerStandard._check_action_interact = function (self, t, input)
 
 
 end
-PlayerStandard._start_action_interact = function (self, t, input, timer, interact_object)
+function PlayerStandard:_start_action_interact(t, input, timer, interact_object)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-67, warpins: 1 ---
@@ -7490,7 +7490,7 @@ PlayerStandard._start_action_interact = function (self, t, input, timer, interac
 
 
 end
-PlayerStandard._interupt_action_interact = function (self, t, input, complete, show_interact_at_finish)
+function PlayerStandard:_interupt_action_interact(t, input, complete, show_interact_at_finish)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -7629,7 +7629,7 @@ PlayerStandard._interupt_action_interact = function (self, t, input, complete, s
 
 
 end
-PlayerStandard._end_action_interact = function (self)
+function PlayerStandard:_end_action_interact()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -7647,7 +7647,7 @@ PlayerStandard._end_action_interact = function (self)
 
 
 end
-PlayerStandard._interacting = function (self)
+function PlayerStandard:_interacting()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -7696,7 +7696,7 @@ PlayerStandard._interacting = function (self)
 
 
 end
-PlayerStandard.interupt_interact = function (self)
+function PlayerStandard:interupt_interact()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -7735,7 +7735,7 @@ PlayerStandard.interupt_interact = function (self)
 
 
 end
-PlayerStandard._update_interaction_timers = function (self, t)
+function PlayerStandard:_update_interaction_timers(t)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -7870,7 +7870,7 @@ PlayerStandard._update_interaction_timers = function (self, t)
 
 
 end
-PlayerStandard._check_action_weapon_firemode = function (self, t, input)
+function PlayerStandard:_check_action_weapon_firemode(t, input)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -7931,7 +7931,7 @@ PlayerStandard._check_action_weapon_firemode = function (self, t, input)
 
 
 end
-PlayerStandard._check_action_weapon_gadget = function (self, t, input)
+function PlayerStandard:_check_action_weapon_gadget(t, input)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -8023,7 +8023,7 @@ PlayerStandard._check_action_weapon_gadget = function (self, t, input)
 
 
 end
-PlayerStandard._check_action_melee = function (self, t, input)
+function PlayerStandard:_check_action_melee(t, input)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -8369,7 +8369,7 @@ PlayerStandard._check_action_melee = function (self, t, input)
 
 
 end
-PlayerStandard._start_action_melee = function (self, t, input, instant)
+function PlayerStandard:_start_action_melee(t, input, instant)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -8571,7 +8571,7 @@ PlayerStandard._start_action_melee = function (self, t, input, instant)
 
 
 end
-PlayerStandard._is_meleeing = function (self)
+function PlayerStandard:_is_meleeing()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -8600,7 +8600,7 @@ PlayerStandard._is_meleeing = function (self)
 
 
 end
-PlayerStandard.in_melee = function (self)
+function PlayerStandard:in_melee()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -8629,7 +8629,7 @@ PlayerStandard.in_melee = function (self)
 
 
 end
-PlayerStandard.discharge_melee = function (self)
+function PlayerStandard:discharge_melee()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -8645,7 +8645,7 @@ PlayerStandard.discharge_melee = function (self)
 
 
 end
-PlayerStandard._melee_repeat_allowed = function (self)
+function PlayerStandard:_melee_repeat_allowed()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -8694,7 +8694,7 @@ PlayerStandard._melee_repeat_allowed = function (self)
 
 
 end
-PlayerStandard._get_melee_charge_lerp_value = function (self, t, offset)
+function PlayerStandard:_get_melee_charge_lerp_value(t, offset)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -8752,7 +8752,7 @@ local melee_vars = {
 	"player_melee",
 	"player_melee_var2"
 }
-PlayerStandard._do_action_melee = function (self, t, input, skip_damage)
+function PlayerStandard:_do_action_melee(t, input, skip_damage)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-18, warpins: 1 ---
@@ -9022,7 +9022,7 @@ PlayerStandard._do_action_melee = function (self, t, input, skip_damage)
 
 
 end
-PlayerStandard._melee_col_ray = function (self)
+function PlayerStandard:_melee_col_ray()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -9064,7 +9064,7 @@ PlayerStandard._melee_col_ray = function (self)
 
 
 end
-PlayerStandard._do_melee_damage = function (self, t, bayonet_melee, col_ray)
+function PlayerStandard:_do_melee_damage(t, bayonet_melee, col_ray)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -9968,7 +9968,7 @@ PlayerStandard._do_melee_damage = function (self, t, bayonet_melee, col_ray)
 
 
 end
-PlayerStandard._check_melee_dot_damage = function (self, col_ray, defense_data, melee_entry)
+function PlayerStandard:_check_melee_dot_damage(col_ray, defense_data, melee_entry)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -10025,7 +10025,7 @@ PlayerStandard._check_melee_dot_damage = function (self, col_ray, defense_data, 
 
 
 end
-PlayerStandard._play_melee_sound = function (self, melee_entry, sound_id, material_string)
+function PlayerStandard:_play_melee_sound(melee_entry, sound_id, material_string)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -10083,7 +10083,7 @@ PlayerStandard._play_melee_sound = function (self, melee_entry, sound_id, materi
 
 
 end
-PlayerStandard._interupt_action_melee = function (self, t)
+function PlayerStandard:_interupt_action_melee(t)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -10176,7 +10176,7 @@ PlayerStandard._interupt_action_melee = function (self, t)
 
 
 end
-PlayerStandard._update_melee_timers = function (self, t, input)
+function PlayerStandard:_update_melee_timers(t, input)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -10402,7 +10402,7 @@ PlayerStandard._update_melee_timers = function (self, t, input)
 
 
 end
-PlayerStandard._check_action_reload = function (self, t, input)
+function PlayerStandard:_check_action_reload(t, input)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -10534,7 +10534,7 @@ PlayerStandard._check_action_reload = function (self, t, input)
 
 
 end
-PlayerStandard._update_reload_timers = function (self, t, dt, input)
+function PlayerStandard:_update_reload_timers(t, dt, input)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -10856,7 +10856,7 @@ PlayerStandard._update_reload_timers = function (self, t, dt, input)
 
 
 end
-PlayerStandard.on_action_reload_success = function (self)
+function PlayerStandard:on_action_reload_success()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -10866,7 +10866,7 @@ PlayerStandard.on_action_reload_success = function (self)
 
 
 end
-PlayerStandard._check_use_item = function (self, t, input)
+function PlayerStandard:_check_use_item(t, input)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -11007,7 +11007,7 @@ PlayerStandard._check_use_item = function (self, t, input)
 
 
 end
-PlayerStandard._update_use_item_timers = function (self, t, input)
+function PlayerStandard:_update_use_item_timers(t, input)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -11102,7 +11102,7 @@ PlayerStandard._update_use_item_timers = function (self, t, input)
 
 
 end
-PlayerStandard._does_deploying_limit_movement = function (self)
+function PlayerStandard:_does_deploying_limit_movement()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -11122,7 +11122,7 @@ PlayerStandard._does_deploying_limit_movement = function (self)
 
 
 end
-PlayerStandard.is_deploying = function (self)
+function PlayerStandard:is_deploying()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -11160,7 +11160,7 @@ PlayerStandard.is_deploying = function (self)
 
 
 end
-PlayerStandard._start_action_use_item = function (self, t)
+function PlayerStandard:_start_action_use_item(t)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-58, warpins: 1 ---
@@ -11268,7 +11268,7 @@ PlayerStandard._start_action_use_item = function (self, t)
 
 
 end
-PlayerStandard._end_action_use_item = function (self, valid)
+function PlayerStandard:_end_action_use_item(valid)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-18, warpins: 1 ---
@@ -11307,7 +11307,7 @@ PlayerStandard._end_action_use_item = function (self, valid)
 
 
 end
-PlayerStandard._interupt_action_use_item = function (self, t, input, complete)
+function PlayerStandard:_interupt_action_use_item(t, input, complete)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -11437,7 +11437,7 @@ PlayerStandard._interupt_action_use_item = function (self, t, input, complete)
 
 
 end
-PlayerStandard._check_change_weapon = function (self, t, input)
+function PlayerStandard:_check_change_weapon(t, input)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -11612,7 +11612,7 @@ PlayerStandard._check_change_weapon = function (self, t, input)
 
 
 end
-PlayerStandard._check_action_next_weapon = function (self, t, input)
+function PlayerStandard:_check_action_next_weapon(t, input)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -11789,7 +11789,7 @@ PlayerStandard._check_action_next_weapon = function (self, t, input)
 
 
 end
-PlayerStandard._check_action_previous_weapon = function (self, t, input)
+function PlayerStandard:_check_action_previous_weapon(t, input)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -11966,7 +11966,7 @@ PlayerStandard._check_action_previous_weapon = function (self, t, input)
 
 
 end
-PlayerStandard._update_equip_weapon_timers = function (self, t, input)
+function PlayerStandard:_update_equip_weapon_timers(t, input)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -12028,7 +12028,7 @@ PlayerStandard._update_equip_weapon_timers = function (self, t, input)
 
 
 end
-PlayerStandard.is_equipping = function (self)
+function PlayerStandard:is_equipping()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -12038,7 +12038,7 @@ PlayerStandard.is_equipping = function (self)
 
 
 end
-PlayerStandard._add_unit_to_char_table = function (self, char_table, unit, unit_type, interaction_dist, interaction_through_walls, tight_area, priority, my_head_pos, cam_fwd, ray_ignore_units)
+function PlayerStandard:_add_unit_to_char_table(char_table, unit, unit_type, interaction_dist, interaction_through_walls, tight_area, priority, my_head_pos, cam_fwd, ray_ignore_units)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -12244,7 +12244,7 @@ PlayerStandard._add_unit_to_char_table = function (self, char_table, unit, unit_
 
 
 end
-PlayerStandard._get_interaction_target = function (self, char_table, my_head_pos, cam_fwd)
+function PlayerStandard:_get_interaction_target(char_table, my_head_pos, cam_fwd)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -12382,7 +12382,7 @@ PlayerStandard._get_interaction_target = function (self, char_table, my_head_pos
 
 
 end
-PlayerStandard._get_intimidation_action = function (self, prime_target, char_table, amount, primary_only, detect_only)
+function PlayerStandard:_get_intimidation_action(prime_target, char_table, amount, primary_only, detect_only)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-16, warpins: 1 ---
@@ -13318,7 +13318,7 @@ PlayerStandard._get_intimidation_action = function (self, prime_target, char_tab
 
 
 end
-PlayerStandard._get_unit_intimidation_action = function (self, intimidate_enemies, intimidate_civilians, intimidate_teammates, only_special_enemies, intimidate_escorts, intimidation_amount, primary_only, detect_only)
+function PlayerStandard:_get_unit_intimidation_action(intimidate_enemies, intimidate_civilians, intimidate_teammates, only_special_enemies, intimidate_escorts, intimidation_amount, primary_only, detect_only)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-48, warpins: 1 ---
@@ -13999,7 +13999,7 @@ PlayerStandard._get_unit_intimidation_action = function (self, intimidate_enemie
 
 
 end
-PlayerStandard._start_action_intimidate = function (self, t)
+function PlayerStandard:_start_action_intimidate(t)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -14676,7 +14676,7 @@ PlayerStandard._start_action_intimidate = function (self, t)
 
 
 end
-PlayerStandard._is_turret_dangerous = function (self, turret_target)
+function PlayerStandard:_is_turret_dangerous(turret_target)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-16, warpins: 1 ---
@@ -14708,7 +14708,7 @@ PlayerStandard._is_turret_dangerous = function (self, turret_target)
 
 
 end
-PlayerStandard._do_action_intimidate = function (self, t, interact_type, sound_name, queue_sound_name, skip_alert)
+function PlayerStandard:_do_action_intimidate(t, interact_type, sound_name, queue_sound_name, skip_alert)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -14776,7 +14776,7 @@ PlayerStandard._do_action_intimidate = function (self, t, interact_type, sound_n
 
 
 end
-PlayerStandard.get_wwise_nationality_from_nationality = function (self, character)
+function PlayerStandard:get_wwise_nationality_from_nationality(character)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -14862,7 +14862,7 @@ PlayerStandard.get_wwise_nationality_from_nationality = function (self, characte
 
 
 end
-PlayerStandard.teammate_aimed_at_by_player = function (self)
+function PlayerStandard:teammate_aimed_at_by_player()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-21, warpins: 1 ---
@@ -15262,7 +15262,7 @@ PlayerStandard.teammate_aimed_at_by_player = function (self)
 
 
 end
-PlayerStandard.say_line = function (self, sound_name, queue_sound_name, skip_alert)
+function PlayerStandard:say_line(sound_name, queue_sound_name, skip_alert)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -15369,7 +15369,7 @@ PlayerStandard.say_line = function (self, sound_name, queue_sound_name, skip_ale
 
 
 end
-PlayerStandard._play_distance_interact_redirect = function (self, t, variant)
+function PlayerStandard:_play_distance_interact_redirect(t, variant)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-15, warpins: 1 ---
@@ -15465,7 +15465,7 @@ PlayerStandard._play_distance_interact_redirect = function (self, t, variant)
 
 
 end
-PlayerStandard._break_intimidate_redirect = function (self, t)
+function PlayerStandard:_break_intimidate_redirect(t)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -15515,7 +15515,7 @@ PlayerStandard._break_intimidate_redirect = function (self, t)
 
 
 end
-PlayerStandard._play_interact_redirect = function (self, t)
+function PlayerStandard:_play_interact_redirect(t)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -15567,7 +15567,7 @@ PlayerStandard._play_interact_redirect = function (self, t)
 
 
 end
-PlayerStandard._break_interact_redirect = function (self, t)
+function PlayerStandard:_break_interact_redirect(t)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -15581,7 +15581,7 @@ PlayerStandard._break_interact_redirect = function (self, t)
 
 
 end
-PlayerStandard.set_weapon_selection_wanted = function (self, selection_wanted)
+function PlayerStandard:set_weapon_selection_wanted(selection_wanted)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -15593,7 +15593,7 @@ PlayerStandard.set_weapon_selection_wanted = function (self, selection_wanted)
 
 
 end
-PlayerStandard._check_action_equip = function (self, t, input)
+function PlayerStandard:_check_action_equip(t, input)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -15829,7 +15829,7 @@ PlayerStandard._check_action_equip = function (self, t, input)
 
 
 end
-PlayerStandard._check_comm_wheel = function (self, t, input)
+function PlayerStandard:_check_comm_wheel(t, input)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -16151,7 +16151,7 @@ PlayerStandard._check_comm_wheel = function (self, t, input)
 
 
 end
-PlayerStandard._check_warcry = function (self, t, input)
+function PlayerStandard:_check_warcry(t, input)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -16226,7 +16226,7 @@ PlayerStandard._check_warcry = function (self, t, input)
 
 
 end
-PlayerStandard._check_fullscreen_switch = function (self, t, dt, input)
+function PlayerStandard:_check_fullscreen_switch(t, dt, input)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -16299,7 +16299,7 @@ PlayerStandard._check_fullscreen_switch = function (self, t, dt, input)
 
 
 end
-PlayerStandard._check_special_interaction = function (self, t, input)
+function PlayerStandard:_check_special_interaction(t, input)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -16451,7 +16451,7 @@ PlayerStandard._check_special_interaction = function (self, t, input)
 
 
 end
-PlayerStandard._warcry = function (self, params)
+function PlayerStandard:_warcry(params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -16510,7 +16510,7 @@ PlayerStandard._warcry = function (self, params)
 
 
 end
-PlayerStandard._toss_ammo = function (self, ...)
+function PlayerStandard:_toss_ammo(...)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -16681,7 +16681,7 @@ PlayerStandard._toss_ammo = function (self, ...)
 
 
 end
-PlayerStandard._closest_visible_team_member = function (self, max_distance_sq, slotmask)
+function PlayerStandard:_closest_visible_team_member(max_distance_sq, slotmask)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-27, warpins: 1 ---
@@ -16876,7 +16876,7 @@ PlayerStandard._closest_visible_team_member = function (self, max_distance_sq, s
 
 
 end
-PlayerStandard._check_stats_screen = function (self, t, dt, input)
+function PlayerStandard:_check_stats_screen(t, dt, input)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -16963,7 +16963,7 @@ PlayerStandard._check_stats_screen = function (self, t, dt, input)
 
 
 end
-PlayerStandard._check_action_jump = function (self, t, input)
+function PlayerStandard:_check_action_jump(t, input)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -17278,7 +17278,7 @@ PlayerStandard._check_action_jump = function (self, t, input)
 
 
 end
-PlayerStandard._start_action_jump = function (self, t, action_start_data)
+function PlayerStandard:_start_action_jump(t, action_start_data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-19, warpins: 1 ---
@@ -17336,7 +17336,7 @@ PlayerStandard._start_action_jump = function (self, t, action_start_data)
 
 
 end
-PlayerStandard._perform_jump = function (self, jump_vec)
+function PlayerStandard:_perform_jump(jump_vec)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -17382,7 +17382,7 @@ PlayerStandard._perform_jump = function (self, jump_vec)
 
 
 end
-PlayerStandard._update_network_jump = function (self, pos, is_exit)
+function PlayerStandard:_update_network_jump(pos, is_exit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -17579,7 +17579,7 @@ PlayerStandard._update_network_jump = function (self, pos, is_exit)
 
 
 end
-PlayerStandard._check_action_zipline = function (self, t, input)
+function PlayerStandard:_check_action_zipline(t, input)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -17642,7 +17642,7 @@ PlayerStandard._check_action_zipline = function (self, t, input)
 
 
 end
-PlayerStandard._start_action_zipline = function (self, t, input, zipline_unit)
+function PlayerStandard:_start_action_zipline(t, input, zipline_unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-29, warpins: 1 ---
@@ -17717,7 +17717,7 @@ PlayerStandard._start_action_zipline = function (self, t, input, zipline_unit)
 
 
 end
-PlayerStandard._update_zipline_timers = function (self, t, dt)
+function PlayerStandard:_update_zipline_timers(t, dt)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -17847,7 +17847,7 @@ PlayerStandard._update_zipline_timers = function (self, t, dt)
 
 
 end
-PlayerStandard._end_action_zipline = function (self, t)
+function PlayerStandard:_end_action_zipline(t)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -17923,7 +17923,7 @@ PlayerStandard._end_action_zipline = function (self, t)
 
 
 end
-PlayerStandard._on_zipline = function (self)
+function PlayerStandard:_on_zipline()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -17933,7 +17933,7 @@ PlayerStandard._on_zipline = function (self)
 
 
 end
-PlayerStandard._check_action_deploy_bipod = function (self, t, input)
+function PlayerStandard:_check_action_deploy_bipod(t, input)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -17997,7 +17997,7 @@ PlayerStandard._check_action_deploy_bipod = function (self, t, input)
 
 
 end
-PlayerStandard._check_action_cash_inspect = function (self, t, input)
+function PlayerStandard:_check_action_cash_inspect(t, input)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -18211,7 +18211,7 @@ PlayerStandard._check_action_cash_inspect = function (self, t, input)
 
 
 end
-PlayerStandard._is_cash_inspecting = function (self, t)
+function PlayerStandard:_is_cash_inspecting(t)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -18221,7 +18221,7 @@ PlayerStandard._is_cash_inspecting = function (self, t)
 
 
 end
-PlayerStandard._interupt_action_cash_inspect = function (self, t)
+function PlayerStandard:_interupt_action_cash_inspect(t)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -18256,7 +18256,7 @@ PlayerStandard._interupt_action_cash_inspect = function (self, t)
 
 
 end
-PlayerStandard._update_omniscience = function (self, t, dt)
+function PlayerStandard:_update_omniscience(t, dt)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -18463,7 +18463,7 @@ PlayerStandard._update_omniscience = function (self, t, dt)
 
 
 end
-PlayerStandard._check_action_run = function (self, t, input)
+function PlayerStandard:_check_action_run(t, input)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -18602,7 +18602,7 @@ PlayerStandard._check_action_run = function (self, t, input)
 
 
 end
-PlayerStandard._update_running_timers = function (self, t)
+function PlayerStandard:_update_running_timers(t)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -18662,7 +18662,7 @@ PlayerStandard._update_running_timers = function (self, t)
 
 
 end
-PlayerStandard.set_running = function (self, running)
+function PlayerStandard:set_running(running)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -18682,7 +18682,7 @@ PlayerStandard.set_running = function (self, running)
 
 
 end
-PlayerStandard._check_action_ladder = function (self, t, input)
+function PlayerStandard:_check_action_ladder(t, input)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -18836,7 +18836,7 @@ PlayerStandard._check_action_ladder = function (self, t, input)
 
 
 end
-PlayerStandard._start_action_ladder = function (self, t, ladder_unit)
+function PlayerStandard:_start_action_ladder(t, ladder_unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-44, warpins: 1 ---
@@ -18872,7 +18872,7 @@ PlayerStandard._start_action_ladder = function (self, t, ladder_unit)
 
 
 end
-PlayerStandard._end_action_ladder = function (self, t, input)
+function PlayerStandard:_end_action_ladder(t, input)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -18913,7 +18913,7 @@ PlayerStandard._end_action_ladder = function (self, t, input)
 
 
 end
-PlayerStandard._interupt_action_ladder = function (self, t, input)
+function PlayerStandard:_interupt_action_ladder(t, input)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -18927,7 +18927,7 @@ PlayerStandard._interupt_action_ladder = function (self, t, input)
 
 
 end
-PlayerStandard.on_ladder = function (self)
+function PlayerStandard:on_ladder()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -18937,7 +18937,7 @@ PlayerStandard.on_ladder = function (self)
 
 
 end
-PlayerStandard._check_action_duck = function (self, t, input)
+function PlayerStandard:_check_action_duck(t, input)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -19095,7 +19095,7 @@ PlayerStandard._check_action_duck = function (self, t, input)
 
 
 end
-PlayerStandard._check_action_steelsight = function (self, t, input)
+function PlayerStandard:_check_action_steelsight(t, input)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -19388,7 +19388,7 @@ PlayerStandard._check_action_steelsight = function (self, t, input)
 
 
 end
-PlayerStandard.shooting = function (self)
+function PlayerStandard:shooting()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -19398,7 +19398,7 @@ PlayerStandard.shooting = function (self)
 
 
 end
-PlayerStandard.running = function (self)
+function PlayerStandard:running()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -19408,7 +19408,7 @@ PlayerStandard.running = function (self)
 
 
 end
-PlayerStandard.ducking = function (self)
+function PlayerStandard:ducking()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -19437,7 +19437,7 @@ PlayerStandard.ducking = function (self)
 
 
 end
-PlayerStandard.get_zoom_fov = function (self, stance_data)
+function PlayerStandard:get_zoom_fov(stance_data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -19491,7 +19491,7 @@ PlayerStandard.get_zoom_fov = function (self, stance_data)
 
 
 end
-PlayerStandard._check_action_primary_attack = function (self, t, input)
+function PlayerStandard:_check_action_primary_attack(t, input)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -20925,7 +20925,7 @@ PlayerStandard._check_action_primary_attack = function (self, t, input)
 
 
 end
-PlayerStandard._check_stop_shooting = function (self)
+function PlayerStandard:_check_stop_shooting()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -21042,7 +21042,7 @@ PlayerStandard._check_stop_shooting = function (self)
 
 
 end
-PlayerStandard._start_action_charging_weapon = function (self, t)
+function PlayerStandard:_start_action_charging_weapon(t)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-38, warpins: 1 ---
@@ -21070,7 +21070,7 @@ PlayerStandard._start_action_charging_weapon = function (self, t)
 
 
 end
-PlayerStandard._interupt_action_charging_weapon = function (self, t)
+function PlayerStandard:_interupt_action_charging_weapon(t)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -21108,7 +21108,7 @@ PlayerStandard._interupt_action_charging_weapon = function (self, t)
 
 
 end
-PlayerStandard._end_action_charging_weapon = function (self, t)
+function PlayerStandard:_end_action_charging_weapon(t)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-17, warpins: 1 ---
@@ -21128,7 +21128,7 @@ PlayerStandard._end_action_charging_weapon = function (self, t)
 
 
 end
-PlayerStandard._is_charging_weapon = function (self)
+function PlayerStandard:_is_charging_weapon()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -21138,7 +21138,7 @@ PlayerStandard._is_charging_weapon = function (self)
 
 
 end
-PlayerStandard._update_charging_weapon_timers = function (self, t, dt)
+function PlayerStandard:_update_charging_weapon_timers(t, dt)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -21167,7 +21167,7 @@ PlayerStandard._update_charging_weapon_timers = function (self, t, dt)
 
 
 end
-PlayerStandard._start_action_reload_enter = function (self, t)
+function PlayerStandard:_start_action_reload_enter(t)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -21264,7 +21264,7 @@ PlayerStandard._start_action_reload_enter = function (self, t)
 
 
 end
-PlayerStandard._start_action_reload = function (self, t)
+function PlayerStandard:_start_action_reload(t)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -21512,7 +21512,7 @@ PlayerStandard._start_action_reload = function (self, t)
 
 
 end
-PlayerStandard._interupt_action_reload = function (self, t)
+function PlayerStandard:_interupt_action_reload(t)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -21661,7 +21661,7 @@ PlayerStandard._interupt_action_reload = function (self, t)
 
 
 end
-PlayerStandard._is_reloading = function (self)
+function PlayerStandard:_is_reloading()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -21690,7 +21690,7 @@ PlayerStandard._is_reloading = function (self)
 
 
 end
-PlayerStandard._is_comm_wheel_active = function (self)
+function PlayerStandard:_is_comm_wheel_active()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -21702,7 +21702,7 @@ PlayerStandard._is_comm_wheel_active = function (self)
 
 
 end
-PlayerStandard.start_deploying_bipod = function (self, bipod_deploy_duration)
+function PlayerStandard:start_deploying_bipod(bipod_deploy_duration)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -21716,7 +21716,7 @@ PlayerStandard.start_deploying_bipod = function (self, bipod_deploy_duration)
 
 
 end
-PlayerStandard._is_deploying_bipod = function (self)
+function PlayerStandard:_is_deploying_bipod()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -21759,7 +21759,7 @@ PlayerStandard._is_deploying_bipod = function (self)
 
 
 end
-PlayerStandard._is_using_bipod = function (self)
+function PlayerStandard:_is_using_bipod()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -21769,7 +21769,7 @@ PlayerStandard._is_using_bipod = function (self)
 
 
 end
-PlayerStandard._get_swap_speed_multiplier = function (self)
+function PlayerStandard:_get_swap_speed_multiplier()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-45, warpins: 1 ---
@@ -21791,7 +21791,7 @@ PlayerStandard._get_swap_speed_multiplier = function (self)
 
 
 end
-PlayerStandard._start_action_unequip_weapon = function (self, t, data)
+function PlayerStandard:_start_action_unequip_weapon(t, data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-32, warpins: 1 ---
@@ -21855,7 +21855,7 @@ PlayerStandard._start_action_unequip_weapon = function (self, t, data)
 
 
 end
-PlayerStandard._start_action_equip_weapon = function (self, t)
+function PlayerStandard:_start_action_equip_weapon(t)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -22301,7 +22301,7 @@ PlayerStandard._start_action_equip_weapon = function (self, t)
 
 
 end
-PlayerStandard._changing_weapon = function (self)
+function PlayerStandard:_changing_weapon()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -22330,7 +22330,7 @@ PlayerStandard._changing_weapon = function (self)
 
 
 end
-PlayerStandard._upd_attention = function (self)
+function PlayerStandard:_upd_attention()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -22473,7 +22473,7 @@ PlayerStandard._upd_attention = function (self)
 
 
 end
-PlayerStandard.get_melee_damage_result = function (self, attack_data)
+function PlayerStandard:get_melee_damage_result(attack_data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -22483,7 +22483,7 @@ PlayerStandard.get_melee_damage_result = function (self, attack_data)
 
 
 end
-PlayerStandard.get_bullet_damage_result = function (self, attack_data)
+function PlayerStandard:get_bullet_damage_result(attack_data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -22493,7 +22493,7 @@ PlayerStandard.get_bullet_damage_result = function (self, attack_data)
 
 
 end
-PlayerStandard.push = function (self, vel)
+function PlayerStandard:push(vel)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -22534,7 +22534,7 @@ PlayerStandard.push = function (self, vel)
 
 
 end
-PlayerStandard._get_dir_str_from_vec = function (self, fwd, dir_vec)
+function PlayerStandard:_get_dir_str_from_vec(fwd, dir_vec)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -22613,7 +22613,7 @@ PlayerStandard._get_dir_str_from_vec = function (self, fwd, dir_vec)
 
 
 end
-PlayerStandard.inventory_clbk_listener = function (self, unit, event)
+function PlayerStandard:inventory_clbk_listener(unit, event)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -22743,7 +22743,7 @@ PlayerStandard.inventory_clbk_listener = function (self, unit, event)
 
 
 end
-PlayerStandard.weapon_recharge_clbk_listener = function (self)
+function PlayerStandard:weapon_recharge_clbk_listener()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -22794,7 +22794,7 @@ PlayerStandard.weapon_recharge_clbk_listener = function (self)
 
 
 end
-PlayerStandard.save = function (self, data)
+function PlayerStandard:save(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -22832,7 +22832,7 @@ PlayerStandard.save = function (self, data)
 
 
 end
-PlayerStandard.pre_destroy = function (self)
+function PlayerStandard:pre_destroy()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -22870,7 +22870,7 @@ PlayerStandard.pre_destroy = function (self)
 
 
 end
-PlayerStandard.tweak_data_clbk_reload = function (self)
+function PlayerStandard:tweak_data_clbk_reload()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -22885,7 +22885,7 @@ PlayerStandard.tweak_data_clbk_reload = function (self)
 
 
 end
-PlayerStandard.set_class_tweak_data = function (self, class)
+function PlayerStandard:set_class_tweak_data(class)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -22899,7 +22899,7 @@ PlayerStandard.set_class_tweak_data = function (self, class)
 
 
 end
-PlayerStandard._get_melee_weapon = function (self)
+function PlayerStandard:_get_melee_weapon()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -22941,7 +22941,7 @@ PlayerStandard._get_melee_weapon = function (self)
 
 
 end
-PlayerStandard.call_teammate = function (self, line, t, no_gesture, skip_alert, skip_mark_cop)
+function PlayerStandard:call_teammate(line, t, no_gesture, skip_alert, skip_mark_cop)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---

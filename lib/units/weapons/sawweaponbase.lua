@@ -18,7 +18,7 @@ if not SawWeaponBase then
 end
 
 SawWeaponBase = slot13
-SawWeaponBase.init = function (self, unit)
+function SawWeaponBase:init(unit)
 	slot5 = unit
 
 	SawWeaponBase.super.init(slot3, self)
@@ -33,7 +33,7 @@ SawWeaponBase.init = function (self, unit)
 
 	return 
 end
-SawWeaponBase.change_fire_object = function (self, new_obj)
+function SawWeaponBase:change_fire_object(new_obj)
 	slot5 = new_obj
 
 	SawWeaponBase.super.change_fire_object(slot3, self)
@@ -42,14 +42,14 @@ SawWeaponBase.change_fire_object = function (self, new_obj)
 
 	return 
 end
-SawWeaponBase.start_shooting = function (self, ...)
+function SawWeaponBase:start_shooting(...)
 	slot3 = self
 
 	SawWeaponBase.super.start_shooting(slot2, ...)
 
 	return 
 end
-SawWeaponBase.stop_shooting = function (self, ...)
+function SawWeaponBase:stop_shooting(...)
 	slot3 = self
 
 	self._stop_sawing_effect(slot2)
@@ -60,21 +60,21 @@ SawWeaponBase.stop_shooting = function (self, ...)
 
 	return 
 end
-SawWeaponBase._play_sound_sawing = function (self)
+function SawWeaponBase:_play_sound_sawing()
 	slot4 = "Play_saw_handheld_grind_generic"
 
 	self.play_sound(slot2, self)
 
 	return 
 end
-SawWeaponBase._play_sound_idle = function (self)
+function SawWeaponBase:_play_sound_idle()
 	slot4 = "Play_saw_handheld_loop_idle"
 
 	self.play_sound(slot2, self)
 
 	return 
 end
-SawWeaponBase._start_sawing_effect = function (self)
+function SawWeaponBase:_start_sawing_effect()
 	if not self._active_effect then
 		slot3 = self
 
@@ -87,7 +87,7 @@ SawWeaponBase._start_sawing_effect = function (self)
 
 	return 
 end
-SawWeaponBase._stop_sawing_effect = function (self)
+function SawWeaponBase:_stop_sawing_effect()
 	if self._active_effect then
 		slot3 = self
 
@@ -103,7 +103,7 @@ SawWeaponBase._stop_sawing_effect = function (self)
 
 	return 
 end
-SawWeaponBase.setup = function (self, setup_data)
+function SawWeaponBase:setup(setup_data)
 	slot5 = setup_data
 
 	SawWeaponBase.super.setup(slot3, self)
@@ -115,7 +115,7 @@ SawWeaponBase.setup = function (self, setup_data)
 
 	return 
 end
-SawWeaponBase.fire = function (self, from_pos, direction, dmg_mul, shoot_player, spread_mul, autohit_mul, suppr_mul, target_unit)
+function SawWeaponBase:fire(from_pos, direction, dmg_mul, shoot_player, spread_mul, autohit_mul, suppr_mul, target_unit)
 	slot11 = self
 
 	if self.get_ammo_remaining_in_clip(slot10) == 0 then
@@ -197,7 +197,7 @@ SawWeaponBase.fire = function (self, from_pos, direction, dmg_mul, shoot_player,
 end
 local mvec_to = Vector3()
 local mvec_spread_direction = Vector3()
-SawWeaponBase._fire_raycast = function (self, user_unit, from_pos, direction, dmg_mul, shoot_player, spread_mul, autohit_mul, suppr_mul)
+function SawWeaponBase:_fire_raycast(user_unit, from_pos, direction, dmg_mul, shoot_player, spread_mul, autohit_mul, suppr_mul)
 	local result = {}
 	local hit_unit = nil
 	slot14 = user_unit
@@ -256,12 +256,12 @@ SawWeaponBase._fire_raycast = function (self, user_unit, from_pos, direction, dm
 
 	return result, col_ray and col_ray.unit
 end
-SawWeaponBase.ammo_info = function (self)
+function SawWeaponBase:ammo_info()
 	slot6 = self
 
 	return self.get_ammo_max_per_clip(slot2), self.get_ammo_remaining_in_clip(self), self.remaining_full_clips(self), self.get_ammo_max(self)
 end
-SawWeaponBase.can_reload = function (self)
+function SawWeaponBase:can_reload()
 	slot3 = self
 
 	if self.clip_empty(slot2) then
@@ -278,7 +278,7 @@ if not SawHit then
 end
 
 SawHit = slot15
-SawHit.on_collision = function (self, col_ray, weapon_unit, user_unit, damage)
+function SawHit:on_collision(col_ray, weapon_unit, user_unit, damage)
 	local hit_unit = col_ray.unit
 
 	if hit_unit then
@@ -320,7 +320,7 @@ SawHit.on_collision = function (self, col_ray, weapon_unit, user_unit, damage)
 
 	return result
 end
-SawHit.play_impact_sound_and_effects = function (self, col_ray)
+function SawHit:play_impact_sound_and_effects(col_ray)
 	slot5 = {
 		decal = "saw",
 		no_sound = true,

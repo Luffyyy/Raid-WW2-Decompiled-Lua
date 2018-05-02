@@ -16,7 +16,7 @@ RaidGUIControlMeleeWeaponPeerLoot.DESCRIPTION_COLOR = tweak_data.gui.colors.raid
 RaidGUIControlMeleeWeaponPeerLoot.DESCRIPTION_FONT_SIZE = tweak_data.gui.font_sizes.size_24
 RaidGUIControlMeleeWeaponPeerLoot.IMAGE_PADDING_RIGHT = 10
 RaidGUIControlMeleeWeaponPeerLoot.TEXT_X = 128
-RaidGUIControlMeleeWeaponPeerLoot.init = function (self, parent, params)
+function RaidGUIControlMeleeWeaponPeerLoot:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlMeleeWeaponPeerLoot.super.init(slot4, self, parent)
@@ -39,7 +39,7 @@ RaidGUIControlMeleeWeaponPeerLoot.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlMeleeWeaponPeerLoot._create_control_panel = function (self)
+function RaidGUIControlMeleeWeaponPeerLoot:_create_control_panel()
 	slot3 = self._params
 	local control_params = clone(slot2)
 	control_params.x = control_params.x
@@ -54,7 +54,7 @@ RaidGUIControlMeleeWeaponPeerLoot._create_control_panel = function (self)
 
 	return 
 end
-RaidGUIControlMeleeWeaponPeerLoot._create_weapon_point_details = function (self)
+function RaidGUIControlMeleeWeaponPeerLoot:_create_weapon_point_details()
 	local params_weapon_point_image = {
 		name = "melee_weapon_image",
 		y = 0,
@@ -111,7 +111,7 @@ RaidGUIControlMeleeWeaponPeerLoot._create_weapon_point_details = function (self)
 
 	return 
 end
-RaidGUIControlMeleeWeaponPeerLoot.set_player_name = function (self, name)
+function RaidGUIControlMeleeWeaponPeerLoot:set_player_name(name)
 	slot4 = self._name_label
 	slot7 = name
 
@@ -123,7 +123,7 @@ RaidGUIControlMeleeWeaponPeerLoot.set_player_name = function (self, name)
 
 	return 
 end
-RaidGUIControlMeleeWeaponPeerLoot._layout_text = function (self)
+function RaidGUIControlMeleeWeaponPeerLoot:_layout_text()
 	slot3 = self._name_label
 	local _, _, _, h = self._name_label.text_rect(slot2)
 	slot8 = h
@@ -141,7 +141,7 @@ RaidGUIControlMeleeWeaponPeerLoot._layout_text = function (self)
 
 	return 
 end
-RaidGUIControlMeleeWeaponPeerLoot.set_melee_weapon = function (self, weapon_id)
+function RaidGUIControlMeleeWeaponPeerLoot:set_melee_weapon(weapon_id)
 	local weapon_name = ""
 	local tweak_data = tweak_data.blackmarket.melee_weapons[weapon_id]
 

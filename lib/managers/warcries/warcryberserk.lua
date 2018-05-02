@@ -46,7 +46,7 @@ if not WarcryBerserk then
 end
 
 WarcryBerserk = slot0
-WarcryBerserk.init = function (self)
+function WarcryBerserk:init()
 	slot3 = self
 
 	WarcryBerserk.super.init(slot2)
@@ -82,7 +82,7 @@ local ids_layer1_animate_factor = Idstring(function (self)
 end)
 slot3 = "blend_factor"
 local ids_blend_factor = Idstring("layer1_animate_factor")
-WarcryBerserk.update = function (self, dt)
+function WarcryBerserk:update(dt)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-32, warpins: 1 ---
@@ -136,7 +136,7 @@ WarcryBerserk.update = function (self, dt)
 
 
 end
-WarcryBerserk.activate = function (self)
+function WarcryBerserk:activate()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-48, warpins: 1 ---
@@ -166,7 +166,7 @@ WarcryBerserk.activate = function (self)
 
 
 end
-WarcryBerserk.deactivate = function (self)
+function WarcryBerserk:deactivate()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -186,7 +186,7 @@ WarcryBerserk.deactivate = function (self)
 
 
 end
-WarcryBerserk.duration = function (self)
+function WarcryBerserk:duration()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -198,7 +198,7 @@ WarcryBerserk.duration = function (self)
 
 
 end
-WarcryBerserk.get_level_description = function (self, level)
+function WarcryBerserk:get_level_description(level)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -233,7 +233,7 @@ WarcryBerserk.get_level_description = function (self, level)
 
 
 end
-WarcryBerserk.check_ammo_consumption = function (self)
+function WarcryBerserk:check_ammo_consumption()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -267,7 +267,7 @@ WarcryBerserk.check_ammo_consumption = function (self)
 
 
 end
-WarcryBerserk._on_enemy_killed = function (self, params)
+function WarcryBerserk:_on_enemy_killed(params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -340,7 +340,7 @@ WarcryBerserk._on_enemy_killed = function (self, params)
 
 
 end
-WarcryBerserk.cleanup = function (self)
+function WarcryBerserk:cleanup()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---

@@ -19,7 +19,7 @@ end
 InstanceInputUnitElement = slot0
 InstanceInputUnitElement.SAVE_UNIT_POSITION = false
 InstanceInputUnitElement.SAVE_UNIT_ROTATION = false
-InstanceInputUnitElement.init = function (self, ...)
+function InstanceInputUnitElement:init(...)
 	slot3 = self
 
 	InstanceInputUnitElement.super.init(slot2, ...)
@@ -31,7 +31,7 @@ InstanceInputUnitElement.init = function (self, ...)
 
 	return 
 end
-InstanceInputUnitElement._build_panel = function (self, panel, panel_sizer)
+function InstanceInputUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -77,7 +77,7 @@ end
 InstanceOutputUnitElement = slot0
 InstanceOutputUnitElement.SAVE_UNIT_POSITION = false
 InstanceOutputUnitElement.SAVE_UNIT_ROTATION = false
-InstanceOutputUnitElement.init = function (self, ...)
+function InstanceOutputUnitElement:init(...)
 	slot3 = self
 
 	InstanceOutputUnitElement.super.init(slot2, ...)
@@ -89,7 +89,7 @@ InstanceOutputUnitElement.init = function (self, ...)
 
 	return 
 end
-InstanceOutputUnitElement._build_panel = function (self, panel, panel_sizer)
+function InstanceOutputUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -135,7 +135,7 @@ end
 InstanceEventUnitElement = slot0
 InstanceEventUnitElement.SAVE_UNIT_POSITION = false
 InstanceEventUnitElement.SAVE_UNIT_ROTATION = false
-InstanceEventUnitElement.init = function (self, type, ...)
+function InstanceEventUnitElement:init(type, ...)
 	slot4 = self
 
 	InstanceEventUnitElement.super.init(slot3, ...)
@@ -149,7 +149,7 @@ InstanceEventUnitElement.init = function (self, type, ...)
 
 	return 
 end
-InstanceEventUnitElement.layer_finished = function (self, ...)
+function InstanceEventUnitElement:layer_finished(...)
 	slot3 = self
 
 	InstanceEventUnitElement.super.layer_finished(slot2, ...)
@@ -165,14 +165,14 @@ InstanceEventUnitElement.layer_finished = function (self, ...)
 
 	return 
 end
-InstanceEventUnitElement.selected = function (self)
+function InstanceEventUnitElement:selected()
 	slot3 = self
 
 	InstanceEventUnitElement.super.selected(slot2)
 
 	return 
 end
-InstanceEventUnitElement.update_selected = function (self, t, dt)
+function InstanceEventUnitElement:update_selected(t, dt)
 	slot5 = self._hed.event_list
 
 	for _, data in ipairs(slot4) do
@@ -183,7 +183,7 @@ InstanceEventUnitElement.update_selected = function (self, t, dt)
 
 	return 
 end
-InstanceEventUnitElement.update_editing = function (self, t, dt)
+function InstanceEventUnitElement:update_editing(t, dt)
 	slot5 = self
 	local instance_name = self._instance_name_raycast(slot4)
 
@@ -195,7 +195,7 @@ InstanceEventUnitElement.update_editing = function (self, t, dt)
 
 	return 
 end
-InstanceEventUnitElement._draw_instance_link = function (self, t, dt, instance_name)
+function InstanceEventUnitElement:_draw_instance_link(t, dt, instance_name)
 	slot6 = self
 	local r, g, b = self.get_link_color(slot5)
 	slot10 = "Instances"
@@ -218,7 +218,7 @@ InstanceEventUnitElement._draw_instance_link = function (self, t, dt, instance_n
 
 	return 
 end
-InstanceEventUnitElement._instance_name_raycast = function (self)
+function InstanceEventUnitElement:_instance_name_raycast()
 	slot4 = {
 		ray_type = "body editor",
 		skip_instance_check = true,
@@ -242,7 +242,7 @@ InstanceEventUnitElement._instance_name_raycast = function (self)
 
 	return (instance_data.script == self._unit.mission_element_data(instance_name).script and instance_name) or nil
 end
-InstanceEventUnitElement.on_instance_changed_name = function (self, old_name, new_name)
+function InstanceEventUnitElement:on_instance_changed_name(old_name, new_name)
 	slot5 = self._hed.event_list
 
 	for _, data in ipairs(slot4) do
@@ -264,7 +264,7 @@ InstanceEventUnitElement.on_instance_changed_name = function (self, old_name, ne
 
 	return 
 end
-InstanceEventUnitElement.on_instance_deleted = function (self, name)
+function InstanceEventUnitElement:on_instance_deleted(name)
 	slot4 = self._guis
 	local clone_guis = clone(slot3)
 	slot7 = self._hed.event_list
@@ -279,7 +279,7 @@ InstanceEventUnitElement.on_instance_deleted = function (self, name)
 
 	return 
 end
-InstanceEventUnitElement._get_events = function (self, instance_name)
+function InstanceEventUnitElement:_get_events(instance_name)
 	if self._type == "input" then
 		slot5 = instance_name
 
@@ -292,7 +292,7 @@ InstanceEventUnitElement._get_events = function (self, instance_name)
 
 	return 
 end
-InstanceEventUnitElement._set_instance_by_raycast = function (self)
+function InstanceEventUnitElement:_set_instance_by_raycast()
 	slot3 = self
 	local instance_name = self._instance_name_raycast(slot2)
 
@@ -304,7 +304,7 @@ InstanceEventUnitElement._set_instance_by_raycast = function (self)
 
 	return 
 end
-InstanceEventUnitElement._add_instance_by_name = function (self, instance_name)
+function InstanceEventUnitElement:_add_instance_by_name(instance_name)
 	local events = self._get_events(slot3, self)
 	local event_list_data = {
 		instance = instance_name,
@@ -320,7 +320,7 @@ InstanceEventUnitElement._add_instance_by_name = function (self, instance_name)
 
 	return 
 end
-InstanceEventUnitElement._add_instance_gui = function (self, instance_name, events, event_list_data)
+function InstanceEventUnitElement:_add_instance_gui(instance_name, events, event_list_data)
 	local panel = self._panel
 	local panel_sizer = self._panel_sizer
 	slot9 = "HORIZONTAL"
@@ -387,7 +387,7 @@ InstanceEventUnitElement._add_instance_gui = function (self, instance_name, even
 
 	return 
 end
-InstanceEventUnitElement._on_gui_set_event_data = function (self, event_list_data)
+function InstanceEventUnitElement:_on_gui_set_event_data(event_list_data)
 	slot5 = event_list_data
 	local guis = self._get_guis_by_event_list_data(slot3, self)
 	slot5 = guis.event
@@ -396,7 +396,7 @@ InstanceEventUnitElement._on_gui_set_event_data = function (self, event_list_dat
 
 	return 
 end
-InstanceEventUnitElement._get_guis_by_event_list_data = function (self, event_list_data)
+function InstanceEventUnitElement:_get_guis_by_event_list_data(event_list_data)
 	slot6 = self._hed.event_list
 
 	for i, entry in pairs(clone(slot5)) do
@@ -407,7 +407,7 @@ InstanceEventUnitElement._get_guis_by_event_list_data = function (self, event_li
 
 	return 
 end
-InstanceEventUnitElement.remove_entry = function (self, event_list_data)
+function InstanceEventUnitElement:remove_entry(event_list_data)
 	local function _remove_guis(guis)
 		if guis then
 			slot3 = guis.instance_name_ctrlr
@@ -458,14 +458,14 @@ InstanceEventUnitElement.remove_entry = function (self, event_list_data)
 
 	return 
 end
-InstanceEventUnitElement.destroy_panel = function (self, ...)
+function InstanceEventUnitElement:destroy_panel(...)
 	slot3 = self
 
 	InstanceEventUnitElement.super.destroy_panel(slot2, ...)
 
 	return 
 end
-InstanceEventUnitElement._on_gui_select_instance_list = function (self)
+function InstanceEventUnitElement:_on_gui_select_instance_list()
 	local settings = {
 		list_style = "LC_REPORT,LC_NO_HEADER,LC_SORT_ASCENDING"
 	}
@@ -500,7 +500,7 @@ InstanceEventUnitElement._on_gui_select_instance_list = function (self)
 
 	return 
 end
-InstanceEventUnitElement._build_panel = function (self, panel, panel_sizer)
+function InstanceEventUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -538,7 +538,7 @@ InstanceEventUnitElement._build_panel = function (self, panel, panel_sizer)
 
 	return 
 end
-InstanceEventUnitElement.add_triggers = function (self, vc)
+function InstanceEventUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "_set_instance_by_raycast"
 
@@ -560,7 +560,7 @@ if not InstanceInputEventUnitElement then
 end
 
 InstanceInputEventUnitElement = slot0
-InstanceInputEventUnitElement.init = function (self, ...)
+function InstanceInputEventUnitElement:init(...)
 	slot4 = "input"
 
 	InstanceInputEventUnitElement.super.init(slot2, self, ...)
@@ -581,7 +581,7 @@ if not InstanceOutputEventUnitElement then
 end
 
 InstanceOutputEventUnitElement = slot0
-InstanceOutputEventUnitElement.init = function (self, ...)
+function InstanceOutputEventUnitElement:init(...)
 	slot4 = "output"
 
 	InstanceOutputEventUnitElement.super.init(slot2, self, ...)
@@ -602,7 +602,7 @@ if not InstancePointUnitElement then
 end
 
 InstancePointUnitElement = slot0
-InstancePointUnitElement.init = function (self, ...)
+function InstancePointUnitElement:init(...)
 	slot3 = self
 
 	InstancePointUnitElement.super.init(slot2, ...)
@@ -614,7 +614,7 @@ InstancePointUnitElement.init = function (self, ...)
 
 	return 
 end
-InstancePointUnitElement.update_selected = function (self, t, dt)
+function InstancePointUnitElement:update_selected(t, dt)
 	if self._hed.instance then
 		slot8 = self._hed.instance
 
@@ -623,7 +623,7 @@ InstancePointUnitElement.update_selected = function (self, t, dt)
 
 	return 
 end
-InstancePointUnitElement.update_editing = function (self, t, dt)
+function InstancePointUnitElement:update_editing(t, dt)
 	slot5 = self
 	local instance_name = self._instance_name_raycast(slot4)
 
@@ -635,7 +635,7 @@ InstancePointUnitElement.update_editing = function (self, t, dt)
 
 	return 
 end
-InstancePointUnitElement.selected = function (self)
+function InstancePointUnitElement:selected()
 	slot3 = self
 
 	InstanceEventUnitElement.super.selected(slot2)
@@ -663,12 +663,12 @@ InstancePointUnitElement.selected = function (self)
 
 	return 
 end
-InstancePointUnitElement.external_change_instance = function (self, instance)
+function InstancePointUnitElement:external_change_instance(instance)
 	self._hed.instance = instance
 
 	return 
 end
-InstancePointUnitElement._set_instance_by_raycast = function (self)
+function InstancePointUnitElement:_set_instance_by_raycast()
 	slot3 = self
 	local instance_name = self._instance_name_raycast(slot2)
 
@@ -681,7 +681,7 @@ InstancePointUnitElement._set_instance_by_raycast = function (self)
 
 	return 
 end
-InstancePointUnitElement._instance_name_raycast = function (self)
+function InstancePointUnitElement:_instance_name_raycast()
 
 	-- Decompilation error in this vicinity:
 	slot4 = {
@@ -705,7 +705,7 @@ InstancePointUnitElement._instance_name_raycast = function (self)
 	slot6 = instance_name
 	local instance_data = managers.world_instance.get_instance_data_by_name(slot4, managers.world_instance)
 end
-InstancePointUnitElement._get_options = function (self)
+function InstancePointUnitElement:_get_options()
 	slot6 = self._unit
 	local _names = managers.world_instance.instance_names_by_script(slot2, managers.world_instance)
 	local names = {}
@@ -723,7 +723,7 @@ InstancePointUnitElement._get_options = function (self)
 
 	return names
 end
-InstancePointUnitElement._build_panel = function (self, panel, panel_sizer)
+function InstancePointUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -737,7 +737,7 @@ InstancePointUnitElement._build_panel = function (self, panel, panel_sizer)
 
 	return 
 end
-InstancePointUnitElement.add_triggers = function (self, vc)
+function InstancePointUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "_set_instance_by_raycast"
 
@@ -768,7 +768,7 @@ if not InstanceParamsUnitElement then
 end
 
 InstanceParamsUnitElement = slot0
-InstanceParamsUnitElement.init = function (self, ...)
+function InstanceParamsUnitElement:init(...)
 	slot3 = self
 
 	InstanceParamsUnitElement.super.init(slot2, ...)
@@ -780,7 +780,7 @@ InstanceParamsUnitElement.init = function (self, ...)
 
 	return 
 end
-InstanceParamsUnitElement._add_var_dialog = function (self)
+function InstanceParamsUnitElement:_add_var_dialog()
 	slot12 = 0
 	slot9 = true
 	local var_name = EWS.get_text_from_user(slot2, EWS, Global.frame_panel, "Enter variable name:", "Add variable", "var_", Vector3(slot9, -1, -1))
@@ -847,10 +847,10 @@ InstanceParamsUnitElement._add_var_dialog = function (self)
 
 	return 
 end
-InstanceParamsUnitElement._add_var = function (self, var_name, type, default_value)
+function InstanceParamsUnitElement:_add_var(var_name, type, default_value)
 	return 
 end
-InstanceParamsUnitElement._remove_var_name = function (self, var_name)
+function InstanceParamsUnitElement:_remove_var_name(var_name)
 	slot4 = self._hed.params
 
 	for i, data in ipairs(slot3) do
@@ -881,7 +881,7 @@ InstanceParamsUnitElement._remove_var_name = function (self, var_name)
 
 	return 
 end
-InstanceParamsUnitElement._build_var_panel = function (self, data)
+function InstanceParamsUnitElement:_build_var_panel(data)
 	self._panels = self._panels or {}
 	slot7 = "TAB_TRAVERSAL"
 	local panel = EWS.Panel(slot3, EWS, self._panel, "")
@@ -960,7 +960,7 @@ InstanceParamsUnitElement._build_var_panel = function (self, data)
 
 	return 
 end
-InstanceParamsUnitElement._build_number = function (self, data, panel, sizer)
+function InstanceParamsUnitElement:_build_number(data, panel, sizer)
 	local number_params = {
 		name_proportions = 1,
 		tooltip = "Set a default number variable.",
@@ -990,7 +990,7 @@ InstanceParamsUnitElement._build_number = function (self, data, panel, sizer)
 
 	return 
 end
-InstanceParamsUnitElement._build_combobox = function (self, data, panel, sizer, options)
+function InstanceParamsUnitElement:_build_combobox(data, panel, sizer, options)
 	slot8 = "HORIZONTAL"
 	local horizontal_sizer = EWS.BoxSizer(slot6, EWS)
 	slot12 = "EXPAND,LEFT"
@@ -1042,7 +1042,7 @@ InstanceParamsUnitElement._build_combobox = function (self, data, panel, sizer, 
 
 	return 
 end
-InstanceParamsUnitElement._set_default_var_name = function (self, data)
+function InstanceParamsUnitElement:_set_default_var_name(data)
 	slot4 = data.ctrlr
 	local value = data.ctrlr.get_value(slot3)
 	slot6 = value
@@ -1050,7 +1050,7 @@ InstanceParamsUnitElement._set_default_var_name = function (self, data)
 
 	return 
 end
-InstanceParamsUnitElement._on_gui_select_name_dialog = function (self, params)
+function InstanceParamsUnitElement:_on_gui_select_name_dialog(params)
 	slot6 = params.combobox.options
 	local dialog = SelectNameModal.new(slot3, SelectNameModal, "Select name")
 	slot5 = dialog
@@ -1076,7 +1076,7 @@ InstanceParamsUnitElement._on_gui_select_name_dialog = function (self, params)
 
 	return 
 end
-InstanceParamsUnitElement._build_panel = function (self, panel, panel_sizer)
+function InstanceParamsUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -1126,7 +1126,7 @@ if not InstanceSetParamsUnitElement then
 end
 
 InstanceSetParamsUnitElement = slot0
-InstanceSetParamsUnitElement.init = function (self, ...)
+function InstanceSetParamsUnitElement:init(...)
 	slot3 = self
 
 	InstanceSetParamsUnitElement.super.init(slot2, ...)
@@ -1149,7 +1149,7 @@ InstanceSetParamsUnitElement.init = function (self, ...)
 
 	return 
 end
-InstanceSetParamsUnitElement.update_selected = function (self, t, dt)
+function InstanceSetParamsUnitElement:update_selected(t, dt)
 	if self._hed.instance then
 		slot8 = self._hed.instance
 
@@ -1158,7 +1158,7 @@ InstanceSetParamsUnitElement.update_selected = function (self, t, dt)
 
 	return 
 end
-InstanceSetParamsUnitElement.update_editing = function (self, t, dt)
+function InstanceSetParamsUnitElement:update_editing(t, dt)
 	slot5 = self
 	local instance_name = self._instance_name_raycast(slot4)
 
@@ -1170,7 +1170,7 @@ InstanceSetParamsUnitElement.update_editing = function (self, t, dt)
 
 	return 
 end
-InstanceSetParamsUnitElement.selected = function (self)
+function InstanceSetParamsUnitElement:selected()
 	slot3 = self
 
 	InstanceEventUnitElement.super.selected(slot2)
@@ -1198,7 +1198,7 @@ InstanceSetParamsUnitElement.selected = function (self)
 
 	return 
 end
-InstanceSetParamsUnitElement.on_instance_changed_name = function (self, old_name, new_name)
+function InstanceSetParamsUnitElement:on_instance_changed_name(old_name, new_name)
 	if old_name == self._hed.instance then
 		self._hed.instance = new_name
 
@@ -1211,7 +1211,7 @@ InstanceSetParamsUnitElement.on_instance_changed_name = function (self, old_name
 
 	return 
 end
-InstanceSetParamsUnitElement.on_instance_deleted = function (self, name)
+function InstanceSetParamsUnitElement:on_instance_deleted(name)
 	if name == self._hed.instance then
 		self._hed.instance = nil
 		self._hed.params = {}
@@ -1228,7 +1228,7 @@ InstanceSetParamsUnitElement.on_instance_deleted = function (self, name)
 
 	return 
 end
-InstanceSetParamsUnitElement._instance_name_raycast = function (self)
+function InstanceSetParamsUnitElement:_instance_name_raycast()
 	slot4 = {
 		ray_type = "body editor",
 		skip_instance_check = true,
@@ -1252,7 +1252,7 @@ InstanceSetParamsUnitElement._instance_name_raycast = function (self)
 
 	return (instance_data.script == self._unit.mission_element_data(instance_name).script and instance_name) or nil
 end
-InstanceSetParamsUnitElement._set_instance_by_raycast = function (self)
+function InstanceSetParamsUnitElement:_set_instance_by_raycast()
 	slot3 = self
 	local instance_name = self._instance_name_raycast(slot2)
 
@@ -1272,7 +1272,7 @@ InstanceSetParamsUnitElement._set_instance_by_raycast = function (self)
 
 	return 
 end
-InstanceSetParamsUnitElement._get_options = function (self)
+function InstanceSetParamsUnitElement:_get_options()
 	slot6 = self._unit
 	local _names = managers.world_instance.instance_names_by_script(slot2, managers.world_instance)
 	local names = {}
@@ -1290,7 +1290,7 @@ InstanceSetParamsUnitElement._get_options = function (self)
 
 	return names
 end
-InstanceSetParamsUnitElement._on_gui_change_instance = function (self, params)
+function InstanceSetParamsUnitElement:_on_gui_change_instance(params)
 	slot4 = self
 	slot7 = params.ctrlr
 
@@ -1298,7 +1298,7 @@ InstanceSetParamsUnitElement._on_gui_change_instance = function (self, params)
 
 	return 
 end
-InstanceSetParamsUnitElement._check_change_instance = function (self, new_instance)
+function InstanceSetParamsUnitElement:_check_change_instance(new_instance)
 
 	-- Decompilation error in this vicinity:
 	slot5 = new_instance
@@ -1330,7 +1330,7 @@ InstanceSetParamsUnitElement._check_change_instance = function (self, new_instan
 
 	return 
 end
-InstanceSetParamsUnitElement._on_instance_changed = function (self)
+function InstanceSetParamsUnitElement:_on_instance_changed()
 	if self._hed.instance then
 		slot4 = self._hed.instance
 		local params = managers.world_instance.get_instance_params_by_name(slot2, managers.world_instance)
@@ -1341,7 +1341,7 @@ InstanceSetParamsUnitElement._on_instance_changed = function (self)
 
 	return 
 end
-InstanceSetParamsUnitElement._set_var_name = function (self, data)
+function InstanceSetParamsUnitElement:_set_var_name(data)
 	local value = data.ctrlr.get_value(slot3)
 	slot5 = value
 
@@ -1352,7 +1352,7 @@ InstanceSetParamsUnitElement._set_var_name = function (self, data)
 
 	return 
 end
-InstanceSetParamsUnitElement._destroy_params_panels = function (self)
+function InstanceSetParamsUnitElement:_destroy_params_panels()
 	slot3 = self._panels
 
 	for _, panel in ipairs(slot2) do
@@ -1369,7 +1369,7 @@ InstanceSetParamsUnitElement._destroy_params_panels = function (self)
 
 	return 
 end
-InstanceSetParamsUnitElement._build_from_params = function (self, params)
+function InstanceSetParamsUnitElement:_build_from_params(params)
 	slot4 = self._panel
 
 	self._panel.freeze(slot3)
@@ -1474,7 +1474,7 @@ InstanceSetParamsUnitElement._build_from_params = function (self, params)
 
 	return 
 end
-InstanceSetParamsUnitElement._on_gui_toggle_use = function (self, params)
+function InstanceSetParamsUnitElement:_on_gui_toggle_use(params)
 	local use = params.ctrlr.get_value(slot3)
 	slot6 = use
 
@@ -1495,7 +1495,7 @@ InstanceSetParamsUnitElement._on_gui_toggle_use = function (self, params)
 
 	return 
 end
-InstanceSetParamsUnitElement._build_number = function (self, data, panel, sizer)
+function InstanceSetParamsUnitElement:_build_number(data, panel, sizer)
 	local number_params = {
 		name_proportions = 1,
 		tooltip = "Set a number variable.",
@@ -1525,7 +1525,7 @@ InstanceSetParamsUnitElement._build_number = function (self, data, panel, sizer)
 
 	return number
 end
-InstanceSetParamsUnitElement._build_combobox = function (self, data, panel, sizer, options)
+function InstanceSetParamsUnitElement:_build_combobox(data, panel, sizer, options)
 	local horizontal_sizer = EWS.BoxSizer(slot6, EWS)
 	slot12 = "EXPAND,LEFT"
 
@@ -1575,7 +1575,7 @@ InstanceSetParamsUnitElement._build_combobox = function (self, data, panel, size
 
 	return combobox
 end
-InstanceSetParamsUnitElement._on_gui_select_name_dialog = function (self, params)
+function InstanceSetParamsUnitElement:_on_gui_select_name_dialog(params)
 	slot6 = params.combobox.options
 	local dialog = SelectNameModal.new(slot3, SelectNameModal, "Select name")
 	slot5 = dialog
@@ -1601,7 +1601,7 @@ InstanceSetParamsUnitElement._on_gui_select_name_dialog = function (self, params
 
 	return 
 end
-InstanceSetParamsUnitElement._build_panel = function (self, panel, panel_sizer)
+function InstanceSetParamsUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -1622,7 +1622,7 @@ InstanceSetParamsUnitElement._build_panel = function (self, panel, panel_sizer)
 
 	return 
 end
-InstanceSetParamsUnitElement.set_element_data = function (self, params, ...)
+function InstanceSetParamsUnitElement:set_element_data(params, ...)
 	if params.value == "instance" then
 		slot5 = params
 
@@ -1641,7 +1641,7 @@ InstanceSetParamsUnitElement.set_element_data = function (self, params, ...)
 
 	return 
 end
-InstanceSetParamsUnitElement.add_triggers = function (self, vc)
+function InstanceSetParamsUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "_set_instance_by_raycast"
 

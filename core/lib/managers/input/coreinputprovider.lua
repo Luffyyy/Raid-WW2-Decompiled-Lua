@@ -11,7 +11,7 @@ slot3 = "CoreInputLayer"
 core.import(slot1, core)
 
 Provider = Provider or class()
-Provider.init = function (self, input_layer_descriptions)
+function Provider:init(input_layer_descriptions)
 	self._layer_description_to_layer = {}
 	self._input_layer_descriptions = input_layer_descriptions
 	slot4 = CoreInputLayerDescriptionPrioritizer.Prioritizer
@@ -19,10 +19,10 @@ Provider.init = function (self, input_layer_descriptions)
 
 	return 
 end
-Provider.destroy = function (self)
+function Provider:destroy()
 	return 
 end
-Provider.context = function (self)
+function Provider:context()
 	slot3 = self._prioritizer
 	local layer_description = self._prioritizer.active_layer_description(slot2)
 
@@ -35,7 +35,7 @@ Provider.context = function (self)
 
 	return layer.context(slot4)
 end
-Provider.create_layer = function (self, layer_description_name)
+function Provider:create_layer(layer_description_name)
 	local layer_description = self._input_layer_descriptions[layer_description_name]
 	slot6 = "Illegal layer description '" .. layer_description_name .. "'"
 
@@ -50,7 +50,7 @@ Provider.create_layer = function (self, layer_description_name)
 
 	return layer
 end
-Provider._layer_destroyed = function (self, layer)
+function Provider:_layer_destroyed(layer)
 	local layer_description = layer.layer_description(slot3)
 	slot6 = layer_description
 

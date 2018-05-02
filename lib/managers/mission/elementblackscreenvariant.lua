@@ -8,21 +8,21 @@ if not ElementBlackscreenVariant then
 end
 
 ElementBlackscreenVariant = slot0
-ElementBlackscreenVariant.init = function (self, ...)
+function ElementBlackscreenVariant:init(...)
 	slot3 = self
 
 	ElementBlackscreenVariant.super.init(slot2, ...)
 
 	return 
 end
-ElementBlackscreenVariant.client_on_executed = function (self, ...)
+function ElementBlackscreenVariant:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementBlackscreenVariant.on_executed = function (self, instigator)
+function ElementBlackscreenVariant:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -46,21 +46,21 @@ if not ElementEndscreenVariant then
 end
 
 ElementEndscreenVariant = slot0
-ElementEndscreenVariant.init = function (self, ...)
+function ElementEndscreenVariant:init(...)
 	slot3 = self
 
 	ElementEndscreenVariant.super.init(slot2, ...)
 
 	return 
 end
-ElementEndscreenVariant.client_on_executed = function (self, ...)
+function ElementEndscreenVariant:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementEndscreenVariant.on_executed = function (self, instigator)
+function ElementEndscreenVariant:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

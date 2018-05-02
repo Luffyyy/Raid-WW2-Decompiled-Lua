@@ -8,7 +8,7 @@ if not RaidGUIControlCardSuggested then
 end
 
 RaidGUIControlCardSuggested = slot0
-RaidGUIControlCardSuggested.init = function (self, parent, params, item_data, grid_params)
+function RaidGUIControlCardSuggested:init(parent, params, item_data, grid_params)
 	local card_image_params = {
 		x = 16,
 		y = 16,
@@ -119,7 +119,7 @@ RaidGUIControlCardSuggested.init = function (self, parent, params, item_data, gr
 
 	return 
 end
-RaidGUIControlCardSuggested._show_controls_for_empty_cardback = function (self)
+function RaidGUIControlCardSuggested:_show_controls_for_empty_cardback()
 	local empty_slot_texture = tweak_data.gui.icons.cc_empty_slot_small
 	slot5 = empty_slot_texture.texture
 
@@ -203,7 +203,7 @@ RaidGUIControlCardSuggested._show_controls_for_empty_cardback = function (self)
 
 	return 
 end
-RaidGUIControlCardSuggested._show_controls_for_empty_suggestion = function (self)
+function RaidGUIControlCardSuggested:_show_controls_for_empty_suggestion()
 	local empty_slot_texture = tweak_data.gui.icons.cc_empty_slot_small
 	slot5 = empty_slot_texture.texture
 
@@ -281,7 +281,7 @@ RaidGUIControlCardSuggested._show_controls_for_empty_suggestion = function (self
 
 	return 
 end
-RaidGUIControlCardSuggested._show_controls_for_suggestion = function (self)
+function RaidGUIControlCardSuggested:_show_controls_for_suggestion()
 	slot4 = false
 
 	self._card_not_selected_label.set_visible(slot2, self._card_not_selected_label)
@@ -332,7 +332,7 @@ RaidGUIControlCardSuggested._show_controls_for_suggestion = function (self)
 
 	return 
 end
-RaidGUIControlCardSuggested.set_visible = function (self, flag)
+function RaidGUIControlCardSuggested:set_visible(flag)
 	slot5 = flag
 
 	RaidGUIControlCardSuggested.super.set_visible(slot3, self)
@@ -351,7 +351,7 @@ RaidGUIControlCardSuggested.set_visible = function (self, flag)
 
 	return 
 end
-RaidGUIControlCardSuggested.set_card = function (self, card_data)
+function RaidGUIControlCardSuggested:set_card(card_data)
 	slot5 = card_data
 
 	RaidGUIControlCardSuggested.super.set_card(slot3, self)
@@ -392,14 +392,14 @@ RaidGUIControlCardSuggested.set_card = function (self, card_data)
 
 	return 
 end
-RaidGUIControlCardSuggested.mouse_released = function (self, o, button, x, y)
+function RaidGUIControlCardSuggested:mouse_released(o, button, x, y)
 	slot10 = y
 
 	self.on_mouse_released(slot6, self, button, x)
 
 	return true
 end
-RaidGUIControlCardSuggested.on_mouse_released = function (self, button, x, y)
+function RaidGUIControlCardSuggested:on_mouse_released(button, x, y)
 	if self._remove_card_button then
 		slot8 = y
 	elseif self._lock_card_button then
@@ -412,7 +412,7 @@ RaidGUIControlCardSuggested.on_mouse_released = function (self, button, x, y)
 
 	return 
 end
-RaidGUIControlCardSuggested.on_mouse_over = function (self, x, y)
+function RaidGUIControlCardSuggested:on_mouse_over(x, y)
 	slot7 = y
 
 	RaidGUIControlCardSuggested.super.on_mouse_over(slot4, self, x)

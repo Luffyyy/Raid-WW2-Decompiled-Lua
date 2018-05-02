@@ -11,14 +11,14 @@ if not MotionPathOperatorUnitElement then
 end
 
 MotionPathOperatorUnitElement = slot0
-MotionPathOperatorUnitElement.init = function (self, ...)
+function MotionPathOperatorUnitElement:init(...)
 	slot3 = self
 
 	MotionPathOperatorUnitElement.super.init(slot2, ...)
 
 	return 
 end
-CoreMotionPathOperatorUnitElement.init = function (self, unit)
+function CoreMotionPathOperatorUnitElement:init(unit)
 	slot5 = unit
 
 	CoreMotionPathOperatorUnitElement.super.init(slot3, self)
@@ -45,7 +45,7 @@ CoreMotionPathOperatorUnitElement.init = function (self, unit)
 
 	return 
 end
-CoreMotionPathOperatorUnitElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function CoreMotionPathOperatorUnitElement:draw_links(t, dt, selected_unit, all_units)
 	slot10 = selected_unit
 
 	CoreMotionPathOperatorUnitElement.super.draw_links(slot6, self, t, dt)
@@ -96,7 +96,7 @@ CoreMotionPathOperatorUnitElement.draw_links = function (self, t, dt, selected_u
 
 	return 
 end
-CoreMotionPathOperatorUnitElement.get_links_to_unit = function (self, ...)
+function CoreMotionPathOperatorUnitElement:get_links_to_unit(...)
 	slot3 = self
 
 	CoreMotionPathOperatorUnitElement.super.get_links_to_unit(slot2, ...)
@@ -107,7 +107,7 @@ CoreMotionPathOperatorUnitElement.get_links_to_unit = function (self, ...)
 
 	return 
 end
-CoreMotionPathOperatorUnitElement.update_editing = function (self)
+function CoreMotionPathOperatorUnitElement:update_editing()
 	slot4 = {
 		ray_type = "body editor",
 		sample = true,
@@ -124,7 +124,7 @@ CoreMotionPathOperatorUnitElement.update_editing = function (self)
 
 	return 
 end
-CoreMotionPathOperatorUnitElement.update_selected = function (self)
+function CoreMotionPathOperatorUnitElement:update_selected()
 	slot8 = self._unit
 	slot8 = self._unit.rotation(self._unit)
 	slot9 = 1
@@ -133,7 +133,7 @@ CoreMotionPathOperatorUnitElement.update_selected = function (self)
 
 	return 
 end
-CoreMotionPathOperatorUnitElement.add_element = function (self)
+function CoreMotionPathOperatorUnitElement:add_element()
 	slot4 = {
 		ray_type = "body editor",
 		mask = managers.slot.get_mask(slot6, managers.slot)
@@ -162,7 +162,7 @@ CoreMotionPathOperatorUnitElement.add_element = function (self)
 
 	return 
 end
-CoreMotionPathOperatorUnitElement.remove_links = function (self, unit)
+function CoreMotionPathOperatorUnitElement:remove_links(unit)
 	slot4 = self._hed.elements
 
 	for _, id in ipairs(slot3) do
@@ -177,7 +177,7 @@ CoreMotionPathOperatorUnitElement.remove_links = function (self, unit)
 
 	return 
 end
-CoreMotionPathOperatorUnitElement.add_triggers = function (self, vc)
+function CoreMotionPathOperatorUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "add_element"
 
@@ -185,7 +185,7 @@ CoreMotionPathOperatorUnitElement.add_triggers = function (self, vc)
 
 	return 
 end
-CoreMotionPathOperatorUnitElement._motion_path_markers = function (self)
+function CoreMotionPathOperatorUnitElement:_motion_path_markers()
 	self._hed.marker_ids = {}
 	local motion_path_markers = {
 		"none"
@@ -213,7 +213,7 @@ CoreMotionPathOperatorUnitElement._motion_path_markers = function (self)
 
 	return motion_path_markers
 end
-CoreMotionPathOperatorUnitElement._build_panel = function (self, panel, panel_sizer)
+function CoreMotionPathOperatorUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -252,7 +252,7 @@ CoreMotionPathOperatorUnitElement._build_panel = function (self, panel, panel_si
 
 	return 
 end
-CoreMotionPathOperatorUnitElement.on_executed_marker_selected = function (self)
+function CoreMotionPathOperatorUnitElement:on_executed_marker_selected()
 	slot6 = self._hed.marker_ids[self._hed.marker]
 
 	Application.debug(slot2, Application, "CoreMotionPathOperatorUnitElement:_build_panel( panel, panel_sizer ): ", self._hed.marker)
@@ -277,14 +277,14 @@ if not MotionPathTriggerUnitElement then
 end
 
 MotionPathTriggerUnitElement = slot0
-MotionPathTriggerUnitElement.init = function (self, ...)
+function MotionPathTriggerUnitElement:init(...)
 	slot3 = self
 
 	MotionPathTriggerUnitElement.super.init(slot2, ...)
 
 	return 
 end
-CoreMotionPathTriggerUnitElement.init = function (self, unit)
+function CoreMotionPathTriggerUnitElement:init(unit)
 	slot5 = unit
 
 	CoreMotionPathTriggerUnitElement.super.init(slot3, self)
@@ -301,7 +301,7 @@ CoreMotionPathTriggerUnitElement.init = function (self, unit)
 
 	return 
 end
-CoreMotionPathTriggerUnitElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function CoreMotionPathTriggerUnitElement:draw_links(t, dt, selected_unit, all_units)
 	slot10 = selected_unit
 
 	CoreMotionPathTriggerUnitElement.super.draw_links(slot6, self, t, dt)
@@ -327,7 +327,7 @@ CoreMotionPathTriggerUnitElement.draw_links = function (self, t, dt, selected_un
 
 	return 
 end
-CoreMotionPathTriggerUnitElement.get_links_to_unit = function (self, ...)
+function CoreMotionPathTriggerUnitElement:get_links_to_unit(...)
 	slot3 = self
 
 	CoreMotionPathTriggerUnitElement.super.get_links_to_unit(slot2, ...)
@@ -338,7 +338,7 @@ CoreMotionPathTriggerUnitElement.get_links_to_unit = function (self, ...)
 
 	return 
 end
-CoreMotionPathTriggerUnitElement.update_editing = function (self)
+function CoreMotionPathTriggerUnitElement:update_editing()
 	slot4 = {
 		ray_type = "body editor",
 		sample = true,
@@ -355,7 +355,7 @@ CoreMotionPathTriggerUnitElement.update_editing = function (self)
 
 	return 
 end
-CoreMotionPathTriggerUnitElement.add_element = function (self)
+function CoreMotionPathTriggerUnitElement:add_element()
 	slot4 = {
 		ray_type = "body editor",
 		mask = managers.slot.get_mask(slot6, managers.slot)
@@ -384,7 +384,7 @@ CoreMotionPathTriggerUnitElement.add_element = function (self)
 
 	return 
 end
-CoreMotionPathTriggerUnitElement.remove_links = function (self, unit)
+function CoreMotionPathTriggerUnitElement:remove_links(unit)
 	slot4 = self._hed.elements
 
 	for _, id in ipairs(slot3) do
@@ -399,7 +399,7 @@ CoreMotionPathTriggerUnitElement.remove_links = function (self, unit)
 
 	return 
 end
-CoreMotionPathTriggerUnitElement.add_triggers = function (self, vc)
+function CoreMotionPathTriggerUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "add_element"
 
@@ -407,7 +407,7 @@ CoreMotionPathTriggerUnitElement.add_triggers = function (self, vc)
 
 	return 
 end
-CoreMotionPathTriggerUnitElement._build_panel = function (self, panel, panel_sizer)
+function CoreMotionPathTriggerUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

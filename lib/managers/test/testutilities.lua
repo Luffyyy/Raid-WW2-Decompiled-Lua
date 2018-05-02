@@ -25,7 +25,7 @@
 --- BLOCK #0 1-3, warpins: 1 ---
 slot0 = TestUtilities or class()
 TestUtilities = slot0
-TestUtilities.init = function (self)
+function TestUtilities:init()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -35,7 +35,7 @@ TestUtilities.init = function (self)
 
 
 end
-TestUtilities.spawn_projectile_at_pos = function (self, trgt_pos)
+function TestUtilities:spawn_projectile_at_pos(trgt_pos)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-27, warpins: 1 ---
@@ -57,7 +57,7 @@ TestUtilities.spawn_projectile_at_pos = function (self, trgt_pos)
 
 
 end
-TestUtilities.spawn_projectile_on_graph = function (self)
+function TestUtilities:spawn_projectile_on_graph()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -72,7 +72,7 @@ TestUtilities.spawn_projectile_on_graph = function (self)
 
 
 end
-TestUtilities.spawn_enemy_at_pos = function (self, trgt_pos)
+function TestUtilities:spawn_enemy_at_pos(trgt_pos)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-44, warpins: 1 ---
@@ -99,7 +99,7 @@ TestUtilities.spawn_enemy_at_pos = function (self, trgt_pos)
 
 
 end
-TestUtilities.spawn_enemy_on_graph = function (self)
+function TestUtilities:spawn_enemy_on_graph()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -114,7 +114,7 @@ TestUtilities.spawn_enemy_on_graph = function (self)
 
 
 end
-TestUtilities.get_random_seg_id_on_test_range = function (self)
+function TestUtilities:get_random_seg_id_on_test_range()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-17, warpins: 1 ---

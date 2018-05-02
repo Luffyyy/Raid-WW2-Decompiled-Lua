@@ -5,14 +5,14 @@ end
 
 RaidMenuFooter = slot0
 RaidMenuFooter.PROFILE_NAME_W = 550
-RaidMenuFooter.init = function (self, ws, fullscreen_ws, node, component_name)
+function RaidMenuFooter:init(ws, fullscreen_ws, node, component_name)
 	slot11 = component_name
 
 	RaidMenuFooter.super.init(slot6, self, ws, fullscreen_ws, node)
 
 	return 
 end
-RaidMenuFooter._layout = function (self)
+function RaidMenuFooter:_layout()
 	slot4 = {
 		name = "footer_object_panel",
 		y = 0,
@@ -33,14 +33,14 @@ RaidMenuFooter._layout = function (self)
 
 	return 
 end
-RaidMenuFooter.set_navigation_button_visibility = function (self, flag)
+function RaidMenuFooter:set_navigation_button_visibility(flag)
 	slot5 = flag
 
 	self._navigation_button.set_visible(slot3, self._navigation_button)
 
 	return 
 end
-RaidMenuFooter._setup_properties = function (self)
+function RaidMenuFooter:_setup_properties()
 	self._panel_x = 0
 	slot3 = self._ws
 	self._panel_y = self._ws.height(slot2) - RaidGuiBase.PADDING
@@ -52,7 +52,7 @@ RaidMenuFooter._setup_properties = function (self)
 
 	return 
 end
-RaidMenuFooter._create_name_and_gold_panel = function (self)
+function RaidMenuFooter:_create_name_and_gold_panel()
 	slot4 = "string_width"
 
 	if not self._object.child(slot2, self._object) then
@@ -157,14 +157,14 @@ RaidMenuFooter._create_name_and_gold_panel = function (self)
 
 	return 
 end
-RaidMenuFooter.hide_name_and_gold_panel = function (self)
+function RaidMenuFooter:hide_name_and_gold_panel()
 	slot3 = self._name_and_gold_panel
 
 	self._name_and_gold_panel.hide(slot2)
 
 	return 
 end
-RaidMenuFooter.refresh_gold_amount = function (self)
+function RaidMenuFooter:refresh_gold_amount()
 	slot6 = managers.gold_economy
 	local gold_amount = managers.gold_economy.gold_string(slot2, managers.gold_economy.current(slot5))
 	slot5 = gold_amount
@@ -173,10 +173,10 @@ RaidMenuFooter.refresh_gold_amount = function (self)
 
 	return 
 end
-RaidMenuFooter.back_pressed = function (self)
+function RaidMenuFooter:back_pressed()
 	return 
 end
-RaidMenuFooter.confirm_pressed = function (self)
+function RaidMenuFooter:confirm_pressed()
 	return false
 end
 

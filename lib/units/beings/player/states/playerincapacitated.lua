@@ -5,7 +5,7 @@ end
 
 PlayerIncapacitated = slot0
 PlayerIncapacitated._update_movement = PlayerBleedOut._update_movement
-PlayerIncapacitated.init = function (self, unit)
+function PlayerIncapacitated:init(unit)
 	slot5 = unit
 
 	PlayerIncapacitated.super.init(slot3, self)
@@ -15,7 +15,7 @@ PlayerIncapacitated.init = function (self, unit)
 
 	return 
 end
-PlayerIncapacitated.enter = function (self, state_data, enter_data)
+function PlayerIncapacitated:enter(state_data, enter_data)
 	PlayerIncapacitated.super.enter(slot4, self, state_data)
 
 	slot5 = self
@@ -117,7 +117,7 @@ PlayerIncapacitated.enter = function (self, state_data, enter_data)
 
 	return 
 end
-PlayerIncapacitated._enter = function (self, enter_data)
+function PlayerIncapacitated:_enter(enter_data)
 	local preset = nil
 	slot5 = managers.groupai
 	slot5 = managers.groupai.state(slot4)
@@ -155,7 +155,7 @@ PlayerIncapacitated._enter = function (self, enter_data)
 
 	return 
 end
-PlayerIncapacitated.exit = function (self, state_data, new_state_name)
+function PlayerIncapacitated:exit(state_data, new_state_name)
 	PlayerIncapacitated.super.exit(slot4, self, state_data)
 
 	slot5 = self
@@ -182,17 +182,17 @@ PlayerIncapacitated.exit = function (self, state_data, new_state_name)
 		equip_weapon = self._reequip_weapon
 	}
 end
-PlayerIncapacitated.interaction_blocked = function (self)
+function PlayerIncapacitated:interaction_blocked()
 	return true
 end
-PlayerIncapacitated.update = function (self, t, dt)
+function PlayerIncapacitated:update(t, dt)
 	slot7 = dt
 
 	PlayerIncapacitated.super.update(slot4, self, t)
 
 	return 
 end
-PlayerIncapacitated._update_check_actions = function (self, t, dt)
+function PlayerIncapacitated:_update_check_actions(t, dt)
 	slot7 = dt
 	local input = self._get_input(slot4, self, t)
 
@@ -256,7 +256,7 @@ PlayerIncapacitated._update_check_actions = function (self, t, dt)
 
 	return 
 end
-PlayerIncapacitated._check_action_interact = function (self, t, input)
+function PlayerIncapacitated:_check_action_interact(t, input)
 	if input.btn_interact_press and (not self._intimidate_t or tweak_data.player.movement_state.interaction_delay < t - self._intimidate_t) then
 		self._intimidate_t = t
 		slot11 = true
@@ -266,7 +266,7 @@ PlayerIncapacitated._check_action_interact = function (self, t, input)
 
 	return 
 end
-PlayerIncapacitated._start_action_incapacitated = function (self, t)
+function PlayerIncapacitated:_start_action_incapacitated(t)
 	slot5 = t
 
 	self._interupt_action_running(slot3, self)
@@ -302,7 +302,7 @@ PlayerIncapacitated._start_action_incapacitated = function (self, t)
 
 	return 
 end
-PlayerIncapacitated._end_action_incapacitated = function (self, t)
+function PlayerIncapacitated:_end_action_incapacitated(t)
 	slot4 = self
 
 	if not self._can_stand(slot3) then
@@ -329,14 +329,14 @@ PlayerIncapacitated._end_action_incapacitated = function (self, t)
 
 	return 
 end
-PlayerIncapacitated.pre_destroy = function (self, unit)
+function PlayerIncapacitated:pre_destroy(unit)
 	slot4 = self
 
 	PlayerBleedOut._unregister_revive_SO(slot3)
 
 	return 
 end
-PlayerIncapacitated.destroy = function (self, unit)
+function PlayerIncapacitated:destroy(unit)
 	slot4 = self
 
 	PlayerBleedOut._unregister_revive_SO(slot3)

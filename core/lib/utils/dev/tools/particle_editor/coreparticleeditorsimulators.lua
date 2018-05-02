@@ -1,7 +1,7 @@
 CoreParticleEditorSimulators = CoreParticleEditorSimulators or class()
 local min_keys = 1
 local max_keys = 8
-CoreParticleEditorSimulators.create_velocityintegrator = function (self)
+function CoreParticleEditorSimulators:create_velocityintegrator()
 	slot6 = "Velocity Integrator"
 	local simulator = CoreEffectStackMember.new(slot2, CoreEffectStackMember, "velocityintegrator", "simulator")
 	slot5 = "Adds velocity * dt to position."
@@ -25,7 +25,7 @@ CoreParticleEditorSimulators.create_velocityintegrator = function (self)
 
 	return simulator
 end
-CoreParticleEditorSimulators.create_trail = function (self)
+function CoreParticleEditorSimulators:create_trail()
 	local simulator = CoreEffectStackMember.new(slot2, CoreEffectStackMember, "trail", "simulator")
 	slot5 = "Copies position and orientation to buffer"
 
@@ -53,7 +53,7 @@ CoreParticleEditorSimulators.create_trail = function (self)
 
 	return simulator
 end
-CoreParticleEditorSimulators.create_scaledvelocityintegrator = function (self)
+function CoreParticleEditorSimulators:create_scaledvelocityintegrator()
 	slot6 = "Velocity Integrator (scaled)"
 	local simulator = CoreEffectStackMember.new(slot2, CoreEffectStackMember, "scaledvelocityintegrator", "simulator")
 	slot5 = "Adds velocity * dt * scale to position. Scale is determined by a key curve."
@@ -105,7 +105,7 @@ CoreParticleEditorSimulators.create_scaledvelocityintegrator = function (self)
 
 	return simulator
 end
-CoreParticleEditorSimulators.create_eventtick = function (self)
+function CoreParticleEditorSimulators:create_eventtick()
 	local simulator = CoreEffectStackMember.new(slot2, CoreEffectStackMember, "eventtick", "simulator")
 	slot5 = "Triggers an event for every particle position at a set frequency."
 
@@ -133,7 +133,7 @@ CoreParticleEditorSimulators.create_eventtick = function (self)
 
 	return simulator
 end
-CoreParticleEditorSimulators.create_particleworldcollision = function (self)
+function CoreParticleEditorSimulators:create_particleworldcollision()
 	local simulator = CoreEffectStackMember.new(slot2, CoreEffectStackMember, "particleworldcollision", "simulator")
 	slot5 = "Simulates collisions between particles with a fixed radius and a slice of the world."
 
@@ -151,7 +151,7 @@ CoreParticleEditorSimulators.create_particleworldcollision = function (self)
 
 	return simulator
 end
-CoreParticleEditorSimulators.create_anglevelocityintegrator = function (self)
+function CoreParticleEditorSimulators:create_anglevelocityintegrator()
 	slot6 = "Angle Velocity Integrator"
 	local simulator = CoreEffectStackMember.new(slot2, CoreEffectStackMember, "anglevelocityintegrator", "simulator")
 	slot5 = "Adds angle velocity * dt to angle."
@@ -160,7 +160,7 @@ CoreParticleEditorSimulators.create_anglevelocityintegrator = function (self)
 
 	return simulator
 end
-CoreParticleEditorSimulators.create_planecollision = function (self)
+function CoreParticleEditorSimulators:create_planecollision()
 	local simulator = CoreEffectStackMember.new(slot2, CoreEffectStackMember, "planecollision", "simulator")
 	slot5 = "Simulates collision with a plane with set origin and normal. Parameters are runtime modifiable by script."
 
@@ -215,7 +215,7 @@ Parameter is runtime modifiable by script by referencing effect/atom name/simula
 
 	return simulator
 end
-CoreParticleEditorSimulators.create_constantacceleration = function (self)
+function CoreParticleEditorSimulators:create_constantacceleration()
 	slot6 = "Constant Acceleration"
 	local simulator = CoreEffectStackMember.new(slot2, CoreEffectStackMember, "constantacceleration", "simulator")
 	slot5 = "Accelerates particles with a set acceleration. If this value must be runtime modifiable, use variableacceleration."
@@ -255,7 +255,7 @@ use this for local position effects where acceleration is still expressed in wor
 
 	return simulator
 end
-CoreParticleEditorSimulators.create_windacceleration = function (self)
+function CoreParticleEditorSimulators:create_windacceleration()
 	slot6 = "Wind Acceleration"
 	local simulator = CoreEffectStackMember.new(slot2, CoreEffectStackMember, "windacceleration", "simulator")
 	slot5 = "Accelerates particles with global wind."
@@ -276,7 +276,7 @@ CoreParticleEditorSimulators.create_windacceleration = function (self)
 
 	return simulator
 end
-CoreParticleEditorSimulators.create_intervalrandomvelocity = function (self)
+function CoreParticleEditorSimulators:create_intervalrandomvelocity()
 	slot6 = "Interval Random Velocity"
 	local simulator = CoreEffectStackMember.new(slot2, CoreEffectStackMember, "intervalrandomvelocity", "simulator")
 	slot5 = "Randomly changes velocity of particles at a set interval."
@@ -323,7 +323,7 @@ Velocities are always offsetted with effect spawn velocity.]]
 
 	return simulator
 end
-CoreParticleEditorSimulators.create_variableacceleration = function (self)
+function CoreParticleEditorSimulators:create_variableacceleration()
 	local simulator = CoreEffectStackMember.new(slot2, CoreEffectStackMember, "variableacceleration", "simulator")
 	slot5 = "Accelerates particles with a set acceleration.\nAcceleration is runtime modifiable by script by referencing effect/atom name/simulator name/acceleration."
 
@@ -366,7 +366,7 @@ use this for local position effects where acceleration is still expressed in wor
 
 	return simulator
 end
-CoreParticleEditorSimulators.create_variablesize = function (self)
+function CoreParticleEditorSimulators:create_variablesize()
 	local simulator = CoreEffectStackMember.new(slot2, CoreEffectStackMember, "variablesize", "simulator")
 	slot5 = "Continously writes a set size to the size channel. The size may be changed runtime by the script."
 
@@ -384,7 +384,7 @@ CoreParticleEditorSimulators.create_variablesize = function (self)
 
 	return simulator
 end
-CoreParticleEditorSimulators.create_variableopacity = function (self)
+function CoreParticleEditorSimulators:create_variableopacity()
 	local simulator = CoreEffectStackMember.new(slot2, CoreEffectStackMember, "variableopacity", "simulator")
 	slot5 = "Continously writes a set opacity to the opacity channel. The opacity may be changed runtime by the script."
 
@@ -402,7 +402,7 @@ CoreParticleEditorSimulators.create_variableopacity = function (self)
 
 	return simulator
 end
-CoreParticleEditorSimulators.create_rotationbyvelocity = function (self)
+function CoreParticleEditorSimulators:create_rotationbyvelocity()
 	slot6 = "Rotation By Velocity"
 	local simulator = CoreEffectStackMember.new(slot2, CoreEffectStackMember, "rotationbyvelocity", "simulator")
 	slot5 = "Rotates particles so that the Z axis is pointing towards the velocity vector\nThe rotation is not done instantly but with a lerp at a set angular velocity."
@@ -417,7 +417,7 @@ CoreParticleEditorSimulators.create_rotationbyvelocity = function (self)
 
 	return simulator
 end
-CoreParticleEditorSimulators.create_teleporter = function (self)
+function CoreParticleEditorSimulators:create_teleporter()
 	local simulator = CoreEffectStackMember.new(slot2, CoreEffectStackMember, "teleporter", "simulator")
 	slot5 = [[
 Teleports particles to an new location, by a frequency determined by the set particle lifetime and the size of the atom.
@@ -812,7 +812,7 @@ keys - use key curve over time]]
 
 	return simulator
 end
-CoreParticleEditorSimulators.create_ager = function (self)
+function CoreParticleEditorSimulators:create_ager()
 	slot6 = "Ager"
 	local simulator = CoreEffectStackMember.new(slot2, CoreEffectStackMember, "ager", "simulator")
 	slot5 = "Adds timestep to age channel."
@@ -821,7 +821,7 @@ CoreParticleEditorSimulators.create_ager = function (self)
 
 	return simulator
 end
-CoreParticleEditorSimulators.create_particleparticlecollision = function (self)
+function CoreParticleEditorSimulators:create_particleparticlecollision()
 	slot6 = "Particle <-> Particle Collision"
 	local simulator = CoreEffectStackMember.new(slot2, CoreEffectStackMember, "particleparticlecollision", "simulator")
 	slot5 = "Simulates collision between particles.\nNote that collions are only simulated between particles within the same atom and instance.\nAn event of type particleparticle_collision will be spawned whenever two particles collide (and total impact velocity is above threshold)"
@@ -847,7 +847,7 @@ CoreParticleEditorSimulators.create_particleparticlecollision = function (self)
 
 	return simulator
 end
-CoreParticleEditorSimulators.create_worldtransform = function (self)
+function CoreParticleEditorSimulators:create_worldtransform()
 	slot6 = "Local -> World Transform"
 	local simulator = CoreEffectStackMember.new(slot2, CoreEffectStackMember, "worldtransform", "simulator")
 	slot5 = "Transforms local positions (and optionally rotations) to world coordinates."

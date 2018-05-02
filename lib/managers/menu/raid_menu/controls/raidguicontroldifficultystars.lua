@@ -12,7 +12,7 @@ RaidGuiControlDifficultyStars.STAR_UNAVAILABLE_ICON = "star_rating_empty"
 RaidGuiControlDifficultyStars.STAR_UNAVAILABLE_COLOR = tweak_data.gui.colors.raid_dark_grey
 RaidGuiControlDifficultyStars.STARS_DISTANCE = 24
 RaidGuiControlDifficultyStars.FIRST_STAR_CENTER_X = 9
-RaidGuiControlDifficultyStars.init = function (self, parent, params)
+function RaidGuiControlDifficultyStars:init(parent, params)
 	slot7 = params
 
 	RaidGuiControlDifficultyStars.super.init(slot4, self, parent)
@@ -31,7 +31,7 @@ RaidGuiControlDifficultyStars.init = function (self, parent, params)
 
 	return 
 end
-RaidGuiControlDifficultyStars._create_panel = function (self)
+function RaidGuiControlDifficultyStars:_create_panel()
 	local panel_params = {
 		name = self._params.name or "difficulty_stars_panel",
 		x = self._params.x or 0,
@@ -45,7 +45,7 @@ RaidGuiControlDifficultyStars._create_panel = function (self)
 
 	return 
 end
-RaidGuiControlDifficultyStars._create_stars = function (self)
+function RaidGuiControlDifficultyStars:_create_stars()
 	self._stars = {}
 	local center_x = RaidGuiControlDifficultyStars.FIRST_STAR_CENTER_X
 
@@ -71,7 +71,7 @@ RaidGuiControlDifficultyStars._create_stars = function (self)
 
 	return 
 end
-RaidGuiControlDifficultyStars.set_progress = function (self, available, completed)
+function RaidGuiControlDifficultyStars:set_progress(available, completed)
 	for i = 1, #self._stars, 1 do
 		slot10 = tweak_data.gui.icons[RaidGuiControlDifficultyStars.STAR_EMPTY_ICON].texture
 
@@ -131,7 +131,7 @@ RaidGuiControlDifficultyStars.set_progress = function (self, available, complete
 
 	return 
 end
-RaidGuiControlDifficultyStars.set_active_difficulty = function (self, difficulty)
+function RaidGuiControlDifficultyStars:set_active_difficulty(difficulty)
 	for i = 1, #self._stars, 1 do
 		slot9 = tweak_data.gui.icons[RaidGuiControlDifficultyStars.STAR_EMPTY_ICON].texture
 

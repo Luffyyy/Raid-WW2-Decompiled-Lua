@@ -4,7 +4,7 @@ if not EnableSoundEnvironmentElement then
 end
 
 EnableSoundEnvironmentElement = slot0
-EnableSoundEnvironmentElement.init = function (self, unit)
+function EnableSoundEnvironmentElement:init(unit)
 	slot5 = unit
 
 	EnableSoundEnvironmentElement.super.init(slot3, self)
@@ -21,7 +21,7 @@ EnableSoundEnvironmentElement.init = function (self, unit)
 
 	return 
 end
-EnableSoundEnvironmentElement._build_panel = function (self, panel, panel_sizer)
+function EnableSoundEnvironmentElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -64,10 +64,10 @@ EnableSoundEnvironmentElement._build_panel = function (self, panel, panel_sizer)
 
 	return 
 end
-EnableSoundEnvironmentElement.update_editing = function (self)
+function EnableSoundEnvironmentElement:update_editing()
 	return 
 end
-EnableSoundEnvironmentElement.update_selected = function (self, t, dt)
+function EnableSoundEnvironmentElement:update_selected(t, dt)
 	slot7 = managers.sound_environment
 
 	for _, area in ipairs(managers.sound_environment.areas(slot6)) do
@@ -93,7 +93,7 @@ EnableSoundEnvironmentElement.update_selected = function (self, t, dt)
 
 	return 
 end
-EnableSoundEnvironmentElement.update_unselected = function (self)
+function EnableSoundEnvironmentElement:update_unselected()
 	slot3 = self._hed.elements
 
 	for _, name in ipairs(slot2) do
@@ -116,7 +116,7 @@ EnableSoundEnvironmentElement.update_unselected = function (self)
 
 	return 
 end
-EnableSoundEnvironmentElement.add_element = function (self)
+function EnableSoundEnvironmentElement:add_element()
 	slot4 = {
 		ray_type = "editor",
 		mask = 10
@@ -149,7 +149,7 @@ EnableSoundEnvironmentElement.add_element = function (self)
 
 	return 
 end
-EnableSoundEnvironmentElement.remove_links = function (self, unit)
+function EnableSoundEnvironmentElement:remove_links(unit)
 	slot6 = managers.sound_environment
 
 	for _, area in ipairs(managers.sound_environment.areas(slot5)) do
@@ -173,7 +173,7 @@ EnableSoundEnvironmentElement.remove_links = function (self, unit)
 
 	return 
 end
-EnableSoundEnvironmentElement.add_triggers = function (self, vc)
+function EnableSoundEnvironmentElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "add_element"
 
@@ -181,7 +181,7 @@ EnableSoundEnvironmentElement.add_triggers = function (self, vc)
 
 	return 
 end
-EnableSoundEnvironmentElement.add_unit_list_btn = function (self)
+function EnableSoundEnvironmentElement:add_unit_list_btn()
 	local function f(unit)
 		slot4 = "sound"
 
@@ -217,7 +217,7 @@ EnableSoundEnvironmentElement.add_unit_list_btn = function (self)
 
 	return 
 end
-EnableSoundEnvironmentElement._add_or_remove_graph = function (self, id)
+function EnableSoundEnvironmentElement:_add_or_remove_graph(id)
 	slot5 = id
 
 	if table.contains(slot3, self._hed.elements) then

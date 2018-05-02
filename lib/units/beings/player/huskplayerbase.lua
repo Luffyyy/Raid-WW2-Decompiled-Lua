@@ -15,7 +15,7 @@ HuskPlayerBase = slot0
 HuskPlayerBase.set_anim_lod = CopBase.set_anim_lod
 HuskPlayerBase.set_visibility_state = CopBase.set_visibility_state
 HuskPlayerBase._anim_lods = CopBase._anim_lods
-HuskPlayerBase.init = function (self, unit)
+function HuskPlayerBase:init(unit)
 	slot6 = false
 
 	UnitBase.init(slot3, self, unit)
@@ -42,7 +42,7 @@ HuskPlayerBase.init = function (self, unit)
 
 	return 
 end
-HuskPlayerBase.post_init = function (self)
+function HuskPlayerBase:post_init()
 	slot3 = self._unit
 	self._ext_anim = self._unit.anim_data(slot2)
 	slot4 = self._unit
@@ -78,7 +78,7 @@ HuskPlayerBase.post_init = function (self)
 
 	return 
 end
-HuskPlayerBase._do_post_init = function (self)
+function HuskPlayerBase:_do_post_init()
 	slot3 = self._unit
 	slot3 = self._unit.movement(slot2)
 
@@ -103,7 +103,7 @@ HuskPlayerBase._do_post_init = function (self)
 
 	return 
 end
-HuskPlayerBase.set_upgrade_value = function (self, category, upgrade, level)
+function HuskPlayerBase:set_upgrade_value(category, upgrade, level)
 	if category == UpgradesTweakData.CLEAR_UPGRADES_FLAG then
 		self._upgrades = {}
 
@@ -137,13 +137,13 @@ HuskPlayerBase.set_upgrade_value = function (self, category, upgrade, level)
 
 	return 
 end
-HuskPlayerBase.upgrade_value = function (self, category, upgrade)
+function HuskPlayerBase:upgrade_value(category, upgrade)
 	return self._upgrades[category] and self._upgrades[category][upgrade]
 end
-HuskPlayerBase.upgrade_level = function (self, category, upgrade)
+function HuskPlayerBase:upgrade_level(category, upgrade)
 	return self._upgrade_levels[category] and self._upgrade_levels[category][upgrade]
 end
-HuskPlayerBase.pre_destroy = function (self, unit)
+function HuskPlayerBase:pre_destroy(unit)
 	slot4 = managers.groupai
 	slot5 = self._unit
 
@@ -169,17 +169,17 @@ HuskPlayerBase.pre_destroy = function (self, unit)
 
 	return 
 end
-HuskPlayerBase.nick_name = function (self)
+function HuskPlayerBase:nick_name()
 
 	-- Decompilation error in this vicinity:
 	slot3 = managers.network
 	slot4 = self._unit
 	local peer = managers.network.session(slot2).peer_by_unit(slot2, managers.network.session(slot2))
 end
-HuskPlayerBase.on_death_exit = function (self)
+function HuskPlayerBase:on_death_exit()
 	return 
 end
-HuskPlayerBase.chk_freeze_anims = function (self)
+function HuskPlayerBase:chk_freeze_anims()
 	return 
 end
 

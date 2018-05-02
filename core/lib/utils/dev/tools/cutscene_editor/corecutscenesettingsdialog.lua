@@ -7,7 +7,7 @@ slot2 = "core/lib/utils/dev/tools/cutscene_editor/CoreCutsceneEditorProject"
 require(slot1)
 
 CoreCutsceneSettingsDialog = CoreCutsceneSettingsDialog or class()
-CoreCutsceneSettingsDialog.init = function (self, parent)
+function CoreCutsceneSettingsDialog:init(parent)
 	slot12 = 0
 	slot13 = 0
 	slot10 = "DEFAULT_DIALOG_STYLE,RESIZE_BORDER"
@@ -84,7 +84,7 @@ CoreCutsceneSettingsDialog.init = function (self, parent)
 
 	return 
 end
-CoreCutsceneSettingsDialog.destroy = function (self)
+function CoreCutsceneSettingsDialog:destroy()
 	slot3 = self.__animation_patches
 
 	self.__animation_patches.destroy(slot2)
@@ -97,7 +97,7 @@ CoreCutsceneSettingsDialog.destroy = function (self)
 
 	return 
 end
-CoreCutsceneSettingsDialog.show = function (self)
+function CoreCutsceneSettingsDialog:show()
 	slot3 = self
 	self.__revert_export_type = self.export_type(slot2)
 	slot3 = self.__animation_patches
@@ -106,14 +106,14 @@ CoreCutsceneSettingsDialog.show = function (self)
 
 	return self.__window.show_modal(slot2)
 end
-CoreCutsceneSettingsDialog.set_unit_types = function (self, unit_types)
+function CoreCutsceneSettingsDialog:set_unit_types(unit_types)
 	slot5 = unit_types
 
 	self.__animation_patches.set_unit_types(slot3, self.__animation_patches)
 
 	return 
 end
-CoreCutsceneSettingsDialog.populate_from_project = function (self, project)
+function CoreCutsceneSettingsDialog:populate_from_project(project)
 	slot4 = self.__animation_patches
 	slot7 = project
 
@@ -127,12 +127,12 @@ CoreCutsceneSettingsDialog.populate_from_project = function (self, project)
 
 	return 
 end
-CoreCutsceneSettingsDialog.unit_animation_patches = function (self)
+function CoreCutsceneSettingsDialog:unit_animation_patches()
 	slot3 = self.__animation_patches
 
 	return self.__animation_patches.patches(slot2)
 end
-CoreCutsceneSettingsDialog.export_type = function (self)
+function CoreCutsceneSettingsDialog:export_type()
 	if not self.__export_type then
 		slot3 = "CutsceneEditorProject"
 		slot1 = get_core_or_local(slot2).DEFAULT_EXPORT_TYPE
@@ -140,7 +140,7 @@ CoreCutsceneSettingsDialog.export_type = function (self)
 
 	return slot1
 end
-CoreCutsceneSettingsDialog._create_buttons_panel = function (self, parent)
+function CoreCutsceneSettingsDialog:_create_buttons_panel(parent)
 	slot5 = parent
 	local panel = EWS.Panel(slot3, EWS)
 	slot6 = "HORIZONTAL"
@@ -172,7 +172,7 @@ CoreCutsceneSettingsDialog._create_buttons_panel = function (self, parent)
 
 	return panel
 end
-CoreCutsceneSettingsDialog._on_ok_button_clicked = function (self, sender)
+function CoreCutsceneSettingsDialog:_on_ok_button_clicked(sender)
 	slot4 = self.__export_type_dropdown
 	self.__export_type = self.__export_type_dropdown.get_value(slot3)
 	self.__revert_export_type = nil
@@ -183,7 +183,7 @@ CoreCutsceneSettingsDialog._on_ok_button_clicked = function (self, sender)
 
 	return 
 end
-CoreCutsceneSettingsDialog._on_close = function (self)
+function CoreCutsceneSettingsDialog:_on_close()
 	slot4 = false
 
 	self.__window.set_visible(slot2, self.__window)

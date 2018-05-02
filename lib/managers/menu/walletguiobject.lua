@@ -77,7 +77,7 @@
 --- BLOCK #0 1-3, warpins: 1 ---
 slot0 = WalletGuiObject or class()
 WalletGuiObject = slot0
-function WalletGuiObject:init(panel)
+WalletGuiObject.init = function (self, panel)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---

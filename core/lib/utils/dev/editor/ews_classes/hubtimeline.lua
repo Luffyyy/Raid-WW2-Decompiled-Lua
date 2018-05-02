@@ -8,7 +8,7 @@ if not HubTimeline then
 end
 
 HubTimeline = slot0
-HubTimeline.init = function (self, caption)
+function HubTimeline:init(caption)
 	slot12 = 0
 	slot13 = 0
 	slot10 = "DEFAULT_DIALOG_STYLE,RESIZE_BORDER,STAY_ON_TOP"
@@ -192,14 +192,14 @@ HubTimeline.init = function (self, caption)
 
 	return 
 end
-HubTimeline.on_focus = function (self)
+function HubTimeline:on_focus()
 	slot4 = self._hub_unit
 
 	managers.editor.select_unit(slot2, managers.editor)
 
 	return 
 end
-HubTimeline._zoom_button = function (self, sizer, name, seconds)
+function HubTimeline:_zoom_button(sizer, name, seconds)
 	slot10 = "BU_EXACTFIT"
 	local btn = EWS.Button(slot5, EWS, self._panel, name, "")
 	slot11 = "RIGHT,LEFT,TOP"
@@ -217,7 +217,7 @@ HubTimeline._zoom_button = function (self, sizer, name, seconds)
 
 	return 
 end
-HubTimeline.on_btn_zoom = function (self, seconds)
+function HubTimeline:on_btn_zoom(seconds)
 	slot5 = (self.size(slot6).x - 40) / seconds
 	slot8 = self._ruler
 
@@ -249,7 +249,7 @@ HubTimeline.on_btn_zoom = function (self, seconds)
 
 	return 
 end
-HubTimeline.set_hub_unit = function (self, unit)
+function HubTimeline:set_hub_unit(unit)
 	self._hub_unit = unit
 	slot4 = self
 
@@ -257,7 +257,7 @@ HubTimeline.set_hub_unit = function (self, unit)
 
 	return 
 end
-HubTimeline.update_timeline = function (self)
+function HubTimeline:update_timeline()
 	slot3 = self._sequence_track
 
 	self._sequence_track.remove_all_clips(slot2)
@@ -273,7 +273,7 @@ HubTimeline.update_timeline = function (self)
 
 	return 
 end
-HubTimeline.action_delay_updated = function (self, data)
+function HubTimeline:action_delay_updated(data)
 	slot6 = self._sequence_track
 
 	for _, clip in ipairs(self._sequence_track.clips(slot5)) do
@@ -295,13 +295,13 @@ HubTimeline.action_delay_updated = function (self, data)
 
 	return 
 end
-HubTimeline.add_action = function (self, unit)
+function HubTimeline:add_action(unit)
 	slot5 = unit
 	local clip = self._add_unit(slot3, self)
 
 	return 
 end
-HubTimeline.select_action = function (self, action)
+function HubTimeline:select_action(action)
 	slot6 = self._sequence_track
 
 	for _, clip in ipairs(self._sequence_track.clips(slot5)) do
@@ -318,7 +318,7 @@ HubTimeline.select_action = function (self, action)
 
 	return 
 end
-HubTimeline._select_clip = function (self, clip)
+function HubTimeline:_select_clip(clip)
 
 	-- Decompilation error in this vicinity:
 	slot4 = self._element_name
@@ -326,7 +326,7 @@ HubTimeline._select_clip = function (self, clip)
 
 	return 
 end
-HubTimeline.remove_action = function (self, unit)
+function HubTimeline:remove_action(unit)
 	slot6 = self._sequence_track
 
 	for _, clip in ipairs(self._sequence_track.clips(slot5)) do
@@ -343,7 +343,7 @@ HubTimeline.remove_action = function (self, unit)
 
 	return 
 end
-HubTimeline._add_unit = function (self, unit)
+function HubTimeline:_add_unit(unit)
 	local key = EWS.SequencerKey(slot3)
 	slot5 = self._hub_unit
 	slot6 = unit
@@ -365,7 +365,7 @@ HubTimeline._add_unit = function (self, unit)
 
 	return self._sequence_track.add_clip(slot8, self._sequence_track, key)
 end
-HubTimeline._get_color = function (self, unit)
+function HubTimeline:_get_color(unit)
 	slot4 = unit
 	slot4 = unit.hub_element(slot3)
 	local color = unit.hub_element(slot3).timeline_color(slot3)
@@ -378,7 +378,7 @@ HubTimeline._get_color = function (self, unit)
 
 	return math.rand(slot4), math.rand(1), math.rand(1)
 end
-HubTimeline._connect_mouse_events = function (self, component)
+function HubTimeline:_connect_mouse_events(component)
 	slot10 = "_on_mouse_left_down"
 
 	component.connect(slot3, component, "EVT_LEFT_DOWN", callback(slot7, self, self))
@@ -402,7 +402,7 @@ HubTimeline._connect_mouse_events = function (self, component)
 
 	return 
 end
-HubTimeline._on_mouse_left_down = function (self, sender, event)
+function HubTimeline:_on_mouse_left_down(sender, event)
 	self._dragging = true
 	slot6 = event
 	local key = self._sequence_track.clip_at_event(slot4, self._sequence_track)
@@ -421,12 +421,12 @@ HubTimeline._on_mouse_left_down = function (self, sender, event)
 
 	return 
 end
-HubTimeline._on_mouse_left_up = function (self, sender, event)
+function HubTimeline:_on_mouse_left_up(sender, event)
 	self._dragging = false
 
 	return 
 end
-HubTimeline._on_mouse_right_down = function (self, sender, event)
+function HubTimeline:_on_mouse_right_down(sender, event)
 	slot6 = event
 	local key = self._sequence_track.clip_at_event(slot4, self._sequence_track)
 	slot7 = key
@@ -446,7 +446,7 @@ HubTimeline._on_mouse_right_down = function (self, sender, event)
 
 	return 
 end
-HubTimeline._on_mouse_motion = function (self, sender, event)
+function HubTimeline:_on_mouse_motion(sender, event)
 	if not self._dragging then
 		return 
 	end
@@ -479,7 +479,7 @@ HubTimeline._on_mouse_motion = function (self, sender, event)
 
 	return 
 end
-HubTimeline._on_mousewheel = function (self, track, event)
+function HubTimeline:_on_mousewheel(track, event)
 	slot5 = self._sequence_track
 	local clip = self._sequence_track.selected_clips(slot4)[1]
 
@@ -496,7 +496,7 @@ HubTimeline._on_mousewheel = function (self, track, event)
 
 	return 
 end
-HubTimeline.zoom_around = function (self, time, offset_in_window, delta)
+function HubTimeline:zoom_around(time, offset_in_window, delta)
 	slot6 = self._scrolled_area
 
 	self._scrolled_area.freeze(slot5)

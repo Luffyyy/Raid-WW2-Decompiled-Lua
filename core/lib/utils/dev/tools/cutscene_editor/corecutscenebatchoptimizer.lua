@@ -155,7 +155,7 @@ require(slot1)
 
 slot0 = CoreCutsceneBatchOptimizer or class()
 CoreCutsceneBatchOptimizer = slot0
-CoreCutsceneBatchOptimizer.init = function (self)
+function CoreCutsceneBatchOptimizer:init()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -168,7 +168,7 @@ CoreCutsceneBatchOptimizer.init = function (self)
 
 
 end
-CoreCutsceneBatchOptimizer.add_project = function (self, project_name, optimized_cutscene_name)
+function CoreCutsceneBatchOptimizer:add_project(project_name, optimized_cutscene_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-20, warpins: 1 ---
@@ -298,7 +298,7 @@ CoreCutsceneBatchOptimizer.add_project = function (self, project_name, optimized
 
 
 end
-CoreCutsceneBatchOptimizer.next_project = function (self)
+function CoreCutsceneBatchOptimizer:next_project()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -346,7 +346,7 @@ CoreCutsceneBatchOptimizer.next_project = function (self)
 
 
 end
-CoreCutsceneBatchOptimizer.consume_project = function (self)
+function CoreCutsceneBatchOptimizer:consume_project()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -405,7 +405,7 @@ CoreCutsceneBatchOptimizer.consume_project = function (self)
 
 
 end
-CoreCutsceneBatchOptimizer.queue_size = function (self)
+function CoreCutsceneBatchOptimizer:queue_size()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -415,7 +415,7 @@ CoreCutsceneBatchOptimizer.queue_size = function (self)
 
 
 end
-CoreCutsceneBatchOptimizer.max_queue_size = function (self)
+function CoreCutsceneBatchOptimizer:max_queue_size()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -444,7 +444,7 @@ CoreCutsceneBatchOptimizer.max_queue_size = function (self)
 
 
 end
-CoreCutsceneBatchOptimizer._load_project = function (self, project_name)
+function CoreCutsceneBatchOptimizer:_load_project(project_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -500,7 +500,7 @@ CoreCutsceneBatchOptimizer._load_project = function (self, project_name)
 
 
 end
-CoreCutsceneBatchOptimizer._create_optimizer_for_project = function (self, project)
+function CoreCutsceneBatchOptimizer:_create_optimizer_for_project(project)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -828,7 +828,7 @@ CoreCutsceneBatchOptimizer._create_optimizer_for_project = function (self, proje
 
 
 end
-CoreCutsceneBatchOptimizer._create_clip = function (self, clip_descriptor)
+function CoreCutsceneBatchOptimizer:_create_clip(clip_descriptor)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-28, warpins: 1 ---

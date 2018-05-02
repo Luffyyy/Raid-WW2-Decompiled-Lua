@@ -4,7 +4,7 @@ if not CreateWorldSettingFile then
 end
 
 CreateWorldSettingFile = slot0
-CreateWorldSettingFile.init = function (self, params)
+function CreateWorldSettingFile:init(params)
 	slot12 = 0
 	slot13 = 0
 	slot10 = "DEFAULT_DIALOG_STYLE,RESIZE_BORDER,STAY_ON_TOP"
@@ -91,7 +91,7 @@ CreateWorldSettingFile.init = function (self, params)
 
 	return 
 end
-CreateWorldSettingFile._add_continent_cbs = function (self, params)
+function CreateWorldSettingFile:_add_continent_cbs(params)
 	self._cbs = {}
 	slot7 = "Exclude continents"
 	local sizer = EWS.StaticBoxSizer(slot3, EWS, self._panel, "VERTICAL")
@@ -122,7 +122,7 @@ CreateWorldSettingFile._add_continent_cbs = function (self, params)
 
 	return 
 end
-CreateWorldSettingFile.on_create = function (self)
+function CreateWorldSettingFile:on_create()
 	local t = {}
 	slot4 = self._cbs
 
@@ -152,7 +152,7 @@ CreateWorldSettingFile.on_create = function (self)
 
 	return 
 end
-CreateWorldSettingFile._compile = function (self, path)
+function CreateWorldSettingFile:_compile(path)
 	local t = {
 		target_db_name = "all",
 		send_idstrings = false,
@@ -183,20 +183,20 @@ CreateWorldSettingFile._compile = function (self, path)
 
 	return 
 end
-CreateWorldSettingFile.on_save = function (self)
+function CreateWorldSettingFile:on_save()
 	slot3 = self
 
 	self.on_create(slot2)
 
 	return 
 end
-CreateWorldSettingFile._serialize_to_script = function (self, type, name)
+function CreateWorldSettingFile:_serialize_to_script(type, name)
 	slot6 = type.id(slot7)
 	slot9 = name
 
 	return PackageManager.editor_load_script_data(slot4, PackageManager, name.id(type))
 end
-CreateWorldSettingFile._parse_file = function (self, path)
+function CreateWorldSettingFile:_parse_file(path)
 	slot6 = path
 
 	if not DB.has(slot3, DB, "world_setting") then
@@ -226,7 +226,7 @@ CreateWorldSettingFile._parse_file = function (self, path)
 
 	return 
 end
-CreateWorldSettingFile.on_cancel = function (self)
+function CreateWorldSettingFile:on_cancel()
 	slot3 = self
 
 	self.end_modal(slot2)

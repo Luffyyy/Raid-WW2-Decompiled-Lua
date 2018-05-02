@@ -16,7 +16,7 @@ end
 EnemyPreferedAddUnitElement = slot0
 EnemyPreferedAddUnitElement.SAVE_UNIT_POSITION = false
 EnemyPreferedAddUnitElement.SAVE_UNIT_ROTATION = false
-EnemyPreferedAddUnitElement.init = function (self, unit)
+function EnemyPreferedAddUnitElement:init(unit)
 	slot5 = unit
 
 	EnemyPreferedRemoveUnitElement.super.init(slot3, self)
@@ -31,7 +31,7 @@ EnemyPreferedAddUnitElement.init = function (self, unit)
 
 	return 
 end
-EnemyPreferedAddUnitElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function EnemyPreferedAddUnitElement:draw_links(t, dt, selected_unit, all_units)
 	slot11 = all_units
 
 	EnemyPreferedRemoveUnitElement.super.draw_links(slot6, self, t, dt, selected_unit)
@@ -42,7 +42,7 @@ EnemyPreferedAddUnitElement.draw_links = function (self, t, dt, selected_unit, a
 
 	return 
 end
-EnemyPreferedAddUnitElement._private_draw_links = function (self, t, dt, selected_unit, all_units)
+function EnemyPreferedAddUnitElement:_private_draw_links(t, dt, selected_unit, all_units)
 	local function _draw_func(element_ids)
 		if not element_ids then
 			return 
@@ -80,10 +80,10 @@ EnemyPreferedAddUnitElement._private_draw_links = function (self, t, dt, selecte
 
 	return 
 end
-EnemyPreferedAddUnitElement.update_editing = function (self)
+function EnemyPreferedAddUnitElement:update_editing()
 	return 
 end
-EnemyPreferedAddUnitElement.add_element = function (self)
+function EnemyPreferedAddUnitElement:add_element()
 	slot4 = {
 		ray_type = "editor",
 		mask = 10
@@ -134,7 +134,7 @@ EnemyPreferedAddUnitElement.add_element = function (self)
 
 	return 
 end
-EnemyPreferedAddUnitElement._delete_id_from_table = function (self, id, table_name)
+function EnemyPreferedAddUnitElement:_delete_id_from_table(id, table_name)
 	if not self._hed[table_name] then
 		return 
 	end
@@ -151,7 +151,7 @@ EnemyPreferedAddUnitElement._delete_id_from_table = function (self, id, table_na
 
 	return 
 end
-EnemyPreferedAddUnitElement.remove_links = function (self, unit)
+function EnemyPreferedAddUnitElement:remove_links(unit)
 	slot4 = unit
 	local rem_u_id = unit.unit_data(slot3).unit_id
 
@@ -183,7 +183,7 @@ EnemyPreferedAddUnitElement.remove_links = function (self, unit)
 
 	return 
 end
-EnemyPreferedAddUnitElement.get_links_to_unit = function (self, ...)
+function EnemyPreferedAddUnitElement:get_links_to_unit(...)
 	slot3 = self
 
 	EnemyPreferedAddUnitElement.super.get_links_to_unit(slot2, ...)
@@ -202,7 +202,7 @@ EnemyPreferedAddUnitElement.get_links_to_unit = function (self, ...)
 
 	return 
 end
-EnemyPreferedAddUnitElement.add_triggers = function (self, vc)
+function EnemyPreferedAddUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "add_element"
 
@@ -210,7 +210,7 @@ EnemyPreferedAddUnitElement.add_triggers = function (self, vc)
 
 	return 
 end
-EnemyPreferedAddUnitElement.add_unit_list_btn = function (self)
+function EnemyPreferedAddUnitElement:add_unit_list_btn()
 	slot3 = self._unit
 	local script = self._unit.mission_element_data(slot2).script
 
@@ -274,7 +274,7 @@ EnemyPreferedAddUnitElement.add_unit_list_btn = function (self)
 
 	return 
 end
-EnemyPreferedAddUnitElement.remove_unit_list_btn = function (self)
+function EnemyPreferedAddUnitElement:remove_unit_list_btn()
 	local function f(unit)
 		return slot1
 	end
@@ -297,7 +297,7 @@ EnemyPreferedAddUnitElement.remove_unit_list_btn = function (self)
 
 	return 
 end
-EnemyPreferedAddUnitElement._build_panel = function (self, panel, panel_sizer)
+function EnemyPreferedAddUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -342,7 +342,7 @@ end
 EnemyPreferedRemoveUnitElement = slot0
 EnemyPreferedRemoveUnitElement.SAVE_UNIT_POSITION = false
 EnemyPreferedRemoveUnitElement.SAVE_UNIT_ROTATION = false
-EnemyPreferedRemoveUnitElement.init = function (self, unit)
+function EnemyPreferedRemoveUnitElement:init(unit)
 	slot5 = unit
 
 	EnemyPreferedRemoveUnitElement.super.init(slot3, self)
@@ -354,10 +354,10 @@ EnemyPreferedRemoveUnitElement.init = function (self, unit)
 
 	return 
 end
-EnemyPreferedRemoveUnitElement.update_editing = function (self)
+function EnemyPreferedRemoveUnitElement:update_editing()
 	return 
 end
-EnemyPreferedRemoveUnitElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function EnemyPreferedRemoveUnitElement:draw_links(t, dt, selected_unit, all_units)
 	slot10 = selected_unit
 
 	EnemyPreferedRemoveUnitElement.super.draw_links(slot6, self, t, dt)
@@ -383,7 +383,7 @@ EnemyPreferedRemoveUnitElement.draw_links = function (self, t, dt, selected_unit
 
 	return 
 end
-EnemyPreferedRemoveUnitElement.add_element = function (self)
+function EnemyPreferedRemoveUnitElement:add_element()
 	slot4 = {
 		ray_type = "editor",
 		mask = 10
@@ -413,7 +413,7 @@ EnemyPreferedRemoveUnitElement.add_element = function (self)
 
 	return 
 end
-EnemyPreferedRemoveUnitElement.remove_links = function (self, unit)
+function EnemyPreferedRemoveUnitElement:remove_links(unit)
 	slot4 = self._hed.elements
 
 	for _, id in ipairs(slot3) do
@@ -428,7 +428,7 @@ EnemyPreferedRemoveUnitElement.remove_links = function (self, unit)
 
 	return 
 end
-EnemyPreferedRemoveUnitElement.get_links_to_unit = function (self, ...)
+function EnemyPreferedRemoveUnitElement:get_links_to_unit(...)
 	slot3 = self
 
 	EnemyPreferedRemoveUnitElement.super.get_links_to_unit(slot2, ...)
@@ -441,7 +441,7 @@ EnemyPreferedRemoveUnitElement.get_links_to_unit = function (self, ...)
 
 	return 
 end
-EnemyPreferedRemoveUnitElement.add_triggers = function (self, vc)
+function EnemyPreferedRemoveUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "add_element"
 
@@ -449,7 +449,7 @@ EnemyPreferedRemoveUnitElement.add_triggers = function (self, vc)
 
 	return 
 end
-EnemyPreferedRemoveUnitElement._build_panel = function (self, panel, panel_sizer)
+function EnemyPreferedRemoveUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

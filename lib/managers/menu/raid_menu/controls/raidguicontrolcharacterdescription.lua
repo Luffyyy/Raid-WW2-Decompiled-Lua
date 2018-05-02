@@ -6,7 +6,7 @@ end
 RaidGUIControlCharacterDescription = slot0
 RaidGUIControlCharacterDescription.MODE_SELECTION = "mode_selection"
 RaidGUIControlCharacterDescription.MODE_CUSTOMIZATION = "mode_customization"
-RaidGUIControlCharacterDescription.init = function (self, parent, params, item_data)
+function RaidGUIControlCharacterDescription:init(parent, params, item_data)
 	slot9 = item_data
 
 	RaidGUIControlCharacterDescription.super.init(slot5, self, parent, params)
@@ -19,7 +19,7 @@ RaidGUIControlCharacterDescription.init = function (self, parent, params, item_d
 
 	return 
 end
-RaidGUIControlCharacterDescription._layout = function (self)
+function RaidGUIControlCharacterDescription:_layout()
 	slot4 = {
 		name = "character_info_panel",
 		x = self._params.x,
@@ -271,7 +271,7 @@ RaidGUIControlCharacterDescription._layout = function (self)
 
 	return 
 end
-RaidGUIControlCharacterDescription.set_data = function (self, data)
+function RaidGUIControlCharacterDescription:set_data(data)
 	local class_icon_data = tweak_data.gui.icons["ico_class_" .. data.class_name] or tweak_data.gui.icons.ico_flag_empty
 	slot6 = class_icon_data.texture
 

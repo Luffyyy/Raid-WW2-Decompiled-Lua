@@ -9,7 +9,7 @@ slot3 = "CoreSessionResponse"
 core.import(slot1, core)
 
 IntroScreens = IntroScreens or class()
-IntroScreens.init = function (self)
+function IntroScreens:init()
 	slot3 = CoreSessionResponse.DoneOrFinished
 	self._response = CoreSessionResponse.DoneOrFinished.new(slot2)
 	slot4 = self._response
@@ -18,14 +18,14 @@ IntroScreens.init = function (self)
 
 	return 
 end
-IntroScreens.destroy = function (self)
+function IntroScreens:destroy()
 	slot3 = self._response
 
 	self._response.destroy(slot2)
 
 	return 
 end
-IntroScreens.transition = function (self)
+function IntroScreens:transition()
 	slot3 = self._response
 
 	if self._response.is_finished(slot2) then

@@ -4,7 +4,7 @@ if not RaidGUIControlListItemCharacterCreateNation then
 end
 
 RaidGUIControlListItemCharacterCreateNation = slot0
-RaidGUIControlListItemCharacterCreateNation.init = function (self, parent, params, item_data)
+function RaidGUIControlListItemCharacterCreateNation:init(parent, params, item_data)
 	slot9 = item_data
 
 	RaidGUIControlListItemCharacterCreateNation.super.init(slot5, self, parent, params)
@@ -28,7 +28,7 @@ RaidGUIControlListItemCharacterCreateNation.init = function (self, parent, param
 
 	return 
 end
-RaidGUIControlListItemCharacterCreateNation._layout = function (self)
+function RaidGUIControlListItemCharacterCreateNation:_layout()
 	slot4 = {
 		visible = false,
 		y = 0,
@@ -87,17 +87,17 @@ RaidGUIControlListItemCharacterCreateNation._layout = function (self)
 
 	return 
 end
-RaidGUIControlListItemCharacterCreateNation.data = function (self)
+function RaidGUIControlListItemCharacterCreateNation:data()
 	return self._data
 end
-RaidGUIControlListItemCharacterCreateNation.highlight_on = function (self)
+function RaidGUIControlListItemCharacterCreateNation:highlight_on()
 	slot3 = self._background
 
 	self._background.show(slot2)
 
 	return 
 end
-RaidGUIControlListItemCharacterCreateNation.highlight_off = function (self)
+function RaidGUIControlListItemCharacterCreateNation:highlight_off()
 	if not self._selected and not self._active and self._background and self._red_selected_line then
 		slot3 = self._background
 
@@ -110,7 +110,7 @@ RaidGUIControlListItemCharacterCreateNation.highlight_off = function (self)
 
 	return 
 end
-RaidGUIControlListItemCharacterCreateNation.activate_on = function (self)
+function RaidGUIControlListItemCharacterCreateNation:activate_on()
 	slot3 = self._background
 
 	self._background.show(slot2)
@@ -139,7 +139,7 @@ RaidGUIControlListItemCharacterCreateNation.activate_on = function (self)
 
 	return 
 end
-RaidGUIControlListItemCharacterCreateNation.activate_off = function (self)
+function RaidGUIControlListItemCharacterCreateNation:activate_off()
 	slot3 = self
 
 	self.highlight_off(slot2)
@@ -160,7 +160,7 @@ RaidGUIControlListItemCharacterCreateNation.activate_off = function (self)
 
 	return 
 end
-RaidGUIControlListItemCharacterCreateNation.mouse_released = function (self, o, button, x, y)
+function RaidGUIControlListItemCharacterCreateNation:mouse_released(o, button, x, y)
 	slot9 = y
 
 	if self.inside(slot6, self, x) then
@@ -171,7 +171,7 @@ RaidGUIControlListItemCharacterCreateNation.mouse_released = function (self, o, 
 
 	return 
 end
-RaidGUIControlListItemCharacterCreateNation.on_mouse_released = function (self, button)
+function RaidGUIControlListItemCharacterCreateNation:on_mouse_released(button)
 	if self.on_click_callback then
 		slot6 = self._data
 
@@ -182,7 +182,7 @@ RaidGUIControlListItemCharacterCreateNation.on_mouse_released = function (self, 
 
 	return 
 end
-RaidGUIControlListItemCharacterCreateNation.select = function (self)
+function RaidGUIControlListItemCharacterCreateNation:select()
 	self._selected = true
 	slot4 = tweak_data.gui.colors.raid_red
 
@@ -200,7 +200,7 @@ RaidGUIControlListItemCharacterCreateNation.select = function (self)
 
 	return 
 end
-RaidGUIControlListItemCharacterCreateNation.unselect = function (self)
+function RaidGUIControlListItemCharacterCreateNation:unselect()
 	self._selected = false
 	slot4 = tweak_data.gui.colors.raid_dirty_white
 
@@ -212,10 +212,10 @@ RaidGUIControlListItemCharacterCreateNation.unselect = function (self)
 
 	return 
 end
-RaidGUIControlListItemCharacterCreateNation.selected = function (self)
+function RaidGUIControlListItemCharacterCreateNation:selected()
 	return self._selected
 end
-RaidGUIControlListItemCharacterCreateNation.activate = function (self)
+function RaidGUIControlListItemCharacterCreateNation:activate()
 	self._active = true
 	slot3 = self
 
@@ -227,7 +227,7 @@ RaidGUIControlListItemCharacterCreateNation.activate = function (self)
 
 	return 
 end
-RaidGUIControlListItemCharacterCreateNation.deactivate = function (self)
+function RaidGUIControlListItemCharacterCreateNation:deactivate()
 	self._active = false
 	slot3 = self
 
@@ -235,10 +235,10 @@ RaidGUIControlListItemCharacterCreateNation.deactivate = function (self)
 
 	return 
 end
-RaidGUIControlListItemCharacterCreateNation.activated = function (self)
+function RaidGUIControlListItemCharacterCreateNation:activated()
 	return self._active
 end
-RaidGUIControlListItemCharacterCreateNation.confirm_pressed = function (self)
+function RaidGUIControlListItemCharacterCreateNation:confirm_pressed()
 	if not self._selected then
 		return false
 	end
@@ -253,7 +253,7 @@ RaidGUIControlListItemCharacterCreateNation.confirm_pressed = function (self)
 
 	return 
 end
-RaidGUIControlListItemCharacterCreateNation.mouse_double_click = function (self, o, button, x, y)
+function RaidGUIControlListItemCharacterCreateNation:mouse_double_click(o, button, x, y)
 	if self._on_double_click_callback then
 		slot9 = self._data
 

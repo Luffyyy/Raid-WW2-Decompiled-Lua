@@ -83,7 +83,7 @@ ElementNavLink._DEFAULT_VALUES = {
 	interaction_voice = 1,
 	path_style = 1
 }
-ElementNavLink.init = function (self, ...)
+function ElementNavLink:init(...)
 	slot3 = self
 
 	ElementNavLink.super.init(slot2, ...)
@@ -97,7 +97,7 @@ ElementNavLink.init = function (self, ...)
 
 	return 
 end
-ElementNavLink._finalize_values = function (self, values)
+function ElementNavLink:_finalize_values(values)
 	slot5 = "so_action"
 	values.so_action = self.value(slot3, self)
 
@@ -249,7 +249,7 @@ ElementNavLink._finalize_values = function (self, values)
 
 	return 
 end
-ElementNavLink.event = function (self, name, unit)
+function ElementNavLink:event(name, unit)
 	if self._events and self._events[name] then
 		slot5 = self._events[name]
 
@@ -262,14 +262,14 @@ ElementNavLink.event = function (self, name, unit)
 
 	return 
 end
-ElementNavLink.clbk_objective_action_start = function (self, unit)
+function ElementNavLink:clbk_objective_action_start(unit)
 	slot6 = unit
 
 	self.event(slot3, self, "anim_start")
 
 	return 
 end
-ElementNavLink.clbk_objective_administered = function (self, unit)
+function ElementNavLink:clbk_objective_administered(unit)
 	if self._values.needs_pos_rsrv then
 		self._pos_rsrv = self._pos_rsrv or {}
 		slot5 = unit
@@ -312,7 +312,7 @@ ElementNavLink.clbk_objective_administered = function (self, unit)
 
 	return 
 end
-ElementNavLink.clbk_objective_complete = function (self, unit)
+function ElementNavLink:clbk_objective_complete(unit)
 	if self._pos_rsrv then
 		slot5 = unit
 		local unit_rsrv = self._pos_rsrv[unit.key(slot4)]
@@ -343,7 +343,7 @@ ElementNavLink.clbk_objective_complete = function (self, unit)
 
 	return 
 end
-ElementNavLink.clbk_objective_failed = function (self, unit)
+function ElementNavLink:clbk_objective_failed(unit)
 	if self._pos_rsrv then
 		slot5 = unit
 		local unit_rsrv = self._pos_rsrv[unit.key(slot4)]
@@ -378,7 +378,7 @@ ElementNavLink.clbk_objective_failed = function (self, unit)
 
 	return 
 end
-ElementNavLink.clbk_verify_administration = function (self, unit)
+function ElementNavLink:clbk_verify_administration(unit)
 	if self._values.needs_pos_rsrv then
 		self._tmp_pos_rsrv = self._tmp_pos_rsrv or {
 			radius = 30,
@@ -399,7 +399,7 @@ ElementNavLink.clbk_verify_administration = function (self, unit)
 
 	return true
 end
-ElementNavLink.add_event_callback = function (self, name, callback)
+function ElementNavLink:add_event_callback(name, callback)
 	self._events = self._events or {}
 	self._events[name] = self._events[name] or {}
 	slot6 = callback
@@ -408,7 +408,7 @@ ElementNavLink.add_event_callback = function (self, name, callback)
 
 	return 
 end
-ElementNavLink.on_executed = function (self, instigator)
+function ElementNavLink:on_executed(instigator)
 
 	-- Decompilation error in this vicinity:
 	if self._values.so_action then
@@ -427,7 +427,7 @@ ElementNavLink.on_executed = function (self, instigator)
 
 	return 
 end
-ElementNavLink.operation_remove = function (self)
+function ElementNavLink:operation_remove()
 	if self._nav_link then
 		slot4 = self
 
@@ -461,7 +461,7 @@ ElementNavLink.operation_remove = function (self)
 
 	return 
 end
-ElementNavLink.destroy = function (self)
+function ElementNavLink:destroy()
 	slot3 = self
 
 	ElementNavLink.super.destroy(slot2)
@@ -484,7 +484,7 @@ ElementNavLink.destroy = function (self)
 
 	return 
 end
-ElementNavLink.get_objective = function (self, instigator)
+function ElementNavLink:get_objective(instigator)
 	if not self._is_AI_SO then
 		slot5 = "AI"
 		local is_AI_SO = string.begins(slot3, self._values.so_action)
@@ -563,7 +563,7 @@ ElementNavLink.get_objective = function (self, instigator)
 
 	return objective
 end
-ElementNavLink._get_misc_SO_params = function (self)
+function ElementNavLink:_get_misc_SO_params()
 
 	-- Decompilation error in this vicinity:
 	local pose, stance, attitude, path_style, pos, rot, interrupt_dis, interrupt_health, haste, trigger_on, interaction_voice = nil
@@ -572,45 +572,45 @@ ElementNavLink._get_misc_SO_params = function (self)
 
 	return pose, stance, attitude, path_style, pos, rot, -1, interrupt_health, haste, trigger_on, interaction_voice
 end
-ElementNavLink.nav_link_end_pos = function (self)
+function ElementNavLink:nav_link_end_pos()
 	return self._values.search_position
 end
-ElementNavLink.nav_link_access = function (self)
+function ElementNavLink:nav_link_access()
 	slot3 = self._values.SO_access
 
 	return tonumber(slot2)
 end
-ElementNavLink.chance = function (self)
+function ElementNavLink:chance()
 	slot4 = "base_chance"
 
 	return self._get_default_value_if_nil(slot2, self)
 end
-ElementNavLink.nav_link_delay = function (self)
+function ElementNavLink:nav_link_delay()
 	slot4 = "interval"
 
 	return self._get_default_value_if_nil(slot2, self)
 end
-ElementNavLink.nav_link = function (self)
+function ElementNavLink:nav_link()
 	return self._nav_link
 end
-ElementNavLink.id = function (self)
+function ElementNavLink:id()
 	return self._id
 end
-ElementNavLink._is_nav_link = function (self)
+function ElementNavLink:_is_nav_link()
 	return true
 end
-ElementNavLink.set_nav_link = function (self, nav_link)
+function ElementNavLink:set_nav_link(nav_link)
 	self._nav_link = nav_link
 
 	return 
 end
-ElementNavLink.nav_link_wants_align_pos = function (self)
+function ElementNavLink:nav_link_wants_align_pos()
 	return self._values.align_position
 end
-ElementNavLink.get_objective_trigger = function (self)
+function ElementNavLink:get_objective_trigger()
 	return self._values.trigger_on
 end
-ElementNavLink._administer_objective = function (self, unit, objective)
+function ElementNavLink:_administer_objective(unit, objective)
 
 	-- Decompilation error in this vicinity:
 	if objective.type == "phalanx" then
@@ -644,7 +644,7 @@ ElementNavLink._administer_objective = function (self, unit, objective)
 
 	return 
 end
-ElementNavLink.choose_followup_SO = function (self, unit, skip_element_ids)
+function ElementNavLink:choose_followup_SO(unit, skip_element_ids)
 
 	-- Decompilation error in this vicinity:
 	if not self._values.followup_elements then
@@ -687,14 +687,14 @@ ElementNavLink.choose_followup_SO = function (self, unit, skip_element_ids)
 
 	return 
 end
-ElementNavLink.get_as_followup = function (self, unit, skip_element_ids)
+function ElementNavLink:get_as_followup(unit, skip_element_ids)
 	slot7 = unit
 
 	self.event(slot4, self, "admin_fail")
 
 	return 
 end
-ElementNavLink._get_default_value_if_nil = function (self, name_in)
+function ElementNavLink:_get_default_value_if_nil(name_in)
 
 	-- Decompilation error in this vicinity:
 	return self._values[name_in] or self._DEFAULT_VALUES[name_in]

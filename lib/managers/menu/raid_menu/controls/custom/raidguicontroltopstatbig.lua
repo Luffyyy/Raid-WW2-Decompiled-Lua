@@ -23,7 +23,7 @@ RaidGUIControlTopStatBig.PLAYER_NAME_COLOR = tweak_data.gui.colors.raid_white
 RaidGUIControlTopStatBig.PLAYER_NAME_FONT_SIZE = tweak_data.gui.font_sizes.menu_list
 RaidGUIControlTopStatBig.FONT = tweak_data.gui.fonts.din_compressed
 RaidGUIControlTopStatBig.FONT_KERNING = tweak_data.hud.medium_kern
-RaidGUIControlTopStatBig.init = function (self, parent, params)
+function RaidGUIControlTopStatBig:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlTopStatBig.super.init(slot4, self, parent)
@@ -52,10 +52,10 @@ RaidGUIControlTopStatBig.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlTopStatBig.close = function (self)
+function RaidGUIControlTopStatBig:close()
 	return 
 end
-RaidGUIControlTopStatBig._create_panel = function (self)
+function RaidGUIControlTopStatBig:_create_panel()
 	slot3 = self._params
 	local control_params = clone(slot2)
 	control_params.x = control_params.x or 0
@@ -70,7 +70,7 @@ RaidGUIControlTopStatBig._create_panel = function (self)
 
 	return 
 end
-RaidGUIControlTopStatBig._create_stat_info = function (self)
+function RaidGUIControlTopStatBig:_create_stat_info()
 	local player_name_params = {
 		vertical = "center",
 		name = "player_name_label",
@@ -138,7 +138,7 @@ RaidGUIControlTopStatBig._create_stat_info = function (self)
 
 	return 
 end
-RaidGUIControlTopStatBig._create_icon_background = function (self)
+function RaidGUIControlTopStatBig:_create_icon_background()
 	local icon_background_params = {
 		name = "icon_background",
 		alpha = 0,
@@ -158,7 +158,7 @@ RaidGUIControlTopStatBig._create_icon_background = function (self)
 
 	return 
 end
-RaidGUIControlTopStatBig.set_data = function (self, data)
+function RaidGUIControlTopStatBig:set_data(data)
 	slot4 = self._player_name_label
 	slot7 = data.player_nickname
 
@@ -213,7 +213,7 @@ RaidGUIControlTopStatBig.set_data = function (self, data)
 
 	return 
 end
-RaidGUIControlTopStatBig.animate_show = function (self, delay, clbk)
+function RaidGUIControlTopStatBig:animate_show(delay, clbk)
 	slot8 = clbk
 
 	Application.trace(slot4, Application, "RaidGUIControlTopStatBig:animate_show", delay)
@@ -231,10 +231,10 @@ RaidGUIControlTopStatBig.animate_show = function (self, delay, clbk)
 
 	return 
 end
-RaidGUIControlTopStatBig.shown = function (self)
+function RaidGUIControlTopStatBig:shown()
 	return self._shown
 end
-RaidGUIControlTopStatBig._animate_show_stat = function (self, panel, delay, icon, label)
+function RaidGUIControlTopStatBig:_animate_show_stat(panel, delay, icon, label)
 	if delay then
 		slot7 = delay
 
@@ -319,7 +319,7 @@ RaidGUIControlTopStatBig._animate_show_stat = function (self, panel, delay, icon
 
 	return 
 end
-RaidGUIControlTopStatBig._animate_show_result = function (self, label, delay, clbk)
+function RaidGUIControlTopStatBig:_animate_show_result(label, delay, clbk)
 	if delay then
 		slot6 = delay
 

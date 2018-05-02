@@ -43,7 +43,7 @@ RaidGUIControlCharacterCustomizationDetails.NATIONALITY_W = 128
 RaidGUIControlCharacterCustomizationDetails.NATIONALITY_H = 96
 RaidGUIControlCharacterCustomizationDetails.NATIONALITY_ICON_H = 64
 RaidGUIControlCharacterCustomizationDetails.NATIONALITY_PADDING_RIGHT = 32
-RaidGUIControlCharacterCustomizationDetails.init = function (self, parent, params)
+function RaidGUIControlCharacterCustomizationDetails:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlCharacterCustomizationDetails.super.init(slot4, self, parent)
@@ -90,10 +90,10 @@ RaidGUIControlCharacterCustomizationDetails.init = function (self, parent, param
 
 	return 
 end
-RaidGUIControlCharacterCustomizationDetails.close = function (self)
+function RaidGUIControlCharacterCustomizationDetails:close()
 	return 
 end
-RaidGUIControlCharacterCustomizationDetails._create_control_panel = function (self)
+function RaidGUIControlCharacterCustomizationDetails:_create_control_panel()
 	slot3 = self._params
 	local control_params = clone(slot2)
 	control_params.x = control_params.x
@@ -108,7 +108,7 @@ RaidGUIControlCharacterCustomizationDetails._create_control_panel = function (se
 
 	return 
 end
-RaidGUIControlCharacterCustomizationDetails._create_left_panel = function (self)
+function RaidGUIControlCharacterCustomizationDetails:_create_left_panel()
 	local left_panel_params = {
 		name = "left_panel",
 		w = RaidGUIControlCharacterCustomizationDetails.LEFT_PANEL_W
@@ -120,7 +120,7 @@ RaidGUIControlCharacterCustomizationDetails._create_left_panel = function (self)
 
 	return 
 end
-RaidGUIControlCharacterCustomizationDetails._create_title = function (self)
+function RaidGUIControlCharacterCustomizationDetails:_create_title()
 	local title_description_params = {
 		name = "title_description",
 		vertical = "center",
@@ -162,7 +162,7 @@ RaidGUIControlCharacterCustomizationDetails._create_title = function (self)
 
 	return 
 end
-RaidGUIControlCharacterCustomizationDetails._layout_title = function (self)
+function RaidGUIControlCharacterCustomizationDetails:_layout_title()
 	slot3 = self._customization_name
 	local _, _, w, h = self._customization_name.text_rect(slot2)
 	slot8 = h
@@ -181,7 +181,7 @@ RaidGUIControlCharacterCustomizationDetails._layout_title = function (self)
 
 	return 
 end
-RaidGUIControlCharacterCustomizationDetails._create_customization_image = function (self)
+function RaidGUIControlCharacterCustomizationDetails:_create_customization_image()
 	local customization_image_panel_params = {
 		name = "customization_image_panel",
 		y = RaidGUIControlCharacterCustomizationDetails.CUSTOMIZATION_IMAGE_PANEL_Y
@@ -197,7 +197,7 @@ RaidGUIControlCharacterCustomizationDetails._create_customization_image = functi
 
 	return 
 end
-RaidGUIControlCharacterCustomizationDetails._set_customization_image = function (self, texture, texture_rect)
+function RaidGUIControlCharacterCustomizationDetails:_set_customization_image(texture, texture_rect)
 	slot6 = "customization_image_panel"
 	local customization_image_panel = self._left_panel.child(slot4, self._left_panel)
 
@@ -229,7 +229,7 @@ RaidGUIControlCharacterCustomizationDetails._set_customization_image = function 
 
 	return 
 end
-RaidGUIControlCharacterCustomizationDetails._create_redeem_info = function (self)
+function RaidGUIControlCharacterCustomizationDetails:_create_redeem_info()
 	local redeem_description_params = {
 		name = "redeem_description",
 		alpha = 0,
@@ -273,7 +273,7 @@ RaidGUIControlCharacterCustomizationDetails._create_redeem_info = function (self
 
 	return 
 end
-RaidGUIControlCharacterCustomizationDetails._layout_redeem_info = function (self)
+function RaidGUIControlCharacterCustomizationDetails:_layout_redeem_info()
 	slot4 = "redeem_description"
 	local redeem_description = self._left_panel.child(slot2, self._left_panel)
 	slot4 = redeem_description
@@ -317,7 +317,7 @@ RaidGUIControlCharacterCustomizationDetails._layout_redeem_info = function (self
 
 	return 
 end
-RaidGUIControlCharacterCustomizationDetails._create_right_panel = function (self)
+function RaidGUIControlCharacterCustomizationDetails:_create_right_panel()
 	local right_panel_params = {
 		name = "right_panel"
 	}
@@ -335,7 +335,7 @@ RaidGUIControlCharacterCustomizationDetails._create_right_panel = function (self
 
 	return 
 end
-RaidGUIControlCharacterCustomizationDetails._create_description = function (self)
+function RaidGUIControlCharacterCustomizationDetails:_create_description()
 	local description_params = {
 		vertical = "top",
 		name = "description",
@@ -358,7 +358,7 @@ RaidGUIControlCharacterCustomizationDetails._create_description = function (self
 
 	return 
 end
-RaidGUIControlCharacterCustomizationDetails._create_item_description_name = function (self)
+function RaidGUIControlCharacterCustomizationDetails:_create_item_description_name()
 	local item_type_params = {
 		name = "item_type",
 		wrap = true,
@@ -381,7 +381,7 @@ RaidGUIControlCharacterCustomizationDetails._create_item_description_name = func
 
 	return 
 end
-RaidGUIControlCharacterCustomizationDetails._create_customization_info = function (self)
+function RaidGUIControlCharacterCustomizationDetails:_create_customization_info()
 	local rarity_info_params = {
 		top_offset_y = 15,
 		name = "rarity_info",
@@ -421,7 +421,7 @@ RaidGUIControlCharacterCustomizationDetails._create_customization_info = functio
 
 	return 
 end
-RaidGUIControlCharacterCustomizationDetails._layout_description = function (self)
+function RaidGUIControlCharacterCustomizationDetails:_layout_description()
 	slot3 = self._description
 	local _, _, _, h = self._description.text_rect(slot2)
 	slot8 = h
@@ -440,7 +440,7 @@ RaidGUIControlCharacterCustomizationDetails._layout_description = function (self
 
 	return 
 end
-RaidGUIControlCharacterCustomizationDetails.show = function (self)
+function RaidGUIControlCharacterCustomizationDetails:show()
 	slot3 = self
 
 	RaidGUIControlCharacterCustomizationDetails.super.show(slot2)
@@ -634,7 +634,7 @@ RaidGUIControlCharacterCustomizationDetails.show = function (self)
 
 	return 
 end
-RaidGUIControlCharacterCustomizationDetails.set_customization = function (self, customization)
+function RaidGUIControlCharacterCustomizationDetails:set_customization(customization)
 	self._customization = customization
 	slot4 = self._customization_name
 	slot9 = true
@@ -734,7 +734,7 @@ RaidGUIControlCharacterCustomizationDetails.set_customization = function (self, 
 
 	return 
 end
-RaidGUIControlCharacterCustomizationDetails._on_click_redeem = function (self)
+function RaidGUIControlCharacterCustomizationDetails:_on_click_redeem()
 	local params = {}
 	slot6 = "redeem"
 	params.callback = callback(slot3, self, self)
@@ -745,7 +745,7 @@ RaidGUIControlCharacterCustomizationDetails._on_click_redeem = function (self)
 
 	return 
 end
-RaidGUIControlCharacterCustomizationDetails.redeem = function (self)
+function RaidGUIControlCharacterCustomizationDetails:redeem()
 	slot3 = managers.lootdrop
 
 	managers.lootdrop.redeem_dropped_loot_for_xp(slot2)
@@ -757,7 +757,7 @@ RaidGUIControlCharacterCustomizationDetails.redeem = function (self)
 
 	return 
 end
-RaidGUIControlCharacterCustomizationDetails.set_duplicate = function (self)
+function RaidGUIControlCharacterCustomizationDetails:set_duplicate()
 	return 
 end
 

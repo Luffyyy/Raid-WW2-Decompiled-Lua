@@ -1372,7 +1372,7 @@ if not MenuCallbackHandler then
 end
 
 MenuCallbackHandler = slot0
-function MenuCallbackHandler:init()
+MenuCallbackHandler.init = function (self)
 	slot3 = self
 
 	MenuCallbackHandler.super.init(slot2)
@@ -1382,7 +1382,7 @@ function MenuCallbackHandler:init()
 
 	return 
 end
-function MenuCallbackHandler:trial_buy()
+MenuCallbackHandler.trial_buy = function (self)
 	slot3 = "[MenuCallbackHandler:trial_buy]"
 
 	print(slot2)
@@ -1393,7 +1393,7 @@ function MenuCallbackHandler:trial_buy()
 
 	return 
 end
-function MenuCallbackHandler:dlc_buy_pc()
+MenuCallbackHandler.dlc_buy_pc = function (self)
 	slot3 = "[MenuCallbackHandler:dlc_buy_pc]"
 
 	print(slot2)
@@ -1405,40 +1405,40 @@ function MenuCallbackHandler:dlc_buy_pc()
 
 	return 
 end
-function MenuCallbackHandler:has_full_game()
+MenuCallbackHandler.has_full_game = function (self)
 	slot3 = managers.dlc
 
 	return managers.dlc.has_full_game(slot2)
 end
-function MenuCallbackHandler:is_trial()
+MenuCallbackHandler.is_trial = function (self)
 	slot3 = managers.dlc
 
 	return managers.dlc.is_trial(slot2)
 end
-function MenuCallbackHandler:is_not_trial()
+MenuCallbackHandler.is_not_trial = function (self)
 	slot3 = self
 
 	return not self.is_trial(slot2)
 end
-function MenuCallbackHandler:has_preorder()
+MenuCallbackHandler.has_preorder = function (self)
 	slot3 = managers.dlc
 
 	return managers.dlc.has_preorder(slot2)
 end
-function MenuCallbackHandler:not_has_preorder()
+MenuCallbackHandler.not_has_preorder = function (self)
 	slot3 = managers.dlc
 
 	return not managers.dlc.has_preorder(slot2)
 end
-function MenuCallbackHandler:has_all_dlcs()
+MenuCallbackHandler.has_all_dlcs = function (self)
 	return true
 end
-function MenuCallbackHandler:is_overlay_enabled()
+MenuCallbackHandler.is_overlay_enabled = function (self)
 
 	-- Decompilation error in this vicinity:
 	slot4 = "WIN32"
 end
-function MenuCallbackHandler:is_installed()
+MenuCallbackHandler.is_installed = function (self)
 	slot4 = "WIN32"
 
 	if SystemInfo.platform(slot2) == Idstring(SystemInfo) then
@@ -1450,20 +1450,20 @@ function MenuCallbackHandler:is_installed()
 
 	return not is_installing
 end
-function MenuCallbackHandler:show_game_is_installing_menu()
+MenuCallbackHandler.show_game_is_installing_menu = function (self)
 	slot3 = managers.menu
 
 	managers.menu.show_game_is_installing_menu(slot2)
 
 	return 
 end
-function MenuCallbackHandler:bang_active()
+MenuCallbackHandler.bang_active = function (self)
 	return true
 end
-function MenuCallbackHandler:_on_host_setting_updated()
+MenuCallbackHandler._on_host_setting_updated = function (self)
 	return 
 end
-function MenuCallbackHandler:choice_region_filter(item)
+MenuCallbackHandler.choice_region_filter = function (self, item)
 	local region_filter = item.value(slot3)
 	slot6 = "region"
 
@@ -1482,7 +1482,7 @@ function MenuCallbackHandler:choice_region_filter(item)
 
 	return 
 end
-function MenuCallbackHandler:choice_job_plan_filter(item)
+MenuCallbackHandler.choice_job_plan_filter = function (self, item)
 	local job_plan_filter = item.value(slot3)
 	slot6 = "job_plan"
 
@@ -1501,7 +1501,7 @@ function MenuCallbackHandler:choice_job_plan_filter(item)
 
 	return 
 end
-function MenuCallbackHandler:is_dlc_latest_locked(check_dlc)
+MenuCallbackHandler.is_dlc_latest_locked = function (self, check_dlc)
 	local dlcs = {}
 	local dlc_tweak_data = tweak_data.dlc
 	slot6 = dlcs
@@ -1536,48 +1536,48 @@ function MenuCallbackHandler:is_dlc_latest_locked(check_dlc)
 
 	return false
 end
-function MenuCallbackHandler:not_has_all_dlcs()
+MenuCallbackHandler.not_has_all_dlcs = function (self)
 	slot3 = self
 
 	return not self.has_all_dlcs(slot2)
 end
-function MenuCallbackHandler:reputation_check(data)
+MenuCallbackHandler.reputation_check = function (self, data)
 	slot5 = data
 
 	return data.value(managers.experience) <= managers.experience.current_level(slot3)
 end
-function MenuCallbackHandler:non_overkill_145(data)
+MenuCallbackHandler.non_overkill_145 = function (self, data)
 	return true
 end
-function MenuCallbackHandler:to_be_continued()
+MenuCallbackHandler.to_be_continued = function (self)
 	return true
 end
-function MenuCallbackHandler:is_level_145()
+MenuCallbackHandler.is_level_145 = function (self)
 	slot3 = managers.experience
 
 	return 145 <= managers.experience.current_level(slot2)
 end
-function MenuCallbackHandler:is_level_100()
+MenuCallbackHandler.is_level_100 = function (self)
 	slot3 = managers.experience
 
 	return 100 <= managers.experience.current_level(slot2)
 end
-function MenuCallbackHandler:is_level_50()
+MenuCallbackHandler.is_level_50 = function (self)
 	slot3 = managers.experience
 
 	return 50 <= managers.experience.current_level(slot2)
 end
-function MenuCallbackHandler:is_win32()
+MenuCallbackHandler.is_win32 = function (self)
 	slot4 = "WIN32"
 
 	return SystemInfo.platform(slot2) == Idstring(SystemInfo)
 end
-function MenuCallbackHandler:is_fullscreen()
+MenuCallbackHandler.is_fullscreen = function (self)
 	slot3 = managers.viewport
 
 	return managers.viewport.is_fullscreen(slot2)
 end
-function MenuCallbackHandler:voice_enabled()
+MenuCallbackHandler.voice_enabled = function (self)
 	slot3 = self
 
 	if not self.is_ps3(slot2) then
@@ -1591,15 +1591,15 @@ function MenuCallbackHandler:voice_enabled()
 
 	return slot1
 end
-function MenuCallbackHandler:customize_controller_enabled()
+MenuCallbackHandler.customize_controller_enabled = function (self)
 	return true
 end
-function MenuCallbackHandler:is_win32_not_lan()
+MenuCallbackHandler.is_win32_not_lan = function (self)
 	slot4 = "WIN32"
 
 	return SystemInfo.platform(slot2) == Idstring(SystemInfo) and not Global.game_settings.playing_lan
 end
-function MenuCallbackHandler:is_console()
+MenuCallbackHandler.is_console = function (self)
 	slot3 = self
 
 	if not self.is_ps3(slot2) then
@@ -1617,37 +1617,37 @@ function MenuCallbackHandler:is_console()
 
 	return slot1
 end
-function MenuCallbackHandler:is_ps3()
+MenuCallbackHandler.is_ps3 = function (self)
 	slot4 = "PS3"
 
 	return SystemInfo.platform(slot2) == Idstring(SystemInfo)
 end
-function MenuCallbackHandler:is_ps4()
+MenuCallbackHandler.is_ps4 = function (self)
 	slot4 = "PS4"
 
 	return SystemInfo.platform(slot2) == Idstring(SystemInfo)
 end
-function MenuCallbackHandler:is_x360()
+MenuCallbackHandler.is_x360 = function (self)
 	slot4 = "X360"
 
 	return SystemInfo.platform(slot2) == Idstring(SystemInfo)
 end
-function MenuCallbackHandler:is_xb1()
+MenuCallbackHandler.is_xb1 = function (self)
 	slot4 = "XB1"
 
 	return SystemInfo.platform(slot2) == Idstring(SystemInfo)
 end
-function MenuCallbackHandler:is_not_x360()
+MenuCallbackHandler.is_not_x360 = function (self)
 	slot3 = self
 
 	return not self.is_x360(slot2)
 end
-function MenuCallbackHandler:is_not_xbox()
+MenuCallbackHandler.is_not_xbox = function (self)
 	slot3 = self
 
 	return not self.is_x360(slot2)
 end
-function MenuCallbackHandler:is_not_nextgen()
+MenuCallbackHandler.is_not_nextgen = function (self)
 	slot3 = self
 
 	if not self.is_xb1(slot2) then
@@ -1663,39 +1663,39 @@ function MenuCallbackHandler:is_not_nextgen()
 
 	return slot1
 end
-function MenuCallbackHandler:is_na()
+MenuCallbackHandler.is_na = function (self)
 	return MenuManager.IS_NORTH_AMERICA
 end
-function MenuCallbackHandler:has_dropin()
+MenuCallbackHandler.has_dropin = function (self)
 	return NetworkManager.DROPIN_ENABLED
 end
-function MenuCallbackHandler:is_server()
+MenuCallbackHandler.is_server = function (self)
 	slot3 = Network
 
 	return Network.is_server(slot2)
 end
-function MenuCallbackHandler:is_not_server()
+MenuCallbackHandler.is_not_server = function (self)
 	slot3 = self
 
 	return not self.is_server(slot2)
 end
-function MenuCallbackHandler:is_online()
+MenuCallbackHandler.is_online = function (self)
 	slot3 = managers.network.account
 
 	return managers.network.account.signin_state(slot2) == "signed in"
 end
-function MenuCallbackHandler:is_singleplayer()
+MenuCallbackHandler.is_singleplayer = function (self)
 	return Global.game_settings.single_player
 end
-function MenuCallbackHandler:is_multiplayer()
+MenuCallbackHandler.is_multiplayer = function (self)
 	return not Global.game_settings.single_player
 end
-function MenuCallbackHandler:is_not_max_rank()
+MenuCallbackHandler.is_not_max_rank = function (self)
 	slot3 = managers.experience
 
 	return managers.experience.current_rank(slot2) < #tweak_data.infamy.ranks
 end
-function MenuCallbackHandler:can_become_infamous()
+MenuCallbackHandler.can_become_infamous = function (self)
 	slot3 = self
 
 	if self.is_level_100(slot2) then
@@ -1705,7 +1705,7 @@ function MenuCallbackHandler:can_become_infamous()
 
 	return slot1
 end
-function MenuCallbackHandler:singleplayer_restart()
+MenuCallbackHandler.singleplayer_restart = function (self)
 	slot3 = self
 
 	if self.is_singleplayer(slot2) then
@@ -1715,7 +1715,7 @@ function MenuCallbackHandler:singleplayer_restart()
 
 	return slot1
 end
-function MenuCallbackHandler:kick_player_visible()
+MenuCallbackHandler.kick_player_visible = function (self)
 	slot3 = self
 
 	if self.is_server(slot2) then
@@ -1739,7 +1739,7 @@ function MenuCallbackHandler:kick_player_visible()
 
 	return slot1
 end
-function MenuCallbackHandler:kick_vote_visible()
+MenuCallbackHandler.kick_vote_visible = function (self)
 	slot3 = self
 
 	if self.is_multiplayer(slot2) then
@@ -1759,7 +1759,7 @@ function MenuCallbackHandler:kick_vote_visible()
 
 	return slot1
 end
-function MenuCallbackHandler:_restart_level_visible()
+MenuCallbackHandler._restart_level_visible = function (self)
 
 	-- Decompilation error in this vicinity:
 	slot3 = self
@@ -1768,7 +1768,7 @@ function MenuCallbackHandler:_restart_level_visible()
 
 	return state ~= "ingame_waiting_for_players" and state ~= "ingame_lobby_menu" and state ~= "empty"
 end
-function MenuCallbackHandler:restart_level_visible()
+MenuCallbackHandler.restart_level_visible = function (self)
 	slot3 = self
 
 	if self.is_server(slot2) then
@@ -1782,7 +1782,7 @@ function MenuCallbackHandler:restart_level_visible()
 
 	return slot1
 end
-function MenuCallbackHandler:restart_vote_visible()
+MenuCallbackHandler.restart_vote_visible = function (self)
 	slot3 = self
 
 	if self._restart_level_visible(slot2) then
@@ -1792,7 +1792,7 @@ function MenuCallbackHandler:restart_vote_visible()
 
 	return slot1
 end
-function MenuCallbackHandler:abort_mission_visible()
+MenuCallbackHandler.abort_mission_visible = function (self)
 
 	-- Decompilation error in this vicinity:
 	slot3 = self
@@ -1804,50 +1804,50 @@ function MenuCallbackHandler:abort_mission_visible()
 
 	return true
 end
-function MenuCallbackHandler:lobby_exist()
+MenuCallbackHandler.lobby_exist = function (self)
 	return managers.network.matchmake.lobby_handler
 end
-function MenuCallbackHandler:hidden()
+MenuCallbackHandler.hidden = function (self)
 	return false
 end
-function MenuCallbackHandler:chat_visible()
+MenuCallbackHandler.chat_visible = function (self)
 	slot4 = "WIN32"
 
 	return SystemInfo.platform(slot2) == Idstring(SystemInfo)
 end
-function MenuCallbackHandler:is_pc_controller()
+MenuCallbackHandler.is_pc_controller = function (self)
 	slot3 = managers.menu
 
 	return managers.menu.is_pc_controller(slot2)
 end
-function MenuCallbackHandler:is_not_pc_controller()
+MenuCallbackHandler.is_not_pc_controller = function (self)
 	slot3 = self
 
 	return not self.is_pc_controller(slot2)
 end
-function MenuCallbackHandler:is_steam_controller()
+MenuCallbackHandler.is_steam_controller = function (self)
 	slot3 = managers.menu
 
 	return managers.menu.is_steam_controller(slot2)
 end
-function MenuCallbackHandler:is_not_steam_controller()
+MenuCallbackHandler.is_not_steam_controller = function (self)
 	slot3 = self
 
 	return not self.is_steam_controller(slot2)
 end
-function MenuCallbackHandler:is_not_editor()
+MenuCallbackHandler.is_not_editor = function (self)
 	slot3 = Application
 
 	return not Application.editor(slot2)
 end
-function MenuCallbackHandler:show_credits()
+MenuCallbackHandler.show_credits = function (self)
 	slot4 = "menu_credits"
 
 	game_state_machine.change_state_by_name(slot2, game_state_machine)
 
 	return 
 end
-function MenuCallbackHandler:can_load_game()
+MenuCallbackHandler.can_load_game = function (self)
 	slot3 = Application
 
 	if not Application.editor(slot2) then
@@ -1863,7 +1863,7 @@ function MenuCallbackHandler:can_load_game()
 
 	return slot1
 end
-function MenuCallbackHandler:can_save_game()
+MenuCallbackHandler.can_save_game = function (self)
 	slot3 = Application
 
 	if not Application.editor(slot2) then
@@ -1879,24 +1879,24 @@ function MenuCallbackHandler:can_save_game()
 
 	return slot1
 end
-function MenuCallbackHandler:is_not_multiplayer()
+MenuCallbackHandler.is_not_multiplayer = function (self)
 	slot3 = Network
 
 	return not Network.multiplayer(slot2)
 end
-function MenuCallbackHandler:debug_menu_enabled()
+MenuCallbackHandler.debug_menu_enabled = function (self)
 	slot3 = managers.menu
 
 	return managers.menu.debug_menu_enabled(slot2)
 end
-function MenuCallbackHandler:leave_online_menu()
+MenuCallbackHandler.leave_online_menu = function (self)
 	slot3 = managers.menu
 
 	managers.menu.leave_online_menu(slot2)
 
 	return 
 end
-function MenuCallbackHandler:has_peer_1()
+MenuCallbackHandler.has_peer_1 = function (self)
 	slot3 = managers.network
 
 	if not not managers.network.session(slot2) then
@@ -1913,7 +1913,7 @@ function MenuCallbackHandler:has_peer_1()
 
 	return slot1
 end
-function MenuCallbackHandler:has_peer_2()
+MenuCallbackHandler.has_peer_2 = function (self)
 	slot3 = managers.network
 
 	if not not managers.network.session(slot2) then
@@ -1930,7 +1930,7 @@ function MenuCallbackHandler:has_peer_2()
 
 	return slot1
 end
-function MenuCallbackHandler:has_peer_3()
+MenuCallbackHandler.has_peer_3 = function (self)
 	slot3 = managers.network
 
 	if not not managers.network.session(slot2) then
@@ -1947,7 +1947,7 @@ function MenuCallbackHandler:has_peer_3()
 
 	return slot1
 end
-function MenuCallbackHandler:has_peer_4()
+MenuCallbackHandler.has_peer_4 = function (self)
 	slot3 = managers.network
 
 	if not not managers.network.session(slot2) then
@@ -1964,7 +1964,7 @@ function MenuCallbackHandler:has_peer_4()
 
 	return slot1
 end
-function MenuCallbackHandler:on_visit_forum()
+MenuCallbackHandler.on_visit_forum = function (self)
 	slot3 = MenuCallbackHandler
 
 	if not MenuCallbackHandler.is_overlay_enabled(slot2) then
@@ -1981,7 +1981,7 @@ function MenuCallbackHandler:on_visit_forum()
 
 	return 
 end
-function MenuCallbackHandler:on_visit_gamehub()
+MenuCallbackHandler.on_visit_gamehub = function (self)
 	slot3 = MenuCallbackHandler
 
 	if not MenuCallbackHandler.is_overlay_enabled(slot2) then
@@ -1999,7 +1999,7 @@ function MenuCallbackHandler:on_visit_gamehub()
 
 	return 
 end
-function MenuCallbackHandler:on_buy_dlc1()
+MenuCallbackHandler.on_buy_dlc1 = function (self)
 	slot4 = "store"
 	slot7 = managers.dlc
 
@@ -2007,7 +2007,7 @@ function MenuCallbackHandler:on_buy_dlc1()
 
 	return 
 end
-function MenuCallbackHandler:on_account_picker()
+MenuCallbackHandler.on_account_picker = function (self)
 	print(slot2)
 
 	local function confirm_cb()
@@ -2037,7 +2037,7 @@ function MenuCallbackHandler:on_account_picker()
 
 	return 
 end
-function MenuCallbackHandler:on_menu_option_help()
+MenuCallbackHandler.on_menu_option_help = function (self)
 	slot3 = "MenuCallbackHandler:on_menu_option_help()"
 
 	print(slot2)
@@ -2048,7 +2048,7 @@ function MenuCallbackHandler:on_menu_option_help()
 
 	return 
 end
-function MenuCallbackHandler:quit_game()
+MenuCallbackHandler.quit_game = function (self)
 	local dialog_data = {}
 	slot5 = "dialog_warning_title"
 	dialog_data.title = managers.localization.text(slot3, managers.localization)
@@ -2076,31 +2076,31 @@ function MenuCallbackHandler:quit_game()
 
 	return 
 end
-function MenuCallbackHandler:_dialog_quit_yes()
+MenuCallbackHandler._dialog_quit_yes = function (self)
 	slot3 = self
 
 	self._dialog_save_progress_backup_no(slot2)
 
 	return 
 end
-function MenuCallbackHandler:_dialog_quit_no()
+MenuCallbackHandler._dialog_quit_no = function (self)
 	return 
 end
-function MenuCallbackHandler:_dialog_save_progress_backup_yes()
+MenuCallbackHandler._dialog_save_progress_backup_yes = function (self)
 	slot3 = setup
 
 	setup.quit(slot2)
 
 	return 
 end
-function MenuCallbackHandler:_dialog_save_progress_backup_no()
+MenuCallbackHandler._dialog_save_progress_backup_no = function (self)
 	slot3 = setup
 
 	setup.quit(slot2)
 
 	return 
 end
-function MenuCallbackHandler:chk_dlc_content_updated()
+MenuCallbackHandler.chk_dlc_content_updated = function (self)
 	if managers.dlc then
 		slot3 = managers.dlc
 
@@ -2109,7 +2109,7 @@ function MenuCallbackHandler:chk_dlc_content_updated()
 
 	return 
 end
-function MenuCallbackHandler:toggle_ready(item)
+MenuCallbackHandler.toggle_ready = function (self, item)
 	slot4 = item
 	local ready = item.value(slot3) == "on"
 	slot5 = managers.network
@@ -2156,7 +2156,7 @@ function MenuCallbackHandler:toggle_ready(item)
 
 	return 
 end
-function MenuCallbackHandler:change_nr_players(item)
+MenuCallbackHandler.change_nr_players = function (self, item)
 	local nr_players = item.value(slot3)
 	Global.nr_players = nr_players
 	slot6 = nr_players
@@ -2165,7 +2165,7 @@ function MenuCallbackHandler:change_nr_players(item)
 
 	return 
 end
-function MenuCallbackHandler:invert_camera_horisontally(item)
+MenuCallbackHandler.invert_camera_horisontally = function (self, item)
 	slot4 = item
 	local invert = item.value(slot3) == "on"
 	slot7 = invert
@@ -2174,7 +2174,7 @@ function MenuCallbackHandler:invert_camera_horisontally(item)
 
 	return 
 end
-function MenuCallbackHandler:invert_camera_vertically(item)
+MenuCallbackHandler.invert_camera_vertically = function (self, item)
 	slot4 = item
 	local invert = item.value(slot3) == "on"
 	slot7 = invert
@@ -2183,7 +2183,7 @@ function MenuCallbackHandler:invert_camera_vertically(item)
 
 	return 
 end
-function MenuCallbackHandler:toggle_dof_setting(item)
+MenuCallbackHandler.toggle_dof_setting = function (self, item)
 	slot4 = item
 	local dof_setting = item.value(slot3) == "on"
 	slot7 = (dof_setting and "standard") or "none"
@@ -2192,7 +2192,7 @@ function MenuCallbackHandler:toggle_dof_setting(item)
 
 	return 
 end
-function MenuCallbackHandler:toggle_ssao_setting(item)
+MenuCallbackHandler.toggle_ssao_setting = function (self, item)
 	slot4 = item
 	local ssao_setting = item.value(slot3) == "on"
 	slot7 = (ssao_setting and "standard") or "none"
@@ -2201,7 +2201,7 @@ function MenuCallbackHandler:toggle_ssao_setting(item)
 
 	return 
 end
-function MenuCallbackHandler:toggle_motion_blur_setting(item)
+MenuCallbackHandler.toggle_motion_blur_setting = function (self, item)
 	slot4 = item
 	local motion_blur_setting = item.value(slot3) == "on"
 	slot7 = (motion_blur_setting and "standard") or "none"
@@ -2210,7 +2210,7 @@ function MenuCallbackHandler:toggle_motion_blur_setting(item)
 
 	return 
 end
-function MenuCallbackHandler:toggle_volumetric_light_scattering_setting(item)
+MenuCallbackHandler.toggle_volumetric_light_scattering_setting = function (self, item)
 	slot4 = item
 	local vls_setting = item.value(slot3) == "on"
 	slot7 = (vls_setting and "standard") or "none"
@@ -2219,7 +2219,7 @@ function MenuCallbackHandler:toggle_volumetric_light_scattering_setting(item)
 
 	return 
 end
-function MenuCallbackHandler:choice_choose_AA_quality(item)
+MenuCallbackHandler.choice_choose_AA_quality = function (self, item)
 	local AA_setting = item.value(slot3)
 	slot7 = AA_setting
 
@@ -2227,7 +2227,7 @@ function MenuCallbackHandler:choice_choose_AA_quality(item)
 
 	return 
 end
-function MenuCallbackHandler:choice_choose_cb_mode(item)
+MenuCallbackHandler.choice_choose_cb_mode = function (self, item)
 	local cb_setting = item.value(slot3)
 	slot7 = cb_setting
 
@@ -2235,7 +2235,7 @@ function MenuCallbackHandler:choice_choose_cb_mode(item)
 
 	return 
 end
-function MenuCallbackHandler:hold_to_steelsight(item)
+MenuCallbackHandler.hold_to_steelsight = function (self, item)
 	slot4 = item
 	local hold = item.value(slot3) == "on"
 	slot7 = hold
@@ -2244,7 +2244,7 @@ function MenuCallbackHandler:hold_to_steelsight(item)
 
 	return 
 end
-function MenuCallbackHandler:hold_to_run(item)
+MenuCallbackHandler.hold_to_run = function (self, item)
 	slot4 = item
 	local hold = item.value(slot3) == "on"
 	slot7 = hold
@@ -2253,7 +2253,7 @@ function MenuCallbackHandler:hold_to_run(item)
 
 	return 
 end
-function MenuCallbackHandler:hold_to_duck(item)
+MenuCallbackHandler.hold_to_duck = function (self, item)
 	slot4 = item
 	local hold = item.value(slot3) == "on"
 	slot7 = hold
@@ -2262,7 +2262,7 @@ function MenuCallbackHandler:hold_to_duck(item)
 
 	return 
 end
-function MenuCallbackHandler:toggle_fullscreen(item)
+MenuCallbackHandler.toggle_fullscreen = function (self, item)
 	slot4 = item
 	local fullscreen = item.value(slot3) == "on"
 	slot5 = managers.viewport
@@ -2299,7 +2299,7 @@ function MenuCallbackHandler:toggle_fullscreen(item)
 
 	return 
 end
-function MenuCallbackHandler:toggle_subtitle(item)
+MenuCallbackHandler.toggle_subtitle = function (self, item)
 	slot4 = item
 	local subtitle = item.value(slot3) == "on"
 	slot7 = subtitle
@@ -2308,7 +2308,7 @@ function MenuCallbackHandler:toggle_subtitle(item)
 
 	return 
 end
-function MenuCallbackHandler:toggle_hit_indicator(item)
+MenuCallbackHandler.toggle_hit_indicator = function (self, item)
 	slot4 = item
 	local on = item.value(slot3) == "on"
 	slot7 = on
@@ -2317,7 +2317,7 @@ function MenuCallbackHandler:toggle_hit_indicator(item)
 
 	return 
 end
-function MenuCallbackHandler:toggle_objective_reminder(item)
+MenuCallbackHandler.toggle_objective_reminder = function (self, item)
 	slot4 = item
 	local on = item.value(slot3) == "on"
 	slot7 = on
@@ -2326,7 +2326,7 @@ function MenuCallbackHandler:toggle_objective_reminder(item)
 
 	return 
 end
-function MenuCallbackHandler:toggle_voicechat(item)
+MenuCallbackHandler.toggle_voicechat = function (self, item)
 	slot4 = item
 	local vchat = item.value(slot3) == "on"
 	slot7 = vchat
@@ -2335,7 +2335,7 @@ function MenuCallbackHandler:toggle_voicechat(item)
 
 	return 
 end
-function MenuCallbackHandler:toggle_push_to_talk(item)
+MenuCallbackHandler.toggle_push_to_talk = function (self, item)
 	slot4 = item
 	local vchat = item.value(slot3) == "on"
 	slot7 = vchat
@@ -2344,7 +2344,7 @@ function MenuCallbackHandler:toggle_push_to_talk(item)
 
 	return 
 end
-function MenuCallbackHandler:toggle_team_AI(item)
+MenuCallbackHandler.toggle_team_AI = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -2392,7 +2392,7 @@ function MenuCallbackHandler:toggle_team_AI(item)
 
 
 end
-function MenuCallbackHandler:toggle_coordinates(item)
+MenuCallbackHandler.toggle_coordinates = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -2467,7 +2467,7 @@ function MenuCallbackHandler:toggle_coordinates(item)
 
 
 end
-function MenuCallbackHandler:toggle_net_throttling(item)
+MenuCallbackHandler.toggle_net_throttling = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -2511,7 +2511,7 @@ function MenuCallbackHandler:toggle_net_throttling(item)
 
 
 end
-function MenuCallbackHandler:toggle_net_forwarding(item)
+MenuCallbackHandler.toggle_net_forwarding = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -2555,7 +2555,7 @@ function MenuCallbackHandler:toggle_net_forwarding(item)
 
 
 end
-function MenuCallbackHandler:toggle_net_use_compression(item)
+MenuCallbackHandler.toggle_net_use_compression = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -2603,7 +2603,7 @@ function MenuCallbackHandler:toggle_net_use_compression(item)
 
 
 end
-function MenuCallbackHandler:change_resolution(item)
+MenuCallbackHandler.change_resolution = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -2678,7 +2678,7 @@ function MenuCallbackHandler:change_resolution(item)
 
 
 end
-function MenuCallbackHandler:choice_test(item)
+MenuCallbackHandler.choice_test = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -2693,7 +2693,7 @@ function MenuCallbackHandler:choice_test(item)
 
 
 end
-function MenuCallbackHandler:choice_premium_contact(item)
+MenuCallbackHandler.choice_premium_contact = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -2796,7 +2796,7 @@ function MenuCallbackHandler:choice_premium_contact(item)
 
 
 end
-function MenuCallbackHandler:choice_controller_type(item)
+MenuCallbackHandler.choice_controller_type = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -2898,7 +2898,7 @@ function MenuCallbackHandler:choice_controller_type(item)
 
 
 end
-function MenuCallbackHandler:choice_max_lobbies_filter(item)
+MenuCallbackHandler.choice_max_lobbies_filter = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-23, warpins: 1 ---
@@ -2918,7 +2918,7 @@ function MenuCallbackHandler:choice_max_lobbies_filter(item)
 
 
 end
-function MenuCallbackHandler:choice_distance_filter(item)
+MenuCallbackHandler.choice_distance_filter = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -2959,7 +2959,7 @@ function MenuCallbackHandler:choice_distance_filter(item)
 
 
 end
-function MenuCallbackHandler:choice_difficulty_filter(item)
+MenuCallbackHandler.choice_difficulty_filter = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-16, warpins: 1 ---
@@ -3004,7 +3004,7 @@ function MenuCallbackHandler:choice_difficulty_filter(item)
 
 
 end
-function MenuCallbackHandler:choice_job_id_filter(item)
+MenuCallbackHandler.choice_job_id_filter = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -3045,7 +3045,7 @@ function MenuCallbackHandler:choice_job_id_filter(item)
 
 
 end
-function MenuCallbackHandler:choice_new_servers_only(item)
+MenuCallbackHandler.choice_new_servers_only = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -3086,7 +3086,7 @@ function MenuCallbackHandler:choice_new_servers_only(item)
 
 
 end
-function MenuCallbackHandler:choice_kick_option(item)
+MenuCallbackHandler.choice_kick_option = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -3127,7 +3127,7 @@ function MenuCallbackHandler:choice_kick_option(item)
 
 
 end
-function MenuCallbackHandler:choice_job_appropriate_filter(item)
+MenuCallbackHandler.choice_job_appropriate_filter = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -3175,7 +3175,7 @@ function MenuCallbackHandler:choice_job_appropriate_filter(item)
 
 
 end
-function MenuCallbackHandler:choice_server_state_lobby(item)
+MenuCallbackHandler.choice_server_state_lobby = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -3216,7 +3216,7 @@ function MenuCallbackHandler:choice_server_state_lobby(item)
 
 
 end
-function MenuCallbackHandler:refresh_node(item)
+MenuCallbackHandler.refresh_node = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -3250,7 +3250,7 @@ function MenuCallbackHandler:refresh_node(item)
 
 
 end
-function MenuCallbackHandler:crimenet_casino_secured_cards()
+MenuCallbackHandler.crimenet_casino_secured_cards = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-18, warpins: 1 ---
@@ -3359,7 +3359,7 @@ function MenuCallbackHandler:crimenet_casino_secured_cards()
 
 
 end
-function MenuCallbackHandler:crimenet_casino_update(item)
+MenuCallbackHandler.crimenet_casino_update = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -3392,7 +3392,7 @@ function MenuCallbackHandler:crimenet_casino_update(item)
 
 
 end
-function MenuCallbackHandler:crimenet_casino_safe_card1(item)
+MenuCallbackHandler.crimenet_casino_safe_card1 = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-18, warpins: 1 ---
@@ -3471,7 +3471,7 @@ function MenuCallbackHandler:crimenet_casino_safe_card1(item)
 
 
 end
-function MenuCallbackHandler:crimenet_casino_safe_card2(item)
+MenuCallbackHandler.crimenet_casino_safe_card2 = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-18, warpins: 1 ---
@@ -3550,7 +3550,7 @@ function MenuCallbackHandler:crimenet_casino_safe_card2(item)
 
 
 end
-function MenuCallbackHandler:crimenet_casino_safe_card3(item)
+MenuCallbackHandler.crimenet_casino_safe_card3 = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-18, warpins: 1 ---
@@ -3600,7 +3600,7 @@ function MenuCallbackHandler:crimenet_casino_safe_card3(item)
 
 
 end
-function MenuCallbackHandler:choice_difficulty_filter_ps3(item)
+MenuCallbackHandler.choice_difficulty_filter_ps3 = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-15, warpins: 1 ---
@@ -3645,7 +3645,7 @@ function MenuCallbackHandler:choice_difficulty_filter_ps3(item)
 
 
 end
-function MenuCallbackHandler:lobby_create_campaign(item)
+MenuCallbackHandler.lobby_create_campaign = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-21, warpins: 1 ---
@@ -3694,7 +3694,7 @@ function MenuCallbackHandler:lobby_create_campaign(item)
 
 
 end
-function MenuCallbackHandler:choice_lobby_campaign(item)
+MenuCallbackHandler.choice_lobby_campaign = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -3794,7 +3794,7 @@ function MenuCallbackHandler:choice_lobby_campaign(item)
 
 
 end
-function MenuCallbackHandler:set_lan_game()
+MenuCallbackHandler.set_lan_game = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -3806,7 +3806,7 @@ function MenuCallbackHandler:set_lan_game()
 
 
 end
-function MenuCallbackHandler:set_not_lan_game()
+MenuCallbackHandler.set_not_lan_game = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -3818,7 +3818,7 @@ function MenuCallbackHandler:set_not_lan_game()
 
 
 end
-function MenuCallbackHandler:create_lobby()
+MenuCallbackHandler.create_lobby = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -3833,7 +3833,7 @@ function MenuCallbackHandler:create_lobby()
 
 
 end
-function MenuCallbackHandler:play_single_player()
+MenuCallbackHandler.play_single_player = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -3852,7 +3852,7 @@ function MenuCallbackHandler:play_single_player()
 
 
 end
-function MenuCallbackHandler:play_online_game()
+MenuCallbackHandler.play_online_game = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -3868,7 +3868,7 @@ function MenuCallbackHandler:play_online_game()
 
 
 end
-function MenuCallbackHandler:apply_and_save_render_settings()
+MenuCallbackHandler.apply_and_save_render_settings = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -4006,7 +4006,7 @@ function MenuCallbackHandler:apply_and_save_render_settings()
 
 
 end
-function MenuCallbackHandler:choice_choose_texture_quality(item)
+MenuCallbackHandler.choice_choose_texture_quality = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -4027,7 +4027,7 @@ function MenuCallbackHandler:choice_choose_texture_quality(item)
 
 
 end
-function MenuCallbackHandler:choice_choose_shadow_quality(item)
+MenuCallbackHandler.choice_choose_shadow_quality = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -4048,7 +4048,7 @@ function MenuCallbackHandler:choice_choose_shadow_quality(item)
 
 
 end
-function MenuCallbackHandler:toggle_gpu_flush_setting(item)
+MenuCallbackHandler.toggle_gpu_flush_setting = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -4093,7 +4093,7 @@ function MenuCallbackHandler:toggle_gpu_flush_setting(item)
 
 
 end
-function MenuCallbackHandler:choice_choose_anisotropic(item)
+MenuCallbackHandler.choice_choose_anisotropic = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -4114,7 +4114,7 @@ function MenuCallbackHandler:choice_choose_anisotropic(item)
 
 
 end
-function MenuCallbackHandler:choice_fps_cap(item)
+MenuCallbackHandler.choice_fps_cap = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-17, warpins: 1 ---
@@ -4133,7 +4133,7 @@ function MenuCallbackHandler:choice_fps_cap(item)
 
 
 end
-function MenuCallbackHandler:choice_choose_color_grading(item)
+MenuCallbackHandler.choice_choose_color_grading = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -4148,7 +4148,7 @@ function MenuCallbackHandler:choice_choose_color_grading(item)
 
 
 end
-function MenuCallbackHandler:choice_choose_anti_alias(item)
+MenuCallbackHandler.choice_choose_anti_alias = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -4163,7 +4163,7 @@ function MenuCallbackHandler:choice_choose_anti_alias(item)
 
 
 end
-function MenuCallbackHandler:choice_choose_anim_lod(item)
+MenuCallbackHandler.choice_choose_anim_lod = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -4178,7 +4178,7 @@ function MenuCallbackHandler:choice_choose_anim_lod(item)
 
 
 end
-function MenuCallbackHandler:toggle_vsync(item)
+MenuCallbackHandler.toggle_vsync = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -4226,7 +4226,7 @@ function MenuCallbackHandler:toggle_vsync(item)
 
 
 end
-function MenuCallbackHandler:toggle_use_thq_weapon_parts(item)
+MenuCallbackHandler.toggle_use_thq_weapon_parts = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -4271,7 +4271,7 @@ function MenuCallbackHandler:toggle_use_thq_weapon_parts(item)
 
 
 end
-function MenuCallbackHandler:toggle_streaks(item)
+MenuCallbackHandler.toggle_streaks = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -4316,7 +4316,7 @@ function MenuCallbackHandler:toggle_streaks(item)
 
 
 end
-function MenuCallbackHandler:toggle_light_adaption(item)
+MenuCallbackHandler.toggle_light_adaption = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -4361,7 +4361,7 @@ function MenuCallbackHandler:toggle_light_adaption(item)
 
 
 end
-function MenuCallbackHandler:toggle_lightfx(item)
+MenuCallbackHandler.toggle_lightfx = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -4406,7 +4406,7 @@ function MenuCallbackHandler:toggle_lightfx(item)
 
 
 end
-function MenuCallbackHandler:choice_max_streaming_chunk(item)
+MenuCallbackHandler.choice_max_streaming_chunk = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -4421,7 +4421,7 @@ function MenuCallbackHandler:choice_max_streaming_chunk(item)
 
 
 end
-function MenuCallbackHandler:set_fov_multiplier(item)
+MenuCallbackHandler.set_fov_multiplier = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-19, warpins: 1 ---
@@ -4462,7 +4462,7 @@ function MenuCallbackHandler:set_fov_multiplier(item)
 
 
 end
-function MenuCallbackHandler:set_detail_distance(item)
+MenuCallbackHandler.set_detail_distance = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-22, warpins: 1 ---
@@ -4483,7 +4483,7 @@ function MenuCallbackHandler:set_detail_distance(item)
 
 
 end
-function MenuCallbackHandler:set_use_parallax(item)
+MenuCallbackHandler.set_use_parallax = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -4527,7 +4527,7 @@ function MenuCallbackHandler:set_use_parallax(item)
 
 
 end
-function MenuCallbackHandler:set_fov_standard(item)
+MenuCallbackHandler.set_fov_standard = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-29, warpins: 1 ---
@@ -4650,7 +4650,7 @@ function MenuCallbackHandler:set_fov_standard(item)
 
 
 end
-function MenuCallbackHandler:set_fov_zoom(item)
+MenuCallbackHandler.set_fov_zoom = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-29, warpins: 1 ---
@@ -4773,7 +4773,7 @@ function MenuCallbackHandler:set_fov_zoom(item)
 
 
 end
-function MenuCallbackHandler:toggle_headbob(item)
+MenuCallbackHandler.toggle_headbob = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -4818,7 +4818,7 @@ function MenuCallbackHandler:toggle_headbob(item)
 
 
 end
-function MenuCallbackHandler:on_stage_success()
+MenuCallbackHandler.on_stage_success = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -4832,7 +4832,7 @@ function MenuCallbackHandler:on_stage_success()
 
 
 end
-function MenuCallbackHandler:lobby_start_the_game()
+MenuCallbackHandler.lobby_start_the_game = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -4846,7 +4846,7 @@ function MenuCallbackHandler:lobby_start_the_game()
 
 
 end
-function MenuCallbackHandler:leave_lobby()
+MenuCallbackHandler.leave_lobby = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -4907,7 +4907,7 @@ function MenuCallbackHandler:leave_lobby()
 
 
 end
-function MenuCallbackHandler:_dialog_leave_lobby_yes()
+MenuCallbackHandler._dialog_leave_lobby_yes = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -4951,7 +4951,7 @@ function MenuCallbackHandler:_dialog_leave_lobby_yes()
 
 
 end
-function MenuCallbackHandler:_dialog_leave_lobby_no()
+MenuCallbackHandler._dialog_leave_lobby_no = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -4961,7 +4961,7 @@ function MenuCallbackHandler:_dialog_leave_lobby_no()
 
 
 end
-function MenuCallbackHandler:connect_to_host_rpc(item)
+MenuCallbackHandler.connect_to_host_rpc = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -5063,7 +5063,7 @@ function MenuCallbackHandler:connect_to_host_rpc(item)
 
 
 end
-function MenuCallbackHandler:host_multiplayer(item)
+MenuCallbackHandler.host_multiplayer = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -5156,7 +5156,7 @@ function MenuCallbackHandler:host_multiplayer(item)
 
 
 end
-function MenuCallbackHandler:join_multiplayer()
+MenuCallbackHandler.join_multiplayer = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -5203,7 +5203,7 @@ function MenuCallbackHandler:join_multiplayer()
 
 
 end
-function MenuCallbackHandler:find_lan_games()
+MenuCallbackHandler.find_lan_games = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -5269,7 +5269,7 @@ function MenuCallbackHandler:find_lan_games()
 
 
 end
-function MenuCallbackHandler:find_online_games_with_friends()
+MenuCallbackHandler.find_online_games_with_friends = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -5283,7 +5283,7 @@ function MenuCallbackHandler:find_online_games_with_friends()
 
 
 end
-function MenuCallbackHandler:find_online_games()
+MenuCallbackHandler.find_online_games = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -5297,7 +5297,7 @@ function MenuCallbackHandler:find_online_games()
 
 
 end
-function MenuCallbackHandler:_find_online_games(friends_only)
+MenuCallbackHandler._find_online_games = function (self, friends_only)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -5434,7 +5434,7 @@ function MenuCallbackHandler:_find_online_games(friends_only)
 
 
 end
-function MenuCallbackHandler:connect_to_lobby(item)
+MenuCallbackHandler.connect_to_lobby = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -5449,7 +5449,7 @@ function MenuCallbackHandler:connect_to_lobby(item)
 
 
 end
-function MenuCallbackHandler:stop_multiplayer()
+MenuCallbackHandler.stop_multiplayer = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -5496,7 +5496,7 @@ function MenuCallbackHandler:stop_multiplayer()
 
 
 end
-function MenuCallbackHandler:find_friends()
+MenuCallbackHandler.find_friends = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -5506,7 +5506,7 @@ function MenuCallbackHandler:find_friends()
 
 
 end
-function MenuCallbackHandler:invite_friends()
+MenuCallbackHandler.invite_friends = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -5560,7 +5560,7 @@ function MenuCallbackHandler:invite_friends()
 
 
 end
-function MenuCallbackHandler:invite_friend(item)
+MenuCallbackHandler.invite_friend = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -5596,7 +5596,7 @@ function MenuCallbackHandler:invite_friend(item)
 
 
 end
-function MenuCallbackHandler:invite_friends_X360()
+MenuCallbackHandler.invite_friends_X360 = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -5611,7 +5611,7 @@ function MenuCallbackHandler:invite_friends_X360()
 
 
 end
-function MenuCallbackHandler:invite_friends_XB1()
+MenuCallbackHandler.invite_friends_XB1 = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-15, warpins: 1 ---
@@ -5626,7 +5626,7 @@ function MenuCallbackHandler:invite_friends_XB1()
 
 
 end
-function MenuCallbackHandler:invite_xbox_live_party()
+MenuCallbackHandler.invite_xbox_live_party = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -5641,7 +5641,7 @@ function MenuCallbackHandler:invite_xbox_live_party()
 
 
 end
-function MenuCallbackHandler:invite_friends_ps4()
+MenuCallbackHandler.invite_friends_ps4 = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -5655,7 +5655,7 @@ function MenuCallbackHandler:invite_friends_ps4()
 
 
 end
-function MenuCallbackHandler:view_invites()
+MenuCallbackHandler.view_invites = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -5673,7 +5673,7 @@ function MenuCallbackHandler:view_invites()
 
 
 end
-function MenuCallbackHandler:kick_player(item)
+MenuCallbackHandler.kick_player = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -5756,7 +5756,7 @@ function MenuCallbackHandler:kick_player(item)
 
 
 end
-function MenuCallbackHandler:mute_player(item)
+MenuCallbackHandler.mute_player = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -5853,7 +5853,7 @@ function MenuCallbackHandler:mute_player(item)
 
 
 end
-function MenuCallbackHandler:mute_xbox_player(item)
+MenuCallbackHandler.mute_xbox_player = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -5950,7 +5950,7 @@ function MenuCallbackHandler:mute_xbox_player(item)
 
 
 end
-function MenuCallbackHandler:mute_xb1_player(item)
+MenuCallbackHandler.mute_xb1_player = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -6047,7 +6047,7 @@ function MenuCallbackHandler:mute_xb1_player(item)
 
 
 end
-function MenuCallbackHandler:mute_ps4_player(item)
+MenuCallbackHandler.mute_ps4_player = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -6145,7 +6145,7 @@ function MenuCallbackHandler:mute_ps4_player(item)
 
 
 end
-function MenuCallbackHandler:restart_mission(item)
+MenuCallbackHandler.restart_mission = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -6268,7 +6268,7 @@ function MenuCallbackHandler:restart_mission(item)
 
 
 end
-function MenuCallbackHandler:view_gamer_card(item)
+MenuCallbackHandler.view_gamer_card = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -6283,7 +6283,7 @@ function MenuCallbackHandler:view_gamer_card(item)
 
 
 end
-function MenuCallbackHandler:save_settings()
+MenuCallbackHandler.save_settings = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -6297,7 +6297,7 @@ function MenuCallbackHandler:save_settings()
 
 
 end
-function MenuCallbackHandler:save_progress()
+MenuCallbackHandler.save_progress = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -6311,7 +6311,7 @@ function MenuCallbackHandler:save_progress()
 
 
 end
-function MenuCallbackHandler:debug_level_jump(item)
+MenuCallbackHandler.debug_level_jump = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-29, warpins: 1 ---
@@ -6333,7 +6333,7 @@ function MenuCallbackHandler:debug_level_jump(item)
 
 
 end
-function MenuCallbackHandler:save_game(item)
+MenuCallbackHandler.save_game = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -6394,7 +6394,7 @@ function MenuCallbackHandler:save_game(item)
 
 
 end
-function MenuCallbackHandler:save_game_callback()
+MenuCallbackHandler.save_game_callback = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -6412,7 +6412,7 @@ function MenuCallbackHandler:save_game_callback()
 
 
 end
-function MenuCallbackHandler:start_the_game()
+MenuCallbackHandler.start_the_game = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -6489,7 +6489,7 @@ function MenuCallbackHandler:start_the_game()
 
 
 end
-function MenuCallbackHandler:singleplayer_restart_game_to_camp(item)
+MenuCallbackHandler.singleplayer_restart_game_to_camp = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -6518,7 +6518,7 @@ function MenuCallbackHandler:singleplayer_restart_game_to_camp(item)
 
 
 end
-function MenuCallbackHandler:singleplayer_restart_mission(item)
+MenuCallbackHandler.singleplayer_restart_mission = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -6547,7 +6547,7 @@ function MenuCallbackHandler:singleplayer_restart_mission(item)
 
 
 end
-function MenuCallbackHandler:always_hide()
+MenuCallbackHandler.always_hide = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -6557,7 +6557,7 @@ function MenuCallbackHandler:always_hide()
 
 
 end
-function MenuCallbackHandler:set_music_volume(item)
+MenuCallbackHandler.set_music_volume = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-18, warpins: 1 ---
@@ -6615,7 +6615,7 @@ function MenuCallbackHandler:set_music_volume(item)
 
 
 end
-function MenuCallbackHandler:set_sfx_volume(item)
+MenuCallbackHandler.set_sfx_volume = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-18, warpins: 1 ---
@@ -6673,7 +6673,7 @@ function MenuCallbackHandler:set_sfx_volume(item)
 
 
 end
-function MenuCallbackHandler:set_voice_volume(item)
+MenuCallbackHandler.set_voice_volume = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-18, warpins: 1 ---
@@ -6731,7 +6731,7 @@ function MenuCallbackHandler:set_voice_volume(item)
 
 
 end
-function MenuCallbackHandler:_refresh_brightness()
+MenuCallbackHandler._refresh_brightness = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -6746,7 +6746,7 @@ function MenuCallbackHandler:_refresh_brightness()
 
 
 end
-function MenuCallbackHandler:set_brightness(item)
+MenuCallbackHandler.set_brightness = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -6761,7 +6761,7 @@ function MenuCallbackHandler:set_brightness(item)
 
 
 end
-function MenuCallbackHandler:set_effect_quality(item)
+MenuCallbackHandler.set_effect_quality = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -6776,7 +6776,7 @@ function MenuCallbackHandler:set_effect_quality(item)
 
 
 end
-function MenuCallbackHandler:set_camera_sensitivity(item)
+MenuCallbackHandler.set_camera_sensitivity = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-18, warpins: 1 ---
@@ -6855,7 +6855,7 @@ function MenuCallbackHandler:set_camera_sensitivity(item)
 
 
 end
-function MenuCallbackHandler:set_camera_zoom_sensitivity(item)
+MenuCallbackHandler.set_camera_zoom_sensitivity = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-18, warpins: 1 ---
@@ -6934,7 +6934,7 @@ function MenuCallbackHandler:set_camera_zoom_sensitivity(item)
 
 
 end
-function MenuCallbackHandler:toggle_zoom_sensitivity(item)
+MenuCallbackHandler.toggle_zoom_sensitivity = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -7012,7 +7012,7 @@ function MenuCallbackHandler:toggle_zoom_sensitivity(item)
 
 
 end
-function MenuCallbackHandler:is_current_resolution(item)
+MenuCallbackHandler.is_current_resolution = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-18, warpins: 1 ---
@@ -7052,7 +7052,7 @@ function MenuCallbackHandler:is_current_resolution(item)
 
 
 end
-function MenuCallbackHandler:end_game()
+MenuCallbackHandler.end_game = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-58, warpins: 1 ---
@@ -7087,7 +7087,7 @@ function MenuCallbackHandler:end_game()
 
 
 end
-function MenuCallbackHandler:_dialog_end_game_yes()
+MenuCallbackHandler._dialog_end_game_yes = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-56, warpins: 1 ---
@@ -7209,7 +7209,7 @@ function MenuCallbackHandler:_dialog_end_game_yes()
 
 
 end
-function MenuCallbackHandler:leave_safehouse()
+MenuCallbackHandler.leave_safehouse = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -7240,7 +7240,7 @@ function MenuCallbackHandler:leave_safehouse()
 
 
 end
-function MenuCallbackHandler:abort_mission()
+MenuCallbackHandler.abort_mission = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -7319,7 +7319,7 @@ function MenuCallbackHandler:abort_mission()
 
 
 end
-function MenuCallbackHandler:load_start_menu_lobby()
+MenuCallbackHandler.load_start_menu_lobby = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -7334,7 +7334,7 @@ function MenuCallbackHandler:load_start_menu_lobby()
 
 
 end
-function MenuCallbackHandler:_dialog_end_game_no()
+MenuCallbackHandler._dialog_end_game_no = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -7344,7 +7344,7 @@ function MenuCallbackHandler:_dialog_end_game_no()
 
 
 end
-function MenuCallbackHandler:_reset_mainmusic()
+MenuCallbackHandler._reset_mainmusic = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-15, warpins: 1 ---
@@ -7362,7 +7362,7 @@ function MenuCallbackHandler:_reset_mainmusic()
 
 
 end
-function MenuCallbackHandler:show_steam_controller_binding_panel()
+MenuCallbackHandler.show_steam_controller_binding_panel = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -7458,7 +7458,7 @@ function MenuCallbackHandler:show_steam_controller_binding_panel()
 
 
 end
-function MenuCallbackHandler:set_default_options()
+MenuCallbackHandler.set_default_options = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-18, warpins: 1 ---
@@ -7493,7 +7493,7 @@ function MenuCallbackHandler:set_default_options()
 
 
 end
-function MenuCallbackHandler:set_default_control_options()
+MenuCallbackHandler.set_default_control_options = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-18, warpins: 1 ---
@@ -7528,7 +7528,7 @@ function MenuCallbackHandler:set_default_control_options()
 
 
 end
-function MenuCallbackHandler:set_default_video_options()
+MenuCallbackHandler.set_default_video_options = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-18, warpins: 1 ---
@@ -7563,7 +7563,7 @@ function MenuCallbackHandler:set_default_video_options()
 
 
 end
-function MenuCallbackHandler:set_default_sound_options()
+MenuCallbackHandler.set_default_sound_options = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-18, warpins: 1 ---
@@ -7602,7 +7602,7 @@ function MenuCallbackHandler:set_default_sound_options()
 
 
 end
-function MenuCallbackHandler:set_default_network_options()
+MenuCallbackHandler.set_default_network_options = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-18, warpins: 1 ---
@@ -7637,7 +7637,7 @@ function MenuCallbackHandler:set_default_network_options()
 
 
 end
-function MenuCallbackHandler:resume_game()
+MenuCallbackHandler.resume_game = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -7651,7 +7651,7 @@ function MenuCallbackHandler:resume_game()
 
 
 end
-function MenuCallbackHandler:change_upgrade(menu_item)
+MenuCallbackHandler.change_upgrade = function (self, menu_item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -7661,7 +7661,7 @@ function MenuCallbackHandler:change_upgrade(menu_item)
 
 
 end
-function MenuCallbackHandler:delayed_open_savefile_menu(item)
+MenuCallbackHandler.delayed_open_savefile_menu = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -7715,7 +7715,7 @@ function MenuCallbackHandler:delayed_open_savefile_menu(item)
 
 
 end
-function MenuCallbackHandler:open_savefile_menu(item)
+MenuCallbackHandler.open_savefile_menu = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-18, warpins: 1 ---
@@ -7736,7 +7736,7 @@ function MenuCallbackHandler:open_savefile_menu(item)
 
 
 end
-function MenuCallbackHandler:hide_huds()
+MenuCallbackHandler.hide_huds = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -7750,7 +7750,7 @@ function MenuCallbackHandler:hide_huds()
 
 
 end
-function MenuCallbackHandler:toggle_hide_huds(item)
+MenuCallbackHandler.toggle_hide_huds = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -7794,7 +7794,7 @@ function MenuCallbackHandler:toggle_hide_huds(item)
 
 
 end
-function MenuCallbackHandler:toggle_mission_fading_debug_enabled(item)
+MenuCallbackHandler.toggle_mission_fading_debug_enabled = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -7838,7 +7838,7 @@ function MenuCallbackHandler:toggle_mission_fading_debug_enabled(item)
 
 
 end
-function MenuCallbackHandler:menu_back()
+MenuCallbackHandler.menu_back = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -7852,7 +7852,7 @@ function MenuCallbackHandler:menu_back()
 
 
 end
-function MenuCallbackHandler:set_default_controller(item)
+MenuCallbackHandler.set_default_controller = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-18, warpins: 1 ---
@@ -7912,7 +7912,7 @@ function MenuCallbackHandler:set_default_controller(item)
 
 
 end
-function MenuCallbackHandler:choice_button_layout_category(item)
+MenuCallbackHandler.choice_button_layout_category = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-16, warpins: 1 ---
@@ -7929,7 +7929,7 @@ function MenuCallbackHandler:choice_button_layout_category(item)
 
 
 end
-function MenuCallbackHandler:debug_goto_custody()
+MenuCallbackHandler.debug_goto_custody = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -8042,7 +8042,7 @@ function MenuCallbackHandler:debug_goto_custody()
 
 
 end
-function MenuCallbackHandler:toggle_visual_upgrade(item)
+MenuCallbackHandler.toggle_visual_upgrade = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-25, warpins: 1 ---
@@ -8101,7 +8101,7 @@ function MenuCallbackHandler:toggle_visual_upgrade(item)
 
 
 end
-function MenuCallbackHandler:set_contact_info(item)
+MenuCallbackHandler.set_contact_info = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -8195,7 +8195,7 @@ function MenuCallbackHandler:set_contact_info(item)
 
 
 end
-function MenuCallbackHandler:is_current_contact_info(item)
+MenuCallbackHandler.is_current_contact_info = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -8258,7 +8258,7 @@ function MenuCallbackHandler:is_current_contact_info(item)
 
 
 end
-function MenuCallbackHandler:is_reticle_applicable(node)
+MenuCallbackHandler.is_reticle_applicable = function (self, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-37, warpins: 1 ---
@@ -8440,7 +8440,7 @@ function MenuCallbackHandler:is_reticle_applicable(node)
 
 
 end
-function MenuCallbackHandler:update_weapon_texture_switch(item)
+MenuCallbackHandler.update_weapon_texture_switch = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -8588,7 +8588,7 @@ function MenuCallbackHandler:update_weapon_texture_switch(item)
 
 
 end
-function MenuCallbackHandler:casino_betting_visible()
+MenuCallbackHandler.casino_betting_visible = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -8598,7 +8598,7 @@ function MenuCallbackHandler:casino_betting_visible()
 
 
 end
-function MenuCallbackHandler:unlock_skill_switch(item)
+MenuCallbackHandler.unlock_skill_switch = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-29, warpins: 1 ---
@@ -8749,7 +8749,7 @@ function MenuCallbackHandler:unlock_skill_switch(item)
 
 
 end
-function MenuCallbackHandler:set_active_skill_switch(item)
+MenuCallbackHandler.set_active_skill_switch = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -8768,7 +8768,7 @@ function MenuCallbackHandler:set_active_skill_switch(item)
 
 
 end
-function MenuCallbackHandler:has_installed_mods()
+MenuCallbackHandler.has_installed_mods = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -8788,7 +8788,7 @@ function MenuCallbackHandler:has_installed_mods()
 
 
 end
-function MenuCallbackHandler:save_mod_changes(node)
+MenuCallbackHandler.save_mod_changes = function (self, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -8798,7 +8798,7 @@ function MenuCallbackHandler:save_mod_changes(node)
 
 
 end
-function MenuCallbackHandler:mod_option_toggle_enabled(item)
+MenuCallbackHandler.mod_option_toggle_enabled = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-16, warpins: 1 ---
@@ -8849,7 +8849,7 @@ function MenuCallbackHandler:mod_option_toggle_enabled(item)
 
 
 end
-function MenuCallbackHandler:is_current_challenge(item)
+MenuCallbackHandler.is_current_challenge = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -8859,7 +8859,7 @@ function MenuCallbackHandler:is_current_challenge(item)
 
 
 end
-function MenuCallbackHandler:update_challenge_menu_node()
+MenuCallbackHandler.update_challenge_menu_node = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -8937,7 +8937,7 @@ function MenuCallbackHandler:update_challenge_menu_node()
 
 
 end
-function MenuCallbackHandler:give_challenge_reward(item)
+MenuCallbackHandler.give_challenge_reward = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -8947,7 +8947,7 @@ function MenuCallbackHandler:give_challenge_reward(item)
 
 
 end
-function MenuCallbackHandler:choice_challenge_choose_weapon_category(item)
+MenuCallbackHandler.choice_challenge_choose_weapon_category = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -9060,7 +9060,7 @@ function MenuCallbackHandler:choice_challenge_choose_weapon_category(item)
 
 
 end
-function MenuCallbackHandler:choice_challenge_choose_weapon(item)
+MenuCallbackHandler.choice_challenge_choose_weapon = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -9192,7 +9192,7 @@ function MenuCallbackHandler:choice_challenge_choose_weapon(item)
 
 
 end
-function MenuCallbackHandler:choice_challenge_choose_global_value(item)
+MenuCallbackHandler.choice_challenge_choose_global_value = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -9324,7 +9324,7 @@ function MenuCallbackHandler:choice_challenge_choose_global_value(item)
 
 
 end
-function MenuCallbackHandler:continue_to_lobby()
+MenuCallbackHandler.continue_to_lobby = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -9334,7 +9334,7 @@ function MenuCallbackHandler:continue_to_lobby()
 
 
 end
-function MenuCallbackHandler:on_view_character_focus(node, in_focus, data)
+MenuCallbackHandler.on_view_character_focus = function (self, node, in_focus, data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -9373,7 +9373,7 @@ function MenuCallbackHandler:on_view_character_focus(node, in_focus, data)
 
 
 end
-function MenuCallbackHandler:on_character_customization()
+MenuCallbackHandler.on_character_customization = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -9387,7 +9387,7 @@ function MenuCallbackHandler:on_character_customization()
 
 
 end
-function MenuCallbackHandler:start_job(job_data)
+MenuCallbackHandler.start_job = function (self, job_data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -9549,7 +9549,7 @@ function MenuCallbackHandler:start_job(job_data)
 
 
 end
-function MenuCallbackHandler:play_single_player_job(item)
+MenuCallbackHandler.play_single_player_job = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-16, warpins: 1 ---
@@ -9571,7 +9571,7 @@ function MenuCallbackHandler:play_single_player_job(item)
 
 
 end
-function MenuCallbackHandler:play_quick_start_job(item)
+MenuCallbackHandler.play_quick_start_job = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -9589,7 +9589,7 @@ function MenuCallbackHandler:play_quick_start_job(item)
 
 
 end
-function MenuCallbackHandler:start_single_player_job(job_data)
+MenuCallbackHandler.start_single_player_job = function (self, job_data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-33, warpins: 1 ---
@@ -9616,7 +9616,7 @@ function MenuCallbackHandler:start_single_player_job(job_data)
 
 
 end
-function MenuCallbackHandler:can_buy_weapon(item)
+MenuCallbackHandler.can_buy_weapon = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -9628,7 +9628,7 @@ function MenuCallbackHandler:can_buy_weapon(item)
 
 
 end
-function MenuCallbackHandler:owns_weapon(item)
+MenuCallbackHandler.owns_weapon = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -9640,7 +9640,7 @@ function MenuCallbackHandler:owns_weapon(item)
 
 
 end
-function MenuCallbackHandler:open_blackmarket_node()
+MenuCallbackHandler.open_blackmarket_node = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -9655,7 +9655,7 @@ function MenuCallbackHandler:open_blackmarket_node()
 
 
 end
-function MenuCallbackHandler:leave_blackmarket(...)
+MenuCallbackHandler.leave_blackmarket = function (self, ...)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -9673,7 +9673,7 @@ function MenuCallbackHandler:leave_blackmarket(...)
 
 
 end
-function MenuCallbackHandler:_left_blackmarket()
+MenuCallbackHandler._left_blackmarket = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -9683,7 +9683,7 @@ function MenuCallbackHandler:_left_blackmarket()
 
 
 end
-function MenuCallbackHandler:blackmarket_abort_customize_mask()
+MenuCallbackHandler.blackmarket_abort_customize_mask = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -9697,7 +9697,7 @@ function MenuCallbackHandler:blackmarket_abort_customize_mask()
 
 
 end
-function MenuCallbackHandler:got_skillpoint_to_spend()
+MenuCallbackHandler.got_skillpoint_to_spend = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -9707,7 +9707,7 @@ function MenuCallbackHandler:got_skillpoint_to_spend()
 
 
 end
-function MenuCallbackHandler:got_new_content_update()
+MenuCallbackHandler.got_new_content_update = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -9717,7 +9717,7 @@ function MenuCallbackHandler:got_new_content_update()
 
 
 end
-function MenuCallbackHandler:got_new_fav_videos()
+MenuCallbackHandler.got_new_fav_videos = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -9727,7 +9727,7 @@ function MenuCallbackHandler:got_new_fav_videos()
 
 
 end
-function MenuCallbackHandler:not_got_new_content_update()
+MenuCallbackHandler.not_got_new_content_update = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -9739,7 +9739,7 @@ function MenuCallbackHandler:not_got_new_content_update()
 
 
 end
-function MenuCallbackHandler:do_content_lootdrop(node)
+MenuCallbackHandler.do_content_lootdrop = function (self, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -9749,7 +9749,7 @@ function MenuCallbackHandler:do_content_lootdrop(node)
 
 
 end
-function MenuCallbackHandler:buy_weapon(item)
+MenuCallbackHandler.buy_weapon = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-34, warpins: 1 ---
@@ -9773,7 +9773,7 @@ function MenuCallbackHandler:buy_weapon(item)
 
 
 end
-function MenuCallbackHandler:on_buy_weapon_yes(params)
+MenuCallbackHandler.on_buy_weapon_yes = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-39, warpins: 1 ---
@@ -9797,7 +9797,7 @@ function MenuCallbackHandler:on_buy_weapon_yes(params)
 
 
 end
-function MenuCallbackHandler:equip_weapon(item)
+MenuCallbackHandler.equip_weapon = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-19, warpins: 1 ---
@@ -9888,7 +9888,7 @@ function MenuCallbackHandler:equip_weapon(item)
 
 
 end
-function MenuCallbackHandler:repair_weapon(item)
+MenuCallbackHandler.repair_weapon = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -9936,7 +9936,7 @@ function MenuCallbackHandler:repair_weapon(item)
 
 
 end
-function MenuCallbackHandler:on_repair_yes(params)
+MenuCallbackHandler.on_repair_yes = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-27, warpins: 1 ---
@@ -9959,7 +9959,7 @@ function MenuCallbackHandler:on_repair_yes(params)
 
 
 end
-function MenuCallbackHandler:clicked_weapon_upgrade_type(item)
+MenuCallbackHandler.clicked_weapon_upgrade_type = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -9969,7 +9969,7 @@ function MenuCallbackHandler:clicked_weapon_upgrade_type(item)
 
 
 end
-function MenuCallbackHandler:clicked_weapon_upgrade(item)
+MenuCallbackHandler.clicked_weapon_upgrade = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -9979,7 +9979,7 @@ function MenuCallbackHandler:clicked_weapon_upgrade(item)
 
 
 end
-function MenuCallbackHandler:can_buy_weapon_upgrade(item)
+MenuCallbackHandler.can_buy_weapon_upgrade = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -9989,7 +9989,7 @@ function MenuCallbackHandler:can_buy_weapon_upgrade(item)
 
 
 end
-function MenuCallbackHandler:owns_weapon_upgrade(item)
+MenuCallbackHandler.owns_weapon_upgrade = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -9999,7 +9999,7 @@ function MenuCallbackHandler:owns_weapon_upgrade(item)
 
 
 end
-function MenuCallbackHandler:buy_weapon_upgrades(item)
+MenuCallbackHandler.buy_weapon_upgrades = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -10009,7 +10009,7 @@ function MenuCallbackHandler:buy_weapon_upgrades(item)
 
 
 end
-function MenuCallbackHandler:buy_weapon_upgrade(item)
+MenuCallbackHandler.buy_weapon_upgrade = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -10020,7 +10020,7 @@ function MenuCallbackHandler:buy_weapon_upgrade(item)
 
 
 end
-function MenuCallbackHandler:_on_buy_weapon_upgrade_yes(params)
+MenuCallbackHandler._on_buy_weapon_upgrade_yes = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -10031,7 +10031,7 @@ function MenuCallbackHandler:_on_buy_weapon_upgrade_yes(params)
 
 
 end
-function MenuCallbackHandler:attach_weapon_upgrade(item)
+MenuCallbackHandler.attach_weapon_upgrade = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -10042,7 +10042,7 @@ function MenuCallbackHandler:attach_weapon_upgrade(item)
 
 
 end
-function MenuCallbackHandler:clicked_customize_character_category(item)
+MenuCallbackHandler.clicked_customize_character_category = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -10052,7 +10052,7 @@ function MenuCallbackHandler:clicked_customize_character_category(item)
 
 
 end
-function MenuCallbackHandler:test_clicked_mask(item)
+MenuCallbackHandler.test_clicked_mask = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -10066,7 +10066,7 @@ function MenuCallbackHandler:test_clicked_mask(item)
 
 
 end
-function MenuCallbackHandler:can_buy_mask(item)
+MenuCallbackHandler.can_buy_mask = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -10078,7 +10078,7 @@ function MenuCallbackHandler:can_buy_mask(item)
 
 
 end
-function MenuCallbackHandler:owns_mask(item)
+MenuCallbackHandler.owns_mask = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -10090,7 +10090,7 @@ function MenuCallbackHandler:owns_mask(item)
 
 
 end
-function MenuCallbackHandler:equip_mask(item)
+MenuCallbackHandler.equip_mask = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-22, warpins: 1 ---
@@ -10114,7 +10114,7 @@ function MenuCallbackHandler:equip_mask(item)
 
 
 end
-function MenuCallbackHandler:_update_outfit_information()
+MenuCallbackHandler._update_outfit_information = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -10255,7 +10255,7 @@ function MenuCallbackHandler:_update_outfit_information()
 
 
 end
-function MenuCallbackHandler:buy_mask(item)
+MenuCallbackHandler.buy_mask = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-35, warpins: 1 ---
@@ -10279,7 +10279,7 @@ function MenuCallbackHandler:buy_mask(item)
 
 
 end
-function MenuCallbackHandler:_on_buy_mask_yes(params)
+MenuCallbackHandler._on_buy_mask_yes = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-39, warpins: 1 ---
@@ -10303,7 +10303,7 @@ function MenuCallbackHandler:_on_buy_mask_yes(params)
 
 
 end
-function MenuCallbackHandler:leave_character_customization()
+MenuCallbackHandler.leave_character_customization = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -10317,7 +10317,7 @@ function MenuCallbackHandler:leave_character_customization()
 
 
 end
-function MenuCallbackHandler:clicked_character(item)
+MenuCallbackHandler.clicked_character = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -10331,7 +10331,7 @@ function MenuCallbackHandler:clicked_character(item)
 
 
 end
-function MenuCallbackHandler:equip_character(item)
+MenuCallbackHandler.equip_character = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-16, warpins: 1 ---
@@ -10394,7 +10394,7 @@ function MenuCallbackHandler:equip_character(item)
 
 
 end
-function MenuCallbackHandler:can_buy_character(item)
+MenuCallbackHandler.can_buy_character = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -10406,7 +10406,7 @@ function MenuCallbackHandler:can_buy_character(item)
 
 
 end
-function MenuCallbackHandler:owns_character(item)
+MenuCallbackHandler.owns_character = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -10418,7 +10418,7 @@ function MenuCallbackHandler:owns_character(item)
 
 
 end
-function MenuCallbackHandler:buy_character(item)
+MenuCallbackHandler.buy_character = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-35, warpins: 1 ---
@@ -10442,7 +10442,7 @@ function MenuCallbackHandler:buy_character(item)
 
 
 end
-function MenuCallbackHandler:_on_buy_character_yes(params)
+MenuCallbackHandler._on_buy_character_yes = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-39, warpins: 1 ---
@@ -10466,7 +10466,7 @@ function MenuCallbackHandler:_on_buy_character_yes(params)
 
 
 end
-function MenuCallbackHandler:stage_success()
+MenuCallbackHandler.stage_success = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -10499,7 +10499,7 @@ function MenuCallbackHandler:stage_success()
 
 
 end
-function MenuCallbackHandler:stage_not_success()
+MenuCallbackHandler.stage_not_success = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -10511,7 +10511,7 @@ function MenuCallbackHandler:stage_not_success()
 
 
 end
-function MenuCallbackHandler:got_job()
+MenuCallbackHandler.got_job = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -10523,7 +10523,7 @@ function MenuCallbackHandler:got_job()
 
 
 end
-function MenuCallbackHandler:got_no_job()
+MenuCallbackHandler.got_no_job = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -10535,7 +10535,7 @@ function MenuCallbackHandler:got_no_job()
 
 
 end
-function MenuCallbackHandler:start_safe_test_overkill()
+MenuCallbackHandler.start_safe_test_overkill = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -10545,7 +10545,7 @@ function MenuCallbackHandler:start_safe_test_overkill()
 
 
 end
-function MenuCallbackHandler:start_safe_test_event_01()
+MenuCallbackHandler.start_safe_test_event_01 = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -10555,7 +10555,7 @@ function MenuCallbackHandler:start_safe_test_event_01()
 
 
 end
-function MenuCallbackHandler:start_safe_test_weapon_01()
+MenuCallbackHandler.start_safe_test_weapon_01 = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -10565,7 +10565,7 @@ function MenuCallbackHandler:start_safe_test_weapon_01()
 
 
 end
-function MenuCallbackHandler:reset_safe_scene()
+MenuCallbackHandler.reset_safe_scene = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -10600,7 +10600,7 @@ function MenuCallbackHandler:reset_safe_scene()
 
 
 end
-function MenuCallbackHandler:is_cash_safe_back_visible()
+MenuCallbackHandler.is_cash_safe_back_visible = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -10612,7 +10612,7 @@ function MenuCallbackHandler:is_cash_safe_back_visible()
 
 
 end
-function MenuCallbackHandler:on_visit_crimefest_challenges()
+MenuCallbackHandler.on_visit_crimefest_challenges = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -10626,7 +10626,7 @@ function MenuCallbackHandler:on_visit_crimefest_challenges()
 
 
 end
-function MenuCallbackHandler:leave_steam_inventory(item)
+MenuCallbackHandler.leave_steam_inventory = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -10636,7 +10636,7 @@ function MenuCallbackHandler:leave_steam_inventory(item)
 
 
 end
-function MenuCallbackHandler:can_toggle_chat()
+MenuCallbackHandler.can_toggle_chat = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -10717,7 +10717,7 @@ function MenuCallbackHandler:can_toggle_chat()
 
 
 end
-function MenuCallbackHandler:on_visit_fbi_files()
+MenuCallbackHandler.on_visit_fbi_files = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -10761,7 +10761,7 @@ function MenuCallbackHandler:on_visit_fbi_files()
 
 
 end
-function MenuCallbackHandler:on_visit_fbi_files_suspect(item)
+MenuCallbackHandler.on_visit_fbi_files_suspect = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -10826,7 +10826,7 @@ function MenuCallbackHandler:on_visit_fbi_files_suspect(item)
 
 
 end
-function MenuCallbackHandler:on_steam_transaction_over(canceled)
+MenuCallbackHandler.on_steam_transaction_over = function (self, canceled)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-24, warpins: 1 ---
@@ -10852,7 +10852,7 @@ function MenuCallbackHandler:on_steam_transaction_over(canceled)
 
 
 end
-function MenuCallbackHandler:steam_open_container(item)
+MenuCallbackHandler.steam_open_container = function (self, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -10959,7 +10959,7 @@ function MenuCallbackHandler:steam_open_container(item)
 
 
 end
-function MenuCallbackHandler:_safe_result_recieved(error, items_new, items_removed)
+MenuCallbackHandler._safe_result_recieved = function (self, error, items_new, items_removed)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-25, warpins: 1 ---

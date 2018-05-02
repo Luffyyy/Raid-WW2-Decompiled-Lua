@@ -4,7 +4,7 @@ if not SpawnPlayerElement then
 end
 
 SpawnPlayerElement = slot0
-SpawnPlayerElement.init = function (self, unit)
+function SpawnPlayerElement:init(unit)
 	slot5 = unit
 
 	MissionElement.init(slot3, self)
@@ -22,7 +22,7 @@ SpawnPlayerElement.init = function (self, unit)
 
 	return 
 end
-SpawnPlayerElement._build_panel = function (self, panel, panel_sizer)
+function SpawnPlayerElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -44,7 +44,7 @@ SpawnPlayerElement._build_panel = function (self, panel, panel_sizer)
 
 	return 
 end
-SpawnPlayerElement.add_to_mission_package = function (self)
+function SpawnPlayerElement:add_to_mission_package()
 	return 
 end
 

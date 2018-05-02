@@ -12,7 +12,7 @@ RaidGUIControlImageViewer.BULLET_PANEL_HEIGHT = 32
 RaidGUIControlImageViewer.BULLET_WIDTH = 16
 RaidGUIControlImageViewer.BULLET_HEIGHT = 16
 RaidGUIControlImageViewer.BULLET_PADDING = 2
-RaidGUIControlImageViewer.init = function (self, parent, params)
+function RaidGUIControlImageViewer:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlImageViewer.super.init(slot4, self, parent)
@@ -25,7 +25,7 @@ RaidGUIControlImageViewer.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlImageViewer._layout = function (self)
+function RaidGUIControlImageViewer:_layout()
 	self._image_frames = {}
 	self._bullets = {}
 	self._bullets_active = {}
@@ -74,7 +74,7 @@ RaidGUIControlImageViewer._layout = function (self)
 
 	return 
 end
-RaidGUIControlImageViewer.set_data = function (self, item_value)
+function RaidGUIControlImageViewer:set_data(item_value)
 	slot4 = self._object
 
 	self._object.stop(slot3)
@@ -92,7 +92,7 @@ RaidGUIControlImageViewer.set_data = function (self, item_value)
 
 	return 
 end
-RaidGUIControlImageViewer._reset_animation_state = function (self)
+function RaidGUIControlImageViewer:_reset_animation_state()
 	slot4 = 0
 
 	self._image_frames[1].set_x(slot2, self._image_frames[1])
@@ -123,7 +123,7 @@ RaidGUIControlImageViewer._reset_animation_state = function (self)
 
 	return 
 end
-RaidGUIControlImageViewer.start = function (self)
+function RaidGUIControlImageViewer:start()
 	if not self._data then
 		return 
 	end
@@ -184,7 +184,7 @@ RaidGUIControlImageViewer.start = function (self)
 
 	return 
 end
-RaidGUIControlImageViewer._animate_image_rotation = function (self)
+function RaidGUIControlImageViewer:_animate_image_rotation()
 	self._current_image_index = 1
 	self._active_image_frame = 1
 	slot4 = self._data[1].texture
@@ -276,7 +276,7 @@ RaidGUIControlImageViewer._animate_image_rotation = function (self)
 
 	return 
 end
-RaidGUIControlImageViewer._get_next_index = function (self, current_index, table_size)
+function RaidGUIControlImageViewer:_get_next_index(current_index, table_size)
 	local next_index = (current_index + 1) % table_size
 
 	if next_index == 0 then
@@ -285,7 +285,7 @@ RaidGUIControlImageViewer._get_next_index = function (self, current_index, table
 
 	return next_index
 end
-RaidGUIControlImageViewer.destroy = function (self)
+function RaidGUIControlImageViewer:destroy()
 	slot3 = self._object
 
 	self._object.stop(slot2)

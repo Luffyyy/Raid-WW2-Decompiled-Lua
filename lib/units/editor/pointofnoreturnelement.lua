@@ -4,7 +4,7 @@ if not PointOfNoReturnElement then
 end
 
 PointOfNoReturnElement = slot0
-PointOfNoReturnElement.init = function (self, unit)
+function PointOfNoReturnElement:init(unit)
 	slot5 = unit
 
 	PointOfNoReturnElement.super.init(slot3, self)
@@ -44,7 +44,7 @@ PointOfNoReturnElement.init = function (self, unit)
 
 	return 
 end
-PointOfNoReturnElement._build_panel = function (self, panel, panel_sizer)
+function PointOfNoReturnElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -221,17 +221,17 @@ PointOfNoReturnElement._build_panel = function (self, panel, panel_sizer)
 
 	return 
 end
-PointOfNoReturnElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function PointOfNoReturnElement:draw_links(t, dt, selected_unit, all_units)
 	slot11 = all_units
 
 	MissionElement.draw_links(slot6, self, t, dt, selected_unit)
 
 	return 
 end
-PointOfNoReturnElement.update_editing = function (self)
+function PointOfNoReturnElement:update_editing()
 	return 
 end
-PointOfNoReturnElement.update_selected = function (self, t, dt, selected_unit, all_units)
+function PointOfNoReturnElement:update_selected(t, dt, selected_unit, all_units)
 	slot7 = self._hed.elements
 
 	for _, id in ipairs(slot6) do
@@ -253,7 +253,7 @@ PointOfNoReturnElement.update_selected = function (self, t, dt, selected_unit, a
 
 	return 
 end
-PointOfNoReturnElement.add_element = function (self)
+function PointOfNoReturnElement:add_element()
 	slot4 = {
 		ray_type = "editor",
 		mask = 10
@@ -282,7 +282,7 @@ PointOfNoReturnElement.add_element = function (self)
 
 	return 
 end
-PointOfNoReturnElement.remove_links = function (self, unit)
+function PointOfNoReturnElement:remove_links(unit)
 	slot4 = self._hed.elements
 
 	for _, id in ipairs(slot3) do
@@ -297,7 +297,7 @@ PointOfNoReturnElement.remove_links = function (self, unit)
 
 	return 
 end
-PointOfNoReturnElement.add_triggers = function (self, vc)
+function PointOfNoReturnElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "add_element"
 

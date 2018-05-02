@@ -4,21 +4,21 @@ if not ElementGlobalStateFilter then
 end
 
 ElementGlobalStateFilter = slot0
-ElementGlobalStateFilter.init = function (self, ...)
+function ElementGlobalStateFilter:init(...)
 	slot3 = self
 
 	ElementGlobalStateFilter.super.init(slot2, ...)
 
 	return 
 end
-ElementGlobalStateFilter.client_on_executed = function (self, ...)
+function ElementGlobalStateFilter:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementGlobalStateFilter.on_executed = function (self, instigator)
+function ElementGlobalStateFilter:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

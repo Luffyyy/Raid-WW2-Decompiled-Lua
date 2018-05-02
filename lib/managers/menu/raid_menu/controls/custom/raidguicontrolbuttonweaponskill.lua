@@ -26,7 +26,7 @@ RaidGUIControlButtonWeaponSkill.ROMAN_NUMERALS = {
 RaidGUIControlButtonWeaponSkill.SELECTOR_TRIANGLE_W = 16
 RaidGUIControlButtonWeaponSkill.SELECTOR_TRIANGLE_H = 16
 RaidGUIControlButtonWeaponSkill.SELECTOR_SIZE_EXTENSION = 10
-RaidGUIControlButtonWeaponSkill.init = function (self, parent, params, tier_number, line_object, left_button)
+function RaidGUIControlButtonWeaponSkill:init(parent, params, tier_number, line_object, left_button)
 	slot8 = self
 
 	self._init_state_data(slot7)
@@ -85,7 +85,7 @@ RaidGUIControlButtonWeaponSkill.init = function (self, parent, params, tier_numb
 
 	return 
 end
-RaidGUIControlButtonWeaponSkill._create_selector = function (self)
+function RaidGUIControlButtonWeaponSkill:_create_selector()
 	local selector_panel_params = {
 		halign = "scale",
 		name = "selector_panel",
@@ -148,12 +148,12 @@ RaidGUIControlButtonWeaponSkill._create_selector = function (self)
 
 	return 
 end
-RaidGUIControlButtonWeaponSkill.set_right_button = function (self, button)
+function RaidGUIControlButtonWeaponSkill:set_right_button(button)
 	self._right_button = button
 
 	return 
 end
-RaidGUIControlButtonWeaponSkill.set_skill = function (self, weapon_id, skill, skill_data, left_skill, unlocked, i_tier, i_skill)
+function RaidGUIControlButtonWeaponSkill:set_skill(weapon_id, skill, skill_data, left_skill, unlocked, i_tier, i_skill)
 	self._unlocked = unlocked
 
 	if not skill then
@@ -260,7 +260,7 @@ RaidGUIControlButtonWeaponSkill.set_skill = function (self, weapon_id, skill, sk
 
 	return 
 end
-RaidGUIControlButtonWeaponSkill._layout_breadcrumb = function (self, weapon_id, i_tier, i_skill)
+function RaidGUIControlButtonWeaponSkill:_layout_breadcrumb(weapon_id, i_tier, i_skill)
 	if self._breadcrumb then
 		slot6 = self._breadcrumb
 
@@ -300,7 +300,7 @@ RaidGUIControlButtonWeaponSkill._layout_breadcrumb = function (self, weapon_id, 
 
 	return 
 end
-RaidGUIControlButtonWeaponSkill.select_skill = function (self, dont_trigger_selected_callback)
+function RaidGUIControlButtonWeaponSkill:select_skill(dont_trigger_selected_callback)
 	self._mouse_inside = true
 	slot4 = self
 
@@ -314,7 +314,7 @@ RaidGUIControlButtonWeaponSkill.select_skill = function (self, dont_trigger_sele
 
 	return 
 end
-RaidGUIControlButtonWeaponSkill.unselect_skill = function (self)
+function RaidGUIControlButtonWeaponSkill:unselect_skill()
 	self._mouse_inside = false
 	slot3 = self
 
@@ -326,7 +326,7 @@ RaidGUIControlButtonWeaponSkill.unselect_skill = function (self)
 
 	return 
 end
-RaidGUIControlButtonWeaponSkill.set_state = function (self, state)
+function RaidGUIControlButtonWeaponSkill:set_state(state)
 	if not self._unlocked and state ~= RaidGUIControlButtonWeaponSkill.STATE_UNAVAILABLE then
 		return 
 	end
@@ -372,7 +372,7 @@ RaidGUIControlButtonWeaponSkill.set_state = function (self, state)
 
 	return 
 end
-RaidGUIControlButtonWeaponSkill._init_state_data = function (self)
+function RaidGUIControlButtonWeaponSkill:_init_state_data()
 	self._state_data = {
 		[RaidGUIControlButtonWeaponSkill.STATE_NORMAL] = {
 			show_selector_triangles_alpha = 0,
@@ -414,13 +414,13 @@ RaidGUIControlButtonWeaponSkill._init_state_data = function (self)
 
 	return 
 end
-RaidGUIControlButtonWeaponSkill.get_state = function (self)
+function RaidGUIControlButtonWeaponSkill:get_state()
 	return self._state
 end
-RaidGUIControlButtonWeaponSkill.get_data = function (self)
+function RaidGUIControlButtonWeaponSkill:get_data()
 	return self._data
 end
-RaidGUIControlButtonWeaponSkill.highlight_on = function (self)
+function RaidGUIControlButtonWeaponSkill:highlight_on()
 	local color = self._state_data[self._state].highlight_on
 	slot5 = color
 
@@ -442,7 +442,7 @@ RaidGUIControlButtonWeaponSkill.highlight_on = function (self)
 
 	return 
 end
-RaidGUIControlButtonWeaponSkill.highlight_off = function (self)
+function RaidGUIControlButtonWeaponSkill:highlight_off()
 	local color = self._state_data[self._state].highlight_off
 	slot5 = color
 
@@ -460,7 +460,7 @@ RaidGUIControlButtonWeaponSkill.highlight_off = function (self)
 
 	return 
 end
-RaidGUIControlButtonWeaponSkill.show_hover_selector = function (self)
+function RaidGUIControlButtonWeaponSkill:show_hover_selector()
 	if self._selector_panel then
 		slot4 = 1
 
@@ -473,7 +473,7 @@ RaidGUIControlButtonWeaponSkill.show_hover_selector = function (self)
 
 	return 
 end
-RaidGUIControlButtonWeaponSkill.hide_hover_selector = function (self)
+function RaidGUIControlButtonWeaponSkill:hide_hover_selector()
 	if self._selector_panel then
 		slot4 = 0
 
@@ -482,7 +482,7 @@ RaidGUIControlButtonWeaponSkill.hide_hover_selector = function (self)
 
 	return 
 end
-RaidGUIControlButtonWeaponSkill.on_mouse_released = function (self, button)
+function RaidGUIControlButtonWeaponSkill:on_mouse_released(button)
 	if self._state == RaidGUIControlButtonWeaponSkill.STATE_ACTIVE and self._data.value.active then
 		return 
 	elseif self._state == RaidGUIControlButtonWeaponSkill.STATE_SELECTED then
@@ -517,10 +517,10 @@ RaidGUIControlButtonWeaponSkill.on_mouse_released = function (self, button)
 
 	return 
 end
-RaidGUIControlButtonWeaponSkill.on_mouse_pressed = function (self, button)
+function RaidGUIControlButtonWeaponSkill:on_mouse_pressed(button)
 	return 
 end
-RaidGUIControlButtonWeaponSkill.mouse_moved = function (self, o, x, y)
+function RaidGUIControlButtonWeaponSkill:mouse_moved(o, x, y)
 	slot8 = y
 
 	if self.inside(slot5, self, x) then
@@ -545,7 +545,7 @@ RaidGUIControlButtonWeaponSkill.mouse_moved = function (self, o, x, y)
 
 	return false
 end
-RaidGUIControlButtonWeaponSkill.propagating_skill_deallocating = function (self)
+function RaidGUIControlButtonWeaponSkill:propagating_skill_deallocating()
 	if self._state == RaidGUIControlButtonWeaponSkill.STATE_SELECTED then
 		slot4 = RaidGUIControlButtonWeaponSkill.STATE_NORMAL
 
@@ -572,7 +572,7 @@ RaidGUIControlButtonWeaponSkill.propagating_skill_deallocating = function (self)
 
 	return 
 end
-RaidGUIControlButtonWeaponSkill.on_mouse_over = function (self, x, y)
+function RaidGUIControlButtonWeaponSkill:on_mouse_over(x, y)
 	self._mouse_inside = true
 	slot7 = self._data.i_tier
 
@@ -580,7 +580,7 @@ RaidGUIControlButtonWeaponSkill.on_mouse_over = function (self, x, y)
 
 	return 
 end
-RaidGUIControlButtonWeaponSkill.on_mouse_out = function (self, x, y)
+function RaidGUIControlButtonWeaponSkill:on_mouse_out(x, y)
 	self._mouse_inside = false
 	slot6 = "weapon_decrease"
 

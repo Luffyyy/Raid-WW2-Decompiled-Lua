@@ -16,7 +16,7 @@ RaidGUIControlXPSkillSet.DOUBLE_ICON_SCALE = 0.8
 RaidGUIControlXPSkillSet.DOUBLE_ICON_DISTANCE = 444
 RaidGUIControlXPSkillSet.TRIPLE_ICON_SCALE = 0.6
 RaidGUIControlXPSkillSet.TRIPLE_ICON_DISTANCE = 260
-RaidGUIControlXPSkillSet.init = function (self, parent)
+function RaidGUIControlXPSkillSet:init(parent)
 	slot5 = parent
 
 	self._create_panel(slot3, self)
@@ -35,7 +35,7 @@ RaidGUIControlXPSkillSet.init = function (self, parent)
 
 	return 
 end
-RaidGUIControlXPSkillSet._create_panel = function (self, parent)
+function RaidGUIControlXPSkillSet:_create_panel(parent)
 	local panel_params = {
 		halign = "scale",
 		name = "skill_set_unlock_panel",
@@ -47,7 +47,7 @@ RaidGUIControlXPSkillSet._create_panel = function (self, parent)
 
 	return 
 end
-RaidGUIControlXPSkillSet._create_content_panel = function (self)
+function RaidGUIControlXPSkillSet:_create_content_panel()
 	local panel_params = {
 		alpha = 0,
 		name = "content_panel",
@@ -59,7 +59,7 @@ RaidGUIControlXPSkillSet._create_content_panel = function (self)
 
 	return 
 end
-RaidGUIControlXPSkillSet._create_icon_panel = function (self)
+function RaidGUIControlXPSkillSet:_create_icon_panel()
 	local icon_panel_params = {
 		halign = "scale",
 		name = "icon_panel",
@@ -70,7 +70,7 @@ RaidGUIControlXPSkillSet._create_icon_panel = function (self)
 
 	return 
 end
-RaidGUIControlXPSkillSet._create_text = function (self)
+function RaidGUIControlXPSkillSet:_create_text()
 	local title_text_params = {
 		align = "center",
 		vertical = "center",
@@ -132,7 +132,7 @@ RaidGUIControlXPSkillSet._create_text = function (self)
 
 	return 
 end
-RaidGUIControlXPSkillSet.set_level = function (self, level)
+function RaidGUIControlXPSkillSet:set_level(level)
 	slot5 = "skill_set_unlock_title_text"
 	local title = self._content_panel.child(slot3, self._content_panel)
 	slot5 = title
@@ -186,7 +186,7 @@ RaidGUIControlXPSkillSet.set_level = function (self, level)
 
 	return 
 end
-RaidGUIControlXPSkillSet._create_icons = function (self, skills)
+function RaidGUIControlXPSkillSet:_create_icons(skills)
 	local icons = {}
 	slot5 = skills
 
@@ -316,7 +316,7 @@ RaidGUIControlXPSkillSet._create_icons = function (self, skills)
 
 	return 
 end
-RaidGUIControlXPSkillSet._animate_skill_change = function (self, panel, skills)
+function RaidGUIControlXPSkillSet:_animate_skill_change(panel, skills)
 	local fade_out_duration = 0.25
 	local fade_in_duration = 0.3
 	slot7 = self._content_panel
@@ -386,7 +386,7 @@ RaidGUIControlXPDoubleUnlock.DOUBLE_ICON_SCALE = 0.43
 RaidGUIControlXPDoubleUnlock.DOUBLE_ICON_DISTANCE = 184
 RaidGUIControlXPDoubleUnlock.TRIPLE_ICON_SCALE = 0.33
 RaidGUIControlXPDoubleUnlock.TRIPLE_ICON_DISTANCE = 148
-RaidGUIControlXPDoubleUnlock.init = function (self, parent)
+function RaidGUIControlXPDoubleUnlock:init(parent)
 	slot5 = parent
 
 	self._create_panel(slot3, self)
@@ -405,7 +405,7 @@ RaidGUIControlXPDoubleUnlock.init = function (self, parent)
 
 	return 
 end
-RaidGUIControlXPDoubleUnlock._create_panel = function (self, parent)
+function RaidGUIControlXPDoubleUnlock:_create_panel(parent)
 	local panel_params = {
 		halign = "scale",
 		name = "skill_set_unlock_panel",
@@ -417,7 +417,7 @@ RaidGUIControlXPDoubleUnlock._create_panel = function (self, parent)
 
 	return 
 end
-RaidGUIControlXPDoubleUnlock._create_weapon_panel = function (self)
+function RaidGUIControlXPDoubleUnlock:_create_weapon_panel()
 	local weapon_panel_params = {
 		halign = "scale",
 		name = "weapon_panel",
@@ -461,7 +461,7 @@ RaidGUIControlXPDoubleUnlock._create_weapon_panel = function (self)
 
 	return 
 end
-RaidGUIControlXPDoubleUnlock._create_skill_panel = function (self)
+function RaidGUIControlXPDoubleUnlock:_create_skill_panel()
 	local skill_panel_params = {
 		halign = "scale",
 		name = "skill_panel",
@@ -507,7 +507,7 @@ RaidGUIControlXPDoubleUnlock._create_skill_panel = function (self)
 
 	return 
 end
-RaidGUIControlXPDoubleUnlock._create_title_text = function (self)
+function RaidGUIControlXPDoubleUnlock:_create_title_text()
 	local title_text_params = {
 		align = "center",
 		vertical = "center",
@@ -567,7 +567,7 @@ RaidGUIControlXPDoubleUnlock._create_title_text = function (self)
 
 	return 
 end
-RaidGUIControlXPDoubleUnlock.set_level = function (self, level)
+function RaidGUIControlXPDoubleUnlock:set_level(level)
 	slot4 = self._skill_set_title
 	slot11 = {
 		LEVEL = tostring(slot13)
@@ -607,7 +607,7 @@ RaidGUIControlXPDoubleUnlock.set_level = function (self, level)
 
 	return 
 end
-RaidGUIControlXPDoubleUnlock._create_skill_icons = function (self, skills)
+function RaidGUIControlXPDoubleUnlock:_create_skill_icons(skills)
 	local icons = {}
 	slot5 = skills
 
@@ -743,7 +743,7 @@ RaidGUIControlXPDoubleUnlock._create_skill_icons = function (self, skills)
 
 	return 
 end
-RaidGUIControlXPDoubleUnlock._create_weapon_icons = function (self, weapon_unlocks)
+function RaidGUIControlXPDoubleUnlock:_create_weapon_icons(weapon_unlocks)
 	local weapon_skill_unlock = weapon_unlocks.weapons[1]
 	local weapon_tweak_data = tweak_data.weapon[tweak_data.skilltree.skills[weapon_skill_unlock].upgrades[1]]
 	local icon_params = {
@@ -780,7 +780,7 @@ RaidGUIControlXPDoubleUnlock._create_weapon_icons = function (self, weapon_unloc
 
 	return 
 end
-RaidGUIControlXPDoubleUnlock._animate_skill_change = function (self, skill_panel, skills)
+function RaidGUIControlXPDoubleUnlock:_animate_skill_change(skill_panel, skills)
 	local fade_out_duration = 0.25
 	local fade_in_duration = 0.3
 	slot7 = self._skill_panel
@@ -826,7 +826,7 @@ RaidGUIControlXPDoubleUnlock._animate_skill_change = function (self, skill_panel
 
 	return 
 end
-RaidGUIControlXPDoubleUnlock._animate_weapon_change = function (self, weapon_panel, weapon_unlocks)
+function RaidGUIControlXPDoubleUnlock:_animate_weapon_change(weapon_panel, weapon_unlocks)
 	local fade_out_duration = 0.25
 	local fade_in_duration = 0.3
 	slot7 = self._weapon_panel
@@ -872,7 +872,7 @@ RaidGUIControlXPDoubleUnlock._animate_weapon_change = function (self, weapon_pan
 
 	return 
 end
-RaidGUIControlXPDoubleUnlock._refit_title_text = function (self, title_control, original_font_size)
+function RaidGUIControlXPDoubleUnlock:_refit_title_text(title_control, original_font_size)
 	local font_sizes = {}
 	slot6 = tweak_data.gui.font_sizes
 

@@ -4,7 +4,7 @@ if not MissionElementListFlow then
 end
 
 MissionElementListFlow = slot0
-MissionElementListFlow.init = function (self, ...)
+function MissionElementListFlow:init(...)
 	slot11 = 0
 	slot12 = 0
 
@@ -247,14 +247,14 @@ MissionElementListFlow.init = function (self, ...)
 
 	return 
 end
-MissionElementListFlow._toolbar_toggle = function (self, params, event)
+function MissionElementListFlow:_toolbar_toggle(params, event)
 	slot6 = params.toolbar
 	slot9 = event
 	self[params.value] = params.toolbar.tool_state(slot5, event.get_id(slot8))
 
 	return 
 end
-MissionElementListFlow._on_gui_help = function (self)
+function MissionElementListFlow:_on_gui_help()
 	local text = "Mission flow show connections between different mission components.\n\nAt the top is the current selected mission element. The left list shows what is affecting it and the right what it affects."
 	text = text .. "\n\nThe 'Type' column displays what type of connection it is. It can be on_executed, operator, trigger etc."
 	text = text .. "\n\nDouble click left mouse button (in any list) will select that unit."
@@ -265,7 +265,7 @@ MissionElementListFlow._on_gui_help = function (self)
 
 	return 
 end
-MissionElementListFlow.on_unit_selected = function (self, unit)
+function MissionElementListFlow:on_unit_selected(unit)
 	slot4 = self
 
 	self.freeze(slot3)
@@ -398,7 +398,7 @@ MissionElementListFlow.on_unit_selected = function (self, unit)
 
 	return 
 end
-MissionElementListFlow._autosize_columns = function (self, list)
+function MissionElementListFlow:_autosize_columns(list)
 	slot5 = list
 
 	for i = 0, list.column_count(slot4) - 1, 1 do
@@ -409,7 +409,7 @@ MissionElementListFlow._autosize_columns = function (self, list)
 
 	return 
 end
-MissionElementListFlow._on_gui_previous = function (self)
+function MissionElementListFlow:_on_gui_previous()
 	if self._unit_history_index == 0 then
 		return 
 	end
@@ -425,7 +425,7 @@ MissionElementListFlow._on_gui_previous = function (self)
 
 	return 
 end
-MissionElementListFlow._on_gui_next = function (self)
+function MissionElementListFlow:_on_gui_next()
 	if #self._unit_history < self._unit_history_index then
 		return 
 	end
@@ -441,7 +441,7 @@ MissionElementListFlow._on_gui_next = function (self)
 
 	return 
 end
-MissionElementListFlow.key_cancel = function (self, ctrlr, event)
+function MissionElementListFlow:key_cancel(ctrlr, event)
 	slot5 = event
 
 	event.skip(slot4)
@@ -457,7 +457,7 @@ MissionElementListFlow.key_cancel = function (self, ctrlr, event)
 
 	return 
 end
-MissionElementListFlow._on_select_selected = function (self)
+function MissionElementListFlow:_on_select_selected()
 	slot3 = self
 	local current_data = self._current_data(slot2)
 
@@ -469,7 +469,7 @@ MissionElementListFlow._on_select_selected = function (self)
 
 	return 
 end
-MissionElementListFlow._right_clicked = function (self, list)
+function MissionElementListFlow:_right_clicked(list)
 	slot5 = list
 	local item_data = self._selected_list_data(slot3, self)
 
@@ -481,13 +481,13 @@ MissionElementListFlow._right_clicked = function (self, list)
 
 	return 
 end
-MissionElementListFlow._on_mark_executer = function (self)
+function MissionElementListFlow:_on_mark_executer()
 	slot3 = self
 	local item_data = self._selected_executer_data(slot2)
 
 	return 
 end
-MissionElementListFlow._on_select_executer = function (self)
+function MissionElementListFlow:_on_select_executer()
 	slot3 = self
 	local item_data = self._selected_executer_data(slot2)
 
@@ -507,13 +507,13 @@ MissionElementListFlow._on_select_executer = function (self)
 
 	return 
 end
-MissionElementListFlow._on_mark_on_executed = function (self)
+function MissionElementListFlow:_on_mark_on_executed()
 	slot3 = self
 	local item_data = self._selected_on_executed_data(slot2)
 
 	return 
 end
-MissionElementListFlow._on_select_on_executed = function (self)
+function MissionElementListFlow:_on_select_on_executed()
 	slot3 = self
 	local item_data = self._selected_on_executed_data(slot2)
 
@@ -533,7 +533,7 @@ MissionElementListFlow._on_select_on_executed = function (self)
 
 	return 
 end
-MissionElementListFlow._current_data = function (self)
+function MissionElementListFlow:_current_data()
 	slot3 = self._selected_list
 	local index = self._selected_list.selected_item(slot2)
 
@@ -544,7 +544,7 @@ MissionElementListFlow._current_data = function (self)
 
 	return self._selected_list.get_item_data_ref(slot3, self._selected_list)
 end
-MissionElementListFlow._selected_list_data = function (self, list)
+function MissionElementListFlow:_selected_list_data(list)
 	slot4 = list
 	local index = list.selected_item(slot3)
 
@@ -556,7 +556,7 @@ MissionElementListFlow._selected_list_data = function (self, list)
 
 	return list.get_item_data_ref(slot4, list)
 end
-MissionElementListFlow._selected_on_executed_data = function (self)
+function MissionElementListFlow:_selected_on_executed_data()
 	slot3 = self._on_executed_list
 	local index = self._on_executed_list.selected_item(slot2)
 
@@ -568,7 +568,7 @@ MissionElementListFlow._selected_on_executed_data = function (self)
 
 	return self._on_executed_list.get_item_data_ref(slot3, self._on_executed_list)
 end
-MissionElementListFlow._selected_executer_data = function (self)
+function MissionElementListFlow:_selected_executer_data()
 	slot3 = self._executers_list
 	local index = self._executers_list.selected_item(slot2)
 
@@ -580,13 +580,13 @@ MissionElementListFlow._selected_executer_data = function (self)
 
 	return self._executers_list.get_item_data_ref(slot3, self._executers_list)
 end
-MissionElementListFlow.on_goto = function (self)
+function MissionElementListFlow:on_goto()
 	return 
 end
-MissionElementListFlow.reset = function (self)
+function MissionElementListFlow:reset()
 	return 
 end
-MissionElementListFlow.freeze = function (self)
+function MissionElementListFlow:freeze()
 	slot3 = self._selected_list
 
 	self._selected_list.freeze(slot2)
@@ -601,7 +601,7 @@ MissionElementListFlow.freeze = function (self)
 
 	return 
 end
-MissionElementListFlow.thaw = function (self)
+function MissionElementListFlow:thaw()
 	slot3 = self._selected_list
 
 	self._selected_list.thaw(slot2)
@@ -616,7 +616,7 @@ MissionElementListFlow.thaw = function (self)
 
 	return 
 end
-MissionElementListFlow.recreate = function (self)
+function MissionElementListFlow:recreate()
 	slot3 = self._continents_cbs
 
 	for name, cb in pairs(slot2) do

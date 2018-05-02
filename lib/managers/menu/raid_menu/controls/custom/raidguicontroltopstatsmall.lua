@@ -14,7 +14,7 @@ RaidGUIControlTopStatSmall.PLAYER_NAME_COLOR = tweak_data.gui.colors.raid_white
 RaidGUIControlTopStatSmall.PLAYER_NAME_FONT_SIZE = tweak_data.gui.font_sizes.small
 RaidGUIControlTopStatSmall.FONT = tweak_data.gui.fonts.din_compressed
 RaidGUIControlTopStatSmall.ICON_SIZE = 64
-RaidGUIControlTopStatSmall.init = function (self, parent, params)
+function RaidGUIControlTopStatSmall:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlTopStatSmall.super.init(slot4, self, parent)
@@ -37,10 +37,10 @@ RaidGUIControlTopStatSmall.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlTopStatSmall.close = function (self)
+function RaidGUIControlTopStatSmall:close()
 	return 
 end
-RaidGUIControlTopStatSmall._create_panel = function (self)
+function RaidGUIControlTopStatSmall:_create_panel()
 	slot3 = self._params
 	local control_params = clone(slot2)
 	control_params.w = RaidGUIControlTopStatSmall.WIDTH
@@ -54,7 +54,7 @@ RaidGUIControlTopStatSmall._create_panel = function (self)
 
 	return 
 end
-RaidGUIControlTopStatSmall._create_stat_info = function (self)
+function RaidGUIControlTopStatSmall:_create_stat_info()
 	local player_name_params = {
 		name = "player_name_label",
 		vertical = "center",
@@ -96,7 +96,7 @@ RaidGUIControlTopStatSmall._create_stat_info = function (self)
 
 	return 
 end
-RaidGUIControlTopStatSmall.set_data = function (self, data)
+function RaidGUIControlTopStatSmall:set_data(data)
 	slot4 = self._player_name_label
 	slot7 = data.player_nickname
 

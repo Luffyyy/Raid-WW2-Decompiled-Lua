@@ -10,14 +10,14 @@ if not CharacterAttentionObject then
 end
 
 CharacterAttentionObject = slot0
-CharacterAttentionObject.init = function (self, unit)
+function CharacterAttentionObject:init(unit)
 	slot6 = true
 
 	CharacterAttentionObject.super.init(slot3, self, unit)
 
 	return 
 end
-CharacterAttentionObject.setup_attention_positions = function (self, m_head_pos, m_pos)
+function CharacterAttentionObject:setup_attention_positions(m_head_pos, m_pos)
 	if not m_head_pos then
 		slot5 = self._unit
 		slot5 = self._unit.movement(slot4)
@@ -36,7 +36,7 @@ CharacterAttentionObject.setup_attention_positions = function (self, m_head_pos,
 
 	return 
 end
-CharacterAttentionObject.chk_settings_diff = function (self, settings_set)
+function CharacterAttentionObject:chk_settings_diff(settings_set)
 	local attention_data = self._attention_data
 	local changes = nil
 
@@ -90,7 +90,7 @@ CharacterAttentionObject.chk_settings_diff = function (self, settings_set)
 
 	return changes
 end
-CharacterAttentionObject.set_settings_set = function (self, settings_set)
+function CharacterAttentionObject:set_settings_set(settings_set)
 	local attention_data = self._attention_data
 	local changed, register, unregister = nil
 
@@ -157,16 +157,16 @@ CharacterAttentionObject.set_settings_set = function (self, settings_set)
 
 	return 
 end
-CharacterAttentionObject.get_attention_m_pos = function (self, settings)
+function CharacterAttentionObject:get_attention_m_pos(settings)
 	return self._m_head_pos
 end
-CharacterAttentionObject.get_detection_m_pos = function (self)
+function CharacterAttentionObject:get_detection_m_pos()
 	return self._m_head_pos
 end
-CharacterAttentionObject.get_ground_m_pos = function (self)
+function CharacterAttentionObject:get_ground_m_pos()
 	return self._m_pos
 end
-CharacterAttentionObject._register = function (self)
+function CharacterAttentionObject:_register()
 	slot3 = managers.groupai
 	slot3 = managers.groupai.state(slot2)
 	slot1 = managers.groupai.state(slot2).register_AI_attention_object

@@ -8,7 +8,7 @@ if not ElementDropPoint then
 end
 
 ElementDropPoint = slot0
-ElementDropPoint.init = function (self, ...)
+function ElementDropPoint:init(...)
 	slot3 = self
 
 	ElementDropPoint.super.init(slot2, ...)
@@ -21,21 +21,21 @@ ElementDropPoint.init = function (self, ...)
 
 	return 
 end
-ElementDropPoint.on_script_activated = function (self)
+function ElementDropPoint:on_script_activated()
 	slot4 = self._id
 
 	self._mission_script.add_save_state_cb(slot2, self._mission_script)
 
 	return 
 end
-ElementDropPoint.client_on_executed = function (self, ...)
+function ElementDropPoint:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementDropPoint.on_executed = function (self, instigator)
+function ElementDropPoint:on_executed(instigator)
 	return 
 
 	if not self._values.enabled then
@@ -48,7 +48,7 @@ ElementDropPoint.on_executed = function (self, instigator)
 
 	return 
 end
-ElementDropPoint.operation_remove = function (self)
+function ElementDropPoint:operation_remove()
 	return 
 end
 

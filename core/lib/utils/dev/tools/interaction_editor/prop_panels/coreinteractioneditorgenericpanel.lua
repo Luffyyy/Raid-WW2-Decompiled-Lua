@@ -202,7 +202,7 @@ core.import(slot1, core)
 NAME = "generic"
 slot0 = InteractionEditorGenericPanel or CoreClass.class()
 InteractionEditorGenericPanel = slot0
-InteractionEditorGenericPanel.init = function (self, parent, box, owner)
+function InteractionEditorGenericPanel:init(parent, box, owner)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-65, warpins: 1 ---
@@ -237,7 +237,7 @@ InteractionEditorGenericPanel.init = function (self, parent, box, owner)
 
 
 end
-InteractionEditorGenericPanel.window = function (self)
+function InteractionEditorGenericPanel:window()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -247,7 +247,7 @@ InteractionEditorGenericPanel.window = function (self)
 
 
 end
-InteractionEditorGenericPanel.set_visible = function (self, b, desc, node)
+function InteractionEditorGenericPanel:set_visible(b, desc, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -296,7 +296,7 @@ InteractionEditorGenericPanel.set_visible = function (self, b, desc, node)
 
 
 end
-InteractionEditorGenericPanel._new_pattern_name = function (self)
+function InteractionEditorGenericPanel:_new_pattern_name()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-21, warpins: 1 ---
@@ -329,7 +329,7 @@ InteractionEditorGenericPanel._new_pattern_name = function (self)
 
 
 end
-InteractionEditorGenericPanel._could_not_add_pat = function (self, name)
+function InteractionEditorGenericPanel:_could_not_add_pat(name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -367,7 +367,7 @@ InteractionEditorGenericPanel._could_not_add_pat = function (self, name)
 
 
 end
-InteractionEditorGenericPanel._disconnect_events = function (self)
+function InteractionEditorGenericPanel:_disconnect_events()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -416,7 +416,7 @@ InteractionEditorGenericPanel._disconnect_events = function (self)
 
 
 end
-InteractionEditorGenericPanel._connect_events = function (self)
+function InteractionEditorGenericPanel:_connect_events()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -465,7 +465,7 @@ InteractionEditorGenericPanel._connect_events = function (self)
 
 
 end
-InteractionEditorGenericPanel._build_ui = function (self, desc, node)
+function InteractionEditorGenericPanel:_build_ui(desc, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -1110,7 +1110,7 @@ InteractionEditorGenericPanel._build_ui = function (self, desc, node)
 
 
 end
-InteractionEditorGenericPanel.on_update_prop = function (self, data, event)
+function InteractionEditorGenericPanel:on_update_prop(data, event)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -1175,7 +1175,7 @@ InteractionEditorGenericPanel.on_update_prop = function (self, data, event)
 
 
 end
-InteractionEditorGenericPanel.on_add_pat = function (self, data, event)
+function InteractionEditorGenericPanel:on_add_pat(data, event)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-15, warpins: 1 ---
@@ -1328,7 +1328,7 @@ InteractionEditorGenericPanel.on_add_pat = function (self, data, event)
 
 
 end
-InteractionEditorGenericPanel.on_remove_pat = function (self, data, event)
+function InteractionEditorGenericPanel:on_remove_pat(data, event)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -1443,7 +1443,7 @@ InteractionEditorGenericPanel.on_remove_pat = function (self, data, event)
 
 
 end
-InteractionEditorGenericPanel.on_list_box_update = function (self, data, event)
+function InteractionEditorGenericPanel:on_list_box_update(data, event)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---

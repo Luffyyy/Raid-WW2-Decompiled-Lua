@@ -12,7 +12,7 @@ RaidGUIControlIntelImage.SELECTOR_ICON = "ico_sel_rect_top_left"
 RaidGUIControlIntelImage.PRESSED_SIZE = 0.95
 RaidGUIControlIntelImage.HOVER_SIZE = 1.05
 RaidGUIControlIntelImage.ACTIVE_SIZE = 0.97
-RaidGUIControlIntelImage.init = function (self, parent, params)
+function RaidGUIControlIntelImage:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlIntelImage.super.init(slot4, self, parent)
@@ -32,7 +32,7 @@ RaidGUIControlIntelImage.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlIntelImage._create_panels = function (self)
+function RaidGUIControlIntelImage:_create_panels()
 	slot3 = self._params
 	local panel_params = clone(slot2)
 	panel_params.name = panel_params.name .. "_panel"
@@ -53,7 +53,7 @@ RaidGUIControlIntelImage._create_panels = function (self)
 
 	return 
 end
-RaidGUIControlIntelImage._create_image = function (self)
+function RaidGUIControlIntelImage:_create_image()
 	local default_image = "ui/loading_screens/loading_trainyard"
 	local default_rect = {
 		256,
@@ -153,7 +153,7 @@ RaidGUIControlIntelImage._create_image = function (self)
 
 	return 
 end
-RaidGUIControlIntelImage.on_mouse_pressed = function (self, button)
+function RaidGUIControlIntelImage:on_mouse_pressed(button)
 	if self._static then
 		return 
 	end
@@ -169,7 +169,7 @@ RaidGUIControlIntelImage.on_mouse_pressed = function (self, button)
 
 	return 
 end
-RaidGUIControlIntelImage.on_mouse_released = function (self, button)
+function RaidGUIControlIntelImage:on_mouse_released(button)
 	if self._static then
 		return 
 	end
@@ -193,7 +193,7 @@ RaidGUIControlIntelImage.on_mouse_released = function (self, button)
 
 	return true
 end
-RaidGUIControlIntelImage.highlight_on = function (self)
+function RaidGUIControlIntelImage:highlight_on()
 	if self._active or self._static then
 		return 
 	end
@@ -209,7 +209,7 @@ RaidGUIControlIntelImage.highlight_on = function (self)
 
 	return 
 end
-RaidGUIControlIntelImage.highlight_off = function (self)
+function RaidGUIControlIntelImage:highlight_off()
 	if self._active or self._static then
 		return 
 	end
@@ -225,7 +225,7 @@ RaidGUIControlIntelImage.highlight_off = function (self)
 
 	return 
 end
-RaidGUIControlIntelImage.set_left = function (self, left)
+function RaidGUIControlIntelImage:set_left(left)
 	slot5 = left
 
 	self._object.set_left(slot3, self._object)
@@ -235,7 +235,7 @@ RaidGUIControlIntelImage.set_left = function (self, left)
 
 	return 
 end
-RaidGUIControlIntelImage.set_right = function (self, right)
+function RaidGUIControlIntelImage:set_right(right)
 	slot5 = right
 
 	self._object.set_right(slot3, self._object)
@@ -245,7 +245,7 @@ RaidGUIControlIntelImage.set_right = function (self, right)
 
 	return 
 end
-RaidGUIControlIntelImage.set_top = function (self, top)
+function RaidGUIControlIntelImage:set_top(top)
 	slot5 = top
 
 	self._object.set_top(slot3, self._object)
@@ -255,7 +255,7 @@ RaidGUIControlIntelImage.set_top = function (self, top)
 
 	return 
 end
-RaidGUIControlIntelImage.set_bottom = function (self, bottom)
+function RaidGUIControlIntelImage:set_bottom(bottom)
 	slot5 = bottom
 
 	self._object.set_bottom(slot3, self._object)
@@ -265,7 +265,7 @@ RaidGUIControlIntelImage.set_bottom = function (self, bottom)
 
 	return 
 end
-RaidGUIControlIntelImage.set_center_x = function (self, center_x)
+function RaidGUIControlIntelImage:set_center_x(center_x)
 	slot5 = center_x
 
 	self._object.set_center_x(slot3, self._object)
@@ -275,7 +275,7 @@ RaidGUIControlIntelImage.set_center_x = function (self, center_x)
 
 	return 
 end
-RaidGUIControlIntelImage.set_center_y = function (self, center_y)
+function RaidGUIControlIntelImage:set_center_y(center_y)
 	slot5 = center_y
 
 	self._object.set_center_y(slot3, self._object)
@@ -285,7 +285,7 @@ RaidGUIControlIntelImage.set_center_y = function (self, center_y)
 
 	return 
 end
-RaidGUIControlIntelImage.select = function (self, skip_animation)
+function RaidGUIControlIntelImage:select(skip_animation)
 	if self._static then
 		return 
 	end
@@ -309,7 +309,7 @@ RaidGUIControlIntelImage.select = function (self, skip_animation)
 
 	return 
 end
-RaidGUIControlIntelImage.unselect = function (self)
+function RaidGUIControlIntelImage:unselect()
 	if self._static then
 		return 
 	end
@@ -326,7 +326,7 @@ RaidGUIControlIntelImage.unselect = function (self)
 
 	return 
 end
-RaidGUIControlIntelImage.set_selected = function (self, value)
+function RaidGUIControlIntelImage:set_selected(value)
 	if self._static then
 		return 
 	end
@@ -354,7 +354,7 @@ RaidGUIControlIntelImage.set_selected = function (self, value)
 
 	return 
 end
-RaidGUIControlIntelImage.confirm_pressed = function (self)
+function RaidGUIControlIntelImage:confirm_pressed()
 	if self._static then
 		return 
 	end
@@ -369,10 +369,10 @@ RaidGUIControlIntelImage.confirm_pressed = function (self)
 
 	return false
 end
-RaidGUIControlIntelImage.close = function (self)
+function RaidGUIControlIntelImage:close()
 	return 
 end
-RaidGUIControlIntelImage._animate_selected = function (self)
+function RaidGUIControlIntelImage:_animate_selected()
 	slot3 = self._selector
 	local starting_alpha = self._selector.alpha(slot2)
 	local duration = 0.2
@@ -394,7 +394,7 @@ RaidGUIControlIntelImage._animate_selected = function (self)
 
 	return 
 end
-RaidGUIControlIntelImage._animate_unselected = function (self)
+function RaidGUIControlIntelImage:_animate_unselected()
 	slot3 = self._selector
 	local starting_alpha = self._selector.alpha(slot2)
 	local duration = 0.2
@@ -434,7 +434,7 @@ RaidGUIControlIntelImage._animate_unselected = function (self)
 
 	return 
 end
-RaidGUIControlIntelImage._animate_highlight_on = function (self)
+function RaidGUIControlIntelImage:_animate_highlight_on()
 	local t = 0
 	local duration = 0.05
 
@@ -462,7 +462,7 @@ RaidGUIControlIntelImage._animate_highlight_on = function (self)
 
 	return 
 end
-RaidGUIControlIntelImage._animate_highlight_off = function (self)
+function RaidGUIControlIntelImage:_animate_highlight_off()
 	local t = 0
 	local duration = 0.25
 	slot7 = self._size_h * RaidGUIControlIntelImage.HOVER_SIZE
@@ -497,7 +497,7 @@ RaidGUIControlIntelImage._animate_highlight_off = function (self)
 
 	return 
 end
-RaidGUIControlIntelImage._animate_press = function (self)
+function RaidGUIControlIntelImage:_animate_press()
 	local t = 0
 	local duration = 0.05
 	slot5 = self._object
@@ -527,7 +527,7 @@ RaidGUIControlIntelImage._animate_press = function (self)
 
 	return 
 end
-RaidGUIControlIntelImage._animate_release = function (self)
+function RaidGUIControlIntelImage:_animate_release()
 	local t = 0
 	local duration = 0.25
 	slot7 = self._size_h * RaidGUIControlIntelImage.PRESSED_SIZE

@@ -32,24 +32,24 @@ TestPhysXCrash.testPositions = {
 	Vector3(slot3, 5996.02, -2469.51)
 }
 local counter = 1
-TestPhysXCrash.init = function (self)
+function TestPhysXCrash:init()
 	counter = 1
 
 	return 
 end
-TestPhysXCrash.update = function (self, t, dt)
+function TestPhysXCrash:update(t, dt)
 	slot7 = dt
 
 	self.hardcodeCrash(slot4, self, t)
 
 	return 
 end
-TestPhysXCrash.toggleTest = function (self)
+function TestPhysXCrash:toggleTest()
 	counter = 1
 
 	return 
 end
-TestPhysXCrash.hardcodeCrash = function (self, t, dt)
+function TestPhysXCrash:hardcodeCrash(t, dt)
 	if counter < #TestPhysXCrash.testPositions + 1 then
 		slot6 = TestPhysXCrash.testPositions[counter]
 

@@ -1589,7 +1589,7 @@ if not WorldHolder then
 end
 
 WorldHolder = slot1
-WorldHolder.get_world_file = function (self)
+function WorldHolder:get_world_file()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -1603,7 +1603,7 @@ WorldHolder.get_world_file = function (self)
 
 
 end
-WorldHolder.init = function (self, params)
+function WorldHolder:init(params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -1840,7 +1840,7 @@ WorldHolder.init = function (self, params)
 
 
 end
-WorldHolder._error = function (self, msg)
+function WorldHolder:_error(msg)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -1877,7 +1877,7 @@ WorldHolder._error = function (self, msg)
 
 
 end
-WorldHolder._worldfile_generation = function (self, file_type, file_path)
+function WorldHolder:_worldfile_generation(file_type, file_path)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -1993,7 +1993,7 @@ WorldHolder._worldfile_generation = function (self, file_type, file_path)
 
 
 end
-WorldHolder.status = function (self)
+function WorldHolder:status()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -2022,7 +2022,7 @@ WorldHolder.status = function (self)
 
 
 end
-WorldHolder.create_world = function (self, world, layer, offset)
+function WorldHolder:create_world(world, layer, offset)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -2163,7 +2163,7 @@ WorldHolder.create_world = function (self, world, layer, offset)
 
 
 end
-WorldHolder.get_player_data = function (self, world, layer, offset)
+function WorldHolder:get_player_data(world, layer, offset)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -2207,7 +2207,7 @@ WorldHolder.get_player_data = function (self, world, layer, offset)
 
 
 end
-WorldHolder.get_max_id = function (self, world)
+function WorldHolder:get_max_id(world)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -2272,7 +2272,7 @@ WorldHolder.get_max_id = function (self, world)
 
 
 end
-WorldHolder.get_level_name = function (self, world)
+function WorldHolder:get_level_name(world)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -2316,7 +2316,7 @@ WorldHolder.get_level_name = function (self, world)
 
 
 end
-CoreOldWorldDefinition.init = function (self, params)
+function CoreOldWorldDefinition:init(params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-51, warpins: 1 ---
@@ -2479,7 +2479,7 @@ CoreOldWorldDefinition.init = function (self, params)
 
 
 end
-CoreOldWorldDefinition._load_node = function (self, type, path)
+function CoreOldWorldDefinition:_load_node(type, path)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -2493,7 +2493,7 @@ CoreOldWorldDefinition._load_node = function (self, type, path)
 
 
 end
-CoreOldWorldDefinition._load_world_package = function (self)
+function CoreOldWorldDefinition:_load_world_package()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -2575,7 +2575,7 @@ CoreOldWorldDefinition._load_world_package = function (self)
 
 
 end
-CoreOldWorldDefinition._load_continent_package = function (self, path)
+function CoreOldWorldDefinition:_load_continent_package(path)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -2682,7 +2682,7 @@ CoreOldWorldDefinition._load_continent_package = function (self, path)
 
 
 end
-CoreOldWorldDefinition.unload_packages = function (self)
+function CoreOldWorldDefinition:unload_packages()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -2763,7 +2763,7 @@ CoreOldWorldDefinition.unload_packages = function (self)
 
 
 end
-CoreOldWorldDefinition.nice_path = function (self, path)
+function CoreOldWorldDefinition:nice_path(path)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-19, warpins: 1 ---
@@ -2779,7 +2779,7 @@ CoreOldWorldDefinition.nice_path = function (self, path)
 
 
 end
-CoreOldWorldDefinition._parse_world_setting = function (self, world_setting)
+function CoreOldWorldDefinition:_parse_world_setting(world_setting)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -2875,7 +2875,7 @@ CoreOldWorldDefinition._parse_world_setting = function (self, world_setting)
 
 
 end
-CoreOldWorldDefinition.parse_definitions = function (self, node)
+function CoreOldWorldDefinition:parse_definitions(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -2994,7 +2994,7 @@ CoreOldWorldDefinition.parse_definitions = function (self, node)
 
 
 end
-CoreOldWorldDefinition.world_dir = function (self)
+function CoreOldWorldDefinition:world_dir()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -3004,7 +3004,7 @@ CoreOldWorldDefinition.world_dir = function (self)
 
 
 end
-CoreOldWorldDefinition.get_max_id = function (self)
+function CoreOldWorldDefinition:get_max_id()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -3014,7 +3014,7 @@ CoreOldWorldDefinition.get_max_id = function (self)
 
 
 end
-CoreOldWorldDefinition.get_level_name = function (self)
+function CoreOldWorldDefinition:get_level_name()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -3024,7 +3024,7 @@ CoreOldWorldDefinition.get_level_name = function (self)
 
 
 end
-CoreOldWorldDefinition.parse_continents = function (self, node, t)
+function CoreOldWorldDefinition:parse_continents(node, t)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -3258,7 +3258,7 @@ CoreOldWorldDefinition.parse_continents = function (self, node, t)
 
 
 end
-CoreOldWorldDefinition._continent_editor_only = function (self, data)
+function CoreOldWorldDefinition:_continent_editor_only(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -3309,7 +3309,7 @@ CoreOldWorldDefinition._continent_editor_only = function (self, data)
 
 
 end
-CoreOldWorldDefinition.parse_values = function (self, node, t)
+function CoreOldWorldDefinition:parse_values(node, t)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -3358,7 +3358,7 @@ CoreOldWorldDefinition.parse_values = function (self, node, t)
 
 
 end
-CoreOldWorldDefinition.parse_markers = function (self, node, t)
+function CoreOldWorldDefinition:parse_markers(node, t)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -3408,7 +3408,7 @@ CoreOldWorldDefinition.parse_markers = function (self, node, t)
 
 
 end
-CoreOldWorldDefinition.parse_groups = function (self, node, t)
+function CoreOldWorldDefinition:parse_groups(node, t)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -3482,7 +3482,7 @@ CoreOldWorldDefinition.parse_groups = function (self, node, t)
 
 
 end
-CoreOldWorldDefinition.parse_editor_groups = function (self, node, t)
+function CoreOldWorldDefinition:parse_editor_groups(node, t)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -3629,7 +3629,7 @@ CoreOldWorldDefinition.parse_editor_groups = function (self, node, t)
 
 
 end
-CoreOldWorldDefinition.add_editor_group = function (self, name, reference)
+function CoreOldWorldDefinition:add_editor_group(name, reference)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-23, warpins: 1 ---
@@ -3668,7 +3668,7 @@ CoreOldWorldDefinition.add_editor_group = function (self, name, reference)
 
 
 end
-CoreOldWorldDefinition.add_editor_group_unit = function (self, name, id)
+function CoreOldWorldDefinition:add_editor_group_unit(name, id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -3704,7 +3704,7 @@ CoreOldWorldDefinition.add_editor_group_unit = function (self, name, id)
 
 
 end
-CoreOldWorldDefinition.parse_brush = function (self, node)
+function CoreOldWorldDefinition:parse_brush(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -3770,7 +3770,7 @@ CoreOldWorldDefinition.parse_brush = function (self, node)
 
 
 end
-CoreOldWorldDefinition.parse_sounds = function (self, node, t)
+function CoreOldWorldDefinition:parse_sounds(node, t)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -3867,7 +3867,7 @@ CoreOldWorldDefinition.parse_sounds = function (self, node, t)
 
 
 end
-CoreOldWorldDefinition.parse_mission_scripts = function (self, node, t)
+function CoreOldWorldDefinition:parse_mission_scripts(node, t)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -3956,7 +3956,7 @@ CoreOldWorldDefinition.parse_mission_scripts = function (self, node, t)
 
 
 end
-CoreOldWorldDefinition.parse_mission = function (self, node, t)
+function CoreOldWorldDefinition:parse_mission(node, t)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -4039,7 +4039,7 @@ CoreOldWorldDefinition.parse_mission = function (self, node, t)
 
 
 end
-CoreOldWorldDefinition.parse_environment = function (self, node)
+function CoreOldWorldDefinition:parse_environment(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -4052,7 +4052,7 @@ CoreOldWorldDefinition.parse_environment = function (self, node)
 
 
 end
-CoreOldWorldDefinition.parse_world_camera = function (self, node)
+function CoreOldWorldDefinition:parse_world_camera(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -4118,7 +4118,7 @@ CoreOldWorldDefinition.parse_world_camera = function (self, node)
 
 
 end
-CoreOldWorldDefinition.parse_portal = function (self, node)
+function CoreOldWorldDefinition:parse_portal(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -4131,7 +4131,7 @@ CoreOldWorldDefinition.parse_portal = function (self, node)
 
 
 end
-CoreOldWorldDefinition.parse_wires = function (self, node, t)
+function CoreOldWorldDefinition:parse_wires(node, t)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -4181,7 +4181,7 @@ CoreOldWorldDefinition.parse_wires = function (self, node, t)
 
 
 end
-CoreOldWorldDefinition.parse_statics = function (self, node, t)
+function CoreOldWorldDefinition:parse_statics(node, t)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -4231,7 +4231,7 @@ CoreOldWorldDefinition.parse_statics = function (self, node, t)
 
 
 end
-CoreOldWorldDefinition.parse_dynamics = function (self, node, t)
+function CoreOldWorldDefinition:parse_dynamics(node, t)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -4281,7 +4281,7 @@ CoreOldWorldDefinition.parse_dynamics = function (self, node, t)
 
 
 end
-CoreOldWorldDefinition.clear_definitions = function (self)
+function CoreOldWorldDefinition:clear_definitions()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -4293,7 +4293,7 @@ CoreOldWorldDefinition.clear_definitions = function (self)
 
 
 end
-CoreOldWorldDefinition.create = function (self, layer, offset)
+function CoreOldWorldDefinition:create(layer, offset)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -4349,7 +4349,7 @@ CoreOldWorldDefinition.create = function (self, layer, offset)
 
 
 end
-CoreOldWorldDefinition._create_continent_level = function (self, layer, offset)
+function CoreOldWorldDefinition:_create_continent_level(layer, offset)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -4537,7 +4537,7 @@ CoreOldWorldDefinition._create_continent_level = function (self, layer, offset)
 
 
 end
-CoreOldWorldDefinition.create_units = function (self, layer, offset)
+function CoreOldWorldDefinition:create_units(layer, offset)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -4970,7 +4970,7 @@ CoreOldWorldDefinition.create_units = function (self, layer, offset)
 
 
 end
-CoreOldWorldDefinition.create_from_level_file = function (self, params)
+function CoreOldWorldDefinition:create_from_level_file(params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -5409,7 +5409,7 @@ CoreOldWorldDefinition.create_from_level_file = function (self, params)
 
 
 end
-CoreOldWorldDefinition.create_level_units = function (self, params)
+function CoreOldWorldDefinition:create_level_units(params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -5467,7 +5467,7 @@ CoreOldWorldDefinition.create_level_units = function (self, params)
 
 
 end
-CoreOldWorldDefinition.create_portals = function (self, portals, offset)
+function CoreOldWorldDefinition:create_portals(portals, offset)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -5578,7 +5578,7 @@ CoreOldWorldDefinition.create_portals = function (self, portals, offset)
 
 
 end
-CoreOldWorldDefinition.create_portal_unit_groups = function (self, unit_groups, offset)
+function CoreOldWorldDefinition:create_portal_unit_groups(unit_groups, offset)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -5675,7 +5675,7 @@ CoreOldWorldDefinition.create_portal_unit_groups = function (self, unit_groups, 
 
 
 end
-CoreOldWorldDefinition.create_sounds = function (self, path)
+function CoreOldWorldDefinition:create_sounds(path)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-34, warpins: 1 ---
@@ -5831,7 +5831,7 @@ CoreOldWorldDefinition.create_sounds = function (self, path)
 
 
 end
-CoreOldWorldDefinition.create_environment = function (self, data, offset)
+function CoreOldWorldDefinition:create_environment(data, offset)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-28, warpins: 1 ---
@@ -6006,7 +6006,7 @@ CoreOldWorldDefinition.create_environment = function (self, data, offset)
 
 
 end
-CoreOldWorldDefinition.load_massunit = function (self, path, offset)
+function CoreOldWorldDefinition:load_massunit(path, offset)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -6177,7 +6177,7 @@ CoreOldWorldDefinition.load_massunit = function (self, path, offset)
 
 
 end
-CoreOldWorldDefinition.parse_replace_unit = function (self)
+function CoreOldWorldDefinition:parse_replace_unit()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -6254,7 +6254,7 @@ CoreOldWorldDefinition.parse_replace_unit = function (self)
 
 
 end
-CoreOldWorldDefinition.preload_unit = function (self, name)
+function CoreOldWorldDefinition:preload_unit(name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -6326,7 +6326,7 @@ CoreOldWorldDefinition.preload_unit = function (self, name)
 
 
 end
-CoreOldWorldDefinition.make_unit = function (self, name, data, offset)
+function CoreOldWorldDefinition:make_unit(name, data, offset)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -6446,7 +6446,7 @@ CoreOldWorldDefinition.make_unit = function (self, name, data, offset)
 
 
 end
-CoreOldWorldDefinition.assign_unit_data = function (self, unit, data)
+function CoreOldWorldDefinition:assign_unit_data(unit, data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -7128,7 +7128,7 @@ CoreOldWorldDefinition.assign_unit_data = function (self, unit, data)
 
 
 end
-CoreOldWorldDefinition.add_trigger_sequence = function (self, unit, triggers)
+function CoreOldWorldDefinition:add_trigger_sequence(unit, triggers)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -7248,7 +7248,7 @@ CoreOldWorldDefinition.add_trigger_sequence = function (self, unit, triggers)
 
 
 end
-CoreOldWorldDefinition.use_me = function (self, unit, is_editor)
+function CoreOldWorldDefinition:use_me(unit, is_editor)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -7358,7 +7358,7 @@ CoreOldWorldDefinition.use_me = function (self, unit, is_editor)
 
 
 end
-CoreOldWorldDefinition.get_unit_on_load = function (self, id, call)
+function CoreOldWorldDefinition:get_unit_on_load(id, call)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -7419,7 +7419,7 @@ CoreOldWorldDefinition.get_unit_on_load = function (self, id, call)
 
 
 end
-CoreOldWorldDefinition.check_stage_depended_units = function (self, stage)
+function CoreOldWorldDefinition:check_stage_depended_units(stage)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -7505,7 +7505,7 @@ CoreOldWorldDefinition.check_stage_depended_units = function (self, stage)
 
 
 end
-CoreOldWorldDefinition.get_unit = function (self, id)
+function CoreOldWorldDefinition:get_unit(id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -7515,7 +7515,7 @@ CoreOldWorldDefinition.get_unit = function (self, id)
 
 
 end
-CoreOldWorldDefinition.add_mission_element_unit = function (self, unit)
+function CoreOldWorldDefinition:add_mission_element_unit(unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -7528,7 +7528,7 @@ CoreOldWorldDefinition.add_mission_element_unit = function (self, unit)
 
 
 end
-CoreOldWorldDefinition.get_mission_element_unit = function (self, id)
+function CoreOldWorldDefinition:get_mission_element_unit(id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -7538,7 +7538,7 @@ CoreOldWorldDefinition.get_mission_element_unit = function (self, id)
 
 
 end
-CoreOldWorldDefinition.get_hub_element_unit = function (self, id)
+function CoreOldWorldDefinition:get_hub_element_unit(id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -7552,7 +7552,7 @@ CoreOldWorldDefinition.get_hub_element_unit = function (self, id)
 
 
 end
-CoreOldWorldDefinition.get_soundbank = function (self)
+function CoreOldWorldDefinition:get_soundbank()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -7564,7 +7564,7 @@ CoreOldWorldDefinition.get_soundbank = function (self)
 end
 slot1 = LoadedMarker or class()
 LoadedMarker = slot1
-LoadedMarker.init = function (self, node)
+function LoadedMarker:init(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-31, warpins: 1 ---
@@ -7583,7 +7583,7 @@ LoadedMarker.init = function (self, node)
 
 end
 CoreWDSoundEnvironment = CoreWDSoundEnvironment or class()
-CoreWDSoundEnvironment.init = function (self, node)
+function CoreWDSoundEnvironment:init(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-52, warpins: 1 ---
@@ -7621,7 +7621,7 @@ CoreWDSoundEnvironment.init = function (self, node)
 
 
 end
-CoreWDSoundEnvironment.parse_default = function (self, node)
+function CoreWDSoundEnvironment:parse_default(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-16, warpins: 1 ---
@@ -7638,7 +7638,7 @@ CoreWDSoundEnvironment.parse_default = function (self, node)
 
 
 end
-CoreWDSoundEnvironment.parse_ambience = function (self, node)
+function CoreWDSoundEnvironment:parse_ambience(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -7651,7 +7651,7 @@ CoreWDSoundEnvironment.parse_ambience = function (self, node)
 
 
 end
-CoreWDSoundEnvironment.parse_sound_environment = function (self, node)
+function CoreWDSoundEnvironment:parse_sound_environment(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-64, warpins: 1 ---
@@ -7683,7 +7683,7 @@ CoreWDSoundEnvironment.parse_sound_environment = function (self, node)
 
 
 end
-CoreWDSoundEnvironment.parse_sound_emitter = function (self, node)
+function CoreWDSoundEnvironment:parse_sound_emitter(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -7733,7 +7733,7 @@ CoreWDSoundEnvironment.parse_sound_emitter = function (self, node)
 
 
 end
-CoreWDSoundEnvironment.parse_sound_area_emitter = function (self, node)
+function CoreWDSoundEnvironment:parse_sound_area_emitter(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -7827,7 +7827,7 @@ CoreWDSoundEnvironment.parse_sound_area_emitter = function (self, node)
 
 
 end
-CoreWDSoundEnvironment.create = function (self)
+function CoreWDSoundEnvironment:create()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-23, warpins: 1 ---
@@ -7967,7 +7967,7 @@ CoreWDSoundEnvironment.create = function (self)
 
 end
 CoreEnvironment = CoreEnvironment or class()
-CoreEnvironment.init = function (self, node)
+function CoreEnvironment:init(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -8029,7 +8029,7 @@ CoreEnvironment.init = function (self, node)
 
 
 end
-CoreEnvironment.parse_value = function (self, node)
+function CoreEnvironment:parse_value(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-17, warpins: 1 ---
@@ -8045,7 +8045,7 @@ CoreEnvironment.parse_value = function (self, node)
 
 
 end
-CoreEnvironment.parse_wind = function (self, node)
+function CoreEnvironment:parse_wind(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-40, warpins: 1 ---
@@ -8108,7 +8108,7 @@ CoreEnvironment.parse_wind = function (self, node)
 
 
 end
-CoreEnvironment.parse_unit_effect = function (self, node)
+function CoreEnvironment:parse_unit_effect(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -8168,7 +8168,7 @@ CoreEnvironment.parse_unit_effect = function (self, node)
 
 
 end
-CoreEnvironment.parse_environment_area = function (self, node)
+function CoreEnvironment:parse_environment_area(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -8221,7 +8221,7 @@ CoreEnvironment.parse_environment_area = function (self, node)
 
 
 end
-CoreEnvironment.parse_unit = function (self, node)
+function CoreEnvironment:parse_unit(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -8261,7 +8261,7 @@ CoreEnvironment.parse_unit = function (self, node)
 
 
 end
-CoreEnvironment.create = function (self, offset)
+function CoreEnvironment:create(offset)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -8511,7 +8511,7 @@ CoreEnvironment.create = function (self, offset)
 
 end
 CorePortal = CorePortal or class()
-CorePortal.init = function (self, node)
+function CorePortal:init(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-29, warpins: 1 ---
@@ -8537,7 +8537,7 @@ CorePortal.init = function (self, node)
 
 
 end
-CorePortal.parse_portal_list = function (self, node)
+function CorePortal:parse_portal_list(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -8662,7 +8662,7 @@ CorePortal.parse_portal_list = function (self, node)
 
 
 end
-CorePortal.parse_unit_group = function (self, node)
+function CorePortal:parse_unit_group(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -8716,7 +8716,7 @@ CorePortal.parse_unit_group = function (self, node)
 
 
 end
-CorePortal.create = function (self, offset)
+function CorePortal:create(offset)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -8907,7 +8907,7 @@ CorePortal.create = function (self, offset)
 
 end
 CoreWire = CoreWire or class()
-CoreWire.init = function (self, node)
+function CoreWire:init(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-27, warpins: 1 ---
@@ -8930,7 +8930,7 @@ CoreWire.init = function (self, node)
 
 
 end
-CoreWire.parse_wire = function (self, node)
+function CoreWire:parse_wire(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-29, warpins: 1 ---
@@ -8949,7 +8949,7 @@ CoreWire.parse_wire = function (self, node)
 
 
 end
-CoreWire.create_unit = function (self, offset)
+function CoreWire:create_unit(offset)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -9001,7 +9001,7 @@ CoreWire.create_unit = function (self, offset)
 
 end
 CoreStaticUnit = CoreStaticUnit or class()
-CoreStaticUnit.init = function (self, node)
+function CoreStaticUnit:init(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-22, warpins: 1 ---
@@ -9023,7 +9023,7 @@ CoreStaticUnit.init = function (self, node)
 
 
 end
-CoreStaticUnit.create_unit = function (self, offset)
+function CoreStaticUnit:create_unit(offset)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -9037,7 +9037,7 @@ CoreStaticUnit.create_unit = function (self, offset)
 
 end
 CoreDynamicUnit = CoreDynamicUnit or class()
-CoreDynamicUnit.init = function (self, node)
+function CoreDynamicUnit:init(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-22, warpins: 1 ---
@@ -9059,7 +9059,7 @@ CoreDynamicUnit.init = function (self, node)
 
 
 end
-CoreDynamicUnit.create_unit = function (self, offset)
+function CoreDynamicUnit:create_unit(offset)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -9072,7 +9072,7 @@ CoreDynamicUnit.create_unit = function (self, offset)
 
 
 end
-CoreMissionElementUnit.init = function (self, node)
+function CoreMissionElementUnit:init(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-17, warpins: 1 ---
@@ -9121,7 +9121,7 @@ CoreMissionElementUnit.init = function (self, node)
 
 
 end
-CoreMissionElementUnit.parse_values = function (self, node)
+function CoreMissionElementUnit:parse_values(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -9134,7 +9134,7 @@ CoreMissionElementUnit.parse_values = function (self, node)
 
 
 end
-CoreMissionElementUnit.create_unit = function (self, offset)
+function CoreMissionElementUnit:create_unit(offset)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -9205,7 +9205,7 @@ CoreMissionElementUnit.create_unit = function (self, offset)
 
 end
 MissionElementValues = MissionElementValues or class()
-MissionElementValues.init = function (self, node)
+function MissionElementValues:init(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -9218,7 +9218,7 @@ MissionElementValues.init = function (self, node)
 
 
 end
-MissionElementValues.set_values = function (self, unit)
+function MissionElementValues:set_values(unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -9266,7 +9266,7 @@ MissionElementValues.set_values = function (self, unit)
 
 
 end
-CoreOldWorldDefinition.make_generic_data = function (self, in_data)
+function CoreOldWorldDefinition:make_generic_data(in_data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-18, warpins: 1 ---
@@ -9476,7 +9476,7 @@ CoreOldWorldDefinition.make_generic_data = function (self, in_data)
 
 end
 Generic = Generic or class()
-Generic.init = function (self, node)
+function Generic:init(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-117, warpins: 1 ---
@@ -9550,7 +9550,7 @@ Generic.init = function (self, node)
 
 
 end
-Generic.parse_orientation = function (self, node)
+function Generic:parse_orientation(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-22, warpins: 1 ---
@@ -9567,7 +9567,7 @@ Generic.parse_orientation = function (self, node)
 
 
 end
-Generic.parse_generic = function (self, node)
+function Generic:parse_generic(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -9676,7 +9676,7 @@ Generic.parse_generic = function (self, node)
 
 
 end
-Generic.continent_upgrade_nil_to_world = function (self)
+function Generic:continent_upgrade_nil_to_world()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -9705,7 +9705,7 @@ Generic.continent_upgrade_nil_to_world = function (self)
 
 
 end
-Generic.parse_light = function (self, node)
+function Generic:parse_light(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-31, warpins: 1 ---
@@ -9829,7 +9829,7 @@ Generic.parse_light = function (self, node)
 
 
 end
-Generic.parse_variation = function (self, node)
+function Generic:parse_variation(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -9842,7 +9842,7 @@ Generic.parse_variation = function (self, node)
 
 
 end
-Generic.parse_material_variation = function (self, node)
+function Generic:parse_material_variation(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -9855,7 +9855,7 @@ Generic.parse_material_variation = function (self, node)
 
 
 end
-Generic.parse_settings = function (self, node)
+function Generic:parse_settings(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -9868,7 +9868,7 @@ Generic.parse_settings = function (self, node)
 
 
 end
-Generic.parse_legend_settings = function (self, node)
+function Generic:parse_legend_settings(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -9881,7 +9881,7 @@ Generic.parse_legend_settings = function (self, node)
 
 
 end
-Generic.cutscene_actor_settings = function (self, node)
+function Generic:cutscene_actor_settings(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -9894,7 +9894,7 @@ Generic.cutscene_actor_settings = function (self, node)
 
 
 end
-Generic.parse_disable_shadows = function (self, node)
+function Generic:parse_disable_shadows(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -9907,7 +9907,7 @@ Generic.parse_disable_shadows = function (self, node)
 
 
 end
-Generic.parse_exists_in_stage = function (self, node)
+function Generic:parse_exists_in_stage(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-15, warpins: 1 ---
@@ -9921,7 +9921,7 @@ Generic.parse_exists_in_stage = function (self, node)
 
 
 end
-Generic.parse_trigger = function (self, node)
+function Generic:parse_trigger(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-38, warpins: 1 ---
@@ -9945,7 +9945,7 @@ Generic.parse_trigger = function (self, node)
 
 
 end
-Generic.parse_editable_gui = function (self, node)
+function Generic:parse_editable_gui(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-39, warpins: 1 ---

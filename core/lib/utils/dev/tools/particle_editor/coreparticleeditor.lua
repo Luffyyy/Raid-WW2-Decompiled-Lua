@@ -106,7 +106,7 @@ slot3 = stack_member_names.visualizer
 collect_member_names(, stack_members.visualizer)
 
 CoreParticleEditor = CoreParticleEditor or class()
-CoreParticleEditor.init = function (self)
+function CoreParticleEditor:init()
 	if managers.editor then
 		slot4 = true
 
@@ -136,7 +136,7 @@ CoreParticleEditor.init = function (self)
 
 	return 
 end
-CoreParticleEditor.start_dialog = function (self)
+function CoreParticleEditor:start_dialog()
 	slot11 = 0
 	slot12 = 0
 	slot9 = "DEFAULT_DIALOG_STYLE"
@@ -238,7 +238,7 @@ CoreParticleEditor.start_dialog = function (self)
 
 	return 
 end
-CoreParticleEditor.new_dialog = function (self)
+function CoreParticleEditor:new_dialog()
 	slot11 = 0
 	slot12 = 0
 	slot9 = "DEFAULT_DIALOG_STYLE"
@@ -345,7 +345,7 @@ CoreParticleEditor.new_dialog = function (self)
 
 	return 
 end
-CoreParticleEditor.create_main_frame = function (self)
+function CoreParticleEditor:create_main_frame()
 	slot9 = -1
 	slot10 = -1
 	slot8 = Global.frame
@@ -677,7 +677,7 @@ CoreParticleEditor.create_main_frame = function (self)
 
 	return 
 end
-CoreParticleEditor.on_undo = function (self)
+function CoreParticleEditor:on_undo()
 	slot3 = self
 	local cur_effect = self.current_effect(slot2)
 
@@ -689,7 +689,7 @@ CoreParticleEditor.on_undo = function (self)
 
 	return 
 end
-CoreParticleEditor.on_batch_all_remove_update_render = function (self)
+function CoreParticleEditor:on_batch_all_remove_update_render()
 	slot7 = "YES_NO"
 	slot12 = 0
 	local ret = EWS.message_box(slot2, EWS, self._main_frame, "You are about to batch all effects of project database and remove update_render\nfor atoms that do not have a visualizer with screen_aligned set.\nAre you sure you want to continue?", "Are you sure you wish to continue?", Vector3(slot9, -1, -1))
@@ -758,7 +758,7 @@ CoreParticleEditor.on_batch_all_remove_update_render = function (self)
 
 	return 
 end
-CoreParticleEditor.on_batch_all_load_unload = function (self)
+function CoreParticleEditor:on_batch_all_load_unload()
 	slot7 = "YES_NO"
 	slot12 = 0
 	local ret = EWS.message_box(slot2, EWS, self._main_frame, "You are about to batch all effects of project database and load and unload them.\nAre you sure you want to continue?", "Are you sure you wish to continue?", Vector3(slot9, -1, -1))
@@ -802,7 +802,7 @@ CoreParticleEditor.on_batch_all_load_unload = function (self)
 
 	return 
 end
-CoreParticleEditor.on_redo = function (self)
+function CoreParticleEditor:on_redo()
 	slot3 = self
 	local cur_effect = self.current_effect(slot2)
 
@@ -814,7 +814,7 @@ CoreParticleEditor.on_redo = function (self)
 
 	return 
 end
-CoreParticleEditor.on_effect_changed = function (self, arg, event)
+function CoreParticleEditor:on_effect_changed(arg, event)
 	slot5 = event
 
 	if event.get_id(slot4) ~= "EFFECTS_NOTEBOOK" then
@@ -853,7 +853,7 @@ CoreParticleEditor.on_effect_changed = function (self, arg, event)
 
 	return 
 end
-CoreParticleEditor.on_play = function (self)
+function CoreParticleEditor:on_play()
 	slot3 = self
 	local cur_effect = self.current_effect(slot2)
 
@@ -865,7 +865,7 @@ CoreParticleEditor.on_play = function (self)
 
 	return 
 end
-CoreParticleEditor.on_play_lowest = function (self)
+function CoreParticleEditor:on_play_lowest()
 	slot3 = self
 	local cur_effect = self.current_effect(slot2)
 
@@ -877,7 +877,7 @@ CoreParticleEditor.on_play_lowest = function (self)
 
 	return 
 end
-CoreParticleEditor.on_play_highest = function (self)
+function CoreParticleEditor:on_play_highest()
 	slot3 = self
 	local cur_effect = self.current_effect(slot2)
 
@@ -889,7 +889,7 @@ CoreParticleEditor.on_play_highest = function (self)
 
 	return 
 end
-CoreParticleEditor.on_debug_draw = function (self)
+function CoreParticleEditor:on_debug_draw()
 	local b = "true"
 	slot5 = "DEBUG_DRAWING"
 
@@ -903,14 +903,14 @@ CoreParticleEditor.on_debug_draw = function (self)
 
 	return 
 end
-CoreParticleEditor.on_effect_stats = function (self)
+function CoreParticleEditor:on_effect_stats()
 	slot4 = "stats tngeffects"
 
 	Application.console_command(slot2, Application)
 
 	return 
 end
-CoreParticleEditor.on_show_stack_overview = function (self)
+function CoreParticleEditor:on_show_stack_overview()
 	slot3 = self
 	local cur_effect = self.current_effect(slot2)
 
@@ -923,7 +923,7 @@ CoreParticleEditor.on_show_stack_overview = function (self)
 
 	return 
 end
-CoreParticleEditor.on_automove_gizmo_no_move = function (self)
+function CoreParticleEditor:on_automove_gizmo_no_move()
 	slot5 = false
 
 	self._gizmo_menu.set_checked(slot2, self._gizmo_menu, "PARENT_JUMP")
@@ -940,7 +940,7 @@ CoreParticleEditor.on_automove_gizmo_no_move = function (self)
 
 	return 
 end
-CoreParticleEditor.on_automove_gizmo_jump = function (self)
+function CoreParticleEditor:on_automove_gizmo_jump()
 	slot5 = false
 
 	self._gizmo_menu.set_checked(slot2, self._gizmo_menu, "PARENT_NO_MOVE")
@@ -961,7 +961,7 @@ CoreParticleEditor.on_automove_gizmo_jump = function (self)
 
 	return 
 end
-CoreParticleEditor.on_automove_gizmo_smooth = function (self)
+function CoreParticleEditor:on_automove_gizmo_smooth()
 	slot5 = false
 
 	self._gizmo_menu.set_checked(slot2, self._gizmo_menu, "PARENT_NO_MOVE")
@@ -982,7 +982,7 @@ CoreParticleEditor.on_automove_gizmo_smooth = function (self)
 
 	return 
 end
-CoreParticleEditor.on_automove_gizmo_circle = function (self)
+function CoreParticleEditor:on_automove_gizmo_circle()
 	slot5 = false
 
 	self._gizmo_menu.set_checked(slot2, self._gizmo_menu, "PARENT_NO_MOVE")
@@ -1003,7 +1003,7 @@ CoreParticleEditor.on_automove_gizmo_circle = function (self)
 
 	return 
 end
-CoreParticleEditor.on_move_gizmo_to_origo = function (self)
+function CoreParticleEditor:on_move_gizmo_to_origo()
 	local gizmo = self.effect_gizmo(slot2)
 	slot4 = gizmo
 	slot9 = 0
@@ -1016,7 +1016,7 @@ CoreParticleEditor.on_move_gizmo_to_origo = function (self)
 
 	return 
 end
-CoreParticleEditor.on_move_gizmo_to_camera = function (self)
+function CoreParticleEditor:on_move_gizmo_to_camera()
 	local gizmo = self.effect_gizmo(slot2)
 	local camera_rot = Application.last_camera_rotation(self)
 	local camera_pos = Application.last_camera_position(Application)
@@ -1027,7 +1027,7 @@ CoreParticleEditor.on_move_gizmo_to_camera = function (self)
 
 	return 
 end
-CoreParticleEditor.on_move_gizmo_to_player = function (self)
+function CoreParticleEditor:on_move_gizmo_to_player()
 	local gizmo = self.effect_gizmo(slot2)
 	local pos = gizmo.position(self)
 	local rot = gizmo.rotation(gizmo)
@@ -1037,7 +1037,7 @@ CoreParticleEditor.on_move_gizmo_to_player = function (self)
 
 	return 
 end
-CoreParticleEditor.on_set_gizmo_rotation = function (self, rot)
+function CoreParticleEditor:on_set_gizmo_rotation(rot)
 	local gizmo = self.effect_gizmo(slot3)
 	slot5 = self
 	slot6 = rot
@@ -1046,7 +1046,7 @@ CoreParticleEditor.on_set_gizmo_rotation = function (self, rot)
 
 	return 
 end
-CoreParticleEditor.on_reset_gizmo_rotation = function (self)
+function CoreParticleEditor:on_reset_gizmo_rotation()
 	slot3 = self
 	slot3 = self.effect_gizmo(slot2)
 
@@ -1054,7 +1054,7 @@ CoreParticleEditor.on_reset_gizmo_rotation = function (self)
 
 	return 
 end
-CoreParticleEditor.create_top_bar = function (self, parent)
+function CoreParticleEditor:create_top_bar(parent)
 	slot7 = ""
 	local panel = EWS.Panel(slot3, EWS, parent, "")
 	local play_button = EWS.Button(EWS, EWS, panel, "Play", "")
@@ -1116,10 +1116,10 @@ CoreParticleEditor.create_top_bar = function (self, parent)
 
 	return panel
 end
-CoreParticleEditor.effect_gizmo = function (self)
+function CoreParticleEditor:effect_gizmo()
 	return self._effect_gizmo
 end
-CoreParticleEditor.update = function (self, t, dt)
+function CoreParticleEditor:update(t, dt)
 
 	-- Decompilation error in this vicinity:
 	slot5 = self
@@ -1192,10 +1192,10 @@ CoreParticleEditor.update = function (self, t, dt)
 
 	return 
 end
-CoreParticleEditor.set_position = function (self, pos)
+function CoreParticleEditor:set_position(pos)
 	return 
 end
-CoreParticleEditor.destroy = function (self)
+function CoreParticleEditor:destroy()
 	slot3 = self._main_frame
 
 	if alive(slot2) then
@@ -1208,14 +1208,14 @@ CoreParticleEditor.destroy = function (self)
 
 	return 
 end
-CoreParticleEditor.close = function (self)
+function CoreParticleEditor:close()
 	slot3 = self._main_frame
 
 	self._main_frame.destroy(slot2)
 
 	return 
 end
-CoreParticleEditor.on_close_effect = function (self)
+function CoreParticleEditor:on_close_effect()
 	slot3 = self
 	local curi = self.current_effect_index(slot2)
 
@@ -1238,7 +1238,7 @@ CoreParticleEditor.on_close_effect = function (self)
 
 	return 
 end
-CoreParticleEditor.on_close = function (self)
+function CoreParticleEditor:on_close()
 	slot3 = self._effects
 
 	for _, e in ipairs(slot2) do
@@ -1261,7 +1261,7 @@ CoreParticleEditor.on_close = function (self)
 
 	return 
 end
-CoreParticleEditor.add_effect = function (self, effect)
+function CoreParticleEditor:add_effect(effect)
 	slot4 = self._main_frame
 
 	self._main_frame.freeze(slot3)
@@ -1296,7 +1296,7 @@ CoreParticleEditor.add_effect = function (self, effect)
 
 	return 
 end
-CoreParticleEditor.current_effect = function (self)
+function CoreParticleEditor:current_effect()
 	slot3 = self
 	local i = self.current_effect_index(slot2)
 
@@ -1306,7 +1306,7 @@ CoreParticleEditor.current_effect = function (self)
 
 	return self._effects[i]
 end
-CoreParticleEditor.current_effect_index = function (self)
+function CoreParticleEditor:current_effect_index()
 	local page = self._effects_notebook.get_current_page(slot2)
 	slot4 = self._effects
 
@@ -1320,7 +1320,7 @@ CoreParticleEditor.current_effect_index = function (self)
 
 	return -1
 end
-CoreParticleEditor.effect_for_page = function (self, page)
+function CoreParticleEditor:effect_for_page(page)
 	slot4 = self._effects
 
 	for _, e in ipairs(slot3) do
@@ -1333,7 +1333,7 @@ CoreParticleEditor.effect_for_page = function (self, page)
 
 	return nil
 end
-CoreParticleEditor.set_page_name = function (self, page, name)
+function CoreParticleEditor:set_page_name(page, name)
 	local i = 0
 	slot6 = self._effects_notebook
 
@@ -1356,14 +1356,14 @@ CoreParticleEditor.set_page_name = function (self, page, name)
 
 	return 
 end
-CoreParticleEditor.on_new = function (self)
+function CoreParticleEditor:on_new()
 	slot3 = self
 
 	self.new_dialog(slot2)
 
 	return 
 end
-CoreParticleEditor.on_open = function (self)
+function CoreParticleEditor:on_open()
 	slot6 = self._last_used_dir
 	local f = managers.database.open_file_dialog(slot2, managers.database, self._main_frame, "*.effect")
 
@@ -1390,7 +1390,7 @@ CoreParticleEditor.on_open = function (self)
 
 	return 
 end
-CoreParticleEditor.on_save = function (self)
+function CoreParticleEditor:on_save()
 	slot3 = self
 	local cur = self.current_effect(slot2)
 
@@ -1402,7 +1402,7 @@ CoreParticleEditor.on_save = function (self)
 
 	return 
 end
-CoreParticleEditor.on_save_as = function (self)
+function CoreParticleEditor:on_save_as()
 	slot3 = self
 	local cur = self.current_effect(slot2)
 

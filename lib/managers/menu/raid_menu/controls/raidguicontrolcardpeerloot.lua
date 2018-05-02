@@ -11,7 +11,7 @@ RaidGUIControlCardPeerLoot.CARD_TITLE_PADDING_PERCENT = 7
 RaidGUIControlCardPeerLoot.TEXT_H = 40
 RaidGUIControlCardPeerLoot.TEXT_FONT = tweak_data.hud.large_font
 RaidGUIControlCardPeerLoot.FONT_SIZE = 18
-RaidGUIControlCardPeerLoot.init = function (self, parent, params)
+function RaidGUIControlCardPeerLoot:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlCardPeerLoot.super.init(slot4, self, parent)
@@ -39,10 +39,10 @@ RaidGUIControlCardPeerLoot.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlCardPeerLoot.close = function (self)
+function RaidGUIControlCardPeerLoot:close()
 	return 
 end
-RaidGUIControlCardPeerLoot._create_control_panel = function (self)
+function RaidGUIControlCardPeerLoot:_create_control_panel()
 	slot3 = self._params
 	local control_params = clone(slot2)
 	control_params.x = control_params.x
@@ -57,7 +57,7 @@ RaidGUIControlCardPeerLoot._create_control_panel = function (self)
 
 	return 
 end
-RaidGUIControlCardPeerLoot._create_card_details = function (self)
+function RaidGUIControlCardPeerLoot:_create_card_details()
 	local params_card_image = {
 		texture = "ui/main_menu/textures/cards_atlas",
 		name = "card_image",
@@ -115,14 +115,14 @@ RaidGUIControlCardPeerLoot._create_card_details = function (self)
 
 	return 
 end
-RaidGUIControlCardPeerLoot.set_debug = function (self, value)
+function RaidGUIControlCardPeerLoot:set_debug(value)
 	slot5 = value
 
 	self._control_panel.set_debug(slot3, self._control_panel)
 
 	return 
 end
-RaidGUIControlCardPeerLoot.set_card = function (self, card)
+function RaidGUIControlCardPeerLoot:set_card(card)
 	self._card = card
 	slot4 = self._card_title_label
 	slot9 = true
@@ -148,10 +148,10 @@ RaidGUIControlCardPeerLoot.set_card = function (self, card)
 
 	return 
 end
-RaidGUIControlCardPeerLoot.get_card = function (self)
+function RaidGUIControlCardPeerLoot:get_card()
 	return self._card
 end
-RaidGUIControlCardPeerLoot.set_player_name = function (self, name)
+function RaidGUIControlCardPeerLoot:set_player_name(name)
 	slot5 = name
 
 	self._name_label.set_text(slot3, self._name_label)

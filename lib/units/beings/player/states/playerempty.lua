@@ -4,35 +4,35 @@ if not PlayerEmpty then
 end
 
 PlayerEmpty = slot0
-PlayerEmpty.init = function (self, unit)
+function PlayerEmpty:init(unit)
 	slot5 = unit
 
 	PlayerMovementState.init(slot3, self)
 
 	return 
 end
-PlayerEmpty.enter = function (self, state_data, enter_data)
+function PlayerEmpty:enter(state_data, enter_data)
 	slot6 = state_data
 
 	PlayerMovementState.enter(slot4, self)
 
 	return 
 end
-PlayerEmpty.exit = function (self, state_data)
+function PlayerEmpty:exit(state_data)
 	slot5 = state_data
 
 	PlayerMovementState.exit(slot3, self)
 
 	return 
 end
-PlayerEmpty.update = function (self, t, dt)
+function PlayerEmpty:update(t, dt)
 	slot7 = dt
 
 	PlayerMovementState.update(slot4, self, t)
 
 	return 
 end
-PlayerEmpty.destroy = function (self)
+function PlayerEmpty:destroy()
 	return 
 end
 

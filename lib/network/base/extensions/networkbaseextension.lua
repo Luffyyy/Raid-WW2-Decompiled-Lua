@@ -1,10 +1,10 @@
 NetworkBaseExtension = NetworkBaseExtension or class()
-NetworkBaseExtension.init = function (self, unit)
+function NetworkBaseExtension:init(unit)
 	self._unit = unit
 
 	return 
 end
-NetworkBaseExtension.send = function (self, func, ...)
+function NetworkBaseExtension:send(func, ...)
 	slot4 = managers.network
 
 	if managers.network.session(slot3) then
@@ -26,7 +26,7 @@ NetworkBaseExtension.send = function (self, func, ...)
 
 	return 
 end
-NetworkBaseExtension.send_to_host = function (self, func, ...)
+function NetworkBaseExtension:send_to_host(func, ...)
 	slot4 = managers.network
 
 	if managers.network.session(slot3) then
@@ -48,7 +48,7 @@ NetworkBaseExtension.send_to_host = function (self, func, ...)
 
 	return 
 end
-NetworkBaseExtension.send_to_unit = function (self, params)
+function NetworkBaseExtension:send_to_unit(params)
 	slot4 = managers.network
 
 	if managers.network.session(slot3) then
@@ -77,7 +77,7 @@ NetworkBaseExtension.send_to_unit = function (self, params)
 
 	return 
 end
-NetworkBaseExtension.peer = function (self)
+function NetworkBaseExtension:peer()
 	slot3 = managers.network
 
 	if managers.network.session(slot2) then

@@ -4,7 +4,7 @@ if not RaidGUIControlIntelRaidPersonel then
 end
 
 RaidGUIControlIntelRaidPersonel = slot0
-RaidGUIControlIntelRaidPersonel.init = function (self, parent, params)
+function RaidGUIControlIntelRaidPersonel:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlIntelRaidPersonel.super.init(slot4, self, parent)
@@ -18,7 +18,7 @@ RaidGUIControlIntelRaidPersonel.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlIntelRaidPersonel._layout = function (self)
+function RaidGUIControlIntelRaidPersonel:_layout()
 	slot4 = {
 		y = 0,
 		x = 0,
@@ -146,7 +146,7 @@ RaidGUIControlIntelRaidPersonel._layout = function (self)
 
 	return 
 end
-RaidGUIControlIntelRaidPersonel.set_data = function (self, item_value)
+function RaidGUIControlIntelRaidPersonel:set_data(item_value)
 	self._data = tweak_data.intel.get_item_data(slot3, tweak_data.intel, self._category_name)
 	slot4 = self._title_name
 	slot9 = true
@@ -200,7 +200,7 @@ RaidGUIControlIntelRaidPersonel.set_data = function (self, item_value)
 
 	return 
 end
-RaidGUIControlIntelRaidPersonel.get_data = function (self)
+function RaidGUIControlIntelRaidPersonel:get_data()
 	return self._data
 end
 

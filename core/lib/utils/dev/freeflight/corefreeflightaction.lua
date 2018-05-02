@@ -3,7 +3,7 @@ slot3 = "CoreFreeFlightAction"
 core.module(slot1, core)
 
 FreeFlightAction = FreeFlightAction or class()
-FreeFlightAction.init = function (self, name, callback)
+function FreeFlightAction:init(name, callback)
 	slot5 = name
 	self._name = assert(slot4)
 	slot5 = callback
@@ -11,19 +11,19 @@ FreeFlightAction.init = function (self, name, callback)
 
 	return 
 end
-FreeFlightAction.do_action = function (self)
+function FreeFlightAction:do_action()
 	self._callback()
 
 	return 
 end
-FreeFlightAction.reset = function (self)
+function FreeFlightAction:reset()
 	return 
 end
-FreeFlightAction.name = function (self)
+function FreeFlightAction:name()
 	return self._name
 end
 FreeFlightActionToggle = FreeFlightActionToggle or class()
-FreeFlightActionToggle.init = function (self, name1, name2, callback1, callback2)
+function FreeFlightActionToggle:init(name1, name2, callback1, callback2)
 	slot7 = name1
 	self._name1 = assert(slot6)
 	slot7 = name2
@@ -36,7 +36,7 @@ FreeFlightActionToggle.init = function (self, name1, name2, callback1, callback2
 
 	return 
 end
-FreeFlightActionToggle.do_action = function (self)
+function FreeFlightActionToggle:do_action()
 	if self._toggle == 1 then
 		self._toggle = 2
 
@@ -49,7 +49,7 @@ FreeFlightActionToggle.do_action = function (self)
 
 	return 
 end
-FreeFlightActionToggle.reset = function (self)
+function FreeFlightActionToggle:reset()
 	if self._toggle == 2 then
 		slot3 = self
 
@@ -58,7 +58,7 @@ FreeFlightActionToggle.reset = function (self)
 
 	return 
 end
-FreeFlightActionToggle.name = function (self)
+function FreeFlightActionToggle:name()
 	if self._toggle == 1 then
 		return self._name1
 	else

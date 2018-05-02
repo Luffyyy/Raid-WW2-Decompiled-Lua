@@ -29,7 +29,7 @@ ProgressionManager.get_instance = function ()
 
 	return Global.progression_manager
 end
-function ProgressionManager:init()
+ProgressionManager.init = function (self)
 	self._mission_progression_completion_pending = false
 	self._mission_progression_completed = false
 	self._first_time_missions_unlocked = false
@@ -47,21 +47,21 @@ function ProgressionManager:init()
 
 	return 
 end
-function ProgressionManager:reset()
+ProgressionManager.reset = function (self)
 	slot3 = self
 
 	self.init(slot2)
 
 	return 
 end
-function ProgressionManager:_setup()
+ProgressionManager._setup = function (self)
 	slot3 = self
 
 	self._setup_mission_states(slot2)
 
 	return 
 end
-function ProgressionManager:_setup_mission_states()
+ProgressionManager._setup_mission_states = function (self)
 	if not self._mission_progression[OperationsTweakData.JOB_TYPE_RAID] then
 		self._mission_progression[OperationsTweakData.JOB_TYPE_RAID] = {}
 	end
@@ -103,7 +103,7 @@ function ProgressionManager:_setup_mission_states()
 
 	return 
 end
-function ProgressionManager:_unlock_mission(job_type, mission_id)
+ProgressionManager._unlock_mission = function (self, job_type, mission_id)
 	slot9 = mission_id
 	slot6 = "[ProgressionManager][_unlock_mission] Unlocking mission " .. tostring(slot8)
 
@@ -115,7 +115,7 @@ function ProgressionManager:_unlock_mission(job_type, mission_id)
 
 	return 
 end
-function ProgressionManager:_offer_mission(mission_id)
+ProgressionManager._offer_mission = function (self, mission_id)
 	slot8 = mission_id
 	slot5 = "[ProgressionManager][_offer_mission] Offering mission " .. tostring(slot7)
 
@@ -125,14 +125,14 @@ function ProgressionManager:_offer_mission(mission_id)
 
 	return 
 end
-function ProgressionManager:mission_unlocked(job_type, mission_id)
+ProgressionManager.mission_unlocked = function (self, job_type, mission_id)
 	if self._mission_progression[job_type][mission_id] and self._mission_progression[job_type][mission_id].state == ProgressionManager.MISSION_STATE_UNLOCKED then
 		return true
 	end
 
 	return false
 end
-function ProgressionManager:have_pending_missions_to_unlock()
+ProgressionManager.have_pending_missions_to_unlock = function (self)
 	slot3 = self._mission_progression
 
 	for mission_type, mission_group in pairs(slot2) do
@@ -147,7 +147,7 @@ function ProgressionManager:have_pending_missions_to_unlock()
 
 	return false
 end
-function ProgressionManager:pending_missions_to_unlock()
+ProgressionManager.pending_missions_to_unlock = function (self)
 	local pending_missions = {}
 	slot4 = self._mission_progression
 
@@ -165,10 +165,10 @@ function ProgressionManager:pending_missions_to_unlock()
 
 	return pending_missions
 end
-function ProgressionManager:mission_progression_completed()
+ProgressionManager.mission_progression_completed = function (self)
 	return self._mission_progression_completed
 end
-function ProgressionManager:set_operations_state(state)
+ProgressionManager.set_operations_state = function (self, state)
 	if self._operations_state == state then
 		return 
 	end
@@ -199,27 +199,27 @@ function ProgressionManager:set_operations_state(state)
 
 	return 
 end
-function ProgressionManager:operations_state()
+ProgressionManager.operations_state = function (self)
 	return self._operations_state
 end
-function ProgressionManager:operations_unlocked()
+ProgressionManager.operations_unlocked = function (self)
 	return self._operations_state == ProgressionManager.OPERATIONS_STATE_UNLOCKED
 end
-function ProgressionManager:at_final_unlock_cycle()
+ProgressionManager.at_final_unlock_cycle = function (self)
 	if not self._mission_progression_completed and (self._unlock_cycles_completed == tweak_data.operations.progression.unlock_cycles - 1 or self._unlock_cycles_completed == tweak_data.operations.progression.unlock_cycles) then
 		return true
 	end
 
 	return false
 end
-function ProgressionManager:time_until_next_unlock()
+ProgressionManager.time_until_next_unlock = function (self)
 	if self._mission_progression_completed or self._mission_progression_completion_pending then
 		return 0
 	end
 
 	return self._mission_unlock_timer
 end
-function ProgressionManager:get_mission_progression(mission_type, mission_id)
+ProgressionManager.get_mission_progression = function (self, mission_type, mission_id)
 	slot7 = mission_id
 
 	if not self.mission_unlocked(slot4, self, mission_type) then
@@ -228,7 +228,7 @@ function ProgressionManager:get_mission_progression(mission_type, mission_id)
 
 	return self._mission_progression[mission_type][mission_id].difficulty_available, self._mission_progression[mission_type][mission_id].difficulty_completed
 end
-function ProgressionManager:complete_mission_on_difficulty(job_type, mission_id, difficulty)
+ProgressionManager.complete_mission_on_difficulty = function (self, job_type, mission_id, difficulty)
 	slot10 = mission_id
 	slot12 = difficulty
 	slot7 = "[ProgressionManager][complete_mission_on_difficulty] Completing mission " .. tostring(slot9) .. " on difficulty " .. tostring(slot11)
@@ -252,7 +252,7 @@ function ProgressionManager:complete_mission_on_difficulty(job_type, mission_id,
 
 	return 
 end
-function ProgressionManager:choose_offered_mission(mission_id)
+ProgressionManager.choose_offered_mission = function (self, mission_id)
 	slot8 = mission_id
 	slot5 = "[ProgressionManager][choose_offered_mission] The player has chosen to unlock mission " .. tostring(slot7)
 
@@ -307,7 +307,7 @@ function ProgressionManager:choose_offered_mission(mission_id)
 
 	return 
 end
-function ProgressionManager:clear_last_unlocked_raid()
+ProgressionManager.clear_last_unlocked_raid = function (self)
 	local last_unlocked = nil
 
 	if self._last_unlocked_raid then
@@ -320,7 +320,7 @@ function ProgressionManager:clear_last_unlocked_raid()
 
 	return last_unlocked
 end
-function ProgressionManager:_unlock_first_time_missions()
+ProgressionManager._unlock_first_time_missions = function (self)
 	slot4 = "[ProgressionManager][_unlock_first_time_missions] Unlocking first-time missions!"
 
 	Application.trace(slot2, Application)
@@ -350,7 +350,7 @@ function ProgressionManager:_unlock_first_time_missions()
 
 	return 
 end
-function ProgressionManager:_unlock_all_missions()
+ProgressionManager._unlock_all_missions = function (self)
 	slot4 = "[ProgressionManager][_unlock_all_missions] Unlocking all remaining missions!"
 
 	Application.trace(slot2, Application)
@@ -400,10 +400,10 @@ function ProgressionManager:_unlock_all_missions()
 
 	return 
 end
-function ProgressionManager:mission_progression_completion_pending()
+ProgressionManager.mission_progression_completion_pending = function (self)
 	return self._mission_progression_completion_pending
 end
-function ProgressionManager:complete_mission_progression()
+ProgressionManager.complete_mission_progression = function (self)
 	slot4 = "[ProgressionManager][complete_mission_progression] Mission progression completed!"
 
 	Application.trace(slot2, Application)
@@ -416,7 +416,7 @@ function ProgressionManager:complete_mission_progression()
 
 	return 
 end
-function ProgressionManager:_offer_new_missions()
+ProgressionManager._offer_new_missions = function (self)
 	slot4 = "[ProgressionManager][_offer_new_missions] Offering a couple of new missions!"
 
 	Application.trace(slot2, Application)
@@ -485,7 +485,7 @@ function ProgressionManager:_offer_new_missions()
 
 	return 
 end
-function ProgressionManager:update(t, dt)
+ProgressionManager.update = function (self, t, dt)
 	slot6 = game_state_machine
 
 	if BaseNetworkHandler._gamestate_filter.any_ingame_mission[game_state_machine.current_state_name(slot5)] then
@@ -509,7 +509,7 @@ function ProgressionManager:update(t, dt)
 
 	return 
 end
-function ProgressionManager:_on_cycle_completed()
+ProgressionManager._on_cycle_completed = function (self)
 	slot4 = "[ProgressionManager][_on_cycle_completed] Progression cycle completed. Determining what to do..."
 
 	Application.trace(slot2, Application)
@@ -536,7 +536,7 @@ function ProgressionManager:_on_cycle_completed()
 
 	return 
 end
-function ProgressionManager:layout_camp()
+ProgressionManager.layout_camp = function (self)
 	slot4 = "[ProgressionManager][layout_camp] Laying out camp."
 
 	Application.trace(slot2, Application)
@@ -608,7 +608,7 @@ function ProgressionManager:layout_camp()
 
 	return 
 end
-function ProgressionManager:sync_trophy_level(unit, trophy_level)
+ProgressionManager.sync_trophy_level = function (self, unit, trophy_level)
 	local difficulty_sequence_to_run = ProgressionManager.TROPHY_DIFFICULTY_SEQUENCES[trophy_level]
 	slot6 = unit
 	slot7 = difficulty_sequence_to_run
@@ -617,7 +617,7 @@ function ProgressionManager:sync_trophy_level(unit, trophy_level)
 
 	return 
 end
-function ProgressionManager:_get_trophy_case_unit()
+ProgressionManager._get_trophy_case_unit = function (self)
 	slot4 = "all"
 	slot8 = "world_geometry"
 	local units = World.find_units_quick(slot2, World, managers.slot.get_mask(slot6, managers.slot))
@@ -640,7 +640,7 @@ function ProgressionManager:_get_trophy_case_unit()
 
 	return 
 end
-function ProgressionManager:save_profile_slot(data)
+ProgressionManager.save_profile_slot = function (self, data)
 	local state = {
 		version = ProgressionManager.VERSION,
 		mission_progression_completed = self._mission_progression_completed,
@@ -655,7 +655,7 @@ function ProgressionManager:save_profile_slot(data)
 
 	return 
 end
-function ProgressionManager:load_profile_slot(data, version)
+ProgressionManager.load_profile_slot = function (self, data, version)
 	local state = data.ProgressionManager
 
 	if not state then

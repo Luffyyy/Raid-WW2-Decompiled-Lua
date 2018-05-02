@@ -1,5 +1,5 @@
 DummyCivilianBase = DummyCivilianBase or class()
-DummyCivilianBase.init = function (self, unit)
+function DummyCivilianBase:init(unit)
 	self._unit = unit
 	slot5 = "animation"
 
@@ -11,28 +11,28 @@ DummyCivilianBase.init = function (self, unit)
 
 	return 
 end
-DummyCivilianBase.play_state = function (self, state_name, at_time)
+function DummyCivilianBase:play_state(state_name, at_time)
 	slot8 = state_name
 	local result = self._unit.play_state(slot4, self._unit, Idstring(at_time))
 	slot6 = ""
 
 	return result ~= Idstring(self._unit) and result
 end
-DummyCivilianBase.anim_clbk_spear_spawn = function (self, unit)
+function DummyCivilianBase:anim_clbk_spear_spawn(unit)
 	slot4 = self
 
 	self._spawn_spear(slot3)
 
 	return 
 end
-DummyCivilianBase.anim_clbk_spear_unspawn = function (self, unit)
+function DummyCivilianBase:anim_clbk_spear_unspawn(unit)
 	slot4 = self
 
 	self._unspawn_spear(slot3)
 
 	return 
 end
-DummyCivilianBase._spawn_spear = function (self)
+function DummyCivilianBase:_spawn_spear()
 	slot3 = self._spear
 
 	if not alive(slot2) then
@@ -48,7 +48,7 @@ DummyCivilianBase._spawn_spear = function (self)
 
 	return 
 end
-DummyCivilianBase._unspawn_spear = function (self)
+function DummyCivilianBase:_unspawn_spear()
 	slot3 = self._spear
 
 	if alive(slot2) then
@@ -61,7 +61,7 @@ DummyCivilianBase._unspawn_spear = function (self)
 
 	return 
 end
-DummyCivilianBase.destroy = function (self, unit)
+function DummyCivilianBase:destroy(unit)
 	slot4 = self
 
 	self._unspawn_spear(slot3)

@@ -3,25 +3,25 @@ slot3 = "CoreSessionFactory"
 core.module(slot1, core)
 
 Factory = Factory or class()
-Factory.create_level_handler = function (self)
+function Factory:create_level_handler()
 	return 
 end
-Factory.create_profile_settings_handler = function (self)
+function Factory:create_profile_settings_handler()
 	return 
 end
-Factory.create_profile_progress_handler = function (self)
+function Factory:create_profile_progress_handler()
 	return 
 end
-Factory.create_session_handler = function (self)
+function Factory:create_session_handler()
 	return 
 end
-Factory.create_menu_handler = function (self)
+function Factory:create_menu_handler()
 	return 
 end
-Factory.create_player_handler = function (self)
+function Factory:create_player_handler()
 	return 
 end
-Factory.create_local_user_handler = function (self)
+function Factory:create_local_user_handler()
 	return 
 end
 

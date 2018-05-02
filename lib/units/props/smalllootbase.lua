@@ -4,7 +4,7 @@ if not SmallLootBase then
 end
 
 SmallLootBase = slot0
-SmallLootBase.init = function (self, unit)
+function SmallLootBase:init(unit)
 	slot6 = false
 
 	UnitBase.init(slot3, self, unit)
@@ -16,10 +16,10 @@ SmallLootBase.init = function (self, unit)
 
 	return 
 end
-SmallLootBase._setup = function (self)
+function SmallLootBase:_setup()
 	return 
 end
-SmallLootBase.take = function (self, unit)
+function SmallLootBase:take(unit)
 	if self._empty then
 		return 
 	end
@@ -65,7 +65,7 @@ SmallLootBase.take = function (self, unit)
 
 	return 
 end
-SmallLootBase.taken = function (self, skip_sync)
+function SmallLootBase:taken(skip_sync)
 	slot7 = self._unit
 	slot7 = self._unit.loot_drop(slot6)
 	slot6 = self._unit
@@ -101,7 +101,7 @@ SmallLootBase.taken = function (self, skip_sync)
 
 	return 
 end
-SmallLootBase._set_empty = function (self)
+function SmallLootBase:_set_empty()
 	self._empty = true
 
 	if not self.skip_remove_unit then
@@ -112,14 +112,14 @@ SmallLootBase._set_empty = function (self)
 
 	return 
 end
-SmallLootBase.save = function (self, data)
+function SmallLootBase:save(data)
 	slot4 = self._unit
 	slot4 = self._unit.loot_drop(slot3)
 	data.loot_value = self._unit.loot_drop(slot3).value(slot3)
 
 	return 
 end
-SmallLootBase.load = function (self, data)
+function SmallLootBase:load(data)
 	slot4 = self._unit
 	slot5 = data.loot_value
 
@@ -127,7 +127,7 @@ SmallLootBase.load = function (self, data)
 
 	return 
 end
-SmallLootBase.destroy = function (self)
+function SmallLootBase:destroy()
 	return 
 end
 

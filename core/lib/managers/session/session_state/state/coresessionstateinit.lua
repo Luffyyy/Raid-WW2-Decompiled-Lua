@@ -7,7 +7,7 @@ slot3 = "CoreSessionStateFindSession"
 core.import(slot1, core)
 
 Init = Init or class()
-Init.init = function (self)
+function Init:init()
 	slot5 = self.session_state._quit_session_requester
 	slot3 = not self.session_state._quit_session_requester.is_requested(slot4)
 
@@ -15,7 +15,7 @@ Init.init = function (self)
 
 	return 
 end
-Init.transition = function (self)
+function Init:transition()
 	slot3 = self.session_state._join_session_requester
 
 	if self.session_state._join_session_requester.is_requested(slot2) then

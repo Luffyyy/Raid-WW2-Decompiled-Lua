@@ -5,7 +5,7 @@ end
 
 WeaponSimpleAnim = slot0
 WeaponSimpleAnim.GADGET_TYPE = "simple_anim"
-WeaponSimpleAnim.init = function (self, unit)
+function WeaponSimpleAnim:init(unit)
 	slot5 = unit
 
 	WeaponSimpleAnim.super.init(slot3, self)
@@ -21,7 +21,7 @@ WeaponSimpleAnim.init = function (self, unit)
 
 	return 
 end
-WeaponSimpleAnim._check_state = function (self, ...)
+function WeaponSimpleAnim:_check_state(...)
 	slot3 = self
 
 	WeaponSimpleAnim.super._check_state(slot2, ...)
@@ -35,7 +35,7 @@ WeaponSimpleAnim._check_state = function (self, ...)
 
 	return 
 end
-WeaponSimpleAnim.play_anim = function (self)
+function WeaponSimpleAnim:play_anim()
 	if not self._anim then
 		return 
 	end
@@ -49,10 +49,10 @@ WeaponSimpleAnim.play_anim = function (self)
 
 	return 
 end
-WeaponSimpleAnim.toggle_requires_stance_update = function (self)
+function WeaponSimpleAnim:toggle_requires_stance_update()
 	return true
 end
-WeaponSimpleAnim.destroy = function (self, unit)
+function WeaponSimpleAnim:destroy(unit)
 	slot5 = unit
 
 	WeaponSimpleAnim.super.destroy(slot3, self)

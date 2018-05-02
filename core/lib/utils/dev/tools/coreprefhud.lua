@@ -23,7 +23,7 @@ core.module(slot1, core)
 PrefHud = PrefHud or class()
 PrefHud.CONFIG_FILE_PATH = "core/settings/prefhud"
 PrefHud.CONFIG_FILE_EXTENSION = "prefhud"
-PrefHud.init = function (self)
+function PrefHud:init()
 	self._const = {
 		_bar_y = 14,
 		_bar_space = 5,
@@ -46,17 +46,17 @@ PrefHud.init = function (self)
 
 	return 
 end
-PrefHud.remove_counter = function (self, name)
+function PrefHud:remove_counter(name)
 	self._counters[name] = nil
 
 	return 
 end
-PrefHud.remove_all_counters = function (self)
+function PrefHud:remove_all_counters()
 	self._counters = {}
 
 	return 
 end
-PrefHud.add_counter = function (self, name, sort, min, mid, max, precision, inv, inv_colors, call_str)
+function PrefHud:add_counter(name, sort, min, mid, max, precision, inv, inv_colors, call_str)
 	slot10 = self._counters
 	slot11 = {
 		_current_value = 0,
@@ -82,7 +82,7 @@ PrefHud.add_counter = function (self, name, sort, min, mid, max, precision, inv,
 
 	return 
 end
-PrefHud.load_config = function (self)
+function PrefHud:load_config()
 	slot7 = self.CONFIG_FILE_PATH
 	slot7 = self.CONFIG_FILE_PATH
 	slot9 = self.CONFIG_FILE_EXTENSION
@@ -106,7 +106,7 @@ PrefHud.load_config = function (self)
 
 	return 
 end
-PrefHud.build_gui = function (self)
+function PrefHud:build_gui()
 	if self._workspace then
 		slot3 = Overlay
 		slot4 = self._workspace
@@ -207,7 +207,7 @@ PrefHud.build_gui = function (self)
 
 	return 
 end
-PrefHud.show = function (self)
+function PrefHud:show()
 	slot3 = self._workspace
 
 	self._workspace.show(slot2)
@@ -216,7 +216,7 @@ PrefHud.show = function (self)
 
 	return 
 end
-PrefHud.hide = function (self)
+function PrefHud:hide()
 	slot3 = self._workspace
 
 	self._workspace.hide(slot2)
@@ -225,7 +225,7 @@ PrefHud.hide = function (self)
 
 	return 
 end
-PrefHud.toggle = function (self)
+function PrefHud:toggle()
 	if self._visible then
 		slot3 = self
 
@@ -238,7 +238,7 @@ PrefHud.toggle = function (self)
 
 	return 
 end
-PrefHud.update_bars = function (self, t, dt)
+function PrefHud:update_bars(t, dt)
 	if self._upd_interval <= (self._prev_upd or self._upd_interval) then
 		self._prev_upd = 0
 		slot5 = self._counters
@@ -436,7 +436,7 @@ local ids_left_ctrl = Idstring("WIN32")
 local ids_f1 = Idstring("left ctrl")
 slot5 = SystemInfo
 local is_win32 = SystemInfo.platform("f1") == ids_win32
-PrefHud.update_keys = function (self)
+function PrefHud:update_keys()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -446,7 +446,7 @@ PrefHud.update_keys = function (self)
 
 
 end
-PrefHud.update = function (self, t, dt)
+function PrefHud:update(t, dt)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -481,7 +481,7 @@ PrefHud.update = function (self, t, dt)
 
 
 end
-PrefHud.paused_update = function (self, t, dt)
+function PrefHud:paused_update(t, dt)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -495,7 +495,7 @@ PrefHud.paused_update = function (self, t, dt)
 
 
 end
-PrefHud.destroy = function (self)
+function PrefHud:destroy()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---

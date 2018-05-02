@@ -12,7 +12,7 @@ CharacterTweakData.SPECIAL_UNIT_TYPE_FLAMER = "flamer"
 CharacterTweakData.SPECIAL_UNIT_TYPE_COMMANDER = "commander"
 CharacterTweakData.SPECIAL_UNIT_TYPE_SNIPER = "sniper"
 CharacterTweakData.SPECIAL_UNIT_TYPE_SPOTTER = "spotter"
-function CharacterTweakData:init(tweak_data)
+CharacterTweakData.init = function (self, tweak_data)
 	slot4 = self
 
 	self._create_table_structure(slot3)
@@ -132,7 +132,7 @@ function CharacterTweakData:init(tweak_data)
 
 	return 
 end
-function CharacterTweakData:_init_russian(presets)
+CharacterTweakData._init_russian = function (self, presets)
 	self.russian = {
 		damage = presets.gang_member_damage
 	}
@@ -163,7 +163,7 @@ function CharacterTweakData:_init_russian(presets)
 
 	return 
 end
-function CharacterTweakData:_init_german(presets)
+CharacterTweakData._init_german = function (self, presets)
 	self.german = {
 		damage = presets.gang_member_damage
 	}
@@ -193,7 +193,7 @@ function CharacterTweakData:_init_german(presets)
 
 	return 
 end
-function CharacterTweakData:_init_british(presets)
+CharacterTweakData._init_british = function (self, presets)
 	self.british = {
 		damage = presets.gang_member_damage
 	}
@@ -223,7 +223,7 @@ function CharacterTweakData:_init_british(presets)
 
 	return 
 end
-function CharacterTweakData:_init_american(presets)
+CharacterTweakData._init_american = function (self, presets)
 	self.american = {
 		damage = presets.gang_member_damage
 	}
@@ -253,7 +253,7 @@ function CharacterTweakData:_init_american(presets)
 
 	return 
 end
-function CharacterTweakData:_init_civilian(presets)
+CharacterTweakData._init_civilian = function (self, presets)
 	self.civilian = {
 		experience = {},
 		detection = presets.detection.civilian,
@@ -299,7 +299,7 @@ function CharacterTweakData:_init_civilian(presets)
 
 	return 
 end
-function CharacterTweakData:_init_dismemberment_data(presets)
+CharacterTweakData._init_dismemberment_data = function (self, presets)
 	self.dismemberment_data = {}
 	local dismembers = {}
 	slot5 = "head"
@@ -422,7 +422,7 @@ function CharacterTweakData:_init_dismemberment_data(presets)
 
 	return 
 end
-function CharacterTweakData:_init_german_grunt_light(presets)
+CharacterTweakData._init_german_grunt_light = function (self, presets)
 	slot4 = presets.base
 	self.german_grunt_light = deep_clone(slot3)
 	self.german_grunt_light.experience = {}
@@ -486,7 +486,7 @@ function CharacterTweakData:_init_german_grunt_light(presets)
 
 	return 
 end
-function CharacterTweakData:_init_german_grunt_mid(presets)
+CharacterTweakData._init_german_grunt_mid = function (self, presets)
 	slot4 = presets.base
 	self.german_grunt_mid = deep_clone(slot3)
 	self.german_grunt_mid.experience = {}
@@ -550,7 +550,7 @@ function CharacterTweakData:_init_german_grunt_mid(presets)
 
 	return 
 end
-function CharacterTweakData:_init_german_grunt_heavy(presets)
+CharacterTweakData._init_german_grunt_heavy = function (self, presets)
 	slot4 = presets.base
 	self.german_grunt_heavy = deep_clone(slot3)
 	self.german_grunt_heavy.experience = {}
@@ -600,7 +600,7 @@ function CharacterTweakData:_init_german_grunt_heavy(presets)
 
 	return 
 end
-function CharacterTweakData:_init_german_gebirgsjager_light(presets)
+CharacterTweakData._init_german_gebirgsjager_light = function (self, presets)
 	slot4 = presets.base
 	self.german_gebirgsjager_light = deep_clone(slot3)
 	self.german_gebirgsjager_light.experience = {}
@@ -664,7 +664,7 @@ function CharacterTweakData:_init_german_gebirgsjager_light(presets)
 
 	return 
 end
-function CharacterTweakData:_init_german_gebirgsjager_heavy(presets)
+CharacterTweakData._init_german_gebirgsjager_heavy = function (self, presets)
 	slot4 = presets.base
 	self.german_gebirgsjager_heavy = deep_clone(slot3)
 	self.german_gebirgsjager_heavy.experience = {}
@@ -729,7 +729,7 @@ function CharacterTweakData:_init_german_gebirgsjager_heavy(presets)
 
 	return 
 end
-function CharacterTweakData:_init_german_light(presets)
+CharacterTweakData._init_german_light = function (self, presets)
 	slot4 = presets.base
 	self.german_light = deep_clone(slot3)
 	self.german_light.experience = {}
@@ -787,7 +787,7 @@ function CharacterTweakData:_init_german_light(presets)
 
 	return 
 end
-function CharacterTweakData:_init_german_heavy(presets)
+CharacterTweakData._init_german_heavy = function (self, presets)
 	slot4 = presets.base
 	self.german_heavy = deep_clone(slot3)
 	self.german_heavy.experience = {}
@@ -852,7 +852,7 @@ function CharacterTweakData:_init_german_heavy(presets)
 
 	return 
 end
-function CharacterTweakData:_init_german_fallschirmjager_light(presets)
+CharacterTweakData._init_german_fallschirmjager_light = function (self, presets)
 	slot4 = presets.base
 	self.german_fallschirmjager_light = deep_clone(slot3)
 	self.german_fallschirmjager_light.experience = {}
@@ -916,7 +916,7 @@ function CharacterTweakData:_init_german_fallschirmjager_light(presets)
 
 	return 
 end
-function CharacterTweakData:_init_german_gasmask(presets)
+CharacterTweakData._init_german_gasmask = function (self, presets)
 	slot4 = presets.base
 	self.german_gasmask = deep_clone(slot3)
 	self.german_gasmask.experience = {}
@@ -967,7 +967,7 @@ function CharacterTweakData:_init_german_gasmask(presets)
 
 	return 
 end
-function CharacterTweakData:_init_german_commander_backup(presets)
+CharacterTweakData._init_german_commander_backup = function (self, presets)
 	slot4 = self.german_light
 	self.german_light_commander_backup = deep_clone(slot3)
 	self.german_light_commander_backup.carry_tweak_corpse = "german_black_waffen_sentry_light_commander_body"
@@ -996,7 +996,7 @@ function CharacterTweakData:_init_german_commander_backup(presets)
 
 	return 
 end
-function CharacterTweakData:_init_german_fallschirmjager_heavy(presets)
+CharacterTweakData._init_german_fallschirmjager_heavy = function (self, presets)
 	slot4 = presets.base
 	self.german_fallschirmjager_heavy = deep_clone(slot3)
 	self.german_fallschirmjager_heavy.experience = {}
@@ -1062,7 +1062,7 @@ function CharacterTweakData:_init_german_fallschirmjager_heavy(presets)
 
 	return 
 end
-function CharacterTweakData:_init_german_waffen_ss(presets)
+CharacterTweakData._init_german_waffen_ss = function (self, presets)
 	slot4 = presets.base
 	self.german_waffen_ss = deep_clone(slot3)
 	self.german_waffen_ss.experience = {}
@@ -1129,7 +1129,7 @@ function CharacterTweakData:_init_german_waffen_ss(presets)
 
 	return 
 end
-function CharacterTweakData:_init_german_commander(presets)
+CharacterTweakData._init_german_commander = function (self, presets)
 	slot4 = presets.base
 	self.german_commander = deep_clone(slot3)
 	self.german_commander.experience = {}
@@ -1179,7 +1179,7 @@ function CharacterTweakData:_init_german_commander(presets)
 
 	return 
 end
-function CharacterTweakData:_init_german_og_commander(presets)
+CharacterTweakData._init_german_og_commander = function (self, presets)
 	slot4 = presets.base
 	self.german_og_commander = deep_clone(slot3)
 	self.german_og_commander.experience = {}
@@ -1229,7 +1229,7 @@ function CharacterTweakData:_init_german_og_commander(presets)
 
 	return 
 end
-function CharacterTweakData:_init_german_officer(presets)
+CharacterTweakData._init_german_officer = function (self, presets)
 	slot4 = presets.base
 	self.german_officer = deep_clone(slot3)
 	self.german_officer.experience = {}
@@ -1275,7 +1275,7 @@ function CharacterTweakData:_init_german_officer(presets)
 
 	return 
 end
-function CharacterTweakData:_init_soviet_nkvd_int_security_captain(presets)
+CharacterTweakData._init_soviet_nkvd_int_security_captain = function (self, presets)
 	slot4 = presets.base
 	self.soviet_nkvd_int_security_captain = deep_clone(slot3)
 	self.soviet_nkvd_int_security_captain.experience = {}
@@ -1321,7 +1321,7 @@ function CharacterTweakData:_init_soviet_nkvd_int_security_captain(presets)
 
 	return 
 end
-function CharacterTweakData:_init_soviet_nkvd_int_security_captain_b(presets)
+CharacterTweakData._init_soviet_nkvd_int_security_captain_b = function (self, presets)
 	slot4 = self.soviet_nkvd_int_security_captain
 	self.soviet_nkvd_int_security_captain_b = deep_clone(slot3)
 	self.soviet_nkvd_int_security_captain_b.weapon_voice = "1"
@@ -1334,7 +1334,7 @@ function CharacterTweakData:_init_soviet_nkvd_int_security_captain_b(presets)
 
 	return 
 end
-function CharacterTweakData:_init_german_flamer(presets)
+CharacterTweakData._init_german_flamer = function (self, presets)
 	slot4 = presets.base
 	self.german_flamer = deep_clone(slot3)
 	self.german_flamer.experience = {}
@@ -1488,7 +1488,7 @@ function CharacterTweakData:_init_german_flamer(presets)
 
 	return 
 end
-function CharacterTweakData:_init_german_sniper(presets)
+CharacterTweakData._init_german_sniper = function (self, presets)
 	slot4 = presets.base
 	self.german_sniper = deep_clone(slot3)
 	self.german_sniper.experience = {}
@@ -1586,7 +1586,7 @@ function CharacterTweakData:_init_german_sniper(presets)
 
 	return 
 end
-function CharacterTweakData:_init_german_spotter(presets)
+CharacterTweakData._init_german_spotter = function (self, presets)
 	slot4 = presets.base
 	self.german_spotter = deep_clone(slot3)
 	self.german_spotter.experience = {}
@@ -1674,7 +1674,7 @@ function CharacterTweakData:_init_german_spotter(presets)
 
 	return 
 end
-function CharacterTweakData:_init_escort(presets)
+CharacterTweakData._init_escort = function (self, presets)
 	slot4 = self.civilian
 	self.escort = deep_clone(slot3)
 	self.escort.HEALTH_INIT = 80
@@ -1688,7 +1688,7 @@ function CharacterTweakData:_init_escort(presets)
 
 	return 
 end
-function CharacterTweakData:_presets(tweak_data)
+CharacterTweakData._presets = function (self, tweak_data)
 	local presets = {
 		hurt_severities = {}
 	}
@@ -7684,7 +7684,7 @@ function CharacterTweakData:_presets(tweak_data)
 
 	return presets
 end
-function CharacterTweakData:_create_table_structure()
+CharacterTweakData._create_table_structure = function (self)
 	self.weap_ids = {
 		"m42_flammenwerfer",
 		"panzerfaust_60",
@@ -7796,7 +7796,7 @@ function CharacterTweakData:_create_table_structure()
 
 	return 
 end
-function CharacterTweakData:_process_weapon_usage_table(weap_usage_table)
+CharacterTweakData._process_weapon_usage_table = function (self, weap_usage_table)
 	slot4 = self.weap_ids
 
 	for _, weap_id in ipairs(slot3) do
@@ -7827,7 +7827,7 @@ function CharacterTweakData:_process_weapon_usage_table(weap_usage_table)
 
 	return 
 end
-function CharacterTweakData:_set_difficulty_1()
+CharacterTweakData._set_difficulty_1 = function (self)
 	slot4 = 0.75
 
 	self._multiply_all_hp(slot2, self)
@@ -7921,7 +7921,7 @@ function CharacterTweakData:_set_difficulty_1()
 
 	return 
 end
-function CharacterTweakData:_set_difficulty_2()
+CharacterTweakData._set_difficulty_2 = function (self)
 	slot4 = 1
 
 	self._multiply_all_hp(slot2, self)
@@ -8015,7 +8015,7 @@ function CharacterTweakData:_set_difficulty_2()
 
 	return 
 end
-function CharacterTweakData:_set_difficulty_3()
+CharacterTweakData._set_difficulty_3 = function (self)
 	slot4 = 1
 
 	self._multiply_all_hp(slot2, self)
@@ -8109,7 +8109,7 @@ function CharacterTweakData:_set_difficulty_3()
 
 	return 
 end
-function CharacterTweakData:_set_difficulty_4()
+CharacterTweakData._set_difficulty_4 = function (self)
 	slot4 = "PS3"
 
 	if SystemInfo.platform(slot2) == Idstring(SystemInfo) then
@@ -8215,7 +8215,7 @@ function CharacterTweakData:_set_difficulty_4()
 
 	return 
 end
-function CharacterTweakData:_multiply_weapon_delay(weap_usage_table, mul)
+CharacterTweakData._multiply_weapon_delay = function (self, weap_usage_table, mul)
 	slot5 = self.weap_ids
 
 	for _, weap_id in ipairs(slot4) do
@@ -8228,7 +8228,7 @@ function CharacterTweakData:_multiply_weapon_delay(weap_usage_table, mul)
 
 	return 
 end
-function CharacterTweakData:_multiply_all_hp(hp_mul)
+CharacterTweakData._multiply_all_hp = function (self, hp_mul)
 	slot4 = self._enemies_list
 
 	for _, name in ipairs(slot3) do
@@ -8237,7 +8237,7 @@ function CharacterTweakData:_multiply_all_hp(hp_mul)
 
 	return 
 end
-function CharacterTweakData:_multiply_all_speeds(walk_mul, run_mul)
+CharacterTweakData._multiply_all_speeds = function (self, walk_mul, run_mul)
 	slot5 = self._enemies_list
 
 	for _, name in ipairs(slot4) do
@@ -8248,7 +8248,7 @@ function CharacterTweakData:_multiply_all_speeds(walk_mul, run_mul)
 
 	return 
 end
-function CharacterTweakData:_set_characters_weapon_preset(preset)
+CharacterTweakData._set_characters_weapon_preset = function (self, preset)
 	return 
 
 	slot4 = self._enemies_list
@@ -8259,7 +8259,7 @@ function CharacterTweakData:_set_characters_weapon_preset(preset)
 
 	return 
 end
-function CharacterTweakData:character_map()
+CharacterTweakData.character_map = function (self)
 	local char_map = {
 		raidww2 = {
 			path = "units/vanilla/characters/enemies/models/",
@@ -8294,7 +8294,7 @@ function CharacterTweakData:character_map()
 
 	return char_map
 end
-function CharacterTweakData:get_special_enemies()
+CharacterTweakData.get_special_enemies = function (self)
 	local special_enemies = {}
 
 	return special_enemies

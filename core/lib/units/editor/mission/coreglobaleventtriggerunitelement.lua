@@ -11,14 +11,14 @@ if not GlobalEventTriggerUnitElement then
 end
 
 GlobalEventTriggerUnitElement = slot0
-GlobalEventTriggerUnitElement.init = function (self, ...)
+function GlobalEventTriggerUnitElement:init(...)
 	slot3 = self
 
 	GlobalEventTriggerUnitElement.super.init(slot2, ...)
 
 	return 
 end
-CoreGlobalEventTriggerUnitElement.init = function (self, unit)
+function CoreGlobalEventTriggerUnitElement:init(unit)
 	slot5 = unit
 
 	MissionElement.init(slot3, self)
@@ -31,7 +31,7 @@ CoreGlobalEventTriggerUnitElement.init = function (self, unit)
 
 	return 
 end
-CoreGlobalEventTriggerUnitElement._build_panel = function (self, panel, panel_sizer)
+function CoreGlobalEventTriggerUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

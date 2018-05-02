@@ -1,6 +1,6 @@
 slot2 = CopLogicBase
 CopLogicTurret = class(slot1)
-CopLogicTurret.enter = function (data, new_logic_name, enter_params)
+function CopLogicTurret.enter(data, new_logic_name, enter_params)
 	local my_data = {
 		unit = data.unit
 	}
@@ -16,7 +16,7 @@ CopLogicTurret.enter = function (data, new_logic_name, enter_params)
 
 	return 
 end
-CopLogicTurret.exit = function (data, new_logic_name, enter_params)
+function CopLogicTurret.exit(data, new_logic_name, enter_params)
 	slot6 = "*** CopLogicTurret.exit"
 
 	Application.debug(slot4, Application)
@@ -32,45 +32,45 @@ CopLogicTurret.exit = function (data, new_logic_name, enter_params)
 
 	return 
 end
-CopLogicTurret.is_available_for_assignment = function (data)
+function CopLogicTurret.is_available_for_assignment(data)
 	return false
 end
-CopLogicTurret.on_enemy_weapons_hot = function (data)
+function CopLogicTurret.on_enemy_weapons_hot(data)
 	slot4 = "*** CopLogicTurret.on_enemy_weapons_hot"
 
 	Application.debug(slot2, Application)
 
 	return 
 end
-CopLogicTurret._register_attention = function (data, my_data)
+function CopLogicTurret._register_attention(data, my_data)
 	slot5 = "*** CopLogicTurret._register_attention"
 
 	Application.debug(slot3, Application)
 
 	return 
 end
-CopLogicTurret._set_interaction = function (data, my_data)
+function CopLogicTurret._set_interaction(data, my_data)
 	slot5 = "*** CopLogicTurret._set_interaction"
 
 	Application.debug(slot3, Application)
 
 	return 
 end
-CopLogicTurret.queued_update = function (data)
+function CopLogicTurret.queued_update(data)
 	slot4 = "*** CopLogicTurret.queued_update"
 
 	Application.debug(slot2, Application)
 
 	return 
 end
-CopLogicTurret.on_intimidated = function (data, amount, aggressor_unit)
+function CopLogicTurret.on_intimidated(data, amount, aggressor_unit)
 	slot6 = "*** CopLogicTurret.on_intimidated"
 
 	Application.debug(slot4, Application)
 
 	return 
 end
-CopLogicTurret.death_clbk = function (data, damage_info)
+function CopLogicTurret.death_clbk(data, damage_info)
 	slot4 = data.unit
 
 	if data.unit.unit_data(slot3).turret_weapon then
@@ -82,14 +82,14 @@ CopLogicTurret.death_clbk = function (data, damage_info)
 
 	return 
 end
-CopLogicTurret.on_intimidated = function (data, amount, aggressor_unit)
+function CopLogicTurret.on_intimidated(data, amount, aggressor_unit)
 	slot6 = "*** CopLogicTurret.on_intimidated"
 
 	Application.debug(slot4, Application)
 
 	return 
 end
-CopLogicTurret.damage_clbk = function (data, damage_info)
+function CopLogicTurret.damage_clbk(data, damage_info)
 	slot4 = data.unit
 
 	if data.unit.unit_data(slot3).turret_weapon then
@@ -101,7 +101,7 @@ CopLogicTurret.damage_clbk = function (data, damage_info)
 
 	return 
 end
-CopLogicTurret.on_suppressed_state = function (data)
+function CopLogicTurret.on_suppressed_state(data)
 	slot4 = "*** CopLogicTurret.on_suppressed_state"
 
 	Application.debug(slot2, Application)

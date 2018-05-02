@@ -40,7 +40,7 @@ slot2 = "scriptviewport_slave"
 NETWORK_SLAVE_RECEIVER = Idstring(slot1)
 slot2 = "scriptviewport_master"
 NETWORK_MASTER_RECEIVER = Idstring(slot1)
-_ScriptViewport.init = function (self, x, y, width, height, vpm, name)
+function _ScriptViewport:init(x, y, width, height, vpm, name)
 	slot11 = name
 
 	_ScriptViewport.super.init(slot8, self, vpm)
@@ -67,31 +67,31 @@ _ScriptViewport.init = function (self, x, y, width, height, vpm, name)
 
 	return 
 end
-_ScriptViewport.enable_slave = function (self, port)
+function _ScriptViewport:enable_slave(port)
 	slot5 = "Deprecated call"
 
 	Application.stack_dump_error(slot3, Application)
 
 	return 
 end
-_ScriptViewport.enable_master = function (self, host_name, port, master_listener_port, net_pump)
+function _ScriptViewport:enable_master(host_name, port, master_listener_port, net_pump)
 	slot8 = "Deprecated call"
 
 	Application.stack_dump_error(slot6, Application)
 
 	return 
 end
-_ScriptViewport.render_params = function (self)
+function _ScriptViewport:render_params()
 	return self._render_params
 end
-_ScriptViewport.set_render_params = function (self, ...)
+function _ScriptViewport:set_render_params(...)
 	self._render_params = {
 		...
 	}
 
 	return 
 end
-_ScriptViewport.destroy = function (self)
+function _ScriptViewport:destroy()
 	slot4 = false
 
 	self.set_active(slot2, self)
@@ -115,70 +115,70 @@ _ScriptViewport.destroy = function (self)
 
 	return 
 end
-_ScriptViewport.set_width_mul_enabled = function (self, b)
+function _ScriptViewport:set_width_mul_enabled(b)
 	self._width_mul_enabled = b
 
 	return 
 end
-_ScriptViewport.width_mul_enabled = function (self)
+function _ScriptViewport:width_mul_enabled()
 	return self._width_mul_enabled
 end
-_ScriptViewport.set_first_viewport = function (self, set_first_viewport)
+function _ScriptViewport:set_first_viewport(set_first_viewport)
 	slot5 = set_first_viewport
 
 	self._env_handler.set_first_viewport(slot3, self._env_handler)
 
 	return 
 end
-_ScriptViewport.get_environment_value = function (self, data_path_key)
+function _ScriptViewport:get_environment_value(data_path_key)
 	slot5 = data_path_key
 
 	return self._env_handler.get_value(slot3, self._env_handler)
 end
-_ScriptViewport.get_environment_path = function (self)
+function _ScriptViewport:get_environment_path()
 	slot3 = self._env_handler
 
 	return self._env_handler.get_path(slot2)
 end
-_ScriptViewport.set_environment = function (self, environment_path, blend_duration, blend_bezier_curve, filter_list, unfiltered_environment_path)
+function _ScriptViewport:set_environment(environment_path, blend_duration, blend_bezier_curve, filter_list, unfiltered_environment_path)
 	slot13 = unfiltered_environment_path
 
 	self._env_handler.set_environment(slot7, self._env_handler, environment_path, blend_duration, blend_bezier_curve, filter_list)
 
 	return 
 end
-_ScriptViewport.set_force_feeder_update = function (self)
+function _ScriptViewport:set_force_feeder_update()
 	slot3 = self._env_handler
 
 	self._env_handler.set_force_feeder_update(slot2)
 
 	return 
 end
-_ScriptViewport.on_default_environment_changed = function (self, environment_path, blend_duration, blend_bezier_curve)
+function _ScriptViewport:on_default_environment_changed(environment_path, blend_duration, blend_bezier_curve)
 	slot9 = blend_bezier_curve
 
 	self._env_handler.on_default_environment_changed(slot5, self._env_handler, environment_path, blend_duration)
 
 	return 
 end
-_ScriptViewport.create_environment_modifier = function (self, data_path_key, is_override, modifier_func)
+function _ScriptViewport:create_environment_modifier(data_path_key, is_override, modifier_func)
 	slot9 = modifier_func
 
 	return self._env_handler.create_modifier(slot5, self._env_handler, data_path_key, is_override)
 end
-_ScriptViewport.destroy_environment_modifier = function (self, data_path_key)
+function _ScriptViewport:destroy_environment_modifier(data_path_key)
 	slot5 = data_path_key
 
 	self._env_handler.destroy_modifier(slot3, self._env_handler)
 
 	return 
 end
-_ScriptViewport.update_environment_value = function (self, data_path_key)
+function _ScriptViewport:update_environment_value(data_path_key)
 	slot5 = data_path_key
 
 	return self._env_handler.update_value(slot3, self._env_handler)
 end
-_ScriptViewport.update_environment_area = function (self, area_list, position_offset)
+function _ScriptViewport:update_environment_area(area_list, position_offset)
 	slot5 = self._vp
 	local camera = self._vp.camera(slot4)
 
@@ -197,14 +197,14 @@ _ScriptViewport.update_environment_area = function (self, area_list, position_of
 
 	return 
 end
-_ScriptViewport.on_environment_area_removed = function (self, area)
+function _ScriptViewport:on_environment_area_removed(area)
 	slot5 = area
 
 	self._env_handler.on_environment_area_removed(slot3, self._env_handler)
 
 	return 
 end
-_ScriptViewport.set_camera = function (self, camera)
+function _ScriptViewport:set_camera(camera)
 	slot5 = camera
 
 	self._vp.set_camera(slot3, self._vp)
@@ -215,31 +215,31 @@ _ScriptViewport.set_camera = function (self, camera)
 
 	return 
 end
-_ScriptViewport.camera = function (self)
+function _ScriptViewport:camera()
 	slot3 = self._vp
 
 	return self._vp.camera(slot2)
 end
-_ScriptViewport.director = function (self)
+function _ScriptViewport:director()
 	slot3 = self._vp
 
 	return self._vp.director(slot2)
 end
-_ScriptViewport.shaker = function (self)
+function _ScriptViewport:shaker()
 	slot3 = self
 	slot3 = self.director(slot2)
 
 	return self.director(slot2).shaker(slot2)
 end
-_ScriptViewport.vp = function (self)
+function _ScriptViewport:vp()
 	return self._vp
 end
-_ScriptViewport.alive = function (self)
+function _ScriptViewport:alive()
 	slot3 = self._vp
 
 	return CoreCode.alive(slot2)
 end
-_ScriptViewport.reference_fov = function (self)
+function _ScriptViewport:reference_fov()
 	local scene = self._render_params[1]
 	local fov = -1
 	slot7 = Idstring(slot8)
@@ -259,7 +259,7 @@ _ScriptViewport.reference_fov = function (self)
 
 	return fov
 end
-_ScriptViewport.push_ref_fov = function (self, fov)
+function _ScriptViewport:push_ref_fov(fov)
 	local scene = self._render_params[1]
 	slot3 = math.rad
 	slot7 = self._vp
@@ -300,7 +300,7 @@ _ScriptViewport.push_ref_fov = function (self, fov)
 
 	return false
 end
-_ScriptViewport.pop_ref_fov = function (self)
+function _ScriptViewport:pop_ref_fov()
 	local scene = self._render_params[1]
 	slot6 = Idstring(slot7)
 	slot9 = "shadow_rendering"
@@ -319,7 +319,7 @@ _ScriptViewport.pop_ref_fov = function (self)
 
 	return false
 end
-_ScriptViewport.set_visualization_mode = function (self, effect_name)
+function _ScriptViewport:set_visualization_mode(effect_name)
 	local scene = self._render_params[1]
 	local effects = {
 		"dof_prepare_post_processor",
@@ -356,7 +356,7 @@ _ScriptViewport.set_visualization_mode = function (self, effect_name)
 
 	return 
 end
-_ScriptViewport.is_rendering_scene = function (self, scene_name)
+function _ScriptViewport:is_rendering_scene(scene_name)
 	slot6 = self
 
 	for _, param in ipairs(self.render_params(slot5)) do
@@ -367,10 +367,10 @@ _ScriptViewport.is_rendering_scene = function (self, scene_name)
 
 	return false
 end
-_ScriptViewport.set_dof = function (self, clamp, near_focus_distance_min, near_focus_distance_max, far_focus_distance_min, far_focus_distance_max)
+function _ScriptViewport:set_dof(clamp, near_focus_distance_min, near_focus_distance_max, far_focus_distance_min, far_focus_distance_max)
 	return 
 end
-_ScriptViewport.replace_engine_vp = function (self, vp)
+function _ScriptViewport:replace_engine_vp(vp)
 	slot4 = self
 
 	self.destroy(slot3)
@@ -380,12 +380,12 @@ _ScriptViewport.replace_engine_vp = function (self, vp)
 
 	return 
 end
-_ScriptViewport.set_environment_editor_callback = function (self, env_editor_callback)
+function _ScriptViewport:set_environment_editor_callback(env_editor_callback)
 	self._env_editor_callback = env_editor_callback
 
 	return 
 end
-_ScriptViewport._update = function (self, is_first_viewport, t, dt)
+function _ScriptViewport:_update(is_first_viewport, t, dt)
 	local scene = self._render_params[1]
 	slot7 = self._vp
 
@@ -407,7 +407,7 @@ _ScriptViewport._update = function (self, is_first_viewport, t, dt)
 
 	return 
 end
-_ScriptViewport._render = function (self, nr)
+function _ScriptViewport:_render(nr)
 	if Global.render_debug.render_world then
 		slot4 = Application
 		slot7 = self._render_params
@@ -417,14 +417,14 @@ _ScriptViewport._render = function (self, nr)
 
 	return 
 end
-_ScriptViewport._resolution_changed = function (self)
+function _ScriptViewport:_resolution_changed()
 	slot3 = self
 
 	self._set_width_multiplier(slot2)
 
 	return 
 end
-_ScriptViewport._set_width_multiplier = function (self)
+function _ScriptViewport:_set_width_multiplier()
 	local camera = self.camera(slot2)
 	slot4 = camera
 
@@ -448,7 +448,7 @@ _ScriptViewport._set_width_multiplier = function (self)
 
 	return 
 end
-_ScriptViewport.set_active = function (self, state)
+function _ScriptViewport:set_active(state)
 	slot5 = state
 
 	_ScriptViewport.super.set_active(slot3, self)

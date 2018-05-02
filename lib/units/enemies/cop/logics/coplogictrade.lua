@@ -159,7 +159,7 @@
 slot2 = CopLogicBase
 CopLogicTrade = class(slot1)
 CopLogicTrade.butchers_traded = 0
-CopLogicTrade.enter = function (data, new_logic_name, enter_params)
+function CopLogicTrade.enter(data, new_logic_name, enter_params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-75, warpins: 1 ---
@@ -251,7 +251,7 @@ CopLogicTrade.enter = function (data, new_logic_name, enter_params)
 
 
 end
-CopLogicTrade.hostage_trade = function (unit, enable, trade_success)
+function CopLogicTrade.hostage_trade(unit, enable, trade_success)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -646,7 +646,7 @@ CopLogicTrade.hostage_trade = function (unit, enable, trade_success)
 
 
 end
-CopLogicTrade.exit = function (data, new_logic_name, enter_params)
+function CopLogicTrade.exit(data, new_logic_name, enter_params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -704,7 +704,7 @@ CopLogicTrade.exit = function (data, new_logic_name, enter_params)
 
 
 end
-CopLogicTrade.on_trade = function (data, trading_unit)
+function CopLogicTrade.on_trade(data, trading_unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -857,7 +857,7 @@ CopLogicTrade.on_trade = function (data, trading_unit)
 
 
 end
-CopLogicTrade.update = function (data)
+function CopLogicTrade.update(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -960,7 +960,7 @@ CopLogicTrade.update = function (data)
 
 
 end
-CopLogicTrade.on_intimidated = function (data, amount, aggressor_unit)
+function CopLogicTrade.on_intimidated(data, amount, aggressor_unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -970,7 +970,7 @@ CopLogicTrade.on_intimidated = function (data, amount, aggressor_unit)
 
 
 end
-CopLogicTrade._process_pathing_results = function (data, my_data)
+function CopLogicTrade._process_pathing_results(data, my_data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1043,7 +1043,7 @@ CopLogicTrade._process_pathing_results = function (data, my_data)
 
 
 end
-CopLogicTrade._chk_request_action_walk_to_flee_pos = function (data, my_data, end_rot)
+function CopLogicTrade._chk_request_action_walk_to_flee_pos(data, my_data, end_rot)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-21, warpins: 1 ---
@@ -1063,7 +1063,7 @@ CopLogicTrade._chk_request_action_walk_to_flee_pos = function (data, my_data, en
 
 
 end
-CopLogicTrade.on_action_completed = function (data, action)
+function CopLogicTrade.on_action_completed(data, action)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -1099,7 +1099,7 @@ CopLogicTrade.on_action_completed = function (data, action)
 
 
 end
-CopLogicTrade.can_activate = function ()
+function CopLogicTrade.can_activate()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -1109,7 +1109,7 @@ CopLogicTrade.can_activate = function ()
 
 
 end
-CopLogicTrade.is_available_for_assignment = function (data)
+function CopLogicTrade.is_available_for_assignment(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -1119,7 +1119,7 @@ CopLogicTrade.is_available_for_assignment = function (data)
 
 
 end
-CopLogicTrade.on_new_objective = function (data, old_objective)
+function CopLogicTrade.on_new_objective(data, old_objective)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -1133,7 +1133,7 @@ CopLogicTrade.on_new_objective = function (data, old_objective)
 
 
 end
-CopLogicTrade._get_all_paths = function (data)
+function CopLogicTrade._get_all_paths(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -1145,7 +1145,7 @@ CopLogicTrade._get_all_paths = function (data)
 
 
 end
-CopLogicTrade._set_verified_paths = function (data, verified_paths)
+function CopLogicTrade._set_verified_paths(data, verified_paths)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -1157,7 +1157,7 @@ CopLogicTrade._set_verified_paths = function (data, verified_paths)
 
 
 end
-CopLogicTrade.pre_destroy = function (data)
+function CopLogicTrade.pre_destroy(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---

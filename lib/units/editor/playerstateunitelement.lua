@@ -4,7 +4,7 @@ if not PlayerStateUnitElement then
 end
 
 PlayerStateUnitElement = slot0
-PlayerStateUnitElement.init = function (self, unit)
+function PlayerStateUnitElement:init(unit)
 	slot5 = unit
 
 	MissionElement.init(slot3, self)
@@ -22,7 +22,7 @@ PlayerStateUnitElement.init = function (self, unit)
 
 	return 
 end
-PlayerStateUnitElement._build_panel = function (self, panel, panel_sizer)
+function PlayerStateUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

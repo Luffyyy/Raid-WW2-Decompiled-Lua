@@ -26,10 +26,10 @@ slot4 = "near_range"
 
 CoreChangeCameraAttributeCutsceneKey.attribute_affects("Camera Attribute", CoreChangeCameraAttributeCutsceneKey, "far_range")
 
-CoreChangeCameraAttributeCutsceneKey.__tostring = function (self)
+function CoreChangeCameraAttributeCutsceneKey:__tostring()
 	return "Change camera attributes."
 end
-CoreChangeCameraAttributeCutsceneKey.populate_from_editor = function (self, cutscene_editor)
+function CoreChangeCameraAttributeCutsceneKey:populate_from_editor(cutscene_editor)
 	slot5 = cutscene_editor
 
 	self.super.populate_from_editor(slot3, self)
@@ -45,10 +45,10 @@ CoreChangeCameraAttributeCutsceneKey.populate_from_editor = function (self, cuts
 
 	return 
 end
-CoreChangeCameraAttributeCutsceneKey.is_valid = function (self)
+function CoreChangeCameraAttributeCutsceneKey:is_valid()
 	return true
 end
-CoreChangeCameraAttributeCutsceneKey.evaluate = function (self, player, fast_forward)
+function CoreChangeCameraAttributeCutsceneKey:evaluate(player, fast_forward)
 	local function set_attribute_if_valid(attribute_name)
 		slot4 = attribute_name
 		local value = self.attribute_value(slot2, self)
@@ -76,10 +76,10 @@ CoreChangeCameraAttributeCutsceneKey.evaluate = function (self, player, fast_for
 
 	return 
 end
-CoreChangeCameraAttributeCutsceneKey.is_valid_near_range = function (self, value)
+function CoreChangeCameraAttributeCutsceneKey:is_valid_near_range(value)
 	return value == nil or (0 < value and value < slot2)
 end
-CoreChangeCameraAttributeCutsceneKey.is_valid_far_range = function (self, value)
+function CoreChangeCameraAttributeCutsceneKey:is_valid_far_range(value)
 	return value == nil or slot2 < value
 end
 

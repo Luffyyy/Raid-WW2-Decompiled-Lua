@@ -3,7 +3,7 @@ slot3 = "CoreSessionDebug"
 core.module(slot1, core)
 
 SessionDebug = SessionDebug or class()
-SessionDebug.init = function (self, session_state)
+function SessionDebug:init(session_state)
 	self._session_state = session_state
 	slot4 = self
 
@@ -11,7 +11,7 @@ SessionDebug.init = function (self, session_state)
 
 	return 
 end
-SessionDebug._parse_standard_arguments = function (self)
+function SessionDebug:_parse_standard_arguments()
 	local level = nil
 	local args = Application.argv(slot3)
 	slot5 = args

@@ -13,14 +13,14 @@ if not PlaySoundUnitElement then
 end
 
 PlaySoundUnitElement = slot0
-PlaySoundUnitElement.init = function (self, ...)
+function PlaySoundUnitElement:init(...)
 	slot3 = self
 
 	PlaySoundUnitElement.super.init(slot2, ...)
 
 	return 
 end
-CorePlaySoundUnitElement.init = function (self, unit)
+function CorePlaySoundUnitElement:init(unit)
 	slot5 = unit
 
 	CorePlaySoundUnitElement.super.init(slot3, self)
@@ -46,17 +46,17 @@ CorePlaySoundUnitElement.init = function (self, unit)
 
 	return 
 end
-CorePlaySoundUnitElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function CorePlaySoundUnitElement:draw_links(t, dt, selected_unit, all_units)
 	slot11 = all_units
 
 	MissionElement.draw_links(slot6, self, t, dt, selected_unit)
 
 	return 
 end
-CorePlaySoundUnitElement.update_editing = function (self)
+function CorePlaySoundUnitElement:update_editing()
 	return 
 end
-CorePlaySoundUnitElement.update_selected = function (self, t, dt, selected_unit, all_units)
+function CorePlaySoundUnitElement:update_selected(t, dt, selected_unit, all_units)
 	slot7 = self._hed.elements
 
 	for _, id in ipairs(slot6) do
@@ -78,7 +78,7 @@ CorePlaySoundUnitElement.update_selected = function (self, t, dt, selected_unit,
 
 	return 
 end
-CorePlaySoundUnitElement.add_element = function (self)
+function CorePlaySoundUnitElement:add_element()
 	slot4 = {
 		ray_type = "editor",
 		mask = 10
@@ -93,7 +93,7 @@ CorePlaySoundUnitElement.add_element = function (self)
 
 	return 
 end
-CorePlaySoundUnitElement.remove_links = function (self, unit)
+function CorePlaySoundUnitElement:remove_links(unit)
 	slot4 = self._hed.elements
 
 	for _, id in ipairs(slot3) do
@@ -108,7 +108,7 @@ CorePlaySoundUnitElement.remove_links = function (self, unit)
 
 	return 
 end
-CorePlaySoundUnitElement.add_triggers = function (self, vc)
+function CorePlaySoundUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "add_element"
 
@@ -116,7 +116,7 @@ CorePlaySoundUnitElement.add_triggers = function (self, vc)
 
 	return 
 end
-CorePlaySoundUnitElement.post_init = function (self, ...)
+function CorePlaySoundUnitElement:post_init(...)
 	slot3 = self
 
 	CorePlaySoundUnitElement.super.post_init(slot2, ...)
@@ -127,7 +127,7 @@ CorePlaySoundUnitElement.post_init = function (self, ...)
 
 	return 
 end
-CorePlaySoundUnitElement.test_element = function (self)
+function CorePlaySoundUnitElement:test_element()
 	if self._hed.sound_event then
 		slot4 = false
 
@@ -163,7 +163,7 @@ CorePlaySoundUnitElement.test_element = function (self)
 
 	return 
 end
-CorePlaySoundUnitElement.stop_test_element = function (self)
+function CorePlaySoundUnitElement:stop_test_element()
 	slot4 = true
 
 	managers.editor.set_wanted_mute(slot2, managers.editor)
@@ -180,7 +180,7 @@ CorePlaySoundUnitElement.stop_test_element = function (self)
 
 	return 
 end
-CorePlaySoundUnitElement.set_category = function (self, params)
+function CorePlaySoundUnitElement:set_category(params)
 	local value = params.value
 	slot5 = self._sound_params
 	slot9 = value
@@ -199,7 +199,7 @@ CorePlaySoundUnitElement.set_category = function (self, params)
 
 	return 
 end
-CorePlaySoundUnitElement._add_soundbank = function (self)
+function CorePlaySoundUnitElement:_add_soundbank()
 	slot3 = self
 
 	self.stop_test_element(slot2)
@@ -211,7 +211,7 @@ CorePlaySoundUnitElement._add_soundbank = function (self)
 
 	return 
 end
-CorePlaySoundUnitElement.set_element_data = function (self, params, ...)
+function CorePlaySoundUnitElement:set_element_data(params, ...)
 	slot5 = params
 
 	CorePlaySoundUnitElement.super.set_element_data(slot3, self, ...)
@@ -224,7 +224,7 @@ CorePlaySoundUnitElement.set_element_data = function (self, params, ...)
 
 	return 
 end
-CorePlaySoundUnitElement._build_panel = function (self, panel, panel_sizer)
+function CorePlaySoundUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -293,7 +293,7 @@ CorePlaySoundUnitElement._build_panel = function (self, panel, panel_sizer)
 
 	return 
 end
-CorePlaySoundUnitElement.add_to_mission_package = function (self)
+function CorePlaySoundUnitElement:add_to_mission_package()
 	slot4 = {
 		category = "soundbanks",
 		name = managers.sound_environment.scene_soundbank(slot6, managers.sound_environment)
@@ -304,7 +304,7 @@ CorePlaySoundUnitElement.add_to_mission_package = function (self)
 
 	return 
 end
-CorePlaySoundUnitElement.destroy = function (self)
+function CorePlaySoundUnitElement:destroy()
 	slot3 = self
 
 	self.stop_test_element(slot2)

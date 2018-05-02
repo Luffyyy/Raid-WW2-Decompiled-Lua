@@ -19,14 +19,14 @@ if not CutsceneDependencyNode then
 end
 
 CutsceneDependencyNode = slot0
-CutsceneDependencyNode.init = function (self, name, get_dn_cb, database)
+function CutsceneDependencyNode:init(name, get_dn_cb, database)
 	slot11 = database
 
 	self.super.init(slot5, self, CUTSCENE, "cutscene", name, get_dn_cb)
 
 	return 
 end
-CutsceneDependencyNode._walkxml2dependencies = function (self, xmlnode, deps)
+function CutsceneDependencyNode:_walkxml2dependencies(xmlnode, deps)
 	slot5 = xmlnode
 	local node_name = xmlnode.name(slot4)
 

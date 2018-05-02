@@ -4,7 +4,7 @@ if not FlashGrenade then
 end
 
 FlashGrenade = slot0
-FlashGrenade.init = function (self, unit)
+function FlashGrenade:init(unit)
 	self._init_timer = 1
 	slot5 = unit
 
@@ -12,7 +12,7 @@ FlashGrenade.init = function (self, unit)
 
 	return 
 end
-FlashGrenade._detonate = function (self)
+function FlashGrenade:_detonate()
 	slot7 = self._unit
 	slot7 = self._slotmask
 	local units = World.find_units(slot2, World, "sphere", self._unit.position(slot6), 400)
@@ -37,7 +37,7 @@ FlashGrenade._detonate = function (self)
 
 	return 
 end
-FlashGrenade._play_sound_and_effects = function (self)
+function FlashGrenade:_play_sound_and_effects()
 	slot3 = World
 	slot4 = {
 		effect = Idstring(slot6),
@@ -58,7 +58,7 @@ FlashGrenade._play_sound_and_effects = function (self)
 
 	return 
 end
-FlashGrenade._give_flash_damage = function (self, col_ray, unit, damage)
+function FlashGrenade:_give_flash_damage(col_ray, unit, damage)
 	return 
 end
 

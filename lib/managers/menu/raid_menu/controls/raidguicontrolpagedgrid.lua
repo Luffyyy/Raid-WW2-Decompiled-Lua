@@ -8,7 +8,7 @@ RaidGUIControlPagedGrid.DEFAULT_BORDER_PADDING = 10
 RaidGUIControlPagedGrid.DEFAULT_ITEM_PADDING = 16
 RaidGUIControlPagedGrid.PAGING_PANEL_HEIGHT = 25
 RaidGUIControlPagedGrid.PAGING_STEPPER_WIDTH = 100
-RaidGUIControlPagedGrid.init = function (self, parent, params)
+function RaidGUIControlPagedGrid:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlPagedGrid.super.init(slot4, self, parent)
@@ -78,10 +78,10 @@ RaidGUIControlPagedGrid.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlPagedGrid.close = function (self)
+function RaidGUIControlPagedGrid:close()
 	return 
 end
-RaidGUIControlPagedGrid._create_grid_panel = function (self)
+function RaidGUIControlPagedGrid:_create_grid_panel()
 	slot3 = self._params
 	local grid_params = clone(slot2)
 	grid_params.name = grid_params.name .. "_grid"
@@ -95,7 +95,7 @@ RaidGUIControlPagedGrid._create_grid_panel = function (self)
 
 	return 
 end
-RaidGUIControlPagedGrid._get_data = function (self)
+function RaidGUIControlPagedGrid:_get_data()
 	local grid_data = self._data_source_callback()
 
 	if not grid_data or #grid_data == 0 then
@@ -133,7 +133,7 @@ RaidGUIControlPagedGrid._get_data = function (self)
 
 	return 
 end
-RaidGUIControlPagedGrid._create_items = function (self)
+function RaidGUIControlPagedGrid:_create_items()
 	local item_count = 0
 	local i_vertical = 1
 	local i_horizontal = 1
@@ -170,14 +170,14 @@ RaidGUIControlPagedGrid._create_items = function (self)
 
 	return 
 end
-RaidGUIControlPagedGrid._create_item = function (self, item_params, item_data, grid_params)
+function RaidGUIControlPagedGrid:_create_item(item_params, item_data, grid_params)
 	local item_class = RaidGUIControlCard
 	slot11 = grid_params
 	local item = self._grid_panel.create_custom_control(slot6, self._grid_panel, item_class, item_params, item_data)
 
 	return item
 end
-RaidGUIControlPagedGrid._create_paging_controls = function (self)
+function RaidGUIControlPagedGrid:_create_paging_controls()
 	if self._paging_controls_panel then
 		slot3 = self._paging_controls_panel
 
@@ -216,7 +216,7 @@ RaidGUIControlPagedGrid._create_paging_controls = function (self)
 
 	return 
 end
-RaidGUIControlPagedGrid._create_filter_controls = function (self)
+function RaidGUIControlPagedGrid:_create_filter_controls()
 	if not self._paging_controls_panel then
 		slot4 = self._grid_panel
 		self._paging_controls_panel_params = {
@@ -251,7 +251,7 @@ RaidGUIControlPagedGrid._create_filter_controls = function (self)
 
 	return 
 end
-RaidGUIControlPagedGrid._delete_items = function (self)
+function RaidGUIControlPagedGrid:_delete_items()
 	self._grid_items = {}
 	self._selected_item = nil
 	slot3 = self._grid_panel
@@ -260,12 +260,12 @@ RaidGUIControlPagedGrid._delete_items = function (self)
 
 	return 
 end
-RaidGUIControlPagedGrid.mouse_moved = function (self, o, x, y)
+function RaidGUIControlPagedGrid:mouse_moved(o, x, y)
 	slot9 = y
 
 	return self._grid_panel.mouse_moved(slot5, self._grid_panel, o, x)
 end
-RaidGUIControlPagedGrid.mouse_released = function (self, o, button, x, y)
+function RaidGUIControlPagedGrid:mouse_released(o, button, x, y)
 	slot7 = self._grid_items
 
 	for _, grid_item in ipairs(slot6) do
@@ -287,13 +287,13 @@ RaidGUIControlPagedGrid.mouse_released = function (self, o, button, x, y)
 
 	return false
 end
-RaidGUIControlPagedGrid.highlight_on = function (self)
+function RaidGUIControlPagedGrid:highlight_on()
 	return 
 end
-RaidGUIControlPagedGrid.highlight_off = function (self)
+function RaidGUIControlPagedGrid:highlight_off()
 	return 
 end
-RaidGUIControlPagedGrid.refresh_data = function (self)
+function RaidGUIControlPagedGrid:refresh_data()
 	slot3 = self
 
 	self._delete_items(slot2)
@@ -308,7 +308,7 @@ RaidGUIControlPagedGrid.refresh_data = function (self)
 
 	return 
 end
-RaidGUIControlPagedGrid.select_grid_item_by_item = function (self, grid_item)
+function RaidGUIControlPagedGrid:select_grid_item_by_item(grid_item)
 	if self._selected_item then
 		slot4 = self._selected_item
 
@@ -325,10 +325,10 @@ RaidGUIControlPagedGrid.select_grid_item_by_item = function (self, grid_item)
 
 	return 
 end
-RaidGUIControlPagedGrid.selected_grid_item = function (self)
+function RaidGUIControlPagedGrid:selected_grid_item()
 	return self._selected_item
 end
-RaidGUIControlPagedGrid.on_item_selected_grid_page = function (self, item)
+function RaidGUIControlPagedGrid:on_item_selected_grid_page(item)
 	self._current_page = item.value
 	slot4 = self
 
@@ -336,7 +336,7 @@ RaidGUIControlPagedGrid.on_item_selected_grid_page = function (self, item)
 
 	return 
 end
-RaidGUIControlPagedGrid.data_source_grid_page_stepper = function (self)
+function RaidGUIControlPagedGrid:data_source_grid_page_stepper()
 	local pages = {}
 
 	for i_page = 1, self._total_pages, 1 do
@@ -350,7 +350,7 @@ RaidGUIControlPagedGrid.data_source_grid_page_stepper = function (self)
 
 	return pages
 end
-RaidGUIControlPagedGrid.on_item_selected_grid_filter = function (self, item)
+function RaidGUIControlPagedGrid:on_item_selected_grid_filter(item)
 	self._filter_value = item.value
 	self._current_page = 1
 	slot4 = self
@@ -359,7 +359,7 @@ RaidGUIControlPagedGrid.on_item_selected_grid_filter = function (self, item)
 
 	return 
 end
-RaidGUIControlPagedGrid.data_source_grid_filter_stepper = function (self)
+function RaidGUIControlPagedGrid:data_source_grid_filter_stepper()
 	if self._data_source_filter_callback then
 		return self._data_source_filter_callback()
 	end

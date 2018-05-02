@@ -7,7 +7,7 @@ slot3 = "CoreSessionStateInSession"
 core.import(slot1, core)
 
 JoinSession = JoinSession or class()
-JoinSession.init = function (self, session_id)
+function JoinSession:init(session_id)
 	slot4 = self.session_state._join_session_requester
 
 	self.session_state._join_session_requester.task_started(slot3)
@@ -20,14 +20,14 @@ JoinSession.init = function (self, session_id)
 
 	return 
 end
-JoinSession.destroy = function (self)
+function JoinSession:destroy()
 	slot3 = self.session_state._join_session_requester
 
 	self.session_state._join_session_requester.task_completed(slot2)
 
 	return 
 end
-JoinSession.transition = function (self)
+function JoinSession:transition()
 	return CoreSessionStateInSession.InSession, self._session
 end
 

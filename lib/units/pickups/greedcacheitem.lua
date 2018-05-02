@@ -1,27 +1,27 @@
 GreedCacheItem = GreedCacheItem or class()
-GreedCacheItem.init = function (self, unit)
+function GreedCacheItem:init(unit)
 	self._unit = unit
 	self._reserve = 0
 	self._unlocked = false
 
 	return 
 end
-GreedCacheItem.set_reserve = function (self, value)
+function GreedCacheItem:set_reserve(value)
 	self._reserve = value
 	self._current_amount = value
 
 	return 
 end
-GreedCacheItem.reserve = function (self)
+function GreedCacheItem:reserve()
 	return self._reserve
 end
-GreedCacheItem.reserve_left = function (self)
+function GreedCacheItem:reserve_left()
 	return self._current_amount
 end
-GreedCacheItem.pickup_amount = function (self)
+function GreedCacheItem:pickup_amount()
 	return tweak_data.greed.cache_items[self._tweak_table].single_interaction_value
 end
-GreedCacheItem.on_interacted = function (self, amount)
+function GreedCacheItem:on_interacted(amount)
 	if not amount then
 		slot4 = self
 		local pickup_amount = self.pickup_amount(slot3)
@@ -37,7 +37,7 @@ GreedCacheItem.on_interacted = function (self, amount)
 
 	return pickup_amount
 end
-GreedCacheItem._check_current_sequence = function (self)
+function GreedCacheItem:_check_current_sequence()
 	local fill_sequences = tweak_data.greed.cache_items[self._tweak_table].sequences
 
 	if fill_sequences then
@@ -58,7 +58,7 @@ GreedCacheItem._check_current_sequence = function (self)
 
 	return 
 end
-GreedCacheItem.get_lockpick_parameters = function (self)
+function GreedCacheItem:get_lockpick_parameters()
 	slot3 = tweak_data.greed.cache_items[self._tweak_table].lockpick
 	local parameters = deep_clone(slot2)
 	parameters.circle_radius = {
@@ -69,7 +69,7 @@ GreedCacheItem.get_lockpick_parameters = function (self)
 
 	return parameters
 end
-GreedCacheItem.unlock = function (self)
+function GreedCacheItem:unlock()
 	self._unlocked = true
 	slot3 = self
 
@@ -77,13 +77,13 @@ GreedCacheItem.unlock = function (self)
 
 	return 
 end
-GreedCacheItem.locked = function (self)
+function GreedCacheItem:locked()
 	return not self._unlocked
 end
-GreedCacheItem.interaction_timer_value = function (self)
+function GreedCacheItem:interaction_timer_value()
 	return tweak_data.greed.cache_items[self._tweak_table].interaction_timer
 end
-GreedCacheItem.on_load_complete = function (self)
+function GreedCacheItem:on_load_complete()
 	slot6 = self._unit
 	slot4 = self._unit.unit_data(slot5).unit_id
 	local world_id = managers.worldcollection.get_worlddefinition_by_unit_id(slot2, managers.worldcollection).world_id(slot2)
@@ -99,14 +99,14 @@ GreedCacheItem.on_load_complete = function (self)
 
 	return 
 end
-GreedCacheItem.save = function (self, data)
+function GreedCacheItem:save(data)
 	data.reserve = self._reserve
 	data.current_amount = self._current_amount
 	data.unlocked = self._unlocked
 
 	return 
 end
-GreedCacheItem.load = function (self, data)
+function GreedCacheItem:load(data)
 	self._reserve = data.reserve
 	self._current_amount = data.current_amount
 	self._unlocked = data.unlocked

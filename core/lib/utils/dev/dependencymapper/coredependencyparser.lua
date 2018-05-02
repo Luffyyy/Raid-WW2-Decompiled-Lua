@@ -86,7 +86,7 @@ TEXTURE = CoreDependencyNode.TEXTURE
 CUTSCENE = CoreDependencyNode.CUTSCENE
 EFFECT = CoreDependencyNode.EFFECT
 DependencyParser = DependencyParser or CoreClass.class()
-DependencyParser.init = function (self, db)
+function DependencyParser:init(db)
 	self._database = db or Database
 	slot6 = "_dn"
 	self._dn_cb = CoreEvent.callback(slot3, self, self)
@@ -133,12 +133,12 @@ DependencyParser.init = function (self, db)
 
 	return 
 end
-DependencyParser._key = function (self, type_, name)
+function DependencyParser:_key(type_, name)
 	slot7 = name
 
 	return string.format(slot4, "%s:%s", type_)
 end
-DependencyParser._dn = function (self, ...)
+function DependencyParser:_dn(...)
 	slot5 = "number:type_"
 	local name, type_ = parse_kwargs(slot2, {
 		...
@@ -148,7 +148,7 @@ DependencyParser._dn = function (self, ...)
 
 	return self._key2node[key]
 end
-DependencyParser._make_game_node = function (self)
+function DependencyParser:_make_game_node()
 	slot5 = "Game"
 	local key = self._key(slot2, self, GAME)
 	slot8 = self._database
@@ -156,7 +156,7 @@ DependencyParser._make_game_node = function (self)
 
 	return 
 end
-DependencyParser._make_level_nodes = function (self)
+function DependencyParser:_make_level_nodes()
 	slot7 = true
 
 	for _, dir in ipairs(File.list(slot4, File, CoreLevelDn.LEVEL_BASE)) do
@@ -174,7 +174,7 @@ DependencyParser._make_level_nodes = function (self)
 
 	return 
 end
-DependencyParser._make_materialfile_node = function (self)
+function DependencyParser:_make_materialfile_node()
 	slot5 = "Materialsfile"
 	local key = self._key(slot2, self, MATERIALS_FILE)
 	slot8 = self._database
@@ -182,7 +182,7 @@ DependencyParser._make_materialfile_node = function (self)
 
 	return 
 end
-DependencyParser._make_nodes_from_db = function (self, dn_class, db_type)
+function DependencyParser:_make_nodes_from_db(dn_class, db_type)
 	slot8 = db_type
 
 	for _, name in ipairs(managers.database.list_entries_of_type(slot6, managers.database)) do
@@ -195,7 +195,7 @@ DependencyParser._make_nodes_from_db = function (self, dn_class, db_type)
 
 	return 
 end
-DependencyParser.nodes = function (self, pattern)
+function DependencyParser:nodes(pattern)
 	local dn_list = {}
 	slot5 = self._key2node
 
@@ -211,7 +211,7 @@ DependencyParser.nodes = function (self, pattern)
 
 	return dn_list
 end
-DependencyParser.complement = function (self, dn_list, pattern)
+function DependencyParser:complement(dn_list, pattern)
 	local all_dn = self.nodes(slot4)
 	slot7 = dn_list
 	local list = set_difference(self, all_dn)
@@ -219,7 +219,7 @@ DependencyParser.complement = function (self, dn_list, pattern)
 
 	return filter(all_dn, list)
 end
-DependencyParser.reached = function (self, start_dn_list, pattern)
+function DependencyParser:reached(start_dn_list, pattern)
 	local reached_dn = {}
 	slot6 = start_dn_list
 
@@ -233,7 +233,7 @@ DependencyParser.reached = function (self, start_dn_list, pattern)
 
 	return filter(slot5, reached_dn)
 end
-DependencyParser.not_reached = function (self, start_dn_list, pattern)
+function DependencyParser:not_reached(start_dn_list, pattern)
 	slot6 = start_dn_list
 	local reached_dn = self.reached(slot4, self)
 	slot7 = reached_dn

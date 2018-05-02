@@ -16,7 +16,7 @@ if not PrepareStartSimulation then
 end
 
 PrepareStartSimulation = slot0
-PrepareStartSimulation.init = function (self)
+function PrepareStartSimulation:init()
 	PrepareStartSimulation.super.init(slot2)
 
 	local factory = self.game_state._session_manager._factory
@@ -39,7 +39,7 @@ PrepareStartSimulation.init = function (self)
 
 	return 
 end
-PrepareStartSimulation.transition = function (self)
+function PrepareStartSimulation:transition()
 	slot3 = self.game_state._session_manager
 
 	if self.game_state._session_manager.all_systems_are_stable_for_loading(slot2) then

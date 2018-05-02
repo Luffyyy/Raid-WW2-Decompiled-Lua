@@ -7,7 +7,7 @@ slot3 = "CoreGameStatePreFrontEnd"
 core.import(slot1, core)
 
 LoadingFrontEnd = LoadingFrontEnd or class()
-LoadingFrontEnd.init = function (self)
+function LoadingFrontEnd:init()
 	slot3 = self.game_state._session_manager
 	self._debug_time = self.game_state._session_manager._debug_time(slot2)
 	slot6 = "all"
@@ -20,10 +20,10 @@ LoadingFrontEnd.init = function (self)
 
 	return 
 end
-LoadingFrontEnd.destroy = function (self)
+function LoadingFrontEnd:destroy()
 	return 
 end
-LoadingFrontEnd.transition = function (self)
+function LoadingFrontEnd:transition()
 	slot3 = self.game_state._session_manager
 	local current_time = self.game_state._session_manager._debug_time(slot2)
 

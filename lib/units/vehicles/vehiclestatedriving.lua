@@ -4,14 +4,14 @@ if not VehicleStateDriving then
 end
 
 VehicleStateDriving = slot0
-VehicleStateDriving.init = function (self, unit)
+function VehicleStateDriving:init(unit)
 	slot5 = unit
 
 	BaseVehicleState.init(slot3, self)
 
 	return 
 end
-VehicleStateDriving.enter = function (self, state_data, enter_data)
+function VehicleStateDriving:enter(state_data, enter_data)
 	slot5 = self._unit
 	slot5 = self._unit.vehicle_driving(slot4)
 
@@ -33,7 +33,7 @@ VehicleStateDriving.enter = function (self, state_data, enter_data)
 
 	return 
 end
-VehicleStateDriving.adjust_interactions = function (self)
+function VehicleStateDriving:adjust_interactions()
 	slot3 = self
 
 	VehicleStateDriving.super.adjust_interactions(slot2)
@@ -89,7 +89,7 @@ VehicleStateDriving.adjust_interactions = function (self)
 
 	return 
 end
-VehicleStateDriving.is_vulnerable = function (self)
+function VehicleStateDriving:is_vulnerable()
 	return true
 end
 

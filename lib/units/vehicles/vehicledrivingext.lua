@@ -87,7 +87,7 @@ slot5 = -150
 VehicleDrivingExt.PLAYER_CAPSULE_OFFSET = Vector3("lib/units/vehicles/VehicleStateBlocked", 0, 0)
 VehicleDrivingExt.SPECIAL_OBJECTIVE_TYPE_DRIVING = "special_objective_type_driving"
 VehicleDrivingExt.SPECIAL_LOOT_GERMAN_SPY_CARRY_ID = "german_spy"
-VehicleDrivingExt.init = function (self, unit)
+function VehicleDrivingExt:init(unit)
 	self._unit = unit
 	slot7 = "vehicle_driving"
 
@@ -185,7 +185,7 @@ VehicleDrivingExt.init = function (self, unit)
 
 	return 
 end
-VehicleDrivingExt._setup_sound = function (self)
+function VehicleDrivingExt:_setup_sound()
 	self._playing_slip_sound_dt = 0
 	self._playing_reverse_sound_dt = 0
 	self._playing_engine_sound = false
@@ -263,7 +263,7 @@ VehicleDrivingExt._setup_sound = function (self)
 
 	return 
 end
-VehicleDrivingExt._setup_states = function (self)
+function VehicleDrivingExt:_setup_states()
 	local unit = self._unit
 	slot6 = unit
 	slot6 = unit
@@ -288,10 +288,10 @@ VehicleDrivingExt._setup_states = function (self)
 
 	return 
 end
-VehicleDrivingExt.get_tweak_data = function (self)
+function VehicleDrivingExt:get_tweak_data()
 	return self._tweak_data
 end
-VehicleDrivingExt.set_tweak_data = function (self, data)
+function VehicleDrivingExt:set_tweak_data(data)
 	self._tweak_data = data
 	slot4 = self._tweak_data.seats
 	self._seats = deep_clone(slot3)
@@ -392,7 +392,7 @@ VehicleDrivingExt.set_tweak_data = function (self, data)
 
 	return 
 end
-VehicleDrivingExt.set_skin = function (self, skin_name)
+function VehicleDrivingExt:set_skin(skin_name)
 	slot4 = self._unit
 	slot5 = skin_name
 
@@ -402,10 +402,10 @@ VehicleDrivingExt.set_skin = function (self, skin_name)
 
 	return 
 end
-VehicleDrivingExt.get_view = function (self)
+function VehicleDrivingExt:get_view()
 	return self._vehicle_view
 end
-VehicleDrivingExt.update = function (self, unit, t, dt)
+function VehicleDrivingExt:update(unit, t, dt)
 
 	-- Decompilation error in this vicinity:
 	slot6 = self._unit
@@ -479,7 +479,7 @@ VehicleDrivingExt.update = function (self, unit, t, dt)
 
 	return 
 end
-VehicleDrivingExt._create_position_reservation = function (self)
+function VehicleDrivingExt:_create_position_reservation()
 	slot3 = managers.navigation
 	self._pos_reservation_id = managers.navigation.get_pos_reservation_id(slot2)
 
@@ -502,7 +502,7 @@ VehicleDrivingExt._create_position_reservation = function (self)
 
 	return 
 end
-VehicleDrivingExt._manage_position_reservation = function (self)
+function VehicleDrivingExt:_manage_position_reservation()
 	if not self._pos_reservation_id and managers.navigation then
 		slot3 = managers.navigation
 
@@ -535,7 +535,7 @@ VehicleDrivingExt._manage_position_reservation = function (self)
 
 	return 
 end
-VehicleDrivingExt._delete_position_reservation = function (self)
+function VehicleDrivingExt:_delete_position_reservation()
 	slot4 = "[VehicleDrivingExt][_delete_position_reservation] "
 
 	Application.trace(slot2, Application)
@@ -555,12 +555,12 @@ VehicleDrivingExt._delete_position_reservation = function (self)
 
 	return 
 end
-VehicleDrivingExt.get_action_for_interaction = function (self, pos, locator)
+function VehicleDrivingExt:get_action_for_interaction(pos, locator)
 	slot8 = self._tweak_data
 
 	return self._current_state.get_action_for_interaction(slot4, self._current_state, pos, locator)
 end
-VehicleDrivingExt.set_interaction_allowed = function (self, allowed)
+function VehicleDrivingExt:set_interaction_allowed(allowed)
 	self._interaction_allowed = allowed
 	slot4 = self._current_state
 
@@ -568,10 +568,10 @@ VehicleDrivingExt.set_interaction_allowed = function (self, allowed)
 
 	return 
 end
-VehicleDrivingExt.is_interaction_allowed = function (self)
+function VehicleDrivingExt:is_interaction_allowed()
 	return self._interaction_allowed
 end
-VehicleDrivingExt.is_interaction_enabled = function (self, action)
+function VehicleDrivingExt:is_interaction_enabled(action)
 	slot4 = self
 
 	if not self.is_interaction_allowed(slot3) then
@@ -595,7 +595,7 @@ VehicleDrivingExt.is_interaction_enabled = function (self, action)
 
 	return result
 end
-VehicleDrivingExt.set_state = function (self, name, do_not_sync)
+function VehicleDrivingExt:set_state(name, do_not_sync)
 	if name == self._current_state_name or self._current_state_name == VehicleDrivingExt.STATE_SECURED then
 		return 
 	end
@@ -643,17 +643,17 @@ VehicleDrivingExt.set_state = function (self, name, do_not_sync)
 
 	return 
 end
-VehicleDrivingExt.get_state_name = function (self)
+function VehicleDrivingExt:get_state_name()
 	return self._current_state_name
 end
-VehicleDrivingExt.lock = function (self)
+function VehicleDrivingExt:lock()
 	slot4 = VehicleDrivingExt.STATE_LOCKED
 
 	self.set_state(slot2, self)
 
 	return 
 end
-VehicleDrivingExt.unlock = function (self)
+function VehicleDrivingExt:unlock()
 	slot3 = self._vehicle
 
 	if not self._vehicle.is_active(slot2) then
@@ -668,7 +668,7 @@ VehicleDrivingExt.unlock = function (self)
 
 	return 
 end
-VehicleDrivingExt.secure = function (self)
+function VehicleDrivingExt:secure()
 	local carry_ext = self._unit.carry_data(slot2)
 	slot4 = Network
 
@@ -687,7 +687,7 @@ VehicleDrivingExt.secure = function (self)
 
 	return 
 end
-VehicleDrivingExt.break_down = function (self)
+function VehicleDrivingExt:break_down()
 	slot3 = self._unit
 	slot4 = 100000
 
@@ -699,7 +699,7 @@ VehicleDrivingExt.break_down = function (self)
 
 	return 
 end
-VehicleDrivingExt.damage = function (self, damage)
+function VehicleDrivingExt:damage(damage)
 	slot4 = self._unit
 	slot5 = damage
 
@@ -707,7 +707,7 @@ VehicleDrivingExt.damage = function (self, damage)
 
 	return 
 end
-VehicleDrivingExt.activate = function (self)
+function VehicleDrivingExt:activate()
 	slot3 = self
 
 	if 0 < self.num_players_inside(slot2) then
@@ -722,21 +722,21 @@ VehicleDrivingExt.activate = function (self)
 
 	return 
 end
-VehicleDrivingExt.deactivate = function (self)
+function VehicleDrivingExt:deactivate()
 	slot4 = VehicleDrivingExt.STATE_FROZEN
 
 	self.set_state(slot2, self)
 
 	return 
 end
-VehicleDrivingExt.block = function (self)
+function VehicleDrivingExt:block()
 	slot4 = VehicleDrivingExt.STATE_BLOCKED
 
 	self.set_state(slot2, self)
 
 	return 
 end
-VehicleDrivingExt.add_loot = function (self, carry_id, multiplier)
+function VehicleDrivingExt:add_loot(carry_id, multiplier)
 	if not carry_id or carry_id == "" then
 		return false
 	end
@@ -786,7 +786,7 @@ VehicleDrivingExt.add_loot = function (self, carry_id, multiplier)
 
 	return 
 end
-VehicleDrivingExt.sync_loot = function (self, carry_id, multiplier)
+function VehicleDrivingExt:sync_loot(carry_id, multiplier)
 	if not carry_id or carry_id == "" then
 		return false
 	end
@@ -834,7 +834,7 @@ VehicleDrivingExt.sync_loot = function (self, carry_id, multiplier)
 
 	return 
 end
-VehicleDrivingExt.remove_loot = function (self, carry_id, multiplier)
+function VehicleDrivingExt:remove_loot(carry_id, multiplier)
 	if not carry_id or carry_id == "" then
 		return false
 	end
@@ -891,31 +891,31 @@ VehicleDrivingExt.remove_loot = function (self, carry_id, multiplier)
 
 	return false
 end
-VehicleDrivingExt.get_random_loot = function (self)
+function VehicleDrivingExt:get_random_loot()
 	slot3 = #self._loot
 	local entry = math.random(slot2)
 
 	return entry
 end
-VehicleDrivingExt.get_loot = function (self)
+function VehicleDrivingExt:get_loot()
 	return self._loot
 end
-VehicleDrivingExt.get_current_loot_amount = function (self)
+function VehicleDrivingExt:get_current_loot_amount()
 	local entry = #self._loot
 
 	return entry
 end
-VehicleDrivingExt.get_max_loot = function (self)
+function VehicleDrivingExt:get_max_loot()
 	return self._max_loot or self._tweak_data.max_loot_bags
 end
-VehicleDrivingExt.has_loot_stored = function (self)
+function VehicleDrivingExt:has_loot_stored()
 	if self._loot and 0 < #self._loot then
 		return true
 	end
 
 	return false
 end
-VehicleDrivingExt.give_vehicle_loot_to_player = function (self, peer_id)
+function VehicleDrivingExt:give_vehicle_loot_to_player(peer_id)
 	slot4 = Network
 
 	if Network.is_server(slot3) then
@@ -931,7 +931,7 @@ VehicleDrivingExt.give_vehicle_loot_to_player = function (self, peer_id)
 
 	return 
 end
-VehicleDrivingExt.server_give_vehicle_loot_to_player = function (self, peer_id)
+function VehicleDrivingExt:server_give_vehicle_loot_to_player(peer_id)
 	slot5 = self
 	local loot = self._loot[self.get_current_loot_amount(slot4)]
 
@@ -948,7 +948,7 @@ VehicleDrivingExt.server_give_vehicle_loot_to_player = function (self, peer_id)
 
 	return 
 end
-VehicleDrivingExt.sync_give_vehicle_loot_to_player = function (self, carry_id, multiplier, peer_id)
+function VehicleDrivingExt:sync_give_vehicle_loot_to_player(carry_id, multiplier, peer_id)
 	slot8 = multiplier
 
 	if not self.remove_loot(slot5, self, carry_id) then
@@ -971,7 +971,7 @@ VehicleDrivingExt.sync_give_vehicle_loot_to_player = function (self, carry_id, m
 
 	return 
 end
-VehicleDrivingExt.drop_loot = function (self)
+function VehicleDrivingExt:drop_loot()
 	slot3 = self
 
 	if not self._should_drop_loot(slot2) then
@@ -1010,10 +1010,10 @@ VehicleDrivingExt.drop_loot = function (self)
 
 	return 
 end
-VehicleDrivingExt._should_drop_loot = function (self)
+function VehicleDrivingExt:_should_drop_loot()
 	return false
 end
-VehicleDrivingExt._store_loot = function (self, unit)
+function VehicleDrivingExt:_store_loot(unit)
 	if self._tweak_data and self._tweak_data.max_loot_bags <= #self._loot then
 		return 
 	end
@@ -1033,7 +1033,7 @@ VehicleDrivingExt._store_loot = function (self, unit)
 
 	return 
 end
-VehicleDrivingExt.server_store_loot_in_vehicle = function (self, unit)
+function VehicleDrivingExt:server_store_loot_in_vehicle(unit)
 	local carry_ext = unit.carry_data(slot3)
 	local carry_id = carry_ext.carry_id(unit)
 	local multiplier = carry_ext.multiplier(carry_ext)
@@ -1048,7 +1048,7 @@ VehicleDrivingExt.server_store_loot_in_vehicle = function (self, unit)
 
 	return 
 end
-VehicleDrivingExt.sync_store_loot_in_vehicle = function (self, unit, carry_id, multiplier)
+function VehicleDrivingExt:sync_store_loot_in_vehicle(unit, carry_id, multiplier)
 	local carry_ext = unit.carry_data(slot5)
 	slot7 = carry_ext
 
@@ -1078,7 +1078,7 @@ VehicleDrivingExt.sync_store_loot_in_vehicle = function (self, unit, carry_id, m
 
 	return 
 end
-VehicleDrivingExt._loot_filter_func = function (self, carry_data)
+function VehicleDrivingExt:_loot_filter_func(carry_data)
 	slot4 = carry_data
 	local carry_id = carry_data.carry_id(slot3)
 
@@ -1094,7 +1094,7 @@ VehicleDrivingExt._loot_filter_func = function (self, carry_data)
 
 	return false
 end
-VehicleDrivingExt._catch_loot = function (self)
+function VehicleDrivingExt:_catch_loot()
 	slot3 = self
 
 	if not self.is_accepting_loot_enabled(slot2) then
@@ -1135,7 +1135,7 @@ VehicleDrivingExt._catch_loot = function (self)
 
 	return 
 end
-VehicleDrivingExt.get_nearest_loot_point = function (self, pos)
+function VehicleDrivingExt:get_nearest_loot_point(pos)
 	local nearest_loot_point = nil
 	local min_distance = 1e+20
 	slot6 = self._loot_points
@@ -1155,7 +1155,7 @@ VehicleDrivingExt.get_nearest_loot_point = function (self, pos)
 
 	return nearest_loot_point, min_distance
 end
-VehicleDrivingExt.loot_contains_german_spy = function (self)
+function VehicleDrivingExt:loot_contains_german_spy()
 	if self._loot then
 		slot3 = self._loot
 
@@ -1168,7 +1168,7 @@ VehicleDrivingExt.loot_contains_german_spy = function (self)
 
 	return false
 end
-VehicleDrivingExt.interact_trunk = function (self)
+function VehicleDrivingExt:interact_trunk()
 	local vehicle = self._unit
 	slot4 = managers.network
 	slot4 = managers.network.session(slot3)
@@ -1184,7 +1184,7 @@ VehicleDrivingExt.interact_trunk = function (self)
 
 	return 
 end
-VehicleDrivingExt._interact_trunk = function (self, vehicle)
+function VehicleDrivingExt:_interact_trunk(vehicle)
 	slot4 = vehicle
 	local driving_ext = vehicle.vehicle_driving(slot3)
 
@@ -1208,7 +1208,7 @@ VehicleDrivingExt._interact_trunk = function (self, vehicle)
 
 	return 
 end
-VehicleDrivingExt.enable_loot_interaction = function (self)
+function VehicleDrivingExt:enable_loot_interaction()
 	slot3 = Network
 
 	if Network.is_server(slot2) then
@@ -1222,7 +1222,7 @@ VehicleDrivingExt.enable_loot_interaction = function (self)
 
 	return 
 end
-VehicleDrivingExt.disable_loot_interaction = function (self)
+function VehicleDrivingExt:disable_loot_interaction()
 	slot3 = Network
 
 	if Network.is_server(slot2) then
@@ -1236,10 +1236,10 @@ VehicleDrivingExt.disable_loot_interaction = function (self)
 
 	return 
 end
-VehicleDrivingExt.is_loot_interaction_enabled = function (self)
+function VehicleDrivingExt:is_loot_interaction_enabled()
 	return self._loot_interaction_enabled
 end
-VehicleDrivingExt.enable_accepting_loot = function (self)
+function VehicleDrivingExt:enable_accepting_loot()
 	slot4 = "[VehicleDrivingExt][enable_accepting_loot] Accepting loot enabled"
 
 	Application.trace(slot2, Application)
@@ -1257,7 +1257,7 @@ VehicleDrivingExt.enable_accepting_loot = function (self)
 
 	return 
 end
-VehicleDrivingExt.disable_accepting_loot = function (self)
+function VehicleDrivingExt:disable_accepting_loot()
 	slot4 = "[VehicleDrivingExt][enable_accepting_loot] Accepting loot disabled"
 
 	Application.trace(slot2, Application)
@@ -1275,10 +1275,10 @@ VehicleDrivingExt.disable_accepting_loot = function (self)
 
 	return 
 end
-VehicleDrivingExt.is_accepting_loot_enabled = function (self)
+function VehicleDrivingExt:is_accepting_loot_enabled()
 	return self._accepting_loot_enabled
 end
-VehicleDrivingExt.enter_vehicle = function (self, player)
+function VehicleDrivingExt:enter_vehicle(player)
 	slot5 = player
 	local seat = self.find_seat_for_player(slot3, self)
 
@@ -1288,7 +1288,7 @@ VehicleDrivingExt.enter_vehicle = function (self, player)
 
 	return 
 end
-VehicleDrivingExt.is_player_in_vehicle = function (self)
+function VehicleDrivingExt:is_player_in_vehicle()
 	slot3 = self._seats
 
 	for _, seat in pairs(slot2) do
@@ -1305,7 +1305,7 @@ VehicleDrivingExt.is_player_in_vehicle = function (self)
 
 	return 
 end
-VehicleDrivingExt.reserve_seat = function (self, player, position, seat_name)
+function VehicleDrivingExt:reserve_seat(player, position, seat_name)
 	local seat = nil
 
 	if position then
@@ -1372,7 +1372,7 @@ VehicleDrivingExt.reserve_seat = function (self, player, position, seat_name)
 
 	return seat
 end
-VehicleDrivingExt.place_player_on_seat = function (self, player, seat_name, move, previous_seat)
+function VehicleDrivingExt:place_player_on_seat(player, seat_name, move, previous_seat)
 	local number_of_seats = 0
 	slot8 = self._seats
 
@@ -1472,7 +1472,7 @@ VehicleDrivingExt.place_player_on_seat = function (self, player, seat_name, move
 
 	return 
 end
-VehicleDrivingExt._activate_seat_sound_environment = function (self, seat, previous_seat)
+function VehicleDrivingExt:_activate_seat_sound_environment(seat, previous_seat)
 	slot5 = self._unit
 	local sound_source = self._unit.sound_source(slot4)
 	local same_environment = previous_seat and seat.sound_environment_start and previous_seat.sound_environment_start and seat.sound_environment_start == previous_seat.sound_environment_start
@@ -1500,7 +1500,7 @@ VehicleDrivingExt._activate_seat_sound_environment = function (self, seat, previ
 
 	return 
 end
-VehicleDrivingExt._stop_seat_sound_environment = function (self)
+function VehicleDrivingExt:_stop_seat_sound_environment()
 	slot3 = self
 	slot6 = managers.player
 	local seat = self.find_seat_for_player(slot2, managers.player.local_player(slot5))
@@ -1518,7 +1518,7 @@ VehicleDrivingExt._stop_seat_sound_environment = function (self)
 
 	return 
 end
-VehicleDrivingExt.move_player_to_seat = function (self, player, new_player_seat, previous_seat, previous_occupant)
+function VehicleDrivingExt:move_player_to_seat(player, new_player_seat, previous_seat, previous_occupant)
 	if previous_occupant then
 		slot10 = previous_occupant
 
@@ -1546,7 +1546,7 @@ VehicleDrivingExt.move_player_to_seat = function (self, player, new_player_seat,
 
 	return 
 end
-VehicleDrivingExt.find_empty_seat = function (self)
+function VehicleDrivingExt:find_empty_seat()
 	slot3 = self._seats
 
 	for name, seat in pairs(slot2) do
@@ -1557,7 +1557,7 @@ VehicleDrivingExt.find_empty_seat = function (self)
 
 	return 
 end
-VehicleDrivingExt._move_ai_to_seat = function (self, from_seat, to_seat, previous_occupant)
+function VehicleDrivingExt:_move_ai_to_seat(from_seat, to_seat, previous_occupant)
 	local ai_unit = previous_occupant
 	slot7 = ai_unit
 
@@ -1603,19 +1603,19 @@ VehicleDrivingExt._move_ai_to_seat = function (self, from_seat, to_seat, previou
 
 	return 
 end
-VehicleDrivingExt.allow_exit = function (self)
+function VehicleDrivingExt:allow_exit()
 	slot3 = self._current_state
 
 	return self._current_state.allow_exit(slot2)
 end
-VehicleDrivingExt.kick = function (self)
+function VehicleDrivingExt:kick()
 	slot4 = "standard"
 
 	managers.player.set_player_state(slot2, managers.player)
 
 	return 
 end
-VehicleDrivingExt.exit_vehicle = function (self, player)
+function VehicleDrivingExt:exit_vehicle(player)
 	slot5 = player
 	local seat = self.find_seat_for_player(slot3, self)
 
@@ -1652,7 +1652,7 @@ VehicleDrivingExt.exit_vehicle = function (self, player)
 
 	return 
 end
-VehicleDrivingExt._evacuate_vehicle = function (self)
+function VehicleDrivingExt:_evacuate_vehicle()
 	slot3 = self._seats
 
 	for _, seat in pairs(slot2) do
@@ -1679,7 +1679,7 @@ VehicleDrivingExt._evacuate_vehicle = function (self)
 
 	return 
 end
-VehicleDrivingExt._evacuate_seat = function (self, seat)
+function VehicleDrivingExt:_evacuate_seat(seat)
 	slot4 = seat.occupant
 
 	seat.occupant.unlink(slot3)
@@ -1723,7 +1723,7 @@ VehicleDrivingExt._evacuate_seat = function (self, seat)
 
 	return 
 end
-VehicleDrivingExt.find_exit_position = function (self, player)
+function VehicleDrivingExt:find_exit_position(player)
 	slot5 = player
 	local seat = self.find_seat_for_player(slot3, self)
 	slot5 = self._unit
@@ -1813,7 +1813,7 @@ VehicleDrivingExt.find_exit_position = function (self, player)
 
 	return result
 end
-VehicleDrivingExt.get_object_placement = function (self, player)
+function VehicleDrivingExt:get_object_placement(player)
 	slot5 = player
 	local seat = self.find_seat_for_player(slot3, self)
 
@@ -1832,7 +1832,7 @@ VehicleDrivingExt.get_object_placement = function (self, player)
 
 	return nil, nil
 end
-VehicleDrivingExt.get_available_seat = function (self, position)
+function VehicleDrivingExt:get_available_seat(position)
 	local nearest_seat = nil
 	local min_distance = 1e+20
 	local min_seat_distance = 1e+20
@@ -1890,7 +1890,7 @@ VehicleDrivingExt.get_available_seat = function (self, position)
 
 	return nearest_seat, min_distance
 end
-VehicleDrivingExt.has_driving_seat = function (self)
+function VehicleDrivingExt:has_driving_seat()
 	slot3 = self._seats
 
 	for _, seat in pairs(slot2) do
@@ -1901,7 +1901,7 @@ VehicleDrivingExt.has_driving_seat = function (self)
 
 	return false
 end
-VehicleDrivingExt.get_next_seat = function (self, player)
+function VehicleDrivingExt:get_next_seat(player)
 	slot5 = player
 	local seat = self.find_seat_for_player(slot3, self)
 	local next_seat = self._seats[seat.next_seat]
@@ -1920,7 +1920,7 @@ VehicleDrivingExt.get_next_seat = function (self, player)
 
 	return nil
 end
-VehicleDrivingExt.find_seat_for_player = function (self, player)
+function VehicleDrivingExt:find_seat_for_player(player)
 	slot4 = self._seats
 
 	for _, seat in pairs(slot3) do
@@ -1933,7 +1933,7 @@ VehicleDrivingExt.find_seat_for_player = function (self, player)
 
 	return nil
 end
-VehicleDrivingExt.num_players_inside = function (self)
+function VehicleDrivingExt:num_players_inside()
 	local num_players = 0
 	slot4 = self._seats
 
@@ -1951,7 +1951,7 @@ VehicleDrivingExt.num_players_inside = function (self)
 
 	return num_players
 end
-VehicleDrivingExt.on_team_ai_enter = function (self, ai_unit)
+function VehicleDrivingExt:on_team_ai_enter(ai_unit)
 	slot4 = ai_unit
 	local original_seat = ai_unit.movement(slot3).vehicle_seat
 	local target_seat = original_seat
@@ -2046,10 +2046,10 @@ VehicleDrivingExt.on_team_ai_enter = function (self, ai_unit)
 
 	return 
 end
-VehicleDrivingExt.seats = function (self)
+function VehicleDrivingExt:seats()
 	return self._seats
 end
-VehicleDrivingExt.get_seat_data_by_seat_name = function (self, seat_name)
+function VehicleDrivingExt:get_seat_data_by_seat_name(seat_name)
 	if self._seats then
 		slot4 = self._seats
 
@@ -2064,7 +2064,7 @@ VehicleDrivingExt.get_seat_data_by_seat_name = function (self, seat_name)
 
 	return nil
 end
-VehicleDrivingExt.sync_occupant = function (self, seat, occupant)
+function VehicleDrivingExt:sync_occupant(seat, occupant)
 	slot8 = VehicleDrivingExt.SEAT_PREFIX .. seat.name
 
 	self._unit.link(slot4, self._unit, Idstring(occupant))
@@ -2080,14 +2080,14 @@ VehicleDrivingExt.sync_occupant = function (self, seat, occupant)
 
 	return 
 end
-VehicleDrivingExt.on_vehicle_death = function (self)
+function VehicleDrivingExt:on_vehicle_death()
 	slot4 = VehicleDrivingExt.STATE_BROKEN
 
 	self.set_state(slot2, self)
 
 	return 
 end
-VehicleDrivingExt.repair_vehicle = function (self)
+function VehicleDrivingExt:repair_vehicle()
 	slot4 = VehicleDrivingExt.STATE_PARKED
 
 	self.set_state(slot2, self)
@@ -2099,12 +2099,12 @@ VehicleDrivingExt.repair_vehicle = function (self)
 
 	return 
 end
-VehicleDrivingExt.is_vulnerable = function (self)
+function VehicleDrivingExt:is_vulnerable()
 	slot3 = self._current_state
 
 	return self._current_state.is_vulnerable(slot2)
 end
-VehicleDrivingExt.start = function (self, player)
+function VehicleDrivingExt:start(player)
 	slot7 = "vehicle_driving"
 
 	self._unit.set_extension_update_enabled(slot3, self._unit, Idstring(true))
@@ -2124,14 +2124,14 @@ VehicleDrivingExt.start = function (self, player)
 
 	return 
 end
-VehicleDrivingExt.sync_start = function (self, player)
+function VehicleDrivingExt:sync_start(player)
 	slot5 = player
 
 	self._start(slot3, self)
 
 	return 
 end
-VehicleDrivingExt._start = function (self, player)
+function VehicleDrivingExt:_start(player)
 	slot5 = player
 	local seat = self.find_seat_for_player(slot3, self)
 
@@ -2145,7 +2145,7 @@ VehicleDrivingExt._start = function (self, player)
 
 	return 
 end
-VehicleDrivingExt.activate_vehicle = function (self)
+function VehicleDrivingExt:activate_vehicle()
 	slot3 = self._vehicle
 
 	if not self._vehicle.is_active(slot2) then
@@ -2173,7 +2173,7 @@ VehicleDrivingExt.activate_vehicle = function (self)
 
 	return 
 end
-VehicleDrivingExt.stop = function (self)
+function VehicleDrivingExt:stop()
 	slot3 = self
 
 	self._stop(slot2)
@@ -2189,14 +2189,14 @@ VehicleDrivingExt.stop = function (self)
 
 	return 
 end
-VehicleDrivingExt.sync_stop = function (self)
+function VehicleDrivingExt:sync_stop()
 	slot3 = self
 
 	self._stop(slot2)
 
 	return 
 end
-VehicleDrivingExt._stop = function (self, do_not_sync_state)
+function VehicleDrivingExt:_stop(do_not_sync_state)
 	slot4 = "[DRIVING] VehicleDrivingExt: _stop()"
 
 	print(slot3)
@@ -2221,7 +2221,7 @@ VehicleDrivingExt._stop = function (self, do_not_sync_state)
 
 	return 
 end
-VehicleDrivingExt.set_input = function (self, accelerate, steer, brake, handbrake, gear_up, gear_down, forced_gear, dt, y_axis)
+function VehicleDrivingExt:set_input(accelerate, steer, brake, handbrake, gear_up, gear_down, forced_gear, dt, y_axis)
 	slot12 = self._current_state
 
 	if self._current_state.stop_vehicle(slot11) then
@@ -2264,28 +2264,28 @@ VehicleDrivingExt.set_input = function (self, accelerate, steer, brake, handbrak
 
 	return 
 end
-VehicleDrivingExt.sync_set_input = function (self, accelerate, steer, brake, handbrake, gear_up, gear_down, forced_gear)
+function VehicleDrivingExt:sync_set_input(accelerate, steer, brake, handbrake, gear_up, gear_down, forced_gear)
 	slot17 = forced_gear
 
 	self._set_input(slot9, self, accelerate, steer, brake, handbrake, gear_up, gear_down)
 
 	return 
 end
-VehicleDrivingExt.sync_state = function (self, position, rotation, velocity)
+function VehicleDrivingExt:sync_state(position, rotation, velocity)
 	slot9 = velocity
 
 	self._vehicle.adjust_vehicle_state(slot5, self._vehicle, position, rotation)
 
 	return 
 end
-VehicleDrivingExt.sync_vehicle_state = function (self, new_state)
+function VehicleDrivingExt:sync_vehicle_state(new_state)
 	slot6 = true
 
 	self.set_state(slot3, self, new_state)
 
 	return 
 end
-VehicleDrivingExt._set_input = function (self, accelerate, steer, brake, handbrake, gear_up, gear_down, forced_gear)
+function VehicleDrivingExt:_set_input(accelerate, steer, brake, handbrake, gear_up, gear_down, forced_gear)
 	local gear_shift = 0
 
 	if gear_up then
@@ -2302,7 +2302,7 @@ VehicleDrivingExt._set_input = function (self, accelerate, steer, brake, handbra
 
 	return 
 end
-VehicleDrivingExt._wake_nearby_dynamics = function (self)
+function VehicleDrivingExt:_wake_nearby_dynamics()
 	slot4 = 1
 	local slotmask = World.make_slot_mask(slot2, World)
 	slot8 = self._vehicle
@@ -2328,7 +2328,7 @@ VehicleDrivingExt._wake_nearby_dynamics = function (self)
 
 	return 
 end
-VehicleDrivingExt._should_push = function (self, unit)
+function VehicleDrivingExt:_should_push(unit)
 	slot4 = self._seats
 
 	for _, seat in pairs(slot3) do
@@ -2339,7 +2339,7 @@ VehicleDrivingExt._should_push = function (self, unit)
 
 	return true
 end
-VehicleDrivingExt._detect_npc_collisions = function (self)
+function VehicleDrivingExt:_detect_npc_collisions()
 	local vel = self._vehicle.velocity(slot2)
 	slot4 = vel
 
@@ -2462,7 +2462,7 @@ VehicleDrivingExt._detect_npc_collisions = function (self)
 
 	return 
 end
-VehicleDrivingExt._detect_collisions = function (self, t, dt)
+function VehicleDrivingExt:_detect_collisions(t, dt)
 	slot5 = self._vehicle
 	local current_speed = self._vehicle.velocity(slot4)
 
@@ -2520,7 +2520,7 @@ VehicleDrivingExt._detect_collisions = function (self, t, dt)
 
 	return 
 end
-VehicleDrivingExt._detect_invalid_possition = function (self, t, dt)
+function VehicleDrivingExt:_detect_invalid_possition(t, dt)
 	local respawn = false
 	local rot = self._vehicle.rotation(slot5)
 	slot7 = rot
@@ -2610,7 +2610,7 @@ VehicleDrivingExt._detect_invalid_possition = function (self, t, dt)
 
 	return 
 end
-VehicleDrivingExt.respawn_vehicle = function (self, auto_respawn)
+function VehicleDrivingExt:respawn_vehicle(auto_respawn)
 	self.respawn_available = false
 
 	if auto_respawn then
@@ -2663,7 +2663,7 @@ VehicleDrivingExt.respawn_vehicle = function (self, auto_respawn)
 
 	return 
 end
-VehicleDrivingExt._check_respawn_spot_valid = function (self, counter)
+function VehicleDrivingExt:_check_respawn_spot_valid(counter)
 	local oobb = self._positions[counter].oobb
 	slot6 = "all"
 	local slotmask = managers.slot.get_mask(slot4, managers.slot)
@@ -2679,7 +2679,7 @@ VehicleDrivingExt._check_respawn_spot_valid = function (self, counter)
 
 	return 
 end
-VehicleDrivingExt._play_sound_events = function (self, t, dt)
+function VehicleDrivingExt:_play_sound_events(t, dt)
 	slot5 = self._vehicle
 	local state = self._vehicle.get_state(slot4)
 	local slip = false
@@ -2807,7 +2807,7 @@ VehicleDrivingExt._play_sound_events = function (self, t, dt)
 
 	return 
 end
-VehicleDrivingExt._start_engine_sound = function (self)
+function VehicleDrivingExt:_start_engine_sound()
 	if not self._playing_engine_sound and self._engine_soundsource then
 		self._playing_engine_sound = true
 
@@ -2846,7 +2846,7 @@ VehicleDrivingExt._start_engine_sound = function (self)
 
 	return 
 end
-VehicleDrivingExt._stop_engine_sound = function (self)
+function VehicleDrivingExt:_stop_engine_sound()
 	if self._playing_engine_sound and self._engine_soundsource then
 		if self._tweak_data.sound.engine_stop then
 			slot4 = self._tweak_data.sound.engine_stop
@@ -2863,7 +2863,7 @@ VehicleDrivingExt._stop_engine_sound = function (self)
 
 	return 
 end
-VehicleDrivingExt._start_broken_engine_sound = function (self)
+function VehicleDrivingExt:_start_broken_engine_sound()
 	if not self._playing_engine_sound and self._engine_soundsource and self._tweak_data.sound.broken_engine then
 		slot4 = self._tweak_data.sound.broken_engine
 
@@ -2874,7 +2874,7 @@ VehicleDrivingExt._start_broken_engine_sound = function (self)
 
 	return 
 end
-VehicleDrivingExt._play_engine_sound = function (self, state)
+function VehicleDrivingExt:_play_engine_sound(state)
 	local speed = state.get_speed(slot3) * 3.6
 	slot5 = state
 	local rpm = state.get_rpm(state)
@@ -2913,7 +2913,7 @@ VehicleDrivingExt._play_engine_sound = function (self, state)
 
 	return 
 end
-VehicleDrivingExt.play_horn_sound = function (self)
+function VehicleDrivingExt:play_horn_sound()
 	if self._tweak_data.sound.horn_start then
 		slot3 = self._unit
 		slot4 = self._tweak_data.sound.horn_start
@@ -2923,7 +2923,7 @@ VehicleDrivingExt.play_horn_sound = function (self)
 
 	return 
 end
-VehicleDrivingExt.stop_horn_sound = function (self)
+function VehicleDrivingExt:stop_horn_sound()
 	if self._tweak_data.sound.horn_stop then
 		slot3 = self._unit
 		slot4 = self._tweak_data.sound.horn_stop
@@ -2933,7 +2933,7 @@ VehicleDrivingExt.stop_horn_sound = function (self)
 
 	return 
 end
-VehicleDrivingExt.stop_all_sound_events = function (self)
+function VehicleDrivingExt:stop_all_sound_events()
 	slot3 = self._hit_soundsource
 
 	self._hit_soundsource.stop(slot2)
@@ -2956,7 +2956,7 @@ VehicleDrivingExt.stop_all_sound_events = function (self)
 
 	return 
 end
-VehicleDrivingExt._unregister_drive_SO = function (self)
+function VehicleDrivingExt:_unregister_drive_SO()
 	slot3 = self._seats
 
 	for _, seat in pairs(slot2) do
@@ -2967,7 +2967,7 @@ VehicleDrivingExt._unregister_drive_SO = function (self)
 
 	return 
 end
-VehicleDrivingExt._unregister_drive_SO_seat = function (self, seat)
+function VehicleDrivingExt:_unregister_drive_SO_seat(seat)
 	if seat.drive_SO_data then
 		local SO_data = seat.drive_SO_data
 		seat.drive_SO_data = nil
@@ -2991,7 +2991,7 @@ VehicleDrivingExt._unregister_drive_SO_seat = function (self, seat)
 
 	return 
 end
-VehicleDrivingExt._chk_register_drive_SO = function (self)
+function VehicleDrivingExt:_chk_register_drive_SO()
 
 	-- Decompilation error in this vicinity:
 	slot3 = Network
@@ -3011,7 +3011,7 @@ VehicleDrivingExt._chk_register_drive_SO = function (self)
 
 	return 
 end
-VehicleDrivingExt._create_seat_SO = function (self, seat)
+function VehicleDrivingExt:_create_seat_SO(seat)
 	if seat.drive_SO_data then
 		return 
 	end
@@ -3098,10 +3098,10 @@ VehicleDrivingExt._create_seat_SO = function (self, seat)
 
 	return 
 end
-VehicleDrivingExt.clbk_drive_SO_verification = function (self, candidate_unit)
+function VehicleDrivingExt:clbk_drive_SO_verification(candidate_unit)
 	return true
 end
-VehicleDrivingExt.on_drive_SO_administered = function (self, seat, unit)
+function VehicleDrivingExt:on_drive_SO_administered(seat, unit)
 	slot5 = self._unit
 
 	if not alive(slot4) then
@@ -3127,10 +3127,10 @@ VehicleDrivingExt.on_drive_SO_administered = function (self, seat, unit)
 
 	return 
 end
-VehicleDrivingExt.on_drive_SO_started = function (self, seat, unit)
+function VehicleDrivingExt:on_drive_SO_started(seat, unit)
 	return 
 end
-VehicleDrivingExt.on_drive_SO_completed = function (self, seat, unit)
+function VehicleDrivingExt:on_drive_SO_completed(seat, unit)
 	slot5 = self._unit
 
 	if not alive(slot4) then
@@ -3143,7 +3143,7 @@ VehicleDrivingExt.on_drive_SO_completed = function (self, seat, unit)
 
 	return 
 end
-VehicleDrivingExt.on_drive_SO_failed = function (self, seat, unit)
+function VehicleDrivingExt:on_drive_SO_failed(seat, unit)
 	slot5 = self._unit
 
 	if not alive(slot4) then
@@ -3169,7 +3169,7 @@ VehicleDrivingExt.on_drive_SO_failed = function (self, seat, unit)
 
 	return 
 end
-VehicleDrivingExt._place_ai_on_seat = function (self, seat, unit)
+function VehicleDrivingExt:_place_ai_on_seat(seat, unit)
 	local rot = seat.third_object.rotation(slot4)
 	local pos = seat.third_object.position(seat.third_object)
 	slot8 = rot
@@ -3197,7 +3197,7 @@ VehicleDrivingExt._place_ai_on_seat = function (self, seat, unit)
 
 	return 
 end
-VehicleDrivingExt.sync_ai_vehicle_action = function (self, action, seat_name, unit)
+function VehicleDrivingExt:sync_ai_vehicle_action(action, seat_name, unit)
 	if action == "enter" then
 		slot6 = self._seats
 
@@ -3227,7 +3227,7 @@ VehicleDrivingExt.sync_ai_vehicle_action = function (self, action, seat_name, un
 
 	return 
 end
-VehicleDrivingExt.collision_callback = function (self, tag, unit, body, other_unit, other_body, position, normal, velocity, ...)
+function VehicleDrivingExt:collision_callback(tag, unit, body, other_unit, other_body, position, normal, velocity, ...)
 	if other_unit then
 		slot11 = other_unit
 	elseif other_unit then
@@ -3248,7 +3248,7 @@ VehicleDrivingExt.collision_callback = function (self, tag, unit, body, other_un
 
 	return 
 end
-VehicleDrivingExt.on_impact = function (self, ray, gforce, velocity)
+function VehicleDrivingExt:on_impact(ray, gforce, velocity)
 	if ray then
 		slot7 = ray.hit_position
 
@@ -3326,15 +3326,15 @@ VehicleDrivingExt.on_impact = function (self, ray, gforce, velocity)
 
 	return 
 end
-VehicleDrivingExt.shooting_stance_allowed = function (self)
+function VehicleDrivingExt:shooting_stance_allowed()
 	return self._shooting_stance_allowed
 end
-VehicleDrivingExt.shooting_stance_mandatory = function (self)
+function VehicleDrivingExt:shooting_stance_mandatory()
 	slot3 = self
 
 	return self.loot_contains_german_spy(slot2)
 end
-VehicleDrivingExt._number_in_the_vehicle = function (self)
+function VehicleDrivingExt:_number_in_the_vehicle()
 	local count = 0
 	slot4 = self._seats
 
@@ -3352,7 +3352,7 @@ VehicleDrivingExt._number_in_the_vehicle = function (self)
 
 	return count
 end
-VehicleDrivingExt.pre_destroy = function (self, unit)
+function VehicleDrivingExt:pre_destroy(unit)
 	slot4 = self
 
 	self._stop_seat_sound_environment(slot3)
@@ -3385,7 +3385,7 @@ VehicleDrivingExt.pre_destroy = function (self, unit)
 
 	return 
 end
-VehicleDrivingExt.destroy = function (self)
+function VehicleDrivingExt:destroy()
 	slot6 = self._unit
 	slot4 = self._unit.unit_data(slot5).name_label_id
 
@@ -3398,7 +3398,7 @@ VehicleDrivingExt.destroy = function (self)
 
 	return 
 end
-VehicleDrivingExt.save = function (self, data)
+function VehicleDrivingExt:save(data)
 	data.vehicle_driving = {
 		loot_interaction_enabled = self._loot_interaction_enabled,
 		accepting_loot_enabled = self._accepting_loot_enabled,
@@ -3407,7 +3407,7 @@ VehicleDrivingExt.save = function (self, data)
 
 	return 
 end
-VehicleDrivingExt.load = function (self, data)
+function VehicleDrivingExt:load(data)
 	if data.vehicle_driving and data.vehicle_driving.loot_interaction_enabled then
 		slot4 = self
 

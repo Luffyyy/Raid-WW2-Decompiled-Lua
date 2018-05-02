@@ -10,7 +10,7 @@ RaidGUIControlIntelImageDetails.BACKGROUND_SIZE_PERCENTAGE = 0.85
 RaidGUIControlIntelImageDetails.FOREGROUND_SIZE_PERCENTAGE = 0.92
 RaidGUIControlIntelImageDetails.SELECTOR_ICON = "ico_sel_rect_top_left"
 RaidGUIControlIntelImageDetails.PRESSED_SIZE = 0.97
-RaidGUIControlIntelImageDetails.init = function (self, parent, params)
+function RaidGUIControlIntelImageDetails:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlIntelImageDetails.super.init(slot4, self, parent)
@@ -26,7 +26,7 @@ RaidGUIControlIntelImageDetails.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlIntelImageDetails._create_panel = function (self)
+function RaidGUIControlIntelImageDetails:_create_panel()
 	slot3 = self._params
 	local panel_params = clone(slot2)
 	panel_params.name = panel_params.name .. "_panel"
@@ -46,7 +46,7 @@ RaidGUIControlIntelImageDetails._create_panel = function (self)
 
 	return 
 end
-RaidGUIControlIntelImageDetails._create_details = function (self)
+function RaidGUIControlIntelImageDetails:_create_details()
 	local intel_image_panel_params = {
 		name = "intel_image_panel",
 		h = 309,
@@ -160,7 +160,7 @@ RaidGUIControlIntelImageDetails._create_details = function (self)
 
 	return 
 end
-RaidGUIControlIntelImageDetails.set_image = function (self, photo, title_id, description_id, skip_animation)
+function RaidGUIControlIntelImageDetails:set_image(photo, title_id, description_id, skip_animation)
 	if skip_animation then
 		slot10 = description_id
 
@@ -180,7 +180,7 @@ RaidGUIControlIntelImageDetails.set_image = function (self, photo, title_id, des
 
 	return 
 end
-RaidGUIControlIntelImageDetails._set_image = function (self, photo, title_id, description_id)
+function RaidGUIControlIntelImageDetails:_set_image(photo, title_id, description_id)
 	slot7 = tweak_data.gui.mission_photos[photo].texture
 
 	self._intel_image.set_image(slot5, self._intel_image)
@@ -223,52 +223,52 @@ RaidGUIControlIntelImageDetails._set_image = function (self, photo, title_id, de
 
 	return 
 end
-RaidGUIControlIntelImageDetails.set_left = function (self, left)
+function RaidGUIControlIntelImageDetails:set_left(left)
 	slot5 = left
 
 	self._object.set_left(slot3, self._object)
 
 	return 
 end
-RaidGUIControlIntelImageDetails.set_right = function (self, right)
+function RaidGUIControlIntelImageDetails:set_right(right)
 	slot5 = right
 
 	self._object.set_right(slot3, self._object)
 
 	return 
 end
-RaidGUIControlIntelImageDetails.set_top = function (self, top)
+function RaidGUIControlIntelImageDetails:set_top(top)
 	slot5 = top
 
 	self._object.set_top(slot3, self._object)
 
 	return 
 end
-RaidGUIControlIntelImageDetails.set_bottom = function (self, bottom)
+function RaidGUIControlIntelImageDetails:set_bottom(bottom)
 	slot5 = bottom
 
 	self._object.set_bottom(slot3, self._object)
 
 	return 
 end
-RaidGUIControlIntelImageDetails.set_center_x = function (self, center_x)
+function RaidGUIControlIntelImageDetails:set_center_x(center_x)
 	slot5 = center_x
 
 	self._object.set_center_x(slot3, self._object)
 
 	return 
 end
-RaidGUIControlIntelImageDetails.set_center_y = function (self, center_y)
+function RaidGUIControlIntelImageDetails:set_center_y(center_y)
 	slot5 = center_y
 
 	self._object.set_center_y(slot3, self._object)
 
 	return 
 end
-RaidGUIControlIntelImageDetails.close = function (self)
+function RaidGUIControlIntelImageDetails:close()
 	return 
 end
-RaidGUIControlIntelImageDetails._animate_change_photo = function (self, control, photo, title_id, description_id)
+function RaidGUIControlIntelImageDetails:_animate_change_photo(control, photo, title_id, description_id)
 	local fade_out_duration = 0.05
 	local fade_in_duration = 0.15
 	slot9 = self._object

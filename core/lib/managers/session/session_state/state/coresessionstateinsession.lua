@@ -7,7 +7,7 @@ slot3 = "CoreSessionStateQuitSession"
 core.import(slot1, core)
 
 InSession = InSession or class()
-InSession.init = function (self, session)
+function InSession:init(session)
 	slot4 = session
 
 	assert(slot3)
@@ -28,7 +28,7 @@ InSession.init = function (self, session)
 
 	return 
 end
-InSession.destroy = function (self)
+function InSession:destroy()
 	slot3 = self.session_state
 	slot3 = self.session_state.player_slots(slot2)
 
@@ -36,7 +36,7 @@ InSession.destroy = function (self)
 
 	return 
 end
-InSession.transition = function (self)
+function InSession:transition()
 	if self._start_session then
 		return CoreSessionStateInSessionStart, self._session
 	end
@@ -49,7 +49,7 @@ InSession.transition = function (self)
 
 	return 
 end
-InSession.start_session = function (self)
+function InSession:start_session()
 	self._start_session = true
 
 	return 

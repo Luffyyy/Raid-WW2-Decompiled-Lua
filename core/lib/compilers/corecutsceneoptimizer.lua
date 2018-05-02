@@ -25,7 +25,7 @@ end
 
 CoreCutsceneOptimizer = slot0
 CoreCutsceneOptimizer.ANIMATION_BLOB_PART_DURATION = 5
-function CoreCutsceneOptimizer:init()
+CoreCutsceneOptimizer.init = function (self)
 	slot3 = self
 
 	self.super.init(slot2)
@@ -38,7 +38,7 @@ function CoreCutsceneOptimizer:init()
 
 	return 
 end
-function CoreCutsceneOptimizer:export_to_compile_destination(dest, optimized_cutscene_path)
+CoreCutsceneOptimizer.export_to_compile_destination = function (self, dest, optimized_cutscene_path)
 
 	-- Decompilation error in this vicinity:
 	slot5 = self
@@ -66,7 +66,7 @@ function CoreCutsceneOptimizer:export_to_compile_destination(dest, optimized_cut
 
 	return 
 end
-function CoreCutsceneOptimizer:compression_enabled(platform)
+CoreCutsceneOptimizer.compression_enabled = function (self, platform)
 	slot8 = platform
 	slot5 = "Unsupported platform \"" .. tostring(slot7) .. "\""
 
@@ -74,7 +74,7 @@ function CoreCutsceneOptimizer:compression_enabled(platform)
 
 	return self.__compression_enabled[platform]
 end
-function CoreCutsceneOptimizer:set_compression_enabled(platform, should_compress)
+CoreCutsceneOptimizer.set_compression_enabled = function (self, platform, should_compress)
 	slot9 = platform
 
 	assert(slot4, self.__compression_enabled[platform] ~= nil)
@@ -88,7 +88,7 @@ function CoreCutsceneOptimizer:set_compression_enabled(platform, should_compress
 
 	return 
 end
-function CoreCutsceneOptimizer:_write_cutscene_xml(path, animation_blobs)
+CoreCutsceneOptimizer._write_cutscene_xml = function (self, path, animation_blobs)
 	local cutscene_node = Node(slot4)
 	slot7 = "unit"
 
@@ -193,7 +193,7 @@ function CoreCutsceneOptimizer:_write_cutscene_xml(path, animation_blobs)
 
 	return 
 end
-function CoreCutsceneOptimizer:_add_unit_visibility_keys(keys_node)
+CoreCutsceneOptimizer._add_unit_visibility_keys = function (self, keys_node)
 	slot4 = self
 	local unit_names = self._all_controlled_unit_names(slot3)
 	local was_visible = {}
@@ -257,7 +257,7 @@ function CoreCutsceneOptimizer:_add_unit_visibility_keys(keys_node)
 
 	return 
 end
-function CoreCutsceneOptimizer:_add_discontinuity_keys(keys_node)
+CoreCutsceneOptimizer._add_discontinuity_keys = function (self, keys_node)
 	local previous_clip = nil
 	slot5 = self.__clips
 
@@ -269,7 +269,7 @@ function CoreCutsceneOptimizer:_add_discontinuity_keys(keys_node)
 
 	return 
 end
-function CoreCutsceneOptimizer:_write_cutscene_unit_xml(path)
+CoreCutsceneOptimizer._write_cutscene_unit_xml = function (self, path)
 	local unit_node = Node(slot3)
 	slot7 = "cutscene"
 
@@ -313,7 +313,7 @@ function CoreCutsceneOptimizer:_write_cutscene_unit_xml(path)
 
 	return 
 end
-function CoreCutsceneOptimizer:_create_merged_animation()
+CoreCutsceneOptimizer._create_merged_animation = function (self)
 	local unit_animation_map = {}
 	slot6 = self
 
@@ -341,7 +341,7 @@ function CoreCutsceneOptimizer:_create_merged_animation()
 
 	return merged_animation
 end
-function CoreCutsceneOptimizer:_write_animation_blobs(full_animation, dest, part_path_pattern)
+CoreCutsceneOptimizer._write_animation_blobs = function (self, full_animation, dest, part_path_pattern)
 	local animation_blob_names = {}
 	local default_settings = {
 		rotation_tolerance = 0.0025,
@@ -387,7 +387,7 @@ function CoreCutsceneOptimizer:_write_animation_blobs(full_animation, dest, part
 
 	return animation_blob_names
 end
-function CoreCutsceneOptimizer:_write_animation_part(dest, path, animation, compressed_animation)
+CoreCutsceneOptimizer._write_animation_part = function (self, dest, path, animation, compressed_animation)
 	local platforms_to_export = {}
 	local base_path = path
 	slot9 = self.__compression_enabled
@@ -422,7 +422,7 @@ function CoreCutsceneOptimizer:_write_animation_part(dest, path, animation, comp
 
 	return 
 end
-function CoreCutsceneOptimizer:_problem_map()
+CoreCutsceneOptimizer._problem_map = function (self)
 	slot3 = self
 	local problem_map = self.super._problem_map(slot2)
 

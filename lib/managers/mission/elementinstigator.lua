@@ -12,7 +12,7 @@ if not ElementInstigator then
 end
 
 ElementInstigator = slot0
-ElementInstigator.init = function (self, ...)
+function ElementInstigator:init(...)
 	slot3 = self
 
 	ElementInstigator.super.init(slot2, ...)
@@ -22,10 +22,10 @@ ElementInstigator.init = function (self, ...)
 
 	return 
 end
-ElementInstigator.client_on_executed = function (self, ...)
+function ElementInstigator:client_on_executed(...)
 	return 
 end
-ElementInstigator.on_executed = function (self, instigator)
+function ElementInstigator:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -40,7 +40,7 @@ ElementInstigator.on_executed = function (self, instigator)
 
 	return 
 end
-ElementInstigator.instigator_operation_set = function (self, instigator)
+function ElementInstigator:instigator_operation_set(instigator)
 	slot5 = instigator
 
 	if not self._is_valid_instigator(slot3, self) then
@@ -83,7 +83,7 @@ ElementInstigator.instigator_operation_set = function (self, instigator)
 
 	return 
 end
-ElementInstigator.instigator_operation_add_first = function (self, instigator)
+function ElementInstigator:instigator_operation_add_first(instigator)
 	slot5 = instigator
 
 	if not self._is_valid_instigator(slot3, self) then
@@ -125,7 +125,7 @@ ElementInstigator.instigator_operation_add_first = function (self, instigator)
 
 	return 
 end
-ElementInstigator.instigator_operation_add_last = function (self, instigator)
+function ElementInstigator:instigator_operation_add_last(instigator)
 	slot5 = instigator
 
 	if not self._is_valid_instigator(slot3, self) then
@@ -167,7 +167,7 @@ ElementInstigator.instigator_operation_add_last = function (self, instigator)
 
 	return 
 end
-ElementInstigator._is_valid_instigator = function (self, instigator)
+function ElementInstigator:_is_valid_instigator(instigator)
 
 	-- Decompilation error in this vicinity:
 	slot4 = instigator
@@ -194,7 +194,7 @@ ElementInstigator._is_valid_instigator = function (self, instigator)
 
 	return true
 end
-ElementInstigator.on_instigator_death = function (self, unit)
+function ElementInstigator:on_instigator_death(unit)
 	slot5 = unit
 
 	if not table.contains(slot3, self._instigators) then
@@ -207,7 +207,7 @@ ElementInstigator.on_instigator_death = function (self, unit)
 
 	return 
 end
-ElementInstigator.instigator_operation_clear = function (self, instigator)
+function ElementInstigator:instigator_operation_clear(instigator)
 	self._instigators = {}
 	slot5 = "cleared"
 
@@ -215,7 +215,7 @@ ElementInstigator.instigator_operation_clear = function (self, instigator)
 
 	return 
 end
-ElementInstigator.instigator_operation_use_first = function (self, keep_on_use)
+function ElementInstigator:instigator_operation_use_first(keep_on_use)
 	if not keep_on_use or not self._instigators[1] then
 		slot5 = 1
 		slot2 = table.remove(slot3, self._instigators)
@@ -223,7 +223,7 @@ ElementInstigator.instigator_operation_use_first = function (self, keep_on_use)
 
 	return slot2
 end
-ElementInstigator.instigator_operation_use_last = function (self, keep_on_use)
+function ElementInstigator:instigator_operation_use_last(keep_on_use)
 	if not keep_on_use or not self._instigators[#self._instigators] then
 		slot4 = self._instigators
 		slot2 = table.remove(slot3)
@@ -231,7 +231,7 @@ ElementInstigator.instigator_operation_use_last = function (self, keep_on_use)
 
 	return slot2
 end
-ElementInstigator.instigator_operation_use_random = function (self, keep_on_use)
+function ElementInstigator:instigator_operation_use_random(keep_on_use)
 	slot4 = #self._instigators
 	local index = math.random(slot3)
 
@@ -242,7 +242,7 @@ ElementInstigator.instigator_operation_use_random = function (self, keep_on_use)
 
 	return slot3
 end
-ElementInstigator.instigator_operation_use_all = function (self, keep_on_use)
+function ElementInstigator:instigator_operation_use_all(keep_on_use)
 	if keep_on_use then
 		return self._instigators
 	end
@@ -253,7 +253,7 @@ ElementInstigator.instigator_operation_use_all = function (self, keep_on_use)
 
 	return instigators
 end
-ElementInstigator.add_trigger = function (self, id, type, callback)
+function ElementInstigator:add_trigger(id, type, callback)
 	self._triggers[type] = self._triggers[type] or {}
 	self._triggers[type][id] = {
 		callback = callback
@@ -261,7 +261,7 @@ ElementInstigator.add_trigger = function (self, id, type, callback)
 
 	return 
 end
-ElementInstigator._check_triggers = function (self, type)
+function ElementInstigator:_check_triggers(type)
 	if not self._triggers[type] then
 		return 
 	end
@@ -281,17 +281,17 @@ if not ElementInstigatorOperator then
 end
 
 ElementInstigatorOperator = slot0
-ElementInstigatorOperator.init = function (self, ...)
+function ElementInstigatorOperator:init(...)
 	slot3 = self
 
 	ElementInstigatorOperator.super.init(slot2, ...)
 
 	return 
 end
-ElementInstigatorOperator.client_on_executed = function (self, ...)
+function ElementInstigatorOperator:client_on_executed(...)
 	return 
 end
-ElementInstigatorOperator.on_executed = function (self, instigator)
+function ElementInstigatorOperator:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -364,7 +364,7 @@ ElementInstigatorOperator.on_executed = function (self, instigator)
 
 	return 
 end
-ElementInstigatorOperator._check_and_execute = function (self, use_instigator)
+function ElementInstigatorOperator:_check_and_execute(use_instigator)
 	slot4 = use_instigator
 
 	if alive(slot3) then
@@ -400,14 +400,14 @@ if not ElementInstigatorTrigger then
 end
 
 ElementInstigatorTrigger = slot0
-ElementInstigatorTrigger.init = function (self, ...)
+function ElementInstigatorTrigger:init(...)
 	slot3 = self
 
 	ElementInstigatorTrigger.super.init(slot2, ...)
 
 	return 
 end
-ElementInstigatorTrigger.on_script_activated = function (self)
+function ElementInstigatorTrigger:on_script_activated()
 	slot3 = self._values.elements
 
 	for _, id in ipairs(slot2) do
@@ -421,10 +421,10 @@ ElementInstigatorTrigger.on_script_activated = function (self)
 
 	return 
 end
-ElementInstigatorTrigger.client_on_executed = function (self, ...)
+function ElementInstigatorTrigger:client_on_executed(...)
 	return 
 end
-ElementInstigatorTrigger.on_executed = function (self, instigator)
+function ElementInstigatorTrigger:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

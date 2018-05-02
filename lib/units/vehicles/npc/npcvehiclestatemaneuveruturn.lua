@@ -4,14 +4,14 @@ if not NpcVehicleStateManeuverUTurn then
 end
 
 NpcVehicleStateManeuverUTurn = slot0
-NpcVehicleStateManeuverUTurn.init = function (self, unit)
+function NpcVehicleStateManeuverUTurn:init(unit)
 	slot5 = unit
 
 	NpcBaseVehicleState.init(slot3, self)
 
 	return 
 end
-NpcVehicleStateManeuverUTurn.on_enter = function (self, npc_driving_ext)
+function NpcVehicleStateManeuverUTurn:on_enter(npc_driving_ext)
 	slot5 = npc_driving_ext
 
 	NpcVehicleStateManeuverUTurn.super.on_enter(slot3, self)
@@ -58,7 +58,7 @@ NpcVehicleStateManeuverUTurn.on_enter = function (self, npc_driving_ext)
 
 	return 
 end
-NpcVehicleStateManeuverUTurn.update = function (self, npc_driving_ext, t, dt)
+function NpcVehicleStateManeuverUTurn:update(npc_driving_ext, t, dt)
 	local current_action = self._maneuver_actions[self._current_maneuver_action_idx]
 
 	if current_action then
@@ -78,10 +78,10 @@ NpcVehicleStateManeuverUTurn.update = function (self, npc_driving_ext, t, dt)
 
 	return 
 end
-NpcVehicleStateManeuverUTurn.name = function (self)
+function NpcVehicleStateManeuverUTurn:name()
 	return NpcVehicleDrivingExt.STATE_MANEUVER_U_TURN
 end
-NpcVehicleStateManeuverUTurn.change_state = function (self, npc_driving_ext)
+function NpcVehicleStateManeuverUTurn:change_state(npc_driving_ext)
 	if not self._maneuver_actions[self._current_maneuver_action_idx] then
 		slot5 = NpcVehicleDrivingExt.STATE_PURSUIT
 
@@ -90,7 +90,7 @@ NpcVehicleStateManeuverUTurn.change_state = function (self, npc_driving_ext)
 
 	return 
 end
-NpcVehicleStateManeuverUTurn.is_maneuvering = function (self)
+function NpcVehicleStateManeuverUTurn:is_maneuvering()
 	return true
 end
 

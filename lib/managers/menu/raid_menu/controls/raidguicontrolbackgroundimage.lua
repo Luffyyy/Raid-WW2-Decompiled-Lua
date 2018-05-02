@@ -1,5 +1,5 @@
 RaidGUIControlBackgroundImage = RaidGUIControlBackgroundImage or class()
-RaidGUIControlBackgroundImage.init = function (self)
+function RaidGUIControlBackgroundImage:init()
 	slot3 = managers.gui_data
 	self._workspace = managers.gui_data.create_fullscreen_workspace(slot2)
 	slot3 = self._workspace
@@ -19,7 +19,7 @@ RaidGUIControlBackgroundImage.init = function (self)
 
 	return 
 end
-RaidGUIControlBackgroundImage._real_aspect_ratio = function (self)
+function RaidGUIControlBackgroundImage:_real_aspect_ratio()
 	slot4 = "WIN32"
 
 	if SystemInfo.platform(slot2) == Idstring(SystemInfo) then
@@ -34,7 +34,7 @@ RaidGUIControlBackgroundImage._real_aspect_ratio = function (self)
 
 	return 
 end
-RaidGUIControlBackgroundImage.set_visible = function (self, visible)
+function RaidGUIControlBackgroundImage:set_visible(visible)
 	if visible then
 		slot4 = self._object
 
@@ -51,7 +51,7 @@ RaidGUIControlBackgroundImage.set_visible = function (self, visible)
 
 	return 
 end
-RaidGUIControlBackgroundImage.destroy = function (self)
+function RaidGUIControlBackgroundImage:destroy()
 	slot4 = "[RaidGUIControlBackgroundImage:destroy]"
 
 	Application.debug(slot2, Application)
@@ -76,7 +76,7 @@ RaidGUIControlBackgroundImage.destroy = function (self)
 
 	return 
 end
-RaidGUIControlBackgroundImage.resolution_changed = function (self)
+function RaidGUIControlBackgroundImage:resolution_changed()
 	slot4 = self._workspace
 
 	managers.gui_data.layout_fullscreen_workspace(slot2, managers.gui_data)

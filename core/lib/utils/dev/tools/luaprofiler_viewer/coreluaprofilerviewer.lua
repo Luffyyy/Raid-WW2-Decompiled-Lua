@@ -33,7 +33,7 @@ local CUSTOM = 2
 local DEFAULT_FORMAT = PERCENT
 local DEFAULT_INFOKEY = "total_time"
 LuaProfilerViewer = LuaProfilerViewer or CoreClass.class()
-LuaProfilerViewer.init = function (self)
+function LuaProfilerViewer:init()
 	slot3 = EWS
 	self._lpd = EWS.LuaProfilerDataStore(slot2)
 	slot3 = self
@@ -42,7 +42,7 @@ LuaProfilerViewer.init = function (self)
 
 	return 
 end
-LuaProfilerViewer._create_main_frame = function (self)
+function LuaProfilerViewer:_create_main_frame()
 	slot9 = 0
 	slot10 = 0
 	slot8 = Global.frame
@@ -121,7 +121,7 @@ LuaProfilerViewer._create_main_frame = function (self)
 
 	return 
 end
-LuaProfilerViewer._create_menu = function (self)
+function LuaProfilerViewer:_create_menu()
 	slot4 = ""
 	local file_menu = EWS.Menu(slot2, EWS)
 	slot7 = ""
@@ -179,7 +179,7 @@ LuaProfilerViewer._create_menu = function (self)
 
 	return 
 end
-LuaProfilerViewer._redraw_menu = function (self)
+function LuaProfilerViewer:_redraw_menu()
 	local lpd = self._lpd
 	self._displayformat = PERCENT
 
@@ -293,7 +293,7 @@ LuaProfilerViewer._redraw_menu = function (self)
 
 	return 
 end
-LuaProfilerViewer.close = function (self)
+function LuaProfilerViewer:close()
 	if self._frame then
 		slot3 = self._frame
 
@@ -314,7 +314,7 @@ LuaProfilerViewer.close = function (self)
 
 	return 
 end
-LuaProfilerViewer.set_position = function (self, newpos)
+function LuaProfilerViewer:set_position(newpos)
 	if self._frame then
 		slot5 = newpos
 
@@ -323,7 +323,7 @@ LuaProfilerViewer.set_position = function (self, newpos)
 
 	return 
 end
-LuaProfilerViewer.update = function (self, t, dt)
+function LuaProfilerViewer:update(t, dt)
 	if self._capturecounter == 4 then
 		slot6 = "luaprofiler dump"
 
@@ -342,14 +342,14 @@ LuaProfilerViewer.update = function (self, t, dt)
 
 	return 
 end
-LuaProfilerViewer._on_close = function (self)
+function LuaProfilerViewer:_on_close()
 	slot4 = TOOLHUB_NAME
 
 	managers.toolhub.close(slot2, managers.toolhub)
 
 	return 
 end
-LuaProfilerViewer._on_open = function (self)
+function LuaProfilerViewer:_on_open()
 	slot8 = managers.database
 	slot9 = ""
 	local filedialog = EWS.FileDialog(slot2, EWS, self._frame, "Open 'luaprofiler dump_stat' File", managers.database.base_path(slot7), "", "*.pf")
@@ -400,7 +400,7 @@ LuaProfilerViewer._on_open = function (self)
 
 	return 
 end
-LuaProfilerViewer._on_percent = function (self)
+function LuaProfilerViewer:_on_percent()
 	self._displayformat = PERCENT
 
 	if self._lpd then
@@ -437,7 +437,7 @@ LuaProfilerViewer._on_percent = function (self)
 
 	return 
 end
-LuaProfilerViewer._on_seconds = function (self)
+function LuaProfilerViewer:_on_seconds()
 	self._displayformat = SECONDS
 
 	if self._lpd then
@@ -474,7 +474,7 @@ LuaProfilerViewer._on_seconds = function (self)
 
 	return 
 end
-LuaProfilerViewer._on_custom = function (self, diffpeak)
+function LuaProfilerViewer:_on_custom(diffpeak)
 	self._displayformat = CUSTOM
 	slot7 = ":"
 	local diff = tonumber(slot3)
@@ -503,7 +503,7 @@ LuaProfilerViewer._on_custom = function (self, diffpeak)
 
 	return 
 end
-LuaProfilerViewer._on_acc_calls = function (self)
+function LuaProfilerViewer:_on_acc_calls()
 	if self._lpd then
 		slot4 = true
 
@@ -526,7 +526,7 @@ LuaProfilerViewer._on_acc_calls = function (self)
 
 	return 
 end
-LuaProfilerViewer._on_no_acc_calls = function (self)
+function LuaProfilerViewer:_on_no_acc_calls()
 	if self._lpd then
 		slot4 = false
 
@@ -549,7 +549,7 @@ LuaProfilerViewer._on_no_acc_calls = function (self)
 
 	return 
 end
-LuaProfilerViewer._on_capture = function (self)
+function LuaProfilerViewer:_on_capture()
 	self._capturecounter = 6
 
 	return 

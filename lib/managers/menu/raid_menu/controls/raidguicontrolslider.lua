@@ -15,7 +15,7 @@ RaidGUIControlSlider.DISABLED_COLOR = tweak_data.gui.colors.raid_dark_grey
 RaidGUIControlSlider.SIDELINE_COLOR = tweak_data.gui.colors.raid_red
 RaidGUIControlSlider.SIDELINE_W = 3
 RaidGUIControlSlider.VALUE_LABEL_W = 64
-RaidGUIControlSlider.init = function (self, parent, params)
+function RaidGUIControlSlider:init(parent, params)
 
 	-- Decompilation error in this vicinity:
 	slot7 = params
@@ -56,7 +56,7 @@ RaidGUIControlSlider.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlSlider.set_selected = function (self, value)
+function RaidGUIControlSlider:set_selected(value)
 	slot5 = value
 
 	RaidGUIControlSlider.super.set_selected(slot3, self)
@@ -67,7 +67,7 @@ RaidGUIControlSlider.set_selected = function (self, value)
 
 	return 
 end
-RaidGUIControlSlider.set_enabled = function (self, enabled)
+function RaidGUIControlSlider:set_enabled(enabled)
 	slot5 = enabled
 
 	RaidGUIControlSlider.super.set_enabled(slot3, self)
@@ -122,7 +122,7 @@ RaidGUIControlSlider.set_enabled = function (self, enabled)
 
 	return 
 end
-RaidGUIControlSlider._create_slider_panel = function (self)
+function RaidGUIControlSlider:_create_slider_panel()
 	local slider_params = clone(slot2)
 	slider_params.name = slider_params.name .. "_slider"
 	slot4 = self._panel
@@ -135,7 +135,7 @@ RaidGUIControlSlider._create_slider_panel = function (self)
 
 	return 
 end
-RaidGUIControlSlider._create_slider_controls = function (self)
+function RaidGUIControlSlider:_create_slider_controls()
 	local sideline_params = {
 		alpha = 0,
 		y = 0,
@@ -204,7 +204,7 @@ RaidGUIControlSlider._create_slider_controls = function (self)
 
 	return 
 end
-RaidGUIControlSlider.on_mouse_out = function (self, x, y)
+function RaidGUIControlSlider:on_mouse_out(x, y)
 	slot7 = y
 
 	RaidGUIControlSlider.super.on_mouse_out(slot4, self, x)
@@ -215,10 +215,10 @@ RaidGUIControlSlider.on_mouse_out = function (self, x, y)
 
 	return 
 end
-RaidGUIControlSlider.get_value = function (self)
+function RaidGUIControlSlider:get_value()
 	return self._value
 end
-RaidGUIControlSlider.set_value = function (self, value)
+function RaidGUIControlSlider:set_value(value)
 	slot6 = 100
 	self._value = math.clamp(slot3, value, 0)
 	slot6 = self._value / 100
@@ -238,7 +238,7 @@ RaidGUIControlSlider.set_value = function (self, value)
 
 	return 
 end
-RaidGUIControlSlider._on_value_changed = function (self)
+function RaidGUIControlSlider:_on_value_changed()
 	local current_value = self._slider.get_value(slot2)
 	slot5 = current_value
 
@@ -252,7 +252,7 @@ RaidGUIControlSlider._on_value_changed = function (self)
 
 	return 
 end
-RaidGUIControlSlider.highlight_on = function (self)
+function RaidGUIControlSlider:highlight_on()
 	if not self._enabled then
 		return 
 	end
@@ -269,7 +269,7 @@ RaidGUIControlSlider.highlight_on = function (self)
 
 	return 
 end
-RaidGUIControlSlider.highlight_off = function (self)
+function RaidGUIControlSlider:highlight_off()
 	if not self._enabled then
 		return 
 	end
@@ -286,7 +286,7 @@ RaidGUIControlSlider.highlight_off = function (self)
 
 	return 
 end
-RaidGUIControlSlider._animate_highlight_on = function (self)
+function RaidGUIControlSlider:_animate_highlight_on()
 	slot3 = self._sideline
 	local starting_alpha = self._sideline.alpha(slot2)
 	local duration = 0.2
@@ -331,7 +331,7 @@ RaidGUIControlSlider._animate_highlight_on = function (self)
 
 	return 
 end
-RaidGUIControlSlider._animate_highlight_off = function (self)
+function RaidGUIControlSlider:_animate_highlight_off()
 	slot3 = self._sideline
 	local starting_alpha = self._sideline.alpha(slot2)
 	local duration = 0.2

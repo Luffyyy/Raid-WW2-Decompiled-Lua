@@ -37,7 +37,7 @@
 -- WARNING: Error occurred during decompilation.
 --   Code may be incomplete or incorrect.
 Pickup = Pickup or class()
-Pickup.init = function (self, unit)
+function Pickup:init(unit)
 	slot4 = Network
 
 	if not Network.is_server(slot3) then
@@ -75,7 +75,7 @@ local ids_mat_effect = Idstring(function (self, unit)
 end)
 slot3 = "uv0_offset"
 local ids_uv0_offset = Idstring("mat_effect")
-Pickup._randomize_glow_effect = function (self)
+function Pickup:_randomize_glow_effect()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -110,7 +110,7 @@ Pickup._randomize_glow_effect = function (self)
 
 
 end
-Pickup.sync_pickup = function (self)
+function Pickup:sync_pickup()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -124,7 +124,7 @@ Pickup.sync_pickup = function (self)
 
 
 end
-Pickup._pickup = function (self)
+function Pickup:_pickup()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -138,7 +138,7 @@ Pickup._pickup = function (self)
 
 
 end
-Pickup.pickup = function (self, unit)
+function Pickup:pickup(unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -169,7 +169,7 @@ Pickup.pickup = function (self, unit)
 
 
 end
-Pickup.consume = function (self)
+function Pickup:consume()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -183,7 +183,7 @@ Pickup.consume = function (self)
 
 
 end
-Pickup.set_active = function (self, active)
+function Pickup:set_active(active)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -195,7 +195,7 @@ Pickup.set_active = function (self, active)
 
 
 end
-Pickup.delete_unit = function (self)
+function Pickup:delete_unit()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -209,7 +209,7 @@ Pickup.delete_unit = function (self)
 
 
 end
-Pickup.save = function (self, data)
+function Pickup:save(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -223,7 +223,7 @@ Pickup.save = function (self, data)
 
 
 end
-Pickup.load = function (self, data)
+function Pickup:load(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -256,7 +256,7 @@ Pickup.load = function (self, data)
 
 
 end
-Pickup.sync_net_event = function (self, event, peer)
+function Pickup:sync_net_event(event, peer)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -266,7 +266,7 @@ Pickup.sync_net_event = function (self, event, peer)
 
 
 end
-Pickup.destroy = function (self, unit)
+function Pickup:destroy(unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -276,7 +276,7 @@ Pickup.destroy = function (self, unit)
 
 
 end
-Pickup.get_pickup_type = function (self)
+function Pickup:get_pickup_type()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---

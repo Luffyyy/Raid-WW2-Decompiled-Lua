@@ -3,7 +3,7 @@
 -- WARNING: Error occurred during decompilation.
 --   Code may be incomplete or incorrect.
 CoreTableEditorPanel = CoreTableEditorPanel or class()
-CoreTableEditorPanel.init = function (self, parent)
+function CoreTableEditorPanel:init(parent)
 	self.__column_names = {}
 	slot5 = parent
 	self.__panel = EWS.Panel(slot3, EWS)
@@ -30,7 +30,7 @@ CoreTableEditorPanel.init = function (self, parent)
 
 	return 
 end
-CoreTableEditorPanel.destroy = function (self)
+function CoreTableEditorPanel:destroy()
 	slot3 = self.__panel
 
 	self.__panel.destroy(slot2)
@@ -39,7 +39,7 @@ CoreTableEditorPanel.destroy = function (self)
 
 	return 
 end
-CoreTableEditorPanel.clear = function (self)
+function CoreTableEditorPanel:clear()
 	slot3 = self
 
 	self.freeze(slot2)
@@ -58,21 +58,21 @@ CoreTableEditorPanel.clear = function (self)
 
 	return 
 end
-CoreTableEditorPanel.add_to_sizer = function (self, sizer, proportion, border, flags)
+function CoreTableEditorPanel:add_to_sizer(sizer, proportion, border, flags)
 	slot11 = flags
 
 	sizer.add(slot6, sizer, self.__panel, proportion, border)
 
 	return 
 end
-CoreTableEditorPanel.detach_from_sizer = function (self, sizer)
+function CoreTableEditorPanel:detach_from_sizer(sizer)
 	slot5 = self.__panel
 
 	sizer.detach(slot3, sizer)
 
 	return 
 end
-CoreTableEditorPanel.freeze = function (self)
+function CoreTableEditorPanel:freeze()
 	self.__frozen = true
 	slot3 = self.__panel
 
@@ -80,7 +80,7 @@ CoreTableEditorPanel.freeze = function (self)
 
 	return 
 end
-CoreTableEditorPanel.thaw = function (self)
+function CoreTableEditorPanel:thaw()
 	self.__frozen = nil
 	slot3 = self.__panel
 
@@ -99,7 +99,7 @@ CoreTableEditorPanel.thaw = function (self)
 
 	return 
 end
-CoreTableEditorPanel.add_column = function (self, heading, format_style)
+function CoreTableEditorPanel:add_column(heading, format_style)
 	slot6 = heading
 
 	table.insert(slot4, self.__column_names)
@@ -114,7 +114,7 @@ CoreTableEditorPanel.add_column = function (self, heading, format_style)
 
 	return 
 end
-CoreTableEditorPanel.add_item = function (self, ...)
+function CoreTableEditorPanel:add_item(...)
 	local values = {
 		...
 	}
@@ -135,7 +135,7 @@ CoreTableEditorPanel.add_item = function (self, ...)
 
 	return item_index
 end
-CoreTableEditorPanel.remove_item = function (self, item_index)
+function CoreTableEditorPanel:remove_item(item_index)
 	slot5 = item_index
 
 	self.__list_ctrl.delete_item(slot3, self.__list_ctrl)
@@ -146,13 +146,13 @@ CoreTableEditorPanel.remove_item = function (self, item_index)
 
 	return 
 end
-CoreTableEditorPanel.item_value = function (self, item_index, column_name)
+function CoreTableEditorPanel:item_value(item_index, column_name)
 	slot9 = item_index
 	slot13 = column_name
 
 	return self._string_to_value(slot4, self, self.__list_ctrl.get_item(column_name, self.__list_ctrl, self._column_index(slot11, self)))
 end
-CoreTableEditorPanel.set_item_value = function (self, item_index, column_name, value)
+function CoreTableEditorPanel:set_item_value(item_index, column_name, value)
 	slot11 = column_name
 	slot8 = self._column_index(slot9, self)
 	slot13 = column_name
@@ -161,13 +161,13 @@ CoreTableEditorPanel.set_item_value = function (self, item_index, column_name, v
 
 	return 
 end
-CoreTableEditorPanel.selected_item = function (self)
+function CoreTableEditorPanel:selected_item()
 	slot3 = self.__list_ctrl
 	local item_index = self.__list_ctrl.selected_item(slot2)
 
 	return (0 <= item_index and item_index) or nil
 end
-CoreTableEditorPanel.set_selected_item = function (self, item_index)
+function CoreTableEditorPanel:set_selected_item(item_index)
 	slot6 = true
 
 	self.__list_ctrl.set_item_selected(slot3, self.__list_ctrl, item_index or -1)
@@ -182,7 +182,7 @@ CoreTableEditorPanel.set_selected_item = function (self, item_index)
 
 	return 
 end
-CoreTableEditorPanel.selected_item_value = function (self, column_name)
+function CoreTableEditorPanel:selected_item_value(column_name)
 	slot4 = self
 	local selected_item_index = self.selected_item(slot3)
 
@@ -193,7 +193,7 @@ CoreTableEditorPanel.selected_item_value = function (self, column_name)
 
 	return slot3
 end
-CoreTableEditorPanel.set_selected_item_value = function (self, column_name, value)
+function CoreTableEditorPanel:set_selected_item_value(column_name, value)
 	slot5 = self
 	local selected_item_index = self.selected_item(slot4)
 
@@ -205,7 +205,7 @@ CoreTableEditorPanel.set_selected_item_value = function (self, column_name, valu
 
 	return 
 end
-CoreTableEditorPanel._create_list_ctrl = function (self, parent)
+function CoreTableEditorPanel:_create_list_ctrl(parent)
 	self.__list_ctrl = EWS.ListCtrl(slot3, EWS, parent, "")
 	slot10 = "_on_selection_changed"
 
@@ -218,7 +218,7 @@ CoreTableEditorPanel._create_list_ctrl = function (self, parent)
 
 	return self.__list_ctrl
 end
-CoreTableEditorPanel._create_buttons_panel = function (self, parent)
+function CoreTableEditorPanel:_create_buttons_panel(parent)
 	slot5 = parent
 	self.__buttons_panel = EWS.Panel(slot3, EWS)
 	slot5 = "HORIZONTAL"
@@ -250,7 +250,7 @@ CoreTableEditorPanel._create_buttons_panel = function (self, parent)
 
 	return self.__buttons_panel
 end
-CoreTableEditorPanel._create_fields_panel = function (self, parent)
+function CoreTableEditorPanel:_create_fields_panel(parent)
 	slot5 = parent
 	self.__fields_panel = EWS.Panel(slot3, EWS)
 	slot4 = self
@@ -259,7 +259,7 @@ CoreTableEditorPanel._create_fields_panel = function (self, parent)
 
 	return self.__fields_panel
 end
-CoreTableEditorPanel._refresh_buttons_panel = function (self)
+function CoreTableEditorPanel:_refresh_buttons_panel()
 	slot6 = self
 	slot4 = self.selected_item(slot5) ~= nil
 
@@ -267,7 +267,7 @@ CoreTableEditorPanel._refresh_buttons_panel = function (self)
 
 	return 
 end
-CoreTableEditorPanel._refresh_fields_panel = function (self)
+function CoreTableEditorPanel:_refresh_fields_panel()
 	if self.__frozen then
 		self.__needs_refresh = true
 	else
@@ -299,7 +299,7 @@ CoreTableEditorPanel._refresh_fields_panel = function (self)
 
 	return 
 end
-CoreTableEditorPanel._sizer_with_editable_fields = function (self, parent)
+function CoreTableEditorPanel:_sizer_with_editable_fields(parent)
 	local sizer = EWS.BoxSizer(slot3, EWS)
 	local first_control = nil
 	slot6 = self.__column_names
@@ -326,7 +326,7 @@ CoreTableEditorPanel._sizer_with_editable_fields = function (self, parent)
 
 	return sizer
 end
-CoreTableEditorPanel._create_labeled_text_field = function (self, column_name, parent, sizer)
+function CoreTableEditorPanel:_create_labeled_text_field(column_name, parent, sizer)
 	slot6 = self
 	local enabled = self.selected_item(slot5) ~= nil
 	slot12 = true
@@ -365,15 +365,15 @@ CoreTableEditorPanel._create_labeled_text_field = function (self, column_name, p
 
 	return control
 end
-CoreTableEditorPanel._column_index = function (self, column_name)
+function CoreTableEditorPanel:_column_index(column_name)
 	return column_index - 1
 end
-CoreTableEditorPanel._string_to_value = function (self, str, column_name)
+function CoreTableEditorPanel:_string_to_value(str, column_name)
 
 	-- Decompilation error in this vicinity:
 	return str or ""
 end
-CoreTableEditorPanel._value_to_string = function (self, value, column_name)
+function CoreTableEditorPanel:_value_to_string(value, column_name)
 	if value == nil then
 		slot3 = ""
 	else
@@ -383,7 +383,7 @@ CoreTableEditorPanel._value_to_string = function (self, value, column_name)
 
 	return slot3
 end
-CoreTableEditorPanel._make_control_edited_callback = function (self, control, column_name, value_method_name)
+function CoreTableEditorPanel:_make_control_edited_callback(control, column_name, value_method_name)
 	return function ()
 		slot5 = value_method_name
 
@@ -392,7 +392,7 @@ CoreTableEditorPanel._make_control_edited_callback = function (self, control, co
 		return 
 	end
 end
-CoreTableEditorPanel._top_level_window = function (self, window)
+function CoreTableEditorPanel:_top_level_window(window)
 
 	-- Decompilation error in this vicinity:
 	window = window or self.__panel
@@ -400,7 +400,7 @@ CoreTableEditorPanel._top_level_window = function (self, window)
 
 	return slot2
 end
-CoreTableEditorPanel._on_selection_changed = function (self, sender)
+function CoreTableEditorPanel:_on_selection_changed(sender)
 	slot4 = self
 
 	self._refresh_fields_panel(slot3)
@@ -411,14 +411,14 @@ CoreTableEditorPanel._on_selection_changed = function (self, sender)
 
 	return 
 end
-CoreTableEditorPanel._on_add_button_clicked = function (self, sender)
+function CoreTableEditorPanel:_on_add_button_clicked(sender)
 	slot5 = "<New Entry>"
 
 	self.add_item(slot3, self)
 
 	return 
 end
-CoreTableEditorPanel._on_remove_button_clicked = function (self, sender)
+function CoreTableEditorPanel:_on_remove_button_clicked(sender)
 	slot4 = self
 	slot7 = self
 
@@ -426,7 +426,7 @@ CoreTableEditorPanel._on_remove_button_clicked = function (self, sender)
 
 	return 
 end
-CoreTableEditorPanel._on_control_edited = function (self, control, column_name, value_method_name)
+function CoreTableEditorPanel:_on_control_edited(control, column_name, value_method_name)
 	value_method_name = value_method_name or "get_value"
 	local value = control[value_method_name](slot5)
 	slot9 = value

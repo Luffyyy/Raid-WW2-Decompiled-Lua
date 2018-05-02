@@ -9,7 +9,7 @@ RaidGUIControlMissionUnlock.HEIGHT = 688
 RaidGUIControlMissionUnlock.ACTIVE_Y_OFFSET = 85
 RaidGUIControlMissionUnlock.DESCRIPTION_Y = 480
 RaidGUIControlMissionUnlock.DESCRIPTION_Y_OFFSET = 30
-RaidGUIControlMissionUnlock.init = function (self, parent, params)
+function RaidGUIControlMissionUnlock:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlMissionUnlock.super.init(slot4, self, parent)
@@ -43,7 +43,7 @@ RaidGUIControlMissionUnlock.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlMissionUnlock._create_panel = function (self)
+function RaidGUIControlMissionUnlock:_create_panel()
 	local panel_params = {
 		name = "mission_unlock_" .. self._params.mission,
 		w = RaidGUIControlMissionUnlock.WIDTH,
@@ -54,7 +54,7 @@ RaidGUIControlMissionUnlock._create_panel = function (self)
 
 	return 
 end
-RaidGUIControlMissionUnlock._create_background = function (self)
+function RaidGUIControlMissionUnlock:_create_background()
 	local background_params = {
 		name = "background",
 		layer = 1,
@@ -66,7 +66,7 @@ RaidGUIControlMissionUnlock._create_background = function (self)
 
 	return 
 end
-RaidGUIControlMissionUnlock._create_selector_triangles = function (self)
+function RaidGUIControlMissionUnlock:_create_selector_triangles()
 	local top_select_triangle_params = {
 		layer = 3,
 		visible = false,
@@ -99,7 +99,7 @@ RaidGUIControlMissionUnlock._create_selector_triangles = function (self)
 
 	return 
 end
-RaidGUIControlMissionUnlock._create_active_border = function (self)
+function RaidGUIControlMissionUnlock:_create_active_border()
 	local border_color = tweak_data.gui.colors.raid_red
 	local border_thickness = 2
 	local border_panel_params = {
@@ -157,7 +157,7 @@ RaidGUIControlMissionUnlock._create_active_border = function (self)
 
 	return 
 end
-RaidGUIControlMissionUnlock._create_folder = function (self)
+function RaidGUIControlMissionUnlock:_create_folder()
 	local mission_tweak_data = tweak_data.operations.mission_data(slot2, tweak_data.operations)
 	local folder_panel_params = {
 		name = "folder_panel",
@@ -382,7 +382,7 @@ RaidGUIControlMissionUnlock._create_folder = function (self)
 
 	return 
 end
-RaidGUIControlMissionUnlock._fit_mission_title = function (self)
+function RaidGUIControlMissionUnlock:_fit_mission_title()
 	local default_font_size = tweak_data.gui.font_sizes.size_32
 	local font_sizes = {}
 	slot5 = tweak_data.gui.font_sizes
@@ -415,7 +415,7 @@ RaidGUIControlMissionUnlock._fit_mission_title = function (self)
 
 	return 
 end
-RaidGUIControlMissionUnlock._create_mission_description = function (self)
+function RaidGUIControlMissionUnlock:_create_mission_description()
 	local mission_tweak_data = tweak_data.operations.mission_data(slot2, tweak_data.operations)
 	local mission_description_panel_params = {
 		alpha = 0,
@@ -467,13 +467,13 @@ RaidGUIControlMissionUnlock._create_mission_description = function (self)
 
 	return 
 end
-RaidGUIControlMissionUnlock.close = function (self)
+function RaidGUIControlMissionUnlock:close()
 	return 
 end
-RaidGUIControlMissionUnlock.mission = function (self)
+function RaidGUIControlMissionUnlock:mission()
 	return self._mission
 end
-RaidGUIControlMissionUnlock.on_mouse_released = function (self)
+function RaidGUIControlMissionUnlock:on_mouse_released()
 	slot4 = not self._active
 
 	self.set_active(slot2, self)
@@ -491,7 +491,7 @@ RaidGUIControlMissionUnlock.on_mouse_released = function (self)
 
 	return 
 end
-RaidGUIControlMissionUnlock.on_double_click = function (self)
+function RaidGUIControlMissionUnlock:on_double_click()
 	if self._on_double_click_callback then
 		slot4 = self._active
 
@@ -502,14 +502,14 @@ RaidGUIControlMissionUnlock.on_double_click = function (self)
 
 	return false
 end
-RaidGUIControlMissionUnlock.confirm_pressed = function (self)
+function RaidGUIControlMissionUnlock:confirm_pressed()
 	slot3 = self
 
 	self.on_double_click(slot2)
 
 	return 
 end
-RaidGUIControlMissionUnlock.on_mouse_over = function (self, x, y)
+function RaidGUIControlMissionUnlock:on_mouse_over(x, y)
 	slot7 = y
 
 	RaidGUIControlMissionUnlock.super.on_mouse_over(slot4, self, x)
@@ -521,7 +521,7 @@ RaidGUIControlMissionUnlock.on_mouse_over = function (self, x, y)
 
 	return 
 end
-RaidGUIControlMissionUnlock.on_mouse_out = function (self, x, y)
+function RaidGUIControlMissionUnlock:on_mouse_out(x, y)
 	slot7 = y
 
 	RaidGUIControlMissionUnlock.super.on_mouse_out(slot4, self, x)
@@ -533,7 +533,7 @@ RaidGUIControlMissionUnlock.on_mouse_out = function (self, x, y)
 
 	return 
 end
-RaidGUIControlMissionUnlock._highlight_on = function (self)
+function RaidGUIControlMissionUnlock:_highlight_on()
 	if self._active then
 		return 
 	end
@@ -549,7 +549,7 @@ RaidGUIControlMissionUnlock._highlight_on = function (self)
 
 	return 
 end
-RaidGUIControlMissionUnlock._highlight_off = function (self)
+function RaidGUIControlMissionUnlock:_highlight_off()
 	if self._active then
 		return 
 	end
@@ -565,7 +565,7 @@ RaidGUIControlMissionUnlock._highlight_off = function (self)
 
 	return 
 end
-RaidGUIControlMissionUnlock.set_active = function (self, active)
+function RaidGUIControlMissionUnlock:set_active(active)
 	self._active = active
 	slot5 = active
 
@@ -587,7 +587,7 @@ RaidGUIControlMissionUnlock.set_active = function (self, active)
 
 	return 
 end
-RaidGUIControlMissionUnlock.set_selected = function (self, selected)
+function RaidGUIControlMissionUnlock:set_selected(selected)
 	if selected then
 		slot4 = self
 
@@ -604,7 +604,7 @@ RaidGUIControlMissionUnlock.set_selected = function (self, selected)
 
 	return 
 end
-RaidGUIControlMissionUnlock.select = function (self)
+function RaidGUIControlMissionUnlock:select()
 	self._selected = true
 	slot3 = self._folder_image
 
@@ -617,7 +617,7 @@ RaidGUIControlMissionUnlock.select = function (self)
 
 	return 
 end
-RaidGUIControlMissionUnlock.unselect = function (self)
+function RaidGUIControlMissionUnlock:unselect()
 	self._selected = false
 	slot3 = self._folder_image
 
@@ -630,7 +630,7 @@ RaidGUIControlMissionUnlock.unselect = function (self)
 
 	return 
 end
-RaidGUIControlMissionUnlock._animate_open_folder = function (self, o)
+function RaidGUIControlMissionUnlock:_animate_open_folder(o)
 	local duration = 0.4
 	self._show_details_animation_t = self._show_details_animation_t or 0
 	local t = self._show_details_animation_t * duration
@@ -720,7 +720,7 @@ RaidGUIControlMissionUnlock._animate_open_folder = function (self, o)
 
 	return 
 end
-RaidGUIControlMissionUnlock._animate_close_folder = function (self, o)
+function RaidGUIControlMissionUnlock:_animate_close_folder(o)
 	local duration = 0.4
 	self._show_details_animation_t = self._show_details_animation_t or 0
 	local t = (1 - self._show_details_animation_t) * duration

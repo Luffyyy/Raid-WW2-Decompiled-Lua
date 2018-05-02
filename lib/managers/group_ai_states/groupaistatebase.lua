@@ -4687,7 +4687,7 @@ GroupAIStateBase.EVENT_SYNC = {
 	"enemy_weapons_hot",
 	"phalanx_spawned"
 }
-function GroupAIStateBase:init()
+GroupAIStateBase.init = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -4701,7 +4701,7 @@ function GroupAIStateBase:init()
 
 
 end
-function GroupAIStateBase:clean_up()
+GroupAIStateBase.clean_up = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -4711,7 +4711,7 @@ function GroupAIStateBase:clean_up()
 
 
 end
-function GroupAIStateBase:update(t, dt)
+GroupAIStateBase.update = function (self, t, dt)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -4751,7 +4751,7 @@ function GroupAIStateBase:update(t, dt)
 
 
 end
-function GroupAIStateBase:paused_update(t, dt)
+GroupAIStateBase.paused_update = function (self, t, dt)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -4782,7 +4782,7 @@ function GroupAIStateBase:paused_update(t, dt)
 
 
 end
-function GroupAIStateBase:get_assault_mode()
+GroupAIStateBase.get_assault_mode = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -4792,7 +4792,7 @@ function GroupAIStateBase:get_assault_mode()
 
 
 end
-function GroupAIStateBase:get_hunt_mode()
+GroupAIStateBase.get_hunt_mode = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -4802,7 +4802,7 @@ function GroupAIStateBase:get_hunt_mode()
 
 
 end
-function GroupAIStateBase:is_AI_enabled()
+GroupAIStateBase.is_AI_enabled = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -4812,7 +4812,7 @@ function GroupAIStateBase:is_AI_enabled()
 
 
 end
-function GroupAIStateBase:set_AI_enabled(state)
+GroupAIStateBase.set_AI_enabled = function (self, state)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -5437,7 +5437,7 @@ function GroupAIStateBase:set_AI_enabled(state)
 
 
 end
-function GroupAIStateBase:_init_misc_data(clean_up)
+GroupAIStateBase._init_misc_data = function (self, clean_up)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-112, warpins: 1 ---
@@ -5590,7 +5590,7 @@ function GroupAIStateBase:_init_misc_data(clean_up)
 
 
 end
-function GroupAIStateBase:_init_team_tables()
+GroupAIStateBase._init_team_tables = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -5653,7 +5653,7 @@ function GroupAIStateBase:_init_team_tables()
 
 
 end
-function GroupAIStateBase:add_alert_listener(id, clbk, filter_num, types, m_pos)
+GroupAIStateBase.add_alert_listener = function (self, id, clbk, filter_num, types, m_pos)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -5752,7 +5752,7 @@ function GroupAIStateBase:add_alert_listener(id, clbk, filter_num, types, m_pos)
 
 
 end
-function GroupAIStateBase:remove_alert_listener(id)
+GroupAIStateBase.remove_alert_listener = function (self, id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -5859,7 +5859,7 @@ function GroupAIStateBase:remove_alert_listener(id)
 
 
 end
-function GroupAIStateBase:propagate_alert(alert_data)
+GroupAIStateBase.propagate_alert = function (self, alert_data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -6178,7 +6178,7 @@ function GroupAIStateBase:propagate_alert(alert_data)
 
 
 end
-function GroupAIStateBase:set_drama_decay_period(period)
+GroupAIStateBase.set_drama_decay_period = function (self, period)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -6195,7 +6195,7 @@ function GroupAIStateBase:set_drama_decay_period(period)
 
 
 end
-function GroupAIStateBase:_claculate_drama_value()
+GroupAIStateBase._claculate_drama_value = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -6213,7 +6213,7 @@ function GroupAIStateBase:_claculate_drama_value()
 
 
 end
-function GroupAIStateBase:_add_drama(amount)
+GroupAIStateBase._add_drama = function (self, amount)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -6310,7 +6310,7 @@ function GroupAIStateBase:_add_drama(amount)
 
 
 end
-function GroupAIStateBase:_on_drama_zone_change()
+GroupAIStateBase._on_drama_zone_change = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -6320,7 +6320,7 @@ function GroupAIStateBase:_on_drama_zone_change()
 
 
 end
-function GroupAIStateBase:calm_ai()
+GroupAIStateBase.calm_ai = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -6493,7 +6493,7 @@ function GroupAIStateBase:calm_ai()
 
 
 end
-function GroupAIStateBase:on_player_weapons_hot()
+GroupAIStateBase.on_player_weapons_hot = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -6525,7 +6525,7 @@ function GroupAIStateBase:on_player_weapons_hot()
 
 
 end
-function GroupAIStateBase:player_weapons_hot()
+GroupAIStateBase.player_weapons_hot = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -6535,7 +6535,7 @@ function GroupAIStateBase:player_weapons_hot()
 
 
 end
-function GroupAIStateBase:on_police_called(called_reason)
+GroupAIStateBase.on_police_called = function (self, called_reason)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -6633,7 +6633,7 @@ function GroupAIStateBase:on_police_called(called_reason)
 
 
 end
-function GroupAIStateBase:teleport_team_ai()
+GroupAIStateBase.teleport_team_ai = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-15, warpins: 1 ---
@@ -6829,7 +6829,7 @@ function GroupAIStateBase:teleport_team_ai()
 
 
 end
-function GroupAIStateBase:_do_teleport_ai(params)
+GroupAIStateBase._do_teleport_ai = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -6885,7 +6885,7 @@ function GroupAIStateBase:_do_teleport_ai(params)
 
 
 end
-function GroupAIStateBase:set_available_turrets_as_mountable()
+GroupAIStateBase.set_available_turrets_as_mountable = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -6945,7 +6945,7 @@ function GroupAIStateBase:set_available_turrets_as_mountable()
 
 
 end
-function GroupAIStateBase:set_reason_called(called_reason)
+GroupAIStateBase.set_reason_called = function (self, called_reason)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -6976,7 +6976,7 @@ function GroupAIStateBase:set_reason_called(called_reason)
 
 
 end
-function GroupAIStateBase:on_gangsters_called(called_reason)
+GroupAIStateBase.on_gangsters_called = function (self, called_reason)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -6990,7 +6990,7 @@ function GroupAIStateBase:on_gangsters_called(called_reason)
 
 
 end
-function GroupAIStateBase:on_enemy_weapons_hot(is_delayed_callback)
+GroupAIStateBase.on_enemy_weapons_hot = function (self, is_delayed_callback)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -7238,7 +7238,7 @@ function GroupAIStateBase:on_enemy_weapons_hot(is_delayed_callback)
 
 
 end
-function GroupAIStateBase:on_police_weapons_hot(called_reason)
+GroupAIStateBase.on_police_weapons_hot = function (self, called_reason)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -7256,7 +7256,7 @@ function GroupAIStateBase:on_police_weapons_hot(called_reason)
 
 
 end
-function GroupAIStateBase:on_gangster_weapons_hot(called_reason)
+GroupAIStateBase.on_gangster_weapons_hot = function (self, called_reason)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -7270,7 +7270,7 @@ function GroupAIStateBase:on_gangster_weapons_hot(called_reason)
 
 
 end
-function GroupAIStateBase:is_police_called()
+GroupAIStateBase.is_police_called = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -7280,7 +7280,7 @@ function GroupAIStateBase:is_police_called()
 
 
 end
-function GroupAIStateBase:enemy_weapons_hot()
+GroupAIStateBase.enemy_weapons_hot = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -7290,7 +7290,7 @@ function GroupAIStateBase:enemy_weapons_hot()
 
 
 end
-function GroupAIStateBase:_clbk_switch_enemies_to_not_cool()
+GroupAIStateBase._clbk_switch_enemies_to_not_cool = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -7404,7 +7404,7 @@ function GroupAIStateBase:_clbk_switch_enemies_to_not_cool()
 
 
 end
-function GroupAIStateBase:_clbk_switch_enemies_to_cool()
+GroupAIStateBase._clbk_switch_enemies_to_cool = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -7510,7 +7510,7 @@ function GroupAIStateBase:_clbk_switch_enemies_to_cool()
 
 
 end
-function GroupAIStateBase:_hostage_hint_clbk()
+GroupAIStateBase._hostage_hint_clbk = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -7599,7 +7599,7 @@ function GroupAIStateBase:_hostage_hint_clbk()
 
 
 end
-function GroupAIStateBase:_radio_chatter_clbk()
+GroupAIStateBase._radio_chatter_clbk = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -7750,7 +7750,7 @@ function GroupAIStateBase:_radio_chatter_clbk()
 
 
 end
-function GroupAIStateBase:police_hostage_count()
+GroupAIStateBase.police_hostage_count = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -7760,7 +7760,7 @@ function GroupAIStateBase:police_hostage_count()
 
 
 end
-function GroupAIStateBase:hostage_count()
+GroupAIStateBase.hostage_count = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -7770,7 +7770,7 @@ function GroupAIStateBase:hostage_count()
 
 
 end
-function GroupAIStateBase:has_room_for_police_hostage()
+GroupAIStateBase.has_room_for_police_hostage = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -7894,7 +7894,7 @@ end
 GroupAIStateBase.PATH = "gamedata/comments"
 GroupAIStateBase.FILE_EXTENSION = "comment"
 GroupAIStateBase.FULL_PATH = GroupAIStateBase.PATH .. "." .. GroupAIStateBase.FILE_EXTENSION
-function GroupAIStateBase:_parse_teammate_comments()
+GroupAIStateBase._parse_teammate_comments = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-20, warpins: 1 ---
@@ -7969,7 +7969,7 @@ function GroupAIStateBase:_parse_teammate_comments()
 
 
 end
-function GroupAIStateBase:_parse_teammate_comment(data)
+GroupAIStateBase._parse_teammate_comment = function (self, data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -8011,7 +8011,7 @@ function GroupAIStateBase:_parse_teammate_comment(data)
 
 
 end
-function GroupAIStateBase:teammate_comment(trigger_unit, message, pos, pos_based, radius, sync)
+GroupAIStateBase.teammate_comment = function (self, trigger_unit, message, pos, pos_based, radius, sync)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -8312,7 +8312,7 @@ function GroupAIStateBase:teammate_comment(trigger_unit, message, pos, pos_based
 
 
 end
-function GroupAIStateBase:sync_teammate_comment(message, pos, pos_based, radius)
+GroupAIStateBase.sync_teammate_comment = function (self, message, pos, pos_based, radius)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -8326,7 +8326,7 @@ function GroupAIStateBase:sync_teammate_comment(message, pos, pos_based, radius)
 
 
 end
-function GroupAIStateBase:sync_teammate_comment_instigator(unit, message)
+GroupAIStateBase.sync_teammate_comment_instigator = function (self, unit, message)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -8340,7 +8340,7 @@ function GroupAIStateBase:sync_teammate_comment_instigator(unit, message)
 
 
 end
-function GroupAIStateBase:on_hostage_state(state, key, police, skip_announcement)
+GroupAIStateBase.on_hostage_state = function (self, state, key, police, skip_announcement)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -8615,7 +8615,7 @@ function GroupAIStateBase:on_hostage_state(state, key, police, skip_announcement
 
 
 end
-function GroupAIStateBase:_police_announce_retreat()
+GroupAIStateBase._police_announce_retreat = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -8625,7 +8625,7 @@ function GroupAIStateBase:_police_announce_retreat()
 
 
 end
-function GroupAIStateBase:set_difficulty(value)
+GroupAIStateBase.set_difficulty = function (self, value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -8641,7 +8641,7 @@ function GroupAIStateBase:set_difficulty(value)
 
 
 end
-function GroupAIStateBase:get_difficulty()
+GroupAIStateBase.get_difficulty = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -8651,7 +8651,7 @@ function GroupAIStateBase:get_difficulty()
 
 
 end
-function GroupAIStateBase:set_debug_draw_state(b)
+GroupAIStateBase.set_debug_draw_state = function (self, b)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -8766,7 +8766,7 @@ function GroupAIStateBase:set_debug_draw_state(b)
 
 
 end
-function GroupAIStateBase:on_unit_detection_updated(unit)
+GroupAIStateBase.on_unit_detection_updated = function (self, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -8799,7 +8799,7 @@ function GroupAIStateBase:on_unit_detection_updated(unit)
 
 
 end
-function GroupAIStateBase:_calculate_difficulty_ratio()
+GroupAIStateBase._calculate_difficulty_ratio = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -8928,7 +8928,7 @@ function GroupAIStateBase:_calculate_difficulty_ratio()
 
 
 end
-function GroupAIStateBase:get_difficulty_dependent_value(tweak_values)
+GroupAIStateBase.get_difficulty_dependent_value = function (self, tweak_values)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -8940,7 +8940,7 @@ function GroupAIStateBase:get_difficulty_dependent_value(tweak_values)
 
 
 end
-function GroupAIStateBase:criminal_spotted(unit)
+GroupAIStateBase.criminal_spotted = function (self, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -9123,7 +9123,7 @@ function GroupAIStateBase:criminal_spotted(unit)
 
 
 end
-function GroupAIStateBase:get_last_world_ids_for_criminals()
+GroupAIStateBase.get_last_world_ids_for_criminals = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -9182,7 +9182,7 @@ function GroupAIStateBase:get_last_world_ids_for_criminals()
 
 
 end
-function GroupAIStateBase:on_criminal_nav_seg_change(unit, nav_seg_id)
+GroupAIStateBase.on_criminal_nav_seg_change = function (self, unit, nav_seg_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -9391,7 +9391,7 @@ function GroupAIStateBase:on_criminal_nav_seg_change(unit, nav_seg_id)
 
 
 end
-function GroupAIStateBase:criminal_record(u_key)
+GroupAIStateBase.criminal_record = function (self, u_key)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -9401,7 +9401,7 @@ function GroupAIStateBase:criminal_record(u_key)
 
 
 end
-function GroupAIStateBase:on_enemy_engaging(unit, other_u_key)
+GroupAIStateBase.on_enemy_engaging = function (self, unit, other_u_key)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -9443,7 +9443,7 @@ function GroupAIStateBase:on_enemy_engaging(unit, other_u_key)
 
 
 end
-function GroupAIStateBase:on_enemy_disengaging(unit, other_u_key)
+GroupAIStateBase.on_enemy_disengaging = function (self, unit, other_u_key)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -9480,7 +9480,7 @@ function GroupAIStateBase:on_enemy_disengaging(unit, other_u_key)
 
 
 end
-function GroupAIStateBase:on_tase_start(cop_key, criminal_key)
+GroupAIStateBase.on_tase_start = function (self, cop_key, criminal_key)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -9492,7 +9492,7 @@ function GroupAIStateBase:on_tase_start(cop_key, criminal_key)
 
 
 end
-function GroupAIStateBase:on_tase_end(criminal_key)
+GroupAIStateBase.on_tase_end = function (self, criminal_key)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -9523,7 +9523,7 @@ function GroupAIStateBase:on_tase_end(criminal_key)
 
 
 end
-function GroupAIStateBase:on_arrest_start(enemy_key, criminal_key)
+GroupAIStateBase.on_arrest_start = function (self, enemy_key, criminal_key)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -9566,7 +9566,7 @@ function GroupAIStateBase:on_arrest_start(enemy_key, criminal_key)
 
 
 end
-function GroupAIStateBase:on_arrest_end(enemy_key, criminal_key)
+GroupAIStateBase.on_arrest_end = function (self, enemy_key, criminal_key)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -9609,7 +9609,7 @@ function GroupAIStateBase:on_arrest_end(enemy_key, criminal_key)
 
 
 end
-function GroupAIStateBase:on_simulation_started()
+GroupAIStateBase.on_simulation_started = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-86, warpins: 1 ---
@@ -9669,7 +9669,7 @@ function GroupAIStateBase:on_simulation_started()
 
 
 end
-function GroupAIStateBase:on_simulation_ended()
+GroupAIStateBase.on_simulation_ended = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-69, warpins: 1 ---
@@ -9874,7 +9874,7 @@ function GroupAIStateBase:on_simulation_ended()
 
 
 end
-function GroupAIStateBase:on_enemy_registered(unit)
+GroupAIStateBase.on_enemy_registered = function (self, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -10017,7 +10017,7 @@ function GroupAIStateBase:on_enemy_registered(unit)
 
 
 end
-function GroupAIStateBase:is_enemy_special(unit)
+GroupAIStateBase.is_enemy_special = function (self, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -10052,7 +10052,7 @@ function GroupAIStateBase:is_enemy_special(unit)
 
 
 end
-function GroupAIStateBase:criminal_hurt_drama(unit, attacker, dmg_percent)
+GroupAIStateBase.criminal_hurt_drama = function (self, unit, attacker, dmg_percent)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -10098,7 +10098,7 @@ function GroupAIStateBase:criminal_hurt_drama(unit, attacker, dmg_percent)
 
 
 end
-function GroupAIStateBase:on_enemy_unregistered(unit)
+GroupAIStateBase.on_enemy_unregistered = function (self, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -10630,7 +10630,7 @@ function GroupAIStateBase:on_enemy_unregistered(unit)
 
 
 end
-function GroupAIStateBase:on_civilian_unregistered(unit)
+GroupAIStateBase.on_civilian_unregistered = function (self, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-15, warpins: 1 ---
@@ -10669,7 +10669,7 @@ function GroupAIStateBase:on_civilian_unregistered(unit)
 
 
 end
-function GroupAIStateBase:report_aggression(unit)
+GroupAIStateBase.report_aggression = function (self, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -10682,7 +10682,7 @@ function GroupAIStateBase:report_aggression(unit)
 
 
 end
-function GroupAIStateBase:register_fleeing_civilian(u_key, unit)
+GroupAIStateBase.register_fleeing_civilian = function (self, u_key, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -10694,7 +10694,7 @@ function GroupAIStateBase:register_fleeing_civilian(u_key, unit)
 
 
 end
-function GroupAIStateBase:unregister_fleeing_civilian(u_key)
+GroupAIStateBase.unregister_fleeing_civilian = function (self, u_key)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -10706,7 +10706,7 @@ function GroupAIStateBase:unregister_fleeing_civilian(u_key)
 
 
 end
-function GroupAIStateBase:register_special_unit(u_key, category_name)
+GroupAIStateBase.register_special_unit = function (self, u_key, category_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -10740,7 +10740,7 @@ function GroupAIStateBase:register_special_unit(u_key, category_name)
 
 
 end
-function GroupAIStateBase:unregister_special_unit(u_key, category_name)
+GroupAIStateBase.unregister_special_unit = function (self, u_key, category_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -10783,7 +10783,7 @@ function GroupAIStateBase:unregister_special_unit(u_key, category_name)
 
 
 end
-function GroupAIStateBase:register_criminal(unit)
+GroupAIStateBase.register_criminal = function (self, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -11016,7 +11016,7 @@ function GroupAIStateBase:register_criminal(unit)
 
 
 end
-function GroupAIStateBase:unregister_criminal(unit)
+GroupAIStateBase.unregister_criminal = function (self, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -11285,7 +11285,7 @@ function GroupAIStateBase:unregister_criminal(unit)
 
 
 end
-function GroupAIStateBase:is_ai_trade_possible()
+GroupAIStateBase.is_ai_trade_possible = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -11433,7 +11433,7 @@ function GroupAIStateBase:is_ai_trade_possible()
 
 
 end
-function GroupAIStateBase:check_gameover_conditions()
+GroupAIStateBase.check_gameover_conditions = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -11725,7 +11725,7 @@ function GroupAIStateBase:check_gameover_conditions()
 
 
 end
-function GroupAIStateBase:_gameover_clbk_func()
+GroupAIStateBase._gameover_clbk_func = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -11765,7 +11765,7 @@ function GroupAIStateBase:_gameover_clbk_func()
 
 
 end
-function GroupAIStateBase:begin_gameover_fadeout()
+GroupAIStateBase.begin_gameover_fadeout = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-16, warpins: 1 ---
@@ -11828,7 +11828,7 @@ function GroupAIStateBase:begin_gameover_fadeout()
 
 
 end
-function GroupAIStateBase:report_criminal_downed(unit)
+GroupAIStateBase.report_criminal_downed = function (self, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -11886,7 +11886,7 @@ function GroupAIStateBase:report_criminal_downed(unit)
 
 
 end
-function GroupAIStateBase:on_criminal_disabled(unit, custom_status)
+GroupAIStateBase.on_criminal_disabled = function (self, unit, custom_status)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -11993,7 +11993,7 @@ function GroupAIStateBase:on_criminal_disabled(unit, custom_status)
 
 
 end
-function GroupAIStateBase:on_criminal_neutralized(unit)
+GroupAIStateBase.on_criminal_neutralized = function (self, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -12096,7 +12096,7 @@ function GroupAIStateBase:on_criminal_neutralized(unit)
 
 
 end
-function GroupAIStateBase:on_criminal_recovered(criminal_unit)
+GroupAIStateBase.on_criminal_recovered = function (self, criminal_unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -12142,7 +12142,7 @@ function GroupAIStateBase:on_criminal_recovered(criminal_unit)
 
 
 end
-function GroupAIStateBase:on_civilian_try_freed()
+GroupAIStateBase.on_civilian_try_freed = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -12207,7 +12207,7 @@ function GroupAIStateBase:on_civilian_try_freed()
 
 
 end
-function GroupAIStateBase:on_civilian_freed()
+GroupAIStateBase.on_civilian_freed = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -12272,7 +12272,7 @@ function GroupAIStateBase:on_civilian_freed()
 
 
 end
-function GroupAIStateBase:sync_warn_about_civilian_free(i)
+GroupAIStateBase.sync_warn_about_civilian_free = function (self, i)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -12384,7 +12384,7 @@ function GroupAIStateBase:sync_warn_about_civilian_free(i)
 
 
 end
-function GroupAIStateBase:on_enemy_tied(u_key)
+GroupAIStateBase.on_enemy_tied = function (self, u_key)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -12394,7 +12394,7 @@ function GroupAIStateBase:on_enemy_tied(u_key)
 
 
 end
-function GroupAIStateBase:on_enemy_untied(u_key)
+GroupAIStateBase.on_enemy_untied = function (self, u_key)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -12404,7 +12404,7 @@ function GroupAIStateBase:on_enemy_untied(u_key)
 
 
 end
-function GroupAIStateBase:on_civilian_tied(u_key)
+GroupAIStateBase.on_civilian_tied = function (self, u_key)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -12414,7 +12414,7 @@ function GroupAIStateBase:on_civilian_tied(u_key)
 
 
 end
-function GroupAIStateBase:_debug_draw_drama(t)
+GroupAIStateBase._debug_draw_drama = function (self, t)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-28, warpins: 1 ---
@@ -12974,7 +12974,7 @@ function GroupAIStateBase:_debug_draw_drama(t)
 
 
 end
-function GroupAIStateBase:toggle_drama_draw_state()
+GroupAIStateBase.toggle_drama_draw_state = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -12989,7 +12989,7 @@ function GroupAIStateBase:toggle_drama_draw_state()
 
 
 end
-function GroupAIStateBase:set_drama_draw_state(state)
+GroupAIStateBase.set_drama_draw_state = function (self, state)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -13203,7 +13203,7 @@ function GroupAIStateBase:set_drama_draw_state(state)
 
 
 end
-function GroupAIStateBase:task_names()
+GroupAIStateBase.task_names = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -13220,7 +13220,7 @@ function GroupAIStateBase:task_names()
 
 
 end
-function GroupAIStateBase:on_objective_failed(unit, objective)
+GroupAIStateBase.on_objective_failed = function (self, unit, objective)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -13411,7 +13411,7 @@ function GroupAIStateBase:on_objective_failed(unit, objective)
 
 
 end
-function GroupAIStateBase:add_special_objective(id, objective_data)
+GroupAIStateBase.add_special_objective = function (self, id, objective_data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -13556,7 +13556,7 @@ function GroupAIStateBase:add_special_objective(id, objective_data)
 
 
 end
-function GroupAIStateBase:_execute_so(so_data, so_rooms, so_administered)
+GroupAIStateBase._execute_so = function (self, so_data, so_rooms, so_administered)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -13889,7 +13889,7 @@ function GroupAIStateBase:_execute_so(so_data, so_rooms, so_administered)
 
 
 end
-function GroupAIStateBase:remove_special_objective(id)
+GroupAIStateBase.remove_special_objective = function (self, id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -13960,7 +13960,7 @@ function GroupAIStateBase:remove_special_objective(id)
 
 
 end
-function GroupAIStateBase:add_SO_group(id, element)
+GroupAIStateBase.add_SO_group = function (self, id, element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -13976,7 +13976,7 @@ function GroupAIStateBase:add_SO_group(id, element)
 
 
 end
-function GroupAIStateBase:remove_SO_group(id)
+GroupAIStateBase.remove_SO_group = function (self, id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -13988,7 +13988,7 @@ function GroupAIStateBase:remove_SO_group(id)
 
 
 end
-function GroupAIStateBase:_upd_SO_groups()
+GroupAIStateBase._upd_SO_groups = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -14107,7 +14107,7 @@ function GroupAIStateBase:_upd_SO_groups()
 
 
 end
-function GroupAIStateBase:_process_SO_group(so_group_id, element)
+GroupAIStateBase._process_SO_group = function (self, so_group_id, element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -14166,7 +14166,7 @@ function GroupAIStateBase:_process_SO_group(so_group_id, element)
 
 
 end
-function GroupAIStateBase:_process_recurring_SO_groups(recurring_id, data)
+GroupAIStateBase._process_recurring_SO_groups = function (self, recurring_id, data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -14710,7 +14710,7 @@ function GroupAIStateBase:_process_recurring_SO_groups(recurring_id, data)
 
 
 end
-function GroupAIStateBase:save(save_data)
+GroupAIStateBase.save = function (self, save_data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-28, warpins: 1 ---
@@ -14756,7 +14756,7 @@ function GroupAIStateBase:save(save_data)
 
 
 end
-function GroupAIStateBase:load(load_data)
+GroupAIStateBase.load = function (self, load_data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-33, warpins: 1 ---
@@ -14848,7 +14848,7 @@ function GroupAIStateBase:load(load_data)
 
 
 end
-function GroupAIStateBase:set_point_of_no_return_timer(time, point_of_no_return_mission_id, point_of_no_return_id)
+GroupAIStateBase.set_point_of_no_return_timer = function (self, time, point_of_no_return_mission_id, point_of_no_return_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -14903,7 +14903,7 @@ function GroupAIStateBase:set_point_of_no_return_timer(time, point_of_no_return_
 
 
 end
-function GroupAIStateBase:set_is_inside_point_of_no_return(peer_id, is_inside)
+GroupAIStateBase.set_is_inside_point_of_no_return = function (self, peer_id, is_inside)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -14915,7 +14915,7 @@ function GroupAIStateBase:set_is_inside_point_of_no_return(peer_id, is_inside)
 
 
 end
-function GroupAIStateBase:_update_point_of_no_return(t, dt)
+GroupAIStateBase._update_point_of_no_return = function (self, t, dt)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -15466,7 +15466,7 @@ function GroupAIStateBase:_update_point_of_no_return(t, dt)
 
 
 end
-function GroupAIStateBase:spawn_one_teamAI(is_drop_in, char_name, spawn_on_unit, transition)
+GroupAIStateBase.spawn_one_teamAI = function (self, is_drop_in, char_name, spawn_on_unit, transition)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -15720,7 +15720,7 @@ function GroupAIStateBase:spawn_one_teamAI(is_drop_in, char_name, spawn_on_unit,
 
 
 end
-function GroupAIStateBase:get_spawn_position(pos, rot, offset_id)
+GroupAIStateBase.get_spawn_position = function (self, pos, rot, offset_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -15737,7 +15737,7 @@ function GroupAIStateBase:get_spawn_position(pos, rot, offset_id)
 
 
 end
-function GroupAIStateBase:remove_one_teamAI(name_to_remove, replace_with_player)
+GroupAIStateBase.remove_one_teamAI = function (self, name_to_remove, replace_with_player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -16058,7 +16058,7 @@ function GroupAIStateBase:remove_one_teamAI(name_to_remove, replace_with_player)
 
 
 end
-function GroupAIStateBase:sync_remove_one_teamAI(name, replace_with_player)
+GroupAIStateBase.sync_remove_one_teamAI = function (self, name, replace_with_player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -16106,7 +16106,7 @@ function GroupAIStateBase:sync_remove_one_teamAI(name, replace_with_player)
 
 
 end
-function GroupAIStateBase:fill_criminal_team_with_AI(transition)
+GroupAIStateBase.fill_criminal_team_with_AI = function (self, transition)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -16203,7 +16203,7 @@ function GroupAIStateBase:fill_criminal_team_with_AI(transition)
 
 
 end
-function GroupAIStateBase:team_ai_enabled()
+GroupAIStateBase.team_ai_enabled = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -16299,7 +16299,7 @@ function GroupAIStateBase:team_ai_enabled()
 
 
 end
-function GroupAIStateBase:on_civilian_objective_complete(unit, objective)
+GroupAIStateBase.on_civilian_objective_complete = function (self, unit, objective)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -16536,7 +16536,7 @@ function GroupAIStateBase:on_civilian_objective_complete(unit, objective)
 
 
 end
-function GroupAIStateBase:on_civilian_objective_failed(unit, objective)
+GroupAIStateBase.on_civilian_objective_failed = function (self, unit, objective)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -16625,7 +16625,7 @@ function GroupAIStateBase:on_civilian_objective_failed(unit, objective)
 
 
 end
-function GroupAIStateBase:on_criminal_objective_complete(unit, objective)
+GroupAIStateBase.on_criminal_objective_complete = function (self, unit, objective)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -16784,7 +16784,7 @@ function GroupAIStateBase:on_criminal_objective_complete(unit, objective)
 
 
 end
-function GroupAIStateBase:on_criminal_objective_failed(unit, objective, no_new_objective)
+GroupAIStateBase.on_criminal_objective_failed = function (self, unit, objective, no_new_objective)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -16840,7 +16840,7 @@ function GroupAIStateBase:on_criminal_objective_failed(unit, objective, no_new_o
 
 
 end
-function GroupAIStateBase:on_criminal_jobless(unit)
+GroupAIStateBase.on_criminal_jobless = function (self, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -16875,7 +16875,7 @@ function GroupAIStateBase:on_criminal_jobless(unit)
 
 
 end
-function GroupAIStateBase:_determine_spawn_objective_for_criminal_AI()
+GroupAIStateBase._determine_spawn_objective_for_criminal_AI = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -16961,7 +16961,7 @@ function GroupAIStateBase:_determine_spawn_objective_for_criminal_AI()
 
 
 end
-function GroupAIStateBase:_determine_objective_for_criminal_AI(unit)
+GroupAIStateBase._determine_objective_for_criminal_AI = function (self, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -17259,7 +17259,7 @@ function GroupAIStateBase:_determine_objective_for_criminal_AI(unit)
 
 
 end
-function GroupAIStateBase:_verifiy_nav_exists_and_teleport_team_ai(ai_unit, player_pos, player_rot)
+GroupAIStateBase._verifiy_nav_exists_and_teleport_team_ai = function (self, ai_unit, player_pos, player_rot)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -17296,7 +17296,7 @@ function GroupAIStateBase:_verifiy_nav_exists_and_teleport_team_ai(ai_unit, play
 
 
 end
-function GroupAIStateBase:_coach_last_man_clbk()
+GroupAIStateBase._coach_last_man_clbk = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -17379,7 +17379,7 @@ function GroupAIStateBase:_coach_last_man_clbk()
 
 
 end
-function GroupAIStateBase:set_assault_mode(enabled)
+GroupAIStateBase.set_assault_mode = function (self, enabled)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -17510,7 +17510,7 @@ function GroupAIStateBase:set_assault_mode(enabled)
 
 
 end
-function GroupAIStateBase:sync_assault_mode(enabled)
+GroupAIStateBase.sync_assault_mode = function (self, enabled)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -17597,7 +17597,7 @@ function GroupAIStateBase:sync_assault_mode(enabled)
 
 
 end
-function GroupAIStateBase:set_fake_assault_mode(enabled)
+GroupAIStateBase.set_fake_assault_mode = function (self, enabled)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -17640,7 +17640,7 @@ function GroupAIStateBase:set_fake_assault_mode(enabled)
 
 
 end
-function GroupAIStateBase:whisper_mode()
+GroupAIStateBase.whisper_mode = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -17650,7 +17650,7 @@ function GroupAIStateBase:whisper_mode()
 
 
 end
-function GroupAIStateBase:whisper_mode_change_t()
+GroupAIStateBase.whisper_mode_change_t = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -17660,7 +17660,7 @@ function GroupAIStateBase:whisper_mode_change_t()
 
 
 end
-function GroupAIStateBase:get_ambience_flag()
+GroupAIStateBase.get_ambience_flag = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -17718,7 +17718,7 @@ function GroupAIStateBase:get_ambience_flag()
 
 
 end
-function GroupAIStateBase:set_whisper_mode(enabled)
+GroupAIStateBase.set_whisper_mode = function (self, enabled)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -17868,7 +17868,7 @@ function GroupAIStateBase:set_whisper_mode(enabled)
 
 
 end
-function GroupAIStateBase:set_blackscreen_variant(variant)
+GroupAIStateBase.set_blackscreen_variant = function (self, variant)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -17880,7 +17880,7 @@ function GroupAIStateBase:set_blackscreen_variant(variant)
 
 
 end
-function GroupAIStateBase:blackscreen_variant(variant)
+GroupAIStateBase.blackscreen_variant = function (self, variant)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -17890,7 +17890,7 @@ function GroupAIStateBase:blackscreen_variant(variant)
 
 
 end
-function GroupAIStateBase:set_endscreen_variant(variant)
+GroupAIStateBase.set_endscreen_variant = function (self, variant)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -17902,7 +17902,7 @@ function GroupAIStateBase:set_endscreen_variant(variant)
 
 
 end
-function GroupAIStateBase:endscreen_variant(variant)
+GroupAIStateBase.endscreen_variant = function (self, variant)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -17912,7 +17912,7 @@ function GroupAIStateBase:endscreen_variant(variant)
 
 
 end
-function GroupAIStateBase:bain_state()
+GroupAIStateBase.bain_state = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -17922,7 +17922,7 @@ function GroupAIStateBase:bain_state()
 
 
 end
-function GroupAIStateBase:set_bain_state(enabled)
+GroupAIStateBase.set_bain_state = function (self, enabled)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -17934,7 +17934,7 @@ function GroupAIStateBase:set_bain_state(enabled)
 
 
 end
-function GroupAIStateBase:set_allow_dropin(enabled)
+GroupAIStateBase.set_allow_dropin = function (self, enabled)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -17969,7 +17969,7 @@ function GroupAIStateBase:set_allow_dropin(enabled)
 
 
 end
-function GroupAIStateBase:sync_hostage_killed_warning(warning)
+GroupAIStateBase.sync_hostage_killed_warning = function (self, warning)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -18055,7 +18055,7 @@ function GroupAIStateBase:sync_hostage_killed_warning(warning)
 
 
 end
-function GroupAIStateBase:hostage_killed(killer_unit)
+GroupAIStateBase.hostage_killed = function (self, killer_unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -18358,7 +18358,7 @@ function GroupAIStateBase:hostage_killed(killer_unit)
 
 
 end
-function GroupAIStateBase:set_dropin_hostages_killed(criminal_unit, hostages_killed, respawn_penalty)
+GroupAIStateBase.set_dropin_hostages_killed = function (self, criminal_unit, hostages_killed, respawn_penalty)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -18471,7 +18471,7 @@ function GroupAIStateBase:set_dropin_hostages_killed(criminal_unit, hostages_kil
 
 
 end
-function GroupAIStateBase:on_AI_criminal_death(criminal_name, unit)
+GroupAIStateBase.on_AI_criminal_death = function (self, criminal_name, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -18551,7 +18551,7 @@ function GroupAIStateBase:on_AI_criminal_death(criminal_name, unit)
 
 
 end
-function GroupAIStateBase:on_player_criminal_death(peer_id)
+GroupAIStateBase.on_player_criminal_death = function (self, peer_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-20, warpins: 1 ---
@@ -18710,7 +18710,7 @@ function GroupAIStateBase:on_player_criminal_death(peer_id)
 
 
 end
-function GroupAIStateBase:all_AI_criminals()
+GroupAIStateBase.all_AI_criminals = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -18720,7 +18720,7 @@ function GroupAIStateBase:all_AI_criminals()
 
 
 end
-function GroupAIStateBase:all_player_criminals()
+GroupAIStateBase.all_player_criminals = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -18730,7 +18730,7 @@ function GroupAIStateBase:all_player_criminals()
 
 
 end
-function GroupAIStateBase:all_criminals()
+GroupAIStateBase.all_criminals = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -18740,7 +18740,7 @@ function GroupAIStateBase:all_criminals()
 
 
 end
-function GroupAIStateBase:all_char_criminals()
+GroupAIStateBase.all_char_criminals = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -18750,7 +18750,7 @@ function GroupAIStateBase:all_char_criminals()
 
 
 end
-function GroupAIStateBase:amount_of_ai_criminals()
+GroupAIStateBase.amount_of_ai_criminals = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -18762,7 +18762,7 @@ function GroupAIStateBase:amount_of_ai_criminals()
 
 
 end
-function GroupAIStateBase:amount_of_winning_ai_criminals()
+GroupAIStateBase.amount_of_winning_ai_criminals = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -18869,7 +18869,7 @@ function GroupAIStateBase:amount_of_winning_ai_criminals()
 
 
 end
-function GroupAIStateBase:fleeing_civilians()
+GroupAIStateBase.fleeing_civilians = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -18879,7 +18879,7 @@ function GroupAIStateBase:fleeing_civilians()
 
 
 end
-function GroupAIStateBase:all_hostages()
+GroupAIStateBase.all_hostages = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -18889,7 +18889,7 @@ function GroupAIStateBase:all_hostages()
 
 
 end
-function GroupAIStateBase:is_a_hostage_within(mvec_pos, radius)
+GroupAIStateBase.is_a_hostage_within = function (self, mvec_pos, radius)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -18939,7 +18939,7 @@ function GroupAIStateBase:is_a_hostage_within(mvec_pos, radius)
 
 
 end
-function GroupAIStateBase:on_criminal_team_AI_enabled_state_changed(transition)
+GroupAIStateBase.on_criminal_team_AI_enabled_state_changed = function (self, transition)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -19022,7 +19022,7 @@ function GroupAIStateBase:on_criminal_team_AI_enabled_state_changed(transition)
 
 
 end
-function GroupAIStateBase:_draw_enemy_importancies()
+GroupAIStateBase._draw_enemy_importancies = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -19208,7 +19208,7 @@ function GroupAIStateBase:_draw_enemy_importancies()
 
 
 end
-function GroupAIStateBase:set_importance_weight(u_key, wgt_report)
+GroupAIStateBase.set_importance_weight = function (self, u_key, wgt_report)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -19549,7 +19549,7 @@ function GroupAIStateBase:set_importance_weight(u_key, wgt_report)
 
 
 end
-function GroupAIStateBase:_adjust_cop_importance(e_key, imp_adj)
+GroupAIStateBase._adjust_cop_importance = function (self, e_key, imp_adj)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -19614,7 +19614,7 @@ function GroupAIStateBase:_adjust_cop_importance(e_key, imp_adj)
 
 
 end
-function GroupAIStateBase:sync_smoke_grenade(detonate_pos, shooter_pos, duration, flashbang)
+GroupAIStateBase.sync_smoke_grenade = function (self, detonate_pos, shooter_pos, duration, flashbang)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -19745,7 +19745,7 @@ function GroupAIStateBase:sync_smoke_grenade(detonate_pos, shooter_pos, duration
 
 
 end
-function GroupAIStateBase:sync_smoke_grenade_kill()
+GroupAIStateBase.sync_smoke_grenade_kill = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -19783,7 +19783,7 @@ function GroupAIStateBase:sync_smoke_grenade_kill()
 
 
 end
-function GroupAIStateBase:sync_cs_grenade(detonate_pos, shooter_pos, duration)
+GroupAIStateBase.sync_cs_grenade = function (self, detonate_pos, shooter_pos, duration)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -19855,7 +19855,7 @@ function GroupAIStateBase:sync_cs_grenade(detonate_pos, shooter_pos, duration)
 
 
 end
-function GroupAIStateBase:sync_cs_grenade_kill()
+GroupAIStateBase.sync_cs_grenade_kill = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -19893,7 +19893,7 @@ function GroupAIStateBase:sync_cs_grenade_kill()
 
 
 end
-function GroupAIStateBase:_call_listeners(event, params)
+GroupAIStateBase._call_listeners = function (self, event, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -19907,7 +19907,7 @@ function GroupAIStateBase:_call_listeners(event, params)
 
 
 end
-function GroupAIStateBase:add_listener(key, events, clbk)
+GroupAIStateBase.add_listener = function (self, key, events, clbk)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -19921,7 +19921,7 @@ function GroupAIStateBase:add_listener(key, events, clbk)
 
 
 end
-function GroupAIStateBase:remove_listener(key)
+GroupAIStateBase.remove_listener = function (self, key)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -19935,7 +19935,7 @@ function GroupAIStateBase:remove_listener(key)
 
 
 end
-function GroupAIStateBase:sync_hostage_headcount(nr_hostages)
+GroupAIStateBase.sync_hostage_headcount = function (self, nr_hostages)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -20002,7 +20002,7 @@ function GroupAIStateBase:sync_hostage_headcount(nr_hostages)
 
 
 end
-function GroupAIStateBase:_set_rescue_state(state)
+GroupAIStateBase._set_rescue_state = function (self, state)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -20094,7 +20094,7 @@ function GroupAIStateBase:_set_rescue_state(state)
 
 
 end
-function GroupAIStateBase:rescue_state()
+GroupAIStateBase.rescue_state = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -20104,7 +20104,7 @@ function GroupAIStateBase:rescue_state()
 
 
 end
-function GroupAIStateBase:chk_area_leads_to_enemy(start_nav_seg_id, test_nav_seg_id, enemy_is_criminal)
+GroupAIStateBase.chk_area_leads_to_enemy = function (self, start_nav_seg_id, test_nav_seg_id, enemy_is_criminal)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -20293,7 +20293,7 @@ function GroupAIStateBase:chk_area_leads_to_enemy(start_nav_seg_id, test_nav_seg
 
 
 end
-function GroupAIStateBase:occasional_event_info(event_type)
+GroupAIStateBase.occasional_event_info = function (self, event_type)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -20303,7 +20303,7 @@ function GroupAIStateBase:occasional_event_info(event_type)
 
 
 end
-function GroupAIStateBase:on_occasional_event(event_type)
+GroupAIStateBase.on_occasional_event = function (self, event_type)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -20359,7 +20359,7 @@ function GroupAIStateBase:on_occasional_event(event_type)
 
 
 end
-function GroupAIStateBase:on_player_spawn_state_set(state_name)
+GroupAIStateBase.on_player_spawn_state_set = function (self, state_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -20373,7 +20373,7 @@ function GroupAIStateBase:on_player_spawn_state_set(state_name)
 
 
 end
-function GroupAIStateBase:chk_say_enemy_chatter(unit, unit_pos, chatter_type)
+GroupAIStateBase.chk_say_enemy_chatter = function (self, unit, unit_pos, chatter_type)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -20606,7 +20606,7 @@ function GroupAIStateBase:chk_say_enemy_chatter(unit, unit_pos, chatter_type)
 
 
 end
-function GroupAIStateBase:chk_say_teamAI_combat_chatter(unit)
+GroupAIStateBase.chk_say_teamAI_combat_chatter = function (self, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -20692,7 +20692,7 @@ function GroupAIStateBase:chk_say_teamAI_combat_chatter(unit)
 
 
 end
-function GroupAIStateBase:_mark_hostage_areas_as_unsafe()
+GroupAIStateBase._mark_hostage_areas_as_unsafe = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -20752,7 +20752,7 @@ function GroupAIStateBase:_mark_hostage_areas_as_unsafe()
 
 
 end
-function GroupAIStateBase:on_nav_link_unregistered(element_id)
+GroupAIStateBase.on_nav_link_unregistered = function (self, element_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-15, warpins: 1 ---
@@ -20839,7 +20839,7 @@ function GroupAIStateBase:on_nav_link_unregistered(element_id)
 
 
 end
-function GroupAIStateBase:chk_allow_drop_in()
+GroupAIStateBase.chk_allow_drop_in = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -20868,7 +20868,7 @@ function GroupAIStateBase:chk_allow_drop_in()
 
 
 end
-function GroupAIStateBase:_get_anticipation_duration(anticipation_duration_table, is_first)
+GroupAIStateBase._get_anticipation_duration = function (self, anticipation_duration_table, is_first)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -20949,7 +20949,7 @@ function GroupAIStateBase:_get_anticipation_duration(anticipation_duration_table
 
 
 end
-function GroupAIStateBase:add_preferred_spawn_points(id, spawn_points)
+GroupAIStateBase.add_preferred_spawn_points = function (self, id, spawn_points)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -20965,7 +20965,7 @@ function GroupAIStateBase:add_preferred_spawn_points(id, spawn_points)
 
 
 end
-function GroupAIStateBase:add_preferred_spawn_groups(id, spawn_groups)
+GroupAIStateBase.add_preferred_spawn_groups = function (self, id, spawn_groups)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -20981,7 +20981,7 @@ function GroupAIStateBase:add_preferred_spawn_groups(id, spawn_groups)
 
 
 end
-function GroupAIStateBase:_map_spawn_points_to_respective_areas(id, spawn_points)
+GroupAIStateBase._map_spawn_points_to_respective_areas = function (self, id, spawn_points)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -21157,7 +21157,7 @@ function GroupAIStateBase:_map_spawn_points_to_respective_areas(id, spawn_points
 
 
 end
-function GroupAIStateBase:_map_spawn_groups_to_respective_areas(id, spawn_groups)
+GroupAIStateBase._map_spawn_groups_to_respective_areas = function (self, id, spawn_groups)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -21266,7 +21266,7 @@ function GroupAIStateBase:_map_spawn_groups_to_respective_areas(id, spawn_groups
 
 
 end
-function GroupAIStateBase:create_spawn_group(id, spawn_group, spawn_points)
+GroupAIStateBase.create_spawn_group = function (self, id, spawn_group, spawn_points)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-34, warpins: 1 ---
@@ -21408,7 +21408,7 @@ function GroupAIStateBase:create_spawn_group(id, spawn_group, spawn_points)
 
 
 end
-function GroupAIStateBase:_remove_preferred_spawn_point_from_area(area, sp_data)
+GroupAIStateBase._remove_preferred_spawn_point_from_area = function (self, area, sp_data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -21509,7 +21509,7 @@ function GroupAIStateBase:_remove_preferred_spawn_point_from_area(area, sp_data)
 
 
 end
-function GroupAIStateBase:_remove_preferred_spawn_group_from_area(area, sp_data)
+GroupAIStateBase._remove_preferred_spawn_group_from_area = function (self, area, sp_data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -21610,7 +21610,7 @@ function GroupAIStateBase:_remove_preferred_spawn_group_from_area(area, sp_data)
 
 
 end
-function GroupAIStateBase:remove_preferred_spawn_points(id)
+GroupAIStateBase.remove_preferred_spawn_points = function (self, id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -21929,7 +21929,7 @@ function GroupAIStateBase:remove_preferred_spawn_points(id)
 
 
 end
-function GroupAIStateBase:register_AI_attention_object(unit, handler, nav_tracker, team, SO_access)
+GroupAIStateBase.register_AI_attention_object = function (self, unit, handler, nav_tracker, team, SO_access)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-19, warpins: 1 ---
@@ -21952,7 +21952,7 @@ function GroupAIStateBase:register_AI_attention_object(unit, handler, nav_tracke
 
 
 end
-function GroupAIStateBase:on_AI_attention_changed(unit_key)
+GroupAIStateBase.on_AI_attention_changed = function (self, unit_key)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -22032,7 +22032,7 @@ function GroupAIStateBase:on_AI_attention_changed(unit_key)
 
 
 end
-function GroupAIStateBase:unregister_AI_attention_object(unit_key)
+GroupAIStateBase.unregister_AI_attention_object = function (self, unit_key)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -22079,7 +22079,7 @@ function GroupAIStateBase:unregister_AI_attention_object(unit_key)
 
 
 end
-function GroupAIStateBase:get_all_AI_attention_objects()
+GroupAIStateBase.get_all_AI_attention_objects = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -22089,7 +22089,7 @@ function GroupAIStateBase:get_all_AI_attention_objects()
 
 
 end
-function GroupAIStateBase:get_AI_attention_objects_by_filter(filter)
+GroupAIStateBase.get_AI_attention_objects_by_filter = function (self, filter)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -22168,7 +22168,7 @@ function GroupAIStateBase:get_AI_attention_objects_by_filter(filter)
 
 
 end
-function GroupAIStateBase:_get_new_group_id(group_type)
+GroupAIStateBase._get_new_group_id = function (self, group_type)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -22227,7 +22227,7 @@ function GroupAIStateBase:_get_new_group_id(group_type)
 
 
 end
-function GroupAIStateBase:_create_group(group_desc)
+GroupAIStateBase._create_group = function (self, group_desc)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-15, warpins: 1 ---
@@ -22251,7 +22251,7 @@ function GroupAIStateBase:_create_group(group_desc)
 
 
 end
-function GroupAIStateBase:_remove_group_member(group, u_key, is_casualty)
+GroupAIStateBase._remove_group_member = function (self, group, u_key, is_casualty)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -22324,7 +22324,7 @@ function GroupAIStateBase:_remove_group_member(group, u_key, is_casualty)
 
 
 end
-function GroupAIStateBase:unit_leave_group(unit, is_casualty)
+GroupAIStateBase.unit_leave_group = function (self, unit, is_casualty)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -22365,7 +22365,7 @@ function GroupAIStateBase:unit_leave_group(unit, is_casualty)
 
 
 end
-function GroupAIStateBase:_add_group_member(group, u_key)
+GroupAIStateBase._add_group_member = function (self, group, u_key)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -22409,7 +22409,7 @@ function GroupAIStateBase:_add_group_member(group, u_key)
 
 
 end
-function GroupAIStateBase:add_area(area_id, nav_segs, area_pos)
+GroupAIStateBase.add_area = function (self, area_id, nav_segs, area_pos)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -22758,7 +22758,7 @@ function GroupAIStateBase:add_area(area_id, nav_segs, area_pos)
 
 
 end
-function GroupAIStateBase:_empty_area_data()
+GroupAIStateBase._empty_area_data = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-16, warpins: 1 ---
@@ -22778,7 +22778,7 @@ function GroupAIStateBase:_empty_area_data()
 
 
 end
-function GroupAIStateBase:unload_world_nav_data(world_id, all_nav_segs)
+GroupAIStateBase.unload_world_nav_data = function (self, world_id, all_nav_segs)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -22928,7 +22928,7 @@ function GroupAIStateBase:unload_world_nav_data(world_id, all_nav_segs)
 
 
 end
-function GroupAIStateBase:merge_world_data(world_id)
+GroupAIStateBase.merge_world_data = function (self, world_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -22942,7 +22942,7 @@ function GroupAIStateBase:merge_world_data(world_id)
 
 
 end
-function GroupAIStateBase:_create_area_data(world_id)
+GroupAIStateBase._create_area_data = function (self, world_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -23182,7 +23182,7 @@ function GroupAIStateBase:_create_area_data(world_id)
 
 
 end
-function GroupAIStateBase:get_area_from_nav_seg_id(nav_seg_id)
+GroupAIStateBase.get_area_from_nav_seg_id = function (self, nav_seg_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -23222,7 +23222,7 @@ function GroupAIStateBase:get_area_from_nav_seg_id(nav_seg_id)
 
 
 end
-function GroupAIStateBase:get_areas_from_nav_seg_id(nav_seg_id)
+GroupAIStateBase.get_areas_from_nav_seg_id = function (self, nav_seg_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -23344,7 +23344,7 @@ GroupAIStateBase.get_nav_seg_id_from_area = function (area)
 
 
 end
-function GroupAIStateBase:is_area_safe(area)
+GroupAIStateBase.is_area_safe = function (self, area)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -23402,7 +23402,7 @@ function GroupAIStateBase:is_area_safe(area)
 
 
 end
-function GroupAIStateBase:is_area_safe_assault(area)
+GroupAIStateBase.is_area_safe_assault = function (self, area)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -23469,7 +23469,7 @@ function GroupAIStateBase:is_area_safe_assault(area)
 
 
 end
-function GroupAIStateBase:is_nav_seg_safe(nav_seg)
+GroupAIStateBase.is_nav_seg_safe = function (self, nav_seg)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -23483,7 +23483,7 @@ function GroupAIStateBase:is_nav_seg_safe(nav_seg)
 
 
 end
-function GroupAIStateBase:_on_area_safety_status(area, event)
+GroupAIStateBase._on_area_safety_status = function (self, area, event)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -23605,7 +23605,7 @@ function GroupAIStateBase:_on_area_safety_status(area, event)
 
 
 end
-function GroupAIStateBase:on_nav_segment_state_change(changed_seg_id, state)
+GroupAIStateBase.on_nav_segment_state_change = function (self, changed_seg_id, state)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -23935,7 +23935,7 @@ function GroupAIStateBase:on_nav_segment_state_change(changed_seg_id, state)
 
 
 end
-function GroupAIStateBase:on_nav_seg_neighbour_state(start_seg_id, end_seg_id, state)
+GroupAIStateBase.on_nav_seg_neighbour_state = function (self, start_seg_id, end_seg_id, state)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -24173,7 +24173,7 @@ function GroupAIStateBase:on_nav_seg_neighbour_state(start_seg_id, end_seg_id, s
 
 
 end
-function GroupAIStateBase:set_enemy_assigned(area, unit_key)
+GroupAIStateBase.set_enemy_assigned = function (self, area, unit_key)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -24301,7 +24301,7 @@ GroupAIStateBase.clone_objective = function (objective)
 
 
 end
-function GroupAIStateBase:convert_hostage_to_criminal(unit, peer_unit)
+GroupAIStateBase.convert_hostage_to_criminal = function (self, unit, peer_unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -24670,7 +24670,7 @@ function GroupAIStateBase:convert_hostage_to_criminal(unit, peer_unit)
 
 
 end
-function GroupAIStateBase:clbk_minion_destroyed(player_key, minion_unit)
+GroupAIStateBase.clbk_minion_destroyed = function (self, player_key, minion_unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -24709,7 +24709,7 @@ function GroupAIStateBase:clbk_minion_destroyed(player_key, minion_unit)
 
 
 end
-function GroupAIStateBase:clbk_minion_dies(player_key, minion_unit, damage_info)
+GroupAIStateBase.clbk_minion_dies = function (self, player_key, minion_unit, damage_info)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -24802,7 +24802,7 @@ function GroupAIStateBase:clbk_minion_dies(player_key, minion_unit, damage_info)
 
 
 end
-function GroupAIStateBase:remove_minion(minion_key, player_key)
+GroupAIStateBase.remove_minion = function (self, minion_key, player_key)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -25046,7 +25046,7 @@ function GroupAIStateBase:remove_minion(minion_key, player_key)
 
 
 end
-function GroupAIStateBase:_set_converted_police(u_key, unit)
+GroupAIStateBase._set_converted_police = function (self, u_key, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -25079,7 +25079,7 @@ function GroupAIStateBase:_set_converted_police(u_key, unit)
 
 
 end
-function GroupAIStateBase:sync_converted_enemy(converted_enemy)
+GroupAIStateBase.sync_converted_enemy = function (self, converted_enemy)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -25118,7 +25118,7 @@ function GroupAIStateBase:sync_converted_enemy(converted_enemy)
 
 
 end
-function GroupAIStateBase:chk_enemy_calling_in_area(area, except_key)
+GroupAIStateBase.chk_enemy_calling_in_area = function (self, area, except_key)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -25197,7 +25197,7 @@ function GroupAIStateBase:chk_enemy_calling_in_area(area, except_key)
 
 
 end
-function GroupAIStateBase:register_security_camera(unit, state)
+GroupAIStateBase.register_security_camera = function (self, unit, state)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -25232,7 +25232,7 @@ function GroupAIStateBase:register_security_camera(unit, state)
 
 
 end
-function GroupAIStateBase:register_ecm_jammer(unit, jam_settings)
+GroupAIStateBase.register_ecm_jammer = function (self, unit, jam_settings)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -25379,7 +25379,7 @@ function GroupAIStateBase:register_ecm_jammer(unit, jam_settings)
 
 
 end
-function GroupAIStateBase:is_ecm_jammer_active(medium)
+GroupAIStateBase.is_ecm_jammer_active = function (self, medium)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -25435,7 +25435,7 @@ function GroupAIStateBase:is_ecm_jammer_active(medium)
 
 
 end
-function GroupAIStateBase:_init_unit_type_filters()
+GroupAIStateBase._init_unit_type_filters = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -25622,7 +25622,7 @@ function GroupAIStateBase:_init_unit_type_filters()
 
 
 end
-function GroupAIStateBase:get_unit_type_filter(filter_name)
+GroupAIStateBase.get_unit_type_filter = function (self, filter_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -25651,7 +25651,7 @@ function GroupAIStateBase:get_unit_type_filter(filter_name)
 
 
 end
-function GroupAIStateBase:sync_event(event_id, blame_id)
+GroupAIStateBase.sync_event = function (self, event_id, blame_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -25759,7 +25759,7 @@ GroupAIStateBase.blame_triggers = {
 	german_fallschirmjager_light = "cop",
 	german_og_commander = "cop"
 }
-function GroupAIStateBase:fetch_highest_giveaway(...)
+GroupAIStateBase.fetch_highest_giveaway = function (self, ...)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -26430,7 +26430,7 @@ GroupAIStateBase.investigate_unit = function (giveaway_unit, additional_info)
 
 
 end
-function GroupAIStateBase:get_sync_event_id(event_name)
+GroupAIStateBase.get_sync_event_id = function (self, event_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -26486,7 +26486,7 @@ function GroupAIStateBase:get_sync_event_id(event_name)
 
 
 end
-function GroupAIStateBase:get_sync_blame_id(blame_name)
+GroupAIStateBase.get_sync_blame_id = function (self, blame_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -26542,7 +26542,7 @@ function GroupAIStateBase:get_sync_blame_id(blame_name)
 
 
 end
-function GroupAIStateBase:_count_police_force(task_name)
+GroupAIStateBase._count_police_force = function (self, task_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -26709,7 +26709,7 @@ function GroupAIStateBase:_count_police_force(task_name)
 
 
 end
-function GroupAIStateBase:_merge_coarse_path_by_area(coarse_path)
+GroupAIStateBase._merge_coarse_path_by_area = function (self, coarse_path)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -26798,7 +26798,7 @@ function GroupAIStateBase:_merge_coarse_path_by_area(coarse_path)
 
 
 end
-function GroupAIStateBase:on_nav_seg_neighbours_state(changed_seg_id, neighbours, state)
+GroupAIStateBase.on_nav_seg_neighbours_state = function (self, changed_seg_id, neighbours, state)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -27128,7 +27128,7 @@ function GroupAIStateBase:on_nav_seg_neighbours_state(changed_seg_id, neighbours
 
 
 end
-function GroupAIStateBase:register_loot(loot_unit, pickup_area)
+GroupAIStateBase.register_loot = function (self, loot_unit, pickup_area)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -27208,7 +27208,7 @@ function GroupAIStateBase:register_loot(loot_unit, pickup_area)
 
 
 end
-function GroupAIStateBase:unregister_loot(loot_u_key)
+GroupAIStateBase.unregister_loot = function (self, loot_u_key)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -27286,7 +27286,7 @@ function GroupAIStateBase:unregister_loot(loot_u_key)
 
 
 end
-function GroupAIStateBase:register_rescueable_hostage(unit, rescue_area)
+GroupAIStateBase.register_rescueable_hostage = function (self, unit, rescue_area)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -27391,7 +27391,7 @@ function GroupAIStateBase:register_rescueable_hostage(unit, rescue_area)
 
 
 end
-function GroupAIStateBase:unregister_rescueable_hostage(u_key)
+GroupAIStateBase.unregister_rescueable_hostage = function (self, u_key)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -27629,7 +27629,7 @@ GroupAIStateBase._create_hud_spotter_icon = function (obs_key, u_observer, u_sus
 
 
 end
-function GroupAIStateBase:_sync_status(sync_status_code, u_suspect, u_observer)
+GroupAIStateBase._sync_status = function (self, sync_status_code, u_suspect, u_observer)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -27688,7 +27688,7 @@ function GroupAIStateBase:_sync_status(sync_status_code, u_suspect, u_observer)
 
 
 end
-function GroupAIStateBase:_sync_spotter_detection(sync_status_code, u_suspect, u_observer)
+GroupAIStateBase._sync_spotter_detection = function (self, sync_status_code, u_suspect, u_observer)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -27733,7 +27733,7 @@ function GroupAIStateBase:_sync_spotter_detection(sync_status_code, u_suspect, u
 
 
 end
-function GroupAIStateBase:on_criminal_suspicion_progress(u_suspect, u_observer, status)
+GroupAIStateBase.on_criminal_suspicion_progress = function (self, u_suspect, u_observer, status)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -28434,7 +28434,7 @@ function GroupAIStateBase:on_criminal_suspicion_progress(u_suspect, u_observer, 
 
 
 end
-function GroupAIStateBase:on_spotter_detection_progress(u_suspect, u_observer, status)
+GroupAIStateBase.on_spotter_detection_progress = function (self, u_suspect, u_observer, status)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -28856,7 +28856,7 @@ function GroupAIStateBase:on_spotter_detection_progress(u_suspect, u_observer, s
 
 
 end
-function GroupAIStateBase:_upd_criminal_suspicion_progress()
+GroupAIStateBase._upd_criminal_suspicion_progress = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -29021,7 +29021,7 @@ function GroupAIStateBase:_upd_criminal_suspicion_progress()
 
 
 end
-function GroupAIStateBase:_clear_criminal_suspicion_data()
+GroupAIStateBase._clear_criminal_suspicion_data = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -29081,7 +29081,7 @@ function GroupAIStateBase:_clear_criminal_suspicion_data()
 
 
 end
-function GroupAIStateBase:_clear_character_criminal_suspicion_data(obs_key)
+GroupAIStateBase._clear_character_criminal_suspicion_data = function (self, obs_key)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -29160,7 +29160,7 @@ function GroupAIStateBase:_clear_character_criminal_suspicion_data(obs_key)
 
 
 end
-function GroupAIStateBase:get_nr_successful_alarm_pager_bluffs()
+GroupAIStateBase.get_nr_successful_alarm_pager_bluffs = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -29170,7 +29170,7 @@ function GroupAIStateBase:get_nr_successful_alarm_pager_bluffs()
 
 
 end
-function GroupAIStateBase:on_successful_alarm_pager_bluff()
+GroupAIStateBase.on_successful_alarm_pager_bluff = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -29182,7 +29182,7 @@ function GroupAIStateBase:on_successful_alarm_pager_bluff()
 
 
 end
-function GroupAIStateBase:trim_coarse_path_to_areas(coarse_path)
+GroupAIStateBase.trim_coarse_path_to_areas = function (self, coarse_path)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -29307,7 +29307,7 @@ function GroupAIStateBase:trim_coarse_path_to_areas(coarse_path)
 
 
 end
-function GroupAIStateBase:on_editor_sim_unit_spawned(unit)
+GroupAIStateBase.on_editor_sim_unit_spawned = function (self, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -29340,7 +29340,7 @@ function GroupAIStateBase:on_editor_sim_unit_spawned(unit)
 
 
 end
-function GroupAIStateBase:_get_balancing_multiplier(balance_multipliers)
+GroupAIStateBase._get_balancing_multiplier = function (self, balance_multipliers)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -29400,7 +29400,7 @@ function GroupAIStateBase:_get_balancing_multiplier(balance_multipliers)
 
 
 end
-function GroupAIStateBase:draw_attention_objects_by_preset_name(wanted_preset_name)
+GroupAIStateBase.draw_attention_objects_by_preset_name = function (self, wanted_preset_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -29443,7 +29443,7 @@ function GroupAIStateBase:draw_attention_objects_by_preset_name(wanted_preset_na
 
 
 end
-function GroupAIStateBase:_upd_debug_draw_attentions()
+GroupAIStateBase._upd_debug_draw_attentions = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -29546,7 +29546,7 @@ function GroupAIStateBase:_upd_debug_draw_attentions()
 
 
 end
-function GroupAIStateBase:show_aiming_icon(unit)
+GroupAIStateBase.show_aiming_icon = function (self, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -29586,7 +29586,7 @@ function GroupAIStateBase:show_aiming_icon(unit)
 
 
 end
-function GroupAIStateBase:hide_aiming_icon(unit)
+GroupAIStateBase.hide_aiming_icon = function (self, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -29634,7 +29634,7 @@ function GroupAIStateBase:hide_aiming_icon(unit)
 
 
 end
-function GroupAIStateBase:show_investigate_icon(u_observer)
+GroupAIStateBase.show_investigate_icon = function (self, u_observer)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -29694,7 +29694,7 @@ function GroupAIStateBase:show_investigate_icon(u_observer)
 
 
 end
-function GroupAIStateBase:hide_investigate_icon(unit)
+GroupAIStateBase.hide_investigate_icon = function (self, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -29737,7 +29737,7 @@ function GroupAIStateBase:hide_investigate_icon(unit)
 
 
 end
-function GroupAIStateBase:is_enemy_converted_to_criminal(unit)
+GroupAIStateBase.is_enemy_converted_to_criminal = function (self, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -29749,7 +29749,7 @@ function GroupAIStateBase:is_enemy_converted_to_criminal(unit)
 
 
 end
-function GroupAIStateBase:get_amount_enemies_converted_to_criminals()
+GroupAIStateBase.get_amount_enemies_converted_to_criminals = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -29779,7 +29779,7 @@ function GroupAIStateBase:get_amount_enemies_converted_to_criminals()
 
 
 end
-function GroupAIStateBase:all_converted_enemies()
+GroupAIStateBase.all_converted_enemies = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -29841,7 +29841,7 @@ GroupAIStateBase._get_group_acces_mask = function (group)
 
 
 end
-function GroupAIStateBase:on_hostage_follow(owner, follower, state)
+GroupAIStateBase.on_hostage_follow = function (self, owner, follower, state)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -30108,7 +30108,7 @@ function GroupAIStateBase:on_hostage_follow(owner, follower, state)
 
 
 end
-function GroupAIStateBase:get_following_hostages(owner)
+GroupAIStateBase.get_following_hostages = function (self, owner)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -30141,7 +30141,7 @@ function GroupAIStateBase:get_following_hostages(owner)
 
 
 end
-function GroupAIStateBase:register_usable_turret(unit)
+GroupAIStateBase.register_usable_turret = function (self, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -30175,7 +30175,7 @@ function GroupAIStateBase:register_usable_turret(unit)
 
 
 end
-function GroupAIStateBase:get_usable_turrets()
+GroupAIStateBase.get_usable_turrets = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -30185,7 +30185,7 @@ function GroupAIStateBase:get_usable_turrets()
 
 
 end
-function GroupAIStateBase:register_turret(unit)
+GroupAIStateBase.register_turret = function (self, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -30219,7 +30219,7 @@ function GroupAIStateBase:register_turret(unit)
 
 
 end
-function GroupAIStateBase:unregister_turret(unit)
+GroupAIStateBase.unregister_turret = function (self, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -30298,7 +30298,7 @@ function GroupAIStateBase:unregister_turret(unit)
 
 
 end
-function GroupAIStateBase:turrets()
+GroupAIStateBase.turrets = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -30308,7 +30308,7 @@ function GroupAIStateBase:turrets()
 
 
 end
-function GroupAIStateBase:phalanx_minions()
+GroupAIStateBase.phalanx_minions = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -30318,7 +30318,7 @@ function GroupAIStateBase:phalanx_minions()
 
 
 end
-function GroupAIStateBase:phalanx_vip()
+GroupAIStateBase.phalanx_vip = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -30328,7 +30328,7 @@ function GroupAIStateBase:phalanx_vip()
 
 
 end
-function GroupAIStateBase:get_phalanx_minion_count()
+GroupAIStateBase.get_phalanx_minion_count = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -30359,7 +30359,7 @@ function GroupAIStateBase:get_phalanx_minion_count()
 
 
 end
-function GroupAIStateBase:register_phalanx_minion(unit)
+GroupAIStateBase.register_phalanx_minion = function (self, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -30372,7 +30372,7 @@ function GroupAIStateBase:register_phalanx_minion(unit)
 
 
 end
-function GroupAIStateBase:register_phalanx_vip(unit)
+GroupAIStateBase.register_phalanx_vip = function (self, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -30384,7 +30384,7 @@ function GroupAIStateBase:register_phalanx_vip(unit)
 
 
 end
-function GroupAIStateBase:unregister_phalanx_minion(unit_key)
+GroupAIStateBase.unregister_phalanx_minion = function (self, unit_key)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -30396,7 +30396,7 @@ function GroupAIStateBase:unregister_phalanx_minion(unit_key)
 
 
 end
-function GroupAIStateBase:unregister_phalanx_vip()
+GroupAIStateBase.unregister_phalanx_vip = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -30408,7 +30408,7 @@ function GroupAIStateBase:unregister_phalanx_vip()
 
 
 end
-function GroupAIStateBase:is_unit_in_phalanx_minion_data(unit_key)
+GroupAIStateBase.is_unit_in_phalanx_minion_data = function (self, unit_key)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---

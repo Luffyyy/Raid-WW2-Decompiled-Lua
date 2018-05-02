@@ -35,7 +35,7 @@ ViewportManager = slot0
 ViewportManager.CAMERA_NEAR_RANGE = 3
 ViewportManager.WORLD_CAMERA_NEAR_RANGE = 20
 ViewportManager.CAMERA_FAR_RANGE = 100000
-ViewportManager.init = function (self, aspect_ratio)
+function ViewportManager:init(aspect_ratio)
 	ViewportManager.super.init(slot3, self)
 
 	slot6 = aspect_ratio
@@ -61,12 +61,12 @@ ViewportManager.init = function (self, aspect_ratio)
 
 	return 
 end
-ViewportManager.skip_update_env_on_first_viewport = function (self, skip)
+function ViewportManager:skip_update_env_on_first_viewport(skip)
 	self._allow_fvp_env_update = not skip
 
 	return 
 end
-ViewportManager.update = function (self, t, dt)
+function ViewportManager:update(t, dt)
 	slot7 = self
 
 	for i, svp in ipairs(self._all_really_active(slot6)) do
@@ -77,14 +77,14 @@ ViewportManager.update = function (self, t, dt)
 
 	return 
 end
-ViewportManager.paused_update = function (self, t, dt)
+function ViewportManager:paused_update(t, dt)
 	slot7 = dt
 
 	self.update(slot4, self, t)
 
 	return 
 end
-ViewportManager.render = function (self)
+function ViewportManager:render()
 	slot5 = self
 
 	for i, svp in ipairs(self._all_really_active(slot4)) do
@@ -95,7 +95,7 @@ ViewportManager.render = function (self)
 
 	return 
 end
-ViewportManager.end_frame = function (self, t, dt)
+function ViewportManager:end_frame(t, dt)
 	if self._render_settings_change_map then
 		local is_resolution_changed = self._render_settings_change_map.resolution ~= nil
 		slot6 = self._render_settings_change_map
@@ -126,7 +126,7 @@ ViewportManager.end_frame = function (self, t, dt)
 
 	return 
 end
-ViewportManager.destroy = function (self)
+function ViewportManager:destroy()
 	slot5 = self
 
 	for _, svp in pairs(self._all_ao(slot4)) do
@@ -141,7 +141,7 @@ ViewportManager.destroy = function (self)
 
 	return 
 end
-ViewportManager.new_vp = function (self, x, y, width, height, name, priority)
+function ViewportManager:new_vp(x, y, width, height, name, priority)
 	local name = name or ""
 	local prio = priority or CoreManagerBase.PRIO_DEFAULT
 	slot17 = name
@@ -152,52 +152,52 @@ ViewportManager.new_vp = function (self, x, y, width, height, name, priority)
 
 	return svp
 end
-ViewportManager.vp_by_name = function (self, name)
+function ViewportManager:vp_by_name(name)
 	slot5 = name
 
 	return self._ao_by_name(slot3, self)
 end
-ViewportManager.active_viewports = function (self)
+function ViewportManager:active_viewports()
 	slot4 = CoreManagerBase.PRIO_DEFAULT
 
 	return self._all_active_requested_by_prio(slot2, self)
 end
-ViewportManager.all_really_active_viewports = function (self)
+function ViewportManager:all_really_active_viewports()
 	slot3 = self
 
 	return self._all_really_active(slot2)
 end
-ViewportManager.num_active_viewports = function (self)
+function ViewportManager:num_active_viewports()
 	slot3 = self
 
 	return #self.active_viewports(slot2)
 end
-ViewportManager.first_active_viewport = function (self)
+function ViewportManager:first_active_viewport()
 	slot3 = self
 	local all_active = self._all_really_active(slot2)
 
 	return (0 < #all_active and all_active[1]) or nil
 end
-ViewportManager.viewports = function (self)
+function ViewportManager:viewports()
 	slot3 = self
 
 	return self._all_ao(slot2)
 end
-ViewportManager.add_resolution_changed_func = function (self, func)
+function ViewportManager:add_resolution_changed_func(func)
 	slot5 = func
 
 	self._resolution_changed_event_handler.add(slot3, self._resolution_changed_event_handler)
 
 	return func
 end
-ViewportManager.remove_resolution_changed_func = function (self, func)
+function ViewportManager:remove_resolution_changed_func(func)
 	slot5 = func
 
 	self._resolution_changed_event_handler.remove(slot3, self._resolution_changed_event_handler)
 
 	return 
 end
-ViewportManager.resolution_changed = function (self)
+function ViewportManager:resolution_changed()
 	slot3 = managers.gui_data
 
 	managers.gui_data.resolution_changed(slot2)
@@ -225,43 +225,43 @@ ViewportManager.resolution_changed = function (self)
 
 	return 
 end
-ViewportManager.editor_reload_environment = function (self, name)
+function ViewportManager:editor_reload_environment(name)
 	slot5 = name
 
 	self._env_manager.editor_reload(slot3, self._env_manager)
 
 	return 
 end
-ViewportManager.editor_add_environment_created_callback = function (self, func)
+function ViewportManager:editor_add_environment_created_callback(func)
 	slot5 = func
 
 	self._env_manager.editor_add_created_callback(slot3, self._env_manager)
 
 	return 
 end
-ViewportManager.preload_environment = function (self, name)
+function ViewportManager:preload_environment(name)
 	slot5 = name
 
 	self._env_manager.preload_environment(slot3, self._env_manager)
 
 	return 
 end
-ViewportManager.get_predefined_environment_filter_map = function (self)
+function ViewportManager:get_predefined_environment_filter_map()
 	slot3 = self._env_manager
 
 	return self._env_manager.get_predefined_environment_filter_map(slot2)
 end
-ViewportManager.get_environment_value = function (self, path, data_path_key)
+function ViewportManager:get_environment_value(path, data_path_key)
 	slot7 = data_path_key
 
 	return self._env_manager.get_value(slot4, self._env_manager, path)
 end
-ViewportManager.has_data_path_key = function (self, data_path_key)
+function ViewportManager:has_data_path_key(data_path_key)
 	slot5 = data_path_key
 
 	return self._env_manager.has_data_path_key(slot3, self._env_manager)
 end
-ViewportManager.create_global_environment_modifier = function (self, data_path_key, is_override, modifier_func)
+function ViewportManager:create_global_environment_modifier(data_path_key, is_override, modifier_func)
 	slot8 = self
 
 	for _, vp in ipairs(self.viewports(slot7)) do
@@ -276,7 +276,7 @@ ViewportManager.create_global_environment_modifier = function (self, data_path_k
 
 	return data_path_key
 end
-ViewportManager.destroy_global_environment_modifier = function (self, data_path_key)
+function ViewportManager:destroy_global_environment_modifier(data_path_key)
 	slot6 = self
 
 	for _, vp in ipairs(self.viewports(slot5)) do
@@ -289,7 +289,7 @@ ViewportManager.destroy_global_environment_modifier = function (self, data_path_
 
 	return 
 end
-ViewportManager.update_global_environment_value = function (self, data_path_key)
+function ViewportManager:update_global_environment_value(data_path_key)
 	slot6 = self
 
 	for _, vp in ipairs(self.viewports(slot5)) do
@@ -300,7 +300,7 @@ ViewportManager.update_global_environment_value = function (self, data_path_key)
 
 	return 
 end
-ViewportManager.set_default_environment = function (self, default_environment_path, blend_duration, blend_bezier_curve)
+function ViewportManager:set_default_environment(default_environment_path, blend_duration, blend_bezier_curve)
 	self._env_manager.set_default_environment(slot5, self._env_manager)
 
 	slot8 = self
@@ -313,17 +313,17 @@ ViewportManager.set_default_environment = function (self, default_environment_pa
 
 	return 
 end
-ViewportManager.default_environment = function (self)
+function ViewportManager:default_environment()
 	slot3 = self._env_manager
 
 	return self._env_manager.default_environment(slot2)
 end
-ViewportManager.game_default_environment = function (self)
+function ViewportManager:game_default_environment()
 	slot3 = self._env_manager
 
 	return self._env_manager.game_default_environment(slot2)
 end
-ViewportManager.editor_reset_environment = function (self)
+function ViewportManager:editor_reset_environment()
 	slot5 = self
 
 	for _, vp in ipairs(self.active_viewports(slot4)) do
@@ -334,7 +334,7 @@ ViewportManager.editor_reset_environment = function (self)
 
 	return 
 end
-ViewportManager._viewport_destroyed = function (self, vp)
+function ViewportManager:_viewport_destroyed(vp)
 	slot5 = vp
 
 	self._del_accessobj(slot3, self)
@@ -343,10 +343,10 @@ ViewportManager._viewport_destroyed = function (self, vp)
 
 	return 
 end
-ViewportManager._get_environment_manager = function (self)
+function ViewportManager:_get_environment_manager()
 	return self._env_manager
 end
-ViewportManager._prioritize_and_activate = function (self)
+function ViewportManager:_prioritize_and_activate()
 	local old_first_vp = self.first_active_viewport(slot2)
 	slot4 = self
 
@@ -371,7 +371,7 @@ ViewportManager._prioritize_and_activate = function (self)
 
 	return 
 end
-ViewportManager.first_active_world_viewport = function (self)
+function ViewportManager:first_active_world_viewport()
 	slot5 = self
 
 	for _, vp in ipairs(self.active_viewports(slot4)) do
@@ -384,7 +384,7 @@ ViewportManager.first_active_world_viewport = function (self)
 
 	return 
 end
-ViewportManager.get_current_camera = function (self)
+function ViewportManager:get_current_camera()
 	if self._current_camera then
 		return self._current_camera
 	end
@@ -407,7 +407,7 @@ ViewportManager.get_current_camera = function (self)
 
 	return self._current_camera
 end
-ViewportManager.get_current_camera_position = function (self)
+function ViewportManager:get_current_camera_position()
 	if self._current_camera_position_updated then
 		return self._current_camera_position
 	end
@@ -425,7 +425,7 @@ ViewportManager.get_current_camera_position = function (self)
 
 	return self._current_camera_position
 end
-ViewportManager.get_current_camera_rotation = function (self)
+function ViewportManager:get_current_camera_rotation()
 	if self._current_camera_rotation then
 		return self._current_camera_rotation
 	end
@@ -442,13 +442,13 @@ ViewportManager.get_current_camera_rotation = function (self)
 
 	return self._current_camera_rotation
 end
-ViewportManager.get_active_vp = function (self)
+function ViewportManager:get_active_vp()
 	slot3 = self
 	slot3 = self.active_vp(slot2)
 
 	return self.active_vp(slot2).vp(slot2)
 end
-ViewportManager.active_vp = function (self)
+function ViewportManager:active_vp()
 	slot3 = self
 	local vps = self.active_viewports(slot2)
 
@@ -475,7 +475,7 @@ slot4 = "PS4"
 local is_ps4 = SystemInfo.platform(slot2) == Idstring(SystemInfo)
 slot5 = "XB1"
 local is_xb1 = SystemInfo.platform(slot3) == Idstring(SystemInfo)
-ViewportManager.get_safe_rect = function (self)
+function ViewportManager:get_safe_rect()
 	local a = 0.05
 	local b = 1 - a * 2
 
@@ -486,7 +486,7 @@ ViewportManager.get_safe_rect = function (self)
 		height = b
 	}
 end
-ViewportManager.get_safe_rect_pixels = function (self)
+function ViewportManager:get_safe_rect_pixels()
 	local res = RenderSettings.resolution
 	slot4 = self
 	local safe_rect_scale = self.get_safe_rect(slot3)
@@ -502,7 +502,7 @@ ViewportManager.get_safe_rect_pixels = function (self)
 
 	return safe_rect_pixels
 end
-ViewportManager.set_resolution = function (self, resolution)
+function ViewportManager:set_resolution(resolution)
 	if RenderSettings.resolution ~= resolution or (self._render_settings_change_map and self._render_settings_change_map.resolution ~= resolution) then
 		self._render_settings_change_map = self._render_settings_change_map or {}
 		self._render_settings_change_map.resolution = resolution
@@ -510,7 +510,7 @@ ViewportManager.set_resolution = function (self, resolution)
 
 	return 
 end
-ViewportManager.is_fullscreen = function (self)
+function ViewportManager:is_fullscreen()
 	if self._render_settings_change_map and self._render_settings_change_map.fullscreen ~= nil then
 		return self._render_settings_change_map.fullscreen
 	else
@@ -519,7 +519,7 @@ ViewportManager.is_fullscreen = function (self)
 
 	return 
 end
-ViewportManager.is_borderless = function (self)
+function ViewportManager:is_borderless()
 	if self._render_settings_change_map and self._render_settings_change_map.borderless ~= nil then
 		return self._render_settings_change_map.borderless
 	else
@@ -528,7 +528,7 @@ ViewportManager.is_borderless = function (self)
 
 	return 
 end
-ViewportManager.set_fullscreen = function (self, fullscreen)
+function ViewportManager:set_fullscreen(fullscreen)
 	if not RenderSettings.fullscreen ~= not fullscreen or (self._render_settings_change_map and not self._render_settings_change_map.fullscreen ~= not fullscreen) then
 		self._render_settings_change_map = self._render_settings_change_map or {}
 		self._render_settings_change_map.fullscreen = not not fullscreen
@@ -536,7 +536,7 @@ ViewportManager.set_fullscreen = function (self, fullscreen)
 
 	return 
 end
-ViewportManager.set_borderless = function (self, borderless)
+function ViewportManager:set_borderless(borderless)
 	if not RenderSettings.borderless ~= not borderless or (self._render_settings_change_map and not self._render_settings_change_map.borderless ~= not borderless) then
 		self._render_settings_change_map = self._render_settings_change_map or {}
 		self._render_settings_change_map.borderless = not not borderless
@@ -544,7 +544,7 @@ ViewportManager.set_borderless = function (self, borderless)
 
 	return 
 end
-ViewportManager.set_aspect_ratio = function (self, aspect_ratio)
+function ViewportManager:set_aspect_ratio(aspect_ratio)
 	if RenderSettings.aspect_ratio ~= aspect_ratio or (self._render_settings_change_map and self._render_settings_change_map.aspect_ratio ~= aspect_ratio) then
 		self._render_settings_change_map = self._render_settings_change_map or {}
 		self._render_settings_change_map.aspect_ratio = aspect_ratio
@@ -553,7 +553,7 @@ ViewportManager.set_aspect_ratio = function (self, aspect_ratio)
 
 	return 
 end
-ViewportManager.set_vsync = function (self, vsync)
+function ViewportManager:set_vsync(vsync)
 	if RenderSettings.v_sync ~= vsync or (self._render_settings_change_map and self._render_settings_change_map.v_sync ~= vsync) then
 		self._render_settings_change_map = self._render_settings_change_map or {}
 		self._render_settings_change_map.v_sync = vsync
@@ -562,7 +562,7 @@ ViewportManager.set_vsync = function (self, vsync)
 
 	return 
 end
-ViewportManager.set_buffer_count = function (self, buffer_count)
+function ViewportManager:set_buffer_count(buffer_count)
 	if RenderSettings.buffer_count ~= buffer_count or (self._render_settings_change_map and self._render_settings_change_map.buffer_count ~= buffer_count) then
 		self._render_settings_change_map = self._render_settings_change_map or {}
 		self._render_settings_change_map.buffer_count = buffer_count
@@ -570,7 +570,7 @@ ViewportManager.set_buffer_count = function (self, buffer_count)
 
 	return 
 end
-ViewportManager.set_adapter_index = function (self, adapter_index)
+function ViewportManager:set_adapter_index(adapter_index)
 	if RenderSettings.adapter_index ~= adapter_index or (self._render_settings_change_map and self._render_settings_change_map.adapter_index ~= adapter_index) then
 		self._render_settings_change_map = self._render_settings_change_map or {}
 		self._render_settings_change_map.adapter_index = adapter_index
@@ -578,15 +578,15 @@ ViewportManager.set_adapter_index = function (self, adapter_index)
 
 	return 
 end
-ViewportManager.aspect_ratio = function (self)
+function ViewportManager:aspect_ratio()
 	return self._aspect_ratio
 end
-ViewportManager.set_aspect_ratio2 = function (self, aspect_ratio)
+function ViewportManager:set_aspect_ratio2(aspect_ratio)
 	self._aspect_ratio = aspect_ratio
 
 	return 
 end
-ViewportManager.save = function (self, data)
+function ViewportManager:save(data)
 	local state = {}
 	slot5 = self
 	state.default_environment = self.default_environment(slot4)
@@ -594,7 +594,7 @@ ViewportManager.save = function (self, data)
 
 	return 
 end
-ViewportManager.load = function (self, data)
+function ViewportManager:load(data)
 	local state = data.ViewportManager
 
 	if not state then

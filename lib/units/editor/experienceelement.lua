@@ -6,7 +6,7 @@ end
 ExperienceUnitElement = slot0
 ExperienceUnitElement.SAVE_UNIT_POSITION = false
 ExperienceUnitElement.SAVE_UNIT_ROTATION = false
-ExperienceUnitElement.init = function (self, unit)
+function ExperienceUnitElement:init(unit)
 	slot5 = unit
 
 	MissionElement.init(slot3, self)
@@ -19,7 +19,7 @@ ExperienceUnitElement.init = function (self, unit)
 
 	return 
 end
-ExperienceUnitElement._build_panel = function (self, panel, panel_sizer)
+function ExperienceUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

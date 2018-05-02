@@ -14,21 +14,21 @@ if not ElementMotionPathOperator then
 end
 
 ElementMotionPathOperator = slot0
-ElementMotionPathOperator.init = function (self, ...)
+function ElementMotionPathOperator:init(...)
 	slot3 = self
 
 	ElementMotionPathOperator.super.init(slot2, ...)
 
 	return 
 end
-ElementMotionPathOperator.client_on_executed = function (self, ...)
+function ElementMotionPathOperator:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementMotionPathOperator.on_executed = function (self, instigator)
+function ElementMotionPathOperator:on_executed(instigator)
 
 	-- Decompilation error in this vicinity:
 	if not self._values.enabled then
@@ -48,14 +48,14 @@ if not ElementMotionPathTrigger then
 end
 
 ElementMotionPathTrigger = slot0
-ElementMotionPathTrigger.init = function (self, ...)
+function ElementMotionPathTrigger:init(...)
 	slot3 = self
 
 	ElementMotionPathTrigger.super.init(slot2, ...)
 
 	return 
 end
-ElementMotionPathTrigger.on_script_activated = function (self)
+function ElementMotionPathTrigger:on_script_activated()
 	slot3 = self._values.elements
 
 	for _, id in ipairs(slot2) do
@@ -69,10 +69,10 @@ ElementMotionPathTrigger.on_script_activated = function (self)
 
 	return 
 end
-ElementMotionPathTrigger.client_on_executed = function (self, ...)
+function ElementMotionPathTrigger:client_on_executed(...)
 	return 
 end
-ElementMotionPathTrigger.on_executed = function (self, instigator)
+function ElementMotionPathTrigger:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

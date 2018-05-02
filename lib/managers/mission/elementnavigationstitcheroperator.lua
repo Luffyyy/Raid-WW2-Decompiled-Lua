@@ -6,21 +6,21 @@ if not ElementNavigationStitcherOperator then
 end
 
 ElementNavigationStitcherOperator = slot0
-ElementNavigationStitcherOperator.init = function (self, ...)
+function ElementNavigationStitcherOperator:init(...)
 	slot3 = self
 
 	ElementNavigationStitcherOperator.super.init(slot2, ...)
 
 	return 
 end
-ElementNavigationStitcherOperator.client_on_executed = function (self, ...)
+function ElementNavigationStitcherOperator:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementNavigationStitcherOperator._apply_operator = function (self, mission_script_element)
+function ElementNavigationStitcherOperator:_apply_operator(mission_script_element)
 	if mission_script_element then
 		local call = mission_script_element[self._values.operation]
 
@@ -42,7 +42,7 @@ ElementNavigationStitcherOperator._apply_operator = function (self, mission_scri
 
 	return 
 end
-ElementNavigationStitcherOperator.on_executed = function (self, instigator)
+function ElementNavigationStitcherOperator:on_executed(instigator)
 
 	-- Decompilation error in this vicinity:
 	if not self._values.enabled then

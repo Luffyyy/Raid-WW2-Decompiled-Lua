@@ -4,21 +4,21 @@ if not RaidMenuOptionsNetwork then
 end
 
 RaidMenuOptionsNetwork = slot0
-RaidMenuOptionsNetwork.init = function (self, ws, fullscreen_ws, node, component_name)
+function RaidMenuOptionsNetwork:init(ws, fullscreen_ws, node, component_name)
 	slot11 = component_name
 
 	RaidMenuOptionsNetwork.super.init(slot6, self, ws, fullscreen_ws, node)
 
 	return 
 end
-RaidMenuOptionsNetwork._set_initial_data = function (self)
+function RaidMenuOptionsNetwork:_set_initial_data()
 	slot5 = "menu_header_options_network_subtitle"
 
 	self._node.components.raid_menu_header.set_screen_name(slot2, self._node.components.raid_menu_header, "menu_header_options_main_screen_name")
 
 	return 
 end
-RaidMenuOptionsNetwork._layout = function (self)
+function RaidMenuOptionsNetwork:_layout()
 	slot3 = self
 
 	RaidMenuOptionsNetwork.super._layout(slot2)
@@ -41,7 +41,7 @@ RaidMenuOptionsNetwork._layout = function (self)
 
 	return 
 end
-RaidMenuOptionsNetwork.close = function (self)
+function RaidMenuOptionsNetwork:close()
 	slot3 = self
 
 	self._save_network_values(slot2)
@@ -57,7 +57,7 @@ RaidMenuOptionsNetwork.close = function (self)
 
 	return 
 end
-RaidMenuOptionsNetwork._layout_network = function (self)
+function RaidMenuOptionsNetwork:_layout_network()
 	local start_x = 0
 	local start_y = 320
 	local default_width = 512
@@ -108,7 +108,7 @@ RaidMenuOptionsNetwork._layout_network = function (self)
 
 	return 
 end
-RaidMenuOptionsNetwork._load_network_values = function (self)
+function RaidMenuOptionsNetwork:_load_network_values()
 	slot4 = "net_packet_throttling"
 	local net_packet_throttling = managers.user.get_setting(slot2, managers.user)
 	slot5 = "net_forwarding"
@@ -129,7 +129,7 @@ RaidMenuOptionsNetwork._load_network_values = function (self)
 
 	return 
 end
-RaidMenuOptionsNetwork._save_network_values = function (self)
+function RaidMenuOptionsNetwork:_save_network_values()
 	slot3 = self
 
 	self.on_click_toggle_packet_throttling(slot2)
@@ -144,7 +144,7 @@ RaidMenuOptionsNetwork._save_network_values = function (self)
 
 	return 
 end
-RaidMenuOptionsNetwork.on_click_toggle_packet_throttling = function (self)
+function RaidMenuOptionsNetwork:on_click_toggle_packet_throttling()
 	local net_packet_throttling = self._toggle_menu_packet_throttling.get_value(slot2)
 	slot4 = managers.menu
 	slot5 = net_packet_throttling
@@ -153,7 +153,7 @@ RaidMenuOptionsNetwork.on_click_toggle_packet_throttling = function (self)
 
 	return 
 end
-RaidMenuOptionsNetwork.on_click_toggle_net_forwarding = function (self)
+function RaidMenuOptionsNetwork:on_click_toggle_net_forwarding()
 	local net_forwarding = self._toggle_menu_net_forwarding.get_value(slot2)
 	slot4 = managers.menu
 	slot5 = net_forwarding
@@ -162,7 +162,7 @@ RaidMenuOptionsNetwork.on_click_toggle_net_forwarding = function (self)
 
 	return 
 end
-RaidMenuOptionsNetwork.on_click_toggle_net_use_compression = function (self)
+function RaidMenuOptionsNetwork:on_click_toggle_net_use_compression()
 	local net_use_compression = self._toggle_menu_net_use_compression.get_value(slot2)
 	slot4 = managers.menu
 	slot5 = net_use_compression
@@ -171,7 +171,7 @@ RaidMenuOptionsNetwork.on_click_toggle_net_use_compression = function (self)
 
 	return 
 end
-RaidMenuOptionsNetwork.on_click_default_network = function (self)
+function RaidMenuOptionsNetwork:on_click_default_network()
 	slot3 = managers.menu
 	slot4 = self._node.components.raid_options
 
@@ -179,7 +179,7 @@ RaidMenuOptionsNetwork.on_click_default_network = function (self)
 
 	return 
 end
-RaidMenuOptionsNetwork.bind_controller_inputs = function (self)
+function RaidMenuOptionsNetwork:bind_controller_inputs()
 	local legend = {
 		controller = {
 			"menu_legend_back"

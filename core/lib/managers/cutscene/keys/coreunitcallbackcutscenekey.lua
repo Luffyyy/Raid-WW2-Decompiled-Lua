@@ -61,7 +61,7 @@ CoreUnitCallbackCutsceneKey.attribute_affects("Unit Callback", CoreUnitCallbackC
 CoreUnitCallbackCutsceneKey.control_for_unit_name = CoreCutsceneKeyBase.standard_combo_box_control
 CoreUnitCallbackCutsceneKey.control_for_extension = CoreCutsceneKeyBase.standard_combo_box_control
 CoreUnitCallbackCutsceneKey.control_for_method = CoreCutsceneKeyBase.standard_combo_box_control
-CoreUnitCallbackCutsceneKey.__tostring = function (self)
+function CoreUnitCallbackCutsceneKey:__tostring()
 	slot4 = self
 	slot6 = self
 	slot8 = self
@@ -69,14 +69,14 @@ CoreUnitCallbackCutsceneKey.__tostring = function (self)
 
 	return "Call " .. self.unit_name(slot3) .. ":" .. self.extension(slot5) .. "():" .. self.method(slot7) .. "(" .. self.arguments_string(slot9) .. ")"
 end
-CoreUnitCallbackCutsceneKey.arguments_string = function (self)
+function CoreUnitCallbackCutsceneKey:arguments_string()
 
 	-- Decompilation error in this vicinity:
 	slot1 = string.join
 	slot3 = ", "
 	slot4 = table.collect
 end
-CoreUnitCallbackCutsceneKey.load = function (self, key_node, loading_class)
+function CoreUnitCallbackCutsceneKey:load(key_node, loading_class)
 	slot7 = loading_class
 
 	self.super.load(slot4, self, key_node)
@@ -106,7 +106,7 @@ CoreUnitCallbackCutsceneKey.load = function (self, key_node, loading_class)
 
 	return 
 end
-CoreUnitCallbackCutsceneKey._save_under = function (self, parent_node)
+function CoreUnitCallbackCutsceneKey:_save_under(parent_node)
 
 	-- Decompilation error in this vicinity:
 	slot5 = parent_node
@@ -115,7 +115,7 @@ CoreUnitCallbackCutsceneKey._save_under = function (self, parent_node)
 
 	return key_node
 end
-CoreUnitCallbackCutsceneKey.play = function (self, player, undo, fast_forward)
+function CoreUnitCallbackCutsceneKey:play(player, undo, fast_forward)
 	slot6 = self
 
 	if self.enabled(slot5) then
@@ -126,7 +126,7 @@ CoreUnitCallbackCutsceneKey.play = function (self, player, undo, fast_forward)
 
 	return 
 end
-CoreUnitCallbackCutsceneKey.skip = function (self, player)
+function CoreUnitCallbackCutsceneKey:skip(player)
 
 	-- Decompilation error in this vicinity:
 	slot4 = self
@@ -140,7 +140,7 @@ CoreUnitCallbackCutsceneKey.skip = function (self, player)
 
 	return 
 end
-CoreUnitCallbackCutsceneKey.is_valid_unit_name = function (self, unit_name)
+function CoreUnitCallbackCutsceneKey:is_valid_unit_name(unit_name)
 	slot5 = unit_name
 
 	if self.super.is_valid_unit_name(slot3, self) then
@@ -150,7 +150,7 @@ CoreUnitCallbackCutsceneKey.is_valid_unit_name = function (self, unit_name)
 
 	return slot2
 end
-CoreUnitCallbackCutsceneKey.is_valid_extension = function (self, extension)
+function CoreUnitCallbackCutsceneKey:is_valid_extension(extension)
 	slot4 = self
 	slot7 = self
 	local methods = self._unit_extension_info(slot3, self.unit_name(slot6))[extension]
@@ -162,7 +162,7 @@ CoreUnitCallbackCutsceneKey.is_valid_extension = function (self, extension)
 
 	return slot3
 end
-CoreUnitCallbackCutsceneKey.is_valid_method = function (self, method)
+function CoreUnitCallbackCutsceneKey:is_valid_method(method)
 	if method ~= nil then
 		slot5 = "undo_"
 	else
@@ -175,7 +175,7 @@ CoreUnitCallbackCutsceneKey.is_valid_method = function (self, method)
 
 	return slot2
 end
-CoreUnitCallbackCutsceneKey.refresh_control_for_extension = function (self, control)
+function CoreUnitCallbackCutsceneKey:refresh_control_for_extension(control)
 	slot4 = control
 
 	control.freeze(slot3)
@@ -227,7 +227,7 @@ CoreUnitCallbackCutsceneKey.refresh_control_for_extension = function (self, cont
 
 	return 
 end
-CoreUnitCallbackCutsceneKey.refresh_control_for_method = function (self, control)
+function CoreUnitCallbackCutsceneKey:refresh_control_for_method(control)
 	slot4 = control
 
 	control.freeze(slot3)
@@ -272,7 +272,7 @@ CoreUnitCallbackCutsceneKey.refresh_control_for_method = function (self, control
 
 	return 
 end
-CoreUnitCallbackCutsceneKey.refresh_control_for_arguments = function (self, panel)
+function CoreUnitCallbackCutsceneKey:refresh_control_for_arguments(panel)
 
 	-- Decompilation error in this vicinity:
 	slot4 = panel
@@ -298,13 +298,13 @@ CoreUnitCallbackCutsceneKey.refresh_control_for_arguments = function (self, pane
 
 	return 
 end
-CoreUnitCallbackCutsceneKey.control_for_arguments = function (self, parent_frame, callback_func)
+function CoreUnitCallbackCutsceneKey:control_for_arguments(parent_frame, callback_func)
 	slot6 = parent_frame
 	local panel = EWS.Panel(slot4, EWS)
 
 	return panel
 end
-CoreUnitCallbackCutsceneKey._invoke_if_exists = function (self, method_name, player)
+function CoreUnitCallbackCutsceneKey:_invoke_if_exists(method_name, player)
 
 	-- Decompilation error in this vicinity:
 	slot9 = self
@@ -333,7 +333,7 @@ CoreUnitCallbackCutsceneKey._invoke_if_exists = function (self, method_name, pla
 		return 
 	end
 end
-CoreUnitCallbackCutsceneKey._param_with_name = function (self, param_name)
+function CoreUnitCallbackCutsceneKey:_param_with_name(param_name)
 	slot6 = self
 	slot9 = self
 
@@ -368,20 +368,20 @@ CoreUnitCallbackCutsceneKey._param_with_name = function (self, param_name)
 	return param
 end
 CoreUnitCallbackCutsceneKeyParam = CoreUnitCallbackCutsceneKeyParam or class()
-CoreUnitCallbackCutsceneKeyParam.__tostring = function (self)
+function CoreUnitCallbackCutsceneKeyParam:__tostring()
 	slot3 = self.name
 	slot7 = self
 
 	return tostring(slot2) .. "=" .. tostring(self.inspect(slot6))
 end
-CoreUnitCallbackCutsceneKeyParam.init = function (self)
+function CoreUnitCallbackCutsceneKeyParam:init()
 	self.value_type = "nil"
 	self.name = "nil"
 	self.string_value = ""
 
 	return 
 end
-CoreUnitCallbackCutsceneKeyParam.load = function (self, param_node)
+function CoreUnitCallbackCutsceneKeyParam:load(param_node)
 	slot4 = param_node
 	self.value_type = param_node.name(slot3)
 	slot5 = "name"
@@ -391,7 +391,7 @@ CoreUnitCallbackCutsceneKeyParam.load = function (self, param_node)
 
 	return 
 end
-CoreUnitCallbackCutsceneKeyParam.value = function (self, cutscene_key)
+function CoreUnitCallbackCutsceneKeyParam:value(cutscene_key)
 	slot4 = self
 
 	if not self.is_nil(slot3) then
@@ -417,13 +417,13 @@ CoreUnitCallbackCutsceneKeyParam.value = function (self, cutscene_key)
 
 	return nil
 end
-CoreUnitCallbackCutsceneKeyParam.is_nil = function (self)
+function CoreUnitCallbackCutsceneKeyParam:is_nil()
 	return self.value_type == "nil"
 end
-CoreUnitCallbackCutsceneKeyParam.inspect = function (self)
+function CoreUnitCallbackCutsceneKeyParam:inspect()
 	return self.string_value
 end
-CoreUnitCallbackCutsceneKeyParam._save_under = function (self, parent_node)
+function CoreUnitCallbackCutsceneKeyParam:_save_under(parent_node)
 	slot5 = self.value_type
 	local param_node = parent_node.make_child(slot3, parent_node)
 	slot6 = "name"

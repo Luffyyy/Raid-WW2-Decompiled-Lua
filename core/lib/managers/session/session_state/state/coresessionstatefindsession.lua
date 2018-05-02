@@ -11,7 +11,7 @@ slot3 = "CoreSessionStateJoinSession"
 core.import(slot1, core)
 
 FindSession = FindSession or class()
-FindSession.init = function (self)
+function FindSession:init()
 	slot4 = self.session_state._session_info
 	slot9 = "_sessions_found"
 
@@ -19,10 +19,10 @@ FindSession.init = function (self)
 
 	return 
 end
-FindSession.destroy = function (self)
+function FindSession:destroy()
 	return 
 end
-FindSession._sessions_found = function (self, sessions)
+function FindSession:_sessions_found(sessions)
 	if not sessions then
 		self._session_to_join = false
 	end
@@ -31,7 +31,7 @@ FindSession._sessions_found = function (self, sessions)
 
 	return 
 end
-FindSession.transition = function (self)
+function FindSession:transition()
 	if self._session_id_to_join == false then
 		return CoreSessionStateCreateSession.CreateSession
 	elseif self._session_id_to_join ~= nil then

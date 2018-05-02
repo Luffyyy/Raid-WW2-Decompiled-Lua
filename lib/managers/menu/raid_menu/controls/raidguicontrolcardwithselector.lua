@@ -5,7 +5,7 @@ end
 
 RaidGUIControlCardWithSelector = slot0
 RaidGUIControlCardWithSelector.SELECT_TRINGLE_SIZE = 30
-RaidGUIControlCardWithSelector.init = function (self, parent, params, item_data, grid_params)
+function RaidGUIControlCardWithSelector:init(parent, params, item_data, grid_params)
 	slot11 = grid_params
 
 	RaidGUIControlCardWithSelector.super.init(slot6, self, parent, params, item_data)
@@ -92,7 +92,7 @@ RaidGUIControlCardWithSelector.init = function (self, parent, params, item_data,
 
 	return 
 end
-RaidGUIControlCardWithSelector.set_card = function (self, card_data)
+function RaidGUIControlCardWithSelector:set_card(card_data)
 	slot5 = card_data
 
 	RaidGUIControlCardWithSelector.super.set_card(slot3, self)
@@ -196,7 +196,7 @@ RaidGUIControlCardWithSelector.set_card = function (self, card_data)
 
 	return 
 end
-RaidGUIControlCardWithSelector.select = function (self, dont_fire_selected_callback)
+function RaidGUIControlCardWithSelector:select(dont_fire_selected_callback)
 	slot4 = self
 
 	RaidGUIControlCardWithSelector.super.select(slot3)
@@ -213,7 +213,7 @@ RaidGUIControlCardWithSelector.select = function (self, dont_fire_selected_callb
 
 	return 
 end
-RaidGUIControlCardWithSelector.unselect = function (self)
+function RaidGUIControlCardWithSelector:unselect()
 	slot3 = self
 
 	RaidGUIControlCardWithSelector.super.unselect(slot2)
@@ -224,7 +224,7 @@ RaidGUIControlCardWithSelector.unselect = function (self)
 
 	return 
 end
-RaidGUIControlCardWithSelector.on_mouse_over = function (self, x, y)
+function RaidGUIControlCardWithSelector:on_mouse_over(x, y)
 	slot7 = y
 
 	RaidGUIControlCardWithSelector.super.on_mouse_over(slot4, self, x)
@@ -235,7 +235,7 @@ RaidGUIControlCardWithSelector.on_mouse_over = function (self, x, y)
 
 	return 
 end
-RaidGUIControlCardWithSelector.on_mouse_released = function (self, button, x, y)
+function RaidGUIControlCardWithSelector:on_mouse_released(button, x, y)
 	if self._on_click_callback then
 		slot7 = self._params.key_value_field
 

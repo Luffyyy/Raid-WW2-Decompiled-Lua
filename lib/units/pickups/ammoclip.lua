@@ -12,7 +12,7 @@ AmmoClip.EVENT_IDS = {
 	bonnie_share_ammo = 1,
 	register_grenade = 16
 }
-AmmoClip.init = function (self, unit)
+function AmmoClip:init(unit)
 	slot5 = unit
 
 	AmmoClip.super.init(slot3, self)
@@ -24,7 +24,7 @@ AmmoClip.init = function (self, unit)
 
 	return 
 end
-AmmoClip._pickup = function (self, unit)
+function AmmoClip:_pickup(unit)
 	if self._picked_up then
 		return 
 	end
@@ -217,7 +217,7 @@ AmmoClip._pickup = function (self, unit)
 
 	return false
 end
-AmmoClip.sync_net_event = function (self, event, peer)
+function AmmoClip:sync_net_event(event, peer)
 
 	-- Decompilation error in this vicinity:
 	local player = managers.player.local_player(slot4)
@@ -285,7 +285,7 @@ AmmoClip.sync_net_event = function (self, event, peer)
 
 	return 
 end
-AmmoClip.get_pickup_type = function (self)
+function AmmoClip:get_pickup_type()
 	return "ammo"
 end
 

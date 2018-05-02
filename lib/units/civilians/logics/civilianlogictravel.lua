@@ -6,7 +6,7 @@ CivilianLogicTravel.on_alert = CivilianLogicIdle.on_alert
 CivilianLogicTravel.on_new_objective = CivilianLogicIdle.on_new_objective
 CivilianLogicTravel.on_action_completed = CopLogicTravel.on_action_completed
 CivilianLogicTravel.is_available_for_assignment = CopLogicTravel.is_available_for_assignment
-CivilianLogicTravel.enter = function (data, new_logic_name, enter_params)
+function CivilianLogicTravel.enter(data, new_logic_name, enter_params)
 	local my_data = {
 		unit = data.unit
 	}
@@ -116,7 +116,7 @@ CivilianLogicTravel.enter = function (data, new_logic_name, enter_params)
 
 	return 
 end
-CivilianLogicTravel.exit = function (data, new_logic_name, enter_params)
+function CivilianLogicTravel.exit(data, new_logic_name, enter_params)
 	slot7 = enter_params
 
 	CopLogicBase.exit(slot4, data, new_logic_name)
@@ -167,7 +167,7 @@ CivilianLogicTravel.exit = function (data, new_logic_name, enter_params)
 
 	return 
 end
-CivilianLogicTravel.update = function (data)
+function CivilianLogicTravel.update(data)
 	local my_data = data.internal_data
 	local unit = data.unit
 	local objective = data.objective
@@ -280,7 +280,7 @@ CivilianLogicTravel.update = function (data)
 
 	return 
 end
-CivilianLogicTravel.on_intimidated = function (data, amount, aggressor_unit)
+function CivilianLogicTravel.on_intimidated(data, amount, aggressor_unit)
 	slot6 = aggressor_unit
 
 	if not CivilianLogicIdle.is_obstructed(slot4, data) then
@@ -311,7 +311,7 @@ CivilianLogicTravel.on_intimidated = function (data, amount, aggressor_unit)
 
 	return 
 end
-CivilianLogicTravel._determine_exact_destination = function (data, objective)
+function CivilianLogicTravel._determine_exact_destination(data, objective)
 	if objective.pos then
 		return objective.pos
 	elseif objective.type == "follow" then
@@ -340,14 +340,14 @@ CivilianLogicTravel._determine_exact_destination = function (data, objective)
 
 	return 
 end
-CivilianLogicTravel._chk_has_old_action = function (data, my_data)
+function CivilianLogicTravel._chk_has_old_action(data, my_data)
 	slot4 = data.unit
 	local anim_data = data.unit.anim_data(slot3)
 	my_data.has_old_action = anim_data.to_idle or (anim_data.act and anim_data.needs_idle)
 
 	return 
 end
-CivilianLogicTravel._upd_stop_old_action = function (data, my_data, objective)
+function CivilianLogicTravel._upd_stop_old_action(data, my_data, objective)
 	slot5 = data.unit
 
 	if not data.unit.anim_data(slot4).to_idle then
@@ -375,7 +375,7 @@ CivilianLogicTravel._upd_stop_old_action = function (data, my_data, objective)
 
 	return 
 end
-CivilianLogicTravel.is_available_for_assignment = function (data, objective)
+function CivilianLogicTravel.is_available_for_assignment(data, objective)
 	if objective and objective.forced then
 		return true
 	end

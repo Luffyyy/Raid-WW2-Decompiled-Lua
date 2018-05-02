@@ -35,7 +35,7 @@ CopLogicIdle.allowed_transitional_actions = {
 		"crouch"
 	}
 }
-CopLogicIdle.enter = function (data, new_logic_name, enter_params)
+function CopLogicIdle.enter(data, new_logic_name, enter_params)
 	local my_data = {
 		unit = data.unit
 	}
@@ -191,7 +191,7 @@ CopLogicIdle.enter = function (data, new_logic_name, enter_params)
 
 	return 
 end
-CopLogicIdle.exit = function (data, new_logic_name, enter_params)
+function CopLogicIdle.exit(data, new_logic_name, enter_params)
 	slot7 = enter_params
 
 	CopLogicBase.exit(slot4, data, new_logic_name)
@@ -220,7 +220,7 @@ CopLogicIdle.exit = function (data, new_logic_name, enter_params)
 
 	return 
 end
-CopLogicIdle.queued_update = function (data)
+function CopLogicIdle.queued_update(data)
 	local my_data = data.internal_data
 	slot4 = data
 	local delay = data.logic._upd_enemy_detection(slot3)
@@ -301,7 +301,7 @@ CopLogicIdle.queued_update = function (data)
 
 	return 
 end
-CopLogicIdle._upd_enemy_detection = function (data)
+function CopLogicIdle._upd_enemy_detection(data)
 	slot3 = data.unit
 
 	if data.unit.brain(slot2).dead then
@@ -375,7 +375,7 @@ CopLogicIdle._upd_enemy_detection = function (data)
 
 	return delay
 end
-CopLogicIdle._upd_pathing = function (data, my_data)
+function CopLogicIdle._upd_pathing(data, my_data)
 	if not data.pathing_results then
 		return 
 	end
@@ -420,7 +420,7 @@ CopLogicIdle._upd_pathing = function (data, my_data)
 
 	return 
 end
-CopLogicIdle._upd_scan = function (data, my_data)
+function CopLogicIdle._upd_scan(data, my_data)
 
 	-- Decompilation error in this vicinity:
 	slot5 = my_data
@@ -512,7 +512,7 @@ CopLogicIdle._upd_scan = function (data, my_data)
 
 	return 
 end
-CopLogicIdle._chk_reaction_to_attention_object = function (data, attention_data, stationary)
+function CopLogicIdle._chk_reaction_to_attention_object(data, attention_data, stationary)
 	local record = attention_data.criminal_record
 	slot6 = data
 	local can_arrest = CopLogicBase._can_arrest(slot5)
@@ -558,7 +558,7 @@ CopLogicIdle._chk_reaction_to_attention_object = function (data, attention_data,
 
 	return math.min(slot7, attention_data.settings.reaction)
 end
-CopLogicIdle._area_has_enemies = function (data, area)
+function CopLogicIdle._area_has_enemies(data, area)
 	slot4 = data.unit
 	slot8 = "enemies"
 	local is_enemy = data.unit.in_slot(slot3, managers.slot.get_mask(slot6, managers.slot))
@@ -579,7 +579,7 @@ CopLogicIdle._area_has_enemies = function (data, area)
 
 	return false
 end
-CopLogicIdle._scan_for_dangerous_areas = function (data)
+function CopLogicIdle._scan_for_dangerous_areas(data)
 	slot3 = data.unit
 	local nav_tracker = data.unit.movement(slot2).nav_tracker(slot2)
 	slot4 = managers.groupai
@@ -713,7 +713,7 @@ CopLogicIdle._scan_for_dangerous_areas = function (data)
 
 	return 
 end
-CopLogicIdle._smooth_stare_path = function (data)
+function CopLogicIdle._smooth_stare_path(data)
 	local my_data = data.internal_data
 	local slotmask = data.visibility_slotmask
 	local stare_path = my_data.stare_path
@@ -823,7 +823,7 @@ CopLogicIdle._smooth_stare_path = function (data)
 
 	return 
 end
-CopLogicIdle.on_area_safety = function (data, nav_seg, safe, event)
+function CopLogicIdle.on_area_safety(data, nav_seg, safe, event)
 	if safe or event.reason ~= "criminal" then
 		return 
 	end
@@ -851,7 +851,7 @@ CopLogicIdle.on_area_safety = function (data, nav_seg, safe, event)
 
 	return 
 end
-CopLogicIdle.on_action_completed = function (data, action)
+function CopLogicIdle.on_action_completed(data, action)
 	slot4 = action
 	local action_type = action.type(slot3)
 
@@ -912,7 +912,7 @@ CopLogicIdle.on_action_completed = function (data, action)
 
 	return 
 end
-CopLogicIdle.is_available_for_assignment = function (data, objective)
+function CopLogicIdle.is_available_for_assignment(data, objective)
 	if objective and objective.forced then
 		return true
 	end
@@ -937,10 +937,10 @@ CopLogicIdle.is_available_for_assignment = function (data, objective)
 
 	return true
 end
-CopLogicIdle._can_move = function (data)
+function CopLogicIdle._can_move(data)
 	return not data.objective or not data.objective.pos or not data.objective.in_place
 end
-CopLogicIdle._exit_non_walkable_area = function (data)
+function CopLogicIdle._exit_non_walkable_area(data)
 
 	-- Decompilation error in this vicinity:
 	local my_data = data.internal_data
@@ -968,17 +968,17 @@ CopLogicIdle._exit_non_walkable_area = function (data)
 
 	return 
 end
-CopLogicIdle._get_all_paths = function (data)
+function CopLogicIdle._get_all_paths(data)
 	return {
 		stare_path = data.internal_data.stare_path
 	}
 end
-CopLogicIdle._set_verified_paths = function (data, verified_paths)
+function CopLogicIdle._set_verified_paths(data, verified_paths)
 	data.internal_data.stare_path = verified_paths.stare_path
 
 	return 
 end
-CopLogicIdle._upd_curious_reaction = function (data)
+function CopLogicIdle._upd_curious_reaction(data)
 	local my_data = data.internal_data
 	local attention_obj = data.attention_obj
 	slot5 = data.unit
@@ -1022,7 +1022,7 @@ CopLogicIdle._upd_curious_reaction = function (data)
 
 	return 
 end
-CopLogicIdle._chk_objective_needs_travel = function (data, objective)
+function CopLogicIdle._chk_objective_needs_travel(data, objective)
 	if not objective.nav_seg and objective.type ~= "follow" then
 		return false
 	end
@@ -1049,7 +1049,7 @@ CopLogicIdle._chk_objective_needs_travel = function (data, objective)
 
 	return true
 end
-CopLogicIdle._upd_stance_and_pose = function (data, my_data, objective)
+function CopLogicIdle._upd_stance_and_pose(data, my_data, objective)
 	slot5 = data.unit
 	slot6 = "walk"
 
@@ -1134,7 +1134,7 @@ CopLogicIdle._upd_stance_and_pose = function (data, my_data, objective)
 
 	return 
 end
-CopLogicIdle._perform_objective_action = function (data, my_data, objective)
+function CopLogicIdle._perform_objective_action(data, my_data, objective)
 
 	-- Decompilation error in this vicinity:
 	if objective.action then

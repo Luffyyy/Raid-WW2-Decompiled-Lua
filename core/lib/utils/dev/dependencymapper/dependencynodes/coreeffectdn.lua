@@ -19,14 +19,14 @@ if not EffectDependencyNode then
 end
 
 EffectDependencyNode = slot0
-EffectDependencyNode.init = function (self, name, get_dn_cb, database)
+function EffectDependencyNode:init(name, get_dn_cb, database)
 	slot11 = database
 
 	self.super.init(slot5, self, EFFECT, "effect", name, get_dn_cb)
 
 	return 
 end
-EffectDependencyNode._walkxml2dependencies = function (self, xmlnode, deps)
+function EffectDependencyNode:_walkxml2dependencies(xmlnode, deps)
 	slot6 = "texture"
 	local texture_name = xmlnode.parameter(slot4, xmlnode)
 

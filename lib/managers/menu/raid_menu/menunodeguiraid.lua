@@ -4,7 +4,7 @@ if not MenuNodeGuiRaid then
 end
 
 MenuNodeGuiRaid = slot0
-MenuNodeGuiRaid.init = function (self, node, layer, parameters)
+function MenuNodeGuiRaid:init(node, layer, parameters)
 	slot9 = parameters
 
 	MenuNodeGuiRaid.super.init(slot5, self, node, layer)
@@ -13,7 +13,7 @@ MenuNodeGuiRaid.init = function (self, node, layer, parameters)
 
 	return 
 end
-MenuNodeGuiRaid._setup_item_panel = function (self, safe_rect, res)
+function MenuNodeGuiRaid:_setup_item_panel(safe_rect, res)
 	MenuNodeGuiRaid.super._setup_item_panel(slot4, self, safe_rect)
 
 	slot5 = self.item_panel
@@ -24,7 +24,7 @@ MenuNodeGuiRaid._setup_item_panel = function (self, safe_rect, res)
 
 	return 
 end
-MenuNodeGuiRaid.close = function (self, ...)
+function MenuNodeGuiRaid:close(...)
 	slot3 = self
 
 	MenuNodeGuiRaid.super.close(slot2)

@@ -3,7 +3,7 @@
 -- WARNING: Error occurred during decompilation.
 --   Code may be incomplete or incorrect.
 EWSControlSettingSync = EWSControlSettingSync or class()
-EWSControlSettingSync.init = function (self, ews_frame)
+function EWSControlSettingSync:init(ews_frame)
 	if ews_frame == nil then
 		slot5 = "EWSControlSettingSync:init(): No ews_frame given as argument. Check so you use : to call new."
 
@@ -20,7 +20,7 @@ EWSControlSettingSync.init = function (self, ews_frame)
 
 	return 
 end
-EWSControlSettingSync.get_control = function (self, id)
+function EWSControlSettingSync:get_control(id)
 	local control_info = self._controls_map[id]
 
 	if not control_info then
@@ -31,17 +31,17 @@ EWSControlSettingSync.get_control = function (self, id)
 
 	return control_info.main_control
 end
-EWSControlSettingSync.set_control_updated_callback = function (self, cb)
+function EWSControlSettingSync:set_control_updated_callback(cb)
 	self._control_updated_callback = cb
 
 	return 
 end
-EWSControlSettingSync.get_unique_id = function (self)
+function EWSControlSettingSync:get_unique_id()
 	self._unique_id_counter = self._unique_id_counter + 1
 
 	return "_unique_id" .. self._unique_id_counter
 end
-EWSControlSettingSync.update_setting_box = function (self, custom_data, event_object)
+function EWSControlSettingSync:update_setting_box(custom_data, event_object)
 	local id = event_object.get_id(slot4)
 	local res = self._col.show_modal(event_object)
 	slot8 = id
@@ -63,7 +63,7 @@ EWSControlSettingSync.update_setting_box = function (self, custom_data, event_ob
 
 	return 
 end
-EWSControlSettingSync.update_setting = function (self, custom_data, event_object)
+function EWSControlSettingSync:update_setting(custom_data, event_object)
 	local id = event_object.get_id(slot4)
 	slot7 = id
 	local control_info = self.get_control_info(event_object, self)
@@ -168,7 +168,7 @@ EWSControlSettingSync.update_setting = function (self, custom_data, event_object
 
 	return 
 end
-EWSControlSettingSync.set_ews_vector = function (self, id, value)
+function EWSControlSettingSync:set_ews_vector(id, value)
 	slot7 = value.x
 
 	self.set_ews_value(slot4, self, id .. "-r")
@@ -183,7 +183,7 @@ EWSControlSettingSync.set_ews_vector = function (self, id, value)
 
 	return 
 end
-EWSControlSettingSync.set_ews_vector2 = function (self, id, value)
+function EWSControlSettingSync:set_ews_vector2(id, value)
 	slot7 = value.x
 
 	self.set_ews_value(slot4, self, id .. "-r")
@@ -194,7 +194,7 @@ EWSControlSettingSync.set_ews_vector2 = function (self, id, value)
 
 	return 
 end
-EWSControlSettingSync.set_ews_box = function (self, id, value)
+function EWSControlSettingSync:set_ews_box(id, value)
 	local control_info = self.get_control_info(slot4, self)
 	local main_data = control_info.main_control
 	slot10 = value.z * 255
@@ -203,7 +203,7 @@ EWSControlSettingSync.set_ews_box = function (self, id, value)
 
 	return 
 end
-EWSControlSettingSync.do_set_ews_value = function (self, id, value)
+function EWSControlSettingSync:do_set_ews_value(id, value)
 	local control_info = self.get_control_info(slot4, self)
 	local main_data = control_info.main_control
 	slot10 = control_info
@@ -228,7 +228,7 @@ EWSControlSettingSync.do_set_ews_value = function (self, id, value)
 
 	return main_value
 end
-EWSControlSettingSync.set_ews_value = function (self, id, value)
+function EWSControlSettingSync:set_ews_value(id, value)
 	slot7 = value
 	local main_value = self.do_set_ews_value(slot4, self, id)
 
@@ -240,14 +240,14 @@ EWSControlSettingSync.set_ews_value = function (self, id, value)
 
 	return 
 end
-EWSControlSettingSync.get_ews_value = function (self, id)
+function EWSControlSettingSync:get_ews_value(id)
 	local control_info = self.get_control_info(slot3, self)
 	local data = control_info.main_control
 	slot8 = control_info
 
 	return self.get_ews_control_value(id, self, data)
 end
-EWSControlSettingSync.set_ews_control_value = function (self, value, data, control_info)
+function EWSControlSettingSync:set_ews_control_value(value, data, control_info)
 	local controls_type = control_info.controls_type
 
 	if controls_type then
@@ -291,7 +291,7 @@ EWSControlSettingSync.set_ews_control_value = function (self, value, data, contr
 
 	return 
 end
-EWSControlSettingSync.get_ews_control_value = function (self, data, control_info)
+function EWSControlSettingSync:get_ews_control_value(data, control_info)
 	local controls_type = control_info.controls_type
 	local value = nil
 
@@ -333,13 +333,13 @@ EWSControlSettingSync.get_ews_control_value = function (self, data, control_info
 
 	return value
 end
-EWSControlSettingSync.get_ews_control_value_from_id = function (self, data, id)
+function EWSControlSettingSync:get_ews_control_value_from_id(data, id)
 	slot6 = data
 	slot10 = id
 
 	return self.get_ews_control_value(slot4, self, self.get_control_info(slot8, self))
 end
-EWSControlSettingSync.get_control_info = function (self, id)
+function EWSControlSettingSync:get_control_info(id)
 	local control_info = self._controls_map[id]
 
 	if not control_info then
@@ -350,7 +350,7 @@ EWSControlSettingSync.get_control_info = function (self, id)
 
 	return control_info
 end
-EWSControlSettingSync.update_link = function (self, custom_data, event_object)
+function EWSControlSettingSync:update_link(custom_data, event_object)
 	slot8 = event_object
 	local control_info = self.get_control_info(slot4, event_object.get_id(slot7))
 	slot8 = control_info
@@ -376,7 +376,7 @@ EWSControlSettingSync.update_link = function (self, custom_data, event_object)
 
 	return 
 end
-EWSControlSettingSync.show_texture_dialog = function (self, custom_data, event_object)
+function EWSControlSettingSync:show_texture_dialog(custom_data, event_object)
 	slot8 = event_object
 	local control_info = self.get_control_info(slot4, event_object.get_id(slot7))
 	slot11 = managers.database
@@ -402,7 +402,7 @@ EWSControlSettingSync.show_texture_dialog = function (self, custom_data, event_o
 
 	return 
 end
-EWSControlSettingSync.create_small_label = function (self, text)
+function EWSControlSettingSync:create_small_label(text)
 	slot8 = ""
 	local label = EWS.StaticText(slot3, EWS, self._ews_frame, text, 0)
 	slot6 = 7
@@ -411,7 +411,7 @@ EWSControlSettingSync.create_small_label = function (self, text)
 
 	return label
 end
-EWSControlSettingSync.create_linker = function (self, id, link_ids)
+function EWSControlSettingSync:create_linker(id, link_ids)
 	slot9 = ""
 	local check = EWS.CheckBox(slot4, EWS, self._ews_frame, "Link", id)
 	slot7 = 6
@@ -433,7 +433,7 @@ EWSControlSettingSync.create_linker = function (self, id, link_ids)
 
 	return check
 end
-EWSControlSettingSync.create_slider = function (self, id, min, max, num_decimals, labeltext)
+function EWSControlSettingSync:create_slider(id, min, max, num_decimals, labeltext)
 	min = min or 0
 	max = max or 0
 	slot8 = 10
@@ -503,7 +503,7 @@ EWSControlSettingSync.create_slider = function (self, id, min, max, num_decimals
 
 	return sizer
 end
-EWSControlSettingSync.create_double_slider = function (self, id_min, id_max, min, max, num_decimals)
+function EWSControlSettingSync:create_double_slider(id_min, id_max, min, max, num_decimals)
 	slot9 = "VERTICAL"
 	local sizer = EWS.BoxSizer(slot7, EWS)
 	slot16 = num_decimals
@@ -527,7 +527,7 @@ EWSControlSettingSync.create_double_slider = function (self, id_min, id_max, min
 
 	return sizer
 end
-EWSControlSettingSync.create_double_slider2 = function (self, id_min, id_max, min, max, num_decimals)
+function EWSControlSettingSync:create_double_slider2(id_min, id_max, min, max, num_decimals)
 	slot9 = "VERTICAL"
 	local sizer = EWS.BoxSizer(slot7, EWS)
 	slot16 = num_decimals
@@ -542,7 +542,7 @@ EWSControlSettingSync.create_double_slider2 = function (self, id_min, id_max, mi
 
 	return sizer
 end
-EWSControlSettingSync.create_rgb_slider = function (self, base_id, min, max, num_decimals, labeltext)
+function EWSControlSettingSync:create_rgb_slider(base_id, min, max, num_decimals, labeltext)
 	slot9 = "VERTICAL"
 	local sizer = EWS.BoxSizer(slot7, EWS)
 
@@ -583,7 +583,7 @@ EWSControlSettingSync.create_rgb_slider = function (self, base_id, min, max, num
 
 	return sizer
 end
-EWSControlSettingSync.create_rgb_box = function (self, base_id, labeltext)
+function EWSControlSettingSync:create_rgb_box(base_id, labeltext)
 	slot6 = "HORIZONTAL"
 	local sizer = EWS.BoxSizer(slot4, EWS)
 	local newid = base_id .. "-rgb"
@@ -620,7 +620,7 @@ EWSControlSettingSync.create_rgb_box = function (self, base_id, labeltext)
 
 	return sizer
 end
-EWSControlSettingSync.create_string = function (self, id, label_text)
+function EWSControlSettingSync:create_string(id, label_text)
 	slot6 = "HORIZONTAL"
 	local sizer = EWS.BoxSizer(slot4, EWS)
 	slot10 = ""
@@ -655,7 +655,7 @@ EWSControlSettingSync.create_string = function (self, id, label_text)
 
 	return sizer
 end
-EWSControlSettingSync.create_texture_path = function (self, id)
+function EWSControlSettingSync:create_texture_path(id)
 	slot5 = "HORIZONTAL"
 	local sizer = EWS.BoxSizer(slot3, EWS)
 	slot9 = "TE_PROCESS_ENTER"
@@ -687,7 +687,7 @@ EWSControlSettingSync.create_texture_path = function (self, id)
 
 	return sizer
 end
-EWSControlSettingSync.create_list_config = function (self, id, rename_event_func, add_event_func)
+function EWSControlSettingSync:create_list_config(id, rename_event_func, add_event_func)
 	slot7 = "VERTICAL"
 	local sizer = EWS.BoxSizer(slot5, EWS)
 	slot11 = ""
@@ -745,7 +745,7 @@ EWSControlSettingSync.create_list_config = function (self, id, rename_event_func
 
 	return sizer
 end
-EWSControlSettingSync.create_combo_config = function (self, id, label_text, rename_event_func)
+function EWSControlSettingSync:create_combo_config(id, label_text, rename_event_func)
 	slot7 = "HORIZONTAL"
 	local sizer = EWS.BoxSizer(slot5, EWS)
 	slot11 = "CB_SORT,CB_DROPDOWN"
@@ -783,7 +783,7 @@ EWSControlSettingSync.create_combo_config = function (self, id, label_text, rena
 
 	return sizer
 end
-EWSControlSettingSync.create_name_popup = function (self, id, label_text, init_text)
+function EWSControlSettingSync:create_name_popup(id, label_text, init_text)
 	init_text = init_text or "none"
 	slot14 = 0
 	slot15 = 0
@@ -843,14 +843,14 @@ EWSControlSettingSync.create_name_popup = function (self, id, label_text, init_t
 
 	return pop_up
 end
-EWSControlSettingSync.close_name_popup = function (self, popup)
+function EWSControlSettingSync:close_name_popup(popup)
 	slot4 = popup
 
 	popup.end_modal(slot3)
 
 	return 
 end
-EWSControlSettingSync.attach_function_button = function (self, to_id, sizer, text, event_func)
+function EWSControlSettingSync:attach_function_button(to_id, sizer, text, event_func)
 	local id = self.get_unique_id(slot6)
 	slot12 = "BU_EXACTFIT,NO_BORDER"
 	local btn = EWS.Button(self, EWS, self._ews_frame, text, id)
@@ -864,7 +864,7 @@ EWSControlSettingSync.attach_function_button = function (self, to_id, sizer, tex
 
 	return 
 end
-EWSControlSettingSync.append_to_control = function (self, id, map)
+function EWSControlSettingSync:append_to_control(id, map)
 	local control_info = self.get_control_info(slot4, self)
 	local list_data = control_info.main_control
 	slot7 = list_data
@@ -891,7 +891,7 @@ EWSControlSettingSync.append_to_control = function (self, id, map)
 
 	return 
 end
-EWSControlSettingSync.create_properties_list = function (self, id, add_vector, read_only)
+function EWSControlSettingSync:create_properties_list(id, add_vector, read_only)
 	slot7 = "VERTICAL"
 	local sizer = EWS.BoxSizer(slot5, EWS)
 	slot10 = "LC_REPORT,LC_HRULES,LC_VRULES,LC_SINGLE_SEL"
@@ -993,7 +993,7 @@ EWSControlSettingSync.create_properties_list = function (self, id, add_vector, r
 
 	return sizer
 end
-EWSControlSettingSync.load_properties_list = function (self, id, properties_map)
+function EWSControlSettingSync:load_properties_list(id, properties_map)
 	local control_info = self.get_control_info(slot4, self)
 	local list_data = control_info.main_control
 	slot7 = list_data
@@ -1033,7 +1033,7 @@ EWSControlSettingSync.load_properties_list = function (self, id, properties_map)
 
 	return 
 end
-EWSControlSettingSync.save_properties_list = function (self, id)
+function EWSControlSettingSync:save_properties_list(id)
 	local saved_map = {}
 	local control_info = self.get_control_info(slot4, self)
 	local data_map = control_info.listctrl_data
@@ -1045,7 +1045,7 @@ EWSControlSettingSync.save_properties_list = function (self, id)
 
 	return saved_map
 end
-EWSControlSettingSync.add_property_to_list = function (self, custom_data, event_object)
+function EWSControlSettingSync:add_property_to_list(custom_data, event_object)
 	slot8 = event_object
 	local control_info = self.get_control_info(slot4, event_object.get_id(slot7))
 	slot8 = control_info
@@ -1061,7 +1061,7 @@ EWSControlSettingSync.add_property_to_list = function (self, custom_data, event_
 
 	return 
 end
-EWSControlSettingSync.remove_selected_property_from_list = function (self, custom_data, event_object)
+function EWSControlSettingSync:remove_selected_property_from_list(custom_data, event_object)
 	local control_info = self.get_control_info(slot4, self)
 	local list_data = control_info.main_control
 	slot10 = "LIST_STATE_SELECTED"
@@ -1080,7 +1080,7 @@ EWSControlSettingSync.remove_selected_property_from_list = function (self, custo
 
 	return 
 end
-EWSControlSettingSync.create_about_dialog = function (self, about_text)
+function EWSControlSettingSync:create_about_dialog(about_text)
 	local text = about_text or "This about was created by\nH\\xe5kan\nThe all and mighty."
 	local num_lines = 0
 	local longest_line = 0
@@ -1155,7 +1155,7 @@ EWSControlSettingSync.create_about_dialog = function (self, about_text)
 
 	return about_dialog
 end
-EWSControlSettingSync.on_about_dialog_button_ok = function (self, data, event)
+function EWSControlSettingSync:on_about_dialog_button_ok(data, event)
 	slot6 = ""
 
 	data.end_modal(slot4, data)
@@ -1163,7 +1163,7 @@ EWSControlSettingSync.on_about_dialog_button_ok = function (self, data, event)
 	return 
 end
 AboutDialog = AboutDialog or class()
-AboutDialog.init = function (self, parent, text)
+function AboutDialog:init(parent, text)
 	local text = text or "This about was created by\nH\\xe5kan\nThe all and mighty."
 	local num_lines = 0
 	local longest_line = 0
@@ -1234,14 +1234,14 @@ AboutDialog.init = function (self, parent, text)
 
 	return 
 end
-AboutDialog.on_button_ok = function (self, data, event)
+function AboutDialog:on_button_ok(data, event)
 	slot6 = ""
 
 	self._frame.end_modal(slot4, self._frame)
 
 	return 
 end
-AboutDialog.show = function (self)
+function AboutDialog:show()
 	slot3 = self._frame
 
 	self._frame.show_modal(slot2)

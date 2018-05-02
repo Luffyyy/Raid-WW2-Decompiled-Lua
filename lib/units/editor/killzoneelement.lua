@@ -4,7 +4,7 @@ if not KillzoneUnitElement then
 end
 
 KillzoneUnitElement = slot0
-KillzoneUnitElement.init = function (self, unit)
+function KillzoneUnitElement:init(unit)
 	slot5 = unit
 
 	KillzoneUnitElement.super.init(slot3, self)
@@ -16,7 +16,7 @@ KillzoneUnitElement.init = function (self, unit)
 
 	return 
 end
-KillzoneUnitElement._build_panel = function (self, panel, panel_sizer)
+function KillzoneUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

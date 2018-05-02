@@ -22,7 +22,7 @@ RaidGUIControlCardDetails.BONUS_EFFECT_Y = 224
 RaidGUIControlCardDetails.MALUS_EFFECT_Y = 320
 RaidGUIControlCardDetails.EFFECT_DISTANCE = 16
 RaidGUIControlCardDetails.FONT = tweak_data.gui.fonts.din_compressed
-RaidGUIControlCardDetails.init = function (self, parent, params)
+function RaidGUIControlCardDetails:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlCardDetails.super.init(slot4, self, parent)
@@ -50,10 +50,10 @@ RaidGUIControlCardDetails.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlCardDetails.close = function (self)
+function RaidGUIControlCardDetails:close()
 	return 
 end
-RaidGUIControlCardDetails._create_object = function (self)
+function RaidGUIControlCardDetails:_create_object()
 	slot3 = self._params
 	local control_params = clone(slot2)
 	control_params.w = control_params.w or RaidGUIControlCardDetails.DEFAULT_WIDTH
@@ -68,7 +68,7 @@ RaidGUIControlCardDetails._create_object = function (self)
 
 	return 
 end
-RaidGUIControlCardDetails._create_card_details = function (self)
+function RaidGUIControlCardDetails:_create_card_details()
 	local card_params = {
 		name = "player_loot_card",
 		x = self._params.card_x or 0,
@@ -244,7 +244,7 @@ RaidGUIControlCardDetails._create_card_details = function (self)
 
 	return 
 end
-RaidGUIControlCardDetails.set_card = function (self, card_key_name, steam_instance_id)
+function RaidGUIControlCardDetails:set_card(card_key_name, steam_instance_id)
 	slot6 = card_key_name
 	self._card = tweak_data.challenge_cards.get_card_by_key_name(slot4, tweak_data.challenge_cards)
 
@@ -452,7 +452,7 @@ RaidGUIControlCardDetails.set_card = function (self, card_key_name, steam_instan
 
 	return 
 end
-RaidGUIControlCardDetails.set_mode_layout = function (self)
+function RaidGUIControlCardDetails:set_mode_layout()
 	slot3 = self._type_icon
 	slot6 = self._type_label
 
@@ -460,10 +460,10 @@ RaidGUIControlCardDetails.set_mode_layout = function (self)
 
 	return 
 end
-RaidGUIControlCardDetails.get_card = function (self)
+function RaidGUIControlCardDetails:get_card()
 	return self._card, self._card.steam_instance_id
 end
-RaidGUIControlCardDetails.set_control_mode = function (self, mode)
+function RaidGUIControlCardDetails:set_control_mode(mode)
 	self._mode = mode
 	slot4 = self
 

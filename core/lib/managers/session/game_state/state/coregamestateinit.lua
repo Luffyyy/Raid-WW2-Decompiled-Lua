@@ -11,17 +11,17 @@ slot3 = "CoreGameStatePreFrontEnd"
 core.import(slot1, core)
 
 Init = Init or class()
-Init.init = function (self)
+function Init:init()
 	self.game_state._is_in_init = true
 
 	return 
 end
-Init.destroy = function (self)
+function Init:destroy()
 	self.game_state._is_in_init = false
 
 	return 
 end
-Init.transition = function (self)
+function Init:transition()
 	slot3 = Application
 
 	if Application.editor(slot2) then

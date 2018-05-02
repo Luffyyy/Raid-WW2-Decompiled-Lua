@@ -23,14 +23,14 @@ if not TimerUnitElement then
 end
 
 TimerUnitElement = slot0
-TimerUnitElement.init = function (self, ...)
+function TimerUnitElement:init(...)
 	slot3 = self
 
 	TimerUnitElement.super.init(slot2, ...)
 
 	return 
 end
-CoreTimerUnitElement.init = function (self, unit)
+function CoreTimerUnitElement:init(unit)
 	slot5 = unit
 
 	CoreTimerUnitElement.super.init(slot3, self)
@@ -53,7 +53,7 @@ CoreTimerUnitElement.init = function (self, unit)
 
 	return 
 end
-CoreTimerUnitElement.layer_finished = function (self)
+function CoreTimerUnitElement:layer_finished()
 	slot3 = self
 
 	MissionElement.layer_finished(slot2)
@@ -73,7 +73,7 @@ CoreTimerUnitElement.layer_finished = function (self)
 
 	return 
 end
-CoreTimerUnitElement.load_unit = function (self, unit)
+function CoreTimerUnitElement:load_unit(unit)
 	if unit then
 		slot5 = unit
 		self._digital_gui_units[unit.unit_data(slot4).unit_id] = unit
@@ -81,7 +81,7 @@ CoreTimerUnitElement.load_unit = function (self, unit)
 
 	return 
 end
-CoreTimerUnitElement.update_selected = function (self)
+function CoreTimerUnitElement:update_selected()
 	slot3 = self._hed.digital_gui_unit_ids
 
 	for _, id in pairs(slot2) do
@@ -127,7 +127,7 @@ CoreTimerUnitElement.update_selected = function (self)
 
 	return 
 end
-CoreTimerUnitElement.update_unselected = function (self, t, dt, selected_unit, all_units)
+function CoreTimerUnitElement:update_unselected(t, dt, selected_unit, all_units)
 	slot7 = self._hed.digital_gui_unit_ids
 
 	for _, id in pairs(slot6) do
@@ -158,7 +158,7 @@ CoreTimerUnitElement.update_unselected = function (self, t, dt, selected_unit, a
 
 	return 
 end
-CoreTimerUnitElement.draw_links_unselected = function (self, ...)
+function CoreTimerUnitElement:draw_links_unselected(...)
 	slot3 = self
 
 	CoreTimerUnitElement.super.draw_links_unselected(slot2, ...)
@@ -184,7 +184,7 @@ CoreTimerUnitElement.draw_links_unselected = function (self, ...)
 
 	return 
 end
-CoreTimerUnitElement.update_editing = function (self)
+function CoreTimerUnitElement:update_editing()
 	slot4 = {
 		ray_type = "body editor",
 		sample = true,
@@ -210,7 +210,7 @@ CoreTimerUnitElement.update_editing = function (self)
 
 	return 
 end
-CoreTimerUnitElement.select_unit = function (self)
+function CoreTimerUnitElement:select_unit()
 	slot4 = {
 		ray_type = "body editor",
 		sample = true,
@@ -245,7 +245,7 @@ CoreTimerUnitElement.select_unit = function (self)
 
 	return 
 end
-CoreTimerUnitElement._remove_unit = function (self, unit)
+function CoreTimerUnitElement:_remove_unit(unit)
 	slot5 = unit
 	self._digital_gui_units[unit.unit_data(slot4).unit_id] = nil
 	slot7 = unit
@@ -255,7 +255,7 @@ CoreTimerUnitElement._remove_unit = function (self, unit)
 
 	return 
 end
-CoreTimerUnitElement._add_unit = function (self, unit)
+function CoreTimerUnitElement:_add_unit(unit)
 	slot5 = unit
 	self._digital_gui_units[unit.unit_data(slot4).unit_id] = unit
 	slot7 = unit
@@ -265,7 +265,7 @@ CoreTimerUnitElement._add_unit = function (self, unit)
 
 	return 
 end
-CoreTimerUnitElement.add_triggers = function (self, vc)
+function CoreTimerUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "select_unit"
 
@@ -273,7 +273,7 @@ CoreTimerUnitElement.add_triggers = function (self, vc)
 
 	return 
 end
-CoreTimerUnitElement._add_unit_filter = function (self, unit)
+function CoreTimerUnitElement:_add_unit_filter(unit)
 	slot5 = unit
 
 	if self._digital_gui_units[unit.unit_data(slot4).unit_id] then
@@ -290,12 +290,12 @@ CoreTimerUnitElement._add_unit_filter = function (self, unit)
 
 	return slot2
 end
-CoreTimerUnitElement._remove_unit_filter = function (self, unit)
+function CoreTimerUnitElement:_remove_unit_filter(unit)
 	slot5 = unit
 
 	return self._digital_gui_units[unit.unit_data(slot4).unit_id]
 end
-CoreTimerUnitElement._build_panel = function (self, panel, panel_sizer)
+function CoreTimerUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -328,12 +328,12 @@ CoreTimerUnitElement._build_panel = function (self, panel, panel_sizer)
 
 	return 
 end
-CoreTimerUnitElement.register_debug_output_unit = function (self, output_monitor_id)
+function CoreTimerUnitElement:register_debug_output_unit(output_monitor_id)
 	self._hed.output_monitor_id = output_monitor_id
 
 	return 
 end
-CoreTimerUnitElement.unregister_debug_output_unit = function (self)
+function CoreTimerUnitElement:unregister_debug_output_unit()
 	self._hed.output_monitor_id = nil
 
 	return 
@@ -352,14 +352,14 @@ if not TimerOperatorUnitElement then
 end
 
 TimerOperatorUnitElement = slot0
-TimerOperatorUnitElement.init = function (self, ...)
+function TimerOperatorUnitElement:init(...)
 	slot3 = self
 
 	TimerOperatorUnitElement.super.init(slot2, ...)
 
 	return 
 end
-CoreTimerOperatorUnitElement.init = function (self, unit)
+function CoreTimerOperatorUnitElement:init(unit)
 	slot5 = unit
 
 	CoreTimerOperatorUnitElement.super.init(slot3, self)
@@ -381,7 +381,7 @@ CoreTimerOperatorUnitElement.init = function (self, unit)
 
 	return 
 end
-CoreTimerOperatorUnitElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function CoreTimerOperatorUnitElement:draw_links(t, dt, selected_unit, all_units)
 	slot10 = selected_unit
 
 	CoreTimerOperatorUnitElement.super.draw_links(slot6, self, t, dt)
@@ -407,7 +407,7 @@ CoreTimerOperatorUnitElement.draw_links = function (self, t, dt, selected_unit, 
 
 	return 
 end
-CoreTimerOperatorUnitElement.get_links_to_unit = function (self, ...)
+function CoreTimerOperatorUnitElement:get_links_to_unit(...)
 	slot3 = self
 
 	CoreTimerOperatorUnitElement.super.get_links_to_unit(slot2, ...)
@@ -418,10 +418,10 @@ CoreTimerOperatorUnitElement.get_links_to_unit = function (self, ...)
 
 	return 
 end
-CoreTimerOperatorUnitElement.update_editing = function (self)
+function CoreTimerOperatorUnitElement:update_editing()
 	return 
 end
-CoreTimerOperatorUnitElement.add_element = function (self)
+function CoreTimerOperatorUnitElement:add_element()
 	slot4 = {
 		ray_type = "editor",
 		mask = 10
@@ -434,7 +434,7 @@ CoreTimerOperatorUnitElement.add_element = function (self)
 
 	return 
 end
-CoreTimerOperatorUnitElement.remove_links = function (self, unit)
+function CoreTimerOperatorUnitElement:remove_links(unit)
 	slot4 = self._hed.elements
 
 	for _, id in ipairs(slot3) do
@@ -449,7 +449,7 @@ CoreTimerOperatorUnitElement.remove_links = function (self, unit)
 
 	return 
 end
-CoreTimerOperatorUnitElement.add_triggers = function (self, vc)
+function CoreTimerOperatorUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "add_element"
 
@@ -457,7 +457,7 @@ CoreTimerOperatorUnitElement.add_triggers = function (self, vc)
 
 	return 
 end
-CoreTimerOperatorUnitElement._build_panel = function (self, panel, panel_sizer)
+function CoreTimerOperatorUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -512,14 +512,14 @@ if not TimerTriggerUnitElement then
 end
 
 TimerTriggerUnitElement = slot0
-TimerTriggerUnitElement.init = function (self, ...)
+function TimerTriggerUnitElement:init(...)
 	slot3 = self
 
 	TimerTriggerUnitElement.super.init(slot2, ...)
 
 	return 
 end
-CoreTimerTriggerUnitElement.init = function (self, unit)
+function CoreTimerTriggerUnitElement:init(unit)
 	slot5 = unit
 
 	CoreTimerTriggerUnitElement.super.init(slot3, self)
@@ -536,7 +536,7 @@ CoreTimerTriggerUnitElement.init = function (self, unit)
 
 	return 
 end
-CoreTimerTriggerUnitElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function CoreTimerTriggerUnitElement:draw_links(t, dt, selected_unit, all_units)
 	slot10 = selected_unit
 
 	CoreTimerTriggerUnitElement.super.draw_links(slot6, self, t, dt)
@@ -562,7 +562,7 @@ CoreTimerTriggerUnitElement.draw_links = function (self, t, dt, selected_unit, a
 
 	return 
 end
-CoreTimerTriggerUnitElement.get_links_to_unit = function (self, ...)
+function CoreTimerTriggerUnitElement:get_links_to_unit(...)
 	slot3 = self
 
 	CoreTimerTriggerUnitElement.super.get_links_to_unit(slot2, ...)
@@ -573,10 +573,10 @@ CoreTimerTriggerUnitElement.get_links_to_unit = function (self, ...)
 
 	return 
 end
-CoreTimerTriggerUnitElement.update_editing = function (self)
+function CoreTimerTriggerUnitElement:update_editing()
 	return 
 end
-CoreTimerTriggerUnitElement.add_element = function (self)
+function CoreTimerTriggerUnitElement:add_element()
 	slot4 = {
 		ray_type = "editor",
 		mask = 10
@@ -589,7 +589,7 @@ CoreTimerTriggerUnitElement.add_element = function (self)
 
 	return 
 end
-CoreTimerTriggerUnitElement.remove_links = function (self, unit)
+function CoreTimerTriggerUnitElement:remove_links(unit)
 	slot4 = self._hed.elements
 
 	for _, id in ipairs(slot3) do
@@ -604,7 +604,7 @@ CoreTimerTriggerUnitElement.remove_links = function (self, unit)
 
 	return 
 end
-CoreTimerTriggerUnitElement.add_triggers = function (self, vc)
+function CoreTimerTriggerUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "add_element"
 
@@ -612,7 +612,7 @@ CoreTimerTriggerUnitElement.add_triggers = function (self, vc)
 
 	return 
 end
-CoreTimerTriggerUnitElement._build_panel = function (self, panel, panel_sizer)
+function CoreTimerTriggerUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

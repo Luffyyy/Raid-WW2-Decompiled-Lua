@@ -8,7 +8,7 @@ if not ShotgunBase then
 end
 
 ShotgunBase = slot0
-ShotgunBase.init = function (self, ...)
+function ShotgunBase:init(...)
 	slot3 = self
 
 	ShotgunBase.super.init(slot2, ...)
@@ -20,7 +20,7 @@ ShotgunBase.init = function (self, ...)
 
 	return 
 end
-ShotgunBase._create_use_setups = function (self)
+function ShotgunBase:_create_use_setups()
 	local use_data = {}
 	local player_setup = {
 		selection_index = tweak_data.weapon[self._name_id].use_data.selection_index,
@@ -38,7 +38,7 @@ ShotgunBase._create_use_setups = function (self)
 end
 local mvec_to = Vector3()
 local mvec_spread_direction = Vector3()
-ShotgunBase._fire_raycast = function (self, user_unit, from_pos, direction, dmg_mul, shoot_player, spread_mul, autohit_mul, suppr_mul)
+function ShotgunBase:_fire_raycast(user_unit, from_pos, direction, dmg_mul, shoot_player, spread_mul, autohit_mul, suppr_mul)
 	local result = {}
 	local hit_enemies = {}
 	local hit_something, col_rays = nil
@@ -249,23 +249,23 @@ ShotgunBase._fire_raycast = function (self, user_unit, from_pos, direction, dmg_
 
 	return result
 end
-ShotgunBase.reload_expire_t = function (self)
+function ShotgunBase:reload_expire_t()
 	local ammo_remaining_in_clip = self.get_ammo_remaining_in_clip(slot2)
 	slot7 = self
 	slot5 = self.get_ammo_max_per_clip(self) - ammo_remaining_in_clip
 
 	return (math.min(self, self.get_ammo_total(slot5) - ammo_remaining_in_clip) * 20) / 30
 end
-ShotgunBase.reload_enter_expire_t = function (self)
+function ShotgunBase:reload_enter_expire_t()
 	return 0.3
 end
-ShotgunBase.reload_exit_expire_t = function (self)
+function ShotgunBase:reload_exit_expire_t()
 	return 1.3
 end
-ShotgunBase.reload_not_empty_exit_expire_t = function (self)
+function ShotgunBase:reload_not_empty_exit_expire_t()
 	return 1
 end
-ShotgunBase.start_reload = function (self, ...)
+function ShotgunBase:start_reload(...)
 	slot3 = self
 
 	ShotgunBase.super.start_reload(slot2, ...)
@@ -278,10 +278,10 @@ ShotgunBase.start_reload = function (self, ...)
 
 	return 
 end
-ShotgunBase.started_reload_empty = function (self)
+function ShotgunBase:started_reload_empty()
 	return self._started_reload_empty
 end
-ShotgunBase.update_reloading = function (self, t, dt, time_left)
+function ShotgunBase:update_reloading(t, dt, time_left)
 	if self._next_shell_reloded_t < t then
 		slot6 = self
 		local speed_multiplier = self.reload_speed_multiplier(slot5)
@@ -302,7 +302,7 @@ ShotgunBase.update_reloading = function (self, t, dt, time_left)
 
 	return 
 end
-ShotgunBase.reload_interuptable = function (self)
+function ShotgunBase:reload_interuptable()
 	return true
 end
 

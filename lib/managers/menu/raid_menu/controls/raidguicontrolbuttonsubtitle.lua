@@ -17,7 +17,7 @@ RaidGUIControlButtonSubtitle.ICON_H = 32
 RaidGUIControlButtonSubtitle.PRESSED_SIZE = 0.9
 RaidGUIControlButtonSubtitle.SELECTOR_TOP_LEFT = "ico_sel_rect_small_top_left"
 RaidGUIControlButtonSubtitle.SELECTOR_BOTTOM_RIGHT = "ico_sel_rect_small_bottom_right"
-RaidGUIControlButtonSubtitle.init = function (self, parent, params)
+function RaidGUIControlButtonSubtitle:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlButtonSubtitle.super.init(slot4, self, parent)
@@ -112,7 +112,7 @@ RaidGUIControlButtonSubtitle.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlButtonSubtitle._init_panel = function (self)
+function RaidGUIControlButtonSubtitle:_init_panel()
 	local panel_params = clone(slot2)
 	panel_params.name = panel_params.name .. "_subtitle_button"
 	slot4 = self._panel
@@ -126,7 +126,7 @@ RaidGUIControlButtonSubtitle._init_panel = function (self)
 
 	return 
 end
-RaidGUIControlButtonSubtitle._create_selectors = function (self)
+function RaidGUIControlButtonSubtitle:_create_selectors()
 	local selector_panel_params = {
 		alpha = 0,
 		name = "selector_panel",
@@ -163,7 +163,7 @@ RaidGUIControlButtonSubtitle._create_selectors = function (self)
 
 	return 
 end
-RaidGUIControlButtonSubtitle._fit_size = function (self)
+function RaidGUIControlButtonSubtitle:_fit_size()
 	slot3 = self._text
 	local _, _, w, h = self._text.text_rect(slot2)
 	slot8 = w
@@ -217,7 +217,7 @@ RaidGUIControlButtonSubtitle._fit_size = function (self)
 
 	return 
 end
-RaidGUIControlButtonSubtitle.set_x = function (self, x)
+function RaidGUIControlButtonSubtitle:set_x(x)
 	slot5 = x
 
 	self._object.set_x(slot3, self._object)
@@ -226,7 +226,7 @@ RaidGUIControlButtonSubtitle.set_x = function (self, x)
 
 	return 
 end
-RaidGUIControlButtonSubtitle.set_center_x = function (self, x)
+function RaidGUIControlButtonSubtitle:set_center_x(x)
 	slot5 = x
 
 	self._object.set_center_x(slot3, self._object)
@@ -235,14 +235,14 @@ RaidGUIControlButtonSubtitle.set_center_x = function (self, x)
 
 	return 
 end
-RaidGUIControlButtonSubtitle.set_center_y = function (self, y)
+function RaidGUIControlButtonSubtitle:set_center_y(y)
 	slot5 = y
 
 	self._object.set_center_y(slot3, self._object)
 
 	return 
 end
-RaidGUIControlButtonSubtitle.set_right = function (self, x)
+function RaidGUIControlButtonSubtitle:set_right(x)
 	slot5 = x
 
 	self._object.set_right(slot3, self._object)
@@ -251,21 +251,21 @@ RaidGUIControlButtonSubtitle.set_right = function (self, x)
 
 	return 
 end
-RaidGUIControlButtonSubtitle.set_y = function (self, y)
+function RaidGUIControlButtonSubtitle:set_y(y)
 	slot5 = y
 
 	self._object.set_y(slot3, self._object)
 
 	return 
 end
-RaidGUIControlButtonSubtitle.set_bottom = function (self, bottom)
+function RaidGUIControlButtonSubtitle:set_bottom(bottom)
 	slot5 = bottom
 
 	self._object.set_bottom(slot3, self._object)
 
 	return 
 end
-RaidGUIControlButtonSubtitle.highlight_on = function (self, skip_animation)
+function RaidGUIControlButtonSubtitle:highlight_on(skip_animation)
 	if self._params.no_highlight then
 		return 
 	end
@@ -299,7 +299,7 @@ RaidGUIControlButtonSubtitle.highlight_on = function (self, skip_animation)
 
 	return 
 end
-RaidGUIControlButtonSubtitle.highlight_off = function (self, skip_animation)
+function RaidGUIControlButtonSubtitle:highlight_off(skip_animation)
 	if self._params.no_highlight or self._active then
 		return 
 	end
@@ -327,14 +327,14 @@ RaidGUIControlButtonSubtitle.highlight_off = function (self, skip_animation)
 
 	return 
 end
-RaidGUIControlButtonSubtitle.mouse_released = function (self, o, button, x, y)
+function RaidGUIControlButtonSubtitle:mouse_released(o, button, x, y)
 	slot8 = button
 
 	self.on_mouse_released(slot6, self)
 
 	return true
 end
-RaidGUIControlButtonSubtitle.on_mouse_pressed = function (self, button)
+function RaidGUIControlButtonSubtitle:on_mouse_pressed(button)
 	if self._params.no_click then
 		return 
 	end
@@ -350,7 +350,7 @@ RaidGUIControlButtonSubtitle.on_mouse_pressed = function (self, button)
 
 	return 
 end
-RaidGUIControlButtonSubtitle.on_mouse_released = function (self, button)
+function RaidGUIControlButtonSubtitle:on_mouse_released(button)
 	if self._params.no_click then
 		return 
 	end
@@ -372,7 +372,7 @@ RaidGUIControlButtonSubtitle.on_mouse_released = function (self, button)
 
 	return 
 end
-RaidGUIControlButtonSubtitle.on_double_click = function (self, button)
+function RaidGUIControlButtonSubtitle:on_double_click(button)
 	if self.on_double_click_callback then
 		slot6 = self._data
 
@@ -381,14 +381,14 @@ RaidGUIControlButtonSubtitle.on_double_click = function (self, button)
 
 	return 
 end
-RaidGUIControlButtonSubtitle.set_alpha = function (self, alpha)
+function RaidGUIControlButtonSubtitle:set_alpha(alpha)
 	slot5 = alpha
 
 	self._object.set_alpha(slot3, self._object)
 
 	return 
 end
-RaidGUIControlButtonSubtitle.set_selected = function (self, value)
+function RaidGUIControlButtonSubtitle:set_selected(value)
 	self._selected = value
 
 	if self._selected then
@@ -403,10 +403,10 @@ RaidGUIControlButtonSubtitle.set_selected = function (self, value)
 
 	return 
 end
-RaidGUIControlButtonSubtitle.selected = function (self)
+function RaidGUIControlButtonSubtitle:selected()
 	return self._selected
 end
-RaidGUIControlButtonSubtitle.set_active = function (self, value)
+function RaidGUIControlButtonSubtitle:set_active(value)
 	self._active = value
 
 	if self._active then
@@ -421,17 +421,17 @@ RaidGUIControlButtonSubtitle.set_active = function (self, value)
 
 	return 
 end
-RaidGUIControlButtonSubtitle.active = function (self)
+function RaidGUIControlButtonSubtitle:active()
 	return self._active
 end
-RaidGUIControlButtonSubtitle.show = function (self)
+function RaidGUIControlButtonSubtitle:show()
 	slot4 = true
 
 	self._object.set_visible(slot2, self._object)
 
 	return 
 end
-RaidGUIControlButtonSubtitle.hide = function (self)
+function RaidGUIControlButtonSubtitle:hide()
 	slot3 = self._object
 
 	self._object.stop(slot2)
@@ -442,7 +442,7 @@ RaidGUIControlButtonSubtitle.hide = function (self)
 
 	return 
 end
-RaidGUIControlButtonSubtitle.enable = function (self, active_texture_color)
+function RaidGUIControlButtonSubtitle:enable(active_texture_color)
 	slot5 = 1
 
 	self._icon.set_alpha(slot3, self._icon)
@@ -463,7 +463,7 @@ RaidGUIControlButtonSubtitle.enable = function (self, active_texture_color)
 
 	return 
 end
-RaidGUIControlButtonSubtitle.disable = function (self, inactive_texture_color)
+function RaidGUIControlButtonSubtitle:disable(inactive_texture_color)
 	slot5 = RaidGUIControlButtonSubtitle.DISABLED_ALPHA
 
 	self._icon.set_alpha(slot3, self._icon)
@@ -484,7 +484,7 @@ RaidGUIControlButtonSubtitle.disable = function (self, inactive_texture_color)
 
 	return 
 end
-RaidGUIControlButtonSubtitle.confirm_pressed = function (self)
+function RaidGUIControlButtonSubtitle:confirm_pressed()
 	if self._selected then
 		slot3 = self
 		slot6 = "0"
@@ -494,7 +494,7 @@ RaidGUIControlButtonSubtitle.confirm_pressed = function (self)
 
 	return 
 end
-RaidGUIControlButtonSubtitle._animate_highlight_on = function (self)
+function RaidGUIControlButtonSubtitle:_animate_highlight_on()
 	slot3 = self._text
 	local starting_color = self._text.color(slot2)
 	local duration = 0.2
@@ -540,7 +540,7 @@ RaidGUIControlButtonSubtitle._animate_highlight_on = function (self)
 
 	return 
 end
-RaidGUIControlButtonSubtitle._animate_highlight_off = function (self)
+function RaidGUIControlButtonSubtitle:_animate_highlight_off()
 	slot3 = self._text
 	local starting_color = self._text.color(slot2)
 	local duration = 0.2
@@ -579,7 +579,7 @@ RaidGUIControlButtonSubtitle._animate_highlight_off = function (self)
 
 	return 
 end
-RaidGUIControlButtonSubtitle._animate_press = function (self)
+function RaidGUIControlButtonSubtitle:_animate_press()
 	local t = 0
 	local duration = 0.05
 
@@ -607,7 +607,7 @@ RaidGUIControlButtonSubtitle._animate_press = function (self)
 
 	return 
 end
-RaidGUIControlButtonSubtitle._animate_release = function (self)
+function RaidGUIControlButtonSubtitle:_animate_release()
 	local t = 0
 	local duration = 0.25
 	slot7 = self._icon_w * RaidGUIControlButtonSubtitle.PRESSED_SIZE

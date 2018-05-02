@@ -6,7 +6,7 @@ end
 GoldAssetStoreGui = slot0
 GoldAssetStoreGui.CONFIRM_PRESSED_STATE_BUY = "state_buy"
 GoldAssetStoreGui.CONFIRM_PRESSED_STATE_APPLY = "state_apply"
-GoldAssetStoreGui.init = function (self, ws, fullscreen_ws, node, component_name)
+function GoldAssetStoreGui:init(ws, fullscreen_ws, node, component_name)
 	slot11 = component_name
 
 	GoldAssetStoreGui.super.init(slot6, self, ws, fullscreen_ws, node)
@@ -22,7 +22,7 @@ GoldAssetStoreGui.init = function (self, ws, fullscreen_ws, node, component_name
 
 	return 
 end
-GoldAssetStoreGui._setup_properties = function (self)
+function GoldAssetStoreGui:_setup_properties()
 	slot3 = self
 
 	GoldAssetStoreGui.super._setup_properties(slot2)
@@ -32,13 +32,13 @@ GoldAssetStoreGui._setup_properties = function (self)
 
 	return 
 end
-GoldAssetStoreGui._set_initial_data = function (self)
+function GoldAssetStoreGui:_set_initial_data()
 	self._loaded_units = {}
 	self._unit_data_to_show = nil
 
 	return 
 end
-GoldAssetStoreGui._layout = function (self)
+function GoldAssetStoreGui:_layout()
 	self._disable_dof(slot2)
 
 	local gold_asset_store_grid_scrollable_area_params = {
@@ -276,7 +276,7 @@ GoldAssetStoreGui._layout = function (self)
 
 	return 
 end
-GoldAssetStoreGui._layout_greed_info = function (self)
+function GoldAssetStoreGui:_layout_greed_info()
 	local greed_panel_default_h = 288
 	local greed_panel_bottom = 896
 	local greed_info_panel_params = {
@@ -332,7 +332,7 @@ GoldAssetStoreGui._layout_greed_info = function (self)
 
 	return 
 end
-GoldAssetStoreGui._data_source_gold_asset_store = function (self)
+function GoldAssetStoreGui:_data_source_gold_asset_store()
 	local gold_items_data_source = managers.gold_economy.get_store_items_data(slot2)
 	slot4 = gold_items_data_source
 
@@ -342,28 +342,28 @@ GoldAssetStoreGui._data_source_gold_asset_store = function (self)
 
 	return gold_items_data_source
 end
-GoldAssetStoreGui._on_click_gold_asset_store = function (self, item_data)
+function GoldAssetStoreGui:_on_click_gold_asset_store(item_data)
 	slot5 = item_data
 
 	self._grid_item_clicked_selected(slot3, self)
 
 	return 
 end
-GoldAssetStoreGui._on_double_click_gold_asset_store = function (self, item_data)
+function GoldAssetStoreGui:_on_double_click_gold_asset_store(item_data)
 	slot5 = item_data
 
 	self._grid_item_clicked_selected(slot3, self)
 
 	return 
 end
-GoldAssetStoreGui._on_selected_gold_asset_store = function (self, item_idx, item_data)
+function GoldAssetStoreGui:_on_selected_gold_asset_store(item_idx, item_data)
 	slot6 = item_data
 
 	self._grid_item_clicked_selected(slot4, self)
 
 	return 
 end
-GoldAssetStoreGui._on_click_button_buy = function (self)
+function GoldAssetStoreGui:_on_click_button_buy()
 	local selected_item = self._gold_asset_store_grid.selected_grid_item(slot2)
 	slot4 = selected_item
 	local selected_item_data = selected_item.get_data(self._gold_asset_store_grid)
@@ -380,7 +380,7 @@ GoldAssetStoreGui._on_click_button_buy = function (self)
 
 	return 
 end
-GoldAssetStoreGui._on_click_button_apply = function (self)
+function GoldAssetStoreGui:_on_click_button_apply()
 	local selected_item = self._gold_asset_store_grid.selected_grid_item(slot2)
 	local selected_item_data = selected_item.get_data(self._gold_asset_store_grid)
 	slot7 = selected_item_data.level
@@ -389,7 +389,7 @@ GoldAssetStoreGui._on_click_button_apply = function (self)
 
 	return 
 end
-GoldAssetStoreGui.update = function (self, t, dt)
+function GoldAssetStoreGui:update(t, dt)
 	if self._unit_data_to_show and self._loaded_units[self._unit_data_to_show.scene_unit] and self._unit_data_to_show_changed then
 		slot6 = self._unit_data_to_show
 
@@ -400,7 +400,7 @@ GoldAssetStoreGui.update = function (self, t, dt)
 
 	return 
 end
-GoldAssetStoreGui._grid_item_clicked_selected = function (self, item_data)
+function GoldAssetStoreGui:_grid_item_clicked_selected(item_data)
 	if self._unit_data_to_show == item_data then
 		return 
 	end
@@ -417,7 +417,7 @@ GoldAssetStoreGui._grid_item_clicked_selected = function (self, item_data)
 
 	return 
 end
-GoldAssetStoreGui._populate_selected_item_data_and_load = function (self, item_data)
+function GoldAssetStoreGui:_populate_selected_item_data_and_load(item_data)
 	slot5 = item_data
 
 	self._load_scene_camp_unit(slot3, self)
@@ -451,7 +451,7 @@ GoldAssetStoreGui._populate_selected_item_data_and_load = function (self, item_d
 
 	return 
 end
-GoldAssetStoreGui._load_scene_camp_unit = function (self, item_data)
+function GoldAssetStoreGui:_load_scene_camp_unit(item_data)
 	if not item_data.scene_unit or item_data.scene_unit == "" then
 		return 
 	end
@@ -465,7 +465,7 @@ GoldAssetStoreGui._load_scene_camp_unit = function (self, item_data)
 
 	return 
 end
-GoldAssetStoreGui._spawn_scene_camp_unit = function (self, unit_data_to_show)
+function GoldAssetStoreGui:_spawn_scene_camp_unit(unit_data_to_show)
 	slot4 = self
 	self._spawned_unit_position = self.get_character_spawn_location(slot3)
 	slot7 = unit_data_to_show.scene_unit
@@ -486,7 +486,7 @@ GoldAssetStoreGui._spawn_scene_camp_unit = function (self, unit_data_to_show)
 
 	return 
 end
-GoldAssetStoreGui.get_character_spawn_location = function (self)
+function GoldAssetStoreGui:get_character_spawn_location()
 	slot4 = "all"
 	slot8 = "env_effect"
 	local units = World.find_units_quick(slot2, World, managers.slot.get_mask(slot6, managers.slot))
@@ -513,14 +513,14 @@ GoldAssetStoreGui.get_character_spawn_location = function (self)
 
 	return result
 end
-GoldAssetStoreGui.pix_to_screen = function (self, px_x, px_y)
+function GoldAssetStoreGui:pix_to_screen(px_x, px_y)
 	local sx = (2 * px_x) / self._root_panel.w(slot5) - 1
 	slot7 = self._root_panel
 	local sy = (2 * px_y) / self._root_panel.h(self._root_panel) - 1
 
 	return sx, sy
 end
-GoldAssetStoreGui._despawn_scene_camp_unit = function (self)
+function GoldAssetStoreGui:_despawn_scene_camp_unit()
 	if self._spawned_unit then
 		slot4 = 0
 
@@ -531,12 +531,12 @@ GoldAssetStoreGui._despawn_scene_camp_unit = function (self)
 
 	return 
 end
-GoldAssetStoreGui._camp_scene_unit_loaded_callback = function (self, item_data)
+function GoldAssetStoreGui:_camp_scene_unit_loaded_callback(item_data)
 	self._loaded_units[item_data.scene_unit] = true
 
 	return 
 end
-GoldAssetStoreGui._process_controls_states = function (self)
+function GoldAssetStoreGui:_process_controls_states()
 	slot3 = self._gold_asset_store_grid
 	slot3 = self._gold_asset_store_grid.selected_grid_item(slot2)
 	local selected_item_data = self._gold_asset_store_grid.selected_grid_item(slot2).get_data(slot2)
@@ -752,7 +752,7 @@ GoldAssetStoreGui._process_controls_states = function (self)
 
 	return 
 end
-GoldAssetStoreGui._buy_gold_item_yes_callback = function (self, item_data)
+function GoldAssetStoreGui:_buy_gold_item_yes_callback(item_data)
 	slot5 = "[GoldAssetStoreGui:_buy_gold_item_yes_callback] item_data "
 	slot8 = item_data
 
@@ -768,7 +768,7 @@ GoldAssetStoreGui._buy_gold_item_yes_callback = function (self, item_data)
 
 	return 
 end
-GoldAssetStoreGui._apply_upgrade_to_camp = function (self, upgrade_name, level)
+function GoldAssetStoreGui:_apply_upgrade_to_camp(upgrade_name, level)
 	slot7 = level
 
 	managers.gold_economy.update_camp_upgrade(slot4, managers.gold_economy, upgrade_name)
@@ -806,7 +806,7 @@ GoldAssetStoreGui._apply_upgrade_to_camp = function (self, upgrade_name, level)
 
 	return 
 end
-GoldAssetStoreGui.close = function (self)
+function GoldAssetStoreGui:close()
 	slot3 = self._loaded_units
 
 	for scene_unit, loaded in pairs(slot2) do
@@ -834,7 +834,7 @@ GoldAssetStoreGui.close = function (self)
 
 	return 
 end
-GoldAssetStoreGui.bind_controller_inputs = function (self)
+function GoldAssetStoreGui:bind_controller_inputs()
 	local legend = {
 		controller = {
 			"menu_legend_back"
@@ -855,7 +855,7 @@ GoldAssetStoreGui.bind_controller_inputs = function (self)
 
 	return 
 end
-GoldAssetStoreGui.bind_controller_inputs_buy = function (self)
+function GoldAssetStoreGui:bind_controller_inputs_buy()
 	local legend = {
 		controller = {
 			"menu_legend_back",
@@ -877,7 +877,7 @@ GoldAssetStoreGui.bind_controller_inputs_buy = function (self)
 
 	return 
 end
-GoldAssetStoreGui.bind_controller_inputs_apply = function (self)
+function GoldAssetStoreGui:bind_controller_inputs_apply()
 	local legend = {
 		controller = {
 			"menu_legend_back",
@@ -899,7 +899,7 @@ GoldAssetStoreGui.bind_controller_inputs_apply = function (self)
 
 	return 
 end
-GoldAssetStoreGui.confirm_pressed = function (self)
+function GoldAssetStoreGui:confirm_pressed()
 	slot3 = self._gold_asset_store_grid
 	local selected_item = self._gold_asset_store_grid.selected_grid_item(slot2)
 

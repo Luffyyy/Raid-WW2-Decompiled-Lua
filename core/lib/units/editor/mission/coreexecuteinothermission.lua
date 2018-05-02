@@ -11,28 +11,28 @@ if not ExecuteInOtherMissionUnitElement then
 end
 
 ExecuteInOtherMissionUnitElement = slot0
-ExecuteInOtherMissionUnitElement.init = function (self, ...)
+function ExecuteInOtherMissionUnitElement:init(...)
 	slot3 = self
 
 	CoreExecuteInOtherMissionUnitElement.init(slot2, ...)
 
 	return 
 end
-CoreExecuteInOtherMissionUnitElement.init = function (self, unit)
+function CoreExecuteInOtherMissionUnitElement:init(unit)
 	slot5 = unit
 
 	MissionElement.init(slot3, self)
 
 	return 
 end
-CoreExecuteInOtherMissionUnitElement.selected = function (self)
+function CoreExecuteInOtherMissionUnitElement:selected()
 	slot3 = self
 
 	MissionElement.selected(slot2)
 
 	return 
 end
-CoreExecuteInOtherMissionUnitElement.add_unit_list_btn = function (self)
+function CoreExecuteInOtherMissionUnitElement:add_unit_list_btn()
 	local function f(unit)
 		slot4 = "mission_element"
 
@@ -50,7 +50,7 @@ CoreExecuteInOtherMissionUnitElement.add_unit_list_btn = function (self)
 
 	return 
 end
-CoreExecuteInOtherMissionUnitElement._build_panel = function (self, panel, panel_sizer)
+function CoreExecuteInOtherMissionUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

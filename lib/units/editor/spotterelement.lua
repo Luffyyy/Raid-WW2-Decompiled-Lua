@@ -9,14 +9,14 @@ SpotterUnitElement.ON_EXECUTED_ALTERNATIVES = {
 	"on_outlined",
 	"on_spotted"
 }
-SpotterUnitElement.init = function (self, unit)
+function SpotterUnitElement:init(unit)
 	slot5 = unit
 
 	SpotterUnitElement.super.init(slot3, self)
 
 	return 
 end
-SpotterUnitElement.update_selected = function (self, time, rel_time)
+function SpotterUnitElement:update_selected(time, rel_time)
 	slot11 = time * 100
 	local brush = Draw.brush(slot4, Color.white.with_alpha(slot7, Color.white))
 	local len = (math.sin(Draw) + 1) / 2 * 3000
@@ -45,7 +45,7 @@ SpotterUnitElement.update_selected = function (self, time, rel_time)
 
 	return 
 end
-SpotterUnitElement._build_panel = function (self, panel, panel_sizer)
+function SpotterUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

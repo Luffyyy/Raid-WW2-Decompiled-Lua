@@ -8,7 +8,7 @@ if not RaidGUIControlRotateUnit then
 end
 
 RaidGUIControlRotateUnit = slot0
-RaidGUIControlRotateUnit.init = function (self, parent, params)
+function RaidGUIControlRotateUnit:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlRotateUnit.super.init(slot4, self, parent)
@@ -26,7 +26,7 @@ RaidGUIControlRotateUnit.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlRotateUnit.set_unit = function (self, unit, position, initial_angle, center_offset, screen_adjust_offset)
+function RaidGUIControlRotateUnit:set_unit(unit, position, initial_angle, center_offset, screen_adjust_offset)
 	self._unit = unit
 
 	if not unit then
@@ -63,14 +63,14 @@ RaidGUIControlRotateUnit.set_unit = function (self, unit, position, initial_angl
 
 	return 
 end
-RaidGUIControlRotateUnit.mouse_moved = function (self, o, x, y)
+function RaidGUIControlRotateUnit:mouse_moved(o, x, y)
 	slot9 = y
 
 	RaidGUIControlRotateUnit.super.mouse_moved(slot5, self, o, x)
 
 	return 
 end
-RaidGUIControlRotateUnit.on_mouse_moved = function (self, o, x, y)
+function RaidGUIControlRotateUnit:on_mouse_moved(o, x, y)
 
 	-- Decompilation error in this vicinity:
 	if not self._last_x then
@@ -115,7 +115,7 @@ RaidGUIControlRotateUnit.on_mouse_moved = function (self, o, x, y)
 
 	return 
 end
-RaidGUIControlRotateUnit._rotate_unit_by = function (self, yaw_delta)
+function RaidGUIControlRotateUnit:_rotate_unit_by(yaw_delta)
 	local rotation = self._unit.rotation(slot3)
 	local yaw = rotation.yaw(self._unit)
 	local pitch = rotation.pitch(rotation)
@@ -131,7 +131,7 @@ RaidGUIControlRotateUnit._rotate_unit_by = function (self, yaw_delta)
 
 	return 
 end
-RaidGUIControlRotateUnit.current_position = function (self)
+function RaidGUIControlRotateUnit:current_position()
 
 	-- Decompilation error in this vicinity:
 	if self._unit then
@@ -142,7 +142,7 @@ RaidGUIControlRotateUnit.current_position = function (self)
 
 	return 
 end
-RaidGUIControlRotateUnit.current_rotation = function (self)
+function RaidGUIControlRotateUnit:current_rotation()
 	if self._unit then
 		slot3 = self._unit
 
@@ -151,7 +151,7 @@ RaidGUIControlRotateUnit.current_rotation = function (self)
 
 	return 
 end
-RaidGUIControlRotateUnit.set_position = function (self, position)
+function RaidGUIControlRotateUnit:set_position(position)
 	if not self._unit then
 		return 
 	end
@@ -163,7 +163,7 @@ RaidGUIControlRotateUnit.set_position = function (self, position)
 
 	return 
 end
-RaidGUIControlRotateUnit.set_rotation = function (self, rotation)
+function RaidGUIControlRotateUnit:set_rotation(rotation)
 	if not self._unit then
 		return 
 	end
@@ -175,7 +175,7 @@ RaidGUIControlRotateUnit.set_rotation = function (self, rotation)
 
 	return 
 end
-RaidGUIControlRotateUnit.update = function (self, t, dt)
+function RaidGUIControlRotateUnit:update(t, dt)
 	local menu_controller = managers.menu.get_controller(slot4)
 	slot6 = managers.menu
 
@@ -188,7 +188,7 @@ RaidGUIControlRotateUnit.update = function (self, t, dt)
 
 	return 
 end
-RaidGUIControlRotateUnit._place_unit = function (self, position, rotation)
+function RaidGUIControlRotateUnit:_place_unit(position, rotation)
 	slot6 = position
 
 	self._unit.set_position(slot4, self._unit)
@@ -203,7 +203,7 @@ RaidGUIControlRotateUnit._place_unit = function (self, position, rotation)
 
 	return 
 end
-RaidGUIControlRotateUnit.on_mouse_over = function (self, x, y)
+function RaidGUIControlRotateUnit:on_mouse_over(x, y)
 	slot7 = y
 
 	RaidGUIControlRotateUnit.super.on_mouse_over(slot4, self, x)
@@ -216,13 +216,13 @@ RaidGUIControlRotateUnit.on_mouse_over = function (self, x, y)
 
 	return 
 end
-RaidGUIControlRotateUnit.on_mouse_out = function (self)
+function RaidGUIControlRotateUnit:on_mouse_out()
 	self._pointer_type = "link"
 	self._dragging = false
 
 	return 
 end
-RaidGUIControlRotateUnit.on_mouse_pressed = function (self)
+function RaidGUIControlRotateUnit:on_mouse_pressed()
 	slot3 = managers.raid_menu
 	self._old_active_control = managers.raid_menu.get_active_control(slot2)
 	slot4 = self
@@ -241,7 +241,7 @@ RaidGUIControlRotateUnit.on_mouse_pressed = function (self)
 
 	return 
 end
-RaidGUIControlRotateUnit.on_mouse_released = function (self)
+function RaidGUIControlRotateUnit:on_mouse_released()
 	slot4 = self._old_active_control
 
 	managers.raid_menu.set_active_control(slot2, managers.raid_menu)

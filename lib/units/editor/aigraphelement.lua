@@ -4,7 +4,7 @@ if not AIGraphUnitElement then
 end
 
 AIGraphUnitElement = slot0
-AIGraphUnitElement.init = function (self, unit)
+function AIGraphUnitElement:init(unit)
 	slot5 = unit
 
 	EnemyPreferedRemoveUnitElement.super.init(slot3, self)
@@ -21,17 +21,17 @@ AIGraphUnitElement.init = function (self, unit)
 
 	return 
 end
-AIGraphUnitElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function AIGraphUnitElement:draw_links(t, dt, selected_unit, all_units)
 	slot10 = selected_unit
 
 	EnemyPreferedRemoveUnitElement.super.draw_links(slot6, self, t, dt)
 
 	return 
 end
-AIGraphUnitElement.update_editing = function (self)
+function AIGraphUnitElement:update_editing()
 	return 
 end
-AIGraphUnitElement._get_unit = function (self, id)
+function AIGraphUnitElement:_get_unit(id)
 	slot7 = "Ai"
 	slot6 = managers.editor.layer(slot5, managers.editor)
 
@@ -45,7 +45,7 @@ AIGraphUnitElement._get_unit = function (self, id)
 
 	return 
 end
-AIGraphUnitElement.update_selected = function (self, t, dt)
+function AIGraphUnitElement:update_selected(t, dt)
 	slot6 = "Ai"
 	slot7 = dt
 
@@ -76,7 +76,7 @@ AIGraphUnitElement.update_selected = function (self, t, dt)
 
 	return 
 end
-AIGraphUnitElement.update_unselected = function (self)
+function AIGraphUnitElement:update_unselected()
 	slot3 = self._hed.graph_ids
 
 	for _, id in ipairs(slot2) do
@@ -93,7 +93,7 @@ AIGraphUnitElement.update_unselected = function (self)
 
 	return 
 end
-AIGraphUnitElement._add_element = function (self)
+function AIGraphUnitElement:_add_element()
 	slot4 = {
 		ray_type = "editor",
 		mask = 19
@@ -115,7 +115,7 @@ AIGraphUnitElement._add_element = function (self)
 
 	return 
 end
-AIGraphUnitElement._add_or_remove_graph = function (self, id)
+function AIGraphUnitElement:_add_or_remove_graph(id)
 	slot5 = id
 
 	if table.contains(slot3, self._hed.graph_ids) then
@@ -130,7 +130,7 @@ AIGraphUnitElement._add_or_remove_graph = function (self, id)
 
 	return 
 end
-AIGraphUnitElement.add_unit_list_btn = function (self)
+function AIGraphUnitElement:add_unit_list_btn()
 	local function f(unit)
 		slot4 = "ai"
 
@@ -149,7 +149,7 @@ AIGraphUnitElement.add_unit_list_btn = function (self)
 
 	return 
 end
-AIGraphUnitElement.remove_links = function (self, unit)
+function AIGraphUnitElement:remove_links(unit)
 	slot4 = self._hed.graph_ids
 
 	for _, id in ipairs(slot3) do
@@ -164,7 +164,7 @@ AIGraphUnitElement.remove_links = function (self, unit)
 
 	return 
 end
-AIGraphUnitElement.add_triggers = function (self, vc)
+function AIGraphUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "_add_element"
 
@@ -172,7 +172,7 @@ AIGraphUnitElement.add_triggers = function (self, vc)
 
 	return 
 end
-AIGraphUnitElement._build_panel = function (self, panel, panel_sizer)
+function AIGraphUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

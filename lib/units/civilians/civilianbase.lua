@@ -4,7 +4,7 @@ if not CivilianBase then
 end
 
 CivilianBase = slot0
-CivilianBase.post_init = function (self)
+function CivilianBase:post_init()
 	slot3 = self._unit
 	self._ext_movement = self._unit.movement(slot2)
 	slot3 = self._unit
@@ -42,7 +42,7 @@ CivilianBase.post_init = function (self)
 
 	return 
 end
-CivilianBase.default_weapon_name = function (self)
+function CivilianBase:default_weapon_name()
 	return 
 end
 

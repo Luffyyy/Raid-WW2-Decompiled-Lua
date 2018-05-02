@@ -6,7 +6,7 @@ if not BowWeaponBase then
 end
 
 BowWeaponBase = slot0
-BowWeaponBase.init = function (self, unit)
+function BowWeaponBase:init(unit)
 	slot5 = unit
 
 	BowWeaponBase.super.init(slot3, self)
@@ -17,14 +17,14 @@ BowWeaponBase.init = function (self, unit)
 
 	return 
 end
-BowWeaponBase.trigger_pressed = function (self, ...)
+function BowWeaponBase:trigger_pressed(...)
 	slot3 = self
 
 	self._start_charging(slot2)
 
 	return 
 end
-BowWeaponBase.trigger_held = function (self, ...)
+function BowWeaponBase:trigger_held(...)
 	if not self._charging and not self._cancelled then
 		slot3 = self
 
@@ -33,7 +33,7 @@ BowWeaponBase.trigger_held = function (self, ...)
 
 	return 
 end
-BowWeaponBase._start_charging = function (self)
+function BowWeaponBase:_start_charging()
 	self._cancelled = nil
 	self._charging = true
 	slot3 = managers.player
@@ -45,12 +45,12 @@ BowWeaponBase._start_charging = function (self)
 
 	return 
 end
-BowWeaponBase.set_tased_shot = function (self, bool)
+function BowWeaponBase:set_tased_shot(bool)
 	self._is_tased_shot = bool
 
 	return 
 end
-BowWeaponBase.trigger_released = function (self, ...)
+function BowWeaponBase:trigger_released(...)
 	local fired = nil
 
 	if self._charging and not self._cancelled then
@@ -78,7 +78,7 @@ BowWeaponBase.trigger_released = function (self, ...)
 
 	return fired
 end
-BowWeaponBase.add_damage_result = function (self, unit, attacker, is_dead, damage_percent)
+function BowWeaponBase:add_damage_result(unit, attacker, is_dead, damage_percent)
 
 	-- Decompilation error in this vicinity:
 	slot7 = attacker
@@ -92,15 +92,15 @@ BowWeaponBase.add_damage_result = function (self, unit, attacker, is_dead, damag
 
 	return 
 end
-BowWeaponBase._spawn_muzzle_effect = function (self)
+function BowWeaponBase:_spawn_muzzle_effect()
 	return 
 end
-BowWeaponBase.charge_fail = function (self)
+function BowWeaponBase:charge_fail()
 	slot3 = self
 
 	return self.charge_multiplier(slot2) < 0.2
 end
-BowWeaponBase.charge_multiplier = function (self)
+function BowWeaponBase:charge_multiplier()
 	if self._is_tased_shot then
 		return 1
 	end
@@ -117,24 +117,24 @@ BowWeaponBase.charge_multiplier = function (self)
 
 	return charge_multiplier
 end
-BowWeaponBase.projectile_speed_multiplier = function (self)
+function BowWeaponBase:projectile_speed_multiplier()
 	slot4 = 1
 	slot7 = self
 
 	return math.lerp(slot2, 0.05, self.charge_multiplier(slot6))
 end
-BowWeaponBase.projectile_damage_multiplier = function (self)
+function BowWeaponBase:projectile_damage_multiplier()
 	slot4 = 1
 	slot7 = self
 
 	return math.lerp(slot2, 0.1, self.charge_multiplier(slot6))
 end
-BowWeaponBase.projectile_charge_value = function (self)
+function BowWeaponBase:projectile_charge_value()
 	slot3 = self
 
 	return self.charge_multiplier(slot2)
 end
-BowWeaponBase._adjust_throw_z = function (self, m_vec)
+function BowWeaponBase:_adjust_throw_z(m_vec)
 	slot10 = m_vec
 	slot6 = 1 - math.abs(mvector3.z(slot9))
 	local adjust_z = math.lerp(slot3, 0, 0.05)
@@ -145,16 +145,16 @@ BowWeaponBase._adjust_throw_z = function (self, m_vec)
 
 	return 
 end
-BowWeaponBase.fire_on_release = function (self)
+function BowWeaponBase:fire_on_release()
 	return true
 end
-BowWeaponBase.can_refire_while_tased = function (self)
+function BowWeaponBase:can_refire_while_tased()
 	return false
 end
-BowWeaponBase.charging = function (self)
+function BowWeaponBase:charging()
 	return self._charging and not self._cancelled
 end
-BowWeaponBase.interupt_charging = function (self)
+function BowWeaponBase:interupt_charging()
 	self._charging = nil
 	self._cancelled = nil
 	slot4 = "charge_cancel"
@@ -163,10 +163,10 @@ BowWeaponBase.interupt_charging = function (self)
 
 	return 
 end
-BowWeaponBase.manages_steelsight = function (self)
+function BowWeaponBase:manages_steelsight()
 	return true
 end
-BowWeaponBase.steelsight_pressed = function (self)
+function BowWeaponBase:steelsight_pressed()
 	if self._cancelled then
 		return 
 	end
@@ -182,22 +182,22 @@ BowWeaponBase.steelsight_pressed = function (self)
 		exit_steelsight = true
 	}
 end
-BowWeaponBase.wants_steelsight = function (self)
+function BowWeaponBase:wants_steelsight()
 	return self._charging and not self._cancelled
 end
-BowWeaponBase.enter_steelsight_speed_multiplier = function (self)
+function BowWeaponBase:enter_steelsight_speed_multiplier()
 	slot4 = self
 
 	return self._steelsight_speed * BowWeaponBase.super.enter_steelsight_speed_multiplier(slot3)
 end
-BowWeaponBase.reload_speed_multiplier = function (self)
+function BowWeaponBase:reload_speed_multiplier()
 	slot3 = self
 	local code_miss_multiplier = self.weapon_tweak_data(slot2).bow_reload_speed_multiplier or 1
 	slot4 = self
 
 	return code_miss_multiplier * BowWeaponBase.super.reload_speed_multiplier(slot3)
 end
-BowWeaponBase.set_ammo_max = function (self, ammo_max)
+function BowWeaponBase:set_ammo_max(ammo_max)
 	slot5 = ammo_max
 
 	BowWeaponBase.super.set_ammo_max(slot3, self)
@@ -210,7 +210,7 @@ BowWeaponBase.set_ammo_max = function (self, ammo_max)
 
 	return 
 end
-BowWeaponBase.set_ammo_total = function (self, ammo_total)
+function BowWeaponBase:set_ammo_total(ammo_total)
 	slot5 = ammo_total
 
 	BowWeaponBase.super.set_ammo_total(slot3, self)
@@ -223,7 +223,7 @@ BowWeaponBase.set_ammo_total = function (self, ammo_total)
 
 	return 
 end
-BowWeaponBase.replenish = function (self)
+function BowWeaponBase:replenish()
 	slot3 = self
 
 	BowWeaponBase.super.replenish(slot2)
@@ -237,7 +237,7 @@ BowWeaponBase.replenish = function (self)
 
 	return 
 end
-BowWeaponBase.charge_max_t = function (self)
+function BowWeaponBase:charge_max_t()
 	slot3 = self
 
 	return self.weapon_tweak_data(slot2).charge_data.max_t
@@ -249,7 +249,7 @@ if not CrossbowWeaponBase then
 end
 
 CrossbowWeaponBase = slot0
-CrossbowWeaponBase.init = function (self, unit)
+function CrossbowWeaponBase:init(unit)
 	slot5 = unit
 
 	CrossbowWeaponBase.super.init(slot3, self)
@@ -258,7 +258,7 @@ CrossbowWeaponBase.init = function (self, unit)
 
 	return 
 end
-CrossbowWeaponBase.charge_fail = function (self)
+function CrossbowWeaponBase:charge_fail()
 	return false
 end
 

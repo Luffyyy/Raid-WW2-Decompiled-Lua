@@ -1,4 +1,4 @@
-BlackMarketTweakData._init_materials = function (self)
+function BlackMarketTweakData:_init_materials()
 	self.materials = {}
 
 	return 

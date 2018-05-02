@@ -11,14 +11,14 @@ if not OverlayEffectUnitElement then
 end
 
 OverlayEffectUnitElement = slot0
-OverlayEffectUnitElement.init = function (self, ...)
+function OverlayEffectUnitElement:init(...)
 	slot3 = self
 
 	OverlayEffectUnitElement.super.init(slot2, ...)
 
 	return 
 end
-CoreOverlayEffectUnitElement.init = function (self, unit)
+function CoreOverlayEffectUnitElement:init(unit)
 	slot5 = unit
 
 	CoreOverlayEffectUnitElement.super.init(slot3, self)
@@ -42,7 +42,7 @@ CoreOverlayEffectUnitElement.init = function (self, unit)
 
 	return 
 end
-CoreOverlayEffectUnitElement.test_element = function (self)
+function CoreOverlayEffectUnitElement:test_element()
 	if self._hed.effect ~= "none" then
 		slot5 = managers.overlay_effect
 		local effect = clone(slot2)
@@ -56,14 +56,14 @@ CoreOverlayEffectUnitElement.test_element = function (self)
 
 	return 
 end
-CoreOverlayEffectUnitElement.stop_test_element = function (self)
+function CoreOverlayEffectUnitElement:stop_test_element()
 	slot3 = managers.overlay_effect
 
 	managers.overlay_effect.stop_effect(slot2)
 
 	return 
 end
-CoreOverlayEffectUnitElement.changed_effect = function (self)
+function CoreOverlayEffectUnitElement:changed_effect()
 	if self._hed.effect == "none" then
 		slot4 = "-"
 
@@ -96,7 +96,7 @@ CoreOverlayEffectUnitElement.changed_effect = function (self)
 
 	return 
 end
-CoreOverlayEffectUnitElement.set_option_time = function (self, data)
+function CoreOverlayEffectUnitElement:set_option_time(data)
 	local c = data.ctrlr
 	local value = c.get_value(slot4)
 	slot6 = c
@@ -120,7 +120,7 @@ CoreOverlayEffectUnitElement.set_option_time = function (self, data)
 
 	return 
 end
-CoreOverlayEffectUnitElement._build_panel = function (self, panel, panel_sizer)
+function CoreOverlayEffectUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

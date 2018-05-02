@@ -8,21 +8,21 @@ if not ElementBlackscreen then
 end
 
 ElementBlackscreen = slot0
-ElementBlackscreen.init = function (self, ...)
+function ElementBlackscreen:init(...)
 	slot3 = self
 
 	ElementBlackscreen.super.init(slot2, ...)
 
 	return 
 end
-ElementBlackscreen.client_on_executed = function (self, ...)
+function ElementBlackscreen:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementBlackscreen.on_executed = function (self, instigator)
+function ElementBlackscreen:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

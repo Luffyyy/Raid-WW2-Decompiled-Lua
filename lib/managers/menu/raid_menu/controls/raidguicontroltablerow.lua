@@ -8,7 +8,7 @@ if not RaidGUIControlTableRow then
 end
 
 RaidGUIControlTableRow = slot0
-RaidGUIControlTableRow.init = function (self, parent, params, row_data, table_params)
+function RaidGUIControlTableRow:init(parent, params, row_data, table_params)
 	slot9 = params
 
 	RaidGUIControlTableRow.super.init(slot6, self, parent)
@@ -66,10 +66,10 @@ RaidGUIControlTableRow.init = function (self, parent, params, row_data, table_pa
 
 	return 
 end
-RaidGUIControlTableRow.get_cells = function (self)
+function RaidGUIControlTableRow:get_cells()
 	return self.cells
 end
-RaidGUIControlTableRow.mouse_moved = function (self, o, x, y)
+function RaidGUIControlTableRow:mouse_moved(o, x, y)
 	slot6 = self
 
 	if self.selected(slot5) then
@@ -96,10 +96,10 @@ RaidGUIControlTableRow.mouse_moved = function (self, o, x, y)
 
 	return false
 end
-RaidGUIControlTableRow.selected = function (self)
+function RaidGUIControlTableRow:selected()
 	return self._selected
 end
-RaidGUIControlTableRow.on_mouse_over = function (self, x, y)
+function RaidGUIControlTableRow:on_mouse_over(x, y)
 	self._mouse_inside = true
 	slot5 = self
 
@@ -107,7 +107,7 @@ RaidGUIControlTableRow.on_mouse_over = function (self, x, y)
 
 	return 
 end
-RaidGUIControlTableRow.on_mouse_out = function (self, x, y)
+function RaidGUIControlTableRow:on_mouse_out(x, y)
 	self._mouse_inside = false
 	slot5 = self
 
@@ -115,7 +115,7 @@ RaidGUIControlTableRow.on_mouse_out = function (self, x, y)
 
 	return 
 end
-RaidGUIControlTableRow.highlight_on = function (self)
+function RaidGUIControlTableRow:highlight_on()
 	if self._selected then
 		return 
 	end
@@ -136,7 +136,7 @@ RaidGUIControlTableRow.highlight_on = function (self)
 
 	return 
 end
-RaidGUIControlTableRow.highlight_off = function (self)
+function RaidGUIControlTableRow:highlight_off()
 	if self._selected then
 		return 
 	end
@@ -157,7 +157,7 @@ RaidGUIControlTableRow.highlight_off = function (self)
 
 	return 
 end
-RaidGUIControlTableRow.select_on = function (self)
+function RaidGUIControlTableRow:select_on()
 	slot3 = self.cells
 
 	for _, cell in pairs(slot2) do
@@ -180,7 +180,7 @@ RaidGUIControlTableRow.select_on = function (self)
 
 	return 
 end
-RaidGUIControlTableRow.select_off = function (self)
+function RaidGUIControlTableRow:select_off()
 	slot3 = self.cells
 
 	for _, cell in pairs(slot2) do
@@ -203,7 +203,7 @@ RaidGUIControlTableRow.select_off = function (self)
 
 	return 
 end
-RaidGUIControlTableRow.select = function (self)
+function RaidGUIControlTableRow:select()
 	self._selected = true
 	slot3 = self
 
@@ -215,7 +215,7 @@ RaidGUIControlTableRow.select = function (self)
 
 	return 
 end
-RaidGUIControlTableRow.unselect = function (self)
+function RaidGUIControlTableRow:unselect()
 	self._selected = false
 	slot3 = self
 
@@ -227,7 +227,7 @@ RaidGUIControlTableRow.unselect = function (self)
 
 	return 
 end
-RaidGUIControlTableRow.confirm_pressed = function (self)
+function RaidGUIControlTableRow:confirm_pressed()
 	slot3 = self.cells
 
 	for _, cell in pairs(slot2) do
@@ -240,12 +240,12 @@ RaidGUIControlTableRow.confirm_pressed = function (self)
 
 	return 
 end
-RaidGUIControlTableRow.mouse_released = function (self, o, button, x, y)
+function RaidGUIControlTableRow:mouse_released(o, button, x, y)
 	slot7 = self
 
 	return self.on_mouse_released(slot6)
 end
-RaidGUIControlTableRow.on_mouse_released = function (self, button)
+function RaidGUIControlTableRow:on_mouse_released(button)
 	if self._params.on_row_click_callback then
 		slot5 = self._params.row_index
 
@@ -254,7 +254,7 @@ RaidGUIControlTableRow.on_mouse_released = function (self, button)
 
 	return true
 end
-RaidGUIControlTableRow.mouse_double_click = function (self, button)
+function RaidGUIControlTableRow:mouse_double_click(button)
 	if self._params.on_row_double_click_callback then
 		slot5 = self._params.row_index
 
@@ -263,7 +263,7 @@ RaidGUIControlTableRow.mouse_double_click = function (self, button)
 
 	return true
 end
-RaidGUIControlTableRow.get_data = function (self)
+function RaidGUIControlTableRow:get_data()
 	return self.row_data
 end
 

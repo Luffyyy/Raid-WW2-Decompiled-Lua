@@ -11,7 +11,7 @@ slot3 = "CoreInputSettingsReader"
 core.import(slot1, core)
 
 InputManager = InputManager or class()
-InputManager.init = function (self)
+function InputManager:init()
 	local settings_reader = CoreInputSettingsReader.SettingsReader.new(slot2)
 	slot4 = settings_reader
 	self._layer_descriptions = settings_reader.layer_descriptions(CoreInputSettingsReader.SettingsReader)
@@ -20,10 +20,10 @@ InputManager.init = function (self)
 
 	return 
 end
-InputManager.destroy = function (self)
+function InputManager:destroy()
 	return 
 end
-InputManager.update = function (self, t, dt)
+function InputManager:update(t, dt)
 	slot5 = self._feeders
 
 	for _, feeder in pairs(slot4) do
@@ -34,7 +34,7 @@ InputManager.update = function (self, t, dt)
 
 	return 
 end
-InputManager.input_provider_id_that_presses_start = function (self)
+function InputManager:input_provider_id_that_presses_start()
 	local layer_description_ids = {}
 	slot4 = Input
 	local count = Input.num_real_controllers(slot3)
@@ -58,7 +58,7 @@ InputManager.input_provider_id_that_presses_start = function (self)
 
 	return layer_description_ids
 end
-InputManager.debug_primary_input_provider_id = function (self)
+function InputManager:debug_primary_input_provider_id()
 	slot3 = Input
 	local count = Input.num_real_controllers(slot2)
 	local best_controller = nil
@@ -87,7 +87,7 @@ InputManager.debug_primary_input_provider_id = function (self)
 
 	return best_controller
 end
-InputManager._create_input_provider_for_controller = function (self, engine_controller)
+function InputManager:_create_input_provider_for_controller(engine_controller)
 	slot6 = self._layer_descriptions
 	local feeder = CoreInputContextFeeder.Feeder.new(slot3, CoreInputContextFeeder.Feeder, engine_controller)
 	slot5 = feeder
@@ -97,7 +97,7 @@ InputManager._create_input_provider_for_controller = function (self, engine_cont
 
 	return input_provider
 end
-InputManager._destroy_input_provider = function (self, input_provider)
+function InputManager:_destroy_input_provider(input_provider)
 	local feeder = self._input_provider_to_feeder[input_provider]
 	self._feeders[feeder] = nil
 

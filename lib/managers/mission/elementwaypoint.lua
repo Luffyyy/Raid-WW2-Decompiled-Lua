@@ -10,7 +10,7 @@ if not ElementWaypoint then
 end
 
 ElementWaypoint = slot0
-ElementWaypoint.init = function (self, ...)
+function ElementWaypoint:init(...)
 	slot3 = self
 
 	ElementWaypoint.super.init(slot2, ...)
@@ -23,26 +23,26 @@ ElementWaypoint.init = function (self, ...)
 
 	return 
 end
-ElementWaypoint._get_unique_id = function (self)
+function ElementWaypoint:_get_unique_id()
 	local uid = self._sync_id .. self._id
 
 	return uid
 end
-ElementWaypoint.on_script_activated = function (self)
+function ElementWaypoint:on_script_activated()
 	slot4 = self._id
 
 	self._mission_script.add_save_state_cb(slot2, self._mission_script)
 
 	return 
 end
-ElementWaypoint.client_on_executed = function (self, ...)
+function ElementWaypoint:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementWaypoint.on_executed = function (self, instigator)
+function ElementWaypoint:on_executed(instigator)
 
 	-- Decompilation error in this vicinity:
 	if not self._values.enabled then
@@ -55,7 +55,7 @@ ElementWaypoint.on_executed = function (self, instigator)
 
 	return 
 end
-ElementWaypoint.operation_remove = function (self)
+function ElementWaypoint:operation_remove()
 	slot3 = managers.hud
 	slot6 = self
 
@@ -63,7 +63,7 @@ ElementWaypoint.operation_remove = function (self)
 
 	return 
 end
-ElementWaypoint.pre_destroy = function (self)
+function ElementWaypoint:pre_destroy()
 	slot3 = managers.hud
 	slot6 = self
 

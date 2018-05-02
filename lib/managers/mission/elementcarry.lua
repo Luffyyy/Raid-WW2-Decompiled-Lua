@@ -10,14 +10,14 @@ if not ElementCarry then
 end
 
 ElementCarry = slot0
-ElementCarry.init = function (self, ...)
+function ElementCarry:init(...)
 	slot3 = self
 
 	ElementCarry.super.init(slot2, ...)
 
 	return 
 end
-ElementCarry.on_executed = function (self, instigator)
+function ElementCarry:on_executed(instigator)
 
 	-- Decompilation error in this vicinity:
 	if self._values.type_filter and self._values.type_filter ~= "none" then
@@ -127,7 +127,7 @@ ElementCarry.on_executed = function (self, instigator)
 
 	return 
 end
-ElementCarry.client_on_executed = function (self, ...)
+function ElementCarry:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)

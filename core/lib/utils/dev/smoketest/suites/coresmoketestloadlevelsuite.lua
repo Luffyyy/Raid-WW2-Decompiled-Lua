@@ -16,7 +16,7 @@ if not LoadLevelSuite then
 end
 
 LoadLevelSuite = slot0
-LoadLevelSuite.init = function (self)
+function LoadLevelSuite:init()
 	slot3 = self
 
 	LoadLevelSuite.super.init(slot2)
@@ -35,7 +35,7 @@ LoadLevelSuite.init = function (self)
 
 	return 
 end
-LoadLevelSuite.load_level = function (self)
+function LoadLevelSuite:load_level()
 	local session_info = self._session_state.session_info(slot2)
 	slot4 = session_info
 	slot8 = "level"

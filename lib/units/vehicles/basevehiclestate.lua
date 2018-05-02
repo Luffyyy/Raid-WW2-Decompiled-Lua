@@ -1,10 +1,10 @@
 BaseVehicleState = BaseVehicleState or class()
-BaseVehicleState.init = function (self, unit)
+function BaseVehicleState:init(unit)
 	self._unit = unit
 
 	return 
 end
-BaseVehicleState.update = function (self, t, dt)
+function BaseVehicleState:update(t, dt)
 	slot5 = self._unit
 	slot5 = self._unit.vehicle_driving(slot4)
 
@@ -32,13 +32,13 @@ BaseVehicleState.update = function (self, t, dt)
 
 	return 
 end
-BaseVehicleState.enter = function (self, state_data, enter_data)
+function BaseVehicleState:enter(state_data, enter_data)
 	return 
 end
-BaseVehicleState.exit = function (self, state_data)
+function BaseVehicleState:exit(state_data)
 	return 
 end
-BaseVehicleState.get_action_for_interaction = function (self, pos, locator, tweak_data)
+function BaseVehicleState:get_action_for_interaction(pos, locator, tweak_data)
 	local locator_name = locator.name(slot5)
 	slot7 = self._unit
 	local seats = self._unit.vehicle_driving(locator).seats(locator)
@@ -98,7 +98,7 @@ BaseVehicleState.get_action_for_interaction = function (self, pos, locator, twea
 
 	return VehicleDrivingExt.INTERACT_INVALID
 end
-BaseVehicleState.adjust_interactions = function (self)
+function BaseVehicleState:adjust_interactions()
 	slot3 = self._unit
 	slot3 = self._unit.vehicle_driving(slot2)
 
@@ -110,7 +110,7 @@ BaseVehicleState.adjust_interactions = function (self)
 
 	return 
 end
-BaseVehicleState.disable_interactions = function (self)
+function BaseVehicleState:disable_interactions()
 	slot3 = self._unit
 
 	if self._unit.damage(slot2) then
@@ -151,13 +151,13 @@ BaseVehicleState.disable_interactions = function (self)
 
 	return 
 end
-BaseVehicleState.allow_exit = function (self)
+function BaseVehicleState:allow_exit()
 	return true
 end
-BaseVehicleState.is_vulnerable = function (self)
+function BaseVehicleState:is_vulnerable()
 	return false
 end
-BaseVehicleState.stop_vehicle = function (self)
+function BaseVehicleState:stop_vehicle()
 	return false
 end
 

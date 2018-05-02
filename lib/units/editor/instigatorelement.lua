@@ -6,14 +6,14 @@ end
 InstigatorUnitElement = slot0
 InstigatorUnitElement.SAVE_UNIT_POSITION = false
 InstigatorUnitElement.SAVE_UNIT_ROTATION = false
-InstigatorUnitElement.init = function (self, unit)
+function InstigatorUnitElement:init(unit)
 	slot5 = unit
 
 	InstigatorUnitElement.super.init(slot3, self)
 
 	return 
 end
-InstigatorUnitElement._build_panel = function (self, panel, panel_sizer)
+function InstigatorUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -35,7 +35,7 @@ end
 InstigatorOperatorUnitElement = slot0
 InstigatorOperatorUnitElement.SAVE_UNIT_POSITION = false
 InstigatorOperatorUnitElement.SAVE_UNIT_ROTATION = false
-InstigatorOperatorUnitElement.init = function (self, unit)
+function InstigatorOperatorUnitElement:init(unit)
 	slot5 = unit
 
 	InstigatorOperatorUnitElement.super.init(slot3, self)
@@ -57,7 +57,7 @@ InstigatorOperatorUnitElement.init = function (self, unit)
 
 	return 
 end
-InstigatorOperatorUnitElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function InstigatorOperatorUnitElement:draw_links(t, dt, selected_unit, all_units)
 	slot10 = selected_unit
 
 	InstigatorOperatorUnitElement.super.draw_links(slot6, self, t, dt)
@@ -83,7 +83,7 @@ InstigatorOperatorUnitElement.draw_links = function (self, t, dt, selected_unit,
 
 	return 
 end
-InstigatorOperatorUnitElement.get_links_to_unit = function (self, ...)
+function InstigatorOperatorUnitElement:get_links_to_unit(...)
 	slot3 = self
 
 	InstigatorOperatorUnitElement.super.get_links_to_unit(slot2, ...)
@@ -94,10 +94,10 @@ InstigatorOperatorUnitElement.get_links_to_unit = function (self, ...)
 
 	return 
 end
-InstigatorOperatorUnitElement.update_editing = function (self)
+function InstigatorOperatorUnitElement:update_editing()
 	return 
 end
-InstigatorOperatorUnitElement.add_element = function (self)
+function InstigatorOperatorUnitElement:add_element()
 	slot4 = {
 		ray_type = "editor",
 		mask = 10
@@ -125,7 +125,7 @@ InstigatorOperatorUnitElement.add_element = function (self)
 
 	return 
 end
-InstigatorOperatorUnitElement.remove_links = function (self, unit)
+function InstigatorOperatorUnitElement:remove_links(unit)
 	slot4 = self._hed.elements
 
 	for _, id in ipairs(slot3) do
@@ -140,7 +140,7 @@ InstigatorOperatorUnitElement.remove_links = function (self, unit)
 
 	return 
 end
-InstigatorOperatorUnitElement.add_triggers = function (self, vc)
+function InstigatorOperatorUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "add_element"
 
@@ -148,7 +148,7 @@ InstigatorOperatorUnitElement.add_triggers = function (self, vc)
 
 	return 
 end
-InstigatorOperatorUnitElement._build_panel = function (self, panel, panel_sizer)
+function InstigatorOperatorUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -195,7 +195,7 @@ end
 InstigatorTriggerUnitElement = slot0
 InstigatorTriggerUnitElement.SAVE_UNIT_POSITION = false
 InstigatorTriggerUnitElement.SAVE_UNIT_ROTATION = false
-InstigatorTriggerUnitElement.init = function (self, unit)
+function InstigatorTriggerUnitElement:init(unit)
 	slot5 = unit
 
 	InstigatorTriggerUnitElement.super.init(slot3, self)
@@ -212,7 +212,7 @@ InstigatorTriggerUnitElement.init = function (self, unit)
 
 	return 
 end
-InstigatorTriggerUnitElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function InstigatorTriggerUnitElement:draw_links(t, dt, selected_unit, all_units)
 	slot10 = selected_unit
 
 	InstigatorTriggerUnitElement.super.draw_links(slot6, self, t, dt)
@@ -238,7 +238,7 @@ InstigatorTriggerUnitElement.draw_links = function (self, t, dt, selected_unit, 
 
 	return 
 end
-InstigatorTriggerUnitElement.get_links_to_unit = function (self, ...)
+function InstigatorTriggerUnitElement:get_links_to_unit(...)
 	slot3 = self
 
 	InstigatorTriggerUnitElement.super.get_links_to_unit(slot2, ...)
@@ -249,10 +249,10 @@ InstigatorTriggerUnitElement.get_links_to_unit = function (self, ...)
 
 	return 
 end
-InstigatorTriggerUnitElement.update_editing = function (self)
+function InstigatorTriggerUnitElement:update_editing()
 	return 
 end
-InstigatorTriggerUnitElement.add_element = function (self)
+function InstigatorTriggerUnitElement:add_element()
 	slot4 = {
 		ray_type = "editor",
 		mask = 10
@@ -280,7 +280,7 @@ InstigatorTriggerUnitElement.add_element = function (self)
 
 	return 
 end
-InstigatorTriggerUnitElement.remove_links = function (self, unit)
+function InstigatorTriggerUnitElement:remove_links(unit)
 	slot4 = self._hed.elements
 
 	for _, id in ipairs(slot3) do
@@ -295,7 +295,7 @@ InstigatorTriggerUnitElement.remove_links = function (self, unit)
 
 	return 
 end
-InstigatorTriggerUnitElement.add_triggers = function (self, vc)
+function InstigatorTriggerUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "add_element"
 
@@ -303,7 +303,7 @@ InstigatorTriggerUnitElement.add_triggers = function (self, vc)
 
 	return 
 end
-InstigatorTriggerUnitElement._build_panel = function (self, panel, panel_sizer)
+function InstigatorTriggerUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

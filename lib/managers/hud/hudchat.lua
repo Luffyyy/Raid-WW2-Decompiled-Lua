@@ -28,7 +28,7 @@ HUDChat.MESSAGES_KEPT = 10
 HUDChat.MESSAGE_PADDING_DOWN = 15
 HUDChat.MESSAGE_MAX_SIZE = 100
 HUDChat.line_height = 21
-function HUDChat:init(ws, panel, background)
+HUDChat.init = function (self, ws, panel, background)
 	self._messages = {}
 	self._recieved_messages = {}
 	self._skip_first = false
@@ -63,7 +63,7 @@ function HUDChat:init(ws, panel, background)
 
 	return 
 end
-function HUDChat:_setup_callbacks()
+HUDChat._setup_callbacks = function (self)
 	slot5 = "esc_key_callback"
 	self._esc_callback = callback(slot2, self, self)
 	slot5 = "enter_key_callback"
@@ -72,7 +72,7 @@ function HUDChat:_setup_callbacks()
 
 	return 
 end
-function HUDChat:_create_panel(panel)
+HUDChat._create_panel = function (self, panel)
 	local panel_params = {
 		visible = false,
 		name = "chat_panel",
@@ -86,7 +86,7 @@ function HUDChat:_create_panel(panel)
 
 	return 
 end
-function HUDChat:_create_background()
+HUDChat._create_background = function (self)
 	local background_params = {
 		name = "background",
 		texture = tweak_data.gui.icons[HUDChat.BACKGROUND_IMAGE].texture,
@@ -97,7 +97,7 @@ function HUDChat:_create_background()
 
 	return 
 end
-function HUDChat:_create_input()
+HUDChat._create_input = function (self)
 	local input_panel_params = {
 		name = "input_panel",
 		halign = "scale",
@@ -180,7 +180,7 @@ function HUDChat:_create_input()
 
 	return 
 end
-function HUDChat:_create_message_panel()
+HUDChat._create_message_panel = function (self)
 
 	-- Decompilation error in this vicinity:
 	slot4 = "background"
@@ -201,43 +201,43 @@ function HUDChat:_create_message_panel()
 
 	return 
 end
-function HUDChat:set_layer(layer)
+HUDChat.set_layer = function (self, layer)
 	slot5 = layer
 
 	self._object.set_layer(slot3, self._object)
 
 	return 
 end
-function HUDChat:layer()
+HUDChat.layer = function (self)
 	slot3 = self._object
 
 	return self._object.layer(slot2)
 end
-function HUDChat:set_bottom(y)
+HUDChat.set_bottom = function (self, y)
 	slot5 = y
 
 	self._object.set_bottom(slot3, self._object)
 
 	return 
 end
-function HUDChat:channel_id()
+HUDChat.channel_id = function (self)
 	return self._channel_id
 end
-function HUDChat:register()
+HUDChat.register = function (self)
 	slot5 = self
 
 	managers.chat.register_receiver(slot2, managers.chat, self._channel_id)
 
 	return 
 end
-function HUDChat:unregister()
+HUDChat.unregister = function (self)
 	slot5 = self
 
 	managers.chat.unregister_receiver(slot2, managers.chat, self._channel_id)
 
 	return 
 end
-function HUDChat:set_channel_id()
+HUDChat.set_channel_id = function (self)
 	slot3 = self
 
 	self.unregister(slot2)
@@ -249,14 +249,14 @@ function HUDChat:set_channel_id()
 
 	return 
 end
-function HUDChat:esc_key_callback()
+HUDChat.esc_key_callback = function (self)
 	slot4 = false
 
 	managers.hud.set_chat_focus(slot2, managers.hud)
 
 	return 
 end
-function HUDChat:enter_key_callback()
+HUDChat.enter_key_callback = function (self)
 	local message = self._input_text.text(slot2)
 	slot4 = message
 
@@ -281,7 +281,7 @@ function HUDChat:enter_key_callback()
 
 	return 
 end
-function HUDChat:_create_input_panel()
+HUDChat._create_input_panel = function (self)
 	slot4 = {
 		name = "input_panel",
 		h = 24,
@@ -376,7 +376,7 @@ function HUDChat:_create_input_panel()
 
 	return 
 end
-function HUDChat:_layout_output_panel()
+HUDChat._layout_output_panel = function (self)
 	slot4 = "output_panel"
 	local output_panel = self._panel.child(slot2, self._panel)
 	slot5 = self._output_width
@@ -438,7 +438,7 @@ function HUDChat:_layout_output_panel()
 
 	return 
 end
-function HUDChat:_layout_input_panel()
+HUDChat._layout_input_panel = function (self)
 	slot4 = self._panel_width
 
 	self._input_panel.set_w(slot2, self._input_panel)
@@ -472,15 +472,15 @@ function HUDChat:_layout_input_panel()
 
 	return 
 end
-function HUDChat:input_focus()
+HUDChat.input_focus = function (self)
 	return self._focus
 end
-function HUDChat:set_skip_first(skip_first)
+HUDChat.set_skip_first = function (self, skip_first)
 	self._skip_first = skip_first
 
 	return 
 end
-function HUDChat:show()
+HUDChat.show = function (self)
 	self._shown = true
 	slot4 = true
 
@@ -492,7 +492,7 @@ function HUDChat:show()
 
 	return 
 end
-function HUDChat:hide()
+HUDChat.hide = function (self)
 	self._shown = false
 	slot4 = false
 
@@ -500,10 +500,10 @@ function HUDChat:hide()
 
 	return 
 end
-function HUDChat:shown()
+HUDChat.shown = function (self)
 	return self._shown
 end
-function HUDChat:_on_focus()
+HUDChat._on_focus = function (self)
 	if self._focus then
 		return 
 	end
@@ -543,7 +543,7 @@ function HUDChat:_on_focus()
 
 	return 
 end
-function HUDChat:_loose_focus()
+HUDChat._loose_focus = function (self)
 	if not self._focus then
 		return 
 	end
@@ -579,7 +579,7 @@ function HUDChat:_loose_focus()
 
 	return 
 end
-function HUDChat:clear()
+HUDChat.clear = function (self)
 	slot4 = ""
 
 	self._input_text.set_text(slot2, self._input_text)
@@ -598,7 +598,7 @@ function HUDChat:clear()
 
 	return 
 end
-function HUDChat:_shift()
+HUDChat._shift = function (self)
 	local k = Input.keyboard(slot2)
 	slot5 = "left shift"
 
@@ -639,7 +639,7 @@ HUDChat.blink = function (o)
 
 	return 
 end
-function HUDChat:set_blinking(b)
+HUDChat.set_blinking = function (self, b)
 	if b == self._blinking then
 		return 
 	end
@@ -664,7 +664,7 @@ function HUDChat:set_blinking(b)
 
 	return 
 end
-function HUDChat:update_caret()
+HUDChat.update_caret = function (self)
 	slot3 = self._input_text
 	local s, e = self._input_text.selection(slot2)
 	slot5 = self._input_text
@@ -713,7 +713,7 @@ function HUDChat:update_caret()
 
 	return 
 end
-function HUDChat:enter_text(o, s)
+HUDChat.enter_text = function (self, o, s)
 	if managers.hud then
 		slot5 = managers.hud
 
@@ -770,7 +770,7 @@ function HUDChat:enter_text(o, s)
 
 	return 
 end
-function HUDChat:update_key_down(o, k)
+HUDChat.update_key_down = function (self, o, k)
 	slot5 = 0.6
 
 	wait(slot4)
@@ -868,14 +868,14 @@ function HUDChat:update_key_down(o, k)
 
 	return 
 end
-function HUDChat:key_release(o, k)
+HUDChat.key_release = function (self, o, k)
 	if self._key_pressed == k then
 		self._key_pressed = false
 	end
 
 	return 
 end
-function HUDChat:key_press(o, k)
+HUDChat.key_press = function (self, o, k)
 	if self._skip_first then
 		self._skip_first = false
 
@@ -1028,7 +1028,7 @@ function HUDChat:key_press(o, k)
 
 	return 
 end
-function HUDChat:_layout_input_text()
+HUDChat._layout_input_text = function (self)
 	slot3 = self._input_text
 	local _, _, w, _ = self._input_text.text_rect(slot2)
 	slot7 = self._input_text_panel
@@ -1055,10 +1055,10 @@ function HUDChat:_layout_input_text()
 
 	return 
 end
-function HUDChat:send_message(name, message)
+HUDChat.send_message = function (self, name, message)
 	return 
 end
-function HUDChat:_message_in_same_thread(peer_id, system_message)
+HUDChat._message_in_same_thread = function (self, peer_id, system_message)
 	if #self._messages == 0 then
 		return false
 	end
@@ -1075,7 +1075,7 @@ function HUDChat:_message_in_same_thread(peer_id, system_message)
 
 	return false
 end
-function HUDChat:receive_message(name, peer_id, message, color, icon, system_message)
+HUDChat.receive_message = function (self, name, peer_id, message, color, icon, system_message)
 	if peer_id then
 		slot9 = managers.network
 		slot10 = peer_id
@@ -1150,10 +1150,10 @@ function HUDChat:receive_message(name, peer_id, message, color, icon, system_mes
 
 	return 
 end
-function HUDChat:ct_cached_messages()
+HUDChat.ct_cached_messages = function (self)
 	return #self._recieved_messages
 end
-function HUDChat:_layout_message_panel()
+HUDChat._layout_message_panel = function (self)
 	local h = 0
 	slot4 = self._message_panel
 	local bottom = self._message_panel.h(slot3)
@@ -1176,7 +1176,7 @@ function HUDChat:_layout_message_panel()
 
 	return 
 end
-function HUDChat:set_output_alpha(alpha)
+HUDChat.set_output_alpha = function (self, alpha)
 	slot5 = "output_panel"
 	slot5 = alpha
 
@@ -1184,7 +1184,7 @@ function HUDChat:set_output_alpha(alpha)
 
 	return 
 end
-function HUDChat:remove()
+HUDChat.remove = function (self)
 	slot4 = "output_panel"
 	slot3 = self._panel.child(slot2, self._panel)
 

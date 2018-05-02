@@ -10,7 +10,7 @@ if not ElementAIArea then
 end
 
 ElementAIArea = slot0
-ElementAIArea.on_executed = function (self, instigator)
+function ElementAIArea:on_executed(instigator)
 
 	-- Decompilation error in this vicinity:
 	slot4 = self._values.nav_segs

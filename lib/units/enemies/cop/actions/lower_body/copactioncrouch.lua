@@ -1,5 +1,5 @@
 CopActionCrouch = CopActionCrouch or class()
-CopActionCrouch.init = function (self, action_desc, common_data)
+function CopActionCrouch:init(action_desc, common_data)
 	self._ext_movement = common_data.ext_movement
 	local enter_t = nil
 	local ext_anim = common_data.ext_anim
@@ -72,7 +72,7 @@ CopActionCrouch.init = function (self, action_desc, common_data)
 
 	return 
 end
-CopActionCrouch.update = function (self, t)
+function CopActionCrouch:update(t)
 	if self._ext_anim.base_need_upd then
 		slot4 = self._ext_movement
 
@@ -83,10 +83,10 @@ CopActionCrouch.update = function (self, t)
 
 	return 
 end
-CopActionCrouch.expired = function (self)
+function CopActionCrouch:expired()
 	return self._expired
 end
-CopActionCrouch.type = function (self)
+function CopActionCrouch:type()
 	return "crouch"
 end
 

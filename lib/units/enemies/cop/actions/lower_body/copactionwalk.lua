@@ -1892,7 +1892,7 @@ function slot28(self)
 			slot8 = nav_point.x
 
 			if not slot8 then
-				nav_point.element.value = function (element, name)
+				nav_point.function element.value(element, name)
 					return element[name]
 				end
 				nav_point.element.nav_link_wants_align_pos = nav_point.element.nav_link_wants_align_pos or function (element)

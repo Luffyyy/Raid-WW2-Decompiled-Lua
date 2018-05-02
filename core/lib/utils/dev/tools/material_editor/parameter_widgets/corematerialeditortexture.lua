@@ -10,7 +10,7 @@ if not CoreMaterialEditorTexture then
 	local CoreMaterialEditorTexture = class(slot2)
 end
 
-CoreMaterialEditorTexture.init = function (self, parent, editor, parameter_info, parameter_node)
+function CoreMaterialEditorTexture:init(parent, editor, parameter_info, parameter_node)
 	slot11 = parameter_node
 
 	CoreMaterialEditorParameter.init(slot6, self, parent, editor, parameter_info)
@@ -48,17 +48,17 @@ CoreMaterialEditorTexture.init = function (self, parent, editor, parameter_info,
 
 	return 
 end
-CoreMaterialEditorTexture.update = function (self, t, dt)
+function CoreMaterialEditorTexture:update(t, dt)
 	return 
 end
-CoreMaterialEditorTexture.destroy = function (self)
+function CoreMaterialEditorTexture:destroy()
 	slot3 = self
 
 	CoreMaterialEditorParameter.destroy(slot2)
 
 	return 
 end
-CoreMaterialEditorTexture.on_toggle_customize = function (self)
+function CoreMaterialEditorTexture:on_toggle_customize()
 	self._customize = not self._customize
 	slot3 = self
 
@@ -84,7 +84,7 @@ CoreMaterialEditorTexture.on_toggle_customize = function (self)
 
 	return 
 end
-CoreMaterialEditorTexture.on_open_texture = function (self)
+function CoreMaterialEditorTexture:on_open_texture()
 	local str = os.getenv(slot2)
 	slot5 = "$FILE"
 	local s, e = string.find("MATEDOPEN", str)
@@ -113,7 +113,7 @@ CoreMaterialEditorTexture.on_open_texture = function (self)
 
 	return 
 end
-CoreMaterialEditorTexture.on_pick_global_texture = function (self)
+function CoreMaterialEditorTexture:on_pick_global_texture()
 	local texture_list = {}
 	slot6 = GlobalTextureManager
 
@@ -164,7 +164,7 @@ CoreMaterialEditorTexture.on_pick_global_texture = function (self)
 
 	return 
 end
-CoreMaterialEditorTexture._on_browse = function (self)
+function CoreMaterialEditorTexture:_on_browse()
 	local current_path = nil
 
 	if self._value then

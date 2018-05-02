@@ -4,7 +4,7 @@ if not LookAtTriggerUnitElement then
 end
 
 LookAtTriggerUnitElement = slot0
-LookAtTriggerUnitElement.init = function (self, unit)
+function LookAtTriggerUnitElement:init(unit)
 	slot5 = unit
 
 	LookAtTriggerUnitElement.super.init(slot3, self)
@@ -32,7 +32,7 @@ LookAtTriggerUnitElement.init = function (self, unit)
 
 	return 
 end
-LookAtTriggerUnitElement.update_selected = function (self, t, dt)
+function LookAtTriggerUnitElement:update_selected(t, dt)
 	if self._hed.distance ~= 0 then
 		local brush = Draw.brush(slot4)
 		slot6 = brush
@@ -72,7 +72,7 @@ LookAtTriggerUnitElement.update_selected = function (self, t, dt)
 
 	return 
 end
-LookAtTriggerUnitElement._build_panel = function (self, panel, panel_sizer)
+function LookAtTriggerUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

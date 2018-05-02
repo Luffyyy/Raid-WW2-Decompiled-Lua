@@ -17,7 +17,7 @@ end
 
 MenuItemCustomizeController = slot0
 MenuItemCustomizeController.TYPE = "customize_controller"
-MenuItemCustomizeController.init = function (self, data_node, parameters)
+function MenuItemCustomizeController:init(data_node, parameters)
 	slot7 = parameters
 
 	CoreMenuItem.Item.init(slot4, self, data_node)
@@ -26,7 +26,7 @@ MenuItemCustomizeController.init = function (self, data_node, parameters)
 
 	return 
 end
-MenuItemCustomizeController.setup_gui = function (self, node, row_item)
+function MenuItemCustomizeController:setup_gui(node, row_item)
 	slot6 = {
 		w = 450
 	}
@@ -60,7 +60,7 @@ MenuItemCustomizeController.setup_gui = function (self, node, row_item)
 
 	return true
 end
-MenuItemCustomizeController.reload = function (self, row_item, node)
+function MenuItemCustomizeController:reload(row_item, node)
 	slot5 = self
 
 	if self.parameters(slot4).axis then
@@ -79,7 +79,7 @@ MenuItemCustomizeController.reload = function (self, row_item, node)
 
 	return true
 end
-MenuItemCustomizeController.highlight_row_item = function (self, node, row_item, mouse_over)
+function MenuItemCustomizeController:highlight_row_item(node, row_item, mouse_over)
 
 	-- Decompilation error in this vicinity:
 	slot7 = row_item.color
@@ -89,7 +89,7 @@ MenuItemCustomizeController.highlight_row_item = function (self, node, row_item,
 	slot6 = row_item.controller_binding
 	slot4 = row_item.controller_binding.set_font
 end
-MenuItemCustomizeController.fade_row_item = function (self, node, row_item)
+function MenuItemCustomizeController:fade_row_item(node, row_item)
 
 	-- Decompilation error in this vicinity:
 	slot6 = row_item.color
@@ -99,7 +99,7 @@ MenuItemCustomizeController.fade_row_item = function (self, node, row_item)
 	slot5 = row_item.controller_name
 	slot3 = row_item.controller_name.set_font
 end
-MenuItemCustomizeController._layout = function (self, node, row_item)
+function MenuItemCustomizeController:_layout(node, row_item)
 	local safe_rect = managers.gui_data.scaled_size(slot4)
 	slot7 = tweak_data.menu.customize_controller_size
 

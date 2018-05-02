@@ -8,24 +8,24 @@ if not ElementAIGraph then
 end
 
 ElementAIGraph = slot0
-ElementAIGraph.init = function (self, ...)
+function ElementAIGraph:init(...)
 	slot3 = self
 
 	ElementAIGraph.super.init(slot2, ...)
 
 	return 
 end
-ElementAIGraph.on_script_activated = function (self)
+function ElementAIGraph:on_script_activated()
 	return 
 end
-ElementAIGraph.client_on_executed = function (self, ...)
+function ElementAIGraph:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementAIGraph.on_executed = function (self, instigator)
+function ElementAIGraph:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

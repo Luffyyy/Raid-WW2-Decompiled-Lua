@@ -28,7 +28,7 @@ for _, char in ipairs(slot4) do
 	table.insert(slot9, VALID_MAYA_NODE_TYPES)
 end
 
-CoreCutsceneMayaExporterCurve.init = function (self, maya_node_type, node_name, attribute_name)
+function CoreCutsceneMayaExporterCurve:init(maya_node_type, node_name, attribute_name)
 	self.__samples = {}
 	self.__sample_count = 0
 	slot8 = maya_node_type
@@ -51,7 +51,7 @@ CoreCutsceneMayaExporterCurve.init = function (self, maya_node_type, node_name, 
 
 	return 
 end
-CoreCutsceneMayaExporterCurve.add_sample = function (self, frame, value)
+function CoreCutsceneMayaExporterCurve:add_sample(frame, value)
 	if frame ~= (self.__previous_frame or -1) + 1 then
 		self.__previous_value = nil
 	end
@@ -66,10 +66,10 @@ CoreCutsceneMayaExporterCurve.add_sample = function (self, frame, value)
 
 	return 
 end
-CoreCutsceneMayaExporterCurve.last_added_value = function (self)
+function CoreCutsceneMayaExporterCurve:last_added_value()
 	return self.__previous_value
 end
-CoreCutsceneMayaExporterCurve.write = function (self, file)
+function CoreCutsceneMayaExporterCurve:write(file)
 	if 1 <= self.__sample_count then
 		slot6 = "_"
 		local curve_name = string.gsub(slot3, self.__node_name, "[:|]") .. "_" .. self.__attribute_name
@@ -123,7 +123,7 @@ CoreCutsceneMayaExporterCurve.write = function (self, file)
 
 	return 
 end
-CoreCutsceneMayaExporterCurveSet.init = function (self, target_object_name)
+function CoreCutsceneMayaExporterCurveSet:init(target_object_name)
 	self.__curves = {}
 	slot4 = SAMPLED_COMPONENTS
 
@@ -136,7 +136,7 @@ CoreCutsceneMayaExporterCurveSet.init = function (self, target_object_name)
 
 	return 
 end
-CoreCutsceneMayaExporterCurveSet.add_sample = function (self, frame, object)
+function CoreCutsceneMayaExporterCurveSet:add_sample(frame, object)
 	local position = object.local_position(slot4)
 	local rotation = object.new_local_rotation(object)
 	slot7 = SAMPLED_COMPONENTS
@@ -157,7 +157,7 @@ CoreCutsceneMayaExporterCurveSet.add_sample = function (self, frame, object)
 
 	return 
 end
-CoreCutsceneMayaExporterCurveSet.write = function (self, file)
+function CoreCutsceneMayaExporterCurveSet:write(file)
 	slot4 = self.__curves
 
 	for _, curve in pairs(slot3) do

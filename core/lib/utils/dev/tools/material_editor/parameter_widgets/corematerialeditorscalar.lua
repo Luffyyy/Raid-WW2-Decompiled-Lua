@@ -10,7 +10,7 @@ if not CoreMaterialEditorScalar then
 	local CoreMaterialEditorScalar = class(slot2)
 end
 
-CoreMaterialEditorScalar.init = function (self, parent, editor, parameter_info, parameter_node)
+function CoreMaterialEditorScalar:init(parent, editor, parameter_info, parameter_node)
 	slot11 = parameter_node
 
 	CoreMaterialEditorParameter.init(slot6, self, parent, editor, parameter_info)
@@ -49,21 +49,21 @@ CoreMaterialEditorScalar.init = function (self, parent, editor, parameter_info, 
 
 	return 
 end
-CoreMaterialEditorScalar.update = function (self, t, dt)
+function CoreMaterialEditorScalar:update(t, dt)
 	slot7 = dt
 
 	CoreMaterialEditorParameter.update(slot4, self, t)
 
 	return 
 end
-CoreMaterialEditorScalar.destroy = function (self)
+function CoreMaterialEditorScalar:destroy()
 	slot3 = self
 
 	CoreMaterialEditorParameter.destroy(slot2)
 
 	return 
 end
-CoreMaterialEditorScalar.on_toggle_customize = function (self)
+function CoreMaterialEditorScalar:on_toggle_customize()
 	self._customize = not self._customize
 	slot3 = self
 
@@ -93,7 +93,7 @@ CoreMaterialEditorScalar.on_toggle_customize = function (self)
 
 	return 
 end
-CoreMaterialEditorScalar._on_slider = function (self)
+function CoreMaterialEditorScalar:_on_slider()
 	slot6 = self._slider
 	self._value = self.from_slider_range(slot2, self, self._slider.get_value(slot5), self._parameter_info.min)
 	slot4 = "value"
@@ -112,7 +112,7 @@ CoreMaterialEditorScalar._on_slider = function (self)
 
 	return 
 end
-CoreMaterialEditorScalar._on_text_ctrl = function (self)
+function CoreMaterialEditorScalar:_on_text_ctrl()
 	slot5 = self._text_ctrl
 	self._value = tonumber(self._text_ctrl.get_value(slot4)) or 0
 	slot4 = "value"

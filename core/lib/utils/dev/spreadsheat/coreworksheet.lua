@@ -9,20 +9,20 @@ core.import(slot1, core)
 local EMPTY_WORKSHEET_XML1 = " <Worksheet ss:Name=\"%s\">\n  <Table> "
 local EMPTY_WORKSHEET_XML2 = "\n  </Table>\n </Worksheet> "
 Worksheet = Worksheet or CoreClass.class()
-Worksheet.init = function (self, name)
+function Worksheet:init(name)
 	self._name = name
 	self._rows = {}
 
 	return 
 end
-Worksheet.add_row = function (self, row)
+function Worksheet:add_row(row)
 	slot5 = row
 
 	table.insert(slot3, self._rows)
 
 	return 
 end
-Worksheet.to_xml = function (self, f)
+function Worksheet:to_xml(f)
 	slot4 = f
 	slot8 = self._name
 

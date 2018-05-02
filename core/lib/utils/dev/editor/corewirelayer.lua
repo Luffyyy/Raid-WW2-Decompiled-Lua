@@ -28,7 +28,7 @@ if not WireLayer then
 end
 
 WireLayer = slot0
-WireLayer.init = function (self, owner, save_name, units_vector, slot_mask)
+function WireLayer:init(owner, save_name, units_vector, slot_mask)
 	slot9 = save_name or "wires"
 
 	WireLayer.super.init(slot6, self, owner)
@@ -54,7 +54,7 @@ WireLayer.init = function (self, owner, save_name, units_vector, slot_mask)
 
 	return 
 end
-WireLayer.save = function (self)
+function WireLayer:save()
 	slot3 = self._created_units
 
 	for _, unit in ipairs(slot2) do
@@ -109,7 +109,7 @@ WireLayer.save = function (self)
 
 	return 
 end
-WireLayer.update_unit_settings = function (self)
+function WireLayer:update_unit_settings()
 	slot3 = self
 
 	WireLayer.super.update_unit_settings(slot2)
@@ -127,7 +127,7 @@ WireLayer.update_unit_settings = function (self)
 
 	return 
 end
-WireLayer.spawn_unit = function (self)
+function WireLayer:spawn_unit()
 	if self._grab then
 		return 
 	end
@@ -162,7 +162,7 @@ WireLayer.spawn_unit = function (self)
 
 	return 
 end
-WireLayer.set_select_unit = function (self, unit)
+function WireLayer:set_select_unit(unit)
 	slot5 = unit
 
 	WireLayer.super.set_select_unit(slot3, self)
@@ -176,7 +176,7 @@ WireLayer.set_select_unit = function (self, unit)
 
 	return 
 end
-WireLayer.delete_selected_unit = function (self)
+function WireLayer:delete_selected_unit()
 	if self._selected_unit then
 		slot5 = self._selected_units
 
@@ -189,7 +189,7 @@ WireLayer.delete_selected_unit = function (self)
 
 	return 
 end
-WireLayer.delete_unit = function (self, unit)
+function WireLayer:delete_unit(unit)
 	slot5 = unit
 
 	WireLayer.super.delete_unit(slot3, self)
@@ -199,17 +199,17 @@ WireLayer.delete_unit = function (self, unit)
 
 	return 
 end
-WireLayer.grab_point = function (self)
+function WireLayer:grab_point()
 	self._grab = true
 
 	return 
 end
-WireLayer.release_grab_point = function (self)
+function WireLayer:release_grab_point()
 	self._grab = false
 
 	return 
 end
-WireLayer.update = function (self, t, dt)
+function WireLayer:update(t, dt)
 	slot7 = dt
 
 	WireLayer.super.update(slot4, self, t)
@@ -351,7 +351,7 @@ WireLayer.update = function (self, t, dt)
 
 	return 
 end
-WireLayer.build_panel = function (self, notebook)
+function WireLayer:build_panel(notebook)
 	slot5 = "WireLayer:build_panel"
 
 	cat_print(slot3, "editor")
@@ -422,7 +422,7 @@ WireLayer.build_panel = function (self, notebook)
 
 	return self._ews_panel
 end
-WireLayer.change_slack = function (self, wire_slack)
+function WireLayer:change_slack(wire_slack)
 	if self._selected_unit then
 		slot4 = self._selected_unit
 		self._selected_unit.wire_data(slot3).slack = self._slack_params.value
@@ -437,7 +437,7 @@ WireLayer.change_slack = function (self, wire_slack)
 
 	return 
 end
-WireLayer.set_midpoint = function (self)
+function WireLayer:set_midpoint()
 	if self._selected_unit then
 		slot6 = self._selected_unit
 		slot6 = self._selected_unit.orientation_object(slot5)
@@ -448,14 +448,14 @@ WireLayer.set_midpoint = function (self)
 
 	return 
 end
-WireLayer.deselect = function (self)
+function WireLayer:deselect()
 	slot3 = self
 
 	WireLayer.super.deselect(slot2)
 
 	return 
 end
-WireLayer.clear = function (self)
+function WireLayer:clear()
 	slot3 = self
 
 	WireLayer.super.clear(slot2)
@@ -464,7 +464,7 @@ WireLayer.clear = function (self)
 
 	return 
 end
-WireLayer.get_help = function (self, text)
+function WireLayer:get_help(text)
 	local t = "\t"
 	local n = "\n"
 	text = text .. "Select unit:     Click left mouse button on either attach point" .. n
@@ -473,7 +473,7 @@ WireLayer.get_help = function (self, text)
 
 	return text
 end
-WireLayer.add_triggers = function (self)
+function WireLayer:add_triggers()
 	WireLayer.super.add_triggers(slot2)
 
 	local vc = self._editor_data.virtual_controller
@@ -508,7 +508,7 @@ WireLayer.add_triggers = function (self)
 
 	return 
 end
-WireLayer.deactivate = function (self)
+function WireLayer:deactivate()
 	slot3 = self
 
 	WireLayer.super.deactivate(slot2)
@@ -519,7 +519,7 @@ WireLayer.deactivate = function (self)
 
 	return 
 end
-WireLayer.clear_triggers = function (self)
+function WireLayer:clear_triggers()
 	slot3 = self._editor_data.virtual_controller
 
 	self._editor_data.virtual_controller.clear_triggers(slot2)

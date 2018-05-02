@@ -20,7 +20,7 @@ NetworkMatchMakingSTEAM = NetworkMatchMakingSTEAM or class()
 NetworkMatchMakingSTEAM.OPEN_SLOTS = 4
 NetworkMatchMakingSTEAM._BUILD_SEARCH_INTEREST_KEY = "raid_ww2_retail_1_0_18"
 NetworkMatchMakingSTEAM.EMPTY_PLAYER_INFO = "-,-,-,-"
-function NetworkMatchMakingSTEAM:init()
+NetworkMatchMakingSTEAM.init = function (self)
 	slot4 = "matchmake = NetworkMatchMakingSTEAM"
 
 	cat_print(slot2, "lobby")
@@ -35,12 +35,12 @@ function NetworkMatchMakingSTEAM:init()
 
 	return 
 end
-function NetworkMatchMakingSTEAM:register_callback(event, callback)
+NetworkMatchMakingSTEAM.register_callback = function (self, event, callback)
 	self._callback_map[event] = callback
 
 	return 
 end
-function NetworkMatchMakingSTEAM:_call_callback(name, ...)
+NetworkMatchMakingSTEAM._call_callback = function (self, name, ...)
 	if self._callback_map[name] then
 		return self._callback_map[name](...)
 	else
@@ -51,26 +51,26 @@ function NetworkMatchMakingSTEAM:_call_callback(name, ...)
 
 	return 
 end
-function NetworkMatchMakingSTEAM:_has_callback(name)
+NetworkMatchMakingSTEAM._has_callback = function (self, name)
 	if self._callback_map[name] then
 		return true
 	end
 
 	return false
 end
-function NetworkMatchMakingSTEAM:_split_attribute_number(attribute_number, splitter)
+NetworkMatchMakingSTEAM._split_attribute_number = function (self, attribute_number, splitter)
 	slot6 = attribute_number / splitter
 
 	return attribute_number % splitter, math.floor(slot5)
 end
-function NetworkMatchMakingSTEAM:destroy_game()
+NetworkMatchMakingSTEAM.destroy_game = function (self)
 	slot3 = self
 
 	self.leave_game(slot2)
 
 	return 
 end
-function NetworkMatchMakingSTEAM:_load_globals()
+NetworkMatchMakingSTEAM._load_globals = function (self)
 
 	-- Decompilation error in this vicinity:
 	if Global.steam and Global.steam.match then
@@ -94,7 +94,7 @@ function NetworkMatchMakingSTEAM:_load_globals()
 
 	return 
 end
-function NetworkMatchMakingSTEAM:_save_globals()
+NetworkMatchMakingSTEAM._save_globals = function (self)
 	if not Global.steam then
 		Global.steam = {}
 	end
@@ -112,12 +112,12 @@ function NetworkMatchMakingSTEAM:_save_globals()
 
 	return 
 end
-function NetworkMatchMakingSTEAM:set_join_invite_pending(lobby_id)
+NetworkMatchMakingSTEAM.set_join_invite_pending = function (self, lobby_id)
 	self._join_invite_pending = lobby_id
 
 	return 
 end
-function NetworkMatchMakingSTEAM:update()
+NetworkMatchMakingSTEAM.update = function (self)
 	slot3 = Steam
 
 	Steam.update(slot2)
@@ -184,7 +184,7 @@ function NetworkMatchMakingSTEAM:update()
 
 	return 
 end
-function NetworkMatchMakingSTEAM:leave_game()
+NetworkMatchMakingSTEAM.leave_game = function (self)
 	self._server_rpc = nil
 
 	if self.lobby_handler then
@@ -206,7 +206,7 @@ function NetworkMatchMakingSTEAM:leave_game()
 
 	return 
 end
-function NetworkMatchMakingSTEAM:get_friends_lobbies()
+NetworkMatchMakingSTEAM.get_friends_lobbies = function (self)
 	local lobbies = {}
 	local num_updated_lobbies = 0
 
@@ -369,39 +369,39 @@ function NetworkMatchMakingSTEAM:get_friends_lobbies()
 
 	return 
 end
-function NetworkMatchMakingSTEAM:search_friends_only()
+NetworkMatchMakingSTEAM.search_friends_only = function (self)
 	return self._search_friends_only
 end
-function NetworkMatchMakingSTEAM:set_search_friends_only(flag)
+NetworkMatchMakingSTEAM.set_search_friends_only = function (self, flag)
 	self._search_friends_only = flag
 
 	return 
 end
-function NetworkMatchMakingSTEAM:distance_filter()
+NetworkMatchMakingSTEAM.distance_filter = function (self)
 	return self._distance_filter
 end
-function NetworkMatchMakingSTEAM:set_distance_filter(filter)
+NetworkMatchMakingSTEAM.set_distance_filter = function (self, filter)
 	self._distance_filter = filter
 
 	return 
 end
-function NetworkMatchMakingSTEAM:get_lobby_return_count()
+NetworkMatchMakingSTEAM.get_lobby_return_count = function (self)
 	return self._lobby_return_count
 end
-function NetworkMatchMakingSTEAM:set_lobby_return_count(lobby_return_count)
+NetworkMatchMakingSTEAM.set_lobby_return_count = function (self, lobby_return_count)
 	self._lobby_return_count = lobby_return_count
 
 	return 
 end
-function NetworkMatchMakingSTEAM:lobby_filters()
+NetworkMatchMakingSTEAM.lobby_filters = function (self)
 	return self._lobby_filters
 end
-function NetworkMatchMakingSTEAM:set_lobby_filters(filters)
+NetworkMatchMakingSTEAM.set_lobby_filters = function (self, filters)
 	self._lobby_filters = filters or {}
 
 	return 
 end
-function NetworkMatchMakingSTEAM:add_lobby_filter(key, value, comparision_type)
+NetworkMatchMakingSTEAM.add_lobby_filter = function (self, key, value, comparision_type)
 	self._lobby_filters[key] = {
 		key = key,
 		value = value,
@@ -410,18 +410,18 @@ function NetworkMatchMakingSTEAM:add_lobby_filter(key, value, comparision_type)
 
 	return 
 end
-function NetworkMatchMakingSTEAM:get_lobby_filter(key)
+NetworkMatchMakingSTEAM.get_lobby_filter = function (self, key)
 	return (self._lobby_filters[key] and self._lobby_filters[key].value) or false
 end
-function NetworkMatchMakingSTEAM:difficulty_filter()
+NetworkMatchMakingSTEAM.difficulty_filter = function (self)
 	return self._difficulty_filter
 end
-function NetworkMatchMakingSTEAM:set_difficulty_filter(filter)
+NetworkMatchMakingSTEAM.set_difficulty_filter = function (self, filter)
 	self._difficulty_filter = filter
 
 	return 
 end
-function NetworkMatchMakingSTEAM:search_lobby(friends_only)
+NetworkMatchMakingSTEAM.search_lobby = function (self, friends_only)
 	self._search_friends_only = friends_only
 	slot5 = "search_lobby"
 
@@ -554,7 +554,7 @@ function NetworkMatchMakingSTEAM:search_lobby(friends_only)
 
 	return 
 end
-function NetworkMatchMakingSTEAM:search_lobby_done()
+NetworkMatchMakingSTEAM.search_lobby_done = function (self)
 	slot4 = "find_server"
 
 	managers.system_menu.close(slot2, managers.system_menu)
@@ -563,12 +563,12 @@ function NetworkMatchMakingSTEAM:search_lobby_done()
 
 	return 
 end
-function NetworkMatchMakingSTEAM:game_owner_name()
+NetworkMatchMakingSTEAM.game_owner_name = function (self)
 	slot4 = "owner_name"
 
 	return managers.network.matchmake.lobby_handler.get_lobby_data(slot2, managers.network.matchmake.lobby_handler)
 end
-function NetworkMatchMakingSTEAM:is_server_ok(friends_only, room, attributes_numbers, is_invite)
+NetworkMatchMakingSTEAM.is_server_ok = function (self, friends_only, room, attributes_numbers, is_invite)
 	slot8 = attributes_numbers[3]
 	local permission = tweak_data.index_to_permission(slot6, tweak_data)
 
@@ -604,7 +604,7 @@ function NetworkMatchMakingSTEAM:is_server_ok(friends_only, room, attributes_num
 
 	return true
 end
-function NetworkMatchMakingSTEAM:join_server_with_check(room_id, is_invite)
+NetworkMatchMakingSTEAM.join_server_with_check = function (self, room_id, is_invite)
 	slot5 = managers.network
 
 	if managers.network.session(slot4) then
@@ -978,7 +978,7 @@ NetworkMatchMakingSTEAM._joined_game = function (res, level_index, difficulty_in
 
 	return 
 end
-function NetworkMatchMakingSTEAM:join_server(room_id, skip_showing_dialog)
+NetworkMatchMakingSTEAM.join_server = function (self, room_id, skip_showing_dialog)
 	if not skip_showing_dialog then
 		slot5 = managers.menu
 
@@ -1115,7 +1115,7 @@ function NetworkMatchMakingSTEAM:join_server(room_id, skip_showing_dialog)
 
 	return 
 end
-function NetworkMatchMakingSTEAM:_retry_join()
+NetworkMatchMakingSTEAM._retry_join = function (self)
 	slot4 = "[NetworkMatchMakingSTEAM:_retry_join]"
 
 	Application.debug(slot2, Application)
@@ -1128,7 +1128,7 @@ function NetworkMatchMakingSTEAM:_retry_join()
 
 	return 
 end
-function NetworkMatchMakingSTEAM:_restart_network()
+NetworkMatchMakingSTEAM._restart_network = function (self)
 	if self._join_called_from_camp then
 		slot3 = managers.menu
 
@@ -1158,17 +1158,17 @@ function NetworkMatchMakingSTEAM:_restart_network()
 
 	return 
 end
-function NetworkMatchMakingSTEAM:send_join_invite(friend)
+NetworkMatchMakingSTEAM.send_join_invite = function (self, friend)
 	return 
 end
-function NetworkMatchMakingSTEAM:set_server_attributes(settings)
+NetworkMatchMakingSTEAM.set_server_attributes = function (self, settings)
 	slot5 = settings
 
 	self.set_attributes(slot3, self)
 
 	return 
 end
-function NetworkMatchMakingSTEAM:create_lobby(settings, return_to_camp_client)
+NetworkMatchMakingSTEAM.create_lobby = function (self, settings, return_to_camp_client)
 	if Global.game_settings.single_player then
 		return 
 	end
@@ -1280,7 +1280,7 @@ function NetworkMatchMakingSTEAM:create_lobby(settings, return_to_camp_client)
 
 	return Steam.create_lobby(managers.system_menu, Steam, f, NetworkMatchMakingSTEAM.OPEN_SLOTS)
 end
-function NetworkMatchMakingSTEAM:set_num_players(num)
+NetworkMatchMakingSTEAM.set_num_players = function (self, num)
 	slot5 = num
 
 	print(slot3, "NetworkMatchMakingSTEAM:set_num_players")
@@ -1296,7 +1296,7 @@ function NetworkMatchMakingSTEAM:set_num_players(num)
 
 	return 
 end
-function NetworkMatchMakingSTEAM:set_job_info_by_current_job()
+NetworkMatchMakingSTEAM.set_job_info_by_current_job = function (self)
 	slot3 = managers.network.matchmake
 	local level_id, job_id, progress, mission_type, server_state_id = managers.network.matchmake.get_job_info_by_current_job(slot2)
 
@@ -1313,7 +1313,7 @@ function NetworkMatchMakingSTEAM:set_job_info_by_current_job()
 
 	return 
 end
-function NetworkMatchMakingSTEAM:set_challenge_card_info()
+NetworkMatchMakingSTEAM.set_challenge_card_info = function (self)
 	slot3 = managers.challenge_cards
 	local active_card = managers.challenge_cards.get_active_card(slot2)
 
@@ -1331,7 +1331,7 @@ function NetworkMatchMakingSTEAM:set_challenge_card_info()
 
 	return 
 end
-function NetworkMatchMakingSTEAM:get_job_info_by_current_job()
+NetworkMatchMakingSTEAM.get_job_info_by_current_job = function (self)
 
 	-- Decompilation error in this vicinity:
 	local level_id = OperationsTweakData.IN_LOBBY
@@ -1342,7 +1342,7 @@ function NetworkMatchMakingSTEAM:get_job_info_by_current_job()
 
 	return level_id, job_id, progress, mission_type, server_state_id
 end
-function NetworkMatchMakingSTEAM:get_all_players_info()
+NetworkMatchMakingSTEAM.get_all_players_info = function (self)
 
 	-- Decompilation error in this vicinity:
 	slot3 = managers.experience
@@ -1357,7 +1357,7 @@ function NetworkMatchMakingSTEAM:get_all_players_info()
 
 	return players_data
 end
-function NetworkMatchMakingSTEAM:remove_player_info(peer_id)
+NetworkMatchMakingSTEAM.remove_player_info = function (self, peer_id)
 	if self._lobby_attributes then
 		self._lobby_attributes["players_info_" .. peer_id] = NetworkMatchMakingSTEAM.EMPTY_PLAYER_INFO
 		slot5 = self._lobby_attributes
@@ -1367,7 +1367,7 @@ function NetworkMatchMakingSTEAM:remove_player_info(peer_id)
 
 	return 
 end
-function NetworkMatchMakingSTEAM:add_player_info(peer_id)
+NetworkMatchMakingSTEAM.add_player_info = function (self, peer_id)
 	if self._lobby_attributes then
 		local players_info = NetworkMatchMakingSTEAM.EMPTY_PLAYER_INFO
 		local player_data = self._lobby_attributes["players_info_" .. peer_id]
@@ -1410,7 +1410,7 @@ function NetworkMatchMakingSTEAM:add_player_info(peer_id)
 
 	return 
 end
-function NetworkMatchMakingSTEAM:set_server_state(state)
+NetworkMatchMakingSTEAM.set_server_state = function (self, state)
 	if self._lobby_attributes then
 		slot5 = state
 		local state_id = tweak_data.server_state_to_index(slot3, tweak_data)
@@ -1438,7 +1438,7 @@ function NetworkMatchMakingSTEAM:set_server_state(state)
 
 	return 
 end
-function NetworkMatchMakingSTEAM:set_server_joinable(state)
+NetworkMatchMakingSTEAM.set_server_joinable = function (self, state)
 	if state == self._server_joinable then
 		return 
 	end
@@ -1453,15 +1453,15 @@ function NetworkMatchMakingSTEAM:set_server_joinable(state)
 
 	return 
 end
-function NetworkMatchMakingSTEAM:is_server_joinable()
+NetworkMatchMakingSTEAM.is_server_joinable = function (self)
 	return self._server_joinable
 end
-function NetworkMatchMakingSTEAM:server_state_name()
+NetworkMatchMakingSTEAM.server_state_name = function (self)
 	slot4 = self._lobby_attributes.state
 
 	return tweak_data.index_to_server_state(slot2, tweak_data)
 end
-function NetworkMatchMakingSTEAM:set_attributes(settings)
+NetworkMatchMakingSTEAM.set_attributes = function (self, settings)
 	if not self.lobby_handler then
 		return 
 	end
@@ -1513,7 +1513,7 @@ function NetworkMatchMakingSTEAM:set_attributes(settings)
 
 	return 
 end
-function NetworkMatchMakingSTEAM:_lobby_to_numbers(lobby)
+NetworkMatchMakingSTEAM._lobby_to_numbers = function (self, lobby)
 	slot8 = "difficulty"
 	slot8 = "permission"
 	slot8 = "state"
@@ -1557,7 +1557,7 @@ function NetworkMatchMakingSTEAM:_lobby_to_numbers(lobby)
 		lobby.key_value(slot4, lobby)
 	}
 end
-function NetworkMatchMakingSTEAM:from_host_lobby_re_opened(status)
+NetworkMatchMakingSTEAM.from_host_lobby_re_opened = function (self, status)
 	slot6 = status
 
 	print(slot3, "[NetworkMatchMakingSTEAM::from_host_lobby_re_opened]", self._try_re_enter_lobby)

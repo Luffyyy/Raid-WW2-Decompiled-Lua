@@ -14,7 +14,7 @@ NetworkMatchMakingXBL.SMARTMATCH_HOST_TIMEOUT_T = 15
 NetworkMatchMakingXBL.SMARTMATCH_CLIENT_TIMEOUT_T = 30
 NetworkMatchMakingXBL.SMARTMATCH_CLIENT_TIMEOUT_T2 = 30
 NetworkMatchMakingXBL.SMARTMATCH_STRICT = true
-function NetworkMatchMakingXBL:init()
+NetworkMatchMakingXBL.init = function (self)
 	self._callback_map = {}
 	self._distance_filter = -1
 	self._difficulty_filter = 0
@@ -37,7 +37,7 @@ function NetworkMatchMakingXBL:init()
 
 	return 
 end
-function NetworkMatchMakingXBL:invite_accepted_callback(invitee_xuid)
+NetworkMatchMakingXBL.invite_accepted_callback = function (self, invitee_xuid)
 	slot5 = invitee_xuid
 
 	print(slot3, "[NetworkMatchMakingXBL:invite_accepted_callback]")
@@ -137,7 +137,7 @@ function NetworkMatchMakingXBL:invite_accepted_callback(invitee_xuid)
 
 	return 
 end
-function NetworkMatchMakingXBL:join_boot_invite()
+NetworkMatchMakingXBL.join_boot_invite = function (self)
 	slot6 = managers.user
 	local invitation = Global.boot_invite[tostring(managers.user.get_platform_id(slot5))]
 	slot5 = invitation
@@ -183,7 +183,7 @@ function NetworkMatchMakingXBL:join_boot_invite()
 
 	return 
 end
-function NetworkMatchMakingXBL:_check_invite_requirements(invitation)
+NetworkMatchMakingXBL._check_invite_requirements = function (self, invitation)
 	Global.game_settings.single_player = false
 	self._test_invitation = invitation
 	slot4 = "invitation\n"
@@ -234,7 +234,7 @@ function NetworkMatchMakingXBL:_check_invite_requirements(invitation)
 
 	return 
 end
-function NetworkMatchMakingXBL:_join_invite_accepted(host_info, host_name)
+NetworkMatchMakingXBL._join_invite_accepted = function (self, host_info, host_name)
 	slot6 = "server_left_dialog"
 
 	managers.system_menu.close(slot4, managers.system_menu)
@@ -270,12 +270,12 @@ function NetworkMatchMakingXBL:_join_invite_accepted(host_info, host_name)
 
 	return 
 end
-function NetworkMatchMakingXBL:register_callback(event, callback)
+NetworkMatchMakingXBL.register_callback = function (self, event, callback)
 	self._callback_map[event] = callback
 
 	return 
 end
-function NetworkMatchMakingXBL:_call_callback(name, ...)
+NetworkMatchMakingXBL._call_callback = function (self, name, ...)
 	if self._callback_map[name] then
 		return self._callback_map[name](...)
 	else
@@ -286,32 +286,32 @@ function NetworkMatchMakingXBL:_call_callback(name, ...)
 
 	return 
 end
-function NetworkMatchMakingXBL:_has_callback(name)
+NetworkMatchMakingXBL._has_callback = function (self, name)
 	if self._callback_map[name] then
 		return true
 	end
 
 	return false
 end
-function NetworkMatchMakingXBL:_split_attribute_number(attribute_number, splitter)
+NetworkMatchMakingXBL._split_attribute_number = function (self, attribute_number, splitter)
 	slot6 = attribute_number / splitter
 
 	return attribute_number % splitter, math.floor(slot5)
 end
-function NetworkMatchMakingXBL:destroy_game()
+NetworkMatchMakingXBL.destroy_game = function (self)
 	slot3 = self
 
 	self.leave_game(slot2)
 
 	return 
 end
-function NetworkMatchMakingXBL:add_cancelable_callback()
+NetworkMatchMakingXBL.add_cancelable_callback = function (self)
 	self._next_cancel_callback_id = self._next_cancel_callback_id + 1
 	self._cancel_callback_map[self._next_cancel_callback_id] = false
 
 	return self._next_cancel_callback_id
 end
-function NetworkMatchMakingXBL:_find_server_callback(cancel_id, servers, mode)
+NetworkMatchMakingXBL._find_server_callback = function (self, cancel_id, servers, mode)
 
 	-- Decompilation error in this vicinity:
 	self._searching_lobbys = nil
@@ -374,7 +374,7 @@ function NetworkMatchMakingXBL:_find_server_callback(cancel_id, servers, mode)
 
 	return 
 end
-function NetworkMatchMakingXBL:check_callback_canceled(id)
+NetworkMatchMakingXBL.check_callback_canceled = function (self, id)
 	local is_canceled = self._cancel_callback_map[id]
 	self._cancel_callback_map[id] = nil
 	slot5 = self._cancel_callback_map
@@ -385,7 +385,7 @@ function NetworkMatchMakingXBL:check_callback_canceled(id)
 
 	return is_canceled
 end
-function NetworkMatchMakingXBL:leave_game()
+NetworkMatchMakingXBL.leave_game = function (self)
 	slot1 = print
 	slot3 = "NetworkMatchMakingXBL:leave_game()"
 
@@ -477,7 +477,7 @@ function NetworkMatchMakingXBL:leave_game()
 
 	return 
 end
-function NetworkMatchMakingXBL:_load_globals()
+NetworkMatchMakingXBL._load_globals = function (self)
 	if Global.xbl and Global.xbl.match then
 		self._session = Global.xbl.match.session
 		self._server_rpc = Global.xbl.match.server_rpc
@@ -502,7 +502,7 @@ function NetworkMatchMakingXBL:_load_globals()
 
 	return 
 end
-function NetworkMatchMakingXBL:_save_globals()
+NetworkMatchMakingXBL._save_globals = function (self)
 	Global.xbl = Global.xbl or {}
 	Global.xbl.match = {
 		session = self._session,
@@ -518,7 +518,7 @@ function NetworkMatchMakingXBL:_save_globals()
 
 	return 
 end
-function NetworkMatchMakingXBL:update()
+NetworkMatchMakingXBL.update = function (self)
 	slot3 = self
 
 	self._chk_advertise_session_for_smartmatch(slot2)
@@ -529,7 +529,7 @@ function NetworkMatchMakingXBL:update()
 
 	return 
 end
-function NetworkMatchMakingXBL:_chk_advertise_session_for_smartmatch()
+NetworkMatchMakingXBL._chk_advertise_session_for_smartmatch = function (self)
 	if self._session then
 		slot3 = managers.network
 	else
@@ -538,44 +538,44 @@ function NetworkMatchMakingXBL:_chk_advertise_session_for_smartmatch()
 
 	return 
 end
-function NetworkMatchMakingXBL:get_friends_lobbies()
+NetworkMatchMakingXBL.get_friends_lobbies = function (self)
 	return 
 end
-function NetworkMatchMakingXBL:search_friends_only()
+NetworkMatchMakingXBL.search_friends_only = function (self)
 	return self._search_friends_only
 end
-function NetworkMatchMakingXBL:distance_filter()
+NetworkMatchMakingXBL.distance_filter = function (self)
 	return self._distance_filter
 end
-function NetworkMatchMakingXBL:set_distance_filter(filter)
+NetworkMatchMakingXBL.set_distance_filter = function (self, filter)
 	self._distance_filter = filter
 
 	return 
 end
-function NetworkMatchMakingXBL:difficulty_filter()
+NetworkMatchMakingXBL.difficulty_filter = function (self)
 	return self._difficulty_filter
 end
-function NetworkMatchMakingXBL:set_difficulty_filter(filter)
+NetworkMatchMakingXBL.set_difficulty_filter = function (self, filter)
 	self._difficulty_filter = filter
 
 	return 
 end
-function NetworkMatchMakingXBL:get_lobby_return_count()
+NetworkMatchMakingXBL.get_lobby_return_count = function (self)
 	return 
 end
-function NetworkMatchMakingXBL:set_lobby_return_count(lobby_return_count)
+NetworkMatchMakingXBL.set_lobby_return_count = function (self, lobby_return_count)
 	return 
 end
-function NetworkMatchMakingXBL:lobby_filters()
+NetworkMatchMakingXBL.lobby_filters = function (self)
 	return 
 end
-function NetworkMatchMakingXBL:set_lobby_filters(filters)
+NetworkMatchMakingXBL.set_lobby_filters = function (self, filters)
 	return 
 end
-function NetworkMatchMakingXBL:add_lobby_filter(key, value, comparision_type)
+NetworkMatchMakingXBL.add_lobby_filter = function (self, key, value, comparision_type)
 	return 
 end
-function NetworkMatchMakingXBL:search_lobby(friends_only)
+NetworkMatchMakingXBL.search_lobby = function (self, friends_only)
 	if self._searching_lobbys then
 		slot4 = "Allready searching lobbys, waiting result"
 
@@ -603,7 +603,7 @@ function NetworkMatchMakingXBL:search_lobby(friends_only)
 
 	return 
 end
-function NetworkMatchMakingXBL:_find_server_callback(cancel_id, servers, mode)
+NetworkMatchMakingXBL._find_server_callback = function (self, cancel_id, servers, mode)
 	self._searching_lobbys = nil
 	slot7 = cancel_id
 
@@ -661,10 +661,10 @@ function NetworkMatchMakingXBL:_find_server_callback(cancel_id, servers, mode)
 
 	return 
 end
-function NetworkMatchMakingXBL:searching_lobbys()
+NetworkMatchMakingXBL.searching_lobbys = function (self)
 	return self._searching_lobbys
 end
-function NetworkMatchMakingXBL:search_lobby_done()
+NetworkMatchMakingXBL.search_lobby_done = function (self)
 	slot4 = "find_server"
 
 	managers.system_menu.close(slot2, managers.system_menu)
@@ -673,10 +673,10 @@ function NetworkMatchMakingXBL:search_lobby_done()
 
 	return 
 end
-function NetworkMatchMakingXBL:game_owner_name()
+NetworkMatchMakingXBL.game_owner_name = function (self)
 	return self._game_owner_name
 end
-function NetworkMatchMakingXBL:is_server_ok(friends_only, session_id, attributes_numbers)
+NetworkMatchMakingXBL.is_server_ok = function (self, friends_only, session_id, attributes_numbers)
 	slot7 = attributes_numbers[3]
 	local permission = tweak_data.index_to_permission(slot5, tweak_data)
 	slot9 = 1000
@@ -711,7 +711,7 @@ function NetworkMatchMakingXBL:is_server_ok(friends_only, session_id, attributes
 
 	return true
 end
-function NetworkMatchMakingXBL:join_server_with_check(session_id, skip_permission_check, data)
+NetworkMatchMakingXBL.join_server_with_check = function (self, session_id, skip_permission_check, data)
 	slot7 = session_id
 
 	print(slot5, "NetworkMatchMakingXBL:join_server_with_check")
@@ -863,7 +863,7 @@ NetworkMatchMakingXBL._handle_chat_message = function (user, message)
 
 	return 
 end
-function NetworkMatchMakingXBL:_update_queued_join_by_smartmatch()
+NetworkMatchMakingXBL._update_queued_join_by_smartmatch = function (self)
 	if not self._queued_join_by_smartmatch then
 		return 
 	end
@@ -899,7 +899,7 @@ function NetworkMatchMakingXBL:_update_queued_join_by_smartmatch()
 
 	return 
 end
-function NetworkMatchMakingXBL:_join_by_smartmatch(job_id_filter, difficulty_filter)
+NetworkMatchMakingXBL._join_by_smartmatch = function (self, job_id_filter, difficulty_filter)
 	slot8 = difficulty_filter
 
 	print(slot4, "[NetworkMatchMakingXBL:_join_by_smartmatch] job_id_filter", job_id_filter, "difficulty_filter")
@@ -990,7 +990,7 @@ function NetworkMatchMakingXBL:_join_by_smartmatch(job_id_filter, difficulty_fil
 
 	return 
 end
-function NetworkMatchMakingXBL:join_by_smartmatch(job_id_filter, difficulty_filter)
+NetworkMatchMakingXBL.join_by_smartmatch = function (self, job_id_filter, difficulty_filter)
 	slot8 = difficulty_filter
 
 	print(slot4, "[NetworkMatchMakingXBL:join_by_smartmatch] job_id_filter", job_id_filter, "difficulty_filter")
@@ -1015,7 +1015,7 @@ function NetworkMatchMakingXBL:join_by_smartmatch(job_id_filter, difficulty_filt
 
 	return true
 end
-function NetworkMatchMakingXBL:clbk_btn_cancel_match()
+NetworkMatchMakingXBL.clbk_btn_cancel_match = function (self)
 	slot3 = "[NetworkMatchMakingXBL:clbk_btn_cancel_match]"
 
 	print(slot2)
@@ -1031,7 +1031,7 @@ function NetworkMatchMakingXBL:clbk_btn_cancel_match()
 
 	return 
 end
-function NetworkMatchMakingXBL:clbk_create_client_lobby(params, session)
+NetworkMatchMakingXBL.clbk_create_client_lobby = function (self, params, session)
 	slot6 = session
 
 	print(slot4, "[NetworkMatchMakingXBL:clbk_create_client_lobby] session")
@@ -1089,7 +1089,7 @@ function NetworkMatchMakingXBL:clbk_create_client_lobby(params, session)
 
 	return 
 end
-function NetworkMatchMakingXBL:clbk_join_session_result(status)
+NetworkMatchMakingXBL.clbk_join_session_result = function (self, status)
 	slot7 = status
 
 	print(slot3, "[NetworkMatchMakingXBL:clbk_join_session_result] self._session", self._session, "status")
@@ -1389,7 +1389,7 @@ function NetworkMatchMakingXBL:clbk_join_session_result(status)
 
 	return 
 end
-function NetworkMatchMakingXBL:join_server(session_id, server, skip_showing_dialog)
+NetworkMatchMakingXBL.join_server = function (self, session_id, server, skip_showing_dialog)
 	local xs_info = server.info
 
 	if not skip_showing_dialog then
@@ -1465,10 +1465,10 @@ function NetworkMatchMakingXBL:join_server(session_id, server, skip_showing_dial
 
 	return 
 end
-function NetworkMatchMakingXBL:send_join_invite(friend)
+NetworkMatchMakingXBL.send_join_invite = function (self, friend)
 	return 
 end
-function NetworkMatchMakingXBL:set_server_attributes(settings)
+NetworkMatchMakingXBL.set_server_attributes = function (self, settings)
 	slot5 = settings
 
 	self.set_attributes(slot3, self)
@@ -1481,7 +1481,7 @@ function NetworkMatchMakingXBL:set_server_attributes(settings)
 
 	return 
 end
-function NetworkMatchMakingXBL:create_lobby(settings)
+NetworkMatchMakingXBL.create_lobby = function (self, settings)
 	local attributes_numbers = settings.numbers
 	self._num_players = nil
 	slot6 = true
@@ -1581,7 +1581,7 @@ function NetworkMatchMakingXBL:create_lobby(settings)
 
 	return 
 end
-function NetworkMatchMakingXBL:_create_lobby_failed()
+NetworkMatchMakingXBL._create_lobby_failed = function (self)
 	slot3 = self
 
 	self._create_lobby_done(slot2)
@@ -1603,7 +1603,7 @@ function NetworkMatchMakingXBL:_create_lobby_failed()
 
 	return 
 end
-function NetworkMatchMakingXBL:_create_lobby_done()
+NetworkMatchMakingXBL._create_lobby_done = function (self)
 	self._creating_lobby = nil
 	slot4 = "create_lobby"
 
@@ -1611,7 +1611,7 @@ function NetworkMatchMakingXBL:_create_lobby_done()
 
 	return 
 end
-function NetworkMatchMakingXBL:clbk_smartmatch_host(params, session, smartmatch_status)
+NetworkMatchMakingXBL.clbk_smartmatch_host = function (self, params, session, smartmatch_status)
 	slot9 = params
 	slot11 = smartmatch_status
 
@@ -1619,7 +1619,7 @@ function NetworkMatchMakingXBL:clbk_smartmatch_host(params, session, smartmatch_
 
 	return 
 end
-function NetworkMatchMakingXBL:_begin_smartmatch(params, progress_clbk)
+NetworkMatchMakingXBL._begin_smartmatch = function (self, params, progress_clbk)
 	slot5 = "[NetworkMatchMakingXBL:_begin_smartmatch] self._hopper_variables"
 	slot8 = self._hopper_variables
 
@@ -1636,7 +1636,7 @@ function NetworkMatchMakingXBL:_begin_smartmatch(params, progress_clbk)
 
 	return status
 end
-function NetworkMatchMakingXBL:_create_lobby_callback(params, session)
+NetworkMatchMakingXBL._create_lobby_callback = function (self, params, session)
 	slot6 = params.cancel_id
 
 	if self.check_callback_canceled(slot4, self) then
@@ -1708,14 +1708,14 @@ function NetworkMatchMakingXBL:_create_lobby_callback(params, session)
 
 	return 
 end
-function NetworkMatchMakingXBL:clbk_smartmatch_client_inexact_join_yes()
+NetworkMatchMakingXBL.clbk_smartmatch_client_inexact_join_yes = function (self)
 	slot4 = true
 
 	self.clbk_join_session_result(slot2, self)
 
 	return 
 end
-function NetworkMatchMakingXBL:clbk_smartmatch_client_inexact_join_no()
+NetworkMatchMakingXBL.clbk_smartmatch_client_inexact_join_no = function (self)
 	slot4 = "join_server"
 
 	managers.system_menu.close(slot2, managers.system_menu)
@@ -1730,7 +1730,7 @@ function NetworkMatchMakingXBL:clbk_smartmatch_client_inexact_join_no()
 
 	return 
 end
-function NetworkMatchMakingXBL:clbk_smartmatch_client(params, session, smartmatch_status)
+NetworkMatchMakingXBL.clbk_smartmatch_client = function (self, params, session, smartmatch_status)
 	slot9 = params
 	slot11 = smartmatch_status
 
@@ -1925,7 +1925,7 @@ function NetworkMatchMakingXBL:clbk_smartmatch_client(params, session, smartmatc
 
 	return 
 end
-function NetworkMatchMakingXBL:set_num_players(num)
+NetworkMatchMakingXBL.set_num_players = function (self, num)
 	slot5 = num
 
 	print(slot3, "NetworkMatchMakingXBL:set_num_players")
@@ -1938,7 +1938,7 @@ function NetworkMatchMakingXBL:set_num_players(num)
 
 	return 
 end
-function NetworkMatchMakingXBL:set_server_state(state)
+NetworkMatchMakingXBL.set_server_state = function (self, state)
 	local player_index = managers.user.get_platform_id(slot3)
 	slot6 = state
 	local state_id = tweak_data.server_state_to_index(managers.user, tweak_data)
@@ -1948,7 +1948,7 @@ function NetworkMatchMakingXBL:set_server_state(state)
 
 	return 
 end
-function NetworkMatchMakingXBL:set_server_joinable(state)
+NetworkMatchMakingXBL.set_server_joinable = function (self, state)
 	slot5 = state
 
 	print(slot3, "[NetworkMatchMakingXBL:set_server_joinable]")
@@ -1967,7 +1967,7 @@ function NetworkMatchMakingXBL:set_server_joinable(state)
 
 	return 
 end
-function NetworkMatchMakingXBL:is_server_joinable()
+NetworkMatchMakingXBL.is_server_joinable = function (self)
 	if self._server_joinable_state then
 		slot4 = self._session
 		slot1 = XboxLive.is_joinable(slot2, XboxLive)
@@ -1975,10 +1975,10 @@ function NetworkMatchMakingXBL:is_server_joinable()
 
 	return slot1
 end
-function NetworkMatchMakingXBL:server_state_name()
+NetworkMatchMakingXBL.server_state_name = function (self)
 	return 
 end
-function NetworkMatchMakingXBL:on_peer_added(peer)
+NetworkMatchMakingXBL.on_peer_added = function (self, peer)
 
 	-- Decompilation error in this vicinity:
 	slot8 = peer
@@ -2031,7 +2031,7 @@ function NetworkMatchMakingXBL:on_peer_added(peer)
 
 	return 
 end
-function NetworkMatchMakingXBL:on_peer_removed(peer)
+NetworkMatchMakingXBL.on_peer_removed = function (self, peer)
 	slot8 = peer
 	slot7 = self._session
 
@@ -2071,10 +2071,10 @@ function NetworkMatchMakingXBL:on_peer_removed(peer)
 
 	return 
 end
-function NetworkMatchMakingXBL:is_host_lobby_public()
+NetworkMatchMakingXBL.is_host_lobby_public = function (self)
 	return self._host_session_attributes and self._host_session_attributes.numbers[3] == 1
 end
-function NetworkMatchMakingXBL:set_attributes(settings)
+NetworkMatchMakingXBL.set_attributes = function (self, settings)
 	local player_index = managers.user.get_platform_id(slot3)
 	slot7 = settings.numbers[1]
 
@@ -2119,7 +2119,7 @@ function NetworkMatchMakingXBL:set_attributes(settings)
 
 	return 
 end
-function NetworkMatchMakingXBL:_server_to_numbers(server)
+NetworkMatchMakingXBL._server_to_numbers = function (self, server)
 	local properties = server.properties
 	slot6 = properties.LEVELINDEX
 	slot6 = properties.DIFFICULTY
@@ -2139,7 +2139,7 @@ function NetworkMatchMakingXBL:_server_to_numbers(server)
 		tonumber(slot5)
 	}
 end
-function NetworkMatchMakingXBL:external_address(rpc)
+NetworkMatchMakingXBL.external_address = function (self, rpc)
 	if not self._session then
 		slot5 = "NetworkMatchMakingXBL:translate_to_xnaddr, had no session!"
 
@@ -2152,7 +2152,7 @@ function NetworkMatchMakingXBL:external_address(rpc)
 
 	return XboxLive.external_address(slot3, XboxLive)
 end
-function NetworkMatchMakingXBL:internal_address(xuid)
+NetworkMatchMakingXBL.internal_address = function (self, xuid)
 	if not self._session then
 		slot5 = "NetworkMatchMakingXBL:internal_address, had no session!"
 
@@ -2177,7 +2177,7 @@ function NetworkMatchMakingXBL:internal_address(xuid)
 
 	return address
 end
-function NetworkMatchMakingXBL:from_host_lobby_re_opened(status)
+NetworkMatchMakingXBL.from_host_lobby_re_opened = function (self, status)
 	slot6 = status
 
 	print(slot3, "[NetworkMatchMakingXBL::from_host_lobby_re_opened]", self._try_re_enter_lobby)
@@ -2195,7 +2195,7 @@ function NetworkMatchMakingXBL:from_host_lobby_re_opened(status)
 
 	return 
 end
-function NetworkMatchMakingXBL:_test_search(settings)
+NetworkMatchMakingXBL._test_search = function (self, settings)
 	slot4 = managers.user
 	local player_index = managers.user.get_platform_id(slot3)
 	local prop = {
@@ -2213,7 +2213,7 @@ function NetworkMatchMakingXBL:_test_search(settings)
 
 	return 
 end
-function NetworkMatchMakingXBL:_find_test_server_callback(cancel_id, servers, mode)
+NetworkMatchMakingXBL._find_test_server_callback = function (self, cancel_id, servers, mode)
 	slot7 = cancel_id
 
 	if self.check_callback_canceled(slot5, self) then
@@ -2252,7 +2252,7 @@ function NetworkMatchMakingXBL:_find_test_server_callback(cancel_id, servers, mo
 
 	return 
 end
-function NetworkMatchMakingXBL:_test_join(xs_info, skip_showing_dialog)
+NetworkMatchMakingXBL._test_join = function (self, xs_info, skip_showing_dialog)
 	xs_info = xs_info or self._test_server.info
 	local player_index = managers.user.get_platform_id(slot4)
 	slot7 = xs_info
@@ -2501,16 +2501,16 @@ function NetworkMatchMakingXBL:_test_join(xs_info, skip_showing_dialog)
 
 	return 
 end
-function NetworkMatchMakingXBL:_join_server_callback()
+NetworkMatchMakingXBL._join_server_callback = function (self)
 	return 
 end
-function NetworkMatchMakingXBL:_get_smartmatch_player_level()
+NetworkMatchMakingXBL._get_smartmatch_player_level = function (self)
 	slot5 = managers.experience
 	slot3 = managers.experience.current_level(slot4) / 20
 
 	return math.floor(slot2)
 end
-function NetworkMatchMakingXBL:_test_create(settings)
+NetworkMatchMakingXBL._test_create = function (self, settings)
 	slot4 = "settings\n"
 	slot7 = settings
 
@@ -2578,7 +2578,7 @@ function NetworkMatchMakingXBL:_test_create(settings)
 
 	return 
 end
-function NetworkMatchMakingXBL:_create_server_callback(cancel_id, session)
+NetworkMatchMakingXBL._create_server_callback = function (self, cancel_id, session)
 	slot6 = cancel_id
 
 	if self.check_callback_canceled(slot4, self) then
@@ -2634,7 +2634,7 @@ function NetworkMatchMakingXBL:_create_server_callback(cancel_id, session)
 
 	return 
 end
-function NetworkMatchMakingXBL:_is_server(set)
+NetworkMatchMakingXBL._is_server = function (self, set)
 	if set == true or set == false then
 		self._is_server_var = set
 	else
@@ -2643,7 +2643,7 @@ function NetworkMatchMakingXBL:_is_server(set)
 
 	return 
 end
-function NetworkMatchMakingXBL:_is_client(set)
+NetworkMatchMakingXBL._is_client = function (self, set)
 	if set == true or set == false then
 		self._is_client_var = set
 	else

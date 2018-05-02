@@ -4,7 +4,7 @@ if not CharacterDamageTriggerUnitElement then
 end
 
 CharacterDamageTriggerUnitElement = slot0
-CharacterDamageTriggerUnitElement.init = function (self, unit)
+function CharacterDamageTriggerUnitElement:init(unit)
 	slot5 = unit
 
 	CharacterDamageTriggerUnitElement.super.init(slot3, self)
@@ -26,7 +26,7 @@ CharacterDamageTriggerUnitElement.init = function (self, unit)
 
 	return 
 end
-CharacterDamageTriggerUnitElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function CharacterDamageTriggerUnitElement:draw_links(t, dt, selected_unit, all_units)
 	slot10 = selected_unit
 
 	MissionElement.draw_links(slot6, self, t, dt)
@@ -52,7 +52,7 @@ CharacterDamageTriggerUnitElement.draw_links = function (self, t, dt, selected_u
 
 	return 
 end
-CharacterDamageTriggerUnitElement.get_links_to_unit = function (self, ...)
+function CharacterDamageTriggerUnitElement:get_links_to_unit(...)
 	slot3 = self
 
 	CharacterDamageTriggerUnitElement.super.get_links_to_unit(slot2, ...)
@@ -63,10 +63,10 @@ CharacterDamageTriggerUnitElement.get_links_to_unit = function (self, ...)
 
 	return 
 end
-CharacterDamageTriggerUnitElement.update_editing = function (self)
+function CharacterDamageTriggerUnitElement:update_editing()
 	return 
 end
-CharacterDamageTriggerUnitElement.add_element = function (self)
+function CharacterDamageTriggerUnitElement:add_element()
 	slot4 = {
 		ray_type = "editor",
 		mask = 10
@@ -96,7 +96,7 @@ CharacterDamageTriggerUnitElement.add_element = function (self)
 
 	return 
 end
-CharacterDamageTriggerUnitElement._correct_unit = function (self, u_name)
+function CharacterDamageTriggerUnitElement:_correct_unit(u_name)
 	local names = {
 		"ai_spawn_enemy",
 		"ai_enemy_group",
@@ -116,7 +116,7 @@ CharacterDamageTriggerUnitElement._correct_unit = function (self, u_name)
 
 	return false
 end
-CharacterDamageTriggerUnitElement.add_triggers = function (self, vc)
+function CharacterDamageTriggerUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "add_element"
 
@@ -124,7 +124,7 @@ CharacterDamageTriggerUnitElement.add_triggers = function (self, vc)
 
 	return 
 end
-CharacterDamageTriggerUnitElement._build_panel = function (self, panel, panel_sizer)
+function CharacterDamageTriggerUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

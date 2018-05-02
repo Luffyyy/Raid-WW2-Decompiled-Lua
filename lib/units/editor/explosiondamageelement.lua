@@ -4,7 +4,7 @@ if not ExplosionDamageUnitElement then
 end
 
 ExplosionDamageUnitElement = slot0
-ExplosionDamageUnitElement.init = function (self, unit)
+function ExplosionDamageUnitElement:init(unit)
 	slot5 = unit
 
 	ExplosionDamageUnitElement.super.init(slot3, self)
@@ -21,7 +21,7 @@ ExplosionDamageUnitElement.init = function (self, unit)
 
 	return 
 end
-ExplosionDamageUnitElement.update_selected = function (self)
+function ExplosionDamageUnitElement:update_selected()
 	local brush = Draw.brush(slot2)
 	slot4 = brush
 	slot10 = 1
@@ -42,7 +42,7 @@ ExplosionDamageUnitElement.update_selected = function (self)
 
 	return 
 end
-ExplosionDamageUnitElement._build_panel = function (self, panel, panel_sizer)
+function ExplosionDamageUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

@@ -272,7 +272,7 @@ CopActionHurt.fire_death_anim_variants_length = {
 	7,
 	4
 }
-CopActionHurt.init = function (self, action_desc, common_data)
+function CopActionHurt:init(action_desc, common_data)
 	self._common_data = common_data
 	self._ext_movement = common_data.ext_movement
 	self._ext_inventory = common_data.ext_inventory
@@ -1055,13 +1055,13 @@ CopActionHurt.init = function (self, action_desc, common_data)
 
 	return true
 end
-CopActionHurt._start_fire_animation = function (self, redir_res, action_type, t, action_desc, common_data)
+function CopActionHurt:_start_fire_animation(redir_res, action_type, t, action_desc, common_data)
 	return 
 end
-CopActionHurt._start_enemy_fire_animation = function (self, action_type, t, use_animation_on_fire_damage, action_desc, common_data)
+function CopActionHurt:_start_enemy_fire_animation(action_type, t, use_animation_on_fire_damage, action_desc, common_data)
 	return 
 end
-CopActionHurt._start_enemy_fire_effect_on_death = function (self, death_variant)
+function CopActionHurt:_start_enemy_fire_effect_on_death(death_variant)
 	local enemy_effect_name = ""
 	local anim_duration = 3
 
@@ -1153,7 +1153,7 @@ CopActionHurt._start_enemy_fire_effect_on_death = function (self, death_variant)
 
 	return 
 end
-CopActionHurt._dragons_breath_sparks = function (self)
+function CopActionHurt:_dragons_breath_sparks()
 	local enemy_effect_name = Idstring(slot2)
 	slot4 = self._unit
 	slot7 = "Spine"
@@ -1171,7 +1171,7 @@ CopActionHurt._dragons_breath_sparks = function (self)
 
 	return 
 end
-CopActionHurt._get_floor_normal = function (self, at_pos, fwd, right)
+function CopActionHurt:_get_floor_normal(at_pos, fwd, right)
 	local padding_height = 150
 	local center_pos = at_pos + math.UP
 	slot9 = center_pos.z + padding_height
@@ -1309,7 +1309,7 @@ CopActionHurt._get_floor_normal = function (self, at_pos, fwd, right)
 
 	return ground_normal
 end
-CopActionHurt.on_exit = function (self)
+function CopActionHurt:on_exit()
 	if self._shooting_hurt then
 		self._shooting_hurt = false
 		slot3 = self._weapon_unit
@@ -1375,7 +1375,7 @@ CopActionHurt.on_exit = function (self)
 
 	return 
 end
-CopActionHurt._get_pos_clamped_to_graph = function (self, test_head)
+function CopActionHurt:_get_pos_clamped_to_graph(test_head)
 	local tracker = self._ext_movement.nav_tracker(slot3)
 	slot5 = tracker
 	local r = tracker.field_position(self._ext_movement)
@@ -1457,17 +1457,17 @@ CopActionHurt._get_pos_clamped_to_graph = function (self, test_head)
 
 	return new_pos
 end
-CopActionHurt._upd_empty = function (self, t)
+function CopActionHurt:_upd_empty(t)
 	return 
 end
-CopActionHurt._upd_sick = function (self, t)
+function CopActionHurt:_upd_sick(t)
 	if not self._sick_time or self._sick_time < t then
 		self._expired = true
 	end
 
 	return 
 end
-CopActionHurt._upd_tased = function (self, t)
+function CopActionHurt:_upd_tased(t)
 	if not self._tased_time or self._tased_time < t then
 		if self._tased_down_time and t < self._tased_down_time then
 			slot5 = "fatal"
@@ -1489,14 +1489,14 @@ CopActionHurt._upd_tased = function (self, t)
 
 	return 
 end
-CopActionHurt._upd_tased_down = function (self, t)
+function CopActionHurt:_upd_tased_down(t)
 	if not self._tased_down_time or self._tased_down_time < t then
 		self._expired = true
 	end
 
 	return 
 end
-CopActionHurt._upd_hurt = function (self, t)
+function CopActionHurt:_upd_hurt(t)
 	slot4 = TimerManager
 	slot4 = TimerManager.game(slot3)
 	local dt = TimerManager.game(slot3).delta_time(slot3)
@@ -1584,7 +1584,7 @@ CopActionHurt._upd_hurt = function (self, t)
 
 	return 
 end
-CopActionHurt._upd_bleedout = function (self, t)
+function CopActionHurt:_upd_bleedout(t)
 	if self._floor_normal then
 		local normal = nil
 
@@ -1790,7 +1790,7 @@ CopActionHurt._upd_bleedout = function (self, t)
 
 	return 
 end
-CopActionHurt._upd_ragdolled = function (self, t)
+function CopActionHurt:_upd_ragdolled(t)
 
 	-- Decompilation error in this vicinity:
 	slot4 = TimerManager
@@ -1835,16 +1835,16 @@ CopActionHurt._upd_ragdolled = function (self, t)
 
 	return 
 end
-CopActionHurt.type = function (self)
+function CopActionHurt:type()
 	return "hurt"
 end
-CopActionHurt.hurt_type = function (self)
+function CopActionHurt:hurt_type()
 	return self._hurt_type
 end
-CopActionHurt.expired = function (self)
+function CopActionHurt:expired()
 	return self._expired
 end
-CopActionHurt.chk_block = function (self, action_type, t)
+function CopActionHurt:chk_block(action_type, t)
 	slot7 = t
 
 	if CopActionAct.chk_block(slot4, self, action_type) then
@@ -1856,12 +1856,12 @@ CopActionHurt.chk_block = function (self, action_type, t)
 
 	return 
 end
-CopActionHurt.on_attention = function (self, attention)
+function CopActionHurt:on_attention(attention)
 	self._attention = attention
 
 	return 
 end
-CopActionHurt.on_death_exit = function (self)
+function CopActionHurt:on_death_exit()
 	if self._shooting_hurt then
 		self._shooting_hurt = false
 		slot3 = self._weapon_unit
@@ -1878,7 +1878,7 @@ CopActionHurt.on_death_exit = function (self)
 
 	return 
 end
-CopActionHurt.on_death_drop = function (self, unit, stage)
+function CopActionHurt:on_death_drop(unit, stage)
 	if self._weapon_dropped then
 		return 
 	end
@@ -1915,10 +1915,10 @@ CopActionHurt.on_death_drop = function (self, unit, stage)
 
 	return 
 end
-CopActionHurt.body_part = function (self)
+function CopActionHurt:body_part()
 	return self._body_part
 end
-CopActionHurt.need_upd = function (self)
+function CopActionHurt:need_upd()
 	if self._died then
 		return false
 	else
@@ -1927,7 +1927,7 @@ CopActionHurt.need_upd = function (self)
 
 	return 
 end
-CopActionHurt.on_inventory_event = function (self, event)
+function CopActionHurt:on_inventory_event(event)
 	slot4 = self._ext_inventory
 	local weapon_unit = self._ext_inventory.equipped_unit(slot3)
 
@@ -1952,7 +1952,7 @@ CopActionHurt.on_inventory_event = function (self, event)
 
 	return 
 end
-CopActionHurt.save = function (self, save_data)
+function CopActionHurt:save(save_data)
 	slot4 = self._action_desc
 
 	for i, k in pairs(slot3) do
@@ -1963,7 +1963,7 @@ CopActionHurt.save = function (self, save_data)
 
 	return 
 end
-CopActionHurt._start_ragdoll = function (self)
+function CopActionHurt:_start_ragdoll()
 	if self._ragdolled then
 		return true
 	end
@@ -2072,7 +2072,7 @@ CopActionHurt._start_ragdoll = function (self)
 
 	return 
 end
-CopActionHurt.force_ragdoll = function (self)
+function CopActionHurt:force_ragdoll()
 	slot3 = self
 
 	if self._start_ragdoll(slot2) then
@@ -2084,7 +2084,7 @@ CopActionHurt.force_ragdoll = function (self)
 
 	return 
 end
-CopActionHurt.clbk_body_active_state = function (self, tag, unit, body, activated)
+function CopActionHurt:clbk_body_active_state(tag, unit, body, activated)
 	slot8 = tag
 
 	if self._root_act_tags[tag.key(slot7)] then
@@ -2106,7 +2106,7 @@ CopActionHurt.clbk_body_active_state = function (self, tag, unit, body, activate
 	return 
 end
 CopActionHurt._apply_freefall = CopActionWalk._apply_freefall
-CopActionHurt._freeze_ragdoll = function (self)
+function CopActionHurt:_freeze_ragdoll()
 	self._root_act_tags = {}
 	slot3 = self._unit
 
@@ -2124,7 +2124,7 @@ CopActionHurt._freeze_ragdoll = function (self)
 
 	return 
 end
-CopActionHurt.clbk_chk_freeze_ragdoll = function (self)
+function CopActionHurt:clbk_chk_freeze_ragdoll()
 	slot3 = self._unit
 
 	if not alive(slot2) then
@@ -2161,7 +2161,7 @@ CopActionHurt.clbk_chk_freeze_ragdoll = function (self)
 
 	return 
 end
-CopActionHurt.clbk_shooting_hurt = function (self)
+function CopActionHurt:clbk_shooting_hurt()
 	self._delayed_shooting_hurt_clbk_id = nil
 	slot3 = self._weapon_unit
 
@@ -2182,7 +2182,7 @@ CopActionHurt.clbk_shooting_hurt = function (self)
 
 	return 
 end
-CopActionHurt.on_destroy = function (self)
+function CopActionHurt:on_destroy()
 	if self._shooting_hurt then
 		self._shooting_hurt = false
 		slot3 = self._weapon_unit

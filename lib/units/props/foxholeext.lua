@@ -1,29 +1,29 @@
 FoxholeExt = FoxholeExt or class()
-FoxholeExt.init = function (self, unit)
+function FoxholeExt:init(unit)
 	self._player = nil
 	self._locked = false
 
 	return 
 end
-FoxholeExt.register_player = function (self, player)
+function FoxholeExt:register_player(player)
 	self._player = player
 
 	return 
 end
-FoxholeExt.unregister_player = function (self)
+function FoxholeExt:unregister_player()
 	self._player = nil
 
 	return 
 end
-FoxholeExt.set_locked = function (self, locked)
+function FoxholeExt:set_locked(locked)
 	self._locked = locked
 
 	return 
 end
-FoxholeExt.locked = function (self)
+function FoxholeExt:locked()
 	return self._locked
 end
-FoxholeExt.release_player = function (self)
+function FoxholeExt:release_player()
 	slot4 = false
 
 	self.set_locked(slot2, self)
@@ -34,10 +34,10 @@ FoxholeExt.release_player = function (self)
 
 	return 
 end
-FoxholeExt.taken = function (self)
+function FoxholeExt:taken()
 	return not not self._player
 end
-FoxholeExt.save = function (self, data)
+function FoxholeExt:save(data)
 	data.foxhole = {
 		player = self._player,
 		locked = self._locked
@@ -45,7 +45,7 @@ FoxholeExt.save = function (self, data)
 
 	return 
 end
-FoxholeExt.load = function (self, data)
+function FoxholeExt:load(data)
 	if data.foxhole then
 		self._player = data.foxhole.player
 		self._locked = data.foxhole.locked

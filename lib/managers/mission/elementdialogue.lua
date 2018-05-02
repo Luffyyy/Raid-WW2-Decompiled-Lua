@@ -10,17 +10,17 @@ if not ElementDialogue then
 end
 
 ElementDialogue = slot0
-ElementDialogue.init = function (self, ...)
+function ElementDialogue:init(...)
 	slot3 = self
 
 	ElementDialogue.super.init(slot2, ...)
 
 	return 
 end
-ElementDialogue.client_on_executed = function (self, ...)
+function ElementDialogue:client_on_executed(...)
 	return 
 end
-ElementDialogue.on_executed = function (self, instigator)
+function ElementDialogue:on_executed(instigator)
 
 	-- Decompilation error in this vicinity:
 	if not self._values.enabled then
@@ -51,7 +51,7 @@ ElementDialogue.on_executed = function (self, instigator)
 
 	return 
 end
-ElementDialogue._done_callback = function (self, instigator, reason)
+function ElementDialogue:_done_callback(instigator, reason)
 	slot7 = reason
 
 	Application.debug(slot4, Application, "[ElementDialogue:_done_callback] reason")
@@ -65,7 +65,7 @@ ElementDialogue._done_callback = function (self, instigator, reason)
 
 	return 
 end
-ElementDialogue._queueud_done = function (self)
+function ElementDialogue:_queueud_done()
 	slot4 = self._instigator
 
 	ElementDialogue.super._trigger_execute_on_executed(slot2, self)

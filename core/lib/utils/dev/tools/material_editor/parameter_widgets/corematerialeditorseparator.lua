@@ -10,7 +10,7 @@ if not CoreMaterialEditorSeparator then
 	local CoreMaterialEditorSeparator = class(slot2)
 end
 
-CoreMaterialEditorSeparator.init = function (self, parent)
+function CoreMaterialEditorSeparator:init(parent)
 	slot7 = ""
 	self._panel = EWS.Panel(slot3, EWS, parent, "")
 	slot5 = "HORIZONTAL"
@@ -27,10 +27,10 @@ CoreMaterialEditorSeparator.init = function (self, parent)
 
 	return 
 end
-CoreMaterialEditorSeparator.update = function (self, t, dt)
+function CoreMaterialEditorSeparator:update(t, dt)
 	return 
 end
-CoreMaterialEditorSeparator.destroy = function (self)
+function CoreMaterialEditorSeparator:destroy()
 	slot3 = self
 
 	CoreMaterialEditorParameter.destroy(slot2)

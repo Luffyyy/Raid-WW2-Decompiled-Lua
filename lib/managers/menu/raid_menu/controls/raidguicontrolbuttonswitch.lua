@@ -27,7 +27,7 @@ RaidGUIControlButtonSwitch.THUMB_H = tweak_data.gui.icons[RaidGUIControlButtonSw
 RaidGUIControlButtonSwitch.THUMB_COLOR_OFF = tweak_data.gui.colors.raid_grey
 RaidGUIControlButtonSwitch.THUMB_COLOR_ON = tweak_data.gui.colors.raid_red
 RaidGUIControlButtonSwitch.THUMB_COLOR_HIGHLIGHT = tweak_data.gui.colors.raid_red
-RaidGUIControlButtonSwitch.init = function (self, parent, params)
+function RaidGUIControlButtonSwitch:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlButtonSwitch.super.init(slot4, self, parent)
@@ -107,7 +107,7 @@ RaidGUIControlButtonSwitch.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlButtonSwitch.highlight_on = function (self)
+function RaidGUIControlButtonSwitch:highlight_on()
 	slot3 = self._object
 
 	self._object.stop(slot2)
@@ -127,7 +127,7 @@ RaidGUIControlButtonSwitch.highlight_on = function (self)
 
 	return 
 end
-RaidGUIControlButtonSwitch.highlight_off = function (self)
+function RaidGUIControlButtonSwitch:highlight_off()
 	slot3 = self._object
 
 	self._object.stop(slot2)
@@ -141,7 +141,7 @@ RaidGUIControlButtonSwitch.highlight_off = function (self)
 
 	return 
 end
-RaidGUIControlButtonSwitch.mouse_pressed = function (self, o, button, x, y)
+function RaidGUIControlButtonSwitch:mouse_pressed(o, button, x, y)
 	slot9 = y
 
 	if self.inside(slot6, self, x) then
@@ -157,7 +157,7 @@ RaidGUIControlButtonSwitch.mouse_pressed = function (self, o, button, x, y)
 
 	return 
 end
-RaidGUIControlButtonSwitch.mouse_released = function (self, o, button, x, y)
+function RaidGUIControlButtonSwitch:mouse_released(o, button, x, y)
 
 	-- Decompilation error in this vicinity:
 	slot9 = y
@@ -197,15 +197,15 @@ RaidGUIControlButtonSwitch.mouse_released = function (self, o, button, x, y)
 
 	return 
 end
-RaidGUIControlButtonSwitch.set_value = function (self, value)
+function RaidGUIControlButtonSwitch:set_value(value)
 	self._value = value
 
 	return 
 end
-RaidGUIControlButtonSwitch.get_value = function (self)
+function RaidGUIControlButtonSwitch:get_value()
 	return self._value
 end
-RaidGUIControlButtonSwitch.set_value_and_render = function (self, value)
+function RaidGUIControlButtonSwitch:set_value_and_render(value)
 	slot5 = value
 
 	self.set_value(slot3, self)
@@ -220,7 +220,7 @@ RaidGUIControlButtonSwitch.set_value_and_render = function (self, value)
 
 	return 
 end
-RaidGUIControlButtonSwitch._render_images = function (self)
+function RaidGUIControlButtonSwitch:_render_images()
 	if self._visible == false then
 		slot3 = self
 
@@ -246,7 +246,7 @@ RaidGUIControlButtonSwitch._render_images = function (self)
 
 	return 
 end
-RaidGUIControlButtonSwitch.set_visible = function (self, flag)
+function RaidGUIControlButtonSwitch:set_visible(flag)
 	self._visible = flag
 	slot4 = self
 
@@ -254,7 +254,7 @@ RaidGUIControlButtonSwitch.set_visible = function (self, flag)
 
 	return 
 end
-RaidGUIControlButtonSwitch.confirm_pressed = function (self)
+function RaidGUIControlButtonSwitch:confirm_pressed()
 
 	-- Decompilation error in this vicinity:
 	if self._value then
@@ -275,7 +275,7 @@ RaidGUIControlButtonSwitch.confirm_pressed = function (self)
 
 	return true
 end
-RaidGUIControlButtonSwitch._animate_highlight_on = function (self)
+function RaidGUIControlButtonSwitch:_animate_highlight_on()
 	local duration = 0.2
 	local t = 0
 
@@ -324,7 +324,7 @@ RaidGUIControlButtonSwitch._animate_highlight_on = function (self)
 
 	return 
 end
-RaidGUIControlButtonSwitch._animate_highlight_off = function (self)
+function RaidGUIControlButtonSwitch:_animate_highlight_off()
 	local duration = 0.2
 	local t = 0
 
@@ -373,7 +373,7 @@ RaidGUIControlButtonSwitch._animate_highlight_off = function (self)
 
 	return 
 end
-RaidGUIControlButtonSwitch._animate_switch_press = function (self)
+function RaidGUIControlButtonSwitch:_animate_switch_press()
 	local t = 0
 	local original_w = RaidGUIControlButtonSwitch.SWITCH_BORDER_W
 	local original_h = RaidGUIControlButtonSwitch.SWITCH_BORDER_H
@@ -415,7 +415,7 @@ RaidGUIControlButtonSwitch._animate_switch_press = function (self)
 
 	return 
 end
-RaidGUIControlButtonSwitch._animate_switch_release = function (self)
+function RaidGUIControlButtonSwitch:_animate_switch_release()
 	local t = 0
 	local duration = 0.25
 	local target_w = RaidGUIControlButtonSwitch.SWITCH_BORDER_W

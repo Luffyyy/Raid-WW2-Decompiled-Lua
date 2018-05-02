@@ -4,7 +4,7 @@ if not EquipmentUnitElement then
 end
 
 EquipmentUnitElement = slot0
-EquipmentUnitElement.init = function (self, unit)
+function EquipmentUnitElement:init(unit)
 	slot5 = unit
 
 	EquipmentUnitElement.super.init(slot3, self)
@@ -21,7 +21,7 @@ EquipmentUnitElement.init = function (self, unit)
 
 	return 
 end
-EquipmentUnitElement._build_panel = function (self, panel, panel_sizer)
+function EquipmentUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

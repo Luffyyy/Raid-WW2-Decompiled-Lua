@@ -20,7 +20,7 @@ ZipLine.NET_EVENTS = {
 }
 slot2 = "rope"
 local ids_rope_obj = Idstring(8)
-ZipLine.init = function (self, unit)
+function ZipLine:init(unit)
 	self._unit = unit
 	slot5 = ids_rope_obj
 	self._rope_obj = unit.get_object(slot3, unit)
@@ -74,7 +74,7 @@ ZipLine.init = function (self, unit)
 
 	return 
 end
-ZipLine.update = function (self, unit, t, dt)
+function ZipLine:update(unit, t, dt)
 	if not self._enabled then
 		return 
 	end
@@ -97,7 +97,7 @@ ZipLine.update = function (self, unit, t, dt)
 end
 local mvec1 = Vector3()
 local mvec2 = Vector3()
-ZipLine._update_sled = function (self, t, dt)
+function ZipLine:_update_sled(t, dt)
 	local current_time = self._current_time
 
 	if self._attached_bag then
@@ -229,7 +229,7 @@ ZipLine._update_sled = function (self, t, dt)
 
 	return 
 end
-ZipLine._update_sounds = function (self, t, dt)
+function ZipLine:_update_sounds(t, dt)
 	if self._current_time ~= 0 and not self._running then
 		self._sound_data = {}
 		slot6 = self._sled_data.pos
@@ -282,7 +282,7 @@ ZipLine._update_sounds = function (self, t, dt)
 
 	return 
 end
-ZipLine._check_dirty = function (self)
+function ZipLine:_check_dirty()
 	if not self._dirty then
 		return 
 	end
@@ -332,7 +332,7 @@ ZipLine._check_dirty = function (self)
 
 	return 
 end
-ZipLine._update_sled_object = function (self)
+function ZipLine:_update_sled_object()
 	if self._sled_data.object then
 		slot4 = self._sled_data.pos
 
@@ -360,7 +360,7 @@ ZipLine._update_sled_object = function (self)
 
 	return 
 end
-ZipLine._check_interaction_active_state = function (self)
+function ZipLine:_check_interaction_active_state()
 	if not self._enabled then
 		slot3 = self._unit
 		slot4 = false
@@ -378,7 +378,7 @@ ZipLine._check_interaction_active_state = function (self)
 
 	return 
 end
-ZipLine.is_interact_blocked = function (self)
+function ZipLine:is_interact_blocked()
 	if self._booked_by_peer_id then
 		return true
 	end
@@ -406,7 +406,7 @@ ZipLine.is_interact_blocked = function (self)
 
 	return slot1
 end
-ZipLine.on_interacted = function (self, unit)
+function ZipLine:on_interacted(unit)
 	slot4 = self
 
 	if self.is_interact_blocked(slot3) then
@@ -459,7 +459,7 @@ ZipLine.on_interacted = function (self, unit)
 
 	return 
 end
-ZipLine._client_request_attach_bag = function (self, player)
+function ZipLine:_client_request_attach_bag(player)
 	self._request_unit = player
 	slot4 = player
 	slot5 = true
@@ -473,7 +473,7 @@ ZipLine._client_request_attach_bag = function (self, player)
 
 	return 
 end
-ZipLine._attach_bag_response = function (self, granted)
+function ZipLine:_attach_bag_response(granted)
 	slot4 = self._request_unit
 
 	if alive(slot3) then
@@ -493,7 +493,7 @@ ZipLine._attach_bag_response = function (self, granted)
 
 	return 
 end
-ZipLine._client_request_access = function (self, unit)
+function ZipLine:_client_request_access(unit)
 	self._request_unit = unit
 	slot4 = managers.network
 	slot8 = self.NET_EVENTS.request_access
@@ -502,7 +502,7 @@ ZipLine._client_request_access = function (self, unit)
 
 	return 
 end
-ZipLine.set_user = function (self, unit)
+function ZipLine:set_user(unit)
 	local old_unit = self._user_unit
 	self._user_unit = unit
 
@@ -535,7 +535,7 @@ ZipLine.set_user = function (self, unit)
 
 	return 
 end
-ZipLine.sync_set_user = function (self, unit)
+function ZipLine:sync_set_user(unit)
 	self._booked_by_peer_id = nil
 	self._user_unit = unit
 	slot4 = self._user_unit
@@ -558,7 +558,7 @@ ZipLine.sync_set_user = function (self, unit)
 
 	return 
 end
-ZipLine.sync_remove_user = function (self)
+function ZipLine:sync_remove_user()
 	slot3 = self._user_unit
 
 	if alive(slot2) then
@@ -575,13 +575,13 @@ ZipLine.sync_remove_user = function (self)
 
 	return 
 end
-ZipLine.user_unit = function (self)
+function ZipLine:user_unit()
 	return self._user_unit
 end
-ZipLine.is_valid = function (self)
+function ZipLine:is_valid()
 	return self._start_pos and self._end_pos and true
 end
-ZipLine.set_speed = function (self, speed)
+function ZipLine:set_speed(speed)
 	if not speed then
 		return 
 	end
@@ -593,18 +593,18 @@ ZipLine.set_speed = function (self, speed)
 
 	return 
 end
-ZipLine.speed = function (self)
+function ZipLine:speed()
 	return self._speed
 end
-ZipLine.set_ai_ignores_bag = function (self, ai_ignores_bag)
+function ZipLine:set_ai_ignores_bag(ai_ignores_bag)
 	self._ai_ignores_bag = ai_ignores_bag
 
 	return 
 end
-ZipLine.ai_ignores_bag = function (self)
+function ZipLine:ai_ignores_bag()
 	return self._ai_ignores_bag
 end
-ZipLine.set_slack = function (self, slack)
+function ZipLine:set_slack(slack)
 	if not slack then
 		return 
 	end
@@ -616,18 +616,18 @@ ZipLine.set_slack = function (self, slack)
 
 	return 
 end
-ZipLine.slack = function (self)
+function ZipLine:slack()
 	return self._slack
 end
-ZipLine.set_total_time = function (self, total_time)
+function ZipLine:set_total_time(total_time)
 	self._total_time = total_time
 
 	return 
 end
-ZipLine.total_time = function (self)
+function ZipLine:total_time()
 	return self._total_time
 end
-ZipLine._update_total_time = function (self)
+function ZipLine:_update_total_time()
 	slot7 = self
 	slot6 = self.start_pos(slot5) - self.end_pos(self)
 	slot4 = self.start_pos(slot5) - self.end_pos(self).length(self.end_pos(self)) / self._speed
@@ -636,13 +636,13 @@ ZipLine._update_total_time = function (self)
 
 	return 
 end
-ZipLine.start_pos = function (self)
+function ZipLine:start_pos()
 	return self._start_pos
 end
-ZipLine.end_pos = function (self)
+function ZipLine:end_pos()
 	return self._end_pos
 end
-ZipLine.set_start_pos = function (self, pos)
+function ZipLine:set_start_pos(pos)
 	self._start_pos = pos
 	slot4 = self
 
@@ -654,7 +654,7 @@ ZipLine.set_start_pos = function (self, pos)
 
 	return 
 end
-ZipLine.set_end_pos = function (self, pos)
+function ZipLine:set_end_pos(pos)
 	self._end_pos = pos
 	slot4 = self
 
@@ -666,14 +666,14 @@ ZipLine.set_end_pos = function (self, pos)
 
 	return 
 end
-ZipLine.set_end_pos_by_line = function (self, pos)
+function ZipLine:set_end_pos_by_line(pos)
 	slot5 = pos - self._line_data.offset
 
 	self.set_end_pos(slot3, self)
 
 	return 
 end
-ZipLine._update_pos_data = function (self)
+function ZipLine:_update_pos_data()
 	slot3 = self
 
 	if not self.is_valid(slot2) then
@@ -713,7 +713,7 @@ ZipLine._update_pos_data = function (self)
 
 	return 
 end
-ZipLine.set_enabled = function (self, enabled)
+function ZipLine:set_enabled(enabled)
 	self._enabled = enabled
 
 	if self._enabled then
@@ -725,7 +725,7 @@ ZipLine.set_enabled = function (self, enabled)
 
 	return 
 end
-ZipLine.set_usage_type = function (self, usage_type)
+function ZipLine:set_usage_type(usage_type)
 	if not usage_type then
 		return 
 	end
@@ -739,24 +739,24 @@ ZipLine.set_usage_type = function (self, usage_type)
 
 	return 
 end
-ZipLine.usage_type = function (self)
+function ZipLine:usage_type()
 	return self._usage_type
 end
-ZipLine.is_usage_type_person = function (self)
+function ZipLine:is_usage_type_person()
 	return self._usage_type == "person"
 end
-ZipLine.is_usage_type_bag = function (self)
+function ZipLine:is_usage_type_bag()
 	return self._usage_type == "bag"
 end
-ZipLine.current_time = function (self)
+function ZipLine:current_time()
 	return self._current_time
 end
-ZipLine.pos_at_current_time = function (self)
+function ZipLine:pos_at_current_time()
 	slot4 = self._current_time
 
 	return self.pos_at_time(slot2, self)
 end
-ZipLine.update_and_get_pos_at_time = function (self, time)
+function ZipLine:update_and_get_pos_at_time(time)
 	self._current_time = time
 	self._dirty = true
 	slot5 = time
@@ -791,7 +791,7 @@ local slack_bezier_points = {
 	0.5,
 	0
 }
-ZipLine.pos_at_time = function (self, time)
+function ZipLine:pos_at_time(time)
 	slot5 = time
 	local bezier_value = math.bezier(slot3, ease_bezier_points)
 	slot7 = bezier_value
@@ -807,10 +807,10 @@ ZipLine.pos_at_time = function (self, time)
 
 	return pos
 end
-ZipLine.current_direction = function (self)
+function ZipLine:current_direction()
 	return self._line_data.current_dir
 end
-ZipLine.sync_net_event = function (self, event_id, peer)
+function ZipLine:sync_net_event(event_id, peer)
 	local net_events = self.NET_EVENTS
 
 	if event_id == net_events.request_access then
@@ -926,7 +926,7 @@ ZipLine.sync_net_event = function (self, event_id, peer)
 
 	return 
 end
-ZipLine._send_net_event = function (self, event_id)
+function ZipLine:_send_net_event(event_id)
 	slot4 = managers.network
 	slot8 = event_id
 
@@ -934,7 +934,7 @@ ZipLine._send_net_event = function (self, event_id)
 
 	return 
 end
-ZipLine.attach_bag = function (self, bag)
+function ZipLine:attach_bag(bag)
 	self._booked_bag_peer_id = nil
 	slot5 = "hinge_body_1"
 
@@ -996,7 +996,7 @@ ZipLine.attach_bag = function (self, bag)
 
 	return 
 end
-ZipLine.release_bag = function (self)
+function ZipLine:release_bag()
 	slot4 = "hinge_body_1"
 
 	if not self._attached_bag.body(slot2, self._attached_bag) then
@@ -1037,7 +1037,7 @@ ZipLine.release_bag = function (self)
 
 	return 
 end
-ZipLine.run_sequence = function (self, sequence_name, user_unit)
+function ZipLine:run_sequence(sequence_name, user_unit)
 	slot5 = self._unit
 	slot6 = sequence_name
 
@@ -1052,10 +1052,10 @@ ZipLine.run_sequence = function (self, sequence_name, user_unit)
 
 	return 
 end
-ZipLine.destroy = function (self, unit)
+function ZipLine:destroy(unit)
 	return 
 end
-ZipLine.debug_draw = function (self, t, dt)
+function ZipLine:debug_draw(t, dt)
 	slot5 = self
 
 	if not self.is_valid(slot4) then
@@ -1095,7 +1095,7 @@ ZipLine.debug_draw = function (self, t, dt)
 
 	return 
 end
-ZipLine.save = function (self, data)
+function ZipLine:save(data)
 	local state = {
 		enabled = self._enabled,
 		current_time = self._current_time,
@@ -1108,7 +1108,7 @@ ZipLine.save = function (self, data)
 
 	return 
 end
-ZipLine.load = function (self, data)
+function ZipLine:load(data)
 
 	-- Decompilation error in this vicinity:
 	local state = data.ZipLine

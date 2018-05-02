@@ -1,7 +1,7 @@
 -- WARNING: Error occurred during decompilation.
 --   Code may be incomplete or incorrect.
 CoreCollapseBox = CoreCollapseBox or class()
-CoreCollapseBox.init = function (self, parent, orientation, caption, expanded_size, expand, style)
+function CoreCollapseBox:init(parent, orientation, caption, expanded_size, expand, style)
 
 	-- Decompilation error in this vicinity:
 	self._caption = caption or ""
@@ -58,29 +58,29 @@ CoreCollapseBox.init = function (self, parent, orientation, caption, expanded_si
 
 	return 
 end
-CoreCollapseBox.connect = function (self, id, event, cb, data)
+function CoreCollapseBox:connect(id, event, cb, data)
 	slot11 = data
 
 	self._btn.connect(slot6, self._btn, id, event, cb)
 
 	return 
 end
-CoreCollapseBox.panel = function (self)
+function CoreCollapseBox:panel()
 	return self._panel
 end
-CoreCollapseBox.lower_panel = function (self)
+function CoreCollapseBox:lower_panel()
 	return self._lower_panel
 end
-CoreCollapseBox.box = function (self)
+function CoreCollapseBox:box()
 	return self._lower_box
 end
-CoreCollapseBox.expanded = function (self)
+function CoreCollapseBox:expanded()
 	return self._expand
 end
-CoreCollapseBox.expanded_size = function (self)
+function CoreCollapseBox:expanded_size()
 	return self._expanded_size
 end
-CoreCollapseBox.set_expand = function (self, b)
+function CoreCollapseBox:set_expand(b)
 	self._expand = not expand
 	slot4 = self
 
@@ -88,7 +88,7 @@ CoreCollapseBox.set_expand = function (self, b)
 
 	return 
 end
-CoreCollapseBox.set_expanded_size = function (self, v)
+function CoreCollapseBox:set_expanded_size(v)
 	slot4 = self._parent
 
 	self._parent.freeze(slot3)
@@ -112,7 +112,7 @@ CoreCollapseBox.set_expanded_size = function (self, v)
 
 	return 
 end
-CoreCollapseBox._cb = function (self)
+function CoreCollapseBox:_cb()
 	self._expand = not self._expand
 	slot3 = self._parent
 

@@ -97,7 +97,7 @@ ElementSpecialObjective._DEFAULT_VALUES = {
 	interrupt_dis = -1,
 	path_style = 1
 }
-ElementSpecialObjective.init = function (self, ...)
+function ElementSpecialObjective:init(...)
 	slot3 = self
 
 	ElementSpecialObjective.super.init(slot2, ...)
@@ -111,7 +111,7 @@ ElementSpecialObjective.init = function (self, ...)
 
 	return 
 end
-ElementSpecialObjective._finalize_values = function (self, values)
+function ElementSpecialObjective:_finalize_values(values)
 	slot5 = "so_action"
 	values.so_action = self.value(slot3, self)
 
@@ -318,7 +318,7 @@ ElementSpecialObjective._finalize_values = function (self, values)
 
 	return 
 end
-ElementSpecialObjective.event = function (self, name, unit)
+function ElementSpecialObjective:event(name, unit)
 	if self._events and self._events[name] then
 		slot5 = self._events[name]
 
@@ -331,14 +331,14 @@ ElementSpecialObjective.event = function (self, name, unit)
 
 	return 
 end
-ElementSpecialObjective.clbk_objective_action_start = function (self, unit)
+function ElementSpecialObjective:clbk_objective_action_start(unit)
 	slot6 = unit
 
 	self.event(slot3, self, "anim_start")
 
 	return 
 end
-ElementSpecialObjective.clbk_objective_administered = function (self, unit)
+function ElementSpecialObjective:clbk_objective_administered(unit)
 	if self._values.needs_pos_rsrv then
 		self._pos_rsrv = self._pos_rsrv or {}
 		slot5 = unit
@@ -381,7 +381,7 @@ ElementSpecialObjective.clbk_objective_administered = function (self, unit)
 
 	return 
 end
-ElementSpecialObjective.clbk_objective_complete = function (self, unit)
+function ElementSpecialObjective:clbk_objective_complete(unit)
 	if self._pos_rsrv then
 		slot5 = unit
 		local unit_rsrv = self._pos_rsrv[unit.key(slot4)]
@@ -419,7 +419,7 @@ ElementSpecialObjective.clbk_objective_complete = function (self, unit)
 
 	return 
 end
-ElementSpecialObjective.clbk_objective_failed = function (self, unit)
+function ElementSpecialObjective:clbk_objective_failed(unit)
 	if self._pos_rsrv then
 		slot5 = unit
 		local unit_rsrv = self._pos_rsrv[unit.key(slot4)]
@@ -461,7 +461,7 @@ ElementSpecialObjective.clbk_objective_failed = function (self, unit)
 
 	return 
 end
-ElementSpecialObjective.clbk_verify_administration = function (self, unit)
+function ElementSpecialObjective:clbk_verify_administration(unit)
 	if self._values.needs_pos_rsrv then
 		self._tmp_pos_rsrv = self._tmp_pos_rsrv or {
 			radius = 30,
@@ -482,7 +482,7 @@ ElementSpecialObjective.clbk_verify_administration = function (self, unit)
 
 	return true
 end
-ElementSpecialObjective.add_event_callback = function (self, name, callback, callback_id)
+function ElementSpecialObjective:add_event_callback(name, callback, callback_id)
 	local id = callback_id or "generic_id"
 	self._events = self._events or {}
 	self._events[name] = self._events[name] or {}
@@ -490,7 +490,7 @@ ElementSpecialObjective.add_event_callback = function (self, name, callback, cal
 
 	return 
 end
-ElementSpecialObjective.remove_event_callback = function (self, callback_id)
+function ElementSpecialObjective:remove_event_callback(callback_id)
 	if self._events and self._events.complete then
 		self._events.complete[callback_id] = nil
 	end
@@ -505,7 +505,7 @@ ElementSpecialObjective.remove_event_callback = function (self, callback_id)
 
 	return 
 end
-ElementSpecialObjective.on_executed = function (self, instigator)
+function ElementSpecialObjective:on_executed(instigator)
 
 	-- Decompilation error in this vicinity:
 	slot4 = managers.groupai
@@ -597,7 +597,7 @@ ElementSpecialObjective.on_executed = function (self, instigator)
 
 	return 
 end
-ElementSpecialObjective.operation_remove = function (self)
+function ElementSpecialObjective:operation_remove()
 	if self._nav_link then
 		slot4 = self
 
@@ -643,7 +643,7 @@ ElementSpecialObjective.operation_remove = function (self)
 
 	return 
 end
-ElementSpecialObjective.get_objective = function (self, instigator)
+function ElementSpecialObjective:get_objective(instigator)
 
 	-- Decompilation error in this vicinity:
 	if not self._is_AI_SO then
@@ -692,7 +692,7 @@ ElementSpecialObjective.get_objective = function (self, instigator)
 
 	return objective
 end
-ElementSpecialObjective._get_hunt_location = function (self, instigator)
+function ElementSpecialObjective:_get_hunt_location(instigator)
 	slot4 = instigator
 
 	if not alive(slot3) then
@@ -736,7 +736,7 @@ ElementSpecialObjective._get_hunt_location = function (self, instigator)
 
 	return objective_nav_seg, criminal_tracker.field_position(slot11)
 end
-ElementSpecialObjective._get_misc_SO_params = function (self)
+function ElementSpecialObjective:_get_misc_SO_params()
 
 	-- Decompilation error in this vicinity:
 	local pose, stance, attitude, path_style, pos, rot, interrupt_dis, interrupt_health, haste, trigger_on, interaction_voice = nil
@@ -755,42 +755,42 @@ ElementSpecialObjective._get_misc_SO_params = function (self)
 
 	return pose, stance, attitude, path_style, pos, rot, interrupt_dis, interrupt_health, haste, trigger_on, interaction_voice
 end
-ElementSpecialObjective.nav_link_end_pos = function (self)
+function ElementSpecialObjective:nav_link_end_pos()
 	return self._values.search_position
 end
-ElementSpecialObjective.nav_link_access = function (self)
+function ElementSpecialObjective:nav_link_access()
 	slot3 = self._values.SO_access
 
 	return tonumber(slot2)
 end
-ElementSpecialObjective.chance = function (self)
+function ElementSpecialObjective:chance()
 	slot4 = "base_chance"
 
 	return self._get_default_value_if_nil(slot2, self)
 end
-ElementSpecialObjective.nav_link_delay = function (self)
+function ElementSpecialObjective:nav_link_delay()
 	slot4 = "interval"
 
 	return self._get_default_value_if_nil(slot2, self)
 end
-ElementSpecialObjective.nav_link = function (self)
+function ElementSpecialObjective:nav_link()
 	return self._nav_link
 end
-ElementSpecialObjective.id = function (self)
+function ElementSpecialObjective:id()
 	return self._id
 end
-ElementSpecialObjective._is_nav_link = function (self)
+function ElementSpecialObjective:_is_nav_link()
 	return self._values.is_navigation_link or (self._values.navigation_link and self._values.navigation_link ~= -1)
 end
-ElementSpecialObjective.set_nav_link = function (self, nav_link)
+function ElementSpecialObjective:set_nav_link(nav_link)
 	self._nav_link = nav_link
 
 	return 
 end
-ElementSpecialObjective.nav_link_wants_align_pos = function (self)
+function ElementSpecialObjective:nav_link_wants_align_pos()
 	return self._values.align_position
 end
-ElementSpecialObjective._select_units_from_spawners = function (self)
+function ElementSpecialObjective:_select_units_from_spawners()
 
 	-- Decompilation error in this vicinity:
 	local candidates = {}
@@ -824,10 +824,10 @@ ElementSpecialObjective._select_units_from_spawners = function (self)
 
 	return chosen_units, chosen_objectives
 end
-ElementSpecialObjective.get_objective_trigger = function (self)
+function ElementSpecialObjective:get_objective_trigger()
 	return self._values.trigger_on
 end
-ElementSpecialObjective._administer_objective = function (self, unit, objective)
+function ElementSpecialObjective:_administer_objective(unit, objective)
 
 	-- Decompilation error in this vicinity:
 	if objective.type == "phalanx" then
@@ -869,7 +869,7 @@ ElementSpecialObjective._administer_objective = function (self, unit, objective)
 
 	return 
 end
-ElementSpecialObjective._administer_to_turret = function (self, unit, objective)
+function ElementSpecialObjective:_administer_to_turret(unit, objective)
 	local so_object = self.turret_unit.weapon(slot4)._SO_object
 	slot6 = self.turret_unit
 	local turret_pos = self.turret_unit.weapon(self.turret_unit)._SO_object.position(self.turret_unit)
@@ -893,7 +893,7 @@ ElementSpecialObjective._administer_to_turret = function (self, unit, objective)
 
 	return 
 end
-ElementSpecialObjective.choose_followup_SO = function (self, unit, skip_element_ids)
+function ElementSpecialObjective:choose_followup_SO(unit, skip_element_ids)
 
 	-- Decompilation error in this vicinity:
 	if not self._values.followup_elements then
@@ -936,14 +936,14 @@ ElementSpecialObjective.choose_followup_SO = function (self, unit, skip_element_
 
 	return 
 end
-ElementSpecialObjective.get_as_followup = function (self, unit, skip_element_ids)
+function ElementSpecialObjective:get_as_followup(unit, skip_element_ids)
 	slot7 = unit
 
 	self.event(slot4, self, "admin_fail")
 
 	return 
 end
-ElementSpecialObjective._get_action_duration = function (self)
+function ElementSpecialObjective:_get_action_duration()
 
 	-- Decompilation error in this vicinity:
 	if not self._values.action_duration_max and not self._values.action_duration_min then
@@ -964,10 +964,10 @@ ElementSpecialObjective._get_action_duration = function (self)
 
 	return 
 end
-ElementSpecialObjective._get_default_value_if_nil = function (self, name_in)
+function ElementSpecialObjective:_get_default_value_if_nil(name_in)
 	return self._values[name_in] or self._DEFAULT_VALUES[name_in]
 end
-ElementSpecialObjective.destroy = function (self)
+function ElementSpecialObjective:destroy()
 	slot3 = self
 
 	ElementSpecialObjective.super.destroy(slot2)

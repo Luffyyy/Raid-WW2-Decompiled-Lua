@@ -4,7 +4,7 @@ if not MenuNodeStatsGui then
 end
 
 MenuNodeStatsGui = slot0
-MenuNodeStatsGui.init = function (self, node, layer, parameters)
+function MenuNodeStatsGui:init(node, layer, parameters)
 	slot9 = parameters
 
 	MenuNodeStatsGui.super.init(slot5, self, node, layer)
@@ -16,7 +16,7 @@ MenuNodeStatsGui.init = function (self, node, layer, parameters)
 
 	return 
 end
-MenuNodeStatsGui._setup_panels = function (self, node)
+function MenuNodeStatsGui:_setup_panels(node)
 	slot5 = node
 
 	MenuNodeStatsGui.super._setup_panels(slot3, self)
@@ -26,7 +26,7 @@ MenuNodeStatsGui._setup_panels = function (self, node)
 
 	return 
 end
-MenuNodeStatsGui._setup_stats = function (self, node)
+function MenuNodeStatsGui:_setup_stats(node)
 	slot5 = {
 		type = "text",
 		topic = managers.localization.text(slot7, managers.localization),
@@ -174,7 +174,7 @@ MenuNodeStatsGui._setup_stats = function (self, node)
 
 	return 
 end
-MenuNodeStatsGui._add_stats = function (self, params)
+function MenuNodeStatsGui:_add_stats(params)
 	local y = 0
 	slot5 = self._stats_items
 
@@ -306,28 +306,28 @@ MenuNodeStatsGui._add_stats = function (self, params)
 
 	return 
 end
-MenuNodeStatsGui._create_menu_item = function (self, row_item)
+function MenuNodeStatsGui:_create_menu_item(row_item)
 	slot5 = row_item
 
 	MenuNodeStatsGui.super._create_menu_item(slot3, self)
 
 	return 
 end
-MenuNodeStatsGui._setup_item_panel_parent = function (self, safe_rect)
+function MenuNodeStatsGui:_setup_item_panel_parent(safe_rect)
 	slot5 = safe_rect
 
 	MenuNodeStatsGui.super._setup_item_panel_parent(slot3, self)
 
 	return 
 end
-MenuNodeStatsGui._setup_item_panel = function (self, safe_rect, res)
+function MenuNodeStatsGui:_setup_item_panel(safe_rect, res)
 	slot7 = res
 
 	MenuNodeStatsGui.super._setup_item_panel(slot4, self, safe_rect)
 
 	return 
 end
-MenuNodeStatsGui.resolution_changed = function (self)
+function MenuNodeStatsGui:resolution_changed()
 	slot3 = self
 
 	MenuNodeStatsGui.super.resolution_changed(slot2)

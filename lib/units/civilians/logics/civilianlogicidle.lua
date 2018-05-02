@@ -13,7 +13,7 @@
 local tmp_vec1 = Vector3()
 slot3 = CivilianLogicBase
 CivilianLogicIdle = class(slot2)
-CivilianLogicIdle.enter = function (data, new_logic_name, enter_params)
+function CivilianLogicIdle.enter(data, new_logic_name, enter_params)
 	local my_data = {
 		unit = data.unit
 	}
@@ -137,7 +137,7 @@ CivilianLogicIdle.enter = function (data, new_logic_name, enter_params)
 
 	return 
 end
-CivilianLogicIdle.exit = function (data, new_logic_name, enter_params)
+function CivilianLogicIdle.exit(data, new_logic_name, enter_params)
 	slot7 = enter_params
 
 	CopLogicBase.exit(slot4, data, new_logic_name)
@@ -178,7 +178,7 @@ CivilianLogicIdle.exit = function (data, new_logic_name, enter_params)
 
 	return 
 end
-CivilianLogicIdle._upd_outline_detection = function (data)
+function CivilianLogicIdle._upd_outline_detection(data)
 	local my_data = data.internal_data
 
 	if data.been_outlined or data.has_outline then
@@ -233,7 +233,7 @@ CivilianLogicIdle._upd_outline_detection = function (data)
 
 	return 
 end
-CivilianLogicIdle._enable_outline = function (data)
+function CivilianLogicIdle._enable_outline(data)
 	local my_data = data.internal_data
 	slot4 = data.unit
 	slot5 = "highlight_character"
@@ -246,7 +246,7 @@ CivilianLogicIdle._enable_outline = function (data)
 
 	return 
 end
-CivilianLogicIdle.on_alert = function (data, alert_data)
+function CivilianLogicIdle.on_alert(data, alert_data)
 	if data.is_tied then
 		slot4 = data.unit
 
@@ -377,7 +377,7 @@ CivilianLogicIdle.on_alert = function (data, alert_data)
 
 	return 
 end
-CivilianLogicIdle._delayed_alert_clbk = function (ignore_this, params)
+function CivilianLogicIdle._delayed_alert_clbk(ignore_this, params)
 	local data = params.data
 	local alert_data = params.alert_data
 	local my_data = data.internal_data
@@ -431,7 +431,7 @@ CivilianLogicIdle._delayed_alert_clbk = function (ignore_this, params)
 
 	return 
 end
-CivilianLogicIdle.on_intimidated = function (data, amount, aggressor_unit)
+function CivilianLogicIdle.on_intimidated(data, amount, aggressor_unit)
 
 	-- Decompilation error in this vicinity:
 	slot5 = data.unit
@@ -466,7 +466,7 @@ CivilianLogicIdle.on_intimidated = function (data, amount, aggressor_unit)
 
 	return 
 end
-CivilianLogicIdle.damage_clbk = function (data, damage_info)
+function CivilianLogicIdle.damage_clbk(data, damage_info)
 	slot4 = data.unit
 	slot5 = false
 	slot8 = managers.groupai
@@ -496,7 +496,7 @@ CivilianLogicIdle.damage_clbk = function (data, damage_info)
 
 	return 
 end
-CivilianLogicIdle.on_new_objective = function (data, old_objective)
+function CivilianLogicIdle.on_new_objective(data, old_objective)
 	local new_objective = data.objective
 	slot6 = old_objective
 
@@ -589,7 +589,7 @@ CivilianLogicIdle.on_new_objective = function (data, old_objective)
 
 	return 
 end
-CivilianLogicIdle.on_action_completed = function (data, action)
+function CivilianLogicIdle.on_action_completed(data, action)
 	local my_data = data.internal_data
 	slot5 = action
 
@@ -618,7 +618,7 @@ CivilianLogicIdle.on_action_completed = function (data, action)
 
 	return 
 end
-CivilianLogicIdle._upd_detection = function (data)
+function CivilianLogicIdle._upd_detection(data)
 	slot3 = managers.groupai
 	slot4 = data.unit
 
@@ -676,7 +676,7 @@ CivilianLogicIdle._upd_detection = function (data)
 
 	return 
 end
-CivilianLogicIdle.is_available_for_assignment = function (data, objective)
+function CivilianLogicIdle.is_available_for_assignment(data, objective)
 
 	-- Decompilation error in this vicinity:
 	if objective and objective.forced then
@@ -685,7 +685,7 @@ CivilianLogicIdle.is_available_for_assignment = function (data, objective)
 
 	local my_data = data.internal_data
 end
-CivilianLogicIdle.anim_clbk = function (data, info_type)
+function CivilianLogicIdle.anim_clbk(data, info_type)
 	if info_type == "reset_attention" and data.internal_data.idle_attention then
 		data.internal_data.idle_attention = nil
 		slot4 = data
@@ -695,7 +695,7 @@ CivilianLogicIdle.anim_clbk = function (data, info_type)
 
 	return 
 end
-CivilianLogicIdle.clbk_action_timeout = function (ignore_this, data)
+function CivilianLogicIdle.clbk_action_timeout(ignore_this, data)
 	local my_data = data.internal_data
 	slot6 = my_data.action_timeout_clbk_id
 
@@ -726,7 +726,7 @@ CivilianLogicIdle.clbk_action_timeout = function (ignore_this, data)
 
 	return 
 end
-CivilianLogicIdle.is_obstructed = function (data, aggressor_unit)
+function CivilianLogicIdle.is_obstructed(data, aggressor_unit)
 	slot4 = data.unit
 	slot5 = "walk"
 
@@ -774,7 +774,7 @@ CivilianLogicIdle.is_obstructed = function (data, aggressor_unit)
 
 	return 
 end
-CivilianLogicIdle._get_priority_attention = function (data, attention_objects)
+function CivilianLogicIdle._get_priority_attention(data, attention_objects)
 	local best_target, best_target_priority, best_target_reaction = nil
 	slot7 = attention_objects
 
@@ -826,7 +826,7 @@ CivilianLogicIdle._get_priority_attention = function (data, attention_objects)
 
 	return best_target, best_target_reaction
 end
-CivilianLogicIdle._set_attention_obj = function (data, new_att_obj, new_reaction)
+function CivilianLogicIdle._set_attention_obj(data, new_att_obj, new_reaction)
 	local old_att_obj = data.attention_obj
 	data.attention_obj = new_att_obj
 

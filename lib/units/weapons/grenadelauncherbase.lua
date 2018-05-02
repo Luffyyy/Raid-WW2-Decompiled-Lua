@@ -11,7 +11,7 @@ if not GrenadeLauncherContinousReloadBase then
 end
 
 GrenadeLauncherContinousReloadBase = slot0
-GrenadeLauncherContinousReloadBase.init = function (self, ...)
+function GrenadeLauncherContinousReloadBase:init(...)
 	slot3 = self
 
 	GrenadeLauncherContinousReloadBase.super.init(slot2, ...)
@@ -20,7 +20,7 @@ GrenadeLauncherContinousReloadBase.init = function (self, ...)
 
 	return 
 end
-GrenadeLauncherContinousReloadBase.shotgun_shell_data = function (self)
+function GrenadeLauncherContinousReloadBase:shotgun_shell_data()
 	return nil
 end
 

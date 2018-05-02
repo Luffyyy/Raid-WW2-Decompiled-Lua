@@ -14,14 +14,14 @@ end
 ElementPhysicsPush = slot0
 slot3 = "core/physic_effects/hubelement_push"
 ElementPhysicsPush.IDS_EFFECT = Idstring(slot2)
-ElementPhysicsPush.client_on_executed = function (self, ...)
+function ElementPhysicsPush:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementPhysicsPush.on_executed = function (self, instigator)
+function ElementPhysicsPush:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

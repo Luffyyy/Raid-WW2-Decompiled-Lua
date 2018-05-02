@@ -13,7 +13,7 @@ RaidGUIControlInfoIcon.COLOR = tweak_data.gui.colors.raid_black
 RaidGUIControlInfoIcon.TOP_PADDING_DOWN = 5
 RaidGUIControlInfoIcon.TOP_W = 48
 RaidGUIControlInfoIcon.TOP_H = 48
-RaidGUIControlInfoIcon.init = function (self, parent, params)
+function RaidGUIControlInfoIcon:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlInfoIcon.super.init(slot4, self, parent)
@@ -130,7 +130,7 @@ RaidGUIControlInfoIcon.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlInfoIcon._init_panel = function (self)
+function RaidGUIControlInfoIcon:_init_panel()
 	local panel_params = clone(slot2)
 	panel_params.name = panel_params.name .. "_info_icon"
 	slot4 = self._panel
@@ -144,7 +144,7 @@ RaidGUIControlInfoIcon._init_panel = function (self)
 
 	return 
 end
-RaidGUIControlInfoIcon._fit_size = function (self)
+function RaidGUIControlInfoIcon:_fit_size()
 	if not self._params.w then
 		slot4 = self._text
 
@@ -195,7 +195,7 @@ RaidGUIControlInfoIcon._fit_size = function (self)
 
 	return 
 end
-RaidGUIControlInfoIcon.set_icon = function (self, icon, params)
+function RaidGUIControlInfoIcon:set_icon(icon, params)
 	if self._top then
 		slot6 = self._top
 
@@ -234,7 +234,7 @@ RaidGUIControlInfoIcon.set_icon = function (self, icon, params)
 
 	return 
 end
-RaidGUIControlInfoIcon.set_title = function (self, title, params)
+function RaidGUIControlInfoIcon:set_title(title, params)
 	local h = nil
 
 	if self._top then
@@ -306,7 +306,7 @@ RaidGUIControlInfoIcon.set_title = function (self, title, params)
 
 	return 
 end
-RaidGUIControlInfoIcon.set_text = function (self, text, params)
+function RaidGUIControlInfoIcon:set_text(text, params)
 	if self._text then
 		slot6 = self._text
 
@@ -377,7 +377,7 @@ RaidGUIControlInfoIcon.set_text = function (self, text, params)
 
 	return 
 end
-RaidGUIControlInfoIcon.set_x = function (self, x)
+function RaidGUIControlInfoIcon:set_x(x)
 	slot5 = x
 
 	self._object.set_x(slot3, self._object)
@@ -386,7 +386,7 @@ RaidGUIControlInfoIcon.set_x = function (self, x)
 
 	return 
 end
-RaidGUIControlInfoIcon.set_center_x = function (self, x)
+function RaidGUIControlInfoIcon:set_center_x(x)
 	slot5 = x
 
 	self._object.set_center_x(slot3, self._object)
@@ -395,14 +395,14 @@ RaidGUIControlInfoIcon.set_center_x = function (self, x)
 
 	return 
 end
-RaidGUIControlInfoIcon.set_center_y = function (self, y)
+function RaidGUIControlInfoIcon:set_center_y(y)
 	slot5 = y
 
 	self._object.set_center_y(slot3, self._object)
 
 	return 
 end
-RaidGUIControlInfoIcon.set_right = function (self, x)
+function RaidGUIControlInfoIcon:set_right(x)
 	slot5 = x
 
 	self._object.set_right(slot3, self._object)
@@ -411,35 +411,35 @@ RaidGUIControlInfoIcon.set_right = function (self, x)
 
 	return 
 end
-RaidGUIControlInfoIcon.set_y = function (self, y)
+function RaidGUIControlInfoIcon:set_y(y)
 	slot5 = y
 
 	self._object.set_y(slot3, self._object)
 
 	return 
 end
-RaidGUIControlInfoIcon.set_bottom = function (self, bottom)
+function RaidGUIControlInfoIcon:set_bottom(bottom)
 	slot5 = bottom
 
 	self._object.set_bottom(slot3, self._object)
 
 	return 
 end
-RaidGUIControlInfoIcon.set_alpha = function (self, alpha)
+function RaidGUIControlInfoIcon:set_alpha(alpha)
 	slot5 = alpha
 
 	self._object.set_alpha(slot3, self._object)
 
 	return 
 end
-RaidGUIControlInfoIcon.show = function (self)
+function RaidGUIControlInfoIcon:show()
 	slot4 = true
 
 	self._object.set_visible(slot2, self._object)
 
 	return 
 end
-RaidGUIControlInfoIcon.hide = function (self)
+function RaidGUIControlInfoIcon:hide()
 	slot4 = false
 
 	self._object.set_visible(slot2, self._object)

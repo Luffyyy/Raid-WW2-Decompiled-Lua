@@ -7,7 +7,7 @@ slot3 = "CoreMenuStatePrepareLoadingFrontEnd"
 core.import(slot1, core)
 
 InGame = InGame or class()
-InGame.transition = function (self)
+function InGame:transition()
 	local game_state = self.menu_state._game_state
 	slot4 = game_state
 

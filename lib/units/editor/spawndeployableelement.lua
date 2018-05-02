@@ -4,7 +4,7 @@ if not SpawnDeployableUnitElement then
 end
 
 SpawnDeployableUnitElement = slot0
-SpawnDeployableUnitElement.init = function (self, unit)
+function SpawnDeployableUnitElement:init(unit)
 	slot5 = unit
 
 	MissionElement.init(slot3, self)
@@ -16,7 +16,7 @@ SpawnDeployableUnitElement.init = function (self, unit)
 
 	return 
 end
-SpawnDeployableUnitElement._build_panel = function (self, panel, panel_sizer)
+function SpawnDeployableUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

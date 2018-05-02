@@ -4,17 +4,17 @@ if not RaidGUIControlGridItemActive then
 end
 
 RaidGUIControlGridItemActive = slot0
-RaidGUIControlGridItemActive.init = function (self, parent, params, item_data, grid_params)
+function RaidGUIControlGridItemActive:init(parent, params, item_data, grid_params)
 	slot11 = grid_params
 
 	RaidGUIControlGridItemActive.super.init(slot6, self, parent, params, item_data)
 
 	return 
 end
-RaidGUIControlGridItemActive.active = function (self)
+function RaidGUIControlGridItemActive:active()
 	return self._active
 end
-RaidGUIControlGridItemActive.activate = function (self)
+function RaidGUIControlGridItemActive:activate()
 	self._active = true
 	slot3 = self._triangle_markers_panel
 
@@ -22,7 +22,7 @@ RaidGUIControlGridItemActive.activate = function (self)
 
 	return 
 end
-RaidGUIControlGridItemActive.deactivate = function (self)
+function RaidGUIControlGridItemActive:deactivate()
 	self._active = false
 	slot3 = self._triangle_markers_panel
 
@@ -30,14 +30,14 @@ RaidGUIControlGridItemActive.deactivate = function (self)
 
 	return 
 end
-RaidGUIControlGridItemActive.select_on = function (self)
+function RaidGUIControlGridItemActive:select_on()
 	slot3 = self._select_background_panel
 
 	self._select_background_panel.show(slot2)
 
 	return 
 end
-RaidGUIControlGridItemActive.select_off = function (self)
+function RaidGUIControlGridItemActive:select_off()
 	slot3 = self._select_background_panel
 
 	self._select_background_panel.hide(slot2)

@@ -8,21 +8,21 @@ if not ElementEnableSoundEnvironment then
 end
 
 ElementEnableSoundEnvironment = slot0
-ElementEnableSoundEnvironment.init = function (self, ...)
+function ElementEnableSoundEnvironment:init(...)
 	slot3 = self
 
 	ElementEnableSoundEnvironment.super.init(slot2, ...)
 
 	return 
 end
-ElementEnableSoundEnvironment.client_on_executed = function (self, ...)
+function ElementEnableSoundEnvironment:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementEnableSoundEnvironment.on_executed = function (self, instigator)
+function ElementEnableSoundEnvironment:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

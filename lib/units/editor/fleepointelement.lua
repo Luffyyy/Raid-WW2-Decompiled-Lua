@@ -9,7 +9,7 @@ end
 
 FleePointElement = slot0
 FleePointElement.SAVE_UNIT_ROTATION = false
-FleePointElement.init = function (self, unit)
+function FleePointElement:init(unit)
 	slot5 = unit
 
 	FleePointElement.super.init(slot3, self)
@@ -35,7 +35,7 @@ FleePointElement.init = function (self, unit)
 
 	return 
 end
-FleePointElement._build_panel = function (self, panel, panel_sizer)
+function FleePointElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -63,7 +63,7 @@ FleePointElement._build_panel = function (self, panel, panel_sizer)
 
 	return 
 end
-FleePointElement.test_element = function (self)
+function FleePointElement:test_element()
 	slot3 = managers.navigation
 
 	if not managers.navigation.is_data_ready(slot2) then
@@ -132,7 +132,7 @@ FleePointElement.test_element = function (self)
 
 	return 
 end
-FleePointElement.stop_test_element = function (self)
+function FleePointElement:stop_test_element()
 
 	-- Decompilation error in this vicinity:
 	slot3 = self._enemies

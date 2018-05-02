@@ -4,7 +4,7 @@ if not SpawnCivilianGroupUnitElement then
 end
 
 SpawnCivilianGroupUnitElement = slot0
-SpawnCivilianGroupUnitElement.init = function (self, unit)
+function SpawnCivilianGroupUnitElement:init(unit)
 	slot5 = unit
 
 	SpawnCivilianGroupUnitElement.super.init(slot3, self)
@@ -36,17 +36,17 @@ SpawnCivilianGroupUnitElement.init = function (self, unit)
 
 	return 
 end
-SpawnCivilianGroupUnitElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function SpawnCivilianGroupUnitElement:draw_links(t, dt, selected_unit, all_units)
 	slot11 = all_units
 
 	SpawnCivilianGroupUnitElement.super.draw_links(slot6, self, t, dt, selected_unit)
 
 	return 
 end
-SpawnCivilianGroupUnitElement.update_editing = function (self)
+function SpawnCivilianGroupUnitElement:update_editing()
 	return 
 end
-SpawnCivilianGroupUnitElement.update_selected = function (self, t, dt, selected_unit, all_units)
+function SpawnCivilianGroupUnitElement:update_selected(t, dt, selected_unit, all_units)
 	slot7 = self._hed.elements
 
 	for _, id in ipairs(slot6) do
@@ -68,7 +68,7 @@ SpawnCivilianGroupUnitElement.update_selected = function (self, t, dt, selected_
 
 	return 
 end
-SpawnCivilianGroupUnitElement.add_element = function (self)
+function SpawnCivilianGroupUnitElement:add_element()
 	slot4 = {
 		ray_type = "editor",
 		mask = 10
@@ -98,7 +98,7 @@ SpawnCivilianGroupUnitElement.add_element = function (self)
 
 	return 
 end
-SpawnCivilianGroupUnitElement.remove_links = function (self, unit)
+function SpawnCivilianGroupUnitElement:remove_links(unit)
 	slot4 = self._hed.elements
 
 	for _, id in ipairs(slot3) do
@@ -113,7 +113,7 @@ SpawnCivilianGroupUnitElement.remove_links = function (self, unit)
 
 	return 
 end
-SpawnCivilianGroupUnitElement.get_links_to_unit = function (self, ...)
+function SpawnCivilianGroupUnitElement:get_links_to_unit(...)
 	slot3 = self
 
 	SpawnCivilianGroupUnitElement.super.get_links_to_unit(slot2, ...)
@@ -124,7 +124,7 @@ SpawnCivilianGroupUnitElement.get_links_to_unit = function (self, ...)
 
 	return 
 end
-SpawnCivilianGroupUnitElement.add_triggers = function (self, vc)
+function SpawnCivilianGroupUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "add_element"
 
@@ -132,7 +132,7 @@ SpawnCivilianGroupUnitElement.add_triggers = function (self, vc)
 
 	return 
 end
-SpawnCivilianGroupUnitElement._build_panel = function (self, panel, panel_sizer)
+function SpawnCivilianGroupUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

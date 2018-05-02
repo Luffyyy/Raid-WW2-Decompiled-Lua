@@ -4,7 +4,7 @@ if not WhisperStateUnitElement then
 end
 
 WhisperStateUnitElement = slot0
-WhisperStateUnitElement.init = function (self, unit)
+function WhisperStateUnitElement:init(unit)
 	slot5 = unit
 
 	WhisperStateUnitElement.super.init(slot3, self)
@@ -16,7 +16,7 @@ WhisperStateUnitElement.init = function (self, unit)
 
 	return 
 end
-WhisperStateUnitElement._build_panel = function (self, panel, panel_sizer)
+function WhisperStateUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

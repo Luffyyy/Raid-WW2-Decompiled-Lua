@@ -4,7 +4,7 @@ if not SelectWorkView then
 end
 
 SelectWorkView = slot0
-SelectWorkView.init = function (self, ...)
+function SelectWorkView:init(...)
 	slot11 = 0
 	slot12 = 0
 	slot9 = "DEFAULT_DIALOG_STYLE,RESIZE_BORDER,STAY_ON_TOP"
@@ -242,7 +242,7 @@ SelectWorkView.init = function (self, ...)
 
 	return 
 end
-SelectWorkView.build_cbs = function (self)
+function SelectWorkView:build_cbs()
 	self._continents_cbs = {}
 	local continents = managers.editor.continents(slot2)
 	self._continent_names = {}
@@ -287,7 +287,7 @@ SelectWorkView.build_cbs = function (self)
 
 	return 
 end
-SelectWorkView.key_delete = function (self, ctrlr, event)
+function SelectWorkView:key_delete(ctrlr, event)
 	slot5 = event
 
 	event.skip(slot4)
@@ -303,7 +303,7 @@ SelectWorkView.key_delete = function (self, ctrlr, event)
 
 	return 
 end
-SelectWorkView.key_cancel = function (self, ctrlr, event)
+function SelectWorkView:key_cancel(ctrlr, event)
 	slot5 = event
 
 	event.skip(slot4)
@@ -319,14 +319,14 @@ SelectWorkView.key_cancel = function (self, ctrlr, event)
 
 	return 
 end
-SelectWorkView.on_continent_cb = function (self)
+function SelectWorkView:on_continent_cb()
 	slot3 = self
 
 	self.fill_views_list(slot2)
 
 	return 
 end
-SelectWorkView.on_all_continents = function (self)
+function SelectWorkView:on_all_continents()
 	slot3 = self._continents_cbs
 
 	for name, cb in pairs(slot2) do
@@ -341,7 +341,7 @@ SelectWorkView.on_all_continents = function (self)
 
 	return 
 end
-SelectWorkView.on_none_continents = function (self)
+function SelectWorkView:on_none_continents()
 	slot3 = self._continents_cbs
 
 	for name, cb in pairs(slot2) do
@@ -356,7 +356,7 @@ SelectWorkView.on_none_continents = function (self)
 
 	return 
 end
-SelectWorkView.on_invert_continents = function (self)
+function SelectWorkView:on_invert_continents()
 	slot3 = self._continents_cbs
 
 	for name, cb in pairs(slot2) do
@@ -372,7 +372,7 @@ SelectWorkView.on_invert_continents = function (self)
 
 	return 
 end
-SelectWorkView.on_delete = function (self)
+function SelectWorkView:on_delete()
 	slot3 = self._list
 	local index = self._list.selected_item(slot2)
 
@@ -394,7 +394,7 @@ SelectWorkView.on_delete = function (self)
 
 	return 
 end
-SelectWorkView.on_set_info = function (self)
+function SelectWorkView:on_set_info()
 	slot3 = self._list
 	local index = self._list.selected_item(slot2)
 
@@ -409,7 +409,7 @@ SelectWorkView.on_set_info = function (self)
 
 	return 
 end
-SelectWorkView.on_mark_view = function (self)
+function SelectWorkView:on_mark_view()
 	local index = self._list.selected_item(slot2)
 	local j = self._list.get_item_data_ref(self._list, self._list)
 	local view = self._views[j].view
@@ -419,14 +419,14 @@ SelectWorkView.on_mark_view = function (self)
 
 	return 
 end
-SelectWorkView.on_select_view = function (self)
+function SelectWorkView:on_select_view()
 	slot3 = self
 
 	self.on_goto(slot2)
 
 	return 
 end
-SelectWorkView.on_goto = function (self)
+function SelectWorkView:on_goto()
 	slot3 = self._list
 	local index = self._list.selected_item(slot2)
 
@@ -442,28 +442,28 @@ SelectWorkView.on_goto = function (self)
 
 	return 
 end
-SelectWorkView.on_add = function (self)
+function SelectWorkView:on_add()
 	slot3 = managers.editor
 
 	managers.editor.on_add_workview(slot2)
 
 	return 
 end
-SelectWorkView.update_filter = function (self)
+function SelectWorkView:update_filter()
 	slot3 = self
 
 	self.fill_views_list(slot2)
 
 	return 
 end
-SelectWorkView.workview_added = function (self)
+function SelectWorkView:workview_added()
 	slot3 = self
 
 	self.fill_views_list(slot2)
 
 	return 
 end
-SelectWorkView.fill_views_list = function (self)
+function SelectWorkView:fill_views_list()
 	self._list.delete_all_items(slot2)
 
 	local j = 1
@@ -517,28 +517,28 @@ SelectWorkView.fill_views_list = function (self)
 
 	return 
 end
-SelectWorkView.reset = function (self)
+function SelectWorkView:reset()
 	slot3 = self
 
 	self.fill_views_list(slot2)
 
 	return 
 end
-SelectWorkView.freeze = function (self)
+function SelectWorkView:freeze()
 	slot3 = self._list
 
 	self._list.freeze(slot2)
 
 	return 
 end
-SelectWorkView.thaw = function (self)
+function SelectWorkView:thaw()
 	slot3 = self._list
 
 	self._list.thaw(slot2)
 
 	return 
 end
-SelectWorkView.recreate = function (self)
+function SelectWorkView:recreate()
 	slot3 = self._continents_cbs
 
 	for name, cb in pairs(slot2) do

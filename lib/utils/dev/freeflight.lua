@@ -18,7 +18,7 @@ if not FreeFlight then
 end
 
 FreeFlight = slot0
-FreeFlight.enable = function (self, ...)
+function FreeFlight:enable(...)
 	slot3 = self
 
 	FreeFlight.super.enable(slot2, ...)
@@ -31,7 +31,7 @@ FreeFlight.enable = function (self, ...)
 
 	return 
 end
-FreeFlight.disable = function (self, ...)
+function FreeFlight:disable(...)
 	slot3 = self
 
 	FreeFlight.super.disable(slot2, ...)
@@ -44,14 +44,14 @@ FreeFlight.disable = function (self, ...)
 
 	return 
 end
-FreeFlight._pause = function (self)
+function FreeFlight:_pause()
 	slot4 = true
 
 	Application.set_pause(slot2, Application)
 
 	return 
 end
-FreeFlight._unpause = function (self)
+function FreeFlight:_unpause()
 	slot4 = false
 
 	Application.set_pause(slot2, Application)

@@ -4,7 +4,7 @@ if not BlurZoneUnitElement then
 end
 
 BlurZoneUnitElement = slot0
-BlurZoneUnitElement.init = function (self, unit)
+function BlurZoneUnitElement:init(unit)
 	slot5 = unit
 
 	BlurZoneUnitElement.super.init(slot3, self)
@@ -26,7 +26,7 @@ BlurZoneUnitElement.init = function (self, unit)
 
 	return 
 end
-BlurZoneUnitElement.update_selected = function (self, t, dt, selected_unit, all_units)
+function BlurZoneUnitElement:update_selected(t, dt, selected_unit, all_units)
 	local brush = Draw.brush(slot6)
 	slot8 = brush
 	slot14 = 1
@@ -67,7 +67,7 @@ BlurZoneUnitElement.update_selected = function (self, t, dt, selected_unit, all_
 
 	return 
 end
-BlurZoneUnitElement._build_panel = function (self, panel, panel_sizer)
+function BlurZoneUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

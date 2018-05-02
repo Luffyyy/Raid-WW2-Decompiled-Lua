@@ -29,7 +29,7 @@ SpecialObjectiveUnitElement._AI_SO_types = {
 	"AI_spotter",
 	"AI_turret"
 }
-SpecialObjectiveUnitElement.init = function (self, unit)
+function SpecialObjectiveUnitElement:init(unit)
 	slot5 = unit
 
 	SpecialObjectiveUnitElement.super.init(slot3, self)
@@ -164,7 +164,7 @@ SpecialObjectiveUnitElement.init = function (self, unit)
 
 	return 
 end
-SpecialObjectiveUnitElement.post_init = function (self, ...)
+function SpecialObjectiveUnitElement:post_init(...)
 	slot3 = self
 
 	SpecialObjectiveUnitElement.super.post_init(slot2, ...)
@@ -180,7 +180,7 @@ SpecialObjectiveUnitElement.post_init = function (self, ...)
 
 	return 
 end
-SpecialObjectiveUnitElement.test_element = function (self)
+function SpecialObjectiveUnitElement:test_element()
 	slot3 = managers.navigation
 
 	if not managers.navigation.is_data_ready(slot2) then
@@ -262,7 +262,7 @@ SpecialObjectiveUnitElement.test_element = function (self)
 
 	return 
 end
-SpecialObjectiveUnitElement.stop_test_element = function (self)
+function SpecialObjectiveUnitElement:stop_test_element()
 
 	-- Decompilation error in this vicinity:
 	slot3 = self._enemies
@@ -277,7 +277,7 @@ SpecialObjectiveUnitElement.stop_test_element = function (self)
 	slot1 = print
 	slot3 = "Stop test time"
 end
-SpecialObjectiveUnitElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function SpecialObjectiveUnitElement:draw_links(t, dt, selected_unit, all_units)
 	if self._hed._patrol_group then
 		return 
 	end
@@ -292,7 +292,7 @@ SpecialObjectiveUnitElement.draw_links = function (self, t, dt, selected_unit, a
 
 	return 
 end
-SpecialObjectiveUnitElement.update_selected = function (self, t, dt, selected_unit, all_units)
+function SpecialObjectiveUnitElement:update_selected(t, dt, selected_unit, all_units)
 	local brush = Draw.brush(slot6)
 	slot8 = brush
 	slot14 = 1
@@ -360,7 +360,7 @@ SpecialObjectiveUnitElement.update_selected = function (self, t, dt, selected_un
 
 	return 
 end
-SpecialObjectiveUnitElement._highlight_if_outside_the_nav_field = function (self, t)
+function SpecialObjectiveUnitElement:_highlight_if_outside_the_nav_field(t)
 	slot4 = managers.navigation
 
 	if managers.navigation.is_data_ready(slot3) then
@@ -397,7 +397,7 @@ SpecialObjectiveUnitElement._highlight_if_outside_the_nav_field = function (self
 
 	return 
 end
-SpecialObjectiveUnitElement.update_unselected = function (self, t, dt, selected_unit, all_units)
+function SpecialObjectiveUnitElement:update_unselected(t, dt, selected_unit, all_units)
 	if self._hed.followup_elements then
 		local followup_elements = self._hed.followup_elements
 		local i = #followup_elements
@@ -448,7 +448,7 @@ SpecialObjectiveUnitElement.update_unselected = function (self, t, dt, selected_
 
 	return 
 end
-SpecialObjectiveUnitElement._draw_follow_up = function (self, selected_unit, all_units)
+function SpecialObjectiveUnitElement:_draw_follow_up(selected_unit, all_units)
 	if self._hed.followup_elements then
 		slot5 = self._hed.followup_elements
 
@@ -472,7 +472,7 @@ SpecialObjectiveUnitElement._draw_follow_up = function (self, selected_unit, all
 
 	return 
 end
-SpecialObjectiveUnitElement.update_editing = function (self)
+function SpecialObjectiveUnitElement:update_editing()
 	slot3 = self
 
 	self._so_raycast(slot2)
@@ -491,7 +491,7 @@ SpecialObjectiveUnitElement.update_editing = function (self)
 
 	return 
 end
-SpecialObjectiveUnitElement._so_raycast = function (self)
+function SpecialObjectiveUnitElement:_so_raycast()
 	slot4 = {
 		ray_type = "editor",
 		mask = 10
@@ -506,7 +506,7 @@ SpecialObjectiveUnitElement._so_raycast = function (self)
 
 	return nil
 end
-SpecialObjectiveUnitElement._spawn_raycast = function (self)
+function SpecialObjectiveUnitElement:_spawn_raycast()
 
 	-- Decompilation error in this vicinity:
 	slot4 = {
@@ -526,7 +526,7 @@ SpecialObjectiveUnitElement._spawn_raycast = function (self)
 
 	return id
 end
-SpecialObjectiveUnitElement._turret_raycast = function (self)
+function SpecialObjectiveUnitElement:_turret_raycast()
 	slot4 = {
 		ray_type = "body",
 		mask = 1
@@ -552,7 +552,7 @@ SpecialObjectiveUnitElement._turret_raycast = function (self)
 
 	return id
 end
-SpecialObjectiveUnitElement._raycast = function (self)
+function SpecialObjectiveUnitElement:_raycast()
 	slot4 = 0
 	local from = managers.editor.get_cursor_look_point(slot2, managers.editor)
 	slot5 = 100000
@@ -571,7 +571,7 @@ SpecialObjectiveUnitElement._raycast = function (self)
 
 	return nil
 end
-SpecialObjectiveUnitElement._lmb = function (self)
+function SpecialObjectiveUnitElement:_lmb()
 	slot3 = self
 	local id = self._so_raycast(slot2)
 
@@ -654,7 +654,7 @@ SpecialObjectiveUnitElement._lmb = function (self)
 
 	return 
 end
-SpecialObjectiveUnitElement.add_triggers = function (self, vc)
+function SpecialObjectiveUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "_lmb"
 
@@ -662,14 +662,14 @@ SpecialObjectiveUnitElement.add_triggers = function (self, vc)
 
 	return 
 end
-SpecialObjectiveUnitElement.selected = function (self)
+function SpecialObjectiveUnitElement:selected()
 	slot3 = self
 
 	SpecialObjectiveUnitElement.super.selected(slot2)
 
 	return 
 end
-SpecialObjectiveUnitElement._apply_preset = function (self, params)
+function SpecialObjectiveUnitElement:_apply_preset(params)
 	local value = params.ctrlr.get_value(slot3)
 	slot9 = "YES_NO,ICON_QUESTION"
 	slot14 = 0
@@ -695,7 +695,7 @@ SpecialObjectiveUnitElement._apply_preset = function (self, params)
 
 	return 
 end
-SpecialObjectiveUnitElement._enable_all_nav_link_filters = function (self)
+function SpecialObjectiveUnitElement:_enable_all_nav_link_filters()
 	slot3 = self._nav_link_filter_check_boxes
 
 	for name, ctrlr in pairs(slot2) do
@@ -713,7 +713,7 @@ SpecialObjectiveUnitElement._enable_all_nav_link_filters = function (self)
 
 	return 
 end
-SpecialObjectiveUnitElement._clear_all_nav_link_filters = function (self)
+function SpecialObjectiveUnitElement:_clear_all_nav_link_filters()
 	slot3 = self._nav_link_filter_check_boxes
 
 	for name, ctrlr in pairs(slot2) do
@@ -731,7 +731,7 @@ SpecialObjectiveUnitElement._clear_all_nav_link_filters = function (self)
 
 	return 
 end
-SpecialObjectiveUnitElement._toggle_nav_link_filter_value = function (self, params)
+function SpecialObjectiveUnitElement:_toggle_nav_link_filter_value(params)
 	slot4 = params.ctrlr
 	local value = params.ctrlr.get_value(slot3)
 
@@ -759,7 +759,7 @@ SpecialObjectiveUnitElement._toggle_nav_link_filter_value = function (self, para
 
 	return 
 end
-SpecialObjectiveUnitElement._build_panel = function (self, panel, panel_sizer)
+function SpecialObjectiveUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -986,7 +986,7 @@ SpecialObjectiveUnitElement._build_panel = function (self, panel, panel_sizer)
 
 	return 
 end
-SpecialObjectiveUnitElement.add_to_mission_package = function (self)
+function SpecialObjectiveUnitElement:add_to_mission_package()
 	return 
 end
 

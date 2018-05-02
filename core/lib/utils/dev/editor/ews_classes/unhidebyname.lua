@@ -6,7 +6,7 @@ if not UnhideByName then
 end
 
 UnhideByName = slot0
-UnhideByName.init = function (self, ...)
+function UnhideByName:init(...)
 	slot11 = 0
 	slot12 = 0
 	slot9 = "DEFAULT_DIALOG_STYLE,RESIZE_BORDER"
@@ -292,7 +292,7 @@ UnhideByName.init = function (self, ...)
 
 	return 
 end
-UnhideByName.build_continent_cbs = function (self)
+function UnhideByName:build_continent_cbs()
 	self._continents_cbs = {}
 	local continents = managers.editor.continents(slot2)
 	self._continent_names = {}
@@ -337,14 +337,14 @@ UnhideByName.build_continent_cbs = function (self)
 
 	return 
 end
-UnhideByName.on_continent_cb = function (self)
+function UnhideByName:on_continent_cb()
 	slot3 = self
 
 	self.fill_unit_list(slot2)
 
 	return 
 end
-UnhideByName.on_all_layers = function (self)
+function UnhideByName:on_all_layers()
 	slot3 = self._layer_cbs
 
 	for name, cb in pairs(slot2) do
@@ -359,7 +359,7 @@ UnhideByName.on_all_layers = function (self)
 
 	return 
 end
-UnhideByName.on_none_layers = function (self)
+function UnhideByName:on_none_layers()
 	slot3 = self._layer_cbs
 
 	for name, cb in pairs(slot2) do
@@ -374,7 +374,7 @@ UnhideByName.on_none_layers = function (self)
 
 	return 
 end
-UnhideByName.on_invert_layers = function (self)
+function UnhideByName:on_invert_layers()
 	slot3 = self._layer_cbs
 
 	for name, cb in pairs(slot2) do
@@ -390,7 +390,7 @@ UnhideByName.on_invert_layers = function (self)
 
 	return 
 end
-UnhideByName.on_all_continents = function (self)
+function UnhideByName:on_all_continents()
 	slot3 = self._continents_cbs
 
 	for name, cb in pairs(slot2) do
@@ -405,7 +405,7 @@ UnhideByName.on_all_continents = function (self)
 
 	return 
 end
-UnhideByName.on_none_continents = function (self)
+function UnhideByName:on_none_continents()
 	slot3 = self._continents_cbs
 
 	for name, cb in pairs(slot2) do
@@ -420,7 +420,7 @@ UnhideByName.on_none_continents = function (self)
 
 	return 
 end
-UnhideByName.on_invert_continents = function (self)
+function UnhideByName:on_invert_continents()
 	slot3 = self._continents_cbs
 
 	for name, cb in pairs(slot2) do
@@ -436,7 +436,7 @@ UnhideByName.on_invert_continents = function (self)
 
 	return 
 end
-UnhideByName.key_cancel = function (self, ctrlr, event)
+function UnhideByName:key_cancel(ctrlr, event)
 	slot5 = event
 
 	event.skip(slot4)
@@ -452,21 +452,21 @@ UnhideByName.key_cancel = function (self, ctrlr, event)
 
 	return 
 end
-UnhideByName.on_layer_cb = function (self, data)
+function UnhideByName:on_layer_cb(data)
 	slot4 = self
 
 	self.fill_unit_list(slot3)
 
 	return 
 end
-UnhideByName.on_cancel = function (self)
+function UnhideByName:on_cancel()
 	slot4 = false
 
 	self._dialog.set_visible(slot2, self._dialog)
 
 	return 
 end
-UnhideByName.on_unhide = function (self)
+function UnhideByName:on_unhide()
 	slot3 = managers.editor
 
 	managers.editor.freeze_gui_lists(slot2)
@@ -491,7 +491,7 @@ UnhideByName.on_unhide = function (self)
 
 	return 
 end
-UnhideByName.on_delete = function (self)
+function UnhideByName:on_delete()
 	slot3 = managers.editor
 
 	managers.editor.freeze_gui_lists(slot2)
@@ -510,10 +510,10 @@ UnhideByName.on_delete = function (self)
 
 	return 
 end
-UnhideByName.on_mark_unit = function (self)
+function UnhideByName:on_mark_unit()
 	return 
 end
-UnhideByName._selected_item_units = function (self)
+function UnhideByName:_selected_item_units()
 	local units = {}
 	slot6 = self._list
 
@@ -527,7 +527,7 @@ UnhideByName._selected_item_units = function (self)
 
 	return units
 end
-UnhideByName._selected_item_unit = function (self)
+function UnhideByName:_selected_item_unit()
 	slot3 = self._list
 	local index = self._list.selected_item(slot2)
 
@@ -539,21 +539,21 @@ UnhideByName._selected_item_unit = function (self)
 
 	return 
 end
-UnhideByName.select_unit = function (self, unit)
+function UnhideByName:select_unit(unit)
 	slot5 = unit
 
 	managers.editor.select_unit(slot3, managers.editor)
 
 	return 
 end
-UnhideByName.hid_unit = function (self, unit)
+function UnhideByName:hid_unit(unit)
 	slot5 = unit
 
 	self._append_unit_to_list(slot3, self)
 
 	return 
 end
-UnhideByName._append_unit_to_list = function (self, unit)
+function UnhideByName:_append_unit_to_list(unit)
 	slot7 = unit
 	local i = self._list.append_item(slot3, self._list)
 	local j = #self._units + 1
@@ -564,14 +564,14 @@ UnhideByName._append_unit_to_list = function (self, unit)
 
 	return 
 end
-UnhideByName.unhid_unit = function (self, unit)
+function UnhideByName:unhid_unit(unit)
 	slot5 = unit
 
 	self._remove_unit_from_list(slot3, self)
 
 	return 
 end
-UnhideByName._remove_unit_from_list = function (self, unit)
+function UnhideByName:_remove_unit_from_list(unit)
 	slot5 = self._list
 
 	for i = 0, self._list.item_count(slot4) - 1, 1 do
@@ -588,7 +588,7 @@ UnhideByName._remove_unit_from_list = function (self, unit)
 
 	return 
 end
-UnhideByName.unit_name_changed = function (self, unit)
+function UnhideByName:unit_name_changed(unit)
 	slot5 = self._list
 
 	for i = 0, self._list.item_count(slot4) - 1, 1 do
@@ -654,14 +654,14 @@ UnhideByName.unit_name_changed = function (self, unit)
 
 	return 
 end
-UnhideByName.update_filter = function (self)
+function UnhideByName:update_filter()
 	slot3 = self
 
 	self.fill_unit_list(slot2)
 
 	return 
 end
-UnhideByName.fill_unit_list = function (self)
+function UnhideByName:fill_unit_list()
 	slot3 = self._list
 
 	self._list.freeze(slot2)
@@ -711,7 +711,7 @@ UnhideByName.fill_unit_list = function (self)
 
 	return 
 end
-UnhideByName._continent_ok = function (self, unit)
+function UnhideByName:_continent_ok(unit)
 	slot4 = unit
 	local continent = unit.unit_data(slot3).continent
 
@@ -729,28 +729,28 @@ UnhideByName._continent_ok = function (self, unit)
 
 	return slot3
 end
-UnhideByName.reset = function (self)
+function UnhideByName:reset()
 	slot3 = self
 
 	self.fill_unit_list(slot2)
 
 	return 
 end
-UnhideByName.freeze = function (self)
+function UnhideByName:freeze()
 	slot3 = self._list
 
 	self._list.freeze(slot2)
 
 	return 
 end
-UnhideByName.thaw = function (self)
+function UnhideByName:thaw()
 	slot3 = self._list
 
 	self._list.thaw(slot2)
 
 	return 
 end
-UnhideByName.recreate = function (self)
+function UnhideByName:recreate()
 	slot3 = self._continents_cbs
 
 	for name, cb in pairs(slot2) do
@@ -787,35 +787,35 @@ HideByName = slot0
 HideByName.TITLE = "Hide by Name"
 HideByName.BTN_NAME = "Hide"
 HideByName.IS_HIDE_BY_NAME = true
-HideByName.init = function (self, ...)
+function HideByName:init(...)
 	slot3 = self
 
 	HideByName.super.init(slot2, ...)
 
 	return 
 end
-HideByName.hid_unit = function (self, unit)
+function HideByName:hid_unit(unit)
 	slot5 = unit
 
 	self._remove_unit_from_list(slot3, self)
 
 	return 
 end
-HideByName.unhid_unit = function (self, unit)
+function HideByName:unhid_unit(unit)
 	slot5 = unit
 
 	self._append_unit_to_list(slot3, self)
 
 	return 
 end
-HideByName.spawned_unit = function (self, unit)
+function HideByName:spawned_unit(unit)
 	slot5 = unit
 
 	self._append_unit_to_list(slot3, self)
 
 	return 
 end
-HideByName.deleted_unit = function (self, unit)
+function HideByName:deleted_unit(unit)
 	slot5 = unit
 
 	self._remove_unit_from_list(slot3, self)

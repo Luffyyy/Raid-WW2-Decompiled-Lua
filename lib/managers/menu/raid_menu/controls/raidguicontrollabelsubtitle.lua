@@ -4,7 +4,7 @@ if not RaidGUIControlLabelSubtitle then
 end
 
 RaidGUIControlLabelSubtitle = slot0
-RaidGUIControlLabelSubtitle.init = function (self, parent, params)
+function RaidGUIControlLabelSubtitle:init(parent, params)
 	params.font = tweak_data.gui.fonts.din_compressed
 	params.font_size = tweak_data.gui.font_sizes.subtitle
 	params.color = tweak_data.gui.colors.raid_white

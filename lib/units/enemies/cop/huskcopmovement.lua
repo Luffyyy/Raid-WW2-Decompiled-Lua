@@ -6,7 +6,7 @@ if not HuskCopMovement then
 end
 
 HuskCopMovement = slot0
-HuskCopMovement.init = function (self, unit)
+function HuskCopMovement:init(unit)
 	slot5 = unit
 
 	CopMovement.init(slot3, self)
@@ -17,7 +17,7 @@ HuskCopMovement.init = function (self, unit)
 
 	return 
 end
-HuskCopMovement._upd_actions = function (self, t)
+function HuskCopMovement:_upd_actions(t)
 	slot5 = t
 
 	CopMovement._upd_actions(slot3, self)
@@ -28,7 +28,7 @@ HuskCopMovement._upd_actions = function (self, t)
 
 	return 
 end
-HuskCopMovement.action_request = function (self, action_desc)
+function HuskCopMovement:action_request(action_desc)
 	slot5 = false
 
 	self.enable_update(slot3, self)
@@ -73,7 +73,7 @@ HuskCopMovement.action_request = function (self, action_desc)
 
 	return 
 end
-HuskCopMovement.chk_action_forbidden = function (self, action_desc)
+function HuskCopMovement:chk_action_forbidden(action_desc)
 	slot4 = TimerManager
 	slot4 = TimerManager.game(slot3)
 	local t = TimerManager.game(slot3).time(slot3)

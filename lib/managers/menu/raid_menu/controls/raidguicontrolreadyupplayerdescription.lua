@@ -4,7 +4,7 @@ if not RaidGUIControlReadyUpPlayerDescription then
 end
 
 RaidGUIControlReadyUpPlayerDescription = slot0
-RaidGUIControlReadyUpPlayerDescription.init = function (self, parent, params)
+function RaidGUIControlReadyUpPlayerDescription:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlReadyUpPlayerDescription.super.init(slot4, self, parent)
@@ -19,7 +19,7 @@ RaidGUIControlReadyUpPlayerDescription.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlReadyUpPlayerDescription._layout = function (self)
+function RaidGUIControlReadyUpPlayerDescription:_layout()
 	local class_icon = tweak_data.gui.icons.ico_class_assault
 	slot5 = {
 		name = "class_icon",
@@ -132,7 +132,7 @@ RaidGUIControlReadyUpPlayerDescription._layout = function (self)
 
 	return 
 end
-RaidGUIControlReadyUpPlayerDescription.set_data = function (self, data)
+function RaidGUIControlReadyUpPlayerDescription:set_data(data)
 	if not data then
 		return 
 	end
@@ -181,10 +181,10 @@ RaidGUIControlReadyUpPlayerDescription.set_data = function (self, data)
 
 	return 
 end
-RaidGUIControlReadyUpPlayerDescription.params = function (self)
+function RaidGUIControlReadyUpPlayerDescription:params()
 	return self._params
 end
-RaidGUIControlReadyUpPlayerDescription.highlight_on = function (self)
+function RaidGUIControlReadyUpPlayerDescription:highlight_on()
 	if not self._enabled then
 		return 
 	end
@@ -203,7 +203,7 @@ RaidGUIControlReadyUpPlayerDescription.highlight_on = function (self)
 
 	return 
 end
-RaidGUIControlReadyUpPlayerDescription.highlight_off = function (self)
+function RaidGUIControlReadyUpPlayerDescription:highlight_off()
 	if self._selected then
 		return 
 	end
@@ -216,7 +216,7 @@ RaidGUIControlReadyUpPlayerDescription.highlight_off = function (self)
 
 	return 
 end
-RaidGUIControlReadyUpPlayerDescription.on_mouse_clicked = function (self)
+function RaidGUIControlReadyUpPlayerDescription:on_mouse_clicked()
 	if not self._enabled then
 		return 
 	end
@@ -233,7 +233,7 @@ RaidGUIControlReadyUpPlayerDescription.on_mouse_clicked = function (self)
 
 	return 
 end
-RaidGUIControlReadyUpPlayerDescription.select_on = function (self)
+function RaidGUIControlReadyUpPlayerDescription:select_on()
 	slot4 = true
 
 	self.set_selected(slot2, self)
@@ -248,7 +248,7 @@ RaidGUIControlReadyUpPlayerDescription.select_on = function (self)
 
 	return 
 end
-RaidGUIControlReadyUpPlayerDescription.select_off = function (self)
+function RaidGUIControlReadyUpPlayerDescription:select_off()
 	slot4 = false
 
 	self.set_selected(slot2, self)
@@ -263,7 +263,7 @@ RaidGUIControlReadyUpPlayerDescription.select_off = function (self)
 
 	return 
 end
-RaidGUIControlReadyUpPlayerDescription.set_state = function (self, state)
+function RaidGUIControlReadyUpPlayerDescription:set_state(state)
 	if state == "ready" then
 		slot4 = self._status_label
 		slot9 = true
@@ -341,7 +341,7 @@ RaidGUIControlReadyUpPlayerDescription.set_state = function (self, state)
 
 	return 
 end
-RaidGUIControlReadyUpPlayerDescription.set_challenge_card_selected = function (self, selected)
+function RaidGUIControlReadyUpPlayerDescription:set_challenge_card_selected(selected)
 	if selected then
 		slot5 = tweak_data.gui.icons.ready_up_card_selected_active.texture
 		slot8 = tweak_data.gui.icons.ready_up_card_selected_active.texture_rect

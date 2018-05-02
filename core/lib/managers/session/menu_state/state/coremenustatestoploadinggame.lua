@@ -15,7 +15,7 @@ slot3 = "CoreMenuStateInGame"
 core.import(slot1, core)
 
 StopLoadingGame = StopLoadingGame or class()
-StopLoadingGame.init = function (self)
+function StopLoadingGame:init()
 	local menu_handler = self.menu_state._menu_handler
 	slot4 = CoreSessionResponse.Done
 	self._response = CoreSessionResponse.Done.new(slot3)
@@ -25,14 +25,14 @@ StopLoadingGame.init = function (self)
 
 	return 
 end
-StopLoadingGame.destroy = function (self)
+function StopLoadingGame:destroy()
 	slot3 = self._response
 
 	self._response.destroy(slot2)
 
 	return 
 end
-StopLoadingGame.transition = function (self)
+function StopLoadingGame:transition()
 	slot3 = self._response
 
 	if not self._response.is_done(slot2) then

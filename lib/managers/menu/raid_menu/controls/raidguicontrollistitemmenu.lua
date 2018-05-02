@@ -4,7 +4,7 @@ if not RaidGUIControlListItemMenu then
 end
 
 RaidGUIControlListItemMenu = slot0
-RaidGUIControlListItemMenu.init = function (self, parent, params, data)
+function RaidGUIControlListItemMenu:init(parent, params, data)
 	slot8 = params
 
 	RaidGUIControlListItemMenu.super.init(slot5, self, parent)
@@ -106,7 +106,7 @@ RaidGUIControlListItemMenu.init = function (self, parent, params, data)
 
 	return 
 end
-RaidGUIControlListItemMenu._layout_breadcrumb = function (self)
+function RaidGUIControlListItemMenu:_layout_breadcrumb()
 	slot4 = self._data.breadcrumb
 	self._breadcrumb = self._object.breadcrumb(slot2, self._object)
 	slot3 = self._breadcrumb
@@ -121,10 +121,10 @@ RaidGUIControlListItemMenu._layout_breadcrumb = function (self)
 
 	return 
 end
-RaidGUIControlListItemMenu._get_font_desc = function (self)
+function RaidGUIControlListItemMenu:_get_font_desc()
 	return tweak_data.gui.fonts.din_compressed, tweak_data.gui.font_sizes.menu_list
 end
-RaidGUIControlListItemMenu.on_mouse_released = function (self, button)
+function RaidGUIControlListItemMenu:on_mouse_released(button)
 	if self._on_click_callback then
 		slot6 = self._data
 
@@ -145,7 +145,7 @@ RaidGUIControlListItemMenu.on_mouse_released = function (self, button)
 
 	return true
 end
-RaidGUIControlListItemMenu.mouse_double_click = function (self, o, button, x, y)
+function RaidGUIControlListItemMenu:mouse_double_click(o, button, x, y)
 	if self._params.no_click then
 		return 
 	end
@@ -160,10 +160,10 @@ RaidGUIControlListItemMenu.mouse_double_click = function (self, o, button, x, y)
 
 	return 
 end
-RaidGUIControlListItemMenu.selected = function (self)
+function RaidGUIControlListItemMenu:selected()
 	return self._selected
 end
-RaidGUIControlListItemMenu.select = function (self, dont_trigger_selected_callback)
+function RaidGUIControlListItemMenu:select(dont_trigger_selected_callback)
 	if self._params.no_click then
 		return 
 	end
@@ -187,7 +187,7 @@ RaidGUIControlListItemMenu.select = function (self, dont_trigger_selected_callba
 
 	return 
 end
-RaidGUIControlListItemMenu.unselect = function (self)
+function RaidGUIControlListItemMenu:unselect()
 	self._selected = false
 	slot3 = self
 
@@ -195,10 +195,10 @@ RaidGUIControlListItemMenu.unselect = function (self)
 
 	return 
 end
-RaidGUIControlListItemMenu.data = function (self)
+function RaidGUIControlListItemMenu:data()
 	return self._data
 end
-RaidGUIControlListItemMenu.highlight_on = function (self)
+function RaidGUIControlListItemMenu:highlight_on()
 	if self._params.no_highlight then
 		return 
 	end
@@ -215,7 +215,7 @@ RaidGUIControlListItemMenu.highlight_on = function (self)
 
 	return 
 end
-RaidGUIControlListItemMenu.highlight_off = function (self)
+function RaidGUIControlListItemMenu:highlight_off()
 	if not self._selected and not self._active and self._item_background then
 		slot3 = self._item_background
 
@@ -228,7 +228,7 @@ RaidGUIControlListItemMenu.highlight_off = function (self)
 
 	return 
 end
-RaidGUIControlListItemMenu.enable = function (self, active_texture_color)
+function RaidGUIControlListItemMenu:enable(active_texture_color)
 	self._enabled = true
 	slot5 = active_texture_color
 
@@ -244,7 +244,7 @@ RaidGUIControlListItemMenu.enable = function (self, active_texture_color)
 
 	return 
 end
-RaidGUIControlListItemMenu.disable = function (self, inactive_texture_color)
+function RaidGUIControlListItemMenu:disable(inactive_texture_color)
 	self._enabled = false
 	slot5 = inactive_texture_color
 
@@ -260,10 +260,10 @@ RaidGUIControlListItemMenu.disable = function (self, inactive_texture_color)
 
 	return 
 end
-RaidGUIControlListItemMenu.enabled = function (self)
+function RaidGUIControlListItemMenu:enabled()
 	return self._enabled
 end
-RaidGUIControlListItemMenu.activate_on = function (self)
+function RaidGUIControlListItemMenu:activate_on()
 	slot3 = self._item_background
 
 	self._item_background.show(slot2)
@@ -278,7 +278,7 @@ RaidGUIControlListItemMenu.activate_on = function (self)
 
 	return 
 end
-RaidGUIControlListItemMenu.activate_off = function (self)
+function RaidGUIControlListItemMenu:activate_off()
 	slot3 = self
 
 	self.highlight_off(slot2)
@@ -305,7 +305,7 @@ RaidGUIControlListItemMenu.activate_off = function (self)
 
 	return 
 end
-RaidGUIControlListItemMenu.activate = function (self)
+function RaidGUIControlListItemMenu:activate()
 	self._active = true
 	slot3 = self
 
@@ -317,7 +317,7 @@ RaidGUIControlListItemMenu.activate = function (self)
 
 	return 
 end
-RaidGUIControlListItemMenu.deactivate = function (self)
+function RaidGUIControlListItemMenu:deactivate()
 	self._active = false
 	slot3 = self
 
@@ -325,7 +325,7 @@ RaidGUIControlListItemMenu.deactivate = function (self)
 
 	return 
 end
-RaidGUIControlListItemMenu.activated = function (self)
+function RaidGUIControlListItemMenu:activated()
 	return self._active
 end
 

@@ -12,21 +12,21 @@ if not ElementPlaySound then
 end
 
 ElementPlaySound = slot0
-ElementPlaySound.init = function (self, ...)
+function ElementPlaySound:init(...)
 	slot3 = self
 
 	ElementPlaySound.super.init(slot2, ...)
 
 	return 
 end
-ElementPlaySound.client_on_executed = function (self, ...)
+function ElementPlaySound:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementPlaySound.on_executed = function (self, instigator)
+function ElementPlaySound:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -74,7 +74,7 @@ ElementPlaySound.on_executed = function (self, instigator)
 
 	return 
 end
-ElementPlaySound._play_sound_on_elements = function (self)
+function ElementPlaySound:_play_sound_on_elements()
 	local function f(unit)
 		slot3 = unit
 
@@ -100,7 +100,7 @@ ElementPlaySound._play_sound_on_elements = function (self)
 
 	return 
 end
-ElementPlaySound._play_sound = function (self)
+function ElementPlaySound:_play_sound()
 	if self._values.sound_event then
 		if self._source then
 			slot3 = self._source
@@ -140,7 +140,7 @@ ElementPlaySound._play_sound = function (self)
 
 	return 
 end
-ElementPlaySound.sound_ended = function (self, ...)
+function ElementPlaySound:sound_ended(...)
 	slot4 = self._id
 
 	self._mission_script.remove_save_state_cb(slot2, self._mission_script)
@@ -149,7 +149,7 @@ ElementPlaySound.sound_ended = function (self, ...)
 
 	return 
 end
-ElementPlaySound.operation_remove = function (self)
+function ElementPlaySound:operation_remove()
 	if self._source then
 		slot3 = self._source
 
@@ -162,13 +162,13 @@ ElementPlaySound.operation_remove = function (self)
 
 	return 
 end
-ElementPlaySound.save = function (self, data)
+function ElementPlaySound:save(data)
 	data.enabled = self._values.enabled
 	data.playing = self._playing
 
 	return 
 end
-ElementPlaySound.load = function (self, data)
+function ElementPlaySound:load(data)
 	slot5 = data.enabled
 
 	self.set_enabled(slot3, self)
@@ -181,7 +181,7 @@ ElementPlaySound.load = function (self, data)
 
 	return 
 end
-ElementPlaySound.stop_simulation = function (self)
+function ElementPlaySound:stop_simulation()
 	if self._source then
 		slot3 = self._source
 
@@ -194,7 +194,7 @@ ElementPlaySound.stop_simulation = function (self)
 
 	return 
 end
-ElementPlaySound.pre_destroy = function (self)
+function ElementPlaySound:pre_destroy()
 	if self._source then
 		slot3 = self._source
 
@@ -207,7 +207,7 @@ ElementPlaySound.pre_destroy = function (self)
 
 	return 
 end
-ElementPlaySound.destroy = function (self)
+function ElementPlaySound:destroy()
 	if self._source then
 		slot3 = self._source
 

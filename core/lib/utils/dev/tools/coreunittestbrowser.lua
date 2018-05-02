@@ -433,7 +433,7 @@ if not CoreUnitTestBrowser then
 end
 
 CoreUnitTestBrowser = slot0
-CoreUnitTestBrowser.init = function (self)
+function CoreUnitTestBrowser:init()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -473,7 +473,7 @@ CoreUnitTestBrowser.init = function (self)
 
 
 end
-CoreUnitTestBrowser.error_frame = function (self)
+function CoreUnitTestBrowser:error_frame()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-284, warpins: 1 ---
@@ -605,7 +605,7 @@ CoreUnitTestBrowser.error_frame = function (self)
 
 
 end
-CoreUnitTestBrowser.search_frame = function (self)
+function CoreUnitTestBrowser:search_frame()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-188, warpins: 1 ---
@@ -694,7 +694,7 @@ CoreUnitTestBrowser.search_frame = function (self)
 
 
 end
-CoreUnitTestBrowser.set_position = function (self, newpos)
+function CoreUnitTestBrowser:set_position(newpos)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -708,7 +708,7 @@ CoreUnitTestBrowser.set_position = function (self, newpos)
 
 
 end
-CoreUnitTestBrowser.update = function (self, t, dt)
+function CoreUnitTestBrowser:update(t, dt)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -718,7 +718,7 @@ CoreUnitTestBrowser.update = function (self, t, dt)
 
 
 end
-CoreUnitTestBrowser.on_popup = function (self)
+function CoreUnitTestBrowser:on_popup()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -1004,7 +1004,7 @@ CoreUnitTestBrowser.on_popup = function (self)
 
 
 end
-CoreUnitTestBrowser.ignore_popup = function (self, critical)
+function CoreUnitTestBrowser:ignore_popup(critical)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-33, warpins: 1 ---
@@ -1030,7 +1030,7 @@ CoreUnitTestBrowser.ignore_popup = function (self, critical)
 
 
 end
-CoreUnitTestBrowser.include_popup = function (self, critical)
+function CoreUnitTestBrowser:include_popup(critical)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-33, warpins: 1 ---
@@ -1056,7 +1056,7 @@ CoreUnitTestBrowser.include_popup = function (self, critical)
 
 
 end
-CoreUnitTestBrowser.on_ignore = function (self, custom_data, event)
+function CoreUnitTestBrowser:on_ignore(custom_data, event)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -1117,7 +1117,7 @@ CoreUnitTestBrowser.on_ignore = function (self, custom_data, event)
 
 
 end
-CoreUnitTestBrowser.on_include = function (self, custom_data, event)
+function CoreUnitTestBrowser:on_include(custom_data, event)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -1178,7 +1178,7 @@ CoreUnitTestBrowser.on_include = function (self, custom_data, event)
 
 
 end
-CoreUnitTestBrowser.on_ignore_all = function (self)
+function CoreUnitTestBrowser:on_ignore_all()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -1418,7 +1418,7 @@ CoreUnitTestBrowser.on_ignore_all = function (self)
 
 
 end
-CoreUnitTestBrowser.on_ignore_none = function (self)
+function CoreUnitTestBrowser:on_ignore_none()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -1659,7 +1659,7 @@ CoreUnitTestBrowser.on_ignore_none = function (self)
 
 
 end
-CoreUnitTestBrowser.destroy = function (self)
+function CoreUnitTestBrowser:destroy()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -1719,7 +1719,7 @@ CoreUnitTestBrowser.destroy = function (self)
 
 
 end
-CoreUnitTestBrowser.close = function (self)
+function CoreUnitTestBrowser:close()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -1737,7 +1737,7 @@ CoreUnitTestBrowser.close = function (self)
 
 
 end
-CoreUnitTestBrowser.close_search = function (self)
+function CoreUnitTestBrowser:close_search()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1770,7 +1770,7 @@ CoreUnitTestBrowser.close_search = function (self)
 
 
 end
-CoreUnitTestBrowser.on_find_unit = function (self)
+function CoreUnitTestBrowser:on_find_unit()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -1784,7 +1784,7 @@ CoreUnitTestBrowser.on_find_unit = function (self)
 
 
 end
-CoreUnitTestBrowser.on_close = function (self)
+function CoreUnitTestBrowser:on_close()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1826,7 +1826,7 @@ CoreUnitTestBrowser.on_close = function (self)
 
 
 end
-CoreUnitTestBrowser.on_close_search = function (self)
+function CoreUnitTestBrowser:on_close_search()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -1840,7 +1840,7 @@ CoreUnitTestBrowser.on_close_search = function (self)
 
 
 end
-CoreUnitTestBrowser.on_search = function (self)
+function CoreUnitTestBrowser:on_search()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -1980,7 +1980,7 @@ CoreUnitTestBrowser.on_search = function (self)
 
 
 end
-CoreUnitTestBrowser.on_listbox_selected = function (self)
+function CoreUnitTestBrowser:on_listbox_selected()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -2031,7 +2031,7 @@ CoreUnitTestBrowser.on_listbox_selected = function (self)
 
 
 end
-CoreUnitTestBrowser.on_send_emails = function (self)
+function CoreUnitTestBrowser:on_send_emails()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -2232,7 +2232,7 @@ CoreUnitTestBrowser.on_send_emails = function (self)
 
 
 end
-CoreUnitTestBrowser.on_send_emails_to = function (self)
+function CoreUnitTestBrowser:on_send_emails_to()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -2435,7 +2435,7 @@ CoreUnitTestBrowser.on_send_emails_to = function (self)
 
 
 end
-CoreUnitTestBrowser.on_tree_ctrl_change = function (self)
+function CoreUnitTestBrowser:on_tree_ctrl_change()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -2503,7 +2503,7 @@ CoreUnitTestBrowser.on_tree_ctrl_change = function (self)
 
 
 end
-CoreUnitTestBrowser.init_tree_view = function (self)
+function CoreUnitTestBrowser:init_tree_view()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-51, warpins: 1 ---
@@ -2767,7 +2767,7 @@ CoreUnitTestBrowser.init_tree_view = function (self)
 end
 slot0 = CoreUnitTestBrowserInputDialog or class()
 CoreUnitTestBrowserInputDialog = slot0
-CoreUnitTestBrowserInputDialog.init = function (self, p)
+function CoreUnitTestBrowserInputDialog:init(p)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-138, warpins: 1 ---
@@ -2829,7 +2829,7 @@ CoreUnitTestBrowserInputDialog.init = function (self, p)
 
 
 end
-CoreUnitTestBrowserInputDialog.show_modal = function (self)
+function CoreUnitTestBrowserInputDialog:show_modal()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-15, warpins: 1 ---
@@ -2900,7 +2900,7 @@ CoreUnitTestBrowserInputDialog.show_modal = function (self)
 
 
 end
-CoreUnitTestBrowserInputDialog.on_send_button = function (self)
+function CoreUnitTestBrowserInputDialog:on_send_button()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -2917,7 +2917,7 @@ CoreUnitTestBrowserInputDialog.on_send_button = function (self)
 
 
 end
-CoreUnitTestBrowserInputDialog.on_cancel_button = function (self)
+function CoreUnitTestBrowserInputDialog:on_cancel_button()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -2933,7 +2933,7 @@ CoreUnitTestBrowserInputDialog.on_cancel_button = function (self)
 
 
 end
-CoreUnitTestBrowserInputDialog.get_value = function (self)
+function CoreUnitTestBrowserInputDialog:get_value()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---

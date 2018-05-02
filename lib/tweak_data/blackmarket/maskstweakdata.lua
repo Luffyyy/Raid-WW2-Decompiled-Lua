@@ -5,7 +5,7 @@
 
 -- Decompilation error in this vicinity:
 slot3 = "PS4"
-BlackMarketTweakData._init_masks = function (self)
+function BlackMarketTweakData:_init_masks()
 	self.masks = {}
 	slot4 = self.masks
 

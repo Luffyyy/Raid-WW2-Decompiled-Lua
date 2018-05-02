@@ -11,7 +11,7 @@ slot3 = "CoreControllerWrapperSettings"
 core.module(slot1, core)
 
 ControllerWrapperSettings = ControllerWrapperSettings or class()
-ControllerWrapperSettings.init = function (self, wrapper_type, node, core_setting, debug_path)
+function ControllerWrapperSettings:init(wrapper_type, node, core_setting, debug_path)
 	self._wrapper_type = wrapper_type
 	self._connection_list = {}
 	self._connection_map = {}
@@ -157,7 +157,7 @@ ControllerWrapperSettings.init = function (self, wrapper_type, node, core_settin
 
 	return 
 end
-ControllerWrapperSettings.merge = function (self, setting, overwrite)
+function ControllerWrapperSettings:merge(setting, overwrite)
 	slot7 = setting
 
 	for name, connection in pairs(setting.get_connection_map(slot6)) do
@@ -186,7 +186,7 @@ ControllerWrapperSettings.merge = function (self, setting, overwrite)
 
 	return 
 end
-ControllerWrapperSettings.validate = function (self)
+function ControllerWrapperSettings:validate()
 	slot3 = self._editable_connection_map
 
 	for connection_name, editable_connection in pairs(slot2) do
@@ -232,7 +232,7 @@ ControllerWrapperSettings.validate = function (self)
 
 	return 
 end
-ControllerWrapperSettings.populate_data = function (self, data)
+function ControllerWrapperSettings:populate_data(data)
 	local sub_data = {}
 	local connection_list = nil
 	slot6 = self._connection_map
@@ -292,19 +292,19 @@ ControllerWrapperSettings.populate_data = function (self, data)
 
 	return 
 end
-ControllerWrapperSettings.wrapper_type = function (self)
+function ControllerWrapperSettings:wrapper_type()
 	return self._wrapper_type
 end
-ControllerWrapperSettings.get_connection_list = function (self)
+function ControllerWrapperSettings:get_connection_list()
 	return self._connection_list
 end
-ControllerWrapperSettings.get_connection_map = function (self)
+function ControllerWrapperSettings:get_connection_map()
 	return self._connection_map
 end
-ControllerWrapperSettings.get_connection = function (self, name)
+function ControllerWrapperSettings:get_connection(name)
 	return self._connection_map[name]
 end
-ControllerWrapperSettings.set_connection = function (self, name, connection)
+function ControllerWrapperSettings:set_connection(name, connection)
 	self._connection_map[name] = connection
 	slot6 = name
 
@@ -312,29 +312,29 @@ ControllerWrapperSettings.set_connection = function (self, name, connection)
 
 	return 
 end
-ControllerWrapperSettings.get_editable_connection_map = function (self)
+function ControllerWrapperSettings:get_editable_connection_map()
 	return self._editable_connection_map
 end
-ControllerWrapperSettings.get_editable_connection = function (self, name)
+function ControllerWrapperSettings:get_editable_connection(name)
 	return self._editable_connection_map[name]
 end
-ControllerWrapperSettings.set_editable_connection = function (self, name, editable)
+function ControllerWrapperSettings:set_editable_connection(name, editable)
 	self._editable_connection_map[name] = editable
 
 	return 
 end
-ControllerWrapperSettings.get_unselectable_input_map = function (self)
+function ControllerWrapperSettings:get_unselectable_input_map()
 	return self._unselectable_input_map
 end
-ControllerWrapperSettings.get_unselectable_input = function (self, input_name)
+function ControllerWrapperSettings:get_unselectable_input(input_name)
 	return self._unselectable_input_map[input_name]
 end
-ControllerWrapperSettings.set_unselectable_input = function (self, input_name, unselectable)
+function ControllerWrapperSettings:set_unselectable_input(input_name, unselectable)
 	self._unselectable_input_map[input_name] = unselectable
 
 	return 
 end
-ControllerWrapperSettings.get_origin = function (self, debug_path)
+function ControllerWrapperSettings:get_origin(debug_path)
 	if debug_path then
 		slot4 = "[Controller][File: %s]"
 		slot7 = debug_path
@@ -354,7 +354,7 @@ ControllerWrapperConnection.DEFAULT_MIN_DEST_RANGE = 0
 ControllerWrapperConnection.DEFAULT_MAX_DEST_RANGE = 1
 ControllerWrapperConnection.DEFAULT_CONNECT_SRC_TYPE = "button"
 ControllerWrapperConnection.DEFAULT_CONNECT_DEST_TYPE = "button"
-ControllerWrapperConnection.init = function (self, node)
+function ControllerWrapperConnection:init(node)
 	if node then
 		self._name = node.name
 		local input_name = nil
@@ -417,15 +417,15 @@ ControllerWrapperConnection.init = function (self, node)
 
 	return 
 end
-ControllerWrapperConnection.set_name = function (self, name)
+function ControllerWrapperConnection:set_name(name)
 	self._name = name
 
 	return 
 end
-ControllerWrapperConnection.get_name = function (self)
+function ControllerWrapperConnection:get_name()
 	return self._name
 end
-ControllerWrapperConnection.set_input_name_list = function (self, input_name_list)
+function ControllerWrapperConnection:set_input_name_list(input_name_list)
 	if self._input_name_list then
 		slot4 = self._input_name_list
 	else
@@ -434,18 +434,18 @@ ControllerWrapperConnection.set_input_name_list = function (self, input_name_lis
 
 	return 
 end
-ControllerWrapperConnection.get_input_name_list = function (self)
+function ControllerWrapperConnection:get_input_name_list()
 	return self._input_name_list or {}
 end
-ControllerWrapperConnection.get_controller_id = function (self)
+function ControllerWrapperConnection:get_controller_id()
 	return self._controller_id
 end
-ControllerWrapperConnection.set_controller_id = function (self, controller_id)
+function ControllerWrapperConnection:set_controller_id(controller_id)
 	self._controller_id = controller_id
 
 	return 
 end
-ControllerWrapperConnection.set_debug = function (self, debug)
+function ControllerWrapperConnection:set_debug(debug)
 	if debug then
 		self._debug = true
 	else
@@ -454,10 +454,10 @@ ControllerWrapperConnection.set_debug = function (self, debug)
 
 	return 
 end
-ControllerWrapperConnection.get_debug = function (self)
+function ControllerWrapperConnection:get_debug()
 	return self._debug
 end
-ControllerWrapperConnection.set_enabled = function (self, enabled)
+function ControllerWrapperConnection:set_enabled(enabled)
 	if not enabled then
 		self._disabled = true
 	else
@@ -466,10 +466,10 @@ ControllerWrapperConnection.set_enabled = function (self, enabled)
 
 	return 
 end
-ControllerWrapperConnection.get_enabled = function (self)
+function ControllerWrapperConnection:get_enabled()
 	return not self._disabled
 end
-ControllerWrapperConnection.set_any_input = function (self, any_input)
+function ControllerWrapperConnection:set_any_input(any_input)
 	if not any_input then
 		self._single_input = true
 	else
@@ -478,10 +478,10 @@ ControllerWrapperConnection.set_any_input = function (self, any_input)
 
 	return 
 end
-ControllerWrapperConnection.get_any_input = function (self)
+function ControllerWrapperConnection:get_any_input()
 	return not self._single_input
 end
-ControllerWrapperConnection.set_delay = function (self, delay)
+function ControllerWrapperConnection:set_delay(delay)
 	if self._delay ~= 0 then
 		self._delay = delay
 	else
@@ -490,10 +490,10 @@ ControllerWrapperConnection.set_delay = function (self, delay)
 
 	return 
 end
-ControllerWrapperConnection.get_delay = function (self)
+function ControllerWrapperConnection:get_delay()
 	return self._delay or 0
 end
-ControllerWrapperConnection.set_delay_connection_list = function (self, delay_connection_list)
+function ControllerWrapperConnection:set_delay_connection_list(delay_connection_list)
 	if self._delay_connection_list then
 		slot4 = self._delay_connection_list
 	else
@@ -502,10 +502,10 @@ ControllerWrapperConnection.set_delay_connection_list = function (self, delay_co
 
 	return 
 end
-ControllerWrapperConnection.get_delay_connection_list = function (self)
+function ControllerWrapperConnection:get_delay_connection_list()
 	return self._delay_connection_list or {}
 end
-ControllerWrapperConnection.set_range = function (self, min_src, max_src, min_dest, max_dest)
+function ControllerWrapperConnection:set_range(min_src, max_src, min_dest, max_dest)
 	if min_src ~= self.DEFAULT_MIN_SRC_RANGE then
 		self._min_src_range = min_src
 	else
@@ -532,10 +532,10 @@ ControllerWrapperConnection.set_range = function (self, min_src, max_src, min_de
 
 	return 
 end
-ControllerWrapperConnection.get_range = function (self)
+function ControllerWrapperConnection:get_range()
 	return self._min_src_range or self.DEFAULT_MIN_SRC_RANGE, self._max_src_range or self.DEFAULT_MAX_SRC_RANGE, self._min_dest_range or self.DEFAULT_MIN_DEST_RANGE, self._max_dest_range or self.DEFAULT_MAX_DEST_RANGE
 end
-ControllerWrapperConnection.set_connect_src_type = function (self, connect_src_type)
+function ControllerWrapperConnection:set_connect_src_type(connect_src_type)
 	if self._connect_src_type ~= self.DEFAULT_CONNECT_SRC_TYPE then
 		self._connect_src_type = connect_src_type
 	else
@@ -544,10 +544,10 @@ ControllerWrapperConnection.set_connect_src_type = function (self, connect_src_t
 
 	return 
 end
-ControllerWrapperConnection.get_connect_src_type = function (self)
+function ControllerWrapperConnection:get_connect_src_type()
 	return self._connect_src_type or self.DEFAULT_CONNECT_SRC_TYPE
 end
-ControllerWrapperConnection.set_connect_dest_type = function (self, connect_dest_type)
+function ControllerWrapperConnection:set_connect_dest_type(connect_dest_type)
 	if self._connect_dest_type ~= self.DEFAULT_CONNECT_DEST_TYPE then
 		self._connect_dest_type = connect_dest_type
 	else
@@ -556,10 +556,10 @@ ControllerWrapperConnection.set_connect_dest_type = function (self, connect_dest
 
 	return 
 end
-ControllerWrapperConnection.get_connect_dest_type = function (self)
+function ControllerWrapperConnection:get_connect_dest_type()
 	return self._connect_dest_type or self.DEFAULT_CONNECT_DEST_TYPE
 end
-ControllerWrapperConnection.populate_data = function (self, data)
+function ControllerWrapperConnection:populate_data(data)
 	local sub_data = {
 		_meta = self.TYPE
 	}
@@ -583,7 +583,7 @@ ControllerWrapperConnection.populate_data = function (self, data)
 
 	return 
 end
-ControllerWrapperConnection.populate_data_attributes = function (self, sub_data)
+function ControllerWrapperConnection:populate_data_attributes(sub_data)
 	sub_data.name = self._name
 	sub_data.controller = self._controller_id
 	sub_data.delay = self._delay
@@ -622,7 +622,7 @@ ControllerWrapperConnection.populate_data_attributes = function (self, sub_data)
 
 	return 
 end
-ControllerWrapperConnection.__tostring = function (self, additional_info)
+function ControllerWrapperConnection:__tostring(additional_info)
 
 	-- Decompilation error in this vicinity:
 	slot2 = string.format
@@ -639,14 +639,14 @@ end
 
 ControllerWrapperButton = slot0
 ControllerWrapperButton.TYPE = "button"
-ControllerWrapperButton.init = function (self, node)
+function ControllerWrapperButton:init(node)
 	slot5 = node
 
 	ControllerWrapperButton.super.init(slot3, self)
 
 	return 
 end
-ControllerWrapperButton.__tostring = function (self, additional_info)
+function ControllerWrapperButton:__tostring(additional_info)
 	slot5 = additional_info
 
 	return ControllerWrapperConnection.__tostring(slot3, self)
@@ -668,7 +668,7 @@ ControllerWrapperAxis.DEFAULT_CONNECT_SRC_TYPE = "axis"
 ControllerWrapperAxis.DEFAULT_CONNECT_DEST_TYPE = "axis"
 slot5 = 1
 ControllerWrapperAxis.ONE_VECTOR = Vector3(slot2, 1, 1)
-ControllerWrapperAxis.init = function (self, node)
+function ControllerWrapperAxis:init(node)
 	slot5 = node
 
 	ControllerWrapperAxis.super.init(slot3, self)
@@ -746,7 +746,7 @@ ControllerWrapperAxis.init = function (self, node)
 
 	return 
 end
-ControllerWrapperAxis.read_axis_btns = function (self, node)
+function ControllerWrapperAxis:read_axis_btns(node)
 	slot4 = node
 
 	for _, child in ipairs(slot3) do
@@ -774,7 +774,7 @@ ControllerWrapperAxis.read_axis_btns = function (self, node)
 
 	return 
 end
-ControllerWrapperAxis.print_output = function (self, output, indent)
+function ControllerWrapperAxis:print_output(output, indent)
 	slot9 = indent
 	slot11 = self
 	slot6 = string.rep(slot7, "\t") .. "<" .. self.TYPE .. self.get_output_attributes(slot10) .. ""
@@ -811,7 +811,7 @@ ControllerWrapperAxis.print_output = function (self, output, indent)
 
 	return 
 end
-ControllerWrapperAxis.print_output_axis_btns = function (self, output, indent)
+function ControllerWrapperAxis:print_output_axis_btns(output, indent)
 	slot5 = self._btn_connections
 
 	for btn, con in pairs(slot4) do
@@ -832,15 +832,15 @@ ControllerWrapperAxis.print_output_axis_btns = function (self, output, indent)
 
 	return 
 end
-ControllerWrapperAxis.set_multiplier = function (self, multiplier)
+function ControllerWrapperAxis:set_multiplier(multiplier)
 	self._multiplier = multiplier or self.ONE_VECTOR
 
 	return 
 end
-ControllerWrapperAxis.get_multiplier = function (self)
+function ControllerWrapperAxis:get_multiplier()
 	return self._multiplier
 end
-ControllerWrapperAxis.set_lerp = function (self, lerp)
+function ControllerWrapperAxis:set_lerp(lerp)
 	if lerp then
 		slot6 = 1
 		slot2 = math.clamp(slot3, lerp, 0)
@@ -850,18 +850,18 @@ ControllerWrapperAxis.set_lerp = function (self, lerp)
 
 	return 
 end
-ControllerWrapperAxis.get_lerp = function (self)
+function ControllerWrapperAxis:get_lerp()
 	return self._lerp
 end
-ControllerWrapperAxis.set_init_lerp_axis = function (self, init_lerp_axis)
+function ControllerWrapperAxis:set_init_lerp_axis(init_lerp_axis)
 	self._init_lerp_axis = init_lerp_axis
 
 	return 
 end
-ControllerWrapperAxis.get_init_lerp_axis = function (self)
+function ControllerWrapperAxis:get_init_lerp_axis()
 	return self._init_lerp_axis
 end
-ControllerWrapperAxis.set_pad_bottom = function (self, pad_bottom)
+function ControllerWrapperAxis:set_pad_bottom(pad_bottom)
 	if pad_bottom then
 		slot6 = 1
 		slot2 = math.clamp(slot3, pad_bottom, 0)
@@ -871,10 +871,10 @@ ControllerWrapperAxis.set_pad_bottom = function (self, pad_bottom)
 
 	return 
 end
-ControllerWrapperAxis.get_pad_bottom = function (self)
+function ControllerWrapperAxis:get_pad_bottom()
 	return self._pad_bottom
 end
-ControllerWrapperAxis.set_pad_top = function (self, pad_top)
+function ControllerWrapperAxis:set_pad_top(pad_top)
 	if pad_top then
 		slot6 = 1
 		slot2 = math.clamp(slot3, pad_top, 0)
@@ -884,10 +884,10 @@ ControllerWrapperAxis.set_pad_top = function (self, pad_top)
 
 	return 
 end
-ControllerWrapperAxis.get_pad_top = function (self)
+function ControllerWrapperAxis:get_pad_top()
 	return self._pad_top
 end
-ControllerWrapperAxis.set_soft_top = function (self, soft_top)
+function ControllerWrapperAxis:set_soft_top(soft_top)
 	if soft_top then
 		slot6 = 1
 		slot2 = math.clamp(slot3, soft_top, 0)
@@ -897,10 +897,10 @@ ControllerWrapperAxis.set_soft_top = function (self, soft_top)
 
 	return 
 end
-ControllerWrapperAxis.get_soft_top = function (self)
+function ControllerWrapperAxis:get_soft_top()
 	return self._soft_top
 end
-ControllerWrapperAxis.set_no_limit = function (self, no_limit)
+function ControllerWrapperAxis:set_no_limit(no_limit)
 	if no_limit then
 		self._no_limit = true
 	else
@@ -909,23 +909,23 @@ ControllerWrapperAxis.set_no_limit = function (self, no_limit)
 
 	return 
 end
-ControllerWrapperAxis.get_no_limit = function (self)
+function ControllerWrapperAxis:get_no_limit()
 	return self._no_limit
 end
-ControllerWrapperAxis.set_inversion = function (self, inversion)
+function ControllerWrapperAxis:set_inversion(inversion)
 	self._inversion_unmodified = inversion or self.ONE_VECTOR
 	slot6 = self._inversion_unmodified.z * self._INVERSION_MODIFIER.z
 	self._inversion = Vector3(slot3, self._inversion_unmodified.x * self._INVERSION_MODIFIER.x, self._inversion_unmodified.y * self._INVERSION_MODIFIER.y)
 
 	return 
 end
-ControllerWrapperAxis.get_inversion_unmodified = function (self)
+function ControllerWrapperAxis:get_inversion_unmodified()
 	return self._inversion_unmodified
 end
-ControllerWrapperAxis.get_inversion = function (self)
+function ControllerWrapperAxis:get_inversion()
 	return self._inversion
 end
-ControllerWrapperAxis.get_output_attributes = function (self)
+function ControllerWrapperAxis:get_output_attributes()
 	local additional_attributes = ""
 
 	if self._multiplier and (self._multiplier.x ~= 1 or self._multiplier.y ~= 1 or self._multiplier.z ~= 1) then
@@ -973,7 +973,7 @@ ControllerWrapperAxis.get_output_attributes = function (self)
 
 	return ControllerWrapperConnection.get_output_attributes(slot3) .. additional_attributes
 end
-ControllerWrapperAxis.__tostring = function (self, additional_info)
+function ControllerWrapperAxis:__tostring(additional_info)
 	slot7 = additional_info or ""
 	slot9 = self._multiplier
 	slot11 = self._lerp
@@ -989,22 +989,22 @@ ControllerWrapperAxis.__tostring = function (self, additional_info)
 end
 ControllerWrapperDelayConnection = ControllerWrapperDelayConnection or class()
 ControllerWrapperDelayConnection.TYPE = "delay"
-ControllerWrapperDelayConnection.init = function (self, node)
+function ControllerWrapperDelayConnection:init(node)
 	if node then
 		self._name = node.name
 	end
 
 	return 
 end
-ControllerWrapperDelayConnection.set_name = function (self, name)
+function ControllerWrapperDelayConnection:set_name(name)
 	self._name = name
 
 	return 
 end
-ControllerWrapperDelayConnection.get_name = function (self)
+function ControllerWrapperDelayConnection:get_name()
 	return self._name
 end
-ControllerWrapperDelayConnection.populate_data = function (self, data)
+function ControllerWrapperDelayConnection:populate_data(data)
 	local list = data.connections
 	local sub_data = {
 		_meta = self.TYPE
@@ -1022,7 +1022,7 @@ ControllerWrapperDelayConnection.populate_data = function (self, data)
 
 	return 
 end
-ControllerWrapperDelayConnection.__tostring = function (self, additional_info)
+function ControllerWrapperDelayConnection:__tostring(additional_info)
 	slot5 = tostring(slot6)
 	slot8 = additional_info
 
@@ -1030,38 +1030,38 @@ ControllerWrapperDelayConnection.__tostring = function (self, additional_info)
 end
 ControllerWrapperEditable = ControllerWrapperEditable or class()
 ControllerWrapperEditable.TYPE = "connection"
-ControllerWrapperEditable.init = function (self, node)
+function ControllerWrapperEditable:init(node)
 	self._connection_name = node.name
 	self._caption = node.caption or self._connection_name
 	self._locale_id = node.locale_id
 
 	return 
 end
-ControllerWrapperEditable.get_connection_name = function (self)
+function ControllerWrapperEditable:get_connection_name()
 	return self._connection_name
 end
-ControllerWrapperEditable.set_connection_name = function (self, connection_name)
+function ControllerWrapperEditable:set_connection_name(connection_name)
 	self._connection_name = connection_name
 
 	return 
 end
-ControllerWrapperEditable.get_caption = function (self)
+function ControllerWrapperEditable:get_caption()
 	return self._caption
 end
-ControllerWrapperEditable.set_caption = function (self, caption)
+function ControllerWrapperEditable:set_caption(caption)
 	self._caption = caption or self._connection_name
 
 	return 
 end
-ControllerWrapperEditable.get_locale_id = function (self)
+function ControllerWrapperEditable:get_locale_id()
 	return self._locale_id
 end
-ControllerWrapperEditable.set_locale_id = function (self, locale_id)
+function ControllerWrapperEditable:set_locale_id(locale_id)
 	self._locale_id = locale_id
 
 	return 
 end
-ControllerWrapperEditable.populate_data = function (self, data)
+function ControllerWrapperEditable:populate_data(data)
 	local sub_data = {
 		_meta = self.TYPE,
 		name = self._connection_name,
@@ -1074,14 +1074,14 @@ ControllerWrapperEditable.populate_data = function (self, data)
 
 	return 
 end
-ControllerWrapperEditable.__tostring = function (self, additional_info)
+function ControllerWrapperEditable:__tostring(additional_info)
 	slot9 = self._locale_id
 
 	return string.format(slot3, "[Editable connection name: %s, Caption: %s, Locale id: %s]", tostring(tostring(self._connection_name)), tostring(self._caption))
 end
 ControllerWrapperUnselectable = ControllerWrapperUnselectable or class()
 ControllerWrapperUnselectable.TYPE = "input"
-ControllerWrapperUnselectable.init = function (self, node)
+function ControllerWrapperUnselectable:init(node)
 	self._input_name = node.name
 
 	if node.single ~= false then
@@ -1094,18 +1094,18 @@ ControllerWrapperUnselectable.init = function (self, node)
 
 	return 
 end
-ControllerWrapperUnselectable.get_input_name = function (self)
+function ControllerWrapperUnselectable:get_input_name()
 	return self._input_name
 end
-ControllerWrapperUnselectable.set_input_name = function (self, input_name)
+function ControllerWrapperUnselectable:set_input_name(input_name)
 	self._input_name = input_name
 
 	return 
 end
-ControllerWrapperUnselectable.get_single = function (self)
+function ControllerWrapperUnselectable:get_single()
 	return self._single
 end
-ControllerWrapperUnselectable.set_single = function (self, single)
+function ControllerWrapperUnselectable:set_single(single)
 	if single then
 		self._single = true
 	else
@@ -1114,10 +1114,10 @@ ControllerWrapperUnselectable.set_single = function (self, single)
 
 	return 
 end
-ControllerWrapperUnselectable.get_multi = function (self)
+function ControllerWrapperUnselectable:get_multi()
 	return self._multi
 end
-ControllerWrapperUnselectable.set_multi = function (self, multi)
+function ControllerWrapperUnselectable:set_multi(multi)
 	if multi then
 		self._multi = true
 	else
@@ -1126,7 +1126,7 @@ ControllerWrapperUnselectable.set_multi = function (self, multi)
 
 	return 
 end
-ControllerWrapperUnselectable.populate_data = function (self, data)
+function ControllerWrapperUnselectable:populate_data(data)
 	local sub_data = {
 		_meta = self.TYPE,
 		name = self._input_name
@@ -1146,7 +1146,7 @@ ControllerWrapperUnselectable.populate_data = function (self, data)
 
 	return 
 end
-ControllerWrapperUnselectable.__tostring = function (self, additional_info)
+function ControllerWrapperUnselectable:__tostring(additional_info)
 	slot4 = "[Unselectable input name: \"%s\"]"
 	slot7 = self._input_name
 

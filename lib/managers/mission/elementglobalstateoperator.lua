@@ -4,21 +4,21 @@ if not ElementGlobalStateOperator then
 end
 
 ElementGlobalStateOperator = slot0
-ElementGlobalStateOperator.init = function (self, ...)
+function ElementGlobalStateOperator:init(...)
 	slot3 = self
 
 	ElementGlobalStateOperator.super.init(slot2, ...)
 
 	return 
 end
-ElementGlobalStateOperator.client_on_executed = function (self, ...)
+function ElementGlobalStateOperator:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementGlobalStateOperator.on_executed = function (self, instigator)
+function ElementGlobalStateOperator:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

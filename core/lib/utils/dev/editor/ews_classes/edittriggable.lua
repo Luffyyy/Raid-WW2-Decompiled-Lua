@@ -16,7 +16,7 @@ if not EditUnitTriggable then
 end
 
 EditUnitTriggable = slot0
-EditUnitTriggable.init = function (self, editor)
+function EditUnitTriggable:init(editor)
 	local panel, sizer = editor or managers.editor.add_unit_edit_page(slot3, editor or managers.editor)
 	self._panel = panel
 	self._ctrls = {}
@@ -91,7 +91,7 @@ EditUnitTriggable.init = function (self, editor)
 
 	return 
 end
-EditUnitTriggable._build_scrolled_window = function (self)
+function EditUnitTriggable:_build_scrolled_window()
 	slot6 = "VSCROLL"
 	self._scrolled_window = EWS.ScrolledWindow(slot2, EWS, self._panel, "")
 	slot3 = self._scrolled_window
@@ -113,7 +113,7 @@ EditUnitTriggable._build_scrolled_window = function (self)
 
 	return self._scrolled_window
 end
-EditUnitTriggable.build_element_gui = function (self, data)
+function EditUnitTriggable:build_element_gui(data)
 	slot7 = "TAB_TRAVERSAL"
 	local panel = EWS.Panel(slot3, EWS, self._scrolled_window, "")
 	slot6 = "HORIZONTAL"
@@ -220,7 +220,7 @@ EditUnitTriggable.build_element_gui = function (self, data)
 
 	return panel
 end
-EditUnitTriggable.change_sequence = function (self, ctrls)
+function EditUnitTriggable:change_sequence(ctrls)
 	slot4 = self._ctrls.unit
 	slot6 = ctrls.trigger_name
 	slot9 = ctrls.trigger
@@ -229,7 +229,7 @@ EditUnitTriggable.change_sequence = function (self, ctrls)
 
 	return 
 end
-EditUnitTriggable.change_time = function (self, ctrls)
+function EditUnitTriggable:change_time(ctrls)
 	slot4 = self._ctrls.unit
 	slot6 = ctrls.trigger_name
 	slot9 = ctrls.time
@@ -238,7 +238,7 @@ EditUnitTriggable.change_time = function (self, ctrls)
 
 	return 
 end
-EditUnitTriggable.remove_element = function (self, ctrls)
+function EditUnitTriggable:remove_element(ctrls)
 	slot4 = self._ctrls.unit
 	slot6 = ctrls.id
 
@@ -250,7 +250,7 @@ EditUnitTriggable.remove_element = function (self, ctrls)
 
 	return 
 end
-EditUnitTriggable.clear_element_gui = function (self)
+function EditUnitTriggable:clear_element_gui()
 	slot3 = self._scrolled_main_sizer
 
 	self._scrolled_main_sizer.clear(slot2)
@@ -267,7 +267,7 @@ EditUnitTriggable.clear_element_gui = function (self)
 
 	return 
 end
-EditUnitTriggable.add_unit_btn = function (self)
+function EditUnitTriggable:add_unit_btn()
 
 	-- Decompilation error in this vicinity:
 	if not managers.editor then
@@ -281,7 +281,7 @@ EditUnitTriggable.add_unit_btn = function (self)
 
 	return 
 end
-EditUnitTriggable.add_unit_list_btn = function (self)
+function EditUnitTriggable:add_unit_list_btn()
 	local function f(unit)
 		slot3 = managers.sequence
 		slot6 = unit
@@ -300,7 +300,7 @@ EditUnitTriggable.add_unit_list_btn = function (self)
 
 	return 
 end
-EditUnitTriggable.update_element_gui = function (self)
+function EditUnitTriggable:update_element_gui()
 	slot3 = self
 
 	self.clear_element_gui(slot2)
@@ -351,7 +351,7 @@ EditUnitTriggable.update_element_gui = function (self)
 
 	return 
 end
-EditUnitTriggable.add_unit = function (self, unit)
+function EditUnitTriggable:add_unit(unit)
 	slot4 = managers.sequence
 	slot7 = unit
 	local triggable_sequences = managers.sequence.get_triggable_sequence_list(slot3, unit.name(slot6))
@@ -370,7 +370,7 @@ EditUnitTriggable.add_unit = function (self, unit)
 
 	return 
 end
-EditUnitTriggable.change_triggers = function (self)
+function EditUnitTriggable:change_triggers()
 	slot3 = self._ctrls.unit
 
 	if alive(slot2) then
@@ -381,7 +381,7 @@ EditUnitTriggable.change_triggers = function (self)
 
 	return 
 end
-EditUnitTriggable.is_editable = function (self, unit)
+function EditUnitTriggable:is_editable(unit)
 	slot4 = unit
 
 	if alive(slot3) then
@@ -421,7 +421,7 @@ EditUnitTriggable.is_editable = function (self, unit)
 
 	return false
 end
-EditUnitTriggable.dialog_closed = function (self)
+function EditUnitTriggable:dialog_closed()
 	slot5 = false
 
 	self._btn_toolbar.set_tool_state(slot2, self._btn_toolbar, "ADD_UNIT")

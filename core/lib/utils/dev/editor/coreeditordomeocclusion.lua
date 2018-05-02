@@ -4,7 +4,7 @@ slot3 = "CoreEditorUtils"
 
 core.import(slot1, core)
 
-CoreEditor.init_create_dome_occlusion = function (self, shape, res)
+function CoreEditor:init_create_dome_occlusion(shape, res)
 	slot5 = "CoreEditor:init_create_dome_occlusion()"
 
 	print(slot4)
@@ -50,7 +50,7 @@ CoreEditor.init_create_dome_occlusion = function (self, shape, res)
 
 	return 
 end
-CoreEditor._create_dome_occlusion = function (self, params)
+function CoreEditor:_create_dome_occlusion(params)
 	self._dome_occlusion_params = params
 	slot7 = 500
 
@@ -250,7 +250,7 @@ CoreEditor._create_dome_occlusion = function (self, params)
 
 	return 
 end
-CoreEditor._tick_generate_dome_occlusion = function (self, t, dt)
+function CoreEditor:_tick_generate_dome_occlusion(t, dt)
 	if self._dome_occlusion_params then
 		self._dome_occlusion_params.step = self._dome_occlusion_params.step + 1
 
@@ -267,7 +267,7 @@ CoreEditor._tick_generate_dome_occlusion = function (self, t, dt)
 
 	return 
 end
-CoreEditor.generate_dome_occlusion = function (self, path)
+function CoreEditor:generate_dome_occlusion(path)
 	slot4 = self._camera_controller
 	local x1, y1, x2, y2 = self._camera_controller._get_screen_size(slot3)
 	slot13 = y2
@@ -276,7 +276,7 @@ CoreEditor.generate_dome_occlusion = function (self, path)
 
 	return 
 end
-CoreEditor._convert_dome_occlusion = function (self)
+function CoreEditor:_convert_dome_occlusion()
 	local path = self._dome_occlusion_params.output_path .. "\\"
 	slot4 = managers.database
 	local execute = managers.database.root_path(slot3) .. "aux_assets/engine/tools/spotmapgen.bat "
@@ -298,7 +298,7 @@ CoreEditor._convert_dome_occlusion = function (self)
 
 	return 
 end
-CoreEditor.dome_occlusion_done = function (self)
+function CoreEditor:dome_occlusion_done()
 
 	-- Decompilation error in this vicinity:
 	if not self._dome_occlusion_params then

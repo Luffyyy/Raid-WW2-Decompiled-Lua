@@ -19,13 +19,13 @@ slot3 = "CoreSlaveUpdators"
 core.import(slot1, core)
 
 SlaveManager = SlaveManager or class()
-SlaveManager.init = function (self)
+function SlaveManager:init()
 	self._updator = nil
 	self._status = false
 
 	return 
 end
-SlaveManager.update = function (self, t, dt)
+function SlaveManager:update(t, dt)
 	if self._status then
 		slot7 = dt
 
@@ -34,14 +34,14 @@ SlaveManager.update = function (self, t, dt)
 
 	return 
 end
-SlaveManager.paused_update = function (self, t, dt)
+function SlaveManager:paused_update(t, dt)
 	slot7 = dt
 
 	self.update(slot4, self, t)
 
 	return 
 end
-SlaveManager.start = function (self, vp, port)
+function SlaveManager:start(vp, port)
 	slot6 = "[SlaveManager] Already started!"
 
 	assert(slot4, not self._status)
@@ -51,14 +51,14 @@ SlaveManager.start = function (self, vp, port)
 
 	return self._status
 end
-SlaveManager.act_master = function (self, host, port, lsport, manual_pumping)
+function SlaveManager:act_master(host, port, lsport, manual_pumping)
 	slot12 = managers.viewport
 	slot12 = manual_pumping
 	self._updator, self._status = CoreSlaveUpdators.MasterUpdator.new(slot6, CoreSlaveUpdators.MasterUpdator, assert(managers.viewport.first_active_viewport(slot11)), host, port, lsport)
 
 	return self._status
 end
-SlaveManager.set_batch_count = function (self, count)
+function SlaveManager:set_batch_count(count)
 	slot5 = "[SlaveManager] Batch count must be more then 0!"
 
 	assert(slot3, not count or 0 < count)
@@ -69,12 +69,12 @@ SlaveManager.set_batch_count = function (self, count)
 
 	return 
 end
-SlaveManager.connected = function (self)
+function SlaveManager:connected()
 	return self._status
 end
-SlaveManager.type = function (self)
+function SlaveManager:type()
 end
-SlaveManager.peer = function (self)
+function SlaveManager:peer()
 end
 
 return 

@@ -5,14 +5,14 @@ end
 
 RaidMenuHeader = slot0
 RaidMenuHeader.HEIGHT = 2 * RaidGuiBase.PADDING + 22
-RaidMenuHeader.init = function (self, ws, fullscreen_ws, node, component_name)
+function RaidMenuHeader:init(ws, fullscreen_ws, node, component_name)
 	slot11 = component_name
 
 	RaidMenuHeader.super.init(slot6, self, ws, fullscreen_ws, node)
 
 	return 
 end
-RaidMenuHeader._layout = function (self)
+function RaidMenuHeader:_layout()
 	slot4 = {
 		text = "",
 		name = "screen_name_label",
@@ -31,7 +31,7 @@ RaidMenuHeader._layout = function (self)
 
 	return 
 end
-RaidMenuHeader._setup_properties = function (self)
+function RaidMenuHeader:_setup_properties()
 	self._panel_x = 0
 	self._panel_y = 0
 	slot3 = self._ws
@@ -42,7 +42,7 @@ RaidMenuHeader._setup_properties = function (self)
 
 	return 
 end
-RaidMenuHeader.set_screen_name = function (self, screen_name_id, subtitle)
+function RaidMenuHeader:set_screen_name(screen_name_id, subtitle)
 	slot8 = screen_name_id
 	local text = utf8.to_upper(managers.localization.text(slot6, managers.localization))
 	slot7 = text
@@ -79,7 +79,7 @@ RaidMenuHeader.set_screen_name = function (self, screen_name_id, subtitle)
 
 	return 
 end
-RaidMenuHeader.set_screen_name_raw = function (self, text)
+function RaidMenuHeader:set_screen_name_raw(text)
 	slot5 = text
 
 	self._screen_name_label.set_text(slot3, self._screen_name_label)
@@ -96,7 +96,7 @@ RaidMenuHeader.set_screen_name_raw = function (self, text)
 
 	return 
 end
-RaidMenuHeader.set_header_icon = function (self, icon_data)
+function RaidMenuHeader:set_header_icon(icon_data)
 	slot5 = {
 		name = "header_icon",
 		y = 0,
@@ -115,13 +115,13 @@ RaidMenuHeader.set_header_icon = function (self, icon_data)
 
 	return 
 end
-RaidMenuHeader.get_screen_name_rect = function (self)
+function RaidMenuHeader:get_screen_name_rect()
 	slot3 = self._screen_name_label
 	local x, y, w, h = self._screen_name_label.text_rect(slot2)
 
 	return x, y, w, h
 end
-RaidMenuHeader.set_character_name = function (self, character_name)
+function RaidMenuHeader:set_character_name(character_name)
 	local full_name = ""
 	slot5 = managers.network
 	slot5 = managers.network.session(slot4)
@@ -131,13 +131,13 @@ RaidMenuHeader.set_character_name = function (self, character_name)
 
 	return 
 end
-RaidMenuHeader.back_pressed = function (self)
+function RaidMenuHeader:back_pressed()
 	return 
 end
-RaidMenuHeader.on_escape = function (self)
+function RaidMenuHeader:on_escape()
 	return 
 end
-RaidMenuHeader.confirm_pressed = function (self)
+function RaidMenuHeader:confirm_pressed()
 	return false
 end
 

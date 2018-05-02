@@ -4,7 +4,7 @@ if not HuskCopBase then
 end
 
 HuskCopBase = slot0
-HuskCopBase.post_init = function (self)
+function HuskCopBase:post_init()
 	slot3 = self._unit
 	self._ext_movement = self._unit.movement(slot2)
 	slot3 = self._unit
@@ -37,7 +37,7 @@ HuskCopBase.post_init = function (self)
 
 	return 
 end
-HuskCopBase._do_post_init = function (self)
+function HuskCopBase:_do_post_init()
 	slot5 = self._nav_ready_listener_key
 
 	Application.debug(slot2, Application, "[HuskCopBase:post_init()] Navigation READY!")
@@ -67,7 +67,7 @@ HuskCopBase._do_post_init = function (self)
 
 	return 
 end
-HuskCopBase.pre_destroy = function (self, unit)
+function HuskCopBase:pre_destroy(unit)
 	slot4 = self._headwear_unit
 
 	if alive(slot3) then

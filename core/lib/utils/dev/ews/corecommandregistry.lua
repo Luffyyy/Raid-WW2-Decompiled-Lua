@@ -16,12 +16,12 @@ if not CoreCommandRegistry.ToolBarWrapper then
 end
 
 slot0.ToolBarWrapper = slot1
-CoreCommandRegistry.init = function (self)
+function CoreCommandRegistry:init()
 	self._commands = {}
 
 	return 
 end
-CoreCommandRegistry.add = function (self, command_table)
+function CoreCommandRegistry:add(command_table)
 	slot6 = command_table
 
 	assert(slot3, type(slot5) == "table")
@@ -43,24 +43,24 @@ CoreCommandRegistry.add = function (self, command_table)
 
 	return 
 end
-CoreCommandRegistry.id = function (self, command_id)
+function CoreCommandRegistry:id(command_id)
 	slot5 = "Command \"" .. command_id .. "\" not found."
 
 	assert(slot3, self._commands[command_id])
 
 	return command_id
 end
-CoreCommandRegistry.wrap_menu = function (self, menu)
+function CoreCommandRegistry:wrap_menu(menu)
 	slot6 = self._commands
 
 	return CoreCommandRegistry.MenuWrapper.new(slot3, CoreCommandRegistry.MenuWrapper, menu)
 end
-CoreCommandRegistry.wrap_tool_bar = function (self, tool_bar)
+function CoreCommandRegistry:wrap_tool_bar(tool_bar)
 	slot6 = self._commands
 
 	return CoreCommandRegistry.ToolBarWrapper.new(slot3, CoreCommandRegistry.ToolBarWrapper, tool_bar)
 end
-CoreCommandRegistry.Wrapper.init = function (self, wrapped_object, commands)
+CoreCommandRegistry.function Wrapper:init(wrapped_object, commands)
 	slot7 = commands
 	slot6 = "Table argument with keyword arguments expected."
 
@@ -90,10 +90,10 @@ CoreCommandRegistry.Wrapper.init = function (self, wrapped_object, commands)
 
 	return 
 end
-CoreCommandRegistry.Wrapper.wrapped_object = function (self)
+CoreCommandRegistry.function Wrapper:wrapped_object()
 	return self._wrapped_object
 end
-CoreCommandRegistry.Wrapper.__index = function (self, key)
+CoreCommandRegistry.function Wrapper:__index(key)
 	slot4 = self
 	local metatable = getmetatable(slot3)
 
@@ -116,13 +116,13 @@ CoreCommandRegistry.Wrapper.__index = function (self, key)
 		return instance[key](wrapper, ...)
 	end
 end
-CoreCommandRegistry.Wrapper.command = function (self, command_id)
+CoreCommandRegistry.function Wrapper:command(command_id)
 	slot5 = "Command \"" .. command_id .. "\" not found."
 	local command_table = assert(slot3, self._commands[command_id])
 
 	return command_table
 end
-CoreCommandRegistry.MenuWrapper.make_args = function (self, command_id)
+CoreCommandRegistry.function MenuWrapper:make_args(command_id)
 	slot5 = command_id
 	local command = self.command(slot3, self)
 	local label = (command.key and command.label .. "\t" .. command.key) or command.label
@@ -136,7 +136,7 @@ CoreCommandRegistry.MenuWrapper.make_args = function (self, command_id)
 
 	return slot4, slot5, slot6
 end
-CoreCommandRegistry.MenuWrapper.append_command = function (self, command_id)
+CoreCommandRegistry.function MenuWrapper:append_command(command_id)
 	slot4 = self
 	slot4 = self.wrapped_object(slot3)
 	slot8 = command_id
@@ -145,7 +145,7 @@ CoreCommandRegistry.MenuWrapper.append_command = function (self, command_id)
 
 	return 
 end
-CoreCommandRegistry.MenuWrapper.append_check_command = function (self, command_id)
+CoreCommandRegistry.function MenuWrapper:append_check_command(command_id)
 	slot4 = self
 	slot4 = self.wrapped_object(slot3)
 	slot8 = command_id
@@ -154,7 +154,7 @@ CoreCommandRegistry.MenuWrapper.append_check_command = function (self, command_i
 
 	return 
 end
-CoreCommandRegistry.MenuWrapper.append_radio_command = function (self, command_id)
+CoreCommandRegistry.function MenuWrapper:append_radio_command(command_id)
 	slot4 = self
 	slot4 = self.wrapped_object(slot3)
 	slot8 = command_id
@@ -163,7 +163,7 @@ CoreCommandRegistry.MenuWrapper.append_radio_command = function (self, command_i
 
 	return 
 end
-CoreCommandRegistry.ToolBarWrapper.make_args = function (self, command_id)
+CoreCommandRegistry.function ToolBarWrapper:make_args(command_id)
 	slot5 = command_id
 	local command = self.command(slot3, self)
 	slot7 = command.image
@@ -182,7 +182,7 @@ CoreCommandRegistry.ToolBarWrapper.make_args = function (self, command_id)
 
 	return command.id, label, CoreEWS.image_path(slot7), command.help or label
 end
-CoreCommandRegistry.ToolBarWrapper.add_command = function (self, command_id)
+CoreCommandRegistry.function ToolBarWrapper:add_command(command_id)
 	slot4 = self
 	slot4 = self.wrapped_object(slot3)
 	slot8 = command_id
@@ -191,7 +191,7 @@ CoreCommandRegistry.ToolBarWrapper.add_command = function (self, command_id)
 
 	return 
 end
-CoreCommandRegistry.ToolBarWrapper.add_check_command = function (self, command_id)
+CoreCommandRegistry.function ToolBarWrapper:add_check_command(command_id)
 	slot4 = self
 	slot4 = self.wrapped_object(slot3)
 	slot8 = command_id
@@ -200,7 +200,7 @@ CoreCommandRegistry.ToolBarWrapper.add_check_command = function (self, command_i
 
 	return 
 end
-CoreCommandRegistry.ToolBarWrapper.add_radio_command = function (self, command_id)
+CoreCommandRegistry.function ToolBarWrapper:add_radio_command(command_id)
 	slot4 = self
 	slot4 = self.wrapped_object(slot3)
 	slot8 = command_id

@@ -7,13 +7,13 @@
 -- WARNING: Error occurred during decompilation.
 --   Code may be incomplete or incorrect.
 HostStateBase = HostStateBase or class()
-HostStateBase.enter = function (self, data, enter_params)
+function HostStateBase:enter(data, enter_params)
 	return 
 end
-HostStateBase.exit = function (self, data, name, enter_params)
+function HostStateBase:exit(data, name, enter_params)
 	return 
 end
-HostStateBase.on_join_request_received = function (self, data, peer_name, client_preferred_character, dlcs, xuid, peer_level, gameversion, join_attempt_identifier, auth_ticket, sender)
+function HostStateBase:on_join_request_received(data, peer_name, client_preferred_character, dlcs, xuid, peer_level, gameversion, join_attempt_identifier, auth_ticket, sender)
 	slot22 = join_attempt_identifier
 	slot26 = 0
 
@@ -37,7 +37,7 @@ HostStateBase.on_join_request_received = function (self, data, peer_name, client
 
 	return 
 end
-HostStateBase._send_request_denied = function (self, sender, reason, my_user_id)
+function HostStateBase:_send_request_denied(sender, reason, my_user_id)
 
 	-- Decompilation error in this vicinity:
 	slot8 = reason
@@ -51,7 +51,7 @@ HostStateBase._send_request_denied = function (self, sender, reason, my_user_id)
 
 	return 
 end
-HostStateBase._has_peer_left_PSN = function (self, peer_name)
+function HostStateBase:_has_peer_left_PSN(peer_name)
 	slot5 = "PS3"
 
 	if SystemInfo.platform(slot3) == Idstring(SystemInfo) then
@@ -68,7 +68,7 @@ HostStateBase._has_peer_left_PSN = function (self, peer_name)
 
 	return 
 end
-HostStateBase._is_in_server_state = function (self)
+function HostStateBase:_is_in_server_state()
 	slot3 = managers.network
 
 	if managers.network.session(slot2) then
@@ -78,14 +78,14 @@ HostStateBase._is_in_server_state = function (self)
 
 	return slot1
 end
-HostStateBase._introduce_new_peer_to_old_peers = function (self, data, new_peer, loading, peer_name, character, mask_set, xuid, xnaddr)
+function HostStateBase:_introduce_new_peer_to_old_peers(data, new_peer, loading, peer_name, character, mask_set, xuid, xnaddr)
 
 	-- Decompilation error in this vicinity:
 	slot12 = "WIN32"
 
 	return 
 end
-HostStateBase._introduce_old_peers_to_new_peer = function (self, data, new_peer)
+function HostStateBase:_introduce_old_peers_to_new_peer(data, new_peer)
 	local new_peer_id = new_peer.id(slot4)
 	slot6 = data.peers
 
@@ -114,7 +114,7 @@ HostStateBase._introduce_old_peers_to_new_peer = function (self, data, new_peer)
 
 	return 
 end
-HostStateBase._chk_mutual_connection_established = function (self, data, peer, introduced_peer_id)
+function HostStateBase:_chk_mutual_connection_established(data, peer, introduced_peer_id)
 	local introduced_peer = data.peers[introduced_peer_id]
 	slot8 = peer
 
@@ -137,7 +137,7 @@ HostStateBase._chk_mutual_connection_established = function (self, data, peer, i
 
 	return false
 end
-HostStateBase.on_handshake_confirmation = function (self, data, peer, introduced_peer_id)
+function HostStateBase:on_handshake_confirmation(data, peer, introduced_peer_id)
 	slot11 = peer
 	slot10 = introduced_peer_id
 
@@ -176,14 +176,14 @@ HostStateBase.on_handshake_confirmation = function (self, data, peer, introduced
 
 	return 
 end
-HostStateBase._is_kicked = function (self, data, peer_name, peer_rpc)
+function HostStateBase:_is_kicked(data, peer_name, peer_rpc)
 
 	-- Decompilation error in this vicinity:
 	slot7 = "WIN32"
 
 	return 
 end
-HostStateBase._chk_peer_owns_current_dlc = function (self, data, peer_dlcs)
+function HostStateBase:_chk_peer_owns_current_dlc(data, peer_dlcs)
 	local requires_dlc = tweak_data.levels[Global.game_settings.level_id].dlc
 
 	if requires_dlc then
@@ -200,7 +200,7 @@ HostStateBase._chk_peer_owns_current_dlc = function (self, data, peer_dlcs)
 
 	return false
 end
-HostStateBase.on_peer_finished_loading = function (self, data, peer)
+function HostStateBase:on_peer_finished_loading(data, peer)
 	slot5 = "[HostStateBase:on_peer_finished_loading]"
 	slot8 = peer
 
@@ -222,12 +222,12 @@ HostStateBase.on_peer_finished_loading = function (self, data, peer)
 
 	return 
 end
-HostStateBase.on_load_level = function (self, data)
+function HostStateBase:on_load_level(data)
 	data.wants_to_load_level = true
 
 	return 
 end
-HostStateBase.is_joinable = function (self, data)
+function HostStateBase:is_joinable(data)
 	return false
 end
 

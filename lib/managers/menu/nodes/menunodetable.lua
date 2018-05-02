@@ -20,7 +20,7 @@ if not MenuNodeTable then
 end
 
 MenuNodeTable = slot0
-MenuNodeTable.init = function (self, data_node)
+function MenuNodeTable:init(data_node)
 	slot5 = data_node
 
 	MenuNodeTable.super.init(slot3, self)
@@ -39,17 +39,17 @@ MenuNodeTable.init = function (self, data_node)
 
 	return 
 end
-MenuNodeTable._setup_columns = function (self)
+function MenuNodeTable:_setup_columns()
 	return 
 end
-MenuNodeTable._add_column = function (self, params)
+function MenuNodeTable:_add_column(params)
 	slot5 = params
 
 	table.insert(slot3, self._columns)
 
 	return 
 end
-MenuNodeTable.columns = function (self)
+function MenuNodeTable:columns()
 	return self._columns
 end
 

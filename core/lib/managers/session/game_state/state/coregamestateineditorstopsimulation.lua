@@ -7,21 +7,21 @@ slot3 = "CoreGameStateInEditor"
 core.import(slot1, core)
 
 StopSimulation = StopSimulation or class()
-StopSimulation.init = function (self)
+function StopSimulation:init()
 	slot3 = self.game_state._front_end_requester
 
 	self.game_state._front_end_requester.task_started(slot2)
 
 	return 
 end
-StopSimulation.destroy = function (self)
+function StopSimulation:destroy()
 	slot3 = self.game_state._front_end_requester
 
 	self.game_state._front_end_requester.task_completed(slot2)
 
 	return 
 end
-StopSimulation.transition = function (self)
+function StopSimulation:transition()
 	return CoreGameStateInEditor.InEditor
 end
 

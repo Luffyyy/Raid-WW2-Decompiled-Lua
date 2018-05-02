@@ -19,28 +19,28 @@ slot3 = "CoreInteractionEditorConfig"
 core.import(slot1, core)
 
 InteractionEditorUIEvents = InteractionEditorUIEvents or CoreClass.class()
-InteractionEditorUIEvents.on_close = function (self)
+function InteractionEditorUIEvents:on_close()
 	slot4 = CoreInteractionEditorConfig.EDITOR_TITLE
 
 	managers.toolhub.close(slot2, managers.toolhub)
 
 	return 
 end
-InteractionEditorUIEvents.on_new = function (self)
+function InteractionEditorUIEvents:on_new()
 	slot3 = self
 
 	self.open_system(slot2)
 
 	return 
 end
-InteractionEditorUIEvents.on_close_system = function (self)
+function InteractionEditorUIEvents:on_close_system()
 	slot3 = self
 
 	self.close_system(slot2)
 
 	return 
 end
-InteractionEditorUIEvents.on_notebook_changing = function (self, data, event)
+function InteractionEditorUIEvents:on_notebook_changing(data, event)
 	slot5 = self
 	slot8 = self
 	slot8 = self.ui(slot7)
@@ -50,7 +50,7 @@ InteractionEditorUIEvents.on_notebook_changing = function (self, data, event)
 
 	return 
 end
-InteractionEditorUIEvents.on_show_graph_context_menu = function (self, system)
+function InteractionEditorUIEvents:on_show_graph_context_menu(system)
 	slot4 = self
 	slot5 = system
 
@@ -58,38 +58,38 @@ InteractionEditorUIEvents.on_show_graph_context_menu = function (self, system)
 
 	return 
 end
-InteractionEditorUIEvents.on_add_node = function (self, func)
+function InteractionEditorUIEvents:on_add_node(func)
 	func()
 
 	return 
 end
-InteractionEditorUIEvents.on_remove_node = function (self, func)
+function InteractionEditorUIEvents:on_remove_node(func)
 	func()
 
 	return 
 end
-InteractionEditorUIEvents.on_save = function (self)
+function InteractionEditorUIEvents:on_save()
 	slot3 = self
 
 	self.do_save(slot2)
 
 	return 
 end
-InteractionEditorUIEvents.on_save_as = function (self)
+function InteractionEditorUIEvents:on_save_as()
 	slot3 = self
 
 	self.do_save_as(slot2)
 
 	return 
 end
-InteractionEditorUIEvents.on_save_all = function (self)
+function InteractionEditorUIEvents:on_save_all()
 	slot3 = self
 
 	self.do_save_all(slot2)
 
 	return 
 end
-InteractionEditorUIEvents.on_open = function (self)
+function InteractionEditorUIEvents:on_open()
 	slot6 = self
 	slot6 = self.ui("*.interaction_project")
 	local path, dir = managers.database.open_file_dialog(slot2, managers.database, self.ui("*.interaction_project").frame("*.interaction_project"))
@@ -106,10 +106,10 @@ InteractionEditorUIEvents.on_open = function (self)
 
 	return 
 end
-InteractionEditorUIEvents.on_undo = function (self)
+function InteractionEditorUIEvents:on_undo()
 	return 
 end
-InteractionEditorUIEvents.on_redo = function (self)
+function InteractionEditorUIEvents:on_redo()
 	return 
 end
 

@@ -23,7 +23,7 @@ ControllerWrapperPC.CONTROLLER_TYPE_LIST = {
 	"win32_keyboard",
 	"win32_mouse"
 }
-ControllerWrapperPC.init = function (self, manager, id, name, controller, setup, debug, skip_virtual_controller, gamepads)
+function ControllerWrapperPC:init(manager, id, name, controller, setup, debug, skip_virtual_controller, gamepads)
 	local func_map = {}
 	slot14 = "virtual_connect_keyboard_axis_1"
 	func_map.keyboard_axis_1 = callback(slot11, self, self)
@@ -47,7 +47,7 @@ ControllerWrapperPC.init = function (self, manager, id, name, controller, setup,
 
 	return 
 end
-ControllerWrapperPC.virtual_connect_keyboard_axis_1 = function (self, controller_id, controller, input_name, connection_name, connection)
+function ControllerWrapperPC:virtual_connect_keyboard_axis_1(controller_id, controller, input_name, connection_name, connection)
 	slot8 = self._virtual_controller
 
 	self._virtual_controller.add_axis(slot7, Idstring(slot10))
@@ -78,7 +78,7 @@ ControllerWrapperPC.virtual_connect_keyboard_axis_1 = function (self, controller
 
 	return 
 end
-ControllerWrapperPC.virtual_connect_keyboard_axis_2 = function (self, controller_id, controller, input_name, connection_name, connection)
+function ControllerWrapperPC:virtual_connect_keyboard_axis_2(controller_id, controller, input_name, connection_name, connection)
 	slot9 = connection_name
 
 	self._virtual_controller.add_axis(slot7, self._virtual_controller)
@@ -109,21 +109,21 @@ ControllerWrapperPC.virtual_connect_keyboard_axis_2 = function (self, controller
 
 	return 
 end
-ControllerWrapperPC.virtual_connect_confirm = function (self, controller_id, controller, input_name, connection_name, connection)
+function ControllerWrapperPC:virtual_connect_confirm(controller_id, controller, input_name, connection_name, connection)
 	slot13 = connection
 
 	self.virtual_connect2(slot7, self, controller_id, controller, "enter", connection_name)
 
 	return 
 end
-ControllerWrapperPC.virtual_connect_cancel = function (self, controller_id, controller, input_name, connection_name, connection)
+function ControllerWrapperPC:virtual_connect_cancel(controller_id, controller, input_name, connection_name, connection)
 	slot13 = connection
 
 	self.virtual_connect2(slot7, self, controller_id, controller, "esc", connection_name)
 
 	return 
 end
-ControllerWrapperPC.virtual_connect2 = function (self, controller_id, controller, input_name, connection_name, connection)
+function ControllerWrapperPC:virtual_connect2(controller_id, controller, input_name, connection_name, connection)
 	slot8 = connection
 	local min_src, max_src, min_dest, max_dest = connection.get_range(slot7)
 	local connect_src_type = connection.get_connect_src_type(slot11)

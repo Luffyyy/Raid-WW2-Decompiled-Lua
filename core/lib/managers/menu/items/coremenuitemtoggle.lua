@@ -23,7 +23,7 @@ end
 
 ItemToggle = slot0
 ItemToggle.TYPE = "toggle"
-ItemToggle.init = function (self, data_node, parameters)
+function ItemToggle:init(data_node, parameters)
 	slot7 = parameters
 
 	CoreMenuItem.Item.init(slot4, self, data_node)
@@ -51,14 +51,14 @@ ItemToggle.init = function (self, data_node, parameters)
 
 	return 
 end
-ItemToggle.add_option = function (self, option)
+function ItemToggle:add_option(option)
 	slot5 = option
 
 	table.insert(slot3, self.options)
 
 	return 
 end
-ItemToggle.toggle = function (self)
+function ItemToggle:toggle()
 	if not self._enabled then
 		return 
 	end
@@ -75,7 +75,7 @@ ItemToggle.toggle = function (self)
 
 	return 
 end
-ItemToggle.toggle_back = function (self)
+function ItemToggle:toggle_back()
 	if not self._enabled then
 		return 
 	end
@@ -92,10 +92,10 @@ ItemToggle.toggle_back = function (self)
 
 	return 
 end
-ItemToggle.selected_option = function (self)
+function ItemToggle:selected_option()
 	return self.options[self.selected]
 end
-ItemToggle.value = function (self)
+function ItemToggle:value()
 	local value = ""
 	slot4 = self
 	local selected_option = self.selected_option(slot3)
@@ -107,7 +107,7 @@ ItemToggle.value = function (self)
 
 	return value
 end
-ItemToggle.set_value = function (self, value)
+function ItemToggle:set_value(value)
 	slot4 = self.options
 
 	for i, option in ipairs(slot3) do
@@ -126,7 +126,7 @@ ItemToggle.set_value = function (self, value)
 
 	return 
 end
-ItemToggle.setup_gui = function (self, node, row_item)
+function ItemToggle:setup_gui(node, row_item)
 
 	-- Decompilation error in this vicinity:
 	slot6 = {
@@ -206,7 +206,7 @@ ItemToggle.setup_gui = function (self, node, row_item)
 	return true
 end
 local xl_pad = 64
-ItemToggle.reload = function (self, row_item, node)
+function ItemToggle:reload(row_item, node)
 	if not row_item then
 		return 
 	end
@@ -391,7 +391,7 @@ ItemToggle.reload = function (self, row_item, node)
 
 	return true
 end
-ItemToggle._set_toggle_item_image = function (self, row_item)
+function ItemToggle:_set_toggle_item_image(row_item)
 	slot4 = self
 	slot4 = self.selected_option(slot3)
 
@@ -438,7 +438,7 @@ ItemToggle._set_toggle_item_image = function (self, row_item)
 
 	return 
 end
-ItemToggle.highlight_row_item = function (self, node, row_item, mouse_over)
+function ItemToggle:highlight_row_item(node, row_item, mouse_over)
 	slot7 = row_item.color
 
 	row_item.gui_text.set_color(slot5, row_item.gui_text)
@@ -475,7 +475,7 @@ ItemToggle.highlight_row_item = function (self, node, row_item, mouse_over)
 
 	return true
 end
-ItemToggle.fade_row_item = function (self, node, row_item)
+function ItemToggle:fade_row_item(node, row_item)
 	slot6 = row_item.color
 
 	row_item.gui_text.set_color(slot4, row_item.gui_text)

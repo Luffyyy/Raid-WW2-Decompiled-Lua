@@ -2665,7 +2665,7 @@ slot2 = "lib/managers/MenuManagerDebug"
 
 require(20)
 
-function MenuManager:init(is_start_menu)
+MenuManager.init = function (self, is_start_menu)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -3553,7 +3553,7 @@ function MenuManager:init(is_start_menu)
 
 
 end
-function MenuManager:_init_loading_screen()
+MenuManager._init_loading_screen = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -3565,7 +3565,7 @@ function MenuManager:_init_loading_screen()
 
 
 end
-function MenuManager:show_loading_screen(data, clbk, instant)
+MenuManager.show_loading_screen = function (self, data, clbk, instant)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -3579,7 +3579,7 @@ function MenuManager:show_loading_screen(data, clbk, instant)
 
 
 end
-function MenuManager:fade_to_black()
+MenuManager.fade_to_black = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -3593,7 +3593,7 @@ function MenuManager:fade_to_black()
 
 
 end
-function MenuManager:hide_loading_screen()
+MenuManager.hide_loading_screen = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -3608,7 +3608,7 @@ function MenuManager:hide_loading_screen()
 
 
 end
-function MenuManager:controller_hotswap_triggered()
+MenuManager.controller_hotswap_triggered = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-21, warpins: 1 ---
@@ -3735,7 +3735,7 @@ function MenuManager:controller_hotswap_triggered()
 
 
 end
-function MenuManager:post_event(event)
+MenuManager.post_event = function (self, event)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -3745,7 +3745,7 @@ function MenuManager:post_event(event)
 
 
 end
-function MenuManager:_cb_matchmake_found_game(game_id, created)
+MenuManager._cb_matchmake_found_game = function (self, game_id, created)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -3759,7 +3759,7 @@ function MenuManager:_cb_matchmake_found_game(game_id, created)
 
 
 end
-function MenuManager:_cb_matchmake_player_joined(player_info)
+MenuManager._cb_matchmake_player_joined = function (self, player_info)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -3793,7 +3793,7 @@ function MenuManager:_cb_matchmake_player_joined(player_info)
 
 
 end
-function MenuManager:destroy()
+MenuManager.destroy = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-15, warpins: 1 ---
@@ -3815,7 +3815,7 @@ function MenuManager:destroy()
 
 
 end
-function MenuManager:set_delayed_open_savefile_menu_callback(callback_func)
+MenuManager.set_delayed_open_savefile_menu_callback = function (self, callback_func)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -3827,7 +3827,7 @@ function MenuManager:set_delayed_open_savefile_menu_callback(callback_func)
 
 
 end
-function MenuManager:set_save_game_callback(callback_func)
+MenuManager.set_save_game_callback = function (self, callback_func)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -3839,7 +3839,7 @@ function MenuManager:set_save_game_callback(callback_func)
 
 
 end
-function MenuManager:system_menu_active_changed(active)
+MenuManager.system_menu_active_changed = function (self, active)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -3903,7 +3903,7 @@ function MenuManager:system_menu_active_changed(active)
 
 
 end
-function MenuManager:set_and_send_sync_state(state)
+MenuManager.set_and_send_sync_state = function (self, state)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -3953,7 +3953,7 @@ function MenuManager:set_and_send_sync_state(state)
 
 
 end
-function MenuManager:_set_peer_sync_state(peer_id, state)
+MenuManager._set_peer_sync_state = function (self, peer_id, state)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -3989,7 +3989,7 @@ function MenuManager:_set_peer_sync_state(peer_id, state)
 
 
 end
-function MenuManager:set_peer_sync_state_index(peer_id, index)
+MenuManager.set_peer_sync_state_index = function (self, peer_id, index)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -4005,7 +4005,7 @@ function MenuManager:set_peer_sync_state_index(peer_id, index)
 
 
 end
-function MenuManager:get_all_peers_state()
+MenuManager.get_all_peers_state = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -4015,7 +4015,7 @@ function MenuManager:get_all_peers_state()
 
 
 end
-function MenuManager:get_peer_state(peer_id)
+MenuManager.get_peer_state = function (self, peer_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -4044,7 +4044,7 @@ function MenuManager:get_peer_state(peer_id)
 
 
 end
-function MenuManager:_node_selected(menu_name, node)
+MenuManager._node_selected = function (self, menu_name, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -4083,7 +4083,7 @@ function MenuManager:_node_selected(menu_name, node)
 
 
 end
-function MenuManager:active_menu(node_name, parameter_list)
+MenuManager.active_menu = function (self, node_name, parameter_list)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -4114,7 +4114,7 @@ function MenuManager:active_menu(node_name, parameter_list)
 
 
 end
-function MenuManager:open_menu(menu_name, position, dont_add_on_stack)
+MenuManager.open_menu = function (self, menu_name, position, dont_add_on_stack)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -4180,7 +4180,7 @@ function MenuManager:open_menu(menu_name, position, dont_add_on_stack)
 
 
 end
-function MenuManager:open_node(node_name, parameter_list)
+MenuManager.open_node = function (self, node_name, parameter_list)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -4236,7 +4236,7 @@ function MenuManager:open_node(node_name, parameter_list)
 
 
 end
-function MenuManager:back(queue, skip_nodes)
+MenuManager.back = function (self, queue, skip_nodes)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -4269,7 +4269,7 @@ function MenuManager:back(queue, skip_nodes)
 
 
 end
-function MenuManager:close_menu(menu_name)
+MenuManager.close_menu = function (self, menu_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -4339,7 +4339,7 @@ function MenuManager:close_menu(menu_name)
 
 
 end
-function MenuManager:_menu_closed(menu_name)
+MenuManager._menu_closed = function (self, menu_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -4357,7 +4357,7 @@ function MenuManager:_menu_closed(menu_name)
 
 
 end
-function MenuManager:close_all_menus()
+MenuManager.close_all_menus = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -4467,7 +4467,7 @@ function MenuManager:close_all_menus()
 
 
 end
-function MenuManager:is_open(menu_name)
+MenuManager.is_open = function (self, menu_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -4523,7 +4523,7 @@ function MenuManager:is_open(menu_name)
 
 
 end
-function MenuManager:is_in_root(menu_name)
+MenuManager.is_in_root = function (self, menu_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -4607,7 +4607,7 @@ function MenuManager:is_in_root(menu_name)
 
 
 end
-function MenuManager:is_pc_controller()
+MenuManager.is_pc_controller = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -4627,7 +4627,7 @@ function MenuManager:is_pc_controller()
 
 
 end
-function MenuManager:is_steam_controller()
+MenuManager.is_steam_controller = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -4647,7 +4647,7 @@ function MenuManager:is_steam_controller()
 
 
 end
-function MenuManager:mark_main_menu(is_main_menu)
+MenuManager.mark_main_menu = function (self, is_main_menu)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -4659,7 +4659,7 @@ function MenuManager:mark_main_menu(is_main_menu)
 
 
 end
-function MenuManager:toggle_menu_state()
+MenuManager.toggle_menu_state = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -4846,7 +4846,7 @@ function MenuManager:toggle_menu_state()
 
 
 end
-function MenuManager:push_to_talk(enabled)
+MenuManager.push_to_talk = function (self, enabled)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -4877,7 +4877,7 @@ function MenuManager:push_to_talk(enabled)
 
 
 end
-function MenuManager:toggle_chatinput()
+MenuManager.toggle_chatinput = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -4981,7 +4981,7 @@ function MenuManager:toggle_chatinput()
 
 
 end
-function MenuManager:set_slot_voice(peer, peer_id, active)
+MenuManager.set_slot_voice = function (self, peer, peer_id, active)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -4991,7 +4991,7 @@ function MenuManager:set_slot_voice(peer, peer_id, active)
 
 
 end
-function MenuManager:recreate_controller()
+MenuManager.recreate_controller = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-28, warpins: 1 ---
@@ -5035,7 +5035,7 @@ function MenuManager:recreate_controller()
 
 
 end
-function MenuManager:create_controller()
+MenuManager.create_controller = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -5117,7 +5117,7 @@ function MenuManager:create_controller()
 
 
 end
-function MenuManager:get_controller()
+MenuManager.get_controller = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -5127,7 +5127,7 @@ function MenuManager:get_controller()
 
 
 end
-function MenuManager:safefile_manager_active_changed(active)
+MenuManager.safefile_manager_active_changed = function (self, active)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -5225,7 +5225,7 @@ function MenuManager:safefile_manager_active_changed(active)
 
 
 end
-function MenuManager:destroy_controller()
+MenuManager.destroy_controller = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -5258,7 +5258,7 @@ function MenuManager:destroy_controller()
 
 
 end
-function MenuManager:activate()
+MenuManager.activate = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -5295,7 +5295,7 @@ function MenuManager:activate()
 
 
 end
-function MenuManager:deactivate()
+MenuManager.deactivate = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -5333,7 +5333,7 @@ function MenuManager:deactivate()
 
 
 end
-function MenuManager:is_active()
+MenuManager.is_active = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -5343,7 +5343,7 @@ function MenuManager:is_active()
 
 
 end
-function MenuManager:add_active_changed_callback(callback_func)
+MenuManager.add_active_changed_callback = function (self, callback_func)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -5357,7 +5357,7 @@ function MenuManager:add_active_changed_callback(callback_func)
 
 
 end
-function MenuManager:remove_active_changed_callback(callback_func)
+MenuManager.remove_active_changed_callback = function (self, callback_func)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -5371,7 +5371,7 @@ function MenuManager:remove_active_changed_callback(callback_func)
 
 
 end
-function MenuManager:brightness_changed(name, old_value, new_value)
+MenuManager.brightness_changed = function (self, name, old_value, new_value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-20, warpins: 1 ---
@@ -5389,7 +5389,7 @@ function MenuManager:brightness_changed(name, old_value, new_value)
 
 
 end
-function MenuManager:effect_quality_changed(name, old_value, new_value)
+MenuManager.effect_quality_changed = function (self, name, old_value, new_value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -5404,7 +5404,7 @@ function MenuManager:effect_quality_changed(name, old_value, new_value)
 
 
 end
-function MenuManager:set_mouse_sensitivity(zoomed)
+MenuManager.set_mouse_sensitivity = function (self, zoomed)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -5470,7 +5470,7 @@ function MenuManager:set_mouse_sensitivity(zoomed)
 
 
 end
-function MenuManager:camera_sensitivity_x_changed(name, old_value, new_value)
+MenuManager.camera_sensitivity_x_changed = function (self, name, old_value, new_value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-42, warpins: 1 ---
@@ -5597,7 +5597,7 @@ function MenuManager:camera_sensitivity_x_changed(name, old_value, new_value)
 
 
 end
-function MenuManager:camera_sensitivity_y_changed(name, old_value, new_value)
+MenuManager.camera_sensitivity_y_changed = function (self, name, old_value, new_value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-42, warpins: 1 ---
@@ -5724,7 +5724,7 @@ function MenuManager:camera_sensitivity_y_changed(name, old_value, new_value)
 
 
 end
-function MenuManager:rumble_changed(name, old_value, new_value)
+MenuManager.rumble_changed = function (self, name, old_value, new_value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -5738,7 +5738,7 @@ function MenuManager:rumble_changed(name, old_value, new_value)
 
 
 end
-function MenuManager:invert_camera_x_changed(name, old_value, new_value)
+MenuManager.invert_camera_x_changed = function (self, name, old_value, new_value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -5792,7 +5792,7 @@ function MenuManager:invert_camera_x_changed(name, old_value, new_value)
 
 
 end
-function MenuManager:invert_camera_y_changed(name, old_value, new_value)
+MenuManager.invert_camera_y_changed = function (self, name, old_value, new_value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -5846,7 +5846,7 @@ function MenuManager:invert_camera_y_changed(name, old_value, new_value)
 
 
 end
-function MenuManager:southpaw_changed(name, old_value, new_value)
+MenuManager.southpaw_changed = function (self, name, old_value, new_value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -6128,7 +6128,7 @@ function MenuManager:southpaw_changed(name, old_value, new_value)
 
 
 end
-function MenuManager:ssao_setting_changed(name, old_value, new_value)
+MenuManager.ssao_setting_changed = function (self, name, old_value, new_value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -6142,7 +6142,7 @@ function MenuManager:ssao_setting_changed(name, old_value, new_value)
 
 
 end
-function MenuManager:motion_blur_setting_changed(name, old_value, new_value)
+MenuManager.motion_blur_setting_changed = function (self, name, old_value, new_value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -6156,7 +6156,7 @@ function MenuManager:motion_blur_setting_changed(name, old_value, new_value)
 
 
 end
-function MenuManager:volumetric_light_scatter_setting_changed(name, old_value, new_value)
+MenuManager.volumetric_light_scatter_setting_changed = function (self, name, old_value, new_value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -6170,7 +6170,7 @@ function MenuManager:volumetric_light_scatter_setting_changed(name, old_value, n
 
 
 end
-function MenuManager:AA_setting_changed(name, old_value, new_value)
+MenuManager.AA_setting_changed = function (self, name, old_value, new_value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -6184,7 +6184,7 @@ function MenuManager:AA_setting_changed(name, old_value, new_value)
 
 
 end
-function MenuManager:colorblind_setting_changed(name, old_value, new_value)
+MenuManager.colorblind_setting_changed = function (self, name, old_value, new_value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -6198,7 +6198,7 @@ function MenuManager:colorblind_setting_changed(name, old_value, new_value)
 
 
 end
-function MenuManager:detail_distance_setting_changed(name, old_value, new_value)
+MenuManager.detail_distance_setting_changed = function (self, name, old_value, new_value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -6216,7 +6216,7 @@ function MenuManager:detail_distance_setting_changed(name, old_value, new_value)
 
 
 end
-function MenuManager:use_parallax_setting_changed(name, old_value, new_value)
+MenuManager.use_parallax_setting_changed = function (self, name, old_value, new_value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -6230,7 +6230,7 @@ function MenuManager:use_parallax_setting_changed(name, old_value, new_value)
 
 
 end
-function MenuManager:dof_setting_changed(name, old_value, new_value)
+MenuManager.dof_setting_changed = function (self, name, old_value, new_value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -6244,7 +6244,7 @@ function MenuManager:dof_setting_changed(name, old_value, new_value)
 
 
 end
-function MenuManager:fps_limit_changed(name, old_value, new_value)
+MenuManager.fps_limit_changed = function (self, name, old_value, new_value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -6279,7 +6279,7 @@ function MenuManager:fps_limit_changed(name, old_value, new_value)
 
 
 end
-function MenuManager:net_packet_throttling_changed(name, old_value, new_value)
+MenuManager.net_packet_throttling_changed = function (self, name, old_value, new_value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -6310,7 +6310,7 @@ function MenuManager:net_packet_throttling_changed(name, old_value, new_value)
 
 
 end
-function MenuManager:net_forwarding_changed(name, old_value, new_value)
+MenuManager.net_forwarding_changed = function (self, name, old_value, new_value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -6328,7 +6328,7 @@ function MenuManager:net_forwarding_changed(name, old_value, new_value)
 
 
 end
-function MenuManager:net_use_compression_changed(name, old_value, new_value)
+MenuManager.net_use_compression_changed = function (self, name, old_value, new_value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -6342,7 +6342,7 @@ function MenuManager:net_use_compression_changed(name, old_value, new_value)
 
 
 end
-function MenuManager:flush_gpu_command_queue_changed(name, old_value, new_value)
+MenuManager.flush_gpu_command_queue_changed = function (self, name, old_value, new_value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -6354,7 +6354,7 @@ function MenuManager:flush_gpu_command_queue_changed(name, old_value, new_value)
 
 
 end
-function MenuManager:use_thq_weapon_parts_changed(name, old_value, new_value)
+MenuManager.use_thq_weapon_parts_changed = function (self, name, old_value, new_value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -6454,7 +6454,7 @@ function MenuManager:use_thq_weapon_parts_changed(name, old_value, new_value)
 
 
 end
-function MenuManager:subtitle_changed(name, old_value, new_value)
+MenuManager.subtitle_changed = function (self, name, old_value, new_value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -6468,7 +6468,7 @@ function MenuManager:subtitle_changed(name, old_value, new_value)
 
 
 end
-function MenuManager:music_volume_changed(name, old_value, new_value)
+MenuManager.music_volume_changed = function (self, name, old_value, new_value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-16, warpins: 1 ---
@@ -6484,7 +6484,7 @@ function MenuManager:music_volume_changed(name, old_value, new_value)
 
 
 end
-function MenuManager:sfx_volume_changed(name, old_value, new_value)
+MenuManager.sfx_volume_changed = function (self, name, old_value, new_value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-22, warpins: 1 ---
@@ -6504,7 +6504,7 @@ function MenuManager:sfx_volume_changed(name, old_value, new_value)
 
 
 end
-function MenuManager:voice_volume_changed(name, old_value, new_value)
+MenuManager.voice_volume_changed = function (self, name, old_value, new_value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -6535,7 +6535,7 @@ function MenuManager:voice_volume_changed(name, old_value, new_value)
 
 
 end
-function MenuManager:voice_over_volume_changed(name, old_value, new_value)
+MenuManager.voice_over_volume_changed = function (self, name, old_value, new_value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -6550,7 +6550,7 @@ function MenuManager:voice_over_volume_changed(name, old_value, new_value)
 
 
 end
-function MenuManager:master_volume_changed(name, old_value, new_value)
+MenuManager.master_volume_changed = function (self, name, old_value, new_value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -6565,7 +6565,7 @@ function MenuManager:master_volume_changed(name, old_value, new_value)
 
 
 end
-function MenuManager:lightfx_changed(name, old_value, new_value)
+MenuManager.lightfx_changed = function (self, name, old_value, new_value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -6596,7 +6596,7 @@ function MenuManager:lightfx_changed(name, old_value, new_value)
 
 
 end
-function MenuManager:set_debug_menu_enabled(enabled)
+MenuManager.set_debug_menu_enabled = function (self, enabled)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -6608,7 +6608,7 @@ function MenuManager:set_debug_menu_enabled(enabled)
 
 
 end
-function MenuManager:debug_menu_enabled()
+MenuManager.debug_menu_enabled = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -6648,7 +6648,7 @@ function MenuManager:debug_menu_enabled()
 
 
 end
-function MenuManager:add_back_button(new_node)
+MenuManager.add_back_button = function (self, new_node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-15, warpins: 1 ---
@@ -6675,7 +6675,7 @@ function MenuManager:add_back_button(new_node)
 
 
 end
-function MenuManager:reload()
+MenuManager.reload = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -6690,7 +6690,7 @@ function MenuManager:reload()
 
 
 end
-function MenuManager:_recompile(dir)
+MenuManager._recompile = function (self, dir)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-50, warpins: 1 ---
@@ -6768,7 +6768,7 @@ function MenuManager:_recompile(dir)
 
 
 end
-function MenuManager:_source_files(dir)
+MenuManager._source_files = function (self, dir)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-17, warpins: 1 ---
@@ -6886,7 +6886,7 @@ function MenuManager:_source_files(dir)
 
 
 end
-function MenuManager:progress_resetted()
+MenuManager.progress_resetted = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-24, warpins: 1 ---
@@ -6910,7 +6910,7 @@ function MenuManager:progress_resetted()
 
 
 end
-function MenuManager:_dialog_progress_resetted_ok()
+MenuManager._dialog_progress_resetted_ok = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -6920,7 +6920,7 @@ function MenuManager:_dialog_progress_resetted_ok()
 
 
 end
-function MenuManager:is_console()
+MenuManager.is_console = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -6974,7 +6974,7 @@ function MenuManager:is_console()
 
 
 end
-function MenuManager:is_ps3()
+MenuManager.is_ps3 = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -7014,7 +7014,7 @@ function MenuManager:is_ps3()
 
 
 end
-function MenuManager:is_ps4()
+MenuManager.is_ps4 = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -7054,7 +7054,7 @@ function MenuManager:is_ps4()
 
 
 end
-function MenuManager:is_x360()
+MenuManager.is_x360 = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -7094,7 +7094,7 @@ function MenuManager:is_x360()
 
 
 end
-function MenuManager:is_xb1()
+MenuManager.is_xb1 = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -7134,7 +7134,7 @@ function MenuManager:is_xb1()
 
 
 end
-function MenuManager:is_na()
+MenuManager.is_na = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -7144,7 +7144,7 @@ function MenuManager:is_na()
 
 
 end
-function MenuManager:open_sign_in_menu(cb)
+MenuManager.open_sign_in_menu = function (self, cb)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -7411,7 +7411,7 @@ function MenuManager:open_sign_in_menu(cb)
 
 
 end
-function MenuManager:_check_privilege_callback(is_success)
+MenuManager._check_privilege_callback = function (self, is_success)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -7469,7 +7469,7 @@ function MenuManager:_check_privilege_callback(is_success)
 
 
 end
-function MenuManager:open_ps3_sign_in_menu(cb)
+MenuManager.open_ps3_sign_in_menu = function (self, cb)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -7594,7 +7594,7 @@ function MenuManager:open_ps3_sign_in_menu(cb)
 
 
 end
-function MenuManager:open_ps4_sign_in_menu(cb)
+MenuManager.open_ps4_sign_in_menu = function (self, cb)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -7810,7 +7810,7 @@ function MenuManager:open_ps4_sign_in_menu(cb)
 
 
 end
-function MenuManager:open_x360_sign_in_menu(cb)
+MenuManager.open_x360_sign_in_menu = function (self, cb)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -7825,7 +7825,7 @@ function MenuManager:open_x360_sign_in_menu(cb)
 
 
 end
-function MenuManager:open_xb1_sign_in_menu(cb)
+MenuManager.open_xb1_sign_in_menu = function (self, cb)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -7840,7 +7840,7 @@ function MenuManager:open_xb1_sign_in_menu(cb)
 
 
 end
-function MenuManager:external_enter_online_menus()
+MenuManager.external_enter_online_menus = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -7939,7 +7939,7 @@ function MenuManager:external_enter_online_menus()
 
 
 end
-function MenuManager:_enter_online_menus()
+MenuManager._enter_online_menus = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -8032,7 +8032,7 @@ function MenuManager:_enter_online_menus()
 
 
 end
-function MenuManager:_enter_online_menus_ps4()
+MenuManager._enter_online_menus_ps4 = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-31, warpins: 1 ---
@@ -8063,7 +8063,7 @@ function MenuManager:_enter_online_menus_ps4()
 
 
 end
-function MenuManager:_enter_online_menus_x360()
+MenuManager._enter_online_menus_x360 = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -8081,7 +8081,7 @@ function MenuManager:_enter_online_menus_x360()
 
 
 end
-function MenuManager:_enter_online_menus_xb1()
+MenuManager._enter_online_menus_xb1 = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -8099,7 +8099,7 @@ function MenuManager:_enter_online_menus_xb1()
 
 
 end
-function MenuManager:psn_disconnected()
+MenuManager.psn_disconnected = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -8156,7 +8156,7 @@ function MenuManager:psn_disconnected()
 
 
 end
-function MenuManager:steam_disconnected()
+MenuManager.steam_disconnected = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -8209,7 +8209,7 @@ function MenuManager:steam_disconnected()
 
 
 end
-function MenuManager:xbox_disconnected()
+MenuManager.xbox_disconnected = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -8244,7 +8244,7 @@ function MenuManager:xbox_disconnected()
 
 
 end
-function MenuManager:ps3_disconnect(connected)
+MenuManager.ps3_disconnect = function (self, connected)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -8320,7 +8320,7 @@ function MenuManager:ps3_disconnect(connected)
 
 
 end
-function MenuManager:show_disconnect_message(requires_signin)
+MenuManager.show_disconnect_message = function (self, requires_signin)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -8402,7 +8402,7 @@ function MenuManager:show_disconnect_message(requires_signin)
 
 
 end
-function MenuManager:created_lobby()
+MenuManager.created_lobby = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-22, warpins: 1 ---
@@ -8429,7 +8429,7 @@ function MenuManager:created_lobby()
 
 
 end
-function MenuManager:exit_online_menues()
+MenuManager.exit_online_menues = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-17, warpins: 1 ---
@@ -8496,7 +8496,7 @@ function MenuManager:exit_online_menues()
 
 
 end
-function MenuManager:leave_online_menu()
+MenuManager.leave_online_menu = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -8525,7 +8525,7 @@ function MenuManager:leave_online_menu()
 
 
 end
-function MenuManager:refresh_player_profile_gui()
+MenuManager.refresh_player_profile_gui = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -8556,7 +8556,7 @@ function MenuManager:refresh_player_profile_gui()
 
 
 end
-function MenuManager:_close_lobby_menu_components()
+MenuManager._close_lobby_menu_components = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -8566,7 +8566,7 @@ function MenuManager:_close_lobby_menu_components()
 
 
 end
-function MenuManager:on_leave_lobby()
+MenuManager.on_leave_lobby = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -8639,7 +8639,7 @@ function MenuManager:on_leave_lobby()
 
 
 end
-function MenuManager:show_global_success(node)
+MenuManager.show_global_success = function (self, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -8844,7 +8844,7 @@ function MenuManager:show_global_success(node)
 
 
 end
-function MenuManager:on_storage_changed(old_user_data, user_data)
+MenuManager.on_storage_changed = function (self, old_user_data, user_data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -8921,7 +8921,7 @@ function MenuManager:on_storage_changed(old_user_data, user_data)
 
 
 end
-function MenuManager:on_user_changed(old_user_data, user_data)
+MenuManager.on_user_changed = function (self, old_user_data, user_data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -8980,7 +8980,7 @@ function MenuManager:on_user_changed(old_user_data, user_data)
 
 
 end
-function MenuManager:reset_all_loaded_data()
+MenuManager.reset_all_loaded_data = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-19, warpins: 1 ---
@@ -9006,7 +9006,7 @@ function MenuManager:reset_all_loaded_data()
 
 
 end
-function MenuManager:do_clear_progress()
+MenuManager.do_clear_progress = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-46, warpins: 1 ---
@@ -9067,7 +9067,7 @@ function MenuManager:do_clear_progress()
 
 
 end
-function MenuManager:on_user_sign_out()
+MenuManager.on_user_sign_out = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -9160,7 +9160,7 @@ if not MenuUpgrades then
 end
 
 MenuUpgrades = slot0
-function MenuUpgrades:modify_node(node, up, ...)
+MenuUpgrades.modify_node = function (self, node, up, ...)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -9364,7 +9364,7 @@ if not InviteFriendsPSN then
 end
 
 InviteFriendsPSN = slot0
-function InviteFriendsPSN:modify_node(node, up)
+InviteFriendsPSN.modify_node = function (self, node, up)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -9431,7 +9431,7 @@ function InviteFriendsPSN:modify_node(node, up)
 
 
 end
-function InviteFriendsPSN:refresh_node(node, friends)
+InviteFriendsPSN.refresh_node = function (self, node, friends)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -9538,7 +9538,7 @@ function InviteFriendsPSN:refresh_node(node, friends)
 
 
 end
-function InviteFriendsPSN:update_node(node)
+InviteFriendsPSN.update_node = function (self, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -9597,7 +9597,7 @@ if not InviteFriendsSTEAM then
 end
 
 InviteFriendsSTEAM = slot0
-function InviteFriendsSTEAM:modify_node(node, up)
+InviteFriendsSTEAM.modify_node = function (self, node, up)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -9607,7 +9607,7 @@ function InviteFriendsSTEAM:modify_node(node, up)
 
 
 end
-function InviteFriendsSTEAM:refresh_node(node, friend)
+InviteFriendsSTEAM.refresh_node = function (self, node, friend)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -9617,7 +9617,7 @@ function InviteFriendsSTEAM:refresh_node(node, friend)
 
 
 end
-function InviteFriendsSTEAM:update_node(node)
+InviteFriendsSTEAM.update_node = function (self, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -9640,7 +9640,7 @@ if not PauseMenu then
 end
 
 PauseMenu = slot0
-function PauseMenu:modify_node(node)
+PauseMenu.modify_node = function (self, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -9735,7 +9735,7 @@ function PauseMenu:modify_node(node)
 
 
 end
-function PauseMenu:refresh_node(node)
+PauseMenu.refresh_node = function (self, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -9760,7 +9760,7 @@ if not KickPlayer then
 end
 
 KickPlayer = slot0
-function KickPlayer:modify_node(node, up)
+KickPlayer.modify_node = function (self, node, up)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -9886,7 +9886,7 @@ function KickPlayer:modify_node(node, up)
 
 
 end
-function KickPlayer:refresh_node(node)
+KickPlayer.refresh_node = function (self, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -9911,7 +9911,7 @@ if not MutePlayer then
 end
 
 MutePlayer = slot0
-function MutePlayer:modify_node(node, up)
+MutePlayer.modify_node = function (self, node, up)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -10089,7 +10089,7 @@ if not MutePlayerX360 then
 end
 
 MutePlayerX360 = slot0
-function MutePlayerX360:modify_node(node, up)
+MutePlayerX360.modify_node = function (self, node, up)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -10248,7 +10248,7 @@ if not MutePlayerXB1 then
 end
 
 MutePlayerXB1 = slot0
-function MutePlayerXB1:modify_node(node, up)
+MutePlayerXB1.modify_node = function (self, node, up)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -10407,7 +10407,7 @@ if not MutePlayerPS4 then
 end
 
 MutePlayerPS4 = slot0
-function MutePlayerPS4:modify_node(node, up)
+MutePlayerPS4.modify_node = function (self, node, up)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -10564,7 +10564,7 @@ if not ViewGamerCard then
 end
 
 ViewGamerCard = slot0
-function ViewGamerCard:modify_node(node, up)
+ViewGamerCard.modify_node = function (self, node, up)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -10656,7 +10656,7 @@ if not MenuPSNHostBrowser then
 end
 
 MenuPSNHostBrowser = slot0
-function MenuPSNHostBrowser:modify_node(node, up)
+MenuPSNHostBrowser.modify_node = function (self, node, up)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -10686,7 +10686,7 @@ function MenuPSNHostBrowser:modify_node(node, up)
 
 
 end
-function MenuPSNHostBrowser:update_node(node)
+MenuPSNHostBrowser.update_node = function (self, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -10722,7 +10722,7 @@ function MenuPSNHostBrowser:update_node(node)
 
 
 end
-function MenuPSNHostBrowser:add_filter(node)
+MenuPSNHostBrowser.add_filter = function (self, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -10800,7 +10800,7 @@ function MenuPSNHostBrowser:add_filter(node)
 
 
 end
-function MenuPSNHostBrowser:refresh_node(node, info_list, friends_only)
+MenuPSNHostBrowser.refresh_node = function (self, node, info_list, friends_only)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -11372,7 +11372,7 @@ if not MenuSTEAMHostBrowser then
 end
 
 MenuSTEAMHostBrowser = slot0
-function MenuSTEAMHostBrowser:modify_node(node, up)
+MenuSTEAMHostBrowser.modify_node = function (self, node, up)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -11402,7 +11402,7 @@ function MenuSTEAMHostBrowser:modify_node(node, up)
 
 
 end
-function MenuSTEAMHostBrowser:update_node(node)
+MenuSTEAMHostBrowser.update_node = function (self, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -11417,7 +11417,7 @@ function MenuSTEAMHostBrowser:update_node(node)
 
 
 end
-function MenuSTEAMHostBrowser:add_filter(node)
+MenuSTEAMHostBrowser.add_filter = function (self, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -11534,7 +11534,7 @@ function MenuSTEAMHostBrowser:add_filter(node)
 
 
 end
-function MenuSTEAMHostBrowser:refresh_node(node, info, friends_only)
+MenuSTEAMHostBrowser.refresh_node = function (self, node, info, friends_only)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -11984,7 +11984,7 @@ if not MenuLANHostBrowser then
 end
 
 MenuLANHostBrowser = slot0
-function MenuLANHostBrowser:modify_node(node, up)
+MenuLANHostBrowser.modify_node = function (self, node, up)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -12014,7 +12014,7 @@ function MenuLANHostBrowser:modify_node(node, up)
 
 
 end
-function MenuLANHostBrowser:refresh_node(node)
+MenuLANHostBrowser.refresh_node = function (self, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -12233,7 +12233,7 @@ if not MenuMPHostBrowser then
 end
 
 MenuMPHostBrowser = slot0
-function MenuMPHostBrowser:modify_node(node, up)
+MenuMPHostBrowser.modify_node = function (self, node, up)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -12267,7 +12267,7 @@ function MenuMPHostBrowser:modify_node(node, up)
 
 
 end
-function MenuMPHostBrowser:refresh_node(node)
+MenuMPHostBrowser.refresh_node = function (self, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -12502,7 +12502,7 @@ if not MenuResolutionCreator then
 end
 
 MenuResolutionCreator = slot0
-function MenuResolutionCreator:modify_node(node)
+MenuResolutionCreator.modify_node = function (self, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -12649,7 +12649,7 @@ if not MenuSoundCreator then
 end
 
 MenuSoundCreator = slot0
-function MenuSoundCreator:modify_node(node)
+MenuSoundCreator.modify_node = function (self, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -12862,7 +12862,7 @@ function MenuSoundCreator:modify_node(node)
 
 
 end
-function MenuSoundCreator:refresh_node(node)
+MenuSoundCreator.refresh_node = function (self, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -13265,7 +13265,7 @@ MenuManager.refresh_level_select = function (node, verify_dlc_owned)
 end
 slot0 = MenuPSNPlayerProfileInitiator or class()
 MenuPSNPlayerProfileInitiator = slot0
-function MenuPSNPlayerProfileInitiator:modify_node(node)
+MenuPSNPlayerProfileInitiator.modify_node = function (self, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -13286,7 +13286,7 @@ function MenuPSNPlayerProfileInitiator:modify_node(node)
 
 end
 GlobalSuccessRateInitiator = GlobalSuccessRateInitiator or class()
-function GlobalSuccessRateInitiator:modify_node(node)
+GlobalSuccessRateInitiator.modify_node = function (self, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -13301,7 +13301,7 @@ function GlobalSuccessRateInitiator:modify_node(node)
 
 end
 LobbyOptionInitiator = LobbyOptionInitiator or class()
-function LobbyOptionInitiator:modify_node(node)
+LobbyOptionInitiator.modify_node = function (self, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -13650,7 +13650,7 @@ function LobbyOptionInitiator:modify_node(node)
 
 end
 VerifyLevelOptionInitiator = VerifyLevelOptionInitiator or class()
-function VerifyLevelOptionInitiator:modify_node(node)
+VerifyLevelOptionInitiator.modify_node = function (self, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -14000,7 +14000,7 @@ MenuCustomizeControllerCreator.controls_info_by_category = function (category)
 
 
 end
-function MenuCustomizeControllerCreator:modify_node(original_node, data)
+MenuCustomizeControllerCreator.modify_node = function (self, original_node, data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -14013,7 +14013,7 @@ function MenuCustomizeControllerCreator:modify_node(original_node, data)
 
 
 end
-function MenuCustomizeControllerCreator:refresh_node(node)
+MenuCustomizeControllerCreator.refresh_node = function (self, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -14027,7 +14027,7 @@ function MenuCustomizeControllerCreator:refresh_node(node)
 
 
 end
-function MenuCustomizeControllerCreator:setup_node(node)
+MenuCustomizeControllerCreator.setup_node = function (self, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -14252,7 +14252,7 @@ function MenuCustomizeControllerCreator:setup_node(node)
 
 end
 MenuOptionInitiator = MenuOptionInitiator or class()
-function MenuOptionInitiator:modify_node(node)
+MenuOptionInitiator.modify_node = function (self, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -14446,7 +14446,7 @@ function MenuOptionInitiator:modify_node(node)
 
 
 end
-function MenuOptionInitiator:refresh_node(node)
+MenuOptionInitiator.refresh_node = function (self, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -14460,7 +14460,7 @@ function MenuOptionInitiator:refresh_node(node)
 
 
 end
-function MenuOptionInitiator:modify_resolution(node)
+MenuOptionInitiator.modify_resolution = function (self, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -14495,7 +14495,7 @@ function MenuOptionInitiator:modify_resolution(node)
 
 
 end
-function MenuOptionInitiator:modify_adv_video(node)
+MenuOptionInitiator.modify_adv_video = function (self, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -15159,7 +15159,7 @@ function MenuOptionInitiator:modify_adv_video(node)
 
 
 end
-function MenuOptionInitiator:modify_video(node)
+MenuOptionInitiator.modify_video = function (self, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -15463,7 +15463,7 @@ function MenuOptionInitiator:modify_video(node)
 
 
 end
-function MenuOptionInitiator:modify_controls(node)
+MenuOptionInitiator.modify_controls = function (self, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -15996,7 +15996,7 @@ function MenuOptionInitiator:modify_controls(node)
 
 
 end
-function MenuOptionInitiator:modify_debug_options(node)
+MenuOptionInitiator.modify_debug_options = function (self, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -16606,7 +16606,7 @@ function MenuOptionInitiator:modify_debug_options(node)
 
 
 end
-function MenuOptionInitiator:modify_options(node)
+MenuOptionInitiator.modify_options = function (self, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -16616,7 +16616,7 @@ function MenuOptionInitiator:modify_options(node)
 
 
 end
-function MenuOptionInitiator:modify_network_options(node)
+MenuOptionInitiator.modify_network_options = function (self, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -16789,7 +16789,7 @@ function MenuOptionInitiator:modify_network_options(node)
 
 end
 ModMenuCreator = ModMenuCreator or class()
-function ModMenuCreator:modify_node(original_node, data)
+ModMenuCreator.modify_node = function (self, original_node, data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -16804,7 +16804,7 @@ function ModMenuCreator:modify_node(original_node, data)
 
 
 end
-function ModMenuCreator:create_mod_menu(node)
+ModMenuCreator.create_mod_menu = function (self, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-15, warpins: 1 ---
@@ -17184,7 +17184,7 @@ function ModMenuCreator:create_mod_menu(node)
 
 
 end
-function ModMenuCreator:create_divider(node, id, text_id, size, color)
+ModMenuCreator.create_divider = function (self, node, id, text_id, size, color)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -17229,7 +17229,7 @@ function ModMenuCreator:create_divider(node, id, text_id, size, color)
 
 
 end
-function ModMenuCreator:create_item(node, params)
+ModMenuCreator.create_item = function (self, node, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-15, warpins: 1 ---
@@ -17250,7 +17250,7 @@ function ModMenuCreator:create_item(node, params)
 
 
 end
-function ModMenuCreator:create_toggle(node, params)
+ModMenuCreator.create_toggle = function (self, node, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-19, warpins: 1 ---
@@ -17301,7 +17301,7 @@ function ModMenuCreator:create_toggle(node, params)
 
 
 end
-function ModMenuCreator:add_back_button(node)
+ModMenuCreator.add_back_button = function (self, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-15, warpins: 1 ---
@@ -17328,7 +17328,7 @@ function ModMenuCreator:add_back_button(node)
 
 
 end
-function MenuManager:e3_end_game()
+MenuManager.e3_end_game = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -17343,7 +17343,7 @@ function MenuManager:e3_end_game()
 
 
 end
-function MenuManager:e3_quit_game()
+MenuManager.e3_quit_game = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -17385,7 +17385,7 @@ function MenuManager:e3_quit_game()
 
 
 end
-function MenuManager:e3_shutdown_game()
+MenuManager.e3_shutdown_game = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-44, warpins: 1 ---
@@ -17483,7 +17483,7 @@ function MenuManager:e3_shutdown_game()
 
 
 end
-function MenuManager:create_menu_item_background(panel, coord_x, coord_y, width, layer)
+MenuManager.create_menu_item_background = function (self, panel, coord_x, coord_y, width, layer)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-15, warpins: 1 ---
@@ -17531,7 +17531,7 @@ function MenuManager:create_menu_item_background(panel, coord_x, coord_y, width,
 
 
 end
-function MenuManager:get_menu_item_width()
+MenuManager.get_menu_item_width = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---

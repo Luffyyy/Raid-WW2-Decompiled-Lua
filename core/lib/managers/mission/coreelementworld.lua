@@ -12,7 +12,7 @@ if not ElementWorldOutputEvent then
 end
 
 ElementWorldOutputEvent = slot0
-ElementWorldOutputEvent.init = function (self, ...)
+function ElementWorldOutputEvent:init(...)
 	slot3 = self
 
 	ElementWorldOutputEvent.super.init(slot2, ...)
@@ -29,13 +29,13 @@ ElementWorldOutputEvent.init = function (self, ...)
 
 	return 
 end
-ElementWorldOutputEvent.on_created = function (self)
+function ElementWorldOutputEvent:on_created()
 	return 
 end
-ElementWorldOutputEvent.client_on_executed = function (self, ...)
+function ElementWorldOutputEvent:client_on_executed(...)
 	return 
 end
-ElementWorldOutputEvent.on_executed = function (self, instigator)
+function ElementWorldOutputEvent:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -46,7 +46,7 @@ ElementWorldOutputEvent.on_executed = function (self, instigator)
 
 	return 
 end
-ElementWorldOutputEvent.destroy = function (self)
+function ElementWorldOutputEvent:destroy()
 	slot3 = self._values.event_list
 
 	for _, event_list_data in ipairs(slot2) do
@@ -64,17 +64,17 @@ if not ElementWorldOutput then
 end
 
 ElementWorldOutput = slot0
-ElementWorldOutput.init = function (self, ...)
+function ElementWorldOutput:init(...)
 	slot3 = self
 
 	ElementWorldOutput.super.init(slot2, ...)
 
 	return 
 end
-ElementWorldOutput.client_on_executed = function (self, ...)
+function ElementWorldOutput:client_on_executed(...)
 	return 
 end
-ElementWorldOutput.on_created = function (self)
+function ElementWorldOutput:on_created()
 	slot6 = self._values.event
 
 	Application.debug(slot2, Application, "[ElementWorldOutput:on_created()]", self._sync_id)
@@ -84,7 +84,7 @@ ElementWorldOutput.on_created = function (self)
 
 	return 
 end
-ElementWorldOutput.on_executed = function (self, instigator)
+function ElementWorldOutput:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -112,7 +112,7 @@ if not ElementWorldInput then
 end
 
 ElementWorldInput = slot0
-ElementWorldInput.init = function (self, ...)
+function ElementWorldInput:init(...)
 	slot3 = self
 
 	ElementWorldInput.super.init(slot2, ...)
@@ -123,10 +123,10 @@ ElementWorldInput.init = function (self, ...)
 
 	return 
 end
-ElementWorldInput.client_on_executed = function (self, ...)
+function ElementWorldInput:client_on_executed(...)
 	return 
 end
-ElementWorldInput.on_executed = function (self, instigator)
+function ElementWorldInput:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -137,7 +137,7 @@ ElementWorldInput.on_executed = function (self, instigator)
 
 	return 
 end
-ElementWorldInput.destroy = function (self)
+function ElementWorldInput:destroy()
 	slot6 = self
 
 	managers.worldcollection.unregister_input_element(slot2, managers.worldcollection, self._sync_id, self._values.event)
@@ -151,24 +151,24 @@ if not ElementWorldInputEvent then
 end
 
 ElementWorldInputEvent = slot0
-ElementWorldInputEvent.init = function (self, ...)
+function ElementWorldInputEvent:init(...)
 	slot3 = self
 
 	ElementWorldInputEvent.super.init(slot2, ...)
 
 	return 
 end
-ElementWorldInputEvent.on_created = function (self)
+function ElementWorldInputEvent:on_created()
 	slot3 = "ElementWorldInputEvent:on_created()"
 
 	print(slot2)
 
 	return 
 end
-ElementWorldInputEvent.client_on_executed = function (self, ...)
+function ElementWorldInputEvent:client_on_executed(...)
 	return 
 end
-ElementWorldInputEvent.on_executed = function (self, instigator)
+function ElementWorldInputEvent:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -205,7 +205,7 @@ if not ElementWorldPoint then
 end
 
 ElementWorldPoint = slot0
-ElementWorldPoint.init = function (self, ...)
+function ElementWorldPoint:init(...)
 	slot3 = self
 
 	ElementWorldPoint.super.init(slot2, ...)
@@ -214,13 +214,13 @@ ElementWorldPoint.init = function (self, ...)
 
 	return 
 end
-ElementWorldPoint.value = function (self, name)
+function ElementWorldPoint:value(name)
 	return self._values[name]
 end
-ElementWorldPoint.client_on_executed = function (self, ...)
+function ElementWorldPoint:client_on_executed(...)
 	return 
 end
-ElementWorldPoint.on_script_activated = function (self)
+function ElementWorldPoint:on_script_activated()
 	slot4 = self._id
 
 	self._mission_script.add_save_state_cb(slot2, self._mission_script)
@@ -231,7 +231,7 @@ ElementWorldPoint.DELAY_DESTROY_SINGLE = 1.1
 ElementWorldPoint.DELAY_CREATE_SINGLE = 2
 ElementWorldPoint.DELAY_DESTROY_MULTI = 3
 ElementWorldPoint.DELAY_CREATE_MULTI = 5
-ElementWorldPoint.on_executed = function (self, instigator)
+function ElementWorldPoint:on_executed(instigator)
 	slot9 = self._action
 
 	Application.debug(slot3, Application, "[ElementWorldPoint:on_executed] on_executed", self._values.world, self._values.enabled, self._world_id)
@@ -279,7 +279,7 @@ ElementWorldPoint.on_executed = function (self, instigator)
 
 	return 
 end
-ElementWorldPoint._destroy_world = function (self)
+function ElementWorldPoint:_destroy_world()
 	slot6 = self._has_created
 
 	Application.debug(slot2, Application, "[ElementWorldPoint:_destroy_world()]", self._world_id)
@@ -301,7 +301,7 @@ ElementWorldPoint._destroy_world = function (self)
 
 	return 
 end
-ElementWorldPoint._create_world = function (self, world_id)
+function ElementWorldPoint:_create_world(world_id)
 	if self._has_created or not self._values.world then
 		slot6 = world_id
 
@@ -379,7 +379,7 @@ ElementWorldPoint._create_world = function (self, world_id)
 
 	return 
 end
-ElementWorldPoint.save = function (self, data)
+function ElementWorldPoint:save(data)
 	data.has_created = self._has_created
 	data.world_id = self._world_id
 	data.excluded_continents = self._excluded_continents
@@ -388,7 +388,7 @@ ElementWorldPoint.save = function (self, data)
 
 	return 
 end
-ElementWorldPoint.load = function (self, data)
+function ElementWorldPoint:load(data)
 	self._values.world = data.world
 	self._excluded_continents = data.excluded_continents
 
@@ -404,10 +404,10 @@ ElementWorldPoint.load = function (self, data)
 
 	return 
 end
-ElementWorldPoint.stop_simulation = function (self, ...)
+function ElementWorldPoint:stop_simulation(...)
 	return 
 end
-ElementWorldPoint.execute_action = function (self, action)
+function ElementWorldPoint:execute_action(action)
 	slot6 = action
 
 	Application.debug(slot3, Application, "[ElementWorldPoint:execute_action]")
@@ -419,7 +419,7 @@ ElementWorldPoint.execute_action = function (self, action)
 
 	return 
 end
-ElementWorldPoint.destroy = function (self)
+function ElementWorldPoint:destroy()
 	slot3 = self
 
 	self._destroy_world(slot2)

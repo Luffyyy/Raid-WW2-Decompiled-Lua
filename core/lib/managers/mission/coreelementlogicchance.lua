@@ -14,7 +14,7 @@ if not ElementLogicChance then
 end
 
 ElementLogicChance = slot0
-ElementLogicChance.init = function (self, ...)
+function ElementLogicChance:init(...)
 	slot3 = self
 
 	ElementLogicChance.super.init(slot2, ...)
@@ -24,10 +24,10 @@ ElementLogicChance.init = function (self, ...)
 
 	return 
 end
-ElementLogicChance.client_on_executed = function (self, ...)
+function ElementLogicChance:client_on_executed(...)
 	return 
 end
-ElementLogicChance.on_executed = function (self, instigator)
+function ElementLogicChance:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -64,7 +64,7 @@ ElementLogicChance.on_executed = function (self, instigator)
 
 	return 
 end
-ElementLogicChance.chance_operation_add_chance = function (self, chance)
+function ElementLogicChance:chance_operation_add_chance(chance)
 	self._chance = self._chance + chance
 	slot4 = self
 
@@ -72,7 +72,7 @@ ElementLogicChance.chance_operation_add_chance = function (self, chance)
 
 	return 
 end
-ElementLogicChance.chance_operation_subtract_chance = function (self, chance)
+function ElementLogicChance:chance_operation_subtract_chance(chance)
 	self._chance = self._chance - chance
 	slot4 = self
 
@@ -80,7 +80,7 @@ ElementLogicChance.chance_operation_subtract_chance = function (self, chance)
 
 	return 
 end
-ElementLogicChance.chance_operation_reset = function (self)
+function ElementLogicChance:chance_operation_reset()
 	self._chance = self._values.chance
 	slot3 = self
 
@@ -88,7 +88,7 @@ ElementLogicChance.chance_operation_reset = function (self)
 
 	return 
 end
-ElementLogicChance.chance_operation_set_chance = function (self, chance)
+function ElementLogicChance:chance_operation_set_chance(chance)
 	self._chance = chance
 	slot4 = self
 
@@ -96,7 +96,7 @@ ElementLogicChance.chance_operation_set_chance = function (self, chance)
 
 	return 
 end
-ElementLogicChance.add_trigger = function (self, id, outcome, callback)
+function ElementLogicChance:add_trigger(id, outcome, callback)
 	self._triggers[id] = {
 		outcome = outcome,
 		callback = callback
@@ -104,12 +104,12 @@ ElementLogicChance.add_trigger = function (self, id, outcome, callback)
 
 	return 
 end
-ElementLogicChance.remove_trigger = function (self, id)
+function ElementLogicChance:remove_trigger(id)
 	self._triggers[id] = nil
 
 	return 
 end
-ElementLogicChance._trigger_outcome = function (self, outcome)
+function ElementLogicChance:_trigger_outcome(outcome)
 	slot4 = self._triggers
 
 	for _, data in pairs(slot3) do
@@ -120,7 +120,7 @@ ElementLogicChance._trigger_outcome = function (self, outcome)
 
 	return 
 end
-ElementLogicChance.monitor_output_change = function (self, result)
+function ElementLogicChance:monitor_output_change(result)
 	if self.monitor_element then
 		local output_string = "chance: " .. self._chance .. " " .. (result or "")
 		slot7 = output_string
@@ -137,17 +137,17 @@ if not ElementLogicChanceOperator then
 end
 
 ElementLogicChanceOperator = slot0
-ElementLogicChanceOperator.init = function (self, ...)
+function ElementLogicChanceOperator:init(...)
 	slot3 = self
 
 	ElementLogicChanceOperator.super.init(slot2, ...)
 
 	return 
 end
-ElementLogicChanceOperator.client_on_executed = function (self, ...)
+function ElementLogicChanceOperator:client_on_executed(...)
 	return 
 end
-ElementLogicChanceOperator.on_executed = function (self, instigator)
+function ElementLogicChanceOperator:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -192,14 +192,14 @@ if not ElementLogicChanceTrigger then
 end
 
 ElementLogicChanceTrigger = slot0
-ElementLogicChanceTrigger.init = function (self, ...)
+function ElementLogicChanceTrigger:init(...)
 	slot3 = self
 
 	ElementLogicChanceTrigger.super.init(slot2, ...)
 
 	return 
 end
-ElementLogicChanceTrigger.on_script_activated = function (self)
+function ElementLogicChanceTrigger:on_script_activated()
 	slot3 = self._values.elements
 
 	for _, id in ipairs(slot2) do
@@ -216,10 +216,10 @@ ElementLogicChanceTrigger.on_script_activated = function (self)
 
 	return 
 end
-ElementLogicChanceTrigger.client_on_executed = function (self, ...)
+function ElementLogicChanceTrigger:client_on_executed(...)
 	return 
 end
-ElementLogicChanceTrigger.on_executed = function (self, instigator)
+function ElementLogicChanceTrigger:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

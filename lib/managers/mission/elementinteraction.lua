@@ -8,7 +8,7 @@ if not ElementInteraction then
 end
 
 ElementInteraction = slot0
-ElementInteraction.init = function (self, ...)
+function ElementInteraction:init(...)
 	slot3 = self
 
 	ElementInteraction.super.init(slot2, ...)
@@ -43,7 +43,7 @@ ElementInteraction.init = function (self, ...)
 
 	return 
 end
-ElementInteraction.on_script_activated = function (self)
+function ElementInteraction:on_script_activated()
 	slot3 = self._unit
 
 	if alive(slot2) and self._values.enabled then
@@ -55,7 +55,7 @@ ElementInteraction.on_script_activated = function (self)
 
 	return 
 end
-ElementInteraction.set_enabled = function (self, enabled)
+function ElementInteraction:set_enabled(enabled)
 	slot5 = enabled
 
 	ElementInteraction.super.set_enabled(slot3, self)
@@ -71,7 +71,7 @@ ElementInteraction.set_enabled = function (self, enabled)
 
 	return 
 end
-ElementInteraction.on_executed = function (self, instigator, ...)
+function ElementInteraction:on_executed(instigator, ...)
 	if not self._values.enabled then
 		return 
 	end
@@ -82,28 +82,28 @@ ElementInteraction.on_executed = function (self, instigator, ...)
 
 	return 
 end
-ElementInteraction.on_interacted = function (self, instigator)
+function ElementInteraction:on_interacted(instigator)
 	slot6 = "interacted"
 
 	self.on_executed(slot3, self, instigator)
 
 	return 
 end
-ElementInteraction.on_interact_start = function (self, instigator)
+function ElementInteraction:on_interact_start(instigator)
 	slot6 = "start"
 
 	self.on_executed(slot3, self, instigator)
 
 	return 
 end
-ElementInteraction.on_interact_interupt = function (self, instigator)
+function ElementInteraction:on_interact_interupt(instigator)
 	slot6 = "interupt"
 
 	self.on_executed(slot3, self, instigator)
 
 	return 
 end
-ElementInteraction.stop_simulation = function (self, ...)
+function ElementInteraction:stop_simulation(...)
 	slot3 = self
 
 	ElementInteraction.super.stop_simulation(slot2, ...)
@@ -118,7 +118,7 @@ ElementInteraction.stop_simulation = function (self, ...)
 
 	return 
 end
-ElementInteraction.destroy = function (self)
+function ElementInteraction:destroy()
 	slot3 = self._unit
 
 	if alive(slot2) then
@@ -129,7 +129,7 @@ ElementInteraction.destroy = function (self)
 
 	return 
 end
-ElementInteraction.stop_simulation = function (self, ...)
+function ElementInteraction:stop_simulation(...)
 	slot3 = self
 
 	self.destroy(slot2)

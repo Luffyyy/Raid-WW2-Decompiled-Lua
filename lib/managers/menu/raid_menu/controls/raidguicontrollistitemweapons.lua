@@ -4,7 +4,7 @@ if not RaidGUIControlListItemWeapons then
 end
 
 RaidGUIControlListItemWeapons = slot0
-RaidGUIControlListItemWeapons._get_font_desc = function (self)
+function RaidGUIControlListItemWeapons:_get_font_desc()
 	return tweak_data.gui.fonts.lato, tweak_data.gui.font_sizes.size_24
 end
 

@@ -6,7 +6,7 @@ end
 TeamAICommandsElement = slot0
 TeamAICommandsElement.SAVE_UNIT_POSITION = false
 TeamAICommandsElement.SAVE_UNIT_ROTATION = false
-TeamAICommandsElement.init = function (self, unit)
+function TeamAICommandsElement:init(unit)
 	slot5 = unit
 
 	MissionElement.init(slot3, self)
@@ -19,7 +19,7 @@ TeamAICommandsElement.init = function (self, unit)
 
 	return 
 end
-TeamAICommandsElement._build_panel = function (self, panel, panel_sizer)
+function TeamAICommandsElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

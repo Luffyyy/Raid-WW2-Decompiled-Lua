@@ -16,7 +16,7 @@ if not PlayerSlots then
 end
 
 PlayerSlots = slot0
-PlayerSlots.init = function (self, local_user_manager, factory)
+function PlayerSlots:init(local_user_manager, factory)
 	self._slots = {}
 	self._local_user_manager = local_user_manager
 	slot5 = self
@@ -27,12 +27,12 @@ PlayerSlots.init = function (self, local_user_manager, factory)
 
 	return 
 end
-PlayerSlots.clear = function (self)
+function PlayerSlots:clear()
 	self._slots = {}
 
 	return 
 end
-PlayerSlots.clear_session = function (self)
+function PlayerSlots:clear_session()
 	slot3 = self._slots
 
 	for _, slot in pairs(slot2) do
@@ -43,7 +43,7 @@ PlayerSlots.clear_session = function (self)
 
 	return 
 end
-PlayerSlots.add_player_slot = function (self)
+function PlayerSlots:add_player_slot()
 	local new_index = #self._slots + 1
 	slot6 = self._local_user_manager
 	local new_slot = CorePlayerSlot.PlayerSlot.new(slot3, CorePlayerSlot.PlayerSlot, self)
@@ -51,7 +51,7 @@ PlayerSlots.add_player_slot = function (self)
 
 	return new_slot
 end
-PlayerSlots._remove_player_slot = function (self, player_slot)
+function PlayerSlots:_remove_player_slot(player_slot)
 	slot4 = self._slots
 
 	for index, slot in pairs(slot3) do
@@ -68,10 +68,10 @@ PlayerSlots._remove_player_slot = function (self, player_slot)
 
 	return 
 end
-PlayerSlots.slots = function (self)
+function PlayerSlots:slots()
 	return self._slots
 end
-PlayerSlots.transition = function (self)
+function PlayerSlots:transition()
 	slot3 = self._slots
 
 	for _, slot in pairs(slot2) do
@@ -82,7 +82,7 @@ PlayerSlots.transition = function (self)
 
 	return 
 end
-PlayerSlots.primary_slot = function (self)
+function PlayerSlots:primary_slot()
 	local primary_slot = self._slots[1]
 	slot5 = "No primary slot defined"
 
@@ -90,7 +90,7 @@ PlayerSlots.primary_slot = function (self)
 
 	return primary_slot
 end
-PlayerSlots.has_primary_local_user = function (self)
+function PlayerSlots:has_primary_local_user()
 	local primary_slot = self._slots[1]
 
 	if primary_slot ~= nil then
@@ -106,7 +106,7 @@ PlayerSlots.has_primary_local_user = function (self)
 
 	return slot2
 end
-PlayerSlots.primary_local_user = function (self)
+function PlayerSlots:primary_local_user()
 	local primary_slot = self._slots[1]
 
 	assert(slot3, primary_slot)
@@ -120,7 +120,7 @@ PlayerSlots.primary_local_user = function (self)
 
 	return primary_slot.assigned_user(slot3)
 end
-PlayerSlots.create_players = function (self)
+function PlayerSlots:create_players()
 	slot3 = self._slots
 
 	for index, slot in pairs(slot2) do
@@ -135,7 +135,7 @@ PlayerSlots.create_players = function (self)
 
 	return 
 end
-PlayerSlots.remove_players = function (self)
+function PlayerSlots:remove_players()
 	slot3 = self._slots
 
 	for index, slot in pairs(slot2) do
@@ -150,7 +150,7 @@ PlayerSlots.remove_players = function (self)
 
 	return 
 end
-PlayerSlots.enter_level_handler = function (self, level_handler)
+function PlayerSlots:enter_level_handler(level_handler)
 	slot4 = self._slots
 
 	for index, slot in pairs(slot3) do
@@ -166,7 +166,7 @@ PlayerSlots.enter_level_handler = function (self, level_handler)
 
 	return 
 end
-PlayerSlots.leave_level_handler = function (self, level_handler)
+function PlayerSlots:leave_level_handler(level_handler)
 	slot4 = self._slots
 
 	for index, slot in pairs(slot3) do

@@ -7,7 +7,7 @@ RaidGUIControlLootProgressBar = slot0
 RaidGUIControlLootProgressBar.DEFAULT_W = 1600
 RaidGUIControlLootProgressBar.DEFAULT_H = 384
 RaidGUIControlLootProgressBar.PROGRESS_BAR_H = 32
-RaidGUIControlLootProgressBar.init = function (self, parent, params)
+function RaidGUIControlLootProgressBar:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlLootProgressBar.super.init(slot4, self, parent)
@@ -41,10 +41,10 @@ RaidGUIControlLootProgressBar.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlLootProgressBar.close = function (self)
+function RaidGUIControlLootProgressBar:close()
 	return 
 end
-RaidGUIControlLootProgressBar._create_panel = function (self)
+function RaidGUIControlLootProgressBar:_create_panel()
 	local control_params = clone(slot2)
 	control_params.name = control_params.name .. "_panel"
 	slot4 = self._panel
@@ -57,7 +57,7 @@ RaidGUIControlLootProgressBar._create_panel = function (self)
 
 	return 
 end
-RaidGUIControlLootProgressBar._create_progress_bar = function (self)
+function RaidGUIControlLootProgressBar:_create_progress_bar()
 	local progress_bar_params = {
 		name = "progress_bar",
 		y = 0,
@@ -77,7 +77,7 @@ RaidGUIControlLootProgressBar._create_progress_bar = function (self)
 
 	return 
 end
-RaidGUIControlLootProgressBar._create_brackets = function (self)
+function RaidGUIControlLootProgressBar:_create_brackets()
 	self._brackets = {}
 	local brackets = self._params.brackets
 	slot4 = brackets
@@ -115,7 +115,7 @@ RaidGUIControlLootProgressBar._create_brackets = function (self)
 
 	return 
 end
-RaidGUIControlLootProgressBar.set_progress = function (self, progress)
+function RaidGUIControlLootProgressBar:set_progress(progress)
 	slot5 = progress
 
 	self._progress_bar.set_progress(slot3, self._progress_bar)
@@ -140,14 +140,14 @@ RaidGUIControlLootProgressBar.set_progress = function (self, progress)
 
 	return 
 end
-RaidGUIControlLootProgressBar.hide = function (self)
+function RaidGUIControlLootProgressBar:hide()
 	slot4 = 0
 
 	self._object.set_alpha(slot2, self._object)
 
 	return 
 end
-RaidGUIControlLootProgressBar.fade_in = function (self)
+function RaidGUIControlLootProgressBar:fade_in()
 	slot3 = self._object
 	slot3 = self._object.get_engine_panel(slot2)
 	slot8 = "_animate_fade_in"
@@ -156,7 +156,7 @@ RaidGUIControlLootProgressBar.fade_in = function (self)
 
 	return 
 end
-RaidGUIControlLootProgressBar._animate_fade_in = function (self)
+function RaidGUIControlLootProgressBar:_animate_fade_in()
 	local duration = 0.3
 	slot4 = self._object
 	local t = self._object.alpha(slot3) * duration

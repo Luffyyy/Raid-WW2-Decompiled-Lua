@@ -5,7 +5,7 @@ end
 
 SpecializationBoxGui = slot0
 SpecializationBoxGui.TEXT = ""
-function SpecializationBoxGui:init(...)
+SpecializationBoxGui.init = function (self, ...)
 	local ws, title, text, content_data, config = ...
 	config.forced_h = 210
 	config.w = 600
@@ -40,7 +40,7 @@ local function make_fine_text(text)
 	return 
 end
 
-function SpecializationBoxGui:_create_text_box(ws, title, text, content_data, config)
+SpecializationBoxGui._create_text_box = function (self, ws, title, text, content_data, config)
 	slot13 = config
 	local panel = SpecializationBoxGui.super._create_text_box(slot7, self, ws, title, text, content_data)
 	local xp_present = content_data.xp_present
@@ -371,7 +371,7 @@ function SpecializationBoxGui:_create_text_box(ws, title, text, content_data, co
 
 	return 
 end
-function SpecializationBoxGui:chk_close()
+SpecializationBoxGui.chk_close = function (self)
 	if not self._anim_data or self._anim_data.conversion_ended then
 		return true
 	end

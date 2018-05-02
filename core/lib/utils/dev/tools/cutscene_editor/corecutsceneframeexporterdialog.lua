@@ -1,5 +1,5 @@
 CoreCutsceneFrameExporterDialog = CoreCutsceneFrameExporterDialog or class()
-CoreCutsceneFrameExporterDialog.init = function (self, editor_self, editor_callback, parent_window, folder_name, start_frame, end_frame)
+function CoreCutsceneFrameExporterDialog:init(editor_self, editor_callback, parent_window, folder_name, start_frame, end_frame)
 	self.__editor_self = editor_self
 	self.__editor_callback = editor_callback
 	self.__start_frame = start_frame
@@ -53,7 +53,7 @@ CoreCutsceneFrameExporterDialog.init = function (self, editor_self, editor_callb
 
 	return 
 end
-CoreCutsceneFrameExporterDialog._create_folder_name_box = function (self, folder_name)
+function CoreCutsceneFrameExporterDialog:_create_folder_name_box(folder_name)
 	slot7 = "Enter a name for the new folder"
 	local folder_name_sizer = EWS.StaticBoxSizer(slot3, EWS, self.__window, "VERTICAL")
 	slot7 = folder_name
@@ -64,7 +64,7 @@ CoreCutsceneFrameExporterDialog._create_folder_name_box = function (self, folder
 
 	return folder_name_sizer
 end
-CoreCutsceneFrameExporterDialog._create_range_box = function (self, start_frame, end_frame)
+function CoreCutsceneFrameExporterDialog:_create_range_box(start_frame, end_frame)
 	slot8 = "Frame range"
 	local frame_range_sizer = EWS.StaticBoxSizer(slot4, EWS, self.__window, "HORIZONTAL")
 	slot10 = "ALIGN_CENTER_VERTICAL"
@@ -117,7 +117,7 @@ CoreCutsceneFrameExporterDialog._create_range_box = function (self, start_frame,
 
 	return frame_range_sizer
 end
-CoreCutsceneFrameExporterDialog._create_button_box = function (self)
+function CoreCutsceneFrameExporterDialog:_create_button_box()
 	slot4 = "HORIZONTAL"
 	local button_sizer = EWS.BoxSizer(slot2, EWS)
 	slot6 = "OK"
@@ -144,7 +144,7 @@ CoreCutsceneFrameExporterDialog._create_button_box = function (self)
 
 	return button_sizer
 end
-CoreCutsceneFrameExporterDialog._destroy_window = function (self)
+function CoreCutsceneFrameExporterDialog:_destroy_window()
 	slot3 = self.__window
 
 	if alive(slot2) then
@@ -157,7 +157,7 @@ CoreCutsceneFrameExporterDialog._destroy_window = function (self)
 
 	return 
 end
-CoreCutsceneFrameExporterDialog.update = function (self, time, delta_time)
+function CoreCutsceneFrameExporterDialog:update(time, delta_time)
 	slot5 = self.__window
 
 	if not alive(slot4) then
@@ -166,14 +166,14 @@ CoreCutsceneFrameExporterDialog.update = function (self, time, delta_time)
 
 	return 
 end
-CoreCutsceneFrameExporterDialog._on_exit = function (self)
+function CoreCutsceneFrameExporterDialog:_on_exit()
 	slot3 = self
 
 	self._destroy_window(slot2)
 
 	return 
 end
-CoreCutsceneFrameExporterDialog._on_ok_clicked = function (self)
+function CoreCutsceneFrameExporterDialog:_on_ok_clicked()
 	slot3 = self
 	local folder_name = self._folder_name_input(slot2)
 	local start_frame, end_frame = nil
@@ -199,14 +199,14 @@ CoreCutsceneFrameExporterDialog._on_ok_clicked = function (self)
 
 	return 
 end
-CoreCutsceneFrameExporterDialog._on_range_ctrl_update = function (self)
+function CoreCutsceneFrameExporterDialog:_on_range_ctrl_update()
 	slot4 = true
 
 	self.__range_button.set_value(slot2, self.__range_button)
 
 	return 
 end
-CoreCutsceneFrameExporterDialog._folder_name_input = function (self)
+function CoreCutsceneFrameExporterDialog:_folder_name_input()
 	slot3 = self.__folder_name_ctrl
 	local folder_name = self.__folder_name_ctrl.get_value(slot2)
 
@@ -247,7 +247,7 @@ CoreCutsceneFrameExporterDialog._folder_name_input = function (self)
 
 	return folder_name
 end
-CoreCutsceneFrameExporterDialog._start_end_frame_input = function (self)
+function CoreCutsceneFrameExporterDialog:_start_end_frame_input()
 	local start_frame = self.__start_frame_ctrl.get_value(slot2)
 	local end_frame = self.__end_frame_ctrl.get_value(self.__start_frame_ctrl)
 	slot6 = "[0-9]+"

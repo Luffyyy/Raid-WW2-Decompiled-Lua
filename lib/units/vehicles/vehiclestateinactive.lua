@@ -4,17 +4,17 @@ if not VehicleStateInactive then
 end
 
 VehicleStateInactive = slot0
-VehicleStateInactive.init = function (self, unit)
+function VehicleStateInactive:init(unit)
 	slot5 = unit
 
 	BaseVehicleState.init(slot3, self)
 
 	return 
 end
-VehicleStateInactive.update = function (self, t, dt)
+function VehicleStateInactive:update(t, dt)
 	return 
 end
-VehicleStateInactive.enter = function (self, state_data, enter_data)
+function VehicleStateInactive:enter(state_data, enter_data)
 	slot5 = self._unit
 	slot5 = self._unit.vehicle_driving(slot4)
 
@@ -41,7 +41,7 @@ VehicleStateInactive.enter = function (self, state_data, enter_data)
 
 	return 
 end
-VehicleStateInactive.adjust_interactions = function (self)
+function VehicleStateInactive:adjust_interactions()
 	slot3 = self
 
 	VehicleStateInactive.super.adjust_interactions(slot2)
@@ -97,10 +97,10 @@ VehicleStateInactive.adjust_interactions = function (self)
 
 	return 
 end
-VehicleStateInactive.is_vulnerable = function (self)
+function VehicleStateInactive:is_vulnerable()
 	return true
 end
-VehicleStateInactive.exit = function (self)
+function VehicleStateInactive:exit()
 	slot3 = self._unit
 
 	if self._unit.unit_data(slot2).name_label_id == nil then

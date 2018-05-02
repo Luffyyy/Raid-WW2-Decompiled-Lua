@@ -5,7 +5,7 @@
 VehicleDamage = VehicleDamage or class()
 VehicleDamage.VEHICLE_DEFAULT_HEALTH = 100
 VehicleDamage._HEALTH_GRANULARITY = 512
-VehicleDamage.init = function (self, unit)
+function VehicleDamage:init(unit)
 	self._unit = unit
 	slot7 = "character_damage"
 
@@ -26,7 +26,7 @@ VehicleDamage.init = function (self, unit)
 
 	return 
 end
-VehicleDamage.set_tweak_data = function (self, data)
+function VehicleDamage:set_tweak_data(data)
 	self._tweak_data = data
 	self._current_max_health = self._tweak_data.damage.max_health
 	slot5 = self._tweak_data.damage.max_health
@@ -37,7 +37,7 @@ VehicleDamage.set_tweak_data = function (self, data)
 
 	return 
 end
-VehicleDamage.is_invulnerable = function (self)
+function VehicleDamage:is_invulnerable()
 	local result = false
 	slot4 = self._unit
 	slot4 = self._unit.vehicle_driving(slot3)
@@ -49,7 +49,7 @@ VehicleDamage.is_invulnerable = function (self)
 
 	return result
 end
-VehicleDamage.is_friendly_fire = function (self, attacker_unit)
+function VehicleDamage:is_friendly_fire(attacker_unit)
 	local friendly_fire = false
 
 	if not attacker_unit then
@@ -74,7 +74,7 @@ VehicleDamage.is_friendly_fire = function (self, attacker_unit)
 
 	return not friendly_fire
 end
-VehicleDamage.damage_mission = function (self, dmg)
+function VehicleDamage:damage_mission(dmg)
 	local damage_info = {
 		result = {
 			variant = "killzone",
@@ -128,7 +128,7 @@ VehicleDamage.damage_mission = function (self, dmg)
 
 	return result
 end
-VehicleDamage.damage_bullet = function (self, attack_data)
+function VehicleDamage:damage_bullet(attack_data)
 	slot4 = self._unit
 
 	if self._unit.vehicle_driving(slot3) then
@@ -246,7 +246,7 @@ VehicleDamage.damage_bullet = function (self, attack_data)
 
 	return result
 end
-VehicleDamage._send_bullet_attack_result = function (self, attack_data, attacker, damage_percent, body_index, hit_offset_height)
+function VehicleDamage:_send_bullet_attack_result(attack_data, attacker, damage_percent, body_index, hit_offset_height)
 	slot8 = self._unit
 	slot16 = self
 	slot14 = (self.dead(slot15) and true) or false
@@ -255,7 +255,7 @@ VehicleDamage._send_bullet_attack_result = function (self, attack_data, attacker
 
 	return 
 end
-VehicleDamage.sync_damage_bullet = function (self, attacker_unit, damage_percent, i_body, hit_offset_height, death)
+function VehicleDamage:sync_damage_bullet(attacker_unit, damage_percent, i_body, hit_offset_height, death)
 	slot8 = self
 
 	if self.dead(slot7) then
@@ -321,10 +321,10 @@ VehicleDamage.sync_damage_bullet = function (self, attacker_unit, damage_percent
 
 	return 
 end
-VehicleDamage._send_sync_bullet_attack_result = function (self, attack_data, hit_offset_height)
+function VehicleDamage:_send_sync_bullet_attack_result(attack_data, hit_offset_height)
 	return 
 end
-VehicleDamage.damage_explosion = function (self, attack_data)
+function VehicleDamage:damage_explosion(attack_data)
 
 	-- Decompilation error in this vicinity:
 	slot4 = self._unit
@@ -401,7 +401,7 @@ VehicleDamage.damage_explosion = function (self, attack_data)
 
 	return result
 end
-VehicleDamage._send_explosion_attack_result = function (self, attack_data, attacker, damage_percent, i_attack_variant, direction)
+function VehicleDamage:_send_explosion_attack_result(attack_data, attacker, damage_percent, i_attack_variant, direction)
 	slot8 = self._unit
 	slot14 = direction
 
@@ -409,7 +409,7 @@ VehicleDamage._send_explosion_attack_result = function (self, attack_data, attac
 
 	return 
 end
-VehicleDamage.sync_damage_explosion = function (self, attacker_unit, damage_percent, i_attack_variant, death, direction)
+function VehicleDamage:sync_damage_explosion(attacker_unit, damage_percent, i_attack_variant, death, direction)
 	slot9 = "[VehicleDamage:sync_damage_explosion]"
 
 	Application.trace(slot7, Application)
@@ -513,10 +513,10 @@ VehicleDamage.sync_damage_explosion = function (self, attacker_unit, damage_perc
 
 	return 
 end
-VehicleDamage._send_sync_explosion_attack_result = function (self, attack_data)
+function VehicleDamage:_send_sync_explosion_attack_result(attack_data)
 	return 
 end
-VehicleDamage.damage_fire = function (self, attack_data)
+function VehicleDamage:damage_fire(attack_data)
 
 	-- Decompilation error in this vicinity:
 	slot5 = "[VehicleDamage:damage_fire]"
@@ -594,7 +594,7 @@ VehicleDamage.damage_fire = function (self, attack_data)
 
 	return result
 end
-VehicleDamage._send_fire_attack_result = function (self, attack_data, attacker, damage_percent, i_attack_variant, direction)
+function VehicleDamage:_send_fire_attack_result(attack_data, attacker, damage_percent, i_attack_variant, direction)
 	slot8 = self._unit
 	slot14 = direction
 
@@ -602,7 +602,7 @@ VehicleDamage._send_fire_attack_result = function (self, attack_data, attacker, 
 
 	return 
 end
-VehicleDamage.sync_damage_fire = function (self, attacker_unit, damage_percent, i_attack_variant, death, direction)
+function VehicleDamage:sync_damage_fire(attacker_unit, damage_percent, i_attack_variant, death, direction)
 	slot9 = "[VehicleDamage:sync_damage_fire]"
 
 	Application.trace(slot7, Application)
@@ -702,10 +702,10 @@ VehicleDamage.sync_damage_fire = function (self, attacker_unit, damage_percent, 
 
 	return 
 end
-VehicleDamage._send_sync_fire_attack_result = function (self, attack_data)
+function VehicleDamage:_send_sync_fire_attack_result(attack_data)
 	return 
 end
-VehicleDamage.damage_collision = function (self, attack_data)
+function VehicleDamage:damage_collision(attack_data)
 	local local_player_seat = nil
 	slot5 = managers.player
 
@@ -798,7 +798,7 @@ VehicleDamage.damage_collision = function (self, attack_data)
 
 	return 
 end
-VehicleDamage._send_vehicle_health = function (self, health)
+function VehicleDamage:_send_vehicle_health(health)
 	slot4 = managers.network
 
 	if managers.network.session(slot3) then
@@ -810,7 +810,7 @@ VehicleDamage._send_vehicle_health = function (self, health)
 
 	return 
 end
-VehicleDamage.sync_vehicle_health = function (self, health)
+function VehicleDamage:sync_vehicle_health(health)
 	slot4 = self
 	slot7 = health
 
@@ -822,14 +822,14 @@ VehicleDamage.sync_vehicle_health = function (self, health)
 
 	return 
 end
-VehicleDamage._on_damage_received = function (self, damage_info)
+function VehicleDamage:_on_damage_received(damage_info)
 	slot5 = damage_info
 
 	self._call_listeners(slot3, self)
 
 	return 
 end
-VehicleDamage._get_attack_variant_index = function (self, variant)
+function VehicleDamage:_get_attack_variant_index(variant)
 	slot4 = self._ATTACK_VARIANTS
 
 	for i, test_variant in ipairs(slot3) do
@@ -845,10 +845,10 @@ VehicleDamage._get_attack_variant_index = function (self, variant)
 
 	return 1
 end
-VehicleDamage.incapacitated = function (self)
+function VehicleDamage:incapacitated()
 	return self._incapacitated
 end
-VehicleDamage.revive = function (self)
+function VehicleDamage:revive()
 	slot3 = self
 
 	self._revive(slot2)
@@ -865,7 +865,7 @@ VehicleDamage.revive = function (self)
 
 	return 
 end
-VehicleDamage._revive = function (self)
+function VehicleDamage:_revive()
 	slot3 = self
 	slot6 = self
 
@@ -896,20 +896,20 @@ VehicleDamage._revive = function (self)
 
 	return 
 end
-VehicleDamage.sync_vehicle_revive = function (self)
+function VehicleDamage:sync_vehicle_revive()
 	slot3 = self
 
 	self._revive(slot2)
 
 	return 
 end
-VehicleDamage.need_revive = function (self)
+function VehicleDamage:need_revive()
 	return self.dead()
 end
-VehicleDamage.dead = function (self)
+function VehicleDamage:dead()
 	return self._health <= 0
 end
-VehicleDamage.die = function (self)
+function VehicleDamage:die()
 	slot4 = "[VehicleDamage:die]"
 
 	Application.trace(slot2, Application)
@@ -925,7 +925,7 @@ VehicleDamage.die = function (self)
 
 	return 
 end
-VehicleDamage._chk_dmg_too_soon = function (self, damage)
+function VehicleDamage:_chk_dmg_too_soon(damage)
 	slot4 = self._next_allowed_dmg_t
 
 	if type(slot3) ~= "number" or not self._next_allowed_dmg_t then
@@ -944,7 +944,7 @@ VehicleDamage._chk_dmg_too_soon = function (self, damage)
 
 	return 
 end
-VehicleDamage._hit_direction = function (self, col_ray)
+function VehicleDamage:_hit_direction(col_ray)
 	slot4 = managers.player
 	local local_player_vehicle = managers.player.get_vehicle(slot3)
 
@@ -995,14 +995,14 @@ VehicleDamage._hit_direction = function (self, col_ray)
 
 	return 
 end
-VehicleDamage._call_listeners = function (self, damage_info)
+function VehicleDamage:_call_listeners(damage_info)
 	slot7 = damage_info
 
 	self._listener_holder.call(slot3, self._listener_holder, damage_info.result.type, self._unit)
 
 	return 
 end
-VehicleDamage.add_listener = function (self, key, events, clbk)
+function VehicleDamage:add_listener(key, events, clbk)
 	events = events or self._all_event_types
 	slot9 = clbk
 
@@ -1010,14 +1010,14 @@ VehicleDamage.add_listener = function (self, key, events, clbk)
 
 	return 
 end
-VehicleDamage.remove_listener = function (self, key)
+function VehicleDamage:remove_listener(key)
 	slot5 = key
 
 	self._listener_holder.remove(slot3, self._listener_holder)
 
 	return 
 end
-VehicleDamage._calc_health_damage = function (self, attack_data)
+function VehicleDamage:_calc_health_damage(attack_data)
 	local health_subtracted = 0
 	slot5 = self
 	health_subtracted = self.get_real_health(slot4)
@@ -1031,15 +1031,15 @@ VehicleDamage._calc_health_damage = function (self, attack_data)
 
 	return health_subtracted
 end
-VehicleDamage.get_real_health = function (self)
+function VehicleDamage:get_real_health()
 	slot3 = self._health * 100
 
 	return math.round(slot2) / 100
 end
-VehicleDamage.get_health_percentage = function (self)
+function VehicleDamage:get_health_percentage()
 	return self._health / self._current_max_health
 end
-VehicleDamage.change_health = function (self, change_of_health)
+function VehicleDamage:change_health(change_of_health)
 	slot7 = self
 	slot5 = self.get_real_health(slot6) + change_of_health
 
@@ -1055,16 +1055,16 @@ VehicleDamage.change_health = function (self, change_of_health)
 
 	return 
 end
-VehicleDamage.set_health = function (self, health)
+function VehicleDamage:set_health(health)
 	slot4 = health * 100
 	self._health = math.round(slot3) / 100
 
 	return 
 end
-VehicleDamage._max_health = function (self)
+function VehicleDamage:_max_health()
 	return self._current_max_health
 end
-VehicleDamage._set_health_effect = function (self)
+function VehicleDamage:_set_health_effect()
 	slot4 = self
 	local hp = self.get_real_health(slot2) / self._max_health(self)
 	slot6 = 1
@@ -1073,7 +1073,7 @@ VehicleDamage._set_health_effect = function (self)
 
 	return 
 end
-VehicleDamage._get_attack_variant_index = function (self, variant)
+function VehicleDamage:_get_attack_variant_index(variant)
 	slot4 = CopDamage._ATTACK_VARIANTS
 
 	for i, test_variant in ipairs(slot3) do
@@ -1089,7 +1089,7 @@ VehicleDamage._get_attack_variant_index = function (self, variant)
 
 	return 1
 end
-VehicleDamage._health_recap = function (self)
+function VehicleDamage:_health_recap()
 	if not self._half_damaged_squence_played then
 		slot4 = self
 

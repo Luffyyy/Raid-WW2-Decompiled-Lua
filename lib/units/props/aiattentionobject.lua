@@ -122,7 +122,7 @@ AIAttentionObject.REACT_COMBAT = 12
 AIAttentionObject.REACT_SPECIAL_ATTACK = 13
 AIAttentionObject.REACT_MIN = AIAttentionObject.REACT_IDLE
 AIAttentionObject.REACT_MAX = AIAttentionObject.REACT_SPECIAL_ATTACK
-AIAttentionObject.init = function (self, unit, is_not_extension)
+function AIAttentionObject:init(unit, is_not_extension)
 	self._unit = unit
 	self._attention_data = nil
 	slot5 = ListenerHolder
@@ -167,21 +167,21 @@ AIAttentionObject.init = function (self, unit, is_not_extension)
 
 	return 
 end
-AIAttentionObject.update = function (self, unit, t, dt)
+function AIAttentionObject:update(unit, t, dt)
 	slot7 = self._observer_info.m_pos
 
 	self._attention_obj.m_position(slot5, self._attention_obj)
 
 	return 
 end
-AIAttentionObject.set_update_enabled = function (self, state)
+function AIAttentionObject:set_update_enabled(state)
 	slot7 = "attention"
 
 	self._unit.set_extension_update_enabled(slot3, self._unit, Idstring(state))
 
 	return 
 end
-AIAttentionObject.set_detection_object_name = function (self, obj_name)
+function AIAttentionObject:set_detection_object_name(obj_name)
 	self._attention_obj_name = obj_name
 	slot4 = self
 
@@ -189,7 +189,7 @@ AIAttentionObject.set_detection_object_name = function (self, obj_name)
 
 	return 
 end
-AIAttentionObject.setup_attention_positions = function (self)
+function AIAttentionObject:setup_attention_positions()
 	if self._attention_obj_name then
 		slot3 = self._unit
 		slot6 = self._attention_obj_name
@@ -206,13 +206,13 @@ AIAttentionObject.setup_attention_positions = function (self)
 
 	return 
 end
-AIAttentionObject.attention_data = function (self)
+function AIAttentionObject:attention_data()
 	return self._attention_data
 end
-AIAttentionObject.unit = function (self)
+function AIAttentionObject:unit()
 	return self._unit
 end
-AIAttentionObject.add_attention = function (self, settings)
+function AIAttentionObject:add_attention(settings)
 	local needs_register = nil
 
 	if not self._attention_data then
@@ -234,7 +234,7 @@ AIAttentionObject.add_attention = function (self, settings)
 
 	return 
 end
-AIAttentionObject.remove_attention = function (self, id)
+function AIAttentionObject:remove_attention(id)
 	if not self._attention_data then
 		return 
 	end
@@ -260,7 +260,7 @@ AIAttentionObject.remove_attention = function (self, id)
 
 	return 
 end
-AIAttentionObject.set_attention = function (self, settings, id)
+function AIAttentionObject:set_attention(settings, id)
 	if self._attention_data then
 		if settings then
 			self._attention_data = {
@@ -294,7 +294,7 @@ AIAttentionObject.set_attention = function (self, settings, id)
 
 	return 
 end
-AIAttentionObject.override_attention = function (self, original_preset_name, override_preset)
+function AIAttentionObject:override_attention(original_preset_name, override_preset)
 	if override_preset then
 		self._overrides = self._overrides or {}
 		local call_listeners = (self._attention_data and self._attention_data[original_preset_name]) or self._overrides[original_preset_name]
@@ -320,7 +320,7 @@ AIAttentionObject.override_attention = function (self, original_preset_name, ove
 
 	return 
 end
-AIAttentionObject.get_attention = function (self, filter, min, max, team)
+function AIAttentionObject:get_attention(filter, min, max, team)
 	if not self._attention_data then
 		return 
 	end
@@ -367,7 +367,7 @@ AIAttentionObject.get_attention = function (self, filter, min, max, team)
 
 	return settings_match
 end
-AIAttentionObject.verify_attention = function (self, test_settings, min, max, team)
+function AIAttentionObject:verify_attention(test_settings, min, max, team)
 	if not self._attention_data then
 		return 
 	end
@@ -377,30 +377,30 @@ AIAttentionObject.verify_attention = function (self, test_settings, min, max, te
 
 	return new_settings == test_settings
 end
-AIAttentionObject.get_attention_m_pos = function (self, settings)
+function AIAttentionObject:get_attention_m_pos(settings)
 	return self._observer_info.m_pos
 end
-AIAttentionObject.get_detection_m_pos = function (self)
+function AIAttentionObject:get_detection_m_pos()
 	return self._observer_info.m_pos
 end
-AIAttentionObject.get_ground_m_pos = function (self)
+function AIAttentionObject:get_ground_m_pos()
 	return self._observer_info.m_pos
 end
-AIAttentionObject.add_listener = function (self, key, clbk)
+function AIAttentionObject:add_listener(key, clbk)
 	slot7 = clbk
 
 	self._listener_holder.add(slot4, self._listener_holder, key)
 
 	return 
 end
-AIAttentionObject.remove_listener = function (self, key)
+function AIAttentionObject:remove_listener(key)
 	slot5 = key
 
 	self._listener_holder.remove(slot3, self._listener_holder)
 
 	return 
 end
-AIAttentionObject._call_listeners = function (self)
+function AIAttentionObject:_call_listeners()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -439,7 +439,7 @@ AIAttentionObject._call_listeners = function (self)
 
 
 end
-AIAttentionObject._register = function (self)
+function AIAttentionObject:_register()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -476,7 +476,7 @@ AIAttentionObject._register = function (self)
 
 
 end
-AIAttentionObject.link = function (self, parent_unit, obj_name, local_pos)
+function AIAttentionObject:link(parent_unit, obj_name, local_pos)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -625,7 +625,7 @@ AIAttentionObject.link = function (self, parent_unit, obj_name, local_pos)
 
 
 end
-AIAttentionObject.set_team = function (self, team)
+function AIAttentionObject:set_team(team)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -769,7 +769,7 @@ AIAttentionObject.set_team = function (self, team)
 
 
 end
-AIAttentionObject.save = function (self, data)
+function AIAttentionObject:save(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -803,7 +803,7 @@ AIAttentionObject.save = function (self, data)
 
 
 end
-AIAttentionObject.load = function (self, data)
+function AIAttentionObject:load(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -927,7 +927,7 @@ AIAttentionObject.load = function (self, data)
 
 
 end
-AIAttentionObject.clbk_load_parent_unit = function (self, parent_unit)
+function AIAttentionObject:clbk_load_parent_unit(parent_unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -960,7 +960,7 @@ AIAttentionObject.clbk_load_parent_unit = function (self, parent_unit)
 
 
 end
-AIAttentionObject.destroy = function (self)
+function AIAttentionObject:destroy()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---

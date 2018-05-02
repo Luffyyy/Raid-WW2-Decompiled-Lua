@@ -16,17 +16,17 @@ if not ElementGlobalEventTrigger then
 end
 
 ElementGlobalEventTrigger = slot0
-ElementGlobalEventTrigger.client_on_executed = function (self, ...)
+function ElementGlobalEventTrigger:client_on_executed(...)
 	return 
 end
-ElementGlobalEventTrigger.init = function (self, ...)
+function ElementGlobalEventTrigger:init(...)
 	slot3 = self
 
 	ElementGlobalEventTrigger.super.init(slot2, ...)
 
 	return 
 end
-ElementGlobalEventTrigger.on_script_activated = function (self)
+function ElementGlobalEventTrigger:on_script_activated()
 	slot6 = self
 	slot5 = {
 		self._values.global_event
@@ -38,7 +38,7 @@ ElementGlobalEventTrigger.on_script_activated = function (self)
 
 	return 
 end
-ElementGlobalEventTrigger.send_to_host = function (self, instigator)
+function ElementGlobalEventTrigger:send_to_host(instigator)
 	if instigator then
 		slot4 = managers.network
 		slot8 = instigator
@@ -48,7 +48,7 @@ ElementGlobalEventTrigger.send_to_host = function (self, instigator)
 
 	return 
 end
-ElementGlobalEventTrigger.on_executed = function (self, instigator)
+function ElementGlobalEventTrigger:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -59,7 +59,7 @@ ElementGlobalEventTrigger.on_executed = function (self, instigator)
 
 	return 
 end
-ElementGlobalEventTrigger.pre_destroy = function (self)
+function ElementGlobalEventTrigger:pre_destroy()
 	slot3 = managers.mission
 	slot6 = self
 

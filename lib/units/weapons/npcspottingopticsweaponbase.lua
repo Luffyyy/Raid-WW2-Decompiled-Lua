@@ -4,14 +4,14 @@ if not NPCSpottingOpticsWeaponBase then
 end
 
 NPCSpottingOpticsWeaponBase = slot0
-NPCSpottingOpticsWeaponBase.init = function (self, ...)
+function NPCSpottingOpticsWeaponBase:init(...)
 	slot3 = self
 
 	NPCSpottingOpticsWeaponBase.super.init(slot2, ...)
 
 	return 
 end
-NPCSpottingOpticsWeaponBase.setup = function (self, setup_data)
+function NPCSpottingOpticsWeaponBase:setup(setup_data)
 	slot5 = setup_data
 
 	NPCSpottingOpticsWeaponBase.super.setup(slot3, self)
@@ -22,13 +22,13 @@ NPCSpottingOpticsWeaponBase.setup = function (self, setup_data)
 
 	return 
 end
-NPCSpottingOpticsWeaponBase.ejects_shells = function (self)
+function NPCSpottingOpticsWeaponBase:ejects_shells()
 	return false
 end
-NPCSpottingOpticsWeaponBase.fire_blank = function (self, direction, impact)
+function NPCSpottingOpticsWeaponBase:fire_blank(direction, impact)
 	return 
 end
-NPCSpottingOpticsWeaponBase.singleshot = function (self, from_pos, direction, dmg_mul, shoot_player, spread_mul, autohit_mul, suppr_mul, target_unit)
+function NPCSpottingOpticsWeaponBase:singleshot(from_pos, direction, dmg_mul, shoot_player, spread_mul, autohit_mul, suppr_mul, target_unit)
 	return 
 
 	slot11 = Network
@@ -83,7 +83,7 @@ end
 local mvec_to = Vector3()
 local mvec_spread_direction = Vector3()
 local mvec1 = Vector3()
-NPCSpottingOpticsWeaponBase._fire_raycast = function (self, user_unit, from_pos, direction, dmg_mul, shoot_player, spread_mul, autohit_mul, suppr_mul, target_unit)
+function NPCSpottingOpticsWeaponBase:_fire_raycast(user_unit, from_pos, direction, dmg_mul, shoot_player, spread_mul, autohit_mul, suppr_mul, target_unit)
 	return 
 
 	local result = {}
@@ -116,7 +116,7 @@ NPCSpottingOpticsWeaponBase._fire_raycast = function (self, user_unit, from_pos,
 
 	return result
 end
-NPCSpottingOpticsWeaponBase._spawn_muzzle_effect = function (self)
+function NPCSpottingOpticsWeaponBase:_spawn_muzzle_effect()
 	return 
 end
 

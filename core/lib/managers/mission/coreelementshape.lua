@@ -23,7 +23,7 @@ if not ElementShape then
 end
 
 ElementShape = slot1
-ElementShape.init = function (self, ...)
+function ElementShape:init(...)
 	slot3 = self
 
 	ElementShape.super.init(slot2, ...)
@@ -67,24 +67,24 @@ ElementShape.init = function (self, ...)
 
 	return 
 end
-ElementShape.on_script_activated = function (self)
+function ElementShape:on_script_activated()
 	slot4 = self._id
 
 	self._mission_script.add_save_state_cb(slot2, self._mission_script)
 
 	return 
 end
-ElementShape._add_shape = function (self, shape)
+function ElementShape:_add_shape(shape)
 	slot5 = shape
 
 	table.insert(slot3, self._shapes)
 
 	return 
 end
-ElementShape.get_shapes = function (self)
+function ElementShape:get_shapes()
 	return self._shapes
 end
-ElementShape.is_inside = function (self, pos)
+function ElementShape:is_inside(pos)
 	slot4 = self._shapes
 
 	for _, shape in ipairs(slot3) do
@@ -128,10 +128,10 @@ ElementShape.is_inside = function (self, pos)
 
 	return false
 end
-ElementShape.client_on_executed = function (self, ...)
+function ElementShape:client_on_executed(...)
 	return 
 end
-ElementShape.on_executed = function (self, instigator)
+function ElementShape:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

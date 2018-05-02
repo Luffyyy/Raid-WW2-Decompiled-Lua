@@ -10,7 +10,7 @@ end
 NpcVehicleDamage = slot0
 NpcVehicleDamage.VEHICLE_DEFAULT_HEALTH = 100
 NpcVehicleDamage._HEALTH_GRANULARITY = 512
-NpcVehicleDamage.init = function (self, unit)
+function NpcVehicleDamage:init(unit)
 	slot5 = unit
 
 	VehicleDamage.init(slot3, self)
@@ -19,7 +19,7 @@ NpcVehicleDamage.init = function (self, unit)
 
 	return 
 end
-NpcVehicleDamage.damage_bullet = function (self, attack_data)
+function NpcVehicleDamage:damage_bullet(attack_data)
 	local result = nil
 	local damage = attack_data.damage
 	slot10 = self._HEALTH_GRANULARITY
@@ -72,7 +72,7 @@ NpcVehicleDamage.damage_bullet = function (self, attack_data)
 
 	return result
 end
-NpcVehicleDamage._send_bullet_attack_result = function (self, attack_data, attacker, damage_percent, body_index, hit_offset_height)
+function NpcVehicleDamage:_send_bullet_attack_result(attack_data, attacker, damage_percent, body_index, hit_offset_height)
 	slot8 = self._unit
 	slot17 = self
 	slot15 = (self.dead(slot16) and true) or false
@@ -81,7 +81,7 @@ NpcVehicleDamage._send_bullet_attack_result = function (self, attack_data, attac
 
 	return 
 end
-NpcVehicleDamage.sync_damage_bullet = function (self, attacker_unit, damage_percent, i_body, hit_offset_height, variant, death)
+function NpcVehicleDamage:sync_damage_bullet(attacker_unit, damage_percent, i_body, hit_offset_height, variant, death)
 	slot9 = self
 
 	if self.dead(slot8) then
@@ -148,10 +148,10 @@ NpcVehicleDamage.sync_damage_bullet = function (self, attacker_unit, damage_perc
 
 	return 
 end
-NpcVehicleDamage._send_sync_bullet_attack_result = function (self, attack_data, hit_offset_height)
+function NpcVehicleDamage:_send_sync_bullet_attack_result(attack_data, hit_offset_height)
 	return 
 end
-NpcVehicleDamage.damage_explosion = function (self, attack_data)
+function NpcVehicleDamage:damage_explosion(attack_data)
 
 	-- Decompilation error in this vicinity:
 	Application.trace(slot3, Application)
@@ -198,7 +198,7 @@ NpcVehicleDamage.damage_explosion = function (self, attack_data)
 
 	return result
 end
-NpcVehicleDamage._send_explosion_attack_result = function (self, attack_data, attacker, damage_percent, i_attack_variant, direction)
+function NpcVehicleDamage:_send_explosion_attack_result(attack_data, attacker, damage_percent, i_attack_variant, direction)
 	slot8 = self._unit
 	slot14 = direction
 
@@ -206,7 +206,7 @@ NpcVehicleDamage._send_explosion_attack_result = function (self, attack_data, at
 
 	return 
 end
-NpcVehicleDamage.sync_damage_explosion = function (self, attacker_unit, damage_percent, i_attack_variant, death, direction)
+function NpcVehicleDamage:sync_damage_explosion(attacker_unit, damage_percent, i_attack_variant, death, direction)
 	slot9 = "[NpcVehicleDamage:sync_damage_explosion]"
 
 	Application.trace(slot7, Application)
@@ -308,10 +308,10 @@ NpcVehicleDamage.sync_damage_explosion = function (self, attacker_unit, damage_p
 
 	return 
 end
-NpcVehicleDamage._send_sync_explosion_attack_result = function (self, attack_data)
+function NpcVehicleDamage:_send_sync_explosion_attack_result(attack_data)
 	return 
 end
-NpcVehicleDamage.damage_fire = function (self, attack_data)
+function NpcVehicleDamage:damage_fire(attack_data)
 
 	-- Decompilation error in this vicinity:
 	Application.trace(slot3, Application)
@@ -358,7 +358,7 @@ NpcVehicleDamage.damage_fire = function (self, attack_data)
 
 	return result
 end
-NpcVehicleDamage._send_fire_attack_result = function (self, attack_data, attacker, damage_percent, i_attack_variant, direction)
+function NpcVehicleDamage:_send_fire_attack_result(attack_data, attacker, damage_percent, i_attack_variant, direction)
 	slot8 = self._unit
 	slot14 = direction
 
@@ -366,7 +366,7 @@ NpcVehicleDamage._send_fire_attack_result = function (self, attack_data, attacke
 
 	return 
 end
-NpcVehicleDamage.sync_damage_fire = function (self, attacker_unit, damage_percent, i_attack_variant, death, direction)
+function NpcVehicleDamage:sync_damage_fire(attacker_unit, damage_percent, i_attack_variant, death, direction)
 	slot9 = "[NpcVehicleDamage:sync_damage_fire]"
 
 	Application.trace(slot7, Application)
@@ -468,10 +468,10 @@ NpcVehicleDamage.sync_damage_fire = function (self, attacker_unit, damage_percen
 
 	return 
 end
-NpcVehicleDamage._send_sync_fire_attack_result = function (self, attack_data)
+function NpcVehicleDamage:_send_sync_fire_attack_result(attack_data)
 	return 
 end
-NpcVehicleDamage.damage_collision = function (self, attack_data)
+function NpcVehicleDamage:damage_collision(attack_data)
 	slot4 = Network
 
 	if Network.is_server(slot3) then
@@ -514,7 +514,7 @@ NpcVehicleDamage.damage_collision = function (self, attack_data)
 
 	return 
 end
-NpcVehicleDamage.is_friendly_fire = function (self, attacker_unit)
+function NpcVehicleDamage:is_friendly_fire(attacker_unit)
 	local friendly_fire = false
 
 	if not attacker_unit then
@@ -539,7 +539,7 @@ NpcVehicleDamage.is_friendly_fire = function (self, attacker_unit)
 
 	return not friendly_fire
 end
-NpcVehicleDamage._health_recap = function (self)
+function NpcVehicleDamage:_health_recap()
 	slot3 = self
 	local current_health = self.get_real_health(slot2)
 

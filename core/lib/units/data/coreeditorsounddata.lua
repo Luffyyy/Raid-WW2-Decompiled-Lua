@@ -1,5 +1,5 @@
 CoreEditorSoundData = CoreEditorSoundData or class()
-CoreEditorSoundData.init = function (self)
+function CoreEditorSoundData:init()
 	self.emitter = nil
 	self.environment_area = nil
 

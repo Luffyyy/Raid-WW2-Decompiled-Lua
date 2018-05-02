@@ -24,7 +24,7 @@ if not ColorPickerPanel then
 end
 
 ColorPickerPanel = slot0
-ColorPickerPanel.init = function (self, parent_frame, enable_alpha, orientation, enable_value)
+function ColorPickerPanel:init(parent_frame, enable_alpha, orientation, enable_value)
 	slot7 = orientation == "HORIZONTAL" or orientation == "VERTICAL"
 
 	assert(slot6)
@@ -35,15 +35,15 @@ ColorPickerPanel.init = function (self, parent_frame, enable_alpha, orientation,
 
 	return 
 end
-ColorPickerPanel.panel = function (self)
+function ColorPickerPanel:panel()
 	return self._panel
 end
-ColorPickerPanel.color = function (self)
+function ColorPickerPanel:color()
 	slot3 = self._fields
 
 	return self._fields.color(slot2)
 end
-ColorPickerPanel.set_color = function (self, color)
+function ColorPickerPanel:set_color(color)
 	slot5 = color
 
 	self._draggables.set_color(slot3, self._draggables)
@@ -54,7 +54,7 @@ ColorPickerPanel.set_color = function (self, color)
 
 	return 
 end
-ColorPickerPanel.update = function (self, time, delta_time)
+function ColorPickerPanel:update(time, delta_time)
 	slot7 = delta_time
 
 	self._draggables.update(slot4, self._draggables, time)
@@ -65,7 +65,7 @@ ColorPickerPanel.update = function (self, time, delta_time)
 
 	return 
 end
-ColorPickerPanel._create_panel = function (self, parent_frame, enable_alpha, orientation, enable_value)
+function ColorPickerPanel:_create_panel(parent_frame, enable_alpha, orientation, enable_value)
 	slot8 = parent_frame
 	self._panel = EWS.Panel(slot6, EWS)
 	slot8 = orientation
@@ -106,7 +106,7 @@ ColorPickerPanel._create_panel = function (self, parent_frame, enable_alpha, ori
 
 	return 
 end
-ColorPickerPanel._on_color_updated = function (self, sender, color)
+function ColorPickerPanel:_on_color_updated(sender, color)
 	slot6 = sender
 	slot6 = color
 
@@ -121,7 +121,7 @@ ColorPickerPanel._on_color_updated = function (self, sender, color)
 
 	return 
 end
-ColorPickerPanel._on_color_changed = function (self, sender, color)
+function ColorPickerPanel:_on_color_changed(sender, color)
 	slot7 = color
 
 	self._send_event(slot4, self, "EVT_COLOR_CHANGED")

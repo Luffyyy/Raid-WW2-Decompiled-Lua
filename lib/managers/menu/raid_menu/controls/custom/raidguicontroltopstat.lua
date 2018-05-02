@@ -16,7 +16,7 @@ RaidGUIControlTopStat.STAT_ICON_SIZE = 192
 RaidGUIControlTopStat.FONT = tweak_data.gui.fonts.din_compressed
 RaidGUIControlTopStat.FONT_SIZE = tweak_data.gui.font_sizes.large
 RaidGUIControlTopStat.FONT_KERNING = tweak_data.hud.medium_kern
-RaidGUIControlTopStat.init = function (self, parent, params)
+function RaidGUIControlTopStat:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlTopStat.super.init(slot4, self, parent)
@@ -48,10 +48,10 @@ RaidGUIControlTopStat.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlTopStat.close = function (self)
+function RaidGUIControlTopStat:close()
 	return 
 end
-RaidGUIControlTopStat._create_control_panel = function (self)
+function RaidGUIControlTopStat:_create_control_panel()
 	slot3 = self._params
 	local control_params = clone(slot2)
 	control_params.w = RaidGUIControlTopStat.WIDTH
@@ -65,7 +65,7 @@ RaidGUIControlTopStat._create_control_panel = function (self)
 
 	return 
 end
-RaidGUIControlTopStat._create_stat_info = function (self)
+function RaidGUIControlTopStat:_create_stat_info()
 	local params_player_name = {
 		vertical = "center",
 		name = "player_name_label",
@@ -107,7 +107,7 @@ RaidGUIControlTopStat._create_stat_info = function (self)
 
 	return 
 end
-RaidGUIControlTopStat._create_icon_panel = function (self)
+function RaidGUIControlTopStat:_create_icon_panel()
 	local icon_panel_params = {
 		name = "icon_panel",
 		x = 0
@@ -124,7 +124,7 @@ RaidGUIControlTopStat._create_icon_panel = function (self)
 
 	return 
 end
-RaidGUIControlTopStat.set_data = function (self, data)
+function RaidGUIControlTopStat:set_data(data)
 	slot4 = self._player_name_label
 	slot7 = data.player_nickname
 
@@ -158,7 +158,7 @@ RaidGUIControlTopStat.set_data = function (self, data)
 
 	return 
 end
-RaidGUIControlTopStat.animate_show = function (self, delay)
+function RaidGUIControlTopStat:animate_show(delay)
 	delay = delay or 0
 	slot9 = "_animate_show_stat"
 	slot8 = self._stat_name_label
@@ -172,7 +172,7 @@ RaidGUIControlTopStat.animate_show = function (self, delay)
 
 	return 
 end
-RaidGUIControlTopStat._animate_show_stat = function (self, panel, delay, icon, label)
+function RaidGUIControlTopStat:_animate_show_stat(panel, delay, icon, label)
 	if delay then
 		slot7 = delay
 
@@ -234,7 +234,7 @@ RaidGUIControlTopStat._animate_show_stat = function (self, panel, delay, icon, l
 
 	return 
 end
-RaidGUIControlTopStat._animate_show_player_name = function (self, label, delay)
+function RaidGUIControlTopStat:_animate_show_player_name(label, delay)
 	if delay then
 		slot5 = delay
 
@@ -306,7 +306,7 @@ RaidGUIControlTopStat._animate_show_player_name = function (self, label, delay)
 
 	return 
 end
-RaidGUIControlTopStat._animate_text_glow = function (self, text, new_color, duration, number_of_laps, delay)
+function RaidGUIControlTopStat:_animate_text_glow(text, new_color, duration, number_of_laps, delay)
 	slot10 = text
 	local number_of_letters = string.len(text.text(slot9))
 	slot9 = text

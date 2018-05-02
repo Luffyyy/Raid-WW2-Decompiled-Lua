@@ -4,7 +4,7 @@ if not CharacterSelectionGui then
 end
 
 CharacterSelectionGui = slot0
-CharacterSelectionGui.init = function (self, ws, fullscreen_ws, node, component_name)
+function CharacterSelectionGui:init(ws, fullscreen_ws, node, component_name)
 	self._loading_units = {}
 	slot11 = component_name
 
@@ -35,7 +35,7 @@ CharacterSelectionGui.init = function (self, ws, fullscreen_ws, node, component_
 
 	return 
 end
-CharacterSelectionGui._setup_properties = function (self)
+function CharacterSelectionGui:_setup_properties()
 	slot3 = self
 
 	CharacterSelectionGui.super._setup_properties(slot2)
@@ -45,7 +45,7 @@ CharacterSelectionGui._setup_properties = function (self)
 
 	return 
 end
-CharacterSelectionGui._set_initial_data = function (self)
+function CharacterSelectionGui:_set_initial_data()
 	slot3 = managers.character_customization
 
 	managers.character_customization.reset_current_version_to_attach(slot2)
@@ -57,7 +57,7 @@ CharacterSelectionGui._set_initial_data = function (self)
 
 	return 
 end
-CharacterSelectionGui._layout = function (self)
+function CharacterSelectionGui:_layout()
 	slot3 = self
 
 	self._disable_dof(slot2)
@@ -197,7 +197,7 @@ CharacterSelectionGui._layout = function (self)
 
 	return 
 end
-CharacterSelectionGui._data_source_characters_list = function (self)
+function CharacterSelectionGui:_data_source_characters_list()
 	local characters = {}
 
 	for slot_index = SavefileManager.CHARACTER_PROFILE_STARTING_SLOT, (SavefileManager.CHARACTER_PROFILE_STARTING_SLOT + SavefileManager.CHARACTER_PROFILE_SLOTS_COUNT) - 1, 1 do
@@ -225,7 +225,7 @@ CharacterSelectionGui._data_source_characters_list = function (self)
 
 	return characters
 end
-CharacterSelectionGui.on_select_character_button = function (self)
+function CharacterSelectionGui:on_select_character_button()
 	slot3 = self
 
 	self.activate_selected_character(slot2)
@@ -237,7 +237,7 @@ CharacterSelectionGui.on_select_character_button = function (self)
 
 	return 
 end
-CharacterSelectionGui._character_action_callback = function (self, slot_index, action)
+function CharacterSelectionGui:_character_action_callback(slot_index, action)
 	slot8 = action
 
 	Application.trace(slot4, Application, "[CharacterSelectionGui:_character_action_callback] slot_index, action ", slot_index)
@@ -270,7 +270,7 @@ CharacterSelectionGui._character_action_callback = function (self, slot_index, a
 
 	return 
 end
-CharacterSelectionGui._customize_character = function (self)
+function CharacterSelectionGui:_customize_character()
 	self._open_customization_screen_flag = true
 	self._open_creation_screen_flag = false
 	slot3 = self
@@ -279,7 +279,7 @@ CharacterSelectionGui._customize_character = function (self)
 
 	return 
 end
-CharacterSelectionGui._delete_character = function (self, slot_index)
+function CharacterSelectionGui:_delete_character(slot_index)
 	slot4 = managers.network
 	slot4 = managers.network.session(slot3)
 
@@ -308,7 +308,7 @@ CharacterSelectionGui._delete_character = function (self, slot_index)
 
 	return 
 end
-CharacterSelectionGui._create_character = function (self)
+function CharacterSelectionGui:_create_character()
 	slot4 = self._selected_character_slot
 
 	managers.savefile.set_create_character_slot(slot2, managers.savefile)
@@ -321,7 +321,7 @@ CharacterSelectionGui._create_character = function (self)
 
 	return 
 end
-CharacterSelectionGui._on_item_click = function (self, slot_index)
+function CharacterSelectionGui:_on_item_click(slot_index)
 	slot5 = "[CharacterSelectionGui:_on_item_click]"
 
 	Application.trace(slot3, Application)
@@ -332,7 +332,7 @@ CharacterSelectionGui._on_item_click = function (self, slot_index)
 
 	return 
 end
-CharacterSelectionGui._on_item_selected = function (self, slot_index)
+function CharacterSelectionGui:_on_item_selected(slot_index)
 	slot6 = slot_index
 
 	Application.trace(slot3, Application, "[CharacterSelectionGui:_on_item_selected] slot_index ")
@@ -343,7 +343,7 @@ CharacterSelectionGui._on_item_selected = function (self, slot_index)
 
 	return 
 end
-CharacterSelectionGui._on_item_double_click = function (self, slot_index)
+function CharacterSelectionGui:_on_item_double_click(slot_index)
 	slot5 = slot_index
 
 	self._select_character_slot(slot3, self)
@@ -359,7 +359,7 @@ CharacterSelectionGui._on_item_double_click = function (self, slot_index)
 
 	return 
 end
-CharacterSelectionGui._rebind_controller_buttons = function (self, slot_index)
+function CharacterSelectionGui:_rebind_controller_buttons(slot_index)
 	local cache = Global.savefile_manager.meta_data_list[slot_index].cache
 
 	if not cache then
@@ -378,7 +378,7 @@ CharacterSelectionGui._rebind_controller_buttons = function (self, slot_index)
 
 	return 
 end
-CharacterSelectionGui._load_all_slots = function (self)
+function CharacterSelectionGui:_load_all_slots()
 	for slot_index = SavefileManager.CHARACTER_PROFILE_STARTING_SLOT, (SavefileManager.CHARACTER_PROFILE_STARTING_SLOT + SavefileManager.CHARACTER_PROFILE_SLOTS_COUNT) - 1, 1 do
 		if Global.savefile_manager.meta_data_list and Global.savefile_manager.meta_data_list[slot_index] then
 			Global.savefile_manager.meta_data_list[slot_index].is_load_done = false
@@ -403,7 +403,7 @@ CharacterSelectionGui._load_all_slots = function (self)
 
 	return 
 end
-CharacterSelectionGui._load_slot_data = function (self, slot_index, save_as_last_selected_slot)
+function CharacterSelectionGui:_load_slot_data(slot_index, save_as_last_selected_slot)
 	slot5 = managers.warcry
 
 	managers.warcry.reset(slot4)
@@ -421,7 +421,7 @@ CharacterSelectionGui._load_slot_data = function (self, slot_index, save_as_last
 
 	return 
 end
-CharacterSelectionGui._select_character_slot = function (self, slot_index)
+function CharacterSelectionGui:_select_character_slot(slot_index)
 	slot8 = self._active_character_slot
 
 	Application.trace(slot3, Application, "[CharacterSelectionGui:_select_character_slot] slot_index, self._selected_character_slot, self._active_character_slot ", slot_index, self._selected_character_slot)
@@ -480,7 +480,7 @@ CharacterSelectionGui._select_character_slot = function (self, slot_index)
 
 	return 
 end
-CharacterSelectionGui.activate_selected_character = function (self)
+function CharacterSelectionGui:activate_selected_character()
 	slot6 = self._active_character_slot
 
 	Application.trace(slot2, Application, "[CharacterSelectionGui:activate_selected_character] selected_slot, active_slot ", self._selected_character_slot)
@@ -512,7 +512,7 @@ CharacterSelectionGui.activate_selected_character = function (self)
 
 	return 
 end
-CharacterSelectionGui._activate_character_profile = function (self, slot_index)
+function CharacterSelectionGui:_activate_character_profile(slot_index)
 	slot6 = slot_index
 
 	Application.trace(slot3, Application, "[CharacterSelectionGui:_activate_character_profile] slot_index ")
@@ -536,7 +536,7 @@ CharacterSelectionGui._activate_character_profile = function (self, slot_index)
 
 	return 
 end
-CharacterSelectionGui.show_selected_character_details = function (self, slot_index)
+function CharacterSelectionGui:show_selected_character_details(slot_index)
 	local cache = nil
 	local profile_name = ""
 	local nationality = ""
@@ -621,7 +621,7 @@ CharacterSelectionGui.show_selected_character_details = function (self, slot_ind
 
 	return 
 end
-CharacterSelectionGui.show_selected_character = function (self, slot_index)
+function CharacterSelectionGui:show_selected_character(slot_index)
 	self._loading_units[CharacterCustomizationTweakData.CRIMINAL_MENU_SELECT_UNIT] = true
 	slot8 = CharacterCustomizationTweakData.CRIMINAL_MENU_SELECT_UNIT
 	slot7 = DynamicResourceManager.DYN_RESOURCES_PACKAGE
@@ -631,7 +631,7 @@ CharacterSelectionGui.show_selected_character = function (self, slot_index)
 
 	return 
 end
-CharacterSelectionGui._show_selected_character_loaded = function (self, slot_index)
+function CharacterSelectionGui:_show_selected_character_loaded(slot_index)
 	if self._closing_screen then
 		if self._spawned_character_unit then
 			slot4 = self._spawned_character_unit
@@ -696,7 +696,7 @@ CharacterSelectionGui._show_selected_character_loaded = function (self, slot_ind
 
 	return 
 end
-CharacterSelectionGui.destroy_character_unit = function (self)
+function CharacterSelectionGui:destroy_character_unit()
 	if self._spawned_character_unit then
 		slot3 = self._spawned_character_unit
 		slot3 = self._spawned_character_unit.customization(slot2)
@@ -712,7 +712,7 @@ CharacterSelectionGui.destroy_character_unit = function (self)
 
 	return 
 end
-CharacterSelectionGui.get_character_spawn_location = function (self)
+function CharacterSelectionGui:get_character_spawn_location()
 	slot4 = "all"
 	slot8 = "env_effect"
 	local units = World.find_units_quick(slot2, World, managers.slot.get_mask(slot6, managers.slot))
@@ -733,7 +733,7 @@ CharacterSelectionGui.get_character_spawn_location = function (self)
 
 	return 
 end
-CharacterSelectionGui.back_pressed = function (self)
+function CharacterSelectionGui:back_pressed()
 	slot4 = "[CharacterSelectionGui:back_pressed] "
 
 	Application.trace(slot2, Application)
@@ -748,7 +748,7 @@ CharacterSelectionGui.back_pressed = function (self)
 
 	return 
 end
-CharacterSelectionGui._pre_close_screen = function (self)
+function CharacterSelectionGui:_pre_close_screen()
 	slot4 = "[CharacterSelectionGui][_pre_close_screen]"
 
 	Application.trace(slot2, Application)
@@ -802,7 +802,7 @@ CharacterSelectionGui._pre_close_screen = function (self)
 
 	return 
 end
-CharacterSelectionGui._extra_character_setup = function (self)
+function CharacterSelectionGui:_extra_character_setup()
 	slot4 = "[CharacterSelectionGui:_extra_character_setup]"
 
 	Application.trace(slot2, Application)
@@ -880,7 +880,7 @@ CharacterSelectionGui._extra_character_setup = function (self)
 
 	return 
 end
-CharacterSelectionGui._pre_close_screen_loading_done = function (self)
+function CharacterSelectionGui:_pre_close_screen_loading_done()
 	slot4 = "[CharacterSelectionGui:_pre_close_screen_loading_done]"
 
 	Application.trace(slot2, Application)
@@ -963,7 +963,7 @@ CharacterSelectionGui._pre_close_screen_loading_done = function (self)
 
 	return 
 end
-CharacterSelectionGui.reset_weapon_challenges = function (self)
+function CharacterSelectionGui:reset_weapon_challenges()
 	slot3 = managers.challenge
 
 	managers.challenge.deactivate_all_challenges(slot2)
@@ -976,7 +976,7 @@ CharacterSelectionGui.reset_weapon_challenges = function (self)
 
 	return 
 end
-CharacterSelectionGui.close = function (self)
+function CharacterSelectionGui:close()
 	slot4 = "[CharacterSelectionGui][close] "
 
 	Application.trace(slot2, Application)
@@ -1006,7 +1006,7 @@ CharacterSelectionGui.close = function (self)
 
 	return 
 end
-CharacterSelectionGui.on_escape = function (self)
+function CharacterSelectionGui:on_escape()
 	slot4 = "[CharacterSelectionGui:on_escape]"
 
 	Application.trace(slot2, Application)
@@ -1017,7 +1017,7 @@ CharacterSelectionGui.on_escape = function (self)
 
 	return 
 end
-CharacterSelectionGui.show_character_delete_confirmation = function (self, callback_yes_function)
+function CharacterSelectionGui:show_character_delete_confirmation(callback_yes_function)
 	local params = {}
 	slot6 = "dialog_character_delete_message"
 	params.text = managers.localization.text(slot4, managers.localization)
@@ -1032,7 +1032,7 @@ CharacterSelectionGui.show_character_delete_confirmation = function (self, callb
 
 	return 
 end
-CharacterSelectionGui.on_item_yes_delete_characters_list = function (self)
+function CharacterSelectionGui:on_item_yes_delete_characters_list()
 	slot5 = self._character_slot_to_delete
 
 	Application.trace(slot2, Application, "[CharacterSelectionGui:on_item_yes_delete_characters_list] self._character_slot_to_delete ")
@@ -1087,7 +1087,7 @@ CharacterSelectionGui.on_item_yes_delete_characters_list = function (self)
 
 	return 
 end
-CharacterSelectionGui.update = function (self, t, dt)
+function CharacterSelectionGui:update(t, dt)
 	if not self._is_load_done and not self._is_render_done then
 		self._is_load_done = true
 
@@ -1170,7 +1170,7 @@ CharacterSelectionGui.update = function (self, t, dt)
 
 	return 
 end
-CharacterSelectionGui._bind_active_slot_controller_inputs = function (self)
+function CharacterSelectionGui:_bind_active_slot_controller_inputs()
 	local bindings = {}
 	slot5 = "menu_controller_face_top"
 	slot7 = "_on_character_customize"
@@ -1207,7 +1207,7 @@ CharacterSelectionGui._bind_active_slot_controller_inputs = function (self)
 
 	return 
 end
-CharacterSelectionGui._bind_inactive_slot_controller_inputs = function (self)
+function CharacterSelectionGui:_bind_inactive_slot_controller_inputs()
 	local bindings = {}
 	slot5 = "menu_controller_face_left"
 	slot7 = "_on_character_delete"
@@ -1244,7 +1244,7 @@ CharacterSelectionGui._bind_inactive_slot_controller_inputs = function (self)
 
 	return 
 end
-CharacterSelectionGui._bind_empty_slot_controller_inputs = function (self)
+function CharacterSelectionGui:_bind_empty_slot_controller_inputs()
 	local bindings = {}
 	slot5 = "menu_controller_face_bottom"
 	slot7 = "_on_character_create"
@@ -1274,7 +1274,7 @@ CharacterSelectionGui._bind_empty_slot_controller_inputs = function (self)
 
 	return 
 end
-CharacterSelectionGui._on_character_customize = function (self)
+function CharacterSelectionGui:_on_character_customize()
 	slot4 = "[CharacterSelectionGui:_on_character_customize]"
 
 	Application.trace(slot2, Application)
@@ -1285,7 +1285,7 @@ CharacterSelectionGui._on_character_customize = function (self)
 
 	return 
 end
-CharacterSelectionGui._on_character_delete = function (self)
+function CharacterSelectionGui:_on_character_delete()
 	slot4 = "[CharacterSelectionGui:_on_character_delete]"
 
 	Application.trace(slot2, Application)
@@ -1296,7 +1296,7 @@ CharacterSelectionGui._on_character_delete = function (self)
 
 	return 
 end
-CharacterSelectionGui._on_character_select = function (self)
+function CharacterSelectionGui:_on_character_select()
 	slot4 = "[CharacterSelectionGui:_on_character_select]"
 
 	Application.trace(slot2, Application)
@@ -1307,7 +1307,7 @@ CharacterSelectionGui._on_character_select = function (self)
 
 	return 
 end
-CharacterSelectionGui._on_character_create = function (self)
+function CharacterSelectionGui:_on_character_create()
 	slot4 = "[CharacterSelectionGui:_on_character_create]"
 
 	Application.trace(slot2, Application)

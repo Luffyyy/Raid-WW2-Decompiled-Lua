@@ -8,21 +8,21 @@ if not ElementCharacterSequence then
 end
 
 ElementCharacterSequence = slot0
-ElementCharacterSequence.init = function (self, ...)
+function ElementCharacterSequence:init(...)
 	slot3 = self
 
 	ElementCharacterSequence.super.init(slot2, ...)
 
 	return 
 end
-ElementCharacterSequence.client_on_executed = function (self, ...)
+function ElementCharacterSequence:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementCharacterSequence.on_executed = function (self, instigator)
+function ElementCharacterSequence:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

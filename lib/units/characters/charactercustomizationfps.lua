@@ -6,12 +6,12 @@ if not CharacterCustomizationFps then
 end
 
 CharacterCustomizationFps = slot0
-CharacterCustomizationFps.init = function (self, unit)
+function CharacterCustomizationFps:init(unit)
 	self._unit = unit
 
 	return 
 end
-CharacterCustomizationFps.attach_fps_hands = function (self, character_nationality_name, equiped_upper_name, customization_version)
+function CharacterCustomizationFps:attach_fps_hands(character_nationality_name, equiped_upper_name, customization_version)
 	slot10 = customization_version
 
 	Application.trace(slot5, Application, "[CharacterCustomizationFps:attach_fps_hands] character_nationality_name, equiped_upper_name, customization_version ", character_nationality_name, equiped_upper_name)
@@ -31,7 +31,7 @@ CharacterCustomizationFps.attach_fps_hands = function (self, character_nationali
 
 	return 
 end
-CharacterCustomizationFps._attach_unit = function (self, slot, name)
+function CharacterCustomizationFps:_attach_unit(slot, name)
 	slot9 = name
 	slot8 = DynamicResourceManager.DYN_RESOURCES_PACKAGE
 	slot14 = {
@@ -43,7 +43,7 @@ CharacterCustomizationFps._attach_unit = function (self, slot, name)
 
 	return 
 end
-CharacterCustomizationFps._part_loaded_callback = function (self, params)
+function CharacterCustomizationFps:_part_loaded_callback(params)
 
 	-- Decompilation error in this vicinity:
 	slot4 = Idstring(slot5)

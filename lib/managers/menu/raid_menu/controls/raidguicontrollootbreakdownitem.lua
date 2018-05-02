@@ -17,7 +17,7 @@ RaidGUIControlLootBreakdownItem.TITLE_FONT_SIZE = tweak_data.gui.font_sizes.size
 RaidGUIControlLootBreakdownItem.TITLE_COLOR = tweak_data.gui.colors.raid_grey_effects
 RaidGUIControlLootBreakdownItem.TEXT_PANEL_H = 96
 RaidGUIControlLootBreakdownItem.COLOR_EMPTY = tweak_data.gui.colors.raid_red
-RaidGUIControlLootBreakdownItem.init = function (self, parent, params)
+function RaidGUIControlLootBreakdownItem:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlLootBreakdownItem.super.init(slot4, self, parent)
@@ -58,10 +58,10 @@ RaidGUIControlLootBreakdownItem.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlLootBreakdownItem.acquired = function (self)
+function RaidGUIControlLootBreakdownItem:acquired()
 	return self._acquired
 end
-RaidGUIControlLootBreakdownItem.add_points = function (self, amount)
+function RaidGUIControlLootBreakdownItem:add_points(amount)
 	self._current = self._current + amount
 	slot4 = self
 
@@ -69,7 +69,7 @@ RaidGUIControlLootBreakdownItem.add_points = function (self, amount)
 
 	return 
 end
-RaidGUIControlLootBreakdownItem.add_point = function (self, duration)
+function RaidGUIControlLootBreakdownItem:add_point(duration)
 	slot9 = "_add_point"
 	slot6 = duration
 
@@ -82,7 +82,7 @@ RaidGUIControlLootBreakdownItem.add_point = function (self, duration)
 
 	return 
 end
-RaidGUIControlLootBreakdownItem._add_point = function (self, main_icon, duration)
+function RaidGUIControlLootBreakdownItem:_add_point(main_icon, duration)
 	local t = 0
 	local y_move = 160
 	local fade_out_distance = 40
@@ -128,7 +128,7 @@ RaidGUIControlLootBreakdownItem._add_point = function (self, main_icon, duration
 
 	return 
 end
-RaidGUIControlLootBreakdownItem._create_panel = function (self)
+function RaidGUIControlLootBreakdownItem:_create_panel()
 	local panel_params = {
 		name = "loot_breakdown_item",
 		alpha = 0,
@@ -139,7 +139,7 @@ RaidGUIControlLootBreakdownItem._create_panel = function (self)
 
 	return 
 end
-RaidGUIControlLootBreakdownItem._create_icon = function (self)
+function RaidGUIControlLootBreakdownItem:_create_icon()
 	local icon_params = {
 		name = "loot_item_icon",
 		texture = tweak_data.gui.icons[self._params.icon].texture,
@@ -153,7 +153,7 @@ RaidGUIControlLootBreakdownItem._create_icon = function (self)
 
 	return 
 end
-RaidGUIControlLootBreakdownItem._create_text_panel = function (self)
+function RaidGUIControlLootBreakdownItem:_create_text_panel()
 	local text_panel_params = {
 		name = "text_panel",
 		h = RaidGUIControlLootBreakdownItem.TEXT_PANEL_H
@@ -166,7 +166,7 @@ RaidGUIControlLootBreakdownItem._create_text_panel = function (self)
 
 	return 
 end
-RaidGUIControlLootBreakdownItem._create_counter = function (self)
+function RaidGUIControlLootBreakdownItem:_create_counter()
 	local counter_params = {
 		vertical = "center",
 		name = "counter",
@@ -187,7 +187,7 @@ RaidGUIControlLootBreakdownItem._create_counter = function (self)
 
 	return 
 end
-RaidGUIControlLootBreakdownItem._refresh_counter = function (self)
+function RaidGUIControlLootBreakdownItem:_refresh_counter()
 	slot3 = self._current
 	local counter_text = tostring(slot2)
 
@@ -202,7 +202,7 @@ RaidGUIControlLootBreakdownItem._refresh_counter = function (self)
 
 	return 
 end
-RaidGUIControlLootBreakdownItem._create_title = function (self)
+function RaidGUIControlLootBreakdownItem:_create_title()
 	local title_params = {
 		name = "counter",
 		vertical = "center",
@@ -224,7 +224,7 @@ RaidGUIControlLootBreakdownItem._create_title = function (self)
 
 	return 
 end
-RaidGUIControlLootBreakdownItem._refresh_layout = function (self)
+function RaidGUIControlLootBreakdownItem:_refresh_layout()
 	slot3 = self._counter
 	local _, _, counter_w, _ = self._counter.text_rect(slot2)
 	slot7 = self._title
@@ -271,10 +271,10 @@ RaidGUIControlLootBreakdownItem._refresh_layout = function (self)
 
 	return 
 end
-RaidGUIControlLootBreakdownItem.close = function (self)
+function RaidGUIControlLootBreakdownItem:close()
 	return 
 end
-RaidGUIControlLootBreakdownItem.animate_icon = function (self)
+function RaidGUIControlLootBreakdownItem:animate_icon()
 	self._animating_icon = true
 	slot3 = self._icon
 
@@ -287,7 +287,7 @@ RaidGUIControlLootBreakdownItem.animate_icon = function (self)
 
 	return 
 end
-RaidGUIControlLootBreakdownItem.animate_show = function (self)
+function RaidGUIControlLootBreakdownItem:animate_show()
 	local duration = 0.7
 	local y_offset = 50
 	local t = 0
@@ -325,7 +325,7 @@ RaidGUIControlLootBreakdownItem.animate_show = function (self)
 
 	return 
 end
-RaidGUIControlLootBreakdownItem.animate_empty = function (self)
+function RaidGUIControlLootBreakdownItem:animate_empty()
 	local duration = 0.7
 	local t = 0
 	local played_sound = false
@@ -392,7 +392,7 @@ RaidGUIControlLootBreakdownItem.animate_empty = function (self)
 
 	return 
 end
-RaidGUIControlLootBreakdownItem.hide = function (self, delay)
+function RaidGUIControlLootBreakdownItem:hide(delay)
 	slot4 = self._title
 
 	self._title.stop(slot3)
@@ -404,7 +404,7 @@ RaidGUIControlLootBreakdownItem.hide = function (self, delay)
 
 	return 
 end
-RaidGUIControlLootBreakdownItem.finalize = function (self)
+function RaidGUIControlLootBreakdownItem:finalize()
 	slot4 = 1
 
 	self._object.set_alpha(slot2, self._object)
@@ -420,7 +420,7 @@ RaidGUIControlLootBreakdownItem.finalize = function (self)
 
 	return 
 end
-RaidGUIControlLootBreakdownItem.fade = function (self)
+function RaidGUIControlLootBreakdownItem:fade()
 	slot4 = 0.5
 
 	self._object.set_alpha(slot2, self._object)
@@ -431,7 +431,7 @@ RaidGUIControlLootBreakdownItem.fade = function (self)
 
 	return 
 end
-RaidGUIControlLootBreakdownItem.check_state = function (self)
+function RaidGUIControlLootBreakdownItem:check_state()
 	if self._acquired == 0 then
 		slot4 = RaidGUIControlLootBreakdownItem.COLOR_EMPTY
 
@@ -448,7 +448,7 @@ RaidGUIControlLootBreakdownItem.check_state = function (self)
 
 	return 
 end
-RaidGUIControlLootBreakdownItem._animate_hide = function (self, panel, delay)
+function RaidGUIControlLootBreakdownItem:_animate_hide(panel, delay)
 	local duration = 0.3
 	local t = 0
 	slot7 = self._object
@@ -476,7 +476,7 @@ RaidGUIControlLootBreakdownItem._animate_hide = function (self, panel, delay)
 
 	return 
 end
-RaidGUIControlLootBreakdownItem.animate_move_right = function (self, offset)
+function RaidGUIControlLootBreakdownItem:animate_move_right(offset)
 	slot4 = self._counter
 
 	self._counter.stop(slot3)
@@ -488,7 +488,7 @@ RaidGUIControlLootBreakdownItem.animate_move_right = function (self, offset)
 
 	return 
 end
-RaidGUIControlLootBreakdownItem._animate_move_right = function (self, panel, offset)
+function RaidGUIControlLootBreakdownItem:_animate_move_right(panel, offset)
 	local duration = 0.8
 	local t = 0
 	local initial_x_position = self._object.x(slot6)
@@ -532,12 +532,12 @@ RaidGUIControlLootBreakdownItem._animate_move_right = function (self, panel, off
 
 	return 
 end
-RaidGUIControlLootBreakdownItem.stop_animating_icon = function (self)
+function RaidGUIControlLootBreakdownItem:stop_animating_icon()
 	self._animating_icon = false
 
 	return 
 end
-RaidGUIControlLootBreakdownItem._animate_icon = function (self, icon)
+function RaidGUIControlLootBreakdownItem:_animate_icon(icon)
 	local y_move = 160
 	local t = 0
 	local cycle_duration = 0.35

@@ -21,14 +21,14 @@ MissionElement = slot0
 MissionElement.SAVE_UNIT_POSITION = true
 MissionElement.SAVE_UNIT_ROTATION = true
 MissionElement.RANDOMS = nil
-MissionElement.init = function (self, ...)
+function MissionElement:init(...)
 	slot3 = self
 
 	CoreMissionElement.init(slot2, ...)
 
 	return 
 end
-CoreMissionElement.init = function (self, unit)
+function CoreMissionElement:init(unit)
 	if not CoreMissionElement.editor_link_brush then
 		local brush = Draw.brush(slot3)
 		slot8 = "core/fonts/nice_editor_font"
@@ -77,7 +77,7 @@ CoreMissionElement.init = function (self, unit)
 
 	return 
 end
-CoreMissionElement.post_init = function (self)
+function CoreMissionElement:post_init()
 	if self.RANDOMS then
 		slot3 = self.RANDOMS
 
@@ -95,7 +95,7 @@ CoreMissionElement.post_init = function (self)
 
 	return 
 end
-CoreMissionElement._createicon = function (self)
+function CoreMissionElement:_createicon()
 	local iconsize = 32
 
 	if Global.iconsize then
@@ -169,7 +169,7 @@ CoreMissionElement._createicon = function (self)
 
 	return 
 end
-CoreMissionElement.set_iconsize = function (self, size)
+function CoreMissionElement:set_iconsize(size)
 	if not self._icon_ws then
 		return 
 	end
@@ -185,7 +185,7 @@ CoreMissionElement.set_iconsize = function (self, size)
 
 	return 
 end
-CoreMissionElement._add_default_saves = function (self)
+function CoreMissionElement:_add_default_saves()
 	self._hed.enabled = true
 	self._hed.debug = nil
 	self._hed.execute_on_startup = false
@@ -264,7 +264,7 @@ CoreMissionElement._add_default_saves = function (self)
 
 	return 
 end
-CoreMissionElement.build_default_gui = function (self, panel, sizer)
+function CoreMissionElement:build_default_gui(panel, sizer)
 	slot8 = "enabled"
 
 	self._build_value_checkbox(slot4, self, panel, sizer)
@@ -511,7 +511,7 @@ CoreMissionElement.build_default_gui = function (self, panel, sizer)
 
 	return 
 end
-CoreMissionElement._build_point_orientation = function (self, panel)
+function CoreMissionElement:_build_point_orientation(panel)
 	slot7 = "Point orientation"
 	local sizer = EWS.StaticBoxSizer(slot3, EWS, panel, "HORIZONTAL")
 	slot8 = "TB_FLAT,TB_NODIVIDER"
@@ -573,7 +573,7 @@ CoreMissionElement._build_point_orientation = function (self, panel)
 
 	return sizer
 end
-CoreMissionElement._add_unit_to_orientation_elements = function (self)
+function CoreMissionElement:_add_unit_to_orientation_elements()
 	slot3 = self._unit
 	local script = self._unit.mission_element_data(slot2).script
 
@@ -619,7 +619,7 @@ CoreMissionElement._add_unit_to_orientation_elements = function (self)
 
 	return 
 end
-CoreMissionElement._remove_unit_from_orientation_elements = function (self)
+function CoreMissionElement:_remove_unit_from_orientation_elements()
 	if not self._hed.orientation_elements then
 		return 
 	end
@@ -650,7 +650,7 @@ CoreMissionElement._remove_unit_from_orientation_elements = function (self)
 
 	return 
 end
-CoreMissionElement._build_instance_var_names = function (self, panel)
+function CoreMissionElement:_build_instance_var_names(panel)
 	slot7 = "Instance variables"
 	local sizer = EWS.StaticBoxSizer(slot3, EWS, panel, "VERTICAL")
 	local options = {}
@@ -701,7 +701,7 @@ CoreMissionElement._build_instance_var_names = function (self, panel)
 
 	return sizer
 end
-CoreMissionElement._set_instance_var_name = function (self, params)
+function CoreMissionElement:_set_instance_var_name(params)
 	slot4 = params.ctrlr
 	local value = params.ctrlr.get_value(slot3)
 	value = (value ~= "not_used" and value) or nil
@@ -712,7 +712,7 @@ CoreMissionElement._set_instance_var_name = function (self, params)
 
 	return 
 end
-CoreMissionElement._create_panel = function (self)
+function CoreMissionElement:_create_panel()
 	if self._panel then
 		return 
 	end
@@ -722,14 +722,14 @@ CoreMissionElement._create_panel = function (self)
 
 	return 
 end
-CoreMissionElement._build_panel = function (self)
+function CoreMissionElement:_build_panel()
 	slot3 = self
 
 	self._create_panel(slot2)
 
 	return 
 end
-CoreMissionElement.panel = function (self, id, parent, parent_sizer)
+function CoreMissionElement:panel(id, parent, parent_sizer)
 	if id then
 		if self._panels[id] then
 			return self._panels[id]
@@ -754,7 +754,7 @@ CoreMissionElement.panel = function (self, id, parent, parent_sizer)
 
 	return self._panel
 end
-CoreMissionElement._add_panel = function (self, parent, parent_sizer)
+function CoreMissionElement:_add_panel(parent, parent_sizer)
 	local panel = EWS.ScrolledWindow(slot4, EWS, parent, "")
 	slot6 = panel
 	slot11 = 0
@@ -793,7 +793,7 @@ CoreMissionElement._add_panel = function (self, parent, parent_sizer)
 
 	return panel, panel_sizer
 end
-CoreMissionElement.add_help_text = function (self, data)
+function CoreMissionElement:add_help_text(data)
 	if data.panel and data.sizer then
 		slot11 = "TE_MULTILINE,TE_READONLY,TE_WORDWRAP,TE_CENTRE"
 		slot8 = "EXPAND,TOP,BOTTOM"
@@ -803,7 +803,7 @@ CoreMissionElement.add_help_text = function (self, data)
 
 	return 
 end
-CoreMissionElement._add_help_text = function (self, text)
+function CoreMissionElement:_add_help_text(text)
 	local help = {
 		panel = self._panel,
 		sizer = self._panel_sizer,
@@ -815,7 +815,7 @@ CoreMissionElement._add_help_text = function (self, text)
 
 	return 
 end
-CoreMissionElement._on_toolbar_add_element = function (self)
+function CoreMissionElement:_on_toolbar_add_element()
 	local function f(unit)
 		slot4 = "mission_element"
 
@@ -833,7 +833,7 @@ CoreMissionElement._on_toolbar_add_element = function (self)
 
 	return 
 end
-CoreMissionElement._on_toolbar_remove = function (self)
+function CoreMissionElement:_on_toolbar_remove()
 	slot3 = self
 	slot6 = self
 
@@ -841,7 +841,7 @@ CoreMissionElement._on_toolbar_remove = function (self)
 
 	return 
 end
-CoreMissionElement.set_element_data = function (self, data)
+function CoreMissionElement:set_element_data(data)
 	if data.callback then
 		local he = self._unit.mission_element(slot3)
 		slot7 = data.params
@@ -886,7 +886,7 @@ CoreMissionElement.set_element_data = function (self, data)
 
 	return 
 end
-CoreMissionElement.set_panel_dirty = function (self)
+function CoreMissionElement:set_panel_dirty()
 	slot3 = self._panel
 
 	if not alive(slot2) then
@@ -901,29 +901,29 @@ CoreMissionElement.set_panel_dirty = function (self)
 
 	return 
 end
-CoreMissionElement.selected = function (self)
+function CoreMissionElement:selected()
 	slot3 = self
 
 	self.append_elements_sorted(slot2)
 
 	return 
 end
-CoreMissionElement.update_selected = function (self)
+function CoreMissionElement:update_selected()
 	return 
 end
-CoreMissionElement.update_unselected = function (self)
+function CoreMissionElement:update_unselected()
 	return 
 end
-CoreMissionElement.can_edit = function (self)
+function CoreMissionElement:can_edit()
 	return self.update_editing or self.base_update_editing
 end
-CoreMissionElement.begin_editing = function (self)
+function CoreMissionElement:begin_editing()
 	return 
 end
-CoreMissionElement.end_editing = function (self)
+function CoreMissionElement:end_editing()
 	return 
 end
-CoreMissionElement.clone_data = function (self, all_units)
+function CoreMissionElement:clone_data(all_units)
 	slot4 = self._hed.on_executed
 
 	for _, data in ipairs(slot3) do
@@ -934,7 +934,7 @@ CoreMissionElement.clone_data = function (self, all_units)
 
 	return 
 end
-CoreMissionElement.layer_finished = function (self)
+function CoreMissionElement:layer_finished()
 	slot3 = self._hed.on_executed
 
 	for _, data in ipairs(slot2) do
@@ -947,14 +947,14 @@ CoreMissionElement.layer_finished = function (self)
 
 	return 
 end
-CoreMissionElement.save_data = function (self, file, t)
+function CoreMissionElement:save_data(file, t)
 	slot7 = t
 
 	self.save_values(slot4, self, file)
 
 	return 
 end
-CoreMissionElement.save_values = function (self, file, t)
+function CoreMissionElement:save_values(file, t)
 	t = t .. "\t"
 	slot6 = t .. "<values>"
 
@@ -974,7 +974,7 @@ CoreMissionElement.save_values = function (self, file, t)
 
 	return 
 end
-CoreMissionElement.save_value = function (self, file, t, name)
+function CoreMissionElement:save_value(file, t, name)
 	t = t .. "\t"
 	slot6 = file
 	slot12 = self._unit
@@ -983,7 +983,7 @@ CoreMissionElement.save_value = function (self, file, t, name)
 
 	return 
 end
-CoreMissionElement.new_save_values = function (self)
+function CoreMissionElement:new_save_values()
 
 	-- Decompilation error in this vicinity:
 	local t = {}
@@ -1000,15 +1000,15 @@ CoreMissionElement.new_save_values = function (self)
 
 	return t
 end
-CoreMissionElement.name = function (self)
+function CoreMissionElement:name()
 	slot3 = self._unit
 
 	return self._unit.name(slot2) .. self._ud.unit_id
 end
-CoreMissionElement.add_to_mission_package = function (self)
+function CoreMissionElement:add_to_mission_package()
 	return 
 end
-CoreMissionElement.get_color = function (self, type)
+function CoreMissionElement:get_color(type)
 	if type then
 		if type == "activate" or type == "enable" then
 			return 0, 1, 0
@@ -1019,7 +1019,7 @@ CoreMissionElement.get_color = function (self, type)
 
 	return 0, 1, 0
 end
-CoreMissionElement.draw_links_selected = function (self, t, dt, selected_unit)
+function CoreMissionElement:draw_links_selected(t, dt, selected_unit)
 	local unit = self._current_element_unit(slot5)
 	slot7 = unit
 
@@ -1053,7 +1053,7 @@ CoreMissionElement.draw_links_selected = function (self, t, dt, selected_unit)
 
 	return 
 end
-CoreMissionElement._draw_link = function (self, params)
+function CoreMissionElement:_draw_link(params)
 	slot5 = "Mission"
 	slot4 = managers.editor.layer(slot3, managers.editor)
 	params.draw_flow = managers.editor.layer(slot3, managers.editor).visualize_flow(slot3)
@@ -1063,22 +1063,22 @@ CoreMissionElement._draw_link = function (self, params)
 
 	return 
 end
-CoreMissionElement.draw_links_unselected = function (self)
+function CoreMissionElement:draw_links_unselected()
 	return 
 end
-CoreMissionElement.clear = function (self)
+function CoreMissionElement:clear()
 	return 
 end
-CoreMissionElement.action_types = function (self)
+function CoreMissionElement:action_types()
 	return self._action_types
 end
-CoreMissionElement.timeline_color = function (self)
+function CoreMissionElement:timeline_color()
 	return self._timeline_color
 end
-CoreMissionElement.add_triggers = function (self, vc)
+function CoreMissionElement:add_triggers(vc)
 	return 
 end
-CoreMissionElement.base_add_triggers = function (self, vc)
+function CoreMissionElement:base_add_triggers(vc)
 	if self.USES_POINT_ORIENTATION then
 		slot5 = Idstring(slot6)
 		slot10 = "_on_use_point_orientation"
@@ -1095,7 +1095,7 @@ CoreMissionElement.base_add_triggers = function (self, vc)
 
 	return 
 end
-CoreMissionElement._on_use_point_orientation = function (self)
+function CoreMissionElement:_on_use_point_orientation()
 	slot4 = {
 		ray_type = "editor",
 		mask = 10
@@ -1123,7 +1123,7 @@ CoreMissionElement._on_use_point_orientation = function (self)
 
 	return 
 end
-CoreMissionElement._add_orientation_unit_id = function (self, id)
+function CoreMissionElement:_add_orientation_unit_id(id)
 	self._hed.orientation_elements = self._hed.orientation_elements or {}
 	slot5 = id
 
@@ -1131,7 +1131,7 @@ CoreMissionElement._add_orientation_unit_id = function (self, id)
 
 	return 
 end
-CoreMissionElement._remove_orientation_unit_id = function (self, id)
+function CoreMissionElement:_remove_orientation_unit_id(id)
 	slot5 = id
 
 	table.delete(slot3, self._hed.orientation_elements)
@@ -1140,7 +1140,7 @@ CoreMissionElement._remove_orientation_unit_id = function (self, id)
 
 	return 
 end
-CoreMissionElement._on_use_instigator_rule = function (self)
+function CoreMissionElement:_on_use_instigator_rule()
 	slot4 = {
 		ray_type = "editor",
 		mask = 10
@@ -1168,7 +1168,7 @@ CoreMissionElement._on_use_instigator_rule = function (self)
 
 	return 
 end
-CoreMissionElement._add_instigator_rule_unit_id = function (self, id)
+function CoreMissionElement:_add_instigator_rule_unit_id(id)
 	self._hed.rules_elements = self._hed.rules_elements or {}
 	slot5 = id
 
@@ -1176,7 +1176,7 @@ CoreMissionElement._add_instigator_rule_unit_id = function (self, id)
 
 	return 
 end
-CoreMissionElement._remove_instigator_rule_unit_id = function (self, id)
+function CoreMissionElement:_remove_instigator_rule_unit_id(id)
 	slot5 = id
 
 	table.delete(slot3, self._hed.rules_elements)
@@ -1185,19 +1185,19 @@ CoreMissionElement._remove_instigator_rule_unit_id = function (self, id)
 
 	return 
 end
-CoreMissionElement.__update_editing = function (self, _, t, dt, current_pos)
+function CoreMissionElement:__update_editing(_, t, dt, current_pos)
 	return 
 end
-CoreMissionElement.clear_triggers = function (self)
+function CoreMissionElement:clear_triggers()
 	return 
 end
-CoreMissionElement.widget_affect_object = function (self)
+function CoreMissionElement:widget_affect_object()
 	return nil
 end
-CoreMissionElement.use_widget_position = function (self)
+function CoreMissionElement:use_widget_position()
 	return nil
 end
-CoreMissionElement.set_enabled = function (self)
+function CoreMissionElement:set_enabled()
 	if self._icon_ws then
 		slot3 = self._icon_ws
 
@@ -1206,7 +1206,7 @@ CoreMissionElement.set_enabled = function (self)
 
 	return 
 end
-CoreMissionElement.set_disabled = function (self)
+function CoreMissionElement:set_disabled()
 	if self._icon_ws then
 		slot3 = self._icon_ws
 
@@ -1215,7 +1215,7 @@ CoreMissionElement.set_disabled = function (self)
 
 	return 
 end
-CoreMissionElement.on_set_visible = function (self, visible)
+function CoreMissionElement:on_set_visible(visible)
 	if self._icon_ws then
 		if visible then
 			slot4 = self._icon_ws
@@ -1230,15 +1230,15 @@ CoreMissionElement.on_set_visible = function (self, visible)
 
 	return 
 end
-CoreMissionElement.set_update_selected_on = function (self, value)
+function CoreMissionElement:set_update_selected_on(value)
 	self._update_selected_on = value
 
 	return 
 end
-CoreMissionElement.update_selected_on = function (self)
+function CoreMissionElement:update_selected_on()
 	return self._update_selected_on
 end
-CoreMissionElement.destroy_panel = function (self)
+function CoreMissionElement:destroy_panel()
 	if self._panel then
 		slot3 = self._panel
 		self._panel.extension(slot2).alive = false
@@ -1251,7 +1251,7 @@ CoreMissionElement.destroy_panel = function (self)
 
 	return 
 end
-CoreMissionElement.destroy = function (self)
+function CoreMissionElement:destroy()
 	if self._timeline then
 		slot3 = self._timeline
 
@@ -1284,7 +1284,7 @@ CoreMissionElement.destroy = function (self)
 
 	return 
 end
-CoreMissionElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function CoreMissionElement:draw_links(t, dt, selected_unit, all_units)
 	slot8 = all_units
 
 	self._base_check_removed_units(slot6, self)
@@ -1303,7 +1303,7 @@ CoreMissionElement.draw_links = function (self, t, dt, selected_unit, all_units)
 
 	return 
 end
-CoreMissionElement._base_check_removed_units = function (self, all_units)
+function CoreMissionElement:_base_check_removed_units(all_units)
 	if self._hed.orientation_elements then
 		slot6 = self._hed.orientation_elements
 
@@ -1336,7 +1336,7 @@ CoreMissionElement._base_check_removed_units = function (self, all_units)
 
 	return 
 end
-CoreMissionElement._draw_elements = function (self, t, dt, elements, selected_unit, all_units)
+function CoreMissionElement:_draw_elements(t, dt, elements, selected_unit, all_units)
 	if not elements then
 		return 
 	end
@@ -1365,10 +1365,10 @@ CoreMissionElement._draw_elements = function (self, t, dt, elements, selected_un
 
 	return 
 end
-CoreMissionElement._should_draw_link = function (self, selected_unit, unit)
+function CoreMissionElement:_should_draw_link(selected_unit, unit)
 	return not selected_unit or unit == selected_unit or self._unit == selected_unit
 end
-CoreMissionElement.get_link_color = function (self, unit)
+function CoreMissionElement:get_link_color(unit)
 	local r = 1
 	local g = 1
 	local b = 1
@@ -1386,7 +1386,7 @@ CoreMissionElement.get_link_color = function (self, unit)
 
 	return r, g, b
 end
-CoreMissionElement.draw_link_on_executed = function (self, t, dt, selected_unit)
+function CoreMissionElement:draw_link_on_executed(t, dt, selected_unit)
 	local unit_sel = self._unit == selected_unit
 	slot8 = (unit_sel and Color.green) or Color.white
 
@@ -1446,7 +1446,7 @@ CoreMissionElement.draw_link_on_executed = function (self, t, dt, selected_unit)
 
 	return 
 end
-CoreMissionElement._get_delay_string = function (self, unit_id)
+function CoreMissionElement:_get_delay_string(unit_id)
 
 	-- Decompilation error in this vicinity:
 	slot6 = unit_id
@@ -1456,7 +1456,7 @@ CoreMissionElement._get_delay_string = function (self, unit_id)
 
 	return text
 end
-CoreMissionElement.add_on_executed = function (self, unit)
+function CoreMissionElement:add_on_executed(unit)
 	slot5 = unit
 
 	if self.remove_on_execute(slot3, self) then
@@ -1493,10 +1493,10 @@ CoreMissionElement.add_on_executed = function (self, unit)
 
 	return 
 end
-CoreMissionElement.remove_links = function (self, unit)
+function CoreMissionElement:remove_links(unit)
 	return 
 end
-CoreMissionElement.remove_on_execute = function (self, unit)
+function CoreMissionElement:remove_on_execute(unit)
 	slot4 = self._hed.on_executed
 
 	for _, on_executed in ipairs(slot3) do
@@ -1527,7 +1527,7 @@ CoreMissionElement.remove_on_execute = function (self, unit)
 
 	return false
 end
-CoreMissionElement.delete_unit = function (self, units)
+function CoreMissionElement:delete_unit(units)
 	local id = self._unit.unit_data(slot3).unit_id
 	slot5 = units
 
@@ -1545,7 +1545,7 @@ CoreMissionElement.delete_unit = function (self, units)
 
 	return 
 end
-CoreMissionElement.set_on_executed_element = function (self, unit, id)
+function CoreMissionElement:set_on_executed_element(unit, id)
 	if not unit then
 		slot6 = id
 		unit = self.on_execute_unit_by_id(slot4, self)
@@ -1583,7 +1583,7 @@ CoreMissionElement.set_on_executed_element = function (self, unit, id)
 
 	return 
 end
-CoreMissionElement.set_on_executed_data = function (self)
+function CoreMissionElement:set_on_executed_data()
 	local id = self.combobox_id(slot2, self)
 	slot5 = id
 	local params = self._get_on_executed(self, self)
@@ -1609,7 +1609,7 @@ CoreMissionElement.set_on_executed_data = function (self)
 
 	return 
 end
-CoreMissionElement._set_first_executed_element = function (self)
+function CoreMissionElement:_set_first_executed_element()
 	if 0 < #self._hed.on_executed then
 		slot5 = self._hed.on_executed[1].id
 
@@ -1618,7 +1618,7 @@ CoreMissionElement._set_first_executed_element = function (self)
 
 	return 
 end
-CoreMissionElement._set_on_execute_ctrlrs_enabled = function (self, enabled)
+function CoreMissionElement:_set_on_execute_ctrlrs_enabled(enabled)
 	if not self._elements_params then
 		return 
 	end
@@ -1647,14 +1647,14 @@ CoreMissionElement._set_on_execute_ctrlrs_enabled = function (self, enabled)
 
 	return 
 end
-CoreMissionElement.on_executed_element_selected = function (self)
+function CoreMissionElement:on_executed_element_selected()
 	slot3 = self
 
 	self.set_on_executed_data(slot2)
 
 	return 
 end
-CoreMissionElement._get_on_executed = function (self, id)
+function CoreMissionElement:_get_on_executed(id)
 	slot4 = self._hed.on_executed
 
 	for _, params in ipairs(slot3) do
@@ -1665,7 +1665,7 @@ CoreMissionElement._get_on_executed = function (self, id)
 
 	return 
 end
-CoreMissionElement._current_element_id = function (self)
+function CoreMissionElement:_current_element_id()
 	if not self._elements_params or not self._elements_params.value then
 		return nil
 	end
@@ -1674,7 +1674,7 @@ CoreMissionElement._current_element_id = function (self)
 
 	return self.combobox_id(slot2, self)
 end
-CoreMissionElement._current_element_unit = function (self)
+function CoreMissionElement:_current_element_unit()
 	slot3 = self
 	local id = self._current_element_id(slot2)
 
@@ -1692,7 +1692,7 @@ CoreMissionElement._current_element_unit = function (self)
 
 	return unit
 end
-CoreMissionElement.on_executed_element_delay = function (self)
+function CoreMissionElement:on_executed_element_delay()
 	slot4 = self._elements_params.value
 	local id = self.combobox_id(slot2, self)
 	slot5 = id
@@ -1707,7 +1707,7 @@ CoreMissionElement.on_executed_element_delay = function (self)
 
 	return 
 end
-CoreMissionElement.on_executed_element_delay_rand = function (self)
+function CoreMissionElement:on_executed_element_delay_rand()
 	slot4 = self._elements_params.value
 	local id = self.combobox_id(slot2, self)
 	slot5 = id
@@ -1716,7 +1716,7 @@ CoreMissionElement.on_executed_element_delay_rand = function (self)
 
 	return 
 end
-CoreMissionElement.on_executed_alternatives_types = function (self)
+function CoreMissionElement:on_executed_alternatives_types()
 	slot4 = self._elements_params.value
 	local id = self.combobox_id(slot2, self)
 	slot5 = id
@@ -1729,7 +1729,7 @@ CoreMissionElement.on_executed_alternatives_types = function (self)
 
 	return 
 end
-CoreMissionElement.append_elements_sorted = function (self)
+function CoreMissionElement:append_elements_sorted()
 	if not self._elements_params then
 		return 
 	end
@@ -1746,13 +1746,13 @@ CoreMissionElement.append_elements_sorted = function (self)
 
 	return 
 end
-CoreMissionElement.combobox_name = function (self, unit)
+function CoreMissionElement:combobox_name(unit)
 	slot4 = unit
 	slot6 = unit
 
 	return unit.unit_data(slot3).name_id .. " (" .. unit.unit_data(slot5).unit_id .. ")"
 end
-CoreMissionElement.combobox_id = function (self, name)
+function CoreMissionElement:combobox_id(name)
 	local s = nil
 	local e = string.len(slot4) - 1
 	slot6 = name
@@ -1772,7 +1772,7 @@ CoreMissionElement.combobox_id = function (self, name)
 
 	return tonumber(string.sub(slot7, name, s))
 end
-CoreMissionElement.on_execute_unit_by_id = function (self, id)
+function CoreMissionElement:on_execute_unit_by_id(id)
 	slot4 = self._on_executed_units
 
 	for _, unit in ipairs(slot3) do
@@ -1785,7 +1785,7 @@ CoreMissionElement.on_execute_unit_by_id = function (self, id)
 
 	return nil
 end
-CoreMissionElement._combobox_names_names = function (self, units)
+function CoreMissionElement:_combobox_names_names(units)
 	local names = {}
 	slot5 = units
 
@@ -1798,7 +1798,7 @@ CoreMissionElement._combobox_names_names = function (self, units)
 
 	return names
 end
-CoreMissionElement.on_timeline = function (self)
+function CoreMissionElement:on_timeline()
 	if not self._timeline then
 		slot6 = self._unit
 		slot4 = self._unit.unit_data(slot5).name_id
@@ -1814,7 +1814,7 @@ CoreMissionElement.on_timeline = function (self)
 
 	return 
 end
-CoreMissionElement._build_value_combobox = function (self, panel, sizer, value_name, options, tooltip, custom_name, params)
+function CoreMissionElement:_build_value_combobox(panel, sizer, value_name, options, tooltip, custom_name, params)
 	slot11 = "HORIZONTAL"
 	local horizontal_sizer = EWS.BoxSizer(slot9, EWS)
 	slot15 = "EXPAND,LEFT"
@@ -1866,7 +1866,7 @@ CoreMissionElement._build_value_combobox = function (self, panel, sizer, value_n
 
 	return ctrlr, combobox_params
 end
-CoreMissionElement._on_gui_value_combobox_toolbar_select_dialog = function (self, params)
+function CoreMissionElement:_on_gui_value_combobox_toolbar_select_dialog(params)
 	slot6 = params.combobox_params.options
 	local dialog = SelectNameModal.new(slot3, SelectNameModal, "Select name")
 	slot5 = dialog
@@ -1892,7 +1892,7 @@ CoreMissionElement._on_gui_value_combobox_toolbar_select_dialog = function (self
 
 	return 
 end
-CoreMissionElement._build_value_number = function (self, panel, sizer, value_name, options, tooltip, custom_name)
+function CoreMissionElement:_build_value_number(panel, sizer, value_name, options, tooltip, custom_name)
 	local number_params = {}
 	slot11 = true
 	number_params.name = string.pretty(slot9, custom_name or value_name) .. ":"
@@ -1924,7 +1924,7 @@ CoreMissionElement._build_value_number = function (self, panel, sizer, value_nam
 
 	return ctrlr, number_params
 end
-CoreMissionElement._build_value_checkbox = function (self, panel, sizer, value_name, tooltip, custom_name)
+function CoreMissionElement:_build_value_checkbox(panel, sizer, value_name, tooltip, custom_name)
 	slot8 = EWS
 	slot6 = EWS.CheckBox
 	slot9 = panel
@@ -1957,7 +1957,7 @@ CoreMissionElement._build_value_checkbox = function (self, panel, sizer, value_n
 
 	return checkbox
 end
-CoreMissionElement._open_color_picker = function (self, panel, color_ctrlr)
+function CoreMissionElement:_open_color_picker(panel, color_ctrlr)
 	if not self.__color_picker_dialog then
 		slot9 = true
 		slot3 = CoreColorPickerDialog.ColorPickerDialog.new(slot4, CoreColorPickerDialog.ColorPickerDialog, panel, true, "HORIZONTAL")
@@ -2001,7 +2001,7 @@ CoreMissionElement._open_color_picker = function (self, panel, color_ctrlr)
 
 	return 
 end
-CoreMissionElement._build_value_color = function (self, panel, sizer, value_name, tooltip, custom_name)
+function CoreMissionElement:_build_value_color(panel, sizer, value_name, tooltip, custom_name)
 	slot9 = "HORIZONTAL"
 	local horizontal_sizer = EWS.BoxSizer(slot7, EWS)
 	slot13 = "EXPAND,ALIGN_RIGHT"
@@ -2049,7 +2049,7 @@ CoreMissionElement._build_value_color = function (self, panel, sizer, value_name
 
 	return text_ctrlr, color_ctrlr
 end
-CoreMissionElement._build_value_random_number = function (self, panel, sizer, value_name, options, tooltip, custom_name)
+function CoreMissionElement:_build_value_random_number(panel, sizer, value_name, options, tooltip, custom_name)
 	local horizontal_sizer = EWS.BoxSizer(slot8, EWS)
 	slot14 = "EXPAND,LEFT"
 
@@ -2119,7 +2119,7 @@ CoreMissionElement._build_value_random_number = function (self, panel, sizer, va
 
 	return ctrlr, number_params
 end
-CoreMissionElement._set_random_number_element_data = function (self, data)
+function CoreMissionElement:_set_random_number_element_data(data)
 	slot4 = "_set_random_number_element_data"
 	slot7 = data
 
@@ -2142,7 +2142,7 @@ CoreMissionElement._set_random_number_element_data = function (self, data)
 
 	return 
 end
-CoreMissionElement._build_add_remove_unit_from_list = function (self, panel, sizer, elements, names, exact_names)
+function CoreMissionElement:_build_add_remove_unit_from_list(panel, sizer, elements, names, exact_names)
 	slot11 = "TB_FLAT,TB_NODIVIDER"
 	local toolbar = EWS.ToolBar(slot7, EWS, panel, "")
 	slot14 = "world_editor\\unit_by_name_list.png"
@@ -2178,7 +2178,7 @@ CoreMissionElement._build_add_remove_unit_from_list = function (self, panel, siz
 
 	return 
 end
-CoreMissionElement._add_unit_list_btn = function (self, params)
+function CoreMissionElement:_add_unit_list_btn(params)
 	local elements = params.elements or {}
 	slot5 = self._unit
 	local script = self._unit.mission_element_data(slot4).script
@@ -2249,7 +2249,7 @@ CoreMissionElement._add_unit_list_btn = function (self, params)
 
 	return 
 end
-CoreMissionElement._remove_unit_list_btn = function (self, params)
+function CoreMissionElement:_remove_unit_list_btn(params)
 	local elements = params.elements
 
 	local function f(unit)
@@ -2271,7 +2271,7 @@ CoreMissionElement._remove_unit_list_btn = function (self, params)
 
 	return 
 end
-CoreMissionElement._build_add_remove_static_unit_from_list = function (self, panel, sizer, params)
+function CoreMissionElement:_build_add_remove_static_unit_from_list(panel, sizer, params)
 	slot9 = "TB_FLAT,TB_NODIVIDER"
 	local toolbar = EWS.ToolBar(slot5, EWS, panel, "")
 	slot12 = "world_editor\\unit_by_name_list.png"
@@ -2301,7 +2301,7 @@ CoreMissionElement._build_add_remove_static_unit_from_list = function (self, pan
 
 	return 
 end
-CoreMissionElement._add_static_unit_list_btn = function (self, params)
+function CoreMissionElement:_add_static_unit_list_btn(params)
 	local dialog = (params.single and SingleSelectUnitByNameModal) or SelectUnitByNameModal.new(slot3, (params.single and SingleSelectUnitByNameModal) or SelectUnitByNameModal, "Add Unit")
 	slot7 = dialog
 
@@ -2314,7 +2314,7 @@ CoreMissionElement._add_static_unit_list_btn = function (self, params)
 
 	return 
 end
-CoreMissionElement._remove_static_unit_list_btn = function (self, params)
+function CoreMissionElement:_remove_static_unit_list_btn(params)
 	local dialog = (params.single and SingleSelectUnitByNameModal) or SelectUnitByNameModal.new(slot3, (params.single and SingleSelectUnitByNameModal) or SelectUnitByNameModal, "Remove Unit")
 	slot7 = dialog
 
@@ -2326,7 +2326,7 @@ CoreMissionElement._remove_static_unit_list_btn = function (self, params)
 
 	return 
 end
-CoreMissionElement.get_links_to_unit = function (self, to_unit, links, all_units)
+function CoreMissionElement:get_links_to_unit(to_unit, links, all_units)
 	if to_unit == self._unit then
 		slot6 = self._hed.on_executed
 
@@ -2366,7 +2366,7 @@ CoreMissionElement.get_links_to_unit = function (self, to_unit, links, all_units
 
 	return 
 end
-CoreMissionElement._get_links_of_type_from_elements = function (self, elements, type, to_unit, links, all_units)
+function CoreMissionElement:_get_links_of_type_from_elements(elements, type, to_unit, links, all_units)
 	local links1 = (type == "operator" and links.on_executed) or (type == "trigger" and links.executers) or (type == "filter" and links.executers) or links.on_executed
 	local links2 = (type == "operator" and links.executers) or (type == "trigger" and links.on_executed) or (type == "filter" and links.on_executed) or links.executers
 	local to_unit_id = to_unit.unit_data(slot9).unit_id

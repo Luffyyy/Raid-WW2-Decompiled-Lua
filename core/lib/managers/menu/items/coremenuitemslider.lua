@@ -19,7 +19,7 @@ end
 
 ItemSlider = slot0
 ItemSlider.TYPE = "slider"
-ItemSlider.init = function (self, data_node, parameters)
+function ItemSlider:init(data_node, parameters)
 	slot7 = parameters
 
 	CoreMenuItem.Item.init(slot4, self, data_node)
@@ -48,13 +48,13 @@ ItemSlider.init = function (self, data_node, parameters)
 
 	return 
 end
-ItemSlider.value = function (self)
+function ItemSlider:value()
 	return self._value
 end
-ItemSlider.show_value = function (self)
+function ItemSlider:show_value()
 	return self._show_value
 end
-ItemSlider.set_value = function (self, value)
+function ItemSlider:set_value(value)
 	slot7 = value
 	slot5 = self._max
 	self._value = math.min(slot3, math.max(slot5, self._min))
@@ -64,46 +64,46 @@ ItemSlider.set_value = function (self, value)
 
 	return 
 end
-ItemSlider.set_value_by_percentage = function (self, percent)
+function ItemSlider:set_value_by_percentage(percent)
 	slot5 = self._min + (self._max - self._min) * percent / 100
 
 	self.set_value(slot3, self)
 
 	return 
 end
-ItemSlider.set_min = function (self, value)
+function ItemSlider:set_min(value)
 	self._min = value
 
 	return 
 end
-ItemSlider.set_max = function (self, value)
+function ItemSlider:set_max(value)
 	self._max = value
 
 	return 
 end
-ItemSlider.set_step = function (self, value)
+function ItemSlider:set_step(value)
 	self._step = value
 
 	return 
 end
-ItemSlider.increase = function (self)
+function ItemSlider:increase()
 	slot4 = self._value + self._step
 
 	self.set_value(slot2, self)
 
 	return 
 end
-ItemSlider.decrease = function (self)
+function ItemSlider:decrease()
 	slot4 = self._value - self._step
 
 	self.set_value(slot2, self)
 
 	return 
 end
-ItemSlider.percentage = function (self)
+function ItemSlider:percentage()
 	return (self._value - self._min) / (self._max - self._min) * 100
 end
-ItemSlider.setup_gui = function (self, node, row_item)
+function ItemSlider:setup_gui(node, row_item)
 	slot6 = {
 		w = node.item_panel.w(slot8)
 	}
@@ -217,7 +217,7 @@ ItemSlider.setup_gui = function (self, node, row_item)
 
 	return true
 end
-ItemSlider.reload = function (self, row_item, node)
+function ItemSlider:reload(row_item, node)
 
 	-- Decompilation error in this vicinity:
 	if not row_item then
@@ -246,7 +246,7 @@ ItemSlider.reload = function (self, row_item, node)
 
 	return true
 end
-ItemSlider.highlight_row_item = function (self, node, row_item, mouse_over)
+function ItemSlider:highlight_row_item(node, row_item, mouse_over)
 
 	-- Decompilation error in this vicinity:
 	slot7 = row_item.color
@@ -258,7 +258,7 @@ ItemSlider.highlight_row_item = function (self, node, row_item, mouse_over)
 
 	return true
 end
-ItemSlider.fade_row_item = function (self, node, row_item)
+function ItemSlider:fade_row_item(node, row_item)
 
 	-- Decompilation error in this vicinity:
 	slot6 = row_item.color
@@ -270,7 +270,7 @@ ItemSlider.fade_row_item = function (self, node, row_item)
 
 	return true
 end
-ItemSlider._layout = function (self, node, row_item)
+function ItemSlider:_layout(node, row_item)
 	local safe_rect = managers.gui_data.scaled_size(slot4)
 	slot7 = node.font_size
 

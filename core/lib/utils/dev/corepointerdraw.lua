@@ -15,7 +15,7 @@ slot3 = "CoreDebug"
 core.import(slot1, core)
 
 PointerDraw = PointerDraw or CoreClass.class()
-PointerDraw.init = function (self, color, size, position)
+function PointerDraw:init(color, size, position)
 	self.__shape = shape or "sphere"
 
 	if not color then
@@ -29,7 +29,7 @@ PointerDraw.init = function (self, color, size, position)
 
 	return 
 end
-PointerDraw.update = function (self, time, delta_time)
+function PointerDraw:update(time, delta_time)
 	if self.__position then
 		local pen = Draw.pen(slot4)
 		slot7 = "no_z"
@@ -47,7 +47,7 @@ PointerDraw.update = function (self, time, delta_time)
 
 	return 
 end
-PointerDraw.set_position = function (self, position)
+function PointerDraw:set_position(position)
 	self.__position = position
 
 	return 

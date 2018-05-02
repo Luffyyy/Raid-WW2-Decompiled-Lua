@@ -5,7 +5,7 @@ end
 
 FeedbackUnitElement = slot0
 FeedbackUnitElement.USES_POINT_ORIENTATION = true
-FeedbackUnitElement.init = function (self, unit)
+function FeedbackUnitElement:init(unit)
 	slot5 = unit
 
 	FeedbackUnitElement.super.init(slot3, self)
@@ -92,7 +92,7 @@ FeedbackUnitElement.init = function (self, unit)
 
 	return 
 end
-FeedbackUnitElement.update_selected = function (self, t, dt, selected_unit, all_units)
+function FeedbackUnitElement:update_selected(t, dt, selected_unit, all_units)
 	if self._hed.orientation_elements then
 		slot7 = self._hed.orientation_elements
 
@@ -112,7 +112,7 @@ FeedbackUnitElement.update_selected = function (self, t, dt, selected_unit, all_
 
 	return 
 end
-FeedbackUnitElement._draw_ranges = function (self, pos)
+function FeedbackUnitElement:_draw_ranges(pos)
 	local brush = Draw.brush(slot3)
 	slot5 = brush
 	slot11 = 1
@@ -146,7 +146,7 @@ FeedbackUnitElement._draw_ranges = function (self, pos)
 
 	return 
 end
-FeedbackUnitElement._build_panel = function (self, panel, panel_sizer)
+function FeedbackUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -273,7 +273,7 @@ FeedbackUnitElement._build_panel = function (self, panel, panel_sizer)
 
 	return 
 end
-FeedbackUnitElement._effect_options = function (self)
+function FeedbackUnitElement:_effect_options()
 	local effect_options = {}
 	slot7 = "effect"
 
@@ -285,7 +285,7 @@ FeedbackUnitElement._effect_options = function (self)
 
 	return effect_options
 end
-FeedbackUnitElement.add_to_mission_package = function (self)
+function FeedbackUnitElement:add_to_mission_package()
 	if self._hed.effect and self._hed.above_camera_effect ~= "none" then
 		slot4 = {
 			category = "effects",

@@ -12,7 +12,7 @@ if not CoreFilteredTreeControl then
 end
 
 CoreFilteredTreeControl = slot0
-CoreFilteredTreeControl.init = function (self, parent_frame, styles)
+function CoreFilteredTreeControl:init(parent_frame, styles)
 	slot7 = styles
 
 	self.super.init(slot4, self, parent_frame)
@@ -34,7 +34,7 @@ CoreFilteredTreeControl.init = function (self, parent_frame, styles)
 
 	return 
 end
-CoreFilteredTreeControl.add_filter = function (self, predicate)
+function CoreFilteredTreeControl:add_filter(predicate)
 	slot5 = predicate
 
 	table.insert(slot3, self._filters)
@@ -45,7 +45,7 @@ CoreFilteredTreeControl.add_filter = function (self, predicate)
 
 	return predicate
 end
-CoreFilteredTreeControl.remove_filter = function (self, predicate)
+function CoreFilteredTreeControl:remove_filter(predicate)
 	slot5 = predicate
 
 	table.delete(slot3, self._filters)
@@ -56,7 +56,7 @@ CoreFilteredTreeControl.remove_filter = function (self, predicate)
 
 	return 
 end
-CoreFilteredTreeControl.refresh_tree = function (self)
+function CoreFilteredTreeControl:refresh_tree()
 	if self._freeze_count ~= 0 then
 		return 
 	end
@@ -94,7 +94,7 @@ CoreFilteredTreeControl.refresh_tree = function (self)
 
 	return 
 end
-CoreFilteredTreeControl._node_passes_filters = function (self, node)
+function CoreFilteredTreeControl:_node_passes_filters(node)
 	slot4 = self._filters
 
 	for _, predicate in ipairs(slot3) do
@@ -107,7 +107,7 @@ CoreFilteredTreeControl._node_passes_filters = function (self, node)
 
 	return true
 end
-CoreFilteredTreeControl._on_node_appended = function (self, new_node)
+function CoreFilteredTreeControl:_on_node_appended(new_node)
 	local visible_parent_node = self._view_tree_root(slot3)
 	slot5 = new_node
 
@@ -131,7 +131,7 @@ CoreFilteredTreeControl._on_node_appended = function (self, new_node)
 
 	return 
 end
-CoreFilteredTreeControl._on_node_removed = function (self, removed_node)
+function CoreFilteredTreeControl:_on_node_removed(removed_node)
 	slot4 = self
 	slot4 = self._view_tree_root(slot3)
 	slot7 = removed_node
@@ -145,7 +145,7 @@ CoreFilteredTreeControl._on_node_removed = function (self, removed_node)
 
 	return 
 end
-CoreFilteredTreeControl.clear = function (self)
+function CoreFilteredTreeControl:clear()
 	slot3 = self
 
 	self.super.clear(slot2)
@@ -156,10 +156,10 @@ CoreFilteredTreeControl.clear = function (self)
 
 	return 
 end
-CoreFilteredTreeControl._tree_root = function (self)
+function CoreFilteredTreeControl:_tree_root()
 	return self._virtual_root_node
 end
-CoreFilteredTreeControl.freeze = function (self)
+function CoreFilteredTreeControl:freeze()
 	if self._freeze_count == 0 then
 		slot3 = self
 
@@ -170,7 +170,7 @@ CoreFilteredTreeControl.freeze = function (self)
 
 	return 
 end
-CoreFilteredTreeControl.thaw = function (self, already_refreshed)
+function CoreFilteredTreeControl:thaw(already_refreshed)
 	self._freeze_count = self._freeze_count - 1
 
 	if self._freeze_count == 0 then

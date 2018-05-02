@@ -286,7 +286,7 @@ function _get_sequence_file(unit_data, sequence_files)
 end
 
 GrabInfo = GrabInfo or CoreClass.class()
-GrabInfo.init = function (self, o, pos, rot)
+function GrabInfo:init(o, pos, rot)
 	if not pos then
 		slot6 = o
 		slot4 = o.position(slot5)
@@ -303,10 +303,10 @@ GrabInfo.init = function (self, o, pos, rot)
 
 	return 
 end
-GrabInfo.rotation = function (self)
+function GrabInfo:rotation()
 	return self._rot
 end
-GrabInfo.position = function (self)
+function GrabInfo:position()
 	return self._pos
 end
 layer_types = layer_types or {}

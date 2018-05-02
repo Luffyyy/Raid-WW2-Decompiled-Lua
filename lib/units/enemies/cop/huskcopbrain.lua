@@ -3,12 +3,12 @@ HuskCopBrain._NET_EVENTS = {
 	weapon_laser_off = 2,
 	weapon_laser_on = 1
 }
-HuskCopBrain.init = function (self, unit)
+function HuskCopBrain:init(unit)
 	self._unit = unit
 
 	return 
 end
-HuskCopBrain.post_init = function (self)
+function HuskCopBrain:post_init()
 	slot6 = self._unit
 	slot2 = tostring(self._unit.key(slot5))
 	self._alert_listen_key = "HuskCopBrain" .. slot2
@@ -60,10 +60,10 @@ HuskCopBrain.post_init = function (self)
 
 	return 
 end
-HuskCopBrain.interaction_voice = function (self)
+function HuskCopBrain:interaction_voice()
 	return self._interaction_voice
 end
-HuskCopBrain.on_intimidated = function (self, amount, aggressor_unit)
+function HuskCopBrain:on_intimidated(amount, aggressor_unit)
 	slot7 = amount * 10
 	slot7 = 10
 	amount = math.clamp(slot4, math.ceil(slot6), 0)
@@ -74,7 +74,7 @@ HuskCopBrain.on_intimidated = function (self, amount, aggressor_unit)
 
 	return self._interaction_voice
 end
-HuskCopBrain.clbk_death = function (self, my_unit, damage_info)
+function HuskCopBrain:clbk_death(my_unit, damage_info)
 	if self._alert_listen_key then
 		slot5 = managers.groupai
 		slot6 = self._alert_listen_key
@@ -107,12 +107,12 @@ HuskCopBrain.clbk_death = function (self, my_unit, damage_info)
 
 	return 
 end
-HuskCopBrain.set_interaction_voice = function (self, voice)
+function HuskCopBrain:set_interaction_voice(voice)
 	self._interaction_voice = voice
 
 	return 
 end
-HuskCopBrain.load = function (self, load_data)
+function HuskCopBrain:load(load_data)
 	local my_load_data = load_data.brain
 	slot6 = my_load_data.interaction_voice
 
@@ -138,7 +138,7 @@ HuskCopBrain.load = function (self, load_data)
 
 	return 
 end
-HuskCopBrain.on_tied = function (self, aggressor_unit)
+function HuskCopBrain:on_tied(aggressor_unit)
 	slot4 = self._unit
 	slot6 = aggressor_unit
 
@@ -146,7 +146,7 @@ HuskCopBrain.on_tied = function (self, aggressor_unit)
 
 	return 
 end
-HuskCopBrain.on_trade = function (self, trading_unit)
+function HuskCopBrain:on_trade(trading_unit)
 	slot4 = self._unit
 	slot6 = trading_unit
 
@@ -154,13 +154,13 @@ HuskCopBrain.on_trade = function (self, trading_unit)
 
 	return 
 end
-HuskCopBrain.on_cool_state_changed = function (self, state)
+function HuskCopBrain:on_cool_state_changed(state)
 	return 
 end
-HuskCopBrain.on_action_completed = function (self, action)
+function HuskCopBrain:on_action_completed(action)
 	return 
 end
-HuskCopBrain.on_alert = function (self, alert_data)
+function HuskCopBrain:on_alert(alert_data)
 	slot4 = self._unit
 
 	if self._unit.id(slot3) == -1 then
@@ -192,7 +192,7 @@ HuskCopBrain.on_alert = function (self, alert_data)
 
 	return 
 end
-HuskCopBrain.on_long_dis_interacted = function (self, amount, aggressor_unit)
+function HuskCopBrain:on_long_dis_interacted(amount, aggressor_unit)
 	slot7 = amount * 10
 	slot7 = 10
 	amount = math.clamp(slot4, math.ceil(slot6), 0)
@@ -203,10 +203,10 @@ HuskCopBrain.on_long_dis_interacted = function (self, amount, aggressor_unit)
 
 	return 
 end
-HuskCopBrain.on_team_set = function (self, team_data)
+function HuskCopBrain:on_team_set(team_data)
 	return 
 end
-HuskCopBrain.sync_net_event = function (self, event_id)
+function HuskCopBrain:sync_net_event(event_id)
 	if event_id == self._NET_EVENTS.weapon_laser_on then
 		self._weapon_laser_on = true
 		slot4 = self._unit
@@ -246,7 +246,7 @@ HuskCopBrain.sync_net_event = function (self, event_id)
 
 	return 
 end
-HuskCopBrain.pre_destroy = function (self)
+function HuskCopBrain:pre_destroy()
 	slot3 = Network
 
 	if Network.is_server(slot2) then
@@ -283,15 +283,15 @@ HuskCopBrain.pre_destroy = function (self)
 
 	return 
 end
-HuskCopBrain.distance_to_target = function (self)
+function HuskCopBrain:distance_to_target()
 	return self._distance_to_target
 end
-HuskCopBrain.set_distance_to_target = function (self, distance)
+function HuskCopBrain:set_distance_to_target(distance)
 	self._distance_to_target = distance
 
 	return 
 end
-HuskCopBrain.anim_clbk_throw_flare = function (self, unit)
+function HuskCopBrain:anim_clbk_throw_flare(unit)
 	return 
 end
 

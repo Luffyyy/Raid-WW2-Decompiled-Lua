@@ -12,7 +12,7 @@ if not CoreCutsceneProjectMappingPanel then
 end
 
 CoreCutsceneProjectMappingPanel = slot0
-CoreCutsceneProjectMappingPanel.init = function (self, parent)
+function CoreCutsceneProjectMappingPanel:init(parent)
 	slot5 = parent
 
 	self.super.init(slot3, self)
@@ -35,12 +35,12 @@ CoreCutsceneProjectMappingPanel.init = function (self, parent)
 
 	return 
 end
-CoreCutsceneProjectMappingPanel.projects = function (self)
+function CoreCutsceneProjectMappingPanel:projects()
 	slot4 = "cutscene_project"
 
 	return managers.database.list_entries_of_type(slot2, managers.database)
 end
-CoreCutsceneProjectMappingPanel.mappings = function (self)
+function CoreCutsceneProjectMappingPanel:mappings()
 	local mappings = {}
 	local list_ctrl = self.__list_ctrl
 	slot5 = list_ctrl
@@ -56,7 +56,7 @@ CoreCutsceneProjectMappingPanel.mappings = function (self)
 
 	return mappings
 end
-CoreCutsceneProjectMappingPanel.set_mappings = function (self, mappings, project_sort_func)
+function CoreCutsceneProjectMappingPanel:set_mappings(mappings, project_sort_func)
 	slot5 = self
 
 	self.freeze(slot4)
@@ -90,7 +90,7 @@ CoreCutsceneProjectMappingPanel.set_mappings = function (self, mappings, project
 
 	return 
 end
-CoreCutsceneProjectMappingPanel._sizer_with_editable_fields = function (self, parent)
+function CoreCutsceneProjectMappingPanel:_sizer_with_editable_fields(parent)
 	slot5 = "VERTICAL"
 	local sizer = EWS.BoxSizer(slot3, EWS)
 	slot5 = self
@@ -138,7 +138,7 @@ CoreCutsceneProjectMappingPanel._sizer_with_editable_fields = function (self, pa
 
 	return sizer
 end
-CoreCutsceneProjectMappingPanel._create_project_dropdown = function (self, parent)
+function CoreCutsceneProjectMappingPanel:_create_project_dropdown(parent)
 	slot5 = "Project"
 	local value = self.selected_item_value(slot3, self)
 	slot9 = "CB_DROPDOWN,CB_READONLY,CB_SORT"
@@ -180,7 +180,7 @@ CoreCutsceneProjectMappingPanel._create_project_dropdown = function (self, paren
 
 	return control
 end
-CoreCutsceneProjectMappingPanel._refresh_buttons_panel = function (self)
+function CoreCutsceneProjectMappingPanel:_refresh_buttons_panel()
 	slot3 = self
 
 	self.super._refresh_buttons_panel(slot2)

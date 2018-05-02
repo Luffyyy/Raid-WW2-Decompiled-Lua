@@ -16,7 +16,7 @@ CopLogicSpotter = class(slot2)
 CopLogicSpotter.damage_clbk = CopLogicBase.damage_clbk
 CopLogicSpotter.is_available_for_assignment = CopLogicAttack.is_available_for_assignment
 CopLogicSpotter.death_clbk = CopLogicAttack.death_clbk
-CopLogicSpotter.enter = function (data, new_logic_name, enter_params)
+function CopLogicSpotter.enter(data, new_logic_name, enter_params)
 	local my_data = {
 		unit = data.unit
 	}
@@ -98,7 +98,7 @@ CopLogicSpotter.enter = function (data, new_logic_name, enter_params)
 
 	return 
 end
-CopLogicSpotter.throw_flare_so = function (data)
+function CopLogicSpotter.throw_flare_so(data)
 	local action_desc = {
 		variant = "spotter_cbt_sup_throw_flare",
 		body_part = 1,
@@ -119,7 +119,7 @@ CopLogicSpotter.throw_flare_so = function (data)
 
 	return 
 end
-CopLogicSpotter.exit = function (data, new_logic_name, enter_params)
+function CopLogicSpotter.exit(data, new_logic_name, enter_params)
 	slot7 = enter_params
 
 	CopLogicSpotter.super.exit(slot4, data, new_logic_name)
@@ -136,7 +136,7 @@ CopLogicSpotter.exit = function (data, new_logic_name, enter_params)
 
 	return 
 end
-CopLogicSpotter._upd_spotter_detection = function (data)
+function CopLogicSpotter._upd_spotter_detection(data)
 	slot5 = managers.player
 
 	for _, player in pairs(managers.player.players(slot4)) do
@@ -148,7 +148,7 @@ CopLogicSpotter._upd_spotter_detection = function (data)
 
 	return 
 end
-CopLogicSpotter._upd_enemy_detection = function (data)
+function CopLogicSpotter._upd_enemy_detection(data)
 	slot3 = managers.groupai
 
 	managers.groupai.state(slot2).on_unit_detection_updated(slot2, managers.groupai.state(slot2))
@@ -187,7 +187,7 @@ CopLogicSpotter._upd_enemy_detection = function (data)
 
 	return 
 end
-CopLogicSpotter._chk_reaction_to_attention_object = function (data, attention_data, stationary)
+function CopLogicSpotter._chk_reaction_to_attention_object(data, attention_data, stationary)
 	local record = attention_data.criminal_record
 
 	if not record or not attention_data.is_person then
@@ -221,7 +221,7 @@ CopLogicSpotter._chk_reaction_to_attention_object = function (data, attention_da
 
 	return math.min(slot7, attention_data.settings.reaction)
 end
-CopLogicSpotter._upd_attention_obj_detection = function (data, min_reaction, max_reaction)
+function CopLogicSpotter._upd_attention_obj_detection(data, min_reaction, max_reaction)
 	local t = data.t
 	local detected_obj = data.detected_attention_objects
 	local my_data = data.internal_data
@@ -473,7 +473,7 @@ CopLogicSpotter._upd_attention_obj_detection = function (data, min_reaction, max
 
 	return delay
 end
-CopLogicSpotter._upd_aim = function (data, my_data)
+function CopLogicSpotter._upd_aim(data, my_data)
 	if not data.logic._should_aim_or_shoot then
 		return 
 	end
@@ -518,7 +518,7 @@ CopLogicSpotter._upd_aim = function (data, my_data)
 
 	return 
 end
-CopLogicSpotter._should_aim_or_shoot = function (data, my_data)
+function CopLogicSpotter._should_aim_or_shoot(data, my_data)
 	local aim, shoot = nil
 	local focus_enemy = data.attention_obj
 
@@ -529,7 +529,7 @@ CopLogicSpotter._should_aim_or_shoot = function (data, my_data)
 
 	return aim, shoot
 end
-CopLogicSpotter._upd_aim_action = function (data, my_data)
+function CopLogicSpotter._upd_aim_action(data, my_data)
 	local focus_enemy = data.attention_obj
 	local action_taken = nil
 	slot6 = data.unit
@@ -611,7 +611,7 @@ CopLogicSpotter._upd_aim_action = function (data, my_data)
 
 	return action_taken
 end
-CopLogicSpotter._aim_or_shoot = function (data, my_data, aim, shoot)
+function CopLogicSpotter._aim_or_shoot(data, my_data, aim, shoot)
 	local focus_enemy = data.attention_obj
 
 	if aim or shoot then
@@ -669,7 +669,7 @@ CopLogicSpotter._aim_or_shoot = function (data, my_data, aim, shoot)
 
 	return 
 end
-CopLogicSpotter._request_action_shoot = function (data, my_data)
+function CopLogicSpotter._request_action_shoot(data, my_data)
 
 	-- Decompilation error in this vicinity:
 	local shoot_action = {
@@ -685,13 +685,13 @@ CopLogicSpotter._request_action_shoot = function (data, my_data)
 
 	return 
 end
-CopLogicSpotter._upd_look_for_player = function (data, attention_info)
+function CopLogicSpotter._upd_look_for_player(data, attention_info)
 	return 
 end
-CopLogicSpotter.on_alert = function (data, alert_data)
+function CopLogicSpotter.on_alert(data, alert_data)
 	return 
 end
-CopLogicSpotter.on_attention_obj_identified = function (data, attention_u_key, attention_info)
+function CopLogicSpotter.on_attention_obj_identified(data, attention_u_key, attention_info)
 	slot5 = data.unit
 
 	if not data.unit.brain(slot4).on_cooldown then

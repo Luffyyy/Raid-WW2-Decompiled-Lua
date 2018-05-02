@@ -4,7 +4,7 @@ if not RaidGUIControlTableCellImage then
 end
 
 RaidGUIControlTableCellImage = slot0
-RaidGUIControlTableCellImage.init = function (self, parent, params)
+function RaidGUIControlTableCellImage:init(parent, params)
 	slot5 = params
 	local local_params = clone(slot4)
 

@@ -14,7 +14,7 @@ if not ElementTimer then
 end
 
 ElementTimer = slot0
-ElementTimer.init = function (self, ...)
+function ElementTimer:init(...)
 	slot3 = self
 
 	ElementTimer.super.init(slot2, ...)
@@ -24,7 +24,7 @@ ElementTimer.init = function (self, ...)
 
 	return 
 end
-ElementTimer.on_script_activated = function (self)
+function ElementTimer:on_script_activated()
 	slot4 = "timer"
 	self._timer = self.value(slot2, self)
 	slot4 = "timer"
@@ -79,7 +79,7 @@ ElementTimer.on_script_activated = function (self)
 
 	return 
 end
-ElementTimer._load_unit = function (self, unit)
+function ElementTimer:_load_unit(unit)
 	slot5 = unit
 
 	table.insert(slot3, self._digital_gui_units)
@@ -91,14 +91,14 @@ ElementTimer._load_unit = function (self, unit)
 
 	return 
 end
-ElementTimer.set_enabled = function (self, enabled)
+function ElementTimer:set_enabled(enabled)
 	slot5 = enabled
 
 	ElementTimer.super.set_enabled(slot3, self)
 
 	return 
 end
-ElementTimer.add_updator = function (self)
+function ElementTimer:add_updator()
 	slot3 = Network
 
 	if not Network.is_server(slot2) then
@@ -115,7 +115,7 @@ ElementTimer.add_updator = function (self)
 
 	return 
 end
-ElementTimer.remove_updator = function (self)
+function ElementTimer:remove_updator()
 	if self._updator then
 		slot4 = self._id
 
@@ -126,7 +126,7 @@ ElementTimer.remove_updator = function (self)
 
 	return 
 end
-ElementTimer.update_timer = function (self, t, dt)
+function ElementTimer:update_timer(t, dt)
 	self._timer = self._timer - dt
 
 	if 1 < self._monitor_timer - self._timer then
@@ -160,10 +160,10 @@ ElementTimer.update_timer = function (self, t, dt)
 
 	return 
 end
-ElementTimer.client_on_executed = function (self, ...)
+function ElementTimer:client_on_executed(...)
 	return 
 end
-ElementTimer.on_executed = function (self, instigator)
+function ElementTimer:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -174,7 +174,7 @@ ElementTimer.on_executed = function (self, instigator)
 
 	return 
 end
-ElementTimer.timer_operation_pause = function (self)
+function ElementTimer:timer_operation_pause()
 	slot3 = self
 
 	self.remove_updator(slot2)
@@ -189,7 +189,7 @@ ElementTimer.timer_operation_pause = function (self)
 
 	return 
 end
-ElementTimer.timer_operation_start = function (self)
+function ElementTimer:timer_operation_start()
 	slot3 = self
 
 	self.add_updator(slot2)
@@ -204,7 +204,7 @@ ElementTimer.timer_operation_start = function (self)
 
 	return 
 end
-ElementTimer.timer_operation_add_time = function (self, time)
+function ElementTimer:timer_operation_add_time(time)
 	self._timer = self._timer + time
 	slot4 = self
 
@@ -216,7 +216,7 @@ ElementTimer.timer_operation_add_time = function (self, time)
 
 	return 
 end
-ElementTimer.timer_operation_subtract_time = function (self, time)
+function ElementTimer:timer_operation_subtract_time(time)
 	self._timer = self._timer - time
 	slot4 = self
 
@@ -228,7 +228,7 @@ ElementTimer.timer_operation_subtract_time = function (self, time)
 
 	return 
 end
-ElementTimer.timer_operation_reset = function (self)
+function ElementTimer:timer_operation_reset()
 	self._timer = self._values.timer
 	slot3 = self
 
@@ -240,7 +240,7 @@ ElementTimer.timer_operation_reset = function (self)
 
 	return 
 end
-ElementTimer.timer_operation_set_time = function (self, time)
+function ElementTimer:timer_operation_set_time(time)
 	self._timer = time
 	slot4 = self
 
@@ -252,7 +252,7 @@ ElementTimer.timer_operation_set_time = function (self, time)
 
 	return 
 end
-ElementTimer._update_digital_guis_timer = function (self)
+function ElementTimer:_update_digital_guis_timer()
 	slot3 = self._digital_gui_units
 
 	for _, unit in ipairs(slot2) do
@@ -268,7 +268,7 @@ ElementTimer._update_digital_guis_timer = function (self)
 
 	return 
 end
-ElementTimer._start_digital_guis_count_down = function (self)
+function ElementTimer:_start_digital_guis_count_down()
 	slot3 = self._digital_gui_units
 
 	for _, unit in ipairs(slot2) do
@@ -284,7 +284,7 @@ ElementTimer._start_digital_guis_count_down = function (self)
 
 	return 
 end
-ElementTimer._start_digital_guis_count_up = function (self)
+function ElementTimer:_start_digital_guis_count_up()
 	slot3 = self._digital_gui_units
 
 	for _, unit in ipairs(slot2) do
@@ -300,7 +300,7 @@ ElementTimer._start_digital_guis_count_up = function (self)
 
 	return 
 end
-ElementTimer._pause_digital_guis = function (self)
+function ElementTimer:_pause_digital_guis()
 	slot3 = self._digital_gui_units
 
 	for _, unit in ipairs(slot2) do
@@ -316,7 +316,7 @@ ElementTimer._pause_digital_guis = function (self)
 
 	return 
 end
-ElementTimer.add_trigger = function (self, id, time, callback)
+function ElementTimer:add_trigger(id, time, callback)
 	self._triggers[id] = {
 		time = time,
 		callback = callback
@@ -324,12 +324,12 @@ ElementTimer.add_trigger = function (self, id, time, callback)
 
 	return 
 end
-ElementTimer.remove_trigger = function (self, id)
+function ElementTimer:remove_trigger(id)
 	self._triggers[id] = nil
 
 	return 
 end
-ElementTimer.monitor_output_change = function (self, output)
+function ElementTimer:monitor_output_change(output)
 	if self.monitor_element then
 		slot5 = self._timer
 		local output_string = "time: " .. math.round(slot4) .. " " .. (output or "")
@@ -347,7 +347,7 @@ if not ElementTimerHud then
 end
 
 ElementTimerHud = slot0
-ElementTimerHud.init = function (self, ...)
+function ElementTimerHud:init(...)
 	slot3 = self
 
 	ElementTimerHud.super.init(slot2, ...)
@@ -359,7 +359,7 @@ ElementTimerHud.init = function (self, ...)
 
 	return 
 end
-ElementTimerHud.on_script_activated = function (self)
+function ElementTimerHud:on_script_activated()
 	slot4 = "timer"
 	self._timer = self.value(slot2, self)
 	slot3 = Network
@@ -375,7 +375,7 @@ ElementTimerHud.on_script_activated = function (self)
 
 	return 
 end
-ElementTimerHud.save = function (self, data)
+function ElementTimerHud:save(data)
 	if self._timer <= 0 then
 		self._show_hud_timer = false
 	end
@@ -387,7 +387,7 @@ ElementTimerHud.save = function (self, data)
 
 	return 
 end
-ElementTimerHud.load = function (self, data)
+function ElementTimerHud:load(data)
 	if not self._on_script_activated_done then
 		slot4 = self
 
@@ -414,7 +414,7 @@ ElementTimerHud.load = function (self, data)
 
 	return 
 end
-ElementTimerHud.add_updator = function (self)
+function ElementTimerHud:add_updator()
 	if not self._updator then
 		self._updator = true
 		slot4 = self._id
@@ -425,7 +425,7 @@ ElementTimerHud.add_updator = function (self)
 
 	return 
 end
-ElementTimerHud.update_timer = function (self, t, dt)
+function ElementTimerHud:update_timer(t, dt)
 	self._timer = self._timer - dt
 
 	if self._timer <= 0 then
@@ -490,7 +490,7 @@ ElementTimerHud.update_timer = function (self, t, dt)
 
 	return 
 end
-ElementTimerHud.timer_operation_pause = function (self)
+function ElementTimerHud:timer_operation_pause()
 	slot3 = self
 
 	self._timer_pause(slot2)
@@ -501,7 +501,7 @@ ElementTimerHud.timer_operation_pause = function (self)
 
 	return 
 end
-ElementTimerHud.timer_operation_start = function (self)
+function ElementTimerHud:timer_operation_start()
 	slot3 = self
 
 	self._timer_start(slot2)
@@ -512,7 +512,7 @@ ElementTimerHud.timer_operation_start = function (self)
 
 	return 
 end
-ElementTimerHud.timer_operation_add_time = function (self, time)
+function ElementTimerHud:timer_operation_add_time(time)
 	slot5 = time
 
 	self._timer_add_time(slot3, self)
@@ -523,7 +523,7 @@ ElementTimerHud.timer_operation_add_time = function (self, time)
 
 	return 
 end
-ElementTimerHud.timer_operation_subtract_time = function (self, time)
+function ElementTimerHud:timer_operation_subtract_time(time)
 	slot5 = time
 
 	self._timer_subtract_time(slot3, self)
@@ -534,7 +534,7 @@ ElementTimerHud.timer_operation_subtract_time = function (self, time)
 
 	return 
 end
-ElementTimerHud.timer_operation_reset = function (self)
+function ElementTimerHud:timer_operation_reset()
 	slot3 = self
 
 	self._timer_reset(slot2)
@@ -545,7 +545,7 @@ ElementTimerHud.timer_operation_reset = function (self)
 
 	return 
 end
-ElementTimerHud.timer_operation_set_time = function (self, time)
+function ElementTimerHud:timer_operation_set_time(time)
 	slot5 = time
 
 	self._timer_set_time(slot3, self)
@@ -556,7 +556,7 @@ ElementTimerHud.timer_operation_set_time = function (self, time)
 
 	return 
 end
-ElementTimerHud.timer_operation_show_hud_timer = function (self)
+function ElementTimerHud:timer_operation_show_hud_timer()
 	slot3 = self
 
 	self._timer_show_hud_timer(slot2)
@@ -567,7 +567,7 @@ ElementTimerHud.timer_operation_show_hud_timer = function (self)
 
 	return 
 end
-ElementTimerHud.timer_operation_hide_hud_timer = function (self)
+function ElementTimerHud:timer_operation_hide_hud_timer()
 	slot3 = self
 
 	self._timer_hide_hud_timer(slot2)
@@ -578,50 +578,50 @@ ElementTimerHud.timer_operation_hide_hud_timer = function (self)
 
 	return 
 end
-ElementTimerHud._timer_pause = function (self)
+function ElementTimerHud:_timer_pause()
 	slot3 = self
 
 	self.remove_updator(slot2)
 
 	return 
 end
-ElementTimerHud._timer_start = function (self)
+function ElementTimerHud:_timer_start()
 	slot3 = self
 
 	self.add_updator(slot2)
 
 	return 
 end
-ElementTimerHud._timer_add_time = function (self, time)
+function ElementTimerHud:_timer_add_time(time)
 	self._timer = self._timer + time
 	self._total_timer_value = self._total_timer_value + time
 
 	return 
 end
-ElementTimerHud._timer_subtract_time = function (self, time)
+function ElementTimerHud:_timer_subtract_time(time)
 	self._timer = self._timer - time
 	self._total_timer_value = self._total_timer_value - time
 
 	return 
 end
-ElementTimerHud._timer_reset = function (self)
+function ElementTimerHud:_timer_reset()
 	self._timer = self._values.timer
 	self._total_timer_value = self._values.timer
 
 	return 
 end
-ElementTimerHud._timer_set_time = function (self, time)
+function ElementTimerHud:_timer_set_time(time)
 	self._timer = time
 	self._total_timer_value = time
 
 	return 
 end
-ElementTimerHud._timer_sync_time = function (self, time)
+function ElementTimerHud:_timer_sync_time(time)
 	self._timer = time
 
 	return 
 end
-ElementTimerHud._timer_show_hud_timer = function (self)
+function ElementTimerHud:_timer_show_hud_timer()
 	slot5 = 100
 
 	managers.hud.create_objectives_timer_hud(slot2, managers.hud, 0)
@@ -630,7 +630,7 @@ ElementTimerHud._timer_show_hud_timer = function (self)
 
 	return 
 end
-ElementTimerHud._timer_hide_hud_timer = function (self)
+function ElementTimerHud:_timer_hide_hud_timer()
 	self._show_hud_timer = false
 	slot4 = false
 
@@ -638,7 +638,7 @@ ElementTimerHud._timer_hide_hud_timer = function (self)
 
 	return 
 end
-ElementTimerHud.execute_client_hud_timer_command = function (self, command, command_value)
+function ElementTimerHud:execute_client_hud_timer_command(command, command_value)
 	slot5 = Network
 
 	if Network.is_server(slot4) then
@@ -650,7 +650,7 @@ ElementTimerHud.execute_client_hud_timer_command = function (self, command, comm
 
 	return 
 end
-ElementTimerHud.sync_client_hud_timer_command = function (self, command, command_value)
+function ElementTimerHud:sync_client_hud_timer_command(command, command_value)
 	if command then
 		if command == "pause" then
 			slot5 = self
@@ -700,21 +700,21 @@ if not ElementTimerOperator then
 end
 
 ElementTimerOperator = slot0
-ElementTimerOperator.init = function (self, ...)
+function ElementTimerOperator:init(...)
 	slot3 = self
 
 	ElementTimerOperator.super.init(slot2, ...)
 
 	return 
 end
-ElementTimerOperator.client_on_executed = function (self, ...)
+function ElementTimerOperator:client_on_executed(...)
 	slot4 = "[ElementTimerOperator:client_on_executed]"
 
 	Application.trace(slot2, Application)
 
 	return 
 end
-ElementTimerOperator.on_executed = function (self, instigator)
+function ElementTimerOperator:on_executed(instigator)
 	slot5 = "[ElementTimerOperator:on_executed]"
 
 	Application.trace(slot3, Application)
@@ -779,24 +779,24 @@ if not ElementTimerTrigger then
 end
 
 ElementTimerTrigger = slot0
-ElementTimerTrigger.init = function (self, ...)
+function ElementTimerTrigger:init(...)
 	slot3 = self
 
 	ElementTimerTrigger.super.init(slot2, ...)
 
 	return 
 end
-ElementTimerTrigger.on_script_activated = function (self)
+function ElementTimerTrigger:on_script_activated()
 	slot3 = self
 
 	self.activate_trigger(slot2)
 
 	return 
 end
-ElementTimerTrigger.client_on_executed = function (self, ...)
+function ElementTimerTrigger:client_on_executed(...)
 	return 
 end
-ElementTimerTrigger.on_executed = function (self, instigator)
+function ElementTimerTrigger:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -807,7 +807,7 @@ ElementTimerTrigger.on_executed = function (self, instigator)
 
 	return 
 end
-ElementTimerTrigger.activate_trigger = function (self)
+function ElementTimerTrigger:activate_trigger()
 	slot3 = self._values.elements
 
 	for _, id in ipairs(slot2) do
@@ -821,7 +821,7 @@ ElementTimerTrigger.activate_trigger = function (self)
 
 	return 
 end
-ElementTimerTrigger.operation_add = function (self)
+function ElementTimerTrigger:operation_add()
 	slot3 = self
 
 	self.activate_trigger(slot2)

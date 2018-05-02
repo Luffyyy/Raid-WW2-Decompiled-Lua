@@ -28,16 +28,16 @@ slot5 = tonumber
 
 CoreVideoCutsceneKey.register_serialized_attribute("Video Playback", CoreVideoCutsceneKey, "speed", 1)
 
-CoreVideoCutsceneKey.__tostring = function (self)
+function CoreVideoCutsceneKey:__tostring()
 	slot3 = "Play video \"%s\"."
 	slot6 = self
 
 	return string.format(slot2, self.video(slot5))
 end
-CoreVideoCutsceneKey.can_evaluate_with_player = function (self, player)
+function CoreVideoCutsceneKey:can_evaluate_with_player(player)
 	return true
 end
-CoreVideoCutsceneKey.play = function (self, player, undo, fast_forward)
+function CoreVideoCutsceneKey:play(player, undo, fast_forward)
 	slot6 = managers.cutscene
 	local video_ws = managers.cutscene.video_workspace(slot5)
 	local was_paused = self._paused
@@ -87,14 +87,14 @@ CoreVideoCutsceneKey.play = function (self, player, undo, fast_forward)
 
 	return 
 end
-CoreVideoCutsceneKey.unload = function (self, player)
+function CoreVideoCutsceneKey:unload(player)
 	slot4 = self
 
 	self._stop(slot3)
 
 	return 
 end
-CoreVideoCutsceneKey.update = function (self, player, time)
+function CoreVideoCutsceneKey:update(player, time)
 	if self.is_in_cutscene_editor then
 		slot6 = time
 
@@ -103,7 +103,7 @@ CoreVideoCutsceneKey.update = function (self, player, time)
 
 	return 
 end
-CoreVideoCutsceneKey.is_valid_video = function (self, value)
+function CoreVideoCutsceneKey:is_valid_video(value)
 	if self.is_in_cutscene_editor then
 		if value ~= nil and value ~= "" then
 			slot5 = value
@@ -127,14 +127,14 @@ CoreVideoCutsceneKey.is_valid_video = function (self, value)
 
 	return 
 end
-CoreVideoCutsceneKey.on_attribute_changed = function (self, attribute_name, value, previous_value)
+function CoreVideoCutsceneKey:on_attribute_changed(attribute_name, value, previous_value)
 	slot6 = self
 
 	self._stop(slot5)
 
 	return 
 end
-CoreVideoCutsceneKey._handle_cutscene_editor_scrubbing = function (self, time)
+function CoreVideoCutsceneKey:_handle_cutscene_editor_scrubbing(time)
 	if self._last_evaluated_time then
 		if time == self._last_evaluated_time then
 			self._stopped_frame_count = (self._stopped_frame_count or 0) + 1
@@ -165,7 +165,7 @@ CoreVideoCutsceneKey._handle_cutscene_editor_scrubbing = function (self, time)
 
 	return 
 end
-CoreVideoCutsceneKey._play_video = function (self, video_ws)
+function CoreVideoCutsceneKey:_play_video(video_ws)
 
 	-- Decompilation error in this vicinity:
 	slot4 = self._video_object
@@ -175,7 +175,7 @@ CoreVideoCutsceneKey._play_video = function (self, video_ws)
 
 	return 
 end
-CoreVideoCutsceneKey._stop = function (self)
+function CoreVideoCutsceneKey:_stop()
 	slot3 = self._video_object
 
 	if alive(slot2) then
@@ -196,7 +196,7 @@ CoreVideoCutsceneKey._stop = function (self)
 
 	return 
 end
-CoreVideoCutsceneKey.pause = function (self)
+function CoreVideoCutsceneKey:pause()
 	if not self._paused then
 		slot3 = self._video_object
 
@@ -211,7 +211,7 @@ CoreVideoCutsceneKey.pause = function (self)
 
 	return 
 end
-CoreVideoCutsceneKey.resume = function (self)
+function CoreVideoCutsceneKey:resume()
 	if self._paused then
 		slot3 = self._video_object
 

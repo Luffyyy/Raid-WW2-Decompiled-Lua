@@ -230,7 +230,7 @@
 --   Code may be incomplete or incorrect.
 slot2 = CopLogicAttack
 TankCopLogicAttack = class(slot1)
-TankCopLogicAttack.enter = function (data, new_logic_name, enter_params)
+function TankCopLogicAttack.enter(data, new_logic_name, enter_params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-18, warpins: 1 ---
@@ -358,7 +358,7 @@ TankCopLogicAttack.enter = function (data, new_logic_name, enter_params)
 
 
 end
-TankCopLogicAttack.exit = function (data, new_logic_name, enter_params)
+function TankCopLogicAttack.exit(data, new_logic_name, enter_params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-37, warpins: 1 ---
@@ -395,7 +395,7 @@ TankCopLogicAttack.exit = function (data, new_logic_name, enter_params)
 
 
 end
-TankCopLogicAttack.update = function (data)
+function TankCopLogicAttack.update(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -964,7 +964,7 @@ TankCopLogicAttack.update = function (data)
 
 
 end
-TankCopLogicAttack.queued_update = function (data)
+function TankCopLogicAttack.queued_update(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-18, warpins: 1 ---
@@ -1004,7 +1004,7 @@ TankCopLogicAttack.queued_update = function (data)
 
 
 end
-TankCopLogicAttack._process_pathing_results = function (data, my_data)
+function TankCopLogicAttack._process_pathing_results(data, my_data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1077,7 +1077,7 @@ TankCopLogicAttack._process_pathing_results = function (data, my_data)
 
 
 end
-TankCopLogicAttack._cancel_chase_attempt = function (data, my_data)
+function TankCopLogicAttack._cancel_chase_attempt(data, my_data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -1201,7 +1201,7 @@ TankCopLogicAttack._cancel_chase_attempt = function (data, my_data)
 
 
 end
-TankCopLogicAttack.on_action_completed = function (data, action)
+function TankCopLogicAttack.on_action_completed(data, action)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -1312,7 +1312,7 @@ TankCopLogicAttack.on_action_completed = function (data, action)
 
 
 end
-TankCopLogicAttack.chk_should_turn = function (data, my_data)
+function TankCopLogicAttack.chk_should_turn(data, my_data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1362,7 +1362,7 @@ TankCopLogicAttack.chk_should_turn = function (data, my_data)
 
 
 end
-TankCopLogicAttack.queue_update = function (data, my_data)
+function TankCopLogicAttack.queue_update(data, my_data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -1377,7 +1377,7 @@ TankCopLogicAttack.queue_update = function (data, my_data)
 
 
 end
-TankCopLogicAttack._chk_request_action_walk_to_chase_pos = function (data, my_data, speed, end_rot)
+function TankCopLogicAttack._chk_request_action_walk_to_chase_pos(data, my_data, speed, end_rot)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -1452,7 +1452,7 @@ TankCopLogicAttack._chk_request_action_walk_to_chase_pos = function (data, my_da
 
 
 end
-TankCopLogicAttack.is_advancing = function (data)
+function TankCopLogicAttack.is_advancing(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -1481,7 +1481,7 @@ TankCopLogicAttack.is_advancing = function (data)
 
 
 end
-TankCopLogicAttack._get_all_paths = function (data)
+function TankCopLogicAttack._get_all_paths(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -1493,7 +1493,7 @@ TankCopLogicAttack._get_all_paths = function (data)
 
 
 end
-TankCopLogicAttack._set_verified_paths = function (data, verified_paths)
+function TankCopLogicAttack._set_verified_paths(data, verified_paths)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---

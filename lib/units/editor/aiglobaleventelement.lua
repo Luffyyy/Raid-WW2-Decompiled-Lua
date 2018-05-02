@@ -4,7 +4,7 @@ if not AiGlobalEventUnitElement then
 end
 
 AiGlobalEventUnitElement = slot0
-AiGlobalEventUnitElement.init = function (self, unit)
+function AiGlobalEventUnitElement:init(unit)
 	slot5 = unit
 
 	AiGlobalEventUnitElement.super.init(slot3, self)
@@ -24,7 +24,7 @@ AiGlobalEventUnitElement.init = function (self, unit)
 
 	return 
 end
-AiGlobalEventUnitElement.post_init = function (self, ...)
+function AiGlobalEventUnitElement:post_init(...)
 	slot3 = self
 
 	AiGlobalEventUnitElement.super.post_init(slot2, ...)
@@ -36,7 +36,7 @@ AiGlobalEventUnitElement.post_init = function (self, ...)
 
 	return 
 end
-AiGlobalEventUnitElement._build_panel = function (self, panel, panel_sizer)
+function AiGlobalEventUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

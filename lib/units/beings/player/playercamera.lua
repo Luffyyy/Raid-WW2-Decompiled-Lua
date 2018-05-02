@@ -1,7 +1,7 @@
 PlayerCamera = PlayerCamera or class()
 slot3 = ""
 PlayerCamera.IDS_NOTHING = Idstring(slot2)
-PlayerCamera.init = function (self, unit)
+function PlayerCamera:init(unit)
 	self._unit = unit
 	slot4 = unit
 	self._m_cam_rot = unit.rotation(slot3)
@@ -42,7 +42,7 @@ PlayerCamera.init = function (self, unit)
 
 	return 
 end
-PlayerCamera.setup_viewport = function (self, data)
+function PlayerCamera:setup_viewport(data)
 	if self._vp then
 		slot4 = self._vp
 
@@ -110,14 +110,14 @@ PlayerCamera.setup_viewport = function (self, data)
 
 	return 
 end
-PlayerCamera._set_dimensions = function (self)
+function PlayerCamera:_set_dimensions()
 	slot7 = RenderSettings.aspect_ratio / 1.7777777777777777
 
 	self._vp._vp.set_dimensions(slot2, self._vp._vp, 0, (1 - RenderSettings.aspect_ratio / 1.7777777777777777) / 2, 1)
 
 	return 
 end
-PlayerCamera.spawn_camera_unit = function (self)
+function PlayerCamera:spawn_camera_unit()
 	local lvl_tweak_data = Global.level_data and Global.level_data.level_id and tweak_data.levels[Global.level_data.level_id]
 	slot7 = "units/vanilla/characters/players/players_default_fps/players_default_fps"
 	self._camera_unit = World.spawn_unit(slot3, World, Idstring(slot6), self._m_cam_pos)
@@ -149,7 +149,7 @@ PlayerCamera.spawn_camera_unit = function (self)
 
 	return 
 end
-PlayerCamera.controller_hotswap_triggered = function (self)
+function PlayerCamera:controller_hotswap_triggered()
 	slot3 = self._unit
 	slot3 = self._unit.base(slot2)
 
@@ -162,55 +162,55 @@ PlayerCamera.controller_hotswap_triggered = function (self)
 
 	return 
 end
-PlayerCamera.camera_unit = function (self)
+function PlayerCamera:camera_unit()
 	return self._camera_unit
 end
-PlayerCamera.anim_state_machine = function (self)
+function PlayerCamera:anim_state_machine()
 	slot3 = self._camera_unit
 
 	return self._camera_unit.anim_state_machine(slot2)
 end
-PlayerCamera.play_redirect = function (self, redirect_name, speed, offset_time)
+function PlayerCamera:play_redirect(redirect_name, speed, offset_time)
 	slot6 = self._camera_unit
 	slot9 = offset_time
 	local result = self._camera_unit.base(slot5).play_redirect(slot5, self._camera_unit.base(slot5), redirect_name, speed)
 
 	return result ~= PlayerCamera.IDS_NOTHING and result
 end
-PlayerCamera.play_redirect_timeblend = function (self, state, redirect_name, offset_time, t)
+function PlayerCamera:play_redirect_timeblend(state, redirect_name, offset_time, t)
 	slot7 = self._camera_unit
 	slot11 = t
 	local result = self._camera_unit.base(slot6).play_redirect_timeblend(slot6, self._camera_unit.base(slot6), state, redirect_name, offset_time)
 
 	return result ~= PlayerCamera.IDS_NOTHING and result
 end
-PlayerCamera.play_state = function (self, state_name, at_time)
+function PlayerCamera:play_state(state_name, at_time)
 	slot5 = self._camera_unit
 	slot7 = at_time
 	local result = self._camera_unit.base(slot4).play_state(slot4, self._camera_unit.base(slot4), state_name)
 
 	return result ~= PlayerCamera.IDS_NOTHING and result
 end
-PlayerCamera.play_raw = function (self, name, params)
+function PlayerCamera:play_raw(name, params)
 	slot5 = self._camera_unit
 	slot7 = params
 	local result = self._camera_unit.base(slot4).play_raw(slot4, self._camera_unit.base(slot4), name)
 
 	return result ~= PlayerCamera.IDS_NOTHING and result
 end
-PlayerCamera.set_speed = function (self, state_name, speed)
+function PlayerCamera:set_speed(state_name, speed)
 	slot7 = speed
 
 	self._machine.set_speed(slot4, self._machine, state_name)
 
 	return 
 end
-PlayerCamera.anim_data = function (self)
+function PlayerCamera:anim_data()
 	slot3 = self._camera_unit
 
 	return self._camera_unit.anim_data(slot2)
 end
-PlayerCamera.destroy = function (self)
+function PlayerCamera:destroy()
 	slot3 = self._vp
 
 	self._vp.destroy(slot2)
@@ -235,7 +235,7 @@ PlayerCamera.destroy = function (self)
 
 	return 
 end
-PlayerCamera.remove_sound_listener = function (self)
+function PlayerCamera:remove_sound_listener()
 	if not self._listener_id then
 		return 
 	end
@@ -256,14 +256,14 @@ PlayerCamera.remove_sound_listener = function (self)
 
 	return 
 end
-PlayerCamera.clbk_fp_enter = function (self, aim_dir)
+function PlayerCamera:clbk_fp_enter(aim_dir)
 	if self._camera_manager_mode ~= "first_person" then
 		self._camera_manager_mode = "first_person"
 	end
 
 	return 
 end
-PlayerCamera._setup_sound_listener = function (self)
+function PlayerCamera:_setup_sound_listener()
 	slot8 = false
 	self._listener_id = managers.listener.add_listener(slot2, managers.listener, "player_camera", self._camera_object, self._camera_object, nil)
 	slot5 = {
@@ -284,39 +284,39 @@ PlayerCamera._setup_sound_listener = function (self)
 
 	return 
 end
-PlayerCamera.set_default_listener_object = function (self)
+function PlayerCamera:set_default_listener_object()
 	slot4 = self._camera_object
 
 	self.set_listener_object(slot2, self)
 
 	return 
 end
-PlayerCamera.set_listener_object = function (self, object)
+function PlayerCamera:set_listener_object(object)
 	slot8 = nil
 
 	managers.listener.set_listener(slot3, managers.listener, self._listener_id, object, object)
 
 	return 
 end
-PlayerCamera.position = function (self)
+function PlayerCamera:position()
 	return self._m_cam_pos
 end
-PlayerCamera.rotation = function (self)
+function PlayerCamera:rotation()
 	return self._m_cam_rot
 end
-PlayerCamera.forward = function (self)
+function PlayerCamera:forward()
 	return self._m_cam_fwd
 end
 local camera_mvec = Vector3()
 local reticle_mvec = Vector3()
-PlayerCamera.position_with_shake = function (self)
+function PlayerCamera:position_with_shake()
 	slot4 = camera_mvec
 
 	self._camera_object.m_position(slot2, self._camera_object)
 
 	return camera_mvec
 end
-PlayerCamera.forward_with_shake_toward_reticle = function (self, reticle_obj)
+function PlayerCamera:forward_with_shake_toward_reticle(reticle_obj)
 	slot5 = reticle_mvec
 
 	reticle_obj.m_position(slot3, reticle_obj)
@@ -335,7 +335,7 @@ PlayerCamera.forward_with_shake_toward_reticle = function (self, reticle_obj)
 
 	return reticle_mvec
 end
-PlayerCamera.set_position = function (self, pos)
+function PlayerCamera:set_position(pos)
 	slot5 = pos
 
 	self._camera_controller.set_camera(slot3, self._camera_controller)
@@ -347,7 +347,7 @@ PlayerCamera.set_position = function (self, pos)
 	return 
 end
 local mvec1 = Vector3()
-PlayerCamera.set_rotation = function (self, rot)
+function PlayerCamera:set_rotation(rot)
 	slot5 = mvec1
 
 	mrotation.y(slot3, rot)
@@ -413,17 +413,17 @@ PlayerCamera.set_rotation = function (self, rot)
 
 	return 
 end
-PlayerCamera.set_FOV = function (self, fov_value)
+function PlayerCamera:set_FOV(fov_value)
 	slot5 = fov_value
 
 	self._camera_object.set_fov(slot3, self._camera_object)
 
 	return 
 end
-PlayerCamera.viewport = function (self)
+function PlayerCamera:viewport()
 	return self._vp
 end
-PlayerCamera.set_shaker_parameter = function (self, effect, parameter, value)
+function PlayerCamera:set_shaker_parameter(effect, parameter, value)
 	if not self._shakers then
 		return 
 	end
@@ -436,19 +436,19 @@ PlayerCamera.set_shaker_parameter = function (self, effect, parameter, value)
 
 	return 
 end
-PlayerCamera.play_shaker = function (self, effect, amplitude, frequency, offset)
+function PlayerCamera:play_shaker(effect, amplitude, frequency, offset)
 	slot11 = offset or 0
 
 	return self._shaker.play(slot6, self._shaker, effect, amplitude or 1, frequency or 1)
 end
-PlayerCamera.stop_shaker = function (self, id)
+function PlayerCamera:stop_shaker(id)
 	slot5 = id
 
 	self._shaker.stop_immediately(slot3, self._shaker)
 
 	return 
 end
-PlayerCamera.shaker = function (self)
+function PlayerCamera:shaker()
 	return self._shaker
 end
 

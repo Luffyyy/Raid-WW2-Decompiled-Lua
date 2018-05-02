@@ -10,7 +10,7 @@ if not CoreMaterialEditorVector3 then
 	local CoreMaterialEditorVector3 = class(slot2)
 end
 
-CoreMaterialEditorVector3.init = function (self, parent, editor, parameter_info, parameter_node)
+function CoreMaterialEditorVector3:init(parent, editor, parameter_info, parameter_node)
 	slot11 = parameter_node
 
 	CoreMaterialEditorParameter.init(slot6, self, parent, editor, parameter_info)
@@ -134,21 +134,21 @@ CoreMaterialEditorVector3.init = function (self, parent, editor, parameter_info,
 
 	return 
 end
-CoreMaterialEditorVector3.update = function (self, t, dt)
+function CoreMaterialEditorVector3:update(t, dt)
 	slot7 = dt
 
 	CoreMaterialEditorParameter.update(slot4, self, t)
 
 	return 
 end
-CoreMaterialEditorVector3.destroy = function (self)
+function CoreMaterialEditorVector3:destroy()
 	slot3 = self
 
 	CoreMaterialEditorParameter.destroy(slot2)
 
 	return 
 end
-CoreMaterialEditorVector3.on_toggle_customize = function (self)
+function CoreMaterialEditorVector3:on_toggle_customize()
 	self._customize = not self._customize
 	slot3 = self
 
@@ -197,7 +197,7 @@ CoreMaterialEditorVector3.on_toggle_customize = function (self)
 
 	return 
 end
-CoreMaterialEditorVector3._on_slider = function (self)
+function CoreMaterialEditorVector3:_on_slider()
 	slot3 = self
 	slot7 = self._y_slider.get_value(self._x_slider)
 	slot10 = self._z_slider
@@ -228,7 +228,7 @@ CoreMaterialEditorVector3._on_slider = function (self)
 
 	return 
 end
-CoreMaterialEditorVector3._on_text_ctrl = function (self)
+function CoreMaterialEditorVector3:_on_text_ctrl()
 	slot9 = self._z_text_ctrl
 	slot5 = tonumber(self._z_text_ctrl.get_value(self._y_text_ctrl)) or 0
 	self._value = Vector3(slot2, tonumber(self._x_text_ctrl.get_value(slot6)) or 0, tonumber(self._y_text_ctrl.get_value(self._x_text_ctrl)) or 0)
@@ -261,7 +261,7 @@ CoreMaterialEditorVector3._on_text_ctrl = function (self)
 
 	return 
 end
-CoreMaterialEditorVector3._to_slider_range = function (self, v)
+function CoreMaterialEditorVector3:_to_slider_range(v)
 	local step_x = self._parameter_info.step.x
 
 	if step_x == 0 then
@@ -287,7 +287,7 @@ CoreMaterialEditorVector3._to_slider_range = function (self, v)
 
 	return Vector3(slot6, CoreMaterialEditorParameter.to_slider_range(slot8, self, v.x, self._parameter_info.min.x), CoreMaterialEditorParameter.to_slider_range(self, self, v.z, self._parameter_info.min.z))
 end
-CoreMaterialEditorVector3._from_slider_range = function (self, v)
+function CoreMaterialEditorVector3:_from_slider_range(v)
 	local step_x = self._parameter_info.step.x
 
 	if step_x == 0 then

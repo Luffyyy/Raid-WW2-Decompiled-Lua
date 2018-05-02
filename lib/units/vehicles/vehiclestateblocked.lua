@@ -4,14 +4,14 @@ if not VehicleStateBlocked then
 end
 
 VehicleStateBlocked = slot0
-VehicleStateBlocked.init = function (self, unit)
+function VehicleStateBlocked:init(unit)
 	slot5 = unit
 
 	BaseVehicleState.init(slot3, self)
 
 	return 
 end
-VehicleStateBlocked.enter = function (self, state_data, enter_data)
+function VehicleStateBlocked:enter(state_data, enter_data)
 	slot5 = self._unit
 	slot5 = self._unit.vehicle_driving(slot4)
 
@@ -33,7 +33,7 @@ VehicleStateBlocked.enter = function (self, state_data, enter_data)
 
 	return 
 end
-VehicleStateBlocked.adjust_interactions = function (self)
+function VehicleStateBlocked:adjust_interactions()
 	slot3 = self
 
 	VehicleStateParked.super.adjust_interactions(slot2)
@@ -89,13 +89,13 @@ VehicleStateBlocked.adjust_interactions = function (self)
 
 	return 
 end
-VehicleStateBlocked.allow_exit = function (self)
+function VehicleStateBlocked:allow_exit()
 	return true
 end
-VehicleStateBlocked.stop_vehicle = function (self)
+function VehicleStateBlocked:stop_vehicle()
 	return true
 end
-VehicleStateBlocked.is_vulnerable = function (self)
+function VehicleStateBlocked:is_vulnerable()
 	return false
 end
 

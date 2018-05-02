@@ -6,7 +6,7 @@ end
 RaidGUIControlTableCell = slot0
 RaidGUIControlTableCell.FONT = tweak_data.gui.fonts.din_compressed
 RaidGUIControlTableCell.FONT_SIZE = tweak_data.gui.font_sizes.small
-RaidGUIControlTableCell.init = function (self, parent, params, row_data, table_params)
+function RaidGUIControlTableCell:init(parent, params, row_data, table_params)
 	params.font = params.font or RaidGUIControlTableCell.FONT
 	params.font_size = params.font_size or RaidGUIControlTableCell.FONT_SIZE
 	slot9 = params
@@ -20,7 +20,7 @@ RaidGUIControlTableCell.init = function (self, parent, params, row_data, table_p
 
 	return 
 end
-RaidGUIControlTableCell.highlight_on = function (self)
+function RaidGUIControlTableCell:highlight_on()
 	slot3 = self._object
 
 	if alive(slot2) and self._table_params and self._table_params.row_params and self._table_params.row_params.color and self._table_params.row_params.highlight_color then
@@ -31,7 +31,7 @@ RaidGUIControlTableCell.highlight_on = function (self)
 
 	return 
 end
-RaidGUIControlTableCell.highlight_off = function (self)
+function RaidGUIControlTableCell:highlight_off()
 	slot3 = self._object
 
 	if alive(slot2) and self._table_params and self._table_params.row_params and self._table_params.row_params.color and self._table_params.row_params.highlight_color then
@@ -42,7 +42,7 @@ RaidGUIControlTableCell.highlight_off = function (self)
 
 	return 
 end
-RaidGUIControlTableCell.select_on = function (self)
+function RaidGUIControlTableCell:select_on()
 	slot3 = self._object
 
 	if alive(slot2) and self._params.selected_color and self._params.color then
@@ -53,7 +53,7 @@ RaidGUIControlTableCell.select_on = function (self)
 
 	return 
 end
-RaidGUIControlTableCell.select_off = function (self)
+function RaidGUIControlTableCell:select_off()
 	slot3 = self._object
 
 	if alive(slot2) and self._params.selected_color and self._params.color then
@@ -64,7 +64,7 @@ RaidGUIControlTableCell.select_off = function (self)
 
 	return 
 end
-RaidGUIControlTableCell.on_double_click = function (self, button)
+function RaidGUIControlTableCell:on_double_click(button)
 	if self._params.on_double_click_callback then
 		slot6 = self._data
 

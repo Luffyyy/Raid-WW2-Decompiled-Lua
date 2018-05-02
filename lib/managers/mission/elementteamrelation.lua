@@ -8,14 +8,14 @@ if not ElementTeamRelation then
 end
 
 ElementTeamRelation = slot0
-ElementTeamRelation.init = function (self, ...)
+function ElementTeamRelation:init(...)
 	slot3 = self
 
 	ElementCharacterTeam.super.init(slot2, ...)
 
 	return 
 end
-ElementTeamRelation.on_executed = function (self, instigator)
+function ElementTeamRelation:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

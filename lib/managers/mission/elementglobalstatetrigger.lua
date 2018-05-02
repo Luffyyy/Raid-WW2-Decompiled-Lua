@@ -4,7 +4,7 @@ if not ElementGlobalStateTrigger then
 end
 
 ElementGlobalStateTrigger = slot0
-ElementGlobalStateTrigger.init = function (self, ...)
+function ElementGlobalStateTrigger:init(...)
 	slot3 = self
 
 	ElementGlobalStateTrigger.super.init(slot2, ...)
@@ -15,14 +15,14 @@ ElementGlobalStateTrigger.init = function (self, ...)
 
 	return 
 end
-ElementGlobalStateTrigger.client_on_executed = function (self, ...)
+function ElementGlobalStateTrigger:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementGlobalStateTrigger.execute = function (self, flag, state, event)
+function ElementGlobalStateTrigger:execute(flag, state, event)
 	if not self._values.enabled then
 		return 
 	end
@@ -51,7 +51,7 @@ ElementGlobalStateTrigger.execute = function (self, flag, state, event)
 
 	return 
 end
-ElementGlobalStateTrigger.on_executed = function (self, instigator)
+function ElementGlobalStateTrigger:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -62,14 +62,14 @@ ElementGlobalStateTrigger.on_executed = function (self, instigator)
 
 	return 
 end
-ElementGlobalStateTrigger.destroy = function (self)
+function ElementGlobalStateTrigger:destroy()
 	slot5 = self._values.flag
 
 	managers.global_state.unregister_trigger(slot2, managers.global_state, self)
 
 	return 
 end
-ElementGlobalStateTrigger.unregister = function (self)
+function ElementGlobalStateTrigger:unregister()
 	slot5 = self._values.flag
 
 	managers.global_state.unregister_trigger(slot2, managers.global_state, self)

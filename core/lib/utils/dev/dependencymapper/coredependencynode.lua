@@ -17,7 +17,7 @@ EFFECT = 8
 MATERIALS_FILE = 9
 MODEL = 10
 DependencyNodeBase = DependencyNodeBase or CoreClass.class()
-DependencyNodeBase.init = function (self, type_, db_type, name, get_dn_cb, database)
+function DependencyNodeBase:init(type_, db_type, name, get_dn_cb, database)
 	slot10 = type_
 	slot8 = type(slot9) == "number"
 
@@ -48,16 +48,16 @@ DependencyNodeBase.init = function (self, type_, db_type, name, get_dn_cb, datab
 
 	return 
 end
-DependencyNodeBase.isdependencynode = function (self)
+function DependencyNodeBase:isdependencynode()
 	return true
 end
-DependencyNodeBase.type_ = function (self)
+function DependencyNodeBase:type_()
 	return self._type
 end
-DependencyNodeBase.name = function (self)
+function DependencyNodeBase:name()
 	return self._name
 end
-DependencyNodeBase.match = function (self, pattern)
+function DependencyNodeBase:match(pattern)
 	if pattern == nil then
 		return true
 	else
@@ -101,7 +101,7 @@ DependencyNodeBase.match = function (self, pattern)
 
 	return 
 end
-DependencyNodeBase.get_dependencies = function (self)
+function DependencyNodeBase:get_dependencies()
 	if not self._parsed then
 		slot5 = self
 
@@ -125,7 +125,7 @@ DependencyNodeBase.get_dependencies = function (self)
 
 	return dn_list
 end
-DependencyNodeBase.reached = function (self, pattern)
+function DependencyNodeBase:reached(pattern)
 	local found = {}
 	slot8 = found
 
@@ -133,7 +133,7 @@ DependencyNodeBase.reached = function (self, pattern)
 
 	return found
 end
-DependencyNodeBase._reached = function (self, pattern, traversed, found)
+function DependencyNodeBase:_reached(pattern, traversed, found)
 	if traversed[self] then
 		return 
 	else
@@ -157,7 +157,7 @@ DependencyNodeBase._reached = function (self, pattern, traversed, found)
 
 	return 
 end
-DependencyNodeBase._parse = function (self)
+function DependencyNodeBase:_parse()
 	local entry = self._database.lookup(slot2, self._database, self._db_type)
 	slot6 = entry
 
@@ -170,7 +170,7 @@ DependencyNodeBase._parse = function (self)
 		xmlnode
 	}
 end
-DependencyNodeBase._walkxml = function (self, xmlnode)
+function DependencyNodeBase:_walkxml(xmlnode)
 	local deps = _Deps.new(slot3)
 	slot7 = deps
 
@@ -192,7 +192,7 @@ DependencyNodeBase._walkxml = function (self, xmlnode)
 
 	return 
 end
-DependencyNodeBase._walkxml2dependencies = function (self, xmlnode, deps)
+function DependencyNodeBase:_walkxml2dependencies(xmlnode, deps)
 	slot5 = "Not Implemented"
 
 	error(slot4)
@@ -200,19 +200,19 @@ DependencyNodeBase._walkxml2dependencies = function (self, xmlnode, deps)
 	return 
 end
 _Deps = _Deps or CoreClass.class()
-_Deps.init = function (self)
+function _Deps:init()
 	self._dnlist = {}
 
 	return 
 end
-_Deps.add = function (self, dn)
+function _Deps:add(dn)
 	slot5 = dn
 
 	table.insert(slot3, self._dnlist)
 
 	return 
 end
-_Deps.get_pairs = function (self)
+function _Deps:get_pairs()
 	slot3 = self._dnlist
 
 	return ipairs(slot2)

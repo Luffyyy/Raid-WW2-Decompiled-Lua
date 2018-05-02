@@ -18,7 +18,7 @@ end
 ElementSpecialObjectiveGroup = slot0
 ElementSpecialObjectiveGroup.add_event_callback = ElementSpecialObjective.add_event_callback
 ElementSpecialObjectiveGroup.event = ElementSpecialObjective.event
-ElementSpecialObjectiveGroup.init = function (self, ...)
+function ElementSpecialObjectiveGroup:init(...)
 	slot3 = self
 
 	ElementSpecialObjectiveGroup.super.init(slot2, ...)
@@ -63,7 +63,7 @@ ElementSpecialObjectiveGroup.init = function (self, ...)
 
 	return 
 end
-ElementSpecialObjectiveGroup.clbk_verify_administration = function (self, unit)
+function ElementSpecialObjectiveGroup:clbk_verify_administration(unit)
 	slot5 = "ElementSpecialObjectiveGroup:clbk_verify_administration( unit )"
 
 	Application.trace(slot3, Application)
@@ -72,7 +72,7 @@ ElementSpecialObjectiveGroup.clbk_verify_administration = function (self, unit)
 
 	return ElementSpecialObjective.clbk_verify_administration(slot3, self)
 end
-ElementSpecialObjectiveGroup.on_executed = function (self, instigator)
+function ElementSpecialObjectiveGroup:on_executed(instigator)
 
 	-- Decompilation error in this vicinity:
 	slot4 = managers.groupai
@@ -120,7 +120,7 @@ ElementSpecialObjectiveGroup.on_executed = function (self, instigator)
 
 	return 
 end
-ElementSpecialObjectiveGroup.operation_remove = function (self)
+function ElementSpecialObjectiveGroup:operation_remove()
 	if self._registered_in_groupai then
 		slot3 = self
 
@@ -138,7 +138,7 @@ ElementSpecialObjectiveGroup.operation_remove = function (self)
 
 	return 
 end
-ElementSpecialObjectiveGroup._unregister_from_group_AI = function (self)
+function ElementSpecialObjectiveGroup:_unregister_from_group_AI()
 	if self._registered_in_groupai then
 		self._registered_in_groupai = nil
 		slot3 = managers.groupai
@@ -150,7 +150,7 @@ ElementSpecialObjectiveGroup._unregister_from_group_AI = function (self)
 
 	return 
 end
-ElementSpecialObjectiveGroup._register_to_group_AI = function (self)
+function ElementSpecialObjectiveGroup:_register_to_group_AI()
 	if self._registered_in_groupai then
 		return 
 	end
@@ -165,12 +165,12 @@ ElementSpecialObjectiveGroup._register_to_group_AI = function (self)
 
 	return 
 end
-ElementSpecialObjectiveGroup._select_units_from_spawners = function (self)
+function ElementSpecialObjectiveGroup:_select_units_from_spawners()
 	slot3 = self
 
 	return ElementSpecialObjective._select_units_from_spawners(slot2)
 end
-ElementSpecialObjectiveGroup.choose_followup_SO = function (self, unit, skip_element_ids)
+function ElementSpecialObjectiveGroup:choose_followup_SO(unit, skip_element_ids)
 	if skip_element_ids and skip_element_ids[self._id] then
 		return 
 	end
@@ -187,7 +187,7 @@ ElementSpecialObjectiveGroup.choose_followup_SO = function (self, unit, skip_ele
 
 	return res_element
 end
-ElementSpecialObjectiveGroup.get_as_followup = function (self, unit, skip_element_ids)
+function ElementSpecialObjectiveGroup:get_as_followup(unit, skip_element_ids)
 	if skip_element_ids[self._id] then
 		return 
 	end
@@ -215,7 +215,7 @@ ElementSpecialObjectiveGroup.get_as_followup = function (self, unit, skip_elemen
 
 	return res_element, self._values.base_chance
 end
-ElementSpecialObjectiveGroup._execute_random_SO = function (self, instigator)
+function ElementSpecialObjectiveGroup:_execute_random_SO(instigator)
 	slot6 = {
 		[self._id] = true
 	}
@@ -234,7 +234,7 @@ ElementSpecialObjectiveGroup._execute_random_SO = function (self, instigator)
 
 	return 
 end
-ElementSpecialObjectiveGroup.get_random_SO = function (self, receiver_unit)
+function ElementSpecialObjectiveGroup:get_random_SO(receiver_unit)
 	slot6 = {
 		[self._id] = true
 	}
@@ -249,10 +249,10 @@ ElementSpecialObjectiveGroup.get_random_SO = function (self, receiver_unit)
 
 	return objective
 end
-ElementSpecialObjectiveGroup.get_SO_spawn_group_types = function (self)
+function ElementSpecialObjectiveGroup:get_SO_spawn_group_types()
 	return self._values.allowed_group_types
 end
-ElementSpecialObjectiveGroup.get_grp_objective = function (self)
+function ElementSpecialObjectiveGroup:get_grp_objective()
 	if not self._area then
 		slot5 = nil
 		local nav_seg_id = managers.navigation.get_nav_seg_from_pos(slot2, managers.navigation, self._values.position)
@@ -272,7 +272,7 @@ ElementSpecialObjectiveGroup.get_grp_objective = function (self)
 
 	return grp_objective
 end
-ElementSpecialObjectiveGroup.clbk_objective_failed = function (self, group)
+function ElementSpecialObjectiveGroup:clbk_objective_failed(group)
 	if managers.editor and managers.editor._stopping_simulation then
 		return 
 	end

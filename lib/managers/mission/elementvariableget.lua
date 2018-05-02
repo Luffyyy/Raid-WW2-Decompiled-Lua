@@ -8,14 +8,14 @@ if not ElementVariableGet then
 end
 
 ElementVariableGet = slot0
-ElementVariableGet.init = function (self, ...)
+function ElementVariableGet:init(...)
 	slot3 = self
 
 	ElementVariableGet.super.init(slot2, ...)
 
 	return 
 end
-ElementVariableGet.on_executed = function (self, instigator)
+function ElementVariableGet:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -26,7 +26,7 @@ ElementVariableGet.on_executed = function (self, instigator)
 
 	return 
 end
-ElementVariableGet.client_on_executed = function (self, ...)
+function ElementVariableGet:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)

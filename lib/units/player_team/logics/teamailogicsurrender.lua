@@ -3,7 +3,7 @@ TeamAILogicSurrender = class(slot1)
 TeamAILogicSurrender.on_cop_neutralized = TeamAILogicIdle.on_cop_neutralized
 TeamAILogicSurrender.on_alert = TeamAILogicIdle.on_alert
 TeamAILogicSurrender.on_recovered = TeamAILogicDisabled.on_recovered
-TeamAILogicSurrender.enter = function (data, new_logic_name, enter_params)
+function TeamAILogicSurrender.enter(data, new_logic_name, enter_params)
 	local my_data = {
 		unit = data.unit
 	}
@@ -92,7 +92,7 @@ TeamAILogicSurrender.enter = function (data, new_logic_name, enter_params)
 
 	return 
 end
-TeamAILogicSurrender.exit = function (data, new_logic_name, enter_params)
+function TeamAILogicSurrender.exit(data, new_logic_name, enter_params)
 	slot7 = enter_params
 
 	TeamAILogicBase.exit(slot4, data, new_logic_name)
@@ -132,13 +132,13 @@ TeamAILogicSurrender.exit = function (data, new_logic_name, enter_params)
 
 	return 
 end
-TeamAILogicSurrender.on_action_completed = function (data, action)
+function TeamAILogicSurrender.on_action_completed(data, action)
 	return 
 end
-TeamAILogicSurrender.can_activate = function ()
+function TeamAILogicSurrender.can_activate()
 	return 
 end
-TeamAILogicSurrender.on_detected_enemy_destroyed = function (data, enemy_unit)
+function TeamAILogicSurrender.on_detected_enemy_destroyed(data, enemy_unit)
 	slot4 = data
 	slot7 = enemy_unit
 
@@ -146,7 +146,7 @@ TeamAILogicSurrender.on_detected_enemy_destroyed = function (data, enemy_unit)
 
 	return 
 end
-TeamAILogicSurrender.is_available_for_assignment = function (data)
+function TeamAILogicSurrender.is_available_for_assignment(data)
 	return 
 end
 

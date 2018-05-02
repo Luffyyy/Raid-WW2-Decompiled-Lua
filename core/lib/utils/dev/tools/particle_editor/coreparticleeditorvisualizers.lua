@@ -1,7 +1,7 @@
 CoreParticleEditorVisualizers = CoreParticleEditorVisualizers or class()
 local min_keys = 1
 local max_keys = 8
-CoreParticleEditorVisualizers.create_billboard = function (self)
+function CoreParticleEditorVisualizers:create_billboard()
 	slot6 = "Billboard"
 	local visualizer = CoreEffectStackMember.new(slot2, CoreEffectStackMember, "billboard", "visualizer")
 	slot5 = "Visualizes particles using quads with different alignment and blending schemes and a set texture"
@@ -648,7 +648,7 @@ channel - read from channel]]
 
 	return visualizer
 end
-CoreParticleEditorVisualizers.create_trail = function (self)
+function CoreParticleEditorVisualizers:create_trail()
 	local visualizer = CoreEffectStackMember.new(slot2, CoreEffectStackMember, "trail", "visualizer")
 	slot5 = "Visualizes particles using quads with different alignment and blending schemes and a set texture"
 
@@ -1120,7 +1120,7 @@ channel - read from channel]]
 
 	return visualizer
 end
-CoreParticleEditorVisualizers.create_light = function (self)
+function CoreParticleEditorVisualizers:create_light()
 	slot6 = "Light"
 	local visualizer = CoreEffectStackMember.new(slot2, CoreEffectStackMember, "light", "visualizer")
 	slot5 = "Visualizes particles using lights with positions aligned to the particles"
@@ -1272,7 +1272,7 @@ channel - read from channel]]
 
 	return visualizer
 end
-CoreParticleEditorVisualizers.create_model = function (self)
+function CoreParticleEditorVisualizers:create_model()
 	slot6 = "Model"
 	local visualizer = CoreEffectStackMember.new(slot2, CoreEffectStackMember, "model", "visualizer")
 	slot5 = "Visualizes particles using models picked from a unit"

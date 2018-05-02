@@ -8,7 +8,7 @@ end
 ChallengeCardsGui = slot0
 ChallengeCardsGui.PHASE = 1
 ChallengeCardsGui.SUGGESTED_CARDS_Y = 540
-ChallengeCardsGui.init = function (self, ws, fullscreen_ws, node, component_name)
+function ChallengeCardsGui:init(ws, fullscreen_ws, node, component_name)
 	slot11 = component_name
 
 	ChallengeCardsGui.super.init(slot6, self, ws, fullscreen_ws, node)
@@ -36,7 +36,7 @@ ChallengeCardsGui.init = function (self, ws, fullscreen_ws, node, component_name
 
 	return 
 end
-ChallengeCardsGui._set_initial_data = function (self)
+function ChallengeCardsGui:_set_initial_data()
 	self._challenge_cards_data_source = {}
 	self._challenge_cards_steam_data_source = {}
 	self._filter_rarity = nil
@@ -46,7 +46,7 @@ ChallengeCardsGui._set_initial_data = function (self)
 
 	return 
 end
-ChallengeCardsGui._layout = function (self)
+function ChallengeCardsGui:_layout()
 	slot4 = {
 		name = "phase_one_panel",
 		x = 0,
@@ -406,7 +406,7 @@ ChallengeCardsGui._layout = function (self)
 
 	return 
 end
-ChallengeCardsGui._setup_single_player = function (self)
+function ChallengeCardsGui:_setup_single_player()
 	slot3 = managers.network
 	slot3 = managers.network.session(slot2)
 	self._is_single_player = managers.network.session(slot2).count_all_peers(slot2) == 1
@@ -425,7 +425,7 @@ ChallengeCardsGui._setup_single_player = function (self)
 
 	return 
 end
-ChallengeCardsGui.host_skip_suggestions = function (self)
+function ChallengeCardsGui:host_skip_suggestions()
 	slot3 = self
 
 	self.phase_two_cancel(slot2)
@@ -436,14 +436,14 @@ ChallengeCardsGui.host_skip_suggestions = function (self)
 
 	return 
 end
-ChallengeCardsGui.on_item_host_clicks_suggested_card_grid = function (self, selected_item_data)
+function ChallengeCardsGui:on_item_host_clicks_suggested_card_grid(selected_item_data)
 	slot5 = selected_item_data
 
 	self.select_suggested_card(slot3, self)
 
 	return 
 end
-ChallengeCardsGui.sync_host_selects_suggested_card = function (self, card_key_name, peer_id, steam_instance_id)
+function ChallengeCardsGui:sync_host_selects_suggested_card(card_key_name, peer_id, steam_instance_id)
 	if card_key_name == nil and peer_id == nil and steam_instance_id == nil then
 		self._host_selected_card = nil
 	else
@@ -464,7 +464,7 @@ ChallengeCardsGui.sync_host_selects_suggested_card = function (self, card_key_na
 
 	return 
 end
-ChallengeCardsGui.on_click_filter_rarity = function (self, rarity)
+function ChallengeCardsGui:on_click_filter_rarity(rarity)
 	self._filter_rarity = rarity
 	slot4 = self
 
@@ -472,7 +472,7 @@ ChallengeCardsGui.on_click_filter_rarity = function (self, rarity)
 
 	return 
 end
-ChallengeCardsGui.filter_cards_by_type = function (self, type)
+function ChallengeCardsGui:filter_cards_by_type(type)
 	slot4 = managers.raid_job
 	self._filter_type = managers.raid_job.current_job_type(slot3)
 	slot4 = self
@@ -481,7 +481,7 @@ ChallengeCardsGui.filter_cards_by_type = function (self, type)
 
 	return 
 end
-ChallengeCardsGui.reload_filtered_data = function (self)
+function ChallengeCardsGui:reload_filtered_data()
 	if self._challenge_cards_steam_data_source and (self._filter_rarity == LootDropTweakData.RARITY_ALL or not self._filter_rarity) then
 		slot3 = self._challenge_cards_steam_data_source
 		self._challenge_cards_data_source = clone(slot2)
@@ -537,12 +537,12 @@ ChallengeCardsGui.reload_filtered_data = function (self)
 
 	return 
 end
-ChallengeCardsGui.data_source_inventory_cards = function (self)
+function ChallengeCardsGui:data_source_inventory_cards()
 	self._challenge_cards_data_source = self._challenge_cards_data_source or {}
 
 	return self._challenge_cards_data_source
 end
-ChallengeCardsGui._on_click_inventory_cards = function (self, item_data)
+function ChallengeCardsGui:_on_click_inventory_cards(item_data)
 	if item_data then
 		slot6 = item_data.steam_instance_ids[1]
 
@@ -563,7 +563,7 @@ ChallengeCardsGui._on_click_inventory_cards = function (self, item_data)
 
 	return 
 end
-ChallengeCardsGui._on_select_inventory_cards = function (self, item_idx, item_data)
+function ChallengeCardsGui:_on_select_inventory_cards(item_idx, item_data)
 	if item_data then
 		slot7 = item_data.steam_instance_ids[1]
 
@@ -584,7 +584,7 @@ ChallengeCardsGui._on_select_inventory_cards = function (self, item_idx, item_da
 
 	return 
 end
-ChallengeCardsGui.suggest_card = function (self)
+function ChallengeCardsGui:suggest_card()
 	slot3 = self._card_details
 	local card, steam_instance_id = self._card_details.get_card(slot2)
 
@@ -604,7 +604,7 @@ ChallengeCardsGui.suggest_card = function (self)
 
 	return 
 end
-ChallengeCardsGui.cancel_card = function (self)
+function ChallengeCardsGui:cancel_card()
 	slot3 = managers.challenge_cards
 
 	managers.challenge_cards.remove_suggested_challenge_card(slot2)
@@ -619,7 +619,7 @@ ChallengeCardsGui.cancel_card = function (self)
 
 	return 
 end
-ChallengeCardsGui.phase_two_activate = function (self)
+function ChallengeCardsGui:phase_two_activate()
 	local peer_id = nil
 
 	if self._host_selected_card then
@@ -641,14 +641,14 @@ ChallengeCardsGui.phase_two_activate = function (self)
 
 	return 
 end
-ChallengeCardsGui._on_continue_without_card = function (self)
+function ChallengeCardsGui:_on_continue_without_card()
 	slot3 = self
 
 	self.host_skip_suggestions(slot2)
 
 	return true, nil
 end
-ChallengeCardsGui.phase_two_cancel = function (self)
+function ChallengeCardsGui:phase_two_cancel()
 	slot5 = nil
 
 	self.sync_phase_two_execute_action(slot2, self, "CANCEL")
@@ -660,7 +660,7 @@ ChallengeCardsGui.phase_two_cancel = function (self)
 
 	return 
 end
-ChallengeCardsGui.sync_phase_two_execute_action = function (self, action, peer_id)
+function ChallengeCardsGui:sync_phase_two_execute_action(action, peer_id)
 	if action == "ACTIVATE" and self._host_selected_card then
 		slot6 = peer_id
 
@@ -669,7 +669,7 @@ ChallengeCardsGui.sync_phase_two_execute_action = function (self, action, peer_i
 
 	return 
 end
-ChallengeCardsGui._players_inventory_processed = function (self, params)
+function ChallengeCardsGui:_players_inventory_processed(params)
 	slot4 = managers.challenge_cards
 	self._challenge_cards_steam_data_source = managers.challenge_cards.get_readyup_card_cache(slot3)
 	slot4 = self._challenge_cards_steam_data_source
@@ -692,7 +692,7 @@ ChallengeCardsGui._players_inventory_processed = function (self, params)
 
 	return 
 end
-ChallengeCardsGui.suggestions_changed = function (self)
+function ChallengeCardsGui:suggestions_changed()
 	slot3 = self._suggested_cards_grid
 
 	self._suggested_cards_grid.refresh_data(slot2)
@@ -703,7 +703,7 @@ ChallengeCardsGui.suggestions_changed = function (self)
 
 	return 
 end
-ChallengeCardsGui.close = function (self)
+function ChallengeCardsGui:close()
 	slot4 = false
 
 	managers.challenge_cards.set_automatic_steam_inventory_refresh(slot2, managers.challenge_cards)
@@ -723,7 +723,7 @@ ChallengeCardsGui.close = function (self)
 
 	return 
 end
-ChallengeCardsGui.select_suggested_card = function (self, selected_item_data)
+function ChallengeCardsGui:select_suggested_card(selected_item_data)
 	slot4 = Network
 	local is_host = Network.is_server(slot3)
 
@@ -748,7 +748,7 @@ ChallengeCardsGui.select_suggested_card = function (self, selected_item_data)
 
 	return 
 end
-ChallengeCardsGui._update_suggest_card_button = function (self)
+function ChallengeCardsGui:_update_suggest_card_button()
 	slot3 = managers.network
 	local local_peer = managers.network.session(slot2).local_peer(slot2)
 	slot4 = managers.challenge_cards
@@ -781,7 +781,7 @@ ChallengeCardsGui._update_suggest_card_button = function (self)
 
 	return 
 end
-ChallengeCardsGui._auto_select_first_card_in_grid = function (self)
+function ChallengeCardsGui:_auto_select_first_card_in_grid()
 	local card_data = nil
 
 	if self._challenge_cards_data_source and 1 <= #self._challenge_cards_data_source then
@@ -817,7 +817,7 @@ ChallengeCardsGui._auto_select_first_card_in_grid = function (self)
 
 	return 
 end
-ChallengeCardsGui.update = function (self, t, dt)
+function ChallengeCardsGui:update(t, dt)
 	if ChallengeCardsGui.PHASE == 2 then
 		if 0 < self._phase_two_timer then
 			self._phase_two_timer = self._phase_two_timer - dt
@@ -855,7 +855,7 @@ ChallengeCardsGui.update = function (self, t, dt)
 
 	return 
 end
-ChallengeCardsGui.redirect_to_phase_two_screen = function (self)
+function ChallengeCardsGui:redirect_to_phase_two_screen()
 	if not self._phase_one_completed then
 		self._phase_one_completed = true
 		local all_players_passed = true
@@ -925,7 +925,7 @@ ChallengeCardsGui.redirect_to_phase_two_screen = function (self)
 
 	return 
 end
-ChallengeCardsGui.redirect_to_level_loading = function (self)
+function ChallengeCardsGui:redirect_to_level_loading()
 	self._phase_two_completed = true
 	slot4 = false
 
@@ -937,7 +937,7 @@ ChallengeCardsGui.redirect_to_level_loading = function (self)
 
 	return 
 end
-ChallengeCardsGui.bind_controller_inputs = function (self)
+function ChallengeCardsGui:bind_controller_inputs()
 	local legend = {
 		controller = {},
 		keyboard = {}
@@ -1055,21 +1055,21 @@ ChallengeCardsGui.bind_controller_inputs = function (self)
 
 	return 
 end
-ChallengeCardsGui._on_tabs_rarity_left = function (self)
+function ChallengeCardsGui:_on_tabs_rarity_left()
 	slot3 = self._rarity_filters_tabs
 
 	self._rarity_filters_tabs._move_left(slot2)
 
 	return true, nil
 end
-ChallengeCardsGui._on_tabs_rarity_right = function (self)
+function ChallengeCardsGui:_on_tabs_rarity_right()
 	slot3 = self._rarity_filters_tabs
 
 	self._rarity_filters_tabs._move_right(slot2)
 
 	return true, nil
 end
-ChallengeCardsGui._on_select_card_left = function (self)
+function ChallengeCardsGui:_on_select_card_left()
 	local item_data = self._host_activates_card_grid.move_selection_left(slot2)
 	slot5 = item_data
 
@@ -1077,7 +1077,7 @@ ChallengeCardsGui._on_select_card_left = function (self)
 
 	return true, nil
 end
-ChallengeCardsGui._on_select_card_right = function (self)
+function ChallengeCardsGui:_on_select_card_right()
 	local item_data = self._host_activates_card_grid.move_selection_right(slot2)
 	slot5 = item_data
 
@@ -1085,7 +1085,7 @@ ChallengeCardsGui._on_select_card_right = function (self)
 
 	return true, nil
 end
-ChallengeCardsGui.back_pressed = function (self)
+function ChallengeCardsGui:back_pressed()
 	if ChallengeCardsGui.PHASE == 2 then
 		return true
 	end
@@ -1108,7 +1108,7 @@ ChallengeCardsGui.back_pressed = function (self)
 
 	return 
 end
-ChallengeCardsGui.confirm_pressed = function (self)
+function ChallengeCardsGui:confirm_pressed()
 	if ChallengeCardsGui.PHASE == 1 then
 		slot3 = self
 

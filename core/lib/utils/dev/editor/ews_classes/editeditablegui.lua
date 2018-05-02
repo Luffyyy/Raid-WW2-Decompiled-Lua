@@ -14,7 +14,7 @@ if not EditUnitEditableGui then
 end
 
 EditUnitEditableGui = slot0
-EditUnitEditableGui.init = function (self, editor)
+function EditUnitEditableGui:init(editor)
 	slot5 = {
 		name = "Gui Text",
 		class = self
@@ -106,7 +106,7 @@ EditUnitEditableGui.init = function (self, editor)
 
 	return 
 end
-EditUnitEditableGui._create_color_button = function (self, panel, sizer)
+function EditUnitEditableGui:_create_color_button(panel, sizer)
 	slot6 = "HORIZONTAL"
 	local horizontal_sizer = EWS.BoxSizer(slot4, EWS)
 	slot10 = ""
@@ -132,7 +132,7 @@ EditUnitEditableGui._create_color_button = function (self, panel, sizer)
 
 	return 
 end
-EditUnitEditableGui._create_text_box = function (self, panel, sizer)
+function EditUnitEditableGui:_create_text_box(panel, sizer)
 	slot6 = "HORIZONTAL"
 	local horizontal_sizer = EWS.BoxSizer(slot4, EWS)
 	slot10 = "EXPAND,BOTTOM"
@@ -158,7 +158,7 @@ EditUnitEditableGui._create_text_box = function (self, panel, sizer)
 
 	return 
 end
-EditUnitEditableGui._create_font_size_slider = function (self, panel, sizer)
+function EditUnitEditableGui:_create_font_size_slider(panel, sizer)
 	local horizontal_sizer = sizer
 	self._font_size_params = {
 		name_proportions = 1,
@@ -196,7 +196,7 @@ EditUnitEditableGui._create_font_size_slider = function (self, panel, sizer)
 
 	return 
 end
-EditUnitEditableGui._create_font_combobox = function (self, panel, sizer)
+function EditUnitEditableGui:_create_font_combobox(panel, sizer)
 	slot6 = "HORIZONTAL"
 	local horizontal_sizer = EWS.BoxSizer(slot4, EWS)
 
@@ -224,7 +224,7 @@ EditUnitEditableGui._create_font_combobox = function (self, panel, sizer)
 
 	return 
 end
-EditUnitEditableGui._create_text_aligns_combobox = function (self, panel, sizer)
+function EditUnitEditableGui:_create_text_aligns_combobox(panel, sizer)
 	slot6 = "HORIZONTAL"
 	local horizontal_sizer = EWS.BoxSizer(slot4, EWS)
 
@@ -271,7 +271,7 @@ EditUnitEditableGui._create_text_aligns_combobox = function (self, panel, sizer)
 
 	return 
 end
-EditUnitEditableGui._create_text_wrap_checkbox = function (self, panel, sizer)
+function EditUnitEditableGui:_create_text_wrap_checkbox(panel, sizer)
 	slot6 = "HORIZONTAL"
 	local horizontal_sizer = EWS.BoxSizer(slot4, EWS)
 
@@ -344,7 +344,7 @@ EditUnitEditableGui._create_text_wrap_checkbox = function (self, panel, sizer)
 
 	return 
 end
-EditUnitEditableGui._create_render_template_blend_mode_combobox = function (self, panel, sizer)
+function EditUnitEditableGui:_create_render_template_blend_mode_combobox(panel, sizer)
 	slot6 = "HORIZONTAL"
 	local horizontal_sizer = EWS.BoxSizer(slot4, EWS)
 
@@ -392,7 +392,7 @@ EditUnitEditableGui._create_render_template_blend_mode_combobox = function (self
 
 	return 
 end
-EditUnitEditableGui._create_alpha_slider = function (self, panel, sizer)
+function EditUnitEditableGui:_create_alpha_slider(panel, sizer)
 	local horizontal_sizer = sizer
 	self._alpha_params = {
 		name_proportions = 1,
@@ -430,7 +430,7 @@ EditUnitEditableGui._create_alpha_slider = function (self, panel, sizer)
 
 	return 
 end
-EditUnitEditableGui._create_shape_sliders = function (self, panel, sizer)
+function EditUnitEditableGui:_create_shape_sliders(panel, sizer)
 	local horizontal_sizer = sizer
 	slot10 = "TOP"
 
@@ -482,7 +482,7 @@ EditUnitEditableGui._create_shape_sliders = function (self, panel, sizer)
 
 	return 
 end
-EditUnitEditableGui.show_color_dialog = function (self)
+function EditUnitEditableGui:show_color_dialog()
 	slot8 = self._ctrls.color_button
 	slot6 = self._ctrls.color_button.background_colour(slot7) / 255
 	local colordlg = EWS.ColourDialog(slot2, EWS, Global.frame, true)
@@ -516,7 +516,7 @@ EditUnitEditableGui.show_color_dialog = function (self)
 
 	return 
 end
-EditUnitEditableGui.update_debug = function (self)
+function EditUnitEditableGui:update_debug()
 
 	-- Decompilation error in this vicinity:
 	local enabled = self._ctrls.debug.get_value(slot2)
@@ -539,7 +539,7 @@ EditUnitEditableGui.update_debug = function (self)
 
 	return 
 end
-EditUnitEditableGui.update_shape = function (self)
+function EditUnitEditableGui:update_shape()
 	if self._no_event then
 		return 
 	end
@@ -569,7 +569,7 @@ EditUnitEditableGui.update_shape = function (self)
 
 	return 
 end
-EditUnitEditableGui.update_alpha = function (self)
+function EditUnitEditableGui:update_alpha()
 	if self._no_event then
 		return 
 	end
@@ -593,7 +593,7 @@ EditUnitEditableGui.update_alpha = function (self)
 
 	return 
 end
-EditUnitEditableGui.update_render_template = function (self)
+function EditUnitEditableGui:update_render_template()
 	if self._no_event then
 		return 
 	end
@@ -622,7 +622,7 @@ EditUnitEditableGui.update_render_template = function (self)
 
 	return 
 end
-EditUnitEditableGui.update_blend_mode = function (self)
+function EditUnitEditableGui:update_blend_mode()
 	if self._no_event then
 		return 
 	end
@@ -647,7 +647,7 @@ EditUnitEditableGui.update_blend_mode = function (self)
 
 	return 
 end
-EditUnitEditableGui.update_text_wrap = function (self)
+function EditUnitEditableGui:update_text_wrap()
 	if self._no_event then
 		return 
 	end
@@ -676,7 +676,7 @@ EditUnitEditableGui.update_text_wrap = function (self)
 
 	return 
 end
-EditUnitEditableGui.update_text_word_wrap = function (self)
+function EditUnitEditableGui:update_text_word_wrap()
 	if self._no_event then
 		return 
 	end
@@ -701,7 +701,7 @@ EditUnitEditableGui.update_text_word_wrap = function (self)
 
 	return 
 end
-EditUnitEditableGui.update_align = function (self)
+function EditUnitEditableGui:update_align()
 	if self._no_event then
 		return 
 	end
@@ -726,7 +726,7 @@ EditUnitEditableGui.update_align = function (self)
 
 	return 
 end
-EditUnitEditableGui.update_vertical = function (self)
+function EditUnitEditableGui:update_vertical()
 	if self._no_event then
 		return 
 	end
@@ -751,7 +751,7 @@ EditUnitEditableGui.update_vertical = function (self)
 
 	return 
 end
-EditUnitEditableGui.update_font = function (self)
+function EditUnitEditableGui:update_font()
 	if self._no_event then
 		return 
 	end
@@ -776,7 +776,7 @@ EditUnitEditableGui.update_font = function (self)
 
 	return 
 end
-EditUnitEditableGui.update_gui_text = function (self, gui_text)
+function EditUnitEditableGui:update_gui_text(gui_text)
 	if self._no_event then
 		return 
 	end
@@ -801,7 +801,7 @@ EditUnitEditableGui.update_gui_text = function (self, gui_text)
 
 	return 
 end
-EditUnitEditableGui.update_font_size = function (self)
+function EditUnitEditableGui:update_font_size()
 	if self._no_event then
 		return 
 	end
@@ -825,7 +825,7 @@ EditUnitEditableGui.update_font_size = function (self)
 
 	return 
 end
-EditUnitEditableGui.is_editable = function (self, unit, units)
+function EditUnitEditableGui:is_editable(unit, units)
 	slot5 = unit
 
 	if alive(slot4) then

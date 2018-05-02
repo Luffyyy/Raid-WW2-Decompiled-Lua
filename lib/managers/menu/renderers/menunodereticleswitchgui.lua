@@ -4,7 +4,7 @@ if not MenuNodeReticleSwitchGui then
 end
 
 MenuNodeReticleSwitchGui = slot0
-MenuNodeReticleSwitchGui.init = function (self, node, layer, parameters)
+function MenuNodeReticleSwitchGui:init(node, layer, parameters)
 	parameters.font = tweak_data.menu.pd2_small_font
 	parameters.font_size = tweak_data.menu.pd2_small_font_size
 	parameters.align = "left"
@@ -23,7 +23,7 @@ MenuNodeReticleSwitchGui.init = function (self, node, layer, parameters)
 
 	return 
 end
-MenuNodeReticleSwitchGui.setup = function (self, node)
+function MenuNodeReticleSwitchGui:setup(node)
 	slot5 = "reticle_color"
 	local color = node.item(slot3, node).value(slot3)
 	slot6 = "reticle_type"
@@ -42,7 +42,7 @@ MenuNodeReticleSwitchGui.setup = function (self, node)
 
 	return 
 end
-MenuNodeReticleSwitchGui.make_fine_text = function (self, text)
+function MenuNodeReticleSwitchGui:make_fine_text(text)
 	slot4 = text
 	local x, y, w, h = text.text_rect(slot3)
 
@@ -55,7 +55,7 @@ MenuNodeReticleSwitchGui.make_fine_text = function (self, text)
 
 	return x, y, w, h
 end
-MenuNodeReticleSwitchGui._setup_item_panel = function (self, safe_rect, res)
+function MenuNodeReticleSwitchGui:_setup_item_panel(safe_rect, res)
 	slot7 = res
 
 	MenuNodeReticleSwitchGui.super._setup_item_panel(slot4, self, safe_rect)
@@ -246,7 +246,7 @@ MenuNodeReticleSwitchGui._setup_item_panel = function (self, safe_rect, res)
 
 	return 
 end
-MenuNodeReticleSwitchGui.update_item_dlc_locks = function (self)
+function MenuNodeReticleSwitchGui:update_item_dlc_locks()
 	local node = self.node
 
 	if not node then
@@ -326,14 +326,14 @@ MenuNodeReticleSwitchGui.update_item_dlc_locks = function (self)
 
 	return pass_type and pass_color
 end
-MenuNodeReticleSwitchGui.set_reticle_texture = function (self, texture)
+function MenuNodeReticleSwitchGui:set_reticle_texture(texture)
 	slot5 = texture
 
 	self._set_reticle_texture(slot3, self)
 
 	return 
 end
-MenuNodeReticleSwitchGui._set_reticle_texture = function (self, texture)
+function MenuNodeReticleSwitchGui:_set_reticle_texture(texture)
 	if texture then
 		slot4 = self._texture_panel
 
@@ -362,7 +362,7 @@ MenuNodeReticleSwitchGui._set_reticle_texture = function (self, texture)
 
 	return 
 end
-MenuNodeReticleSwitchGui._unretrieve_texture = function (self)
+function MenuNodeReticleSwitchGui:_unretrieve_texture()
 	if self._texture then
 		slot5 = self._texture_index
 
@@ -375,7 +375,7 @@ MenuNodeReticleSwitchGui._unretrieve_texture = function (self)
 
 	return 
 end
-MenuNodeReticleSwitchGui._texture_done_callback = function (self, texture_ids)
+function MenuNodeReticleSwitchGui:_texture_done_callback(texture_ids)
 	if self then
 		slot4 = self._texture_panel
 
@@ -397,10 +397,10 @@ MenuNodeReticleSwitchGui._texture_done_callback = function (self, texture_ids)
 
 	return 
 end
-MenuNodeReticleSwitchGui.get_recticle_texture_ids = function (self)
+function MenuNodeReticleSwitchGui:get_recticle_texture_ids()
 	return self._texture_ids
 end
-MenuNodeReticleSwitchGui._setup_item_panel_parent = function (self, safe_rect, shape)
+function MenuNodeReticleSwitchGui:_setup_item_panel_parent(safe_rect, shape)
 	shape = shape or {}
 	shape.x = shape.x or safe_rect.x
 	shape.y = shape.y or safe_rect.y + 0
@@ -412,7 +412,7 @@ MenuNodeReticleSwitchGui._setup_item_panel_parent = function (self, safe_rect, s
 
 	return 
 end
-MenuNodeReticleSwitchGui._rec_round_object = function (self, object)
+function MenuNodeReticleSwitchGui:_rec_round_object(object)
 	if object.children then
 		slot6 = object
 
@@ -432,14 +432,14 @@ MenuNodeReticleSwitchGui._rec_round_object = function (self, object)
 
 	return 
 end
-MenuNodeReticleSwitchGui._setup_item_rows = function (self, node)
+function MenuNodeReticleSwitchGui:_setup_item_rows(node)
 	slot5 = node
 
 	MenuNodeReticleSwitchGui.super._setup_item_rows(slot3, self)
 
 	return 
 end
-MenuNodeReticleSwitchGui.reload_item = function (self, item)
+function MenuNodeReticleSwitchGui:reload_item(item)
 	slot5 = item
 
 	MenuNodeReticleSwitchGui.super.reload_item(slot3, self)
@@ -464,7 +464,7 @@ MenuNodeReticleSwitchGui.reload_item = function (self, item)
 
 	return 
 end
-MenuNodeReticleSwitchGui._align_marker = function (self, row_item)
+function MenuNodeReticleSwitchGui:_align_marker(row_item)
 	slot5 = row_item
 
 	MenuNodeReticleSwitchGui.super._align_marker(slot3, self)
@@ -487,7 +487,7 @@ MenuNodeReticleSwitchGui._align_marker = function (self, row_item)
 
 	return 
 end
-MenuNodeReticleSwitchGui.close = function (self)
+function MenuNodeReticleSwitchGui:close()
 	slot3 = self
 
 	self._unretrieve_texture(slot2)

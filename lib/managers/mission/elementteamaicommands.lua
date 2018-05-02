@@ -8,14 +8,14 @@ if not ElementTeamAICommands then
 end
 
 ElementTeamAICommands = slot0
-ElementTeamAICommands.init = function (self, ...)
+function ElementTeamAICommands:init(...)
 	slot3 = self
 
 	ElementTeamAICommands.super.init(slot2, ...)
 
 	return 
 end
-ElementTeamAICommands.on_executed = function (self, instigator)
+function ElementTeamAICommands:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -26,7 +26,7 @@ ElementTeamAICommands.on_executed = function (self, instigator)
 
 	return 
 end
-ElementTeamAICommands.client_on_executed = function (self, ...)
+function ElementTeamAICommands:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)

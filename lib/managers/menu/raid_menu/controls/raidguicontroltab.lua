@@ -12,7 +12,7 @@ RaidGUIControlTab.BOTTOM_LINE_NORMAL_HEIGHT = 2
 RaidGUIControlTab.BOTTOM_LINE_ACTIVE_HEIGHT = 5
 RaidGUIControlTab.BOTTOM_LINE_INACTIVE_ALPHA = 0.25
 RaidGUIControlTab.BOTTOM_LINE_ACTIVE_ALPHA = 1
-RaidGUIControlTab.init = function (self, parent, params)
+function RaidGUIControlTab:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlTab.super.init(slot4, self, parent)
@@ -100,7 +100,7 @@ RaidGUIControlTab.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlTab._layout_breadcrumb = function (self)
+function RaidGUIControlTab:_layout_breadcrumb()
 	self._params.breadcrumb.padding = 0
 	slot4 = self._params.breadcrumb
 	self._breadcrumb = self._object.breadcrumb(0, self._object)
@@ -116,16 +116,16 @@ RaidGUIControlTab._layout_breadcrumb = function (self)
 
 	return 
 end
-RaidGUIControlTab.needs_divider = function (self)
+function RaidGUIControlTab:needs_divider()
 	return false
 end
-RaidGUIControlTab.needs_bottom_line = function (self)
+function RaidGUIControlTab:needs_bottom_line()
 	return true
 end
-RaidGUIControlTab.get_callback_param = function (self)
+function RaidGUIControlTab:get_callback_param()
 	return self._callback_param
 end
-RaidGUIControlTab.highlight_on = function (self)
+function RaidGUIControlTab:highlight_on()
 	slot3 = self._bottom_line
 
 	self._bottom_line.stop(slot2)
@@ -137,7 +137,7 @@ RaidGUIControlTab.highlight_on = function (self)
 
 	return 
 end
-RaidGUIControlTab.highlight_off = function (self)
+function RaidGUIControlTab:highlight_off()
 	if not self._selected then
 		slot3 = self._bottom_line
 
@@ -151,7 +151,7 @@ RaidGUIControlTab.highlight_off = function (self)
 
 	return 
 end
-RaidGUIControlTab.select = function (self)
+function RaidGUIControlTab:select()
 	slot3 = self._tab_label._object
 
 	self._tab_label._object.stop(slot2)
@@ -173,7 +173,7 @@ RaidGUIControlTab.select = function (self)
 
 	return 
 end
-RaidGUIControlTab.unselect = function (self)
+function RaidGUIControlTab:unselect()
 	slot3 = self._tab_label._object
 
 	self._tab_label._object.stop(slot2)
@@ -195,14 +195,14 @@ RaidGUIControlTab.unselect = function (self)
 
 	return 
 end
-RaidGUIControlTab.mouse_released = function (self, o, button, x, y)
+function RaidGUIControlTab:mouse_released(o, button, x, y)
 	slot10 = y
 
 	self.on_mouse_released(slot6, self, button, x)
 
 	return true
 end
-RaidGUIControlTab.on_mouse_released = function (self, button, x, y)
+function RaidGUIControlTab:on_mouse_released(button, x, y)
 	if self._params.tab_select_callback then
 		slot7 = self._callback_param
 
@@ -211,7 +211,7 @@ RaidGUIControlTab.on_mouse_released = function (self, button, x, y)
 
 	return true
 end
-RaidGUIControlTab._animate_highlight_on = function (self)
+function RaidGUIControlTab:_animate_highlight_on()
 	local duration = 0.3
 	local t = duration - (1 - self._highlight_t) * duration
 
@@ -249,7 +249,7 @@ RaidGUIControlTab._animate_highlight_on = function (self)
 
 	return 
 end
-RaidGUIControlTab._animate_highlight_off = function (self)
+function RaidGUIControlTab:_animate_highlight_off()
 	local duration = 0.2
 	local t = duration - self._highlight_t * duration
 
@@ -287,7 +287,7 @@ RaidGUIControlTab._animate_highlight_off = function (self)
 
 	return 
 end
-RaidGUIControlTab._animate_select = function (self)
+function RaidGUIControlTab:_animate_select()
 	local duration = 0.3
 	local t = duration - (1 - self._select_t) * duration
 
@@ -330,7 +330,7 @@ RaidGUIControlTab._animate_select = function (self)
 
 	return 
 end
-RaidGUIControlTab._animate_deselect = function (self)
+function RaidGUIControlTab:_animate_deselect()
 	local duration = 0.3
 	local t = duration - self._select_t * duration
 

@@ -4,7 +4,7 @@ if not TeamAIInventory then
 end
 
 TeamAIInventory = slot0
-TeamAIInventory.add_unit_by_name = function (self, new_unit_name, equip)
+function TeamAIInventory:add_unit_by_name(new_unit_name, equip)
 	slot7 = Vector3()
 	local new_unit = World.spawn_unit(slot4, World, new_unit_name, Rotation())
 	local setup_data = {
@@ -34,7 +34,7 @@ TeamAIInventory.add_unit_by_name = function (self, new_unit_name, equip)
 
 	return 
 end
-TeamAIInventory.pre_destroy = function (self, unit)
+function TeamAIInventory:pre_destroy(unit)
 	slot5 = unit
 
 	TeamAIInventory.super.pre_destroy(slot3, self)

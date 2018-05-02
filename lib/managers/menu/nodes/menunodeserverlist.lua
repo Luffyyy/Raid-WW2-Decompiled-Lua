@@ -20,21 +20,21 @@ if not MenuNodeServerList then
 end
 
 MenuNodeServerList = slot0
-MenuNodeServerList.init = function (self, data_node)
+function MenuNodeServerList:init(data_node)
 	slot5 = data_node
 
 	MenuNodeServerList.super.init(slot3, self)
 
 	return 
 end
-MenuNodeServerList.update = function (self, t, dt)
+function MenuNodeServerList:update(t, dt)
 	slot7 = dt
 
 	MenuNodeServerList.super.update(slot4, self, t)
 
 	return 
 end
-MenuNodeServerList._setup_columns = function (self)
+function MenuNodeServerList:_setup_columns()
 	slot4 = {
 		proportions = 1.9,
 		align = "left",

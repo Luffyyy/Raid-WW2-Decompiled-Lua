@@ -16,7 +16,7 @@ RaidGUIControlLegend.FONT = tweak_data.gui.fonts.din_compressed
 RaidGUIControlLegend.FONT_SIZE = tweak_data.gui.font_sizes.large
 RaidGUIControlLegend.COLOR = tweak_data.gui.colors.raid_grey
 RaidGUIControlLegend.LABEL_PADDING = 15
-RaidGUIControlLegend.init = function (self, parent, params)
+function RaidGUIControlLegend:init(parent, params)
 	params.x = params.x or RaidGUIControlLegend.X
 	params.y = params.y or RaidGUIControlLegend.Y
 	params.w = params.w or RaidGUIControlLegend.W
@@ -39,7 +39,7 @@ RaidGUIControlLegend.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlLegend.close = function (self)
+function RaidGUIControlLegend:close()
 	slot4 = nil
 
 	managers.raid_menu.set_current_legend_control(slot2, managers.raid_menu)
@@ -50,14 +50,14 @@ RaidGUIControlLegend.close = function (self)
 
 	return 
 end
-RaidGUIControlLegend.controller_hotswap_triggered = function (self)
+function RaidGUIControlLegend:controller_hotswap_triggered()
 	slot3 = self
 
 	self._create_legend(slot2)
 
 	return 
 end
-RaidGUIControlLegend.set_labels = function (self, legend)
+function RaidGUIControlLegend:set_labels(legend)
 	self._legend = legend
 	slot4 = self
 
@@ -65,7 +65,7 @@ RaidGUIControlLegend.set_labels = function (self, legend)
 
 	return 
 end
-RaidGUIControlLegend._create_legend = function (self)
+function RaidGUIControlLegend:_create_legend()
 
 	-- Decompilation error in this vicinity:
 	slot3 = self._object
@@ -77,7 +77,7 @@ RaidGUIControlLegend._create_legend = function (self)
 
 	return 
 end
-RaidGUIControlLegend._create_console_legend = function (self, label_params)
+function RaidGUIControlLegend:_create_console_legend(label_params)
 	if not self._legend.controller then
 		return 
 	end
@@ -119,7 +119,7 @@ RaidGUIControlLegend._create_console_legend = function (self, label_params)
 
 	return 
 end
-RaidGUIControlLegend._create_pc_legend = function (self)
+function RaidGUIControlLegend:_create_pc_legend()
 	if not self._legend.keyboard then
 		return 
 	end

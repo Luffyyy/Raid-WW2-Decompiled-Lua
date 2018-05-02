@@ -16,7 +16,7 @@ slot5 = 0
 CharacterCustomizationGui.CHARACTER_SPAWN_ROTATION = Rotation(slot2, 0, 0)
 CharacterCustomizationGui.CONFIRM_PRESSED_STATE_BUY = "state_buy"
 CharacterCustomizationGui.CONFIRM_PRESSED_STATE_EQUIP = "state_equip"
-CharacterCustomizationGui.init = function (self, ws, fullscreen_ws, node, component_name)
+function CharacterCustomizationGui:init(ws, fullscreen_ws, node, component_name)
 	slot11 = component_name
 
 	CharacterCustomizationGui.super.init(slot6, self, ws, fullscreen_ws, node)
@@ -32,7 +32,7 @@ CharacterCustomizationGui.init = function (self, ws, fullscreen_ws, node, compon
 
 	return 
 end
-CharacterCustomizationGui._setup_properties = function (self)
+function CharacterCustomizationGui:_setup_properties()
 	slot3 = self
 
 	CharacterCustomizationGui.super._setup_properties(slot2)
@@ -42,7 +42,7 @@ CharacterCustomizationGui._setup_properties = function (self)
 
 	return 
 end
-CharacterCustomizationGui._set_initial_data = function (self)
+function CharacterCustomizationGui:_set_initial_data()
 	slot3 = managers.character_customization
 
 	managers.character_customization.reset_current_version_to_attach(slot2)
@@ -75,7 +75,7 @@ CharacterCustomizationGui._set_initial_data = function (self)
 
 	return 
 end
-CharacterCustomizationGui._layout = function (self)
+function CharacterCustomizationGui:_layout()
 	local character_nationality = managers.player.get_character_profile_nation(slot2)
 	slot4 = self
 
@@ -433,7 +433,7 @@ CharacterCustomizationGui._layout = function (self)
 
 	return 
 end
-CharacterCustomizationGui.close = function (self)
+function CharacterCustomizationGui:close()
 	slot3 = self
 
 	self._enable_dof(slot2)
@@ -452,14 +452,14 @@ CharacterCustomizationGui.close = function (self)
 
 	return 
 end
-CharacterCustomizationGui._on_click_button_equip = function (self)
+function CharacterCustomizationGui:_on_click_button_equip()
 	slot3 = self
 
 	self._equip_selected_customization(slot2)
 
 	return 
 end
-CharacterCustomizationGui._on_click_button_buy = function (self)
+function CharacterCustomizationGui:_on_click_button_buy()
 	slot4 = "[CharacterCustomizationGui:_on_click_button_buy]"
 
 	Application.trace(slot2, Application)
@@ -480,42 +480,42 @@ CharacterCustomizationGui._on_click_button_buy = function (self)
 
 	return 
 end
-CharacterCustomizationGui._on_click_filter_body_part = function (self, data)
+function CharacterCustomizationGui:_on_click_filter_body_part(data)
 	slot5 = data
 
 	self._process_body_part_filter(slot3, self)
 
 	return 
 end
-CharacterCustomizationGui._data_source_character_customizations = function (self)
+function CharacterCustomizationGui:_data_source_character_customizations()
 	local character_nationality = managers.player.get_character_profile_nation(slot2)
 	slot7 = false
 	local grid_data = managers.character_customization.get_all_parts_indexed_filtered(managers.player, managers.character_customization, self._selected_filter_body_part, character_nationality)
 
 	return grid_data
 end
-CharacterCustomizationGui._on_click_character_customizations = function (self, item_data)
+function CharacterCustomizationGui:_on_click_character_customizations(item_data)
 	slot5 = item_data
 
 	self._select_grid_item(slot3, self)
 
 	return 
 end
-CharacterCustomizationGui._on_double_click_character_customizations = function (self, item_data)
+function CharacterCustomizationGui:_on_double_click_character_customizations(item_data)
 	slot4 = self
 
 	self._equip_selected_customization(slot3)
 
 	return 
 end
-CharacterCustomizationGui._on_selected_character_customizations = function (self, item_idx, item_data)
+function CharacterCustomizationGui:_on_selected_character_customizations(item_idx, item_data)
 	slot6 = item_data
 
 	self._select_grid_item(slot4, self)
 
 	return 
 end
-CharacterCustomizationGui._equip_selected_customization = function (self)
+function CharacterCustomizationGui:_equip_selected_customization()
 	local selected_item_data, character_customizations = nil
 
 	if self._selected_filter_body_part == CharacterCustomizationTweakData.PART_TYPE_UPPER then
@@ -559,7 +559,7 @@ CharacterCustomizationGui._equip_selected_customization = function (self)
 
 	return 
 end
-CharacterCustomizationGui._buy_customization_yes_callback = function (self)
+function CharacterCustomizationGui:_buy_customization_yes_callback()
 	local selected_item_data, character_customizations = nil
 	slot5 = managers.gold_economy
 	local owned_gold = managers.gold_economy.current(slot4)
@@ -622,7 +622,7 @@ CharacterCustomizationGui._buy_customization_yes_callback = function (self)
 
 	return 
 end
-CharacterCustomizationGui._process_controls_states = function (self)
+function CharacterCustomizationGui:_process_controls_states()
 	slot3 = self._character_customizations_grid
 	local equipped_item_data = self._character_customizations_grid.get_active_item(slot2).get_data(slot2)
 	slot4 = self._character_customizations_grid
@@ -865,7 +865,7 @@ CharacterCustomizationGui._process_controls_states = function (self)
 
 	return 
 end
-CharacterCustomizationGui._process_body_part_filter = function (self, data)
+function CharacterCustomizationGui:_process_body_part_filter(data)
 	slot4 = self._character_customizations_grid
 	local active_item_data = self._character_customizations_grid.get_active_item(slot3).get_data(slot3)
 	slot6 = {
@@ -923,7 +923,7 @@ CharacterCustomizationGui._process_body_part_filter = function (self, data)
 
 	return 
 end
-CharacterCustomizationGui._select_grid_item = function (self, item_data)
+function CharacterCustomizationGui:_select_grid_item(item_data)
 	if self._selected_filter_body_part == CharacterCustomizationTweakData.PART_TYPE_HEAD then
 		if self._selected_head_name == item_data.key_name then
 			return 
@@ -984,7 +984,7 @@ CharacterCustomizationGui._select_grid_item = function (self, item_data)
 
 	return 
 end
-CharacterCustomizationGui.show_character_description = function (self, item_data)
+function CharacterCustomizationGui:show_character_description(item_data)
 	slot5 = self._selected_filter_body_part
 	local icon_data = self.get_icon_data_for_body_part(slot3, self)
 	slot6 = icon_data.texture
@@ -1018,7 +1018,7 @@ CharacterCustomizationGui.show_character_description = function (self, item_data
 
 	return 
 end
-CharacterCustomizationGui.get_character_spawn_location = function (self)
+function CharacterCustomizationGui:get_character_spawn_location()
 	slot4 = "all"
 	slot8 = "env_effect"
 	local units = World.find_units_quick(slot2, World, managers.slot.get_mask(slot6, managers.slot))
@@ -1039,7 +1039,7 @@ CharacterCustomizationGui.get_character_spawn_location = function (self)
 
 	return 
 end
-CharacterCustomizationGui.spawn_character_unit = function (self)
+function CharacterCustomizationGui:spawn_character_unit()
 	if not self._spawned_character_unit then
 		self.destroy_character_unit(slot2)
 
@@ -1060,7 +1060,7 @@ CharacterCustomizationGui.spawn_character_unit = function (self)
 
 	return 
 end
-CharacterCustomizationGui.destroy_character_unit = function (self)
+function CharacterCustomizationGui:destroy_character_unit()
 	if self._spawned_character_unit then
 		slot3 = self._spawned_character_unit
 		slot3 = self._spawned_character_unit.customization(slot2)
@@ -1076,7 +1076,7 @@ CharacterCustomizationGui.destroy_character_unit = function (self)
 
 	return 
 end
-CharacterCustomizationGui.render_all_parts = function (self)
+function CharacterCustomizationGui:render_all_parts()
 	local character_nationality = managers.player.get_character_profile_nation(slot2)
 	slot4 = self._spawned_character_unit
 	slot8 = self._selected_lower_name
@@ -1093,7 +1093,7 @@ CharacterCustomizationGui.render_all_parts = function (self)
 
 	return 
 end
-CharacterCustomizationGui._set_selected_piece = function (self, part_type, part_data)
+function CharacterCustomizationGui:_set_selected_piece(part_type, part_data)
 	if part_type == CharacterCustomizationTweakData.PART_TYPE_UPPER then
 		slot5 = self._spawned_character_unit
 		slot7 = part_data.path
@@ -1122,7 +1122,7 @@ CharacterCustomizationGui._set_selected_piece = function (self, part_type, part_
 
 	return 
 end
-CharacterCustomizationGui.save_equipped_customizations = function (self)
+function CharacterCustomizationGui:save_equipped_customizations()
 	slot4 = "self._equipped_upper_name "
 	slot7 = self._equipped_upper_name
 
@@ -1176,7 +1176,7 @@ CharacterCustomizationGui.save_equipped_customizations = function (self)
 
 	return 
 end
-CharacterCustomizationGui.get_icon_data_for_body_part = function (self, body_part)
+function CharacterCustomizationGui:get_icon_data_for_body_part(body_part)
 	local icon_data = nil
 
 	if body_part == CharacterCustomizationTweakData.PART_TYPE_UPPER then
@@ -1187,7 +1187,7 @@ CharacterCustomizationGui.get_icon_data_for_body_part = function (self, body_par
 
 	return icon_data
 end
-CharacterCustomizationGui.bind_controller_inputs = function (self)
+function CharacterCustomizationGui:bind_controller_inputs()
 	local bindings = {}
 	slot5 = "menu_controller_shoulder_left"
 	slot7 = "_on_filter_body_part_left"
@@ -1225,7 +1225,7 @@ CharacterCustomizationGui.bind_controller_inputs = function (self)
 
 	return 
 end
-CharacterCustomizationGui.bind_controller_inputs_equip = function (self)
+function CharacterCustomizationGui:bind_controller_inputs_equip()
 	local bindings = {}
 	slot5 = "menu_controller_shoulder_left"
 	slot7 = "_on_filter_body_part_left"
@@ -1264,7 +1264,7 @@ CharacterCustomizationGui.bind_controller_inputs_equip = function (self)
 
 	return 
 end
-CharacterCustomizationGui.bind_controller_inputs_buy = function (self)
+function CharacterCustomizationGui:bind_controller_inputs_buy()
 	local bindings = {}
 	slot5 = "menu_controller_shoulder_left"
 	slot7 = "_on_filter_body_part_left"
@@ -1303,21 +1303,21 @@ CharacterCustomizationGui.bind_controller_inputs_buy = function (self)
 
 	return 
 end
-CharacterCustomizationGui._on_filter_body_part_left = function (self)
+function CharacterCustomizationGui:_on_filter_body_part_left()
 	slot3 = self._filter_body_part
 
 	self._filter_body_part._move_left(slot2)
 
 	return true, nil
 end
-CharacterCustomizationGui._on_filter_body_part_right = function (self)
+function CharacterCustomizationGui:_on_filter_body_part_right()
 	slot3 = self._filter_body_part
 
 	self._filter_body_part._move_right(slot2)
 
 	return true, nil
 end
-CharacterCustomizationGui.confirm_pressed = function (self)
+function CharacterCustomizationGui:confirm_pressed()
 	slot3 = self._character_customizations_grid
 	local selected_item = self._character_customizations_grid.selected_grid_item(slot2)
 

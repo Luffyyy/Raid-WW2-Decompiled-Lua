@@ -7,7 +7,7 @@ RaidGUIControlCardSuggestedLarge = slot0
 RaidGUIControlCardSuggestedLarge.ICON_PADDING = 20
 RaidGUIControlCardSuggestedLarge.ICON_WIDTH = 32
 RaidGUIControlCardSuggestedLarge.SELECT_TRINGLE_SIZE = 30
-RaidGUIControlCardSuggestedLarge.init = function (self, parent, params, item_data, grid_params)
+function RaidGUIControlCardSuggestedLarge:init(parent, params, item_data, grid_params)
 	slot11 = grid_params
 
 	RaidGUIControlCardSuggestedLarge.super.init(slot6, self, parent, params, item_data)
@@ -38,13 +38,13 @@ RaidGUIControlCardSuggestedLarge.init = function (self, parent, params, item_dat
 
 	return 
 end
-RaidGUIControlCardSuggestedLarge.get_data = function (self)
+function RaidGUIControlCardSuggestedLarge:get_data()
 	return self._item_data
 end
-RaidGUIControlCardSuggestedLarge.update = function (self)
+function RaidGUIControlCardSuggestedLarge:update()
 	return 
 end
-RaidGUIControlCardSuggestedLarge.set_card = function (self, card_data)
+function RaidGUIControlCardSuggestedLarge:set_card(card_data)
 	self._item_data = card_data
 	self._item_data.peer_id = self._params.peer_id
 
@@ -361,7 +361,7 @@ RaidGUIControlCardSuggestedLarge.set_card = function (self, card_data)
 
 	return 
 end
-RaidGUIControlCardSuggestedLarge._refit_card_title_text = function (self, original_font_size)
+function RaidGUIControlCardSuggestedLarge:_refit_card_title_text(original_font_size)
 	local font_sizes = {}
 	slot5 = tweak_data.gui.font_sizes
 
@@ -397,7 +397,7 @@ RaidGUIControlCardSuggestedLarge._refit_card_title_text = function (self, origin
 
 	return 
 end
-RaidGUIControlCardSuggestedLarge._show_pass_card_controls = function (self)
+function RaidGUIControlCardSuggestedLarge:_show_pass_card_controls()
 	local empty_slot_texture = tweak_data.gui.icons.cc_empty_slot_small
 	slot5 = empty_slot_texture.texture
 
@@ -483,14 +483,14 @@ RaidGUIControlCardSuggestedLarge._show_pass_card_controls = function (self)
 
 	return 
 end
-RaidGUIControlCardSuggestedLarge._set_visible_selected_marker = function (self, flag)
+function RaidGUIControlCardSuggestedLarge:_set_visible_selected_marker(flag)
 	slot5 = flag
 
 	self._select_marker_panel.set_visible(slot3, self._select_marker_panel)
 
 	return 
 end
-RaidGUIControlCardSuggestedLarge.select = function (self)
+function RaidGUIControlCardSuggestedLarge:select()
 	self._selected = true
 
 	if self._select_marker_panel then
@@ -501,7 +501,7 @@ RaidGUIControlCardSuggestedLarge.select = function (self)
 
 	return 
 end
-RaidGUIControlCardSuggestedLarge.unselect = function (self)
+function RaidGUIControlCardSuggestedLarge:unselect()
 	self._selected = false
 
 	if self._select_marker_panel then
@@ -512,17 +512,17 @@ RaidGUIControlCardSuggestedLarge.unselect = function (self)
 
 	return 
 end
-RaidGUIControlCardSuggestedLarge.selected = function (self)
+function RaidGUIControlCardSuggestedLarge:selected()
 	return self._selected
 end
-RaidGUIControlCardSuggestedLarge.mouse_released = function (self, o, button, x, y)
+function RaidGUIControlCardSuggestedLarge:mouse_released(o, button, x, y)
 	slot10 = y
 
 	self.on_mouse_released(slot6, self, button, x)
 
 	return 
 end
-RaidGUIControlCardSuggestedLarge.on_mouse_released = function (self, button, x, y)
+function RaidGUIControlCardSuggestedLarge:on_mouse_released(button, x, y)
 	slot6 = Network
 	local is_host = Network.is_server(slot5)
 
@@ -555,7 +555,7 @@ RaidGUIControlCardSuggestedLarge.on_mouse_released = function (self, button, x, 
 
 	return true
 end
-RaidGUIControlCardSuggestedLarge.on_mouse_over = function (self, x, y)
+function RaidGUIControlCardSuggestedLarge:on_mouse_over(x, y)
 	slot7 = y
 
 	RaidGUIControlCardSuggestedLarge.super.on_mouse_over(slot4, self, x)
@@ -566,7 +566,7 @@ RaidGUIControlCardSuggestedLarge.on_mouse_over = function (self, x, y)
 
 	return 
 end
-RaidGUIControlCardSuggestedLarge.close = function (self)
+function RaidGUIControlCardSuggestedLarge:close()
 	return 
 end
 

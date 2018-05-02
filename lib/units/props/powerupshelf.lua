@@ -6,7 +6,7 @@ if not PowerupShelf then
 end
 
 PowerupShelf = slot0
-PowerupShelf.init = function (self, unit)
+function PowerupShelf:init(unit)
 	slot6 = false
 
 	PowerupShelf.super.init(slot3, self, unit)
@@ -16,7 +16,7 @@ PowerupShelf.init = function (self, unit)
 
 	return 
 end
-PowerupShelf.spawn_pickups = function (self)
+function PowerupShelf:spawn_pickups()
 
 	-- Decompilation error in this vicinity:
 	slot3 = self._unit
@@ -38,7 +38,7 @@ PowerupShelf.spawn_pickups = function (self)
 
 	return 
 end
-PowerupShelf.set_tweak_data = function (self, new_tweak_table)
+function PowerupShelf:set_tweak_data(new_tweak_table)
 	self._tweak_table = new_tweak_table
 
 	return 

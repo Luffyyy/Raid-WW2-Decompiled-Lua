@@ -22,7 +22,7 @@ if not FloatSpinCtrl then
 end
 
 FloatSpinCtrl = slot0
-FloatSpinCtrl.init = function (self, parent, min, max, step, value, dec, style)
+function FloatSpinCtrl:init(parent, min, max, step, value, dec, style)
 	slot10 = parent
 
 	assert(slot9)
@@ -90,13 +90,13 @@ FloatSpinCtrl.init = function (self, parent, min, max, step, value, dec, style)
 
 	return 
 end
-FloatSpinCtrl.window = function (self)
+function FloatSpinCtrl:window()
 	return self._panel
 end
-FloatSpinCtrl.get_value = function (self)
+function FloatSpinCtrl:get_value()
 	return self._value
 end
-FloatSpinCtrl.set_value = function (self, value)
+function FloatSpinCtrl:set_value(value)
 	slot6 = self._max
 	self._value = math.clamp(slot3, value, self._min)
 	slot5 = true
@@ -105,7 +105,7 @@ FloatSpinCtrl.set_value = function (self, value)
 
 	return 
 end
-FloatSpinCtrl.change_value = function (self, value)
+function FloatSpinCtrl:change_value(value)
 	slot6 = self._max
 	self._value = math.clamp(slot3, value, self._min)
 	slot4 = self
@@ -114,7 +114,7 @@ FloatSpinCtrl.change_value = function (self, value)
 
 	return 
 end
-FloatSpinCtrl._btn_up_cb = function (self)
+function FloatSpinCtrl:_btn_up_cb()
 	slot5 = self._max
 	self._value = math.clamp(slot2, self._value + self._step, self._min)
 	slot4 = true
@@ -137,7 +137,7 @@ FloatSpinCtrl._btn_up_cb = function (self)
 
 	return 
 end
-FloatSpinCtrl._btn_down_cb = function (self)
+function FloatSpinCtrl:_btn_down_cb()
 	slot5 = self._max
 	self._value = math.clamp(slot2, self._value - self._step, self._min)
 	slot4 = true
@@ -160,7 +160,7 @@ FloatSpinCtrl._btn_down_cb = function (self)
 
 	return 
 end
-FloatSpinCtrl._text_update_cb = function (self, data, event)
+function FloatSpinCtrl:_text_update_cb(data, event)
 	slot7 = event
 	local value = tonumber(event.get_string(slot6))
 
@@ -187,7 +187,7 @@ FloatSpinCtrl._text_update_cb = function (self, data, event)
 
 	return 
 end
-FloatSpinCtrl._text_enter_cb = function (self, data, event)
+function FloatSpinCtrl:_text_enter_cb(data, event)
 	slot9 = event
 	slot7 = self._max
 	self._value = math.clamp(slot4, tonumber(event.get_string(slot8)) or 0, self._min)
@@ -211,7 +211,7 @@ FloatSpinCtrl._text_enter_cb = function (self, data, event)
 
 	return 
 end
-FloatSpinCtrl._update_text = function (self, send_event)
+function FloatSpinCtrl:_update_text(send_event)
 	slot7 = self._dec
 	slot5 = self._value
 	local str = string.format(slot3, "%0." .. tostring(slot6) .. "f")
@@ -228,7 +228,7 @@ FloatSpinCtrl._update_text = function (self, send_event)
 
 	return 
 end
-FloatSpinCtrl._set_valid = function (self, valid)
+function FloatSpinCtrl:_set_valid(valid)
 	if self._use_colors then
 		if valid then
 			slot7 = self._bg_color.z
@@ -248,7 +248,7 @@ FloatSpinCtrl._set_valid = function (self, valid)
 
 	return 
 end
-FloatSpinCtrl._add_style = function (self, style)
+function FloatSpinCtrl:_add_style(style)
 	self._sp_style = (self._sp_style and self._sp_style .. "," .. style) or style
 
 	return 

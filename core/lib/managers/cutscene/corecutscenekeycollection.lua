@@ -9,12 +9,12 @@
 -- WARNING: Error occurred during decompilation.
 --   Code may be incomplete or incorrect.
 CoreCutsceneKeyCollection = CoreCutsceneKeyCollection or class()
-CoreCutsceneKeyCollection.keys = function (self, element_name)
+function CoreCutsceneKeyCollection:keys(element_name)
 	slot7 = element_name
 
 	return self.keys_between(slot3, self, -1, math.huge)
 end
-CoreCutsceneKeyCollection.keys_between = function (self, start_time, end_time, element_name)
+function CoreCutsceneKeyCollection:keys_between(start_time, end_time, element_name)
 	if start_time == end_time then
 		return function ()
 			return 
@@ -80,7 +80,7 @@ CoreCutsceneKeyCollection.keys_between = function (self, start_time, end_time, e
 		return 
 	end
 end
-CoreCutsceneKeyCollection.keys_to_update = function (self, time, element_name)
+function CoreCutsceneKeyCollection:keys_to_update(time, element_name)
 	slot5 = self
 	local keys = self._all_keys_sorted_by_time(slot4)
 	local index = 0
@@ -99,7 +99,7 @@ CoreCutsceneKeyCollection.keys_to_update = function (self, time, element_name)
 		return 
 	end
 end
-CoreCutsceneKeyCollection.first_key = function (self, time, element_name, properties)
+function CoreCutsceneKeyCollection:first_key(time, element_name, properties)
 	slot8 = self
 
 	for index, key in ipairs(self._all_keys_sorted_by_time(slot7)) do
@@ -111,7 +111,7 @@ CoreCutsceneKeyCollection.first_key = function (self, time, element_name, proper
 
 	return 
 end
-CoreCutsceneKeyCollection.last_key_before = function (self, time, element_name, properties)
+function CoreCutsceneKeyCollection:last_key_before(time, element_name, properties)
 	local last_key = nil
 	slot9 = self
 

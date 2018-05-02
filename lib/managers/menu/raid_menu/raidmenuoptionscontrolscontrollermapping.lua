@@ -4,7 +4,7 @@ if not RaidMenuOptionsControlsControllerMapping then
 end
 
 RaidMenuOptionsControlsControllerMapping = slot0
-RaidMenuOptionsControlsControllerMapping.init = function (self, ws, fullscreen_ws, node, component_name)
+function RaidMenuOptionsControlsControllerMapping:init(ws, fullscreen_ws, node, component_name)
 	self._label_font = tweak_data.gui.fonts.din_compressed
 	self._label_font_size = tweak_data.gui.font_sizes.size_24
 	slot11 = component_name
@@ -13,14 +13,14 @@ RaidMenuOptionsControlsControllerMapping.init = function (self, ws, fullscreen_w
 
 	return 
 end
-RaidMenuOptionsControlsControllerMapping._set_initial_data = function (self)
+function RaidMenuOptionsControlsControllerMapping:_set_initial_data()
 	slot5 = "menu_header_options_controls_controller_mapping_on_foot"
 
 	self._node.components.raid_menu_header.set_screen_name(slot2, self._node.components.raid_menu_header, "menu_header_options_main_screen_name")
 
 	return 
 end
-RaidMenuOptionsControlsControllerMapping._layout = function (self)
+function RaidMenuOptionsControlsControllerMapping:_layout()
 	slot3 = self
 
 	RaidMenuOptionsControlsControllerMapping.super._layout(slot2)
@@ -72,14 +72,14 @@ RaidMenuOptionsControlsControllerMapping._layout = function (self)
 
 	return 
 end
-RaidMenuOptionsControlsControllerMapping.close = function (self)
+function RaidMenuOptionsControlsControllerMapping:close()
 	slot3 = self
 
 	RaidMenuOptionsControlsControllerMapping.super.close(slot2)
 
 	return 
 end
-RaidMenuOptionsControlsControllerMapping._layout_on_foot = function (self)
+function RaidMenuOptionsControlsControllerMapping:_layout_on_foot()
 	slot4 = "southpaw"
 	local southpaw = managers.user.get_setting(slot2, managers.user)
 	slot6 = true
@@ -381,7 +381,7 @@ RaidMenuOptionsControlsControllerMapping._layout_on_foot = function (self)
 
 	return 
 end
-RaidMenuOptionsControlsControllerMapping._layout_in_vehicle = function (self)
+function RaidMenuOptionsControlsControllerMapping:_layout_in_vehicle()
 	slot4 = "southpaw"
 	local southpaw = managers.user.get_setting(slot2, managers.user)
 	slot6 = true
@@ -652,7 +652,7 @@ RaidMenuOptionsControlsControllerMapping._layout_in_vehicle = function (self)
 
 	return 
 end
-RaidMenuOptionsControlsControllerMapping._set_position_size_controller_keybind_label = function (self, params)
+function RaidMenuOptionsControlsControllerMapping:_set_position_size_controller_keybind_label(params)
 	slot4 = params.control
 	local x, y, w, h = params.control.text_rect(slot3)
 	slot9 = w
@@ -711,7 +711,7 @@ RaidMenuOptionsControlsControllerMapping._set_position_size_controller_keybind_l
 
 	return 
 end
-RaidMenuOptionsControlsControllerMapping.bind_controller_inputs_on_foot = function (self)
+function RaidMenuOptionsControlsControllerMapping:bind_controller_inputs_on_foot()
 	local bindings = {}
 	slot5 = "menu_controller_shoulder_right"
 	slot7 = "_show_vehicle_mapping"
@@ -741,7 +741,7 @@ RaidMenuOptionsControlsControllerMapping.bind_controller_inputs_on_foot = functi
 
 	return 
 end
-RaidMenuOptionsControlsControllerMapping.bind_controller_inputs_in_vehicle = function (self)
+function RaidMenuOptionsControlsControllerMapping:bind_controller_inputs_in_vehicle()
 	local bindings = {}
 	slot5 = "menu_controller_shoulder_left"
 	slot7 = "_show_on_foot_mapping"
@@ -771,7 +771,7 @@ RaidMenuOptionsControlsControllerMapping.bind_controller_inputs_in_vehicle = fun
 
 	return 
 end
-RaidMenuOptionsControlsControllerMapping._show_vehicle_mapping = function (self)
+function RaidMenuOptionsControlsControllerMapping:_show_vehicle_mapping()
 	slot3 = self._panel_on_foot
 
 	self._panel_on_foot.hide(slot2)
@@ -790,7 +790,7 @@ RaidMenuOptionsControlsControllerMapping._show_vehicle_mapping = function (self)
 
 	return 
 end
-RaidMenuOptionsControlsControllerMapping._show_on_foot_mapping = function (self)
+function RaidMenuOptionsControlsControllerMapping:_show_on_foot_mapping()
 	slot3 = self._panel_on_foot
 
 	self._panel_on_foot.show(slot2)

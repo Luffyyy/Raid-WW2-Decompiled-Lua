@@ -8,14 +8,14 @@ if not ElementFleePoint then
 end
 
 ElementFleePoint = slot0
-ElementFleePoint.init = function (self, ...)
+function ElementFleePoint:init(...)
 	slot3 = self
 
 	ElementFleePoint.super.init(slot2, ...)
 
 	return 
 end
-ElementFleePoint.on_executed = function (self, instigator)
+function ElementFleePoint:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -30,7 +30,7 @@ ElementFleePoint.on_executed = function (self, instigator)
 
 	return 
 end
-ElementFleePoint.operation_add = function (self)
+function ElementFleePoint:operation_add()
 	if self._values.functionality == "loot_drop" then
 		slot3 = managers.groupai
 		slot6 = self
@@ -47,7 +47,7 @@ ElementFleePoint.operation_add = function (self)
 
 	return 
 end
-ElementFleePoint.operation_remove = function (self)
+function ElementFleePoint:operation_remove()
 	if self._values.functionality == "loot_drop" then
 		slot3 = managers.groupai
 		slot3 = managers.groupai.state(slot2)

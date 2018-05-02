@@ -10,7 +10,7 @@ if not ElementSpawnCivilian then
 end
 
 ElementSpawnCivilian = slot0
-ElementSpawnCivilian.init = function (self, ...)
+function ElementSpawnCivilian:init(...)
 
 	-- Decompilation error in this vicinity:
 	slot3 = self
@@ -25,7 +25,7 @@ ElementSpawnCivilian.init = function (self, ...)
 
 	return 
 end
-ElementSpawnCivilian._finalize_values = function (self)
+function ElementSpawnCivilian:_finalize_values()
 	slot5 = "state"
 	self._values.state = self.value(slot3, self)
 	slot4 = self._values.state
@@ -36,13 +36,13 @@ ElementSpawnCivilian._finalize_values = function (self)
 
 	return 
 end
-ElementSpawnCivilian.enemy_name = function (self)
+function ElementSpawnCivilian:enemy_name()
 	return self._enemy_name
 end
-ElementSpawnCivilian.units = function (self)
+function ElementSpawnCivilian:units()
 	return self._units
 end
-ElementSpawnCivilian.produce = function (self, params)
+function ElementSpawnCivilian:produce(params)
 	slot4 = managers.groupai
 	slot4 = managers.groupai.state(slot3)
 
@@ -115,7 +115,7 @@ ElementSpawnCivilian.produce = function (self, params)
 
 	return unit
 end
-ElementSpawnCivilian.event = function (self, name, unit)
+function ElementSpawnCivilian:event(name, unit)
 	if self._events and self._events[name] then
 		slot5 = self._events[name]
 
@@ -128,7 +128,7 @@ ElementSpawnCivilian.event = function (self, name, unit)
 
 	return 
 end
-ElementSpawnCivilian.add_event_callback = function (self, name, callback)
+function ElementSpawnCivilian:add_event_callback(name, callback)
 	self._events = self._events or {}
 	self._events[name] = self._events[name] or {}
 	slot6 = callback
@@ -137,7 +137,7 @@ ElementSpawnCivilian.add_event_callback = function (self, name, callback)
 
 	return 
 end
-ElementSpawnCivilian.on_executed = function (self, instigator)
+function ElementSpawnCivilian:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -160,21 +160,21 @@ ElementSpawnCivilian.on_executed = function (self, instigator)
 
 	return 
 end
-ElementSpawnCivilian.unspawn_all_units = function (self)
+function ElementSpawnCivilian:unspawn_all_units()
 	slot3 = self
 
 	ElementSpawnEnemyDummy.unspawn_all_units(slot2)
 
 	return 
 end
-ElementSpawnCivilian.kill_all_units = function (self)
+function ElementSpawnCivilian:kill_all_units()
 	slot3 = self
 
 	ElementSpawnEnemyDummy.kill_all_units(slot2)
 
 	return 
 end
-ElementSpawnCivilian.execute_on_all_units = function (self, func)
+function ElementSpawnCivilian:execute_on_all_units(func)
 	slot5 = func
 
 	ElementSpawnEnemyDummy.execute_on_all_units(slot3, self)

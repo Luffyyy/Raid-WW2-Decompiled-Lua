@@ -4,7 +4,7 @@ if not RaidMenuLeftOptions then
 end
 
 RaidMenuLeftOptions = slot0
-RaidMenuLeftOptions.init = function (self, ws, fullscreen_ws, node, component_name)
+function RaidMenuLeftOptions:init(ws, fullscreen_ws, node, component_name)
 	slot11 = component_name
 
 	RaidMenuLeftOptions.super.init(slot6, self, ws, fullscreen_ws, node)
@@ -15,14 +15,14 @@ RaidMenuLeftOptions.init = function (self, ws, fullscreen_ws, node, component_na
 
 	return 
 end
-RaidMenuLeftOptions._set_initial_data = function (self)
+function RaidMenuLeftOptions:_set_initial_data()
 	slot5 = "menu_header_options_main_screen_subtitle"
 
 	self._node.components.raid_menu_header.set_screen_name(slot2, self._node.components.raid_menu_header, "menu_header_options_main_screen_name")
 
 	return 
 end
-RaidMenuLeftOptions._layout = function (self)
+function RaidMenuLeftOptions:_layout()
 	slot3 = self
 
 	RaidMenuLeftOptions.super._layout(slot2)
@@ -45,14 +45,14 @@ RaidMenuLeftOptions._layout = function (self)
 
 	return 
 end
-RaidMenuLeftOptions.close = function (self)
+function RaidMenuLeftOptions:close()
 	slot3 = self
 
 	RaidMenuLeftOptions.super.close(slot2)
 
 	return 
 end
-RaidMenuLeftOptions._layout_list_menu = function (self)
+function RaidMenuLeftOptions:_layout_list_menu()
 	local list_menu_options_params = {
 		selection_enabled = true,
 		name = "list_menu_options",
@@ -106,7 +106,7 @@ RaidMenuLeftOptions._layout_list_menu = function (self)
 
 	return 
 end
-RaidMenuLeftOptions._list_menu_options_data_source = function (self)
+function RaidMenuLeftOptions:_list_menu_options_data_source()
 	local _list_items = {}
 	slot5 = {
 		callback = "menu_options_on_click_controls",
@@ -142,7 +142,7 @@ RaidMenuLeftOptions._list_menu_options_data_source = function (self)
 
 	return _list_items
 end
-RaidMenuLeftOptions._on_list_menu_options_item_selected = function (self, data)
+function RaidMenuLeftOptions:_on_list_menu_options_item_selected(data)
 	if not data.callback then
 		return 
 	end
@@ -162,7 +162,7 @@ RaidMenuLeftOptions._on_list_menu_options_item_selected = function (self, data)
 
 	return 
 end
-RaidMenuLeftOptions.bind_controller_inputs = function (self)
+function RaidMenuLeftOptions:bind_controller_inputs()
 	local bindings = {}
 	slot5 = "menu_controller_face_top"
 	slot8 = {
@@ -194,7 +194,7 @@ RaidMenuLeftOptions.bind_controller_inputs = function (self)
 
 	return 
 end
-RaidMenuLeftOptions.bind_controller_inputs_reset_progress = function (self)
+function RaidMenuLeftOptions:bind_controller_inputs_reset_progress()
 	local bindings = {}
 	slot5 = "menu_controller_face_left"
 	slot8 = {

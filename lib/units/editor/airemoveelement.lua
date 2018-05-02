@@ -6,7 +6,7 @@ if not AIRemoveUnitElement then
 end
 
 AIRemoveUnitElement = slot0
-AIRemoveUnitElement.init = function (self, unit)
+function AIRemoveUnitElement:init(unit)
 	slot5 = unit
 
 	MissionElement.init(slot3, self)
@@ -38,17 +38,17 @@ AIRemoveUnitElement.init = function (self, unit)
 
 	return 
 end
-AIRemoveUnitElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function AIRemoveUnitElement:draw_links(t, dt, selected_unit, all_units)
 	slot11 = all_units
 
 	MissionElement.draw_links(slot6, self, t, dt, selected_unit)
 
 	return 
 end
-AIRemoveUnitElement.update_editing = function (self)
+function AIRemoveUnitElement:update_editing()
 	return 
 end
-AIRemoveUnitElement.update_selected = function (self, t, dt, selected_unit, all_units)
+function AIRemoveUnitElement:update_selected(t, dt, selected_unit, all_units)
 	slot7 = self._hed.elements
 
 	for _, id in ipairs(slot6) do
@@ -70,7 +70,7 @@ AIRemoveUnitElement.update_selected = function (self, t, dt, selected_unit, all_
 
 	return 
 end
-AIRemoveUnitElement.add_element = function (self)
+function AIRemoveUnitElement:add_element()
 	slot4 = {
 		ray_type = "editor",
 		mask = 10
@@ -85,7 +85,7 @@ AIRemoveUnitElement.add_element = function (self)
 
 	return 
 end
-AIRemoveUnitElement.remove_links = function (self, unit)
+function AIRemoveUnitElement:remove_links(unit)
 	slot4 = self._hed.elements
 
 	for _, id in ipairs(slot3) do
@@ -100,7 +100,7 @@ AIRemoveUnitElement.remove_links = function (self, unit)
 
 	return 
 end
-AIRemoveUnitElement.add_triggers = function (self, vc)
+function AIRemoveUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "add_element"
 
@@ -108,7 +108,7 @@ AIRemoveUnitElement.add_triggers = function (self, vc)
 
 	return 
 end
-AIRemoveUnitElement._build_panel = function (self, panel, panel_sizer)
+function AIRemoveUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

@@ -455,7 +455,7 @@ core.import(slot1, core)
 DebugManager = DebugManager or class()
 DebugManager.ROT_LINE_LENGTH = 20
 DebugManager.reload = true
-function DebugManager:init()
+DebugManager.init = function (self)
 	self._enabled = false
 	self._enabled_paused = false
 	DebugManager.reload = false
@@ -502,7 +502,7 @@ function DebugManager:init()
 
 	return 
 end
-function DebugManager:destroy()
+DebugManager.destroy = function (self)
 	slot3 = self._system_list
 
 	for _, system in pairs(slot2) do
@@ -515,7 +515,7 @@ function DebugManager:destroy()
 
 	return 
 end
-function DebugManager:update(t, dt)
+DebugManager.update = function (self, t, dt)
 	if self._enabled then
 		if DebugManager.reload then
 			slot5 = self
@@ -534,7 +534,7 @@ function DebugManager:update(t, dt)
 
 	return 
 end
-function DebugManager:paused_update(t, dt)
+DebugManager.paused_update = function (self, t, dt)
 	if self._enabled_paused then
 		if DebugManager.reload then
 			slot5 = self
@@ -553,7 +553,7 @@ function DebugManager:paused_update(t, dt)
 
 	return 
 end
-function DebugManager:reloaded()
+DebugManager.reloaded = function (self)
 	DebugManager.reload = false
 	slot3 = self._system_list
 
@@ -565,7 +565,7 @@ function DebugManager:reloaded()
 
 	return 
 end
-function DebugManager:clear(...)
+DebugManager.clear = function (self, ...)
 	slot3 = self._system_list
 
 	for _, system in pairs(slot2) do
@@ -576,21 +576,21 @@ function DebugManager:clear(...)
 
 	return 
 end
-function DebugManager:toggle_enabled()
+DebugManager.toggle_enabled = function (self)
 	slot4 = not self._enabled
 
 	self.set_enabled(slot2, self)
 
 	return 
 end
-function DebugManager:toggle_enabled_paused()
+DebugManager.toggle_enabled_paused = function (self)
 	slot4 = not self._enabled_paused
 
 	self.set_enabled_paused(slot2, self)
 
 	return 
 end
-function DebugManager:toggle_enabled_all()
+DebugManager.toggle_enabled_all = function (self)
 	slot4 = not self._enabled
 
 	self.set_enabled(slot2, self)
@@ -609,13 +609,13 @@ function DebugManager:toggle_enabled_all()
 
 	return 
 end
-function DebugManager:enabled()
+DebugManager.enabled = function (self)
 	return self._enabled
 end
-function DebugManager:enabled_paused()
+DebugManager.enabled_paused = function (self)
 	return self._enabled_paused
 end
-function DebugManager:set_enabled(enabled)
+DebugManager.set_enabled = function (self, enabled)
 	if self._enabled ~= enabled then
 		if enabled then
 			Global.render_debug.draw_enabled = true
@@ -626,7 +626,7 @@ function DebugManager:set_enabled(enabled)
 
 	return 
 end
-function DebugManager:set_enabled_paused(enabled)
+DebugManager.set_enabled_paused = function (self, enabled)
 	if self._enabled_paused ~= enabled then
 		if enabled then
 			Global.render_debug.draw_enabled = true
@@ -637,7 +637,7 @@ function DebugManager:set_enabled_paused(enabled)
 
 	return 
 end
-function DebugManager:set_systems_enabled(enabled, include_non_preferred)
+DebugManager.set_systems_enabled = function (self, enabled, include_non_preferred)
 	slot5 = self._system_list
 
 	for system_name, system in pairs(slot4) do
@@ -650,7 +650,7 @@ function DebugManager:set_systems_enabled(enabled, include_non_preferred)
 
 	return 
 end
-function DebugManager:set_enabled_all(enabled, include_non_preferred)
+DebugManager.set_enabled_all = function (self, enabled, include_non_preferred)
 	slot6 = enabled
 
 	self.set_enabled(slot4, self)
@@ -830,11 +830,11 @@ DebugManager.args_to_string = function (...)
 
 	return s
 end
-function DebugManager:qa_debug(username)
+DebugManager.qa_debug = function (self, username)
 	return 
 end
 DebugPoint = DebugPoint or class()
-function DebugPoint:init(pos, rot, red, green, blue, radius)
+DebugPoint.init = function (self, pos, rot, red, green, blue, radius)
 	self._pos = pos
 	self._rot = rot
 
@@ -851,7 +851,7 @@ function DebugPoint:init(pos, rot, red, green, blue, radius)
 	return 
 end
 DebugFunction = DebugFunction or class()
-function DebugFunction:init(func, start_delay, interval, call_count)
+DebugFunction.init = function (self, func, start_delay, interval, call_count)
 	self._func = func
 	slot7 = start_delay
 	start_delay = tonumber(slot6)
@@ -871,7 +871,7 @@ function DebugFunction:init(func, start_delay, interval, call_count)
 
 	return 
 end
-function DebugFunction:update(t, dt)
+DebugFunction.update = function (self, t, dt)
 	local can_start = not self._start_time or self._start_time <= t
 	local interval_done = not self._last_call_time or not self._interval or self._interval <= t - self._last_call_time
 
@@ -898,7 +898,7 @@ function DebugFunction:update(t, dt)
 end
 DebugRaycast = DebugRaycast or class()
 DebugRaycast.MAX_ARROW_SIZE = 8
-function DebugRaycast:init(copy_ray_wrapper)
+DebugRaycast.init = function (self, copy_ray_wrapper)
 
 	-- Decompilation error in this vicinity:
 	self._arrow_size = nil
@@ -924,10 +924,10 @@ function DebugRaycast:init(copy_ray_wrapper)
 
 	return 
 end
-function DebugRaycast:from()
+DebugRaycast.from = function (self)
 	return self._from
 end
-function DebugRaycast:set_from(from)
+DebugRaycast.set_from = function (self, from)
 	self._from = from
 
 	if self._to then
@@ -937,10 +937,10 @@ function DebugRaycast:set_from(from)
 
 	return 
 end
-function DebugRaycast:to()
+DebugRaycast.to = function (self)
 	return self._to
 end
-function DebugRaycast:set_to(to)
+DebugRaycast.set_to = function (self, to)
 	self._to = to
 	slot4 = self
 
@@ -948,7 +948,7 @@ function DebugRaycast:set_to(to)
 
 	return 
 end
-function DebugRaycast:update_from_to_vars()
+DebugRaycast.update_from_to_vars = function (self)
 	if self._from and self._to then
 		slot3 = self._to - self._from
 		self._dir = self._to - self._from.normalized(self._from)
@@ -964,26 +964,26 @@ function DebugRaycast:update_from_to_vars()
 
 	return 
 end
-function DebugRaycast:radius()
+DebugRaycast.radius = function (self)
 	return self._radius
 end
-function DebugRaycast:set_radius(radius)
+DebugRaycast.set_radius = function (self, radius)
 	self._radius = radius
 
 	return 
 end
-function DebugRaycast:bundle()
+DebugRaycast.bundle = function (self)
 	return self._bundle
 end
-function DebugRaycast:set_bundle(bundle)
+DebugRaycast.set_bundle = function (self, bundle)
 	self._bundle = bundle
 
 	return 
 end
-function DebugRaycast:color()
+DebugRaycast.color = function (self)
 	return self._color
 end
-function DebugRaycast:set_color(red, green, blue)
+DebugRaycast.set_color = function (self, red, green, blue)
 	self._color = {
 		red or 1,
 		green or 1,
@@ -992,18 +992,18 @@ function DebugRaycast:set_color(red, green, blue)
 
 	return 
 end
-function DebugRaycast:normal()
+DebugRaycast.normal = function (self)
 	return self._normal
 end
-function DebugRaycast:set_normal(normal)
+DebugRaycast.set_normal = function (self, normal)
 	self._normal = normal
 
 	return 
 end
-function DebugRaycast:normal_color()
+DebugRaycast.normal_color = function (self)
 	return self._normal_color
 end
-function DebugRaycast:set_normal_color(red, green, blue)
+DebugRaycast.set_normal_color = function (self, red, green, blue)
 	self._normal_color = {
 		red or 1,
 		green or 1,
@@ -1012,7 +1012,7 @@ function DebugRaycast:set_normal_color(red, green, blue)
 
 	return 
 end
-function DebugRaycast:update(t, dt)
+DebugRaycast.update = function (self, t, dt)
 	if self._from and self._to then
 		if self._radius then
 			if self._bundle then
@@ -1075,7 +1075,7 @@ function DebugRaycast:update(t, dt)
 	return 
 end
 DebugProfilerCounter = DebugProfilerCounter or class()
-function DebugProfilerCounter:init(name, index, obj, func_name, color, min, max, enabled, graph_enabled, gui_enabled, instance_override)
+DebugProfilerCounter.init = function (self, name, index, obj, func_name, color, min, max, enabled, graph_enabled, gui_enabled, instance_override)
 	self._instance_override = instance_override
 	self._old_func = nil
 	self._new_func = nil
@@ -1122,7 +1122,7 @@ function DebugProfilerCounter:init(name, index, obj, func_name, color, min, max,
 
 	return 
 end
-function DebugProfilerCounter:reload()
+DebugProfilerCounter.reload = function (self)
 	if not self._instance_override and self._enabled then
 		self._old_func = nil
 		slot4 = false
@@ -1136,13 +1136,13 @@ function DebugProfilerCounter:reload()
 
 	return 
 end
-function DebugProfilerCounter:name()
+DebugProfilerCounter.name = function (self)
 	return self._name
 end
-function DebugProfilerCounter:index()
+DebugProfilerCounter.index = function (self)
 	return self._index
 end
-function DebugProfilerCounter:set_index(index)
+DebugProfilerCounter.set_index = function (self, index)
 	if self._index and self._gui_enabled then
 		slot6 = nil
 
@@ -1157,10 +1157,10 @@ function DebugProfilerCounter:set_index(index)
 
 	return 
 end
-function DebugProfilerCounter:enabled()
+DebugProfilerCounter.enabled = function (self)
 	return self._enabled
 end
-function DebugProfilerCounter:set_enabled(enabled)
+DebugProfilerCounter.set_enabled = function (self, enabled)
 	enabled = not not enabled
 
 	if self._enabled ~= enabled then
@@ -1242,10 +1242,10 @@ function DebugProfilerCounter:set_enabled(enabled)
 
 	return 
 end
-function DebugProfilerCounter:graph_enabled()
+DebugProfilerCounter.graph_enabled = function (self)
 	return self._graph_enabled
 end
-function DebugProfilerCounter:set_graph_enabled(enabled)
+DebugProfilerCounter.set_graph_enabled = function (self, enabled)
 	enabled = not not enabled
 
 	if self._graph_enabled ~= enabled then
@@ -1261,10 +1261,10 @@ function DebugProfilerCounter:set_graph_enabled(enabled)
 
 	return 
 end
-function DebugProfilerCounter:gui_enabled()
+DebugProfilerCounter.gui_enabled = function (self)
 	return self._gui_enabled
 end
-function DebugProfilerCounter:set_gui_enabled(enabled)
+DebugProfilerCounter.set_gui_enabled = function (self, enabled)
 	enabled = not not enabled
 
 	if self._gui_enabled ~= enabled then
@@ -1282,10 +1282,10 @@ function DebugProfilerCounter:set_gui_enabled(enabled)
 
 	return 
 end
-function DebugProfilerCounter:range()
+DebugProfilerCounter.range = function (self)
 	return self._min, self._max
 end
-function DebugProfilerCounter:set_range(min, max)
+DebugProfilerCounter.set_range = function (self, min, max)
 	slot5 = min
 	self._min = tonumber(slot4) or 0
 	slot8 = max
@@ -1297,10 +1297,10 @@ function DebugProfilerCounter:set_range(min, max)
 
 	return 
 end
-function DebugProfilerCounter:color()
+DebugProfilerCounter.color = function (self)
 	return self._color
 end
-function DebugProfilerCounter:set_color(color)
+DebugProfilerCounter.set_color = function (self, color)
 	if color and color.type_name ~= "Color" then
 		color = nil
 	end
@@ -1327,7 +1327,7 @@ function DebugProfilerCounter:set_color(color)
 
 	return 
 end
-function DebugProfilerCounter:update_graph()
+DebugProfilerCounter.update_graph = function (self)
 	if self._initialized then
 		if self._enabled and self._graph_enabled then
 			slot12 = self._color.b * 15
@@ -1343,7 +1343,7 @@ function DebugProfilerCounter:update_graph()
 
 	return 
 end
-function DebugProfilerCounter:update_gui()
+DebugProfilerCounter.update_gui = function (self)
 	if self._initialized and self._index and self._gui_enabled then
 		slot5 = nil
 
@@ -1363,40 +1363,40 @@ function DebugProfilerCounter:update_gui()
 	return 
 end
 BaseDebug = BaseDebug or class()
-function BaseDebug:init()
+BaseDebug.init = function (self)
 	self._enabled = false
 
 	return 
 end
-function BaseDebug:clear()
+BaseDebug.clear = function (self)
 	return 
 end
-function BaseDebug:update(t, dt)
+BaseDebug.update = function (self, t, dt)
 	return 
 end
-function BaseDebug:paused_update(t, dt)
+BaseDebug.paused_update = function (self, t, dt)
 	slot7 = dt
 
 	self.update(slot4, self, t)
 
 	return 
 end
-function BaseDebug:set_enabled(enabled)
+BaseDebug.set_enabled = function (self, enabled)
 	self._enabled = enabled
 
 	return 
 end
-function BaseDebug:get_enabled()
+BaseDebug.get_enabled = function (self)
 	return self._enabled
 end
-function BaseDebug:toggle_enabled()
+BaseDebug.toggle_enabled = function (self)
 	slot4 = not self._enabled
 
 	self.set_enabled(slot2, self)
 
 	return 
 end
-function BaseDebug:reloaded()
+BaseDebug.reloaded = function (self)
 	return 
 end
 
@@ -1406,7 +1406,7 @@ if not FuncDebug then
 end
 
 FuncDebug = slot0
-function FuncDebug:init()
+FuncDebug.init = function (self)
 	slot3 = self
 
 	FuncDebug.super.init(slot2)
@@ -1415,7 +1415,7 @@ function FuncDebug:init()
 
 	return 
 end
-function FuncDebug:update(t, dt)
+FuncDebug.update = function (self, t, dt)
 	slot5 = self._func_list
 
 	for index, wrapped_func in pairs(slot4) do
@@ -1430,7 +1430,7 @@ function FuncDebug:update(t, dt)
 
 	return 
 end
-function FuncDebug:clear()
+FuncDebug.clear = function (self)
 	slot3 = self
 
 	FuncDebug.super.clear(slot2)
@@ -1439,14 +1439,14 @@ function FuncDebug:clear()
 
 	return 
 end
-function FuncDebug:add(func, start_delay, interval, call_count)
+FuncDebug.add = function (self, func, start_delay, interval, call_count)
 	slot12 = call_count
 
 	self.set(slot6, self, #self._func_list + 1, func, start_delay, interval)
 
 	return 
 end
-function FuncDebug:set(index, func, start_delay, interval, call_count)
+FuncDebug.set = function (self, index, func, start_delay, interval, call_count)
 	index = index or 1
 
 	if func then
@@ -1470,7 +1470,7 @@ function FuncDebug:set(index, func, start_delay, interval, call_count)
 
 	return 
 end
-function FuncDebug:delete(func, all)
+FuncDebug.delete = function (self, func, all)
 	local count = 0
 	slot6 = self._func_list
 
@@ -1492,7 +1492,7 @@ function FuncDebug:delete(func, all)
 
 	return count
 end
-function FuncDebug:remove(index)
+FuncDebug.remove = function (self, index)
 	self._func_list[index] = nil
 
 	return 
@@ -1504,7 +1504,7 @@ if not PosDebug then
 end
 
 PosDebug = slot0
-function PosDebug:init()
+PosDebug.init = function (self)
 	slot3 = self
 
 	PosDebug.super.init(slot2)
@@ -1516,7 +1516,7 @@ function PosDebug:init()
 
 	return 
 end
-function PosDebug:update(t, dt)
+PosDebug.update = function (self, t, dt)
 	slot5 = self._pos_list
 
 	for list_index, list in pairs(slot4) do
@@ -1527,7 +1527,7 @@ function PosDebug:update(t, dt)
 
 	return 
 end
-function PosDebug:clear(list_index)
+PosDebug.clear = function (self, list_index)
 	slot4 = self
 
 	PosDebug.super.clear(slot3)
@@ -1540,15 +1540,15 @@ function PosDebug:clear(list_index)
 
 	return 
 end
-function PosDebug:get_skip_lines(list_index)
+PosDebug.get_skip_lines = function (self, list_index)
 	return self._skip_lines_map[list_index]
 end
-function PosDebug:set_skip_lines(list_index, skip_lines)
+PosDebug.set_skip_lines = function (self, list_index, skip_lines)
 	self._skip_lines_map[list_index] = skip_lines
 
 	return 
 end
-function PosDebug:add(pos, list_index, red, green, blue, radius)
+PosDebug.add = function (self, pos, list_index, red, green, blue, radius)
 	list_index = list_index or 1
 	slot13 = list_index
 	slot16 = radius
@@ -1557,7 +1557,7 @@ function PosDebug:add(pos, list_index, red, green, blue, radius)
 
 	return 
 end
-function PosDebug:add_list(list, list_index, red, green, blue, radius)
+PosDebug.add_list = function (self, list, list_index, red, green, blue, radius)
 	slot9 = list
 
 	for index, point in ipairs(slot8) do
@@ -1568,10 +1568,10 @@ function PosDebug:add_list(list, list_index, red, green, blue, radius)
 
 	return 
 end
-function PosDebug:set(index, pos, list_index, red, green, blue, radius)
+PosDebug.set = function (self, index, pos, list_index, red, green, blue, radius)
 	return 
 end
-function PosDebug:remove(index, list_index)
+PosDebug.remove = function (self, index, list_index)
 
 	-- Decompilation error in this vicinity:
 	list_index = list_index or 1
@@ -1588,7 +1588,7 @@ function PosDebug:remove(index, list_index)
 
 	return 
 end
-function PosDebug:get(index, list_index)
+PosDebug.get = function (self, index, list_index)
 	list_index = list_index or 1
 
 	if self._pos_list[list_index] and 0 < #self._pos_list[list_index] then
@@ -1597,7 +1597,7 @@ function PosDebug:get(index, list_index)
 
 	return nil
 end
-function PosDebug:get_count(list_index)
+PosDebug.get_count = function (self, list_index)
 	if list_index then
 		if self._pos_list[list_index] then
 			return #self._pos_list[list_index]
@@ -1610,10 +1610,10 @@ function PosDebug:get_count(list_index)
 
 	return 
 end
-function PosDebug:get_max_count(list_index)
+PosDebug.get_max_count = function (self, list_index)
 	return (list_index and self._max_pos_count_map[list_index]) or self._max_pos_count
 end
-function PosDebug:set_max_count(list_index, max_count)
+PosDebug.set_max_count = function (self, list_index, max_count)
 	if list_index then
 		slot6 = max_count
 		self._max_pos_count_map[list_index] = tonumber(slot5)
@@ -1640,7 +1640,7 @@ if not RotDebug then
 end
 
 RotDebug = slot0
-function RotDebug:init()
+RotDebug.init = function (self)
 	slot3 = self
 
 	RotDebug.super.init(slot2)
@@ -1651,7 +1651,7 @@ function RotDebug:init()
 
 	return 
 end
-function RotDebug:update(t, dt)
+RotDebug.update = function (self, t, dt)
 	slot5 = self._rot_list
 
 	for _, list in pairs(slot4) do
@@ -1662,7 +1662,7 @@ function RotDebug:update(t, dt)
 
 	return 
 end
-function RotDebug:clear(list_index)
+RotDebug.clear = function (self, list_index)
 	slot4 = self
 
 	RotDebug.super.clear(slot3)
@@ -1675,7 +1675,7 @@ function RotDebug:clear(list_index)
 
 	return 
 end
-function RotDebug:add(pos, list_index, rot, red, green, blue, radius)
+RotDebug.add = function (self, pos, list_index, rot, red, green, blue, radius)
 	list_index = list_index or 1
 	slot14 = list_index
 	slot18 = radius
@@ -1684,7 +1684,7 @@ function RotDebug:add(pos, list_index, rot, red, green, blue, radius)
 
 	return 
 end
-function RotDebug:set(index, pos, list_index, rot, red, green, blue, radius)
+RotDebug.set = function (self, index, pos, list_index, rot, red, green, blue, radius)
 	if pos then
 		slot11 = pos
 	elseif rot then
@@ -1707,7 +1707,7 @@ function RotDebug:set(index, pos, list_index, rot, red, green, blue, radius)
 
 	return 
 end
-function RotDebug:remove(index, list_index)
+RotDebug.remove = function (self, index, list_index)
 	list_index = list_index or 1
 
 	if self._rot_list[list_index] then
@@ -1722,7 +1722,7 @@ function RotDebug:remove(index, list_index)
 
 	return 
 end
-function RotDebug:get_count(list_index)
+RotDebug.get_count = function (self, list_index)
 	if list_index then
 		if self._rot_list[list_index] then
 			return #self._rot_list[list_index]
@@ -1735,10 +1735,10 @@ function RotDebug:get_count(list_index)
 
 	return 
 end
-function RotDebug:get_max_count(list_index)
+RotDebug.get_max_count = function (self, list_index)
 	return (list_index and self._max_rot_count_map[list_index]) or self._max_rot_count
 end
-function RotDebug:set_max_count(list_index, max_count)
+RotDebug.set_max_count = function (self, list_index, max_count)
 	if list_index then
 		slot6 = max_count
 		self._max_rot_count_map[list_index] = tonumber(slot5)
@@ -1766,7 +1766,7 @@ end
 
 GUIDebug = slot0
 GUIDebug.GUI_TEXT_COUNT = 60
-function GUIDebug:init()
+GUIDebug.init = function (self)
 	slot3 = self
 
 	GUIDebug.super.init(slot2)
@@ -1775,7 +1775,7 @@ function GUIDebug:init()
 
 	return 
 end
-function GUIDebug:destroy()
+GUIDebug.destroy = function (self)
 	slot3 = self._workspace
 
 	if alive(slot2) then
@@ -1789,7 +1789,7 @@ function GUIDebug:destroy()
 
 	return 
 end
-function GUIDebug:update(t, dt)
+GUIDebug.update = function (self, t, dt)
 	slot5 = self._text_func
 
 	for index, func in pairs(slot4) do
@@ -1802,7 +1802,7 @@ function GUIDebug:update(t, dt)
 
 	return 
 end
-function GUIDebug:clear()
+GUIDebug.clear = function (self)
 	slot3 = self
 
 	GUIDebug.super.clear(slot2)
@@ -1839,7 +1839,7 @@ function GUIDebug:clear()
 
 	return 
 end
-function GUIDebug:set_enabled(enabled)
+GUIDebug.set_enabled = function (self, enabled)
 	if self._workspace and self._enabled ~= enabled then
 		if enabled then
 			slot4 = self._workspace
@@ -1858,7 +1858,7 @@ function GUIDebug:set_enabled(enabled)
 
 	return 
 end
-function GUIDebug:setup()
+GUIDebug.setup = function (self)
 	local gui_scene = Overlay.gui(slot2)
 	slot4 = gui_scene
 	self._workspace = gui_scene.create_screen_workspace(Overlay)
@@ -1896,7 +1896,7 @@ function GUIDebug:setup()
 
 	return 
 end
-function GUIDebug:set_func(index, func)
+GUIDebug.set_func = function (self, index, func)
 	if 1 <= index and index <= self.GUI_TEXT_COUNT then
 		if self._workspace == nil then
 			slot5 = self
@@ -1909,7 +1909,7 @@ function GUIDebug:set_func(index, func)
 
 	return 
 end
-function GUIDebug:get(index)
+GUIDebug.get = function (self, index)
 	if 1 <= index and index <= self.GUI_TEXT_COUNT then
 		if self._workspace == nil then
 			slot4 = self
@@ -1935,7 +1935,7 @@ function GUIDebug:get(index)
 
 	return 
 end
-function GUIDebug:set(index, ...)
+GUIDebug.set = function (self, index, ...)
 	if 1 <= index and index <= self.GUI_TEXT_COUNT then
 		if self._workspace == nil then
 			slot4 = self
@@ -1953,7 +1953,7 @@ function GUIDebug:set(index, ...)
 
 	return 
 end
-function GUIDebug:get(index)
+GUIDebug.get = function (self, index)
 	if 1 <= index and index <= self.GUI_TEXT_COUNT then
 		if self._workspace == nil then
 			slot4 = self
@@ -1968,7 +1968,7 @@ function GUIDebug:get(index)
 
 	return 
 end
-function GUIDebug:set_color(index, red, green, blue, alpha)
+GUIDebug.set_color = function (self, index, red, green, blue, alpha)
 	if 1 <= index and index <= self.GUI_TEXT_COUNT then
 		if self._workspace == nil then
 			slot8 = self
@@ -1995,7 +1995,7 @@ GraphDebug = slot0
 GraphDebug.AXIS_ARROW_SIZE = 20
 GraphDebug.GUI_WORLD_WIDTH = 1000
 GraphDebug.GUI_WORLD_HEIGHT = 250
-function GraphDebug:init()
+GraphDebug.init = function (self)
 	slot3 = self
 
 	GraphDebug.super.init(slot2)
@@ -2025,7 +2025,7 @@ function GraphDebug:init()
 
 	return 
 end
-function GraphDebug:set_fixed_range(fixed_range)
+GraphDebug.set_fixed_range = function (self, fixed_range)
 	self._fixed_range = fixed_range
 
 	if fixed_range then
@@ -2038,7 +2038,7 @@ function GraphDebug:set_fixed_range(fixed_range)
 
 	return 
 end
-function GraphDebug:set_range(min, max)
+GraphDebug.set_range = function (self, min, max)
 	self._min_x = min.x
 	self._max_x = max.x
 	self._min_y = min.y
@@ -2069,7 +2069,7 @@ function GraphDebug:set_range(min, max)
 
 	return 
 end
-function GraphDebug:update(t, dt)
+GraphDebug.update = function (self, t, dt)
 	slot5 = self._pos_list
 
 	if next(slot4) then
@@ -2262,7 +2262,7 @@ function GraphDebug:update(t, dt)
 
 	return 
 end
-function GraphDebug:set_gui_text(id, position, rotation, label, value)
+GraphDebug.set_gui_text = function (self, id, position, rotation, label, value)
 	local workspace = self._workspace_map[id]
 	slot9 = workspace
 	slot10 = 0
@@ -2285,7 +2285,7 @@ function GraphDebug:set_gui_text(id, position, rotation, label, value)
 
 	return 
 end
-function GraphDebug:get_text_size(gui_text)
+GraphDebug.get_text_size = function (self, gui_text)
 	local w = 0
 	local h = 0
 	slot7 = gui_text
@@ -2300,12 +2300,12 @@ function GraphDebug:get_text_size(gui_text)
 
 	return w, h
 end
-function GraphDebug:get_scaled_pos(pos)
+GraphDebug.get_scaled_pos = function (self, pos)
 	slot6 = pos.z * self._scale_z
 
 	return Vector3(slot3, pos.x * self._scale_x, pos.y * self._scale_y)
 end
-function GraphDebug:setup()
+GraphDebug.setup = function (self)
 	self._workspace_map = {}
 	local text_config = {
 		font = "core/fonts/diesel",
@@ -2349,15 +2349,15 @@ function GraphDebug:setup()
 
 	return 
 end
-function GraphDebug:get_camera()
+GraphDebug.get_camera = function (self)
 	return self._camera
 end
-function GraphDebug:set_camera(camera)
+GraphDebug.set_camera = function (self, camera)
 	self._camera = camera
 
 	return 
 end
-function GraphDebug:create_gui_text(id, config)
+GraphDebug.create_gui_text = function (self, id, config)
 	slot5 = World
 	slot13 = 0
 	slot9 = Vector3(slot10, 1, 0)
@@ -2373,7 +2373,7 @@ function GraphDebug:create_gui_text(id, config)
 
 	return 
 end
-function GraphDebug:clear(list_index)
+GraphDebug.clear = function (self, list_index)
 	slot5 = list_index
 
 	GraphDebug.super.clear(slot3, self)
@@ -2382,40 +2382,40 @@ function GraphDebug:clear(list_index)
 
 	return 
 end
-function GraphDebug:set_size(size)
+GraphDebug.set_size = function (self, size)
 	self._size = size
 	self._invalidated = true
 
 	return 
 end
-function GraphDebug:get_size()
+GraphDebug.get_size = function (self)
 	return self._size
 end
-function GraphDebug:set_offset(offset)
+GraphDebug.set_offset = function (self, offset)
 	self._cam_offset = offset
 
 	return 
 end
-function GraphDebug:get_offset()
+GraphDebug.get_offset = function (self)
 	return self._cam_offset
 end
-function GraphDebug:set_is_fixed_rot(is_fixed_rot)
+GraphDebug.set_is_fixed_rot = function (self, is_fixed_rot)
 	self._is_fixed_rot = is_fixed_rot
 
 	return 
 end
-function GraphDebug:is_fixed_rot()
+GraphDebug.is_fixed_rot = function (self)
 	return self._is_fixed_rot
 end
-function GraphDebug:set_fixed_rot(fixed_rot)
+GraphDebug.set_fixed_rot = function (self, fixed_rot)
 	self._fixed_rot = fixed_rot
 
 	return 
 end
-function GraphDebug:get_fixed_rot()
+GraphDebug.get_fixed_rot = function (self)
 	return self._fixed_rot
 end
-function GraphDebug:set(index, pos, list_index, red, green, blue, radius)
+GraphDebug.set = function (self, index, pos, list_index, red, green, blue, radius)
 	list_index = list_index or 1
 	slot10 = pos
 
@@ -2447,7 +2447,7 @@ function GraphDebug:set(index, pos, list_index, red, green, blue, radius)
 
 	return 
 end
-function GraphDebug:set_max_count(list_index, max_count)
+GraphDebug.set_max_count = function (self, list_index, max_count)
 	if list_index then
 		local list = self._pos_list[list_index]
 
@@ -2478,7 +2478,7 @@ function GraphDebug:set_max_count(list_index, max_count)
 
 	return 
 end
-function GraphDebug:scroll_number_list(list_index, scroll)
+GraphDebug.scroll_number_list = function (self, list_index, scroll)
 	slot5 = self._pos_list[list_index]
 
 	for _, point in ipairs(slot4) do
@@ -2488,7 +2488,7 @@ function GraphDebug:scroll_number_list(list_index, scroll)
 
 	return 
 end
-function GraphDebug:remove(list_index, ...)
+GraphDebug.remove = function (self, list_index, ...)
 	slot5 = list_index
 
 	GraphDebug.super.remove(slot3, self, ...)
@@ -2497,7 +2497,7 @@ function GraphDebug:remove(list_index, ...)
 
 	return 
 end
-function GraphDebug:set_enabled(enabled)
+GraphDebug.set_enabled = function (self, enabled)
 	if self._enabled ~= enabled then
 		if enabled then
 			if not self._workspace_map then
@@ -2522,7 +2522,7 @@ function GraphDebug:set_enabled(enabled)
 
 	return 
 end
-function GraphDebug:set_visible(visible)
+GraphDebug.set_visible = function (self, visible)
 	if not self._visible ~= not visible then
 		self._visible = visible
 		slot4 = self._workspace_map
@@ -2549,7 +2549,7 @@ if not HijackDebug then
 end
 
 HijackDebug = slot0
-function HijackDebug:init()
+HijackDebug.init = function (self)
 	slot3 = self
 
 	HijackDebug.super.init(slot2)
@@ -2566,7 +2566,7 @@ function HijackDebug:init()
 
 	return 
 end
-function HijackDebug:update(t, dt)
+HijackDebug.update = function (self, t, dt)
 	slot5 = self._ray_list
 
 	for _, ray in pairs(slot4) do
@@ -2577,7 +2577,7 @@ function HijackDebug:update(t, dt)
 
 	return 
 end
-function HijackDebug:clear()
+HijackDebug.clear = function (self)
 	slot3 = self
 
 	HijackDebug.super.clear(slot2)
@@ -2586,7 +2586,7 @@ function HijackDebug:clear()
 
 	return 
 end
-function HijackDebug:add_ray_obj(obj)
+HijackDebug.add_ray_obj = function (self, obj)
 	if obj.key then
 		slot5 = obj
 		self._ray_obj_list[obj.key(slot4)] = obj
@@ -2600,7 +2600,7 @@ function HijackDebug:add_ray_obj(obj)
 
 	return 
 end
-function HijackDebug:delete_ray_obj(obj)
+HijackDebug.delete_ray_obj = function (self, obj)
 	if obj.key then
 		slot5 = obj
 		self._ray_obj_list[obj.key(slot4)] = nil
@@ -2614,7 +2614,7 @@ function HijackDebug:delete_ray_obj(obj)
 
 	return 
 end
-function HijackDebug:reset_ray_obj_list()
+HijackDebug.reset_ray_obj_list = function (self)
 	self.clear_ray_obj_list(slot2)
 
 	slot4 = World
@@ -2622,7 +2622,7 @@ function HijackDebug:reset_ray_obj_list()
 
 	return 
 end
-function HijackDebug:clear_ray_obj_list()
+HijackDebug.clear_ray_obj_list = function (self)
 	slot3 = self._ray_obj_list
 
 	for _, obj in pairs(slot2) do
@@ -2633,10 +2633,10 @@ function HijackDebug:clear_ray_obj_list()
 
 	return 
 end
-function HijackDebug:ray_enabled()
+HijackDebug.ray_enabled = function (self)
 	return self._hijack_ray_enabled
 end
-function HijackDebug:set_ray_enabled(enabled)
+HijackDebug.set_ray_enabled = function (self, enabled)
 	if self._hijack_ray_enabled ~= enabled then
 		self._hijack_ray_enabled = enabled
 		slot4 = self._ray_obj_list
@@ -2650,12 +2650,12 @@ function HijackDebug:set_ray_enabled(enabled)
 
 	return 
 end
-function HijackDebug:set_hijack_ray_obj(obj, enabled)
+HijackDebug.set_hijack_ray_obj = function (self, obj, enabled)
 	return 
 end
-function HijackDebug:is_hijack_ray_obj(obj)
+HijackDebug.is_hijack_ray_obj = function (self, obj)
 end
-function HijackDebug:set_hijack_ray_func(func)
+HijackDebug.set_hijack_ray_func = function (self, func)
 
 	-- Decompilation error in this vicinity:
 	if func then
@@ -2667,7 +2667,7 @@ function HijackDebug:set_hijack_ray_func(func)
 
 	return 
 end
-function HijackDebug:hijacked_ray(obj, ...)
+HijackDebug.hijacked_ray = function (self, obj, ...)
 	slot5 = obj
 
 	if self._old_func_list[obj.key(slot4)] then
@@ -2681,7 +2681,7 @@ function HijackDebug:hijacked_ray(obj, ...)
 
 	return 
 end
-function HijackDebug:default_hijacked_ray_func(obj, old_func, ...)
+HijackDebug.default_hijacked_ray_func = function (self, obj, old_func, ...)
 	local param_list = {
 		...
 	}
@@ -2855,14 +2855,14 @@ function HijackDebug:default_hijacked_ray_func(obj, old_func, ...)
 
 	return ray
 end
-function HijackDebug:reloaded()
+HijackDebug.reloaded = function (self)
 	slot4 = false
 
 	self.set_ray_enabled(slot2, self)
 
 	return 
 end
-function HijackDebug:hijack_statemachine(unit, unit_state_func, machine_state_func, redirect_func)
+HijackDebug.hijack_statemachine = function (self, unit, unit_state_func, machine_state_func, redirect_func)
 	slot7 = unit
 	local machine = unit.anim_state_machine(slot6)
 
@@ -2955,7 +2955,7 @@ function HijackDebug:hijack_statemachine(unit, unit_state_func, machine_state_fu
 
 	return 
 end
-function HijackDebug:hijack_func(obj, func_name, func, is_metatable)
+HijackDebug.hijack_func = function (self, obj, func_name, func, is_metatable)
 	local meta = nil
 
 	if is_metatable then
@@ -2976,7 +2976,7 @@ function HijackDebug:hijack_func(obj, func_name, func, is_metatable)
 
 	return 
 end
-function HijackDebug:unhijack_func(obj, func_name, is_metatable)
+HijackDebug.unhijack_func = function (self, obj, func_name, is_metatable)
 	local meta = nil
 
 	if is_metatable then
@@ -2997,7 +2997,7 @@ function HijackDebug:unhijack_func(obj, func_name, is_metatable)
 
 	return 
 end
-function HijackDebug:play_unit_state(unit, state)
+HijackDebug.play_unit_state = function (self, unit, state)
 	slot6 = state
 	local result = unit.hijacked_play_state(slot4, unit)
 
@@ -3011,7 +3011,7 @@ function HijackDebug:play_unit_state(unit, state)
 
 	return result
 end
-function HijackDebug:play_machine_state(machine, state)
+HijackDebug.play_machine_state = function (self, machine, state)
 	slot6 = state
 	local result = machine.hijacked_play(slot4, machine)
 
@@ -3025,7 +3025,7 @@ function HijackDebug:play_machine_state(machine, state)
 
 	return result
 end
-function HijackDebug:play_redirect(machine_or_unit, redirect)
+HijackDebug.play_redirect = function (self, machine_or_unit, redirect)
 	slot6 = redirect
 	local result = machine_or_unit.hijacked_play_redirect(slot4, machine_or_unit)
 
@@ -3046,7 +3046,7 @@ if not SimpleDebug then
 end
 
 SimpleDebug = slot0
-function SimpleDebug:init()
+SimpleDebug.init = function (self)
 	slot3 = self
 
 	SimpleDebug.super.init(slot2)
@@ -3055,7 +3055,7 @@ function SimpleDebug:init()
 
 	return 
 end
-function SimpleDebug:add_depricate(dep_type, depricate_time, ...)
+SimpleDebug.add_depricate = function (self, dep_type, depricate_time, ...)
 	local dep = {
 		type = dep_type
 	}
@@ -3072,7 +3072,7 @@ function SimpleDebug:add_depricate(dep_type, depricate_time, ...)
 
 	return 
 end
-function SimpleDebug:draw_depricate(dep, red, green, blue)
+SimpleDebug.draw_depricate = function (self, dep, red, green, blue)
 	if dep.type == "line" then
 		slot12 = blue
 
@@ -3085,21 +3085,21 @@ function SimpleDebug:draw_depricate(dep, red, green, blue)
 
 	return 
 end
-function SimpleDebug:draw_line(start_pos, end_pos, depricate_time)
+SimpleDebug.draw_line = function (self, start_pos, end_pos, depricate_time)
 	slot10 = end_pos
 
 	self.add_depricate(slot5, self, "line", depricate_time, start_pos)
 
 	return 
 end
-function SimpleDebug:draw_sphere(pos, radie, depricate_time)
+SimpleDebug.draw_sphere = function (self, pos, radie, depricate_time)
 	slot10 = radie
 
 	self.add_depricate(slot5, self, "sphere", depricate_time, pos)
 
 	return 
 end
-function SimpleDebug:update(time, rel_time)
+SimpleDebug.update = function (self, time, rel_time)
 	local remove_list = {}
 	slot6 = self._depricate_list
 
@@ -3129,7 +3129,7 @@ function SimpleDebug:update(time, rel_time)
 
 	return 
 end
-function SimpleDebug:clear()
+SimpleDebug.clear = function (self)
 	slot3 = self
 
 	SimpleDebug.super.clear(slot2)
@@ -3145,10 +3145,10 @@ if not PrintDebug then
 end
 
 PrintDebug = slot0
-function PrintDebug:xml_file(file, indent, indent_string)
+PrintDebug.xml_file = function (self, file, indent, indent_string)
 	return 
 end
-function PrintDebug:node(node, indent, indent_string)
+PrintDebug.node = function (self, node, indent, indent_string)
 
 	-- Decompilation error in this vicinity:
 	indent = indent or 0
@@ -3201,7 +3201,7 @@ if not ProfilerDebug then
 end
 
 ProfilerDebug = slot0
-function ProfilerDebug:init()
+ProfilerDebug.init = function (self)
 	slot3 = self
 
 	ProfilerDebug.super.init(slot2)
@@ -3211,7 +3211,7 @@ function ProfilerDebug:init()
 
 	return 
 end
-function ProfilerDebug:clear()
+ProfilerDebug.clear = function (self)
 	slot3 = self
 
 	ProfilerDebug.super.clear(slot2)
@@ -3229,7 +3229,7 @@ function ProfilerDebug:clear()
 
 	return 
 end
-function ProfilerDebug:add_counter(counter_name, obj, func_name, color, min_range, max_range, disabled, graph_disabled, gui_disabled, print_counter, override_class)
+ProfilerDebug.add_counter = function (self, counter_name, obj, func_name, color, min_range, max_range, disabled, graph_disabled, gui_disabled, print_counter, override_class)
 	local counter = self._counter_map[counter_name]
 
 	if counter then
@@ -3255,7 +3255,7 @@ function ProfilerDebug:add_counter(counter_name, obj, func_name, color, min_rang
 
 	return 
 end
-function ProfilerDebug:remove_index(index, print_counter, skip_color_update)
+ProfilerDebug.remove_index = function (self, index, print_counter, skip_color_update)
 	local counter = self._counter_list[index]
 
 	if counter then
@@ -3266,7 +3266,7 @@ function ProfilerDebug:remove_index(index, print_counter, skip_color_update)
 
 	return 
 end
-function ProfilerDebug:remove_name(counter_name, print_counter, skip_color_update)
+ProfilerDebug.remove_name = function (self, counter_name, print_counter, skip_color_update)
 	local counter = self._counter_map[counter_name]
 
 	if counter then
@@ -3277,7 +3277,7 @@ function ProfilerDebug:remove_name(counter_name, print_counter, skip_color_updat
 
 	return 
 end
-function ProfilerDebug:remove_counter(counter, print_counter, skip_color_update)
+ProfilerDebug.remove_counter = function (self, counter, print_counter, skip_color_update)
 	if counter then
 		local index = counter.index(slot5)
 		slot8 = false
@@ -3312,7 +3312,7 @@ function ProfilerDebug:remove_counter(counter, print_counter, skip_color_update)
 
 	return 
 end
-function ProfilerDebug:update_colors()
+ProfilerDebug.update_colors = function (self)
 	slot3 = self._counter_list
 
 	for index, counter in ipairs(slot2) do
@@ -3327,7 +3327,7 @@ function ProfilerDebug:update_colors()
 
 	return 
 end
-function ProfilerDebug:set_unit_enabled(unit, enabled, function_name_list, ignore_map, include_only_map, min_range, max_range, disabled, graph_disabled, gui_disabled, print_counters, class_override)
+ProfilerDebug.set_unit_enabled = function (self, unit, enabled, function_name_list, ignore_map, include_only_map, min_range, max_range, disabled, graph_disabled, gui_disabled, print_counters, class_override)
 	slot15 = unit
 
 	if alive(slot14) and unit.type_name == "Unit" then
@@ -3367,7 +3367,7 @@ function ProfilerDebug:set_unit_enabled(unit, enabled, function_name_list, ignor
 
 	return 
 end
-function ProfilerDebug:set_managers_enabled(enabled, ignore_map, include_only_map, min_range, max_range, disabled, graph_disabled, gui_disabled, print_counters)
+ProfilerDebug.set_managers_enabled = function (self, enabled, ignore_map, include_only_map, min_range, max_range, disabled, graph_disabled, gui_disabled, print_counters)
 	slot12 = managers
 
 	for manager_name, manager in pairs(slot11) do
@@ -3393,7 +3393,7 @@ function ProfilerDebug:set_managers_enabled(enabled, ignore_map, include_only_ma
 
 	return 
 end
-function ProfilerDebug:reloaded()
+ProfilerDebug.reloaded = function (self)
 	slot3 = self._counter_list
 
 	for _, counter in ipairs(slot2) do
@@ -3404,7 +3404,7 @@ function ProfilerDebug:reloaded()
 
 	return 
 end
-function ProfilerDebug:toggle_compare_find(slotmask, find_type, radius, length, count, bundle_count, func_name)
+ProfilerDebug.toggle_compare_find = function (self, slotmask, find_type, radius, length, count, bundle_count, func_name)
 	local f = nil
 	local list = {}
 	local result = nil
@@ -3778,7 +3778,7 @@ end
 
 MacroDebug = slot0
 MacroDebug.DEFAULT_LINE_DURATION = 2
-function MacroDebug:init()
+MacroDebug.init = function (self)
 	slot3 = self
 
 	MacroDebug.super.init(slot2)
@@ -3794,7 +3794,7 @@ function MacroDebug:init()
 
 	return 
 end
-function MacroDebug:get_ray(skip_last_unit_assign)
+MacroDebug.get_ray = function (self, skip_last_unit_assign)
 
 	-- Decompilation error in this vicinity:
 	slot4 = managers.viewport
@@ -3833,7 +3833,7 @@ function MacroDebug:get_ray(skip_last_unit_assign)
 
 	return ray
 end
-function MacroDebug:set_last_ray(ray)
+MacroDebug.set_last_ray = function (self, ray)
 	self._last_ray = ray
 	slot6 = ray
 
@@ -3841,19 +3841,19 @@ function MacroDebug:set_last_ray(ray)
 
 	return 
 end
-function MacroDebug:get_last_ray()
+MacroDebug.get_last_ray = function (self)
 	return self._last_ray
 end
-function MacroDebug:set_last_unit(unit)
+MacroDebug.set_last_unit = function (self, unit)
 
 	-- Decompilation error in this vicinity:
 	self._last_unit = unit
 	slot4 = unit
 end
-function MacroDebug:get_last_unit()
+MacroDebug.get_last_unit = function (self)
 	return self._last_unit
 end
-function MacroDebug:ray()
+MacroDebug.ray = function (self)
 	slot3 = self
 	local ray = self.get_ray(slot2)
 
@@ -3877,7 +3877,7 @@ function MacroDebug:ray()
 
 	return 
 end
-function MacroDebug:print_unit_info(unit)
+MacroDebug.print_unit_info = function (self, unit)
 	slot4 = unit
 
 	if alive(slot3) then
@@ -3926,7 +3926,7 @@ function MacroDebug:print_unit_info(unit)
 
 	return 
 end
-function MacroDebug:get_unit_files(unit)
+MacroDebug.get_unit_files = function (self, unit)
 	local object_file, unit_file = nil
 	slot9 = unit
 	slot8 = ""
@@ -3963,7 +3963,7 @@ function MacroDebug:get_unit_files(unit)
 
 	return slot11, slot12, slot13, slot14(slot15)
 end
-function MacroDebug:get_cleaned_path(path)
+MacroDebug.get_cleaned_path = function (self, path)
 	if path then
 		slot6 = path
 		slot6 = "%1/%2"
@@ -3982,7 +3982,7 @@ function MacroDebug:get_cleaned_path(path)
 
 	return 
 end
-function MacroDebug:ray_push(velocity_dir, velocity_length, mass)
+MacroDebug.ray_push = function (self, velocity_dir, velocity_length, mass)
 	slot6 = self
 	local ray = self.get_ray(slot5)
 
@@ -4006,7 +4006,7 @@ function MacroDebug:ray_push(velocity_dir, velocity_length, mass)
 
 	return 
 end
-function MacroDebug:push(unit, velocity_dir, velocity_length, mass)
+MacroDebug.push = function (self, unit, velocity_dir, velocity_length, mass)
 	velocity_dir = velocity_dir or self._default_push_velocity_dir
 	velocity_length = velocity_length or self._default_push_velocity_length
 	local effect_name = Idstring(slot6)
@@ -4020,7 +4020,7 @@ function MacroDebug:push(unit, velocity_dir, velocity_length, mass)
 
 	return 
 end
-function MacroDebug:ray_gravitate(multiplier)
+MacroDebug.ray_gravitate = function (self, multiplier)
 	slot4 = self
 	local ray = self.get_ray(slot3)
 
@@ -4044,7 +4044,7 @@ function MacroDebug:ray_gravitate(multiplier)
 
 	return 
 end
-function MacroDebug:gravitate(unit, multiplier)
+MacroDebug.gravitate = function (self, unit, multiplier)
 	local effect_name = Idstring(slot4)
 	slot8 = "physic_effect"
 
@@ -4057,7 +4057,7 @@ function MacroDebug:gravitate(unit, multiplier)
 
 	return 
 end
-function MacroDebug:stop_gravitate()
+MacroDebug.stop_gravitate = function (self)
 	local effect_name_str = "core/physic_effects/debugmanager_gravitate"
 	local effect_name = Idstring(slot3)
 	slot7 = "physic_effect"
@@ -4071,7 +4071,7 @@ function MacroDebug:stop_gravitate()
 
 	return 
 end
-function MacroDebug:ray_hover(multiplier)
+MacroDebug.ray_hover = function (self, multiplier)
 	slot4 = self
 	local ray = self.get_ray(slot3)
 
@@ -4095,7 +4095,7 @@ function MacroDebug:ray_hover(multiplier)
 
 	return 
 end
-function MacroDebug:hover(unit, multiplier)
+MacroDebug.hover = function (self, unit, multiplier)
 	local effect_name = Idstring(slot4)
 	slot8 = "physic_effect"
 
@@ -4108,7 +4108,7 @@ function MacroDebug:hover(unit, multiplier)
 
 	return 
 end
-function MacroDebug:stop_hover()
+MacroDebug.stop_hover = function (self)
 	local effect_name_str = "core/physic_effects/debugmanager_hover"
 	local effect_name = Idstring(slot3)
 	slot7 = "physic_effect"
@@ -4122,7 +4122,7 @@ function MacroDebug:stop_hover()
 
 	return 
 end
-function MacroDebug:effect(effect)
+MacroDebug.effect = function (self, effect)
 
 	-- Decompilation error in this vicinity:
 	local cam = managers.viewport.get_current_camera(slot3)
@@ -4135,7 +4135,7 @@ function MacroDebug:effect(effect)
 	}
 	slot10 = effect
 end
-function MacroDebug:ray_run_sequence(sequence, damage_type, source_unit, dest_body, normal, position, direction, damage, velocity, params)
+MacroDebug.ray_run_sequence = function (self, sequence, damage_type, source_unit, dest_body, normal, position, direction, damage, velocity, params)
 	slot13 = self
 	local ray = self.get_ray(slot12)
 
@@ -4174,7 +4174,7 @@ function MacroDebug:ray_run_sequence(sequence, damage_type, source_unit, dest_bo
 
 	return 
 end
-function MacroDebug:ray_select_unit()
+MacroDebug.ray_select_unit = function (self)
 	slot3 = self
 	local ray = self.get_ray(slot2)
 
@@ -4198,7 +4198,7 @@ function MacroDebug:ray_select_unit()
 
 	return 
 end
-function MacroDebug:select_unit(unit)
+MacroDebug.select_unit = function (self, unit)
 	local selected_unit = World.selected_unit(slot3)
 	slot6 = unit or self._last_unit
 
@@ -4216,7 +4216,7 @@ function MacroDebug:select_unit(unit)
 
 	return 
 end
-function MacroDebug:anim_verbose(unit)
+MacroDebug.anim_verbose = function (self, unit)
 	local selected_unit = World.selected_unit(slot3)
 	slot6 = unit or self._last_unit or selected_unit
 
@@ -4257,7 +4257,7 @@ function MacroDebug:anim_verbose(unit)
 
 	return 
 end
-function MacroDebug:spawn(unit_name, pos, rot)
+MacroDebug.spawn = function (self, unit_name, pos, rot)
 	unit_name = unit_name or self._last_unit_name
 	slot8 = unit_name
 
@@ -4273,7 +4273,7 @@ function MacroDebug:spawn(unit_name, pos, rot)
 
 	return 
 end
-function MacroDebug:multi_spawn(unit_name, unit_offset, count_x, count_y, count_z, pos, rot)
+MacroDebug.multi_spawn = function (self, unit_name, unit_offset, count_x, count_y, count_z, pos, rot)
 
 	-- Decompilation error in this vicinity:
 	slot10 = managers.viewport
@@ -4302,7 +4302,7 @@ function MacroDebug:multi_spawn(unit_name, unit_offset, count_x, count_y, count_
 
 	return 
 end
-function MacroDebug:ray_profile_unit(function_name_list, ignore_map, include_only_map, min_range, max_range, disabled, graph_disabled, gui_disabled, print_counters, instance_override)
+MacroDebug.ray_profile_unit = function (self, function_name_list, ignore_map, include_only_map, min_range, max_range, disabled, graph_disabled, gui_disabled, print_counters, instance_override)
 	slot13 = self
 	local ray = self.get_ray(slot12)
 
@@ -4324,7 +4324,7 @@ function MacroDebug:ray_profile_unit(function_name_list, ignore_map, include_onl
 
 	return 
 end
-function MacroDebug:profile_unit(unit, function_name_list, ignore_map, include_only_map, min_range, max_range, disabled, graph_disabled, gui_disabled, print_counters, instance_override)
+MacroDebug.profile_unit = function (self, unit, function_name_list, ignore_map, include_only_map, min_range, max_range, disabled, graph_disabled, gui_disabled, print_counters, instance_override)
 	slot14 = unit
 
 	if alive(slot13) then
@@ -4348,7 +4348,7 @@ function MacroDebug:profile_unit(unit, function_name_list, ignore_map, include_o
 
 	return 
 end
-function MacroDebug:unit_goto(add_to_path, unit, pos)
+MacroDebug.unit_goto = function (self, add_to_path, unit, pos)
 	if not unit then
 		slot6 = self
 		unit = self.get_last_unit(slot5)
@@ -4367,7 +4367,7 @@ function MacroDebug:unit_goto(add_to_path, unit, pos)
 
 	return 
 end
-function MacroDebug:fps(graph)
+MacroDebug.fps = function (self, graph)
 	if not self._check_fps and not self._check_fps_pause_time then
 		slot5 = true
 
@@ -4511,10 +4511,10 @@ function MacroDebug:fps(graph)
 
 	return 
 end
-function MacroDebug:is_fps_enabled()
+MacroDebug.is_fps_enabled = function (self)
 	return self._check_fps or self._check_fps_pause_time
 end
-function MacroDebug:set_fps_paused(paused)
+MacroDebug.set_fps_paused = function (self, paused)
 	if not paused ~= not self._check_fps_pause_time then
 		slot4 = self
 
@@ -4523,7 +4523,7 @@ function MacroDebug:set_fps_paused(paused)
 
 	return 
 end
-function MacroDebug:toggle_fps_paused()
+MacroDebug.toggle_fps_paused = function (self)
 	slot3 = TimerManager
 	slot3 = TimerManager.wall(slot2)
 	local wall_time = TimerManager.wall(slot2).time(slot2)
@@ -4542,7 +4542,7 @@ function MacroDebug:toggle_fps_paused()
 
 	return 
 end
-function MacroDebug:test_spawn_all(layer_name, sub_type)
+MacroDebug.test_spawn_all = function (self, layer_name, sub_type)
 	if not managers.editor then
 		slot6 = "Need to run this in the editor."
 
@@ -4577,7 +4577,7 @@ function MacroDebug:test_spawn_all(layer_name, sub_type)
 
 	return 
 end
-function MacroDebug:set_draw_unit_enabled(unit_name, is_enabled, draw_camera_line, draw_on_top, red, green, blue, disabled_color_scale)
+MacroDebug.set_draw_unit_enabled = function (self, unit_name, is_enabled, draw_camera_line, draw_on_top, red, green, blue, disabled_color_scale)
 	local unit_name_id = nil
 	slot12 = unit_name
 
@@ -4655,7 +4655,7 @@ function MacroDebug:set_draw_unit_enabled(unit_name, is_enabled, draw_camera_lin
 
 	return 
 end
-function MacroDebug:get_file_list_by_type(file_type)
+MacroDebug.get_file_list_by_type = function (self, file_type)
 
 	-- Decompilation error in this vicinity:
 	slot5 = file_type
@@ -4664,7 +4664,7 @@ function MacroDebug:get_file_list_by_type(file_type)
 
 	return 
 end
-function MacroDebug:get_asset_path()
+MacroDebug.get_asset_path = function (self)
 	local is_assetslocation_arg = nil
 	local relative_path = "../../assets/"
 	slot7 = Application
@@ -4685,7 +4685,7 @@ function MacroDebug:get_asset_path()
 
 	return self.get_cleaned_path(slot4, Application.nice_path(slot7, Application, Application.base_path(slot10) .. relative_path))
 end
-function MacroDebug:check_dangerous_network_slot(slot_list)
+MacroDebug.check_dangerous_network_slot = function (self, slot_list)
 	slot_list = slot_list or {
 		0
 	}
@@ -4814,7 +4814,7 @@ function MacroDebug:check_dangerous_network_slot(slot_list)
 
 	return found_unit_file_map
 end
-function MacroDebug:update(t, dt)
+MacroDebug.update = function (self, t, dt)
 	if self._check_fps then
 		slot5 = TimerManager
 		slot5 = TimerManager.wall(slot4)
@@ -4988,7 +4988,7 @@ function MacroDebug:update(t, dt)
 
 	return 
 end
-function MacroDebug:clear()
+MacroDebug.clear = function (self)
 	slot3 = self
 
 	MacroDebug.super.clear(slot2)
@@ -5003,7 +5003,7 @@ function MacroDebug:clear()
 
 	return 
 end
-function MacroDebug:toggle_endurance_damage_hook(skip_print, line_duration)
+MacroDebug.toggle_endurance_damage_hook = function (self, skip_print, line_duration)
 	line_duration = line_duration or self.DEFAULT_LINE_DURATION
 
 	if self._endurance_damage_hook then
@@ -5042,7 +5042,7 @@ function MacroDebug:toggle_endurance_damage_hook(skip_print, line_duration)
 
 	return 
 end
-function MacroDebug:_hijacked_endurance_activate(option_map, endurance, env)
+MacroDebug._hijacked_endurance_activate = function (self, option_map, endurance, env)
 	if not option_map.skip_print then
 		slot6 = "debug"
 		slot12 = env.dest_unit.name(slot13)
@@ -5083,7 +5083,7 @@ MemoryDebug.PRIMITIVE_VALUE_TYPE_MAP = DebugManager.PRIMITIVE_VALUE_TYPE_MAP or 
 	string = true,
 	number = true
 }
-function MemoryDebug:extensions()
+MemoryDebug.extensions = function (self)
 	slot4 = "all"
 	local unit_list = World.find_units_quick(slot2, World)
 	local extension_class_map = {}
@@ -5119,7 +5119,7 @@ function MemoryDebug:extensions()
 
 	return extension_class_map
 end
-function MemoryDebug:find_instance(find_value, is_meta_data, print_path, find_all, seen_map, map)
+MemoryDebug.find_instance = function (self, find_value, is_meta_data, print_path, find_all, seen_map, map)
 	if find_value ~= nil then
 		local function func(path, key, value, populate_map, info_map, seen_map, func)
 			slot19 = find_all
@@ -5136,7 +5136,7 @@ function MemoryDebug:find_instance(find_value, is_meta_data, print_path, find_al
 
 	return 
 end
-function MemoryDebug:find_instance_callback(print_path, path, key, value, populate_map, info_map, seen_map, find_value, is_meta_data, find_all)
+MemoryDebug.find_instance_callback = function (self, print_path, path, key, value, populate_map, info_map, seen_map, find_value, is_meta_data, find_all)
 	local found = nil
 
 	if is_meta_data then
@@ -5164,7 +5164,7 @@ function MemoryDebug:find_instance_callback(print_path, path, key, value, popula
 
 	return found, find_all
 end
-function MemoryDebug:traverse_instances(func, seen_map, map)
+MemoryDebug.traverse_instances = function (self, func, seen_map, map)
 	seen_map = seen_map or {}
 	local populate_map = {}
 	local info_map = {
@@ -5244,7 +5244,7 @@ function MemoryDebug:traverse_instances(func, seen_map, map)
 
 	return 
 end
-function MemoryDebug:traverse_instances_recursively(path, key, value, func, populate_map, info_map, seen_map)
+MemoryDebug.traverse_instances_recursively = function (self, path, key, value, func, populate_map, info_map, seen_map)
 	info_map.count = info_map.count + 1
 
 	if not seen_map[value] then
@@ -5297,7 +5297,7 @@ function MemoryDebug:traverse_instances_recursively(path, key, value, func, popu
 
 	return 
 end
-function MemoryDebug:calc(map, seen_map)
+MemoryDebug.calc = function (self, map, seen_map)
 	local global_populate_map = nil
 
 	if map ~= nil then
@@ -5326,7 +5326,7 @@ function MemoryDebug:calc(map, seen_map)
 
 	return 
 end
-function MemoryDebug:add_calc(key, value, is_key, populate_map)
+MemoryDebug.add_calc = function (self, key, value, is_key, populate_map)
 	local check_value = (is_key and key) or value
 	slot8 = check_value
 	local check_value_type = type(slot7)
@@ -5370,22 +5370,22 @@ function MemoryDebug:add_calc(key, value, is_key, populate_map)
 
 	return 
 end
-function MemoryDebug:add_calc_string(value, populate_map)
+MemoryDebug.add_calc_string = function (self, value, populate_map)
 	return #value * 2 * 8
 end
-function MemoryDebug:add_calc_number(value, populate_map)
+MemoryDebug.add_calc_number = function (self, value, populate_map)
 	return 32
 end
-function MemoryDebug:add_calc_boolean(value, populate_map)
+MemoryDebug.add_calc_boolean = function (self, value, populate_map)
 	return 1
 end
-function MemoryDebug:add_calc_userdata(value, populate_map)
+MemoryDebug.add_calc_userdata = function (self, value, populate_map)
 	return 128
 end
-function MemoryDebug:add_calc_table(value, populate_map)
+MemoryDebug.add_calc_table = function (self, value, populate_map)
 	return 0
 end
-function MemoryDebug:add_calc_function(value, populate_map)
+MemoryDebug.add_calc_function = function (self, value, populate_map)
 	return 128
 end
 
@@ -5396,21 +5396,21 @@ end
 
 ConsoleDebug = slot0
 ConsoleDebug.IS_PREFERRED_DISABLED = true
-function ConsoleDebug:init()
+ConsoleDebug.init = function (self)
 	slot3 = self
 
 	ConsoleDebug.super.init(slot2)
 
 	return 
 end
-function ConsoleDebug:destroy()
+ConsoleDebug.destroy = function (self)
 	slot3 = self
 
 	self.clear(slot2)
 
 	return 
 end
-function ConsoleDebug:set_enabled(enabled)
+ConsoleDebug.set_enabled = function (self, enabled)
 	local was_enabled = self._enabled
 	slot6 = enabled
 
@@ -5477,7 +5477,7 @@ function ConsoleDebug:set_enabled(enabled)
 
 	return 
 end
-function ConsoleDebug:hijacked_print(...)
+ConsoleDebug.hijacked_print = function (self, ...)
 	_G.hijacked_print(...)
 
 	slot3 = self
@@ -5486,7 +5486,7 @@ function ConsoleDebug:hijacked_print(...)
 
 	return 
 end
-function ConsoleDebug:hijacked_debug(app, ...)
+ConsoleDebug.hijacked_debug = function (self, app, ...)
 	slot4 = app
 
 	app.hijacked_debug(slot3, ...)
@@ -5497,7 +5497,7 @@ function ConsoleDebug:hijacked_debug(app, ...)
 
 	return 
 end
-function ConsoleDebug:hijacked_error(app, ...)
+ConsoleDebug.hijacked_error = function (self, app, ...)
 	slot4 = app
 
 	app.hijacked_error(slot3, ...)
@@ -5508,7 +5508,7 @@ function ConsoleDebug:hijacked_error(app, ...)
 
 	return 
 end
-function ConsoleDebug:hijacked_stack_dump(app, ...)
+ConsoleDebug.hijacked_stack_dump = function (self, app, ...)
 	slot4 = app
 
 	app.hijacked_stack_dump(slot3, ...)
@@ -5520,7 +5520,7 @@ function ConsoleDebug:hijacked_stack_dump(app, ...)
 
 	return 
 end
-function ConsoleDebug:get_stack_dump_text(skip_level)
+ConsoleDebug.get_stack_dump_text = function (self, skip_level)
 	local text = nil
 	local level = (skip_level or 0) + 1
 
@@ -5551,7 +5551,7 @@ function ConsoleDebug:get_stack_dump_text(skip_level)
 
 	return text or ""
 end
-function ConsoleDebug:clear()
+ConsoleDebug.clear = function (self)
 	slot3 = self
 
 	ConsoleDebug.super.clear(slot2)
@@ -5583,7 +5583,7 @@ function ConsoleDebug:clear()
 
 	return 
 end
-function ConsoleDebug:toggle_visible()
+ConsoleDebug.toggle_visible = function (self)
 	slot6 = self
 	slot4 = not self.get_visible(slot5)
 
@@ -5591,7 +5591,7 @@ function ConsoleDebug:toggle_visible()
 
 	return 
 end
-function ConsoleDebug:set_visible(visible)
+ConsoleDebug.set_visible = function (self, visible)
 	if not self._visible ~= not visible then
 		self._visible = visible
 		slot4 = self._workspace
@@ -5615,10 +5615,10 @@ function ConsoleDebug:set_visible(visible)
 
 	return 
 end
-function ConsoleDebug:get_visible()
+ConsoleDebug.get_visible = function (self)
 	return self._visible
 end
-function ConsoleDebug:add_print(...)
+ConsoleDebug.add_print = function (self, ...)
 	slot4 = self.get_arg_text(slot5, ...)
 	slot9 = 1
 
@@ -5626,7 +5626,7 @@ function ConsoleDebug:add_print(...)
 
 	return 
 end
-function ConsoleDebug:add_debug(...)
+ConsoleDebug.add_debug = function (self, ...)
 	slot4 = self.get_arg_text(slot5, ...)
 	slot9 = 0.2627450980392157
 
@@ -5634,7 +5634,7 @@ function ConsoleDebug:add_debug(...)
 
 	return 
 end
-function ConsoleDebug:add_error(...)
+ConsoleDebug.add_error = function (self, ...)
 	slot4 = self.get_arg_text(slot5, ...)
 	slot9 = 0
 
@@ -5642,7 +5642,7 @@ function ConsoleDebug:add_error(...)
 
 	return 
 end
-function ConsoleDebug:get_arg_text(...)
+ConsoleDebug.get_arg_text = function (self, ...)
 	local text = ""
 	slot4 = {
 		...
@@ -5659,7 +5659,7 @@ function ConsoleDebug:get_arg_text(...)
 
 	return text
 end
-function ConsoleDebug:add_text(text, color)
+ConsoleDebug.add_text = function (self, text, color)
 	slot5 = self._workspace
 
 	if not alive(slot4) then
@@ -5691,7 +5691,7 @@ function ConsoleDebug:add_text(text, color)
 
 	return 
 end
-function ConsoleDebug:invalidate()
+ConsoleDebug.invalidate = function (self)
 	slot3 = self._workspace
 
 	if alive(slot2) then
@@ -5851,7 +5851,7 @@ function ConsoleDebug:invalidate()
 
 	return 
 end
-function ConsoleDebug:setup()
+ConsoleDebug.setup = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -5963,7 +5963,7 @@ function ConsoleDebug:setup()
 
 
 end
-function ConsoleDebug:setup_controller()
+ConsoleDebug.setup_controller = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -6010,7 +6010,7 @@ function ConsoleDebug:setup_controller()
 
 
 end
-function ConsoleDebug:destroy_controller()
+ConsoleDebug.destroy_controller = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -6043,7 +6043,7 @@ function ConsoleDebug:destroy_controller()
 
 
 end
-function ConsoleDebug:update(t, dt)
+ConsoleDebug.update = function (self, t, dt)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -6089,7 +6089,7 @@ function ConsoleDebug:update(t, dt)
 
 
 end
-function ConsoleDebug:scroll_page_up()
+ConsoleDebug.scroll_page_up = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -6120,7 +6120,7 @@ function ConsoleDebug:scroll_page_up()
 
 
 end
-function ConsoleDebug:scroll_page_down()
+ConsoleDebug.scroll_page_down = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -6151,7 +6151,7 @@ function ConsoleDebug:scroll_page_down()
 
 
 end
-function ConsoleDebug:add_scroll(scroll)
+ConsoleDebug.add_scroll = function (self, scroll)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -6165,7 +6165,7 @@ function ConsoleDebug:add_scroll(scroll)
 
 
 end
-function ConsoleDebug:set_scroll(scroll)
+ConsoleDebug.set_scroll = function (self, scroll)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-17, warpins: 1 ---
@@ -6216,7 +6216,7 @@ end
 
 MenuDebug = slot0
 MenuDebug.IS_PREFERRED_DISABLED = true
-function MenuDebug:init()
+MenuDebug.init = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -6230,7 +6230,7 @@ function MenuDebug:init()
 
 
 end
-function MenuDebug:destroy()
+MenuDebug.destroy = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -6296,7 +6296,7 @@ function MenuDebug:destroy()
 
 
 end
-function MenuDebug:destroy_controller()
+MenuDebug.destroy_controller = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -6333,7 +6333,7 @@ function MenuDebug:destroy_controller()
 
 
 end
-function MenuDebug:set_enabled(enabled)
+MenuDebug.set_enabled = function (self, enabled)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -6441,7 +6441,7 @@ function MenuDebug:set_enabled(enabled)
 
 
 end
-function MenuDebug:toggle_visible()
+MenuDebug.toggle_visible = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -6456,7 +6456,7 @@ function MenuDebug:toggle_visible()
 
 
 end
-function MenuDebug:set_visible(visible)
+MenuDebug.set_visible = function (self, visible)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -6545,7 +6545,7 @@ function MenuDebug:set_visible(visible)
 
 
 end
-function MenuDebug:get_visible()
+MenuDebug.get_visible = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -6555,7 +6555,7 @@ function MenuDebug:get_visible()
 
 
 end
-function MenuDebug:clear()
+MenuDebug.clear = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -6574,7 +6574,7 @@ function MenuDebug:clear()
 
 
 end
-function MenuDebug:setup_controller()
+MenuDebug.setup_controller = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -6611,7 +6611,7 @@ function MenuDebug:setup_controller()
 
 
 end
-function MenuDebug:set_controller_triggers_enabled(controller, enabled)
+MenuDebug.set_controller_triggers_enabled = function (self, controller, enabled)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -6750,7 +6750,7 @@ function MenuDebug:set_controller_triggers_enabled(controller, enabled)
 
 
 end
-function MenuDebug:change_selection(change)
+MenuDebug.change_selection = function (self, change)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -6783,7 +6783,7 @@ function MenuDebug:change_selection(change)
 
 
 end
-function MenuDebug:confirm_button_pressed()
+MenuDebug.confirm_button_pressed = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -6899,7 +6899,7 @@ function MenuDebug:confirm_button_pressed()
 
 
 end
-function MenuDebug:cancel_button_pressed()
+MenuDebug.cancel_button_pressed = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -6975,7 +6975,7 @@ function MenuDebug:cancel_button_pressed()
 
 
 end
-function MenuDebug:left_button_pressed()
+MenuDebug.left_button_pressed = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -7036,7 +7036,7 @@ function MenuDebug:left_button_pressed()
 
 
 end
-function MenuDebug:right_button_pressed()
+MenuDebug.right_button_pressed = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -7097,7 +7097,7 @@ function MenuDebug:right_button_pressed()
 
 
 end
-function MenuDebug:setup_menu()
+MenuDebug.setup_menu = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -7403,7 +7403,7 @@ function MenuDebug:setup_menu()
 
 
 end
-function MenuDebug:setup_menu_shape()
+MenuDebug.setup_menu_shape = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -7719,7 +7719,7 @@ function MenuDebug:setup_menu_shape()
 
 
 end
-function MenuDebug:set(menu_data)
+MenuDebug.set = function (self, menu_data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -7804,7 +7804,7 @@ function MenuDebug:set(menu_data)
 
 
 end
-function MenuDebug:get_level()
+MenuDebug.get_level = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -7822,7 +7822,7 @@ function MenuDebug:get_level()
 
 
 end
-function MenuDebug:update(t, dt)
+MenuDebug.update = function (self, t, dt)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-19, warpins: 1 ---

@@ -18,7 +18,7 @@ if not ElementCounter then
 end
 
 ElementCounter = slot0
-ElementCounter.init = function (self, ...)
+function ElementCounter:init(...)
 	slot3 = self
 
 	ElementCounter.super.init(slot2, ...)
@@ -28,14 +28,14 @@ ElementCounter.init = function (self, ...)
 
 	return 
 end
-ElementCounter.client_on_executed = function (self, ...)
+function ElementCounter:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementCounter.on_script_activated = function (self)
+function ElementCounter:on_script_activated()
 	slot5 = "counter_target"
 	self._values.counter_target = self.value(slot3, self)
 	self._original_value = self._values.counter_target
@@ -94,7 +94,7 @@ ElementCounter.on_script_activated = function (self)
 
 	return 
 end
-ElementCounter._load_unit = function (self, unit)
+function ElementCounter:_load_unit(unit)
 	slot5 = unit
 
 	table.insert(slot3, self._digital_gui_units)
@@ -106,7 +106,7 @@ ElementCounter._load_unit = function (self, unit)
 
 	return 
 end
-ElementCounter.on_executed = function (self, instigator)
+function ElementCounter:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -148,7 +148,7 @@ ElementCounter.on_executed = function (self, instigator)
 
 	return 
 end
-ElementCounter.reset_counter_target = function (self, counter_target)
+function ElementCounter:reset_counter_target(counter_target)
 	self._values.counter_target = counter_target
 	slot4 = self
 
@@ -160,7 +160,7 @@ ElementCounter.reset_counter_target = function (self, counter_target)
 
 	return 
 end
-ElementCounter.counter_operation_add = function (self, amount)
+function ElementCounter:counter_operation_add(amount)
 	self._values.counter_target = self._values.counter_target + amount
 	slot4 = self
 
@@ -180,7 +180,7 @@ ElementCounter.counter_operation_add = function (self, amount)
 
 	return 
 end
-ElementCounter.counter_operation_subtract = function (self, amount)
+function ElementCounter:counter_operation_subtract(amount)
 	self._values.counter_target = self._values.counter_target - amount
 	slot4 = self
 
@@ -200,7 +200,7 @@ ElementCounter.counter_operation_subtract = function (self, amount)
 
 	return 
 end
-ElementCounter.counter_operation_reset = function (self, amount)
+function ElementCounter:counter_operation_reset(amount)
 	self._values.counter_target = self._original_value
 	slot4 = self
 
@@ -220,7 +220,7 @@ ElementCounter.counter_operation_reset = function (self, amount)
 
 	return 
 end
-ElementCounter.counter_operation_set = function (self, amount)
+function ElementCounter:counter_operation_set(amount)
 	self._values.counter_target = amount
 	slot4 = self
 
@@ -240,7 +240,7 @@ ElementCounter.counter_operation_set = function (self, amount)
 
 	return 
 end
-ElementCounter.apply_job_value = function (self, amount)
+function ElementCounter:apply_job_value(amount)
 	slot4 = amount
 	local type = CoreClass.type_name(slot3)
 
@@ -258,7 +258,7 @@ ElementCounter.apply_job_value = function (self, amount)
 
 	return 
 end
-ElementCounter.add_trigger = function (self, id, type, amount, callback)
+function ElementCounter:add_trigger(id, type, amount, callback)
 	self._triggers[type] = self._triggers[type] or {}
 	self._triggers[type][id] = {
 		amount = amount,
@@ -267,15 +267,15 @@ ElementCounter.add_trigger = function (self, id, type, amount, callback)
 
 	return 
 end
-ElementCounter.counter_value = function (self)
+function ElementCounter:counter_value()
 	return self._values.counter_target
 end
-ElementCounter._set_counter_value = function (self, counter_value)
+function ElementCounter:_set_counter_value(counter_value)
 	self._values.counter_target = counter_value
 
 	return 
 end
-ElementCounter._update_digital_guis_number = function (self)
+function ElementCounter:_update_digital_guis_number()
 	slot3 = self._digital_gui_units
 
 	for _, unit in ipairs(slot2) do
@@ -291,7 +291,7 @@ ElementCounter._update_digital_guis_number = function (self)
 
 	return 
 end
-ElementCounter._check_triggers = function (self, type)
+function ElementCounter:_check_triggers(type)
 	if not self._triggers[type] then
 		return 
 	end
@@ -306,7 +306,7 @@ ElementCounter._check_triggers = function (self, type)
 
 	return 
 end
-ElementCounter.monitor_output_change = function (self)
+function ElementCounter:monitor_output_change()
 	if self.monitor_element then
 		local output_string = self._values.counter_target
 		slot6 = output_string
@@ -316,7 +316,7 @@ ElementCounter.monitor_output_change = function (self)
 
 	return 
 end
-ElementCounter.save = function (self, data)
+function ElementCounter:save(data)
 	slot4 = self
 	data.counter_value = self.counter_value(slot3)
 	data.original_value = self._original_value
@@ -324,7 +324,7 @@ ElementCounter.save = function (self, data)
 
 	return 
 end
-ElementCounter.load = function (self, data)
+function ElementCounter:load(data)
 	if data.counter_value then
 		slot5 = data.counter_value
 
@@ -345,21 +345,21 @@ if not ElementCounterReset then
 end
 
 ElementCounterReset = slot0
-ElementCounterReset.client_on_executed = function (self, ...)
+function ElementCounterReset:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementCounterReset.init = function (self, ...)
+function ElementCounterReset:init(...)
 	slot3 = self
 
 	ElementCounterReset.super.init(slot2, ...)
 
 	return 
 end
-ElementCounterReset.on_executed = function (self, instigator)
+function ElementCounterReset:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -400,21 +400,21 @@ if not ElementCounterOperator then
 end
 
 ElementCounterOperator = slot0
-ElementCounterOperator.init = function (self, ...)
+function ElementCounterOperator:init(...)
 	slot3 = self
 
 	ElementCounterOperator.super.init(slot2, ...)
 
 	return 
 end
-ElementCounterOperator.client_on_executed = function (self, ...)
+function ElementCounterOperator:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementCounterOperator.on_executed = function (self, instigator)
+function ElementCounterOperator:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -470,14 +470,14 @@ if not ElementCounterTrigger then
 end
 
 ElementCounterTrigger = slot0
-ElementCounterTrigger.init = function (self, ...)
+function ElementCounterTrigger:init(...)
 	slot3 = self
 
 	ElementCounterTrigger.super.init(slot2, ...)
 
 	return 
 end
-ElementCounterTrigger.on_script_activated = function (self)
+function ElementCounterTrigger:on_script_activated()
 	slot3 = Network
 
 	if Network.is_server(slot2) then
@@ -495,10 +495,10 @@ ElementCounterTrigger.on_script_activated = function (self)
 
 	return 
 end
-ElementCounterTrigger.client_on_executed = function (self, ...)
+function ElementCounterTrigger:client_on_executed(...)
 	return 
 end
-ElementCounterTrigger.on_executed = function (self, instigator)
+function ElementCounterTrigger:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -516,20 +516,20 @@ if not ElementCounterFilter then
 end
 
 ElementCounterFilter = slot0
-ElementCounterFilter.init = function (self, ...)
+function ElementCounterFilter:init(...)
 	slot3 = self
 
 	ElementCounterFilter.super.init(slot2, ...)
 
 	return 
 end
-ElementCounterFilter.on_script_activated = function (self)
+function ElementCounterFilter:on_script_activated()
 	return 
 end
-ElementCounterFilter.client_on_executed = function (self, ...)
+function ElementCounterFilter:client_on_executed(...)
 	return 
 end
-ElementCounterFilter.on_executed = function (self, instigator)
+function ElementCounterFilter:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -546,7 +546,7 @@ ElementCounterFilter.on_executed = function (self, instigator)
 
 	return 
 end
-ElementCounterFilter._values_ok = function (self)
+function ElementCounterFilter:_values_ok()
 	if self._values.check_type == "counters_equal" then
 		slot3 = self
 
@@ -573,7 +573,7 @@ ElementCounterFilter._values_ok = function (self)
 
 	return 
 end
-ElementCounterFilter._all_counter_values_equal = function (self)
+function ElementCounterFilter:_all_counter_values_equal()
 	local test_value = nil
 	slot4 = self._values.elements
 
@@ -595,7 +595,7 @@ ElementCounterFilter._all_counter_values_equal = function (self)
 
 	return true
 end
-ElementCounterFilter._all_counters_ok = function (self)
+function ElementCounterFilter:_all_counters_ok()
 	slot3 = self._values.elements
 
 	for _, id in ipairs(slot2) do
@@ -609,7 +609,7 @@ ElementCounterFilter._all_counters_ok = function (self)
 
 	return true
 end
-ElementCounterFilter._any_counters_ok = function (self)
+function ElementCounterFilter:_any_counters_ok()
 	slot3 = self._values.elements
 
 	for _, id in ipairs(slot2) do
@@ -623,7 +623,7 @@ ElementCounterFilter._any_counters_ok = function (self)
 
 	return false
 end
-ElementCounterFilter._check_type = function (self, element)
+function ElementCounterFilter:_check_type(element)
 	if not self._values.check_type or self._values.check_type == "equal" then
 		slot4 = element
 

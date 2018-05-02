@@ -4,14 +4,14 @@ if not ChallengeCardsViewGui then
 end
 
 ChallengeCardsViewGui = slot0
-ChallengeCardsViewGui.init = function (self, ws, fullscreen_ws, node, component_name)
+function ChallengeCardsViewGui:init(ws, fullscreen_ws, node, component_name)
 	slot11 = component_name
 
 	ChallengeCardsViewGui.super.init(slot6, self, ws, fullscreen_ws, node)
 
 	return 
 end
-ChallengeCardsViewGui._set_initial_data = function (self)
+function ChallengeCardsViewGui:_set_initial_data()
 	slot4 = "challenge_cards_album_view_title"
 
 	self._node.components.raid_menu_header.set_screen_name(slot2, self._node.components.raid_menu_header)
@@ -23,7 +23,7 @@ ChallengeCardsViewGui._set_initial_data = function (self)
 
 	return 
 end
-ChallengeCardsViewGui._layout = function (self)
+function ChallengeCardsViewGui:_layout()
 	slot4 = {
 		tab_align = "center",
 		name = "rarity_filters_tabs",
@@ -164,7 +164,7 @@ ChallengeCardsViewGui._layout = function (self)
 
 	return 
 end
-ChallengeCardsViewGui.on_click_filter_rarity = function (self, rarity)
+function ChallengeCardsViewGui:on_click_filter_rarity(rarity)
 	self._filter_rarity = rarity
 	slot4 = self
 
@@ -172,7 +172,7 @@ ChallengeCardsViewGui.on_click_filter_rarity = function (self, rarity)
 
 	return 
 end
-ChallengeCardsViewGui.on_click_filter_type = function (self, type)
+function ChallengeCardsViewGui:on_click_filter_type(type)
 	self._filter_type = type
 	slot4 = self
 
@@ -180,7 +180,7 @@ ChallengeCardsViewGui.on_click_filter_type = function (self, type)
 
 	return 
 end
-ChallengeCardsViewGui.reload_filtered_data = function (self)
+function ChallengeCardsViewGui:reload_filtered_data()
 	if self._challenge_cards_steam_data_source and (self._filter_rarity == LootDropTweakData.RARITY_ALL or not self._filter_rarity) then
 		slot3 = self._challenge_cards_steam_data_source
 		self._challenge_cards_data_source = clone(slot2)
@@ -236,12 +236,12 @@ ChallengeCardsViewGui.reload_filtered_data = function (self)
 
 	return 
 end
-ChallengeCardsViewGui.data_source_inventory_cards = function (self)
+function ChallengeCardsViewGui:data_source_inventory_cards()
 	self._challenge_cards_data_source = self._challenge_cards_data_source or {}
 
 	return self._challenge_cards_data_source
 end
-ChallengeCardsViewGui._on_click_inventory_cards = function (self, item_data)
+function ChallengeCardsViewGui:_on_click_inventory_cards(item_data)
 	if item_data then
 		slot6 = item_data.steam_instance_id
 
@@ -254,7 +254,7 @@ ChallengeCardsViewGui._on_click_inventory_cards = function (self, item_data)
 
 	return 
 end
-ChallengeCardsViewGui._on_select_inventory_cards = function (self, item_idx, item_data)
+function ChallengeCardsViewGui:_on_select_inventory_cards(item_idx, item_data)
 	if item_data then
 		slot7 = item_data.steam_instance_id
 
@@ -267,7 +267,7 @@ ChallengeCardsViewGui._on_select_inventory_cards = function (self, item_idx, ite
 
 	return 
 end
-ChallengeCardsViewGui.render_player_inventory = function (self, params)
+function ChallengeCardsViewGui:render_player_inventory(params)
 	if not params or not params.list then
 		return 
 	end
@@ -299,7 +299,7 @@ ChallengeCardsViewGui.render_player_inventory = function (self, params)
 
 	return 
 end
-ChallengeCardsViewGui.close = function (self)
+function ChallengeCardsViewGui:close()
 	slot4 = "challenge_cards_view_gui_steam_inventory_loaded"
 
 	managers.system_event_listener.remove_listener(slot2, managers.system_event_listener)
@@ -310,7 +310,7 @@ ChallengeCardsViewGui.close = function (self)
 
 	return 
 end
-ChallengeCardsViewGui._auto_select_first_card_in_grid = function (self)
+function ChallengeCardsViewGui:_auto_select_first_card_in_grid()
 	local card_data = nil
 
 	if self._challenge_cards_data_source and 1 <= #self._challenge_cards_data_source then
@@ -329,10 +329,10 @@ ChallengeCardsViewGui._auto_select_first_card_in_grid = function (self)
 
 	return 
 end
-ChallengeCardsViewGui.on_mouse_moved = function (self, o, x, y)
+function ChallengeCardsViewGui:on_mouse_moved(o, x, y)
 	return false
 end
-ChallengeCardsViewGui.bind_controller_inputs = function (self)
+function ChallengeCardsViewGui:bind_controller_inputs()
 	local bindings = {}
 	slot5 = "menu_controller_shoulder_left"
 	slot7 = "_on_tabs_rarity_left"
@@ -381,35 +381,35 @@ ChallengeCardsViewGui.bind_controller_inputs = function (self)
 
 	return 
 end
-ChallengeCardsViewGui._on_tabs_rarity_left = function (self)
+function ChallengeCardsViewGui:_on_tabs_rarity_left()
 	slot3 = self._rarity_filters_tabs
 
 	self._rarity_filters_tabs._move_left(slot2)
 
 	return true, nil
 end
-ChallengeCardsViewGui._on_tabs_rarity_right = function (self)
+function ChallengeCardsViewGui:_on_tabs_rarity_right()
 	slot3 = self._rarity_filters_tabs
 
 	self._rarity_filters_tabs._move_right(slot2)
 
 	return true, nil
 end
-ChallengeCardsViewGui._on_tabs_type_left = function (self)
+function ChallengeCardsViewGui:_on_tabs_type_left()
 	slot3 = self._type_filters_tabs
 
 	self._type_filters_tabs._move_left(slot2)
 
 	return true, nil
 end
-ChallengeCardsViewGui._on_tabs_type_right = function (self)
+function ChallengeCardsViewGui:_on_tabs_type_right()
 	slot3 = self._type_filters_tabs
 
 	self._type_filters_tabs._move_right(slot2)
 
 	return true, nil
 end
-ChallengeCardsViewGui.back_pressed = function (self)
+function ChallengeCardsViewGui:back_pressed()
 	slot3 = managers.raid_menu
 
 	managers.raid_menu.on_escape(slot2)

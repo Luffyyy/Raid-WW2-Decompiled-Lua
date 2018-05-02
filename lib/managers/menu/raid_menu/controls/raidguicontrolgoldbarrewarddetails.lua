@@ -34,7 +34,7 @@ RaidGUIControlGoldBarRewardDetails.ITEM_TYPE_Y = 224
 RaidGUIControlGoldBarRewardDetails.ITEM_TYPE_H = 64
 RaidGUIControlGoldBarRewardDetails.ITEM_TYPE_FONT_SIZE = tweak_data.gui.font_sizes.size_38
 RaidGUIControlGoldBarRewardDetails.ITEM_TYPE_COLOR = tweak_data.gui.colors.raid_white
-RaidGUIControlGoldBarRewardDetails.init = function (self, parent, params)
+function RaidGUIControlGoldBarRewardDetails:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlGoldBarRewardDetails.super.init(slot4, self, parent)
@@ -77,7 +77,7 @@ RaidGUIControlGoldBarRewardDetails.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlGoldBarRewardDetails._create_control_panel = function (self)
+function RaidGUIControlGoldBarRewardDetails:_create_control_panel()
 	slot3 = self._params
 	local control_params = clone(slot2)
 	control_params.x = control_params.x
@@ -92,7 +92,7 @@ RaidGUIControlGoldBarRewardDetails._create_control_panel = function (self)
 
 	return 
 end
-RaidGUIControlGoldBarRewardDetails._create_left_panel = function (self)
+function RaidGUIControlGoldBarRewardDetails:_create_left_panel()
 	local left_panel_params = {
 		name = "left_panel",
 		w = RaidGUIControlGoldBarRewardDetails.LEFT_PANEL_W
@@ -104,7 +104,7 @@ RaidGUIControlGoldBarRewardDetails._create_left_panel = function (self)
 
 	return 
 end
-RaidGUIControlGoldBarRewardDetails._create_gold_bar_value = function (self)
+function RaidGUIControlGoldBarRewardDetails:_create_gold_bar_value()
 	local title_description_params = {
 		name = "title_description",
 		vertical = "center",
@@ -146,7 +146,7 @@ RaidGUIControlGoldBarRewardDetails._create_gold_bar_value = function (self)
 
 	return 
 end
-RaidGUIControlGoldBarRewardDetails._layout_gold_bar_value = function (self)
+function RaidGUIControlGoldBarRewardDetails:_layout_gold_bar_value()
 	slot3 = self._gold_bar_value
 	local _, _, w, h = self._gold_bar_value.text_rect(slot2)
 	slot8 = w
@@ -169,7 +169,7 @@ RaidGUIControlGoldBarRewardDetails._layout_gold_bar_value = function (self)
 
 	return 
 end
-RaidGUIControlGoldBarRewardDetails._create_reward_image = function (self)
+function RaidGUIControlGoldBarRewardDetails:_create_reward_image()
 	local reward_image_panel_params = {
 		name = "reward_image_panel",
 		y = RaidGUIControlGoldBarRewardDetails.REWARD_ICON_PANEL_Y
@@ -199,7 +199,7 @@ RaidGUIControlGoldBarRewardDetails._create_reward_image = function (self)
 
 	return 
 end
-RaidGUIControlGoldBarRewardDetails._create_right_panel = function (self)
+function RaidGUIControlGoldBarRewardDetails:_create_right_panel()
 	local right_panel_params = {
 		name = "right_panel"
 	}
@@ -217,7 +217,7 @@ RaidGUIControlGoldBarRewardDetails._create_right_panel = function (self)
 
 	return 
 end
-RaidGUIControlGoldBarRewardDetails._create_description = function (self)
+function RaidGUIControlGoldBarRewardDetails:_create_description()
 	local description_params = {
 		vertical = "top",
 		name = "description",
@@ -241,7 +241,7 @@ RaidGUIControlGoldBarRewardDetails._create_description = function (self)
 
 	return 
 end
-RaidGUIControlGoldBarRewardDetails._create_item_type = function (self)
+function RaidGUIControlGoldBarRewardDetails:_create_item_type()
 	local item_type_params = {
 		name = "item_type",
 		vertical = "center",
@@ -264,7 +264,7 @@ RaidGUIControlGoldBarRewardDetails._create_item_type = function (self)
 
 	return 
 end
-RaidGUIControlGoldBarRewardDetails.show = function (self)
+function RaidGUIControlGoldBarRewardDetails:show()
 	slot3 = self
 
 	RaidGUIControlGoldBarRewardDetails.super.show(slot2)
@@ -421,7 +421,7 @@ RaidGUIControlGoldBarRewardDetails.show = function (self)
 
 	return 
 end
-RaidGUIControlGoldBarRewardDetails.set_gold_bar_reward = function (self, amount)
+function RaidGUIControlGoldBarRewardDetails:set_gold_bar_reward(amount)
 	local text = ""
 
 	if amount == 1 then

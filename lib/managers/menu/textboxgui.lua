@@ -17,7 +17,7 @@ TextBoxGui.PRESETS = {
 		bottom = 620
 	}
 }
-function TextBoxGui:init(...)
+TextBoxGui.init = function (self, ...)
 	self._target_alpha = {}
 	self._visible = true
 	self._enabled = true
@@ -48,7 +48,7 @@ TextBoxGui._update = function (o, self)
 
 	return 
 end
-function TextBoxGui:set_layer(layer)
+TextBoxGui.set_layer = function (self, layer)
 	slot5 = self._init_layer + layer
 
 	self._panel.set_layer(slot3, self._panel)
@@ -62,12 +62,12 @@ function TextBoxGui:set_layer(layer)
 
 	return 
 end
-function TextBoxGui:layer()
+TextBoxGui.layer = function (self)
 	slot3 = self._panel
 
 	return self._panel.layer(slot2)
 end
-function TextBoxGui:add_background()
+TextBoxGui.add_background = function (self)
 	slot3 = self._fullscreen_ws
 
 	if alive(slot2) then
@@ -100,7 +100,7 @@ function TextBoxGui:add_background()
 
 	return 
 end
-function TextBoxGui:set_centered()
+TextBoxGui.set_centered = function (self)
 	slot3 = self._panel
 	slot6 = self._ws
 	slot6 = self._ws.panel(slot5)
@@ -109,7 +109,7 @@ function TextBoxGui:set_centered()
 
 	return 
 end
-function TextBoxGui:recreate_text_box(...)
+TextBoxGui.recreate_text_box = function (self, ...)
 	slot3 = self
 
 	self.close(slot2)
@@ -123,7 +123,7 @@ function TextBoxGui:recreate_text_box(...)
 
 	return 
 end
-function TextBoxGui:_create_text_box(ws, title, text, content_data, config)
+TextBoxGui._create_text_box = function (self, ws, title, text, content_data, config)
 	self._ws = ws
 	slot8 = self._ws
 	slot8 = self._ws.panel(slot7)
@@ -540,7 +540,7 @@ function TextBoxGui:_create_text_box(ws, title, text, content_data, config)
 
 	return main
 end
-function TextBoxGui:_setup_stats_panel(scroll_panel, stats_list, stats_text)
+TextBoxGui._setup_stats_panel = function (self, scroll_panel, stats_list, stats_text)
 
 	-- Decompilation error in this vicinity:
 	local has_stats = stats_list and 0 < #stats_list
@@ -557,7 +557,7 @@ function TextBoxGui:_setup_stats_panel(scroll_panel, stats_list, stats_text)
 
 	return stats_panel
 end
-function TextBoxGui:_setup_buttons_panel(info_area, button_list, focus_button, only_buttons)
+TextBoxGui._setup_buttons_panel = function (self, info_area, button_list, focus_button, only_buttons)
 	local has_buttons = button_list and 0 < #button_list
 	slot9 = {
 		name = "buttons_panel",
@@ -660,7 +660,7 @@ function TextBoxGui:_setup_buttons_panel(info_area, button_list, focus_button, o
 
 	return self._text_box_buttons_panel
 end
-function TextBoxGui:_setup_textbox(has_textbox, texbox_value)
+TextBoxGui._setup_textbox = function (self, has_textbox, texbox_value)
 	slot6 = "info_area"
 	local info_area = self._panel.child(slot4, self._panel)
 	slot7 = "scroll_panel"
@@ -723,7 +723,7 @@ function TextBoxGui:_setup_textbox(has_textbox, texbox_value)
 
 	return textbox_panel
 end
-function TextBoxGui:_input_field_text_changed()
+TextBoxGui._input_field_text_changed = function (self)
 	if not self._callback_data then
 		self._callback_data = {}
 	end
@@ -733,13 +733,13 @@ function TextBoxGui:_input_field_text_changed()
 
 	return 
 end
-function TextBoxGui:_create_lower_static_panel()
+TextBoxGui._create_lower_static_panel = function (self)
 	return 
 end
-function TextBoxGui:get_callback_data()
+TextBoxGui.get_callback_data = function (self)
 	return self._callback_data
 end
-function TextBoxGui:check_focus_button(x, y)
+TextBoxGui.check_focus_button = function (self, x, y)
 	slot7 = self._text_box_buttons_panel
 
 	for i, panel in ipairs(self._text_box_buttons_panel.children(slot6)) do
@@ -758,7 +758,7 @@ function TextBoxGui:check_focus_button(x, y)
 
 	return false
 end
-function TextBoxGui:set_focus_button(focus_button)
+TextBoxGui.set_focus_button = function (self, focus_button)
 	if focus_button ~= self._text_box_focus_button then
 		slot5 = "highlight"
 
@@ -779,7 +779,7 @@ function TextBoxGui:set_focus_button(focus_button)
 
 	return 
 end
-function TextBoxGui:unfocus_button(index)
+TextBoxGui.unfocus_button = function (self, index)
 	if self._text_box_focus_button == index then
 		slot6 = false
 
@@ -790,7 +790,7 @@ function TextBoxGui:unfocus_button(index)
 
 	return 
 end
-function TextBoxGui:_set_button_selected(index, is_selected)
+TextBoxGui._set_button_selected = function (self, index, is_selected)
 	local button = self._buttons[index]
 
 	if button then
@@ -801,7 +801,7 @@ function TextBoxGui:_set_button_selected(index, is_selected)
 
 	return 
 end
-function TextBoxGui:change_focus_button(change)
+TextBoxGui.change_focus_button = function (self, change)
 	if self._input_field then
 		slot4 = self._input_field
 
@@ -829,22 +829,22 @@ function TextBoxGui:change_focus_button(change)
 
 	return 
 end
-function TextBoxGui:get_focus_button()
+TextBoxGui.get_focus_button = function (self)
 	return self._text_box_focus_button
 end
-function TextBoxGui:get_focus_button_id()
+TextBoxGui.get_focus_button_id = function (self)
 	slot4 = self._text_box_focus_button - 1
 	slot3 = self._text_box_buttons_panel.child(slot2, self._text_box_buttons_panel)
 
 	return self._text_box_buttons_panel.child(slot2, self._text_box_buttons_panel).name(slot2)
 end
-function TextBoxGui:input_focus()
+TextBoxGui.input_focus = function (self)
 	return false
 end
-function TextBoxGui:mouse_pressed(button, x, y)
+TextBoxGui.mouse_pressed = function (self, button, x, y)
 	return false
 end
-function TextBoxGui:check_close(x, y)
+TextBoxGui.check_close = function (self, x, y)
 	slot5 = self
 
 	if not self.can_take_input(slot4) then
@@ -867,7 +867,7 @@ function TextBoxGui:check_close(x, y)
 
 	return false
 end
-function TextBoxGui:check_minimize(x, y)
+TextBoxGui.check_minimize = function (self, x, y)
 	slot5 = self
 
 	if not self.can_take_input(slot4) then
@@ -890,7 +890,7 @@ function TextBoxGui:check_minimize(x, y)
 
 	return false
 end
-function TextBoxGui:mouse_moved(x, y)
+TextBoxGui.mouse_moved = function (self, x, y)
 
 	-- Decompilation error in this vicinity:
 	slot5 = self
@@ -963,16 +963,16 @@ function TextBoxGui:mouse_moved(x, y)
 
 	return false, "arrow"
 end
-function TextBoxGui:check_grab_scroll_bar()
+TextBoxGui.check_grab_scroll_bar = function (self)
 	return false
 end
-function TextBoxGui:moved_scroll_bar()
+TextBoxGui.moved_scroll_bar = function (self)
 	return false, "arrow"
 end
-function TextBoxGui:release_scroll_bar()
+TextBoxGui.release_scroll_bar = function (self)
 	return 
 end
-function TextBoxGui:set_fade(fade)
+TextBoxGui.set_fade = function (self, fade)
 	slot5 = fade
 
 	self._set_alpha(slot3, self)
@@ -987,7 +987,7 @@ function TextBoxGui:set_fade(fade)
 
 	return 
 end
-function TextBoxGui:_set_alpha(alpha)
+TextBoxGui._set_alpha = function (self, alpha)
 	slot5 = alpha
 
 	self._panel.set_alpha(slot3, self._panel)
@@ -998,7 +998,7 @@ function TextBoxGui:_set_alpha(alpha)
 
 	return 
 end
-function TextBoxGui:_set_alpha_recursive(obj, alpha)
+TextBoxGui._set_alpha_recursive = function (self, obj, alpha)
 	if obj.set_color then
 		slot6 = obj
 	end
@@ -1015,7 +1015,7 @@ function TextBoxGui:_set_alpha_recursive(obj, alpha)
 
 	return 
 end
-function TextBoxGui:set_title(title)
+TextBoxGui.set_title = function (self, title)
 	slot5 = "title"
 	local title_text = self._panel.child(slot3, self._panel)
 	slot6 = title or "none"
@@ -1039,7 +1039,7 @@ function TextBoxGui:set_title(title)
 
 	return 
 end
-function TextBoxGui:set_text(txt, no_upper)
+TextBoxGui.set_text = function (self, txt, no_upper)
 	slot6 = "info_area"
 	slot6 = "scroll_panel"
 	slot6 = "text_box_gui_text"
@@ -1056,7 +1056,7 @@ function TextBoxGui:set_text(txt, no_upper)
 
 	return 
 end
-function TextBoxGui:set_use_minimize_legend(use)
+TextBoxGui.set_use_minimize_legend = function (self, use)
 	slot5 = "legend_minimize"
 	slot5 = use
 
@@ -1064,18 +1064,18 @@ function TextBoxGui:set_use_minimize_legend(use)
 
 	return 
 end
-function TextBoxGui:in_focus(x, y)
+TextBoxGui.in_focus = function (self, x, y)
 	slot7 = y
 
 	return self._panel.inside(slot4, self._panel, x)
 end
-function TextBoxGui:in_info_area_focus(x, y)
+TextBoxGui.in_info_area_focus = function (self, x, y)
 	slot6 = "info_area"
 	slot7 = y
 
 	return self._panel.child(slot4, self._panel).inside(slot4, self._panel.child(slot4, self._panel), x)
 end
-function TextBoxGui:_set_visible_state()
+TextBoxGui._set_visible_state = function (self)
 	local visible = self._visible and self._enabled
 	slot5 = visible
 
@@ -1091,10 +1091,10 @@ function TextBoxGui:_set_visible_state()
 
 	return 
 end
-function TextBoxGui:can_take_input()
+TextBoxGui.can_take_input = function (self)
 	return self._visible and self._enabled
 end
-function TextBoxGui:set_visible(visible)
+TextBoxGui.set_visible = function (self, visible)
 	self._visible = visible
 	slot4 = self
 
@@ -1102,7 +1102,7 @@ function TextBoxGui:set_visible(visible)
 
 	return 
 end
-function TextBoxGui:set_enabled(enabled)
+TextBoxGui.set_enabled = function (self, enabled)
 	if self._enabled == enabled then
 		return 
 	end
@@ -1126,10 +1126,10 @@ function TextBoxGui:set_enabled(enabled)
 
 	return 
 end
-function TextBoxGui:enabled()
+TextBoxGui.enabled = function (self)
 	return self._enabled
 end
-function TextBoxGui:_maximize(data)
+TextBoxGui._maximize = function (self, data)
 	slot5 = true
 
 	self.set_visible(slot3, self)
@@ -1144,7 +1144,7 @@ function TextBoxGui:_maximize(data)
 
 	return 
 end
-function TextBoxGui:set_minimized(minimized, minimized_data)
+TextBoxGui.set_minimized = function (self, minimized, minimized_data)
 	self._minimized = minimized
 	self._minimized_data = minimized_data
 
@@ -1156,7 +1156,7 @@ function TextBoxGui:set_minimized(minimized, minimized_data)
 
 	return 
 end
-function TextBoxGui:_add_minimized()
+TextBoxGui._add_minimized = function (self)
 	slot6 = "_maximize"
 	slot2 = callback(slot3, self, self)
 	self._minimized_data.callback = slot2
@@ -1169,7 +1169,7 @@ function TextBoxGui:_add_minimized()
 
 	return 
 end
-function TextBoxGui:_remove_minimized(id)
+TextBoxGui._remove_minimized = function (self, id)
 	self._minimized_id = nil
 	slot5 = id
 
@@ -1177,22 +1177,22 @@ function TextBoxGui:_remove_minimized(id)
 
 	return 
 end
-function TextBoxGui:minimized()
+TextBoxGui.minimized = function (self)
 	return self._minimized
 end
-function TextBoxGui:set_position(x, y)
+TextBoxGui.set_position = function (self, x, y)
 	slot7 = y
 
 	self._panel.set_position(slot4, self._panel, x)
 
 	return 
 end
-function TextBoxGui:position()
+TextBoxGui.position = function (self)
 	slot3 = self._panel
 
 	return self._panel.position(slot2)
 end
-function TextBoxGui:set_size(x, y)
+TextBoxGui.set_size = function (self, x, y)
 	slot7 = y
 
 	self._panel.set_size(slot4, self._panel, x)
@@ -1278,33 +1278,33 @@ function TextBoxGui:set_size(x, y)
 
 	return 
 end
-function TextBoxGui:size()
+TextBoxGui.size = function (self)
 	slot3 = self._panel
 
 	return self._panel.size(slot2)
 end
-function TextBoxGui:open_page()
+TextBoxGui.open_page = function (self)
 	return 
 end
-function TextBoxGui:close_page()
+TextBoxGui.close_page = function (self)
 	return 
 end
-function TextBoxGui:x()
+TextBoxGui.x = function (self)
 	slot3 = self._panel
 
 	return self._panel.x(slot2)
 end
-function TextBoxGui:y()
+TextBoxGui.y = function (self)
 	slot3 = self._panel
 
 	return self._panel.y(slot2)
 end
-function TextBoxGui:h()
+TextBoxGui.h = function (self)
 	slot3 = self._panel
 
 	return self._panel.h(slot2)
 end
-function TextBoxGui:w()
+TextBoxGui.w = function (self)
 	slot3 = self._panel
 
 	return self._panel.w(slot2)

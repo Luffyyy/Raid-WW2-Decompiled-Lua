@@ -7,7 +7,7 @@ slot3 = "CoreSessionStateInit"
 core.import(slot1, core)
 
 InSessionEnd = InSessionEnd or class()
-InSessionEnd.init = function (self, session)
+function InSessionEnd:init(session)
 	slot4 = session
 
 	assert(slot3)
@@ -19,10 +19,10 @@ InSessionEnd.init = function (self, session)
 
 	return 
 end
-InSessionEnd.destroy = function (self)
+function InSessionEnd:destroy()
 	return 
 end
-InSessionEnd.transition = function (self)
+function InSessionEnd:transition()
 	return CoreSessionStateInit
 end
 

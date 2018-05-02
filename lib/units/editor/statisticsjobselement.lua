@@ -6,7 +6,7 @@ end
 StatisticsJobsElement = slot0
 StatisticsJobsElement.SAVE_UNIT_POSITION = false
 StatisticsJobsElement.SAVE_UNIT_ROTATION = false
-StatisticsJobsElement.init = function (self, unit)
+function StatisticsJobsElement:init(unit)
 	slot5 = unit
 
 	MissionElement.init(slot3, self)
@@ -44,7 +44,7 @@ StatisticsJobsElement.init = function (self, unit)
 
 	return 
 end
-StatisticsJobsElement._build_panel = function (self, panel, panel_sizer)
+function StatisticsJobsElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

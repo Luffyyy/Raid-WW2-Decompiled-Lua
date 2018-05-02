@@ -11,14 +11,14 @@ if not MusicUnitElement then
 end
 
 MusicUnitElement = slot0
-MusicUnitElement.init = function (self, ...)
+function MusicUnitElement:init(...)
 	slot3 = self
 
 	CoreMusicUnitElement.init(slot2, ...)
 
 	return 
 end
-CoreMusicUnitElement.init = function (self, unit)
+function CoreMusicUnitElement:init(unit)
 	slot5 = unit
 
 	MissionElement.init(slot3, self)
@@ -30,7 +30,7 @@ CoreMusicUnitElement.init = function (self, unit)
 
 	return 
 end
-CoreMusicUnitElement.test_element = function (self)
+function CoreMusicUnitElement:test_element()
 	if self._hed.music_event then
 		slot4 = false
 
@@ -43,7 +43,7 @@ CoreMusicUnitElement.test_element = function (self)
 
 	return 
 end
-CoreMusicUnitElement.stop_test_element = function (self)
+function CoreMusicUnitElement:stop_test_element()
 	slot4 = true
 
 	managers.editor.set_wanted_mute(slot2, managers.editor)
@@ -54,7 +54,7 @@ CoreMusicUnitElement.stop_test_element = function (self)
 
 	return 
 end
-CoreMusicUnitElement._build_panel = function (self, panel, panel_sizer)
+function CoreMusicUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

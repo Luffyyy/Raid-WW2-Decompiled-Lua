@@ -6,7 +6,7 @@ if not MissionElementTimeline then
 end
 
 MissionElementTimeline = slot0
-MissionElementTimeline.init = function (self, caption)
+function MissionElementTimeline:init(caption)
 	slot12 = 0
 	slot13 = 0
 	slot10 = "DEFAULT_DIALOG_STYLE,RESIZE_BORDER,STAY_ON_TOP"
@@ -173,14 +173,14 @@ MissionElementTimeline.init = function (self, caption)
 
 	return 
 end
-MissionElementTimeline.on_focus = function (self)
+function MissionElementTimeline:on_focus()
 	slot4 = self._mission_unit
 
 	managers.editor.select_unit(slot2, managers.editor)
 
 	return 
 end
-MissionElementTimeline._zoom_button = function (self, sizer, name, seconds)
+function MissionElementTimeline:_zoom_button(sizer, name, seconds)
 	slot10 = "BU_EXACTFIT"
 	local btn = EWS.Button(slot5, EWS, self._panel, name, "")
 	slot11 = "RIGHT,LEFT,TOP"
@@ -198,7 +198,7 @@ MissionElementTimeline._zoom_button = function (self, sizer, name, seconds)
 
 	return 
 end
-MissionElementTimeline.on_btn_zoom = function (self, seconds)
+function MissionElementTimeline:on_btn_zoom(seconds)
 	slot5 = (self.size(slot6).x - 40) / seconds
 	slot8 = self._ruler
 
@@ -230,7 +230,7 @@ MissionElementTimeline.on_btn_zoom = function (self, seconds)
 
 	return 
 end
-MissionElementTimeline.set_mission_unit = function (self, unit)
+function MissionElementTimeline:set_mission_unit(unit)
 	self._mission_unit = unit
 	slot4 = self
 
@@ -238,7 +238,7 @@ MissionElementTimeline.set_mission_unit = function (self, unit)
 
 	return 
 end
-MissionElementTimeline.update_timeline = function (self)
+function MissionElementTimeline:update_timeline()
 	slot3 = self._sequence_track
 
 	self._sequence_track.remove_all_clips(slot2)
@@ -257,7 +257,7 @@ MissionElementTimeline.update_timeline = function (self)
 
 	return 
 end
-MissionElementTimeline.delay_updated = function (self, params)
+function MissionElementTimeline:delay_updated(params)
 	slot6 = self._sequence_track
 
 	for _, clip in ipairs(self._sequence_track.clips(slot5)) do
@@ -279,14 +279,14 @@ MissionElementTimeline.delay_updated = function (self, params)
 
 	return 
 end
-MissionElementTimeline.add_element = function (self, unit, params)
+function MissionElementTimeline:add_element(unit, params)
 	slot7 = params
 
 	self._add_unit(slot4, self, unit)
 
 	return 
 end
-MissionElementTimeline.select_element = function (self, params)
+function MissionElementTimeline:select_element(params)
 	slot6 = self._sequence_track
 
 	for _, clip in ipairs(self._sequence_track.clips(slot5)) do
@@ -303,7 +303,7 @@ MissionElementTimeline.select_element = function (self, params)
 
 	return 
 end
-MissionElementTimeline._select_clip = function (self, clip)
+function MissionElementTimeline:_select_clip(clip)
 
 	-- Decompilation error in this vicinity:
 	slot4 = self._element_name
@@ -311,7 +311,7 @@ MissionElementTimeline._select_clip = function (self, clip)
 
 	return 
 end
-MissionElementTimeline.remove_element = function (self, params)
+function MissionElementTimeline:remove_element(params)
 	slot6 = self._sequence_track
 
 	for _, clip in ipairs(self._sequence_track.clips(slot5)) do
@@ -328,7 +328,7 @@ MissionElementTimeline.remove_element = function (self, params)
 
 	return 
 end
-MissionElementTimeline._add_unit = function (self, unit, params)
+function MissionElementTimeline:_add_unit(unit, params)
 	local key = EWS.SequencerKey(slot4)
 	slot7 = {
 		unit = unit,
@@ -347,7 +347,7 @@ MissionElementTimeline._add_unit = function (self, unit, params)
 
 	return self._sequence_track.add_clip(slot8, self._sequence_track, key)
 end
-MissionElementTimeline._get_color = function (self, unit)
+function MissionElementTimeline:_get_color(unit)
 	slot4 = unit
 	slot4 = unit.mission_element(slot3)
 	local color = unit.mission_element(slot3).timeline_color(slot3)
@@ -360,7 +360,7 @@ MissionElementTimeline._get_color = function (self, unit)
 
 	return math.rand(slot4), math.rand(1), math.rand(1)
 end
-MissionElementTimeline._connect_mouse_events = function (self, component)
+function MissionElementTimeline:_connect_mouse_events(component)
 	slot10 = "_on_mouse_left_down"
 
 	component.connect(slot3, component, "EVT_LEFT_DOWN", callback(slot7, self, self))
@@ -384,7 +384,7 @@ MissionElementTimeline._connect_mouse_events = function (self, component)
 
 	return 
 end
-MissionElementTimeline._on_mouse_left_down = function (self, sender, event)
+function MissionElementTimeline:_on_mouse_left_down(sender, event)
 	self._dragging = true
 	slot6 = event
 	local key = self._sequence_track.clip_at_event(slot4, self._sequence_track)
@@ -407,12 +407,12 @@ MissionElementTimeline._on_mouse_left_down = function (self, sender, event)
 
 	return 
 end
-MissionElementTimeline._on_mouse_left_up = function (self, sender, event)
+function MissionElementTimeline:_on_mouse_left_up(sender, event)
 	self._dragging = false
 
 	return 
 end
-MissionElementTimeline._on_mouse_right_down = function (self, sender, event)
+function MissionElementTimeline:_on_mouse_right_down(sender, event)
 	slot6 = event
 	local key = self._sequence_track.clip_at_event(slot4, self._sequence_track)
 
@@ -433,7 +433,7 @@ MissionElementTimeline._on_mouse_right_down = function (self, sender, event)
 
 	return 
 end
-MissionElementTimeline._on_mouse_motion = function (self, sender, event)
+function MissionElementTimeline:_on_mouse_motion(sender, event)
 	if not self._dragging then
 		return 
 	end
@@ -467,7 +467,7 @@ MissionElementTimeline._on_mouse_motion = function (self, sender, event)
 
 	return 
 end
-MissionElementTimeline._on_mousewheel = function (self, track, event)
+function MissionElementTimeline:_on_mousewheel(track, event)
 	slot5 = self._sequence_track
 	local clip = self._sequence_track.selected_clips(slot4)[1]
 
@@ -484,7 +484,7 @@ MissionElementTimeline._on_mousewheel = function (self, track, event)
 
 	return 
 end
-MissionElementTimeline.zoom_around = function (self, time, offset_in_window, delta)
+function MissionElementTimeline:zoom_around(time, offset_in_window, delta)
 	slot6 = self._scrolled_area
 
 	self._scrolled_area.freeze(slot5)

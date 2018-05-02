@@ -59,7 +59,7 @@ slot3 = "CoreUnit"
 core.import(slot1, core)
 
 CameraBase = CameraBase or CoreClass.class()
-CameraBase.init = function (self)
+function CameraBase:init()
 	self._nodes = {}
 	self._name_to_nodes = {}
 	self._setup = nil
@@ -68,7 +68,7 @@ CameraBase.init = function (self)
 
 	return 
 end
-CameraBase.destroy = function (self)
+function CameraBase:destroy()
 	slot3 = self._nodes
 
 	for index, node in ipairs(slot2) do
@@ -82,25 +82,25 @@ CameraBase.destroy = function (self)
 
 	return 
 end
-CameraBase.name = function (self)
+function CameraBase:name()
 	return self._setup._name
 end
-CameraBase.transition_blend = function (self, from_camera)
+function CameraBase:transition_blend(from_camera)
 	slot5 = from_camera
 
 	return self._blend_table[from_camera.name(slot4)]
 end
-CameraBase.default_blend = function (self)
+function CameraBase:default_blend()
 	return self._default_blend
 end
-CameraBase.node = function (self, node_name)
+function CameraBase:node(node_name)
 	return self._name_to_nodes[node_name]
 end
-CameraBase.nodes = function (self)
+function CameraBase:nodes()
 	return self._nodes
 end
 CameraManager = CameraManager or CoreClass.class()
-CameraManager.init = function (self, templates)
+function CameraManager:init(templates)
 	self._layers = {}
 	slot5 = templates
 
@@ -108,7 +108,7 @@ CameraManager.init = function (self, templates)
 
 	return 
 end
-CameraManager.destroy = function (self)
+function CameraManager:destroy()
 	slot3 = self._layers
 
 	for index, mixer in ipairs(slot2) do
@@ -121,7 +121,7 @@ CameraManager.destroy = function (self)
 
 	return 
 end
-CameraManager.create_layers = function (self, templates)
+function CameraManager:create_layers(templates)
 	slot4 = self._layers
 
 	for index, mixer in ipairs(slot3) do
@@ -149,7 +149,7 @@ CameraManager.create_layers = function (self, templates)
 
 	return 
 end
-CameraManager.view_camera = function (self, camera_name, force_new_camera)
+function CameraManager:view_camera(camera_name, force_new_camera)
 	local layer_name = self.get_camera_layer(slot4, self)
 	local mixer = self._name_to_layer[layer_name]
 	slot7 = mixer
@@ -187,7 +187,7 @@ CameraManager.view_camera = function (self, camera_name, force_new_camera)
 
 	return camera
 end
-CameraManager.stop_all_layers = function (self)
+function CameraManager:stop_all_layers()
 	slot3 = self._layers
 
 	for index, layer in ipairs(slot2) do
@@ -198,7 +198,7 @@ CameraManager.stop_all_layers = function (self)
 
 	return 
 end
-CameraManager.stop_layer = function (self, layer_name)
+function CameraManager:stop_layer(layer_name)
 	local mixer = nil
 
 	if layer_name then
@@ -213,7 +213,7 @@ CameraManager.stop_layer = function (self, layer_name)
 
 	return 
 end
-CameraManager.get_camera_layer = function (self, name)
+function CameraManager:get_camera_layer(name)
 	local camera_setups = self._templates._setups
 
 	local function get_camera_layer(name)
@@ -246,7 +246,7 @@ CameraManager.get_camera_layer = function (self, name)
 
 	return layer_name
 end
-CameraManager.create_camera = function (self, name)
+function CameraManager:create_camera(name)
 	local templates = self._templates
 	local camera_setups = templates._setups
 	local camera_node_setups = templates._node_setups
@@ -340,7 +340,7 @@ CameraManager.create_camera = function (self, name)
 
 	return camera
 end
-CameraManager.update = function (self, time, dt)
+function CameraManager:update(time, dt)
 	self._interpreter.reset(slot4)
 
 	local interpreter_class = self._templates._interpreter_class
@@ -364,10 +364,10 @@ CameraManager.update = function (self, time, dt)
 
 	return 
 end
-CameraManager.interpreter = function (self)
+function CameraManager:interpreter()
 	return self._interpreter
 end
-CameraManager.print_cameras = function (self)
+function CameraManager:print_cameras()
 	slot3 = self._layers
 
 	for index, mixer in ipairs(slot2) do
@@ -390,7 +390,7 @@ end
 CameraTemplateManager = CameraTemplateManager or CoreClass.class()
 CameraTemplateManager.camera_db_type = "camera"
 CameraTemplateManager.camera_db_path = "cameras/cameras"
-CameraTemplateManager.init = function (self)
+function CameraTemplateManager:init()
 	self._camera_space = {}
 	self._parse_func_table = {
 		interpreter = CameraTemplateManager.parse_interpreter,
@@ -406,7 +406,7 @@ CameraTemplateManager.init = function (self)
 
 	return 
 end
-CameraTemplateManager.create_camera_manager = function (self, camera_space)
+function CameraTemplateManager:create_camera_manager(camera_space)
 	local camera_space = self._camera_space[camera_space]
 	slot6 = camera_space
 	local cm = CameraManager.new(slot4, CameraManager)
@@ -416,7 +416,7 @@ CameraTemplateManager.create_camera_manager = function (self, camera_space)
 
 	return cm
 end
-CameraTemplateManager.load_cameras = function (self)
+function CameraTemplateManager:load_cameras()
 	slot3 = self
 
 	self.clear(slot2)
@@ -457,7 +457,7 @@ CameraTemplateManager.load_cameras = function (self)
 
 	return 
 end
-CameraTemplateManager.load_camera_file = function (self, file_name)
+function CameraTemplateManager:load_camera_file(file_name)
 	slot6 = file_name
 
 	if DB.has(slot3, DB, CameraTemplateManager.camera_db_type) then
@@ -492,17 +492,17 @@ CameraTemplateManager.load_camera_file = function (self, file_name)
 
 	return 
 end
-CameraTemplateManager.clear = function (self)
+function CameraTemplateManager:clear()
 	self._camera_space = {}
 
 	return 
 end
-CameraTemplateManager.get_layers = function (self, camera_space)
+function CameraTemplateManager:get_layers(camera_space)
 	local space = self._camera_space[camera_space]
 
 	return space._layers
 end
-CameraTemplateManager.parse_layer = function (self, xml_node, space)
+function CameraTemplateManager:parse_layer(xml_node, space)
 	slot6 = "name"
 	local layer_name = xml_node.parameter(slot4, xml_node)
 	slot7 = layer_name
@@ -511,7 +511,7 @@ CameraTemplateManager.parse_layer = function (self, xml_node, space)
 
 	return 
 end
-CameraTemplateManager.parse_interpreter = function (self, xml_node, space)
+function CameraTemplateManager:parse_interpreter(xml_node, space)
 	slot6 = "class"
 	local interpreter_class = xml_node.parameter(slot4, xml_node)
 	slot7 = interpreter_class
@@ -519,7 +519,7 @@ CameraTemplateManager.parse_interpreter = function (self, xml_node, space)
 
 	return 
 end
-CameraTemplateManager.parse_camera = function (self, xml_node, space)
+function CameraTemplateManager:parse_camera(xml_node, space)
 	local camera_setups = space._setups
 	local setup = {}
 	slot8 = "name"
@@ -634,7 +634,7 @@ CameraTemplateManager.parse_camera = function (self, xml_node, space)
 
 	return 
 end
-CameraTemplateManager.parse_camera_node = function (self, xml_node, space)
+function CameraTemplateManager:parse_camera_node(xml_node, space)
 	local function split_string(str)
 		local strings = {}
 		slot5 = "[^%p]+"
@@ -694,7 +694,7 @@ CameraTemplateManager.parse_camera_node = function (self, xml_node, space)
 
 	return 
 end
-CameraTemplateManager.parse_depends_on = function (self, xml_node, space)
+function CameraTemplateManager:parse_depends_on(xml_node, space)
 	slot5 = Application
 
 	if Application.editor(slot4) then
@@ -719,7 +719,7 @@ CameraTemplateManager.parse_depends_on = function (self, xml_node, space)
 
 	return 
 end
-CameraTemplateManager.update = function (self, t, dt)
+function CameraTemplateManager:update(t, dt)
 	slot5 = self._camera_managers
 
 	for index, cam_man in ipairs(slot4) do

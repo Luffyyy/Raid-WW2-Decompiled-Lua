@@ -10,7 +10,7 @@ if not RaidGUIControlBranchingProgressBar then
 end
 
 RaidGUIControlBranchingProgressBar = slot0
-RaidGUIControlBranchingProgressBar.init = function (self, parent, params)
+function RaidGUIControlBranchingProgressBar:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlBranchingProgressBar.super.init(slot4, self, parent)
@@ -106,7 +106,7 @@ RaidGUIControlBranchingProgressBar.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlBranchingProgressBar.close = function (self)
+function RaidGUIControlBranchingProgressBar:close()
 	RaidGUIControlScrollbar.super.close()
 
 	slot4 = "branching_progress_bar"
@@ -118,7 +118,7 @@ RaidGUIControlBranchingProgressBar.close = function (self)
 
 	return 
 end
-RaidGUIControlBranchingProgressBar._create_elements = function (self, params)
+function RaidGUIControlBranchingProgressBar:_create_elements(params)
 	local node_tree = self._data_source_callback()
 	local panel_padding = params.padding or 0
 	local x_step = params.x_step or 200
@@ -311,7 +311,7 @@ RaidGUIControlBranchingProgressBar._create_elements = function (self, params)
 
 	return 
 end
-RaidGUIControlBranchingProgressBar._check_if_node_reachable = function (self, node)
+function RaidGUIControlBranchingProgressBar:_check_if_node_reachable(node)
 	slot4 = node
 
 	if node.level(slot3) == 1 then
@@ -332,7 +332,7 @@ RaidGUIControlBranchingProgressBar._check_if_node_reachable = function (self, no
 
 	return false
 end
-RaidGUIControlBranchingProgressBar._check_if_node_blocked = function (self, node)
+function RaidGUIControlBranchingProgressBar:_check_if_node_blocked(node)
 	slot4 = node
 
 	if node.level(slot3) == 1 then
@@ -351,7 +351,7 @@ RaidGUIControlBranchingProgressBar._check_if_node_blocked = function (self, node
 
 	return false
 end
-RaidGUIControlBranchingProgressBar._set_initial_state = function (self, initial_points)
+function RaidGUIControlBranchingProgressBar:_set_initial_state(initial_points)
 	self._current_points = initial_points
 	slot5 = true
 
@@ -359,7 +359,7 @@ RaidGUIControlBranchingProgressBar._set_initial_state = function (self, initial_
 
 	return 
 end
-RaidGUIControlBranchingProgressBar._node_click_callback = function (self, node, node_data)
+function RaidGUIControlBranchingProgressBar:_node_click_callback(node, node_data)
 	if not self._on_click_callback then
 		return 
 	end
@@ -383,7 +383,7 @@ RaidGUIControlBranchingProgressBar._node_click_callback = function (self, node, 
 
 	return 
 end
-RaidGUIControlBranchingProgressBar._node_enter_callback = function (self, node, node_data)
+function RaidGUIControlBranchingProgressBar:_node_enter_callback(node, node_data)
 	if self._on_mouse_enter_callback then
 		slot5 = node_data
 
@@ -392,7 +392,7 @@ RaidGUIControlBranchingProgressBar._node_enter_callback = function (self, node, 
 
 	return 
 end
-RaidGUIControlBranchingProgressBar._node_exit_callback = function (self, node, node_data)
+function RaidGUIControlBranchingProgressBar:_node_exit_callback(node, node_data)
 	if self._on_mouse_exit_callback then
 		slot5 = node_data
 
@@ -401,7 +401,7 @@ RaidGUIControlBranchingProgressBar._node_exit_callback = function (self, node, n
 
 	return 
 end
-RaidGUIControlBranchingProgressBar._get_level_progress = function (self, level)
+function RaidGUIControlBranchingProgressBar:_get_level_progress(level)
 	if self._levels[level].points_needed == 0 then
 		return 1
 	end
@@ -434,7 +434,7 @@ RaidGUIControlBranchingProgressBar._get_level_progress = function (self, level)
 
 	return level_progress
 end
-RaidGUIControlBranchingProgressBar._get_current_level = function (self)
+function RaidGUIControlBranchingProgressBar:_get_current_level()
 	local current_level = 1
 
 	for i = 1, #self._levels, 1 do
@@ -447,7 +447,7 @@ RaidGUIControlBranchingProgressBar._get_current_level = function (self)
 
 	return current_level
 end
-RaidGUIControlBranchingProgressBar._get_level_by_points = function (self, points)
+function RaidGUIControlBranchingProgressBar:_get_level_by_points(points)
 	local current_level = 0
 
 	for i = 1, #self._levels, 1 do
@@ -460,7 +460,7 @@ RaidGUIControlBranchingProgressBar._get_level_by_points = function (self, points
 
 	return current_level
 end
-RaidGUIControlBranchingProgressBar._refresh_tree = function (self, full_refresh)
+function RaidGUIControlBranchingProgressBar:_refresh_tree(full_refresh)
 	local current_level_index = 1
 	local need_to_check_further = true
 	local level_progress = nil
@@ -533,7 +533,7 @@ RaidGUIControlBranchingProgressBar._refresh_tree = function (self, full_refresh)
 
 	return 
 end
-RaidGUIControlBranchingProgressBar._refresh_level_paths = function (self, level_index)
+function RaidGUIControlBranchingProgressBar:_refresh_level_paths(level_index)
 	if level_index < 1 or #self._levels < level_index then
 		return 
 	end
@@ -588,7 +588,7 @@ RaidGUIControlBranchingProgressBar._refresh_level_paths = function (self, level_
 
 	return 
 end
-RaidGUIControlBranchingProgressBar.set_points = function (self, points)
+function RaidGUIControlBranchingProgressBar:set_points(points)
 	local old_points = self._current_points
 	self._current_points = points
 	slot6 = self._current_points
@@ -607,10 +607,10 @@ RaidGUIControlBranchingProgressBar.set_points = function (self, points)
 
 	return 
 end
-RaidGUIControlBranchingProgressBar.get_points = function (self)
+function RaidGUIControlBranchingProgressBar:get_points()
 	return self._current_points
 end
-RaidGUIControlBranchingProgressBar.give_points = function (self, points, animate)
+function RaidGUIControlBranchingProgressBar:give_points(points, animate)
 	if animate == true then
 		slot5 = self._scrollable_panel
 		slot10 = "_animate_giving_points"
@@ -625,7 +625,7 @@ RaidGUIControlBranchingProgressBar.give_points = function (self, points, animate
 
 	return 
 end
-RaidGUIControlBranchingProgressBar.reset_points = function (self)
+function RaidGUIControlBranchingProgressBar:reset_points()
 	self._current_points = 0
 	slot4 = 0
 
@@ -633,7 +633,7 @@ RaidGUIControlBranchingProgressBar.reset_points = function (self)
 
 	return 
 end
-RaidGUIControlBranchingProgressBar._animate_giving_points = function (self, panel, new_points, duration)
+function RaidGUIControlBranchingProgressBar:_animate_giving_points(panel, new_points, duration)
 	local t = 0
 	local starting_points = self._current_points
 
@@ -653,7 +653,7 @@ RaidGUIControlBranchingProgressBar._animate_giving_points = function (self, pane
 
 	return 
 end
-RaidGUIControlBranchingProgressBar.on_mouse_moved = function (self, o, x, y)
+function RaidGUIControlBranchingProgressBar:on_mouse_moved(o, x, y)
 	if not self._draggable then
 		return 
 	end
@@ -706,14 +706,14 @@ RaidGUIControlBranchingProgressBar.on_mouse_moved = function (self, o, x, y)
 
 	return true, "grab"
 end
-RaidGUIControlBranchingProgressBar.on_mouse_over = function (self, x, y)
+function RaidGUIControlBranchingProgressBar:on_mouse_over(x, y)
 	slot7 = y
 
 	RaidGUIControlBranchingProgressBar.super.on_mouse_over(slot4, self, x)
 
 	return 
 end
-RaidGUIControlBranchingProgressBar.on_mouse_out = function (self, x, y)
+function RaidGUIControlBranchingProgressBar:on_mouse_out(x, y)
 	if not self._draggable then
 		return 
 	end
@@ -730,7 +730,7 @@ RaidGUIControlBranchingProgressBar.on_mouse_out = function (self, x, y)
 
 	return 
 end
-RaidGUIControlBranchingProgressBar.on_mouse_pressed = function (self)
+function RaidGUIControlBranchingProgressBar:on_mouse_pressed()
 	if not self._draggable then
 		return 
 	end
@@ -750,7 +750,7 @@ RaidGUIControlBranchingProgressBar.on_mouse_pressed = function (self)
 
 	return 
 end
-RaidGUIControlBranchingProgressBar.on_mouse_released = function (self)
+function RaidGUIControlBranchingProgressBar:on_mouse_released()
 	if not self._draggable then
 		return 
 	end
@@ -767,7 +767,7 @@ RaidGUIControlBranchingProgressBar.on_mouse_released = function (self)
 
 	return 
 end
-RaidGUIControlBranchingProgressBar.show = function (self)
+function RaidGUIControlBranchingProgressBar:show()
 	slot3 = self._object
 
 	self._object.show(slot2)
@@ -778,7 +778,7 @@ RaidGUIControlBranchingProgressBar.show = function (self)
 
 	return 
 end
-RaidGUIControlBranchingProgressBar.hide = function (self)
+function RaidGUIControlBranchingProgressBar:hide()
 	slot3 = self._object
 
 	self._object.hide(slot2)
@@ -789,7 +789,7 @@ RaidGUIControlBranchingProgressBar.hide = function (self)
 
 	return 
 end
-RaidGUIControlBranchingProgressBar._ease_in_out_quint = function (self, t, starting_value, change, duration)
+function RaidGUIControlBranchingProgressBar:_ease_in_out_quint(t, starting_value, change, duration)
 	if duration <= t then
 		return starting_value + change
 	end
@@ -804,7 +804,7 @@ RaidGUIControlBranchingProgressBar._ease_in_out_quint = function (self, t, start
 
 	return change / 2 * (t * t * t * t * t + 2) + starting_value
 end
-RaidGUIControlBranchingProgressBar.update = function (self, t, dt)
+function RaidGUIControlBranchingProgressBar:update(t, dt)
 
 	-- Decompilation error in this vicinity:
 	if not self._panel_velocity then
@@ -847,7 +847,7 @@ RaidGUIControlBranchingProgressBar.update = function (self, t, dt)
 
 	return 
 end
-RaidGUIControlBranchingProgressBar.clear_selection = function (self)
+function RaidGUIControlBranchingProgressBar:clear_selection()
 	self._selected_nodes = {}
 	self._first_available_level = 2
 	local current_level_index = 2

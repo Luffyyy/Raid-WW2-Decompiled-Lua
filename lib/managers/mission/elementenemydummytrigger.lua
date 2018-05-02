@@ -8,14 +8,14 @@ if not ElementEnemyDummyTrigger then
 end
 
 ElementEnemyDummyTrigger = slot0
-ElementEnemyDummyTrigger.init = function (self, ...)
+function ElementEnemyDummyTrigger:init(...)
 	slot3 = self
 
 	ElementEnemyDummyTrigger.super.init(slot2, ...)
 
 	return 
 end
-ElementEnemyDummyTrigger.on_script_activated = function (self)
+function ElementEnemyDummyTrigger:on_script_activated()
 	slot3 = self._values.elements
 
 	for _, id in ipairs(slot2) do
@@ -32,7 +32,7 @@ ElementEnemyDummyTrigger.on_script_activated = function (self)
 
 	return 
 end
-ElementEnemyDummyTrigger.on_executed = function (self, instigator)
+function ElementEnemyDummyTrigger:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

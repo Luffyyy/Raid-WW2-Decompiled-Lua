@@ -23,7 +23,7 @@ slot2 = "core/lib/managers/cutscene/CoreCutsceneKeys"
 require(slot1)
 
 CoreCutsceneExporter = CoreCutsceneExporter or class()
-CoreCutsceneExporter.init = function (self)
+function CoreCutsceneExporter:init()
 
 	-- Decompilation error in this vicinity:
 	self.__clips = {}
@@ -31,14 +31,14 @@ CoreCutsceneExporter.init = function (self)
 	slot1 = assert
 	slot5 = self.export_to_path
 end
-CoreCutsceneExporter.free_cached_animations = function (self)
+function CoreCutsceneExporter:free_cached_animations()
 	self.__final_animation_cache = nil
 	self.__joined_animation_cache = nil
 	self.__footage_animation_cache = nil
 
 	return 
 end
-CoreCutsceneExporter.add_clip = function (self, clip)
+function CoreCutsceneExporter:add_clip(clip)
 	function slot6(a, b)
 		slot5 = b
 
@@ -53,7 +53,7 @@ CoreCutsceneExporter.add_clip = function (self, clip)
 
 	return 
 end
-CoreCutsceneExporter.add_key = function (self, cutscene_key)
+function CoreCutsceneExporter:add_key(cutscene_key)
 	function slot6(a, b)
 		slot5 = b
 
@@ -68,7 +68,7 @@ CoreCutsceneExporter.add_key = function (self, cutscene_key)
 
 	return 
 end
-CoreCutsceneExporter.add_animation_patch = function (self, unit_name, blend_set, animation_name)
+function CoreCutsceneExporter:add_animation_patch(unit_name, blend_set, animation_name)
 	if unit_name and blend_set and animation_name then
 		self.__animation_patches = self.__animation_patches or {}
 		self.__animation_patches[unit_name] = self.__animation_patches[unit_name] or {}
@@ -77,19 +77,19 @@ CoreCutsceneExporter.add_animation_patch = function (self, unit_name, blend_set,
 
 	return 
 end
-CoreCutsceneExporter.export_to_database = function (self, asset_name)
+function CoreCutsceneExporter:export_to_database(asset_name)
 	slot4 = self
 
 	self._assert_is_valid(slot3)
 
 	return false
 end
-CoreCutsceneExporter.frame_count = function (self)
+function CoreCutsceneExporter:frame_count()
 	slot6 = last_key_time
 
 	return math.max(slot4, last_clip_end_time)
 end
-CoreCutsceneExporter.contains_optimized_footage = function (self)
+function CoreCutsceneExporter:contains_optimized_footage()
 
 	-- Decompilation error in this vicinity:
 	function slot4(clip)
@@ -102,7 +102,7 @@ CoreCutsceneExporter.contains_optimized_footage = function (self)
 
 	return table.find_value(slot2, self.__clips) ~= nil
 end
-CoreCutsceneExporter.contains_unoptimized_footage = function (self)
+function CoreCutsceneExporter:contains_unoptimized_footage()
 	function slot4(clip)
 		slot3 = clip
 		slot3 = clip.metadata(slot2)
@@ -113,12 +113,12 @@ CoreCutsceneExporter.contains_unoptimized_footage = function (self)
 
 	return table.find_value(slot2, self.__clips) ~= nil
 end
-CoreCutsceneExporter.is_valid = function (self)
+function CoreCutsceneExporter:is_valid()
 	slot3 = self
 
 	return #self.problems(slot2) == 0
 end
-CoreCutsceneExporter.problems = function (self)
+function CoreCutsceneExporter:problems()
 	if not self.__problems then
 		slot5 = self
 		slot1 = table.map_keys(self._problem_map(slot4))
@@ -128,7 +128,7 @@ CoreCutsceneExporter.problems = function (self)
 
 	return self.__problems
 end
-CoreCutsceneExporter._problem_map = function (self)
+function CoreCutsceneExporter:_problem_map()
 	local problem_map = {}
 
 	local function add_problem(problem)
@@ -245,7 +245,7 @@ CoreCutsceneExporter._problem_map = function (self)
 
 	return problem_map
 end
-CoreCutsceneExporter._has_cameras = function (self)
+function CoreCutsceneExporter:_has_cameras()
 	slot6 = true
 
 	for unit_name, _ in pairs(self._all_controlled_unit_types(slot4, self)) do
@@ -258,7 +258,7 @@ CoreCutsceneExporter._has_cameras = function (self)
 
 	return false
 end
-CoreCutsceneExporter._all_controlled_unit_types = function (self, include_cameras)
+function CoreCutsceneExporter:_all_controlled_unit_types(include_cameras)
 	if self.__all_controlled_unit_types == nil then
 		self.__all_controlled_unit_types = {}
 		slot4 = self.__clips
@@ -286,12 +286,12 @@ CoreCutsceneExporter._all_controlled_unit_types = function (self, include_camera
 
 	return slot2
 end
-CoreCutsceneExporter._all_controlled_unit_names = function (self, include_cameras)
+function CoreCutsceneExporter:_all_controlled_unit_names(include_cameras)
 	slot7 = include_cameras
 
 	return table.map_keys(self._all_controlled_unit_types(slot5, self))
 end
-CoreCutsceneExporter._get_final_animation = function (self, unit_name)
+function CoreCutsceneExporter:_get_final_animation(unit_name)
 	if not self.__final_animation_cache then
 		slot5 = {
 			__mode = "v"
@@ -381,7 +381,7 @@ CoreCutsceneExporter._get_final_animation = function (self, unit_name)
 
 	return final_animation or nil
 end
-CoreCutsceneExporter._get_joined_animation = function (self, unit_name_or_func)
+function CoreCutsceneExporter:_get_joined_animation(unit_name_or_func)
 	if not self.__joined_animation_cache then
 		slot5 = {
 			__mode = "v"
@@ -411,7 +411,7 @@ CoreCutsceneExporter._get_joined_animation = function (self, unit_name_or_func)
 
 	return joined_animation or nil
 end
-CoreCutsceneExporter._get_joined_camera_animation = function (self)
+function CoreCutsceneExporter:_get_joined_camera_animation()
 	function slot4(clip)
 		if clip then
 			slot3 = clip
@@ -424,7 +424,7 @@ CoreCutsceneExporter._get_joined_camera_animation = function (self)
 
 	return self._get_joined_animation(slot2, self)
 end
-CoreCutsceneExporter._get_footage_animation = function (self, cutscene, unit_name)
+function CoreCutsceneExporter:_get_footage_animation(cutscene, unit_name)
 	if not self.__footage_animation_cache then
 		slot6 = {
 			__mode = "v"
@@ -448,7 +448,7 @@ CoreCutsceneExporter._get_footage_animation = function (self, cutscene, unit_nam
 
 	return footage_animation or nil
 end
-CoreCutsceneExporter._get_animatable_set_name_for_unit_type = function (self, unit_type)
+function CoreCutsceneExporter:_get_animatable_set_name_for_unit_type(unit_type)
 	slot6 = unit_type
 	local unit_data = CoreEngineAccess._editor_unit_data(unit_type.id(slot5))
 	local model_filename = unit_data.model(unit_type.id)
@@ -497,7 +497,7 @@ CoreCutsceneExporter._get_animatable_set_name_for_unit_type = function (self, un
 
 	return 
 end
-CoreCutsceneExporter._join_animations = function (self, unit_name_func)
+function CoreCutsceneExporter:_join_animations(unit_name_func)
 	local joined_animation = nil
 	slot5 = self.__clips
 
@@ -570,7 +570,7 @@ CoreCutsceneExporter._join_animations = function (self, unit_name_func)
 
 	return joined_animation
 end
-CoreCutsceneExporter._clear_cached_lists = function (self)
+function CoreCutsceneExporter:_clear_cached_lists()
 	self.__problems = nil
 	self.__all_controlled_unit_types = nil
 	slot3 = self
@@ -579,7 +579,7 @@ CoreCutsceneExporter._clear_cached_lists = function (self)
 
 	return 
 end
-CoreCutsceneExporter._process_animation = function (self, animation_cutter_method_name, animation, ...)
+function CoreCutsceneExporter:_process_animation(animation_cutter_method_name, animation, ...)
 	slot6 = animation
 	local result = AnimationCutter[animation_cutter_method_name](slot4, AnimationCutter, ...)
 	slot6 = animation
@@ -588,7 +588,7 @@ CoreCutsceneExporter._process_animation = function (self, animation_cutter_metho
 
 	return result
 end
-CoreCutsceneExporter._assert_is_valid = function (self)
+function CoreCutsceneExporter:_assert_is_valid()
 	slot3 = self
 	local problems = self.problems(slot2)
 

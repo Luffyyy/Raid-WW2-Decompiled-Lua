@@ -6,7 +6,7 @@ end
 JobValueUnitElement = slot0
 JobValueUnitElement.SAVE_UNIT_POSITION = false
 JobValueUnitElement.SAVE_UNIT_ROTATION = false
-JobValueUnitElement.init = function (self, unit)
+function JobValueUnitElement:init(unit)
 	slot5 = unit
 
 	JobValueUnitElement.super.init(slot3, self)
@@ -28,7 +28,7 @@ JobValueUnitElement.init = function (self, unit)
 
 	return 
 end
-JobValueUnitElement._build_panel = function (self, panel, panel_sizer)
+function JobValueUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -116,7 +116,7 @@ end
 JobValueFilterUnitElement = slot0
 JobValueFilterUnitElement.SAVE_UNIT_POSITION = false
 JobValueFilterUnitElement.SAVE_UNIT_ROTATION = false
-JobValueFilterUnitElement.init = function (self, unit)
+function JobValueFilterUnitElement:init(unit)
 	slot5 = unit
 
 	JobValueFilterUnitElement.super.init(slot3, self)
@@ -143,7 +143,7 @@ JobValueFilterUnitElement.init = function (self, unit)
 
 	return 
 end
-JobValueFilterUnitElement._build_panel = function (self, panel, panel_sizer)
+function JobValueFilterUnitElement:_build_panel(panel, panel_sizer)
 	slot7 = panel_sizer
 
 	JobValueUnitElement._build_panel(slot4, self, panel)
@@ -182,7 +182,7 @@ end
 ApplyJobValueUnitElement = slot0
 ApplyJobValueUnitElement.SAVE_UNIT_POSITION = false
 ApplyJobValueUnitElement.SAVE_UNIT_ROTATION = false
-ApplyJobValueUnitElement.init = function (self, unit)
+function ApplyJobValueUnitElement:init(unit)
 	slot5 = unit
 
 	ApplyJobValueUnitElement.super.init(slot3, self)
@@ -204,10 +204,10 @@ ApplyJobValueUnitElement.init = function (self, unit)
 
 	return 
 end
-ApplyJobValueUnitElement.update_editing = function (self)
+function ApplyJobValueUnitElement:update_editing()
 	return 
 end
-ApplyJobValueUnitElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function ApplyJobValueUnitElement:draw_links(t, dt, selected_unit, all_units)
 	slot10 = selected_unit
 
 	ApplyJobValueUnitElement.super.draw_links(slot6, self, t, dt)
@@ -233,7 +233,7 @@ ApplyJobValueUnitElement.draw_links = function (self, t, dt, selected_unit, all_
 
 	return 
 end
-ApplyJobValueUnitElement.add_element = function (self)
+function ApplyJobValueUnitElement:add_element()
 	slot4 = {
 		ray_type = "editor",
 		mask = 10
@@ -257,7 +257,7 @@ ApplyJobValueUnitElement.add_element = function (self)
 
 	return 
 end
-ApplyJobValueUnitElement.remove_links = function (self, unit)
+function ApplyJobValueUnitElement:remove_links(unit)
 	slot4 = self._hed.elements
 
 	for _, id in ipairs(slot3) do
@@ -272,7 +272,7 @@ ApplyJobValueUnitElement.remove_links = function (self, unit)
 
 	return 
 end
-ApplyJobValueUnitElement.add_triggers = function (self, vc)
+function ApplyJobValueUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "add_element"
 
@@ -280,7 +280,7 @@ ApplyJobValueUnitElement.add_triggers = function (self, vc)
 
 	return 
 end
-ApplyJobValueUnitElement._build_panel = function (self, panel, panel_sizer)
+function ApplyJobValueUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

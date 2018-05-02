@@ -3,7 +3,7 @@ slot2 = "core/lib/utils/dev/ews/tree_control/CoreFilteredTreeControl"
 require(slot1)
 
 CoreFilteredTreePanel = CoreFilteredTreePanel or class()
-CoreFilteredTreePanel.init = function (self, parent_frame)
+function CoreFilteredTreePanel:init(parent_frame)
 	slot5 = parent_frame
 
 	self._create_panel(slot3, self)
@@ -12,18 +12,18 @@ CoreFilteredTreePanel.init = function (self, parent_frame)
 
 	return 
 end
-CoreFilteredTreePanel.add_to_sizer = function (self, sizer, proportion, border, flags)
+function CoreFilteredTreePanel:add_to_sizer(sizer, proportion, border, flags)
 	slot11 = flags
 
 	return sizer.add(slot6, sizer, self._panel, proportion, border)
 end
-CoreFilteredTreePanel.connect = function (self, event_type, script_callback, script_data)
+function CoreFilteredTreePanel:connect(event_type, script_callback, script_data)
 	slot6 = self
 	slot9 = script_data
 
 	return self._tree_control(slot5).connect(slot5, self._tree_control(slot5), event_type, script_callback)
 end
-CoreFilteredTreePanel.update = function (self, time, delta_time)
+function CoreFilteredTreePanel:update(time, delta_time)
 	if 0 < self._tree_refresh_timeout then
 		self._tree_refresh_timeout = self._tree_refresh_timeout - delta_time
 
@@ -42,10 +42,10 @@ CoreFilteredTreePanel.update = function (self, time, delta_time)
 
 	return 
 end
-CoreFilteredTreePanel._tree_control = function (self)
+function CoreFilteredTreePanel:_tree_control()
 	return self._filtered_tree_control
 end
-CoreFilteredTreePanel._create_panel = function (self, parent_frame)
+function CoreFilteredTreePanel:_create_panel(parent_frame)
 	slot7 = ""
 	self._panel = EWS.Panel(slot3, EWS, parent_frame, "")
 	slot5 = "VERTICAL"
@@ -86,7 +86,7 @@ CoreFilteredTreePanel._create_panel = function (self, parent_frame)
 
 	return 
 end
-CoreFilteredTreePanel._create_filter_bar_panel = function (self, parent_frame)
+function CoreFilteredTreePanel:_create_filter_bar_panel(parent_frame)
 	slot7 = ""
 	local panel = EWS.Panel(slot3, EWS, parent_frame, "")
 	slot6 = "HORIZONTAL"
@@ -110,12 +110,12 @@ CoreFilteredTreePanel._create_filter_bar_panel = function (self, parent_frame)
 
 	return panel, filter_text_ctrl
 end
-CoreFilteredTreePanel._on_filter_text_updated = function (self)
+function CoreFilteredTreePanel:_on_filter_text_updated()
 	self._tree_refresh_timeout = 0.25
 
 	return 
 end
-CoreFilteredTreePanel._on_filter_enter_pressed = function (self)
+function CoreFilteredTreePanel:_on_filter_enter_pressed()
 	if 0 < self._tree_refresh_timeout then
 		self._tree_refresh_timeout = 0
 		slot3 = self

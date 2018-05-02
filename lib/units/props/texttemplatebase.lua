@@ -4,7 +4,7 @@ if not TextTemplateBase then
 end
 
 TextTemplateBase = slot0
-TextTemplateBase.init = function (self, unit)
+function TextTemplateBase:init(unit)
 	slot6 = false
 
 	TextTemplateBase.super.init(slot3, self, unit)
@@ -15,7 +15,7 @@ TextTemplateBase.init = function (self, unit)
 
 	return 
 end
-TextTemplateBase._apply_template = function (self)
+function TextTemplateBase:_apply_template()
 	if self.TEMPLATE == "stocks" then
 		slot3 = self
 
@@ -28,7 +28,7 @@ TextTemplateBase._apply_template = function (self)
 
 	return 
 end
-TextTemplateBase.set_template = function (self, template)
+function TextTemplateBase:set_template(template)
 	self.TEMPLATE = template
 	slot4 = self
 
@@ -36,7 +36,7 @@ TextTemplateBase.set_template = function (self, template)
 
 	return 
 end
-TextTemplateBase._stock_ticker = function (self)
+function TextTemplateBase:_stock_ticker()
 	slot4 = self._unit
 
 	for i = 1, self._unit.text_gui(slot3).ROWS, 1 do
@@ -283,7 +283,7 @@ TextTemplateBase._stock_ticker = function (self)
 
 	return 
 end
-TextTemplateBase._big_bank_welcome = function (self)
+function TextTemplateBase:_big_bank_welcome()
 	slot3 = self._unit
 	slot5 = 100
 
@@ -385,10 +385,10 @@ TextTemplateBase._big_bank_welcome = function (self)
 
 	return 
 end
-TextTemplateBase.destroy = function (self)
+function TextTemplateBase:destroy()
 	return 
 end
-TextTemplateBase.save = function (self, data)
+function TextTemplateBase:save(data)
 	local state = {
 		template = self.TEMPLATE
 	}
@@ -396,7 +396,7 @@ TextTemplateBase.save = function (self, data)
 
 	return 
 end
-TextTemplateBase.load = function (self, data)
+function TextTemplateBase:load(data)
 	local state = data.TextTemplateBase
 
 	if state.template and state.TEMPLATE ~= self.TEMPLATE then

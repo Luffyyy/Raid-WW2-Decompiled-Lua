@@ -8,7 +8,7 @@ if not ElementSlowMotion then
 end
 
 ElementSlowMotion = slot0
-ElementSlowMotion.on_executed = function (self, instigator)
+function ElementSlowMotion:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

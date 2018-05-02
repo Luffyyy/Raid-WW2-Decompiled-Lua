@@ -76,7 +76,7 @@ if not InstancesLayer then
 end
 
 InstancesLayer = slot0
-InstancesLayer.init = function (self, owner)
+function InstancesLayer:init(owner)
 	slot8 = "statics_layer"
 
 	InstancesLayer.super.init(slot3, self, owner, "instances", {
@@ -96,7 +96,7 @@ InstancesLayer.init = function (self, owner)
 
 	return 
 end
-InstancesLayer._load_predefined_instances = function (self)
+function InstancesLayer:_load_predefined_instances()
 	slot5 = self._predefined_instances_file
 
 	if DB.has(slot2, DB, "xml") then
@@ -109,7 +109,7 @@ InstancesLayer._load_predefined_instances = function (self)
 
 	return 
 end
-InstancesLayer.load = function (self, world_holder, offset)
+function InstancesLayer:load(world_holder, offset)
 	slot8 = offset
 
 	world_holder.create_world(slot4, world_holder, "world", self._save_name)
@@ -124,7 +124,7 @@ InstancesLayer.load = function (self, world_holder, offset)
 
 	return 
 end
-InstancesLayer.save = function (self, save_params)
+function InstancesLayer:save(save_params)
 	slot6 = managers.world_instance
 
 	for _, data in ipairs(managers.world_instance.instance_save_data(slot5)) do
@@ -140,7 +140,7 @@ InstancesLayer.save = function (self, save_params)
 
 	return 
 end
-InstancesLayer.clone_unit = function (self)
+function InstancesLayer:clone_unit()
 	slot3 = self
 
 	if self.ctrl(slot2) then
@@ -151,7 +151,7 @@ InstancesLayer.clone_unit = function (self)
 
 	return 
 end
-InstancesLayer.clone = function (self)
+function InstancesLayer:clone()
 	if self._selected_instance then
 		local data = self._selected_instance.data(slot2)
 		slot6 = data.name
@@ -163,7 +163,7 @@ InstancesLayer.clone = function (self)
 
 	return 
 end
-InstancesLayer.spawn_unit = function (self)
+function InstancesLayer:spawn_unit()
 	self._wants_to_create = false
 
 	if not self._grab then
@@ -179,10 +179,10 @@ InstancesLayer.spawn_unit = function (self)
 
 	return 
 end
-InstancesLayer.do_spawn_unit = function (self, name, pos, rot)
+function InstancesLayer:do_spawn_unit(name, pos, rot)
 	return 
 end
-InstancesLayer._mouse_create_instance = function (self)
+function InstancesLayer:_mouse_create_instance()
 	if not self._grab then
 		slot3 = self
 
@@ -196,7 +196,7 @@ InstancesLayer._mouse_create_instance = function (self)
 
 	return 
 end
-InstancesLayer._get_instance_info_from_user = function (self)
+function InstancesLayer:_get_instance_info_from_user()
 	if not managers.worlddefinition then
 		slot4 = "Instance cannot be placed in new level. Open a saved level first."
 
@@ -233,7 +233,7 @@ InstancesLayer._get_instance_info_from_user = function (self)
 
 	return 
 end
-InstancesLayer._get_instance_script = function (self)
+function InstancesLayer:_get_instance_script()
 	slot3 = managers.editor
 	local continent = managers.editor.current_continent(slot2).name(slot2)
 	slot5 = "Mission"
@@ -267,7 +267,7 @@ InstancesLayer._get_instance_script = function (self)
 
 	return script
 end
-InstancesLayer._get_name_from_user = function (self, predef)
+function InstancesLayer:_get_name_from_user(predef)
 
 	-- Decompilation error in this vicinity:
 	slot14 = 0
@@ -287,7 +287,7 @@ InstancesLayer._get_name_from_user = function (self, predef)
 
 	return nil
 end
-InstancesLayer.use_grab_info = function (self)
+function InstancesLayer:use_grab_info()
 	slot3 = self
 
 	InstancesLayer.super.super.use_grab_info(slot2)
@@ -307,7 +307,7 @@ InstancesLayer.use_grab_info = function (self)
 
 	return 
 end
-InstancesLayer.move_unit = function (self, btn, pressed)
+function InstancesLayer:move_unit(btn, pressed)
 	if self._selected_instance then
 		self._grab = true
 		slot8 = self._selected_instance_data.rotation
@@ -317,7 +317,7 @@ InstancesLayer.move_unit = function (self, btn, pressed)
 
 	return 
 end
-InstancesLayer.rotate_unit = function (self, btn, pressed)
+function InstancesLayer:rotate_unit(btn, pressed)
 	if self._selected_instance then
 		slot5 = self
 
@@ -365,7 +365,7 @@ InstancesLayer.rotate_unit = function (self, btn, pressed)
 
 	return 
 end
-InstancesLayer.position_as = function (self)
+function InstancesLayer:position_as()
 	if self._selected_instance then
 		slot3 = self
 
@@ -395,7 +395,7 @@ InstancesLayer.position_as = function (self)
 
 	return 
 end
-InstancesLayer.click_select_unit = function (self)
+function InstancesLayer:click_select_unit()
 
 	-- Decompilation error in this vicinity:
 	slot3 = self
@@ -405,7 +405,7 @@ InstancesLayer.click_select_unit = function (self)
 
 	return 
 end
-InstancesLayer.select_instance = function (self, instance_name)
+function InstancesLayer:select_instance(instance_name)
 	self._selected_instance = nil
 	self._selected_instance_data = nil
 	slot5 = (instance_name and true) or false
@@ -463,20 +463,20 @@ InstancesLayer.select_instance = function (self, instance_name)
 
 	return 
 end
-InstancesLayer.set_select_unit = function (self, unit)
+function InstancesLayer:set_select_unit(unit)
 
 	-- Decompilation error in this vicinity:
 	slot4 = self
 	slot2 = self.select_instance
 end
-InstancesLayer.release_unit = function (self)
+function InstancesLayer:release_unit()
 	slot3 = self
 
 	InstancesLayer.super.release_unit(slot2)
 
 	return 
 end
-InstancesLayer.get_instance_units_by_name = function (self, name)
+function InstancesLayer:get_instance_units_by_name(name)
 	if self._stashed_instance_units[name] then
 		return self._stashed_instance_units[name]
 	end
@@ -516,7 +516,7 @@ InstancesLayer.get_instance_units_by_name = function (self, name)
 
 	return t
 end
-InstancesLayer._delete_instance_by_name = function (self, name)
+function InstancesLayer:_delete_instance_by_name(name)
 	slot4 = managers.editor
 
 	managers.editor.freeze_gui_lists(slot3)
@@ -601,7 +601,7 @@ InstancesLayer._delete_instance_by_name = function (self, name)
 
 	return 
 end
-InstancesLayer.delete_selected_unit = function (self, btn, pressed)
+function InstancesLayer:delete_selected_unit(btn, pressed)
 	if self._selected_instance then
 		slot5 = self
 		slot8 = self._selected_instance
@@ -611,10 +611,10 @@ InstancesLayer.delete_selected_unit = function (self, btn, pressed)
 
 	return 
 end
-InstancesLayer.reset_rotation = function (self)
+function InstancesLayer:reset_rotation()
 	return 
 end
-InstancesLayer.add_instance = function (self, name, folder, index_size, script, pos, rot, predef)
+function InstancesLayer:add_instance(name, folder, index_size, script, pos, rot, predef)
 	folder = folder or "levels/tests/inst/world"
 	slot10 = managers.editor
 	slot10 = managers.editor.current_continent(slot9)
@@ -694,7 +694,7 @@ InstancesLayer.add_instance = function (self, name, folder, index_size, script, 
 
 	return 
 end
-InstancesLayer.update = function (self, t, dt)
+function InstancesLayer:update(t, dt)
 	slot7 = dt
 
 	InstancesLayer.super.super.update(slot4, self, t)
@@ -790,7 +790,7 @@ InstancesLayer.update = function (self, t, dt)
 
 	return 
 end
-InstancesLayer.update_move_triggers = function (self, t, dt)
+function InstancesLayer:update_move_triggers(t, dt)
 
 	-- Decompilation error in this vicinity:
 	slot7 = dt
@@ -862,7 +862,7 @@ InstancesLayer.update_move_triggers = function (self, t, dt)
 
 	return 
 end
-InstancesLayer.update_rotate_triggers = function (self, t, dt)
+function InstancesLayer:update_rotate_triggers(t, dt)
 
 	-- Decompilation error in this vicinity:
 	local rot_speed = self.rotation_speed(slot4) * dt
@@ -941,14 +941,14 @@ InstancesLayer.update_rotate_triggers = function (self, t, dt)
 
 	return 
 end
-InstancesLayer.external_draw_instance = function (self, t, dt, instance_name, r, g, b)
+function InstancesLayer:external_draw_instance(t, dt, instance_name, r, g, b)
 	slot15 = b
 
 	self._draw_instance(slot8, self, t, dt, instance_name, r, g)
 
 	return 
 end
-InstancesLayer._draw_instance = function (self, t, dt, instance_name, r, g, b)
+function InstancesLayer:_draw_instance(t, dt, instance_name, r, g, b)
 	r = r or 1
 	g = g or 1
 	b = b or 1
@@ -1080,23 +1080,23 @@ InstancesLayer._draw_instance = function (self, t, dt, instance_name, r, g, b)
 
 	return 
 end
-InstancesLayer.draw_rotation = function (self, t, dt)
+function InstancesLayer:draw_rotation(t, dt)
 	return 
 end
-InstancesLayer.draw_units = function (self, t, dt)
+function InstancesLayer:draw_units(t, dt)
 	return 
 end
-InstancesLayer.widget_affect_object = function (self)
+function InstancesLayer:widget_affect_object()
 	return self._selected_instance
 end
-InstancesLayer.use_widget_position = function (self, pos)
+function InstancesLayer:use_widget_position(pos)
 	slot5 = pos
 
 	self.set_instance_positions(slot3, self)
 
 	return 
 end
-InstancesLayer.use_widget_rotation = function (self, rot)
+function InstancesLayer:use_widget_rotation(rot)
 	slot7 = self
 	slot7 = self.widget_affect_object(slot6)
 	slot7 = self.widget_affect_object(slot6).rotation(slot6)
@@ -1106,21 +1106,21 @@ InstancesLayer.use_widget_rotation = function (self, rot)
 
 	return 
 end
-InstancesLayer.set_unit_positions = function (self, pos)
+function InstancesLayer:set_unit_positions(pos)
 	slot5 = pos
 
 	self.set_instance_positions(slot3, self)
 
 	return 
 end
-InstancesLayer.set_unit_rotations = function (self, rot)
+function InstancesLayer:set_unit_rotations(rot)
 	slot5 = rot
 
 	self.set_instance_rotations(slot3, self)
 
 	return 
 end
-InstancesLayer.set_instance_positions = function (self, pos)
+function InstancesLayer:set_instance_positions(pos)
 	slot6 = self
 	slot9 = self._selected_instance
 
@@ -1144,7 +1144,7 @@ InstancesLayer.set_instance_positions = function (self, pos)
 
 	return 
 end
-InstancesLayer.set_instance_rotations = function (self, rot)
+function InstancesLayer:set_instance_rotations(rot)
 	local rot = rot * self._selected_instance_data.rotation
 	slot7 = self
 	slot10 = self._selected_instance
@@ -1174,7 +1174,7 @@ InstancesLayer.set_instance_rotations = function (self, rot)
 
 	return 
 end
-InstancesLayer.build_panel = function (self, notebook, settings)
+function InstancesLayer:build_panel(notebook, settings)
 	slot6 = notebook
 
 	InstancesLayer.super.super.build_panel(slot4, self)
@@ -1412,7 +1412,7 @@ InstancesLayer.build_panel = function (self, notebook, settings)
 
 	return self._ews_panel
 end
-InstancesLayer._build_predefined_instances_notebook = function (self)
+function InstancesLayer:_build_predefined_instances_notebook()
 	slot4 = "VERTICAL"
 	local notebook_sizer = EWS.BoxSizer(slot2, EWS)
 	self._predefined_instances_notebook = EWS.Notebook(EWS, EWS, self._ews_panel, "")
@@ -1431,7 +1431,7 @@ InstancesLayer._build_predefined_instances_notebook = function (self)
 
 	return notebook_sizer
 end
-InstancesLayer._add_predefined_instances_notebook_pages = function (self)
+function InstancesLayer:_add_predefined_instances_notebook_pages()
 	local style = "LC_REPORT,LC_NO_HEADER,LC_SORT_ASCENDING,LC_SINGLE_SEL"
 	self._predefined_instances_notebook_lists = {}
 	local predefined_data_by_category = self._predefined_data_by_category(slot3)
@@ -1510,7 +1510,7 @@ InstancesLayer._add_predefined_instances_notebook_pages = function (self)
 
 	return 
 end
-InstancesLayer._clear_predefined_instances_notebook = function (self)
+function InstancesLayer:_clear_predefined_instances_notebook()
 	self._predefined_instances_notebook_lists = {}
 	slot3 = self._predefined_instances_notebook
 
@@ -1523,7 +1523,7 @@ InstancesLayer._clear_predefined_instances_notebook = function (self)
 
 	return 
 end
-InstancesLayer._predefined_data_by_category = function (self)
+function InstancesLayer:_predefined_data_by_category()
 	local t = {
 		ALL = {}
 	}
@@ -1543,7 +1543,7 @@ InstancesLayer._predefined_data_by_category = function (self)
 
 	return t
 end
-InstancesLayer._on_gui_instances_page_changed = function (self)
+function InstancesLayer:_on_gui_instances_page_changed()
 	slot3 = self._predefined_instances_notebook_lists
 
 	for _, data in pairs(slot2) do
@@ -1558,7 +1558,7 @@ InstancesLayer._on_gui_instances_page_changed = function (self)
 
 	return 
 end
-InstancesLayer._on_gui_instances_update_filter = function (self, data)
+function InstancesLayer:_on_gui_instances_update_filter(data)
 	local filter = data.filter.get_value(slot3)
 	slot5 = data.instances
 
@@ -1585,14 +1585,14 @@ InstancesLayer._on_gui_instances_update_filter = function (self, data)
 
 	return 
 end
-InstancesLayer._on_gui_new_instance = function (self)
+function InstancesLayer:_on_gui_new_instance()
 	slot3 = self
 
 	self._get_instance_info_from_user(slot2)
 
 	return 
 end
-InstancesLayer._on_gui_open_selected_instance_path = function (self)
+function InstancesLayer:_on_gui_open_selected_instance_path()
 	slot3 = self
 	local name = self._get_selection_instances_listbox(slot2)
 
@@ -1606,7 +1606,7 @@ InstancesLayer._on_gui_open_selected_instance_path = function (self)
 
 	return 
 end
-InstancesLayer._on_gui_rename_instance = function (self)
+function InstancesLayer:_on_gui_rename_instance()
 	slot3 = self
 	local name = self._get_selection_instances_listbox(slot2)
 
@@ -1675,7 +1675,7 @@ InstancesLayer._on_gui_rename_instance = function (self)
 
 	return 
 end
-InstancesLayer._on_gui_delete_instance = function (self)
+function InstancesLayer:_on_gui_delete_instance()
 	slot3 = self
 	local name = self._get_selection_instances_listbox(slot2)
 
@@ -1687,7 +1687,7 @@ InstancesLayer._on_gui_delete_instance = function (self)
 
 	return 
 end
-InstancesLayer._on_gui_mission_placed = function (self)
+function InstancesLayer:_on_gui_mission_placed()
 	slot3 = self
 	local name = self._get_selection_instances_listbox(slot2)
 
@@ -1699,7 +1699,7 @@ InstancesLayer._on_gui_mission_placed = function (self)
 
 	return 
 end
-InstancesLayer._on_gui_select_predefined_instance = function (self, predefined_instances_list_box)
+function InstancesLayer:_on_gui_select_predefined_instance(predefined_instances_list_box)
 	slot5 = predefined_instances_list_box
 	local name = self._get_selection_predefined_instances_listbox(slot3, self)
 	slot6 = name
@@ -1708,7 +1708,7 @@ InstancesLayer._on_gui_select_predefined_instance = function (self, predefined_i
 
 	return 
 end
-InstancesLayer._set_selected_predefined_instance = function (self, name)
+function InstancesLayer:_set_selected_predefined_instance(name)
 	self._selected_predefined_instance = name
 
 	if not name then
@@ -1805,7 +1805,7 @@ InstancesLayer._set_selected_predefined_instance = function (self, name)
 
 	return 
 end
-InstancesLayer._get_selection_predefined_instances_listbox = function (self, predefined_instances_list_box)
+function InstancesLayer:_get_selection_predefined_instances_listbox(predefined_instances_list_box)
 	predefined_instances_list_box = predefined_instances_list_box or self._predefined_instances_listbox
 	slot4 = predefined_instances_list_box
 	local i = predefined_instances_list_box.selected_item(slot3)
@@ -1818,7 +1818,7 @@ InstancesLayer._get_selection_predefined_instances_listbox = function (self, pre
 
 	return nil
 end
-InstancesLayer._on_gui_select_instance = function (self)
+function InstancesLayer:_on_gui_select_instance()
 	slot3 = self._instances_listbox
 	local i = self._instances_listbox.selected_index(slot2)
 
@@ -1832,7 +1832,7 @@ InstancesLayer._on_gui_select_instance = function (self)
 
 	return 
 end
-InstancesLayer._get_selection_instances_listbox = function (self)
+function InstancesLayer:_get_selection_instances_listbox()
 	slot3 = self._instances_listbox
 	local i = self._instances_listbox.selected_index(slot2)
 
@@ -1844,7 +1844,7 @@ InstancesLayer._get_selection_instances_listbox = function (self)
 
 	return nil
 end
-InstancesLayer._update_instances_listbox = function (self)
+function InstancesLayer:_update_instances_listbox()
 	slot3 = self._instances_listbox
 
 	self._instances_listbox.clear(slot2)
@@ -1861,7 +1861,7 @@ InstancesLayer._update_instances_listbox = function (self)
 
 	return 
 end
-InstancesLayer._set_selection_instances_listbox = function (self, name)
+function InstancesLayer:_set_selection_instances_listbox(name)
 	if not name then
 		slot4 = self._instances_listbox
 		local i = self._instances_listbox.selected_index(slot3)
@@ -1889,7 +1889,7 @@ InstancesLayer._set_selection_instances_listbox = function (self, name)
 
 	return 
 end
-InstancesLayer._on_gui_open_instance_path = function (self, name)
+function InstancesLayer:_on_gui_open_instance_path(name)
 	name = name or self._selected_predefined_instance
 
 	if not name then
@@ -1903,7 +1903,7 @@ InstancesLayer._on_gui_open_instance_path = function (self, name)
 
 	return 
 end
-InstancesLayer._open_instance_path = function (self, folder)
+function InstancesLayer:_open_instance_path(folder)
 	slot4 = managers.editor
 
 	if managers.editor.confirm_on_new(slot3) then
@@ -1923,7 +1923,7 @@ InstancesLayer._open_instance_path = function (self, folder)
 
 	return 
 end
-InstancesLayer._on_gui_open_predefined_instances_file = function (self)
+function InstancesLayer:_on_gui_open_predefined_instances_file()
 	slot7 = self._predefined_instances_file .. ".xml"
 	slot3 = "start " .. managers.database.entry_expanded_directory(slot5, managers.database)
 
@@ -1931,7 +1931,7 @@ InstancesLayer._on_gui_open_predefined_instances_file = function (self)
 
 	return 
 end
-InstancesLayer._on_gui_reload_predefined_instances_file = function (self)
+function InstancesLayer:_on_gui_reload_predefined_instances_file()
 	local t = {
 		target_db_name = "all",
 		send_idstrings = false,
@@ -1985,7 +1985,7 @@ InstancesLayer._on_gui_reload_predefined_instances_file = function (self)
 
 	return 
 end
-InstancesLayer.on_continent_changed = function (self, ...)
+function InstancesLayer:on_continent_changed(...)
 	slot3 = self
 
 	InstancesLayer.super.on_continent_changed(slot2, ...)
@@ -2004,7 +2004,7 @@ InstancesLayer.on_continent_changed = function (self, ...)
 
 	return 
 end
-InstancesLayer.on_hide_selected = function (self)
+function InstancesLayer:on_hide_selected()
 	if not self._selected_instance then
 		return 
 	end
@@ -2028,7 +2028,7 @@ InstancesLayer.on_hide_selected = function (self)
 
 	return 
 end
-InstancesLayer._create_overlay_gui = function (self)
+function InstancesLayer:_create_overlay_gui()
 	if self._workspace then
 		slot3 = Overlay
 		slot4 = self._workspace
@@ -2056,7 +2056,7 @@ InstancesLayer._create_overlay_gui = function (self)
 
 	return 
 end
-InstancesLayer._update_overlay_gui = function (self)
+function InstancesLayer:_update_overlay_gui()
 	slot3 = self._gui_panel
 
 	self._gui_panel.clear(slot2)
@@ -2112,7 +2112,7 @@ InstancesLayer._update_overlay_gui = function (self)
 
 	return 
 end
-InstancesLayer.on_simulation_started = function (self)
+function InstancesLayer:on_simulation_started()
 	slot5 = managers.world_instance
 
 	for _, instance_data in ipairs(managers.world_instance.instance_data(slot4)) do
@@ -2138,7 +2138,7 @@ InstancesLayer.on_simulation_started = function (self)
 
 	return 
 end
-InstancesLayer.update_unit_settings = function (self, ...)
+function InstancesLayer:update_unit_settings(...)
 	slot3 = self
 
 	InstancesLayer.super.update_unit_settings(slot2, ...)
@@ -2149,7 +2149,7 @@ InstancesLayer.update_unit_settings = function (self, ...)
 
 	return 
 end
-InstancesLayer.activate = function (self)
+function InstancesLayer:activate()
 	slot3 = self
 
 	InstancesLayer.super.activate(slot2)
@@ -2162,7 +2162,7 @@ InstancesLayer.activate = function (self)
 
 	return 
 end
-InstancesLayer.deactivate = function (self)
+function InstancesLayer:deactivate()
 	self._stashed_instance_units = {}
 	slot3 = self
 
@@ -2176,7 +2176,7 @@ InstancesLayer.deactivate = function (self)
 
 	return 
 end
-InstancesLayer.add_triggers = function (self)
+function InstancesLayer:add_triggers()
 	local vc = self._editor_data.virtual_controller
 	slot5 = Idstring(slot6)
 	slot10 = "_mouse_create_instance"
@@ -2189,10 +2189,10 @@ InstancesLayer.add_triggers = function (self)
 
 	return 
 end
-InstancesLayer.selected_amount_string = function (self)
+function InstancesLayer:selected_amount_string()
 	return "Selected " .. self._save_name .. ": " .. ((self._selected_instance and 1) or 0)
 end
-InstancesLayer.clear = function (self)
+function InstancesLayer:clear()
 	self._stashed_instance_units = {}
 	self._selected_instance = nil
 	slot3 = managers.world_instance
@@ -2214,37 +2214,37 @@ InstancesLayer.clear = function (self)
 	return 
 end
 Reference = Reference or class()
-Reference.init = function (self, pos, rot)
+function Reference:init(pos, rot)
 	self._pos = pos
 	self._rot = rot
 
 	return 
 end
-Reference.position = function (self)
+function Reference:position()
 	return self._pos
 end
-Reference.rotation = function (self)
+function Reference:rotation()
 	return self._rot
 end
 Instance = Instance or class()
-Instance.init = function (self, data)
+function Instance:init(data)
 	self._data = data
 
 	return 
 end
-Instance.name = function (self)
+function Instance:name()
 	return self._data.name
 end
-Instance.alive = function (self)
+function Instance:alive()
 	return true
 end
-Instance.data = function (self)
+function Instance:data()
 	return self._data
 end
-Instance.position = function (self)
+function Instance:position()
 	return self._data.position or Vector3()
 end
-Instance.rotation = function (self)
+function Instance:rotation()
 	return self._data.rotation or Rotation()
 end
 

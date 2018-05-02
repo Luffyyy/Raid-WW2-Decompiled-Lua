@@ -7,10 +7,10 @@ slot3 = "CoreFakeSession"
 core.import(slot1, core)
 
 Creator = Creator or class()
-Creator.init = function (self)
+function Creator:init()
 	return 
 end
-Creator.create_session = function (self, session_info, player_slots)
+function Creator:create_session(session_info, player_slots)
 	slot5 = session_info
 
 	if session_info.is_ranked(slot4) then
@@ -31,12 +31,12 @@ Creator.create_session = function (self, session_info, player_slots)
 
 	return CoreFakeSession.Session.new(slot4)
 end
-Creator.join_session = function (self, session_id)
+function Creator:join_session(session_id)
 	slot4 = CoreFakeSession.Session
 
 	return CoreFakeSession.Session.new(slot3)
 end
-Creator.find_session = function (self, session_info, callback)
+function Creator:find_session(session_info, callback)
 	local fake_sessions = {
 		{
 			info = 2

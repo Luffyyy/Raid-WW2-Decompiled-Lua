@@ -1,5 +1,5 @@
 CoreUnitReloader = CoreUnitReloader or class()
-CoreUnitReloader.init = function (self)
+function CoreUnitReloader:init()
 	self._unit_msg = {}
 	self._no_skipping = true
 	slot3 = self
@@ -8,7 +8,7 @@ CoreUnitReloader.init = function (self)
 
 	return 
 end
-CoreUnitReloader.destroy = function (self)
+function CoreUnitReloader:destroy()
 	slot3 = self._unitreloader_frame
 
 	if alive(slot2) then
@@ -21,7 +21,7 @@ CoreUnitReloader.destroy = function (self)
 
 	return 
 end
-CoreUnitReloader.create_main_frame = function (self)
+function CoreUnitReloader:create_main_frame()
 	slot9 = 0
 	slot10 = 0
 	slot8 = Global.frame
@@ -137,14 +137,14 @@ CoreUnitReloader.create_main_frame = function (self)
 
 	return 
 end
-CoreUnitReloader.set_position = function (self, newpos)
+function CoreUnitReloader:set_position(newpos)
 	slot5 = newpos
 
 	self._unitreloader_frame.set_position(slot3, self._unitreloader_frame)
 
 	return 
 end
-CoreUnitReloader.update = function (self, t, dt)
+function CoreUnitReloader:update(t, dt)
 	if not self._initialized then
 		self._initialized = true
 		slot6 = "all"
@@ -170,14 +170,14 @@ CoreUnitReloader.update = function (self, t, dt)
 
 	return 
 end
-CoreUnitReloader.close = function (self)
+function CoreUnitReloader:close()
 	slot3 = self._unitreloader_frame
 
 	self._unitreloader_frame.destroy(slot2)
 
 	return 
 end
-CoreUnitReloader.check_extensions = function (self)
+function CoreUnitReloader:check_extensions()
 	slot4 = "all"
 	local units = World.find_units_quick(slot2, World)
 	slot4 = units
@@ -200,7 +200,7 @@ CoreUnitReloader.check_extensions = function (self)
 
 	return true
 end
-CoreUnitReloader.on_reload = function (self)
+function CoreUnitReloader:on_reload()
 	slot3 = self
 	slot6 = self._main_box.unit_combo_box
 
@@ -213,7 +213,7 @@ CoreUnitReloader.on_reload = function (self)
 
 	return 
 end
-CoreUnitReloader.on_reload_all = function (self)
+function CoreUnitReloader:on_reload_all()
 	slot3 = self._warning_reload_all_dialog
 
 	if self._warning_reload_all_dialog.show_modal(slot2) == "ID_OK" then
@@ -236,19 +236,19 @@ CoreUnitReloader.on_reload_all = function (self)
 
 	return 
 end
-CoreUnitReloader.on_reload_list = function (self)
+function CoreUnitReloader:on_reload_list()
 	self._initialized = false
 
 	return 
 end
-CoreUnitReloader.on_close = function (self)
+function CoreUnitReloader:on_close()
 	slot4 = "Unit Reloader"
 
 	managers.toolhub.close(slot2, managers.toolhub)
 
 	return 
 end
-CoreUnitReloader.log = function (self, string)
+function CoreUnitReloader:log(string)
 	slot5 = string
 
 	self._main_box.listbox.append(slot3, self._main_box.listbox)
@@ -260,7 +260,7 @@ CoreUnitReloader.log = function (self, string)
 
 	return 
 end
-CoreUnitReloader.reload_units = function (self, unit_name)
+function CoreUnitReloader:reload_units(unit_name)
 	local num_reloads = reload_units(slot3)
 	slot6 = num_reloads .. " " .. unit_name .. " reloaded."
 

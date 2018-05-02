@@ -15,25 +15,25 @@ slot3 = "CoreInteractionEditorOpStack"
 core.import(slot1, core)
 
 InteractionEditorSystemEvents = InteractionEditorSystemEvents or CoreClass.class()
-InteractionEditorSystemEvents.setup_stack = function (self)
+function InteractionEditorSystemEvents:setup_stack()
 	slot3 = CoreInteractionEditorOpStack.InteractionEditorOpStack
 	local stack = CoreInteractionEditorOpStack.InteractionEditorOpStack.new(slot2)
 
 	return stack
 end
-InteractionEditorSystemEvents.undo_add_node = function (self, node_id, node_type)
+function InteractionEditorSystemEvents:undo_add_node(node_id, node_type)
 	return 
 end
-InteractionEditorSystemEvents.redo_add_node = function (self, node_id, node_type)
+function InteractionEditorSystemEvents:redo_add_node(node_id, node_type)
 	return 
 end
-InteractionEditorSystemEvents.undo_remove_node = function (self, node_id)
+function InteractionEditorSystemEvents:undo_remove_node(node_id)
 	return 
 end
-InteractionEditorSystemEvents.redo_remove_node = function (self, node_id)
+function InteractionEditorSystemEvents:redo_remove_node(node_id)
 	return 
 end
-InteractionEditorSystemEvents.on_delete_node = function (self, data, event)
+function InteractionEditorSystemEvents:on_delete_node(data, event)
 	slot5 = self
 	slot8 = event
 
@@ -45,7 +45,7 @@ InteractionEditorSystemEvents.on_delete_node = function (self, data, event)
 
 	return 
 end
-InteractionEditorSystemEvents.on_select_node = function (self, data, event)
+function InteractionEditorSystemEvents:on_select_node(data, event)
 	slot5 = self
 	slot5 = self.ui(slot4)
 
@@ -68,7 +68,7 @@ InteractionEditorSystemEvents.on_select_node = function (self, data, event)
 
 	return 
 end
-InteractionEditorSystemEvents.on_connect_node = function (self, data, event)
+function InteractionEditorSystemEvents:on_connect_node(data, event)
 	slot5 = event
 	local md_src = event.source(slot4).metadata(slot4)
 	local output = event.outslot(event.source(slot4))
@@ -96,7 +96,7 @@ InteractionEditorSystemEvents.on_connect_node = function (self, data, event)
 
 	return 
 end
-InteractionEditorSystemEvents.on_disconnect_node = function (self, data, event)
+function InteractionEditorSystemEvents:on_disconnect_node(data, event)
 	slot5 = event
 	local md_src = event.source(slot4).metadata(slot4)
 	local output = event.outslot(event.source(slot4))

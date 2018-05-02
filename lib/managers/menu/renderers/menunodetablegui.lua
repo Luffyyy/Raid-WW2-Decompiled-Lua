@@ -6,14 +6,14 @@ if not MenuNodeTableGui then
 end
 
 MenuNodeTableGui = slot0
-MenuNodeTableGui.init = function (self, node, layer, parameters)
+function MenuNodeTableGui:init(node, layer, parameters)
 	slot9 = parameters
 
 	MenuNodeTableGui.super.init(slot5, self, node, layer)
 
 	return 
 end
-MenuNodeTableGui._setup_panels = function (self, node)
+function MenuNodeTableGui:_setup_panels(node)
 	slot5 = node
 
 	MenuNodeTableGui.super._setup_panels(slot3, self)
@@ -80,14 +80,14 @@ MenuNodeTableGui._setup_panels = function (self, node)
 
 	return 
 end
-MenuNodeTableGui.set_mini_info = function (self, text)
+function MenuNodeTableGui:set_mini_info(text)
 	slot5 = text
 
 	self._mini_info_text.set_text(slot3, self._mini_info_text)
 
 	return 
 end
-MenuNodeTableGui._create_menu_item = function (self, row_item)
+function MenuNodeTableGui:_create_menu_item(row_item)
 	if row_item.type == "column" then
 		local columns = row_item.node.columns(slot3)
 		local total_proportions = row_item.node.parameters(row_item.node).total_proportions
@@ -229,7 +229,7 @@ MenuNodeTableGui._create_menu_item = function (self, row_item)
 
 	return 
 end
-MenuNodeTableGui._align_server_column = function (self, row_item)
+function MenuNodeTableGui:_align_server_column(row_item)
 	local safe_rect = self._scaled_size(slot3)
 
 	self._align_item_gui_info_panel(self, self)
@@ -418,28 +418,28 @@ MenuNodeTableGui._align_server_column = function (self, row_item)
 
 	return 
 end
-MenuNodeTableGui._setup_item_panel_parent = function (self, safe_rect)
+function MenuNodeTableGui:_setup_item_panel_parent(safe_rect)
 	slot5 = safe_rect
 
 	MenuNodeTableGui.super._setup_item_panel_parent(slot3, self)
 
 	return 
 end
-MenuNodeTableGui._set_width_and_height = function (self, safe_rect)
+function MenuNodeTableGui:_set_width_and_height(safe_rect)
 	slot5 = safe_rect
 
 	MenuNodeTableGui.super._set_width_and_height(slot3, self)
 
 	return 
 end
-MenuNodeTableGui._setup_item_panel = function (self, safe_rect, res)
+function MenuNodeTableGui:_setup_item_panel(safe_rect, res)
 	slot7 = res
 
 	MenuNodeTableGui.super._setup_item_panel(slot4, self, safe_rect)
 
 	return 
 end
-MenuNodeTableGui.resolution_changed = function (self)
+function MenuNodeTableGui:resolution_changed()
 	slot3 = self
 
 	MenuNodeTableGui.super.resolution_changed(slot2)

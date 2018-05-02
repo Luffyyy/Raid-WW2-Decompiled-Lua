@@ -14,7 +14,7 @@ slot4 = ""
 
 CoreChangeShadowCutsceneKey.register_serialized_attribute("Shadow Change", CoreChangeShadowCutsceneKey, "name")
 
-CoreChangeShadowCutsceneKey.init = function (self, keycollection)
+function CoreChangeShadowCutsceneKey:init(keycollection)
 	self.super.init(slot3, self)
 
 	self._modify_func_map = {}
@@ -47,12 +47,12 @@ CoreChangeShadowCutsceneKey.init = function (self, keycollection)
 
 	return 
 end
-CoreChangeShadowCutsceneKey.__tostring = function (self)
+function CoreChangeShadowCutsceneKey:__tostring()
 	slot4 = self
 
 	return "Change shadow settings to \"" .. self.name(slot3) .. "\"."
 end
-CoreChangeShadowCutsceneKey.evaluate = function (self, player, fast_forward)
+function CoreChangeShadowCutsceneKey:evaluate(player, fast_forward)
 	slot5 = self
 	slot3 = self.preceeding_key
 	slot6 = {}
@@ -89,24 +89,24 @@ CoreChangeShadowCutsceneKey.evaluate = function (self, player, fast_forward)
 
 	return 
 end
-CoreChangeShadowCutsceneKey.revert = function (self)
+function CoreChangeShadowCutsceneKey:revert()
 	slot3 = self
 
 	self._reset_interface(slot2)
 
 	return 
 end
-CoreChangeShadowCutsceneKey.unload = function (self)
+function CoreChangeShadowCutsceneKey:unload()
 	slot3 = self
 
 	self._reset_interface(slot2)
 
 	return 
 end
-CoreChangeShadowCutsceneKey.can_evaluate_with_player = function (self, player)
+function CoreChangeShadowCutsceneKey:can_evaluate_with_player(player)
 	return true
 end
-CoreChangeShadowCutsceneKey.is_valid_name = function (self, name)
+function CoreChangeShadowCutsceneKey:is_valid_name(name)
 	if name then
 		slot6 = name
 		slot2 = DB.has(slot3, DB, "environment")
@@ -115,7 +115,7 @@ CoreChangeShadowCutsceneKey.is_valid_name = function (self, name)
 	return slot2
 end
 CoreChangeShadowCutsceneKey.control_for_name = CoreCutsceneKeyBase.standard_combo_box_control
-CoreChangeShadowCutsceneKey.refresh_control_for_name = function (self, control)
+function CoreChangeShadowCutsceneKey:refresh_control_for_name(control)
 	slot4 = control
 
 	control.freeze(slot3)
@@ -146,7 +146,7 @@ CoreChangeShadowCutsceneKey.refresh_control_for_name = function (self, control)
 
 	return 
 end
-CoreChangeShadowCutsceneKey._reset_interface = function (self)
+function CoreChangeShadowCutsceneKey:_reset_interface()
 	if self._shadow_interface_id_map then
 		slot3 = self._shadow_interface_id_map
 

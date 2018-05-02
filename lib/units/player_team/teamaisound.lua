@@ -4,7 +4,7 @@ if not TeamAISound then
 end
 
 TeamAISound = slot0
-TeamAISound.init = function (self, unit)
+function TeamAISound:init(unit)
 	self._unit = unit
 	slot4 = unit
 	slot4 = unit.base(slot3)
@@ -23,7 +23,7 @@ TeamAISound.init = function (self, unit)
 
 	return 
 end
-TeamAISound.set_voice = function (self, voice)
+function TeamAISound:set_voice(voice)
 	local ss = self._unit.sound_source(slot3)
 	slot7 = voice
 

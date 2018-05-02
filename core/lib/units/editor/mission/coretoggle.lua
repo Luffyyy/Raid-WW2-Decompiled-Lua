@@ -13,14 +13,14 @@ if not ToggleUnitElement then
 end
 
 ToggleUnitElement = slot0
-ToggleUnitElement.init = function (self, ...)
+function ToggleUnitElement:init(...)
 	slot3 = self
 
 	CoreToggleUnitElement.init(slot2, ...)
 
 	return 
 end
-CoreToggleUnitElement.init = function (self, unit)
+function CoreToggleUnitElement:init(unit)
 	slot5 = unit
 
 	MissionElement.init(slot3, self)
@@ -42,7 +42,7 @@ CoreToggleUnitElement.init = function (self, unit)
 
 	return 
 end
-CoreToggleUnitElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function CoreToggleUnitElement:draw_links(t, dt, selected_unit, all_units)
 	slot10 = selected_unit
 
 	MissionElement.draw_links(slot6, self, t, dt)
@@ -68,7 +68,7 @@ CoreToggleUnitElement.draw_links = function (self, t, dt, selected_unit, all_uni
 
 	return 
 end
-CoreToggleUnitElement.get_links_to_unit = function (self, ...)
+function CoreToggleUnitElement:get_links_to_unit(...)
 	slot3 = self
 
 	CoreToggleUnitElement.super.get_links_to_unit(slot2, ...)
@@ -79,10 +79,10 @@ CoreToggleUnitElement.get_links_to_unit = function (self, ...)
 
 	return 
 end
-CoreToggleUnitElement.update_editing = function (self)
+function CoreToggleUnitElement:update_editing()
 	return 
 end
-CoreToggleUnitElement.add_element = function (self)
+function CoreToggleUnitElement:add_element()
 	slot4 = {
 		ray_type = "editor",
 		mask = 10
@@ -106,7 +106,7 @@ CoreToggleUnitElement.add_element = function (self)
 
 	return 
 end
-CoreToggleUnitElement.remove_links = function (self, unit)
+function CoreToggleUnitElement:remove_links(unit)
 	slot4 = self._hed.elements
 
 	for _, id in ipairs(slot3) do
@@ -121,7 +121,7 @@ CoreToggleUnitElement.remove_links = function (self, unit)
 
 	return 
 end
-CoreToggleUnitElement.add_triggers = function (self, vc)
+function CoreToggleUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "add_element"
 
@@ -129,7 +129,7 @@ CoreToggleUnitElement.add_triggers = function (self, vc)
 
 	return 
 end
-CoreToggleUnitElement._build_panel = function (self, panel, panel_sizer)
+function CoreToggleUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

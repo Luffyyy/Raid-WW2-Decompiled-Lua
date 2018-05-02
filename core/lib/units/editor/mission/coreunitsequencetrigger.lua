@@ -13,14 +13,14 @@ if not UnitSequenceTriggerUnitElement then
 end
 
 UnitSequenceTriggerUnitElement = slot0
-UnitSequenceTriggerUnitElement.init = function (self, ...)
+function UnitSequenceTriggerUnitElement:init(...)
 	slot3 = self
 
 	CoreUnitSequenceTriggerUnitElement.init(slot2, ...)
 
 	return 
 end
-CoreUnitSequenceTriggerUnitElement.init = function (self, unit)
+function CoreUnitSequenceTriggerUnitElement:init(unit)
 	slot5 = unit
 
 	MissionElement.init(slot3, self)
@@ -37,7 +37,7 @@ CoreUnitSequenceTriggerUnitElement.init = function (self, unit)
 
 	return 
 end
-CoreUnitSequenceTriggerUnitElement.layer_finished = function (self)
+function CoreUnitSequenceTriggerUnitElement:layer_finished()
 	slot3 = self
 
 	MissionElement.layer_finished(slot2)
@@ -66,7 +66,7 @@ CoreUnitSequenceTriggerUnitElement.layer_finished = function (self)
 
 	return 
 end
-CoreUnitSequenceTriggerUnitElement.load_unit = function (self, unit)
+function CoreUnitSequenceTriggerUnitElement:load_unit(unit)
 	if unit then
 		slot5 = unit
 		self._sequence_units[unit.unit_data(slot4).unit_id] = unit
@@ -74,7 +74,7 @@ CoreUnitSequenceTriggerUnitElement.load_unit = function (self, unit)
 
 	return 
 end
-CoreUnitSequenceTriggerUnitElement.update_selected = function (self)
+function CoreUnitSequenceTriggerUnitElement:update_selected()
 	slot3 = self._sequence_units
 
 	for id, unit in pairs(slot2) do
@@ -106,14 +106,14 @@ CoreUnitSequenceTriggerUnitElement.update_selected = function (self)
 
 	return 
 end
-CoreUnitSequenceTriggerUnitElement.update_unselected = function (self, t, dt, selected_unit, all_units)
+function CoreUnitSequenceTriggerUnitElement:update_unselected(t, dt, selected_unit, all_units)
 	slot7 = self
 
 	self._check_alive_units(slot6)
 
 	return 
 end
-CoreUnitSequenceTriggerUnitElement._check_alive_units = function (self)
+function CoreUnitSequenceTriggerUnitElement:_check_alive_units()
 	slot3 = self._sequence_units
 
 	for id, unit in pairs(slot2) do
@@ -130,7 +130,7 @@ CoreUnitSequenceTriggerUnitElement._check_alive_units = function (self)
 
 	return 
 end
-CoreUnitSequenceTriggerUnitElement.draw_links_unselected = function (self, ...)
+function CoreUnitSequenceTriggerUnitElement:draw_links_unselected(...)
 	slot3 = self
 
 	CoreUnitSequenceTriggerUnitElement.super.draw_links_unselected(slot2, ...)
@@ -156,7 +156,7 @@ CoreUnitSequenceTriggerUnitElement.draw_links_unselected = function (self, ...)
 
 	return 
 end
-CoreUnitSequenceTriggerUnitElement.get_links_to_unit = function (self, to_unit, links, all_units)
+function CoreUnitSequenceTriggerUnitElement:get_links_to_unit(to_unit, links, all_units)
 	slot9 = all_units
 
 	CoreUnitSequenceTriggerUnitElement.super.get_links_to_unit(slot5, self, to_unit, links)
@@ -176,7 +176,7 @@ CoreUnitSequenceTriggerUnitElement.get_links_to_unit = function (self, to_unit, 
 
 	return 
 end
-CoreUnitSequenceTriggerUnitElement.update_editing = function (self)
+function CoreUnitSequenceTriggerUnitElement:update_editing()
 	slot4 = {
 		ray_type = "body editor",
 		sample = true,
@@ -199,7 +199,7 @@ CoreUnitSequenceTriggerUnitElement.update_editing = function (self)
 
 	return 
 end
-CoreUnitSequenceTriggerUnitElement.select_unit = function (self)
+function CoreUnitSequenceTriggerUnitElement:select_unit()
 	slot4 = {
 		ray_type = "body editor",
 		sample = true,
@@ -216,7 +216,7 @@ CoreUnitSequenceTriggerUnitElement.select_unit = function (self)
 
 	return 
 end
-CoreUnitSequenceTriggerUnitElement._check_add_unit = function (self, unit)
+function CoreUnitSequenceTriggerUnitElement:_check_add_unit(unit)
 	slot4 = managers.sequence
 	slot7 = unit
 	local sequences = managers.sequence.get_sequence_list(slot3, unit.name(slot6))
@@ -240,7 +240,7 @@ CoreUnitSequenceTriggerUnitElement._check_add_unit = function (self, unit)
 
 	return 
 end
-CoreUnitSequenceTriggerUnitElement.add_triggers = function (self, vc)
+function CoreUnitSequenceTriggerUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "select_unit"
 
@@ -248,7 +248,7 @@ CoreUnitSequenceTriggerUnitElement.add_triggers = function (self, vc)
 
 	return 
 end
-CoreUnitSequenceTriggerUnitElement.select_unit_list_btn = function (self)
+function CoreUnitSequenceTriggerUnitElement:select_unit_list_btn()
 	local function f(unit)
 		slot4 = "Statics"
 		slot4 = unit
@@ -276,7 +276,7 @@ CoreUnitSequenceTriggerUnitElement.select_unit_list_btn = function (self)
 
 	return 
 end
-CoreUnitSequenceTriggerUnitElement._build_panel = function (self, panel, panel_sizer)
+function CoreUnitSequenceTriggerUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._check_alive_units(slot4)
@@ -327,7 +327,7 @@ CoreUnitSequenceTriggerUnitElement._build_panel = function (self, panel, panel_s
 
 	return 
 end
-CoreUnitSequenceTriggerUnitElement._remove_by_unit_id = function (self, unit_id)
+function CoreUnitSequenceTriggerUnitElement:_remove_by_unit_id(unit_id)
 	local remove_entries = {}
 	slot5 = self._guis
 
@@ -363,7 +363,7 @@ CoreUnitSequenceTriggerUnitElement._remove_by_unit_id = function (self, unit_id)
 
 	return 
 end
-CoreUnitSequenceTriggerUnitElement.remove_entry = function (self, id)
+function CoreUnitSequenceTriggerUnitElement:remove_entry(id)
 	local unit_id = self._guis[id].unit_id
 	slot5 = self._guis[id].unit_id_ctrlr
 
@@ -408,7 +408,7 @@ CoreUnitSequenceTriggerUnitElement.remove_entry = function (self, id)
 
 	return 
 end
-CoreUnitSequenceTriggerUnitElement._remove_from_sequence_list = function (self, unit_id)
+function CoreUnitSequenceTriggerUnitElement:_remove_from_sequence_list(unit_id)
 	slot6 = self._hed.sequence_list
 
 	for i, entry in pairs(clone(slot5)) do
@@ -421,7 +421,7 @@ CoreUnitSequenceTriggerUnitElement._remove_from_sequence_list = function (self, 
 
 	return 
 end
-CoreUnitSequenceTriggerUnitElement._add_unit = function (self, unit, sequences, sequence_list_data)
+function CoreUnitSequenceTriggerUnitElement:_add_unit(unit, sequences, sequence_list_data)
 	local panel = self._panel
 	local panel_sizer = self._panel_sizer
 	slot13 = unit
@@ -493,7 +493,7 @@ CoreUnitSequenceTriggerUnitElement._add_unit = function (self, unit, sequences, 
 
 	return 
 end
-CoreUnitSequenceTriggerUnitElement.set_sequence_data = function (self, guis_id)
+function CoreUnitSequenceTriggerUnitElement:set_sequence_data(guis_id)
 	local sequence = self._guis[guis_id].sequence.get_value(slot3)
 	slot5 = self._hed.sequence_list
 

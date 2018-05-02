@@ -4,31 +4,31 @@ WeaponLionGadget1 = WeaponLionGadget1 or class()
 WeaponLionGadget1.GADGET_TYPE = "bipod"
 WeaponLionGadget1._previous_state = nil
 WeaponLionGadget1.bipod_length = nil
-WeaponLionGadget1.init = function (self, unit)
+function WeaponLionGadget1:init(unit)
 	self._unit = unit
 	self._is_npc = false
 	self._deployed = false
 
 	return 
 end
-WeaponLionGadget1.update = function (self, unit, t, dt)
+function WeaponLionGadget1:update(unit, t, dt)
 	return 
 end
-WeaponLionGadget1.set_npc = function (self)
+function WeaponLionGadget1:set_npc()
 	self._is_npc = true
 
 	return 
 end
-WeaponLionGadget1.is_bipod = function (self)
+function WeaponLionGadget1:is_bipod()
 	return true
 end
-WeaponLionGadget1.bipod_state = function (self)
+function WeaponLionGadget1:bipod_state()
 	return self._on
 end
-WeaponLionGadget1.is_deployed = function (self)
+function WeaponLionGadget1:is_deployed()
 	return self._deployed
 end
-WeaponLionGadget1.toggle = function (self)
+function WeaponLionGadget1:toggle()
 	slot4 = "WeaponLionGadget1:toggle() is_deployed: "
 	slot7 = self
 
@@ -48,7 +48,7 @@ WeaponLionGadget1.toggle = function (self)
 
 	return 
 end
-WeaponLionGadget1.is_usable = function (self)
+function WeaponLionGadget1:is_usable()
 	if not self._center_ray_from or not self._center_ray_to then
 		return nil
 	end
@@ -62,7 +62,7 @@ WeaponLionGadget1.is_usable = function (self)
 
 	return ray_bipod_center and (ray_bipod_left or ray_bipod_right)
 end
-WeaponLionGadget1._unmount = function (self)
+function WeaponLionGadget1:_unmount()
 	slot4 = self._previous_state or "standard"
 
 	managers.player.set_player_state(slot2, managers.player)
@@ -72,7 +72,7 @@ WeaponLionGadget1._unmount = function (self)
 
 	return 
 end
-WeaponLionGadget1._is_deployable = function (self)
+function WeaponLionGadget1:_is_deployable()
 
 	-- Decompilation error in this vicinity:
 	if self._is_npc then
@@ -151,7 +151,7 @@ WeaponLionGadget1._is_deployable = function (self)
 
 	return false
 end
-WeaponLionGadget1._shoot_bipod_rays = function (self, debug_draw)
+function WeaponLionGadget1:_shoot_bipod_rays(debug_draw)
 	local mvec1 = Vector3()
 	local mvec2 = Vector3()
 	local mvec3 = Vector3()
@@ -362,7 +362,7 @@ WeaponLionGadget1._shoot_bipod_rays = function (self, debug_draw)
 		forward = ray_bipod_forward
 	}
 end
-WeaponLionGadget1.check_state = function (self)
+function WeaponLionGadget1:check_state()
 	if self._is_npc then
 		return false
 	end
@@ -399,7 +399,7 @@ WeaponLionGadget1.check_state = function (self)
 
 	return 
 end
-WeaponLionGadget1.destroy = function (self, unit)
+function WeaponLionGadget1:destroy(unit)
 	return 
 end
 

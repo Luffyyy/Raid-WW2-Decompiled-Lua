@@ -27,7 +27,7 @@ RaidGUIControlKickMuteWidget.NAME_FONT_SIZE = tweak_data.gui.font_sizes.small
 RaidGUIControlKickMuteWidget.NAME_FONT_COLOR_INACTIVE = tweak_data.gui.colors.raid_grey
 RaidGUIControlKickMuteWidget.NAME_FONT_COLOR_ACTIVE = tweak_data.gui.colors.raid_dirty_white
 RaidGUIControlKickMuteWidget.BUTTON_PADDING = 96
-RaidGUIControlKickMuteWidget.init = function (self, parent, params)
+function RaidGUIControlKickMuteWidget:init(parent, params)
 	slot5 = params
 	self._params = clone(slot4)
 	self._index = params.index
@@ -67,7 +67,7 @@ RaidGUIControlKickMuteWidget.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlKickMuteWidget._create_panel = function (self, parent, params)
+function RaidGUIControlKickMuteWidget:_create_panel(parent, params)
 	local parent_params = {
 		halign = "scale",
 		name = "kick_mute_widget_panel",
@@ -81,7 +81,7 @@ RaidGUIControlKickMuteWidget._create_panel = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlKickMuteWidget._create_highlight_line = function (self)
+function RaidGUIControlKickMuteWidget:_create_highlight_line()
 	local highlight_params = {
 		name = "highlight_line",
 		halign = "left",
@@ -100,7 +100,7 @@ RaidGUIControlKickMuteWidget._create_highlight_line = function (self)
 
 	return 
 end
-RaidGUIControlKickMuteWidget._create_name_text = function (self)
+function RaidGUIControlKickMuteWidget:_create_name_text()
 	local name_params = {
 		name = "name",
 		vertical = "center",
@@ -120,7 +120,7 @@ RaidGUIControlKickMuteWidget._create_name_text = function (self)
 
 	return 
 end
-RaidGUIControlKickMuteWidget._create_kick_button = function (self)
+function RaidGUIControlKickMuteWidget:_create_kick_button()
 	local move_up_index = (1 < self._index and self._index - 1) or 3
 	local move_down_index = self._index % 3 + 1
 	local kick_button_params = {
@@ -164,7 +164,7 @@ RaidGUIControlKickMuteWidget._create_kick_button = function (self)
 
 	return 
 end
-RaidGUIControlKickMuteWidget._create_mute_button = function (self)
+function RaidGUIControlKickMuteWidget:_create_mute_button()
 	local move_up_index = (1 < self._index and self._index - 1) or 3
 	local move_down_index = self._index % 3 + 1
 	local mute_button_params = {
@@ -209,7 +209,7 @@ RaidGUIControlKickMuteWidget._create_mute_button = function (self)
 
 	return 
 end
-RaidGUIControlKickMuteWidget._create_gamercard_button = function (self)
+function RaidGUIControlKickMuteWidget:_create_gamercard_button()
 	local move_up_index = (1 < self._index and self._index - 1) or 3
 	local move_down_index = self._index % 3 + 1
 	local gamercard_button_params = {
@@ -247,7 +247,7 @@ RaidGUIControlKickMuteWidget._create_gamercard_button = function (self)
 
 	return 
 end
-RaidGUIControlKickMuteWidget._create_invite_button = function (self)
+function RaidGUIControlKickMuteWidget:_create_invite_button()
 	local move_up_index = (1 < self._index and self._index - 1) or 3
 	local move_down_index = self._index % 3 + 1
 	local invite_button_params = {
@@ -285,7 +285,7 @@ RaidGUIControlKickMuteWidget._create_invite_button = function (self)
 
 	return 
 end
-RaidGUIControlKickMuteWidget._refresh_mute_button = function (self)
+function RaidGUIControlKickMuteWidget:_refresh_mute_button()
 	slot3 = self._mute_button
 	slot6 = self._peer
 
@@ -293,7 +293,7 @@ RaidGUIControlKickMuteWidget._refresh_mute_button = function (self)
 
 	return 
 end
-RaidGUIControlKickMuteWidget.set_peer = function (self, peer, mute_button, kick_button)
+function RaidGUIControlKickMuteWidget:set_peer(peer, mute_button, kick_button)
 	self._peer = peer
 	slot6 = self._name
 	slot11 = peer
@@ -324,7 +324,7 @@ RaidGUIControlKickMuteWidget.set_peer = function (self, peer, mute_button, kick_
 
 	return 
 end
-RaidGUIControlKickMuteWidget.calculate_width = function (self)
+function RaidGUIControlKickMuteWidget:calculate_width()
 	local w = 0
 	slot4 = self._object
 	local leftmost_button_x = self._object.w(slot3)
@@ -347,7 +347,7 @@ RaidGUIControlKickMuteWidget.calculate_width = function (self)
 
 	return w
 end
-RaidGUIControlKickMuteWidget.set_w = function (self, w)
+function RaidGUIControlKickMuteWidget:set_w(w)
 	slot5 = w
 
 	RaidGUIControlKickMuteWidget.super.set_w(slot3, self)
@@ -358,7 +358,7 @@ RaidGUIControlKickMuteWidget.set_w = function (self, w)
 
 	return 
 end
-RaidGUIControlKickMuteWidget._fit_size = function (self)
+function RaidGUIControlKickMuteWidget:_fit_size()
 	slot3 = self._name
 	local _, _, w, _ = self._name.text_rect(slot2)
 	slot8 = w
@@ -422,7 +422,7 @@ RaidGUIControlKickMuteWidget._fit_size = function (self)
 
 	return 
 end
-RaidGUIControlKickMuteWidget.on_mute_selected = function (self)
+function RaidGUIControlKickMuteWidget:on_mute_selected()
 	if self._params.on_button_selected_callback then
 		slot5 = self._mute_button
 		slot3 = (self._mute_button.get_value(slot4) and "unmute") or "mute"
@@ -432,7 +432,7 @@ RaidGUIControlKickMuteWidget.on_mute_selected = function (self)
 
 	return 
 end
-RaidGUIControlKickMuteWidget.on_mute_pressed = function (self)
+function RaidGUIControlKickMuteWidget:on_mute_pressed()
 	if not self._peer then
 		return 
 	end
@@ -452,7 +452,7 @@ RaidGUIControlKickMuteWidget.on_mute_pressed = function (self)
 
 	return 
 end
-RaidGUIControlKickMuteWidget.on_kick_pressed = function (self)
+function RaidGUIControlKickMuteWidget:on_kick_pressed()
 	if not self._peer then
 		return 
 	end
@@ -468,12 +468,12 @@ RaidGUIControlKickMuteWidget.on_kick_pressed = function (self)
 
 	return 
 end
-RaidGUIControlKickMuteWidget.on_invite_pressed = function (self)
+function RaidGUIControlKickMuteWidget:on_invite_pressed()
 	RaidMenuCallbackHandler.invite_friend()
 
 	return 
 end
-RaidGUIControlKickMuteWidget.set_invite_widget = function (self)
+function RaidGUIControlKickMuteWidget:set_invite_widget()
 	slot3 = self._buttons
 
 	for index, button in pairs(slot2) do
@@ -497,7 +497,7 @@ RaidGUIControlKickMuteWidget.set_invite_widget = function (self)
 
 	return 
 end
-RaidGUIControlKickMuteWidget.set_move_controls = function (self, number_of_widgets_shown, invite_widget_shown)
+function RaidGUIControlKickMuteWidget:set_move_controls(number_of_widgets_shown, invite_widget_shown)
 
 	-- Decompilation error in this vicinity:
 	if number_of_widgets_shown < 2 then
@@ -557,7 +557,7 @@ RaidGUIControlKickMuteWidget.set_move_controls = function (self, number_of_widge
 
 	return 
 end
-RaidGUIControlKickMuteWidget.show_gamercard = function (self)
+function RaidGUIControlKickMuteWidget:show_gamercard()
 	slot9 = self._peer
 	slot4 = "[RaidGUIControlKickMuteWidget:show_gamercard] showing gamercard for peer " .. tostring(self._peer.name(slot8))
 
@@ -575,7 +575,7 @@ RaidGUIControlKickMuteWidget.show_gamercard = function (self)
 
 	return 
 end
-RaidGUIControlKickMuteWidget.on_kick_confirmed = function (self)
+function RaidGUIControlKickMuteWidget:on_kick_confirmed()
 	slot4 = self._peer
 
 	managers.vote.host_kick(slot2, managers.vote)
@@ -586,7 +586,7 @@ RaidGUIControlKickMuteWidget.on_kick_confirmed = function (self)
 
 	return 
 end
-RaidGUIControlKickMuteWidget.highlight_on = function (self)
+function RaidGUIControlKickMuteWidget:highlight_on()
 	slot3 = self._highlight_line
 
 	self._highlight_line.stop(slot2)
@@ -598,7 +598,7 @@ RaidGUIControlKickMuteWidget.highlight_on = function (self)
 
 	return 
 end
-RaidGUIControlKickMuteWidget.highlight_off = function (self)
+function RaidGUIControlKickMuteWidget:highlight_off()
 	slot3 = self._highlight_line
 
 	self._highlight_line.stop(slot2)
@@ -610,7 +610,7 @@ RaidGUIControlKickMuteWidget.highlight_off = function (self)
 
 	return 
 end
-RaidGUIControlKickMuteWidget.set_selected = function (self, selected)
+function RaidGUIControlKickMuteWidget:set_selected(selected)
 	self._selected = selected
 
 	if selected then
@@ -633,7 +633,7 @@ RaidGUIControlKickMuteWidget.set_selected = function (self, selected)
 
 	return 
 end
-RaidGUIControlKickMuteWidget.on_button_selected = function (self, button)
+function RaidGUIControlKickMuteWidget:on_button_selected(button)
 	if self._params.on_button_selected_callback then
 		slot4 = button
 
@@ -642,7 +642,7 @@ RaidGUIControlKickMuteWidget.on_button_selected = function (self, button)
 
 	return 
 end
-RaidGUIControlKickMuteWidget.on_button_unselected = function (self, button)
+function RaidGUIControlKickMuteWidget:on_button_unselected(button)
 	if self._params.on_button_unselected_callback then
 		slot4 = button
 
@@ -651,7 +651,7 @@ RaidGUIControlKickMuteWidget.on_button_unselected = function (self, button)
 
 	return 
 end
-RaidGUIControlKickMuteWidget._animate_highlight_on = function (self)
+function RaidGUIControlKickMuteWidget:_animate_highlight_on()
 	local duration = 0.2
 	slot4 = self._highlight_line
 	local t = self._highlight_line.alpha(slot3) * duration
@@ -672,7 +672,7 @@ RaidGUIControlKickMuteWidget._animate_highlight_on = function (self)
 
 	return 
 end
-RaidGUIControlKickMuteWidget._animate_highlight_off = function (self)
+function RaidGUIControlKickMuteWidget:_animate_highlight_off()
 	local duration = 0.2
 	slot4 = self._highlight_line
 	local t = (1 - self._highlight_line.alpha(slot3)) * duration

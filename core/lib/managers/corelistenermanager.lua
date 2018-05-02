@@ -7,7 +7,7 @@ slot3 = "CoreLinkedStackMap"
 core.import(slot1, core)
 
 ListenerManager = ListenerManager or class()
-function ListenerManager:init()
+ListenerManager.init = function (self)
 	self._set_map = {}
 	self._category_map = {}
 	self._listener_map = {}
@@ -25,7 +25,7 @@ function ListenerManager:init()
 
 	return 
 end
-function ListenerManager:active_listener_obj()
+ListenerManager.active_listener_obj = function (self)
 	slot3 = self._listener_map
 
 	for id, listener_data in pairs(slot2) do
@@ -36,7 +36,7 @@ function ListenerManager:active_listener_obj()
 
 	return 
 end
-function ListenerManager:get_closest_listener_position(position)
+ListenerManager.get_closest_listener_position = function (self, position)
 	slot5 = "ListenerManager:get_closest_listener_position dont function in wwise yet"
 
 	Application.error(slot3, Application)
@@ -68,7 +68,7 @@ function ListenerManager:get_closest_listener_position(position)
 
 	return closest_position, closest_distance
 end
-function ListenerManager:set_enabled(enabled)
+ListenerManager.set_enabled = function (self, enabled)
 	enabled = not not enabled
 
 	if self._enabled ~= enabled then
@@ -87,7 +87,7 @@ function ListenerManager:set_enabled(enabled)
 
 	return 
 end
-function ListenerManager:callback_on_all_active_listeners(func)
+ListenerManager.callback_on_all_active_listeners = function (self, func)
 	local done_set_map = {}
 	local done_category_map = {}
 	slot6 = self._active_set_stack_map
@@ -119,16 +119,16 @@ function ListenerManager:callback_on_all_active_listeners(func)
 
 	return 
 end
-function ListenerManager:has_stack(stack_id)
+ListenerManager.has_stack = function (self, stack_id)
 	return self._active_set_stack_map[stack_id] ~= nil
 end
-function ListenerManager:has_set(set_id)
+ListenerManager.has_set = function (self, set_id)
 	return self._set_map[set_id] ~= nil
 end
-function ListenerManager:has_category(category_id)
+ListenerManager.has_category = function (self, category_id)
 	return self._category_map[category_id] ~= nil
 end
-function ListenerManager:add_stack(stack_id)
+ListenerManager.add_stack = function (self, stack_id)
 	if not self._active_set_stack_map[stack_id] then
 		slot5 = CoreLinkedStackMap.LinkedStackMap
 		self._active_set_stack_map[stack_id] = CoreLinkedStackMap.LinkedStackMap.new(slot4)
@@ -142,7 +142,7 @@ function ListenerManager:add_stack(stack_id)
 
 	return 
 end
-function ListenerManager:remove_stack(stack_id)
+ListenerManager.remove_stack = function (self, stack_id)
 	local active_set_stack = self._active_set_stack_map[stack_id]
 
 	if active_set_stack then
@@ -165,7 +165,7 @@ function ListenerManager:remove_stack(stack_id)
 
 	return 
 end
-function ListenerManager:add_set(set_id, category_id_list)
+ListenerManager.add_set = function (self, set_id, category_id_list)
 	if not self._set_map[set_id] then
 		self._set_map[set_id] = {}
 		self._set_activation_map[set_id] = {}
@@ -188,7 +188,7 @@ function ListenerManager:add_set(set_id, category_id_list)
 
 	return 
 end
-function ListenerManager:remove_set(set_id)
+ListenerManager.remove_set = function (self, set_id)
 	local category_map = self._set_map[set_id]
 
 	if category_map then
@@ -219,7 +219,7 @@ function ListenerManager:remove_set(set_id)
 
 	return 
 end
-function ListenerManager:add_set_category(set_id, category_id)
+ListenerManager.add_set_category = function (self, set_id, category_id)
 	local category_map = self._set_map[set_id]
 
 	if category_map then
@@ -242,7 +242,7 @@ function ListenerManager:add_set_category(set_id, category_id)
 
 	return 
 end
-function ListenerManager:remove_set_category(set_id, category_id)
+ListenerManager.remove_set_category = function (self, set_id, category_id)
 	local category_map = self._set_map[set_id]
 
 	if category_map then
@@ -265,7 +265,7 @@ function ListenerManager:remove_set_category(set_id, category_id)
 
 	return 
 end
-function ListenerManager:add_category(category_id)
+ListenerManager.add_category = function (self, category_id)
 	if not self._category_map[category_id] then
 		self._category_map[category_id] = {}
 		self._active_category_map[category_id] = false
@@ -278,7 +278,7 @@ function ListenerManager:add_category(category_id)
 
 	return 
 end
-function ListenerManager:remove_category(category_id)
+ListenerManager.remove_category = function (self, category_id)
 	if self._category_map[category_id] then
 		slot4 = self._set_map
 
@@ -301,7 +301,7 @@ function ListenerManager:remove_category(category_id)
 
 	return 
 end
-function ListenerManager:add_listener(category_id, distance_obj, orientation_obj, occlusion_obj, disabled)
+ListenerManager.add_listener = function (self, category_id, distance_obj, orientation_obj, occlusion_obj, disabled)
 	if not self._category_map[category_id] then
 		slot9 = category_id
 
@@ -348,7 +348,7 @@ function ListenerManager:add_listener(category_id, distance_obj, orientation_obj
 
 	return key
 end
-function ListenerManager:remove_listener(listener_id)
+ListenerManager.remove_listener = function (self, listener_id)
 	local listener = self._listener_map[listener_id]
 
 	if listener then
@@ -383,7 +383,7 @@ function ListenerManager:remove_listener(listener_id)
 
 	return 
 end
-function ListenerManager:set_listener(listener_id, distance_obj, orientation_obj, occlusion_obj)
+ListenerManager.set_listener = function (self, listener_id, distance_obj, orientation_obj, occlusion_obj)
 	local listener = self._listener_map[listener_id]
 
 	if listener then
@@ -431,7 +431,7 @@ function ListenerManager:set_listener(listener_id, distance_obj, orientation_obj
 
 	return 
 end
-function ListenerManager:set_listener_enabled(listener_id, enabled)
+ListenerManager.set_listener_enabled = function (self, listener_id, enabled)
 	local data = self._listener_map[listener_id]
 
 	if data then
@@ -451,7 +451,7 @@ function ListenerManager:set_listener_enabled(listener_id, enabled)
 
 	return 
 end
-function ListenerManager:get_listener_enabled(listener_id)
+ListenerManager.get_listener_enabled = function (self, listener_id)
 	local listener = self._listener_map[listener_id]
 
 	if listener then
@@ -467,7 +467,7 @@ function ListenerManager:get_listener_enabled(listener_id)
 
 	return 
 end
-function ListenerManager:activate_set(stack_id, set_id)
+ListenerManager.activate_set = function (self, stack_id, set_id)
 	local active_set_stack = self._active_set_stack_map[stack_id]
 
 	if active_set_stack then
@@ -515,7 +515,7 @@ function ListenerManager:activate_set(stack_id, set_id)
 
 	return -1
 end
-function ListenerManager:deactivate_set(activation_id)
+ListenerManager.deactivate_set = function (self, activation_id)
 	local activation = self._activation_map[activation_id]
 
 	if activation then
@@ -554,7 +554,7 @@ function ListenerManager:deactivate_set(activation_id)
 
 	return 
 end
-function ListenerManager:_activate_set(set_id)
+ListenerManager._activate_set = function (self, set_id)
 	local active_set_count = self._active_set_count_map[set_id]
 
 	if not active_set_count then
@@ -568,7 +568,7 @@ function ListenerManager:_activate_set(set_id)
 
 	return 
 end
-function ListenerManager:_deactivate_set(set_id)
+ListenerManager._deactivate_set = function (self, set_id)
 	local active_set_count = self._active_set_count_map[set_id]
 	active_set_count = active_set_count - 1
 
@@ -583,7 +583,7 @@ function ListenerManager:_deactivate_set(set_id)
 
 	return 
 end
-function ListenerManager:_set_listener_set_active(set_id, active)
+ListenerManager._set_listener_set_active = function (self, set_id, active)
 	slot5 = self._set_map[set_id]
 
 	for category_id, listener_map in pairs(slot4) do
@@ -601,7 +601,7 @@ function ListenerManager:_set_listener_set_active(set_id, active)
 
 	return 
 end
-function ListenerManager:debug_print()
+ListenerManager.debug_print = function (self)
 	slot3 = self._active_set_stack_map
 
 	for stack_id, stack in pairs(slot2) do

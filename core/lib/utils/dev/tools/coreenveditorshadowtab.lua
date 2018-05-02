@@ -3,24 +3,24 @@ slot3 = "CoreEnvironmentFeeder"
 core.import(slot1, core)
 
 ShadowBlock = ShadowBlock or CoreClass.class()
-ShadowBlock.init = function (self)
+function ShadowBlock:init()
 	self._parameters = {}
 
 	return 
 end
-ShadowBlock.map = function (self)
+function ShadowBlock:map()
 	return self._parameters
 end
-ShadowBlock.set = function (self, key, value)
+function ShadowBlock:set(key, value)
 	self._parameters[key] = value
 
 	return 
 end
-ShadowBlock.get = function (self, key)
+function ShadowBlock:get(key)
 	return self._parameters[key]
 end
 CoreEnvEditor = CoreEnvEditor or class()
-CoreEnvEditor.init_shadow_tab = function (self)
+function CoreEnvEditor:init_shadow_tab()
 	self._shadow_blocks = {}
 	self._shadow_params = {}
 	slot3 = self
@@ -36,7 +36,7 @@ CoreEnvEditor.init_shadow_tab = function (self)
 
 	return 
 end
-CoreEnvEditor.load_shadow_data = function (self, block)
+function CoreEnvEditor:load_shadow_data(block)
 	slot6 = block
 
 	for k, v in pairs(block.map(slot5)) do
@@ -51,7 +51,7 @@ CoreEnvEditor.load_shadow_data = function (self, block)
 
 	return 
 end
-CoreEnvEditor.parse_shadow_data = function (self)
+function CoreEnvEditor:parse_shadow_data()
 	local values = {}
 	slot6 = CoreEnvironmentFeeder.PostShadowSlice0Feeder.DATA_PATH_KEY
 	values.slice0 = managers.viewport.get_environment_value(slot3, managers.viewport, self._env_path)
@@ -74,7 +74,7 @@ CoreEnvEditor.parse_shadow_data = function (self)
 
 	return 
 end
-CoreEnvEditor.set_params_enabled = function (self, b)
+function CoreEnvEditor:set_params_enabled(b)
 	slot4 = self._shadow_params
 
 	for _, v in pairs(slot3) do
@@ -89,7 +89,7 @@ CoreEnvEditor.set_params_enabled = function (self, b)
 
 	return 
 end
-CoreEnvEditor.clear_param_sliders = function (self)
+function CoreEnvEditor:clear_param_sliders()
 	slot3 = self._shadow_params
 
 	for k, v in pairs(slot2) do
@@ -100,7 +100,7 @@ CoreEnvEditor.clear_param_sliders = function (self)
 
 	return 
 end
-CoreEnvEditor.serialize = function (self, str)
+function CoreEnvEditor:serialize(str)
 	slot4 = self._shadow_params
 
 	for k, v in pairs(slot3) do
@@ -112,7 +112,7 @@ CoreEnvEditor.serialize = function (self, str)
 
 	return 
 end
-CoreEnvEditor.convert_to_block = function (self, values)
+function CoreEnvEditor:convert_to_block(values)
 	local block = ShadowBlock.new(slot3)
 	slot7 = values.shadow_slice_depths.x
 
@@ -144,7 +144,7 @@ CoreEnvEditor.convert_to_block = function (self, values)
 
 	return block
 end
-CoreEnvEditor.shadow_feed_params = function (self, feed_params)
+function CoreEnvEditor:shadow_feed_params(feed_params)
 	local interface_params = self._posteffect.post_processors.shadow_processor.modifiers.shadow_modifier.params
 	slot8 = interface_params.d0
 	local s0 = Vector3(slot4, 0, interface_params.d0.get_value(slot7))
@@ -172,7 +172,7 @@ CoreEnvEditor.shadow_feed_params = function (self, feed_params)
 
 	return feed_params
 end
-CoreEnvEditor.create_shadow_tab = function (self)
+function CoreEnvEditor:create_shadow_tab()
 	slot6 = ""
 	local panel = EWS.Panel(slot2, EWS, self._main_notebook, "")
 	slot5 = "VERTICAL"

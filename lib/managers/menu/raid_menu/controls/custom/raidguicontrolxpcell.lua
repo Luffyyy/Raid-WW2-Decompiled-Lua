@@ -6,7 +6,7 @@ end
 RaidGUIControlXPCell = slot0
 RaidGUIControlXPCell.FONT = tweak_data.gui.fonts.din_compressed
 RaidGUIControlXPCell.FONT_SIZE = tweak_data.gui.font_sizes.small
-RaidGUIControlXPCell.init = function (self, parent, params)
+function RaidGUIControlXPCell:init(parent, params)
 	params.font = RaidGUIControlXPCell.FONT
 	params.font_size = RaidGUIControlXPCell.FONT_SIZE
 	slot7 = params
@@ -26,7 +26,7 @@ RaidGUIControlXPCell.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlXPCell.set_text = function (self, text, animate)
+function RaidGUIControlXPCell:set_text(text, animate)
 	slot5 = self._object
 
 	if text ~= self._object.text(slot4) then
@@ -47,7 +47,7 @@ RaidGUIControlXPCell.set_text = function (self, text, animate)
 
 	return 
 end
-RaidGUIControlXPCell.set_visible = function (self, flag)
+function RaidGUIControlXPCell:set_visible(flag)
 	local alpha = (flag and 1) or 0
 	slot6 = alpha
 
@@ -55,7 +55,7 @@ RaidGUIControlXPCell.set_visible = function (self, flag)
 
 	return 
 end
-RaidGUIControlXPCell.fade_in = function (self, duration)
+function RaidGUIControlXPCell:fade_in(duration)
 	if self._fade_in_animation_thread then
 		slot4 = self._panel
 		slot5 = self._fade_in_animation_thread
@@ -70,7 +70,7 @@ RaidGUIControlXPCell.fade_in = function (self, duration)
 
 	return 
 end
-RaidGUIControlXPCell.animate_fade_in = function (self, panel, duration)
+function RaidGUIControlXPCell:animate_fade_in(panel, duration)
 	local t = 0
 	local anim_duration = duration or 0.15
 
@@ -90,7 +90,7 @@ RaidGUIControlXPCell.animate_fade_in = function (self, panel, duration)
 
 	return 
 end
-RaidGUIControlXPCell.animate_change_text = function (self, panel)
+function RaidGUIControlXPCell:animate_change_text(panel)
 	local starting_color = tweak_data.gui.colors.xp_breakdown_active_column
 	local offset = 15
 	local t = 0
@@ -128,19 +128,19 @@ RaidGUIControlXPCell.animate_change_text = function (self, panel)
 
 	return 
 end
-RaidGUIControlXPCell.highlight_on = function (self)
+function RaidGUIControlXPCell:highlight_on()
 	return 
 end
-RaidGUIControlXPCell.highlight_off = function (self)
+function RaidGUIControlXPCell:highlight_off()
 	return 
 end
-RaidGUIControlXPCell.select_on = function (self)
+function RaidGUIControlXPCell:select_on()
 	return 
 end
-RaidGUIControlXPCell.select_off = function (self)
+function RaidGUIControlXPCell:select_off()
 	return 
 end
-RaidGUIControlXPCell.on_double_click = function (self, button)
+function RaidGUIControlXPCell:on_double_click(button)
 	return 
 end
 

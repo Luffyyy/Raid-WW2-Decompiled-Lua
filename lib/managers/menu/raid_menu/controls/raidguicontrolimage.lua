@@ -4,7 +4,7 @@ if not RaidGUIControlImage then
 end
 
 RaidGUIControlImage = slot0
-RaidGUIControlImage.init = function (self, parent, params)
+function RaidGUIControlImage:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlImage.super.init(slot4, self, parent)
@@ -30,26 +30,26 @@ RaidGUIControlImage.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlImage.set_color = function (self, color)
+function RaidGUIControlImage:set_color(color)
 	slot5 = color
 
 	self._object.set_color(slot3, self._object)
 
 	return 
 end
-RaidGUIControlImage.color = function (self)
+function RaidGUIControlImage:color()
 	slot3 = self._object
 
 	return self._object.color(slot2)
 end
-RaidGUIControlImage.set_image = function (self, texture)
+function RaidGUIControlImage:set_image(texture)
 	slot5 = texture
 
 	self._object.set_image(slot3, self._object)
 
 	return 
 end
-RaidGUIControlImage.set_texture_rect = function (self, rect)
+function RaidGUIControlImage:set_texture_rect(rect)
 	slot4 = self._object
 	slot7 = rect
 
@@ -57,7 +57,7 @@ RaidGUIControlImage.set_texture_rect = function (self, rect)
 
 	return 
 end
-RaidGUIControlImage.on_mouse_pressed = function (self, o, button, x, y)
+function RaidGUIControlImage:on_mouse_pressed(o, button, x, y)
 	if self._on_mouse_pressed_callback then
 		self._on_mouse_pressed_callback()
 
@@ -66,7 +66,7 @@ RaidGUIControlImage.on_mouse_pressed = function (self, o, button, x, y)
 
 	return false
 end
-RaidGUIControlImage.mouse_released = function (self, o, button, x, y)
+function RaidGUIControlImage:mouse_released(o, button, x, y)
 	if self._on_mouse_released_callback then
 		self._on_mouse_released_callback()
 
@@ -75,19 +75,19 @@ RaidGUIControlImage.mouse_released = function (self, o, button, x, y)
 
 	return false
 end
-RaidGUIControlImage.center = function (self)
+function RaidGUIControlImage:center()
 	slot3 = self._object
 
 	return self._object.center(slot2)
 end
-RaidGUIControlImage.set_center = function (self, x, y)
+function RaidGUIControlImage:set_center(x, y)
 	slot7 = y
 
 	self._object.set_center(slot4, self._object, x)
 
 	return 
 end
-RaidGUIControlImage.set_center_x = function (self, x)
+function RaidGUIControlImage:set_center_x(x)
 	slot5 = x
 
 	self._object.set_center_x(slot3, self._object)

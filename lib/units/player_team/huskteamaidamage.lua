@@ -13,10 +13,10 @@ TeamAIDamage._RESULT_NAME_TABLE = {
 	"fatal"
 }
 TeamAIDamage._ATTACK_VARIANTS = CopDamage._ATTACK_VARIANTS
-HuskTeamAIDamage.update = function (self, unit, t, dt)
+function HuskTeamAIDamage:update(unit, t, dt)
 	return 
 end
-HuskTeamAIDamage.damage_bullet = function (self, attack_data)
+function HuskTeamAIDamage:damage_bullet(attack_data)
 	if self._dead or self._fatal then
 		return 
 	end
@@ -60,7 +60,7 @@ HuskTeamAIDamage.damage_bullet = function (self, attack_data)
 
 	return 
 end
-HuskTeamAIDamage.damage_explosion = function (self, attack_data)
+function HuskTeamAIDamage:damage_explosion(attack_data)
 	if self._dead or self._fatal then
 		return 
 	end
@@ -96,7 +96,7 @@ HuskTeamAIDamage.damage_explosion = function (self, attack_data)
 
 	return 
 end
-HuskTeamAIDamage.damage_fire = function (self, attack_data)
+function HuskTeamAIDamage:damage_fire(attack_data)
 	if self._dead or self._fatal then
 		return 
 	end
@@ -160,7 +160,7 @@ HuskTeamAIDamage.damage_fire = function (self, attack_data)
 
 	return 
 end
-HuskTeamAIDamage.damage_melee = function (self, attack_data)
+function HuskTeamAIDamage:damage_melee(attack_data)
 	if self._dead or self._fatal then
 		return 
 	end
@@ -198,7 +198,7 @@ HuskTeamAIDamage.damage_melee = function (self, attack_data)
 
 	return 
 end
-HuskTeamAIDamage.sync_damage_bullet = function (self, attacker_unit, hit_offset_height, result_index)
+function HuskTeamAIDamage:sync_damage_bullet(attacker_unit, hit_offset_height, result_index)
 	if self._dead or self._fatal then
 		return 
 	end
@@ -260,7 +260,7 @@ HuskTeamAIDamage.sync_damage_bullet = function (self, attacker_unit, hit_offset_
 
 	return 
 end
-HuskTeamAIDamage.sync_damage_explosion = function (self, attacker_unit, result_index, i_attack_variant)
+function HuskTeamAIDamage:sync_damage_explosion(attacker_unit, result_index, i_attack_variant)
 	if self._dead or self._fatal then
 		return 
 	end
@@ -322,7 +322,7 @@ HuskTeamAIDamage.sync_damage_explosion = function (self, attacker_unit, result_i
 
 	return 
 end
-HuskTeamAIDamage.sync_damage_fire = function (self, attacker_unit, result_index, i_attack_variant)
+function HuskTeamAIDamage:sync_damage_fire(attacker_unit, result_index, i_attack_variant)
 	if self._dead or self._fatal then
 		return 
 	end
@@ -384,7 +384,7 @@ HuskTeamAIDamage.sync_damage_fire = function (self, attacker_unit, result_index,
 
 	return 
 end
-HuskTeamAIDamage.sync_damage_melee = function (self, attacker_unit, hit_offset_height, result_index)
+function HuskTeamAIDamage:sync_damage_melee(attacker_unit, hit_offset_height, result_index)
 	if self._dead or self._fatal then
 		return 
 	end
@@ -449,7 +449,7 @@ HuskTeamAIDamage.sync_damage_melee = function (self, attacker_unit, hit_offset_h
 
 	return 
 end
-HuskTeamAIDamage.sync_damage_bleeding = function (self)
+function HuskTeamAIDamage:sync_damage_bleeding()
 	local dmg_info = {
 		variant = "bleeding",
 		result = {
@@ -470,7 +470,7 @@ HuskTeamAIDamage.sync_damage_bleeding = function (self)
 
 	return 
 end
-HuskTeamAIDamage.sync_damage_incapacitated = function (self)
+function HuskTeamAIDamage:sync_damage_incapacitated()
 	self._fatal = true
 	slot3 = self._unit
 	slot5 = false
@@ -489,14 +489,14 @@ HuskTeamAIDamage.sync_damage_incapacitated = function (self)
 
 	return 
 end
-HuskTeamAIDamage.sync_damage_tase = function (self)
+function HuskTeamAIDamage:sync_damage_tase()
 	slot3 = self
 
 	self.damage_tase(slot2)
 
 	return 
 end
-HuskTeamAIDamage.sync_unit_recovered = function (self)
+function HuskTeamAIDamage:sync_unit_recovered()
 	if self._tase_effect then
 		slot3 = World
 		slot4 = self._tase_effect
@@ -522,7 +522,7 @@ HuskTeamAIDamage.sync_unit_recovered = function (self)
 
 	return 
 end
-HuskTeamAIDamage.revive = function (self, reviving_unit)
+function HuskTeamAIDamage:revive(reviving_unit)
 	if self._dead then
 		return 
 	end
@@ -534,7 +534,7 @@ HuskTeamAIDamage.revive = function (self, reviving_unit)
 
 	return 
 end
-HuskTeamAIDamage.pause_bleed_out = function (self)
+function HuskTeamAIDamage:pause_bleed_out()
 	if self._dead then
 		return 
 	end
@@ -546,7 +546,7 @@ HuskTeamAIDamage.pause_bleed_out = function (self)
 
 	return 
 end
-HuskTeamAIDamage.unpause_bleed_out = function (self)
+function HuskTeamAIDamage:unpause_bleed_out()
 	if self._dead then
 		return 
 	end
@@ -564,7 +564,7 @@ HuskTeamAIDamage.unpause_bleed_out = function (self)
 
 	return 
 end
-HuskTeamAIDamage.pause_arrested_timer = function (self)
+function HuskTeamAIDamage:pause_arrested_timer()
 	if self._dead then
 		return 
 	end
@@ -576,7 +576,7 @@ HuskTeamAIDamage.pause_arrested_timer = function (self)
 
 	return 
 end
-HuskTeamAIDamage.unpause_arrested_timer = function (self)
+function HuskTeamAIDamage:unpause_arrested_timer()
 	if self._dead then
 		return 
 	end
@@ -594,7 +594,7 @@ HuskTeamAIDamage.unpause_arrested_timer = function (self)
 
 	return 
 end
-HuskTeamAIDamage._on_bleedout = function (self, from_dropin)
+function HuskTeamAIDamage:_on_bleedout(from_dropin)
 	self._bleed_out = true
 	self._fatal = nil
 
@@ -616,7 +616,7 @@ HuskTeamAIDamage._on_bleedout = function (self, from_dropin)
 
 	return 
 end
-HuskTeamAIDamage._on_fatal = function (self, from_dropin)
+function HuskTeamAIDamage:_on_fatal(from_dropin)
 	self._fatal = true
 
 	if not self._bleed_out and not from_dropin then
@@ -639,7 +639,7 @@ HuskTeamAIDamage._on_fatal = function (self, from_dropin)
 
 	return 
 end
-HuskTeamAIDamage._on_death = function (self)
+function HuskTeamAIDamage:_on_death()
 	self._dead = true
 	self._bleed_out = nil
 	self._fatal = nil
@@ -654,7 +654,7 @@ HuskTeamAIDamage._on_death = function (self)
 
 	return 
 end
-HuskTeamAIDamage.load = function (self, data)
+function HuskTeamAIDamage:load(data)
 	if not data.char_dmg then
 		return 
 	end
@@ -676,7 +676,7 @@ HuskTeamAIDamage.load = function (self, data)
 
 	return 
 end
-HuskTeamAIDamage.run_queued_teammate_panel_update = function (self)
+function HuskTeamAIDamage:run_queued_teammate_panel_update()
 	if self._queued_teammate_panel_update then
 		if self._queued_teammate_panel_update == "bleedout" then
 			slot3 = self

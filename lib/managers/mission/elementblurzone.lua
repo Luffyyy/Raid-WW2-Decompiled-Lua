@@ -8,21 +8,21 @@ if not ElementBlurZone then
 end
 
 ElementBlurZone = slot0
-ElementBlurZone.init = function (self, ...)
+function ElementBlurZone:init(...)
 	slot3 = self
 
 	ElementBlurZone.super.init(slot2, ...)
 
 	return 
 end
-ElementBlurZone.client_on_executed = function (self, ...)
+function ElementBlurZone:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementBlurZone.on_executed = function (self, instigator)
+function ElementBlurZone:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

@@ -4,7 +4,7 @@ if not RaidGUIControlLabelNamedValueWithDelta then
 end
 
 RaidGUIControlLabelNamedValueWithDelta = slot0
-RaidGUIControlLabelNamedValueWithDelta.init = function (self, parent, params)
+function RaidGUIControlLabelNamedValueWithDelta:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlLabelNamedValueWithDelta.super.init(slot4, self, parent)
@@ -25,7 +25,7 @@ RaidGUIControlLabelNamedValueWithDelta.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlLabelNamedValueWithDelta.set_value_delta = function (self, number)
+function RaidGUIControlLabelNamedValueWithDelta:set_value_delta(number)
 	local full_value = ""
 
 	if not number or number == 0 then
@@ -64,12 +64,12 @@ RaidGUIControlLabelNamedValueWithDelta.set_value_delta = function (self, number)
 
 	return 
 end
-RaidGUIControlLabelNamedValueWithDelta.value_delta = function (self)
+function RaidGUIControlLabelNamedValueWithDelta:value_delta()
 	slot3 = self._label_value_with_delta
 
 	return self._label_value_with_delta.text(slot2)
 end
-RaidGUIControlLabelNamedValueWithDelta.set_label_color = function (self, color)
+function RaidGUIControlLabelNamedValueWithDelta:set_label_color(color)
 	slot5 = color
 
 	RaidGUIControlLabelNamedValueWithDelta.super.set_label_color(slot3, self)
@@ -80,7 +80,7 @@ RaidGUIControlLabelNamedValueWithDelta.set_label_color = function (self, color)
 
 	return 
 end
-RaidGUIControlLabelNamedValueWithDelta.set_label_default_color = function (self)
+function RaidGUIControlLabelNamedValueWithDelta:set_label_default_color()
 	slot3 = self
 
 	RaidGUIControlLabelNamedValueWithDelta.super.set_label_default_color(slot2)

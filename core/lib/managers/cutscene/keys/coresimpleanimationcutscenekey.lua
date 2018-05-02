@@ -23,13 +23,13 @@ slot4 = "group"
 CoreSimpleAnimationCutsceneKey.attribute_affects("Simple Animation", CoreSimpleAnimationCutsceneKey, "unit_name")
 
 CoreSimpleAnimationCutsceneKey.control_for_group = CoreCutsceneKeyBase.standard_combo_box_control
-CoreSimpleAnimationCutsceneKey.__tostring = function (self)
+function CoreSimpleAnimationCutsceneKey:__tostring()
 	slot4 = self
 	slot6 = self
 
 	return "Trigger simple animation \"" .. self.group(slot3) .. "\" on \"" .. self.unit_name(slot5) .. "\"."
 end
-CoreSimpleAnimationCutsceneKey.skip = function (self, player)
+function CoreSimpleAnimationCutsceneKey:skip(player)
 	slot7 = self
 	local unit = self._unit(slot3, self.unit_name(slot6))
 	local group = self.group(self)
@@ -44,7 +44,7 @@ CoreSimpleAnimationCutsceneKey.skip = function (self, player)
 
 	return 
 end
-CoreSimpleAnimationCutsceneKey.evaluate = function (self, player, fast_forward)
+function CoreSimpleAnimationCutsceneKey:evaluate(player, fast_forward)
 	slot5 = self
 	slot8 = self
 	slot8 = self
@@ -54,7 +54,7 @@ CoreSimpleAnimationCutsceneKey.evaluate = function (self, player, fast_forward)
 
 	return 
 end
-CoreSimpleAnimationCutsceneKey.revert = function (self, player)
+function CoreSimpleAnimationCutsceneKey:revert(player)
 	slot7 = self
 	local unit = self._unit(slot3, self.unit_name(slot6))
 	local group = self.group(self)
@@ -72,7 +72,7 @@ CoreSimpleAnimationCutsceneKey.revert = function (self, player)
 
 	return 
 end
-CoreSimpleAnimationCutsceneKey.update = function (self, player, time)
+function CoreSimpleAnimationCutsceneKey:update(player, time)
 	slot5 = self
 	slot8 = self
 	slot8 = self
@@ -82,7 +82,7 @@ CoreSimpleAnimationCutsceneKey.update = function (self, player, time)
 
 	return 
 end
-CoreSimpleAnimationCutsceneKey.is_valid_unit_name = function (self, unit_name)
+function CoreSimpleAnimationCutsceneKey:is_valid_unit_name(unit_name)
 	slot5 = unit_name
 
 	if self.super.is_valid_unit_name(slot3, self) then
@@ -91,14 +91,14 @@ CoreSimpleAnimationCutsceneKey.is_valid_unit_name = function (self, unit_name)
 		return 0 < #self._unit_animation_groups(slot3, self)
 	end
 end
-CoreSimpleAnimationCutsceneKey.is_valid_group = function (self, group)
+function CoreSimpleAnimationCutsceneKey:is_valid_group(group)
 	slot6 = self
 	slot9 = self
 	slot5 = group
 
 	return table.contains(slot3, self._unit_animation_groups(slot5, self.unit_name(slot8)))
 end
-CoreSimpleAnimationCutsceneKey.refresh_control_for_group = function (self, control)
+function CoreSimpleAnimationCutsceneKey:refresh_control_for_group(control)
 	slot4 = control
 
 	control.freeze(slot3)

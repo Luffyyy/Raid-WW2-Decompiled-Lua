@@ -10,7 +10,7 @@ if not WorldDefinition then
 end
 
 WorldDefinition = slot0
-WorldDefinition.init = function (self, ...)
+function WorldDefinition:init(...)
 	slot3 = self
 
 	WorldDefinition.super.init(slot2, ...)

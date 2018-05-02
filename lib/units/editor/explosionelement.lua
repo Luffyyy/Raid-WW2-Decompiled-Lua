@@ -4,7 +4,7 @@ if not ExplosionUnitElement then
 end
 
 ExplosionUnitElement = slot0
-ExplosionUnitElement.init = function (self, unit)
+function ExplosionUnitElement:init(unit)
 	slot5 = unit
 
 	ExplosionUnitElement.super.init(slot3, self)
@@ -36,14 +36,14 @@ ExplosionUnitElement.init = function (self, unit)
 
 	return 
 end
-ExplosionUnitElement.update_selected = function (self, ...)
+function ExplosionUnitElement:update_selected(...)
 	slot3 = self
 
 	ExplosionUnitElement.super.update_selected(slot2, ...)
 
 	return 
 end
-ExplosionUnitElement._build_panel = function (self, panel, panel_sizer)
+function ExplosionUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -86,7 +86,7 @@ ExplosionUnitElement._build_panel = function (self, panel, panel_sizer)
 
 	return 
 end
-ExplosionUnitElement.add_to_mission_package = function (self)
+function ExplosionUnitElement:add_to_mission_package()
 	slot3 = self
 
 	ExplosionUnitElement.super.add_to_mission_package(slot2)

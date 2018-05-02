@@ -4,7 +4,7 @@ if not SmokeGrenade then
 end
 
 SmokeGrenade = slot0
-SmokeGrenade.init = function (self, unit)
+function SmokeGrenade:init(unit)
 	self._init_timer = 1.5
 	slot5 = unit
 
@@ -12,7 +12,7 @@ SmokeGrenade.init = function (self, unit)
 
 	return 
 end
-SmokeGrenade.update = function (self, unit, t, dt)
+function SmokeGrenade:update(unit, t, dt)
 	slot9 = dt
 
 	SmokeGrenade.super.update(slot5, self, unit, t)
@@ -31,7 +31,7 @@ SmokeGrenade.update = function (self, unit, t, dt)
 
 	return 
 end
-SmokeGrenade._detonate = function (self)
+function SmokeGrenade:_detonate()
 	slot7 = self._unit
 	slot7 = self._slotmask
 	local units = World.find_units(slot2, World, "sphere", self._unit.position(slot6), 400)
@@ -52,7 +52,7 @@ SmokeGrenade._detonate = function (self)
 
 	return 
 end
-SmokeGrenade._play_sound_and_effects = function (self)
+function SmokeGrenade:_play_sound_and_effects()
 	slot3 = World
 	slot4 = {
 		effect = Idstring(slot6),
@@ -82,10 +82,10 @@ SmokeGrenade._play_sound_and_effects = function (self)
 
 	return 
 end
-SmokeGrenade._give_smoke_damage = function (self, col_ray, unit, damage)
+function SmokeGrenade:_give_smoke_damage(col_ray, unit, damage)
 	return 
 end
-SmokeGrenade.destroy = function (self)
+function SmokeGrenade:destroy()
 	if self._smoke_effect then
 		slot3 = World
 		slot4 = self._smoke_effect

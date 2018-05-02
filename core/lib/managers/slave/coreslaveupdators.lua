@@ -23,16 +23,16 @@ DEFAULT_NETWORK_LSPORT = 31255
 UNITS_PER_FRAME = 1
 SlaveManager = SlaveManager or class()
 Updator = Updator or class()
-Updator.init = function (self)
+function Updator:init()
 	return 
 end
-Updator.peer = function (self)
+function Updator:peer()
 	return self._peer
 end
-Updator.update = function (self)
+function Updator:update()
 	return 
 end
-Updator.set_batch_count = function (self)
+function Updator:set_batch_count()
 	return 
 end
 
@@ -42,7 +42,7 @@ if not SlaveUpdator then
 end
 
 SlaveUpdator = slot0
-SlaveUpdator.init = function (self, vp, port)
+function SlaveUpdator:init(vp, port)
 	slot7 = self
 
 	Network.bind(slot4, Network, port or DEFAULT_NETWORK_PORT)
@@ -59,10 +59,10 @@ SlaveUpdator.init = function (self, vp, port)
 
 	return true
 end
-SlaveUpdator.type = function (self)
+function SlaveUpdator:type()
 	return "slave"
 end
-SlaveUpdator.slaveupdators_sync = function (self, key, name, pos, rot, rpc)
+function SlaveUpdator:slaveupdators_sync(key, name, pos, rot, rpc)
 	local unit = self._units[key]
 	slot9 = unit
 
@@ -94,7 +94,7 @@ SlaveUpdator.slaveupdators_sync = function (self, key, name, pos, rot, rpc)
 
 	return 
 end
-SlaveUpdator.slaveupdators_reset = function (self, rpc)
+function SlaveUpdator:slaveupdators_reset(rpc)
 	slot4 = self._pings
 
 	for _, unit in pairs(slot3) do
@@ -115,7 +115,7 @@ SlaveUpdator.slaveupdators_reset = function (self, rpc)
 
 	return 
 end
-SlaveUpdator.slaveupdators_init = function (self)
+function SlaveUpdator:slaveupdators_init()
 	slot6 = "all"
 
 	for _, unit in ipairs(World.find_units_quick(slot4, World)) do
@@ -140,7 +140,7 @@ if not MasterUpdator then
 end
 
 MasterUpdator = slot0
-MasterUpdator.init = function (self, vp, host, port, master_listener_port, manual_pumping)
+function MasterUpdator:init(vp, host, port, master_listener_port, manual_pumping)
 	slot10 = port or DEFAULT_NETWORK_PORT
 	self._peer = Network.handshake(slot7, Network, host or "localhost")
 
@@ -172,15 +172,15 @@ MasterUpdator.init = function (self, vp, host, port, master_listener_port, manua
 
 	return true
 end
-MasterUpdator.type = function (self)
+function MasterUpdator:type()
 	return "master"
 end
-MasterUpdator.set_batch_count = function (self, count)
+function MasterUpdator:set_batch_count(count)
 	self._units_per_frame = count or UNITS_PER_FRAME
 
 	return 
 end
-MasterUpdator.update = function (self, t, dt)
+function MasterUpdator:update(t, dt)
 	if #self._unitqueue == 0 then
 		slot5 = self._peer
 
@@ -235,7 +235,7 @@ MasterUpdator.update = function (self, t, dt)
 
 	return 
 end
-MasterUpdator.slaveupdators_ready_to_send = function (self)
+function MasterUpdator:slaveupdators_ready_to_send()
 	self._ready_to_send = true
 
 	return 

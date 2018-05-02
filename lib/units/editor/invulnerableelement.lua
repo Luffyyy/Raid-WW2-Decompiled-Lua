@@ -7,7 +7,7 @@ InvulnerableUnitElement = slot0
 InvulnerableUnitElement.LINK_ELEMENTS = {
 	"elements"
 }
-InvulnerableUnitElement.init = function (self, unit)
+function InvulnerableUnitElement:init(unit)
 	slot5 = unit
 
 	InvulnerableUnitElement.super.init(slot3, self)
@@ -29,7 +29,7 @@ InvulnerableUnitElement.init = function (self, unit)
 
 	return 
 end
-InvulnerableUnitElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function InvulnerableUnitElement:draw_links(t, dt, selected_unit, all_units)
 	slot10 = selected_unit
 
 	MissionElement.draw_links(slot6, self, t, dt)
@@ -55,7 +55,7 @@ InvulnerableUnitElement.draw_links = function (self, t, dt, selected_unit, all_u
 
 	return 
 end
-InvulnerableUnitElement.get_links_to_unit = function (self, ...)
+function InvulnerableUnitElement:get_links_to_unit(...)
 	slot3 = self
 
 	InvulnerableUnitElement.super.get_links_to_unit(slot2, ...)
@@ -66,10 +66,10 @@ InvulnerableUnitElement.get_links_to_unit = function (self, ...)
 
 	return 
 end
-InvulnerableUnitElement.update_editing = function (self)
+function InvulnerableUnitElement:update_editing()
 	return 
 end
-InvulnerableUnitElement.add_element = function (self)
+function InvulnerableUnitElement:add_element()
 	slot4 = {
 		ray_type = "editor",
 		mask = 10
@@ -99,7 +99,7 @@ InvulnerableUnitElement.add_element = function (self)
 
 	return 
 end
-InvulnerableUnitElement._correct_unit = function (self, u_name)
+function InvulnerableUnitElement:_correct_unit(u_name)
 	local names = {
 		"ai_spawn_enemy",
 		"ai_enemy_group",
@@ -119,7 +119,7 @@ InvulnerableUnitElement._correct_unit = function (self, u_name)
 
 	return false
 end
-InvulnerableUnitElement.add_triggers = function (self, vc)
+function InvulnerableUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "add_element"
 
@@ -127,7 +127,7 @@ InvulnerableUnitElement.add_triggers = function (self, vc)
 
 	return 
 end
-InvulnerableUnitElement._build_panel = function (self, panel, panel_sizer)
+function InvulnerableUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

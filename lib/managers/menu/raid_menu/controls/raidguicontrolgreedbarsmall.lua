@@ -22,7 +22,7 @@ RaidGUIControlGreedBarSmall.LOOT_BAR_ICON_R = "loot_meter_parts_r"
 RaidGUIControlGreedBarSmall.LOOT_BAR_W = 96
 RaidGUIControlGreedBarSmall.LOOT_BAR_COLOR = tweak_data.gui.colors.raid_dark_grey
 RaidGUIControlGreedBarSmall.LOOT_BAR_FOREGROUND_COLOR = tweak_data.gui.colors.raid_gold
-RaidGUIControlGreedBarSmall.init = function (self, parent, params)
+function RaidGUIControlGreedBarSmall:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlGreedBarSmall.super.init(slot4, self, parent)
@@ -49,7 +49,7 @@ RaidGUIControlGreedBarSmall.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlGreedBarSmall._create_panel = function (self)
+function RaidGUIControlGreedBarSmall:_create_panel()
 	local panel_params = {
 		name = "greed_bar_small",
 		x = self._params.x or 0,
@@ -62,7 +62,7 @@ RaidGUIControlGreedBarSmall._create_panel = function (self)
 
 	return 
 end
-RaidGUIControlGreedBarSmall._create_loot_icon = function (self)
+function RaidGUIControlGreedBarSmall:_create_loot_icon()
 	local loot_icon_params = {
 		name = "loot_icon",
 		valign = "center",
@@ -83,7 +83,7 @@ RaidGUIControlGreedBarSmall._create_loot_icon = function (self)
 
 	return 
 end
-RaidGUIControlGreedBarSmall._create_loot_title = function (self)
+function RaidGUIControlGreedBarSmall:_create_loot_title()
 	local loot_title_params = {
 		name = "loot_title",
 		vertical = "center",
@@ -107,7 +107,7 @@ RaidGUIControlGreedBarSmall._create_loot_title = function (self)
 
 	return 
 end
-RaidGUIControlGreedBarSmall._create_loot_bar = function (self)
+function RaidGUIControlGreedBarSmall:_create_loot_bar()
 	local loot_bar_panel_params = {
 		name = "loot_bar_panel",
 		halign = "left",
@@ -173,7 +173,7 @@ RaidGUIControlGreedBarSmall._create_loot_bar = function (self)
 
 	return 
 end
-RaidGUIControlGreedBarSmall._fit_size = function (self)
+function RaidGUIControlGreedBarSmall:_fit_size()
 	slot4 = self._loot_bar_background
 
 	if self._loot_bar_background.w(self._title) < self._title.w(slot2) then
@@ -209,7 +209,7 @@ RaidGUIControlGreedBarSmall._fit_size = function (self)
 
 	return 
 end
-RaidGUIControlGreedBarSmall.set_data_from_manager = function (self)
+function RaidGUIControlGreedBarSmall:set_data_from_manager()
 	slot4 = managers.greed
 	local progress = managers.greed.current_loot_counter(slot2) / managers.greed.loot_needed_for_gold_bar(managers.greed)
 	slot7 = self._loot_bar_background

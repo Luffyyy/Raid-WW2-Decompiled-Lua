@@ -23,7 +23,7 @@ if not StringIDSubtitle then
 end
 
 StringIDSubtitle = slot0
-SubtitleSequence.init = function (self, sequence_node)
+function SubtitleSequence:init(sequence_node)
 	if sequence_node then
 		slot5 = sequence_node
 
@@ -32,12 +32,12 @@ SubtitleSequence.init = function (self, sequence_node)
 
 	return 
 end
-SubtitleSequence.name = function (self)
+function SubtitleSequence:name()
 	slot3 = self
 
 	return self.parameters(slot2).name or ""
 end
-SubtitleSequence.duration = function (self)
+function SubtitleSequence:duration()
 	if self.__subtitles then
 		slot3 = self.__subtitles[#self.__subtitles]
 		slot1 = self.__subtitles[#self.__subtitles].end_time(#self.__subtitles)
@@ -45,13 +45,13 @@ SubtitleSequence.duration = function (self)
 
 	return slot1
 end
-SubtitleSequence.parameters = function (self)
+function SubtitleSequence:parameters()
 	return self.__parameters or {}
 end
-SubtitleSequence.subtitles = function (self)
+function SubtitleSequence:subtitles()
 	return self.__subtitles or {}
 end
-SubtitleSequence.add_subtitle = function (self, subtitle)
+function SubtitleSequence:add_subtitle(subtitle)
 	self.__subtitles = self.__subtitles or {}
 
 	function slot6(a, b)
@@ -64,7 +64,7 @@ SubtitleSequence.add_subtitle = function (self, subtitle)
 
 	return 
 end
-SubtitleSequence._load_from_xml = function (self, sequence_node)
+function SubtitleSequence:_load_from_xml(sequence_node)
 	slot5 = "Localization Manager not ready."
 
 	assert(slot3, managers.localization)
@@ -120,14 +120,14 @@ SubtitleSequence._load_from_xml = function (self, sequence_node)
 
 	return 
 end
-SubtitleSequence._report_bad_string_id = function (self, string_id)
+function SubtitleSequence:_report_bad_string_id(string_id)
 	slot5 = string_id
 
 	Localizer.lookup(slot3, Localizer)
 
 	return 
 end
-SubtitleSequence._xml_assert = function (self, condition, node, message)
+function SubtitleSequence:_xml_assert(condition, node, message)
 	if not condition then
 		slot13 = node
 		slot13 = ""
@@ -137,36 +137,36 @@ SubtitleSequence._xml_assert = function (self, condition, node, message)
 
 	return slot4
 end
-Subtitle.init = function (self, string_data, start_time, duration, color, nationality_icon)
+function Subtitle:init(string_data, start_time, duration, color, nationality_icon)
 end
-Subtitle.string = function (self)
+function Subtitle:string()
 	return self.__string_data
 end
-Subtitle.color = function (self)
+function Subtitle:color()
 	return self.__color
 end
-Subtitle.start_time = function (self)
+function Subtitle:start_time()
 	return self.__start_time
 end
-Subtitle.nationality_icon = function (self)
+function Subtitle:nationality_icon()
 	return self.__nationality_icon
 end
-Subtitle.end_time = function (self)
+function Subtitle:end_time()
 
 	-- Decompilation error in this vicinity:
 	slot4 = self
 
 	return self.start_time(slot2) + (self.duration(self) or math.huge)
 end
-Subtitle.duration = function (self)
+function Subtitle:duration()
 	return self.__duration
 end
-Subtitle.is_active_at_time = function (self, time)
+function Subtitle:is_active_at_time(time)
 
 	-- Decompilation error in this vicinity:
 	slot4 = self
 end
-StringIDSubtitle.string = function (self)
+function StringIDSubtitle:string()
 	slot4 = "Localization Manager not ready."
 
 	assert(slot2, managers.localization)

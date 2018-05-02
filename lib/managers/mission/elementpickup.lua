@@ -10,17 +10,17 @@ if not ElementPickup then
 end
 
 ElementPickup = slot0
-ElementPickup.init = function (self, ...)
+function ElementPickup:init(...)
 	slot3 = self
 
 	ElementPickup.super.init(slot2, ...)
 
 	return 
 end
-ElementPickup.client_on_executed = function (self, ...)
+function ElementPickup:client_on_executed(...)
 	return 
 end
-ElementPickup.on_executed = function (self, instigator)
+function ElementPickup:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

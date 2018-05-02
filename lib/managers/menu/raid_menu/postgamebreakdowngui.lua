@@ -47,7 +47,7 @@ PostGameBreakdownGui.GENERIC_WIN_ICON = "experience_no_progress_large"
 PostGameBreakdownGui.FAIL_ICON = "experience_mission_fail_large"
 PostGameBreakdownGui.ONE_POINT_SOUND_EFFECT = "one_number_one_click"
 PostGameBreakdownGui.LEVEL_UP_SOUND_EFFECT = "leveled_up"
-PostGameBreakdownGui.init = function (self, ws, fullscreen_ws, node, component_name)
+function PostGameBreakdownGui:init(ws, fullscreen_ws, node, component_name)
 	slot7 = "[PostGameBreakdownGui:init()]"
 
 	print(slot6)
@@ -70,7 +70,7 @@ PostGameBreakdownGui.init = function (self, ws, fullscreen_ws, node, component_n
 
 	return 
 end
-PostGameBreakdownGui._set_initial_data = function (self)
+function PostGameBreakdownGui:_set_initial_data()
 	slot3 = self.current_state
 
 	if self.current_state.is_success(slot2) then
@@ -89,7 +89,7 @@ PostGameBreakdownGui._set_initial_data = function (self)
 
 	return 
 end
-PostGameBreakdownGui._layout = function (self)
+function PostGameBreakdownGui:_layout()
 	PostGameBreakdownGui.super._layout(slot2)
 
 	local params_xp_breakdown = {
@@ -260,7 +260,7 @@ PostGameBreakdownGui._layout = function (self)
 
 	return 
 end
-PostGameBreakdownGui._layout_central_display = function (self)
+function PostGameBreakdownGui:_layout_central_display()
 	local central_display_panel_params = {
 		alpha = 0,
 		name = "central_display_params",
@@ -278,7 +278,7 @@ PostGameBreakdownGui._layout_central_display = function (self)
 
 	return 
 end
-PostGameBreakdownGui._layout_generic_win_display = function (self)
+function PostGameBreakdownGui:_layout_generic_win_display()
 	local generic_win_panel_params = {
 		visible = true,
 		name = "generic_win_panel",
@@ -380,7 +380,7 @@ PostGameBreakdownGui._layout_generic_win_display = function (self)
 
 	return 
 end
-PostGameBreakdownGui._layout_fail_display = function (self)
+function PostGameBreakdownGui:_layout_fail_display()
 	local fail_panel_params = {
 		visible = false,
 		name = "fail_display_panel",
@@ -481,19 +481,19 @@ PostGameBreakdownGui._layout_fail_display = function (self)
 
 	return 
 end
-PostGameBreakdownGui._layout_skill_unlock_display = function (self)
+function PostGameBreakdownGui:_layout_skill_unlock_display()
 	slot4 = self._central_display_panel
 	self._skill_unlock_display = RaidGUIControlXPSkillSet.new(slot2, RaidGUIControlXPSkillSet)
 
 	return 
 end
-PostGameBreakdownGui._layout_double_unlock_display = function (self)
+function PostGameBreakdownGui:_layout_double_unlock_display()
 	slot4 = self._central_display_panel
 	self._double_unlock_display = RaidGUIControlXPDoubleUnlock.new(slot2, RaidGUIControlXPDoubleUnlock)
 
 	return 
 end
-PostGameBreakdownGui._get_progress = function (self, current_xp)
+function PostGameBreakdownGui:_get_progress(current_xp)
 	local level_cap = managers.experience.level_cap(slot3)
 	slot6 = current_xp
 	local current_level = self._get_level_by_xp(managers.experience, self)
@@ -517,7 +517,7 @@ PostGameBreakdownGui._get_progress = function (self, current_xp)
 
 	return math.clamp(slot9, progress_to_level + progress_in_level, 0)
 end
-PostGameBreakdownGui._calculate_xp_needed_for_levels = function (self)
+function PostGameBreakdownGui:_calculate_xp_needed_for_levels()
 	slot3 = managers.experience
 	local level_cap = managers.experience.level_cap(slot2)
 	self._levels_by_xp = {}
@@ -532,7 +532,7 @@ PostGameBreakdownGui._calculate_xp_needed_for_levels = function (self)
 
 	return 
 end
-PostGameBreakdownGui._get_level_by_xp = function (self, xp)
+function PostGameBreakdownGui:_get_level_by_xp(xp)
 	slot4 = managers.experience
 	local level_cap = managers.experience.level_cap(slot3)
 	local points_needed = self._levels_by_xp[1]
@@ -545,7 +545,7 @@ PostGameBreakdownGui._get_level_by_xp = function (self, xp)
 
 	return level
 end
-PostGameBreakdownGui._get_xp_breakdown = function (self)
+function PostGameBreakdownGui:_get_xp_breakdown()
 	local xp_table = {
 		{
 			{
@@ -683,12 +683,12 @@ PostGameBreakdownGui._get_xp_breakdown = function (self)
 
 	return xp_table
 end
-PostGameBreakdownGui.data_source_xp_breakdown = function (self)
+function PostGameBreakdownGui:data_source_xp_breakdown()
 	slot3 = self
 
 	return self._get_xp_breakdown(slot2)
 end
-PostGameBreakdownGui._get_stats_breakdown = function (self)
+function PostGameBreakdownGui:_get_stats_breakdown()
 	slot3 = game_state_machine
 	local personal_stats = game_state_machine.current_state(slot2).personal_stats
 	local stats_breakdown = {}
@@ -780,19 +780,19 @@ PostGameBreakdownGui._get_stats_breakdown = function (self)
 
 	return stats_breakdown
 end
-PostGameBreakdownGui.data_source_stats_breakdown = function (self)
+function PostGameBreakdownGui:data_source_stats_breakdown()
 	slot3 = self
 
 	return self._get_stats_breakdown(slot2)
 end
-PostGameBreakdownGui._continue_button_on_click = function (self)
+function PostGameBreakdownGui:_continue_button_on_click()
 	slot3 = managers.raid_menu
 
 	managers.raid_menu.close_menu(slot2)
 
 	return 
 end
-PostGameBreakdownGui.close = function (self)
+function PostGameBreakdownGui:close()
 	if self._closing then
 		return 
 	end
@@ -818,7 +818,7 @@ PostGameBreakdownGui.close = function (self)
 
 	return 
 end
-PostGameBreakdownGui.give_xp = function (self, xp_earned)
+function PostGameBreakdownGui:give_xp(xp_earned)
 	slot4 = self._root_panel
 	slot9 = "_animate_giving_xp"
 	slot6 = xp_earned
@@ -827,7 +827,7 @@ PostGameBreakdownGui.give_xp = function (self, xp_earned)
 
 	return 
 end
-PostGameBreakdownGui._unlock_level = function (self, level)
+function PostGameBreakdownGui:_unlock_level(level)
 	if level == 1 then
 		return 
 	end
@@ -878,7 +878,7 @@ PostGameBreakdownGui._unlock_level = function (self, level)
 
 	return 
 end
-PostGameBreakdownGui._animate_active_display_panel = function (self, central_display_panel, new_active_panel)
+function PostGameBreakdownGui:_animate_active_display_panel(central_display_panel, new_active_panel)
 	local fade_out_duration = 0.25
 	local fade_in_duration = 0.3
 	slot7 = self._central_display_panel
@@ -929,7 +929,7 @@ PostGameBreakdownGui._animate_active_display_panel = function (self, central_dis
 
 	return 
 end
-PostGameBreakdownGui.animate_breakdown = function (self)
+function PostGameBreakdownGui:animate_breakdown()
 	slot3 = managers.network
 	slot3 = managers.network.session(slot2)
 
@@ -969,7 +969,7 @@ PostGameBreakdownGui.animate_breakdown = function (self)
 
 	return 
 end
-PostGameBreakdownGui._animate_xp_breakdown = function (self)
+function PostGameBreakdownGui:_animate_xp_breakdown()
 	local t = 0
 	local xp_breakdown = self.current_state.xp_breakdown
 	local table = self._xp_breakdown._breakdown_table
@@ -1243,7 +1243,7 @@ PostGameBreakdownGui._animate_xp_breakdown = function (self)
 
 	return 
 end
-PostGameBreakdownGui._fade_in_label = function (self, text, duration, delay)
+function PostGameBreakdownGui:_fade_in_label(text, duration, delay)
 	local anim_duration = duration or 0.15
 	slot7 = text
 	local t = text.alpha(slot6) * anim_duration
@@ -1270,7 +1270,7 @@ PostGameBreakdownGui._fade_in_label = function (self, text, duration, delay)
 
 	return 
 end
-PostGameBreakdownGui._animate_giving_xp = function (self, panel, xp_earned)
+function PostGameBreakdownGui:_animate_giving_xp(panel, xp_earned)
 	local points_given = 0
 	local mid_speed = 30
 	local in_duration = 3
@@ -1297,17 +1297,17 @@ PostGameBreakdownGui._animate_giving_xp = function (self, panel, xp_earned)
 
 	return 
 end
-PostGameBreakdownGui.confirm_pressed = function (self)
+function PostGameBreakdownGui:confirm_pressed()
 	slot3 = self
 
 	self._continue_button_on_click(slot2)
 
 	return 
 end
-PostGameBreakdownGui.on_escape = function (self)
+function PostGameBreakdownGui:on_escape()
 	return true
 end
-PostGameBreakdownGui.bind_controller_inputs = function (self)
+function PostGameBreakdownGui:bind_controller_inputs()
 	local bindings = {}
 	slot5 = "menu_controller_face_bottom"
 	slot7 = "_continue_button_on_click"

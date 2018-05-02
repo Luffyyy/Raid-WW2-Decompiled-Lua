@@ -12,14 +12,14 @@ if not _InitState then
 end
 
 _InitState = slot0
-_InitState.init = function (self, game_state_machine)
+function _InitState:init(game_state_machine)
 	slot6 = game_state_machine
 
 	CoreInternalGameState.GameState.init(slot3, self, "init")
 
 	return 
 end
-_InitState.at_enter = function (self)
+function _InitState:at_enter()
 	slot3 = "[GameStateMachine] ERROR, you are not allowed to enter the init state"
 
 	error(slot2)

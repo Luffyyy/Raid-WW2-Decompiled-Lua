@@ -4,7 +4,7 @@ if not HuskTeamAIMovement then
 end
 
 HuskTeamAIMovement = slot0
-HuskTeamAIMovement.init = function (self, unit)
+function HuskTeamAIMovement:init(unit)
 	slot5 = unit
 
 	HuskTeamAIMovement.super.init(slot3, self)
@@ -15,7 +15,7 @@ HuskTeamAIMovement.init = function (self, unit)
 
 	return 
 end
-HuskTeamAIMovement._post_init = function (self)
+function HuskTeamAIMovement:_post_init()
 	slot3 = managers.groupai
 	slot3 = managers.groupai.state(slot2)
 
@@ -32,7 +32,7 @@ HuskTeamAIMovement._post_init = function (self)
 
 	return 
 end
-HuskTeamAIMovement.sync_arrested = function (self)
+function HuskTeamAIMovement:sync_arrested()
 	slot3 = self._unit
 	slot4 = "free"
 
@@ -50,7 +50,7 @@ HuskTeamAIMovement.sync_arrested = function (self)
 
 	return 
 end
-HuskTeamAIMovement._upd_actions = function (self, t)
+function HuskTeamAIMovement:_upd_actions(t)
 	slot5 = t
 
 	TeamAIMovement._upd_actions(slot3, self)
@@ -61,12 +61,12 @@ HuskTeamAIMovement._upd_actions = function (self, t)
 
 	return 
 end
-HuskTeamAIMovement.action_request = function (self, action_desc)
+function HuskTeamAIMovement:action_request(action_desc)
 	slot5 = action_desc
 
 	return HuskCopMovement.action_request(slot3, self)
 end
-HuskTeamAIMovement.chk_action_forbidden = function (self, action_desc)
+function HuskTeamAIMovement:chk_action_forbidden(action_desc)
 	slot5 = action_desc
 
 	return HuskCopMovement.chk_action_forbidden(slot3, self)

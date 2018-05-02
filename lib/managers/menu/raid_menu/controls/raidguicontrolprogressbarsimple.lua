@@ -8,7 +8,7 @@ RaidGUIControlProgressBarSimple.DEFAULT_HEIGHT = 20
 slot4 = 0.2
 RaidGUIControlProgressBarSimple.DEFAULT_BACKGROUND_COLOR = Color.white.with_alpha(slot2, Color.white)
 RaidGUIControlProgressBarSimple.DEFAULT_FOREGROUND_COLOR = tweak_data.gui.colors.raid_red
-RaidGUIControlProgressBarSimple.init = function (self, parent, params)
+function RaidGUIControlProgressBarSimple:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlProgressBarSimple.super.init(slot4, self, parent)
@@ -32,7 +32,7 @@ RaidGUIControlProgressBarSimple.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlProgressBarSimple._create_panel = function (self)
+function RaidGUIControlProgressBarSimple:_create_panel()
 	local progress_bar_params = clone(slot2)
 	progress_bar_params.name = progress_bar_params.name
 	slot4 = self._panel
@@ -51,7 +51,7 @@ RaidGUIControlProgressBarSimple._create_panel = function (self)
 
 	return 
 end
-RaidGUIControlProgressBarSimple._create_background_bar = function (self, ...)
+function RaidGUIControlProgressBarSimple:_create_background_bar(...)
 	local background_bar_params = {
 		name = "background_bar",
 		y = 0,
@@ -71,7 +71,7 @@ RaidGUIControlProgressBarSimple._create_background_bar = function (self, ...)
 
 	return 
 end
-RaidGUIControlProgressBarSimple._create_foreground_bar = function (self)
+function RaidGUIControlProgressBarSimple:_create_foreground_bar()
 	local foreground_panel_params = {
 		name = "foreground_panel",
 		y = 0,
@@ -102,7 +102,7 @@ RaidGUIControlProgressBarSimple._create_foreground_bar = function (self)
 
 	return 
 end
-RaidGUIControlProgressBarSimple.set_progress = function (self, progress)
+function RaidGUIControlProgressBarSimple:set_progress(progress)
 	self._progress = progress
 	slot7 = self._background
 	slot5 = self._background.w(slot6) * progress
@@ -116,7 +116,7 @@ RaidGUIControlProgressBarSimple.set_progress = function (self, progress)
 
 	return 
 end
-RaidGUIControlProgressBarSimple.set_foreground_progress = function (self, progress)
+function RaidGUIControlProgressBarSimple:set_foreground_progress(progress)
 	self._progress = progress
 	slot7 = self._background
 	slot5 = self._background.w(slot6) * progress
@@ -130,17 +130,17 @@ RaidGUIControlProgressBarSimple.set_foreground_progress = function (self, progre
 
 	return 
 end
-RaidGUIControlProgressBarSimple.get_progress = function (self)
+function RaidGUIControlProgressBarSimple:get_progress()
 	return self._progress
 end
-RaidGUIControlProgressBarSimple.show = function (self)
+function RaidGUIControlProgressBarSimple:show()
 	slot4 = 1
 
 	self._object.set_alpha(slot2, self._object)
 
 	return 
 end
-RaidGUIControlProgressBarSimple.hide = function (self)
+function RaidGUIControlProgressBarSimple:hide()
 	slot4 = 0
 
 	self._object.set_alpha(slot2, self._object)

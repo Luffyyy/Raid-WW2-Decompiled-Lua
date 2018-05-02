@@ -8,7 +8,7 @@ RaidGUIControlButtonShortSecondary.ICON = "btn_secondary_192"
 RaidGUIControlButtonShortSecondary.HOVER_ICON = "btn_secondary_192_hover"
 RaidGUIControlButtonShortSecondary.W = tweak_data.gui.icons[RaidGUIControlButtonShortSecondary.ICON].texture_rect[3]
 RaidGUIControlButtonShortSecondary.H = tweak_data.gui.icons[RaidGUIControlButtonShortSecondary.ICON].texture_rect[4]
-RaidGUIControlButtonShortSecondary.init = function (self, parent, params)
+function RaidGUIControlButtonShortSecondary:init(parent, params)
 	if not params then
 		slot6 = "Trying to create a short secondary button without parameters!"
 

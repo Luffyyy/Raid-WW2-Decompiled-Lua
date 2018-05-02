@@ -23,7 +23,7 @@ slot3 = "CoreSmoketestEditorSuite"
 core.import(slot1, core)
 
 Manager = Manager or CoreClass.class()
-Manager.init = function (self, session_state)
+function Manager:init(session_state)
 	self._session_state = session_state
 	self._smoketestsuites = {}
 	slot4 = CoreSmoketestReporter.Reporter
@@ -40,15 +40,15 @@ Manager.init = function (self, session_state)
 
 	return 
 end
-Manager.destroy = function (self)
+function Manager:destroy()
 	return 
 end
-Manager.register = function (self, name, smoketestsuite)
+function Manager:register(name, smoketestsuite)
 	self._smoketestsuites[name] = smoketestsuite
 
 	return 
 end
-Manager.post_init = function (self)
+function Manager:post_init()
 	slot3 = self
 	slot6 = Application
 
@@ -56,7 +56,7 @@ Manager.post_init = function (self)
 
 	return 
 end
-Manager._parse_arguments = function (self, args)
+function Manager:_parse_arguments(args)
 	local suite_arguments = {}
 	slot5 = args
 
@@ -104,7 +104,7 @@ Manager._parse_arguments = function (self, args)
 
 	return 
 end
-Manager.update = function (self, t, dt)
+function Manager:update(t, dt)
 	if self._suite then
 		slot7 = dt
 

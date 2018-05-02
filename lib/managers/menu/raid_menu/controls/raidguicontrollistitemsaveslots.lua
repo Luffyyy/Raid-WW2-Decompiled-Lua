@@ -13,7 +13,7 @@ RaidGUIControlListItemSaveSlots.LOCK_ICON = "ico_locker"
 RaidGUIControlListItemSaveSlots.LOCK_ICON_CENTER_DISTANCE_FROM_RIGHT = 43
 RaidGUIControlListItemSaveSlots.LOCKED_COLOR = tweak_data.gui.colors.raid_dark_grey
 RaidGUIControlListItemSaveSlots.UNLOCKED_COLOR = tweak_data.gui.colors.raid_dirty_white
-RaidGUIControlListItemSaveSlots.init = function (self, parent, params, data)
+function RaidGUIControlListItemSaveSlots:init(parent, params, data)
 	slot8 = params
 
 	RaidGUIControlListItemSaveSlots.super.init(slot5, self, parent)
@@ -96,7 +96,7 @@ RaidGUIControlListItemSaveSlots.init = function (self, parent, params, data)
 
 	return 
 end
-RaidGUIControlListItemSaveSlots._layout_panel = function (self, params)
+function RaidGUIControlListItemSaveSlots:_layout_panel(params)
 	local panel_params = {
 		name = "list_item_" .. self._name,
 		x = params.x,
@@ -109,7 +109,7 @@ RaidGUIControlListItemSaveSlots._layout_panel = function (self, params)
 
 	return 
 end
-RaidGUIControlListItemSaveSlots._layout_background = function (self, params)
+function RaidGUIControlListItemSaveSlots:_layout_background(params)
 	local background_params = {
 		y = 1,
 		visible = false,
@@ -125,7 +125,7 @@ RaidGUIControlListItemSaveSlots._layout_background = function (self, params)
 
 	return 
 end
-RaidGUIControlListItemSaveSlots._layout_highlight_marker = function (self)
+function RaidGUIControlListItemSaveSlots:_layout_highlight_marker()
 	local marker_params = {
 		y = 1,
 		w = 3,
@@ -141,7 +141,7 @@ RaidGUIControlListItemSaveSlots._layout_highlight_marker = function (self)
 
 	return 
 end
-RaidGUIControlListItemSaveSlots._layout_icon = function (self, params, data)
+function RaidGUIControlListItemSaveSlots:_layout_icon(params, data)
 	local icon_params = {
 		name = "list_item_icon_" .. self._name,
 		x = RaidGUIControlListItemSaveSlots.ICON_PADDING,
@@ -163,7 +163,7 @@ RaidGUIControlListItemSaveSlots._layout_icon = function (self, params, data)
 
 	return 
 end
-RaidGUIControlListItemSaveSlots._layout_raid_name = function (self, params, data)
+function RaidGUIControlListItemSaveSlots:_layout_raid_name(params, data)
 	local raid_name_params = {
 		vertical = "center",
 		y = 0,
@@ -186,7 +186,7 @@ RaidGUIControlListItemSaveSlots._layout_raid_name = function (self, params, data
 
 	return 
 end
-RaidGUIControlListItemSaveSlots._layout_difficulty_locked = function (self)
+function RaidGUIControlListItemSaveSlots:_layout_difficulty_locked()
 	local difficulty_locked_params = {
 		text = "--",
 		vertical = "center",
@@ -215,7 +215,7 @@ RaidGUIControlListItemSaveSlots._layout_difficulty_locked = function (self)
 
 	return 
 end
-RaidGUIControlListItemSaveSlots._layout_difficulty = function (self)
+function RaidGUIControlListItemSaveSlots:_layout_difficulty()
 	local difficulty_params = {}
 	slot5 = self._item_icon
 	difficulty_params.x = self._item_icon.x(slot3) + self._item_icon.w(self._item_icon) + RaidGUIControlListItemSaveSlots.ICON_PADDING
@@ -237,7 +237,7 @@ RaidGUIControlListItemSaveSlots._layout_difficulty = function (self)
 
 	return 
 end
-RaidGUIControlListItemSaveSlots._layout_lock_icon = function (self)
+function RaidGUIControlListItemSaveSlots:_layout_lock_icon()
 	local lock_icon_params = {
 		texture = tweak_data.gui.icons[RaidGUIControlListItemSaveSlots.LOCK_ICON].texture,
 		texture_rect = tweak_data.gui.icons[RaidGUIControlListItemSaveSlots.LOCK_ICON].texture_rect,
@@ -257,7 +257,7 @@ RaidGUIControlListItemSaveSlots._layout_lock_icon = function (self)
 
 	return 
 end
-RaidGUIControlListItemSaveSlots._layout_breadcrumb = function (self)
+function RaidGUIControlListItemSaveSlots:_layout_breadcrumb()
 	local breadcrumb_params = {
 		category = self._data.breadcrumb.category,
 		identifiers = self._data.breadcrumb.identifiers
@@ -276,7 +276,7 @@ RaidGUIControlListItemSaveSlots._layout_breadcrumb = function (self)
 
 	return 
 end
-RaidGUIControlListItemSaveSlots._apply_locked_layout = function (self)
+function RaidGUIControlListItemSaveSlots:_apply_locked_layout()
 	slot3 = self._lock_icon
 
 	self._lock_icon.show(slot2)
@@ -303,7 +303,7 @@ RaidGUIControlListItemSaveSlots._apply_locked_layout = function (self)
 
 	return 
 end
-RaidGUIControlListItemSaveSlots.on_mouse_released = function (self, button)
+function RaidGUIControlListItemSaveSlots:on_mouse_released(button)
 	if self._data.breadcrumb then
 		slot6 = self._data.breadcrumb.identifiers
 
@@ -336,7 +336,7 @@ RaidGUIControlListItemSaveSlots.on_mouse_released = function (self, button)
 
 	return 
 end
-RaidGUIControlListItemSaveSlots.mouse_double_click = function (self, o, button, x, y)
+function RaidGUIControlListItemSaveSlots:mouse_double_click(o, button, x, y)
 	if self._params.no_click then
 		return 
 	end
@@ -351,10 +351,10 @@ RaidGUIControlListItemSaveSlots.mouse_double_click = function (self, o, button, 
 
 	return 
 end
-RaidGUIControlListItemSaveSlots.selected = function (self)
+function RaidGUIControlListItemSaveSlots:selected()
 	return self._selected
 end
-RaidGUIControlListItemSaveSlots.select = function (self)
+function RaidGUIControlListItemSaveSlots:select()
 	self._selected = true
 	slot3 = self._item_background
 
@@ -390,7 +390,7 @@ RaidGUIControlListItemSaveSlots.select = function (self)
 
 	return 
 end
-RaidGUIControlListItemSaveSlots.unfocus = function (self)
+function RaidGUIControlListItemSaveSlots:unfocus()
 	slot3 = self._item_background
 
 	self._item_background.hide(slot2)
@@ -401,7 +401,7 @@ RaidGUIControlListItemSaveSlots.unfocus = function (self)
 
 	return 
 end
-RaidGUIControlListItemSaveSlots.unselect = function (self)
+function RaidGUIControlListItemSaveSlots:unselect()
 	self._selected = false
 	slot3 = self._item_background
 
@@ -419,10 +419,10 @@ RaidGUIControlListItemSaveSlots.unselect = function (self)
 
 	return 
 end
-RaidGUIControlListItemSaveSlots.data = function (self)
+function RaidGUIControlListItemSaveSlots:data()
 	return self._data
 end
-RaidGUIControlListItemSaveSlots.highlight_on = function (self)
+function RaidGUIControlListItemSaveSlots:highlight_on()
 	slot3 = self._item_background
 
 	self._item_background.show(slot2)
@@ -449,7 +449,7 @@ RaidGUIControlListItemSaveSlots.highlight_on = function (self)
 
 	return 
 end
-RaidGUIControlListItemSaveSlots.highlight_off = function (self)
+function RaidGUIControlListItemSaveSlots:highlight_off()
 	slot3 = managers.menu
 
 	if not managers.menu.is_pc_controller(slot2) then
@@ -470,7 +470,7 @@ RaidGUIControlListItemSaveSlots.highlight_off = function (self)
 
 	return 
 end
-RaidGUIControlListItemSaveSlots.confirm_pressed = function (self)
+function RaidGUIControlListItemSaveSlots:confirm_pressed()
 	if self._selected then
 		slot4 = self._name
 

@@ -1,5 +1,5 @@
 CoreCameraDistancePicker = CoreCameraDistancePicker or class()
-CoreCameraDistancePicker.init = function (self, parent_window, value, button_label)
+function CoreCameraDistancePicker:init(parent_window, value, button_label)
 	slot7 = "HORIZONTAL"
 	local sizer = EWS.BoxSizer(slot5, EWS)
 	slot8 = parent_window
@@ -40,10 +40,10 @@ CoreCameraDistancePicker.init = function (self, parent_window, value, button_lab
 
 	return 
 end
-CoreCameraDistancePicker.panel = function (self)
+function CoreCameraDistancePicker:panel()
 	return self.__panel
 end
-CoreCameraDistancePicker.update = function (self, time, delta_time)
+function CoreCameraDistancePicker:update(time, delta_time)
 	if self.__is_picking and managers.viewport then
 		slot5 = managers.viewport
 		local picking_camera = managers.viewport.get_current_camera(slot4)
@@ -115,7 +115,7 @@ CoreCameraDistancePicker.update = function (self, time, delta_time)
 
 	return 
 end
-CoreCameraDistancePicker._screen_to_world = function (self, coords)
+function CoreCameraDistancePicker:_screen_to_world(coords)
 	slot2 = assert
 
 	if managers.viewport then
@@ -141,7 +141,7 @@ CoreCameraDistancePicker._screen_to_world = function (self, coords)
 
 	return camera.screen_to_world(coords.with_x(viewport, coords), camera)
 end
-CoreCameraDistancePicker._world_to_screen = function (self, coords)
+function CoreCameraDistancePicker:_world_to_screen(coords)
 	slot2 = assert
 
 	if managers.viewport then
@@ -168,7 +168,7 @@ CoreCameraDistancePicker._world_to_screen = function (self, coords)
 
 	return screen_position
 end
-CoreCameraDistancePicker.connect = function (self, event_type, script_callback, object_data)
+function CoreCameraDistancePicker:connect(event_type, script_callback, object_data)
 	if object_data then
 		slot9 = object_data
 
@@ -181,7 +181,7 @@ CoreCameraDistancePicker.connect = function (self, event_type, script_callback, 
 
 	return 
 end
-CoreCameraDistancePicker.disconnect = function (self, event_type, script_callback, object_data)
+function CoreCameraDistancePicker:disconnect(event_type, script_callback, object_data)
 	if object_data then
 		slot9 = object_data
 
@@ -194,26 +194,26 @@ CoreCameraDistancePicker.disconnect = function (self, event_type, script_callbac
 
 	return 
 end
-CoreCameraDistancePicker.get_value = function (self, value)
+function CoreCameraDistancePicker:get_value(value)
 	slot5 = value
 
 	return self.__field.get_value(slot3, self.__field)
 end
-CoreCameraDistancePicker.set_value = function (self, value)
+function CoreCameraDistancePicker:set_value(value)
 	slot5 = value
 
 	self.__field.set_value(slot3, self.__field)
 
 	return 
 end
-CoreCameraDistancePicker.change_value = function (self, value)
+function CoreCameraDistancePicker:change_value(value)
 	slot5 = value
 
 	self.__field.change_value(slot3, self.__field)
 
 	return 
 end
-CoreCameraDistancePicker.set_background_colour = function (self, r, g, b)
+function CoreCameraDistancePicker:set_background_colour(r, g, b)
 	slot9 = b
 
 	self.__field.set_background_colour(slot5, self.__field, r, g)
@@ -228,12 +228,12 @@ CoreCameraDistancePicker.set_background_colour = function (self, r, g, b)
 
 	return 
 end
-CoreCameraDistancePicker.enabled = function (self)
+function CoreCameraDistancePicker:enabled()
 	slot3 = self.__field
 
 	return self.__field.enabled(slot2)
 end
-CoreCameraDistancePicker.set_enabled = function (self, enabled)
+function CoreCameraDistancePicker:set_enabled(enabled)
 	slot5 = enabled
 
 	self.__field.set_enabled(slot3, self.__field)
@@ -244,7 +244,7 @@ CoreCameraDistancePicker.set_enabled = function (self, enabled)
 
 	return 
 end
-CoreCameraDistancePicker.set_pick_button_enabled = function (self, enabled)
+function CoreCameraDistancePicker:set_pick_button_enabled(enabled)
 	self.__pick_button_disabled = not enabled or nil
 	slot7 = self
 	slot5 = self.enabled(slot6) and not self.__pick_button_disabled
@@ -253,19 +253,19 @@ CoreCameraDistancePicker.set_pick_button_enabled = function (self, enabled)
 
 	return 
 end
-CoreCameraDistancePicker.has_focus = function (self)
+function CoreCameraDistancePicker:has_focus()
 	if not self.__is_picking then
 		slot3 = EWS
 
 		return EWS.get_window_in_focus(slot2) == self.__field
 	end
 end
-CoreCameraDistancePicker._enter_pick_mode = function (self)
+function CoreCameraDistancePicker:_enter_pick_mode()
 	self.__is_picking = true
 
 	return 
 end
-CoreCameraDistancePicker._exit_pick_mode = function (self)
+function CoreCameraDistancePicker:_exit_pick_mode()
 	self.__is_picking = nil
 
 	return 

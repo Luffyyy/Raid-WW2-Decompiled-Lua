@@ -6,7 +6,7 @@ if not HuskCopDamage then
 end
 
 HuskCopDamage = slot0
-HuskCopDamage.die = function (self, variant)
+function HuskCopDamage:die(variant)
 	slot4 = self._unit
 	slot6 = 17
 

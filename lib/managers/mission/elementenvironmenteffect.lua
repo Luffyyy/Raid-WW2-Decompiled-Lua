@@ -4,7 +4,7 @@ if not ElementEnvironmentEffect then
 end
 
 ElementEnvironmentEffect = slot0
-ElementEnvironmentEffect.init = function (self, ...)
+function ElementEnvironmentEffect:init(...)
 	self._has_executed = false
 	slot3 = self
 
@@ -12,7 +12,7 @@ ElementEnvironmentEffect.init = function (self, ...)
 
 	return 
 end
-ElementEnvironmentEffect.stop_simulation = function (self, ...)
+function ElementEnvironmentEffect:stop_simulation(...)
 	slot4 = self._values.effect
 
 	managers.environment_effects.stop(slot2, managers.environment_effects)
@@ -23,26 +23,26 @@ ElementEnvironmentEffect.stop_simulation = function (self, ...)
 
 	return 
 end
-ElementEnvironmentEffect.pre_destroy = function (self)
+function ElementEnvironmentEffect:pre_destroy()
 	slot4 = self._values.effect
 
 	managers.environment_effects.stop(slot2, managers.environment_effects)
 
 	return 
 end
-ElementEnvironmentEffect.client_on_executed = function (self, ...)
+function ElementEnvironmentEffect:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementEnvironmentEffect.save = function (self, data)
+function ElementEnvironmentEffect:save(data)
 	data.has_executed = self._has_executed
 
 	return 
 end
-ElementEnvironmentEffect.load = function (self, data)
+function ElementEnvironmentEffect:load(data)
 	self._has_executed = data.has_executed
 
 	if self._has_executed == true then
@@ -53,7 +53,7 @@ ElementEnvironmentEffect.load = function (self, data)
 
 	return 
 end
-ElementEnvironmentEffect.on_executed = function (self, instigator)
+function ElementEnvironmentEffect:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

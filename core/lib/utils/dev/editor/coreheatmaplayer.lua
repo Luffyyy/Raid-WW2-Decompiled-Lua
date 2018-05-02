@@ -18,7 +18,7 @@ if not HeatmapLayer then
 end
 
 HeatmapLayer = slot0
-HeatmapLayer.init = function (self, owner)
+function HeatmapLayer:init(owner)
 	slot6 = "heatmap"
 
 	HeatmapLayer.super.init(slot3, self, owner)
@@ -27,26 +27,26 @@ HeatmapLayer.init = function (self, owner)
 
 	return 
 end
-HeatmapLayer.get_layer_name = function (self)
+function HeatmapLayer:get_layer_name()
 	return "Heatmap"
 end
-HeatmapLayer.get_setting = function (self, setting)
+function HeatmapLayer:get_setting(setting)
 	return 
 end
-HeatmapLayer.load = function (self, world_holder, offset)
+function HeatmapLayer:load(world_holder, offset)
 	return 
 end
-HeatmapLayer.save = function (self, save_params)
+function HeatmapLayer:save(save_params)
 	return 
 end
-HeatmapLayer.update = function (self, t, dt)
+function HeatmapLayer:update(t, dt)
 	slot7 = dt
 
 	self._draw(slot4, self, t)
 
 	return 
 end
-HeatmapLayer._draw = function (self, t, dt)
+function HeatmapLayer:_draw(t, dt)
 	local colors = {}
 	slot8 = 0
 	colors[1] = Vector3(slot5, 0, 1)
@@ -103,7 +103,7 @@ HeatmapLayer._draw = function (self, t, dt)
 
 	return 
 end
-HeatmapLayer._draw_path = function (self, path, color)
+function HeatmapLayer:_draw_path(path, color)
 	for i = 1, #path, 2 do
 		local p1 = path[i]
 		local p2 = path[i + 2]
@@ -117,7 +117,7 @@ HeatmapLayer._draw_path = function (self, path, color)
 
 	return 
 end
-HeatmapLayer.build_panel = function (self, notebook)
+function HeatmapLayer:build_panel(notebook)
 	slot5 = "HeatmapLayer:build_panel"
 
 	cat_print(slot3, "editor")
@@ -160,7 +160,7 @@ HeatmapLayer.build_panel = function (self, notebook)
 
 	return self._ews_panel
 end
-HeatmapLayer._add_data = function (self)
+function HeatmapLayer:_add_data()
 	slot5 = "Logs (*.txt)|*.txt"
 	local opendlg_path, opendlg_dir = managers.database.open_file_dialog(slot2, managers.database, Global.frame)
 
@@ -240,33 +240,33 @@ HeatmapLayer._add_data = function (self)
 
 	return 
 end
-HeatmapLayer._clr_data = function (self)
+function HeatmapLayer:_clr_data()
 	self._heatmap_sets = {}
 
 	return 
 end
-HeatmapLayer.add_triggers = function (self)
+function HeatmapLayer:add_triggers()
 	slot3 = self
 
 	HeatmapLayer.super.add_triggers(slot2)
 
 	return 
 end
-HeatmapLayer.activate = function (self)
+function HeatmapLayer:activate()
 	slot3 = self
 
 	HeatmapLayer.super.activate(slot2)
 
 	return 
 end
-HeatmapLayer.deactivate = function (self)
+function HeatmapLayer:deactivate()
 	slot3 = self
 
 	HeatmapLayer.super.deactivate(slot2)
 
 	return 
 end
-HeatmapLayer.clear = function (self)
+function HeatmapLayer:clear()
 	slot3 = self
 
 	HeatmapLayer.super.clear(slot2)

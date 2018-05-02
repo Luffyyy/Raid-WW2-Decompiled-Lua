@@ -7,7 +7,7 @@ EnvironmentOperatorElement = slot0
 EnvironmentOperatorElement.ACTIONS = {
 	"set"
 }
-EnvironmentOperatorElement.init = function (self, unit)
+function EnvironmentOperatorElement:init(unit)
 	slot5 = unit
 
 	EnvironmentOperatorElement.super.init(slot3, self)
@@ -27,10 +27,10 @@ EnvironmentOperatorElement.init = function (self, unit)
 
 	return 
 end
-EnvironmentOperatorElement.clear = function (self, ...)
+function EnvironmentOperatorElement:clear(...)
 	return 
 end
-EnvironmentOperatorElement.add_to_mission_package = function (self)
+function EnvironmentOperatorElement:add_to_mission_package()
 	slot4 = {
 		category = "script_data",
 		name = self._hed.environment .. ".environment"
@@ -47,7 +47,7 @@ EnvironmentOperatorElement.add_to_mission_package = function (self)
 
 	return 
 end
-EnvironmentOperatorElement._build_panel = function (self, panel, panel_sizer)
+function EnvironmentOperatorElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

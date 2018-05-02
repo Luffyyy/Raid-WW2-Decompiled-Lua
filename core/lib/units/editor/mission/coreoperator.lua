@@ -13,14 +13,14 @@ if not OperatorUnitElement then
 end
 
 OperatorUnitElement = slot0
-OperatorUnitElement.init = function (self, ...)
+function OperatorUnitElement:init(...)
 	slot3 = self
 
 	OperatorUnitElement.super.init(slot2, ...)
 
 	return 
 end
-CoreOperatorUnitElement.init = function (self, unit)
+function CoreOperatorUnitElement:init(unit)
 	slot5 = unit
 
 	CoreOperatorUnitElement.super.init(slot3, self)
@@ -37,7 +37,7 @@ CoreOperatorUnitElement.init = function (self, unit)
 
 	return 
 end
-CoreOperatorUnitElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function CoreOperatorUnitElement:draw_links(t, dt, selected_unit, all_units)
 	slot10 = selected_unit
 
 	CoreOperatorUnitElement.super.draw_links(slot6, self, t, dt)
@@ -71,7 +71,7 @@ CoreOperatorUnitElement.draw_links = function (self, t, dt, selected_unit, all_u
 
 	return 
 end
-CoreOperatorUnitElement.get_links_to_unit = function (self, ...)
+function CoreOperatorUnitElement:get_links_to_unit(...)
 	slot3 = self
 
 	CoreOperatorUnitElement.super.get_links_to_unit(slot2, ...)
@@ -82,10 +82,10 @@ CoreOperatorUnitElement.get_links_to_unit = function (self, ...)
 
 	return 
 end
-CoreOperatorUnitElement.update_editing = function (self)
+function CoreOperatorUnitElement:update_editing()
 	return 
 end
-CoreOperatorUnitElement.add_element = function (self)
+function CoreOperatorUnitElement:add_element()
 	slot4 = {
 		ray_type = "editor",
 		mask = 10
@@ -109,7 +109,7 @@ CoreOperatorUnitElement.add_element = function (self)
 
 	return 
 end
-CoreOperatorUnitElement.remove_links = function (self, unit)
+function CoreOperatorUnitElement:remove_links(unit)
 	slot4 = self._hed.elements
 
 	for _, id in ipairs(slot3) do
@@ -124,7 +124,7 @@ CoreOperatorUnitElement.remove_links = function (self, unit)
 
 	return 
 end
-CoreOperatorUnitElement.add_triggers = function (self, vc)
+function CoreOperatorUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "add_element"
 
@@ -132,7 +132,7 @@ CoreOperatorUnitElement.add_triggers = function (self, vc)
 
 	return 
 end
-CoreOperatorUnitElement._build_panel = function (self, panel, panel_sizer)
+function CoreOperatorUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

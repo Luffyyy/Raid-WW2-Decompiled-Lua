@@ -18,12 +18,12 @@ ChallengeManager.get_instance = function ()
 
 	return Global.challenge_manager
 end
-function ChallengeManager:init()
+ChallengeManager.init = function (self)
 	self._challenges = {}
 
 	return 
 end
-function ChallengeManager:_setup()
+ChallengeManager._setup = function (self)
 	slot3 = self._challenges
 
 	for category_id, category in pairs(slot2) do
@@ -42,7 +42,7 @@ function ChallengeManager:_setup()
 
 	return 
 end
-function ChallengeManager:reset()
+ChallengeManager.reset = function (self)
 	slot3 = self._challenges
 
 	for category_id, category in pairs(slot2) do
@@ -59,7 +59,7 @@ function ChallengeManager:reset()
 
 	return 
 end
-function ChallengeManager:create_challenge(challenge_category, challenge_id, tasks, complete_callback, challenge_data)
+ChallengeManager.create_challenge = function (self, challenge_category, challenge_id, tasks, complete_callback, challenge_data)
 	challenge_category = challenge_category or ChallengeManager.CATEGORY_GENERIC
 	slot13 = challenge_data
 	local challenge = Challenge.new(slot7, Challenge, challenge_category, challenge_id, tasks, complete_callback)
@@ -72,7 +72,7 @@ function ChallengeManager:create_challenge(challenge_category, challenge_id, tas
 
 	return 
 end
-function ChallengeManager:activate_challenge(challenge_category, challenge_id)
+ChallengeManager.activate_challenge = function (self, challenge_category, challenge_id)
 	if not self._challenges[challenge_category] or not self._challenges[challenge_category][challenge_id] then
 		slot7 = challenge_id
 
@@ -87,7 +87,7 @@ function ChallengeManager:activate_challenge(challenge_category, challenge_id)
 
 	return 
 end
-function ChallengeManager:deactivate_challenge(challenge_category, challenge_id)
+ChallengeManager.deactivate_challenge = function (self, challenge_category, challenge_id)
 	if not self._challenges[challenge_category] or not self._challenges[challenge_category][challenge_id] then
 		slot7 = challenge_id
 
@@ -102,7 +102,7 @@ function ChallengeManager:deactivate_challenge(challenge_category, challenge_id)
 
 	return 
 end
-function ChallengeManager:deactivate_all_challenges()
+ChallengeManager.deactivate_all_challenges = function (self)
 	slot3 = self._challenges
 
 	for category_index, category in pairs(slot2) do
@@ -117,7 +117,7 @@ function ChallengeManager:deactivate_all_challenges()
 
 	return 
 end
-function ChallengeManager:reset_challenge(challenge_category, challenge_id)
+ChallengeManager.reset_challenge = function (self, challenge_category, challenge_id)
 	if not self._challenges[challenge_category] or not self._challenges[challenge_category][challenge_id] then
 		slot7 = challenge_id
 
@@ -132,7 +132,7 @@ function ChallengeManager:reset_challenge(challenge_category, challenge_id)
 
 	return 
 end
-function ChallengeManager:reset_all_challenges()
+ChallengeManager.reset_all_challenges = function (self)
 	slot3 = self._challenges
 
 	for category_index, category in pairs(slot2) do
@@ -147,23 +147,23 @@ function ChallengeManager:reset_all_challenges()
 
 	return 
 end
-function ChallengeManager:get_challenge(challenge_category, challenge_id)
+ChallengeManager.get_challenge = function (self, challenge_category, challenge_id)
 	if not self._challenges[challenge_category] or not self._challenges[challenge_category][challenge_id] then
 		return 
 	end
 
 	return self._challenges[challenge_category][challenge_id]
 end
-function ChallengeManager:challenge_exists(challenge_category, challenge_id)
+ChallengeManager.challenge_exists = function (self, challenge_category, challenge_id)
 	return (self._challenges[challenge_category] and self._challenges[challenge_category][challenge_id] and true) or false
 end
-function ChallengeManager:save_character_slot(data)
+ChallengeManager.save_character_slot = function (self, data)
 	return 
 end
-function ChallengeManager:load_character_slot(data, version)
+ChallengeManager.load_character_slot = function (self, data, version)
 	return 
 end
-function ChallengeManager:save_profile_slot(data)
+ChallengeManager.save_profile_slot = function (self, data)
 	local state = {
 		version = ChallengeManager.VERSION,
 		challenges = self._challenges
@@ -172,7 +172,7 @@ function ChallengeManager:save_profile_slot(data)
 
 	return 
 end
-function ChallengeManager:load_profile_slot(data, version)
+ChallengeManager.load_profile_slot = function (self, data, version)
 	local state = data.ChallengeManager
 
 	if not state then

@@ -197,7 +197,7 @@ else
 	CopBrain._reload_clbks = {}
 end
 
-CopBrain.init = function (self, unit)
+function CopBrain:init(unit)
 	self._unit = unit
 	slot4 = TimerManager
 	self._timer = TimerManager.game(slot3)
@@ -220,7 +220,7 @@ CopBrain.init = function (self, unit)
 
 	return 
 end
-CopBrain.post_init = function (self)
+function CopBrain:post_init()
 	self._logics = CopBrain._logic_variants[self._unit.base(slot3)._tweak_table]
 	slot3 = self
 
@@ -316,7 +316,7 @@ CopBrain.post_init = function (self)
 
 	return 
 end
-CopBrain.set_logic_queued = function (self, data)
+function CopBrain:set_logic_queued(data)
 	slot4 = self._unit
 
 	if alive(slot3) then
@@ -333,7 +333,7 @@ CopBrain.set_logic_queued = function (self, data)
 
 	return 
 end
-CopBrain.update = function (self, unit, t, dt)
+function CopBrain:update(unit, t, dt)
 	slot6 = managers.network
 
 	if managers.network.session(slot5) then
@@ -361,7 +361,7 @@ CopBrain.update = function (self, unit, t, dt)
 
 	return 
 end
-CopBrain.set_update_enabled_state = function (self, state)
+function CopBrain:set_update_enabled_state(state)
 	slot7 = "brain"
 	slot6 = state
 
@@ -369,7 +369,7 @@ CopBrain.set_update_enabled_state = function (self, state)
 
 	return 
 end
-CopBrain.set_spawn_ai = function (self, spawn_ai)
+function CopBrain:set_spawn_ai(spawn_ai)
 	self._spawn_ai = spawn_ai
 	slot5 = true
 
@@ -396,13 +396,13 @@ CopBrain.set_spawn_ai = function (self, spawn_ai)
 
 	return 
 end
-CopBrain.set_spawn_entry = function (self, spawn_entry, tactics_map)
+function CopBrain:set_spawn_entry(spawn_entry, tactics_map)
 	self._logic_data.tactics = tactics_map
 	self._logic_data.rank = spawn_entry.rank
 
 	return 
 end
-CopBrain.set_tactic = function (self, new_tactic_info)
+function CopBrain:set_tactic(new_tactic_info)
 	local old_tactic = self._logic_data.tactic
 	self._logic_data.tactic = new_tactic_info
 
@@ -414,7 +414,7 @@ CopBrain.set_tactic = function (self, new_tactic_info)
 
 	return 
 end
-CopBrain.set_objective = function (self, new_objective)
+function CopBrain:set_objective(new_objective)
 	local old_objective = self._logic_data.objective
 	self._logic_data.objective = new_objective
 
@@ -436,7 +436,7 @@ CopBrain.set_objective = function (self, new_objective)
 
 	return 
 end
-CopBrain.set_followup_objective = function (self, followup_objective)
+function CopBrain:set_followup_objective(followup_objective)
 	local old_followup = self._logic_data.objective.followup_objective
 	self._logic_data.objective.followup_objective = followup_objective
 
@@ -454,7 +454,7 @@ CopBrain.set_followup_objective = function (self, followup_objective)
 
 	return 
 end
-CopBrain.save = function (self, save_data)
+function CopBrain:save(save_data)
 	local my_save_data = {}
 
 	if self._logic_data.objective and self._logic_data.objective.followup_objective and self._logic_data.objective.followup_objective.interaction_voice then
@@ -480,18 +480,18 @@ CopBrain.save = function (self, save_data)
 
 	return 
 end
-CopBrain.objective = function (self)
+function CopBrain:objective()
 	return self._logic_data.objective
 end
-CopBrain.is_hostage = function (self)
+function CopBrain:is_hostage()
 	return self._logic_data.internal_data and self._logic_data.internal_data.is_hostage
 end
-CopBrain.is_available_for_assignment = function (self, objective)
+function CopBrain:is_available_for_assignment(objective)
 	slot5 = objective
 
 	return self._current_logic.is_available_for_assignment(slot3, self._logic_data)
 end
-CopBrain._reset_logic_data = function (self)
+function CopBrain:_reset_logic_data()
 	slot4 = self._unit
 	slot5 = self._unit
 	slot4 = self._unit
@@ -531,7 +531,7 @@ CopBrain._reset_logic_data = function (self)
 
 	return 
 end
-CopBrain.set_init_logic = function (self, name, enter_params)
+function CopBrain:set_init_logic(name, enter_params)
 	local logic = self._logics[name]
 	local l_data = self._logic_data
 	slot7 = self._timer
@@ -548,7 +548,7 @@ CopBrain.set_init_logic = function (self, name, enter_params)
 
 	return 
 end
-CopBrain.set_logic = function (self, name, enter_params)
+function CopBrain:set_logic(name, enter_params)
 	local logic = self._logics[name]
 	local l_data = self._logic_data
 	slot7 = self._timer
@@ -569,10 +569,10 @@ CopBrain.set_logic = function (self, name, enter_params)
 
 	return 
 end
-CopBrain.get_logic_by_name = function (self, name)
+function CopBrain:get_logic_by_name(name)
 	return self._logics[name]
 end
-CopBrain.search_for_path_to_unit = function (self, search_id, other_unit, access_neg)
+function CopBrain:search_for_path_to_unit(search_id, other_unit, access_neg)
 	slot6 = other_unit
 	local enemy_tracker = other_unit.movement(slot5).nav_tracker(slot5)
 	slot7 = enemy_tracker
@@ -594,7 +594,7 @@ CopBrain.search_for_path_to_unit = function (self, search_id, other_unit, access
 
 	return true
 end
-CopBrain.search_for_path = function (self, search_id, to_pos, prio, access_neg, nav_segs)
+function CopBrain:search_for_path(search_id, to_pos, prio, access_neg, nav_segs)
 	local params = {}
 	slot9 = self._unit
 	slot9 = self._unit.movement(slot8)
@@ -614,7 +614,7 @@ CopBrain.search_for_path = function (self, search_id, to_pos, prio, access_neg, 
 
 	return true
 end
-CopBrain.search_for_path_from_pos = function (self, search_id, from_pos, to_pos, prio, access_neg, nav_segs)
+function CopBrain:search_for_path_from_pos(search_id, from_pos, to_pos, prio, access_neg, nav_segs)
 	local params = {
 		pos_from = from_pos,
 		pos_to = to_pos
@@ -633,7 +633,7 @@ CopBrain.search_for_path_from_pos = function (self, search_id, from_pos, to_pos,
 
 	return true
 end
-CopBrain.search_for_path_to_cover = function (self, search_id, cover, offset_pos, access_neg)
+function CopBrain:search_for_path_to_cover(search_id, cover, offset_pos, access_neg)
 	local params = {}
 	slot8 = self._unit
 	slot8 = self._unit.movement(slot7)
@@ -651,7 +651,7 @@ CopBrain.search_for_path_to_cover = function (self, search_id, cover, offset_pos
 
 	return true
 end
-CopBrain.search_for_coarse_path = function (self, search_id, to_seg, verify_clbk, access_neg)
+function CopBrain:search_for_coarse_path(search_id, to_seg, verify_clbk, access_neg)
 	local params = {}
 	slot8 = self._unit
 	slot8 = self._unit.movement(slot7)
@@ -673,27 +673,27 @@ CopBrain.search_for_coarse_path = function (self, search_id, to_seg, verify_clbk
 
 	return true
 end
-CopBrain.action_request = function (self, new_action_data)
+function CopBrain:action_request(new_action_data)
 	slot4 = self._unit
 	slot5 = new_action_data
 
 	return self._unit.movement(slot3).action_request(slot3, self._unit.movement(slot3))
 end
-CopBrain.on_action_completed = function (self, action)
+function CopBrain:on_action_completed(action)
 	slot5 = action
 
 	self._current_logic.on_action_completed(slot3, self._logic_data)
 
 	return 
 end
-CopBrain.clbk_coarse_pathing_results = function (self, search_id, path)
+function CopBrain:clbk_coarse_pathing_results(search_id, path)
 	slot7 = path
 
 	self._add_pathing_result(slot4, self, search_id)
 
 	return 
 end
-CopBrain.clbk_pathing_results = function (self, search_id, path)
+function CopBrain:clbk_pathing_results(search_id, path)
 	slot7 = path
 
 	self._add_pathing_result(slot4, self, search_id)
@@ -726,14 +726,14 @@ CopBrain.clbk_pathing_results = function (self, search_id, path)
 
 	return 
 end
-CopBrain._add_pathing_result = function (self, search_id, path)
+function CopBrain:_add_pathing_result(search_id, path)
 	self._logic_data.active_searches[search_id] = nil
 	self._logic_data.pathing_results = self._logic_data.pathing_results or {}
 	self._logic_data.pathing_results[search_id] = path or "failed"
 
 	return 
 end
-CopBrain.cancel_all_pathing_searches = function (self)
+function CopBrain:cancel_all_pathing_searches()
 	slot3 = self._logic_data.active_searches
 
 	for search_id, search_type in pairs(slot2) do
@@ -753,7 +753,7 @@ CopBrain.cancel_all_pathing_searches = function (self)
 
 	return 
 end
-CopBrain.abort_detailed_pathing = function (self, search_id)
+function CopBrain:abort_detailed_pathing(search_id)
 	if self._logic_data.active_searches[search_id] then
 		self._logic_data.active_searches[search_id] = nil
 		slot5 = search_id
@@ -763,7 +763,7 @@ CopBrain.abort_detailed_pathing = function (self, search_id)
 
 	return 
 end
-CopBrain.clbk_damage = function (self, my_unit, damage_info)
+function CopBrain:clbk_damage(my_unit, damage_info)
 	if damage_info.attacker_unit then
 		slot6 = self._slotmask_enemies
 
@@ -776,7 +776,7 @@ CopBrain.clbk_damage = function (self, my_unit, damage_info)
 
 	return 
 end
-CopBrain.clbk_death = function (self, my_unit, damage_info)
+function CopBrain:clbk_death(my_unit, damage_info)
 	slot6 = damage_info
 
 	self._current_logic.death_clbk(slot4, self._logic_data)
@@ -818,10 +818,10 @@ CopBrain.clbk_death = function (self, my_unit, damage_info)
 
 	return 
 end
-CopBrain.is_active = function (self)
+function CopBrain:is_active()
 	return self._active
 end
-CopBrain.set_active = function (self, state)
+function CopBrain:set_active(state)
 	self._active = state
 
 	if state then
@@ -842,7 +842,7 @@ CopBrain.set_active = function (self, state)
 
 	return 
 end
-CopBrain.cancel_trade = function (self)
+function CopBrain:cancel_trade()
 	if not self._active then
 		return 
 	end
@@ -871,7 +871,7 @@ CopBrain.cancel_trade = function (self)
 
 	return 
 end
-CopBrain.interaction_voice = function (self)
+function CopBrain:interaction_voice()
 	if self._logic_data.objective and self._logic_data.objective.followup_objective and self._logic_data.objective.followup_objective.trigger_on == "interact" and (not self._logic_data.objective or not self._logic_data.objective.nav_seg or not not self._logic_data.objective.in_place) then
 		slot3 = self._unit
 
@@ -882,7 +882,7 @@ CopBrain.interaction_voice = function (self)
 
 	return 
 end
-CopBrain.on_intimidated = function (self, amount, aggressor_unit)
+function CopBrain:on_intimidated(amount, aggressor_unit)
 	slot5 = self
 	local interaction_voice = self.interaction_voice(slot4)
 
@@ -900,38 +900,38 @@ CopBrain.on_intimidated = function (self, amount, aggressor_unit)
 
 	return 
 end
-CopBrain.on_tied = function (self, aggressor_unit, not_tied)
+function CopBrain:on_tied(aggressor_unit, not_tied)
 	slot7 = not_tied
 
 	return self._current_logic.on_tied(slot4, self._logic_data, aggressor_unit)
 end
-CopBrain.on_trade = function (self, aggressor_unit)
+function CopBrain:on_trade(aggressor_unit)
 	slot5 = aggressor_unit
 
 	return self._current_logic.on_trade(slot3, self._logic_data)
 end
-CopBrain.on_detected_enemy_destroyed = function (self, destroyed_unit)
+function CopBrain:on_detected_enemy_destroyed(destroyed_unit)
 	slot5 = destroyed_unit
 
 	self._current_logic.on_detected_enemy_destroyed(slot3, self._logic_data)
 
 	return 
 end
-CopBrain.on_detected_attention_obj_modified = function (self, modified_u_key)
+function CopBrain:on_detected_attention_obj_modified(modified_u_key)
 	slot5 = modified_u_key
 
 	self._current_logic.on_detected_attention_obj_modified(slot3, self._logic_data)
 
 	return 
 end
-CopBrain.on_criminal_neutralized = function (self, criminal_key)
+function CopBrain:on_criminal_neutralized(criminal_key)
 	slot5 = criminal_key
 
 	self._current_logic.on_criminal_neutralized(slot3, self._logic_data)
 
 	return 
 end
-CopBrain.on_alert = function (self, alert_data)
+function CopBrain:on_alert(alert_data)
 	if alert_data[5] == self._unit then
 		return 
 	end
@@ -942,34 +942,34 @@ CopBrain.on_alert = function (self, alert_data)
 
 	return 
 end
-CopBrain.filter_area_unsafe = function (self, nav_seg)
+function CopBrain:filter_area_unsafe(nav_seg)
 	slot4 = managers.groupai
 	slot5 = nav_seg
 
 	return not managers.groupai.state(slot3).is_nav_seg_safe(slot3, managers.groupai.state(slot3))
 end
-CopBrain.on_area_safety = function (self, ...)
+function CopBrain:on_area_safety(...)
 	slot3 = self._logic_data
 
 	self._current_logic.on_area_safety(slot2, ...)
 
 	return 
 end
-CopBrain.draw_reserved_positions = function (self)
+function CopBrain:draw_reserved_positions()
 	slot3 = self._logic_data
 
 	self._current_logic.draw_reserved_positions(slot2)
 
 	return 
 end
-CopBrain.draw_reserved_covers = function (self)
+function CopBrain:draw_reserved_covers()
 	slot3 = self._logic_data
 
 	self._current_logic.draw_reserved_covers(slot2)
 
 	return 
 end
-CopBrain.set_important = function (self, state)
+function CopBrain:set_important(state)
 	self._important = state
 	self._logic_data.important = state
 	slot4 = self._logic_data
@@ -978,10 +978,10 @@ CopBrain.set_important = function (self, state)
 
 	return 
 end
-CopBrain.is_important = function (self)
+function CopBrain:is_important()
 	return self._important
 end
-CopBrain.on_reload = function (self)
+function CopBrain:on_reload()
 	slot5 = self._unit
 	self._logic_data.char_tweak = tweak_data.character[self._unit.base(slot4)._tweak_table]
 	self._logics = CopBrain._logic_variants[self._unit.base(self._unit.base(slot4)._tweak_table)._tweak_table]
@@ -991,7 +991,7 @@ CopBrain.on_reload = function (self)
 
 	return 
 end
-CopBrain.on_rescue_allowed_state = function (self, state)
+function CopBrain:on_rescue_allowed_state(state)
 	if self._current_logic.on_rescue_allowed_state then
 		slot5 = state
 
@@ -1000,12 +1000,12 @@ CopBrain.on_rescue_allowed_state = function (self, state)
 
 	return 
 end
-CopBrain.on_objective_unit_destroyed = function (self, unit)
+function CopBrain:on_objective_unit_destroyed(unit)
 	slot5 = unit
 
 	return self._current_logic.on_objective_unit_destroyed(slot3, self._logic_data)
 end
-CopBrain.on_objective_unit_damaged = function (self, unit, damage_info)
+function CopBrain:on_objective_unit_damaged(unit, damage_info)
 	slot5 = unit
 
 	if unit.character_damage(slot4).dead then
@@ -1021,26 +1021,26 @@ CopBrain.on_objective_unit_damaged = function (self, unit, damage_info)
 
 	return 
 end
-CopBrain.is_advancing = function (self)
+function CopBrain:is_advancing()
 	slot3 = self._logic_data
 
 	return self._current_logic.is_advancing(slot2)
 end
-CopBrain.anim_clbk = function (self, unit, ...)
+function CopBrain:anim_clbk(unit, ...)
 	slot4 = self._logic_data
 
 	self._current_logic.anim_clbk(slot3, ...)
 
 	return 
 end
-CopBrain.anim_clbk_dodge_cover_grenade = function (self, unit)
+function CopBrain:anim_clbk_dodge_cover_grenade(unit)
 	slot5 = unit
 
 	self._chk_use_cover_grenade(slot3, self)
 
 	return 
 end
-CopBrain._chk_use_cover_grenade = function (self, unit)
+function CopBrain:_chk_use_cover_grenade(unit)
 	slot4 = Network
 
 	if not Network.is_server(slot3) or not self._logic_data.char_tweak.dodge_with_grenade or not self._logic_data.attention_obj then
@@ -1099,7 +1099,7 @@ CopBrain._chk_use_cover_grenade = function (self, unit)
 
 	return 
 end
-CopBrain.on_nav_link_unregistered = function (self, element_id)
+function CopBrain:on_nav_link_unregistered(element_id)
 	if self._logic_data.pathing_results then
 		local failed_search_ids = nil
 		slot5 = self._logic_data.pathing_results
@@ -1177,19 +1177,19 @@ CopBrain.on_nav_link_unregistered = function (self, element_id)
 
 	return 
 end
-CopBrain.SO_access = function (self)
+function CopBrain:SO_access()
 	return self._SO_access
 end
-CopBrain._setup_attention_handler = function (self)
+function CopBrain:_setup_attention_handler()
 	slot4 = self._unit
 	self._attention_handler = CharacterAttentionObject.new(slot2, CharacterAttentionObject)
 
 	return 
 end
-CopBrain.attention_handler = function (self)
+function CopBrain:attention_handler()
 	return self._attention_handler
 end
-CopBrain.set_attention_settings = function (self, params)
+function CopBrain:set_attention_settings(params)
 	local att_settings = nil
 
 	if params then
@@ -1231,15 +1231,15 @@ CopBrain.set_attention_settings = function (self, params)
 
 	return 
 end
-CopBrain._create_attention_setting_from_descriptor = function (self, setting_desc, setting_name)
+function CopBrain:_create_attention_setting_from_descriptor(setting_desc, setting_name)
 	slot7 = setting_name
 
 	return PlayerMovement._create_attention_setting_from_descriptor(slot4, self, setting_desc)
 end
-CopBrain.clbk_attention_notice_corpse = function (self, observer_unit, status)
+function CopBrain:clbk_attention_notice_corpse(observer_unit, status)
 	return 
 end
-CopBrain.on_cool_state_changed = function (self, state)
+function CopBrain:on_cool_state_changed(state)
 	if self._logic_data then
 		self._logic_data.cool = state
 	end
@@ -1305,7 +1305,7 @@ CopBrain.on_cool_state_changed = function (self, state)
 
 	return 
 end
-CopBrain.on_suppressed = function (self, state)
+function CopBrain:on_suppressed(state)
 	self._logic_data.is_suppressed = state or nil
 
 	if self._current_logic.on_suppressed_state then
@@ -1323,7 +1323,7 @@ CopBrain.on_suppressed = function (self, state)
 
 	return 
 end
-CopBrain.attention_objects = function (self)
+function CopBrain:attention_objects()
 	if self._logic_data.attention_obj then
 		slot3 = "attention_obj"
 
@@ -1346,7 +1346,7 @@ CopBrain.attention_objects = function (self)
 
 	return 
 end
-CopBrain.clbk_enemy_weapons_hot = function (self)
+function CopBrain:clbk_enemy_weapons_hot()
 	slot3 = managers.groupai
 	slot4 = self._enemy_weapons_hot_listen_id
 
@@ -1365,12 +1365,12 @@ CopBrain.clbk_enemy_weapons_hot = function (self)
 
 	return 
 end
-CopBrain.set_group = function (self, group)
+function CopBrain:set_group(group)
 	self._logic_data.group = group
 
 	return 
 end
-CopBrain.on_team_set = function (self, team_data)
+function CopBrain:on_team_set(team_data)
 	self._logic_data.team = team_data
 	slot5 = team_data
 
@@ -1378,7 +1378,7 @@ CopBrain.on_team_set = function (self, team_data)
 
 	return 
 end
-CopBrain.on_new_group_objective = function (self, objective)
+function CopBrain:on_new_group_objective(objective)
 	if self._current_logic.on_new_group_objective then
 		slot5 = objective
 
@@ -1387,14 +1387,14 @@ CopBrain.on_new_group_objective = function (self, objective)
 
 	return 
 end
-CopBrain.clbk_group_member_attention_identified = function (self, member_unit, attention_u_key)
+function CopBrain:clbk_group_member_attention_identified(member_unit, attention_u_key)
 	slot6 = attention_u_key
 
 	self._current_logic.identify_attention_obj_instant(slot4, self._logic_data)
 
 	return 
 end
-CopBrain.convert_to_criminal = function (self, mastermind_criminal)
+function CopBrain:convert_to_criminal(mastermind_criminal)
 	self._logic_data.is_converted = true
 	self._logic_data.group = nil
 	slot5 = "mover_blocker"
@@ -1531,7 +1531,7 @@ CopBrain.convert_to_criminal = function (self, mastermind_criminal)
 
 	return 
 end
-CopBrain.on_surrender_chance = function (self)
+function CopBrain:on_surrender_chance()
 	slot3 = TimerManager
 	slot3 = TimerManager.game(slot2)
 	local t = TimerManager.game(slot2).time(slot2)
@@ -1566,7 +1566,7 @@ CopBrain.on_surrender_chance = function (self)
 
 	return 
 end
-CopBrain.terminate_all_suspicion = function (self)
+function CopBrain:terminate_all_suspicion()
 	slot3 = self._logic_data.detected_attention_objects
 
 	for u_key, u_data in pairs(slot2) do
@@ -1582,12 +1582,12 @@ CopBrain.terminate_all_suspicion = function (self)
 
 	return 
 end
-CopBrain.clbk_surrender_chance_expired = function (self)
+function CopBrain:clbk_surrender_chance_expired()
 	self._logic_data.surrender_window = nil
 
 	return 
 end
-CopBrain.add_pos_rsrv = function (self, rsrv_name, pos_rsrv)
+function CopBrain:add_pos_rsrv(rsrv_name, pos_rsrv)
 	local pos_reservations = self._logic_data.pos_rsrv
 
 	if pos_reservations[rsrv_name] then
@@ -1614,7 +1614,7 @@ CopBrain.add_pos_rsrv = function (self, rsrv_name, pos_rsrv)
 
 	return 
 end
-CopBrain.set_pos_rsrv = function (self, rsrv_name, pos_rsrv)
+function CopBrain:set_pos_rsrv(rsrv_name, pos_rsrv)
 	local pos_reservations = self._logic_data.pos_rsrv
 
 	if pos_reservations[rsrv_name] == pos_rsrv then
@@ -1640,7 +1640,7 @@ CopBrain.set_pos_rsrv = function (self, rsrv_name, pos_rsrv)
 
 	return 
 end
-CopBrain.rem_pos_rsrv = function (self, rsrv_name)
+function CopBrain:rem_pos_rsrv(rsrv_name)
 	local pos_reservations = self._logic_data.pos_rsrv
 
 	if not pos_reservations[rsrv_name] then
@@ -1664,10 +1664,10 @@ CopBrain.rem_pos_rsrv = function (self, rsrv_name)
 
 	return 
 end
-CopBrain.get_pos_rsrv = function (self, rsrv_name)
+function CopBrain:get_pos_rsrv(rsrv_name)
 	return self._logic_data.pos_rsrv[rsrv_name]
 end
-CopBrain.rem_all_pos_rsrv = function (self)
+function CopBrain:rem_all_pos_rsrv()
 	slot3 = self._logic_data.pos_rsrv
 
 	for rsrv_name, pos_rsrv in pairs(slot2) do
@@ -1680,7 +1680,7 @@ CopBrain.rem_all_pos_rsrv = function (self)
 
 	return 
 end
-CopBrain.begin_alarm_pager = function (self, reset)
+function CopBrain:begin_alarm_pager(reset)
 	if not reset and self._alarm_pager_has_run then
 		return 
 	end
@@ -1703,10 +1703,10 @@ CopBrain.begin_alarm_pager = function (self, reset)
 
 	return 
 end
-CopBrain.is_pager_started = function (self)
+function CopBrain:is_pager_started()
 	return (self._alarm_pager_data and true) or nil
 end
-CopBrain.end_alarm_pager = function (self)
+function CopBrain:end_alarm_pager()
 	if not self._alarm_pager_data then
 		return 
 	end
@@ -1721,7 +1721,7 @@ CopBrain.end_alarm_pager = function (self)
 
 	return 
 end
-CopBrain.on_alarm_pager_interaction = function (self, status, player)
+function CopBrain:on_alarm_pager_interaction(status, player)
 	slot5 = managers.groupai
 	slot5 = managers.groupai.state(slot4)
 
@@ -1879,7 +1879,7 @@ CopBrain.on_alarm_pager_interaction = function (self, status, player)
 
 	return 
 end
-CopBrain.clbk_alarm_pager = function (self, ignore_this, data)
+function CopBrain:clbk_alarm_pager(ignore_this, data)
 	local pager_data = self._alarm_pager_data
 	local clbk_id = pager_data.pager_clbk_id
 	pager_data.pager_clbk_id = nil
@@ -2020,7 +2020,7 @@ CopBrain.clbk_alarm_pager = function (self, ignore_this, data)
 
 	return 
 end
-CopBrain._chk_enable_bodybag_interaction = function (self)
+function CopBrain:_chk_enable_bodybag_interaction()
 	slot3 = self._unit
 	slot4 = "corpse_dispose"
 
@@ -2033,7 +2033,7 @@ CopBrain._chk_enable_bodybag_interaction = function (self)
 
 	return true
 end
-CopBrain.on_police_call_success = function (self, unit)
+function CopBrain:on_police_call_success(unit)
 	if self._logic_data.logic.on_police_call_success then
 		slot4 = self._logic_data
 
@@ -2042,10 +2042,10 @@ CopBrain.on_police_call_success = function (self, unit)
 
 	return 
 end
-CopBrain.stealth_action_allowed = function (self)
+function CopBrain:stealth_action_allowed()
 	return not self._flagged_looking and not self._SO_id
 end
-CopBrain._switch_to_cbt = function (self)
+function CopBrain:_switch_to_cbt()
 	self._switch_to_cbt_called = false
 	slot3 = self._unit
 
@@ -2058,7 +2058,7 @@ CopBrain._switch_to_cbt = function (self)
 
 	return 
 end
-CopBrain.pre_destroy = function (self, unit)
+function CopBrain:pre_destroy(unit)
 	slot5 = false
 
 	self.set_active(slot3, self)

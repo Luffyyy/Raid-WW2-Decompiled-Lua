@@ -13,7 +13,7 @@ DynamicResourceManager.listener_events = {
 }
 slot2 = "unit"
 local ids_unit = Idstring()
-function DynamicResourceManager:init()
+DynamicResourceManager.init = function (self)
 	if not Global.dyn_resource_manager_data then
 		Global.dyn_resource_manager_data = {
 			streaming_settings = {
@@ -33,7 +33,7 @@ function DynamicResourceManager:init()
 
 	return 
 end
-function DynamicResourceManager:post_init()
+DynamicResourceManager.post_init = function (self)
 	slot4 = "max_streaming_chunk"
 	local chunk_size_kb = managers.user.get_setting(slot2, managers.user)
 
@@ -53,7 +53,7 @@ function DynamicResourceManager:post_init()
 
 	return 
 end
-function DynamicResourceManager:update()
+DynamicResourceManager.update = function (self)
 	if self._to_unload then
 		slot3 = self._to_unload
 
@@ -77,7 +77,7 @@ function DynamicResourceManager:update()
 
 	return 
 end
-function DynamicResourceManager:is_ready_to_close()
+DynamicResourceManager.is_ready_to_close = function (self)
 
 	-- Decompilation error in this vicinity:
 	if self._to_unload then
@@ -114,7 +114,7 @@ DynamicResourceManager._get_resource_key = function (resource_type, resource_nam
 
 	return package_name .. resource_name.key(slot5) .. resource_type.key(resource_name)
 end
-function DynamicResourceManager:load(resource_type, resource_name, package_name, complete_clbk)
+DynamicResourceManager.load = function (self, resource_type, resource_name, package_name, complete_clbk)
 	slot9 = package_name
 	local key = self._get_resource_key(slot6, resource_type, resource_name)
 	local entry = self._to_unload and self._to_unload[key]
@@ -197,7 +197,7 @@ function DynamicResourceManager:load(resource_type, resource_name, package_name,
 
 	return 
 end
-function DynamicResourceManager:unload(resource_type, resource_name, package_name, keep_using)
+DynamicResourceManager.unload = function (self, resource_type, resource_name, package_name, keep_using)
 	if keep_using then
 		slot11 = keep_using
 
@@ -221,20 +221,20 @@ function DynamicResourceManager:unload(resource_type, resource_name, package_nam
 
 	return 
 end
-function DynamicResourceManager:has_resource(resource_type, resource_name, package_name)
+DynamicResourceManager.has_resource = function (self, resource_type, resource_name, package_name)
 	slot8 = package_name
 	local key = self._get_resource_key(slot5, resource_type, resource_name)
 
 	return (self._dyn_resources[key] and true) or false
 end
-function DynamicResourceManager:is_resource_ready(resource_type, resource_name, package_name)
+DynamicResourceManager.is_resource_ready = function (self, resource_type, resource_name, package_name)
 	slot8 = package_name
 	local key = self._get_resource_key(slot5, resource_type, resource_name)
 	local entry = self._dyn_resources[key]
 
 	return entry and entry.ready
 end
-function DynamicResourceManager:clbk_resource_loaded(status, resource_type, resource_name, package_name)
+DynamicResourceManager.clbk_resource_loaded = function (self, status, resource_type, resource_name, package_name)
 	slot9 = package_name
 	local key = self._get_resource_key(slot6, resource_type, resource_name)
 	local entry = self._dyn_resources[key] or (self._to_unload and self._to_unload[key])
@@ -261,14 +261,14 @@ function DynamicResourceManager:clbk_resource_loaded(status, resource_type, reso
 
 	return 
 end
-function DynamicResourceManager:change_material_config(name, unit)
+DynamicResourceManager.change_material_config = function (self, name, unit)
 	slot13 = unit
 
 	unit.set_material_config(slot4, unit, name, true, callback(100, self, self, "on_material_applied"))
 
 	return 
 end
-function DynamicResourceManager:on_material_applied(unit)
+DynamicResourceManager.on_material_applied = function (self, unit)
 	slot4 = unit
 
 	if alive(slot3) then
@@ -293,7 +293,7 @@ function DynamicResourceManager:on_material_applied(unit)
 
 	return 
 end
-function DynamicResourceManager:_check_file_streamer_status()
+DynamicResourceManager._check_file_streamer_status = function (self)
 	local nr_tasks = Application.file_streamer_workload(slot2)
 	slot6 = nr_tasks
 
@@ -301,13 +301,13 @@ function DynamicResourceManager:_check_file_streamer_status()
 
 	return 
 end
-function DynamicResourceManager:is_file_streamer_idle()
+DynamicResourceManager.is_file_streamer_idle = function (self)
 	slot3 = Application
 	local nr_tasks = Application.file_streamer_workload(slot2)
 
 	return nr_tasks == 0
 end
-function DynamicResourceManager:set_file_streaming_chunk_size_mul(mul, sleep_time)
+DynamicResourceManager.set_file_streaming_chunk_size_mul = function (self, mul, sleep_time)
 	mul = mul or self._streaming_settings.chunk_size_mul
 	sleep_time = sleep_time or self._streaming_settings.sleep_time
 
@@ -326,7 +326,7 @@ function DynamicResourceManager:set_file_streaming_chunk_size_mul(mul, sleep_tim
 
 	return 
 end
-function DynamicResourceManager:_set_file_streamer_settings(chunk_size_kb, sleep_time)
+DynamicResourceManager._set_file_streamer_settings = function (self, chunk_size_kb, sleep_time)
 	self._streaming_settings.chunk_size_kb = chunk_size_kb
 	self._streaming_settings.sleep_time = sleep_time
 	local chunk_size_kb_end_value = chunk_size_kb * 1024 * self._streaming_settings.chunk_size_mul
@@ -336,31 +336,31 @@ function DynamicResourceManager:_set_file_streamer_settings(chunk_size_kb, sleep
 
 	return 
 end
-function DynamicResourceManager:add_listener(key, events, clbk)
+DynamicResourceManager.add_listener = function (self, key, events, clbk)
 	slot9 = clbk
 
 	self._listener_holder.add(slot5, self._listener_holder, key, events)
 
 	return 
 end
-function DynamicResourceManager:remove_listener(key)
+DynamicResourceManager.remove_listener = function (self, key)
 	slot5 = key
 
 	self._listener_holder.remove(slot3, self._listener_holder)
 
 	return 
 end
-function DynamicResourceManager:max_streaming_chunk()
+DynamicResourceManager.max_streaming_chunk = function (self)
 	return self._max_streaming_chunk_kb
 end
-function DynamicResourceManager:clbk_streaming_chunk_size_changed(name, old_value, new_value)
+DynamicResourceManager.clbk_streaming_chunk_size_changed = function (self, name, old_value, new_value)
 	slot8 = self._streaming_settings.sleep_time
 
 	self._set_file_streamer_settings(slot5, self, new_value)
 
 	return 
 end
-function DynamicResourceManager:preload_units()
+DynamicResourceManager.preload_units = function (self)
 	return 
 end
 

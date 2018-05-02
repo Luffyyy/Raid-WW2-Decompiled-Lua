@@ -2,25 +2,25 @@ TestPhysXCrashRandom = TestPhysXCrashRandom or class()
 TestPhysXCrashRandom.PERIOD_BETWEEN_SPAWNS = 3
 local timer = 0
 local testing_active = true
-TestPhysXCrashRandom.init = function (self)
+function TestPhysXCrashRandom:init()
 	timer = TestPhysXCrashRandom.PERIOD_BETWEEN_SPAWNS
 	testing_active = true
 
 	return 
 end
-TestPhysXCrashRandom.update = function (self, t, dt)
+function TestPhysXCrashRandom:update(t, dt)
 	slot7 = dt
 
 	self.randomCrash(slot4, self, t)
 
 	return 
 end
-TestPhysXCrashRandom.toggleTest = function (self)
+function TestPhysXCrashRandom:toggleTest()
 	testing_active = not testing_active
 
 	return 
 end
-TestPhysXCrashRandom.randomCrash = function (self, t, dt)
+function TestPhysXCrashRandom:randomCrash(t, dt)
 	if testing_active == true then
 		if timer < 0 then
 			slot5 = managers.test.utils

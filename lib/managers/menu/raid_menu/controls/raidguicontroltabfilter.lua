@@ -9,7 +9,7 @@ RaidGUIControlTabFilter.BOTTOM_LINE_NORMAL_HEIGHT = 2
 RaidGUIControlTabFilter.BOTTOM_LINE_ACTIVE_HEIGHT = 5
 RaidGUIControlTabFilter.DIVIDER_WIDTH = 2
 RaidGUIControlTabFilter.DIVIDER_HEIGHT = 14
-RaidGUIControlTabFilter.init = function (self, parent, params)
+function RaidGUIControlTabFilter:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlTabFilter.super.init(slot4, self, parent)
@@ -46,13 +46,13 @@ RaidGUIControlTabFilter.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlTabFilter.needs_divider = function (self)
+function RaidGUIControlTabFilter:needs_divider()
 	return true
 end
-RaidGUIControlTabFilter.needs_bottom_line = function (self)
+function RaidGUIControlTabFilter:needs_bottom_line()
 	return false
 end
-RaidGUIControlTabFilter.set_divider = function (self)
+function RaidGUIControlTabFilter:set_divider()
 	slot4 = {
 		x = self._tab_label.right(slot6) - RaidGUIControlTabFilter.DIVIDER_WIDTH / 2,
 		y = (self._params.h - RaidGUIControlTabFilter.DIVIDER_HEIGHT) / 2,
@@ -65,16 +65,16 @@ RaidGUIControlTabFilter.set_divider = function (self)
 
 	return 
 end
-RaidGUIControlTabFilter.get_callback_param = function (self)
+function RaidGUIControlTabFilter:get_callback_param()
 	return self._callback_param
 end
-RaidGUIControlTabFilter.highlight_on = function (self)
+function RaidGUIControlTabFilter:highlight_on()
 	return 
 end
-RaidGUIControlTabFilter.highlight_off = function (self)
+function RaidGUIControlTabFilter:highlight_off()
 	return 
 end
-RaidGUIControlTabFilter.select = function (self)
+function RaidGUIControlTabFilter:select()
 	slot4 = tweak_data.gui.colors.raid_white
 
 	self._tab_label.set_color(slot2, self._tab_label)
@@ -83,7 +83,7 @@ RaidGUIControlTabFilter.select = function (self)
 
 	return 
 end
-RaidGUIControlTabFilter.unselect = function (self)
+function RaidGUIControlTabFilter:unselect()
 	slot4 = tweak_data.gui.colors.raid_grey
 
 	self._tab_label.set_color(slot2, self._tab_label)
@@ -92,14 +92,14 @@ RaidGUIControlTabFilter.unselect = function (self)
 
 	return 
 end
-RaidGUIControlTabFilter.mouse_released = function (self, o, button, x, y)
+function RaidGUIControlTabFilter:mouse_released(o, button, x, y)
 	slot10 = y
 
 	self.on_mouse_released(slot6, self, button, x)
 
 	return true
 end
-RaidGUIControlTabFilter.on_mouse_released = function (self, button, x, y)
+function RaidGUIControlTabFilter:on_mouse_released(button, x, y)
 	if self._params.tab_select_callback then
 		slot7 = self._callback_param
 

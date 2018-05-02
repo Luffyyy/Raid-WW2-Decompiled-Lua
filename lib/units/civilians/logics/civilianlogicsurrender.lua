@@ -10,7 +10,7 @@ CivilianLogicSurrender = class(slot2)
 CivilianLogicSurrender.on_new_objective = CivilianLogicIdle.on_new_objective
 CivilianLogicSurrender.on_rescue_allowed_state = CivilianLogicFlee.on_rescue_allowed_state
 CivilianLogicSurrender.wants_rescue = CivilianLogicFlee.wants_rescue
-CivilianLogicSurrender.enter = function (data, new_logic_name, enter_params)
+function CivilianLogicSurrender.enter(data, new_logic_name, enter_params)
 	local my_data = {
 		unit = data.unit
 	}
@@ -170,7 +170,7 @@ CivilianLogicSurrender.enter = function (data, new_logic_name, enter_params)
 
 	return 
 end
-CivilianLogicSurrender.exit = function (data, new_logic_name, enter_params)
+function CivilianLogicSurrender.exit(data, new_logic_name, enter_params)
 	slot7 = enter_params
 
 	CopLogicBase.exit(slot4, data, new_logic_name)
@@ -245,7 +245,7 @@ CivilianLogicSurrender.exit = function (data, new_logic_name, enter_params)
 
 	return 
 end
-CivilianLogicSurrender.queued_update = function (rubbish, data)
+function CivilianLogicSurrender.queued_update(rubbish, data)
 	local my_data = data.internal_data
 	slot6 = my_data
 
@@ -273,7 +273,7 @@ CivilianLogicSurrender.queued_update = function (rubbish, data)
 
 	return 
 end
-CivilianLogicSurrender.on_tied = function (data, aggressor_unit, not_tied)
+function CivilianLogicSurrender.on_tied(data, aggressor_unit, not_tied)
 	local my_data = data.internal_data
 
 	if data.is_tied then
@@ -422,7 +422,7 @@ CivilianLogicSurrender.on_tied = function (data, aggressor_unit, not_tied)
 
 	return 
 end
-CivilianLogicSurrender._do_initial_act = function (data, amount, aggressor_unit, initial_act)
+function CivilianLogicSurrender._do_initial_act(data, amount, aggressor_unit, initial_act)
 	local my_data = data.internal_data
 	local adj_sumbission = amount * data.char_tweak.submission_intimidate
 	slot9 = my_data.submission_meter + adj_sumbission
@@ -443,7 +443,7 @@ CivilianLogicSurrender._do_initial_act = function (data, amount, aggressor_unit,
 
 	return 
 end
-CivilianLogicSurrender.on_action_completed = function (data, action)
+function CivilianLogicSurrender.on_action_completed(data, action)
 	local my_data = data.internal_data
 	slot5 = action
 	local action_type = action.type(slot4)
@@ -459,7 +459,7 @@ CivilianLogicSurrender.on_action_completed = function (data, action)
 
 	return 
 end
-CivilianLogicSurrender.on_intimidated = function (data, amount, aggressor_unit, skip_delay)
+function CivilianLogicSurrender.on_intimidated(data, amount, aggressor_unit, skip_delay)
 
 	-- Decompilation error in this vicinity:
 	if data.is_tied then
@@ -498,7 +498,7 @@ CivilianLogicSurrender.on_intimidated = function (data, amount, aggressor_unit, 
 
 	return 
 end
-CivilianLogicSurrender._delayed_intimidate_clbk = function (ignore_this, params)
+function CivilianLogicSurrender._delayed_intimidate_clbk(ignore_this, params)
 	local data = params[1]
 	local my_data = data.internal_data
 
@@ -608,7 +608,7 @@ CivilianLogicSurrender._delayed_intimidate_clbk = function (ignore_this, params)
 
 	return 
 end
-CivilianLogicSurrender.on_alert = function (data, alert_data)
+function CivilianLogicSurrender.on_alert(data, alert_data)
 	local alert_type = alert_data[1]
 
 	if alert_type ~= "aggression" and alert_type ~= "bullet" and alert_type ~= "explosion" then
@@ -755,7 +755,7 @@ CivilianLogicSurrender.on_alert = function (data, alert_data)
 
 	return 
 end
-CivilianLogicSurrender._update_enemy_detection = function (data, my_data)
+function CivilianLogicSurrender._update_enemy_detection(data, my_data)
 	slot4 = managers.groupai
 
 	managers.groupai.state(slot3).on_unit_detection_updated(slot3, managers.groupai.state(slot3))
@@ -896,7 +896,7 @@ CivilianLogicSurrender._update_enemy_detection = function (data, my_data)
 
 	return 
 end
-CivilianLogicSurrender.is_available_for_assignment = function (data, objective)
+function CivilianLogicSurrender.is_available_for_assignment(data, objective)
 	if objective and objective.forced then
 		return true
 	end

@@ -37,7 +37,7 @@ ElementLaserTrigger.COLORS = {
 		0.1
 	}
 }
-ElementLaserTrigger.init = function (self, ...)
+function ElementLaserTrigger:init(...)
 	slot3 = self
 
 	ElementLaserTrigger.super.init(slot2, ...)
@@ -132,7 +132,7 @@ ElementLaserTrigger.init = function (self, ...)
 
 	return 
 end
-ElementLaserTrigger.on_script_activated = function (self, ...)
+function ElementLaserTrigger:on_script_activated(...)
 	slot3 = self
 
 	ElementLaserTrigger.super.on_script_activated(slot2, ...)
@@ -149,7 +149,7 @@ ElementLaserTrigger.on_script_activated = function (self, ...)
 
 	return 
 end
-ElementLaserTrigger.set_enabled = function (self, enabled)
+function ElementLaserTrigger:set_enabled(enabled)
 	slot5 = enabled
 
 	ElementLaserTrigger.super.set_enabled(slot3, self)
@@ -167,7 +167,7 @@ ElementLaserTrigger.set_enabled = function (self, enabled)
 
 	return 
 end
-ElementLaserTrigger.add_callback = function (self)
+function ElementLaserTrigger:add_callback()
 	if not self._callback then
 		if not self._values.visual_only then
 			slot8 = "update_laser"
@@ -183,7 +183,7 @@ ElementLaserTrigger.add_callback = function (self)
 
 	return 
 end
-ElementLaserTrigger.remove_callback = function (self)
+function ElementLaserTrigger:remove_callback()
 	if self._callback then
 		slot4 = self._callback
 
@@ -204,10 +204,10 @@ ElementLaserTrigger.remove_callback = function (self)
 
 	return 
 end
-ElementLaserTrigger.client_on_executed = function (self, ...)
+function ElementLaserTrigger:client_on_executed(...)
 	return 
 end
-ElementLaserTrigger.on_executed = function (self, instigator, alternative)
+function ElementLaserTrigger:on_executed(instigator, alternative)
 	if not self._values.enabled then
 		return 
 	end
@@ -224,12 +224,12 @@ ElementLaserTrigger.on_executed = function (self, instigator, alternative)
 
 	return 
 end
-ElementLaserTrigger.instigators = function (self)
+function ElementLaserTrigger:instigators()
 	slot3 = self
 
 	return ElementAreaTrigger.project_instigators(slot2)
 end
-ElementLaserTrigger._check_delayed_remove = function (self, t, dt)
+function ElementLaserTrigger:_check_delayed_remove(t, dt)
 	if not self._delayed_remove then
 		return false
 	end
@@ -255,7 +255,7 @@ ElementLaserTrigger._check_delayed_remove = function (self, t, dt)
 
 	return false
 end
-ElementLaserTrigger.update_laser_draw = function (self, t, dt)
+function ElementLaserTrigger:update_laser_draw(t, dt)
 	if #self._connections == 0 then
 		return 
 	end
@@ -309,12 +309,12 @@ ElementLaserTrigger.update_laser_draw = function (self, t, dt)
 
 	return 
 end
-ElementLaserTrigger.project_amount_all = function (self)
+function ElementLaserTrigger:project_amount_all()
 	slot3 = self
 
 	return ElementAreaTrigger.project_amount_all(slot2)
 end
-ElementLaserTrigger.update_laser = function (self)
+function ElementLaserTrigger:update_laser()
 	if not self._values.enabled then
 		return 
 	end
@@ -348,28 +348,28 @@ ElementLaserTrigger.update_laser = function (self)
 
 	return 
 end
-ElementLaserTrigger.sync_enter_area = function (self, unit)
+function ElementLaserTrigger:sync_enter_area(unit)
 	slot5 = unit
 
 	self._add_inside(slot3, self)
 
 	return 
 end
-ElementLaserTrigger.sync_exit_area = function (self, unit)
+function ElementLaserTrigger:sync_exit_area(unit)
 	slot5 = unit
 
 	self._remove_inside(slot3, self)
 
 	return 
 end
-ElementLaserTrigger.sync_while_in_area = function (self, unit)
+function ElementLaserTrigger:sync_while_in_area(unit)
 	slot5 = unit
 
 	self._while_inside(slot3, self)
 
 	return 
 end
-ElementLaserTrigger._check_state = function (self, unit)
+function ElementLaserTrigger:_check_state(unit)
 	slot4 = unit
 
 	if alive(slot3) then
@@ -447,7 +447,7 @@ ElementLaserTrigger._check_state = function (self, unit)
 
 	return false
 end
-ElementLaserTrigger._add_inside = function (self, unit)
+function ElementLaserTrigger:_add_inside(unit)
 	slot5 = unit
 
 	table.insert(slot3, self._inside)
@@ -458,14 +458,14 @@ ElementLaserTrigger._add_inside = function (self, unit)
 
 	return 
 end
-ElementLaserTrigger._while_inside = function (self, unit)
+function ElementLaserTrigger:_while_inside(unit)
 	slot6 = "while_inside"
 
 	self.on_executed(slot3, self, unit)
 
 	return 
 end
-ElementLaserTrigger._remove_inside = function (self, unit)
+function ElementLaserTrigger:_remove_inside(unit)
 	slot5 = unit
 
 	table.delete(slot3, self._inside)
@@ -482,7 +482,7 @@ ElementLaserTrigger._remove_inside = function (self, unit)
 
 	return 
 end
-ElementLaserTrigger._remove_inside_by_index = function (self, index)
+function ElementLaserTrigger:_remove_inside_by_index(index)
 	slot5 = index
 
 	table.remove(slot3, self._inside)
@@ -499,7 +499,7 @@ ElementLaserTrigger._remove_inside_by_index = function (self, index)
 
 	return 
 end
-ElementLaserTrigger._check_instigator_rules = function (self, unit)
+function ElementLaserTrigger:_check_instigator_rules(unit)
 	if not self._rules_elements then
 		return true
 	end
@@ -516,7 +516,7 @@ ElementLaserTrigger._check_instigator_rules = function (self, unit)
 
 	return true
 end
-ElementLaserTrigger._clean_destroyed_units = function (self)
+function ElementLaserTrigger:_clean_destroyed_units()
 	local i = 1
 	slot4 = self._inside
 
@@ -534,7 +534,7 @@ ElementLaserTrigger._clean_destroyed_units = function (self)
 
 	return 
 end
-ElementLaserTrigger._client_check_state = function (self, unit)
+function ElementLaserTrigger:_client_check_state(unit)
 	local rule_ok = self._check_instigator_rules(slot3, self)
 	local inside = nil
 	slot6 = unit
@@ -588,21 +588,21 @@ ElementLaserTrigger._client_check_state = function (self, unit)
 
 	return 
 end
-ElementLaserTrigger.operation_add = function (self)
+function ElementLaserTrigger:operation_add()
 	slot4 = true
 
 	self._set_dummies_visible(slot2, self)
 
 	return 
 end
-ElementLaserTrigger.operation_remove = function (self)
+function ElementLaserTrigger:operation_remove()
 	slot4 = false
 
 	self._set_dummies_visible(slot2, self)
 
 	return 
 end
-ElementLaserTrigger._set_dummies_visible = function (self, visible)
+function ElementLaserTrigger:_set_dummies_visible(visible)
 	if not self._dummy_units then
 		return 
 	end
@@ -618,7 +618,7 @@ ElementLaserTrigger._set_dummies_visible = function (self, visible)
 
 	return 
 end
-ElementLaserTrigger.save = function (self, data)
+function ElementLaserTrigger:save(data)
 	data.enabled = self._values.enabled
 	data.cycle_order = self._cycle_order
 	data.cycle_index = self._cycle_index
@@ -627,7 +627,7 @@ ElementLaserTrigger.save = function (self, data)
 
 	return 
 end
-ElementLaserTrigger.load = function (self, data)
+function ElementLaserTrigger:load(data)
 	slot5 = data.enabled
 
 	self.set_enabled(slot3, self)

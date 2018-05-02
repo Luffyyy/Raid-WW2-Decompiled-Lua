@@ -6,7 +6,7 @@ Challenge.STATE_FAILED = "failed"
 Challenge.create = function ()
 	return 
 end
-function Challenge:init(challenge_category, challenge_id, tasks, completion_callback, challenge_data)
+Challenge.init = function (self, challenge_category, challenge_id, tasks, completion_callback, challenge_data)
 	self._category = challenge_category
 	self._id = challenge_id
 	self._state = Challenge.STATE_INACTIVE
@@ -25,7 +25,7 @@ function Challenge:init(challenge_category, challenge_id, tasks, completion_call
 
 	return 
 end
-function Challenge:setup()
+Challenge.setup = function (self)
 	slot3 = self._tasks
 
 	for index, task in pairs(slot2) do
@@ -45,13 +45,13 @@ function Challenge:setup()
 
 	return 
 end
-function Challenge:category()
+Challenge.category = function (self)
 	return self._category
 end
-function Challenge:id()
+Challenge.id = function (self)
 	return self._id
 end
-function Challenge:activate()
+Challenge.activate = function (self)
 	if self._state ~= Challenge.STATE_INACTIVE then
 		return 
 	end
@@ -67,7 +67,7 @@ function Challenge:activate()
 
 	return 
 end
-function Challenge:deactivate()
+Challenge.deactivate = function (self)
 	if self._state ~= Challenge.STATE_ACTIVE then
 		return 
 	end
@@ -83,7 +83,7 @@ function Challenge:deactivate()
 
 	return 
 end
-function Challenge:reset()
+Challenge.reset = function (self)
 	if self._state == Challenge.STATE_COMPLETED or self._state == Challenge.STATE_FAILED then
 		self._state = Challenge.STATE_INACTIVE
 	end
@@ -98,16 +98,16 @@ function Challenge:reset()
 
 	return 
 end
-function Challenge:tasks()
+Challenge.tasks = function (self)
 	return self._tasks
 end
-function Challenge:data()
+Challenge.data = function (self)
 	return self._data
 end
-function Challenge:completed()
+Challenge.completed = function (self)
 	return (self._state == Challenge.STATE_COMPLETED and true) or false
 end
-function Challenge:on_task_completed()
+Challenge.on_task_completed = function (self)
 	local challenge_completed = true
 	slot4 = self._tasks
 
@@ -127,7 +127,7 @@ function Challenge:on_task_completed()
 
 	return 
 end
-function Challenge:_on_completed()
+Challenge._on_completed = function (self)
 	self._state = Challenge.STATE_COMPLETED
 
 	if self._completion_callback then
@@ -160,7 +160,7 @@ function Challenge:_on_completed()
 
 	return 
 end
-function Challenge:force_complete()
+Challenge.force_complete = function (self)
 	slot3 = self
 
 	if self.completed(slot2) then

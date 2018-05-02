@@ -8,14 +8,14 @@ if not ElementJobValue then
 end
 
 ElementJobValue = slot0
-ElementJobValue.init = function (self, ...)
+function ElementJobValue:init(...)
 	slot3 = self
 
 	ElementJobValue.super.init(slot2, ...)
 
 	return 
 end
-ElementJobValue.client_on_executed = function (self, ...)
+function ElementJobValue:client_on_executed(...)
 	if self._values.save then
 		slot3 = self
 
@@ -24,7 +24,7 @@ ElementJobValue.client_on_executed = function (self, ...)
 
 	return 
 end
-ElementJobValue.on_executed = function (self, instigator)
+function ElementJobValue:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -62,17 +62,17 @@ if not ElementJobValueFilter then
 end
 
 ElementJobValueFilter = slot0
-ElementJobValueFilter.init = function (self, ...)
+function ElementJobValueFilter:init(...)
 	slot3 = self
 
 	ElementJobValueFilter.super.init(slot2, ...)
 
 	return 
 end
-ElementJobValueFilter.client_on_executed = function (self, ...)
+function ElementJobValueFilter:client_on_executed(...)
 	return 
 end
-ElementJobValueFilter.on_executed = function (self, instigator)
+function ElementJobValueFilter:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -99,7 +99,7 @@ ElementJobValueFilter.on_executed = function (self, instigator)
 
 	return 
 end
-ElementJobValueFilter._check_value = function (self, value)
+function ElementJobValueFilter:_check_value(value)
 	if self._values.check_type == "not_has_key" then
 		return not value
 	end
@@ -141,17 +141,17 @@ if not ElementApplyJobValue then
 end
 
 ElementApplyJobValue = slot0
-ElementApplyJobValue.init = function (self, ...)
+function ElementApplyJobValue:init(...)
 	slot3 = self
 
 	ElementApplyJobValue.super.init(slot2, ...)
 
 	return 
 end
-ElementApplyJobValue.client_on_executed = function (self, ...)
+function ElementApplyJobValue:client_on_executed(...)
 	return 
 end
-ElementApplyJobValue.on_executed = function (self, instigator)
+function ElementApplyJobValue:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

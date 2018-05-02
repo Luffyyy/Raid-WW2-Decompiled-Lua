@@ -5,7 +5,7 @@ end
 
 RaidGUIControlScrollbar = slot0
 RaidGUIControlScrollbar.SCROLLBAR_WIDTH = 5
-RaidGUIControlScrollbar.init = function (self, parent, params)
+function RaidGUIControlScrollbar:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlScrollbar.super.init(slot4, self, parent)
@@ -19,21 +19,21 @@ RaidGUIControlScrollbar.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlScrollbar.close = function (self)
+function RaidGUIControlScrollbar:close()
 	RaidGUIControlScrollbar.super.close()
 
 	self._dragging = false
 
 	return 
 end
-RaidGUIControlScrollbar.set_y = function (self, y)
+function RaidGUIControlScrollbar:set_y(y)
 	slot5 = y
 
 	self._object.set_y(slot3, self._object)
 
 	return 
 end
-RaidGUIControlScrollbar.set_scroller_path_height = function (self)
+function RaidGUIControlScrollbar:set_scroller_path_height()
 	slot4 = self._object
 	self._scroller_path_height = self._params.scroll_outer_panel.h(slot2) - self._object.bottom(self._params.scroll_outer_panel)
 	slot3 = self._object
@@ -41,14 +41,14 @@ RaidGUIControlScrollbar.set_scroller_path_height = function (self)
 
 	return 
 end
-RaidGUIControlScrollbar.mouse_moved = function (self, o, x, y)
+function RaidGUIControlScrollbar:mouse_moved(o, x, y)
 	slot9 = y
 
 	RaidGUIControlScrollbar.super.mouse_moved(slot5, self, o, x)
 
 	return 
 end
-RaidGUIControlScrollbar.on_mouse_moved = function (self, o, x, y)
+function RaidGUIControlScrollbar:on_mouse_moved(o, x, y)
 	if not self._dragging then
 		return 
 	end
@@ -66,13 +66,13 @@ RaidGUIControlScrollbar.on_mouse_moved = function (self, o, x, y)
 
 	return 
 end
-RaidGUIControlScrollbar.on_mouse_out = function (self)
+function RaidGUIControlScrollbar:on_mouse_out()
 	self._pointer_type = "link"
 	self._dragging = false
 
 	return 
 end
-RaidGUIControlScrollbar.on_mouse_pressed = function (self)
+function RaidGUIControlScrollbar:on_mouse_pressed()
 	slot3 = managers.raid_menu
 	self._old_active_control = managers.raid_menu.get_active_control(slot2)
 	slot4 = self
@@ -83,7 +83,7 @@ RaidGUIControlScrollbar.on_mouse_pressed = function (self)
 
 	return 
 end
-RaidGUIControlScrollbar.on_mouse_released = function (self)
+function RaidGUIControlScrollbar:on_mouse_released()
 	slot4 = self._old_active_control
 
 	managers.raid_menu.set_active_control(slot2, managers.raid_menu)
@@ -92,7 +92,7 @@ RaidGUIControlScrollbar.on_mouse_released = function (self)
 
 	return true
 end
-RaidGUIControlScrollbar.set_bottom_by_y_coord = function (self, dy)
+function RaidGUIControlScrollbar:set_bottom_by_y_coord(dy)
 	slot7 = self._object
 	slot5 = self._object.y(slot6) + dy
 

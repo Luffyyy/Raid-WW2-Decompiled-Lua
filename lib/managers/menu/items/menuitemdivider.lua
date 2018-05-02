@@ -9,7 +9,7 @@ end
 
 MenuItemDivider = slot0
 MenuItemDivider.TYPE = "divider"
-MenuItemDivider.init = function (self, data_node, parameters)
+function MenuItemDivider:init(data_node, parameters)
 	slot7 = parameters
 
 	MenuItemDivider.super.init(slot4, self, data_node)
@@ -18,7 +18,7 @@ MenuItemDivider.init = function (self, data_node, parameters)
 
 	return 
 end
-MenuItemDivider.setup_gui = function (self, node, row_item)
+function MenuItemDivider:setup_gui(node, row_item)
 	local scaled_size = managers.gui_data.scaled_size(slot4)
 	slot7 = {
 		w = node.item_panel.w(slot9)
@@ -54,7 +54,7 @@ MenuItemDivider.setup_gui = function (self, node, row_item)
 
 	return true
 end
-MenuItemDivider.reload = function (self, row_item, node)
+function MenuItemDivider:reload(row_item, node)
 	slot7 = node
 
 	MenuItemDivider.super.reload(slot4, self, row_item)
@@ -65,30 +65,30 @@ MenuItemDivider.reload = function (self, row_item, node)
 
 	return true
 end
-MenuItemDivider.highlight_row_item = function (self, node, row_item, mouse_over)
+function MenuItemDivider:highlight_row_item(node, row_item, mouse_over)
 	slot8 = row_item
 
 	self._set_row_item_state(slot5, self, node)
 
 	return true
 end
-MenuItemDivider.fade_row_item = function (self, node, row_item, mouse_over)
+function MenuItemDivider:fade_row_item(node, row_item, mouse_over)
 	slot8 = row_item
 
 	self._set_row_item_state(slot5, self, node)
 
 	return true
 end
-MenuItemDivider._set_row_item_state = function (self, node, row_item)
+function MenuItemDivider:_set_row_item_state(node, row_item)
 	if row_item.highlighted then
 	end
 
 	return 
 end
-MenuItemDivider.menu_unselected_visible = function (self)
+function MenuItemDivider:menu_unselected_visible()
 	return false
 end
-MenuItemDivider.on_delete_row_item = function (self, row_item, ...)
+function MenuItemDivider:on_delete_row_item(row_item, ...)
 	slot5 = row_item
 
 	MenuItemDivider.super.on_delete_row_item(slot3, self, ...)

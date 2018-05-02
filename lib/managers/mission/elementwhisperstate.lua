@@ -8,21 +8,21 @@ if not ElementWhisperState then
 end
 
 ElementWhisperState = slot0
-ElementWhisperState.init = function (self, ...)
+function ElementWhisperState:init(...)
 	slot3 = self
 
 	ElementWhisperState.super.init(slot2, ...)
 
 	return 
 end
-ElementWhisperState.client_on_executed = function (self, ...)
+function ElementWhisperState:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementWhisperState.on_executed = function (self, instigator)
+function ElementWhisperState:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

@@ -8,28 +8,28 @@ if not ElementObjective then
 end
 
 ElementObjective = slot0
-ElementObjective.init = function (self, ...)
+function ElementObjective:init(...)
 	slot3 = self
 
 	ElementObjective.super.init(slot2, ...)
 
 	return 
 end
-ElementObjective.on_script_activated = function (self)
+function ElementObjective:on_script_activated()
 	slot4 = self._id
 
 	self._mission_script.add_save_state_cb(slot2, self._mission_script)
 
 	return 
 end
-ElementObjective.client_on_executed = function (self, ...)
+function ElementObjective:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementObjective.on_executed = function (self, instigator)
+function ElementObjective:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -120,7 +120,7 @@ ElementObjective.on_executed = function (self, instigator)
 
 	return 
 end
-ElementObjective.apply_job_value = function (self, amount)
+function ElementObjective:apply_job_value(amount)
 	slot4 = amount
 	local type = CoreClass.type_name(slot3)
 
@@ -136,13 +136,13 @@ ElementObjective.apply_job_value = function (self, amount)
 
 	return 
 end
-ElementObjective.save = function (self, data)
+function ElementObjective:save(data)
 	data.enabled = self._values.enabled
 	data.amount = self._values.amount
 
 	return 
 end
-ElementObjective.load = function (self, data)
+function ElementObjective:load(data)
 	self._values.enabled = data.enabled
 	self._values.amount = data.amount
 

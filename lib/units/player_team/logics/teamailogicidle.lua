@@ -570,7 +570,7 @@ if not TeamAILogicIdle then
 end
 
 TeamAILogicIdle = slot3
-TeamAILogicIdle.enter = function (data, new_logic_name, enter_params)
+function TeamAILogicIdle.enter(data, new_logic_name, enter_params)
 	local my_data = {
 		unit = data.unit
 	}
@@ -789,7 +789,7 @@ TeamAILogicIdle.enter = function (data, new_logic_name, enter_params)
 
 	return 
 end
-TeamAILogicIdle.exit = function (data, new_logic_name, enter_params)
+function TeamAILogicIdle.exit(data, new_logic_name, enter_params)
 	slot7 = enter_params
 
 	TeamAILogicBase.exit(slot4, data, new_logic_name)
@@ -889,7 +889,7 @@ TeamAILogicIdle.exit = function (data, new_logic_name, enter_params)
 
 	return 
 end
-TeamAILogicIdle.update = function (data)
+function TeamAILogicIdle.update(data)
 	TeamAILogicTravel._upd_ai_perceptors(slot2)
 
 	local my_data = data.internal_data
@@ -935,13 +935,13 @@ TeamAILogicIdle.update = function (data)
 
 	return 
 end
-TeamAILogicIdle.on_detected_enemy_destroyed = function (data, enemy_unit)
+function TeamAILogicIdle.on_detected_enemy_destroyed(data, enemy_unit)
 	return 
 end
-TeamAILogicIdle.on_cop_neutralized = function (data, cop_key)
+function TeamAILogicIdle.on_cop_neutralized(data, cop_key)
 	return 
 end
-TeamAILogicIdle.damage_clbk = function (data, damage_info)
+function TeamAILogicIdle.damage_clbk(data, damage_info)
 	local attacker_unit = damage_info.attacker_unit
 
 	if attacker_unit then
@@ -1027,7 +1027,7 @@ TeamAILogicIdle.damage_clbk = function (data, damage_info)
 
 	return 
 end
-TeamAILogicIdle.on_objective_unit_damaged = function (data, unit, attacker_unit)
+function TeamAILogicIdle.on_objective_unit_damaged(data, unit, attacker_unit)
 	if attacker_unit ~= nil then
 		slot6 = {
 			"aggression",
@@ -1042,7 +1042,7 @@ TeamAILogicIdle.on_objective_unit_damaged = function (data, unit, attacker_unit)
 
 	return 
 end
-TeamAILogicIdle.on_alert = function (data, alert_data)
+function TeamAILogicIdle.on_alert(data, alert_data)
 	local alert_type = alert_data[1]
 	local alert_unit = alert_data[5]
 
@@ -1064,7 +1064,7 @@ TeamAILogicIdle.on_alert = function (data, alert_data)
 
 	return 
 end
-TeamAILogicIdle.on_long_dis_interacted = function (data, other_unit)
+function TeamAILogicIdle.on_long_dis_interacted(data, other_unit)
 	if data.objective and data.objective.type == "revive" then
 		return 
 	end
@@ -1222,7 +1222,7 @@ TeamAILogicIdle.on_long_dis_interacted = function (data, other_unit)
 
 	return 
 end
-TeamAILogicIdle.on_new_objective = function (data, old_objective)
+function TeamAILogicIdle.on_new_objective(data, old_objective)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -1418,7 +1418,7 @@ TeamAILogicIdle.on_new_objective = function (data, old_objective)
 
 
 end
-TeamAILogicIdle._upd_enemy_detection = function (data)
+function TeamAILogicIdle._upd_enemy_detection(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-22, warpins: 1 ---
@@ -1755,7 +1755,7 @@ TeamAILogicIdle._upd_enemy_detection = function (data)
 
 
 end
-TeamAILogicIdle.find_civilian_to_intimidate = function (criminal, max_angle, max_dis)
+function TeamAILogicIdle.find_civilian_to_intimidate(criminal, max_angle, max_dis)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -1768,7 +1768,7 @@ TeamAILogicIdle.find_civilian_to_intimidate = function (criminal, max_angle, max
 
 
 end
-TeamAILogicIdle._find_intimidateable_civilians = function (criminal, use_default_shout_shape, max_angle, max_dis)
+function TeamAILogicIdle._find_intimidateable_civilians(criminal, use_default_shout_shape, max_angle, max_dis)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-39, warpins: 1 ---
@@ -1983,7 +1983,7 @@ TeamAILogicIdle._find_intimidateable_civilians = function (criminal, use_default
 
 
 end
-TeamAILogicIdle.intimidate_civilians = function (data, criminal, play_sound, play_action, primary_target)
+function TeamAILogicIdle.intimidate_civilians(data, criminal, play_sound, play_action, primary_target)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -2342,7 +2342,7 @@ TeamAILogicIdle.intimidate_civilians = function (data, criminal, play_sound, pla
 
 
 end
-TeamAILogicIdle.on_action_completed = function (data, action)
+function TeamAILogicIdle.on_action_completed(data, action)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -2590,7 +2590,7 @@ TeamAILogicIdle.on_action_completed = function (data, action)
 
 
 end
-TeamAILogicIdle.is_available_for_assignment = function (data, new_objective)
+function TeamAILogicIdle.is_available_for_assignment(data, new_objective)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -2761,7 +2761,7 @@ TeamAILogicIdle.is_available_for_assignment = function (data, new_objective)
 
 
 end
-TeamAILogicIdle.clbk_heat = function (data)
+function TeamAILogicIdle.clbk_heat(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -2806,7 +2806,7 @@ TeamAILogicIdle.clbk_heat = function (data)
 
 
 end
-TeamAILogicIdle.clbk_revive_complete = function (ignore_this, data)
+function TeamAILogicIdle.clbk_revive_complete(ignore_this, data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-16, warpins: 1 ---
@@ -2921,7 +2921,7 @@ TeamAILogicIdle.clbk_revive_complete = function (ignore_this, data)
 
 
 end
-TeamAILogicIdle.clbk_action_timeout = function (ignore_this, data)
+function TeamAILogicIdle.clbk_action_timeout(ignore_this, data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -2986,7 +2986,7 @@ TeamAILogicIdle.clbk_action_timeout = function (ignore_this, data)
 
 
 end
-TeamAILogicIdle._check_should_relocate = function (data, my_data, objective)
+function TeamAILogicIdle._check_should_relocate(data, my_data, objective)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -3288,7 +3288,7 @@ TeamAILogicIdle._check_should_relocate = function (data, my_data, objective)
 
 
 end
-TeamAILogicIdle._get_priority_attention = function (data, attention_objects, reaction_func)
+function TeamAILogicIdle._get_priority_attention(data, attention_objects, reaction_func)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -3933,7 +3933,7 @@ TeamAILogicIdle._get_priority_attention = function (data, attention_objects, rea
 
 
 end
-TeamAILogicIdle._upd_sneak_spotting = function (data, my_data)
+function TeamAILogicIdle._upd_sneak_spotting(data, my_data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -4001,7 +4001,7 @@ TeamAILogicIdle._upd_sneak_spotting = function (data, my_data)
 
 
 end
-TeamAILogicIdle.find_sneak_char_to_mark = function (data)
+function TeamAILogicIdle.find_sneak_char_to_mark(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -4059,7 +4059,7 @@ TeamAILogicIdle.find_sneak_char_to_mark = function (data)
 
 
 end
-TeamAILogicIdle.mark_sneak_char = function (data, criminal, to_mark, play_sound, play_action)
+function TeamAILogicIdle.mark_sneak_char(data, criminal, to_mark, play_sound, play_action)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---

@@ -16,7 +16,7 @@ local temp_vec2 = Vector3()
 local temp_vec3 = Vector3()
 slot14 = CopLogicAttack
 FlamerLogicAttack = class(slot13)
-FlamerLogicAttack.enter = function (data, new_logic_name, enter_params)
+function FlamerLogicAttack.enter(data, new_logic_name, enter_params)
 	local my_data = {
 		unit = data.unit
 	}
@@ -113,7 +113,7 @@ FlamerLogicAttack.enter = function (data, new_logic_name, enter_params)
 
 	return 
 end
-FlamerLogicAttack.exit = function (data, new_logic_name, enter_params)
+function FlamerLogicAttack.exit(data, new_logic_name, enter_params)
 	slot7 = enter_params
 
 	CopLogicBase.exit(slot4, data, new_logic_name)
@@ -143,7 +143,7 @@ FlamerLogicAttack.exit = function (data, new_logic_name, enter_params)
 
 	return 
 end
-FlamerLogicAttack.update = function (data)
+function FlamerLogicAttack.update(data)
 	local t = data.t
 	local unit = data.unit
 	local my_data = data.internal_data
@@ -278,7 +278,7 @@ FlamerLogicAttack.update = function (data)
 
 	return 
 end
-FlamerLogicAttack.queued_update = function (data)
+function FlamerLogicAttack.queued_update(data)
 	local my_data = data.internal_data
 	my_data.update_queued = false
 	slot4 = TimerManager
@@ -296,7 +296,7 @@ FlamerLogicAttack.queued_update = function (data)
 
 	return 
 end
-FlamerLogicAttack._process_pathing_results = function (data, my_data)
+function FlamerLogicAttack._process_pathing_results(data, my_data)
 	if data.pathing_results then
 		local pathing_results = data.pathing_results
 		data.pathing_results = nil
@@ -318,7 +318,7 @@ FlamerLogicAttack._process_pathing_results = function (data, my_data)
 
 	return 
 end
-FlamerLogicAttack._cancel_chase_attempt = function (data, my_data)
+function FlamerLogicAttack._cancel_chase_attempt(data, my_data)
 	my_data.chase_path = nil
 
 	if my_data.walking_to_chase_pos then
@@ -357,7 +357,7 @@ FlamerLogicAttack._cancel_chase_attempt = function (data, my_data)
 
 	return 
 end
-FlamerLogicAttack.on_action_completed = function (data, action)
+function FlamerLogicAttack.on_action_completed(data, action)
 	slot4 = action
 	local action_type = action.type(slot3)
 	local my_data = data.internal_data
@@ -384,9 +384,9 @@ FlamerLogicAttack.on_action_completed = function (data, action)
 
 	return 
 end
-FlamerLogicAttack.chk_should_turn = function (data, my_data)
+function FlamerLogicAttack.chk_should_turn(data, my_data)
 end
-FlamerLogicAttack.queue_update = function (data, my_data)
+function FlamerLogicAttack.queue_update(data, my_data)
 	my_data.update_queued = true
 	slot9 = data.important
 
@@ -394,7 +394,7 @@ FlamerLogicAttack.queue_update = function (data, my_data)
 
 	return 
 end
-FlamerLogicAttack._chk_request_action_walk_to_chase_pos = function (data, my_data, speed, end_rot)
+function FlamerLogicAttack._chk_request_action_walk_to_chase_pos(data, my_data, speed, end_rot)
 
 	-- Decompilation error in this vicinity:
 	slot6 = data.unit
@@ -423,19 +423,19 @@ FlamerLogicAttack._chk_request_action_walk_to_chase_pos = function (data, my_dat
 
 	return 
 end
-FlamerLogicAttack.is_advancing = function (data)
+function FlamerLogicAttack.is_advancing(data)
 	if data.internal_data.walking_to_chase_pos and data.pos_rsrv.move_dest then
 		return data.pos_rsrv.move_dest.position
 	end
 
 	return 
 end
-FlamerLogicAttack._get_all_paths = function (data)
+function FlamerLogicAttack._get_all_paths(data)
 	return {
 		chase_path = data.internal_data.chase_path
 	}
 end
-FlamerLogicAttack._set_verified_paths = function (data, verified_paths)
+function FlamerLogicAttack._set_verified_paths(data, verified_paths)
 	data.internal_data.chase_path = verified_paths.chase_path
 
 	return 

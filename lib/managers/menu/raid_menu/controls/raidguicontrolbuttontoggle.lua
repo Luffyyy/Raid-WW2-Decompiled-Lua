@@ -27,7 +27,7 @@ RaidGUIControlButtonToggle.BORDER_HOVER_COLOR = tweak_data.gui.colors.raid_red
 RaidGUIControlButtonToggle.CHECK_ICON = "checkbox_check_base"
 RaidGUIControlButtonToggle.CHECK_W = tweak_data.gui.icons[RaidGUIControlButtonToggle.CHECK_ICON].texture_rect[3]
 RaidGUIControlButtonToggle.CHECK_H = tweak_data.gui.icons[RaidGUIControlButtonToggle.CHECK_ICON].texture_rect[4]
-RaidGUIControlButtonToggle.init = function (self, parent, params)
+function RaidGUIControlButtonToggle:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlButtonToggle.super.init(slot4, self, parent)
@@ -120,7 +120,7 @@ RaidGUIControlButtonToggle.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlButtonToggle.highlight_on = function (self)
+function RaidGUIControlButtonToggle:highlight_on()
 	self._highlighted = true
 
 	if not self._enabled then
@@ -146,7 +146,7 @@ RaidGUIControlButtonToggle.highlight_on = function (self)
 
 	return 
 end
-RaidGUIControlButtonToggle.highlight_off = function (self)
+function RaidGUIControlButtonToggle:highlight_off()
 	self._highlighted = false
 
 	if not self._enabled then
@@ -166,7 +166,7 @@ RaidGUIControlButtonToggle.highlight_off = function (self)
 
 	return 
 end
-RaidGUIControlButtonToggle.mouse_pressed = function (self, o, button, x, y)
+function RaidGUIControlButtonToggle:mouse_pressed(o, button, x, y)
 	if not self._enabled then
 		return 
 	end
@@ -186,7 +186,7 @@ RaidGUIControlButtonToggle.mouse_pressed = function (self, o, button, x, y)
 
 	return 
 end
-RaidGUIControlButtonToggle.mouse_released = function (self, o, button, x, y)
+function RaidGUIControlButtonToggle:mouse_released(o, button, x, y)
 
 	-- Decompilation error in this vicinity:
 	if not self._enabled then
@@ -230,15 +230,15 @@ RaidGUIControlButtonToggle.mouse_released = function (self, o, button, x, y)
 
 	return 
 end
-RaidGUIControlButtonToggle.set_value = function (self, value)
+function RaidGUIControlButtonToggle:set_value(value)
 	self._value = value
 
 	return 
 end
-RaidGUIControlButtonToggle.get_value = function (self)
+function RaidGUIControlButtonToggle:get_value()
 	return self._value
 end
-RaidGUIControlButtonToggle.set_value_and_render = function (self, value)
+function RaidGUIControlButtonToggle:set_value_and_render(value)
 	slot5 = value
 
 	self.set_value(slot3, self)
@@ -249,7 +249,7 @@ RaidGUIControlButtonToggle.set_value_and_render = function (self, value)
 
 	return 
 end
-RaidGUIControlButtonToggle._render_images = function (self)
+function RaidGUIControlButtonToggle:_render_images()
 	if self._visible == false then
 		slot3 = self
 
@@ -268,21 +268,21 @@ RaidGUIControlButtonToggle._render_images = function (self)
 
 	return 
 end
-RaidGUIControlButtonToggle.show = function (self)
+function RaidGUIControlButtonToggle:show()
 	slot3 = self._object
 
 	self._object.show(slot2)
 
 	return 
 end
-RaidGUIControlButtonToggle.hide = function (self)
+function RaidGUIControlButtonToggle:hide()
 	slot3 = self._object
 
 	self._object.hide(slot2)
 
 	return 
 end
-RaidGUIControlButtonToggle.set_visible = function (self, flag)
+function RaidGUIControlButtonToggle:set_visible(flag)
 	self._visible = flag
 	slot4 = self
 
@@ -290,7 +290,7 @@ RaidGUIControlButtonToggle.set_visible = function (self, flag)
 
 	return 
 end
-RaidGUIControlButtonToggle.confirm_pressed = function (self)
+function RaidGUIControlButtonToggle:confirm_pressed()
 
 	-- Decompilation error in this vicinity:
 	if not self._enabled then
@@ -321,7 +321,7 @@ RaidGUIControlButtonToggle.confirm_pressed = function (self)
 
 	return false
 end
-RaidGUIControlButtonToggle.set_enabled = function (self, enabled)
+function RaidGUIControlButtonToggle:set_enabled(enabled)
 	slot5 = enabled
 
 	RaidGUIControlButtonToggle.super.set_enabled(slot3, self)
@@ -380,7 +380,7 @@ RaidGUIControlButtonToggle.set_enabled = function (self, enabled)
 
 	return 
 end
-RaidGUIControlButtonToggle._animate_highlight_on = function (self)
+function RaidGUIControlButtonToggle:_animate_highlight_on()
 	slot3 = self._sideline
 	local starting_alpha = self._sideline.alpha(slot2)
 	local duration = 0.2
@@ -430,7 +430,7 @@ RaidGUIControlButtonToggle._animate_highlight_on = function (self)
 
 	return 
 end
-RaidGUIControlButtonToggle._animate_highlight_off = function (self)
+function RaidGUIControlButtonToggle:_animate_highlight_off()
 	slot3 = self._sideline
 	local starting_alpha = self._sideline.alpha(slot2)
 	local duration = 0.2
@@ -480,7 +480,7 @@ RaidGUIControlButtonToggle._animate_highlight_off = function (self)
 
 	return 
 end
-RaidGUIControlButtonToggle._animate_checkbox_press = function (self)
+function RaidGUIControlButtonToggle:_animate_checkbox_press()
 	local t = 0
 	local original_w = RaidGUIControlButtonToggle.W
 	local original_h = RaidGUIControlButtonToggle.H
@@ -522,7 +522,7 @@ RaidGUIControlButtonToggle._animate_checkbox_press = function (self)
 
 	return 
 end
-RaidGUIControlButtonToggle._animate_checkbox_release = function (self)
+function RaidGUIControlButtonToggle:_animate_checkbox_release()
 	local t = 0
 	local duration = 0.25
 	local target_w = RaidGUIControlButtonToggle.W

@@ -7,17 +7,17 @@ slot3 = "CoreGameStatePrepareLoadingGame"
 core.import(slot1, core)
 
 FrontEnd = FrontEnd or class()
-FrontEnd.init = function (self)
+function FrontEnd:init()
 	self.game_state._is_in_front_end = true
 
 	return 
 end
-FrontEnd.destroy = function (self)
+function FrontEnd:destroy()
 	self.game_state._is_in_front_end = false
 
 	return 
 end
-FrontEnd.transition = function (self)
+function FrontEnd:transition()
 	slot3 = self.game_state._game_requester
 
 	if not self.game_state._game_requester.is_requested(slot2) then

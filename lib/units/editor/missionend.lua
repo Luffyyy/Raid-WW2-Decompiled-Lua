@@ -4,7 +4,7 @@ if not MissionEndUnitElement then
 end
 
 MissionEndUnitElement = slot0
-MissionEndUnitElement.init = function (self, unit)
+function MissionEndUnitElement:init(unit)
 	slot5 = unit
 
 	MissionEndUnitElement.super.init(slot3, self)
@@ -16,7 +16,7 @@ MissionEndUnitElement.init = function (self, unit)
 
 	return 
 end
-MissionEndUnitElement._build_panel = function (self, panel, panel_sizer)
+function MissionEndUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

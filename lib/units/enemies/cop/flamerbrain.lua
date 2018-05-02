@@ -6,10 +6,10 @@ end
 FlamerBrain = slot0
 FlamerBrain.UPDATE_INTERVAL = 2
 FlamerBrain.ATTACK_INTERVAL = 0.5
-FlamerBrain.stealth_action_allowed = function (self)
+function FlamerBrain:stealth_action_allowed()
 	return false
 end
-FlamerBrain.init = function (self, unit)
+function FlamerBrain:init(unit)
 	slot5 = unit
 
 	FlamerBrain.super.init(slot3, self)
@@ -32,7 +32,7 @@ FlamerBrain.init = function (self, unit)
 
 	return 
 end
-FlamerBrain.add_pos_rsrv = function (self, rsrv_name, pos_rsrv)
+function FlamerBrain:add_pos_rsrv(rsrv_name, pos_rsrv)
 	pos_rsrv.radius = pos_rsrv.radius * 2
 	local pos_reservations = self._logic_data.pos_rsrv
 
@@ -60,7 +60,7 @@ FlamerBrain.add_pos_rsrv = function (self, rsrv_name, pos_rsrv)
 
 	return 
 end
-FlamerBrain.queued_update = function (self)
+function FlamerBrain:queued_update()
 	slot3 = self._unit
 
 	if not alive(slot2) then
@@ -76,7 +76,7 @@ FlamerBrain.queued_update = function (self)
 
 	return 
 end
-FlamerBrain._queued_update = function (self, t, dt)
+function FlamerBrain:_queued_update(t, dt)
 	if self._current_logic_name == "inactive" then
 		return 
 	end
@@ -172,10 +172,10 @@ FlamerBrain._queued_update = function (self, t, dt)
 
 	return 
 end
-FlamerBrain.distance_to_target = function (self)
+function FlamerBrain:distance_to_target()
 	return self._distance_to_target
 end
-FlamerBrain._hunt = function (self, assalut_target)
+function FlamerBrain:_hunt(assalut_target)
 	if self._current_logic_name == "inactive" then
 		return 
 	end
@@ -197,7 +197,7 @@ FlamerBrain._hunt = function (self, assalut_target)
 
 	return 
 end
-FlamerBrain.clbk_death = function (self, my_unit, damage_info)
+function FlamerBrain:clbk_death(my_unit, damage_info)
 	slot7 = damage_info
 
 	FlamerBrain.super.clbk_death(slot4, self, my_unit)
@@ -209,7 +209,7 @@ FlamerBrain.clbk_death = function (self, my_unit, damage_info)
 
 	return 
 end
-FlamerBrain.pre_destroy = function (self, unit)
+function FlamerBrain:pre_destroy(unit)
 	slot6 = self
 
 	managers.queued_tasks.unqueue_all(slot3, managers.queued_tasks, self._ukey)

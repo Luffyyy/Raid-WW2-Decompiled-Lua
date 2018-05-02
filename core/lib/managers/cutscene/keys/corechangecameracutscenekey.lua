@@ -14,12 +14,12 @@ slot4 = nil
 
 CoreChangeCameraCutsceneKey.register_serialized_attribute("Camera Change", CoreChangeCameraCutsceneKey, "camera")
 
-CoreChangeCameraCutsceneKey.__tostring = function (self)
+function CoreChangeCameraCutsceneKey:__tostring()
 	slot4 = self
 
 	return "Change camera to \"" .. self.camera(slot3) .. "\"."
 end
-CoreChangeCameraCutsceneKey.load = function (self, key_node, loading_class)
+function CoreChangeCameraCutsceneKey:load(key_node, loading_class)
 	slot7 = loading_class
 
 	self.super.load(slot4, self, key_node)
@@ -31,7 +31,7 @@ CoreChangeCameraCutsceneKey.load = function (self, key_node, loading_class)
 
 	return 
 end
-CoreChangeCameraCutsceneKey.evaluate = function (self, player, fast_forward)
+function CoreChangeCameraCutsceneKey:evaluate(player, fast_forward)
 	slot5 = player
 	slot8 = self
 
@@ -39,7 +39,7 @@ CoreChangeCameraCutsceneKey.evaluate = function (self, player, fast_forward)
 
 	return 
 end
-CoreChangeCameraCutsceneKey.is_valid_camera = function (self, camera)
+function CoreChangeCameraCutsceneKey:is_valid_camera(camera)
 	slot5 = camera
 
 	if self.super.is_valid_unit_name(slot3, self) then

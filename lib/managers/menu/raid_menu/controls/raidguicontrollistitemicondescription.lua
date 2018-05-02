@@ -16,7 +16,7 @@ RaidGUIControlListItemIconDescription.ACTIVE_COLOR = tweak_data.gui.colors.raid_
 RaidGUIControlListItemIconDescription.TITLE_PADDING_DOWN = 13
 RaidGUIControlListItemIconDescription.PANEL_PADDING_DOWN = 13
 RaidGUIControlListItemIconDescription.SIDELINE_W = 3
-RaidGUIControlListItemIconDescription.init = function (self, parent, params, data)
+function RaidGUIControlListItemIconDescription:init(parent, params, data)
 	slot8 = params
 
 	RaidGUIControlListItemIconDescription.super.init(slot5, self, parent)
@@ -64,7 +64,7 @@ RaidGUIControlListItemIconDescription.init = function (self, parent, params, dat
 
 	return 
 end
-RaidGUIControlListItemIconDescription._create_panel = function (self)
+function RaidGUIControlListItemIconDescription:_create_panel()
 	local panel_params = {
 		name = "list_item_" .. self._name,
 		x = self._params.x or 0,
@@ -89,7 +89,7 @@ RaidGUIControlListItemIconDescription._create_panel = function (self)
 
 	return 
 end
-RaidGUIControlListItemIconDescription._create_sideline = function (self)
+function RaidGUIControlListItemIconDescription:_create_sideline()
 	local sideline_params = {
 		alpha = 0,
 		x = 0,
@@ -103,7 +103,7 @@ RaidGUIControlListItemIconDescription._create_sideline = function (self)
 
 	return 
 end
-RaidGUIControlListItemIconDescription._create_icon = function (self)
+function RaidGUIControlListItemIconDescription:_create_icon()
 	local icon_params = {
 		name = "list_item_icon_" .. self._name
 	}
@@ -125,7 +125,7 @@ RaidGUIControlListItemIconDescription._create_icon = function (self)
 
 	return 
 end
-RaidGUIControlListItemIconDescription._create_title = function (self)
+function RaidGUIControlListItemIconDescription:_create_title()
 	local title_params = {
 		vertical = "center",
 		y = 0
@@ -160,7 +160,7 @@ RaidGUIControlListItemIconDescription._create_title = function (self)
 
 	return 
 end
-RaidGUIControlListItemIconDescription._create_description = function (self)
+function RaidGUIControlListItemIconDescription:_create_description()
 	local description_params = {
 		wrap = true,
 		vertical = "center"
@@ -197,7 +197,7 @@ RaidGUIControlListItemIconDescription._create_description = function (self)
 
 	return 
 end
-RaidGUIControlListItemIconDescription.on_mouse_released = function (self, button)
+function RaidGUIControlListItemIconDescription:on_mouse_released(button)
 	if self._on_click_callback then
 		slot6 = self._data
 
@@ -212,7 +212,7 @@ RaidGUIControlListItemIconDescription.on_mouse_released = function (self, button
 
 	return 
 end
-RaidGUIControlListItemIconDescription.mouse_double_click = function (self, o, button, x, y)
+function RaidGUIControlListItemIconDescription:mouse_double_click(o, button, x, y)
 	if self._params.no_click then
 		return 
 	end
@@ -227,10 +227,10 @@ RaidGUIControlListItemIconDescription.mouse_double_click = function (self, o, bu
 
 	return 
 end
-RaidGUIControlListItemIconDescription.selected = function (self)
+function RaidGUIControlListItemIconDescription:selected()
 	return self._selected
 end
-RaidGUIControlListItemIconDescription.select = function (self)
+function RaidGUIControlListItemIconDescription:select()
 	self._selected = true
 	slot4 = RaidGUIControlListItemIconDescription.ACTIVE_COLOR
 
@@ -246,7 +246,7 @@ RaidGUIControlListItemIconDescription.select = function (self)
 
 	return 
 end
-RaidGUIControlListItemIconDescription.unselect = function (self)
+function RaidGUIControlListItemIconDescription:unselect()
 	self._selected = false
 
 	if not self._active then
@@ -265,17 +265,17 @@ RaidGUIControlListItemIconDescription.unselect = function (self)
 
 	return 
 end
-RaidGUIControlListItemIconDescription.data = function (self)
+function RaidGUIControlListItemIconDescription:data()
 	return self._data
 end
-RaidGUIControlListItemIconDescription.highlight_on = function (self)
+function RaidGUIControlListItemIconDescription:highlight_on()
 	slot4 = RaidGUIControlListItemIconDescription.ACTIVE_COLOR
 
 	self._title.set_color(slot2, self._title)
 
 	return 
 end
-RaidGUIControlListItemIconDescription.highlight_off = function (self)
+function RaidGUIControlListItemIconDescription:highlight_off()
 	if not self._active then
 		slot4 = RaidGUIControlListItemIconDescription.COLOR
 
@@ -292,7 +292,7 @@ RaidGUIControlListItemIconDescription.highlight_off = function (self)
 
 	return 
 end
-RaidGUIControlListItemIconDescription.confirm_pressed = function (self)
+function RaidGUIControlListItemIconDescription:confirm_pressed()
 	slot3 = self
 	slot6 = "0"
 
@@ -300,7 +300,7 @@ RaidGUIControlListItemIconDescription.confirm_pressed = function (self)
 
 	return 
 end
-RaidGUIControlListItemIconDescription.activate = function (self)
+function RaidGUIControlListItemIconDescription:activate()
 	self._active = true
 	slot3 = self
 
@@ -308,7 +308,7 @@ RaidGUIControlListItemIconDescription.activate = function (self)
 
 	return 
 end
-RaidGUIControlListItemIconDescription.deactivate = function (self)
+function RaidGUIControlListItemIconDescription:deactivate()
 	self._active = false
 	slot3 = self
 
@@ -316,7 +316,7 @@ RaidGUIControlListItemIconDescription.deactivate = function (self)
 
 	return 
 end
-RaidGUIControlListItemIconDescription.activated = function (self)
+function RaidGUIControlListItemIconDescription:activated()
 	return self._active
 end
 

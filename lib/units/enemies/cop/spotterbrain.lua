@@ -4,10 +4,10 @@ if not SpotterBrain then
 end
 
 SpotterBrain = slot0
-SpotterBrain.stealth_action_allowed = function (self)
+function SpotterBrain:stealth_action_allowed()
 	return false
 end
-SpotterBrain.reset_spotter = function (self)
+function SpotterBrain:reset_spotter()
 	slot4 = "[SpotterBrain:reset_spotter()]"
 
 	Application.debug(slot2, Application)
@@ -31,10 +31,10 @@ SpotterBrain.reset_spotter = function (self)
 
 	return 
 end
-SpotterBrain.on_barrage_ended = function (self)
+function SpotterBrain:on_barrage_ended()
 	return 
 end
-SpotterBrain.schedule_spotter_reset = function (self, delay)
+function SpotterBrain:schedule_spotter_reset(delay)
 	slot6 = delay
 
 	Application.debug(slot3, Application, "[SpotterBrain:schedule_spotter_reset()] delay")
@@ -46,14 +46,14 @@ SpotterBrain.schedule_spotter_reset = function (self, delay)
 
 	return 
 end
-SpotterBrain.set_logic = function (self, name, enter_params)
+function SpotterBrain:set_logic(name, enter_params)
 	slot7 = enter_params
 
 	SpotterBrain.super.set_logic(slot4, self, name)
 
 	return 
 end
-SpotterBrain.action_request = function (self, action)
+function SpotterBrain:action_request(action)
 	if action.type == "shoot" then
 		return 
 	end
@@ -62,7 +62,7 @@ SpotterBrain.action_request = function (self, action)
 
 	return SpotterBrain.super.action_request(slot3, self)
 end
-SpotterBrain.anim_clbk_throw_flare = function (self)
+function SpotterBrain:anim_clbk_throw_flare()
 	slot4 = "[SpotterBrain:anim_clbk_throw_flare()]"
 
 	Application.debug(slot2, Application)
@@ -73,7 +73,7 @@ SpotterBrain.anim_clbk_throw_flare = function (self)
 
 	return 
 end
-SpotterBrain.destroy = function (self)
+function SpotterBrain:destroy()
 	slot5 = self
 
 	managers.queued_tasks.unqueue_all(slot2, managers.queued_tasks, nil)

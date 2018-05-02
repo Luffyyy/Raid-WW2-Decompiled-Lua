@@ -11,12 +11,12 @@ slot3 = "CoreSerialize"
 core.import(slot1, core)
 
 Data = Data or class()
-Data.init = function (self)
+function Data:init()
 	self._nodes = {}
 
 	return 
 end
-Data.get_node = function (self, node_name, ...)
+function Data:get_node(node_name, ...)
 	local node = nil
 
 	if node_name then
@@ -55,7 +55,7 @@ Data.get_node = function (self, node_name, ...)
 
 	return node
 end
-Data.load_data = function (self, file_path, menu_id)
+function Data:load_data(file_path, menu_id)
 	slot9 = file_path
 	local root = PackageManager.script_data(slot4, PackageManager, file_path.id("menu"))
 	local menu = nil
@@ -108,7 +108,7 @@ Data.load_data = function (self, file_path, menu_id)
 
 	return 
 end
-Data.set_callback_handler = function (self, callback_handler)
+function Data:set_callback_handler(callback_handler)
 	slot4 = self._nodes
 
 	for name, node in pairs(slot3) do

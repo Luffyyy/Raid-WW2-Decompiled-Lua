@@ -1,5 +1,5 @@
 CopActionStand = CopActionStand or class()
-CopActionStand.init = function (self, action_desc, common_data)
+function CopActionStand:init(action_desc, common_data)
 	self._ext_movement = common_data.ext_movement
 
 	if common_data.active_actions[2] and common_data.active_actions[2]._nav_link then
@@ -72,7 +72,7 @@ CopActionStand.init = function (self, action_desc, common_data)
 
 	return 
 end
-CopActionStand.update = function (self, t)
+function CopActionStand:update(t)
 	if self._ext_anim.base_need_upd then
 		slot4 = self._ext_movement
 
@@ -83,10 +83,10 @@ CopActionStand.update = function (self, t)
 
 	return 
 end
-CopActionStand.expired = function (self)
+function CopActionStand:expired()
 	return self._expired
 end
-CopActionStand.type = function (self)
+function CopActionStand:type()
 	return "stand"
 end
 

@@ -7,7 +7,7 @@ slot3 = "CoreGameStateLoadingGame"
 core.import(slot1, core)
 
 PrepareLoadingGame = PrepareLoadingGame or class()
-PrepareLoadingGame.init = function (self)
+function PrepareLoadingGame:init()
 	slot3 = self.game_state._game_requester
 
 	self.game_state._game_requester.task_started(slot2)
@@ -19,7 +19,7 @@ PrepareLoadingGame.init = function (self)
 
 	return 
 end
-PrepareLoadingGame.destroy = function (self)
+function PrepareLoadingGame:destroy()
 	slot3 = self.game_state._game_requester
 
 	self.game_state._game_requester.task_completed(slot2)
@@ -28,7 +28,7 @@ PrepareLoadingGame.destroy = function (self)
 
 	return 
 end
-PrepareLoadingGame.transition = function (self)
+function PrepareLoadingGame:transition()
 	slot3 = self.game_state._session_manager
 
 	if self.game_state._session_manager.all_systems_are_stable_for_loading(slot2) then

@@ -25,12 +25,12 @@ ChallengeTask.get_metatable = function (task_type)
 
 	return 
 end
-function ChallengeTask:init()
+ChallengeTask.init = function (self)
 	self._state = ChallengeTask.STATE_INACTIVE
 
 	return 
 end
-function ChallengeTask:setup()
+ChallengeTask.setup = function (self)
 	if self._state == ChallengeTask.STATE_ACTIVE then
 		self._state = ChallengeTask.STATE_INACTIVE
 		slot3 = self
@@ -40,36 +40,36 @@ function ChallengeTask:setup()
 
 	return 
 end
-function ChallengeTask:activate()
+ChallengeTask.activate = function (self)
 	self._state = ChallengeTask.STATE_ACTIVE
 
 	return 
 end
-function ChallengeTask:deactivate()
+ChallengeTask.deactivate = function (self)
 	self._state = ChallengeTask.STATE_INACTIVE
 
 	return 
 end
-function ChallengeTask:reset()
+ChallengeTask.reset = function (self)
 	if self._state == Challenge.STATE_COMPLETED or self._state == Challenge.STATE_FAILED then
 		self._state = Challenge.STATE_INACTIVE
 	end
 
 	return 
 end
-function ChallengeTask:active()
+ChallengeTask.active = function (self)
 	return (self._state == ChallengeTask.STATE_ACTIVE and true) or false
 end
-function ChallengeTask:completed()
+ChallengeTask.completed = function (self)
 	return (self._state == ChallengeTask.STATE_COMPLETED and true) or false
 end
-function ChallengeTask:id()
+ChallengeTask.id = function (self)
 	return self._id
 end
-function ChallengeTask:type()
+ChallengeTask.type = function (self)
 	return self._type
 end
-function ChallengeTask:force_complete()
+ChallengeTask.force_complete = function (self)
 	slot3 = self
 
 	if self.completed(slot2) then
@@ -87,7 +87,7 @@ if not ChallengeTaskKillEnemies then
 end
 
 ChallengeTaskKillEnemies = slot0
-function ChallengeTaskKillEnemies:init(challenge_category, challenge_id, task_data)
+ChallengeTaskKillEnemies.init = function (self, challenge_category, challenge_id, task_data)
 	slot6 = self
 
 	ChallengeTaskKillEnemies.super.init(slot5)
@@ -104,7 +104,7 @@ function ChallengeTaskKillEnemies:init(challenge_category, challenge_id, task_da
 
 	return 
 end
-function ChallengeTaskKillEnemies:activate()
+ChallengeTaskKillEnemies.activate = function (self)
 	slot3 = self
 
 	ChallengeTaskKillEnemies.super.activate(slot2)
@@ -118,7 +118,7 @@ function ChallengeTaskKillEnemies:activate()
 
 	return 
 end
-function ChallengeTaskKillEnemies:deactivate()
+ChallengeTaskKillEnemies.deactivate = function (self)
 	slot3 = self
 
 	ChallengeTaskKillEnemies.super.deactivate(slot2)
@@ -129,7 +129,7 @@ function ChallengeTaskKillEnemies:deactivate()
 
 	return 
 end
-function ChallengeTaskKillEnemies:reset()
+ChallengeTaskKillEnemies.reset = function (self)
 	slot3 = self
 
 	ChallengeTaskKillEnemies.super.reset(slot2)
@@ -138,26 +138,26 @@ function ChallengeTaskKillEnemies:reset()
 
 	return 
 end
-function ChallengeTaskKillEnemies:current_count()
+ChallengeTaskKillEnemies.current_count = function (self)
 	return self._count
 end
-function ChallengeTaskKillEnemies:target()
+ChallengeTaskKillEnemies.target = function (self)
 	return self._target
 end
-function ChallengeTaskKillEnemies:min_range()
+ChallengeTaskKillEnemies.min_range = function (self)
 	return self._modifiers.min_range or 0
 end
-function ChallengeTaskKillEnemies:set_reminders(reminders)
+ChallengeTaskKillEnemies.set_reminders = function (self, reminders)
 	self._reminders = reminders
 
 	return 
 end
-function ChallengeTaskKillEnemies:set_modifiers(modifiers)
+ChallengeTaskKillEnemies.set_modifiers = function (self, modifiers)
 	self._modifiers = modifiers
 
 	return 
 end
-function ChallengeTaskKillEnemies:on_enemy_killed(kill_data)
+ChallengeTaskKillEnemies.on_enemy_killed = function (self, kill_data)
 	if kill_data.using_turret then
 		return 
 	end
@@ -220,7 +220,7 @@ function ChallengeTaskKillEnemies:on_enemy_killed(kill_data)
 
 	return 
 end
-function ChallengeTaskKillEnemies:_check_status()
+ChallengeTaskKillEnemies._check_status = function (self)
 	if self._target <= self._count then
 		slot3 = self
 
@@ -229,7 +229,7 @@ function ChallengeTaskKillEnemies:_check_status()
 
 	return 
 end
-function ChallengeTaskKillEnemies:_on_completed()
+ChallengeTaskKillEnemies._on_completed = function (self)
 	self._state = ChallengeTask.STATE_COMPLETED
 	slot5 = self._parent_challenge_id
 	slot3 = managers.challenge.get_challenge(slot2, managers.challenge, self._parent_challenge_category)
@@ -242,7 +242,7 @@ function ChallengeTaskKillEnemies:_on_completed()
 
 	return 
 end
-function ChallengeTaskKillEnemies:force_complete()
+ChallengeTaskKillEnemies.force_complete = function (self)
 	slot3 = self
 
 	if self.completed(slot2) then
@@ -264,7 +264,7 @@ if not ChallengeTaskCollectAmmo then
 end
 
 ChallengeTaskCollectAmmo = slot0
-function ChallengeTaskCollectAmmo:init(challenge_category, challenge_id, task_data)
+ChallengeTaskCollectAmmo.init = function (self, challenge_category, challenge_id, task_data)
 	slot6 = self
 
 	ChallengeTaskCollectAmmo.super.init(slot5)
@@ -279,7 +279,7 @@ function ChallengeTaskCollectAmmo:init(challenge_category, challenge_id, task_da
 
 	return 
 end
-function ChallengeTaskCollectAmmo:activate()
+ChallengeTaskCollectAmmo.activate = function (self)
 	slot3 = self
 
 	ChallengeTaskCollectAmmo.super.activate(slot2)
@@ -293,7 +293,7 @@ function ChallengeTaskCollectAmmo:activate()
 
 	return 
 end
-function ChallengeTaskCollectAmmo:deactivate()
+ChallengeTaskCollectAmmo.deactivate = function (self)
 	slot3 = self
 
 	ChallengeTaskCollectAmmo.super.deactivate(slot2)
@@ -304,7 +304,7 @@ function ChallengeTaskCollectAmmo:deactivate()
 
 	return 
 end
-function ChallengeTaskCollectAmmo:reset()
+ChallengeTaskCollectAmmo.reset = function (self)
 	slot3 = self
 
 	ChallengeTaskKillEnemies.super.reset(slot2)
@@ -313,26 +313,26 @@ function ChallengeTaskCollectAmmo:reset()
 
 	return 
 end
-function ChallengeTaskCollectAmmo:current_count()
+ChallengeTaskCollectAmmo.current_count = function (self)
 	return self._count
 end
-function ChallengeTaskCollectAmmo:target()
+ChallengeTaskCollectAmmo.target = function (self)
 	return self._target
 end
-function ChallengeTaskCollectAmmo:min_range()
+ChallengeTaskCollectAmmo.min_range = function (self)
 	return 0
 end
-function ChallengeTaskCollectAmmo:set_reminders(reminders)
+ChallengeTaskCollectAmmo.set_reminders = function (self, reminders)
 	self._reminders = reminders
 
 	return 
 end
-function ChallengeTaskCollectAmmo:set_modifiers(modifiers)
+ChallengeTaskCollectAmmo.set_modifiers = function (self, modifiers)
 	self._modifiers = modifiers
 
 	return 
 end
-function ChallengeTaskCollectAmmo:on_ammo_collected(ammo_info)
+ChallengeTaskCollectAmmo.on_ammo_collected = function (self, ammo_info)
 	slot4 = managers.raid_job
 
 	if managers.raid_job.is_camp_loaded(slot3) then
@@ -361,7 +361,7 @@ function ChallengeTaskCollectAmmo:on_ammo_collected(ammo_info)
 
 	return 
 end
-function ChallengeTaskCollectAmmo:_check_status()
+ChallengeTaskCollectAmmo._check_status = function (self)
 	if self._target <= self._count then
 		slot3 = self
 
@@ -370,7 +370,7 @@ function ChallengeTaskCollectAmmo:_check_status()
 
 	return 
 end
-function ChallengeTaskCollectAmmo:_on_completed()
+ChallengeTaskCollectAmmo._on_completed = function (self)
 	self._state = ChallengeTask.STATE_COMPLETED
 	slot5 = self._parent_challenge_id
 	slot3 = managers.challenge.get_challenge(slot2, managers.challenge, self._parent_challenge_category)
@@ -383,7 +383,7 @@ function ChallengeTaskCollectAmmo:_on_completed()
 
 	return 
 end
-function ChallengeTaskCollectAmmo:force_complete()
+ChallengeTaskCollectAmmo.force_complete = function (self)
 	slot3 = self
 
 	if self.completed(slot2) then

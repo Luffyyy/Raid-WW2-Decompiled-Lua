@@ -7,7 +7,7 @@ slot3 = "CoreGameStateFrontEnd"
 core.import(slot1, core)
 
 PreFrontEnd = PreFrontEnd or class()
-PreFrontEnd.init = function (self)
+function PreFrontEnd:init()
 	slot3 = self.game_state
 	local player_slot = self.game_state.player_slots(slot2).primary_slot(slot2)
 	slot4 = player_slot
@@ -18,12 +18,12 @@ PreFrontEnd.init = function (self)
 
 	return 
 end
-PreFrontEnd.destroy = function (self)
+function PreFrontEnd:destroy()
 	self.game_state._is_in_pre_front_end = false
 
 	return 
 end
-PreFrontEnd.transition = function (self)
+function PreFrontEnd:transition()
 	slot3 = self.game_state
 	slot3 = self.game_state.player_slots(slot2)
 

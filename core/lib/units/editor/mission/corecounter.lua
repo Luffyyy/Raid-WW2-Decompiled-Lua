@@ -19,14 +19,14 @@ if not CounterUnitElement then
 end
 
 CounterUnitElement = slot0
-CounterUnitElement.init = function (self, ...)
+function CounterUnitElement:init(...)
 	slot3 = self
 
 	CoreCounterUnitElement.init(slot2, ...)
 
 	return 
 end
-CoreCounterUnitElement.init = function (self, unit)
+function CoreCounterUnitElement:init(unit)
 	slot5 = unit
 
 	MissionElement.init(slot3, self)
@@ -49,7 +49,7 @@ CoreCounterUnitElement.init = function (self, unit)
 
 	return 
 end
-CoreCounterUnitElement.layer_finished = function (self)
+function CoreCounterUnitElement:layer_finished()
 	slot3 = self
 
 	MissionElement.layer_finished(slot2)
@@ -69,7 +69,7 @@ CoreCounterUnitElement.layer_finished = function (self)
 
 	return 
 end
-CoreCounterUnitElement.load_unit = function (self, unit)
+function CoreCounterUnitElement:load_unit(unit)
 	if unit then
 		slot5 = unit
 		self._digital_gui_units[unit.unit_data(slot4).unit_id] = unit
@@ -77,7 +77,7 @@ CoreCounterUnitElement.load_unit = function (self, unit)
 
 	return 
 end
-CoreCounterUnitElement.update_selected = function (self)
+function CoreCounterUnitElement:update_selected()
 	slot3 = self._hed.digital_gui_unit_ids
 
 	for _, id in pairs(slot2) do
@@ -123,7 +123,7 @@ CoreCounterUnitElement.update_selected = function (self)
 
 	return 
 end
-CoreCounterUnitElement.update_unselected = function (self, t, dt, selected_unit, all_units)
+function CoreCounterUnitElement:update_unselected(t, dt, selected_unit, all_units)
 	slot7 = self._hed.digital_gui_unit_ids
 
 	for _, id in pairs(slot6) do
@@ -154,7 +154,7 @@ CoreCounterUnitElement.update_unselected = function (self, t, dt, selected_unit,
 
 	return 
 end
-CoreCounterUnitElement.draw_links_unselected = function (self, ...)
+function CoreCounterUnitElement:draw_links_unselected(...)
 	slot3 = self
 
 	CoreCounterUnitElement.super.draw_links_unselected(slot2, ...)
@@ -180,7 +180,7 @@ CoreCounterUnitElement.draw_links_unselected = function (self, ...)
 
 	return 
 end
-CoreCounterUnitElement.update_editing = function (self)
+function CoreCounterUnitElement:update_editing()
 	slot4 = {
 		ray_type = "body editor",
 		sample = true,
@@ -206,7 +206,7 @@ CoreCounterUnitElement.update_editing = function (self)
 
 	return 
 end
-CoreCounterUnitElement.select_unit = function (self)
+function CoreCounterUnitElement:select_unit()
 	slot4 = {
 		ray_type = "body editor",
 		sample = true,
@@ -241,7 +241,7 @@ CoreCounterUnitElement.select_unit = function (self)
 
 	return 
 end
-CoreCounterUnitElement._remove_unit = function (self, unit)
+function CoreCounterUnitElement:_remove_unit(unit)
 	slot5 = unit
 	self._digital_gui_units[unit.unit_data(slot4).unit_id] = nil
 	slot7 = unit
@@ -251,7 +251,7 @@ CoreCounterUnitElement._remove_unit = function (self, unit)
 
 	return 
 end
-CoreCounterUnitElement._add_unit = function (self, unit)
+function CoreCounterUnitElement:_add_unit(unit)
 	slot5 = unit
 	self._digital_gui_units[unit.unit_data(slot4).unit_id] = unit
 	slot7 = unit
@@ -261,7 +261,7 @@ CoreCounterUnitElement._add_unit = function (self, unit)
 
 	return 
 end
-CoreCounterUnitElement.add_triggers = function (self, vc)
+function CoreCounterUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "select_unit"
 
@@ -269,7 +269,7 @@ CoreCounterUnitElement.add_triggers = function (self, vc)
 
 	return 
 end
-CoreCounterUnitElement._add_unit_filter = function (self, unit)
+function CoreCounterUnitElement:_add_unit_filter(unit)
 	slot5 = unit
 
 	if self._digital_gui_units[unit.unit_data(slot4).unit_id] then
@@ -286,12 +286,12 @@ CoreCounterUnitElement._add_unit_filter = function (self, unit)
 
 	return slot2
 end
-CoreCounterUnitElement._remove_unit_filter = function (self, unit)
+function CoreCounterUnitElement:_remove_unit_filter(unit)
 	slot5 = unit
 
 	return self._digital_gui_units[unit.unit_data(slot4).unit_id]
 end
-CoreCounterUnitElement._build_panel = function (self, panel, panel_sizer)
+function CoreCounterUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -324,12 +324,12 @@ CoreCounterUnitElement._build_panel = function (self, panel, panel_sizer)
 
 	return 
 end
-CoreCounterUnitElement.register_debug_output_unit = function (self, output_monitor_id)
+function CoreCounterUnitElement:register_debug_output_unit(output_monitor_id)
 	self._hed.output_monitor_id = output_monitor_id
 
 	return 
 end
-CoreCounterUnitElement.unregister_debug_output_unit = function (self)
+function CoreCounterUnitElement:unregister_debug_output_unit()
 	self._hed.output_monitor_id = nil
 
 	return 
@@ -356,14 +356,14 @@ if not CounterOperatorUnitElement then
 end
 
 CounterOperatorUnitElement = slot0
-CounterOperatorUnitElement.init = function (self, ...)
+function CounterOperatorUnitElement:init(...)
 	slot3 = self
 
 	CounterOperatorUnitElement.super.init(slot2, ...)
 
 	return 
 end
-CoreCounterOperatorUnitElement.init = function (self, unit)
+function CoreCounterOperatorUnitElement:init(unit)
 	slot5 = unit
 
 	CoreCounterOperatorUnitElement.super.init(slot3, self)
@@ -385,7 +385,7 @@ CoreCounterOperatorUnitElement.init = function (self, unit)
 
 	return 
 end
-CoreCounterOperatorUnitElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function CoreCounterOperatorUnitElement:draw_links(t, dt, selected_unit, all_units)
 	slot10 = selected_unit
 
 	CoreCounterOperatorUnitElement.super.draw_links(slot6, self, t, dt)
@@ -411,7 +411,7 @@ CoreCounterOperatorUnitElement.draw_links = function (self, t, dt, selected_unit
 
 	return 
 end
-CoreCounterOperatorUnitElement.get_links_to_unit = function (self, ...)
+function CoreCounterOperatorUnitElement:get_links_to_unit(...)
 	slot3 = self
 
 	CoreCounterOperatorUnitElement.super.get_links_to_unit(slot2, ...)
@@ -422,10 +422,10 @@ CoreCounterOperatorUnitElement.get_links_to_unit = function (self, ...)
 
 	return 
 end
-CoreCounterOperatorUnitElement.update_editing = function (self)
+function CoreCounterOperatorUnitElement:update_editing()
 	return 
 end
-CoreCounterOperatorUnitElement.add_element = function (self)
+function CoreCounterOperatorUnitElement:add_element()
 	slot4 = {
 		ray_type = "editor",
 		mask = 10
@@ -453,7 +453,7 @@ CoreCounterOperatorUnitElement.add_element = function (self)
 
 	return 
 end
-CoreCounterOperatorUnitElement.remove_links = function (self, unit)
+function CoreCounterOperatorUnitElement:remove_links(unit)
 	slot4 = self._hed.elements
 
 	for _, id in ipairs(slot3) do
@@ -468,7 +468,7 @@ CoreCounterOperatorUnitElement.remove_links = function (self, unit)
 
 	return 
 end
-CoreCounterOperatorUnitElement.add_triggers = function (self, vc)
+function CoreCounterOperatorUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "add_element"
 
@@ -476,7 +476,7 @@ CoreCounterOperatorUnitElement.add_triggers = function (self, vc)
 
 	return 
 end
-CoreCounterOperatorUnitElement._build_panel = function (self, panel, panel_sizer)
+function CoreCounterOperatorUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -529,14 +529,14 @@ if not CounterTriggerUnitElement then
 end
 
 CounterTriggerUnitElement = slot0
-CounterTriggerUnitElement.init = function (self, ...)
+function CounterTriggerUnitElement:init(...)
 	slot3 = self
 
 	CounterTriggerUnitElement.super.init(slot2, ...)
 
 	return 
 end
-CoreCounterTriggerUnitElement.init = function (self, unit)
+function CoreCounterTriggerUnitElement:init(unit)
 	slot5 = unit
 
 	CoreCounterTriggerUnitElement.super.init(slot3, self)
@@ -558,7 +558,7 @@ CoreCounterTriggerUnitElement.init = function (self, unit)
 
 	return 
 end
-CoreCounterTriggerUnitElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function CoreCounterTriggerUnitElement:draw_links(t, dt, selected_unit, all_units)
 	slot10 = selected_unit
 
 	CoreCounterTriggerUnitElement.super.draw_links(slot6, self, t, dt)
@@ -584,7 +584,7 @@ CoreCounterTriggerUnitElement.draw_links = function (self, t, dt, selected_unit,
 
 	return 
 end
-CoreCounterTriggerUnitElement.get_links_to_unit = function (self, ...)
+function CoreCounterTriggerUnitElement:get_links_to_unit(...)
 	slot3 = self
 
 	CoreCounterTriggerUnitElement.super.get_links_to_unit(slot2, ...)
@@ -595,10 +595,10 @@ CoreCounterTriggerUnitElement.get_links_to_unit = function (self, ...)
 
 	return 
 end
-CoreCounterTriggerUnitElement.update_editing = function (self)
+function CoreCounterTriggerUnitElement:update_editing()
 	return 
 end
-CoreCounterTriggerUnitElement.add_element = function (self)
+function CoreCounterTriggerUnitElement:add_element()
 	slot4 = {
 		ray_type = "editor",
 		mask = 10
@@ -626,7 +626,7 @@ CoreCounterTriggerUnitElement.add_element = function (self)
 
 	return 
 end
-CoreCounterTriggerUnitElement.remove_links = function (self, unit)
+function CoreCounterTriggerUnitElement:remove_links(unit)
 	slot4 = self._hed.elements
 
 	for _, id in ipairs(slot3) do
@@ -641,7 +641,7 @@ CoreCounterTriggerUnitElement.remove_links = function (self, unit)
 
 	return 
 end
-CoreCounterTriggerUnitElement.add_triggers = function (self, vc)
+function CoreCounterTriggerUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "add_element"
 
@@ -649,7 +649,7 @@ CoreCounterTriggerUnitElement.add_triggers = function (self, vc)
 
 	return 
 end
-CoreCounterTriggerUnitElement._build_panel = function (self, panel, panel_sizer)
+function CoreCounterTriggerUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -702,14 +702,14 @@ if not CounterFilterUnitElement then
 end
 
 CounterFilterUnitElement = slot0
-CounterFilterUnitElement.init = function (self, ...)
+function CounterFilterUnitElement:init(...)
 	slot3 = self
 
 	CounterFilterUnitElement.super.init(slot2, ...)
 
 	return 
 end
-CoreCounterFilterUnitElement.init = function (self, unit)
+function CoreCounterFilterUnitElement:init(unit)
 	slot5 = unit
 
 	CoreCounterFilterUnitElement.super.init(slot3, self)
@@ -736,7 +736,7 @@ CoreCounterFilterUnitElement.init = function (self, unit)
 
 	return 
 end
-CoreCounterFilterUnitElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function CoreCounterFilterUnitElement:draw_links(t, dt, selected_unit, all_units)
 	slot10 = selected_unit
 
 	CoreCounterFilterUnitElement.super.draw_links(slot6, self, t, dt)
@@ -762,7 +762,7 @@ CoreCounterFilterUnitElement.draw_links = function (self, t, dt, selected_unit, 
 
 	return 
 end
-CoreCounterFilterUnitElement.get_links_to_unit = function (self, ...)
+function CoreCounterFilterUnitElement:get_links_to_unit(...)
 	slot3 = self
 
 	CoreCounterFilterUnitElement.super.get_links_to_unit(slot2, ...)
@@ -773,10 +773,10 @@ CoreCounterFilterUnitElement.get_links_to_unit = function (self, ...)
 
 	return 
 end
-CoreCounterFilterUnitElement.update_editing = function (self)
+function CoreCounterFilterUnitElement:update_editing()
 	return 
 end
-CoreCounterFilterUnitElement.add_element = function (self)
+function CoreCounterFilterUnitElement:add_element()
 	slot4 = {
 		ray_type = "editor",
 		mask = 10
@@ -804,7 +804,7 @@ CoreCounterFilterUnitElement.add_element = function (self)
 
 	return 
 end
-CoreCounterFilterUnitElement.remove_links = function (self, unit)
+function CoreCounterFilterUnitElement:remove_links(unit)
 	slot4 = self._hed.elements
 
 	for _, id in ipairs(slot3) do
@@ -819,7 +819,7 @@ CoreCounterFilterUnitElement.remove_links = function (self, unit)
 
 	return 
 end
-CoreCounterFilterUnitElement.add_triggers = function (self, vc)
+function CoreCounterFilterUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "add_element"
 
@@ -827,7 +827,7 @@ CoreCounterFilterUnitElement.add_triggers = function (self, vc)
 
 	return 
 end
-CoreCounterFilterUnitElement._build_panel = function (self, panel, panel_sizer)
+function CoreCounterFilterUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

@@ -16,7 +16,7 @@ ControllerWrapperXB1.TYPE = "xb1"
 ControllerWrapperXB1.CONTROLLER_TYPE_LIST = {
 	"xb1_controller"
 }
-ControllerWrapperXB1.init = function (self, manager, id, name, controller, setup, debug, skip_virtual_controller)
+function ControllerWrapperXB1:init(manager, id, name, controller, setup, debug, skip_virtual_controller)
 	local func_map = {}
 	slot13 = "virtual_connect_confirm"
 	func_map.confirm = callback(slot10, self, self)
@@ -32,14 +32,14 @@ ControllerWrapperXB1.init = function (self, manager, id, name, controller, setup
 
 	return 
 end
-ControllerWrapperXB1.virtual_connect_confirm = function (self, controller_id, controller, input_name, connection_name, connection)
+function ControllerWrapperXB1:virtual_connect_confirm(controller_id, controller, input_name, connection_name, connection)
 	slot13 = connection
 
 	self.virtual_connect2(slot7, self, controller_id, controller, "a", connection_name)
 
 	return 
 end
-ControllerWrapperXB1.virtual_connect_cancel = function (self, controller_id, controller, input_name, connection_name, connection)
+function ControllerWrapperXB1:virtual_connect_cancel(controller_id, controller, input_name, connection_name, connection)
 	slot13 = connection
 
 	self.virtual_connect2(slot7, self, controller_id, controller, "b", connection_name)

@@ -21,7 +21,7 @@ RaidGuiControlKeyBind.ICON_LEFT = "kb_left_base"
 RaidGuiControlKeyBind.ICON_CENTER = "kb_center_base"
 RaidGuiControlKeyBind.ICON_RIGHT = "kb_right_base"
 RaidGuiControlKeyBind.CORNER_WIDTH = 10
-RaidGuiControlKeyBind.init = function (self, parent, params)
+function RaidGuiControlKeyBind:init(parent, params)
 	slot7 = params
 
 	RaidGuiControlKeyBind.super.init(slot4, self, parent)
@@ -57,10 +57,10 @@ RaidGuiControlKeyBind.init = function (self, parent, params)
 
 	return 
 end
-RaidGuiControlKeyBind.is_listening_to_input = function (self)
+function RaidGuiControlKeyBind:is_listening_to_input()
 	return self._listening_to_input
 end
-RaidGuiControlKeyBind.highlight_on = function (self)
+function RaidGuiControlKeyBind:highlight_on()
 	slot4 = RaidGuiControlKeyBind.TEXT_COLOR_ACTIVE
 
 	self._description.set_color(slot2, self._description)
@@ -87,7 +87,7 @@ RaidGuiControlKeyBind.highlight_on = function (self)
 
 	return 
 end
-RaidGuiControlKeyBind.highlight_off = function (self)
+function RaidGuiControlKeyBind:highlight_off()
 	if not self._listening_to_input then
 		slot4 = RaidGuiControlKeyBind.TEXT_COLOR_NORMAL
 
@@ -110,7 +110,7 @@ RaidGuiControlKeyBind.highlight_off = function (self)
 
 	return 
 end
-RaidGuiControlKeyBind._set_background_state = function (self, bg_state)
+function RaidGuiControlKeyBind:_set_background_state(bg_state)
 	if bg_state == "active" then
 		slot4 = self._background_left
 
@@ -163,7 +163,7 @@ RaidGuiControlKeyBind._set_background_state = function (self, bg_state)
 
 	return 
 end
-RaidGuiControlKeyBind.on_mouse_released = function (self, button)
+function RaidGuiControlKeyBind:on_mouse_released(button)
 	slot4 = managers.user
 
 	if managers.user.get_key_rebind_started(slot3) and not self._listening_to_input then
@@ -176,7 +176,7 @@ RaidGuiControlKeyBind.on_mouse_released = function (self, button)
 
 	return 
 end
-RaidGuiControlKeyBind.activate_customize_controller = function (self)
+function RaidGuiControlKeyBind:activate_customize_controller()
 	slot3 = self._ws
 	slot6 = Input
 
@@ -238,7 +238,7 @@ RaidGuiControlKeyBind.activate_customize_controller = function (self)
 
 	return 
 end
-RaidGuiControlKeyBind._key_press = function (self, o, key, input_id, no_add)
+function RaidGuiControlKeyBind:_key_press(o, key, input_id, no_add)
 
 	-- Decompilation error in this vicinity:
 	slot7 = managers.system_menu
@@ -422,7 +422,7 @@ RaidGuiControlKeyBind._key_press = function (self, o, key, input_id, no_add)
 
 	return 
 end
-RaidGuiControlKeyBind._end_customize_controller = function (self, o, skip_next_key_press)
+function RaidGuiControlKeyBind:_end_customize_controller(o, skip_next_key_press)
 	slot5 = o
 
 	if not alive(slot4) then
@@ -494,7 +494,7 @@ RaidGuiControlKeyBind._end_customize_controller = function (self, o, skip_next_k
 
 	return 
 end
-RaidGuiControlKeyBind.reload = function (self)
+function RaidGuiControlKeyBind:reload()
 	slot3 = self._object
 
 	self._object.clear(slot2)
@@ -505,7 +505,7 @@ RaidGuiControlKeyBind.reload = function (self)
 
 	return 
 end
-RaidGuiControlKeyBind.confirm_pressed = function (self)
+function RaidGuiControlKeyBind:confirm_pressed()
 	if self._selected then
 		slot4 = self
 
@@ -516,7 +516,7 @@ RaidGuiControlKeyBind.confirm_pressed = function (self)
 
 	return 
 end
-RaidGuiControlKeyBind._create_keybind_layout = function (self)
+function RaidGuiControlKeyBind:_create_keybind_layout()
 	slot4 = self._keybind_params.binding
 	local translated_keybind = managers.localization.check_keybind_translation(slot2, managers.localization)
 	slot5 = {

@@ -14,7 +14,7 @@ RaidGUIControlGridItem.STATUS_LOCKED = "grid_item_status_locked"
 RaidGUIControlGridItem.STATUS_PURCHASABLE = "grid_item_status_purchasable"
 RaidGUIControlGridItem.STATUS_NOT_ENOUGHT_RESOURCES = "grid_item_status_not_enought_resources"
 RaidGUIControlGridItem.STATUS_LOCKED_DLC = "grid_item_status_locked_dlc"
-RaidGUIControlGridItem.init = function (self, parent, params, item_data, grid_params)
+function RaidGUIControlGridItem:init(parent, params, item_data, grid_params)
 	slot9 = params
 
 	RaidGUIControlGridItem.super.init(slot6, self, parent)
@@ -205,7 +205,7 @@ RaidGUIControlGridItem.init = function (self, parent, params, item_data, grid_pa
 
 	return 
 end
-RaidGUIControlGridItem._layout_breadcrumb = function (self)
+function RaidGUIControlGridItem:_layout_breadcrumb()
 	local breadcrumb_params = {
 		padding = 10,
 		category = self._item_data.breadcrumb.category,
@@ -226,7 +226,7 @@ RaidGUIControlGridItem._layout_breadcrumb = function (self)
 
 	return 
 end
-RaidGUIControlGridItem._toggle_visibility_status_icons = function (self)
+function RaidGUIControlGridItem:_toggle_visibility_status_icons()
 	if self._item_data.status == RaidGUIControlGridItem.STATUS_OWNED_OR_PURCHASED then
 		slot3 = self._item_status_resource_icon
 
@@ -291,17 +291,17 @@ RaidGUIControlGridItem._toggle_visibility_status_icons = function (self)
 
 	return 
 end
-RaidGUIControlGridItem.get_data = function (self)
+function RaidGUIControlGridItem:get_data()
 	return self._item_data
 end
-RaidGUIControlGridItem.mouse_released = function (self, o, button, x, y)
+function RaidGUIControlGridItem:mouse_released(o, button, x, y)
 	slot8 = button
 
 	self.on_mouse_released(slot6, self)
 
 	return true
 end
-RaidGUIControlGridItem.on_mouse_released = function (self, button)
+function RaidGUIControlGridItem:on_mouse_released(button)
 	if self._on_click_callback then
 		slot5 = self._params.key_value_field
 
@@ -310,14 +310,14 @@ RaidGUIControlGridItem.on_mouse_released = function (self, button)
 
 	return 
 end
-RaidGUIControlGridItem.mouse_double_click = function (self, o, button, x, y)
+function RaidGUIControlGridItem:mouse_double_click(o, button, x, y)
 	slot8 = button
 
 	self.on_mouse_double_click(slot6, self)
 
 	return true
 end
-RaidGUIControlGridItem.on_mouse_double_click = function (self, button)
+function RaidGUIControlGridItem:on_mouse_double_click(button)
 	if self._on_double_click_callback then
 		slot5 = self._params.key_value_field
 
@@ -326,10 +326,10 @@ RaidGUIControlGridItem.on_mouse_double_click = function (self, button)
 
 	return 
 end
-RaidGUIControlGridItem.selected = function (self)
+function RaidGUIControlGridItem:selected()
 	return self._selected
 end
-RaidGUIControlGridItem.select = function (self, dont_fire_selected_callback)
+function RaidGUIControlGridItem:select(dont_fire_selected_callback)
 	self._selected = true
 	slot4 = self
 
@@ -349,7 +349,7 @@ RaidGUIControlGridItem.select = function (self, dont_fire_selected_callback)
 
 	return 
 end
-RaidGUIControlGridItem.unselect = function (self)
+function RaidGUIControlGridItem:unselect()
 	self._selected = false
 	slot3 = self
 
@@ -357,7 +357,7 @@ RaidGUIControlGridItem.unselect = function (self)
 
 	return 
 end
-RaidGUIControlGridItem.select_on = function (self)
+function RaidGUIControlGridItem:select_on()
 	slot3 = self._select_background_panel
 
 	self._select_background_panel.show(slot2)
@@ -368,7 +368,7 @@ RaidGUIControlGridItem.select_on = function (self)
 
 	return 
 end
-RaidGUIControlGridItem.select_off = function (self)
+function RaidGUIControlGridItem:select_off()
 	slot3 = self._select_background_panel
 
 	self._select_background_panel.hide(slot2)
@@ -379,7 +379,7 @@ RaidGUIControlGridItem.select_off = function (self)
 
 	return 
 end
-RaidGUIControlGridItem.confirm_pressed = function (self)
+function RaidGUIControlGridItem:confirm_pressed()
 	slot4 = nil
 
 	self.on_mouse_released(slot2, self)

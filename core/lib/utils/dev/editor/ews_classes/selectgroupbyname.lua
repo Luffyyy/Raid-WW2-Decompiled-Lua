@@ -4,7 +4,7 @@ if not SelectGroupByName then
 end
 
 SelectGroupByName = slot0
-SelectGroupByName.init = function (self, ...)
+function SelectGroupByName:init(...)
 	slot11 = 0
 	slot12 = 0
 	slot9 = "DEFAULT_DIALOG_STYLE,RESIZE_BORDER,STAY_ON_TOP"
@@ -154,7 +154,7 @@ SelectGroupByName.init = function (self, ...)
 
 	return 
 end
-SelectGroupByName.key_delete = function (self, ctrlr, event)
+function SelectGroupByName:key_delete(ctrlr, event)
 	slot5 = event
 
 	event.skip(slot4)
@@ -170,7 +170,7 @@ SelectGroupByName.key_delete = function (self, ctrlr, event)
 
 	return 
 end
-SelectGroupByName.key_cancel = function (self, ctrlr, event)
+function SelectGroupByName:key_cancel(ctrlr, event)
 	slot5 = event
 
 	event.skip(slot4)
@@ -186,7 +186,7 @@ SelectGroupByName.key_cancel = function (self, ctrlr, event)
 
 	return 
 end
-SelectGroupByName.on_delete = function (self)
+function SelectGroupByName:on_delete()
 	slot3 = managers.editor
 
 	managers.editor.freeze_gui_lists(slot2)
@@ -210,10 +210,10 @@ SelectGroupByName.on_delete = function (self)
 
 	return 
 end
-SelectGroupByName.on_mark_group = function (self)
+function SelectGroupByName:on_mark_group()
 	return 
 end
-SelectGroupByName.on_ungroup = function (self)
+function SelectGroupByName:on_ungroup()
 	local groups = self._selected_item_groups(slot2)
 	slot4 = groups
 
@@ -226,7 +226,7 @@ SelectGroupByName.on_ungroup = function (self)
 
 	return 
 end
-SelectGroupByName.on_select_group = function (self)
+function SelectGroupByName:on_select_group()
 	slot3 = self
 	local group = self._selected_item_group(slot2)
 
@@ -253,7 +253,7 @@ SelectGroupByName.on_select_group = function (self)
 
 	return 
 end
-SelectGroupByName._selected_item_groups = function (self)
+function SelectGroupByName:_selected_item_groups()
 	local groups = {}
 	slot6 = self._list
 
@@ -267,7 +267,7 @@ SelectGroupByName._selected_item_groups = function (self)
 
 	return groups
 end
-SelectGroupByName._selected_item_group = function (self)
+function SelectGroupByName:_selected_item_group()
 	slot3 = self._list
 	local index = self._list.selected_item(slot2)
 
@@ -279,7 +279,7 @@ SelectGroupByName._selected_item_group = function (self)
 
 	return 
 end
-SelectGroupByName.group_removed = function (self, group)
+function SelectGroupByName:group_removed(group)
 	slot5 = self._list
 
 	for i = 0, self._list.item_count(slot4) - 1, 1 do
@@ -296,7 +296,7 @@ SelectGroupByName.group_removed = function (self, group)
 
 	return 
 end
-SelectGroupByName.group_created = function (self, group)
+function SelectGroupByName:group_created(group)
 	slot4 = self._list
 	slot7 = group
 	local i = self._list.append_item(slot3, group.name(slot6))
@@ -308,7 +308,7 @@ SelectGroupByName.group_created = function (self, group)
 
 	return 
 end
-SelectGroupByName.group_selected = function (self, group)
+function SelectGroupByName:group_selected(group)
 	slot6 = self._list
 
 	for _, i in ipairs(self._list.selected_items(slot5)) do
@@ -337,14 +337,14 @@ SelectGroupByName.group_selected = function (self, group)
 
 	return 
 end
-SelectGroupByName.update_filter = function (self)
+function SelectGroupByName:update_filter()
 	slot3 = self
 
 	self.fill_group_list(slot2)
 
 	return 
 end
-SelectGroupByName.fill_group_list = function (self)
+function SelectGroupByName:fill_group_list()
 	slot3 = self._list
 
 	self._list.delete_all_items(slot2)
@@ -386,21 +386,21 @@ SelectGroupByName.fill_group_list = function (self)
 
 	return 
 end
-SelectGroupByName.reset = function (self)
+function SelectGroupByName:reset()
 	slot3 = self
 
 	self.fill_group_list(slot2)
 
 	return 
 end
-SelectGroupByName.freeze = function (self)
+function SelectGroupByName:freeze()
 	slot3 = self._list
 
 	self._list.freeze(slot2)
 
 	return 
 end
-SelectGroupByName.thaw = function (self)
+function SelectGroupByName:thaw()
 	slot3 = self._list
 
 	self._list.thaw(slot2)

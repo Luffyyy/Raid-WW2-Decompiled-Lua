@@ -12,21 +12,21 @@ if not ElementToggle then
 end
 
 ElementToggle = slot0
-ElementToggle.init = function (self, ...)
+function ElementToggle:init(...)
 	slot3 = self
 
 	ElementToggle.super.init(slot2, ...)
 
 	return 
 end
-ElementToggle.client_on_executed = function (self, ...)
+function ElementToggle:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementToggle.on_executed = function (self, instigator)
+function ElementToggle:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

@@ -6,28 +6,28 @@ if not ElementWorldOperator then
 end
 
 ElementWorldOperator = slot0
-ElementWorldOperator.init = function (self, ...)
+function ElementWorldOperator:init(...)
 	slot3 = self
 
 	ElementWorldOperator.super.init(slot2, ...)
 
 	return 
 end
-ElementWorldOperator.client_on_executed = function (self, ...)
+function ElementWorldOperator:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementWorldOperator.on_script_activated = function (self)
+function ElementWorldOperator:on_script_activated()
 	slot4 = self._id
 
 	self._mission_script.add_save_state_cb(slot2, self._mission_script)
 
 	return 
 end
-ElementWorldOperator._get_unit = function (self, unit_id)
+function ElementWorldOperator:_get_unit(unit_id)
 	if false then
 		slot5 = unit_id
 
@@ -40,7 +40,7 @@ ElementWorldOperator._get_unit = function (self, unit_id)
 
 	return 
 end
-ElementWorldOperator._apply_operator = function (self, mission_script_element)
+function ElementWorldOperator:_apply_operator(mission_script_element)
 	if mission_script_element then
 		if mission_script_element.execute_action then
 			slot5 = self._values.operation
@@ -61,7 +61,7 @@ ElementWorldOperator._apply_operator = function (self, mission_script_element)
 
 	return 
 end
-ElementWorldOperator.on_executed = function (self, instigator)
+function ElementWorldOperator:on_executed(instigator)
 
 	-- Decompilation error in this vicinity:
 	slot6 = self._editor_name

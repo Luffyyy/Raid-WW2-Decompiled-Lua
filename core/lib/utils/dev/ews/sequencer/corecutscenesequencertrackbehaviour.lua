@@ -33,28 +33,28 @@ if not BoxSelectionTrackBehaviour then
 end
 
 BoxSelectionTrackBehaviour = slot0
-TrackBehaviour.init = function (self)
+function TrackBehaviour:init()
 	self._default_behaviour = self
 
 	return 
 end
-TrackBehaviour.set_delegate = function (self, track_behaviour_delegate)
+function TrackBehaviour:set_delegate(track_behaviour_delegate)
 	self._delegate = track_behaviour_delegate
 
 	return self
 end
-TrackBehaviour.set_default_behaviour = function (self, behaviour)
+function TrackBehaviour:set_default_behaviour(behaviour)
 	self._default_behaviour = behaviour
 
 	return self
 end
-TrackBehaviour.populate_from = function (self, behaviour)
+function TrackBehaviour:populate_from(behaviour)
 	self._default_behaviour = behaviour._default_behaviour
 	self._delegate = behaviour._delegate
 
 	return self
 end
-TrackBehaviour.change_behaviour = function (self, new_behaviour)
+function TrackBehaviour:change_behaviour(new_behaviour)
 	slot5 = "change_track_behaviour"
 	slot9 = self
 
@@ -62,21 +62,21 @@ TrackBehaviour.change_behaviour = function (self, new_behaviour)
 
 	return self
 end
-TrackBehaviour.restore_default_behaviour = function (self)
+function TrackBehaviour:restore_default_behaviour()
 	slot4 = self._default_behaviour
 
 	self.change_behaviour(slot2, self)
 
 	return self
 end
-TrackBehaviour._delegate_supports = function (self, method_name)
+function TrackBehaviour:_delegate_supports(method_name)
 	if self._delegate then
 		slot4 = self._delegate[method_name]
 
 		return type(slot3) == "function"
 	end
 end
-TrackBehaviour._invoke_on_delegate = function (self, method_name, ...)
+function TrackBehaviour:_invoke_on_delegate(method_name, ...)
 	if self._delegate == nil then
 		slot4 = "Failed to call required delegate method \"" .. method_name .. "\" - no delegate object has been assigned"
 
@@ -99,14 +99,14 @@ TrackBehaviour._invoke_on_delegate = function (self, method_name, ...)
 	return 
 end
 EditableTrackBehaviour.CLIP_EDGE_HANDLE_WIDTH = 6
-EditableTrackBehaviour.init = function (self)
+function EditableTrackBehaviour:init()
 	slot3 = self
 
 	self.super.init(slot2)
 
 	return 
 end
-EditableTrackBehaviour.on_mouse_motion = function (self, sender, track, event)
+function EditableTrackBehaviour:on_mouse_motion(sender, track, event)
 	if sender.clips and sender == track then
 		slot7 = event
 		local clip_below_cursor = sender.clip_at_event(slot5, sender)
@@ -130,7 +130,7 @@ EditableTrackBehaviour.on_mouse_motion = function (self, sender, track, event)
 
 	return 
 end
-EditableTrackBehaviour.on_mouse_left_down = function (self, sender, track, event)
+function EditableTrackBehaviour:on_mouse_left_down(sender, track, event)
 	if not sender.clips then
 		slot6 = self
 		slot9 = MovePlayheadTrackBehaviour
@@ -209,7 +209,7 @@ EditableTrackBehaviour.on_mouse_left_down = function (self, sender, track, event
 
 	return 
 end
-EditableTrackBehaviour._set_item_selected = function (self, item, selected)
+function EditableTrackBehaviour:_set_item_selected(item, selected)
 	slot6 = "set_item_selected"
 
 	if self._delegate_supports(slot4, self) then
@@ -224,7 +224,7 @@ EditableTrackBehaviour._set_item_selected = function (self, item, selected)
 
 	return 
 end
-EditableTrackBehaviour._drag_mode = function (self, clip, position)
+function EditableTrackBehaviour:_drag_mode(clip, position)
 	slot8 = -EditableTrackBehaviour.CLIP_EDGE_HANDLE_WIDTH
 
 	if clip.point_is_near_edge(slot4, clip, position, "LEFT_EDGE") then
@@ -242,7 +242,7 @@ EditableTrackBehaviour._drag_mode = function (self, clip, position)
 	return 
 end
 ClipDragTrackBehaviour.SNAP_RADIUS = 10
-ClipDragTrackBehaviour.init = function (self, clip, drag_start, mode)
+function ClipDragTrackBehaviour:init(clip, drag_start, mode)
 	slot6 = self
 
 	self.super.init(slot5)
@@ -263,7 +263,7 @@ ClipDragTrackBehaviour.init = function (self, clip, drag_start, mode)
 
 	return 
 end
-ClipDragTrackBehaviour.on_mouse_motion = function (self, sender, track, event)
+function ClipDragTrackBehaviour:on_mouse_motion(sender, track, event)
 
 	-- Decompilation error in this vicinity:
 	slot6 = self
@@ -282,7 +282,7 @@ ClipDragTrackBehaviour.on_mouse_motion = function (self, sender, track, event)
 
 	return 
 end
-ClipDragTrackBehaviour.on_mouse_left_up = function (self, sender, track, event)
+function ClipDragTrackBehaviour:on_mouse_left_up(sender, track, event)
 
 	-- Decompilation error in this vicinity:
 	slot4 = ipairs
@@ -296,7 +296,7 @@ ClipDragTrackBehaviour.on_mouse_left_up = function (self, sender, track, event)
 
 	return 
 end
-ClipDragTrackBehaviour._determine_snapped_edge = function (self, position)
+function ClipDragTrackBehaviour:_determine_snapped_edge(position)
 	if self._mode == "CLIP" then
 		local drag_delta_x = position.x - self._previous_mouse_position.x
 
@@ -309,7 +309,7 @@ ClipDragTrackBehaviour._determine_snapped_edge = function (self, position)
 
 	return 
 end
-ClipDragTrackBehaviour._time_displacement = function (self, track, event)
+function ClipDragTrackBehaviour:_time_displacement(track, event)
 	slot9 = track
 	slot6 = event.get_position(slot7, event).x - self._drag_start.x
 	local time_displacement = track.pixels_to_units(slot4, track)
@@ -323,25 +323,25 @@ ClipDragTrackBehaviour._time_displacement = function (self, track, event)
 
 	return 
 end
-ClipDragTrackBehaviour._snap_to_time = function (self, time)
+function ClipDragTrackBehaviour:_snap_to_time(time)
 	slot4 = self
 
 	return time - self._dragged_clip_edge_time(slot3)
 end
-ClipDragTrackBehaviour._snap_to_grid = function (self, track, time_displacement)
+function ClipDragTrackBehaviour:_snap_to_grid(track, time_displacement)
 	local unsnapped_time = self._dragged_clip_edge_time(slot4) + time_displacement
 	slot6 = self
 	slot10 = unsnapped_time
 
 	return self._snap_to_time(self, self._closest_grid_line_time(slot8, self))
 end
-ClipDragTrackBehaviour._closest_grid_line_time = function (self, time)
+function ClipDragTrackBehaviour:_closest_grid_line_time(time)
 	slot4 = 0
 	slot8 = 100
 
 	return math.max(slot3, math.round(slot6, time))
 end
-ClipDragTrackBehaviour._dragged_clip_edge_time = function (self)
+function ClipDragTrackBehaviour:_dragged_clip_edge_time()
 	if self._snapped_edge == "LEFT" then
 		return self._clip_initial_start_time
 	elseif self._snapped_edge == "RIGHT" then
@@ -350,7 +350,7 @@ ClipDragTrackBehaviour._dragged_clip_edge_time = function (self)
 
 	return 
 end
-ClipDragTrackBehaviour._snap_to_clips = function (self, track, time_displacement)
+function ClipDragTrackBehaviour:_snap_to_clips(track, time_displacement)
 	if not track.clips then
 		return nil
 	end
@@ -401,7 +401,7 @@ ClipDragTrackBehaviour._snap_to_clips = function (self, track, time_displacement
 
 	return closest_snapped_displacement
 end
-MovePlayheadTrackBehaviour.on_mouse_motion = function (self, sender, track, event)
+function MovePlayheadTrackBehaviour:on_mouse_motion(sender, track, event)
 	if sender == track then
 		local pos = event.get_position(slot5)
 		slot11 = sender
@@ -418,7 +418,7 @@ MovePlayheadTrackBehaviour.on_mouse_motion = function (self, sender, track, even
 
 	return 
 end
-MovePlayheadTrackBehaviour.on_mouse_left_up = function (self, sender, track, event)
+function MovePlayheadTrackBehaviour:on_mouse_left_up(sender, track, event)
 	if sender == track then
 		slot9 = event
 
@@ -431,7 +431,7 @@ MovePlayheadTrackBehaviour.on_mouse_left_up = function (self, sender, track, eve
 
 	return 
 end
-BoxSelectionTrackBehaviour.on_mouse_motion = function (self, sender, track, event)
+function BoxSelectionTrackBehaviour:on_mouse_motion(sender, track, event)
 	if sender == track then
 		slot8 = event
 
@@ -444,7 +444,7 @@ BoxSelectionTrackBehaviour.on_mouse_motion = function (self, sender, track, even
 
 	return 
 end
-BoxSelectionTrackBehaviour.on_mouse_left_up = function (self, sender, track, event)
+function BoxSelectionTrackBehaviour:on_mouse_left_up(sender, track, event)
 	if sender == track then
 		slot9 = event
 

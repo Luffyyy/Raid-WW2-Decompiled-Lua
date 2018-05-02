@@ -20,7 +20,7 @@ end
 EditUnitLight = slot0
 EditUnitLight.DEFAULT_SHADOW_RESOLUTION = 128
 EditUnitLight.DEFAULT_SPOT_PROJECTION_TEXTURE = "units/lights/spot_light_projection_textures/default_df"
-EditUnitLight.init = function (self, editor)
+function EditUnitLight:init(editor)
 	slot4 = self
 
 	EditUnitLight.super.init(slot3)
@@ -419,7 +419,7 @@ EditUnitLight.init = function (self, editor)
 
 	return 
 end
-EditUnitLight.get_spot_projection_textures = function (self)
+function EditUnitLight:get_spot_projection_textures()
 	slot4 = managers.database.base_path(slot5) .. "units\\lights\\spot_light_projection_textures"
 	local entry_path = managers.database.entry_path(slot2, managers.database)
 	slot7 = managers.database
@@ -436,7 +436,7 @@ EditUnitLight.get_spot_projection_textures = function (self)
 
 	return textures
 end
-EditUnitLight.change_light = function (self)
+function EditUnitLight:change_light()
 	slot3 = self._reference_unit
 
 	if alive(slot2) then
@@ -449,7 +449,7 @@ EditUnitLight.change_light = function (self)
 
 	return 
 end
-EditUnitLight.update_light_ctrls_from_light = function (self, light)
+function EditUnitLight:update_light_ctrls_from_light(light)
 
 	-- Decompilation error in this vicinity:
 	slot4 = self._lights_params
@@ -553,7 +553,7 @@ EditUnitLight.update_light_ctrls_from_light = function (self, light)
 
 	return 
 end
-EditUnitLight.update_falloff = function (self)
+function EditUnitLight:update_falloff()
 	slot5 = self
 
 	for _, light in ipairs(self._selected_lights(slot4)) do
@@ -564,7 +564,7 @@ EditUnitLight.update_falloff = function (self)
 
 	return 
 end
-EditUnitLight.update_linear_atten = function (self)
+function EditUnitLight:update_linear_atten()
 	slot5 = self
 
 	for _, light in ipairs(self._selected_lights(slot4)) do
@@ -575,7 +575,7 @@ EditUnitLight.update_linear_atten = function (self)
 
 	return 
 end
-EditUnitLight.update_enabled = function (self)
+function EditUnitLight:update_enabled()
 	slot5 = self
 
 	for _, light in ipairs(self._selected_lights(slot4)) do
@@ -587,7 +587,7 @@ EditUnitLight.update_enabled = function (self)
 
 	return 
 end
-EditUnitLight.show_color_dialog = function (self)
+function EditUnitLight:show_color_dialog()
 	slot8 = self._color_ctrlr
 	slot6 = self._color_ctrlr.background_colour(slot7) / 255
 	local colordlg = EWS.ColourDialog(slot2, EWS, self._panel, true)
@@ -611,7 +611,7 @@ EditUnitLight.show_color_dialog = function (self)
 
 	return 
 end
-EditUnitLight.update_intensity = function (self)
+function EditUnitLight:update_intensity()
 	slot5 = self
 
 	for _, light in ipairs(self._selected_lights(slot4)) do
@@ -630,7 +630,7 @@ EditUnitLight.update_intensity = function (self)
 
 	return 
 end
-EditUnitLight.update_near_range = function (self, params)
+function EditUnitLight:update_near_range(params)
 	slot6 = self
 
 	for _, light in ipairs(self._selected_lights(slot5)) do
@@ -641,7 +641,7 @@ EditUnitLight.update_near_range = function (self, params)
 
 	return 
 end
-EditUnitLight.update_far_range = function (self, params)
+function EditUnitLight:update_far_range(params)
 	slot6 = self
 
 	for _, light in ipairs(self._selected_lights(slot5)) do
@@ -652,7 +652,7 @@ EditUnitLight.update_far_range = function (self, params)
 
 	return 
 end
-EditUnitLight.update_clipping = function (self, value, params)
+function EditUnitLight:update_clipping(value, params)
 	slot7 = self
 
 	for _, light in ipairs(self._selected_lights(slot6)) do
@@ -679,7 +679,7 @@ EditUnitLight.update_clipping = function (self, value, params)
 
 	return 
 end
-EditUnitLight.update_start_angle = function (self)
+function EditUnitLight:update_start_angle()
 	slot5 = self
 
 	for _, light in ipairs(self._selected_lights(slot4)) do
@@ -690,7 +690,7 @@ EditUnitLight.update_start_angle = function (self)
 
 	return 
 end
-EditUnitLight.update_end_angle = function (self)
+function EditUnitLight:update_end_angle()
 	slot5 = self
 
 	for _, light in ipairs(self._selected_lights(slot4)) do
@@ -701,7 +701,7 @@ EditUnitLight.update_end_angle = function (self)
 
 	return 
 end
-EditUnitLight.update_resolution = function (self)
+function EditUnitLight:update_resolution()
 	local value = self._shadow_resolution_params.value
 	slot4 = self._selected_units
 
@@ -728,7 +728,7 @@ EditUnitLight.update_resolution = function (self)
 
 	return 
 end
-EditUnitLight.update_spot_projection_texture = function (self)
+function EditUnitLight:update_spot_projection_texture()
 	local value = self._spot_projection_texture_params.value
 	slot4 = self._selected_units
 
@@ -757,7 +757,7 @@ EditUnitLight.update_spot_projection_texture = function (self)
 
 	return 
 end
-EditUnitLight._selected_lights = function (self)
+function EditUnitLight:_selected_lights()
 	local lights = {}
 	slot4 = self._selected_units
 
@@ -779,7 +779,7 @@ EditUnitLight._selected_lights = function (self)
 
 	return lights
 end
-EditUnitLight._reference_light = function (self)
+function EditUnitLight:_reference_light()
 	slot3 = self._reference_unit
 
 	if alive(slot2) then
@@ -791,14 +791,14 @@ EditUnitLight._reference_light = function (self)
 
 	return 
 end
-EditUnitLight._is_type = function (self, type)
+function EditUnitLight:_is_type(type)
 	slot6 = self
 	slot6 = self._reference_light(slot5)
 	slot5 = type
 
 	return string.find(slot3, self._reference_light(slot5).properties(slot5))
 end
-EditUnitLight.is_editable = function (self, unit, units)
+function EditUnitLight:is_editable(unit, units)
 	slot5 = unit
 
 	if alive(slot4) then
@@ -834,14 +834,14 @@ EditUnitLight.is_editable = function (self, unit, units)
 
 	return false
 end
-EditUnitLight.update = function (self, t, dt)
+function EditUnitLight:update(t, dt)
 	slot7 = dt
 
 	self._draw(slot4, self, t)
 
 	return 
 end
-EditUnitLight._draw = function (self, t, dt)
+function EditUnitLight:_draw(t, dt)
 	if not self._debug then
 		return 
 	end
@@ -856,7 +856,7 @@ EditUnitLight._draw = function (self, t, dt)
 
 	return 
 end
-EditUnitLight._draw_light = function (self, light, t, dt)
+function EditUnitLight:_draw_light(light, t, dt)
 	slot6 = light
 
 	if not light.enable(slot5) then

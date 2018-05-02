@@ -3,7 +3,7 @@
 local tmp_vec1 = Vector3()
 slot3 = CopLogicBase
 CopLogicIntimidated = class(slot2)
-CopLogicIntimidated.enter = function (data, new_logic_name, enter_params)
+function CopLogicIntimidated.enter(data, new_logic_name, enter_params)
 	local my_data = {
 		unit = data.unit
 	}
@@ -106,7 +106,7 @@ CopLogicIntimidated.enter = function (data, new_logic_name, enter_params)
 
 	return 
 end
-CopLogicIntimidated.exit = function (data, new_logic_name, enter_params)
+function CopLogicIntimidated.exit(data, new_logic_name, enter_params)
 	slot7 = enter_params
 
 	CopLogicBase.exit(slot4, data, new_logic_name)
@@ -168,14 +168,14 @@ CopLogicIntimidated.exit = function (data, new_logic_name, enter_params)
 
 	return 
 end
-CopLogicIntimidated.death_clbk = function (data, damage_info)
+function CopLogicIntimidated.death_clbk(data, damage_info)
 	slot5 = damage_info
 
 	CopLogicIntimidated.super.death_clbk(slot3, data)
 
 	return 
 end
-CopLogicIntimidated.queued_update = function (rubbish, data)
+function CopLogicIntimidated.queued_update(rubbish, data)
 	local my_data = data.internal_data
 	slot6 = my_data
 
@@ -193,7 +193,7 @@ CopLogicIntimidated.queued_update = function (rubbish, data)
 
 	return 
 end
-CopLogicIntimidated._update_enemy_detection = function (data, my_data)
+function CopLogicIntimidated._update_enemy_detection(data, my_data)
 	slot4 = managers.groupai
 	local robbers = managers.groupai.state(slot3).all_criminals(slot3)
 	slot5 = data.unit
@@ -273,7 +273,7 @@ CopLogicIntimidated._update_enemy_detection = function (data, my_data)
 
 	return 
 end
-CopLogicIntimidated.on_action_completed = function (data, action)
+function CopLogicIntimidated.on_action_completed(data, action)
 	local my_data = data.internal_data
 	slot5 = action
 	local action_type = action.type(slot4)
@@ -296,7 +296,7 @@ CopLogicIntimidated.on_action_completed = function (data, action)
 
 	return 
 end
-CopLogicIntimidated.update = function (data)
+function CopLogicIntimidated.update(data)
 	slot3 = data.unit
 
 	if data.unit.anim_data(slot2).surrender then
@@ -319,10 +319,10 @@ CopLogicIntimidated.update = function (data)
 
 	return 
 end
-CopLogicIntimidated.can_activate = function ()
+function CopLogicIntimidated.can_activate()
 	return false
 end
-CopLogicIntimidated.on_intimidated = function (data, amount, aggressor_unit)
+function CopLogicIntimidated.on_intimidated(data, amount, aggressor_unit)
 	local my_data = data.internal_data
 
 	if not my_data.tied then
@@ -395,7 +395,7 @@ CopLogicIntimidated.on_intimidated = function (data, amount, aggressor_unit)
 
 	return 
 end
-CopLogicIntimidated._register_harassment_SO = function (data, my_data)
+function CopLogicIntimidated._register_harassment_SO(data, my_data)
 	slot5 = data.unit
 	slot5 = data.unit.rotation(data.unit)
 	local objective_pos = data.unit.position(slot3) - data.unit.rotation(data.unit).y(data.unit) * 100
@@ -450,13 +450,13 @@ CopLogicIntimidated._register_harassment_SO = function (data, my_data)
 
 	return 
 end
-CopLogicIntimidated.on_harassment_SO_administered = function (ignore_this, data, receiver_unit)
+function CopLogicIntimidated.on_harassment_SO_administered(ignore_this, data, receiver_unit)
 	local my_data = data.internal_data
 	my_data.harassment_SO_id = nil
 
 	return 
 end
-CopLogicIntimidated.on_harassment_SO_action_start = function (ignore_this, data, receiver_unit)
+function CopLogicIntimidated.on_harassment_SO_action_start(ignore_this, data, receiver_unit)
 	local my_data = data.internal_data
 	local action = {
 		variant = "harassed_kicked_from_behind",
@@ -484,7 +484,7 @@ CopLogicIntimidated.on_harassment_SO_action_start = function (ignore_this, data,
 
 	return 
 end
-CopLogicIntimidated.on_harassment_SO_failed = function (ignore_this, data, receiver_unit)
+function CopLogicIntimidated.on_harassment_SO_failed(ignore_this, data, receiver_unit)
 	local my_data = data.internal_data
 
 	if my_data.being_harassed then
@@ -509,7 +509,7 @@ CopLogicIntimidated.on_harassment_SO_failed = function (ignore_this, data, recei
 
 	return 
 end
-CopLogicIntimidated._unregister_harassment_SO = function (data, my_data)
+function CopLogicIntimidated._unregister_harassment_SO(data, my_data)
 	local my_data = data.internal_data
 
 	if my_data.harassment_SO_id then
@@ -523,7 +523,7 @@ CopLogicIntimidated._unregister_harassment_SO = function (data, my_data)
 
 	return 
 end
-CopLogicIntimidated._do_tied = function (data, aggressor_unit)
+function CopLogicIntimidated._do_tied(data, aggressor_unit)
 	local my_data = data.internal_data
 	slot5 = aggressor_unit
 
@@ -619,7 +619,7 @@ CopLogicIntimidated._do_tied = function (data, aggressor_unit)
 
 	return 
 end
-CopLogicIntimidated.on_enemy_weapons_hot = function (data)
+function CopLogicIntimidated.on_enemy_weapons_hot(data)
 	if data.internal_data.tied then
 		slot3 = data.unit
 		slot4 = "hostage_convert"
@@ -634,14 +634,14 @@ CopLogicIntimidated.on_enemy_weapons_hot = function (data)
 
 	return 
 end
-CopLogicIntimidated.on_new_objective = function (data, old_objective)
+function CopLogicIntimidated.on_new_objective(data, old_objective)
 	slot5 = old_objective
 
 	CopLogicBase.update_follow_unit(slot3, data)
 
 	return 
 end
-CopLogicIntimidated.on_alert = function (data, alert_data)
+function CopLogicIntimidated.on_alert(data, alert_data)
 	local alert_unit = alert_data[5]
 
 	if alert_unit then
@@ -682,14 +682,14 @@ CopLogicIntimidated.on_alert = function (data, alert_data)
 
 	return 
 end
-CopLogicIntimidated.is_available_for_assignment = function (data, objective)
+function CopLogicIntimidated.is_available_for_assignment(data, objective)
 	if objective and objective.forced then
 		return true
 	end
 
 	return false
 end
-CopLogicIntimidated._add_delayed_rescue_SO = function (data, my_data)
+function CopLogicIntimidated._add_delayed_rescue_SO(data, my_data)
 	if data.char_tweak.flee_type ~= "hide" then
 		slot4 = data.unit
 
@@ -733,7 +733,7 @@ CopLogicIntimidated._add_delayed_rescue_SO = function (data, my_data)
 
 	return 
 end
-CopLogicIntimidated.register_rescue_SO = function (ignore_this, data)
+function CopLogicIntimidated.register_rescue_SO(ignore_this, data)
 	local my_data = data.internal_data
 	slot6 = my_data.delayed_rescue_SO_id
 
@@ -814,7 +814,7 @@ CopLogicIntimidated.register_rescue_SO = function (ignore_this, data)
 
 	return 
 end
-CopLogicIntimidated._unregister_rescue_SO = function (data, my_data)
+function CopLogicIntimidated._unregister_rescue_SO(data, my_data)
 	if my_data.rescuer then
 		local rescuer = my_data.rescuer
 		my_data.rescuer = nil
@@ -839,14 +839,14 @@ CopLogicIntimidated._unregister_rescue_SO = function (data, my_data)
 
 	return 
 end
-CopLogicIntimidated.on_rescue_SO_administered = function (ignore_this, data, receiver_unit)
+function CopLogicIntimidated.on_rescue_SO_administered(ignore_this, data, receiver_unit)
 	local my_data = data.internal_data
 	my_data.rescuer = receiver_unit
 	my_data.rescue_SO_id = nil
 
 	return 
 end
-CopLogicIntimidated.rescue_SO_verification = function (ignore_this, data, unit)
+function CopLogicIntimidated.rescue_SO_verification(ignore_this, data, unit)
 	slot5 = unit
 	slot5 = unit.base(slot4)
 
@@ -869,7 +869,7 @@ CopLogicIntimidated.rescue_SO_verification = function (ignore_this, data, unit)
 
 	return slot3
 end
-CopLogicIntimidated.on_rescue_SO_failed = function (ignore_this, data)
+function CopLogicIntimidated.on_rescue_SO_failed(ignore_this, data)
 	local my_data = data.internal_data
 
 	if my_data.rescuer then
@@ -885,7 +885,7 @@ CopLogicIntimidated.on_rescue_SO_failed = function (ignore_this, data)
 
 	return 
 end
-CopLogicIntimidated.on_rescue_SO_completed = function (ignore_this, data, good_pig)
+function CopLogicIntimidated.on_rescue_SO_completed(ignore_this, data, good_pig)
 	slot5 = data.unit
 	slot5 = data.unit.inventory(slot4)
 
@@ -932,7 +932,7 @@ CopLogicIntimidated.on_rescue_SO_completed = function (ignore_this, data, good_p
 
 	return 
 end
-CopLogicIntimidated.on_rescue_allowed_state = function (data, state)
+function CopLogicIntimidated.on_rescue_allowed_state(data, state)
 	if state then
 		slot4 = data.unit
 
@@ -949,7 +949,7 @@ CopLogicIntimidated.on_rescue_allowed_state = function (data, state)
 
 	return 
 end
-CopLogicIntimidated.anim_clbk = function (data, event_type)
+function CopLogicIntimidated.anim_clbk(data, event_type)
 	local my_data = data.internal_data
 
 	if event_type == "harass_end" and my_data.being_harassed then
@@ -961,7 +961,7 @@ CopLogicIntimidated.anim_clbk = function (data, event_type)
 
 	return 
 end
-CopLogicIntimidated._start_action_hands_up = function (data)
+function CopLogicIntimidated._start_action_hands_up(data)
 	local my_data = data.internal_data
 	slot4 = managers.groupai
 	slot4 = managers.groupai.state(slot3)
@@ -994,7 +994,7 @@ CopLogicIntimidated._start_action_hands_up = function (data)
 
 	return 
 end
-CopLogicIntimidated._chk_begin_alarm_pager = function (data)
+function CopLogicIntimidated._chk_begin_alarm_pager(data)
 	slot3 = managers.groupai
 	slot3 = managers.groupai.state(slot2)
 

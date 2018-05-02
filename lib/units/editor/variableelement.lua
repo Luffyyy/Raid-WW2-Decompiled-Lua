@@ -6,7 +6,7 @@ end
 VariableElement = slot0
 VariableElement.SAVE_UNIT_POSITION = false
 VariableElement.SAVE_UNIT_ROTATION = false
-VariableElement.init = function (self, unit)
+function VariableElement:init(unit)
 	slot5 = unit
 
 	MissionElement.init(slot3, self)
@@ -24,7 +24,7 @@ VariableElement.init = function (self, unit)
 
 	return 
 end
-VariableElement._build_panel = function (self, panel, panel_sizer)
+function VariableElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

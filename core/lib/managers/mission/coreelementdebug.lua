@@ -12,21 +12,21 @@ if not ElementDebug then
 end
 
 ElementDebug = slot0
-ElementDebug.init = function (self, ...)
+function ElementDebug:init(...)
 	slot3 = self
 
 	ElementDebug.super.init(slot2, ...)
 
 	return 
 end
-ElementDebug.client_on_executed = function (self, ...)
+function ElementDebug:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementDebug.on_executed = function (self, instigator)
+function ElementDebug:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -50,7 +50,7 @@ ElementDebug.on_executed = function (self, instigator)
 
 	return 
 end
-ElementDebug.on_monitored_element = function (self, monitored_element_name, output_string)
+function ElementDebug:on_monitored_element(monitored_element_name, output_string)
 	if not self._values.enabled then
 		return 
 	end

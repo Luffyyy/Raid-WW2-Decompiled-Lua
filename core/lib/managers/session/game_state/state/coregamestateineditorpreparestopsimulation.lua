@@ -7,12 +7,12 @@ slot3 = "CoreGameStateInEditorStopSimulation"
 core.import(slot1, core)
 
 PrepareStopSimulation = PrepareStopSimulation or class()
-PrepareStopSimulation.init = function (self, level_handler)
+function PrepareStopSimulation:init(level_handler)
 	self._level_handler = level_handler
 
 	return 
 end
-PrepareStopSimulation.destroy = function (self)
+function PrepareStopSimulation:destroy()
 	local local_user_manager = self.game_state._session_manager._local_user_manager
 	slot4 = self.game_state
 	slot5 = self._level_handler
@@ -29,7 +29,7 @@ PrepareStopSimulation.destroy = function (self)
 
 	return 
 end
-PrepareStopSimulation.transition = function (self)
+function PrepareStopSimulation:transition()
 	slot3 = self.game_state._session_manager
 
 	if self.game_state._session_manager.all_systems_are_stable_for_loading(slot2) then

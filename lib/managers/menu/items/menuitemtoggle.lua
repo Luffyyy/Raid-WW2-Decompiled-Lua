@@ -8,7 +8,7 @@ if not MenuItemToggleWithIcon then
 end
 
 MenuItemToggleWithIcon = slot0
-MenuItemToggleWithIcon.init = function (self, data_node, parameters, ...)
+function MenuItemToggleWithIcon:init(data_node, parameters, ...)
 	slot7 = parameters
 
 	MenuItemToggleWithIcon.super.init(slot4, self, data_node, ...)
@@ -17,7 +17,7 @@ MenuItemToggleWithIcon.init = function (self, data_node, parameters, ...)
 
 	return 
 end
-MenuItemToggleWithIcon.setup_gui = function (self, node, row_item, ...)
+function MenuItemToggleWithIcon:setup_gui(node, row_item, ...)
 	slot7 = row_item
 
 	MenuItemToggleWithIcon.super.setup_gui(slot4, self, node, ...)
@@ -38,7 +38,7 @@ MenuItemToggleWithIcon.setup_gui = function (self, node, row_item, ...)
 
 	return true
 end
-MenuItemToggleWithIcon.reload = function (self, row_item, node, ...)
+function MenuItemToggleWithIcon:reload(row_item, node, ...)
 	MenuItemToggleWithIcon.super.reload(slot4, self, row_item, ...)
 
 	slot5 = self._icon
@@ -53,7 +53,7 @@ MenuItemToggleWithIcon.reload = function (self, row_item, node, ...)
 
 	return true
 end
-MenuItemToggleWithIcon.highlight_row_item = function (self, node, row_item, mouse_over, ...)
+function MenuItemToggleWithIcon:highlight_row_item(node, row_item, mouse_over, ...)
 	slot9 = mouse_over
 
 	MenuItemToggleWithIcon.super.highlight_row_item(slot5, self, node, row_item, ...)
@@ -64,7 +64,7 @@ MenuItemToggleWithIcon.highlight_row_item = function (self, node, row_item, mous
 
 	return true
 end
-MenuItemToggleWithIcon.fade_row_item = function (self, node, row_item, ...)
+function MenuItemToggleWithIcon:fade_row_item(node, row_item, ...)
 	slot7 = row_item
 
 	MenuItemToggleWithIcon.super.fade_row_item(slot4, self, node, ...)
@@ -75,7 +75,7 @@ MenuItemToggleWithIcon.fade_row_item = function (self, node, row_item, ...)
 
 	return true
 end
-MenuItemToggleWithIcon.set_icon_visible = function (self, state)
+function MenuItemToggleWithIcon:set_icon_visible(state)
 	slot5 = state
 
 	self._icon.set_visible(slot3, self._icon)

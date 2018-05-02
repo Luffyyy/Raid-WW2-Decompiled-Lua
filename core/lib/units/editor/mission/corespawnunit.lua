@@ -11,14 +11,14 @@ if not SpawnUnitUnitElement then
 end
 
 SpawnUnitUnitElement = slot0
-SpawnUnitUnitElement.init = function (self, ...)
+function SpawnUnitUnitElement:init(...)
 	slot3 = self
 
 	CoreSpawnUnitUnitElement.init(slot2, ...)
 
 	return 
 end
-CoreSpawnUnitUnitElement.init = function (self, unit)
+function CoreSpawnUnitUnitElement:init(unit)
 	slot5 = unit
 
 	MissionElement.init(slot3, self)
@@ -49,7 +49,7 @@ CoreSpawnUnitUnitElement.init = function (self, unit)
 
 	return 
 end
-CoreSpawnUnitUnitElement.test_element = function (self)
+function CoreSpawnUnitUnitElement:test_element()
 	if self._hed.unit_name ~= "none" then
 		slot4 = self._unit.position(slot5)
 		slot7 = self._unit
@@ -65,7 +65,7 @@ CoreSpawnUnitUnitElement.test_element = function (self)
 
 	return 
 end
-CoreSpawnUnitUnitElement.stop_test_element = function (self)
+function CoreSpawnUnitUnitElement:stop_test_element()
 	slot3 = self._test_units
 
 	for _, unit in ipairs(slot2) do
@@ -82,7 +82,7 @@ CoreSpawnUnitUnitElement.stop_test_element = function (self)
 
 	return 
 end
-CoreSpawnUnitUnitElement.update_selected = function (self, time, rel_time)
+function CoreSpawnUnitUnitElement:update_selected(time, rel_time)
 	slot9 = self._unit
 	slot10 = 0.75
 
@@ -90,7 +90,7 @@ CoreSpawnUnitUnitElement.update_selected = function (self, time, rel_time)
 
 	return 
 end
-CoreSpawnUnitUnitElement.update_editing = function (self, time, rel_time)
+function CoreSpawnUnitUnitElement:update_editing(time, rel_time)
 	slot5 = Input
 	local kb = Input.keyboard(slot4)
 	local speed = 60 * rel_time
@@ -149,7 +149,7 @@ CoreSpawnUnitUnitElement.update_editing = function (self, time, rel_time)
 
 	return 
 end
-CoreSpawnUnitUnitElement._build_panel = function (self, panel, panel_sizer)
+function CoreSpawnUnitUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -200,7 +200,7 @@ Bullet hit (10 g, 900 m/s)]]
 
 	return 
 end
-CoreSpawnUnitUnitElement.add_to_mission_package = function (self)
+function CoreSpawnUnitUnitElement:add_to_mission_package()
 	slot4 = {
 		category = "units",
 		name = self._hed.unit_name,

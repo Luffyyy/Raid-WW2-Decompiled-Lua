@@ -33,7 +33,7 @@ RaidGUIControlWeaponPointRewardDetails.REDEEM_VALUE_CENTER_Y_FROM_BOTTOM = 148
 RaidGUIControlWeaponPointRewardDetails.REDEEM_VALUE_FONT_SIZE = tweak_data.gui.font_sizes.size_56
 RaidGUIControlWeaponPointRewardDetails.REDEEM_VALUE_COLOR = tweak_data.gui.colors.raid_red
 RaidGUIControlWeaponPointRewardDetails.REDEEM_BUTTON_CENTER_Y_FROM_BOTTOM = 92
-RaidGUIControlWeaponPointRewardDetails.init = function (self, parent, params)
+function RaidGUIControlWeaponPointRewardDetails:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlWeaponPointRewardDetails.super.init(slot4, self, parent)
@@ -81,7 +81,7 @@ RaidGUIControlWeaponPointRewardDetails.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlWeaponPointRewardDetails._create_control_panel = function (self)
+function RaidGUIControlWeaponPointRewardDetails:_create_control_panel()
 	slot3 = self._params
 	local control_params = clone(slot2)
 	control_params.x = control_params.x
@@ -96,7 +96,7 @@ RaidGUIControlWeaponPointRewardDetails._create_control_panel = function (self)
 
 	return 
 end
-RaidGUIControlWeaponPointRewardDetails._create_left_panel = function (self)
+function RaidGUIControlWeaponPointRewardDetails:_create_left_panel()
 	local left_panel_params = {
 		name = "left_panel",
 		w = RaidGUIControlWeaponPointRewardDetails.LEFT_PANEL_W
@@ -108,7 +108,7 @@ RaidGUIControlWeaponPointRewardDetails._create_left_panel = function (self)
 
 	return 
 end
-RaidGUIControlWeaponPointRewardDetails._create_title = function (self)
+function RaidGUIControlWeaponPointRewardDetails:_create_title()
 	local title_description_params = {
 		align = "left",
 		vertical = "center",
@@ -148,7 +148,7 @@ RaidGUIControlWeaponPointRewardDetails._create_title = function (self)
 
 	return 
 end
-RaidGUIControlWeaponPointRewardDetails._layout_title = function (self)
+function RaidGUIControlWeaponPointRewardDetails:_layout_title()
 	slot3 = self._customization_name
 	local _, _, w, h = self._customization_name.text_rect(slot2)
 	slot8 = w
@@ -172,7 +172,7 @@ RaidGUIControlWeaponPointRewardDetails._layout_title = function (self)
 
 	return 
 end
-RaidGUIControlWeaponPointRewardDetails._create_reward_image = function (self)
+function RaidGUIControlWeaponPointRewardDetails:_create_reward_image()
 	local reward_image_panel_params = {
 		name = "reward_image_panel",
 		y = RaidGUIControlWeaponPointRewardDetails.REWARD_ICON_PANEL_Y
@@ -201,7 +201,7 @@ RaidGUIControlWeaponPointRewardDetails._create_reward_image = function (self)
 
 	return 
 end
-RaidGUIControlWeaponPointRewardDetails._create_redeem_info = function (self)
+function RaidGUIControlWeaponPointRewardDetails:_create_redeem_info()
 	local redeem_description_params = {
 		name = "redeem_description",
 		font = RaidGUIControlWeaponPointRewardDetails.FONT,
@@ -244,7 +244,7 @@ RaidGUIControlWeaponPointRewardDetails._create_redeem_info = function (self)
 
 	return 
 end
-RaidGUIControlWeaponPointRewardDetails._layout_redeem_info = function (self)
+function RaidGUIControlWeaponPointRewardDetails:_layout_redeem_info()
 	slot4 = "redeem_description"
 	local redeem_description = self._left_panel.child(slot2, self._left_panel)
 	slot4 = redeem_description
@@ -288,7 +288,7 @@ RaidGUIControlWeaponPointRewardDetails._layout_redeem_info = function (self)
 
 	return 
 end
-RaidGUIControlWeaponPointRewardDetails._create_right_panel = function (self)
+function RaidGUIControlWeaponPointRewardDetails:_create_right_panel()
 	local right_panel_params = {
 		name = "right_panel"
 	}
@@ -306,7 +306,7 @@ RaidGUIControlWeaponPointRewardDetails._create_right_panel = function (self)
 
 	return 
 end
-RaidGUIControlWeaponPointRewardDetails._create_item_type = function (self)
+function RaidGUIControlWeaponPointRewardDetails:_create_item_type()
 	local item_type_params = {
 		vertical = "center",
 		name = "item_type",
@@ -326,7 +326,7 @@ RaidGUIControlWeaponPointRewardDetails._create_item_type = function (self)
 
 	return 
 end
-RaidGUIControlWeaponPointRewardDetails._create_description = function (self)
+function RaidGUIControlWeaponPointRewardDetails:_create_description()
 	local description_params = {
 		vertical = "top",
 		name = "description",
@@ -349,7 +349,7 @@ RaidGUIControlWeaponPointRewardDetails._create_description = function (self)
 
 	return 
 end
-RaidGUIControlWeaponPointRewardDetails._on_click_redeem = function (self)
+function RaidGUIControlWeaponPointRewardDetails:_on_click_redeem()
 	local params = {}
 	slot6 = "redeem"
 	params.callback = callback(slot3, self, self)
@@ -360,7 +360,7 @@ RaidGUIControlWeaponPointRewardDetails._on_click_redeem = function (self)
 
 	return 
 end
-RaidGUIControlWeaponPointRewardDetails.redeem = function (self)
+function RaidGUIControlWeaponPointRewardDetails:redeem()
 	slot3 = managers.lootdrop
 
 	managers.lootdrop.redeem_dropped_loot_for_xp(slot2)

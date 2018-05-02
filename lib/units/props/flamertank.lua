@@ -2,12 +2,12 @@ FlamerTank = FlamerTank or class()
 FlamerTank.DETONATE_EVENT_ID = 1
 FlamerTank.EXTENSION = "base"
 FlamerTank.EXPLOSION_TYPE = "flamer_death_fake"
-FlamerTank.init = function (self, unit)
+function FlamerTank:init(unit)
 	self._unit = unit
 
 	return 
 end
-FlamerTank.detonate = function (self, in_pos, range, damage, player_damage)
+function FlamerTank:detonate(in_pos, range, damage, player_damage)
 	slot8 = "[FlamerTank:detonate]"
 
 	Application.trace(slot6, Application)

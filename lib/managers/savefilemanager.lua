@@ -70,7 +70,7 @@ SavefileManager.SAVE_SYSTEM = "steam_cloud"
 SavefileManager._USER_ID_OVERRRIDE = nil
 SavefileManager.CHARACTER_PROFILE_SLOTS_COUNT = 5
 SavefileManager.CHARACTER_PROFILE_STARTING_SLOT = 11
-function SavefileManager:init()
+SavefileManager.init = function (self)
 	slot3 = CoreEvent.CallbackEventHandler
 	self._active_changed_callback_handler = CoreEvent.CallbackEventHandler.new(slot2)
 	slot3 = CoreEvent.CallbackEventHandler
@@ -111,30 +111,30 @@ function SavefileManager:init()
 
 	return 
 end
-function SavefileManager:set_save_progress_slot(slot_index)
+SavefileManager.set_save_progress_slot = function (self, slot_index)
 	Global.savefile_manager.save_progress_slot = slot_index
 
 	return 
 end
-function SavefileManager:get_save_progress_slot()
+SavefileManager.get_save_progress_slot = function (self)
 	return Global.savefile_manager.save_progress_slot or SavefileManager.PROGRESS_SLOT
 end
-function SavefileManager:set_create_character_slot(slot_index)
+SavefileManager.set_create_character_slot = function (self, slot_index)
 	Global.savefile_manager.create_character_slot = slot_index
 
 	return 
 end
-function SavefileManager:get_create_character_slot()
+SavefileManager.get_create_character_slot = function (self)
 	return Global.savefile_manager.create_character_slot or SavefileManager.PROGRESS_SLOT
 end
-function SavefileManager:resolution_changed()
+SavefileManager.resolution_changed = function (self)
 	slot4 = self._workspace
 
 	managers.gui_data.layout_workspace(slot2, managers.gui_data)
 
 	return 
 end
-function SavefileManager:destroy()
+SavefileManager.destroy = function (self)
 	if self._workspace then
 		slot3 = Overlay
 		slot4 = self._workspace
@@ -146,7 +146,7 @@ function SavefileManager:destroy()
 
 	return 
 end
-function SavefileManager:active_user_changed()
+SavefileManager.active_user_changed = function (self)
 	if managers.user.STORE_SETTINGS_ON_PROFILE then
 		slot4 = true
 
@@ -164,7 +164,7 @@ function SavefileManager:active_user_changed()
 
 	return 
 end
-function SavefileManager:storage_changed()
+SavefileManager.storage_changed = function (self)
 	slot4 = nil
 	local storage_device_selected = managers.user.is_storage_selected(slot2, managers.user)
 
@@ -215,7 +215,7 @@ function SavefileManager:storage_changed()
 
 	return 
 end
-function SavefileManager:check_space_required()
+SavefileManager.check_space_required = function (self)
 	local task_data = {
 		queued_in_save_manager = true,
 		task_type = self.CHECK_SPACE_REQUIRED_TASK_TYPE
@@ -235,7 +235,7 @@ function SavefileManager:check_space_required()
 
 	return 
 end
-function SavefileManager:clear_progress_data()
+SavefileManager.clear_progress_data = function (self)
 	slot4 = 11
 
 	self._remove(slot2, self)
@@ -326,21 +326,21 @@ function SavefileManager:clear_progress_data()
 
 	return 
 end
-function SavefileManager:setting_changed()
+SavefileManager.setting_changed = function (self)
 	slot4 = true
 
 	self._set_setting_changed(slot2, self)
 
 	return 
 end
-function SavefileManager:save_game(slot, cache_only)
+SavefileManager.save_game = function (self, slot, cache_only)
 	slot7 = cache_only
 
 	self._save(slot4, self, slot)
 
 	return 
 end
-function SavefileManager:save_setting(is_user_initiated_action)
+SavefileManager.save_setting = function (self, is_user_initiated_action)
 	slot5 = is_user_initiated_action
 
 	if self._is_saving_setting_allowed(slot3, self) then
@@ -351,7 +351,7 @@ function SavefileManager:save_setting(is_user_initiated_action)
 
 	return 
 end
-function SavefileManager:save_progress(save_system)
+SavefileManager.save_progress = function (self, save_system)
 	slot4 = self
 
 	if self._is_saving_progress_allowed(slot3) then
@@ -366,7 +366,7 @@ function SavefileManager:save_progress(save_system)
 
 	return 
 end
-function SavefileManager:load_progress(save_system)
+SavefileManager.load_progress = function (self, save_system)
 	local progress_slot = self.get_save_progress_slot(slot3)
 	slot8 = save_system
 
@@ -374,24 +374,24 @@ function SavefileManager:load_progress(save_system)
 
 	return 
 end
-function SavefileManager:load_game(slot, cache_only)
+SavefileManager.load_game = function (self, slot, cache_only)
 	slot7 = cache_only
 
 	self._load(slot4, self, slot)
 
 	return 
 end
-function SavefileManager:load_settings()
+SavefileManager.load_settings = function (self)
 	slot4 = self.SETTING_SLOT
 
 	self._load(slot2, self)
 
 	return 
 end
-function SavefileManager:current_game_cache_slot()
+SavefileManager.current_game_cache_slot = function (self)
 	return Global.savefile_manager.current_game_cache_slot
 end
-function SavefileManager:update(t, dt)
+SavefileManager.update = function (self, t, dt)
 	slot5 = self
 
 	self.update_gui_visibility(slot4)
@@ -414,7 +414,7 @@ function SavefileManager:update(t, dt)
 
 	return 
 end
-function SavefileManager:_is_loading()
+SavefileManager._is_loading = function (self)
 	slot3 = self._queued_tasks
 
 	for i, task_data in ipairs(slot2) do
@@ -425,7 +425,7 @@ function SavefileManager:_is_loading()
 
 	return 
 end
-function SavefileManager:_on_load_sequence_complete()
+SavefileManager._on_load_sequence_complete = function (self)
 	slot4 = "[SavefileManager:_on_load_sequence_complete]"
 	slot7 = Application
 
@@ -438,10 +438,10 @@ function SavefileManager:_on_load_sequence_complete()
 
 	return 
 end
-function SavefileManager:is_in_loading_sequence()
+SavefileManager.is_in_loading_sequence = function (self)
 	return self._loading_sequence
 end
-function SavefileManager:break_loading_sequence()
+SavefileManager.break_loading_sequence = function (self)
 	slot4 = "SavefileManager:break_loading_sequence()"
 
 	cat_print(slot2, "savefile_manager")
@@ -468,14 +468,14 @@ function SavefileManager:break_loading_sequence()
 
 	return 
 end
-function SavefileManager:paused_update(t, dt)
+SavefileManager.paused_update = function (self, t, dt)
 	slot5 = self
 
 	self.update_gui_visibility(slot4)
 
 	return 
 end
-function SavefileManager:update_current_task_type()
+SavefileManager.update_current_task_type = function (self)
 	local current_task_data = self._queued_tasks[1]
 	slot5 = (current_task_data and current_task_data.task_type) or self.IDLE_TASK_TYPE
 
@@ -483,7 +483,7 @@ function SavefileManager:update_current_task_type()
 
 	return 
 end
-function SavefileManager:update_gui_visibility()
+SavefileManager.update_gui_visibility = function (self)
 	if self._hide_gui_time then
 		slot3 = TimerManager
 		slot3 = TimerManager.wall(slot2)
@@ -498,15 +498,15 @@ function SavefileManager:update_gui_visibility()
 
 	return 
 end
-function SavefileManager:debug_get_task_name(task_type)
+SavefileManager.debug_get_task_name = function (self, task_type)
 	return self.DEBUG_TASK_TYPE_NAME_LIST[task_type] or "Invalid"
 end
-function SavefileManager:is_active()
+SavefileManager.is_active = function (self)
 	slot3 = self._queued_tasks
 
 	return (next(slot2) and true) or false
 end
-function SavefileManager:get_save_info_list(include_empty_slot)
+SavefileManager.get_save_info_list = function (self, include_empty_slot)
 	local data_list = {}
 	local save_info_list = {}
 	slot6 = Global.savefile_manager.meta_data_list
@@ -569,91 +569,91 @@ function SavefileManager:get_save_info_list(include_empty_slot)
 
 	return save_info_list
 end
-function SavefileManager:add_active_changed_callback(callback_func)
+SavefileManager.add_active_changed_callback = function (self, callback_func)
 	slot5 = callback_func
 
 	self._active_changed_callback_handler.add(slot3, self._active_changed_callback_handler)
 
 	return 
 end
-function SavefileManager:remove_active_changed_callback(callback_func)
+SavefileManager.remove_active_changed_callback = function (self, callback_func)
 	slot5 = callback_func
 
 	self._active_changed_callback_handler.remove(slot3, self._active_changed_callback_handler)
 
 	return 
 end
-function SavefileManager:add_save_begin_callback(callback_func)
+SavefileManager.add_save_begin_callback = function (self, callback_func)
 	slot5 = callback_func
 
 	self._save_begin_callback_handler.add(slot3, self._save_begin_callback_handler)
 
 	return 
 end
-function SavefileManager:remove_save_begin_callback(callback_func)
+SavefileManager.remove_save_begin_callback = function (self, callback_func)
 	slot5 = callback_func
 
 	self._save_begin_callback_handler.remove(slot3, self._save_begin_callback_handler)
 
 	return 
 end
-function SavefileManager:add_save_done_callback(callback_func)
+SavefileManager.add_save_done_callback = function (self, callback_func)
 	slot5 = callback_func
 
 	self._save_done_callback_handler.add(slot3, self._save_done_callback_handler)
 
 	return 
 end
-function SavefileManager:remove_save_done_callback(callback_func)
+SavefileManager.remove_save_done_callback = function (self, callback_func)
 	slot5 = callback_func
 
 	self._save_done_callback_handler.remove(slot3, self._save_done_callback_handler)
 
 	return 
 end
-function SavefileManager:add_load_begin_callback(callback_func)
+SavefileManager.add_load_begin_callback = function (self, callback_func)
 	slot5 = callback_func
 
 	self._load_begin_callback_handler.add(slot3, self._load_begin_callback_handler)
 
 	return 
 end
-function SavefileManager:remove_load_begin_callback(callback_func)
+SavefileManager.remove_load_begin_callback = function (self, callback_func)
 	slot5 = callback_func
 
 	self._load_begin_callback_handler.remove(slot3, self._load_begin_callback_handler)
 
 	return 
 end
-function SavefileManager:add_load_done_callback(callback_func)
+SavefileManager.add_load_done_callback = function (self, callback_func)
 	slot5 = callback_func
 
 	self._load_done_callback_handler.add(slot3, self._load_done_callback_handler)
 
 	return 
 end
-function SavefileManager:remove_load_done_callback(callback_func)
+SavefileManager.remove_load_done_callback = function (self, callback_func)
 	slot5 = callback_func
 
 	self._load_done_callback_handler.remove(slot3, self._load_done_callback_handler)
 
 	return 
 end
-function SavefileManager:add_load_sequence_done_callback_handler(callback_func)
+SavefileManager.add_load_sequence_done_callback_handler = function (self, callback_func)
 	slot5 = callback_func
 
 	self._load_sequence_done_callback_handler.add(slot3, self._load_sequence_done_callback_handler)
 
 	return 
 end
-function SavefileManager:remove_load_sequence_done_callback_handler(callback_func)
+SavefileManager.remove_load_sequence_done_callback_handler = function (self, callback_func)
 	slot5 = callback_func
 
 	self._load_sequence_done_callback_handler.remove(slot3, self._load_sequence_done_callback_handler)
 
 	return 
 end
-function SavefileManager:_clean_meta_data_list(is_setting_slot)
+SavefileManager._clean_meta_data_list = function (self, is_setting_slot)
 	if is_setting_slot then
 		Global.savefile_manager.meta_data_list[self.SETTING_SLOT] = nil
 	else
@@ -678,7 +678,7 @@ function SavefileManager:_clean_meta_data_list(is_setting_slot)
 
 	return 
 end
-function SavefileManager:_save(slot, cache_only, save_system)
+SavefileManager._save = function (self, slot, cache_only, save_system)
 	local is_setting_slot = slot == self.SETTING_SLOT
 	slot7 = self
 	local is_progress_slot = slot == self.get_save_progress_slot(slot6)
@@ -772,7 +772,7 @@ function SavefileManager:_save(slot, cache_only, save_system)
 
 	return 
 end
-function SavefileManager:_save_cache(slot)
+SavefileManager._save_cache = function (self, slot)
 	slot8 = slot
 	slot5 = "[SavefileManager] Saves slot \"" .. tostring(slot7) .. "\" to cache."
 
@@ -933,7 +933,7 @@ function SavefileManager:_save_cache(slot)
 
 	return 
 end
-function SavefileManager:_save_done(slot, cache_only, task_data, slot_data, success)
+SavefileManager._save_done = function (self, slot, cache_only, task_data, slot_data, success)
 	if not success then
 		slot10 = nil
 
@@ -981,7 +981,7 @@ function SavefileManager:_save_done(slot, cache_only, task_data, slot_data, succ
 
 	return 
 end
-function SavefileManager:_load(slot, cache_only, save_system)
+SavefileManager._load = function (self, slot, cache_only, save_system)
 	local is_setting_slot = slot == self.SETTING_SLOT
 
 	if not is_setting_slot then
@@ -1063,7 +1063,7 @@ function SavefileManager:_load(slot, cache_only, save_system)
 
 	return 
 end
-function SavefileManager:_on_task_queued(task_data)
+SavefileManager._on_task_queued = function (self, task_data)
 	slot5 = "[SavefileManager:_on_task_queued]"
 	slot8 = task_data
 
@@ -1106,7 +1106,7 @@ function SavefileManager:_on_task_queued(task_data)
 
 	return 
 end
-function SavefileManager:_on_task_completed(task_data)
+SavefileManager._on_task_completed = function (self, task_data)
 	slot4 = self._queued_tasks
 
 	for i, test_task_data in ipairs(slot3) do
@@ -1129,7 +1129,7 @@ function SavefileManager:_on_task_completed(task_data)
 
 	return 
 end
-function SavefileManager:_load_done(slot, cache_only, wrong_user, wrong_version)
+SavefileManager._load_done = function (self, slot, cache_only, wrong_user, wrong_version)
 	local is_setting_slot = slot == self.SETTING_SLOT
 	slot8 = self
 	local is_progress_slot = slot == self.get_save_progress_slot(slot7)
@@ -1377,7 +1377,7 @@ function SavefileManager:_load_done(slot, cache_only, wrong_user, wrong_version)
 		end
 	end
 end
-function SavefileManager:_remove(slot, save_system)
+SavefileManager._remove = function (self, slot, save_system)
 	local task_data = {
 		queued_in_save_manager = true,
 		first_slot = slot,
@@ -1403,12 +1403,12 @@ function SavefileManager:_remove(slot, save_system)
 
 	return 
 end
-function SavefileManager:set_resave_required()
+SavefileManager.set_resave_required = function (self)
 	self._resave_required = true
 
 	return 
 end
-function SavefileManager:_load_cache(slot)
+SavefileManager._load_cache = function (self, slot)
 	slot8 = slot
 	slot5 = "[SavefileManager] Loads cached slot \"" .. tostring(slot7) .. "\"."
 
@@ -1543,7 +1543,7 @@ function SavefileManager:_load_cache(slot)
 
 	return 
 end
-function SavefileManager:_meta_data(slot)
+SavefileManager._meta_data = function (self, slot)
 	local meta_data = Global.savefile_manager.meta_data_list[slot]
 
 	if not meta_data then
@@ -1564,7 +1564,7 @@ function SavefileManager:_meta_data(slot)
 
 	return meta_data
 end
-function SavefileManager:_set_current_task_type(task_type)
+SavefileManager._set_current_task_type = function (self, task_type)
 	local old_task_type = self._current_task_type
 
 	if old_task_type ~= task_type then
@@ -1596,7 +1596,7 @@ function SavefileManager:_set_current_task_type(task_type)
 
 	return 
 end
-function SavefileManager:_set_current_game_cache_slot(current_game_cache_slot, dont_clear_old_cache)
+SavefileManager._set_current_game_cache_slot = function (self, current_game_cache_slot, dont_clear_old_cache)
 	if not dont_clear_old_cache then
 		local old_slot = Global.savefile_manager.current_game_cache_slot
 
@@ -1621,7 +1621,7 @@ function SavefileManager:_set_current_game_cache_slot(current_game_cache_slot, d
 
 	return 
 end
-function SavefileManager:_set_corrupt(slot, is_corrupt)
+SavefileManager._set_corrupt = function (self, slot, is_corrupt)
 	slot6 = slot
 	local meta_data = self._meta_data(slot4, self)
 
@@ -1637,7 +1637,7 @@ function SavefileManager:_set_corrupt(slot, is_corrupt)
 
 	return 
 end
-function SavefileManager:_set_synched_cache(slot, is_synched_cache)
+SavefileManager._set_synched_cache = function (self, slot, is_synched_cache)
 	slot6 = slot
 	local meta_data = self._meta_data(slot4, self)
 
@@ -1653,7 +1653,7 @@ function SavefileManager:_set_synched_cache(slot, is_synched_cache)
 
 	return 
 end
-function SavefileManager:_set_cache(slot, cache)
+SavefileManager._set_cache = function (self, slot, cache)
 	slot6 = slot
 	local meta_data = self._meta_data(slot4, self)
 
@@ -1670,7 +1670,7 @@ function SavefileManager:_set_cache(slot, cache)
 
 	return 
 end
-function SavefileManager:_set_setting_changed(setting_changed)
+SavefileManager._set_setting_changed = function (self, setting_changed)
 	if not Global.savefile_manager.setting_changed ~= not setting_changed then
 		slot8 = setting_changed
 		slot5 = "[SavefileManager] Setting changed: \"" .. tostring(slot7) .. "\"."
@@ -1682,7 +1682,7 @@ function SavefileManager:_set_setting_changed(setting_changed)
 
 	return 
 end
-function SavefileManager:_is_saving_progress_allowed()
+SavefileManager._is_saving_progress_allowed = function (self)
 	slot4 = nil
 
 	if not managers.user.is_signed_in(slot2, managers.user) then
@@ -1713,7 +1713,7 @@ function SavefileManager:_is_saving_progress_allowed()
 
 	return true
 end
-function SavefileManager:_is_saving_setting_allowed(is_user_initiated_action)
+SavefileManager._is_saving_setting_allowed = function (self, is_user_initiated_action)
 	slot5 = nil
 
 	if not managers.user.is_signed_in(slot3, managers.user) then
@@ -1757,10 +1757,10 @@ function SavefileManager:_is_saving_setting_allowed(is_user_initiated_action)
 
 	return true
 end
-function SavefileManager:fetch_savegame_hdd_space_required()
+SavefileManager.fetch_savegame_hdd_space_required = function (self)
 	return self._savegame_hdd_space_required
 end
-function SavefileManager:_ask_load_backup(reason, dialog_at_init, load_params)
+SavefileManager._ask_load_backup = function (self, reason, dialog_at_init, load_params)
 	dialog_at_init = false
 	local dialog_data = {}
 	slot8 = "dialog_error_title"
@@ -1839,7 +1839,7 @@ function SavefileManager:_ask_load_backup(reason, dialog_at_init, load_params)
 
 	return 
 end
-function SavefileManager:clbk_result_load_platform_setting_map(task_data, platform_setting_map)
+SavefileManager.clbk_result_load_platform_setting_map = function (self, task_data, platform_setting_map)
 	slot6 = "[SavefileManager:clbk_result_load_platform_setting_map]"
 
 	cat_print(slot4, "savefile_manager")
@@ -1867,7 +1867,7 @@ function SavefileManager:clbk_result_load_platform_setting_map(task_data, platfo
 
 	return 
 end
-function SavefileManager:reset_progress_managers()
+SavefileManager.reset_progress_managers = function (self)
 	slot3 = managers.blackmarket
 
 	managers.blackmarket._setup(slot2)
@@ -1906,7 +1906,7 @@ function SavefileManager:reset_progress_managers()
 
 	return 
 end
-function SavefileManager:save_last_selected_character_profile_slot()
+SavefileManager.save_last_selected_character_profile_slot = function (self)
 	local progress_slot = managers.savefile.get_save_progress_slot(slot2)
 	slot7 = true
 
@@ -1922,7 +1922,7 @@ function SavefileManager:save_last_selected_character_profile_slot()
 
 	return 
 end
-function SavefileManager:clbk_result_load(task_data, result_data)
+SavefileManager.clbk_result_load = function (self, task_data, result_data)
 	slot6 = task_data
 
 	if not self._on_task_completed(slot4, self) then
@@ -2011,7 +2011,7 @@ function SavefileManager:clbk_result_load(task_data, result_data)
 
 	return 
 end
-function SavefileManager:clbk_result_load_backup(task_data, result_data)
+SavefileManager.clbk_result_load_backup = function (self, task_data, result_data)
 	slot6 = task_data
 
 	if not self._on_task_completed(slot4, self) then
@@ -2062,7 +2062,7 @@ function SavefileManager:clbk_result_load_backup(task_data, result_data)
 
 	return 
 end
-function SavefileManager:clbk_result_remove(task_data, result_data)
+SavefileManager.clbk_result_remove = function (self, task_data, result_data)
 	slot7 = inspect(slot8)
 	slot10 = result_data
 
@@ -2076,7 +2076,7 @@ function SavefileManager:clbk_result_remove(task_data, result_data)
 
 	return 
 end
-function SavefileManager:clbk_result_iterate_savegame_slots(task_data, result_data)
+SavefileManager.clbk_result_iterate_savegame_slots = function (self, task_data, result_data)
 	slot6 = task_data
 
 	if not self._on_task_completed(slot4, self) then
@@ -2116,7 +2116,7 @@ function SavefileManager:clbk_result_iterate_savegame_slots(task_data, result_da
 
 	return 
 end
-function SavefileManager:clbk_result_save(task_data, result_data)
+SavefileManager.clbk_result_save = function (self, task_data, result_data)
 	slot6 = task_data
 
 	if not self._on_task_completed(slot4, self) then
@@ -2165,7 +2165,7 @@ function SavefileManager:clbk_result_save(task_data, result_data)
 
 	return 
 end
-function SavefileManager:clbk_result_save_platform_setting(task_data, success)
+SavefileManager.clbk_result_save_platform_setting = function (self, task_data, success)
 	slot9 = task_data
 
 	cat_print(slot4, "savefile_manager", "[SavefileManager:clbk_result_save_platform_setting]", inspect(success))
@@ -2192,7 +2192,7 @@ function SavefileManager:clbk_result_save_platform_setting(task_data, success)
 
 	return 
 end
-function SavefileManager:clbk_result_space_required(task_data, result_data)
+SavefileManager.clbk_result_space_required = function (self, task_data, result_data)
 	slot6 = "[SavefileManager:clbk_result_space_required] table.size(result_data)"
 	slot9 = result_data
 
@@ -2216,7 +2216,7 @@ function SavefileManager:clbk_result_space_required(task_data, result_data)
 
 	return 
 end
-function SavefileManager:get_active_characters_count()
+SavefileManager.get_active_characters_count = function (self)
 	local result = 0
 
 	if Global and Global.savefile_manager and Global.savefile_manager.meta_data_list then
@@ -2230,16 +2230,16 @@ function SavefileManager:get_active_characters_count()
 	return result
 end
 SavefileInfo = SavefileInfo or class()
-function SavefileInfo:init(slot, text)
+SavefileInfo.init = function (self, slot, text)
 	self._slot = slot
 	self._text = text
 
 	return 
 end
-function SavefileInfo:slot()
+SavefileInfo.slot = function (self)
 	return self._slot
 end
-function SavefileInfo:text()
+SavefileInfo.text = function (self)
 	return self._text
 end
 

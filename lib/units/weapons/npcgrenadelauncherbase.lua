@@ -4,7 +4,7 @@ if not NPCGrenadeLauncherBase then
 end
 
 NPCGrenadeLauncherBase = slot0
-NPCGrenadeLauncherBase.init = function (self, ...)
+function NPCGrenadeLauncherBase:init(...)
 	slot3 = self
 
 	NPCGrenadeLauncherBase.super.init(slot2, ...)
@@ -13,10 +13,10 @@ NPCGrenadeLauncherBase.init = function (self, ...)
 
 	return 
 end
-NPCGrenadeLauncherBase.ejects_shells = function (self)
+function NPCGrenadeLauncherBase:ejects_shells()
 	return false
 end
-NPCGrenadeLauncherBase.fire_blank = function (self, direction, impact)
+function NPCGrenadeLauncherBase:fire_blank(direction, impact)
 	slot5 = World
 	slot6 = self._muzzle_effect_table
 
@@ -28,7 +28,7 @@ NPCGrenadeLauncherBase.fire_blank = function (self, direction, impact)
 
 	return 
 end
-NPCGrenadeLauncherBase.singleshot = function (self, from_pos, direction, dmg_mul, shoot_player, spread_mul, autohit_mul, suppr_mul, target_unit)
+function NPCGrenadeLauncherBase:singleshot(from_pos, direction, dmg_mul, shoot_player, spread_mul, autohit_mul, suppr_mul, target_unit)
 	slot11 = Network
 
 	if not Network.is_server(slot10) then
@@ -73,7 +73,7 @@ end
 local mvec_to = Vector3()
 local mvec_spread_direction = Vector3()
 local mvec1 = Vector3()
-NPCGrenadeLauncherBase._fire_raycast = function (self, user_unit, from_pos, direction, dmg_mul, shoot_player, spread_mul, autohit_mul, suppr_mul, target_unit)
+function NPCGrenadeLauncherBase:_fire_raycast(user_unit, from_pos, direction, dmg_mul, shoot_player, spread_mul, autohit_mul, suppr_mul, target_unit)
 	local result = {}
 	local hit_unit = nil
 	slot15 = user_unit

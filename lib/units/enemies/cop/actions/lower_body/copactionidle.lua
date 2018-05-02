@@ -12,7 +12,7 @@ local idstr_look_upper_body = Idstring(slot8)
 local idstr_look_head = Idstring("look_upper_body")
 slot11 = "Head"
 local idstr_head = Idstring("look_head")
-CopActionIdle.init = function (self, action_desc, common_data)
+function CopActionIdle:init(action_desc, common_data)
 	if action_desc.non_persistent then
 		return 
 	end
@@ -104,7 +104,7 @@ CopActionIdle.init = function (self, action_desc, common_data)
 
 	return true
 end
-CopActionIdle.on_exit = function (self)
+function CopActionIdle:on_exit()
 	if self._modifier_on then
 		self._modifier_on = nil
 		slot4 = self._modifier_name
@@ -122,7 +122,7 @@ CopActionIdle.on_exit = function (self)
 
 	return 
 end
-CopActionIdle.update = function (self, t)
+function CopActionIdle:update(t)
 	if self._attention then
 		local ik_enable = true
 		slot5 = self._ext_movement
@@ -252,10 +252,10 @@ CopActionIdle.update = function (self, t)
 
 	return 
 end
-CopActionIdle.type = function (self)
+function CopActionIdle:type()
 	return "idle"
 end
-CopActionIdle.on_attention = function (self, attention)
+function CopActionIdle:on_attention(attention)
 	if self._body_part ~= 1 and self._body_part ~= 3 then
 		return 
 	end
@@ -340,10 +340,10 @@ CopActionIdle.on_attention = function (self, attention)
 
 	return 
 end
-CopActionIdle.need_upd = function (self)
+function CopActionIdle:need_upd()
 	return (self._attention and (self._attention.unit or self._look_trans) and true) or false
 end
-CopActionIdle.save = function (self, save_data)
+function CopActionIdle:save(save_data)
 	if self._body_part == 1 then
 		save_data.is_save = true
 		save_data.type = "idle"

@@ -4,7 +4,7 @@ if not SpawnVehicleElement then
 end
 
 SpawnVehicleElement = slot0
-SpawnVehicleElement.init = function (self, unit)
+function SpawnVehicleElement:init(unit)
 	slot6 = unit
 
 	Application.trace(slot3, Application, "SpawnVehicleElement:init")
@@ -36,7 +36,7 @@ SpawnVehicleElement.init = function (self, unit)
 
 	return 
 end
-SpawnVehicleElement._build_panel = function (self, panel, panel_sizer)
+function SpawnVehicleElement:_build_panel(panel, panel_sizer)
 	slot6 = "SpawnVehicleElement:_build_panel"
 
 	Application.trace(slot4, Application)
@@ -57,7 +57,7 @@ SpawnVehicleElement._build_panel = function (self, panel, panel_sizer)
 
 	return 
 end
-SpawnVehicleElement.add_to_mission_package = function (self)
+function SpawnVehicleElement:add_to_mission_package()
 	slot4 = "SpawnVehicleElement:add_to_mission_package"
 
 	Application.trace(slot2, Application)

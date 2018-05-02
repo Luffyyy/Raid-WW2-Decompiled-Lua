@@ -9,7 +9,7 @@ if not HuskCivilianBase then
 end
 
 HuskCivilianBase = slot3
-HuskCivilianBase.post_init = function (self)
+function HuskCivilianBase:post_init()
 	slot3 = self._unit
 	self._ext_movement = self._unit.movement(slot2)
 	slot3 = self._unit
@@ -51,10 +51,10 @@ HuskCivilianBase.post_init = function (self)
 
 	return 
 end
-HuskCivilianBase.default_weapon_name = function (self)
+function HuskCivilianBase:default_weapon_name()
 	return 
 end
-HuskCivilianBase.sync_net_event = function (self, event_id)
+function HuskCivilianBase:sync_net_event(event_id)
 	if event_id == 1 then
 		slot4 = managers.groupai
 		slot7 = managers.player

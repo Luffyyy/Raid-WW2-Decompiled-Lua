@@ -4,7 +4,7 @@ if not TankTurretWeapon then
 end
 
 TankTurretWeapon = slot0
-TankTurretWeapon.init = function (self, unit)
+function TankTurretWeapon:init(unit)
 	slot5 = unit
 
 	TankTurretWeapon.super.init(slot3, self)
@@ -18,7 +18,7 @@ TankTurretWeapon.init = function (self, unit)
 
 	return 
 end
-TankTurretWeapon.setup = function (self, setup_data, damage_multiplier)
+function TankTurretWeapon:setup(setup_data, damage_multiplier)
 	slot7 = damage_multiplier
 
 	TankTurretWeapon.super.setup(slot4, self, setup_data)
@@ -32,7 +32,7 @@ TankTurretWeapon.setup = function (self, setup_data, damage_multiplier)
 
 	return 
 end
-TankTurretWeapon.play_lock_on_sound = function (self)
+function TankTurretWeapon:play_lock_on_sound()
 	slot3 = self._unit
 	local sound_source = self._unit.sound_source(slot2)
 	local weapon_tweak_data = self._tweak_data
@@ -45,7 +45,7 @@ TankTurretWeapon.play_lock_on_sound = function (self)
 
 	return 
 end
-TankTurretWeapon.start_autofire = function (self)
+function TankTurretWeapon:start_autofire()
 	slot3 = "[TankTurretWeapon:start_autofire] start_autofire() not supported by the tank turret, unit: "
 	slot6 = self._unit
 
@@ -53,7 +53,7 @@ TankTurretWeapon.start_autofire = function (self)
 
 	return 
 end
-TankTurretWeapon.stop_autofire = function (self)
+function TankTurretWeapon:stop_autofire()
 	slot3 = "[TankTurretWeapon:start_autofire] stop_autofire() not supported by the tank turret, unit: "
 	slot6 = self._unit
 
@@ -61,7 +61,7 @@ TankTurretWeapon.stop_autofire = function (self)
 
 	return 
 end
-TankTurretWeapon.trigger_held = function (self, blanks, expend_ammo, shoot_player, target_unit)
+function TankTurretWeapon:trigger_held(blanks, expend_ammo, shoot_player, target_unit)
 	slot7 = "[TankTurretWeapon:start_autofire] autofire() not supported by the tank turret, unit: "
 	slot10 = self._unit
 
@@ -69,7 +69,7 @@ TankTurretWeapon.trigger_held = function (self, blanks, expend_ammo, shoot_playe
 
 	return 
 end
-TankTurretWeapon.singleshot = function (self, blanks, expend_ammo, shoot_player, target_pos)
+function TankTurretWeapon:singleshot(blanks, expend_ammo, shoot_player, target_pos)
 	slot7 = Network
 
 	if not Network.is_server(slot6) then
@@ -115,7 +115,7 @@ TankTurretWeapon.singleshot = function (self, blanks, expend_ammo, shoot_player,
 
 	return 
 end
-TankTurretWeapon.play_singleshot_sound_and_effect = function (self, position, normal)
+function TankTurretWeapon:play_singleshot_sound_and_effect(position, normal)
 	local weapon_tweak_data = self._tweak_data
 	local effect_range = weapon_tweak_data.sound.main_cannon_fire_tinnitus_range
 	slot7 = World
@@ -166,7 +166,7 @@ TankTurretWeapon.play_singleshot_sound_and_effect = function (self, position, no
 
 	return 
 end
-TankTurretWeapon.update = function (self, unit, t, dt)
+function TankTurretWeapon:update(unit, t, dt)
 	if self._test_delete_after then
 		slot6 = self._test_delete_after
 
@@ -244,7 +244,7 @@ TankTurretWeapon.update = function (self, unit, t, dt)
 
 	return 
 end
-TankTurretWeapon._hit_explosion = function (self, raycast, hit_position)
+function TankTurretWeapon:_hit_explosion(raycast, hit_position)
 	slot5 = Network
 
 	if not Network.is_server(slot4) then
@@ -289,7 +289,7 @@ TankTurretWeapon._hit_explosion = function (self, raycast, hit_position)
 
 	return 
 end
-TankTurretWeapon._hit_explosion_on_client = function (self, position, radius, damage, player_damage, curve_pow)
+function TankTurretWeapon:_hit_explosion_on_client(position, radius, damage, player_damage, curve_pow)
 	local sound_event = "grenade_explode"
 	local damage_radius = radius or self._tweak_data.turret.damage_radius or 1000
 	local custom_params = {
@@ -309,7 +309,7 @@ TankTurretWeapon._hit_explosion_on_client = function (self, position, radius, da
 
 	return 
 end
-TankTurretWeapon.adjust_target_pos = function (self, target_pos)
+function TankTurretWeapon:adjust_target_pos(target_pos)
 	slot6 = 150
 
 	return target_pos - Vector3(slot3, 0, 0)

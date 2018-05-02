@@ -12,7 +12,7 @@ RaidGUIControlClassDescription.CLASS_STATS_DEFAULT_Y = 258
 RaidGUIControlClassDescription.WARCRY_DEFAULT_Y = 386
 RaidGUIControlClassDescription.WARCRY_DEFAULT_H = 64
 RaidGUIControlClassDescription.PERSONAL_BUFF_DEFAULT_Y = 470
-RaidGUIControlClassDescription.init = function (self, parent, params, item_data)
+function RaidGUIControlClassDescription:init(parent, params, item_data)
 	slot9 = item_data
 
 	RaidGUIControlClassDescription.super.init(slot5, self, parent, params)
@@ -24,7 +24,7 @@ RaidGUIControlClassDescription.init = function (self, parent, params, item_data)
 
 	return 
 end
-RaidGUIControlClassDescription._layout = function (self)
+function RaidGUIControlClassDescription:_layout()
 	slot4 = {
 		name = "character_info_panel",
 		x = self._params.x,
@@ -276,7 +276,7 @@ RaidGUIControlClassDescription._layout = function (self)
 
 	return 
 end
-RaidGUIControlClassDescription.set_data = function (self, data)
+function RaidGUIControlClassDescription:set_data(data)
 
 	-- Decompilation error in this vicinity:
 	local class_icon_data = tweak_data.gui.icons["ico_class_" .. data.class_name] or tweak_data.gui.icons.ico_flag_empty

@@ -7,7 +7,7 @@ RaidGUIControlListItemIcon = slot0
 RaidGUIControlListItemIcon.ICON_PADDING = 28
 RaidGUIControlListItemIcon.ICON_WIDTH = 42
 RaidGUIControlListItemIcon.ICON_HEIGHT = 42
-RaidGUIControlListItemIcon.init = function (self, parent, params, data)
+function RaidGUIControlListItemIcon:init(parent, params, data)
 	slot8 = params
 
 	RaidGUIControlListItemIcon.super.init(slot5, self, parent)
@@ -92,7 +92,7 @@ RaidGUIControlListItemIcon.init = function (self, parent, params, data)
 
 	return 
 end
-RaidGUIControlListItemIcon._layout_breadcrumb = function (self)
+function RaidGUIControlListItemIcon:_layout_breadcrumb()
 	local breadcrumb_params = {
 		category = self._data.breadcrumb.category,
 		identifiers = self._data.breadcrumb.identifiers
@@ -111,7 +111,7 @@ RaidGUIControlListItemIcon._layout_breadcrumb = function (self)
 
 	return 
 end
-RaidGUIControlListItemIcon.on_mouse_released = function (self, button)
+function RaidGUIControlListItemIcon:on_mouse_released(button)
 	if self._data.breadcrumb then
 		slot6 = self._data.breadcrumb.identifiers
 
@@ -132,7 +132,7 @@ RaidGUIControlListItemIcon.on_mouse_released = function (self, button)
 
 	return 
 end
-RaidGUIControlListItemIcon.mouse_double_click = function (self, o, button, x, y)
+function RaidGUIControlListItemIcon:mouse_double_click(o, button, x, y)
 	if self._params.no_click then
 		return 
 	end
@@ -147,10 +147,10 @@ RaidGUIControlListItemIcon.mouse_double_click = function (self, o, button, x, y)
 
 	return 
 end
-RaidGUIControlListItemIcon.selected = function (self)
+function RaidGUIControlListItemIcon:selected()
 	return self._selected
 end
-RaidGUIControlListItemIcon.select = function (self)
+function RaidGUIControlListItemIcon:select()
 	self._selected = true
 	slot3 = self._item_background
 
@@ -178,7 +178,7 @@ RaidGUIControlListItemIcon.select = function (self)
 
 	return 
 end
-RaidGUIControlListItemIcon.unfocus = function (self)
+function RaidGUIControlListItemIcon:unfocus()
 	slot3 = self._item_background
 
 	self._item_background.hide(slot2)
@@ -189,7 +189,7 @@ RaidGUIControlListItemIcon.unfocus = function (self)
 
 	return 
 end
-RaidGUIControlListItemIcon.unselect = function (self)
+function RaidGUIControlListItemIcon:unselect()
 	self._selected = false
 	slot3 = self._item_background
 
@@ -205,10 +205,10 @@ RaidGUIControlListItemIcon.unselect = function (self)
 
 	return 
 end
-RaidGUIControlListItemIcon.data = function (self)
+function RaidGUIControlListItemIcon:data()
 	return self._data
 end
-RaidGUIControlListItemIcon.highlight_on = function (self)
+function RaidGUIControlListItemIcon:highlight_on()
 	slot3 = self._item_background
 
 	self._item_background.show(slot2)
@@ -225,7 +225,7 @@ RaidGUIControlListItemIcon.highlight_on = function (self)
 
 	return 
 end
-RaidGUIControlListItemIcon.highlight_off = function (self)
+function RaidGUIControlListItemIcon:highlight_off()
 	slot3 = managers.menu
 
 	if not managers.menu.is_pc_controller(slot2) then
@@ -246,7 +246,7 @@ RaidGUIControlListItemIcon.highlight_off = function (self)
 
 	return 
 end
-RaidGUIControlListItemIcon.confirm_pressed = function (self)
+function RaidGUIControlListItemIcon:confirm_pressed()
 	if self._selected then
 		slot4 = self._name
 

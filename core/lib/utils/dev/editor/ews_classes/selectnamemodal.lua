@@ -4,7 +4,7 @@ if not SelectNameModal then
 end
 
 SelectNameModal = slot0
-SelectNameModal.init = function (self, name, assets_list, settings, ...)
+function SelectNameModal:init(name, assets_list, settings, ...)
 	Global.world_editor = Global.world_editor or {}
 	Global.world_editor.filter = Global.world_editor.filter or ""
 	self._dialog_name = self._dialog_name or name or "Assets"
@@ -110,13 +110,13 @@ SelectNameModal.init = function (self, name, assets_list, settings, ...)
 
 	return 
 end
-SelectNameModal._on_mark_assett = function (self)
+function SelectNameModal:_on_mark_assett()
 	return 
 end
-SelectNameModal._on_select_asset = function (self)
+function SelectNameModal:_on_select_asset()
 	return 
 end
-SelectNameModal._build_buttons = function (self, panel, sizer)
+function SelectNameModal:_build_buttons(panel, sizer)
 	slot9 = "BU_BOTTOM"
 	local select_btn = EWS.Button(slot4, EWS, panel, "Select", "")
 	slot10 = "RIGHT,LEFT"
@@ -149,7 +149,7 @@ SelectNameModal._build_buttons = function (self, panel, sizer)
 
 	return 
 end
-SelectNameModal._on_select_asset = function (self)
+function SelectNameModal:_on_select_asset()
 	self._cancelled = false
 	slot4 = "hello"
 
@@ -157,19 +157,19 @@ SelectNameModal._on_select_asset = function (self)
 
 	return 
 end
-SelectNameModal.on_cancel = function (self)
+function SelectNameModal:on_cancel()
 	slot4 = "hello"
 
 	self._dialog.end_modal(slot2, self._dialog)
 
 	return 
 end
-SelectNameModal.selected_assets = function (self)
+function SelectNameModal:selected_assets()
 	slot3 = self
 
 	return self._selected_item_assets(slot2)
 end
-SelectNameModal.update_filter = function (self)
+function SelectNameModal:update_filter()
 	slot4 = self._filter
 	Global.world_editor.filter = self._filter.get_value(slot3)
 	slot3 = self
@@ -178,10 +178,10 @@ SelectNameModal.update_filter = function (self)
 
 	return 
 end
-SelectNameModal.cancelled = function (self)
+function SelectNameModal:cancelled()
 	return self._cancelled
 end
-SelectNameModal.fill_asset_list = function (self)
+function SelectNameModal:fill_asset_list()
 	slot3 = self._list
 
 	self._list.delete_all_items(slot2)
@@ -225,7 +225,7 @@ SelectNameModal.fill_asset_list = function (self)
 
 	return 
 end
-SelectNameModal.key_delete = function (self, ctrlr, event)
+function SelectNameModal:key_delete(ctrlr, event)
 	slot5 = event
 
 	event.skip(slot4)
@@ -241,7 +241,7 @@ SelectNameModal.key_delete = function (self, ctrlr, event)
 
 	return 
 end
-SelectNameModal.key_cancel = function (self, ctrlr, event)
+function SelectNameModal:key_cancel(ctrlr, event)
 	slot5 = event
 
 	event.skip(slot4)
@@ -257,10 +257,10 @@ SelectNameModal.key_cancel = function (self, ctrlr, event)
 
 	return 
 end
-SelectNameModal._on_delete = function (self)
+function SelectNameModal:_on_delete()
 	return 
 end
-SelectNameModal._selected_item_assets = function (self)
+function SelectNameModal:_selected_item_assets()
 	local assets = {}
 	slot6 = self._list
 

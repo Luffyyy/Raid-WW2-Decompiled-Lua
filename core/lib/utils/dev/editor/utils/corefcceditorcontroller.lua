@@ -263,7 +263,7 @@
 --- BLOCK #0 1-3, warpins: 1 ---
 slot0 = FFCEditorController or class()
 FFCEditorController = slot0
-FFCEditorController.init = function (self, cam, controller)
+function FFCEditorController:init(cam, controller)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-29, warpins: 1 ---
@@ -288,7 +288,7 @@ FFCEditorController.init = function (self, cam, controller)
 
 
 end
-FFCEditorController.update = function (self, time, rel_time)
+function FFCEditorController:update(time, rel_time)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -465,7 +465,7 @@ FFCEditorController.update = function (self, time, rel_time)
 
 
 end
-FFCEditorController.update_locked = function (self, time, rel_time)
+function FFCEditorController:update_locked(time, rel_time)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -479,7 +479,7 @@ FFCEditorController.update_locked = function (self, time, rel_time)
 
 
 end
-FFCEditorController._draw_frustum_freeze = function (self, time, rel_time)
+function FFCEditorController:_draw_frustum_freeze(time, rel_time)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -578,7 +578,7 @@ FFCEditorController._draw_frustum_freeze = function (self, time, rel_time)
 
 
 end
-FFCEditorController.set_camera = function (self, cam)
+function FFCEditorController:set_camera(cam)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -590,7 +590,7 @@ FFCEditorController.set_camera = function (self, cam)
 
 
 end
-FFCEditorController.set_camera_pos = function (self, pos)
+function FFCEditorController:set_camera_pos(pos)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -604,7 +604,7 @@ FFCEditorController.set_camera_pos = function (self, pos)
 
 
 end
-FFCEditorController.set_camera_rot = function (self, rot)
+function FFCEditorController:set_camera_rot(rot)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-20, warpins: 1 ---
@@ -624,7 +624,7 @@ FFCEditorController.set_camera_rot = function (self, rot)
 
 
 end
-FFCEditorController.set_camera_roll = function (self, roll)
+function FFCEditorController:set_camera_roll(roll)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-27, warpins: 1 ---
@@ -645,7 +645,7 @@ FFCEditorController.set_camera_roll = function (self, roll)
 
 
 end
-FFCEditorController.set_controller = function (self, c)
+function FFCEditorController:set_controller(c)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -657,7 +657,7 @@ FFCEditorController.set_controller = function (self, c)
 
 
 end
-FFCEditorController.set_move_speed = function (self, speed)
+function FFCEditorController:set_move_speed(speed)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -669,7 +669,7 @@ FFCEditorController.set_move_speed = function (self, speed)
 
 
 end
-FFCEditorController.set_turn_speed = function (self, t_speed)
+function FFCEditorController:set_turn_speed(t_speed)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -681,7 +681,7 @@ FFCEditorController.set_turn_speed = function (self, t_speed)
 
 
 end
-FFCEditorController.set_fov = function (self, fov)
+function FFCEditorController:set_fov(fov)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -695,7 +695,7 @@ FFCEditorController.set_fov = function (self, fov)
 
 
 end
-FFCEditorController.get_camera_pos = function (self)
+function FFCEditorController:get_camera_pos()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -707,7 +707,7 @@ FFCEditorController.get_camera_pos = function (self)
 
 
 end
-FFCEditorController.get_camera_rot = function (self)
+function FFCEditorController:get_camera_rot()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -719,7 +719,7 @@ FFCEditorController.get_camera_rot = function (self)
 
 
 end
-FFCEditorController.get_move_speed = function (self)
+function FFCEditorController:get_move_speed()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -729,7 +729,7 @@ FFCEditorController.get_move_speed = function (self)
 
 
 end
-FFCEditorController.get_turn_speed = function (self)
+function FFCEditorController:get_turn_speed()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -739,7 +739,7 @@ FFCEditorController.get_turn_speed = function (self)
 
 
 end
-FFCEditorController.frustum_freeze = function (self, camera)
+function FFCEditorController:frustum_freeze(camera)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-61, warpins: 1 ---
@@ -797,7 +797,7 @@ FFCEditorController.frustum_freeze = function (self, camera)
 
 
 end
-FFCEditorController.frustum_unfreeze = function (self, camera)
+function FFCEditorController:frustum_unfreeze(camera)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-30, warpins: 1 ---
@@ -829,7 +829,7 @@ FFCEditorController.frustum_unfreeze = function (self, camera)
 
 
 end
-FFCEditorController.frustum_frozen = function (self)
+function FFCEditorController:frustum_frozen()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -839,7 +839,7 @@ FFCEditorController.frustum_frozen = function (self)
 
 
 end
-FFCEditorController.start_cube_map = function (self, params)
+function FFCEditorController:start_cube_map(params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -1212,7 +1212,7 @@ FFCEditorController.start_cube_map = function (self, params)
 
 
 end
-FFCEditorController.creating_cube_map = function (self)
+function FFCEditorController:creating_cube_map()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -1222,7 +1222,7 @@ FFCEditorController.creating_cube_map = function (self)
 
 
 end
-FFCEditorController.create_cube_map = function (self)
+function FFCEditorController:create_cube_map()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -1547,7 +1547,7 @@ FFCEditorController.create_cube_map = function (self)
 
 
 end
-FFCEditorController._cubemap_done = function (self)
+function FFCEditorController:_cubemap_done()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -1601,7 +1601,7 @@ FFCEditorController._cubemap_done = function (self)
 
 
 end
-FFCEditorController._get_screen_size = function (self)
+function FFCEditorController:_get_screen_size()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-18, warpins: 1 ---
@@ -1619,7 +1619,7 @@ FFCEditorController._get_screen_size = function (self)
 
 
 end
-FFCEditorController._create_spot_projection = function (self)
+function FFCEditorController:_create_spot_projection()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-27, warpins: 1 ---
@@ -1662,7 +1662,7 @@ FFCEditorController._create_spot_projection = function (self)
 
 
 end
-FFCEditorController._generate_spot_projection = function (self)
+function FFCEditorController:_generate_spot_projection()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -1750,7 +1750,7 @@ FFCEditorController._generate_spot_projection = function (self)
 
 
 end
-FFCEditorController._generate_cubemap = function (self, file)
+function FFCEditorController:_generate_cubemap(file)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -1872,7 +1872,7 @@ FFCEditorController._generate_cubemap = function (self, file)
 
 
 end
-FFCEditorController._add_meta_data = function (self, file, meta)
+function FFCEditorController:_add_meta_data(file, meta)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-17, warpins: 1 ---
@@ -1889,7 +1889,7 @@ FFCEditorController._add_meta_data = function (self, file, meta)
 
 
 end
-FFCEditorController.update_orthographic = function (self, time, rel_time)
+function FFCEditorController:update_orthographic(time, rel_time)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-72, warpins: 1 ---
@@ -1918,7 +1918,7 @@ FFCEditorController.update_orthographic = function (self, time, rel_time)
 
 
 end
-FFCEditorController.set_orthographic_screen = function (self)
+function FFCEditorController:set_orthographic_screen()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-27, warpins: 1 ---
@@ -1933,7 +1933,7 @@ FFCEditorController.set_orthographic_screen = function (self)
 
 
 end
-FFCEditorController.toggle_orthographic = function (self, use)
+function FFCEditorController:toggle_orthographic(use)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---

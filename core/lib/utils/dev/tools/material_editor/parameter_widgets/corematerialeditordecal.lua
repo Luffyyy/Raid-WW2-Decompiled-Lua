@@ -13,7 +13,7 @@ if not CoreMaterialEditorDecal then
 end
 
 CoreMaterialEditorDecal.DECAL_MATERIAL_FILE = "settings/decals"
-CoreMaterialEditorDecal.init = function (self, parent, editor)
+function CoreMaterialEditorDecal:init(parent, editor)
 	slot7 = editor
 
 	self._set_params(slot4, self, parent)
@@ -103,21 +103,21 @@ CoreMaterialEditorDecal.init = function (self, parent, editor)
 
 	return 
 end
-CoreMaterialEditorDecal.update = function (self, t, dt)
+function CoreMaterialEditorDecal:update(t, dt)
 	slot7 = dt
 
 	CoreMaterialEditorParameter.update(slot4, self, t)
 
 	return 
 end
-CoreMaterialEditorDecal.destroy = function (self)
+function CoreMaterialEditorDecal:destroy()
 	slot3 = self
 
 	CoreMaterialEditorParameter.destroy(slot2)
 
 	return 
 end
-CoreMaterialEditorDecal.on_toggle_customize = function (self)
+function CoreMaterialEditorDecal:on_toggle_customize()
 	self._customize = not self._customize
 	slot3 = self._editor
 
@@ -151,7 +151,7 @@ CoreMaterialEditorDecal.on_toggle_customize = function (self)
 
 	return 
 end
-CoreMaterialEditorDecal.on_copy_to_parent = function (self)
+function CoreMaterialEditorDecal:on_copy_to_parent()
 	slot3 = self._editor._parent_combo_box
 
 	if self._editor._parent_combo_box.get_value(slot2) ~= "[NONE]" then
@@ -185,7 +185,7 @@ CoreMaterialEditorDecal.on_copy_to_parent = function (self)
 
 	return 
 end
-CoreMaterialEditorDecal._set_params = function (self, parent, editor)
+function CoreMaterialEditorDecal:_set_params(parent, editor)
 	self._parent = parent
 	self._editor = editor
 	slot6 = "decal_material"
@@ -195,7 +195,7 @@ CoreMaterialEditorDecal._set_params = function (self, parent, editor)
 
 	return 
 end
-CoreMaterialEditorDecal._copy_to_parent = function (self, name)
+function CoreMaterialEditorDecal:_copy_to_parent(name)
 	local material_node = nil
 
 	if name then
@@ -231,7 +231,7 @@ CoreMaterialEditorDecal._copy_to_parent = function (self, name)
 
 	return 
 end
-CoreMaterialEditorDecal._on_combo_box_change = function (self)
+function CoreMaterialEditorDecal:_on_combo_box_change()
 	slot3 = self._combo_box
 	self._value = self._combo_box.get_value(slot2)
 
@@ -251,7 +251,7 @@ CoreMaterialEditorDecal._on_combo_box_change = function (self)
 
 	return 
 end
-CoreMaterialEditorDecal._fill_decal_materials = function (self)
+function CoreMaterialEditorDecal:_fill_decal_materials()
 	slot3 = self._combo_box
 
 	self._combo_box.clear(slot2)

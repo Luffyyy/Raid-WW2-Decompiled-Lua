@@ -3,7 +3,7 @@ slot3 = "CoreFreeFlightModifier"
 core.module(slot1, core)
 
 FreeFlightModifier = FreeFlightModifier or class()
-FreeFlightModifier.init = function (self, name, values, index, callback)
+function FreeFlightModifier:init(name, values, index, callback)
 	slot7 = name
 	self._name = assert(slot6)
 	slot7 = values
@@ -14,7 +14,7 @@ FreeFlightModifier.init = function (self, name, values, index, callback)
 
 	return 
 end
-FreeFlightModifier.step_up = function (self)
+function FreeFlightModifier:step_up()
 	slot5 = #self._values
 	self._index = math.clamp(slot2, self._index + 1, 1)
 
@@ -26,7 +26,7 @@ FreeFlightModifier.step_up = function (self)
 
 	return 
 end
-FreeFlightModifier.step_down = function (self)
+function FreeFlightModifier:step_down()
 	slot5 = #self._values
 	self._index = math.clamp(slot2, self._index - 1, 1)
 
@@ -38,12 +38,12 @@ FreeFlightModifier.step_down = function (self)
 
 	return 
 end
-FreeFlightModifier.name_value = function (self)
+function FreeFlightModifier:name_value()
 	slot5 = self._values[self._index]
 
 	return string.format(slot2, "%10.10s %7.2f", self._name)
 end
-FreeFlightModifier.value = function (self)
+function FreeFlightModifier:value()
 	return self._values[self._index]
 end
 

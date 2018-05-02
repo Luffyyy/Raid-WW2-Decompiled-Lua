@@ -49,7 +49,7 @@ core.import(slot1, core)
 SettingsReader = SettingsReader or class()
 SettingsReader.db_type = "input_settings"
 SettingsReader.db_path = "settings/input"
-SettingsReader.init = function (self)
+function SettingsReader:init()
 	self._layer_descriptions = {}
 	slot3 = self
 
@@ -57,10 +57,10 @@ SettingsReader.init = function (self)
 
 	return 
 end
-SettingsReader.layer_descriptions = function (self)
+function SettingsReader:layer_descriptions()
 	return self._layer_descriptions
 end
-SettingsReader._read_settings = function (self)
+function SettingsReader:_read_settings()
 	slot5 = SettingsReader.db_path
 
 	if not DB.has(slot2, DB, SettingsReader.db_type) then
@@ -76,7 +76,7 @@ SettingsReader._read_settings = function (self)
 
 	return 
 end
-SettingsReader._read_children = function (self, nodes)
+function SettingsReader:_read_children(nodes)
 	self._layer_descriptions = {}
 	local layer_description_priority = 1
 
@@ -100,7 +100,7 @@ SettingsReader._read_children = function (self, nodes)
 
 	return 
 end
-SettingsReader._read_layer_description_children = function (self, nodes, layer_description)
+function SettingsReader:_read_layer_description_children(nodes, layer_description)
 	for node in nil do
 		slot9 = node.name(slot10) == "context"
 
@@ -120,7 +120,7 @@ SettingsReader._read_layer_description_children = function (self, nodes, layer_d
 
 	return 
 end
-SettingsReader._read_context_description_children = function (self, nodes, context_description)
+function SettingsReader:_read_context_description_children(nodes, context_description)
 	for node in nil do
 		slot9 = node
 
@@ -156,7 +156,7 @@ SettingsReader._read_context_description_children = function (self, nodes, conte
 
 	return 
 end
-SettingsReader._read_input = function (self, node, context_description)
+function SettingsReader:_read_input(node, context_description)
 	slot6 = "type"
 	local type_name = node.parameter(slot4, node)
 	slot7 = "name"
@@ -169,7 +169,7 @@ SettingsReader._read_input = function (self, node, context_description)
 
 	return 
 end
-SettingsReader._read_layout_descriptions_children = function (self, nodes, context_description)
+function SettingsReader:_read_layout_descriptions_children(nodes, context_description)
 	for node in nil do
 		slot9 = node.name(slot10) == "layout"
 
@@ -189,7 +189,7 @@ SettingsReader._read_layout_descriptions_children = function (self, nodes, conte
 
 	return 
 end
-SettingsReader._read_layout_description_children = function (self, nodes, context_description, layout_description)
+function SettingsReader:_read_layout_description_children(nodes, context_description, layout_description)
 	for node in nil do
 		slot12 = node
 		slot14 = node
@@ -211,7 +211,7 @@ SettingsReader._read_layout_description_children = function (self, nodes, contex
 
 	return 
 end
-SettingsReader._read_device_layout_description_children = function (self, nodes, context_description, device_layout_description)
+function SettingsReader:_read_device_layout_description_children(nodes, context_description, device_layout_description)
 	for node in nil do
 		slot12 = node
 		slot10 = node.name(slot11) == "bind"
@@ -225,7 +225,7 @@ SettingsReader._read_device_layout_description_children = function (self, nodes,
 
 	return 
 end
-SettingsReader._read_bind = function (self, node, context_description, device_layout_description)
+function SettingsReader:_read_bind(node, context_description, device_layout_description)
 	slot7 = "axis"
 	local axis_name = node.parameter(slot5, node)
 	slot8 = "input"

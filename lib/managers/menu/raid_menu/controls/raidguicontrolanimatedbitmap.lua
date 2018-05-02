@@ -4,7 +4,7 @@ if not RaidGUIControlAnimatedBitmap then
 end
 
 RaidGUIControlAnimatedBitmap = slot0
-RaidGUIControlAnimatedBitmap.init = function (self, parent, params)
+function RaidGUIControlAnimatedBitmap:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlAnimatedBitmap.super.init(slot4, self, parent)
@@ -40,7 +40,7 @@ RaidGUIControlAnimatedBitmap.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlAnimatedBitmap._update = function (self, t, dt)
+function RaidGUIControlAnimatedBitmap:_update(t, dt)
 	if self._paused then
 		return 
 	end
@@ -80,7 +80,7 @@ RaidGUIControlAnimatedBitmap._update = function (self, t, dt)
 
 	return 
 end
-RaidGUIControlAnimatedBitmap._get_frame = function (self, frame_index)
+function RaidGUIControlAnimatedBitmap:_get_frame(frame_index)
 	slot5 = frame_index
 	local row, row_index = self._get_frame_row(slot3, self)
 	local x = row_index * self._w
@@ -93,7 +93,7 @@ RaidGUIControlAnimatedBitmap._get_frame = function (self, frame_index)
 
 	return x, y, self._w, self._h
 end
-RaidGUIControlAnimatedBitmap._get_frame_row = function (self, frame_index)
+function RaidGUIControlAnimatedBitmap:_get_frame_row(frame_index)
 	local row = 0
 	local row_index = frame_index
 
@@ -109,7 +109,7 @@ RaidGUIControlAnimatedBitmap._get_frame_row = function (self, frame_index)
 
 	return row, row_index
 end
-RaidGUIControlAnimatedBitmap.pause = function (self)
+function RaidGUIControlAnimatedBitmap:pause()
 	self._paused = true
 	slot3 = TimerManager
 	slot3 = TimerManager.game(slot2)
@@ -117,7 +117,7 @@ RaidGUIControlAnimatedBitmap.pause = function (self)
 
 	return 
 end
-RaidGUIControlAnimatedBitmap.unpause = function (self)
+function RaidGUIControlAnimatedBitmap:unpause()
 	if not self._paused then
 		return 
 	end
@@ -131,12 +131,12 @@ RaidGUIControlAnimatedBitmap.unpause = function (self)
 
 	return 
 end
-RaidGUIControlAnimatedBitmap.stop = function (self)
+function RaidGUIControlAnimatedBitmap:stop()
 	self._stop = true
 
 	return 
 end
-RaidGUIControlAnimatedBitmap.close = function (self)
+function RaidGUIControlAnimatedBitmap:close()
 	if self._closed then
 		return 
 	end
@@ -156,7 +156,7 @@ RaidGUIControlAnimatedBitmap.close = function (self)
 
 	return 
 end
-RaidGUIControlAnimatedBitmap._params_valid = function (self)
+function RaidGUIControlAnimatedBitmap:_params_valid()
 	if not self._params.texture then
 		slot5 = self._params.name
 

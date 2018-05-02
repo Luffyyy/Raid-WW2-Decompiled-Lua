@@ -8,7 +8,7 @@ if not ElementLootBag then
 end
 
 ElementLootBag = slot0
-ElementLootBag.init = function (self, ...)
+function ElementLootBag:init(...)
 	slot3 = self
 
 	ElementLootBag.super.init(slot2, ...)
@@ -17,10 +17,10 @@ ElementLootBag.init = function (self, ...)
 
 	return 
 end
-ElementLootBag.client_on_executed = function (self, ...)
+function ElementLootBag:client_on_executed(...)
 	return 
 end
-ElementLootBag.on_executed = function (self, instigator)
+function ElementLootBag:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -89,7 +89,7 @@ ElementLootBag.on_executed = function (self, instigator)
 
 	return 
 end
-ElementLootBag.add_trigger = function (self, id, type, callback)
+function ElementLootBag:add_trigger(id, type, callback)
 	self._triggers[type] = self._triggers[type] or {}
 	self._triggers[type][id] = {
 		callback = callback
@@ -97,7 +97,7 @@ ElementLootBag.add_trigger = function (self, id, type, callback)
 
 	return 
 end
-ElementLootBag._check_triggers = function (self, type, instigator)
+function ElementLootBag:_check_triggers(type, instigator)
 	if not self._triggers[type] then
 		return 
 	end
@@ -112,7 +112,7 @@ ElementLootBag._check_triggers = function (self, type, instigator)
 
 	return 
 end
-ElementLootBag.trigger = function (self, type, instigator)
+function ElementLootBag:trigger(type, instigator)
 	slot7 = instigator
 
 	self._check_triggers(slot4, self, type)
@@ -126,14 +126,14 @@ if not ElementLootBagTrigger then
 end
 
 ElementLootBagTrigger = slot0
-ElementLootBagTrigger.init = function (self, ...)
+function ElementLootBagTrigger:init(...)
 	slot3 = self
 
 	ElementLootBagTrigger.super.init(slot2, ...)
 
 	return 
 end
-ElementLootBagTrigger.on_script_activated = function (self)
+function ElementLootBagTrigger:on_script_activated()
 	slot3 = self._values.elements
 
 	for _, id in ipairs(slot2) do
@@ -147,10 +147,10 @@ ElementLootBagTrigger.on_script_activated = function (self)
 
 	return 
 end
-ElementLootBagTrigger.client_on_executed = function (self, ...)
+function ElementLootBagTrigger:client_on_executed(...)
 	return 
 end
-ElementLootBagTrigger.on_executed = function (self, instigator)
+function ElementLootBagTrigger:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

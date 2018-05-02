@@ -8,14 +8,14 @@ if not ElementEnemyPreferedAdd then
 end
 
 ElementEnemyPreferedAdd = slot0
-ElementEnemyPreferedAdd.init = function (self, ...)
+function ElementEnemyPreferedAdd:init(...)
 	slot3 = self
 
 	ElementEnemyPreferedAdd.super.init(slot2, ...)
 
 	return 
 end
-ElementEnemyPreferedAdd.on_script_activated = function (self)
+function ElementEnemyPreferedAdd:on_script_activated()
 	self._values.spawn_points = self._values.spawn_points or self._values.elements
 
 	if not self._values.spawn_points and not self._values.spawn_groups then
@@ -52,7 +52,7 @@ ElementEnemyPreferedAdd.on_script_activated = function (self)
 
 	return 
 end
-ElementEnemyPreferedAdd.add = function (self)
+function ElementEnemyPreferedAdd:add()
 	if not self._group_data then
 		return 
 	end
@@ -75,7 +75,7 @@ ElementEnemyPreferedAdd.add = function (self)
 
 	return 
 end
-ElementEnemyPreferedAdd.remove = function (self)
+function ElementEnemyPreferedAdd:remove()
 	slot3 = managers.groupai
 	slot3 = managers.groupai.state(slot2)
 	slot6 = self
@@ -84,7 +84,7 @@ ElementEnemyPreferedAdd.remove = function (self)
 
 	return 
 end
-ElementEnemyPreferedAdd.on_executed = function (self, instigator)
+function ElementEnemyPreferedAdd:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -106,14 +106,14 @@ if not ElementEnemyPreferedRemove then
 end
 
 ElementEnemyPreferedRemove = slot0
-ElementEnemyPreferedRemove.init = function (self, ...)
+function ElementEnemyPreferedRemove:init(...)
 	slot3 = self
 
 	ElementEnemyPreferedRemove.super.init(slot2, ...)
 
 	return 
 end
-ElementEnemyPreferedRemove.on_executed = function (self, instigator)
+function ElementEnemyPreferedRemove:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

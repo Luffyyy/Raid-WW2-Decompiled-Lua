@@ -14,14 +14,14 @@ GreedManager.get_instance = function ()
 
 	return Global.greed_manager
 end
-function GreedManager:init()
+GreedManager.init = function (self)
 	slot3 = self
 
 	self.reset(slot2)
 
 	return 
 end
-function GreedManager:reset()
+GreedManager.reset = function (self)
 	self._registered_greed_items = {}
 	self._registered_greed_cache_items = {}
 	self._current_loot_counter = 0
@@ -31,7 +31,7 @@ function GreedManager:reset()
 
 	return 
 end
-function GreedManager:register_greed_item(unit, tweak_table, world_id)
+GreedManager.register_greed_item = function (self, unit, tweak_table, world_id)
 	self._registered_greed_items[world_id] = self._registered_greed_items[world_id] or {}
 	local item_tweak_data = tweak_data.greed.greed_items[tweak_table]
 	local greed_item_data = {
@@ -45,7 +45,7 @@ function GreedManager:register_greed_item(unit, tweak_table, world_id)
 
 	return 
 end
-function GreedManager:register_greed_cache_item(unit, world_id)
+GreedManager.register_greed_cache_item = function (self, unit, world_id)
 	self._registered_greed_cache_items[world_id] = self._registered_greed_cache_items[world_id] or {}
 	local greed_cache_item_data = {
 		unit = unit,
@@ -57,7 +57,7 @@ function GreedManager:register_greed_cache_item(unit, world_id)
 
 	return 
 end
-function GreedManager:plant_greed_items_on_level(world_id)
+GreedManager.plant_greed_items_on_level = function (self, world_id)
 
 	-- Decompilation error in this vicinity:
 	slot4 = Network
@@ -164,7 +164,7 @@ function GreedManager:plant_greed_items_on_level(world_id)
 
 	return 
 end
-function GreedManager:remove_greed_items_from_level(world_id)
+GreedManager.remove_greed_items_from_level = function (self, world_id)
 	slot4 = Network
 
 	if not Network.is_server(slot3) then
@@ -199,7 +199,7 @@ function GreedManager:remove_greed_items_from_level(world_id)
 
 	return 
 end
-function GreedManager:pickup_greed_item(value, unit)
+GreedManager.pickup_greed_item = function (self, value, unit)
 	slot6 = value
 
 	self.on_loot_picked_up(slot4, self)
@@ -216,14 +216,14 @@ function GreedManager:pickup_greed_item(value, unit)
 
 	return 
 end
-function GreedManager:pickup_cache_loot(value)
+GreedManager.pickup_cache_loot = function (self, value)
 	slot5 = value
 
 	self.on_loot_picked_up(slot3, self)
 
 	return 
 end
-function GreedManager:on_loot_picked_up(value)
+GreedManager.on_loot_picked_up = function (self, value)
 	self._mission_loot_counter = self._mission_loot_counter + value
 	local acquired_new_goldbar = tweak_data.greed.points_needed_for_gold_bar <= (self._current_loot_counter + self._mission_loot_counter) - self._gold_awarded_in_mission * tweak_data.greed.points_needed_for_gold_bar
 
@@ -237,13 +237,13 @@ function GreedManager:on_loot_picked_up(value)
 
 	return 
 end
-function GreedManager:current_loot_counter()
+GreedManager.current_loot_counter = function (self)
 	return self._current_loot_counter
 end
-function GreedManager:loot_needed_for_gold_bar()
+GreedManager.loot_needed_for_gold_bar = function (self)
 	return tweak_data.greed.points_needed_for_gold_bar
 end
-function GreedManager:on_level_exited(success)
+GreedManager.on_level_exited = function (self, success)
 	self._registered_greed_items = {}
 	self._registered_greed_cache_items = {}
 	self._greed_items_spawned_value = 0
@@ -266,19 +266,19 @@ function GreedManager:on_level_exited(success)
 
 	return 
 end
-function GreedManager:cache()
+GreedManager.cache = function (self)
 	return self._cache_current, self._cache_mission
 end
-function GreedManager:clear_cache()
+GreedManager.clear_cache = function (self)
 	self._cache_current = nil
 	self._cache_mission = nil
 
 	return 
 end
-function GreedManager:acquired_gold_in_mission()
+GreedManager.acquired_gold_in_mission = function (self)
 	return 0 < self._gold_awarded_in_mission
 end
-function GreedManager:award_gold_picked_up_in_mission()
+GreedManager.award_gold_picked_up_in_mission = function (self)
 	slot4 = self._gold_awarded_in_mission
 
 	managers.gold_economy.add_gold(slot2, managers.gold_economy)
@@ -287,7 +287,7 @@ function GreedManager:award_gold_picked_up_in_mission()
 
 	return 
 end
-function GreedManager:save_profile_slot(data)
+GreedManager.save_profile_slot = function (self, data)
 	local state = {
 		version = GreedManager.VERSION,
 		current_loot_counter = self._current_loot_counter
@@ -296,7 +296,7 @@ function GreedManager:save_profile_slot(data)
 
 	return 
 end
-function GreedManager:load_profile_slot(data, version)
+GreedManager.load_profile_slot = function (self, data, version)
 	local state = data.GreedManager
 
 	if not state then

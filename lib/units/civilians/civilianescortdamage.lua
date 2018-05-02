@@ -7,7 +7,7 @@ end
 
 CivilianEscortDamage = slot0
 CivilianEscortDamage.grace_period = 0.5
-CivilianEscortDamage.init = function (self, ...)
+function CivilianEscortDamage:init(...)
 	slot3 = self
 
 	CivilianEscortDamage.super.init(slot2, ...)
@@ -17,7 +17,7 @@ CivilianEscortDamage.init = function (self, ...)
 
 	return 
 end
-CivilianEscortDamage._escort_damage = function (self, attack_data)
+function CivilianEscortDamage:_escort_damage(attack_data)
 	slot4 = TimerManager
 	slot4 = TimerManager.game(slot3)
 	local t = TimerManager.game(slot3).time(slot3)
@@ -38,7 +38,7 @@ CivilianEscortDamage._escort_damage = function (self, attack_data)
 
 	return 
 end
-CivilianEscortDamage._apply_damage_to_health = function (self, damage)
+function CivilianEscortDamage:_apply_damage_to_health(damage)
 	slot5 = damage
 
 	CivilianEscortDamage.super._apply_damage_to_health(slot3, self)
@@ -54,7 +54,7 @@ CivilianEscortDamage._apply_damage_to_health = function (self, damage)
 
 	return 
 end
-CivilianEscortDamage.die = function (self)
+function CivilianEscortDamage:die()
 	slot3 = self
 
 	CivilianEscortDamage.super.die(slot2)
@@ -75,7 +75,7 @@ CivilianEscortDamage.die = function (self)
 
 	return 
 end
-CivilianEscortDamage.damage_bullet = function (self, attack_data)
+function CivilianEscortDamage:damage_bullet(attack_data)
 	slot5 = attack_data
 
 	if not self._escort_damage(slot3, self) then
@@ -85,7 +85,7 @@ CivilianEscortDamage.damage_bullet = function (self, attack_data)
 
 	return slot2
 end
-CivilianEscortDamage.damage_explosion = function (self, attack_data)
+function CivilianEscortDamage:damage_explosion(attack_data)
 	slot5 = attack_data
 
 	if not self._escort_damage(slot3, self) then
@@ -95,7 +95,7 @@ CivilianEscortDamage.damage_explosion = function (self, attack_data)
 
 	return slot2
 end
-CivilianEscortDamage.damage_fire = function (self, attack_data)
+function CivilianEscortDamage:damage_fire(attack_data)
 	slot5 = attack_data
 
 	if not self._escort_damage(slot3, self) then
@@ -105,7 +105,7 @@ CivilianEscortDamage.damage_fire = function (self, attack_data)
 
 	return slot2
 end
-CivilianEscortDamage.damage_melee = function (self, attack_data)
+function CivilianEscortDamage:damage_melee(attack_data)
 	slot5 = attack_data
 
 	if not self._escort_damage(slot3, self) then
@@ -115,7 +115,7 @@ CivilianEscortDamage.damage_melee = function (self, attack_data)
 
 	return slot2
 end
-CivilianEscortDamage.damage_tase = function (self, attack_data)
+function CivilianEscortDamage:damage_tase(attack_data)
 	slot5 = attack_data
 
 	if not self._escort_damage(slot3, self) then

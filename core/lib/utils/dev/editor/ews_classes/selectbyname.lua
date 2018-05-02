@@ -4,14 +4,14 @@ if not SelectByName then
 end
 
 SelectByName = slot0
-SelectByName.init = function (self, ...)
+function SelectByName:init(...)
 	slot5 = nil
 
 	UnitByName.init(slot2, self, "Select by name", ...)
 
 	return 
 end
-SelectByName._build_buttons = function (self, panel, sizer)
+function SelectByName:_build_buttons(panel, sizer)
 	slot9 = "BU_BOTTOM"
 	local find_btn = EWS.Button(slot4, EWS, panel, "Find", "")
 	slot10 = "RIGHT,LEFT"
@@ -63,7 +63,7 @@ SelectByName._build_buttons = function (self, panel, sizer)
 
 	return 
 end
-SelectByName._on_delete = function (self)
+function SelectByName:_on_delete()
 	slot7 = "YES_NO,ICON_QUESTION"
 	slot12 = 0
 	local confirm = EWS.message_box(slot2, EWS, self._dialog, "Delete selected unit(s)?", self._dialog_name, Vector3(slot9, -1, -1))
@@ -90,7 +90,7 @@ SelectByName._on_delete = function (self)
 
 	return 
 end
-SelectByName._on_find_unit = function (self)
+function SelectByName:_on_find_unit()
 	slot3 = self
 
 	self._on_select_unit(slot2)
@@ -102,7 +102,7 @@ SelectByName._on_find_unit = function (self)
 
 	return 
 end
-SelectByName._on_select_unit = function (self)
+function SelectByName:_on_select_unit()
 	slot3 = managers.editor
 	slot6 = self
 

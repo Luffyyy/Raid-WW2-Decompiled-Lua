@@ -7,14 +7,14 @@ slot3 = "CoreMenuStateIntroScreens"
 core.import(slot1, core)
 
 Legal = Legal or class()
-Legal.init = function (self)
+function Legal:init()
 	slot3 = TimerManager
 	slot3 = TimerManager.game(slot2)
 	self._start_time = TimerManager.game(slot2).time(slot2)
 
 	return 
 end
-Legal.transition = function (self)
+function Legal:transition()
 	slot3 = TimerManager
 	slot3 = TimerManager.game(slot2)
 	local current_time = TimerManager.game(slot2).time(slot2)

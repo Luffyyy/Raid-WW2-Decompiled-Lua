@@ -11,14 +11,14 @@ if not EnvironmentEffectHubElement then
 end
 
 EnvironmentEffectHubElement = slot0
-EnvironmentEffectHubElement.init = function (self, ...)
+function EnvironmentEffectHubElement:init(...)
 	slot3 = self
 
 	CoreEnvironmentEffectHubElement.init(slot2, ...)
 
 	return 
 end
-CoreEnvironmentEffectHubElement.init = function (self, unit)
+function CoreEnvironmentEffectHubElement:init(unit)
 	slot5 = unit
 
 	HubElement.init(slot3, self)
@@ -38,7 +38,7 @@ CoreEnvironmentEffectHubElement.init = function (self, unit)
 
 	return 
 end
-CoreEnvironmentEffectHubElement._build_panel = function (self, panel, panel_sizer)
+function CoreEnvironmentEffectHubElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

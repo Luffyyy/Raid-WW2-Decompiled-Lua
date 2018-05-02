@@ -5,7 +5,7 @@ end
 
 CharacterManageSpawnedUnits = slot0
 local mvec1 = Vector3()
-CharacterManageSpawnedUnits.spawn_character_debris = function (self, unit_id, align_obj_name, unit, push_mass)
+function CharacterManageSpawnedUnits:spawn_character_debris(unit_id, align_obj_name, unit, push_mass)
 	slot7 = self._unit
 	slot10 = align_obj_name
 	local align_obj = self._unit.get_object(slot6, Idstring(slot9))
@@ -162,7 +162,7 @@ CharacterManageSpawnedUnits.spawn_character_debris = function (self, unit_id, al
 
 	return 
 end
-CharacterManageSpawnedUnits.enable_debris_bodies = function (self, data)
+function CharacterManageSpawnedUnits:enable_debris_bodies(data)
 	local unit = data.unit
 	local direction = data.push_direction
 	local push_mass = data.push_mass
@@ -199,7 +199,7 @@ CharacterManageSpawnedUnits.enable_debris_bodies = function (self, data)
 
 	return 
 end
-CharacterManageSpawnedUnits.destroy = function (self, unit)
+function CharacterManageSpawnedUnits:destroy(unit)
 	slot5 = unit
 
 	CharacterManageSpawnedUnits.super.destroy(slot3, self)

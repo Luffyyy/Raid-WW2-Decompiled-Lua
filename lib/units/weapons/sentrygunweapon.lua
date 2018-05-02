@@ -380,7 +380,7 @@
 slot0 = SentryGunWeapon or class()
 SentryGunWeapon = slot0
 local tmp_rot1 = Rotation()
-SentryGunWeapon.init = function (self, unit)
+function SentryGunWeapon:init(unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-44, warpins: 1 ---
@@ -470,7 +470,7 @@ SentryGunWeapon.init = function (self, unit)
 
 
 end
-SentryGunWeapon._init = function (self)
+function SentryGunWeapon:_init()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-23, warpins: 1 ---
@@ -638,7 +638,7 @@ SentryGunWeapon._init = function (self)
 
 
 end
-SentryGunWeapon.setup = function (self, setup_data, damage_multiplier)
+function SentryGunWeapon:setup(setup_data, damage_multiplier)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-20, warpins: 1 ---
@@ -709,7 +709,7 @@ SentryGunWeapon.setup = function (self, setup_data, damage_multiplier)
 
 
 end
-SentryGunWeapon.update = function (self, unit, t, dt)
+function SentryGunWeapon:update(unit, t, dt)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -765,7 +765,7 @@ SentryGunWeapon.update = function (self, unit, t, dt)
 
 
 end
-SentryGunWeapon.set_ammo = function (self, amount)
+function SentryGunWeapon:set_ammo(amount)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -779,7 +779,7 @@ SentryGunWeapon.set_ammo = function (self, amount)
 
 
 end
-SentryGunWeapon._setup_contour = function (self)
+function SentryGunWeapon:_setup_contour()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -874,7 +874,7 @@ SentryGunWeapon._setup_contour = function (self)
 
 
 end
-SentryGunWeapon.change_ammo = function (self, amount)
+function SentryGunWeapon:change_ammo(amount)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-23, warpins: 1 ---
@@ -932,7 +932,7 @@ SentryGunWeapon.change_ammo = function (self, amount)
 
 
 end
-SentryGunWeapon.sync_ammo = function (self, ammo_ratio)
+function SentryGunWeapon:sync_ammo(ammo_ratio)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-17, warpins: 1 ---
@@ -976,7 +976,7 @@ SentryGunWeapon.sync_ammo = function (self, ammo_ratio)
 
 
 end
-SentryGunWeapon.set_spread_mul = function (self, spread_mul)
+function SentryGunWeapon:set_spread_mul(spread_mul)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -988,7 +988,7 @@ SentryGunWeapon.set_spread_mul = function (self, spread_mul)
 
 
 end
-SentryGunWeapon.start_autofire = function (self)
+function SentryGunWeapon:start_autofire()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1028,7 +1028,7 @@ SentryGunWeapon.start_autofire = function (self)
 
 
 end
-SentryGunWeapon.stop_autofire = function (self)
+function SentryGunWeapon:stop_autofire()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1115,7 +1115,7 @@ SentryGunWeapon.stop_autofire = function (self)
 
 
 end
-SentryGunWeapon.trigger_held = function (self, blanks, expend_ammo, shoot_player, target_unit)
+function SentryGunWeapon:trigger_held(blanks, expend_ammo, shoot_player, target_unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -1189,7 +1189,7 @@ SentryGunWeapon.trigger_held = function (self, blanks, expend_ammo, shoot_player
 
 
 end
-SentryGunWeapon.fire = function (self, blanks, expend_ammo, shoot_player, target_unit)
+function SentryGunWeapon:fire(blanks, expend_ammo, shoot_player, target_unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -1304,7 +1304,7 @@ SentryGunWeapon.fire = function (self, blanks, expend_ammo, shoot_player, target
 
 end
 local mvec_to = Vector3()
-SentryGunWeapon._fire_raycast = function (self, from_pos, direction, shoot_player, target_unit)
+function SentryGunWeapon:_fire_raycast(from_pos, direction, shoot_player, target_unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-36, warpins: 1 ---
@@ -1524,7 +1524,7 @@ SentryGunWeapon._fire_raycast = function (self, from_pos, direction, shoot_playe
 
 
 end
-SentryGunWeapon._apply_dmg_mul = function (self, damage, col_ray, from_pos)
+function SentryGunWeapon:_apply_dmg_mul(damage, col_ray, from_pos)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -1653,7 +1653,7 @@ SentryGunWeapon._apply_dmg_mul = function (self, damage, col_ray, from_pos)
 
 
 end
-SentryGunWeapon._sound_autofire_start = function (self)
+function SentryGunWeapon:_sound_autofire_start()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -1667,7 +1667,7 @@ SentryGunWeapon._sound_autofire_start = function (self)
 
 
 end
-SentryGunWeapon._sound_autofire_end = function (self)
+function SentryGunWeapon:_sound_autofire_end()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1705,7 +1705,7 @@ SentryGunWeapon._sound_autofire_end = function (self)
 
 
 end
-SentryGunWeapon._sound_autofire_end_empty = function (self)
+function SentryGunWeapon:_sound_autofire_end_empty()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1760,7 +1760,7 @@ SentryGunWeapon._sound_autofire_end_empty = function (self)
 
 
 end
-SentryGunWeapon._sound_autofire_end_cooldown = function (self)
+function SentryGunWeapon:_sound_autofire_end_cooldown()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1803,7 +1803,7 @@ SentryGunWeapon._sound_autofire_end_cooldown = function (self)
 
 
 end
-SentryGunWeapon._spawn_trail_effect = function (self, direction, col_ray)
+function SentryGunWeapon:_spawn_trail_effect(direction, col_ray)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-24, warpins: 1 ---
@@ -1848,7 +1848,7 @@ SentryGunWeapon._spawn_trail_effect = function (self, direction, col_ray)
 
 
 end
-SentryGunWeapon.out_of_ammo = function (self)
+function SentryGunWeapon:out_of_ammo()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1942,7 +1942,7 @@ SentryGunWeapon.out_of_ammo = function (self)
 
 
 end
-SentryGunWeapon.ammo_ratio = function (self)
+function SentryGunWeapon:ammo_ratio()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1980,7 +1980,7 @@ SentryGunWeapon.ammo_ratio = function (self)
 
 
 end
-SentryGunWeapon.ammo_total = function (self)
+function SentryGunWeapon:ammo_total()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -1990,7 +1990,7 @@ SentryGunWeapon.ammo_total = function (self)
 
 
 end
-SentryGunWeapon.ammo_max = function (self)
+function SentryGunWeapon:ammo_max()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -2000,7 +2000,7 @@ SentryGunWeapon.ammo_max = function (self)
 
 
 end
-SentryGunWeapon.can_auto_reload = function (self)
+function SentryGunWeapon:can_auto_reload()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -2010,7 +2010,7 @@ SentryGunWeapon.can_auto_reload = function (self)
 
 
 end
-SentryGunWeapon.on_team_set = function (self, team_data)
+function SentryGunWeapon:on_team_set(team_data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -2022,7 +2022,7 @@ SentryGunWeapon.on_team_set = function (self, team_data)
 
 
 end
-SentryGunWeapon.set_laser_enabled = function (self, mode, blink)
+function SentryGunWeapon:set_laser_enabled(mode, blink)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -2159,7 +2159,7 @@ SentryGunWeapon.set_laser_enabled = function (self, mode, blink)
 
 
 end
-SentryGunWeapon._set_laser_state = function (self, state)
+function SentryGunWeapon:_set_laser_state(state)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -2169,7 +2169,7 @@ SentryGunWeapon._set_laser_state = function (self, state)
 
 
 end
-SentryGunWeapon.has_laser = function (self)
+function SentryGunWeapon:has_laser()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -2179,7 +2179,7 @@ SentryGunWeapon.has_laser = function (self)
 
 
 end
-SentryGunWeapon.update_laser = function (self)
+function SentryGunWeapon:update_laser()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -2352,7 +2352,7 @@ SentryGunWeapon.update_laser = function (self)
 
 
 end
-SentryGunWeapon.save = function (self, save_data)
+function SentryGunWeapon:save(save_data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -2419,7 +2419,7 @@ SentryGunWeapon.save = function (self, save_data)
 
 
 end
-SentryGunWeapon.load = function (self, save_data)
+function SentryGunWeapon:load(save_data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-15, warpins: 1 ---
@@ -2506,7 +2506,7 @@ SentryGunWeapon.load = function (self, save_data)
 
 
 end
-SentryGunWeapon.destroy = function (self, unit)
+function SentryGunWeapon:destroy(unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -2520,7 +2520,7 @@ SentryGunWeapon.destroy = function (self, unit)
 
 
 end
-SentryGunWeapon.weapon_tweak_data = function (self)
+function SentryGunWeapon:weapon_tweak_data()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -2530,7 +2530,7 @@ SentryGunWeapon.weapon_tweak_data = function (self)
 
 
 end
-SentryGunWeapon.adjust_target_pos = function (self, target_pos)
+function SentryGunWeapon:adjust_target_pos(target_pos)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---

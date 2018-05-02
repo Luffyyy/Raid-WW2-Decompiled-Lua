@@ -4,7 +4,7 @@ if not RaidGUIControlTableCellButton then
 end
 
 RaidGUIControlTableCellButton = slot0
-RaidGUIControlTableCellButton.init = function (self, parent, params)
+function RaidGUIControlTableCellButton:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlTableCellButton.super.init(slot4, self, parent)

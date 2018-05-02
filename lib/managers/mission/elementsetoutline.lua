@@ -8,17 +8,17 @@ if not ElementSetOutline then
 end
 
 ElementSetOutline = slot0
-ElementSetOutline.init = function (self, ...)
+function ElementSetOutline:init(...)
 	slot3 = self
 
 	ElementSetOutline.super.init(slot2, ...)
 
 	return 
 end
-ElementSetOutline.client_on_executed = function (self, ...)
+function ElementSetOutline:client_on_executed(...)
 	return 
 end
-ElementSetOutline.on_executed = function (self, instigator)
+function ElementSetOutline:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

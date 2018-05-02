@@ -20,14 +20,14 @@ if not GameDependencyNode then
 end
 
 GameDependencyNode = slot0
-GameDependencyNode.init = function (self, name, get_dn_cb, database)
+function GameDependencyNode:init(name, get_dn_cb, database)
 	slot11 = database
 
 	self.super.init(slot5, self, GAME, nil, name, get_dn_cb)
 
 	return 
 end
-GameDependencyNode._parse = function (self)
+function GameDependencyNode:_parse()
 	local f = File.open(slot2, File, LEVELS_FILE)
 	slot6 = f
 	local xmlnode = Node.from_xml(f.read("r"))
@@ -39,7 +39,7 @@ GameDependencyNode._parse = function (self)
 		xmlnode
 	}
 end
-GameDependencyNode._walkxml2dependencies = function (self, xmlnode, deps)
+function GameDependencyNode:_walkxml2dependencies(xmlnode, deps)
 	local node_name = xmlnode.name(slot4)
 	slot7 = "name"
 	local name = xmlnode.parameter(xmlnode, xmlnode)

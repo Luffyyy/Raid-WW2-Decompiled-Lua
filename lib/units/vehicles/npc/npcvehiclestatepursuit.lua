@@ -4,7 +4,7 @@ if not NpcVehicleStatePursuit then
 end
 
 NpcVehicleStatePursuit = slot0
-NpcVehicleStatePursuit.init = function (self, unit)
+function NpcVehicleStatePursuit:init(unit)
 	slot5 = unit
 
 	NpcBaseVehicleState.init(slot3, self)
@@ -46,7 +46,7 @@ NpcVehicleStatePursuit.init = function (self, unit)
 
 	return 
 end
-NpcVehicleStatePursuit.on_enter = function (self, npc_driving_ext)
+function NpcVehicleStatePursuit:on_enter(npc_driving_ext)
 	slot4 = "Npc state change: "
 	slot7 = self
 
@@ -66,13 +66,13 @@ NpcVehicleStatePursuit.on_enter = function (self, npc_driving_ext)
 
 	return 
 end
-NpcVehicleStatePursuit.update = function (self, t, dt)
+function NpcVehicleStatePursuit:update(t, dt)
 	return 
 end
-NpcVehicleStatePursuit.name = function (self)
+function NpcVehicleStatePursuit:name()
 	return NpcVehicleDrivingExt.STATE_PURSUIT
 end
-NpcVehicleStatePursuit.calc_steering = function (self, angle)
+function NpcVehicleStatePursuit:calc_steering(angle)
 	self._desired_direction = angle
 	local direction = 0
 	local normalized_steer = 0
@@ -100,7 +100,7 @@ NpcVehicleStatePursuit.calc_steering = function (self, angle)
 
 	return final_steer
 end
-NpcVehicleStatePursuit.calc_distance_threshold = function (self, angle)
+function NpcVehicleStatePursuit:calc_distance_threshold(angle)
 	local vehicle_state = self._vehicle.get_state(slot3)
 	slot5 = vehicle_state
 	local current_speed = vehicle_state.get_speed(self._vehicle) * 3.6
@@ -115,7 +115,7 @@ NpcVehicleStatePursuit.calc_distance_threshold = function (self, angle)
 
 	return threshold
 end
-NpcVehicleStatePursuit.calc_speed_limit = function (self, path, unit_and_pos)
+function NpcVehicleStatePursuit:calc_speed_limit(path, unit_and_pos)
 	local default_speed_limit = path.default_speed_limit or -1
 	local retval = default_speed_limit
 	local points_in_direction = nil
@@ -134,7 +134,7 @@ NpcVehicleStatePursuit.calc_speed_limit = function (self, path, unit_and_pos)
 
 	return retval
 end
-NpcVehicleStatePursuit.handle_hard_turn = function (self, npc_driving_ext, angle_to_target)
+function NpcVehicleStatePursuit:handle_hard_turn(npc_driving_ext, angle_to_target)
 	local vehicle_state = self._vehicle.get_state(slot4)
 	slot6 = vehicle_state
 	local current_speed = vehicle_state.get_speed(self._vehicle) * 3.6
@@ -147,12 +147,12 @@ NpcVehicleStatePursuit.handle_hard_turn = function (self, npc_driving_ext, angle
 
 	return 
 end
-NpcVehicleStatePursuit.evasion_maneuvers = function (self, npc_driving_ext, target_steering)
+function NpcVehicleStatePursuit:evasion_maneuvers(npc_driving_ext, target_steering)
 	slot7 = target_steering
 
 	return self._loco_unit_proximity(slot4, self, npc_driving_ext)
 end
-NpcVehicleStatePursuit._loco_unit_proximity = function (self, npc_driving_ext, target_steering)
+function NpcVehicleStatePursuit:_loco_unit_proximity(npc_driving_ext, target_steering)
 	local retval = nil
 	slot6 = npc_driving_ext
 	local player_unit = npc_driving_ext._get_target_unit(slot5)
@@ -207,7 +207,7 @@ NpcVehicleStatePursuit._loco_unit_proximity = function (self, npc_driving_ext, t
 
 	return retval
 end
-NpcVehicleStatePursuit.change_state = function (self, npc_driving_ext)
+function NpcVehicleStatePursuit:change_state(npc_driving_ext)
 	if self._next_state then
 		slot5 = self._next_state
 
@@ -216,10 +216,10 @@ NpcVehicleStatePursuit.change_state = function (self, npc_driving_ext)
 
 	return 
 end
-NpcVehicleStatePursuit.is_maneuvering = function (self)
+function NpcVehicleStatePursuit:is_maneuvering()
 	return false
 end
-NpcVehicleStatePursuit.handle_stuck_vehicle = function (self, npc_driving_ext, t, dt)
+function NpcVehicleStatePursuit:handle_stuck_vehicle(npc_driving_ext, t, dt)
 	if not self._tachograph then
 		return 
 	end
@@ -240,7 +240,7 @@ NpcVehicleStatePursuit.handle_stuck_vehicle = function (self, npc_driving_ext, t
 
 	return 
 end
-NpcVehicleStatePursuit._choose_recovery_maneuver = function (self)
+function NpcVehicleStatePursuit:_choose_recovery_maneuver()
 	local recovery_maneuver = nil
 
 	if 0 <= self._desired_direction and self._desired_direction < 90 then

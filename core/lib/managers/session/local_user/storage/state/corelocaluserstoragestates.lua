@@ -3,7 +3,7 @@ slot3 = "CoreLocalUserStorageStates"
 core.module(slot1, core)
 
 Init = Init or class()
-Init.transition = function (self)
+function Init:transition()
 	slot3 = self.storage._load
 
 	if self.storage._load.is_requested(slot2) then
@@ -13,7 +13,7 @@ Init.transition = function (self)
 	return 
 end
 DetectSignOut = DetectSignOut or class()
-DetectSignOut.init = function (self)
+function DetectSignOut:init()
 	return 
 end
 
@@ -23,7 +23,7 @@ if not Loading then
 end
 
 Loading = slot0
-Loading.init = function (self)
+function Loading:init()
 	slot3 = self
 
 	DetectSignOut.init(slot2)
@@ -34,14 +34,14 @@ Loading.init = function (self)
 
 	return 
 end
-Loading.destroy = function (self)
+function Loading:destroy()
 	slot3 = self.storage
 
 	self.storage._close_load_task(slot2)
 
 	return 
 end
-Loading.transition = function (self)
+function Loading:transition()
 	slot3 = self.storage
 	local status = self.storage._load_status(slot2)
 
@@ -60,32 +60,32 @@ Loading.transition = function (self)
 	return 
 end
 Ready = Ready or class()
-Ready.init = function (self)
+function Ready:init()
 	slot3 = self.storage
 
 	self.storage._set_stable_for_loading(slot2)
 
 	return 
 end
-Ready.destroy = function (self)
+function Ready:destroy()
 	slot3 = self.storage
 
 	self.storage._not_stable_for_loading(slot2)
 
 	return 
 end
-Ready.transition = function (self)
+function Ready:transition()
 	return 
 end
 NoSaveGameFound = NoSaveGameFound or class()
-NoSaveGameFound.init = function (self)
+function NoSaveGameFound:init()
 	slot3 = self.storage
 
 	self.storage._set_stable_for_loading(slot2)
 
 	return 
 end
-NoSaveGameFound.transition = function (self)
+function NoSaveGameFound:transition()
 	slot3 = self.storage
 
 	self.storage._not_stable_for_loading(slot2)
@@ -93,7 +93,7 @@ NoSaveGameFound.transition = function (self)
 	return 
 end
 LoadError = LoadError or class()
-LoadError.transition = function (self)
+function LoadError:transition()
 	return 
 end
 

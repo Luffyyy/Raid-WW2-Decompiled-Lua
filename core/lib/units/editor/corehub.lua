@@ -15,14 +15,14 @@ if not Hub then
 end
 
 Hub = slot0
-Hub.init = function (self, ...)
+function Hub:init(...)
 	slot3 = self
 
 	CoreHub.init(slot2, ...)
 
 	return 
 end
-CoreHub.init = function (self, unit)
+function CoreHub:init(unit)
 	slot5 = unit
 
 	HubElement.init(slot3, self)
@@ -85,7 +85,7 @@ CoreHub.init = function (self, unit)
 
 	return 
 end
-CoreHub.set_actions = function (self)
+function CoreHub:set_actions()
 	if not self._actions_ctrlrs then
 		return 
 	end
@@ -133,7 +133,7 @@ CoreHub.set_actions = function (self)
 
 	return 
 end
-CoreHub.append_actions_sorted = function (self)
+function CoreHub:append_actions_sorted()
 	slot3 = self._actions_ctrlrs.actions
 
 	self._actions_ctrlrs.actions.clear(slot2)
@@ -148,7 +148,7 @@ CoreHub.append_actions_sorted = function (self)
 
 	return 
 end
-CoreHub._action_names = function (self)
+function CoreHub:_action_names()
 	local names = {}
 	slot4 = self._hed.actions
 
@@ -165,7 +165,7 @@ CoreHub._action_names = function (self)
 
 	return names
 end
-CoreHub.set_triggers = function (self)
+function CoreHub:set_triggers()
 	if not self._triggers_ctrlrs then
 		return 
 	end
@@ -204,7 +204,7 @@ CoreHub.set_triggers = function (self)
 
 	return 
 end
-CoreHub.append_triggers_sorted = function (self)
+function CoreHub:append_triggers_sorted()
 	slot3 = self._triggers_ctrlrs.triggers
 
 	self._triggers_ctrlrs.triggers.clear(slot2)
@@ -219,7 +219,7 @@ CoreHub.append_triggers_sorted = function (self)
 
 	return 
 end
-CoreHub._trigger_names = function (self)
+function CoreHub:_trigger_names()
 	local names = {}
 	slot4 = self._hed.triggers
 
@@ -236,7 +236,7 @@ CoreHub._trigger_names = function (self)
 
 	return names
 end
-CoreHub.set_required_triggers = function (self)
+function CoreHub:set_required_triggers()
 	slot3 = self._required_triggers
 
 	self._required_triggers.clear(slot2)
@@ -271,7 +271,7 @@ CoreHub.set_required_triggers = function (self)
 
 	return 
 end
-CoreHub.set_trigger_type = function (self, trigger_types)
+function CoreHub:set_trigger_type(trigger_types)
 	if self._selected_trigger then
 		slot5 = trigger_types
 		self._selected_trigger.type = trigger_types.get_value(slot4)
@@ -279,7 +279,7 @@ CoreHub.set_trigger_type = function (self, trigger_types)
 
 	return 
 end
-CoreHub.set_action_type = function (self, action_types)
+function CoreHub:set_action_type(action_types)
 	if self._selected_action then
 		slot5 = action_types
 		self._selected_action.type = action_types.get_value(slot4)
@@ -287,7 +287,7 @@ CoreHub.set_action_type = function (self, action_types)
 
 	return 
 end
-CoreHub.set_action_delay = function (self, action_delay)
+function CoreHub:set_action_delay(action_delay)
 	if self._selected_action then
 		slot6 = action_delay
 		local value = tonumber(action_delay.get_value(slot5)) or 0
@@ -306,7 +306,7 @@ CoreHub.set_action_delay = function (self, action_delay)
 
 	return 
 end
-CoreHub.ews_select_action = function (self)
+function CoreHub:ews_select_action()
 	slot6 = self._actions_ctrlrs.actions
 	slot7 = self._actions_ctrlrs.action_delay
 
@@ -314,7 +314,7 @@ CoreHub.ews_select_action = function (self)
 
 	return 
 end
-CoreHub.select_action_with_unit = function (self, unit)
+function CoreHub:select_action_with_unit(unit)
 	slot5 = unit
 
 	if not table.contains(slot3, self._hed.actions) then
@@ -328,7 +328,7 @@ CoreHub.select_action_with_unit = function (self, unit)
 
 	return 
 end
-CoreHub.ews_select_trigger = function (self)
+function CoreHub:ews_select_trigger()
 	slot6 = self._triggers_ctrlrs.triggers
 	slot6 = self._triggers_ctrlrs.trigger_types
 
@@ -336,7 +336,7 @@ CoreHub.ews_select_trigger = function (self)
 
 	return 
 end
-CoreHub.select_trigger_with_unit = function (self, unit)
+function CoreHub:select_trigger_with_unit(unit)
 	slot5 = unit
 
 	if not table.contains(slot3, self._hed.triggers) then
@@ -350,7 +350,7 @@ CoreHub.select_trigger_with_unit = function (self, unit)
 
 	return 
 end
-CoreHub.select_action = function (self, s, actions, action_types, action_delay)
+function CoreHub:select_action(s, actions, action_types, action_delay)
 	local action_id = self.combobox_id(slot6, self)
 	local a = self._hed.actions_data[action_id]
 	self._selected_action = a
@@ -410,7 +410,7 @@ CoreHub.select_action = function (self, s, actions, action_types, action_delay)
 
 	return 
 end
-CoreHub.select_trigger = function (self, s, triggers, trigger_types)
+function CoreHub:select_trigger(s, triggers, trigger_types)
 	local trigger_id = self.combobox_id(slot5, self)
 	local t = self._hed.triggers_data[trigger_id]
 	self._selected_trigger = t
@@ -455,7 +455,7 @@ CoreHub.select_trigger = function (self, s, triggers, trigger_types)
 
 	return 
 end
-CoreHub.update_selected = function (self, t, dt)
+function CoreHub:update_selected(t, dt)
 	slot8 = self._unit
 	slot10 = 0
 
@@ -463,7 +463,7 @@ CoreHub.update_selected = function (self, t, dt)
 
 	return 
 end
-CoreHub.draw_connections_selected = function (self, t, dt)
+function CoreHub:draw_connections_selected(t, dt)
 	slot7 = dt
 
 	self.draw_triggers(slot4, self, t)
@@ -474,7 +474,7 @@ CoreHub.draw_connections_selected = function (self, t, dt)
 
 	return 
 end
-CoreHub.draw_actions = function (self, t, dt)
+function CoreHub:draw_actions(t, dt)
 	slot5 = self._hed.actions
 
 	for _, action in ipairs(slot4) do
@@ -509,7 +509,7 @@ CoreHub.draw_actions = function (self, t, dt)
 
 	return 
 end
-CoreHub.draw_triggers = function (self, t, dt)
+function CoreHub:draw_triggers(t, dt)
 	slot5 = self._hed.triggers
 
 	for _, trigger in ipairs(slot4) do
@@ -559,10 +559,10 @@ CoreHub.draw_triggers = function (self, t, dt)
 
 	return 
 end
-CoreHub.update_unselected = function (self)
+function CoreHub:update_unselected()
 	return 
 end
-CoreHub.draw_connections_unselected = function (self)
+function CoreHub:draw_connections_unselected()
 	slot6 = self._unit
 	slot8 = 0
 
@@ -611,13 +611,13 @@ CoreHub.draw_connections_unselected = function (self)
 
 	return 
 end
-CoreHub.combobox_name = function (self, unit)
+function CoreHub:combobox_name(unit)
 	slot4 = unit
 	slot6 = unit
 
 	return unit.unit_data(slot3).name_id .. " (" .. unit.unit_data(slot5).unit_id .. ")"
 end
-CoreHub.combobox_id = function (self, name)
+function CoreHub:combobox_id(name)
 	local s = nil
 	local e = string.len(slot4) - 1
 	slot6 = name
@@ -637,20 +637,20 @@ CoreHub.combobox_id = function (self, name)
 
 	return string.sub(slot5, name, s)
 end
-CoreHub.id_string = function (self, unit)
+function CoreHub:id_string(unit)
 	slot6 = unit
 	slot4 = unit.unit_data(slot5).unit_id
 
 	return tostring(slot3)
 end
-CoreHub.save_mission_action = function (self, file, t, hub)
+function CoreHub:save_mission_action(file, t, hub)
 	slot10 = true
 
 	HubElement.save_mission_action(slot5, self, file, t, hub)
 
 	return 
 end
-CoreHub.save_mission_trigger = function (self, file, tab)
+function CoreHub:save_mission_trigger(file, tab)
 	local name = self._unit.name(slot4)
 	slot12 = self._unit
 	slot7 = tab .. "<trigger type=\"Hub\" name=\"" .. name .. self._unit.unit_data(slot11).unit_id .. "\"/>"
@@ -659,7 +659,7 @@ CoreHub.save_mission_trigger = function (self, file, tab)
 
 	return 
 end
-CoreHub.layer_finished = function (self)
+function CoreHub:layer_finished()
 	local hed = self._hed
 	local t = {}
 	slot5 = hed.actions_data
@@ -723,7 +723,7 @@ CoreHub.layer_finished = function (self)
 
 	return 
 end
-CoreHub.action_unit = function (self, id)
+function CoreHub:action_unit(id)
 	slot4 = self._hed.actions
 
 	for _, unit in ipairs(slot3) do
@@ -736,7 +736,7 @@ CoreHub.action_unit = function (self, id)
 
 	return 
 end
-CoreHub.trigger_unit = function (self, id)
+function CoreHub:trigger_unit(id)
 	slot4 = self._hed.triggers
 
 	for _, unit in ipairs(slot3) do
@@ -749,7 +749,7 @@ CoreHub.trigger_unit = function (self, id)
 
 	return 
 end
-CoreHub.add_action = function (self, a)
+function CoreHub:add_action(a)
 	slot5 = a
 
 	if table.contains(slot3, self._hed.actions) then
@@ -794,7 +794,7 @@ CoreHub.add_action = function (self, a)
 
 	return 
 end
-CoreHub.add_trigger = function (self, t)
+function CoreHub:add_trigger(t)
 	slot5 = t
 
 	if table.contains(slot3, self._hed.triggers) then
@@ -838,7 +838,7 @@ CoreHub.add_trigger = function (self, t)
 
 	return 
 end
-CoreHub.remove_action = function (self, a)
+function CoreHub:remove_action(a)
 	slot8 = a
 
 	cat_print(slot3, "editor", a.name(slot7))
@@ -860,7 +860,7 @@ CoreHub.remove_action = function (self, a)
 
 	return 
 end
-CoreHub.delete_action = function (self, a)
+function CoreHub:delete_action(a)
 	slot6 = self._unit
 	slot5 = a
 
@@ -888,7 +888,7 @@ CoreHub.delete_action = function (self, a)
 
 	return 
 end
-CoreHub.remove_trigger = function (self, t)
+function CoreHub:remove_trigger(t)
 	slot8 = t
 
 	cat_print(slot3, "editor", t.name(slot7))
@@ -908,7 +908,7 @@ CoreHub.remove_trigger = function (self, t)
 
 	return 
 end
-CoreHub.delete_trigger = function (self, t)
+function CoreHub:delete_trigger(t)
 	slot6 = self._unit
 	slot5 = t
 
@@ -930,17 +930,17 @@ CoreHub.delete_trigger = function (self, t)
 
 	return 
 end
-CoreHub.get_hub_action = function (self, unit)
+function CoreHub:get_hub_action(unit)
 	slot6 = unit
 
 	return self._hed.actions_data[self.id_string(slot4, self)]
 end
-CoreHub.get_hub_trigger = function (self, unit)
+function CoreHub:get_hub_trigger(unit)
 	slot6 = unit
 
 	return self._hed.triggers_data[self.id_string(slot4, self)]
 end
-CoreHub.on_timeline_btn = function (self)
+function CoreHub:on_timeline_btn()
 	if not self._timeline then
 		slot6 = self._unit
 		slot4 = self._unit.unit_data(slot5).name_id
@@ -956,7 +956,7 @@ CoreHub.on_timeline_btn = function (self)
 
 	return 
 end
-CoreHub._build_panel = function (self)
+function CoreHub:_build_panel()
 	slot3 = self
 
 	self._create_panel(slot2)
@@ -1243,7 +1243,7 @@ CoreHub._build_panel = function (self)
 
 	return 
 end
-CoreHub.destroy = function (self)
+function CoreHub:destroy()
 	if self._timeline then
 		slot3 = self._timeline
 

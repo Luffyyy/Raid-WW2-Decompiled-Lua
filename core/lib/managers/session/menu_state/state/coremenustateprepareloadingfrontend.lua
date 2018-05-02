@@ -15,7 +15,7 @@ slot3 = "CoreMenuStateLoadingFrontEnd"
 core.import(slot1, core)
 
 PrepareLoadingFrontEnd = PrepareLoadingFrontEnd or class()
-PrepareLoadingFrontEnd.init = function (self)
+function PrepareLoadingFrontEnd:init()
 	self._response = CoreSessionResponse.Done.new(slot2)
 	local menu_handler = self.menu_state._menu_handler
 	slot5 = self._response
@@ -24,14 +24,14 @@ PrepareLoadingFrontEnd.init = function (self)
 
 	return 
 end
-PrepareLoadingFrontEnd.destroy = function (self)
+function PrepareLoadingFrontEnd:destroy()
 	slot3 = self._response
 
 	self._response.destroy(slot2)
 
 	return 
 end
-PrepareLoadingFrontEnd.transition = function (self)
+function PrepareLoadingFrontEnd:transition()
 	slot3 = self._response
 
 	if self._response.is_done(slot2) then

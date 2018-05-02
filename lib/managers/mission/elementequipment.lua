@@ -8,14 +8,14 @@ if not ElementEquipment then
 end
 
 ElementEquipment = slot0
-ElementEquipment.init = function (self, ...)
+function ElementEquipment:init(...)
 	slot3 = self
 
 	ElementEquipment.super.init(slot2, ...)
 
 	return 
 end
-ElementEquipment.on_executed = function (self, instigator)
+function ElementEquipment:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

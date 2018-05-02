@@ -8,7 +8,7 @@ CopSound = CopSound or class()
 CopSound.MAX_DISTANCE_FROM_PLAYER = 2500
 CopSound.FOOTSTEP_COOLDOWN = 1.1
 CopSound.VO_COOLDOWN = 2
-CopSound.init = function (self, unit)
+function CopSound:init(unit)
 
 	-- Decompilation error in this vicinity:
 	self._unit = unit
@@ -30,10 +30,10 @@ CopSound.init = function (self, unit)
 
 	return 
 end
-CopSound.destroy = function (self, unit)
+function CopSound:destroy(unit)
 	return 
 end
-CopSound.set_voice_prefix = function (self, index)
+function CopSound:set_voice_prefix(index)
 
 	-- Decompilation error in this vicinity:
 	slot5 = self._unit
@@ -48,7 +48,7 @@ CopSound.set_voice_prefix = function (self, index)
 
 	slot4 = char_tweak.speech_prefix_p1 or ""
 end
-CopSound._out_of_hearing_range = function (self)
+function CopSound:_out_of_hearing_range()
 	local player_unit = nil
 	slot4 = game_state_machine
 
@@ -75,7 +75,7 @@ CopSound._out_of_hearing_range = function (self)
 
 	return CopSound.MAX_DISTANCE_FROM_PLAYER < distance_vector.length(self._unit)
 end
-CopSound._play = function (self, sound_name, source_name)
+function CopSound:_play(sound_name, source_name)
 	slot5 = self
 
 	if self._out_of_hearing_range(slot4) then
@@ -95,7 +95,7 @@ CopSound._play = function (self, sound_name, source_name)
 
 	return event
 end
-CopSound.play = function (self, sound_name, source_name, sync)
+function CopSound:play(sound_name, source_name, sync)
 	local event_id = nil
 	slot7 = sound_name
 
@@ -122,7 +122,7 @@ CopSound.play = function (self, sound_name, source_name, sync)
 
 	return event
 end
-CopSound.corpse_play = function (self, sound_name, source_name, sync)
+function CopSound:corpse_play(sound_name, source_name, sync)
 	local event_id = nil
 	slot7 = sound_name
 
@@ -162,7 +162,7 @@ CopSound.corpse_play = function (self, sound_name, source_name, sync)
 
 	return event
 end
-CopSound.stop = function (self, source_name)
+function CopSound:stop(source_name)
 	local source = nil
 
 	if source_name then
@@ -177,7 +177,7 @@ CopSound.stop = function (self, source_name)
 
 	return 
 end
-CopSound.say = function (self, sound_name, sync, skip_prefix)
+function CopSound:say(sound_name, sync, skip_prefix)
 	if self._last_speech then
 		slot6 = self._last_speech
 
@@ -225,7 +225,7 @@ CopSound.say = function (self, sound_name, sync, skip_prefix)
 
 	return 
 end
-CopSound.sync_say_str = function (self, full_sound)
+function CopSound:sync_say_str(full_sound)
 	if self._last_speech then
 		slot4 = self._last_speech
 
@@ -237,7 +237,7 @@ CopSound.sync_say_str = function (self, full_sound)
 
 	return 
 end
-CopSound.speaking = function (self, t)
+function CopSound:speaking(t)
 	if not t then
 		slot4 = TimerManager
 		slot4 = TimerManager.game(slot3)
@@ -246,7 +246,7 @@ CopSound.speaking = function (self, t)
 
 	return slot2 < self._speak_expire_t
 end
-CopSound.playing_footsteps = function (self, t)
+function CopSound:playing_footsteps(t)
 	if not t then
 		slot4 = TimerManager
 		slot4 = TimerManager.game(slot3)
@@ -255,7 +255,7 @@ CopSound.playing_footsteps = function (self, t)
 
 	return slot2 < self._footstep_expire_t
 end
-CopSound.anim_clbk_play_sound = function (self, unit, queue_name)
+function CopSound:anim_clbk_play_sound(unit, queue_name)
 	slot5 = self
 
 	if not self.speaking(slot4) then

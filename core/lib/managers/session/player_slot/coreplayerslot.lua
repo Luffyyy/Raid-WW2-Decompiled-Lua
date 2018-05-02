@@ -19,7 +19,7 @@ slot3 = "CorePlayer"
 core.import(slot1, core)
 
 PlayerSlot = PlayerSlot or class()
-PlayerSlot.init = function (self, player_slots_parent, local_user_manager)
+function PlayerSlot:init(player_slots_parent, local_user_manager)
 	slot5 = CoreRequester.Requester
 	self._perform_local_user_binding = CoreRequester.Requester.new(slot4)
 	slot5 = CoreRequester.Requester
@@ -33,7 +33,7 @@ PlayerSlot.init = function (self, player_slots_parent, local_user_manager)
 
 	return 
 end
-PlayerSlot.destroy = function (self)
+function PlayerSlot:destroy()
 	slot4 = self
 
 	self._player_slots_parent._remove_player_slot(slot2, self._player_slots_parent)
@@ -46,7 +46,7 @@ PlayerSlot.destroy = function (self)
 
 	return 
 end
-PlayerSlot.clear_session = function (self)
+function PlayerSlot:clear_session()
 	if self._player then
 		slot3 = self._player
 
@@ -57,14 +57,14 @@ PlayerSlot.clear_session = function (self)
 
 	return 
 end
-PlayerSlot.remove = function (self)
+function PlayerSlot:remove()
 	slot3 = self
 
 	self.destroy(slot2)
 
 	return 
 end
-PlayerSlot._release_user_from_slot = function (self)
+function PlayerSlot:_release_user_from_slot()
 	if self._assigned_user then
 		slot4 = self
 
@@ -78,34 +78,34 @@ PlayerSlot._release_user_from_slot = function (self)
 
 	return 
 end
-PlayerSlot.request_local_user_binding = function (self)
+function PlayerSlot:request_local_user_binding()
 	slot3 = self._perform_local_user_binding
 
 	self._perform_local_user_binding.request(slot2)
 
 	return 
 end
-PlayerSlot.stop_local_user_binding = function (self)
+function PlayerSlot:stop_local_user_binding()
 	slot3 = self._perform_local_user_binding
 
 	self._perform_local_user_binding.cancel_request(slot2)
 
 	return 
 end
-PlayerSlot.request_debug_local_user_binding = function (self)
+function PlayerSlot:request_debug_local_user_binding()
 	slot3 = self._perform_debug_local_user_binding
 
 	self._perform_debug_local_user_binding.request(slot2)
 
 	return 
 end
-PlayerSlot.has_assigned_user = function (self)
+function PlayerSlot:has_assigned_user()
 	return self._assigned_user ~= nil
 end
-PlayerSlot.assigned_user = function (self)
+function PlayerSlot:assigned_user()
 	return self._assigned_user
 end
-PlayerSlot.assign_local_user = function (self, local_user)
+function PlayerSlot:assign_local_user(local_user)
 	slot5 = "Must specify a valid user"
 
 	assert(slot3, local_user)
@@ -121,14 +121,14 @@ PlayerSlot.assign_local_user = function (self, local_user)
 
 	return 
 end
-PlayerSlot.transition = function (self)
+function PlayerSlot:transition()
 	slot3 = self._user_state
 
 	self._user_state.transition(slot2)
 
 	return 
 end
-PlayerSlot.create_player = function (self)
+function PlayerSlot:create_player()
 	slot4 = "Player already created for this slot"
 
 	assert(slot2, self._player == nil)
@@ -147,7 +147,7 @@ PlayerSlot.create_player = function (self)
 
 	return 
 end
-PlayerSlot.remove_player = function (self)
+function PlayerSlot:remove_player()
 	if self._assigned_user then
 		slot4 = self._player
 
@@ -162,10 +162,10 @@ PlayerSlot.remove_player = function (self)
 
 	return 
 end
-PlayerSlot.has_player = function (self)
+function PlayerSlot:has_player()
 	return self._player ~= nil
 end
-PlayerSlot.player = function (self)
+function PlayerSlot:player()
 	return self._player
 end
 

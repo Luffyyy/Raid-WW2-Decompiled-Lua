@@ -10,7 +10,7 @@ MissionUnlockGui.CONTENT_WIDTH = 1568
 MissionUnlockGui.CONTENT_HEIGHT = 688
 MissionUnlockGui.CONTENT_Y = 96
 MissionUnlockGui.UNLOCK_BUTTON_CENTER_Y = 864
-MissionUnlockGui.init = function (self, ws, fullscreen_ws, node, component_name)
+function MissionUnlockGui:init(ws, fullscreen_ws, node, component_name)
 	self._selected_mission = nil
 	slot11 = component_name
 
@@ -36,14 +36,14 @@ MissionUnlockGui.init = function (self, ws, fullscreen_ws, node, component_name)
 
 	return 
 end
-MissionUnlockGui._set_initial_data = function (self)
+function MissionUnlockGui:_set_initial_data()
 	slot4 = "mission_unlock_screen_title"
 
 	self._node.components.raid_menu_header.set_screen_name(slot2, self._node.components.raid_menu_header)
 
 	return 
 end
-MissionUnlockGui.close = function (self)
+function MissionUnlockGui:close()
 	slot4 = "mission_unlock_gui"
 
 	managers.controller.remove_hotswap_callback(slot2, managers.controller)
@@ -64,7 +64,7 @@ MissionUnlockGui.close = function (self)
 
 	return 
 end
-MissionUnlockGui._layout = function (self)
+function MissionUnlockGui:_layout()
 	slot3 = self
 
 	MissionUnlockGui.super._layout(slot2)
@@ -105,7 +105,7 @@ MissionUnlockGui._layout = function (self)
 
 	return 
 end
-MissionUnlockGui._layout_contents_panel = function (self)
+function MissionUnlockGui:_layout_contents_panel()
 	local contents_panel_params = {
 		halign = "scale",
 		name = "contents_panel",
@@ -116,7 +116,7 @@ MissionUnlockGui._layout_contents_panel = function (self)
 
 	return 
 end
-MissionUnlockGui._layout_offered_missions = function (self)
+function MissionUnlockGui:_layout_offered_missions()
 	local offered_missions_panel_params = {
 		name = "offered_missions_panel",
 		y = MissionUnlockGui.CONTENT_Y,
@@ -185,7 +185,7 @@ MissionUnlockGui._layout_offered_missions = function (self)
 
 	return 
 end
-MissionUnlockGui._layout_unlock_button = function (self)
+function MissionUnlockGui:_layout_unlock_button()
 	local unlock_button_params = {
 		name = "unlock_button",
 		layer = 1
@@ -206,7 +206,7 @@ MissionUnlockGui._layout_unlock_button = function (self)
 
 	return 
 end
-MissionUnlockGui._create_video_panels = function (self)
+function MissionUnlockGui:_create_video_panels()
 	slot3 = managers.gui_data
 	self._fullscreen_ws = managers.gui_data.create_fullscreen_16_9_workspace(slot2)
 	slot3 = self._fullscreen_ws
@@ -223,7 +223,7 @@ MissionUnlockGui._create_video_panels = function (self)
 
 	return 
 end
-MissionUnlockGui._play_control_briefing_video = function (self, mission_id)
+function MissionUnlockGui:_play_control_briefing_video(mission_id)
 	local potential_videos = tweak_data.operations.missions[mission_id].control_brief_video
 	local chosen_index = math.random(slot4, 1)
 	local chosen_video = potential_videos[chosen_index]
@@ -336,7 +336,7 @@ MissionUnlockGui._play_control_briefing_video = function (self, mission_id)
 
 	return 
 end
-MissionUnlockGui._animate_show_press_any_key_prompt = function (self, prompt)
+function MissionUnlockGui:_animate_show_press_any_key_prompt(prompt)
 	local duration = 0.7
 	local t = 0
 	slot6 = 3
@@ -359,7 +359,7 @@ MissionUnlockGui._animate_show_press_any_key_prompt = function (self, prompt)
 
 	return 
 end
-MissionUnlockGui._animate_change_press_any_key_prompt = function (self, prompt)
+function MissionUnlockGui:_animate_change_press_any_key_prompt(prompt)
 	local fade_out_duration = 0.25
 	slot5 = prompt
 	local t = (1 - prompt.alpha(slot4)) * fade_out_duration
@@ -418,7 +418,7 @@ MissionUnlockGui._animate_change_press_any_key_prompt = function (self, prompt)
 
 	return 
 end
-MissionUnlockGui.on_controller_hotswap = function (self)
+function MissionUnlockGui:on_controller_hotswap()
 	if self._playing_briefing_video then
 		slot4 = "press_any_key_prompt"
 		local press_any_key_prompt = self._safe_panel.child(slot2, self._safe_panel)
@@ -449,14 +449,14 @@ MissionUnlockGui.on_controller_hotswap = function (self)
 
 	return 
 end
-MissionUnlockGui.update = function (self, t, dt)
+function MissionUnlockGui:update(t, dt)
 	if self._playing_briefing_video then
 		slot5 = self
 	end
 
 	return 
 end
-MissionUnlockGui.complete_video = function (self)
+function MissionUnlockGui:complete_video()
 	slot3 = self._control_briefing_video
 
 	self._control_briefing_video.destroy(slot2)
@@ -506,7 +506,7 @@ MissionUnlockGui.complete_video = function (self)
 
 	return true
 end
-MissionUnlockGui.is_playing = function (self)
+function MissionUnlockGui:is_playing()
 	slot3 = self._control_briefing_video
 
 	if alive(slot2) then
@@ -519,7 +519,7 @@ MissionUnlockGui.is_playing = function (self)
 
 	return 
 end
-MissionUnlockGui.is_skipped = function (self)
+function MissionUnlockGui:is_skipped()
 	slot3 = self._controller_list
 
 	for _, controller in ipairs(slot2) do
@@ -532,7 +532,7 @@ MissionUnlockGui.is_skipped = function (self)
 
 	return false
 end
-MissionUnlockGui._finish_video = function (self)
+function MissionUnlockGui:_finish_video()
 	slot4 = "menu_volume_reset"
 
 	managers.menu_component.post_event(slot2, managers.menu_component)
@@ -555,7 +555,7 @@ MissionUnlockGui._finish_video = function (self)
 
 	return 
 end
-MissionUnlockGui.on_mission_chosen = function (self, control, mission, active)
+function MissionUnlockGui:on_mission_chosen(control, mission, active)
 	if active then
 		self._selected_mission = mission
 		slot6 = self._unlock_button
@@ -588,7 +588,7 @@ MissionUnlockGui.on_mission_chosen = function (self, control, mission, active)
 
 	return 
 end
-MissionUnlockGui.on_mission_double_click = function (self, mission)
+function MissionUnlockGui:on_mission_double_click(mission)
 	self._selected_mission = mission
 	slot4 = self
 
@@ -596,7 +596,7 @@ MissionUnlockGui.on_mission_double_click = function (self, mission)
 
 	return 
 end
-MissionUnlockGui.show_unlock_confirmation_prompt = function (self)
+function MissionUnlockGui:show_unlock_confirmation_prompt()
 	if not self._selected_mission then
 		return 
 	end
@@ -612,7 +612,7 @@ MissionUnlockGui.show_unlock_confirmation_prompt = function (self)
 
 	return 
 end
-MissionUnlockGui.on_unlock_confirmed = function (self)
+function MissionUnlockGui:on_unlock_confirmed()
 	slot4 = self._selected_mission
 
 	managers.progression.choose_offered_mission(slot2, managers.progression)
@@ -641,7 +641,7 @@ MissionUnlockGui.on_unlock_confirmed = function (self)
 
 	return 
 end
-MissionUnlockGui._complete_mission_unlock_process = function (self)
+function MissionUnlockGui:_complete_mission_unlock_process()
 	slot4 = "mission_unlock_menu"
 
 	managers.raid_menu.remove_menu_name_from_stack(slot2, managers.raid_menu)
@@ -652,7 +652,7 @@ MissionUnlockGui._complete_mission_unlock_process = function (self)
 
 	return 
 end
-MissionUnlockGui._bind_controller_inputs = function (self)
+function MissionUnlockGui:_bind_controller_inputs()
 	local bindings = {}
 	slot5 = "menu_controller_face_bottom"
 	slot7 = "show_unlock_confirmation_prompt"

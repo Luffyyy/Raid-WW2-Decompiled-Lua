@@ -1,4 +1,4 @@
-BlackMarketTweakData._init_colors = function (self)
+function BlackMarketTweakData:_init_colors()
 	self.colors = {}
 	local white = Color.white
 	local black = Color.black

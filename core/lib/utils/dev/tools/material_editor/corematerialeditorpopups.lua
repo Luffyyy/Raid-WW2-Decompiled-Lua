@@ -51,7 +51,7 @@
 --- BLOCK #0 1-3, warpins: 1 ---
 slot0 = CoreMaterialEditor or class()
 CoreMaterialEditor = slot0
-CoreMaterialEditor._on_material_popup = function (self)
+function CoreMaterialEditor:_on_material_popup()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-130, warpins: 1 ---
@@ -137,7 +137,7 @@ CoreMaterialEditor._on_material_popup = function (self)
 
 
 end
-CoreMaterialEditor._on_parameter_popup = function (self)
+function CoreMaterialEditor:_on_parameter_popup()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-22, warpins: 1 ---
@@ -368,7 +368,7 @@ CoreMaterialEditor._on_parameter_popup = function (self)
 
 
 end
-CoreMaterialEditor._on_edit_global_popup = function (self, event)
+function CoreMaterialEditor:_on_edit_global_popup(event)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-33, warpins: 1 ---

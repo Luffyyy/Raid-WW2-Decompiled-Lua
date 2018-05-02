@@ -3,7 +3,7 @@ slot3 = "CoreInputContext"
 core.module(slot1, core)
 
 Context = Context or class()
-Context.init = function (self, input_context_description, input_context_stack)
+function Context:init(input_context_description, input_context_stack)
 	self._input_data = {}
 	slot6 = input_context_description
 
@@ -21,7 +21,7 @@ Context.init = function (self, input_context_description, input_context_stack)
 
 	return 
 end
-Context.destroy = function (self)
+function Context:destroy()
 	slot4 = self
 
 	self._input_context_stack.pop_input_context(slot2, self._input_context_stack)
@@ -30,7 +30,7 @@ Context.destroy = function (self)
 
 	return 
 end
-Context.create_context = function (self, context_name)
+function Context:create_context(context_name)
 	slot5 = context_name
 	local context_description = self._input_context_description.context_description(slot3, self._input_context_description)
 	slot6 = "Couldn't find subcontext with name:'" .. context_name .. "'"
@@ -42,13 +42,13 @@ Context.create_context = function (self, context_name)
 
 	return context
 end
-Context.input = function (self)
+function Context:input()
 	return self._input_data
 end
-Context._context_description = function (self)
+function Context:_context_description()
 	return self._input_context_description
 end
-Context._construct_input_data = function (self, input_context_description)
+function Context:_construct_input_data(input_context_description)
 	slot6 = input_context_description
 
 	for name, input_target in pairs(input_context_description.input_targets(slot5)) do

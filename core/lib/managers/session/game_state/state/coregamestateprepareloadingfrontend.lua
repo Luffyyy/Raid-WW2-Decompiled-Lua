@@ -7,7 +7,7 @@ slot3 = "CoreGameStateLoadingFrontEnd"
 core.import(slot1, core)
 
 PrepareLoadingFrontEnd = PrepareLoadingFrontEnd or class()
-PrepareLoadingFrontEnd.init = function (self, level_handler)
+function PrepareLoadingFrontEnd:init(level_handler)
 	self.game_state._is_preparing_for_loading_front_end = true
 	slot4 = self.game_state._front_end_requester
 
@@ -21,7 +21,7 @@ PrepareLoadingFrontEnd.init = function (self, level_handler)
 
 	return 
 end
-PrepareLoadingFrontEnd.destroy = function (self)
+function PrepareLoadingFrontEnd:destroy()
 	self.game_state._front_end_requester.task_completed(slot2)
 
 	self.game_state._is_preparing_for_loading_front_end = false
@@ -41,7 +41,7 @@ PrepareLoadingFrontEnd.destroy = function (self)
 
 	return 
 end
-PrepareLoadingFrontEnd.transition = function (self)
+function PrepareLoadingFrontEnd:transition()
 	slot3 = self.game_state._session_manager
 
 	if self.game_state._session_manager.all_systems_are_stable_for_loading(slot2) then

@@ -4,7 +4,7 @@ if not NPCSawWeaponBase then
 end
 
 NPCSawWeaponBase = slot0
-NPCSawWeaponBase.init = function (self, unit)
+function NPCSawWeaponBase:init(unit)
 	slot6 = false
 
 	NPCSawWeaponBase.super.init(slot3, self, unit)
@@ -19,21 +19,21 @@ NPCSawWeaponBase.init = function (self, unit)
 
 	return 
 end
-NPCSawWeaponBase._play_sound_sawing = function (self)
+function NPCSawWeaponBase:_play_sound_sawing()
 	slot4 = "Play_npc_saw_handheld_grind_generic"
 
 	self.play_sound(slot2, self)
 
 	return 
 end
-NPCSawWeaponBase._play_sound_idle = function (self)
+function NPCSawWeaponBase:_play_sound_idle()
 	slot4 = "Play_npc_saw_handheld_loop_idle"
 
 	self.play_sound(slot2, self)
 
 	return 
 end
-NPCSawWeaponBase.update = function (self, unit, t, dt)
+function NPCSawWeaponBase:update(unit, t, dt)
 	if self._check_shooting_expired and self._check_shooting_expired.check_t < t then
 		self._check_shooting_expired = nil
 		slot9 = "base"
@@ -52,7 +52,7 @@ NPCSawWeaponBase.update = function (self, unit, t, dt)
 
 	return 
 end
-NPCSawWeaponBase.change_fire_object = function (self, new_obj)
+function NPCSawWeaponBase:change_fire_object(new_obj)
 	slot5 = new_obj
 
 	NPCSawWeaponBase.super.change_fire_object(slot3, self)
@@ -63,7 +63,7 @@ NPCSawWeaponBase.change_fire_object = function (self, new_obj)
 end
 local mto = Vector3()
 local mfrom = Vector3()
-NPCSawWeaponBase.fire_blank = function (self, direction, impact)
+function NPCSawWeaponBase:fire_blank(direction, impact)
 	if not self._check_shooting_expired then
 		slot6 = "fire"
 
@@ -117,7 +117,7 @@ NPCSawWeaponBase.fire_blank = function (self, direction, impact)
 
 	return 
 end
-NPCSawWeaponBase.destroy = function (self, ...)
+function NPCSawWeaponBase:destroy(...)
 	slot3 = self
 
 	NPCSawWeaponBase.super.destroy(slot2, ...)

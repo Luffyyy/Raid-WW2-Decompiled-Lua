@@ -5,7 +5,7 @@ end
 
 NPCFlamethrowerBase = slot0
 NPCFlamethrowerBase.EXPLOSION_TYPE = "flamer_death_fake"
-NPCFlamethrowerBase.init = function (self, ...)
+function NPCFlamethrowerBase:init(...)
 	slot3 = self
 
 	NPCFlamethrowerBase.super.init(slot2, ...)
@@ -17,10 +17,10 @@ NPCFlamethrowerBase.init = function (self, ...)
 
 	return 
 end
-NPCFlamethrowerBase.ejects_shells = function (self)
+function NPCFlamethrowerBase:ejects_shells()
 	return false
 end
-NPCFlamethrowerBase._spawn_muzzle_effect = function (self, from_pos, direction)
+function NPCFlamethrowerBase:_spawn_muzzle_effect(from_pos, direction)
 	slot5 = self._unit
 	slot7 = direction
 
@@ -28,10 +28,10 @@ NPCFlamethrowerBase._spawn_muzzle_effect = function (self, from_pos, direction)
 
 	return 
 end
-NPCFlamethrowerBase._spawn_trail_effect = function (self, direction, col_ray)
+function NPCFlamethrowerBase:_spawn_trail_effect(direction, col_ray)
 	return 
 end
-NPCFlamethrowerBase.fire_blank = function (self, direction, impact)
+function NPCFlamethrowerBase:fire_blank(direction, impact)
 	if not self._check_shooting_expired then
 		slot6 = "fire"
 
@@ -49,7 +49,7 @@ NPCFlamethrowerBase.fire_blank = function (self, direction, impact)
 
 	return 
 end
-NPCFlamethrowerBase.update = function (self, unit, t, dt)
+function NPCFlamethrowerBase:update(unit, t, dt)
 	if self._check_shooting_expired and self._check_shooting_expired.check_t < t then
 		self._check_shooting_expired = nil
 		slot9 = "base"
@@ -68,7 +68,7 @@ NPCFlamethrowerBase.update = function (self, unit, t, dt)
 
 	return 
 end
-NPCFlamethrowerBase.start_autofire = function (self, nr_shots)
+function NPCFlamethrowerBase:start_autofire(nr_shots)
 	slot5 = self._obj_fire.position(slot6)
 	slot8 = self._obj_fire
 	slot8 = self._obj_fire.rotation(self._obj_fire)
@@ -81,7 +81,7 @@ NPCFlamethrowerBase.start_autofire = function (self, nr_shots)
 
 	return 
 end
-NPCFlamethrowerBase.trigger_held = function (self, from_pos, direction, dmg_mul, shoot_player, spread_mul, autohit_mul, suppr_mul, target_unit)
+function NPCFlamethrowerBase:trigger_held(from_pos, direction, dmg_mul, shoot_player, spread_mul, autohit_mul, suppr_mul, target_unit)
 	slot14 = self._obj_fire
 	slot13 = direction
 

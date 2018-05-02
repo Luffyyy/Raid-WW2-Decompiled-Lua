@@ -7,7 +7,7 @@ slot3 = "CoreSessionStateInSession"
 core.import(slot1, core)
 
 CreateSession = CreateSession or class()
-CreateSession.init = function (self)
+function CreateSession:init()
 	local session_info = self.session_state._session_info
 	local player_slots = self.session_state._player_slots
 	slot7 = player_slots
@@ -26,7 +26,7 @@ CreateSession.init = function (self)
 
 	return 
 end
-CreateSession.transition = function (self)
+function CreateSession:transition()
 	return CoreSessionStateInSession.InSession, self._session
 end
 

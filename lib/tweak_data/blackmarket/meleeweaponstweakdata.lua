@@ -1,4 +1,4 @@
-BlackMarketTweakData._init_melee_weapons = function (self)
+function BlackMarketTweakData:_init_melee_weapons()
 	self.melee_weapons = {
 		weapon = {}
 	}

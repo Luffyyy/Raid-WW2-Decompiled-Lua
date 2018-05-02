@@ -4,12 +4,12 @@ if not HuskTeamAIBase then
 end
 
 HuskTeamAIBase = slot0
-HuskTeamAIBase.default_weapon_name = function (self)
+function HuskTeamAIBase:default_weapon_name()
 	slot3 = self
 
 	return TeamAIBase.default_weapon_name(slot2)
 end
-HuskTeamAIBase.post_init = function (self)
+function HuskTeamAIBase:post_init()
 	slot3 = self._unit
 	self._ext_anim = self._unit.anim_data(slot2)
 	slot3 = self._unit
@@ -33,12 +33,12 @@ HuskTeamAIBase.post_init = function (self)
 
 	return 
 end
-HuskTeamAIBase.nick_name = function (self)
+function HuskTeamAIBase:nick_name()
 	slot3 = self
 
 	return TeamAIBase.nick_name(slot2)
 end
-HuskTeamAIBase.on_death_exit = function (self)
+function HuskTeamAIBase:on_death_exit()
 	slot3 = self
 
 	HuskTeamAIBase.super.on_death_exit(slot2)
@@ -53,7 +53,7 @@ HuskTeamAIBase.on_death_exit = function (self)
 
 	return 
 end
-HuskTeamAIBase.pre_destroy = function (self, unit)
+function HuskTeamAIBase:pre_destroy(unit)
 	slot4 = self
 
 	TeamAIBase.unregister(slot3)
@@ -64,7 +64,7 @@ HuskTeamAIBase.pre_destroy = function (self, unit)
 
 	return 
 end
-HuskTeamAIBase.load = function (self, data)
+function HuskTeamAIBase:load(data)
 	self._tweak_table = data.base.tweak_table or self._tweak_table
 	local character_name = self._tweak_table
 
@@ -89,10 +89,10 @@ HuskTeamAIBase.load = function (self, data)
 
 	return 
 end
-HuskTeamAIBase.chk_freeze_anims = function (self)
+function HuskTeamAIBase:chk_freeze_anims()
 	return 
 end
-HuskTeamAIBase.unregister = function (self)
+function HuskTeamAIBase:unregister()
 	slot3 = self
 
 	TeamAIBase.unregister(slot2)

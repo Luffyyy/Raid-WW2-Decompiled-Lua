@@ -4,7 +4,7 @@ if not RaidGUIControlListItem then
 end
 
 RaidGUIControlListItem = slot0
-RaidGUIControlListItem.init = function (self, parent, params, data)
+function RaidGUIControlListItem:init(parent, params, data)
 	slot8 = params
 
 	RaidGUIControlListItem.super.init(slot5, self, parent)
@@ -86,7 +86,7 @@ RaidGUIControlListItem.init = function (self, parent, params, data)
 
 	return 
 end
-RaidGUIControlListItem._layout_breadcrumb = function (self)
+function RaidGUIControlListItem:_layout_breadcrumb()
 	slot4 = self._data.breadcrumb
 	self._breadcrumb = self._object.breadcrumb(slot2, self._object)
 	slot3 = self._breadcrumb
@@ -101,7 +101,7 @@ RaidGUIControlListItem._layout_breadcrumb = function (self)
 
 	return 
 end
-RaidGUIControlListItem.on_mouse_released = function (self, button)
+function RaidGUIControlListItem:on_mouse_released(button)
 	if self._on_click_callback then
 		slot6 = self._data
 
@@ -116,10 +116,10 @@ RaidGUIControlListItem.on_mouse_released = function (self, button)
 
 	return 
 end
-RaidGUIControlListItem.selected = function (self)
+function RaidGUIControlListItem:selected()
 	return self._selected
 end
-RaidGUIControlListItem.select = function (self, dont_trigger_selected_callback)
+function RaidGUIControlListItem:select(dont_trigger_selected_callback)
 	self._selected = true
 	slot4 = self
 
@@ -147,14 +147,14 @@ RaidGUIControlListItem.select = function (self, dont_trigger_selected_callback)
 
 	return 
 end
-RaidGUIControlListItem.unfocus = function (self)
+function RaidGUIControlListItem:unfocus()
 	slot4 = true
 
 	self.unselect(slot2, self)
 
 	return 
 end
-RaidGUIControlListItem.unselect = function (self, force)
+function RaidGUIControlListItem:unselect(force)
 	self._selected = false
 	slot5 = force
 
@@ -170,10 +170,10 @@ RaidGUIControlListItem.unselect = function (self, force)
 
 	return 
 end
-RaidGUIControlListItem.data = function (self)
+function RaidGUIControlListItem:data()
 	return self._data
 end
-RaidGUIControlListItem.highlight_on = function (self)
+function RaidGUIControlListItem:highlight_on()
 	slot3 = self._item_background
 
 	if alive(slot2) then
@@ -190,7 +190,7 @@ RaidGUIControlListItem.highlight_on = function (self)
 
 	return 
 end
-RaidGUIControlListItem.highlight_off = function (self, force)
+function RaidGUIControlListItem:highlight_off(force)
 	if force or not self._selected then
 		slot4 = self._item_background
 
@@ -203,7 +203,7 @@ RaidGUIControlListItem.highlight_off = function (self, force)
 
 	return 
 end
-RaidGUIControlListItem.confirm_pressed = function (self, button)
+function RaidGUIControlListItem:confirm_pressed(button)
 	if self._selected then
 		if self._on_click_callback then
 			slot4 = self

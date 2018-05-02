@@ -5,7 +5,7 @@ end
 
 CharacterCreationGui = slot0
 CharacterCreationGui.STEP_TWO_INDICATOR_DEFAULT_X = 224
-CharacterCreationGui.init = function (self, ws, fullscreen_ws, node, component_name)
+function CharacterCreationGui:init(ws, fullscreen_ws, node, component_name)
 	self._loading_units = {}
 	slot11 = component_name
 
@@ -27,7 +27,7 @@ CharacterCreationGui.init = function (self, ws, fullscreen_ws, node, component_n
 
 	return 
 end
-CharacterCreationGui._setup_properties = function (self)
+function CharacterCreationGui:_setup_properties()
 	slot3 = self
 
 	CharacterCreationGui.super._setup_properties(slot2)
@@ -37,7 +37,7 @@ CharacterCreationGui._setup_properties = function (self)
 
 	return 
 end
-CharacterCreationGui._set_initial_data = function (self)
+function CharacterCreationGui:_set_initial_data()
 	slot3 = managers.character_customization
 
 	managers.character_customization.reset_current_version_to_attach(slot2)
@@ -50,7 +50,7 @@ CharacterCreationGui._set_initial_data = function (self)
 
 	return 
 end
-CharacterCreationGui._update_control_visibility = function (self)
+function CharacterCreationGui:_update_control_visibility()
 	local show_class_controls = self._current_screen == "class"
 	local show_nationality_screen = not show_class_controls
 	slot5 = self._nationality_screen_controls
@@ -121,7 +121,7 @@ CharacterCreationGui._update_control_visibility = function (self)
 
 	return 
 end
-CharacterCreationGui._layout = function (self)
+function CharacterCreationGui:_layout()
 	self._loaded_weapons = {}
 	slot3 = self
 
@@ -385,7 +385,7 @@ CharacterCreationGui._layout = function (self)
 
 	return 
 end
-CharacterCreationGui.set_character_select_allowed = function (self, value)
+function CharacterCreationGui:set_character_select_allowed(value)
 	self._character_select_allowed = value
 	slot5 = not value
 
@@ -393,7 +393,7 @@ CharacterCreationGui.set_character_select_allowed = function (self, value)
 
 	return 
 end
-CharacterCreationGui._set_class_default_nationality = function (self)
+function CharacterCreationGui:_set_class_default_nationality()
 	self._selected_nation = tweak_data.skilltree.classes[self._selected_class].default_natioanlity
 	slot3 = self._nationality_label
 	slot8 = true
@@ -410,7 +410,7 @@ CharacterCreationGui._set_class_default_nationality = function (self)
 
 	return 
 end
-CharacterCreationGui._on_nation_click_callback = function (self, data)
+function CharacterCreationGui:_on_nation_click_callback(data)
 	if self._selected_nation == data.value then
 		return 
 	end
@@ -449,7 +449,7 @@ CharacterCreationGui._on_nation_click_callback = function (self, data)
 
 	return 
 end
-CharacterCreationGui._on_nation_select_callback = function (self, data)
+function CharacterCreationGui:_on_nation_select_callback(data)
 	if self._current_screen ~= "nationality" then
 		return 
 	end
@@ -464,7 +464,7 @@ CharacterCreationGui._on_nation_select_callback = function (self, data)
 
 	return 
 end
-CharacterCreationGui._on_class_click_callback = function (self, data)
+function CharacterCreationGui:_on_class_click_callback(data)
 	if self._selected_class == data.value then
 		return 
 	end
@@ -524,7 +524,7 @@ CharacterCreationGui._on_class_click_callback = function (self, data)
 
 	return 
 end
-CharacterCreationGui._on_class_select_callback = function (self, data)
+function CharacterCreationGui:_on_class_select_callback(data)
 	if self._current_screen ~= "class" then
 		return 
 	end
@@ -539,7 +539,7 @@ CharacterCreationGui._on_class_select_callback = function (self, data)
 
 	return 
 end
-CharacterCreationGui._data_source_nation_list = function (self)
+function CharacterCreationGui:_data_source_nation_list()
 	local nationalities = {}
 	slot4 = tweak_data.skilltree.base_classes
 
@@ -557,7 +557,7 @@ CharacterCreationGui._data_source_nation_list = function (self)
 
 	return nationalities
 end
-CharacterCreationGui._data_source_class_list = function (self)
+function CharacterCreationGui:_data_source_class_list()
 	local classes = {}
 	slot4 = tweak_data.skilltree.base_classes
 
@@ -574,7 +574,7 @@ CharacterCreationGui._data_source_class_list = function (self)
 
 	return classes
 end
-CharacterCreationGui._on_click_button_next = function (self)
+function CharacterCreationGui:_on_click_button_next()
 	if self._current_screen == "class" then
 		self._current_screen = "nationality"
 		slot4 = true
@@ -620,7 +620,7 @@ CharacterCreationGui._on_click_button_next = function (self)
 
 	return 
 end
-CharacterCreationGui.back_pressed = function (self)
+function CharacterCreationGui:back_pressed()
 	if self._current_screen == "nationality" then
 		self._current_screen = "class"
 		slot4 = false
@@ -672,7 +672,7 @@ CharacterCreationGui.back_pressed = function (self)
 
 	return 
 end
-CharacterCreationGui.on_click_character_name = function (self)
+function CharacterCreationGui:on_click_character_name()
 	slot3 = self
 
 	self.input_focus(slot2)
@@ -683,7 +683,7 @@ CharacterCreationGui.on_click_character_name = function (self)
 
 	return 
 end
-CharacterCreationGui.show_selected_character_description = function (self)
+function CharacterCreationGui:show_selected_character_description()
 	local right_side_info = (self._current_screen == "class" and self._right_side_info_class) or self._right_side_info_nationality
 	slot5 = {
 		level = 0,
@@ -697,7 +697,7 @@ CharacterCreationGui.show_selected_character_description = function (self)
 
 	return 
 end
-CharacterCreationGui.show_selected_character = function (self)
+function CharacterCreationGui:show_selected_character()
 	if self._spawned_character_unit then
 		local anim_state_name = "character_creation_" .. tweak_data.skilltree.default_weapons[self._selected_class].primary
 		slot7 = anim_state_name
@@ -719,7 +719,7 @@ CharacterCreationGui.show_selected_character = function (self)
 
 	return 
 end
-CharacterCreationGui._spawn_empty_character_skeleton = function (self)
+function CharacterCreationGui:_spawn_empty_character_skeleton()
 	slot4 = false
 
 	self.set_character_select_allowed(slot2, self)
@@ -733,7 +733,7 @@ CharacterCreationGui._spawn_empty_character_skeleton = function (self)
 
 	return 
 end
-CharacterCreationGui._spawn_empty_character_skeleton_loaded = function (self)
+function CharacterCreationGui:_spawn_empty_character_skeleton_loaded()
 	self._loading_units[CharacterCustomizationTweakData.CRIMINAL_MENU_SELECT_UNIT] = nil
 	slot3 = self
 
@@ -775,7 +775,7 @@ CharacterCreationGui._spawn_empty_character_skeleton_loaded = function (self)
 
 	return 
 end
-CharacterCreationGui.get_character_spawn_location = function (self)
+function CharacterCreationGui:get_character_spawn_location()
 	slot4 = "all"
 	slot8 = "env_effect"
 	local units = World.find_units_quick(slot2, World, managers.slot.get_mask(slot6, managers.slot))
@@ -798,7 +798,7 @@ CharacterCreationGui.get_character_spawn_location = function (self)
 
 	return 
 end
-CharacterCreationGui.close = function (self)
+function CharacterCreationGui:close()
 	if self._parts_being_loaded then
 		slot3 = self._parts_being_loaded
 
@@ -895,7 +895,7 @@ CharacterCreationGui.close = function (self)
 
 	return 
 end
-CharacterCreationGui.show_selected_character_default_customization = function (self, nationality)
+function CharacterCreationGui:show_selected_character_default_customization(nationality)
 	slot4 = self._spawned_character_unit
 	slot4 = self._spawned_character_unit.customization(slot3)
 
@@ -918,7 +918,7 @@ CharacterCreationGui.show_selected_character_default_customization = function (s
 
 	return 
 end
-CharacterCreationGui._destroy_character_unit = function (self)
+function CharacterCreationGui:_destroy_character_unit()
 	if self._spawned_character_unit then
 		slot3 = self._spawned_character_unit
 		slot3 = self._spawned_character_unit.customization(slot2)
@@ -934,7 +934,7 @@ CharacterCreationGui._destroy_character_unit = function (self)
 
 	return 
 end
-CharacterCreationGui.show_character_create_input_textbox = function (self, callback_yes_function, callback_no_function)
+function CharacterCreationGui:show_character_create_input_textbox(callback_yes_function, callback_no_function)
 	slot5 = managers.savefile
 	local slot_index = managers.savefile.get_create_character_slot(slot4)
 	local params = {
@@ -972,12 +972,12 @@ function character_name_exists(name)
 	return false
 end
 
-CharacterCreationGui._callback_error_ok_function = function (self)
+function CharacterCreationGui:_callback_error_ok_function()
 	self._should_show_character_create_input_textbox = true
 
 	return 
 end
-CharacterCreationGui._callback_yes_function = function (self, button, button_data, data)
+function CharacterCreationGui:_callback_yes_function(button, button_data, data)
 	slot6 = data.input_field_text
 	local new_profile_name = trim(slot5)
 
@@ -1015,7 +1015,7 @@ CharacterCreationGui._callback_yes_function = function (self, button, button_dat
 
 	return 
 end
-CharacterCreationGui._callback_no_function = function (self)
+function CharacterCreationGui:_callback_no_function()
 	self._current_screen = "nationality"
 	slot3 = self
 
@@ -1027,7 +1027,7 @@ CharacterCreationGui._callback_no_function = function (self)
 
 	return 
 end
-CharacterCreationGui.create_new_character = function (self, character_profile_name)
+function CharacterCreationGui:create_new_character(character_profile_name)
 	local character_profile_nation = self._selected_nation
 	local character_profile_base_class = self._selected_class
 	local slot_index = managers.savefile.get_create_character_slot(slot5)
@@ -1115,7 +1115,7 @@ CharacterCreationGui.create_new_character = function (self, character_profile_na
 
 	return 
 end
-CharacterCreationGui._character_save_done_callback = function (self, slot, success, is_setting_slot, cache_only, aborted)
+function CharacterCreationGui:_character_save_done_callback(slot, success, is_setting_slot, cache_only, aborted)
 	slot8 = managers.savefile
 	local saving_character_slot = managers.savefile.get_save_progress_slot(slot7)
 
@@ -1149,7 +1149,7 @@ CharacterCreationGui._character_save_done_callback = function (self, slot, succe
 
 	return 
 end
-CharacterCreationGui.update = function (self, t, dt)
+function CharacterCreationGui:update(t, dt)
 	if self._should_show_character_create_input_textbox then
 		self._should_show_character_create_input_textbox = nil
 		slot10 = "_callback_yes_function"
@@ -1178,7 +1178,7 @@ CharacterCreationGui.update = function (self, t, dt)
 
 	return 
 end
-CharacterCreationGui._load_class_default_weapons = function (self)
+function CharacterCreationGui:_load_class_default_weapons()
 	self._parts_being_loaded = {}
 	slot3 = tweak_data.skilltree.default_weapons
 
@@ -1201,7 +1201,7 @@ CharacterCreationGui._load_class_default_weapons = function (self)
 
 	return 
 end
-CharacterCreationGui._weapon_unit_load_complete_callback = function (self, params)
+function CharacterCreationGui:_weapon_unit_load_complete_callback(params)
 	self._loading_units[params.unit_path] = nil
 	slot7 = "a_weapon_right_front"
 	local right_hand_locator = self._spawned_character_unit.get_object(params.unit_path, Idstring(slot6))
@@ -1235,7 +1235,7 @@ CharacterCreationGui._weapon_unit_load_complete_callback = function (self, param
 
 	return 
 end
-CharacterCreationGui._assemble_completed = function (self, params, parts, blueprint)
+function CharacterCreationGui:_assemble_completed(params, parts, blueprint)
 	self._parts_being_loaded[params.weapon_id] = nil
 
 	if self._loaded_weapons then
@@ -1254,7 +1254,7 @@ CharacterCreationGui._assemble_completed = function (self, params, parts, bluepr
 
 	return 
 end
-CharacterCreationGui._show_weapon = function (self, weapon_id)
+function CharacterCreationGui:_show_weapon(weapon_id)
 	if not self._loaded_weapons then
 		return 
 	end
@@ -1274,7 +1274,7 @@ CharacterCreationGui._show_weapon = function (self, weapon_id)
 
 	return 
 end
-CharacterCreationGui._destroy_weapon_parts_and_weapon_units = function (self)
+function CharacterCreationGui:_destroy_weapon_parts_and_weapon_units()
 	slot3 = self._loaded_weapons
 
 	for wpn_id, wpn_units in pairs(slot2) do
@@ -1297,7 +1297,7 @@ CharacterCreationGui._destroy_weapon_parts_and_weapon_units = function (self)
 
 	return 
 end
-CharacterCreationGui._bind_controller_inputs = function (self)
+function CharacterCreationGui:_bind_controller_inputs()
 	local bindings = {}
 	slot5 = "menu_controller_face_bottom"
 	slot7 = "_on_click_button_next"

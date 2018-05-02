@@ -14,7 +14,7 @@ core.import(slot1, core)
 
 ScriptGraph = ScriptGraph or CoreClass.class()
 CONFIG_VERSION = "1"
-ScriptGraph.init = function (self, parent, id, style)
+function ScriptGraph:init(parent, id, style)
 	slot7 = "[ScriptGraph] Currently the only supported graph view type is 'FLOW'."
 
 	assert(slot5, style == "FLOW" or not style)
@@ -25,24 +25,24 @@ ScriptGraph.init = function (self, parent, id, style)
 
 	return 
 end
-ScriptGraph.update = function (self, t, dt)
+function ScriptGraph:update(t, dt)
 	slot6 = dt
 
 	self._graph_view.update_graph(slot4, self._graph_view)
 
 	return 
 end
-ScriptGraph.window = function (self)
+function ScriptGraph:window()
 	return self._graph_view
 end
-ScriptGraph.destroy = function (self)
+function ScriptGraph:destroy()
 	slot3 = self._graph_view
 
 	self._graph_view.destroy(slot2)
 
 	return 
 end
-ScriptGraph.selected_nodes = function (self)
+function ScriptGraph:selected_nodes()
 	local t = {}
 	slot4 = self._graph_view
 
@@ -54,25 +54,25 @@ ScriptGraph.selected_nodes = function (self)
 
 	return t
 end
-ScriptGraph.last_selected_node = function (self)
+function ScriptGraph:last_selected_node()
 	slot3 = self._graph_view
 
 	return self._graph_view.last_selected_node(slot2)
 end
-ScriptGraph.nodes = function (self)
+function ScriptGraph:nodes()
 	slot3 = self._graph_view
 
 	return self._graph_view.nodes(slot2)
 end
-ScriptGraph.graph_metadata = function (self)
+function ScriptGraph:graph_metadata()
 	return self._graph_metadata
 end
-ScriptGraph.set_graph_metadata = function (self, data)
+function ScriptGraph:set_graph_metadata(data)
 	self._graph_metadata = data
 
 	return 
 end
-ScriptGraph.add_node = function (self, node)
+function ScriptGraph:add_node(node)
 	slot6 = node
 	slot5 = "[ScriptGraph] The only supported node type is 'flow_node'."
 
@@ -84,14 +84,14 @@ ScriptGraph.add_node = function (self, node)
 
 	return 
 end
-ScriptGraph.connect = function (self, id, event_type, cb, data)
+function ScriptGraph:connect(id, event_type, cb, data)
 	slot11 = data
 
 	self._graph_view.connect(slot6, self._graph_view, id, event_type, cb)
 
 	return 
 end
-ScriptGraph.save = function (self, id_map)
+function ScriptGraph:save(id_map)
 	local new_id_map = id_map or {}
 	local config = Node(slot4)
 	slot8 = self._name or ""
@@ -208,7 +208,7 @@ ScriptGraph.save = function (self, id_map)
 
 	return config, new_id_map
 end
-ScriptGraph.load = function (self, config_root)
+function ScriptGraph:load(config_root)
 	slot8 = config_root
 
 	assert(slot3, config_root)
@@ -330,7 +330,7 @@ ScriptGraph.load = function (self, config_root)
 
 	return self._id_map
 end
-ScriptGraph._load_node_info = function (self, node)
+function ScriptGraph:_load_node_info(node)
 	local info = {}
 	slot5 = node
 
@@ -443,7 +443,7 @@ ScriptGraph._load_node_info = function (self, node)
 
 	return info
 end
-ScriptGraph._create_panel = function (self, parent, id, style, window_style)
+function ScriptGraph:_create_panel(parent, id, style, window_style)
 	slot7 = EWS
 	self._graph = EWS.Graph(slot6)
 	slot11 = "FLOW"
@@ -458,14 +458,14 @@ ScriptGraph._create_panel = function (self, parent, id, style, window_style)
 
 	return 
 end
-ScriptGraph._find_node_with_id = function (self, nodes, id)
+function ScriptGraph:_find_node_with_id(nodes, id)
 	slot9 = id
 	slot6 = "[ScriptGraph] The graph is corrupt! Can't find node id: " .. tostring(slot8)
 	local node = assert(slot4, nodes[id])
 
 	return node.cnode
 end
-ScriptGraph._find_id_with_node = function (self, id_map, node)
+function ScriptGraph:_find_id_with_node(id_map, node)
 	slot5 = id_map
 
 	for id, n in pairs(slot4) do
@@ -481,7 +481,7 @@ ScriptGraph._find_id_with_node = function (self, id_map, node)
 
 	return 
 end
-ScriptGraph._write_icon = function (self, cfg_node, node)
+function ScriptGraph:_write_icon(cfg_node, node)
 	slot5 = node
 
 	if node.icon(slot4) ~= "" then
@@ -500,7 +500,7 @@ ScriptGraph._write_icon = function (self, cfg_node, node)
 
 	return 
 end
-ScriptGraph._write_connections = function (self, slot_node, slot, node, id_map)
+function ScriptGraph:_write_connections(slot_node, slot, node, id_map)
 	slot8 = slot
 	local con_info = node.connection_info(slot6, node)
 	slot8 = con_info
@@ -534,7 +534,7 @@ ScriptGraph._write_connections = function (self, slot_node, slot, node, id_map)
 
 	return 
 end
-ScriptGraph._write_output_color = function (self, slot_node, slot, node)
+function ScriptGraph:_write_output_color(slot_node, slot, node)
 	slot7 = slot
 	local r, g, b = node.output_colour(slot5, node)
 	slot13 = "color"
@@ -544,10 +544,10 @@ ScriptGraph._write_output_color = function (self, slot_node, slot, node)
 
 	return 
 end
-ScriptGraph._write_input_color = function (self, slot_node, slot, node)
+function ScriptGraph:_write_input_color(slot_node, slot, node)
 	return 
 end
-ScriptGraph._write_output_color_to_node = function (self, slot_node, color_node, r, g, b)
+function ScriptGraph:_write_output_color_to_node(slot_node, color_node, r, g, b)
 	slot9 = "r"
 	slot14 = r
 
@@ -569,7 +569,7 @@ ScriptGraph._write_output_color_to_node = function (self, slot_node, color_node,
 
 	return 
 end
-ScriptGraph._write_node_color = function (self, cfg_node, node)
+function ScriptGraph:_write_node_color(cfg_node, node)
 	local color_node = Node(slot4)
 	slot7 = "r"
 	slot14 = node
@@ -592,7 +592,7 @@ ScriptGraph._write_node_color = function (self, cfg_node, node)
 
 	return 
 end
-ScriptGraph._write_slots = function (self, cfg_node, node, id_map)
+function ScriptGraph:_write_slots(cfg_node, node, id_map)
 	slot6 = node
 
 	if node.type(slot5) == "FlowNode" then

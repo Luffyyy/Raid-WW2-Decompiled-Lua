@@ -8,7 +8,7 @@ if not ElementAccessCamera then
 end
 
 ElementAccessCamera = slot0
-ElementAccessCamera.init = function (self, ...)
+function ElementAccessCamera:init(...)
 	slot3 = self
 
 	ElementAccessCamera.super.init(slot2, ...)
@@ -18,7 +18,7 @@ ElementAccessCamera.init = function (self, ...)
 
 	return 
 end
-ElementAccessCamera.on_script_activated = function (self)
+function ElementAccessCamera:on_script_activated()
 	if self._values.camera_u_id then
 		local id = self._values.camera_u_id
 		local unit = nil
@@ -50,7 +50,7 @@ ElementAccessCamera.on_script_activated = function (self)
 
 	return 
 end
-ElementAccessCamera._load_unit = function (self, unit)
+function ElementAccessCamera:_load_unit(unit)
 	slot4 = unit
 	slot5 = self
 
@@ -60,10 +60,10 @@ ElementAccessCamera._load_unit = function (self, unit)
 
 	return 
 end
-ElementAccessCamera.client_on_executed = function (self, ...)
+function ElementAccessCamera:client_on_executed(...)
 	return 
 end
-ElementAccessCamera.on_executed = function (self, instigator)
+function ElementAccessCamera:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -74,7 +74,7 @@ ElementAccessCamera.on_executed = function (self, instigator)
 
 	return 
 end
-ElementAccessCamera.access_camera_operation_destroy = function (self)
+function ElementAccessCamera:access_camera_operation_destroy()
 	self._values.destroyed = true
 	slot4 = "destroyed"
 
@@ -82,7 +82,7 @@ ElementAccessCamera.access_camera_operation_destroy = function (self)
 
 	return 
 end
-ElementAccessCamera.add_trigger = function (self, id, type, callback)
+function ElementAccessCamera:add_trigger(id, type, callback)
 	self._triggers[type] = self._triggers[type] or {}
 	self._triggers[type][id] = {
 		callback = callback
@@ -90,14 +90,14 @@ ElementAccessCamera.add_trigger = function (self, id, type, callback)
 
 	return 
 end
-ElementAccessCamera.remove_trigger = function (self, id, type)
+function ElementAccessCamera:remove_trigger(id, type)
 	if self._triggers[type] then
 		self._triggers[type][id] = nil
 	end
 
 	return 
 end
-ElementAccessCamera.trigger_accessed = function (self, instigator)
+function ElementAccessCamera:trigger_accessed(instigator)
 	slot4 = Network
 
 	if Network.is_client(slot3) then
@@ -113,7 +113,7 @@ ElementAccessCamera.trigger_accessed = function (self, instigator)
 
 	return 
 end
-ElementAccessCamera.check_triggers = function (self, type, instigator)
+function ElementAccessCamera:check_triggers(type, instigator)
 	if not self._triggers[type] then
 		return 
 	end
@@ -128,7 +128,7 @@ ElementAccessCamera.check_triggers = function (self, type, instigator)
 
 	return 
 end
-ElementAccessCamera.enabled = function (self, ...)
+function ElementAccessCamera:enabled(...)
 	slot3 = self._camera_unit
 
 	if alive(slot2) then
@@ -141,12 +141,12 @@ ElementAccessCamera.enabled = function (self, ...)
 
 	return ElementAccessCamera.super.enabled(slot2, ...)
 end
-ElementAccessCamera.has_camera_unit = function (self)
+function ElementAccessCamera:has_camera_unit()
 	slot3 = self._camera_unit
 
 	return (alive(slot2) and true) or false
 end
-ElementAccessCamera.camera_unit = function (self)
+function ElementAccessCamera:camera_unit()
 	slot3 = self._camera_unit
 
 	if alive(slot2) then
@@ -155,7 +155,7 @@ ElementAccessCamera.camera_unit = function (self)
 
 	return nil
 end
-ElementAccessCamera.camera_position = function (self)
+function ElementAccessCamera:camera_position()
 	slot3 = self._camera_unit
 
 	if alive(slot2) then
@@ -170,13 +170,13 @@ ElementAccessCamera.camera_position = function (self)
 
 	return self.value(slot2, self)
 end
-ElementAccessCamera.save = function (self, data)
+function ElementAccessCamera:save(data)
 	data.enabled = self._values.enabled
 	data.destroyed = self._values.destroyed
 
 	return 
 end
-ElementAccessCamera.load = function (self, data)
+function ElementAccessCamera:load(data)
 	slot5 = data.enabled
 
 	self.set_enabled(slot3, self)
@@ -198,21 +198,21 @@ if not ElementAccessCameraOperator then
 end
 
 ElementAccessCameraOperator = slot0
-ElementAccessCameraOperator.init = function (self, ...)
+function ElementAccessCameraOperator:init(...)
 	slot3 = self
 
 	ElementAccessCameraOperator.super.init(slot2, ...)
 
 	return 
 end
-ElementAccessCameraOperator.client_on_executed = function (self, ...)
+function ElementAccessCameraOperator:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementAccessCameraOperator.on_executed = function (self, instigator)
+function ElementAccessCameraOperator:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -243,14 +243,14 @@ if not ElementAccessCameraTrigger then
 end
 
 ElementAccessCameraTrigger = slot0
-ElementAccessCameraTrigger.init = function (self, ...)
+function ElementAccessCameraTrigger:init(...)
 	slot3 = self
 
 	ElementAccessCameraTrigger.super.init(slot2, ...)
 
 	return 
 end
-ElementAccessCameraTrigger.on_script_activated = function (self)
+function ElementAccessCameraTrigger:on_script_activated()
 	slot3 = self._values.elements
 
 	for _, id in ipairs(slot2) do
@@ -264,10 +264,10 @@ ElementAccessCameraTrigger.on_script_activated = function (self)
 
 	return 
 end
-ElementAccessCameraTrigger.client_on_executed = function (self, ...)
+function ElementAccessCameraTrigger:client_on_executed(...)
 	return 
 end
-ElementAccessCameraTrigger.on_executed = function (self, instigator)
+function ElementAccessCameraTrigger:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

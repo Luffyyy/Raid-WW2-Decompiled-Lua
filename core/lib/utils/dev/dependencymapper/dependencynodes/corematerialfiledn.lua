@@ -20,14 +20,14 @@ if not MaterialsfileDependencyNode then
 end
 
 MaterialsfileDependencyNode = slot1
-MaterialsfileDependencyNode.init = function (self, name, get_dn_cb, database)
+function MaterialsfileDependencyNode:init(name, get_dn_cb, database)
 	slot11 = database
 
 	self.super.init(slot5, self, MATERIALS_FILE, nil, name, get_dn_cb)
 
 	return 
 end
-MaterialsfileDependencyNode._parse = function (self)
+function MaterialsfileDependencyNode:_parse()
 	local f = File.open(slot2, File, _FILE)
 	slot6 = f
 	local xmlnode = Node.from_xml(f.read("r"))
@@ -39,7 +39,7 @@ MaterialsfileDependencyNode._parse = function (self)
 		xmlnode
 	}
 end
-MaterialsfileDependencyNode._walkxml2dependencies = function (self, xmlnode, deps)
+function MaterialsfileDependencyNode:_walkxml2dependencies(xmlnode, deps)
 	slot5 = xmlnode
 	local node_name = xmlnode.name(slot4)
 

@@ -27,19 +27,19 @@ local EMPTY_WORKBOOK_XML1 = [[
  </Styles>]]
 local EMPTY_WORKBOOK_XML2 = "</Workbook> "
 Workbook = Workbook or CoreClass.class()
-Workbook.init = function (self)
+function Workbook:init()
 	self._worksheets = {}
 
 	return 
 end
-Workbook.add_worksheet = function (self, worksheet)
+function Workbook:add_worksheet(worksheet)
 	slot5 = worksheet
 
 	table.insert(slot3, self._worksheets)
 
 	return 
 end
-Workbook.to_xml = function (self, f)
+function Workbook:to_xml(f)
 	slot5 = EMPTY_WORKBOOK_XML1
 
 	f.write(slot3, f)

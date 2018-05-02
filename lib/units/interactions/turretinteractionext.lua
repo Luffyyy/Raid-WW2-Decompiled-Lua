@@ -4,12 +4,12 @@ if not TurretInteractionExt then
 end
 
 TurretInteractionExt = slot0
-TurretInteractionExt.interact_distance = function (self, ...)
+function TurretInteractionExt:interact_distance(...)
 	slot3 = self
 
 	return TurretInteractionExt.super.interact_distance(slot2, ...)
 end
-TurretInteractionExt.can_select = function (self, player)
+function TurretInteractionExt:can_select(player)
 	slot5 = player
 	local super_condition = TurretInteractionExt.super.can_select(slot3, self)
 	slot5 = self._unit
@@ -20,12 +20,12 @@ TurretInteractionExt.can_select = function (self, player)
 
 	return super_condition and not taken and not locked
 end
-TurretInteractionExt.check_interupt = function (self)
+function TurretInteractionExt:check_interupt()
 	slot3 = self
 
 	return TurretInteractionExt.super.check_interupt(slot2)
 end
-TurretInteractionExt.interact = function (self, player)
+function TurretInteractionExt:interact(player)
 	slot5 = player
 
 	TurretInteractionExt.super.super.interact(slot3, self)
@@ -40,14 +40,14 @@ TurretInteractionExt.interact = function (self, player)
 
 	return 
 end
-TurretInteractionExt.sync_interacted = function (self, peer, player, status, skip_alive_check)
+function TurretInteractionExt:sync_interacted(peer, player, status, skip_alive_check)
 	if not self._active then
 		return 
 	end
 
 	return 
 end
-TurretInteractionExt.set_contour = function (self, color, opacity)
+function TurretInteractionExt:set_contour(color, opacity)
 	return 
 end
 

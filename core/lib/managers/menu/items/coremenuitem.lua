@@ -6,7 +6,7 @@ core.module(slot1, core)
 
 Item = Item or class()
 Item.TYPE = "item"
-Item.init = function (self, data_node, parameters)
+function Item:init(data_node, parameters)
 	self._type = ""
 	local params = parameters or {}
 	params.info_panel = ""
@@ -85,7 +85,7 @@ Item.init = function (self, data_node, parameters)
 
 	return 
 end
-Item.set_enabled = function (self, enabled)
+function Item:set_enabled(enabled)
 	self._enabled = enabled
 	slot4 = self
 
@@ -93,35 +93,35 @@ Item.set_enabled = function (self, enabled)
 
 	return 
 end
-Item.enabled = function (self)
+function Item:enabled()
 	return self._enabled
 end
-Item.type = function (self)
+function Item:type()
 	return self._type
 end
-Item.name = function (self)
+function Item:name()
 	return self._parameters.name
 end
-Item.info_panel = function (self)
+function Item:info_panel()
 	return self._parameters.info_panel
 end
-Item.parameters = function (self)
+function Item:parameters()
 	return self._parameters
 end
-Item.parameter = function (self, name)
+function Item:parameter(name)
 	return self._parameters[name]
 end
-Item.set_parameter = function (self, name, value)
+function Item:set_parameter(name, value)
 	self._parameters[name] = value
 
 	return 
 end
-Item.set_parameters = function (self, parameters)
+function Item:set_parameters(parameters)
 	self._parameters = parameters
 
 	return 
 end
-Item.set_callback_handler = function (self, callback_handler)
+function Item:set_callback_handler(callback_handler)
 	self._callback_handler = callback_handler
 	slot4 = self._parameters.callback_name
 
@@ -189,7 +189,7 @@ Item.set_callback_handler = function (self, callback_handler)
 
 	return 
 end
-Item.trigger = function (self)
+function Item:trigger()
 
 	-- Decompilation error in this vicinity:
 	slot1 = pairs
@@ -203,7 +203,7 @@ Item.trigger = function (self)
 
 	return 
 end
-Item.dirty = function (self)
+function Item:dirty()
 	if self.dirty_callback then
 		slot3 = self
 
@@ -212,7 +212,7 @@ Item.dirty = function (self)
 
 	return 
 end
-Item.visible = function (self)
+function Item:visible()
 	if self._visible_callback_list then
 		slot3 = self._visible_callback_list
 
@@ -227,10 +227,10 @@ Item.visible = function (self)
 
 	return true
 end
-Item.on_delete_row_item = function (self)
+function Item:on_delete_row_item()
 	return 
 end
-Item.on_delete_item = function (self)
+function Item:on_delete_item()
 	self._parameters.callback = {}
 	self._parameters.callback_disabled = {}
 	self._visible_callback_list = nil
@@ -238,31 +238,31 @@ Item.on_delete_item = function (self)
 
 	return 
 end
-Item.on_item_position = function (self, row_item, node)
+function Item:on_item_position(row_item, node)
 	return 
 end
-Item.on_item_positions_done = function (self, row_item, node)
+function Item:on_item_positions_done(row_item, node)
 	return 
 end
-Item.get_h = function (self, row_item)
+function Item:get_h(row_item)
 	return nil
 end
-Item.setup_gui = function (self, node, row_item)
+function Item:setup_gui(node, row_item)
 	return false
 end
-Item.reload = function (self, row_item)
+function Item:reload(row_item)
 	return false
 end
-Item.highlight_row_item = function (self, node, row_item, mouse_over)
+function Item:highlight_row_item(node, row_item, mouse_over)
 	return false
 end
-Item.fade_row_item = function (self, node, row_item)
+function Item:fade_row_item(node, row_item)
 	return false
 end
-Item.menu_unselected_visible = function (self)
+function Item:menu_unselected_visible()
 	return true
 end
-Item.icon_visible = function (self)
+function Item:icon_visible()
 	if self._icon_visible_callback_list then
 		slot3 = self._icon_visible_callback_list
 

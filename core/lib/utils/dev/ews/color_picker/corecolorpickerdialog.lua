@@ -27,7 +27,7 @@ end
 
 ColorPickerDialog = slot0
 ColorPickerDialog.EDITOR_TITLE = "Color Picker"
-ColorPickerDialog.init = function (self, parent_frame, enable_alpha, orientation, enable_value)
+function ColorPickerDialog:init(parent_frame, enable_alpha, orientation, enable_value)
 
 	-- Decompilation error in this vicinity:
 	orientation = orientation or "HORIZONTAL"
@@ -75,40 +75,40 @@ ColorPickerDialog.init = function (self, parent_frame, enable_alpha, orientation
 
 	return 
 end
-ColorPickerDialog.update = function (self, time, delta_time)
+function ColorPickerDialog:update(time, delta_time)
 	slot7 = delta_time
 
 	self._picker_panel.update(slot4, self._picker_panel, time)
 
 	return 
 end
-ColorPickerDialog.color = function (self)
+function ColorPickerDialog:color()
 	slot3 = self._picker_panel
 
 	return self._picker_panel.color(slot2)
 end
-ColorPickerDialog.set_color = function (self, color)
+function ColorPickerDialog:set_color(color)
 	slot5 = color
 
 	self._picker_panel.set_color(slot3, self._picker_panel)
 
 	return 
 end
-ColorPickerDialog.set_position = function (self, newpos)
+function ColorPickerDialog:set_position(newpos)
 	slot5 = newpos
 
 	self._window.set_position(slot3, self._window)
 
 	return 
 end
-ColorPickerDialog.set_visible = function (self, visible)
+function ColorPickerDialog:set_visible(visible)
 	slot5 = visible
 
 	self._window.set_visible(slot3, self._window)
 
 	return 
 end
-ColorPickerDialog.center = function (self, window)
+function ColorPickerDialog:center(window)
 	slot8 = window
 	slot8 = self._window
 	slot5 = (window.get_position(slot6) + window.get_size(window) * 0.5) - self._window.get_size(window) * 0.5
@@ -117,28 +117,28 @@ ColorPickerDialog.center = function (self, window)
 
 	return 
 end
-ColorPickerDialog.close = function (self)
+function ColorPickerDialog:close()
 	slot3 = self._window
 
 	self._window.destroy(slot2)
 
 	return 
 end
-ColorPickerDialog._on_color_updated = function (self, sender, color)
+function ColorPickerDialog:_on_color_updated(sender, color)
 	slot7 = color
 
 	self._send_event(slot4, self, "EVT_COLOR_UPDATED")
 
 	return 
 end
-ColorPickerDialog._on_color_changed = function (self, sender, color)
+function ColorPickerDialog:_on_color_changed(sender, color)
 	slot7 = color
 
 	self._send_event(slot4, self, "EVT_COLOR_CHANGED")
 
 	return 
 end
-ColorPickerDialog._on_close = function (self)
+function ColorPickerDialog:_on_close()
 	slot4 = false
 
 	self._window.set_visible(slot2, self._window)

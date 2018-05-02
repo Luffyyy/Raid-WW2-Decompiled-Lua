@@ -18,20 +18,20 @@ slot5 = tonumber
 
 CoreTimerSpeedCutsceneKey.register_serialized_attribute("Timer Speed", CoreTimerSpeedCutsceneKey, "duration", 0)
 
-CoreTimerSpeedCutsceneKey.__tostring = function (self)
+function CoreTimerSpeedCutsceneKey:__tostring()
 	slot4 = self.speed(slot5)
 	slot7 = self
 
 	return string.format(slot2, "Change timer speed to \"%g\" over \"%g\" seconds.", self.duration(self))
 end
-CoreTimerSpeedCutsceneKey.unload = function (self, player)
+function CoreTimerSpeedCutsceneKey:unload(player)
 	slot6 = 0
 
 	self._set_timer_speed(slot3, self, 1)
 
 	return 
 end
-CoreTimerSpeedCutsceneKey.play = function (self, player, undo, fast_forward)
+function CoreTimerSpeedCutsceneKey:play(player, undo, fast_forward)
 	if undo then
 		slot6 = self
 		local preceeding_key = self.preceeding_key(slot5)
@@ -55,7 +55,7 @@ CoreTimerSpeedCutsceneKey.play = function (self, player, undo, fast_forward)
 
 	return 
 end
-CoreTimerSpeedCutsceneKey._set_timer_speed = function (self, speed, duration)
+function CoreTimerSpeedCutsceneKey:_set_timer_speed(speed, duration)
 	slot6 = 0
 	speed = math.max(slot4, speed)
 	slot6 = 0
@@ -83,10 +83,10 @@ CoreTimerSpeedCutsceneKey._set_timer_speed = function (self, speed, duration)
 
 	return 
 end
-CoreTimerSpeedCutsceneKey.is_valid_speed = function (self, speed)
+function CoreTimerSpeedCutsceneKey:is_valid_speed(speed)
 	return speed ~= nil and 0.035 <= speed
 end
-CoreTimerSpeedCutsceneKey.is_valid_duration = function (self, duration)
+function CoreTimerSpeedCutsceneKey:is_valid_duration(duration)
 	return duration ~= nil and 0 <= duration
 end
 

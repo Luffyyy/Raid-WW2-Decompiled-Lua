@@ -15,7 +15,7 @@ slot3 = "CoreInteractionEditorGenericPanel"
 core.import(slot1, core)
 
 InteractionEditorPropUI = InteractionEditorPropUI or CoreClass.class()
-InteractionEditorPropUI.init = function (self, parent, owner)
+function InteractionEditorPropUI:init(parent, owner)
 	slot8 = ""
 	self._prop_panel = EWS.Panel(slot4, EWS, parent, "")
 	slot6 = "VERTICAL"
@@ -29,10 +29,10 @@ InteractionEditorPropUI.init = function (self, parent, owner)
 
 	return 
 end
-InteractionEditorPropUI.window = function (self)
+function InteractionEditorPropUI:window()
 	return self._prop_panel
 end
-InteractionEditorPropUI.clean = function (self)
+function InteractionEditorPropUI:clean()
 	if self._current_panel then
 		slot4 = false
 
@@ -43,7 +43,7 @@ InteractionEditorPropUI.clean = function (self)
 
 	return 
 end
-InteractionEditorPropUI.rebuild = function (self, desc, node)
+function InteractionEditorPropUI:rebuild(desc, node)
 	slot7 = node
 	self._current_panel = self._node_panels[desc.node_type(slot5, desc)] or self._node_panels[CoreInteractionEditorGenericPanel.NAME]
 	slot8 = node

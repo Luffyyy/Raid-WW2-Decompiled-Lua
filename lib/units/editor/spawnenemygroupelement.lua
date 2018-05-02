@@ -11,7 +11,7 @@ SpawnEnemyGroupUnitElement.SAVE_UNIT_ROTATION = false
 SpawnEnemyGroupUnitElement.RANDOMS = {
 	"amount"
 }
-SpawnEnemyGroupUnitElement.init = function (self, unit)
+function SpawnEnemyGroupUnitElement:init(unit)
 	slot5 = unit
 
 	MissionElement.init(slot3, self)
@@ -60,7 +60,7 @@ SpawnEnemyGroupUnitElement.init = function (self, unit)
 
 	return 
 end
-SpawnEnemyGroupUnitElement.post_init = function (self, ...)
+function SpawnEnemyGroupUnitElement:post_init(...)
 	slot3 = self
 
 	SpawnEnemyGroupUnitElement.super.post_init(slot2, ...)
@@ -92,17 +92,17 @@ SpawnEnemyGroupUnitElement.post_init = function (self, ...)
 
 	return 
 end
-SpawnEnemyGroupUnitElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function SpawnEnemyGroupUnitElement:draw_links(t, dt, selected_unit, all_units)
 	slot11 = all_units
 
 	MissionElement.draw_links(slot6, self, t, dt, selected_unit)
 
 	return 
 end
-SpawnEnemyGroupUnitElement.update_editing = function (self)
+function SpawnEnemyGroupUnitElement:update_editing()
 	return 
 end
-SpawnEnemyGroupUnitElement.update_selected = function (self, t, dt, selected_unit, all_units)
+function SpawnEnemyGroupUnitElement:update_selected(t, dt, selected_unit, all_units)
 	slot7 = self._hed.elements
 
 	for _, id in ipairs(slot6) do
@@ -124,7 +124,7 @@ SpawnEnemyGroupUnitElement.update_selected = function (self, t, dt, selected_uni
 
 	return 
 end
-SpawnEnemyGroupUnitElement.add_element = function (self)
+function SpawnEnemyGroupUnitElement:add_element()
 	slot4 = {
 		ray_type = "editor",
 		mask = 10
@@ -154,7 +154,7 @@ SpawnEnemyGroupUnitElement.add_element = function (self)
 
 	return 
 end
-SpawnEnemyGroupUnitElement.remove_links = function (self, unit)
+function SpawnEnemyGroupUnitElement:remove_links(unit)
 	slot4 = self._hed.elements
 
 	for _, id in ipairs(slot3) do
@@ -169,7 +169,7 @@ SpawnEnemyGroupUnitElement.remove_links = function (self, unit)
 
 	return 
 end
-SpawnEnemyGroupUnitElement.get_links_to_unit = function (self, ...)
+function SpawnEnemyGroupUnitElement:get_links_to_unit(...)
 	slot3 = self
 
 	SpawnEnemyGroupUnitElement.super.get_links_to_unit(slot2, ...)
@@ -180,7 +180,7 @@ SpawnEnemyGroupUnitElement.get_links_to_unit = function (self, ...)
 
 	return 
 end
-SpawnEnemyGroupUnitElement.add_triggers = function (self, vc)
+function SpawnEnemyGroupUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "add_element"
 
@@ -188,7 +188,7 @@ SpawnEnemyGroupUnitElement.add_triggers = function (self, vc)
 
 	return 
 end
-SpawnEnemyGroupUnitElement._build_panel = function (self, panel, panel_sizer)
+function SpawnEnemyGroupUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -335,7 +335,7 @@ SpawnEnemyGroupUnitElement._build_panel = function (self, panel, panel_sizer)
 
 	return 
 end
-SpawnEnemyGroupUnitElement.on_preferred_spawn_groups_checkbox_changed = function (self, params)
+function SpawnEnemyGroupUnitElement:on_preferred_spawn_groups_checkbox_changed(params)
 	slot4 = params.ctrlr
 	local value = params.ctrlr.get_value(slot3)
 

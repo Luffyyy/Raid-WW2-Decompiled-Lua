@@ -6366,7 +6366,7 @@ SequenceManager.GLOBAL_SEQUENCE_PATH = "settings/sequence_manager"
 SequenceManager.SEQUENCE_FILE_EXTENSION = "sequence_manager"
 slot3 = "unit"
 SequenceManager.IDS_UNIT = Idstring(slot2)
-function SequenceManager:init(area_damage_mask, target_world_mask, beings_mask)
+SequenceManager.init = function (self, area_damage_mask, target_world_mask, beings_mask)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-171, warpins: 1 ---
@@ -6676,7 +6676,7 @@ function SequenceManager:init(area_damage_mask, target_world_mask, beings_mask)
 
 
 end
-function SequenceManager:register_event_element_class(element_class)
+SequenceManager.register_event_element_class = function (self, element_class)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -6719,7 +6719,7 @@ function SequenceManager:register_event_element_class(element_class)
 
 
 end
-function SequenceManager:get_event_element_class_map()
+SequenceManager.get_event_element_class_map = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -6729,7 +6729,7 @@ function SequenceManager:get_event_element_class_map()
 
 
 end
-function SequenceManager:register_filter_element_class(element_class)
+SequenceManager.register_filter_element_class = function (self, element_class)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -6772,7 +6772,7 @@ function SequenceManager:register_filter_element_class(element_class)
 
 
 end
-function SequenceManager:get_filter_element_class_map()
+SequenceManager.get_filter_element_class_map = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -6782,7 +6782,7 @@ function SequenceManager:get_filter_element_class_map()
 
 
 end
-function SequenceManager:register_inflict_element_class(element_class)
+SequenceManager.register_inflict_element_class = function (self, element_class)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -6825,7 +6825,7 @@ function SequenceManager:register_inflict_element_class(element_class)
 
 
 end
-function SequenceManager:get_inflict_element_class_map()
+SequenceManager.get_inflict_element_class_map = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -6835,7 +6835,7 @@ function SequenceManager:get_inflict_element_class_map()
 
 
 end
-function SequenceManager:get_inflict_updator_unit_map(damage_type)
+SequenceManager.get_inflict_updator_unit_map = function (self, damage_type)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -6845,7 +6845,7 @@ function SequenceManager:get_inflict_updator_unit_map(damage_type)
 
 
 end
-function SequenceManager:get_inflict_updator_body_map(damage_type, unit_key)
+SequenceManager.get_inflict_updator_body_map = function (self, damage_type, unit_key)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -6889,7 +6889,7 @@ function SequenceManager:get_inflict_updator_body_map(damage_type, unit_key)
 
 
 end
-function SequenceManager:add_inflict_updator_body(damage_type, unit_key, body_key, body_ext)
+SequenceManager.add_inflict_updator_body = function (self, damage_type, unit_key, body_key, body_ext)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -6994,7 +6994,7 @@ function SequenceManager:add_inflict_updator_body(damage_type, unit_key, body_ke
 
 
 end
-function SequenceManager:remove_inflict_updator_body(damage_type, unit_key, body_key)
+SequenceManager.remove_inflict_updator_body = function (self, damage_type, unit_key, body_key)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -7064,7 +7064,7 @@ function SequenceManager:remove_inflict_updator_body(damage_type, unit_key, body
 
 
 end
-function SequenceManager:remove_inflict_updator_body_map(damage_type, unit_key)
+SequenceManager.remove_inflict_updator_body_map = function (self, damage_type, unit_key)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -7108,7 +7108,7 @@ function SequenceManager:remove_inflict_updator_body_map(damage_type, unit_key)
 
 
 end
-function SequenceManager:get_global_core_unit_element()
+SequenceManager.get_global_core_unit_element = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -7118,7 +7118,7 @@ function SequenceManager:get_global_core_unit_element()
 
 
 end
-function SequenceManager:get_global_unit_element()
+SequenceManager.get_global_unit_element = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -7128,7 +7128,7 @@ function SequenceManager:get_global_unit_element()
 
 
 end
-function SequenceManager:get_global_sequence(sequence_name)
+SequenceManager.get_global_sequence = function (self, sequence_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -7157,7 +7157,7 @@ function SequenceManager:get_global_sequence(sequence_name)
 
 
 end
-function SequenceManager:get_global_sequence_map()
+SequenceManager.get_global_sequence_map = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -7186,7 +7186,7 @@ function SequenceManager:get_global_sequence_map()
 
 
 end
-function SequenceManager:get_global_filter(filter_name)
+SequenceManager.get_global_filter = function (self, filter_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -7215,7 +7215,7 @@ function SequenceManager:get_global_filter(filter_name)
 
 
 end
-function SequenceManager:set_collisions_enabled(enabled)
+SequenceManager.set_collisions_enabled = function (self, enabled)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -7227,7 +7227,7 @@ function SequenceManager:set_collisions_enabled(enabled)
 
 
 end
-function SequenceManager:is_collisions_enabled()
+SequenceManager.is_collisions_enabled = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -7237,7 +7237,7 @@ function SequenceManager:is_collisions_enabled()
 
 
 end
-function SequenceManager:set_proximity_enabled(enabled)
+SequenceManager.set_proximity_enabled = function (self, enabled)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -7249,7 +7249,7 @@ function SequenceManager:set_proximity_enabled(enabled)
 
 
 end
-function SequenceManager:is_proximity_enabled()
+SequenceManager.is_proximity_enabled = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -7259,7 +7259,7 @@ function SequenceManager:is_proximity_enabled()
 
 
 end
-function SequenceManager:editor_info(unit_name)
+SequenceManager.editor_info = function (self, unit_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -7369,7 +7369,7 @@ function SequenceManager:editor_info(unit_name)
 
 
 end
-function SequenceManager:get_proximity_mask(name)
+SequenceManager.get_proximity_mask = function (self, name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -7379,7 +7379,7 @@ function SequenceManager:get_proximity_mask(name)
 
 
 end
-function SequenceManager:get_proximity_mask_map()
+SequenceManager.get_proximity_mask_map = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -7389,7 +7389,7 @@ function SequenceManager:get_proximity_mask_map()
 
 
 end
-function SequenceManager:get_keys_as_string(key_value_list, none_string, dot_at_end, only_values)
+SequenceManager.get_keys_as_string = function (self, key_value_list, none_string, dot_at_end, only_values)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -7622,7 +7622,7 @@ function SequenceManager:get_keys_as_string(key_value_list, none_string, dot_at_
 
 
 end
-function SequenceManager:has(unit_name)
+SequenceManager.has = function (self, unit_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -7662,7 +7662,7 @@ function SequenceManager:has(unit_name)
 
 
 end
-function SequenceManager:get(unit_name, ignore_error, create_empty)
+SequenceManager.get = function (self, unit_name, ignore_error, create_empty)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -7727,7 +7727,7 @@ function SequenceManager:get(unit_name, ignore_error, create_empty)
 
 
 end
-function SequenceManager:get_sequence_file(unit_name)
+SequenceManager.get_sequence_file = function (self, unit_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -7739,7 +7739,7 @@ function SequenceManager:get_sequence_file(unit_name)
 
 
 end
-function SequenceManager:parse_event(node, unit_element)
+SequenceManager.parse_event = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -7803,7 +7803,7 @@ function SequenceManager:parse_event(node, unit_element)
 
 
 end
-function SequenceManager:run_sequence_simple(name, dest_unit, params)
+SequenceManager.run_sequence_simple = function (self, name, dest_unit, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -7817,7 +7817,7 @@ function SequenceManager:run_sequence_simple(name, dest_unit, params)
 
 
 end
-function SequenceManager:run_sequence_simple2(name, endurance_type, dest_unit, params)
+SequenceManager.run_sequence_simple2 = function (self, name, endurance_type, dest_unit, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -7831,7 +7831,7 @@ function SequenceManager:run_sequence_simple2(name, endurance_type, dest_unit, p
 
 
 end
-function SequenceManager:run_sequence_simple3(name, endurance_type, source_unit, dest_unit, params)
+SequenceManager.run_sequence_simple3 = function (self, name, endurance_type, source_unit, dest_unit, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -7865,7 +7865,7 @@ function SequenceManager:run_sequence_simple3(name, endurance_type, source_unit,
 
 
 end
-function SequenceManager:run_sequence(name, endurance_type, source_unit, dest_unit, dest_body, dest_normal, position, direction, damage, velocity, params)
+SequenceManager.run_sequence = function (self, name, endurance_type, source_unit, dest_unit, dest_body, dest_normal, position, direction, damage, velocity, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -7911,7 +7911,7 @@ function SequenceManager:run_sequence(name, endurance_type, source_unit, dest_un
 
 
 end
-function SequenceManager:get_body_param(unit_name, body_name, param_name)
+SequenceManager.get_body_param = function (self, unit_name, body_name, param_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -7974,7 +7974,7 @@ function SequenceManager:get_body_param(unit_name, body_name, param_name)
 
 
 end
-function SequenceManager:_register_start_time_callback(id, element, node)
+SequenceManager._register_start_time_callback = function (self, id, element, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -8007,7 +8007,7 @@ function SequenceManager:_register_start_time_callback(id, element, node)
 
 
 end
-function SequenceManager:_add_start_time_callback(element_id, env, delay, repeat_nr, sequence_name)
+SequenceManager._add_start_time_callback = function (self, element_id, env, delay, repeat_nr, sequence_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -8072,7 +8072,7 @@ function SequenceManager:_add_start_time_callback(element_id, env, delay, repeat
 
 
 end
-function SequenceManager:_remove_start_time_callback(id)
+SequenceManager._remove_start_time_callback = function (self, id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -8151,7 +8151,7 @@ function SequenceManager:_remove_start_time_callback(id)
 
 
 end
-function SequenceManager:add_retry_callback(callback_type, func, try_immediately)
+SequenceManager.add_retry_callback = function (self, callback_type, func, try_immediately)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -8224,7 +8224,7 @@ function SequenceManager:add_retry_callback(callback_type, func, try_immediately
 
 
 end
-function SequenceManager:add_callback(func)
+SequenceManager.add_callback = function (self, func)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -8237,7 +8237,7 @@ function SequenceManager:add_callback(func)
 
 
 end
-function SequenceManager:remove_callback(id)
+SequenceManager.remove_callback = function (self, id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -8269,7 +8269,7 @@ function SequenceManager:remove_callback(id)
 
 
 end
-function SequenceManager:add_startup_callback(func)
+SequenceManager.add_startup_callback = function (self, func)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -8303,7 +8303,7 @@ function SequenceManager:add_startup_callback(func)
 
 
 end
-function SequenceManager:remove_startup_callback(id)
+SequenceManager.remove_startup_callback = function (self, id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -8332,7 +8332,7 @@ function SequenceManager:remove_startup_callback(id)
 
 
 end
-function SequenceManager:update(t, dt)
+SequenceManager.update = function (self, t, dt)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -8377,7 +8377,7 @@ function SequenceManager:update(t, dt)
 
 
 end
-function SequenceManager:update_startup_callbacks()
+SequenceManager.update_startup_callbacks = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -8435,7 +8435,7 @@ function SequenceManager:update_startup_callbacks()
 
 
 end
-function SequenceManager:update_start_time_callbacks(dt)
+SequenceManager.update_start_time_callbacks = function (self, dt)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -8741,7 +8741,7 @@ function SequenceManager:update_start_time_callbacks(dt)
 
 
 end
-function SequenceManager:get_time_callback_info(time_callback)
+SequenceManager.get_time_callback_info = function (self, time_callback)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -8829,7 +8829,7 @@ function SequenceManager:get_time_callback_info(time_callback)
 
 
 end
-function SequenceManager:update_retry_callbacks()
+SequenceManager.update_retry_callbacks = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -9023,7 +9023,7 @@ function SequenceManager:update_retry_callbacks()
 
 
 end
-function SequenceManager:update_callbacks(t, dt)
+SequenceManager.update_callbacks = function (self, t, dt)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -9148,7 +9148,7 @@ function SequenceManager:update_callbacks(t, dt)
 
 
 end
-function SequenceManager:_serialize_to_script(type, name)
+SequenceManager._serialize_to_script = function (self, type, name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -9194,7 +9194,7 @@ function SequenceManager:_serialize_to_script(type, name)
 
 
 end
-function SequenceManager:_add_sequences_from_unit_data(unit_data)
+SequenceManager._add_sequences_from_unit_data = function (self, unit_data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -9334,7 +9334,7 @@ function SequenceManager:_add_sequences_from_unit_data(unit_data)
 
 
 end
-function SequenceManager:add_queued_sequences_from_unit_data()
+SequenceManager.add_queued_sequences_from_unit_data = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -9423,7 +9423,7 @@ function SequenceManager:add_queued_sequences_from_unit_data()
 
 
 end
-function SequenceManager:_add_unit_element(manager_node, unit_name_key, unit_name, seq_manager_filename)
+SequenceManager._add_unit_element = function (self, manager_node, unit_name_key, unit_name, seq_manager_filename)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -9500,7 +9500,7 @@ function SequenceManager:_add_unit_element(manager_node, unit_name_key, unit_nam
 
 
 end
-function SequenceManager:preload()
+SequenceManager.preload = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -9549,7 +9549,7 @@ function SequenceManager:preload()
 
 
 end
-function SequenceManager:preload_package(package_name)
+SequenceManager.preload_package = function (self, package_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -9600,7 +9600,7 @@ function SequenceManager:preload_package(package_name)
 
 
 end
-function SequenceManager:clbk_pkg_manager_unit_loaded(type, unit_name, package_name)
+SequenceManager.clbk_pkg_manager_unit_loaded = function (self, type, unit_name, package_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -9616,7 +9616,7 @@ function SequenceManager:clbk_pkg_manager_unit_loaded(type, unit_name, package_n
 
 
 end
-function SequenceManager:reload(unit_name, sequences_only)
+SequenceManager.reload = function (self, unit_name, sequences_only)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -9709,7 +9709,7 @@ function SequenceManager:reload(unit_name, sequences_only)
 
 
 end
-function SequenceManager:reload_all()
+SequenceManager.reload_all = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -9769,7 +9769,7 @@ function SequenceManager:reload_all()
 
 
 end
-function SequenceManager:clear()
+SequenceManager.clear = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-15, warpins: 1 ---
@@ -9791,7 +9791,7 @@ function SequenceManager:clear()
 
 
 end
-function SequenceManager:count()
+SequenceManager.count = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -9839,7 +9839,7 @@ function SequenceManager:count()
 
 
 end
-function SequenceManager:remove(unit_name)
+SequenceManager.remove = function (self, unit_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -9883,7 +9883,7 @@ function SequenceManager:remove(unit_name)
 
 
 end
-function SequenceManager:test_unit_by_name(unit_name, pos, rot)
+SequenceManager.test_unit_by_name = function (self, unit_name, pos, rot)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -9993,7 +9993,7 @@ function SequenceManager:test_unit_by_name(unit_name, pos, rot)
 
 
 end
-function SequenceManager:test_unit_variations(unit)
+SequenceManager.test_unit_variations = function (self, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -10155,7 +10155,7 @@ function SequenceManager:test_unit_variations(unit)
 
 
 end
-function SequenceManager:test_unit_damage(unit)
+SequenceManager.test_unit_damage = function (self, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -10357,7 +10357,7 @@ function SequenceManager:test_unit_damage(unit)
 
 
 end
-function SequenceManager:load_element_data(unit, element_name, data)
+SequenceManager.load_element_data = function (self, unit, element_name, data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -10371,7 +10371,7 @@ function SequenceManager:load_element_data(unit, element_name, data)
 
 
 end
-function SequenceManager:save(data)
+SequenceManager.save = function (self, data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -10573,7 +10573,7 @@ function SequenceManager:save(data)
 
 
 end
-function SequenceManager:load(data)
+SequenceManager.load = function (self, data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -10729,7 +10729,7 @@ function SequenceManager:load(data)
 
 
 end
-function SequenceManager:save_global_save_data(data)
+SequenceManager.save_global_save_data = function (self, data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -10774,7 +10774,7 @@ function SequenceManager:save_global_save_data(data)
 
 
 end
-function SequenceManager:load_global_save_data(data)
+SequenceManager.load_global_save_data = function (self, data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -10806,7 +10806,7 @@ function SequenceManager:load_global_save_data(data)
 
 
 end
-function SequenceManager:safe_save_map(map)
+SequenceManager.safe_save_map = function (self, map)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -10818,7 +10818,7 @@ function SequenceManager:safe_save_map(map)
 
 
 end
-function SequenceManager:_safe_save_map(map, visited_map)
+SequenceManager._safe_save_map = function (self, map, visited_map)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -11043,7 +11043,7 @@ function SequenceManager:_safe_save_map(map, visited_map)
 
 
 end
-function SequenceManager:safe_load_map(data_map)
+SequenceManager.safe_load_map = function (self, data_map)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-26, warpins: 1 ---
@@ -11083,7 +11083,7 @@ function SequenceManager:safe_load_map(data_map)
 
 
 end
-function SequenceManager:_safe_load_map_done(data_map)
+SequenceManager._safe_load_map_done = function (self, data_map)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -11123,7 +11123,7 @@ function SequenceManager:_safe_load_map_done(data_map)
 
 
 end
-function SequenceManager:_safe_load_map(state, wait_unit_load_map, done_callback_func, visited_map)
+SequenceManager._safe_load_map = function (self, state, wait_unit_load_map, done_callback_func, visited_map)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -11275,7 +11275,7 @@ function SequenceManager:_safe_load_map(state, wait_unit_load_map, done_callback
 
 
 end
-function SequenceManager:_on_load_unit_done_callback(data, unit)
+SequenceManager._on_load_unit_done_callback = function (self, data, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -11311,7 +11311,7 @@ function SequenceManager:_on_load_unit_done_callback(data, unit)
 
 
 end
-function SequenceManager:_count_down_wait_unit_load_map(wait_unit_load_map, id)
+SequenceManager._count_down_wait_unit_load_map = function (self, wait_unit_load_map, id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -11342,7 +11342,7 @@ function SequenceManager:_count_down_wait_unit_load_map(wait_unit_load_map, id)
 
 
 end
-function SequenceManager:internal_load()
+SequenceManager.internal_load = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -11435,7 +11435,7 @@ function SequenceManager:internal_load()
 
 
 end
-function SequenceManager:add_area_damage_callback(func)
+SequenceManager.add_area_damage_callback = function (self, func)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -11448,7 +11448,7 @@ function SequenceManager:add_area_damage_callback(func)
 
 
 end
-function SequenceManager:remove_area_damage_callback(id)
+SequenceManager.remove_area_damage_callback = function (self, id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -11460,7 +11460,7 @@ function SequenceManager:remove_area_damage_callback(id)
 
 
 end
-function SequenceManager:do_area_damage(damage_type, attack_unit, pos, range, constant_damage, damage, physic_effect, mass, ignore_unit, direct_attack_unit, ignore_mask, get_damage_func, velocity)
+SequenceManager.do_area_damage = function (self, damage_type, attack_unit, pos, range, constant_damage, damage, physic_effect, mass, ignore_unit, direct_attack_unit, ignore_mask, get_damage_func, velocity)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -12066,7 +12066,7 @@ function SequenceManager:do_area_damage(damage_type, attack_unit, pos, range, co
 
 
 end
-function SequenceManager:do_area_damage_on_body(unit, body, body_extension, damage_type, attack_unit, normal, pos, dir, body_damage, velocity, ignore_unit, direct_attack_unit)
+SequenceManager.do_area_damage_on_body = function (self, unit, body, body_extension, damage_type, attack_unit, normal, pos, dir, body_damage, velocity, ignore_unit, direct_attack_unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -12104,7 +12104,7 @@ function SequenceManager:do_area_damage_on_body(unit, body, body_extension, dama
 
 
 end
-function SequenceManager:do_area_damage_on_unit(unit, body, unit_extension, damage_type, attack_unit, normal, pos, dir, body_damage, velocity, ignore_unit, direct_attack_unit)
+SequenceManager.do_area_damage_on_unit = function (self, unit, body, unit_extension, damage_type, attack_unit, normal, pos, dir, body_damage, velocity, ignore_unit, direct_attack_unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-16, warpins: 1 ---
@@ -12155,7 +12155,7 @@ function SequenceManager:do_area_damage_on_unit(unit, body, unit_extension, dama
 
 
 end
-function SequenceManager:is_hit_by_area_damage(dest_unit, position, ray_caller, ignore_unit)
+SequenceManager.is_hit_by_area_damage = function (self, dest_unit, position, ray_caller, ignore_unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -12283,7 +12283,7 @@ function SequenceManager:is_hit_by_area_damage(dest_unit, position, ray_caller, 
 
 
 end
-function SequenceManager:get_editable_state_sequence_list(unit_name)
+SequenceManager.get_editable_state_sequence_list = function (self, unit_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -12295,7 +12295,7 @@ function SequenceManager:get_editable_state_sequence_list(unit_name)
 
 
 end
-function SequenceManager:get_reset_editable_state_sequence_list(unit_name)
+SequenceManager.get_reset_editable_state_sequence_list = function (self, unit_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -12307,7 +12307,7 @@ function SequenceManager:get_reset_editable_state_sequence_list(unit_name)
 
 
 end
-function SequenceManager:get_triggable_sequence_list(unit_name)
+SequenceManager.get_triggable_sequence_list = function (self, unit_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -12319,7 +12319,7 @@ function SequenceManager:get_triggable_sequence_list(unit_name)
 
 
 end
-function SequenceManager:get_trigger_list(unit_name)
+SequenceManager.get_trigger_list = function (self, unit_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -12362,7 +12362,7 @@ function SequenceManager:get_trigger_list(unit_name)
 
 
 end
-function SequenceManager:get_trigger_map(unit_name)
+SequenceManager.get_trigger_map = function (self, unit_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -12405,7 +12405,7 @@ function SequenceManager:get_trigger_map(unit_name)
 
 
 end
-function SequenceManager:get_sequence_list(unit_name, property_name, property_value)
+SequenceManager.get_sequence_list = function (self, unit_name, property_name, property_value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -12458,7 +12458,7 @@ function SequenceManager:get_sequence_list(unit_name, property_name, property_va
 
 
 end
-function SequenceManager:has_sequence_name(unit_name, sequence_name, ignore_error)
+SequenceManager.has_sequence_name = function (self, unit_name, sequence_name, ignore_error)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -12492,7 +12492,7 @@ function SequenceManager:has_sequence_name(unit_name, sequence_name, ignore_erro
 
 
 end
-function SequenceManager:get_unit_count()
+SequenceManager.get_unit_count = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -12657,7 +12657,7 @@ SequenceEnvironment.abs = math.abs
 SequenceEnvironment.string = string
 SequenceEnvironment.stack_dump = Application.stack_dump
 SequenceEnvironment.Idstring = Idstring
-function SequenceEnvironment:init(endurance_type, source_unit, dest_unit, dest_body, dest_normal, position, direction, damage, velocity, params, unit_element, damage_ext)
+SequenceEnvironment.init = function (self, endurance_type, source_unit, dest_unit, dest_body, dest_normal, position, direction, damage, velocity, params, unit_element, damage_ext)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -12757,7 +12757,7 @@ function SequenceEnvironment:init(endurance_type, source_unit, dest_unit, dest_b
 
 
 end
-function SequenceEnvironment:init_static_env()
+SequenceEnvironment.init_static_env = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-33, warpins: 1 ---
@@ -15042,7 +15042,7 @@ end
 
 slot0[slot1] = slot2
 BaseElement.SAVE_STATE = true
-function BaseElement:init(node, unit_element)
+BaseElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -15219,7 +15219,7 @@ function BaseElement:init(node, unit_element)
 
 		-- Decompilation error in this vicinity:
 		--- BLOCK #0 100-101, warpins: 1 ---
-		function self:_is_allowed_func(env)
+		self._is_allowed_func = function (self, env)
 
 			-- Decompilation error in this vicinity:
 			--- BLOCK #0 1-7, warpins: 1 ---
@@ -15300,7 +15300,7 @@ function BaseElement:init(node, unit_element)
 
 		-- Decompilation error in this vicinity:
 		--- BLOCK #0 106-107, warpins: 1 ---
-		function self:_delayed_is_allowed_func(env)
+		self._delayed_is_allowed_func = function (self, env)
 
 			-- Decompilation error in this vicinity:
 			--- BLOCK #0 1-12, warpins: 1 ---
@@ -15365,7 +15365,7 @@ function BaseElement:init(node, unit_element)
 
 
 end
-function BaseElement:retrieve_node_file(node)
+BaseElement.retrieve_node_file = function (self, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -15383,7 +15383,7 @@ function BaseElement:retrieve_node_file(node)
 
 
 end
-function BaseElement:retrieve_node_line(node)
+BaseElement.retrieve_node_line = function (self, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -15429,7 +15429,7 @@ function BaseElement:retrieve_node_line(node)
 
 
 end
-function BaseElement:get(name, set_function)
+BaseElement.get = function (self, name, set_function)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -15441,7 +15441,7 @@ function BaseElement:get(name, set_function)
 
 
 end
-function BaseElement:get_static(name, value, set_function, node)
+BaseElement.get_static = function (self, name, value, set_function, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -15550,7 +15550,7 @@ function BaseElement:get_static(name, value, set_function, node)
 
 
 end
-function BaseElement:run_parsed_func(env, func)
+BaseElement.run_parsed_func = function (self, env, func)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -15590,7 +15590,7 @@ function BaseElement:run_parsed_func(env, func)
 
 
 end
-function BaseElement:run_parsed_func_list(env, list)
+BaseElement.run_parsed_func_list = function (self, env, list)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -15641,7 +15641,7 @@ function BaseElement:run_parsed_func_list(env, list)
 
 
 end
-function BaseElement:run_parsed_func_map(env, map)
+BaseElement.run_parsed_func_map = function (self, env, map)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -15690,7 +15690,7 @@ function BaseElement:run_parsed_func_map(env, map)
 
 
 end
-function BaseElement:activate(env)
+BaseElement.activate = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -15857,7 +15857,7 @@ function BaseElement:activate(env)
 
 
 end
-function BaseElement:start_time_callback(env)
+BaseElement.start_time_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -15903,7 +15903,7 @@ function BaseElement:start_time_callback(env)
 
 
 end
-function BaseElement:filter_callback(env)
+BaseElement.filter_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -15953,7 +15953,7 @@ function BaseElement:filter_callback(env)
 
 
 end
-function BaseElement:delayed_filter_callback(env)
+BaseElement.delayed_filter_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -16003,7 +16003,7 @@ function BaseElement:delayed_filter_callback(env)
 
 
 end
-function BaseElement:activate_callback(env)
+BaseElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -16013,7 +16013,7 @@ function BaseElement:activate_callback(env)
 
 
 end
-function BaseElement:set_state(unit, data)
+BaseElement.set_state = function (self, unit, data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -16065,7 +16065,7 @@ function BaseElement:set_state(unit, data)
 
 
 end
-function BaseElement:set_cat_state(unit, category, cat_data)
+BaseElement.set_cat_state = function (self, unit, category, cat_data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -16138,7 +16138,7 @@ function BaseElement:set_cat_state(unit, category, cat_data)
 
 
 end
-function BaseElement:set_cat_state2(unit, category1, category2, cat_data)
+BaseElement.set_cat_state2 = function (self, unit, category1, category2, cat_data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -16241,7 +16241,7 @@ function BaseElement:set_cat_state2(unit, category1, category2, cat_data)
 
 
 end
-function BaseElement:check_invalid_node(node, valid_node_list)
+BaseElement.check_invalid_node = function (self, node, valid_node_list)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -16349,7 +16349,7 @@ function BaseElement:check_invalid_node(node, valid_node_list)
 
 
 end
-function BaseElement:is_valid_xml_node(node)
+BaseElement.is_valid_xml_node = function (self, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -16369,7 +16369,7 @@ function BaseElement:is_valid_xml_node(node)
 
 
 end
-function BaseElement:print_attribute_error(attribute_name, attribute_value, valid_values, recoverable, env_to_print, node)
+BaseElement.print_attribute_error = function (self, attribute_name, attribute_value, valid_values, recoverable, env_to_print, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -16406,7 +16406,7 @@ function BaseElement:print_attribute_error(attribute_name, attribute_value, vali
 
 
 end
-function BaseElement:print_error(msg, recoverable, env_to_print, node)
+BaseElement.print_error = function (self, msg, recoverable, env_to_print, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -16416,7 +16416,7 @@ function BaseElement:print_error(msg, recoverable, env_to_print, node)
 
 
 end
-function BaseElement:get_xml_origin(node)
+BaseElement.get_xml_origin = function (self, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -16535,7 +16535,7 @@ else
 
 end
 
-function BaseElement:get_model_xml_file()
+BaseElement.get_model_xml_file = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -16608,7 +16608,7 @@ function BaseElement:get_model_xml_file()
 
 
 end
-function BaseElement:get_xml_element_string(node)
+BaseElement.get_xml_element_string = function (self, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -16688,7 +16688,7 @@ if not UnitElement then
 end
 
 UnitElement = slot1
-function UnitElement:init(node, name, is_global)
+UnitElement.init = function (self, node, name, is_global)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -17670,7 +17670,7 @@ function UnitElement:init(node, name, is_global)
 
 
 end
-function UnitElement:_register_start_time_callback(id, element, node)
+UnitElement._register_start_time_callback = function (self, id, element, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -17731,7 +17731,7 @@ function UnitElement:_register_start_time_callback(id, element, node)
 
 
 end
-function UnitElement:get_startup_sequence_map(unit, damage_ext)
+UnitElement.get_startup_sequence_map = function (self, unit, damage_ext)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -17841,7 +17841,7 @@ function UnitElement:get_startup_sequence_map(unit, damage_ext)
 
 
 end
-function UnitElement:get_editor_startup_sequence_map(unit, damage_ext)
+UnitElement.get_editor_startup_sequence_map = function (self, unit, damage_ext)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -17951,7 +17951,7 @@ function UnitElement:get_editor_startup_sequence_map(unit, damage_ext)
 
 
 end
-function UnitElement:get_name()
+UnitElement.get_name = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -17961,7 +17961,7 @@ function UnitElement:get_name()
 
 
 end
-function UnitElement:get_global_set_var_map()
+UnitElement.get_global_set_var_map = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -17971,7 +17971,7 @@ function UnitElement:get_global_set_var_map()
 
 
 end
-function UnitElement:get_set_var_map()
+UnitElement.get_set_var_map = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -17981,7 +17981,7 @@ function UnitElement:get_set_var_map()
 
 
 end
-function UnitElement:get_body_element(body_name)
+UnitElement.get_body_element = function (self, body_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -17991,7 +17991,7 @@ function UnitElement:get_body_element(body_name)
 
 
 end
-function UnitElement:get_trigger_name_list()
+UnitElement.get_trigger_name_list = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -18051,7 +18051,7 @@ function UnitElement:get_trigger_name_list()
 
 
 end
-function UnitElement:has_trigger_name(trigger_name)
+UnitElement.has_trigger_name = function (self, trigger_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -18098,7 +18098,7 @@ function UnitElement:has_trigger_name(trigger_name)
 
 
 end
-function UnitElement:get_trigger_name_map()
+UnitElement.get_trigger_name_map = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -18127,7 +18127,7 @@ function UnitElement:get_trigger_name_map()
 
 
 end
-function UnitElement:get_sequence_name_list()
+UnitElement.get_sequence_name_list = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -18216,7 +18216,7 @@ function UnitElement:get_sequence_name_list()
 
 
 end
-function UnitElement:get_parameter_sequence_name_list(parameter_name, parameter_value)
+UnitElement.get_parameter_sequence_name_list = function (self, parameter_name, parameter_value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -18289,7 +18289,7 @@ function UnitElement:get_parameter_sequence_name_list(parameter_name, parameter_
 
 
 end
-function UnitElement:has_sequence_name(sequence_name)
+UnitElement.has_sequence_name = function (self, sequence_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -18327,7 +18327,7 @@ function UnitElement:has_sequence_name(sequence_name)
 
 
 end
-function UnitElement:get_body_element(body_name)
+UnitElement.get_body_element = function (self, body_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -18337,7 +18337,7 @@ function UnitElement:get_body_element(body_name)
 
 
 end
-function UnitElement:get_body_element_list()
+UnitElement.get_body_element_list = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -18347,7 +18347,7 @@ function UnitElement:get_body_element_list()
 
 
 end
-function UnitElement:get_endurance()
+UnitElement.get_endurance = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -18376,7 +18376,7 @@ function UnitElement:get_endurance()
 
 
 end
-function UnitElement:set_endurance(endurance)
+UnitElement.set_endurance = function (self, endurance)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -18408,7 +18408,7 @@ function UnitElement:set_endurance(endurance)
 
 
 end
-function UnitElement:reset_damage(unit)
+UnitElement.reset_damage = function (self, unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -18488,7 +18488,7 @@ function UnitElement:reset_damage(unit)
 
 
 end
-function UnitElement:run_sequence(name, endurance_type, source_unit, dest_unit, dest_body, dest_normal, position, direction, damage, velocity, params)
+UnitElement.run_sequence = function (self, name, endurance_type, source_unit, dest_unit, dest_body, dest_normal, position, direction, damage, velocity, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-21, warpins: 1 ---
@@ -18553,7 +18553,7 @@ function UnitElement:run_sequence(name, endurance_type, source_unit, dest_unit, 
 
 
 end
-function UnitElement:has_sequence(sequence_name)
+UnitElement.has_sequence = function (self, sequence_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -18593,7 +18593,7 @@ function UnitElement:has_sequence(sequence_name)
 
 
 end
-function UnitElement:get_sequence_element(sequence_name)
+UnitElement.get_sequence_element = function (self, sequence_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -18623,7 +18623,7 @@ function UnitElement:get_sequence_element(sequence_name)
 
 
 end
-function UnitElement:get_proximity_element_map()
+UnitElement.get_proximity_element_map = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -18663,7 +18663,7 @@ function UnitElement:get_proximity_element_map()
 
 
 end
-function UnitElement:save_by_unit(unit, data)
+UnitElement.save_by_unit = function (self, unit, data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -18743,7 +18743,7 @@ function UnitElement:save_by_unit(unit, data)
 
 
 end
-function UnitElement:load_by_unit(unit, data)
+UnitElement.load_by_unit = function (self, unit, data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -18805,7 +18805,7 @@ function UnitElement:load_by_unit(unit, data)
 
 
 end
-function UnitElement:get_filter(filter_name)
+UnitElement.get_filter = function (self, filter_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -18835,7 +18835,7 @@ function UnitElement:get_filter(filter_name)
 
 
 end
-function UnitElement:get_water_element_map()
+UnitElement.get_water_element_map = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -18845,7 +18845,7 @@ function UnitElement:get_water_element_map()
 
 
 end
-function UnitElement:save(data)
+UnitElement.save = function (self, data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -18944,7 +18944,7 @@ function UnitElement:save(data)
 
 
 end
-function UnitElement:load(data)
+UnitElement.load = function (self, data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -18990,7 +18990,7 @@ if not TriggerDeclarationElement then
 end
 
 TriggerDeclarationElement = slot1
-function TriggerDeclarationElement:init(node, unit_element)
+TriggerDeclarationElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -19064,7 +19064,7 @@ if not FilterElement then
 end
 
 FilterElement = slot1
-function FilterElement:init(node, unit_element)
+FilterElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -19193,7 +19193,7 @@ function FilterElement:init(node, unit_element)
 
 
 end
-function FilterElement:is_allowed(env)
+FilterElement.is_allowed = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -19363,7 +19363,7 @@ end
 
 CheckFilterElement = slot1
 CheckFilterElement.NAME = "check"
-function CheckFilterElement:init(node, unit_element)
+CheckFilterElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -19404,7 +19404,7 @@ function CheckFilterElement:init(node, unit_element)
 
 
 end
-function CheckFilterElement:is_allowed(env)
+CheckFilterElement.is_allowed = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -19459,7 +19459,7 @@ end
 
 SideFilterElement = slot1
 SideFilterElement.NAME = "side"
-function SideFilterElement:init(node, unit_element)
+SideFilterElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -19570,7 +19570,7 @@ function SideFilterElement:init(node, unit_element)
 
 
 end
-function SideFilterElement:is_allowed(env)
+SideFilterElement.is_allowed = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -19662,7 +19662,7 @@ end
 
 ZoneFilterElement = slot1
 ZoneFilterElement.NAME = "zone"
-function ZoneFilterElement:init(node, unit_element)
+ZoneFilterElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -19926,7 +19926,7 @@ function ZoneFilterElement:init(node, unit_element)
 
 
 end
-function ZoneFilterElement:is_allowed(env)
+ZoneFilterElement.is_allowed = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -20061,7 +20061,7 @@ if not SequenceElement then
 end
 
 SequenceElement = slot1
-function SequenceElement:init(node, unit_element)
+SequenceElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -20182,7 +20182,7 @@ function SequenceElement:init(node, unit_element)
 
 
 end
-function SequenceElement:activate_callback(env)
+SequenceElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -20330,7 +20330,7 @@ if not ProximityElement then
 end
 
 ProximityElement = slot1
-function ProximityElement:init(node, unit_element)
+ProximityElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -20408,7 +20408,7 @@ function ProximityElement:init(node, unit_element)
 
 
 end
-function ProximityElement:get_proximity_element_map()
+ProximityElement.get_proximity_element_map = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -20433,7 +20433,7 @@ end
 
 ProximityTypeElement = slot1
 ProximityTypeElement.MIN_INTERVAL = 0.2
-function ProximityTypeElement:init(node, unit_element)
+ProximityTypeElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -20858,7 +20858,7 @@ function ProximityTypeElement:init(node, unit_element)
 
 
 end
-function ProximityTypeElement:get_name()
+ProximityTypeElement.get_name = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -20868,7 +20868,7 @@ function ProximityTypeElement:get_name()
 
 
 end
-function ProximityTypeElement:get_slotmask()
+ProximityTypeElement.get_slotmask = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -20878,7 +20878,7 @@ function ProximityTypeElement:get_slotmask()
 
 
 end
-function ProximityTypeElement:get_enabled()
+ProximityTypeElement.get_enabled = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -20888,7 +20888,7 @@ function ProximityTypeElement:get_enabled()
 
 
 end
-function ProximityTypeElement:get_ref_object()
+ProximityTypeElement.get_ref_object = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -20898,7 +20898,7 @@ function ProximityTypeElement:get_ref_object()
 
 
 end
-function ProximityTypeElement:get_interval()
+ProximityTypeElement.get_interval = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -20908,7 +20908,7 @@ function ProximityTypeElement:get_interval()
 
 
 end
-function ProximityTypeElement:is_quick()
+ProximityTypeElement.is_quick = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -20918,7 +20918,7 @@ function ProximityTypeElement:is_quick()
 
 
 end
-function ProximityTypeElement:get_start_within()
+ProximityTypeElement.get_start_within = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -20928,7 +20928,7 @@ function ProximityTypeElement:get_start_within()
 
 
 end
-function ProximityTypeElement:get_within_element()
+ProximityTypeElement.get_within_element = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -20938,7 +20938,7 @@ function ProximityTypeElement:get_within_element()
 
 
 end
-function ProximityTypeElement:get_outside_element()
+ProximityTypeElement.get_outside_element = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -20962,7 +20962,7 @@ if not ProximityRangeElement then
 end
 
 ProximityRangeElement = slot1
-function ProximityRangeElement:init(node, unit_element, within)
+ProximityRangeElement.init = function (self, node, unit_element, within)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-15, warpins: 1 ---
@@ -21145,7 +21145,7 @@ function ProximityRangeElement:init(node, unit_element, within)
 
 
 end
-function ProximityRangeElement:get_max_activation_count()
+ProximityRangeElement.get_max_activation_count = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -21155,7 +21155,7 @@ function ProximityRangeElement:get_max_activation_count()
 
 
 end
-function ProximityRangeElement:get_delay()
+ProximityRangeElement.get_delay = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -21165,7 +21165,7 @@ function ProximityRangeElement:get_delay()
 
 
 end
-function ProximityRangeElement:get_range()
+ProximityRangeElement.get_range = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -21175,7 +21175,7 @@ function ProximityRangeElement:get_range()
 
 
 end
-function ProximityRangeElement:get_count()
+ProximityRangeElement.get_count = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -21185,7 +21185,7 @@ function ProximityRangeElement:get_count()
 
 
 end
-function ProximityRangeElement:activate_elements(env)
+ProximityRangeElement.activate_elements = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -21248,7 +21248,7 @@ if not WaterElement then
 end
 
 WaterElement = slot1
-function WaterElement:init(node, unit_element)
+WaterElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -21636,7 +21636,7 @@ function WaterElement:init(node, unit_element)
 
 
 end
-function WaterElement:is_empty()
+WaterElement.is_empty = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -21654,7 +21654,7 @@ function WaterElement:is_empty()
 
 
 end
-function WaterElement:get_name()
+WaterElement.get_name = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -21664,7 +21664,7 @@ function WaterElement:get_name()
 
 
 end
-function WaterElement:get_enabled()
+WaterElement.get_enabled = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -21674,7 +21674,7 @@ function WaterElement:get_enabled()
 
 
 end
-function WaterElement:get_interval()
+WaterElement.get_interval = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -21684,7 +21684,7 @@ function WaterElement:get_interval()
 
 
 end
-function WaterElement:get_ref_object()
+WaterElement.get_ref_object = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -21694,7 +21694,7 @@ function WaterElement:get_ref_object()
 
 
 end
-function WaterElement:get_ref_body()
+WaterElement.get_ref_body = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -21704,7 +21704,7 @@ function WaterElement:get_ref_body()
 
 
 end
-function WaterElement:get_body_depth()
+WaterElement.get_body_depth = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -21714,7 +21714,7 @@ function WaterElement:get_body_depth()
 
 
 end
-function WaterElement:get_physic_effect()
+WaterElement.get_physic_effect = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -21724,7 +21724,7 @@ function WaterElement:get_physic_effect()
 
 
 end
-function WaterElement:activate_enter(env)
+WaterElement.activate_enter = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -21755,7 +21755,7 @@ function WaterElement:activate_enter(env)
 
 
 end
-function WaterElement:activate_exit(env)
+WaterElement.activate_exit = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -21800,7 +21800,7 @@ if not SequenceContainerElement then
 end
 
 SequenceContainerElement = slot1
-function SequenceContainerElement:init(node, unit_element)
+SequenceContainerElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -21890,7 +21890,7 @@ function SequenceContainerElement:init(node, unit_element)
 
 
 end
-function SequenceContainerElement:sequence_count()
+SequenceContainerElement.sequence_count = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -21900,7 +21900,7 @@ function SequenceContainerElement:sequence_count()
 
 
 end
-function SequenceContainerElement:activate_callback(env)
+SequenceContainerElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -21991,7 +21991,7 @@ if not RootBodyElement then
 end
 
 RootBodyElement = slot1
-function RootBodyElement:init(node, unit_element)
+RootBodyElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -22386,7 +22386,7 @@ function RootBodyElement:init(node, unit_element)
 
 
 end
-function RootBodyElement:get_body_param(param_name)
+RootBodyElement.get_body_param = function (self, param_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -22396,7 +22396,7 @@ function RootBodyElement:get_body_param(param_name)
 
 
 end
-function RootBodyElement:get_body_param_list()
+RootBodyElement.get_body_param_list = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -22406,7 +22406,7 @@ function RootBodyElement:get_body_param_list()
 
 
 end
-function RootBodyElement:get_first_endurance_element(endurance_type)
+RootBodyElement.get_first_endurance_element = function (self, endurance_type)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -22416,7 +22416,7 @@ function RootBodyElement:get_first_endurance_element(endurance_type)
 
 
 end
-function RootBodyElement:get_first_endurance_element_list()
+RootBodyElement.get_first_endurance_element_list = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -22426,7 +22426,7 @@ function RootBodyElement:get_first_endurance_element_list()
 
 
 end
-function RootBodyElement:activate_inflict_enter(env)
+RootBodyElement.activate_inflict_enter = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -22440,7 +22440,7 @@ function RootBodyElement:activate_inflict_enter(env)
 
 
 end
-function RootBodyElement:activate_inflict_damage(env)
+RootBodyElement.activate_inflict_damage = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -22454,7 +22454,7 @@ function RootBodyElement:activate_inflict_damage(env)
 
 
 end
-function RootBodyElement:activate_inflict_exit(env)
+RootBodyElement.activate_inflict_exit = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -22468,7 +22468,7 @@ function RootBodyElement:activate_inflict_exit(env)
 
 
 end
-function RootBodyElement:get_inflict_element_list()
+RootBodyElement.get_inflict_element_list = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -22513,7 +22513,7 @@ if not RootInflictElement then
 end
 
 RootInflictElement = slot1
-function RootInflictElement:init(node, unit_element)
+RootInflictElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-17, warpins: 1 ---
@@ -22590,7 +22590,7 @@ function RootInflictElement:init(node, unit_element)
 
 
 end
-function RootInflictElement:activate_enter(env)
+RootInflictElement.activate_enter = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -22604,7 +22604,7 @@ function RootInflictElement:activate_enter(env)
 
 
 end
-function RootInflictElement:activate_damage(env)
+RootInflictElement.activate_damage = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -22618,7 +22618,7 @@ function RootInflictElement:activate_damage(env)
 
 
 end
-function RootInflictElement:activate_exit(env)
+RootInflictElement.activate_exit = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -22632,7 +22632,7 @@ function RootInflictElement:activate_exit(env)
 
 
 end
-function RootInflictElement:get_element_list()
+RootInflictElement.get_element_list = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -22656,7 +22656,7 @@ if not InflictElement then
 end
 
 InflictElement = slot1
-function InflictElement:init(node, unit_element)
+InflictElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-16, warpins: 1 ---
@@ -22915,7 +22915,7 @@ function InflictElement:init(node, unit_element)
 
 
 end
-function InflictElement:get_damage()
+InflictElement.get_damage = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -22925,7 +22925,7 @@ function InflictElement:get_damage()
 
 
 end
-function InflictElement:get_interval()
+InflictElement.get_interval = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -22935,7 +22935,7 @@ function InflictElement:get_interval()
 
 
 end
-function InflictElement:get_instant()
+InflictElement.get_instant = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -22945,7 +22945,7 @@ function InflictElement:get_instant()
 
 
 end
-function InflictElement:get_enabled()
+InflictElement.get_enabled = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -22955,7 +22955,7 @@ function InflictElement:get_enabled()
 
 
 end
-function InflictElement:get_enter_element()
+InflictElement.get_enter_element = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -22965,7 +22965,7 @@ function InflictElement:get_enter_element()
 
 
 end
-function InflictElement:get_exit_element()
+InflictElement.get_exit_element = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -22975,7 +22975,7 @@ function InflictElement:get_exit_element()
 
 
 end
-function InflictElement:get_damage_element()
+InflictElement.get_damage_element = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -22985,7 +22985,7 @@ function InflictElement:get_damage_element()
 
 
 end
-function InflictElement:activate_enter(env)
+InflictElement.activate_enter = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -23016,7 +23016,7 @@ function InflictElement:activate_enter(env)
 
 
 end
-function InflictElement:activate_damage(env)
+InflictElement.activate_damage = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -23047,7 +23047,7 @@ function InflictElement:activate_damage(env)
 
 
 end
-function InflictElement:activate_exit(env)
+InflictElement.activate_exit = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -23078,7 +23078,7 @@ function InflictElement:activate_exit(env)
 
 
 end
-function InflictElement:enter_sequence_count()
+InflictElement.enter_sequence_count = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -23118,7 +23118,7 @@ function InflictElement:enter_sequence_count()
 
 
 end
-function InflictElement:damage_sequence_count()
+InflictElement.damage_sequence_count = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -23158,7 +23158,7 @@ function InflictElement:damage_sequence_count()
 
 
 end
-function InflictElement:exit_sequence_count()
+InflictElement.exit_sequence_count = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -23228,7 +23228,7 @@ end
 
 InflictFireElement = slot1
 InflictFireElement.NAME = "fire"
-function InflictFireElement:init(node, unit_element)
+InflictFireElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -23339,7 +23339,7 @@ function InflictFireElement:init(node, unit_element)
 
 
 end
-function InflictFireElement:get_fire_object_name()
+InflictFireElement.get_fire_object_name = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -23349,7 +23349,7 @@ function InflictFireElement:get_fire_object_name()
 
 
 end
-function InflictFireElement:get_fire_height()
+InflictFireElement.get_fire_height = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -23359,7 +23359,7 @@ function InflictFireElement:get_fire_height()
 
 
 end
-function InflictFireElement:get_velocity()
+InflictFireElement.get_velocity = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -23369,7 +23369,7 @@ function InflictFireElement:get_velocity()
 
 
 end
-function InflictFireElement:get_falloff()
+InflictFireElement.get_falloff = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -23435,7 +23435,7 @@ if not EnduranceElement then
 end
 
 EnduranceElement = slot1
-function EnduranceElement:init(node, unit_element)
+EnduranceElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -23695,7 +23695,7 @@ function EnduranceElement:init(node, unit_element)
 
 
 end
-function EnduranceElement:can_skip()
+EnduranceElement.can_skip = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -23705,7 +23705,7 @@ function EnduranceElement:can_skip()
 
 
 end
-function EnduranceElement:damage(env)
+EnduranceElement.damage = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -23752,7 +23752,7 @@ function EnduranceElement:damage(env)
 
 
 end
-function EnduranceElement:activate(env)
+EnduranceElement.activate = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-16, warpins: 1 ---
@@ -23876,7 +23876,7 @@ function EnduranceElement:activate(env)
 
 
 end
-function EnduranceElement:activate_elements(env)
+EnduranceElement.activate_elements = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -23940,7 +23940,7 @@ end
 
 AnimationGroupElement = slot1
 AnimationGroupElement.NAME = "animation_group"
-function AnimationGroupElement:init(node, unit_element)
+AnimationGroupElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-37, warpins: 1 ---
@@ -24015,7 +24015,7 @@ function AnimationGroupElement:init(node, unit_element)
 
 
 end
-function AnimationGroupElement:activate_callback(env)
+AnimationGroupElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -24093,7 +24093,7 @@ function AnimationGroupElement:activate_callback(env)
 
 
 end
-function AnimationGroupElement:play(env, name)
+AnimationGroupElement.play = function (self, env, name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -24116,7 +24116,7 @@ function AnimationGroupElement:play(env, name)
 
 
 end
-function AnimationGroupElement:stop(env, name)
+AnimationGroupElement.stop = function (self, env, name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -24154,7 +24154,7 @@ function AnimationGroupElement:stop(env, name)
 
 
 end
-function AnimationGroupElement:set_time(env, name)
+AnimationGroupElement.set_time = function (self, env, name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -24254,7 +24254,7 @@ end
 
 AnimationRedirectElement = slot1
 AnimationRedirectElement.NAME = "animation_redirect"
-function AnimationRedirectElement:init(node, unit_element)
+AnimationRedirectElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-17, warpins: 1 ---
@@ -24273,7 +24273,7 @@ function AnimationRedirectElement:init(node, unit_element)
 
 
 end
-function AnimationRedirectElement:activate_callback(env)
+AnimationRedirectElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -24305,7 +24305,7 @@ end
 
 AreaDamageElement = slot1
 AreaDamageElement.NAME = "area_damage"
-function AreaDamageElement:init(node, unit_element)
+AreaDamageElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-63, warpins: 1 ---
@@ -24406,7 +24406,7 @@ function AreaDamageElement:init(node, unit_element)
 
 
 end
-function AreaDamageElement:activate_callback(env)
+AreaDamageElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -24625,7 +24625,7 @@ function AreaDamageElement:activate_callback(env)
 
 
 end
-function AreaDamageElement:get_params(env)
+AreaDamageElement.get_params = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -24760,7 +24760,7 @@ function AreaDamageElement:get_params(env)
 
 
 end
-function AreaDamageElement:do_area_damage(env, damage_type, attack_unit, pos, range, constant_damage, damage, physic_effect, mass, ignore_unit, direct_attack_unit, ignore_mask, get_damage_func, velocity)
+AreaDamageElement.do_area_damage = function (self, env, damage_type, attack_unit, pos, range, constant_damage, damage, physic_effect, mass, ignore_unit, direct_attack_unit, ignore_mask, get_damage_func, velocity)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-19, warpins: 1 ---
@@ -24774,7 +24774,7 @@ function AreaDamageElement:do_area_damage(env, damage_type, attack_unit, pos, ra
 
 
 end
-function AreaDamageElement:get_falloff_key_damage(params, unit, body, dir, hit_pos, damage_type, attack_unit, pos, range, constant_damage, damage, velocity, ignore_unit, direct_attack_unit, ignore_mask)
+AreaDamageElement.get_falloff_key_damage = function (self, params, unit, body, dir, hit_pos, damage_type, attack_unit, pos, range, constant_damage, damage, velocity, ignore_unit, direct_attack_unit, ignore_mask)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -24966,7 +24966,7 @@ function AreaDamageElement:get_falloff_key_damage(params, unit, body, dir, hit_p
 
 
 end
-function AreaDamageElement:get_falloff_preset1_damage(params, unit, body, dir, hit_pos, damage_type, attack_unit, pos, range, constant_damage, damage, velocity, ignore_unit, direct_attack_unit, ignore_mask)
+AreaDamageElement.get_falloff_preset1_damage = function (self, params, unit, body, dir, hit_pos, damage_type, attack_unit, pos, range, constant_damage, damage, velocity, ignore_unit, direct_attack_unit, ignore_mask)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -24979,7 +24979,7 @@ function AreaDamageElement:get_falloff_preset1_damage(params, unit, body, dir, h
 
 
 end
-function AreaDamageElement:get_distance(body, hit_pos, pos)
+AreaDamageElement.get_distance = function (self, body, hit_pos, pos)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -25011,7 +25011,7 @@ if not AreaDamageKeyElement then
 end
 
 AreaDamageKeyElement = slot1
-function AreaDamageKeyElement:init(node, unit_element)
+AreaDamageKeyElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-37, warpins: 1 ---
@@ -25038,7 +25038,7 @@ function AreaDamageKeyElement:init(node, unit_element)
 
 
 end
-function AreaDamageKeyElement:get_parsed_key(env)
+AreaDamageKeyElement.get_parsed_key = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-17, warpins: 1 ---
@@ -25139,7 +25139,7 @@ function AreaDamageKeyElement:get_parsed_key(env)
 
 
 end
-function AreaDamageKeyElement:get_distance_damage(parsed_key, distance, prev_key_range, prev_key_damage)
+AreaDamageKeyElement.get_distance_damage = function (self, parsed_key, distance, prev_key_range, prev_key_damage)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -25186,7 +25186,7 @@ function AreaDamageKeyElement:get_distance_damage(parsed_key, distance, prev_key
 
 
 end
-function AreaDamageKeyElement:activate(env, unit, body, pos, distance, total_range)
+AreaDamageKeyElement.activate = function (self, env, unit, body, pos, distance, total_range)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -25290,7 +25290,7 @@ function AreaDamageKeyElement:activate(env, unit, body, pos, distance, total_ran
 
 
 end
-function AreaDamageKeyElement:get_linear_damage(distance, range, damage, prev_key_range, prev_key_damage)
+AreaDamageKeyElement.get_linear_damage = function (self, distance, range, damage, prev_key_range, prev_key_damage)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -25347,7 +25347,7 @@ if not ParsedKeyElement then
 end
 
 ParsedKeyElement = slot1
-function ParsedKeyElement:init(key_element, variable_map)
+ParsedKeyElement.init = function (self, key_element, variable_map)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -25380,7 +25380,7 @@ function ParsedKeyElement:init(key_element, variable_map)
 
 
 end
-function ParsedKeyElement:get_key_element()
+ParsedKeyElement.get_key_element = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -25390,7 +25390,7 @@ function ParsedKeyElement:get_key_element()
 
 
 end
-function ParsedKeyElement:get_variable(name)
+ParsedKeyElement.get_variable = function (self, name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -25400,7 +25400,7 @@ function ParsedKeyElement:get_variable(name)
 
 
 end
-function ParsedKeyElement:set_variable(name, value)
+ParsedKeyElement.set_variable = function (self, name, value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -25489,7 +25489,7 @@ if not BodyElement.VALID_MOVER_MAP then
 end
 
 slot1[slot2] = slot3
-function BodyElement:init(node, unit_element)
+BodyElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-17, warpins: 1 ---
@@ -25544,7 +25544,7 @@ function BodyElement:init(node, unit_element)
 
 
 end
-function BodyElement:activate_callback(env)
+BodyElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -25688,7 +25688,7 @@ function BodyElement:activate_callback(env)
 
 
 end
-function BodyElement:set_motion(env, motion, body)
+BodyElement.set_motion = function (self, env, motion, body)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -25769,7 +25769,7 @@ function BodyElement:set_motion(env, motion, body)
 
 
 end
-function BodyElement:set_enabled(env, enabled, body)
+BodyElement.set_enabled = function (self, env, enabled, body)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -25810,7 +25810,7 @@ function BodyElement:set_enabled(env, enabled, body)
 
 
 end
-function BodyElement:add_ray_type(env, ray_type, body)
+BodyElement.add_ray_type = function (self, env, ray_type, body)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-16, warpins: 1 ---
@@ -25857,7 +25857,7 @@ function BodyElement:add_ray_type(env, ray_type, body)
 
 
 end
-function BodyElement:remove_ray_type(env, ray_type, body)
+BodyElement.remove_ray_type = function (self, env, ray_type, body)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-16, warpins: 1 ---
@@ -25904,7 +25904,7 @@ function BodyElement:remove_ray_type(env, ray_type, body)
 
 
 end
-function BodyElement:set_body_collision(env, enabled, body)
+BodyElement.set_body_collision = function (self, env, enabled, body)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -25945,7 +25945,7 @@ function BodyElement:set_body_collision(env, enabled, body)
 
 
 end
-function BodyElement:set_mover_collision(env, enabled, body)
+BodyElement.set_mover_collision = function (self, env, enabled, body)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -25986,7 +25986,7 @@ function BodyElement:set_mover_collision(env, enabled, body)
 
 
 end
-function BodyElement:set_pushed_by_mover(env, enabled, body)
+BodyElement.set_pushed_by_mover = function (self, env, enabled, body)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -26027,7 +26027,7 @@ function BodyElement:set_pushed_by_mover(env, enabled, body)
 
 
 end
-function BodyElement:set_mover(env, mover, body)
+BodyElement.set_mover = function (self, env, mover, body)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -26109,7 +26109,7 @@ function BodyElement:set_mover(env, mover, body)
 
 
 end
-function BodyElement:interpolate(env, value, body)
+BodyElement.interpolate = function (self, env, value, body)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -26288,7 +26288,7 @@ end
 
 ConstraintElement = slot1
 ConstraintElement.NAME = "constraint"
-function ConstraintElement:init(node, unit_element)
+ConstraintElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-22, warpins: 1 ---
@@ -26309,7 +26309,7 @@ function ConstraintElement:init(node, unit_element)
 
 
 end
-function ConstraintElement:activate_callback(env)
+ConstraintElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -26505,7 +26505,7 @@ end
 
 DebugElement = slot1
 DebugElement.NAME = "debug"
-function DebugElement:init(node, unit_element)
+DebugElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -26522,7 +26522,7 @@ function DebugElement:init(node, unit_element)
 
 
 end
-function DebugElement:activate_callback(env)
+DebugElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -26554,7 +26554,7 @@ end
 
 AlertElement = slot1
 AlertElement.NAME = "alert"
-function AlertElement:init(node, unit_element)
+AlertElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -26568,7 +26568,7 @@ function AlertElement:init(node, unit_element)
 
 
 end
-function AlertElement:activate_callback(env)
+AlertElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-25, warpins: 1 ---
@@ -26608,7 +26608,7 @@ end
 
 AttentionElement = slot1
 AttentionElement.NAME = "attention"
-function AttentionElement:init(node, unit_element)
+AttentionElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-27, warpins: 1 ---
@@ -26631,7 +26631,7 @@ function AttentionElement:init(node, unit_element)
 
 
 end
-function AttentionElement:activate_callback(env)
+AttentionElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-26, warpins: 1 ---
@@ -26757,7 +26757,7 @@ end
 
 DecalMeshElement = slot1
 DecalMeshElement.NAME = "decal_mesh"
-function DecalMeshElement:init(node, unit_element)
+DecalMeshElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-22, warpins: 1 ---
@@ -26778,7 +26778,7 @@ function DecalMeshElement:init(node, unit_element)
 
 
 end
-function DecalMeshElement:activate_callback(env)
+DecalMeshElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -27044,7 +27044,7 @@ end
 
 EffectElement = slot1
 EffectElement.NAME = "effect"
-function EffectElement:init(node, unit_element)
+EffectElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-42, warpins: 1 ---
@@ -27130,7 +27130,7 @@ function EffectElement:init(node, unit_element)
 
 
 end
-function EffectElement:activate_callback(env)
+EffectElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-17, warpins: 1 ---
@@ -27512,7 +27512,7 @@ end
 
 EffectSpawnerElement = slot1
 EffectSpawnerElement.NAME = "effect_spawner"
-function EffectSpawnerElement:init(node, unit_element)
+EffectSpawnerElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-20, warpins: 1 ---
@@ -27553,7 +27553,7 @@ function EffectSpawnerElement:init(node, unit_element)
 
 
 end
-function EffectSpawnerElement:activate_callback(env)
+EffectSpawnerElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -27658,7 +27658,7 @@ function EffectSpawnerElement:activate_callback(env)
 
 
 end
-function EffectSpawnerElement:set_enabled(env, enabled, effect_spawner, name)
+EffectSpawnerElement.set_enabled = function (self, env, enabled, effect_spawner, name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -27806,7 +27806,7 @@ end
 
 EnemyKilledElement = slot1
 EnemyKilledElement.NAME = "enemy_killed"
-function EnemyKilledElement:activate_callback(env)
+EnemyKilledElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -27878,7 +27878,7 @@ end
 
 FunctionElement = slot1
 FunctionElement.NAME = "function"
-function FunctionElement:init(node, unit_element)
+FunctionElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-29, warpins: 1 ---
@@ -28013,7 +28013,7 @@ function FunctionElement:init(node, unit_element)
 
 
 end
-function FunctionElement:activate_callback(env)
+FunctionElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-17, warpins: 1 ---
@@ -28149,7 +28149,7 @@ function FunctionElement:activate_callback(env)
 
 
 end
-function FunctionElement:function0(env, target, func)
+FunctionElement.function0 = function (self, env, target, func)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -28163,7 +28163,7 @@ function FunctionElement:function0(env, target, func)
 
 
 end
-function FunctionElement:function1(env, target, func)
+FunctionElement.function1 = function (self, env, target, func)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -28179,7 +28179,7 @@ function FunctionElement:function1(env, target, func)
 
 
 end
-function FunctionElement:function2(env, target, func)
+FunctionElement.function2 = function (self, env, target, func)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-16, warpins: 1 ---
@@ -28197,7 +28197,7 @@ function FunctionElement:function2(env, target, func)
 
 
 end
-function FunctionElement:function3(env, target, func)
+FunctionElement.function3 = function (self, env, target, func)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-22, warpins: 1 ---
@@ -28217,7 +28217,7 @@ function FunctionElement:function3(env, target, func)
 
 
 end
-function FunctionElement:function4(env, target, func)
+FunctionElement.function4 = function (self, env, target, func)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-28, warpins: 1 ---
@@ -28239,7 +28239,7 @@ function FunctionElement:function4(env, target, func)
 
 
 end
-function FunctionElement:function5(env, target, func)
+FunctionElement.function5 = function (self, env, target, func)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-34, warpins: 1 ---
@@ -28278,7 +28278,7 @@ end
 
 GraphicGroupElement = slot1
 GraphicGroupElement.NAME = "graphic_group"
-function GraphicGroupElement:init(node, unit_element)
+GraphicGroupElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-22, warpins: 1 ---
@@ -28299,7 +28299,7 @@ function GraphicGroupElement:init(node, unit_element)
 
 
 end
-function GraphicGroupElement:activate_callback(env)
+GraphicGroupElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -28484,7 +28484,7 @@ end
 
 LightElement = slot1
 LightElement.NAME = "light"
-function LightElement:init(node, unit_element)
+LightElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-20, warpins: 1 ---
@@ -28645,7 +28645,7 @@ function LightElement:init(node, unit_element)
 
 
 end
-function LightElement:activate_callback(env)
+LightElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -28746,7 +28746,7 @@ function LightElement:activate_callback(env)
 
 
 end
-function LightElement:set_enabled(env, enabled, light_obj, name)
+LightElement.set_enabled = function (self, env, enabled, light_obj, name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -28840,7 +28840,7 @@ function LightElement:set_enabled(env, enabled, light_obj, name)
 
 
 end
-function LightElement:set_multiplier(env, multiplier, light_obj, name)
+LightElement.set_multiplier = function (self, env, multiplier, light_obj, name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -28878,7 +28878,7 @@ function LightElement:set_multiplier(env, multiplier, light_obj, name)
 
 
 end
-function LightElement:set_color(env, color, light_obj, name)
+LightElement.set_color = function (self, env, color, light_obj, name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -28916,7 +28916,7 @@ function LightElement:set_color(env, color, light_obj, name)
 
 
 end
-function LightElement:set_far_range(env, far_range, light_obj, name)
+LightElement.set_far_range = function (self, env, far_range, light_obj, name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -28954,7 +28954,7 @@ function LightElement:set_far_range(env, far_range, light_obj, name)
 
 
 end
-function LightElement:set_spot_angle_start(env, spot_angle_start, light_obj, name)
+LightElement.set_spot_angle_start = function (self, env, spot_angle_start, light_obj, name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -28992,7 +28992,7 @@ function LightElement:set_spot_angle_start(env, spot_angle_start, light_obj, nam
 
 
 end
-function LightElement:set_spot_angle_end(env, spot_angle_end, light_obj, name)
+LightElement.set_spot_angle_end = function (self, env, spot_angle_end, light_obj, name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -29096,7 +29096,7 @@ end
 
 MaterialConfigElement = slot1
 MaterialConfigElement.NAME = "material_config"
-function MaterialConfigElement:init(node, unit_element)
+MaterialConfigElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -29113,7 +29113,7 @@ function MaterialConfigElement:init(node, unit_element)
 
 
 end
-function MaterialConfigElement:activate_callback(env)
+MaterialConfigElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -29260,7 +29260,7 @@ if not MaterialElement.TIMER_STATE_MAP then
 end
 
 slot1[slot2] = slot3
-function MaterialElement:init(node, unit_element)
+MaterialElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-27, warpins: 1 ---
@@ -29369,7 +29369,7 @@ function MaterialElement:init(node, unit_element)
 
 
 end
-function MaterialElement:activate_callback(env)
+MaterialElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -29533,7 +29533,7 @@ function MaterialElement:activate_callback(env)
 
 
 end
-function MaterialElement:set_glossiness(env, glossiness, material)
+MaterialElement.set_glossiness = function (self, env, glossiness, material)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -29547,7 +29547,7 @@ function MaterialElement:set_glossiness(env, glossiness, material)
 
 
 end
-function MaterialElement:set_render_template(env, render_template, material)
+MaterialElement.set_render_template = function (self, env, render_template, material)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -29561,7 +29561,7 @@ function MaterialElement:set_render_template(env, render_template, material)
 
 
 end
-function MaterialElement:set_time(env, time, material)
+MaterialElement.set_time = function (self, env, time, material)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -29575,7 +29575,7 @@ function MaterialElement:set_time(env, time, material)
 
 
 end
-function MaterialElement:set_variable(env, value, material, key)
+MaterialElement.set_variable = function (self, env, value, material, key)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -29590,7 +29590,7 @@ function MaterialElement:set_variable(env, value, material, key)
 
 
 end
-function MaterialElement:set_material_state(env, state, material)
+MaterialElement.set_material_state = function (self, env, state, material)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-15, warpins: 1 ---
@@ -29724,7 +29724,7 @@ end
 
 MorphExpressionElement = slot1
 MorphExpressionElement.NAME = "morph_expression"
-function MorphExpressionElement:init(node, unit_element)
+MorphExpressionElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-17, warpins: 1 ---
@@ -29818,7 +29818,7 @@ function MorphExpressionElement:init(node, unit_element)
 
 
 end
-function MorphExpressionElement:activate_callback(env)
+MorphExpressionElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -29881,7 +29881,7 @@ end
 
 MorphExpressionMovieElement = slot1
 MorphExpressionMovieElement.NAME = "morph_expression_movie"
-function MorphExpressionMovieElement:init(node, unit_element)
+MorphExpressionMovieElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-22, warpins: 1 ---
@@ -29902,7 +29902,7 @@ function MorphExpressionMovieElement:init(node, unit_element)
 
 
 end
-function MorphExpressionMovieElement:activate_callback(env)
+MorphExpressionMovieElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -29986,7 +29986,7 @@ end
 
 ObjectElement = slot1
 ObjectElement.NAME = "object"
-function ObjectElement:init(node, unit_element)
+ObjectElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-20, warpins: 1 ---
@@ -30078,7 +30078,7 @@ function ObjectElement:init(node, unit_element)
 
 
 end
-function ObjectElement:activate_callback(env)
+ObjectElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -30164,7 +30164,7 @@ function ObjectElement:activate_callback(env)
 
 
 end
-function ObjectElement:set_visibility(env, visible, object_list, local_scope)
+ObjectElement.set_visibility = function (self, env, visible, object_list, local_scope)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -30178,7 +30178,7 @@ function ObjectElement:set_visibility(env, visible, object_list, local_scope)
 
 
 end
-function ObjectElement:set_position(env, position, object_list, local_scope)
+ObjectElement.set_position = function (self, env, position, object_list, local_scope)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -30222,7 +30222,7 @@ function ObjectElement:set_position(env, position, object_list, local_scope)
 
 
 end
-function ObjectElement:set_rotation(env, rotation, object_list, local_scope)
+ObjectElement.set_rotation = function (self, env, rotation, object_list, local_scope)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -30266,7 +30266,7 @@ function ObjectElement:set_rotation(env, rotation, object_list, local_scope)
 
 
 end
-function ObjectElement:set_object(dest_unit, object_list, func_name, value)
+ObjectElement.set_object = function (self, dest_unit, object_list, func_name, value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -30426,7 +30426,7 @@ end
 
 PhantomElement = slot1
 PhantomElement.NAME = "phantom"
-function PhantomElement:init(node, unit_element)
+PhantomElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-17, warpins: 1 ---
@@ -30445,7 +30445,7 @@ function PhantomElement:init(node, unit_element)
 
 
 end
-function PhantomElement:activate_callback(env)
+PhantomElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -30573,7 +30573,7 @@ end
 
 PhysicEffectElement = slot1
 PhysicEffectElement.NAME = "physic_effect"
-function PhysicEffectElement:init(node, unit_element)
+PhysicEffectElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-27, warpins: 1 ---
@@ -30642,7 +30642,7 @@ function PhysicEffectElement:init(node, unit_element)
 
 
 end
-function PhysicEffectElement:activate_callback(env)
+PhysicEffectElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-22, warpins: 1 ---
@@ -30699,7 +30699,7 @@ end
 
 ProjectDecalElement = slot1
 ProjectDecalElement.NAME = "project_decal"
-function ProjectDecalElement:init(node, unit_element)
+ProjectDecalElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-52, warpins: 1 ---
@@ -30732,7 +30732,7 @@ function ProjectDecalElement:init(node, unit_element)
 
 
 end
-function ProjectDecalElement:activate_callback(env)
+ProjectDecalElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-18, warpins: 1 ---
@@ -31055,7 +31055,7 @@ end
 
 RemoveStartTimeElement = slot1
 RemoveStartTimeElement.NAME = "remove_start_time"
-function RemoveStartTimeElement:init(node, unit_element)
+RemoveStartTimeElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -31072,7 +31072,7 @@ function RemoveStartTimeElement:init(node, unit_element)
 
 
 end
-function RemoveStartTimeElement:activate_callback(env)
+RemoveStartTimeElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -31138,7 +31138,7 @@ end
 
 slot1[slot2] = slot3
 RunSequenceElement.NAME = "run_sequence"
-function RunSequenceElement:init(node, unit_element)
+RunSequenceElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-17, warpins: 1 ---
@@ -31202,7 +31202,7 @@ function RunSequenceElement:init(node, unit_element)
 
 
 end
-function RunSequenceElement:activate_callback(env)
+RunSequenceElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -31329,7 +31329,7 @@ end
 
 RunSpawnSystemSequenceElement = slot1
 RunSpawnSystemSequenceElement.NAME = "run_spawn_system_sequence"
-function RunSpawnSystemSequenceElement:init(node, unit_element)
+RunSpawnSystemSequenceElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-22, warpins: 1 ---
@@ -31350,7 +31350,7 @@ function RunSpawnSystemSequenceElement:init(node, unit_element)
 
 
 end
-function RunSpawnSystemSequenceElement:activate_callback(env)
+RunSpawnSystemSequenceElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-17, warpins: 1 ---
@@ -31515,7 +31515,7 @@ end
 
 SetDamageElement = slot1
 SetDamageElement.NAME = "set_damage"
-function SetDamageElement:init(node, unit_element)
+SetDamageElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -31569,7 +31569,7 @@ function SetDamageElement:init(node, unit_element)
 
 
 end
-function SetDamageElement:activate_callback(env)
+SetDamageElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -31635,7 +31635,7 @@ function SetDamageElement:activate_callback(env)
 
 
 end
-function SetDamageElement:set_damage(env, damage, damage_type)
+SetDamageElement.set_damage = function (self, env, damage, damage_type)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -31665,7 +31665,7 @@ end
 
 SetExtensionVarElement = slot1
 SetExtensionVarElement.NAME = "set_extension_var"
-function SetExtensionVarElement:init(node, unit_element)
+SetExtensionVarElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-22, warpins: 1 ---
@@ -31686,7 +31686,7 @@ function SetExtensionVarElement:init(node, unit_element)
 
 
 end
-function SetExtensionVarElement:activate_callback(env)
+SetExtensionVarElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -31792,7 +31792,7 @@ end
 
 SetGlobalVariableElement = slot1
 SetGlobalVariableElement.NAME = "set_global_variable"
-function SetGlobalVariableElement:init(node, unit_element)
+SetGlobalVariableElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-17, warpins: 1 ---
@@ -31811,7 +31811,7 @@ function SetGlobalVariableElement:init(node, unit_element)
 
 
 end
-function SetGlobalVariableElement:activate_callback(env)
+SetGlobalVariableElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -31858,7 +31858,7 @@ function SetGlobalVariableElement:activate_callback(env)
 
 
 end
-function SetGlobalVariableElement:set_variable(env, name, value)
+SetGlobalVariableElement.set_variable = function (self, env, name, value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -31886,7 +31886,7 @@ end
 
 SetGlobalVariablesElement = slot1
 SetGlobalVariablesElement.NAME = "set_global_variables"
-function SetGlobalVariablesElement:init(node, unit_element)
+SetGlobalVariablesElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -31948,7 +31948,7 @@ function SetGlobalVariablesElement:init(node, unit_element)
 
 
 end
-function SetGlobalVariablesElement:activate_callback(env)
+SetGlobalVariablesElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -31998,7 +31998,7 @@ function SetGlobalVariablesElement:activate_callback(env)
 
 
 end
-function SetGlobalVariablesElement:set_variable(env, name, value)
+SetGlobalVariablesElement.set_variable = function (self, env, name, value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -32026,7 +32026,7 @@ end
 
 SetInflictElement = slot1
 SetInflictElement.NAME = "set_inflict"
-function SetInflictElement:init(node, unit_element)
+SetInflictElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-67, warpins: 1 ---
@@ -32062,7 +32062,7 @@ function SetInflictElement:init(node, unit_element)
 
 
 end
-function SetInflictElement:activate_callback(env)
+SetInflictElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -32255,7 +32255,7 @@ end
 
 SetPhysicEffectElement = slot1
 SetPhysicEffectElement.NAME = "set_physic_effect"
-function SetPhysicEffectElement:init(node, unit_element)
+SetPhysicEffectElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-17, warpins: 1 ---
@@ -32355,7 +32355,7 @@ function SetPhysicEffectElement:init(node, unit_element)
 
 
 end
-function SetPhysicEffectElement:activate_callback(env)
+SetPhysicEffectElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -32507,7 +32507,7 @@ end
 
 SetProximityElement = slot1
 SetProximityElement.NAME = "set_proximity"
-function SetProximityElement:init(node, unit_element)
+SetProximityElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-20, warpins: 1 ---
@@ -32908,7 +32908,7 @@ function SetProximityElement:init(node, unit_element)
 
 
 end
-function SetProximityElement:activate_callback(env)
+SetProximityElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -32993,7 +32993,7 @@ function SetProximityElement:activate_callback(env)
 
 
 end
-function SetProximityElement:set_enabled(env, enabled, name)
+SetProximityElement.set_enabled = function (self, env, enabled, name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -33038,7 +33038,7 @@ function SetProximityElement:set_enabled(env, enabled, name)
 
 
 end
-function SetProximityElement:set_type(env, proximity_type, name)
+SetProximityElement.set_type = function (self, env, proximity_type, name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -33087,7 +33087,7 @@ function SetProximityElement:set_type(env, proximity_type, name)
 
 
 end
-function SetProximityElement:set_ref_obj_name(env, ref_obj_name, name)
+SetProximityElement.set_ref_obj_name = function (self, env, ref_obj_name, name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -33101,7 +33101,7 @@ function SetProximityElement:set_ref_obj_name(env, ref_obj_name, name)
 
 
 end
-function SetProximityElement:set_interval(env, interval, name)
+SetProximityElement.set_interval = function (self, env, interval, name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -33141,7 +33141,7 @@ function SetProximityElement:set_interval(env, interval, name)
 
 
 end
-function SetProximityElement:set_quick(env, quick, name)
+SetProximityElement.set_quick = function (self, env, quick, name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -33186,7 +33186,7 @@ function SetProximityElement:set_quick(env, quick, name)
 
 
 end
-function SetProximityElement:set_is_within(env, is_within, name)
+SetProximityElement.set_is_within = function (self, env, is_within, name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -33231,7 +33231,7 @@ function SetProximityElement:set_is_within(env, is_within, name)
 
 
 end
-function SetProximityElement:set_within_activations(env, activations, name)
+SetProximityElement.set_within_activations = function (self, env, activations, name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -33268,7 +33268,7 @@ function SetProximityElement:set_within_activations(env, activations, name)
 
 
 end
-function SetProximityElement:set_within_max_activations(env, max_activations, name)
+SetProximityElement.set_within_max_activations = function (self, env, max_activations, name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -33305,7 +33305,7 @@ function SetProximityElement:set_within_max_activations(env, max_activations, na
 
 
 end
-function SetProximityElement:set_within_delay(env, delay, name)
+SetProximityElement.set_within_delay = function (self, env, delay, name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -33342,7 +33342,7 @@ function SetProximityElement:set_within_delay(env, delay, name)
 
 
 end
-function SetProximityElement:set_within_range(env, range, name)
+SetProximityElement.set_within_range = function (self, env, range, name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -33382,7 +33382,7 @@ function SetProximityElement:set_within_range(env, range, name)
 
 
 end
-function SetProximityElement:set_inside_count(env, count, name)
+SetProximityElement.set_inside_count = function (self, env, count, name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -33419,7 +33419,7 @@ function SetProximityElement:set_inside_count(env, count, name)
 
 
 end
-function SetProximityElement:set_outside_activations(env, activations, name)
+SetProximityElement.set_outside_activations = function (self, env, activations, name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -33456,7 +33456,7 @@ function SetProximityElement:set_outside_activations(env, activations, name)
 
 
 end
-function SetProximityElement:set_outside_max_activations(env, max_activations, name)
+SetProximityElement.set_outside_max_activations = function (self, env, max_activations, name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -33493,7 +33493,7 @@ function SetProximityElement:set_outside_max_activations(env, max_activations, n
 
 
 end
-function SetProximityElement:set_outside_delay(env, delay, name)
+SetProximityElement.set_outside_delay = function (self, env, delay, name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -33530,7 +33530,7 @@ function SetProximityElement:set_outside_delay(env, delay, name)
 
 
 end
-function SetProximityElement:set_outside_range(env, range, name)
+SetProximityElement.set_outside_range = function (self, env, range, name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -33570,7 +33570,7 @@ function SetProximityElement:set_outside_range(env, range, name)
 
 
 end
-function SetProximityElement:set_outside_count(env, count, name)
+SetProximityElement.set_outside_count = function (self, env, count, name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -33639,7 +33639,7 @@ if not SetSaveDataElement.SET_SAVE_DATA_ATTRIBUTE_MAP then
 end
 
 slot1[slot2] = slot3
-function SetSaveDataElement:init(node, unit_element)
+SetSaveDataElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-17, warpins: 1 ---
@@ -33703,7 +33703,7 @@ function SetSaveDataElement:init(node, unit_element)
 
 
 end
-function SetSaveDataElement:activate_callback(env)
+SetSaveDataElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -33790,7 +33790,7 @@ end
 
 SpawnSystemUnitEnabledElement = slot1
 SpawnSystemUnitEnabledElement.NAME = "set_spawn_system_unit_enabled"
-function SpawnSystemUnitEnabledElement:init(node, unit_element)
+SpawnSystemUnitEnabledElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-22, warpins: 1 ---
@@ -33811,7 +33811,7 @@ function SpawnSystemUnitEnabledElement:init(node, unit_element)
 
 
 end
-function SpawnSystemUnitEnabledElement:activate_callback(env)
+SpawnSystemUnitEnabledElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-17, warpins: 1 ---
@@ -33918,7 +33918,7 @@ end
 
 SetVariableElement = slot1
 SetVariableElement.NAME = "set_variable"
-function SetVariableElement:set_variable(env, name, value)
+SetVariableElement.set_variable = function (self, env, name, value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -33947,7 +33947,7 @@ end
 
 SetVariablesElement = slot1
 SetVariablesElement.NAME = "set_variables"
-function SetVariablesElement:set_variable(env, name, value)
+SetVariablesElement.set_variable = function (self, env, name, value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -33976,7 +33976,7 @@ end
 
 SetWaterElement = slot1
 SetWaterElement.NAME = "set_water"
-function SetWaterElement:init(node, unit_element)
+SetWaterElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-42, warpins: 1 ---
@@ -34005,7 +34005,7 @@ function SetWaterElement:init(node, unit_element)
 
 
 end
-function SetWaterElement:activate_callback(env)
+SetWaterElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -34161,7 +34161,7 @@ end
 
 ShakeCameraElement = slot1
 ShakeCameraElement.NAME = "shake_camera"
-function ShakeCameraElement:init(node, unit_element)
+ShakeCameraElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-27, warpins: 1 ---
@@ -34184,7 +34184,7 @@ function ShakeCameraElement:init(node, unit_element)
 
 
 end
-function ShakeCameraElement:activate_callback(env)
+ShakeCameraElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -34299,7 +34299,7 @@ end
 
 SlotElement = slot1
 SlotElement.NAME = "slot"
-function SlotElement:init(node, unit_element)
+SlotElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-32, warpins: 1 ---
@@ -34324,7 +34324,7 @@ function SlotElement:init(node, unit_element)
 
 
 end
-function SlotElement:activate_callback(env)
+SlotElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -34467,7 +34467,7 @@ function SlotElement:activate_callback(env)
 
 
 end
-function SlotElement:activate_element(env)
+SlotElement.activate_element = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -34539,7 +34539,7 @@ SlotElement.load = function (unit, data)
 
 
 end
-function SlotElement:check_frustum_delay(frustum_close_radius, frustum_extension, frustum_far_clip, visible, env, data)
+SlotElement.check_frustum_delay = function (self, frustum_close_radius, frustum_extension, frustum_far_clip, visible, env, data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -34703,7 +34703,7 @@ function SlotElement:check_frustum_delay(frustum_close_radius, frustum_extension
 
 
 end
-function SlotElement:hide_objects(obj)
+SlotElement.hide_objects = function (self, obj)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -34769,7 +34769,7 @@ end
 
 WwiseElement = slot1
 WwiseElement.NAME = "sound"
-function WwiseElement:init(node, unit_element)
+WwiseElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-37, warpins: 1 ---
@@ -34796,7 +34796,7 @@ function WwiseElement:init(node, unit_element)
 
 
 end
-function WwiseElement:activate_callback(env)
+WwiseElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -34850,7 +34850,7 @@ function WwiseElement:activate_callback(env)
 
 
 end
-function WwiseElement:play(env)
+WwiseElement.play = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-28, warpins: 1 ---
@@ -35110,7 +35110,7 @@ function WwiseElement:play(env)
 
 
 end
-function WwiseElement:stop(env)
+WwiseElement.stop = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -35309,7 +35309,7 @@ end
 
 SoundElement = slot1
 SoundElement.NAME = "sound"
-function SoundElement:init(node, unit_element)
+SoundElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-42, warpins: 1 ---
@@ -35338,7 +35338,7 @@ function SoundElement:init(node, unit_element)
 
 
 end
-function SoundElement:activate_callback(env)
+SoundElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -35392,7 +35392,7 @@ function SoundElement:activate_callback(env)
 
 
 end
-function SoundElement:play(env)
+SoundElement.play = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -35494,7 +35494,7 @@ function SoundElement:play(env)
 
 
 end
-function SoundElement:stop(env)
+SoundElement.stop = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -35570,7 +35570,7 @@ slot3 = SpawnUnitElement.SPAWN_UNIT_ATTRIBUTE_MAP or {
 	to_trigger = true
 }
 slot1[slot2] = slot3
-function SpawnUnitElement:init(node, unit_element)
+SpawnUnitElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-77, warpins: 1 ---
@@ -35658,7 +35658,7 @@ function SpawnUnitElement:init(node, unit_element)
 
 
 end
-function SpawnUnitElement:activate_callback(env)
+SpawnUnitElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-27, warpins: 1 ---
@@ -36834,7 +36834,7 @@ function SpawnUnitElement:activate_callback(env)
 
 
 end
-function SpawnUnitElement:get_params(env)
+SpawnUnitElement.get_params = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -36925,7 +36925,7 @@ FLOW; TARGET BLOCK #86
 --- BLOCK #86 2464-2478, warpins: 2 ---
 StopPhysicEffectElement = slot1
 StopPhysicEffectElement.NAME = "stop_physic_effect"
-function StopPhysicEffectElement:init(node, unit_element)
+StopPhysicEffectElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -36942,7 +36942,7 @@ function StopPhysicEffectElement:init(node, unit_element)
 
 
 end
-function StopPhysicEffectElement:activate_callback(env)
+StopPhysicEffectElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -37010,7 +37010,7 @@ FLOW; TARGET BLOCK #87
 --- BLOCK #87 2482-2496, warpins: 2 ---
 StopEffectElement = slot1
 StopEffectElement.NAME = "stop_effect"
-function StopEffectElement:init(node, unit_element)
+StopEffectElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-17, warpins: 1 ---
@@ -37029,7 +37029,7 @@ function StopEffectElement:init(node, unit_element)
 
 
 end
-function StopEffectElement:activate_callback(env)
+StopEffectElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -37212,7 +37212,7 @@ FLOW; TARGET BLOCK #88
 --- BLOCK #88 2500-2513, warpins: 2 ---
 TriggerElement = slot1
 TriggerElement.NAME = "trigger"
-function TriggerElement:init(node, unit_element)
+TriggerElement.init = function (self, node, unit_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -37229,7 +37229,7 @@ function TriggerElement:init(node, unit_element)
 
 
 end
-function TriggerElement:activate_callback(env)
+TriggerElement.activate_callback = function (self, env)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-20, warpins: 1 ---

@@ -10,7 +10,7 @@ HuskServerSyncedCivilianDamage._RESULT_NAME_TABLE = {
 	"heavy_hurt",
 	"death"
 }
-HuskServerSyncedCivilianDamage.sync_damage_bullet = function (self, attacker_unit, hit_offset_height, result_index)
+function HuskServerSyncedCivilianDamage:sync_damage_bullet(attacker_unit, hit_offset_height, result_index)
 	if self._dead or self._fatal then
 		return 
 	end
@@ -68,7 +68,7 @@ HuskServerSyncedCivilianDamage.sync_damage_bullet = function (self, attacker_uni
 
 	return 
 end
-HuskServerSyncedCivilianDamage.sync_damage_explosion = function (self, attacker_unit, result_index)
+function HuskServerSyncedCivilianDamage:sync_damage_explosion(attacker_unit, result_index)
 	if self._dead or self._fatal then
 		return 
 	end
@@ -125,7 +125,7 @@ HuskServerSyncedCivilianDamage.sync_damage_explosion = function (self, attacker_
 
 	return 
 end
-HuskServerSyncedCivilianDamage.sync_damage_fire = function (self, attacker_unit, result_index)
+function HuskServerSyncedCivilianDamage:sync_damage_fire(attacker_unit, result_index)
 	if self._dead or self._fatal then
 		return 
 	end
@@ -182,7 +182,7 @@ HuskServerSyncedCivilianDamage.sync_damage_fire = function (self, attacker_unit,
 
 	return 
 end
-HuskServerSyncedCivilianDamage.sync_damage_melee = function (self, attacker_unit, attacker_unit, hit_offset_height, result_index)
+function HuskServerSyncedCivilianDamage:sync_damage_melee(attacker_unit, attacker_unit, hit_offset_height, result_index)
 	if self._dead or self._fatal then
 		return 
 	end
@@ -243,7 +243,7 @@ HuskServerSyncedCivilianDamage.sync_damage_melee = function (self, attacker_unit
 
 	return 
 end
-HuskServerSyncedCivilianDamage.damage_bullet = function (self, attack_data)
+function HuskServerSyncedCivilianDamage:damage_bullet(attack_data)
 	if self._dead or self._fatal then
 		return 
 	end
@@ -272,7 +272,7 @@ HuskServerSyncedCivilianDamage.damage_bullet = function (self, attack_data)
 
 	return 
 end
-HuskServerSyncedCivilianDamage.damage_explosion = function (self, attack_data)
+function HuskServerSyncedCivilianDamage:damage_explosion(attack_data)
 	if self._dead or self._fatal then
 		return 
 	end
@@ -295,7 +295,7 @@ HuskServerSyncedCivilianDamage.damage_explosion = function (self, attack_data)
 
 	return 
 end
-HuskServerSyncedCivilianDamage.damage_fire = function (self, attack_data)
+function HuskServerSyncedCivilianDamage:damage_fire(attack_data)
 	if self._dead or self._fatal then
 		return 
 	end
@@ -323,7 +323,7 @@ HuskServerSyncedCivilianDamage.damage_fire = function (self, attack_data)
 
 	return 
 end
-HuskServerSyncedCivilianDamage.damage_melee = function (self, attack_data)
+function HuskServerSyncedCivilianDamage:damage_melee(attack_data)
 	if self._dead or self._fatal then
 		return 
 	end
@@ -351,7 +351,7 @@ HuskServerSyncedCivilianDamage.damage_melee = function (self, attack_data)
 
 	return 
 end
-HuskServerSyncedCivilianDamage._clamp_health_percentage = function (self, health_abs)
+function HuskServerSyncedCivilianDamage:_clamp_health_percentage(health_abs)
 	slot6 = self._HEALTH_INIT
 	local damage = math.clamp(slot3, health_abs, self._HEALTH_INIT_PRECENT)
 	slot5 = damage / self._HEALTH_INIT_PRECENT

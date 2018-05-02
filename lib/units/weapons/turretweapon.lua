@@ -6,7 +6,7 @@
 --   Code may be incomplete or incorrect.
 TurretWeapon = TurretWeapon or class()
 local mvec_to = Vector3()
-TurretWeapon.init = function (self, unit)
+function TurretWeapon:init(unit)
 	self._unit = unit
 	self._name_id = self.name_id
 	self._overheat_skill_id = self._name_id .. "_overheat_reduction"
@@ -155,10 +155,10 @@ TurretWeapon.init = function (self, unit)
 
 	return 
 end
-TurretWeapon._init = function (self)
+function TurretWeapon:_init()
 	return 
 end
-TurretWeapon.post_init = function (self)
+function TurretWeapon:post_init()
 	slot3 = self._unit
 	slot3 = self._unit.base(slot2)
 
@@ -166,37 +166,37 @@ TurretWeapon.post_init = function (self)
 
 	return 
 end
-TurretWeapon.pre_destroy = function (self)
+function TurretWeapon:pre_destroy()
 	return 
 end
-TurretWeapon.set_visibility_state = function (self, visible)
+function TurretWeapon:set_visibility_state(visible)
 	slot5 = "[TurretWeapon] TurretWeapon:set_visibility_state: Implement me."
 
 	Application.error(slot3, Application)
 
 	return 
 end
-TurretWeapon.out_of_ammo = function (self)
+function TurretWeapon:out_of_ammo()
 	return false
 end
-TurretWeapon.can_auto_reload = function (self)
+function TurretWeapon:can_auto_reload()
 	slot4 = "[TurretWeapon] TurretWeapon:out_of_ammo(): Implement me."
 
 	Application.error(slot2, Application)
 
 	return 
 end
-TurretWeapon.set_laser_enabled = function (self)
+function TurretWeapon:set_laser_enabled()
 	slot4 = "[TurretWeapon] TurretWeapon:set_laser_enabled(): Implement me."
 
 	Application.error(slot2, Application)
 
 	return 
 end
-TurretWeapon.setup = function (self, setup_data, damage_multiplier)
+function TurretWeapon:setup(setup_data, damage_multiplier)
 	return 
 end
-TurretWeapon.initialize_sentry = function (self, unit)
+function TurretWeapon:initialize_sentry(unit)
 	slot4 = self._unit
 
 	if not alive(slot3) then
@@ -246,7 +246,7 @@ TurretWeapon.initialize_sentry = function (self, unit)
 
 	return 
 end
-TurretWeapon._setup_fire_effects = function (self)
+function TurretWeapon:_setup_fire_effects()
 	if tweak_data.weapon[self.name_id].muzzle_effect then
 		slot3 = tweak_data.weapon[self.name_id].muzzle_effect
 		local muzzle_effect_tweak = Idstring(slot2)
@@ -274,7 +274,7 @@ TurretWeapon._setup_fire_effects = function (self)
 
 	return 
 end
-TurretWeapon._setup_smoke_effects = function (self)
+function TurretWeapon:_setup_smoke_effects()
 	self._overheating_smoke_effect_table = {}
 	slot3 = "effects/vanilla/smoke/smoke_turret_heated_001"
 	self._overheating_smoke_effect = Idstring(slot2)
@@ -298,7 +298,7 @@ TurretWeapon._setup_smoke_effects = function (self)
 
 	return 
 end
-TurretWeapon.activate_sentry = function (self)
+function TurretWeapon:activate_sentry()
 	self._moving = false
 	slot3 = self._unit
 	slot3 = self._unit.brain(slot2)
@@ -312,7 +312,7 @@ TurretWeapon.activate_sentry = function (self)
 
 	return 
 end
-TurretWeapon.deactivate_sentry = function (self)
+function TurretWeapon:deactivate_sentry()
 	self._moving = false
 	slot3 = self._unit
 	slot4 = true
@@ -326,15 +326,15 @@ TurretWeapon.deactivate_sentry = function (self)
 
 	return 
 end
-TurretWeapon.player_on = function (self)
+function TurretWeapon:player_on()
 	return self._player_on
 end
-TurretWeapon.set_player_on = function (self, is_on)
+function TurretWeapon:set_player_on(is_on)
 	self._player_on = is_on
 
 	return 
 end
-TurretWeapon.set_mountable = function (self)
+function TurretWeapon:set_mountable()
 	if self._administered_unit_data then
 		return 
 	end
@@ -354,7 +354,7 @@ TurretWeapon.set_mountable = function (self)
 
 	return 
 end
-TurretWeapon.debug_switch_on = function (self)
+function TurretWeapon:debug_switch_on()
 	slot3 = self._unit
 	slot3 = self._unit.brain(slot2)
 
@@ -367,7 +367,7 @@ TurretWeapon.debug_switch_on = function (self)
 
 	return 
 end
-TurretWeapon.debug_switch_off = function (self)
+function TurretWeapon:debug_switch_off()
 	slot3 = self._unit
 	slot4 = true
 
@@ -380,14 +380,14 @@ TurretWeapon.debug_switch_off = function (self)
 
 	return 
 end
-TurretWeapon.debug_deactivate = function (self)
+function TurretWeapon:debug_deactivate()
 	slot3 = self
 
 	self.deactivate(slot2)
 
 	return 
 end
-TurretWeapon.update = function (self, unit, t, dt)
+function TurretWeapon:update(unit, t, dt)
 	slot8 = self._overheat_current * 100
 
 	SoundDevice.set_rtpc(slot5, SoundDevice, "turret_heat_rtpc")
@@ -459,7 +459,7 @@ TurretWeapon.update = function (self, unit, t, dt)
 
 	return 
 end
-TurretWeapon.on_unit_set_enabled = function (self, enable)
+function TurretWeapon:on_unit_set_enabled(enable)
 	slot4 = self._unit
 	slot6 = true
 
@@ -467,7 +467,7 @@ TurretWeapon.on_unit_set_enabled = function (self, enable)
 
 	return 
 end
-TurretWeapon.set_turret_rot = function (self, dt)
+function TurretWeapon:set_turret_rot(dt)
 	slot4 = self._unit
 
 	if not alive(slot3) or not self._turret_user or not self._joint_heading or not self._joint_pitch then
@@ -493,7 +493,7 @@ TurretWeapon.set_turret_rot = function (self, dt)
 
 	return 
 end
-TurretWeapon.deactivate = function (self)
+function TurretWeapon:deactivate()
 	slot3 = self._unit
 	slot4 = true
 
@@ -588,13 +588,13 @@ TurretWeapon.deactivate = function (self)
 
 	return 
 end
-TurretWeapon.get_current_heat = function (self)
+function TurretWeapon:get_current_heat()
 	return self._overheat_current
 end
-TurretWeapon.is_overheating = function (self)
+function TurretWeapon:is_overheating()
 	return self._overheated
 end
-TurretWeapon._reduce_heat = function (self, dt)
+function TurretWeapon:_reduce_heat(dt)
 	if not self._shooting then
 		self._overheat_time = tweak_data.weapon[self.name_id].overheat_time or 1
 		slot6 = 1
@@ -613,7 +613,7 @@ TurretWeapon._reduce_heat = function (self, dt)
 
 	return 
 end
-TurretWeapon._increase_heat = function (self)
+function TurretWeapon:_increase_heat()
 	slot3 = self._puppet_unit
 
 	if alive(slot2) then
@@ -650,7 +650,7 @@ TurretWeapon._increase_heat = function (self)
 
 	return 
 end
-TurretWeapon._enable_overheating_smoke = function (self, enabled)
+function TurretWeapon:_enable_overheating_smoke(enabled)
 	if self._overheating_smoke_effect and enabled then
 		for barrel_id = 1, self._number_of_barrels, 1 do
 			if self._overheating_smoke_effect_table[barrel_id] then
@@ -677,7 +677,7 @@ TurretWeapon._enable_overheating_smoke = function (self, enabled)
 
 	return 
 end
-TurretWeapon._update_heading_rotation = function (self, dt, target_heading_rot)
+function TurretWeapon:_update_heading_rotation(dt, target_heading_rot)
 	local anim_lerp = dt * 4
 	slot6 = self._joint_heading
 	slot8 = anim_lerp
@@ -691,7 +691,7 @@ TurretWeapon._update_heading_rotation = function (self, dt, target_heading_rot)
 
 	return math.abs(heading_diff.yaw(target_heading_rot))
 end
-TurretWeapon._update_animation_pitch = function (self, anim_name, dt, target_pitch)
+function TurretWeapon:_update_animation_pitch(anim_name, dt, target_pitch)
 	slot6 = self._unit
 	local anims = self._unit.anim_groups(slot5)
 	local anim_exists = false
@@ -733,7 +733,7 @@ TurretWeapon._update_animation_pitch = function (self, anim_name, dt, target_pit
 
 	return math.abs(slot16)
 end
-TurretWeapon._reset_pitch = function (self)
+function TurretWeapon:_reset_pitch()
 	local heading = self._joint_heading.rotation(slot2)
 	slot5 = heading
 
@@ -745,7 +745,7 @@ TurretWeapon._reset_pitch = function (self)
 
 	return 
 end
-TurretWeapon._update_rotation_pitch = function (self, dt, target_pitch_rot)
+function TurretWeapon:_update_rotation_pitch(dt, target_pitch_rot)
 	local anim_lerp = 4 * dt
 	local MAX_ANGLE = tweak_data.weapon[self.name_id].MAX_PITCH_ANGLE
 	local MIN_ANGLE = tweak_data.weapon[self.name_id].MIN_PITCH_ANGLE
@@ -770,7 +770,7 @@ TurretWeapon._update_rotation_pitch = function (self, dt, target_pitch_rot)
 
 	return math.abs(self._joint_pitch)
 end
-TurretWeapon._reset_animation = function (self, name)
+function TurretWeapon:_reset_animation(name)
 	local id_name = Idstring(slot3)
 	slot5 = self._unit
 	local anims = self._unit.anim_groups(name)
@@ -798,7 +798,7 @@ TurretWeapon._reset_animation = function (self, name)
 
 	return 
 end
-TurretWeapon._update_pitch = function (self, dt, target_pitch_rot)
+function TurretWeapon:_update_pitch(dt, target_pitch_rot)
 	local delta_pitch = 0
 	slot8 = target_pitch_rot
 	delta_pitch = delta_pitch + self._update_rotation_pitch(slot5, self, dt)
@@ -809,7 +809,7 @@ TurretWeapon._update_pitch = function (self, dt, target_pitch_rot)
 
 	return delta_pitch
 end
-TurretWeapon._update_turret_rot = function (self, dt)
+function TurretWeapon:_update_turret_rot(dt)
 	if not self._player_rotation then
 		return 
 	end
@@ -873,7 +873,7 @@ TurretWeapon._update_turret_rot = function (self, dt)
 
 	return 
 end
-TurretWeapon.stop_moving_sound = function (self)
+function TurretWeapon:stop_moving_sound()
 	if self._sound_movement then
 		slot3 = self._sound_movement
 
@@ -882,15 +882,15 @@ TurretWeapon.stop_moving_sound = function (self)
 
 	return 
 end
-TurretWeapon.sync_turret_rotation = function (self, player_rotation)
+function TurretWeapon:sync_turret_rotation(player_rotation)
 	self._player_rotation = player_rotation
 
 	return 
 end
-TurretWeapon.set_ammo = function (self, amount)
+function TurretWeapon:set_ammo(amount)
 	return 
 end
-TurretWeapon.start_autofire = function (self)
+function TurretWeapon:start_autofire()
 	if self._shooting or self._lock_fire then
 		return 
 	end
@@ -911,7 +911,7 @@ TurretWeapon.start_autofire = function (self)
 
 	return 
 end
-TurretWeapon.stop_autofire = function (self)
+function TurretWeapon:stop_autofire()
 	if self._shooting then
 		slot3 = self
 
@@ -922,7 +922,7 @@ TurretWeapon.stop_autofire = function (self)
 
 	return 
 end
-TurretWeapon.trigger_held = function (self, blanks, expend_ammo, shoot_player, target_unit, damage_multiplier)
+function TurretWeapon:trigger_held(blanks, expend_ammo, shoot_player, target_unit, damage_multiplier)
 	if not self._shooting then
 		return false
 	end
@@ -961,7 +961,7 @@ TurretWeapon.trigger_held = function (self, blanks, expend_ammo, shoot_player, t
 
 	return fired
 end
-TurretWeapon._upd_puppet_movement = function (self)
+function TurretWeapon:_upd_puppet_movement()
 	if self._puppet_stance == "sitting" then
 		return 
 	end
@@ -1024,7 +1024,7 @@ TurretWeapon._upd_puppet_movement = function (self)
 
 	return 
 end
-TurretWeapon._play_recoil_animation = function (self)
+function TurretWeapon:_play_recoil_animation()
 	slot3 = self._puppet_unit
 
 	if alive(slot2) then
@@ -1036,7 +1036,7 @@ TurretWeapon._play_recoil_animation = function (self)
 
 	return 
 end
-TurretWeapon.fire = function (self, blanks, expend_ammo, shoot_player, target_unit, damage_multiplier)
+function TurretWeapon:fire(blanks, expend_ammo, shoot_player, target_unit, damage_multiplier)
 	if self._overheated or self._lock_fire then
 		return 
 	end
@@ -1142,7 +1142,7 @@ TurretWeapon.fire = function (self, blanks, expend_ammo, shoot_player, target_un
 
 	return true
 end
-TurretWeapon._update_shell_movement = function (self, dt)
+function TurretWeapon:_update_shell_movement(dt)
 	if not self._turret_shell then
 		return 
 	end
@@ -1179,7 +1179,7 @@ TurretWeapon._update_shell_movement = function (self, dt)
 
 	return 
 end
-TurretWeapon._fire_shell = function (self, from_pos, direction)
+function TurretWeapon:_fire_shell(from_pos, direction)
 	self._turret_shell = {
 		position = from_pos,
 		direction = direction
@@ -1188,7 +1188,7 @@ TurretWeapon._fire_shell = function (self, from_pos, direction)
 
 	return 
 end
-TurretWeapon._turret_shell_explode = function (self, from_pos, to_pos, detonate_now)
+function TurretWeapon:_turret_shell_explode(from_pos, to_pos, detonate_now)
 	local shell_position = from_pos
 
 	if not detonate_now then
@@ -1253,20 +1253,20 @@ TurretWeapon._turret_shell_explode = function (self, from_pos, to_pos, detonate_
 
 	return 
 end
-TurretWeapon._get_fire_locator = function (self)
+function TurretWeapon:_get_fire_locator()
 	local fire_locator = self["_locator_fire_" .. self._current_barrel] or self._locator_fire_1
 
 	return fire_locator
 end
-TurretWeapon._get_puppet_locator = function (self)
+function TurretWeapon:_get_puppet_locator()
 	return self._locator_tpp
 end
-TurretWeapon._get_smoke_locator = function (self)
+function TurretWeapon:_get_smoke_locator()
 	local smoke_locator = self["_locator_smoke_" .. self._current_barrel] or self._locator_smoke_1
 
 	return smoke_locator
 end
-TurretWeapon._alert = function (self)
+function TurretWeapon:_alert()
 	local weapon_stats = tweak_data.weapon.stats
 	slot5 = self
 	local stats = tweak_data.weapon[self.get_name_id(slot4)].stats
@@ -1290,7 +1290,7 @@ TurretWeapon._alert = function (self)
 end
 local mvec_spread_direction = Vector3()
 local mvec1 = Vector3()
-TurretWeapon._fire_raycast = function (self, from_pos, direction, shoot_player, target_unit, damage_multiplier)
+function TurretWeapon:_fire_raycast(from_pos, direction, shoot_player, target_unit, damage_multiplier)
 	local result = {}
 	local hit_unit = nil
 	slot11 = direction
@@ -1364,7 +1364,7 @@ TurretWeapon._fire_raycast = function (self, from_pos, direction, shoot_player, 
 
 	return result
 end
-TurretWeapon._spawn_trail_effect = function (self, direction, col_ray)
+function TurretWeapon:_spawn_trail_effect(direction, col_ray)
 	local current_fire_object_name = "_locator_fire_" .. self._current_barrel
 	slot7 = self._trail_effect_table.position
 
@@ -1388,7 +1388,7 @@ TurretWeapon._spawn_trail_effect = function (self, direction, col_ray)
 
 	return 
 end
-TurretWeapon._apply_dmg_mul = function (self, damage, col_ray, from_pos)
+function TurretWeapon:_apply_dmg_mul(damage, col_ray, from_pos)
 	local damage_out = damage
 
 	if tweak_data.weapon[self._name_id].DAMAGE_MUL_RANGE then
@@ -1420,7 +1420,7 @@ TurretWeapon._apply_dmg_mul = function (self, damage, col_ray, from_pos)
 
 	return damage_out
 end
-TurretWeapon._sound_autofire_start = function (self)
+function TurretWeapon:_sound_autofire_start()
 	if self._fire_type == "auto" and self._sound_fire_start then
 
 		-- Decompilation error in this vicinity:
@@ -1438,14 +1438,14 @@ TurretWeapon._sound_autofire_start = function (self)
 
 	return 
 end
-TurretWeapon._sound_autofire_end = function (self)
+function TurretWeapon:_sound_autofire_end()
 	if self._fire_type == "auto" and self._sound_fire and self._sound_fire_stop then
 		slot3 = self._turret_user
 	end
 
 	return 
 end
-TurretWeapon._sound_fire_single = function (self)
+function TurretWeapon:_sound_fire_single()
 	if self._fire_type == "single" then
 
 		-- Decompilation error in this vicinity:
@@ -1459,45 +1459,45 @@ TurretWeapon._sound_fire_single = function (self)
 
 	return 
 end
-TurretWeapon._sound_autofire_end_empty = function (self)
+function TurretWeapon:_sound_autofire_end_empty()
 	return 
 end
-TurretWeapon._sound_autofire_end_cooldown = function (self)
+function TurretWeapon:_sound_autofire_end_cooldown()
 	return 
 end
-TurretWeapon.ammo_total = function (self)
+function TurretWeapon:ammo_total()
 	return 
 end
-TurretWeapon.ammo_max = function (self)
+function TurretWeapon:ammo_max()
 	return 
 end
-TurretWeapon.on_team_set = function (self, team_data)
+function TurretWeapon:on_team_set(team_data)
 	self._foe_teams = team_data.foes
 
 	return 
 end
-TurretWeapon.get_name_id = function (self)
+function TurretWeapon:get_name_id()
 	return self.name_id
 end
-TurretWeapon.weapon_tweak_data = function (self)
+function TurretWeapon:weapon_tweak_data()
 	return tweak_data.weapon[self.name_id]
 end
-TurretWeapon.has_part = function (self)
+function TurretWeapon:has_part()
 	return 
 end
-TurretWeapon.update_laser = function (self)
+function TurretWeapon:update_laser()
 	return 
 end
-TurretWeapon.on_death = function (self)
+function TurretWeapon:on_death()
 	return 
 end
-TurretWeapon.has_shield = function (self)
+function TurretWeapon:has_shield()
 	return false
 end
-TurretWeapon.unregister = function (self)
+function TurretWeapon:unregister()
 	return 
 end
-TurretWeapon.save = function (self, save_data)
+function TurretWeapon:save(save_data)
 	local my_save_data = {}
 	save_data.weapon = my_save_data
 	my_save_data.foe_teams = self._foe_teams
@@ -1516,7 +1516,7 @@ TurretWeapon.save = function (self, save_data)
 
 	return 
 end
-TurretWeapon.load = function (self, save_data)
+function TurretWeapon:load(save_data)
 	local my_save_data = save_data.weapon
 	self._foe_teams = my_save_data.foe_teams
 	self._auto_reload = my_save_data.auto_reload
@@ -1533,7 +1533,7 @@ TurretWeapon.load = function (self, save_data)
 
 	return 
 end
-TurretWeapon._delay_sync_turret_unit = function (self, peer)
+function TurretWeapon:_delay_sync_turret_unit(peer)
 	slot4 = managers.network
 
 	if not managers.network.session(slot3) then
@@ -1556,7 +1556,7 @@ TurretWeapon._delay_sync_turret_unit = function (self, peer)
 
 	return 
 end
-TurretWeapon.destroy = function (self, unit)
+function TurretWeapon:destroy(unit)
 	if self._sound_fire then
 		slot4 = self._sound_fire
 
@@ -1583,7 +1583,7 @@ TurretWeapon.destroy = function (self, unit)
 
 	return 
 end
-TurretWeapon._create_turret_SO = function (self)
+function TurretWeapon:_create_turret_SO()
 	slot3 = self._unit
 
 	if not alive(slot2) then
@@ -1678,17 +1678,17 @@ TurretWeapon._create_turret_SO = function (self)
 
 	return 
 end
-TurretWeapon.active = function (self)
+function TurretWeapon:active()
 	return self._active
 end
-TurretWeapon.sync_administered_unit = function (self, unit)
+function TurretWeapon:sync_administered_unit(unit)
 	self._administered_unit_data = {
 		unit = unit
 	}
 
 	return 
 end
-TurretWeapon.on_turret_SO_administered = function (self, unit, SO)
+function TurretWeapon:on_turret_SO_administered(unit, SO)
 	slot5 = managers.network
 	slot8 = unit
 
@@ -1707,14 +1707,14 @@ TurretWeapon.on_turret_SO_administered = function (self, unit, SO)
 
 	return 
 end
-TurretWeapon.on_turret_SO_failed = function (self, unit)
+function TurretWeapon:on_turret_SO_failed(unit)
 	self._administered_to_unit = nil
 	self._mode = nil
 	self._puppet_unit = nil
 
 	return 
 end
-TurretWeapon.on_turret_SO_completed = function (self, unit)
+function TurretWeapon:on_turret_SO_completed(unit)
 	slot4 = unit
 
 	if not alive(slot3) then
@@ -1757,14 +1757,14 @@ TurretWeapon.on_turret_SO_completed = function (self, unit)
 
 	return 
 end
-TurretWeapon.sync_create_SO = function (self)
+function TurretWeapon:sync_create_SO()
 	slot4 = true
 
 	self.enable_automatic_SO(slot2, self)
 
 	return 
 end
-TurretWeapon.sync_SO_completed = function (self, puppet_unit)
+function TurretWeapon:sync_SO_completed(puppet_unit)
 	slot4 = puppet_unit
 
 	if not alive(slot3) then
@@ -1801,14 +1801,14 @@ TurretWeapon.sync_SO_completed = function (self, puppet_unit)
 
 	return 
 end
-TurretWeapon.sync_cancel_SO = function (self)
+function TurretWeapon:sync_cancel_SO()
 	slot4 = false
 
 	self.enable_automatic_SO(slot2, self)
 
 	return 
 end
-TurretWeapon.remove_administered_SO = function (self)
+function TurretWeapon:remove_administered_SO()
 	if self._SO_data then
 		slot3 = managers.groupai
 		slot4 = self._SO_data.SO_id
@@ -1817,16 +1817,16 @@ TurretWeapon.remove_administered_SO = function (self)
 
 	return 
 end
-TurretWeapon.is_available = function (self)
+function TurretWeapon:is_available()
 	return not self._mode and not self._administered_unit_data and self._active
 end
-TurretWeapon.set_weapon_user = function (self, user)
+function TurretWeapon:set_weapon_user(user)
 	self._turret_user = user
 	self._player_rotation = nil
 
 	return 
 end
-TurretWeapon.activate_turret = function (self)
+function TurretWeapon:activate_turret()
 	slot3 = self._puppet_unit
 
 	if alive(slot2) and self._puppet_stance == "sitting" then
@@ -1864,7 +1864,7 @@ TurretWeapon.activate_turret = function (self)
 
 	return 
 end
-TurretWeapon.keep_ai_attached = function (self)
+function TurretWeapon:keep_ai_attached()
 	slot3 = self._unit
 	slot3 = self._unit.brain(slot2)
 
@@ -1872,7 +1872,7 @@ TurretWeapon.keep_ai_attached = function (self)
 
 	return 
 end
-TurretWeapon.add_outline = function (self)
+function TurretWeapon:add_outline()
 	slot3 = Network
 
 	if Network.is_server(slot2) then
@@ -1884,7 +1884,7 @@ TurretWeapon.add_outline = function (self)
 
 	return 
 end
-TurretWeapon.remove_outline = function (self)
+function TurretWeapon:remove_outline()
 	slot3 = Network
 
 	if Network.is_server(slot2) then
@@ -1896,7 +1896,7 @@ TurretWeapon.remove_outline = function (self)
 
 	return 
 end
-TurretWeapon.enable_automatic_SO = function (self, enabled)
+function TurretWeapon:enable_automatic_SO(enabled)
 	if not self._automatic_SO then
 		return 
 	end
@@ -1913,7 +1913,7 @@ TurretWeapon.enable_automatic_SO = function (self, enabled)
 
 	return 
 end
-TurretWeapon.on_player_enter = function (self)
+function TurretWeapon:on_player_enter()
 	self._player_on = true
 	slot3 = Network
 
@@ -1981,7 +1981,7 @@ TurretWeapon.on_player_enter = function (self)
 
 	return 
 end
-TurretWeapon.on_player_exit = function (self)
+function TurretWeapon:on_player_exit()
 	self._player_on = false
 
 	if self._shooting then
@@ -2024,7 +2024,7 @@ TurretWeapon.on_player_exit = function (self)
 
 	return 
 end
-TurretWeapon.sync_activate_triggers = function (self)
+function TurretWeapon:sync_activate_triggers()
 	slot3 = self._unit
 
 	if self._unit.damage(slot2) then
@@ -2061,7 +2061,7 @@ TurretWeapon.sync_activate_triggers = function (self)
 
 	return 
 end
-TurretWeapon.sync_exit_triggers = function (self)
+function TurretWeapon:sync_exit_triggers()
 	slot3 = self._unit
 
 	if self._unit.damage(slot2) then
@@ -2084,7 +2084,7 @@ TurretWeapon.sync_exit_triggers = function (self)
 
 	return 
 end
-TurretWeapon._cancel_active_SO = function (self)
+function TurretWeapon:_cancel_active_SO()
 	if self._administered_unit_data then
 		slot3 = self._administered_unit_data.unit
 
@@ -2144,7 +2144,7 @@ TurretWeapon._cancel_active_SO = function (self)
 
 	return 
 end
-TurretWeapon.on_puppet_damaged = function (self, data, damage_info)
+function TurretWeapon:on_puppet_damaged(data, damage_info)
 	slot5 = self._puppet_unit
 
 	if not alive(slot4) then
@@ -2212,7 +2212,7 @@ TurretWeapon.on_puppet_damaged = function (self, data, damage_info)
 
 	return 
 end
-TurretWeapon.on_puppet_death = function (self, data, damage_info)
+function TurretWeapon:on_puppet_death(data, damage_info)
 	slot5 = managers.network
 	slot7 = self._unit
 
@@ -2232,7 +2232,7 @@ TurretWeapon.on_puppet_death = function (self, data, damage_info)
 
 	return 
 end
-TurretWeapon.on_puppet_damaged_client = function (self, attacker_unit)
+function TurretWeapon:on_puppet_damaged_client(attacker_unit)
 	slot4 = self._puppet_unit
 
 	if not alive(slot3) then
@@ -2300,7 +2300,7 @@ TurretWeapon.on_puppet_damaged_client = function (self, attacker_unit)
 
 	return 
 end
-TurretWeapon.on_puppet_death_client = function (self)
+function TurretWeapon:on_puppet_death_client()
 	slot5 = self
 
 	managers.queued_tasks.unqueue_all(slot2, managers.queued_tasks, self._activate_turret_clbk_id)
@@ -2311,7 +2311,7 @@ TurretWeapon.on_puppet_death_client = function (self)
 
 	return 
 end
-TurretWeapon.set_active = function (self, state)
+function TurretWeapon:set_active(state)
 	self._active = state
 
 	if state then
@@ -2326,7 +2326,7 @@ TurretWeapon.set_active = function (self, state)
 
 	return 
 end
-TurretWeapon._disable_extension = function (self)
+function TurretWeapon:_disable_extension()
 	slot3 = self._unit
 
 	if alive(slot2) and not self._active then
@@ -2337,7 +2337,7 @@ TurretWeapon._disable_extension = function (self)
 
 	return 
 end
-TurretWeapon.deactivate_client = function (self)
+function TurretWeapon:deactivate_client()
 	slot4 = "TurretWeapon:deactivate_client"
 
 	Application.trace(slot2, Application)
@@ -2458,7 +2458,7 @@ TurretWeapon.deactivate_client = function (self)
 
 	return 
 end
-TurretWeapon.lock_fire = function (self, lock)
+function TurretWeapon:lock_fire(lock)
 	self._lock_fire = lock
 
 	if not self._lock_fire then
@@ -2473,10 +2473,10 @@ TurretWeapon.lock_fire = function (self, lock)
 
 	return 
 end
-TurretWeapon.locked_fire = function (self)
+function TurretWeapon:locked_fire()
 	return self._lock_fire
 end
-TurretWeapon.weapon_unlocked = function (self)
+function TurretWeapon:weapon_unlocked()
 	slot4 = "TurretWeapon:weapon_unlocked: "
 	slot7 = not self._lock_fire
 
@@ -2484,7 +2484,7 @@ TurretWeapon.weapon_unlocked = function (self)
 
 	return not self._lock_fire
 end
-TurretWeapon._shell_explosion_on_client = function (self, position, radius, damage, player_damage, curve_pow)
+function TurretWeapon:_shell_explosion_on_client(position, radius, damage, player_damage, curve_pow)
 	slot9 = "TurretWeapon:_shell_explosion_on_client"
 
 	Application.trace(slot7, Application)
@@ -2508,10 +2508,10 @@ TurretWeapon._shell_explosion_on_client = function (self, position, radius, dama
 
 	return 
 end
-TurretWeapon.adjust_target_pos = function (self, target_pos)
+function TurretWeapon:adjust_target_pos(target_pos)
 	return target_pos
 end
-TurretWeapon.get_damage = function (self)
+function TurretWeapon:get_damage()
 	if self._puppet_unit then
 		return self._damage_npc
 	else
@@ -2520,7 +2520,7 @@ TurretWeapon.get_damage = function (self)
 
 	return 
 end
-TurretWeapon.mode = function (self)
+function TurretWeapon:mode()
 	return self._mode
 end
 

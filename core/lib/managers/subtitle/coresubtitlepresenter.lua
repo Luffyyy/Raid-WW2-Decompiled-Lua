@@ -41,25 +41,25 @@ if not OverlayPresenter then
 end
 
 OverlayPresenter = slot0
-SubtitlePresenter.destroy = function (self)
+function SubtitlePresenter:destroy()
 	return 
 end
-SubtitlePresenter.update = function (self, time, delta_time)
+function SubtitlePresenter:update(time, delta_time)
 	return 
 end
-SubtitlePresenter.show = function (self)
+function SubtitlePresenter:show()
 	return 
 end
-SubtitlePresenter.hide = function (self)
+function SubtitlePresenter:hide()
 	return 
 end
-SubtitlePresenter.show_text = function (self, text, duration)
+function SubtitlePresenter:show_text(text, duration)
 	return 
 end
-SubtitlePresenter.preprocess_sequence = function (self, sequence)
+function SubtitlePresenter:preprocess_sequence(sequence)
 	return sequence
 end
-DebugPresenter.destroy = function (self)
+function DebugPresenter:destroy()
 	slot3 = "subtitle_manager"
 	slot6 = "SubtitlePresenter is destroyed."
 
@@ -67,7 +67,7 @@ DebugPresenter.destroy = function (self)
 
 	return 
 end
-DebugPresenter.show = function (self)
+function DebugPresenter:show()
 	slot3 = "subtitle_manager"
 	slot6 = "SubtitlePresenter is shown."
 
@@ -75,7 +75,7 @@ DebugPresenter.show = function (self)
 
 	return 
 end
-DebugPresenter.hide = function (self)
+function DebugPresenter:hide()
 	slot3 = "subtitle_manager"
 	slot6 = "SubtitlePresenter hides."
 
@@ -83,7 +83,7 @@ DebugPresenter.hide = function (self)
 
 	return 
 end
-DebugPresenter.show_text = function (self, text, duration)
+function DebugPresenter:show_text(text, duration)
 
 	-- Decompilation error in this vicinity:
 	slot3 = CoreDebug.cat_print
@@ -92,7 +92,7 @@ DebugPresenter.show_text = function (self, text, duration)
 	slot8 = "SubtitlePresenter displays \"%s\" %s."
 	slot9 = text
 end
-OverlayPresenter.init = function (self, font_name, font_size)
+function OverlayPresenter:init(font_name, font_size)
 	slot5 = self
 	slot3 = self.set_font
 
@@ -119,7 +119,7 @@ OverlayPresenter.init = function (self, font_name, font_size)
 
 	return 
 end
-OverlayPresenter.destroy = function (self)
+function OverlayPresenter:destroy()
 	if self.__resolution_changed_id and managers.viewport then
 		slot4 = self.__resolution_changed_id
 
@@ -153,21 +153,21 @@ OverlayPresenter.destroy = function (self)
 
 	return 
 end
-OverlayPresenter.show = function (self)
+function OverlayPresenter:show()
 	slot3 = self.__ws
 
 	self.__ws.show(slot2)
 
 	return 
 end
-OverlayPresenter.hide = function (self)
+function OverlayPresenter:hide()
 	slot3 = self.__ws
 
 	self.__ws.hide(slot2)
 
 	return 
 end
-OverlayPresenter.set_debug = function (self, enabled)
+function OverlayPresenter:set_debug(enabled)
 	if self.__ws then
 		slot4 = self.__ws
 		slot5 = enabled
@@ -177,7 +177,7 @@ OverlayPresenter.set_debug = function (self, enabled)
 
 	return 
 end
-OverlayPresenter.set_font = function (self, font_name, font_size)
+function OverlayPresenter:set_font(font_name, font_size)
 	slot7 = font_name
 	self.__font_name = assert(slot4, tostring(slot6))
 	slot7 = font_size
@@ -229,7 +229,7 @@ OverlayPresenter.set_font = function (self, font_name, font_size)
 
 	return 
 end
-OverlayPresenter.set_width = function (self, pixels)
+function OverlayPresenter:set_width(pixels)
 	local safe_width = self._gui_width(slot3)
 	slot6 = safe_width
 	self.__width = math.min(self, pixels)
@@ -244,7 +244,7 @@ OverlayPresenter.set_width = function (self, pixels)
 
 	return 
 end
-OverlayPresenter.show_text = function (self, text, duration, color, nationality_icon)
+function OverlayPresenter:show_text(text, duration, color, nationality_icon)
 	if text == nil or text == "" then
 		return 
 	end
@@ -365,7 +365,7 @@ OverlayPresenter.show_text = function (self, text, duration, color, nationality_
 
 	return 
 end
-OverlayPresenter.preprocess_sequence = function (self, sequence)
+function OverlayPresenter:preprocess_sequence(sequence)
 	slot4 = CoreSubtitleSequence.SubtitleSequence
 	local new_sequence = CoreSubtitleSequence.SubtitleSequence.new(slot3)
 	slot7 = sequence
@@ -401,7 +401,7 @@ OverlayPresenter.preprocess_sequence = function (self, sequence)
 
 	return new_sequence
 end
-OverlayPresenter._clear_workspace = function (self)
+function OverlayPresenter:_clear_workspace()
 	slot3 = self.__ws
 
 	if CoreCode.alive(slot2) then
@@ -429,12 +429,12 @@ OverlayPresenter._clear_workspace = function (self)
 
 	return 
 end
-OverlayPresenter._split_string_into_lines = function (self, subtitle_string, owning_sequence)
+function OverlayPresenter:_split_string_into_lines(subtitle_string, owning_sequence)
 	slot6 = subtitle_string
 
 	return self._auto_word_wrap_string(slot4, self)
 end
-OverlayPresenter._auto_word_wrap_string = function (self, subtitle_string)
+function OverlayPresenter:_auto_word_wrap_string(subtitle_string)
 	local layout_text_field = self._layout_text_field(slot3)
 
 	layout_text_field.set_text(self, layout_text_field)
@@ -461,7 +461,7 @@ OverlayPresenter._auto_word_wrap_string = function (self, subtitle_string)
 
 	return wrapped_lines
 end
-OverlayPresenter._layout_text_field = function (self)
+function OverlayPresenter:_layout_text_field()
 	slot3 = self.__subtitle_panel
 
 	assert(slot2)
@@ -486,7 +486,7 @@ OverlayPresenter._layout_text_field = function (self)
 
 	return slot1
 end
-OverlayPresenter._string_width = function (self, subtitle_string)
+function OverlayPresenter:_string_width(subtitle_string)
 	slot4 = self.__ws
 	slot5 = "string_width"
 
@@ -511,7 +511,7 @@ OverlayPresenter._string_width = function (self, subtitle_string)
 
 	return width
 end
-OverlayPresenter._on_resolution_changed = function (self)
+function OverlayPresenter:_on_resolution_changed()
 	slot3 = self
 	slot1 = self.set_font
 
@@ -590,20 +590,20 @@ OverlayPresenter._on_resolution_changed = function (self)
 
 	return 
 end
-OverlayPresenter._gui_width = function (self)
+function OverlayPresenter:_gui_width()
 	slot3 = self.__subtitle_panel
 
 	return self.__subtitle_panel.width(slot2)
 end
-OverlayPresenter._gui_height = function (self)
+function OverlayPresenter:_gui_height()
 	slot3 = self.__subtitle_panel
 
 	return self.__subtitle_panel.width(slot2)
 end
-OverlayPresenter._default_font_name = function (self)
+function OverlayPresenter:_default_font_name()
 	return "ui/fonts/pf_din_text_comp_pro_medium_outlined_22"
 end
-OverlayPresenter._default_font_size = function (self)
+function OverlayPresenter:_default_font_size()
 	return 22
 end
 

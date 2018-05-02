@@ -12,21 +12,21 @@ if not ElementMusic then
 end
 
 ElementMusic = slot0
-ElementMusic.init = function (self, ...)
+function ElementMusic:init(...)
 	slot3 = self
 
 	ElementMusic.super.init(slot2, ...)
 
 	return 
 end
-ElementMusic.client_on_executed = function (self, ...)
+function ElementMusic:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementMusic.on_executed = function (self, instigator)
+function ElementMusic:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

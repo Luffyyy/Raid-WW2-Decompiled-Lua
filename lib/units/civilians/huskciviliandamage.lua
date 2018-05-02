@@ -7,21 +7,21 @@ HuskCivilianDamage = slot0
 HuskCivilianDamage._HEALTH_INIT = CivilianDamage._HEALTH_INIT
 HuskCivilianDamage.damage_bullet = CivilianDamage.damage_bullet
 HuskCivilianDamage.damage_melee = CivilianDamage.damage_melee
-HuskCivilianDamage._on_damage_received = function (self, damage_info)
+function HuskCivilianDamage:_on_damage_received(damage_info)
 	slot5 = damage_info
 
 	CivilianDamage._on_damage_received(slot3, self)
 
 	return 
 end
-HuskCivilianDamage._unregister_from_enemy_manager = function (self, damage_info)
+function HuskCivilianDamage:_unregister_from_enemy_manager(damage_info)
 	slot5 = damage_info
 
 	CivilianDamage._unregister_from_enemy_manager(slot3, self)
 
 	return 
 end
-HuskCivilianDamage.damage_explosion = function (self, attack_data)
+function HuskCivilianDamage:damage_explosion(attack_data)
 	if attack_data.variant == "explosion" then
 		attack_data.damage = 10
 	end
@@ -30,7 +30,7 @@ HuskCivilianDamage.damage_explosion = function (self, attack_data)
 
 	return CopDamage.damage_explosion(slot3, self)
 end
-HuskCivilianDamage.damage_fire = function (self, attack_data)
+function HuskCivilianDamage:damage_fire(attack_data)
 	if attack_data.variant == "fire" then
 		attack_data.damage = 10
 	end

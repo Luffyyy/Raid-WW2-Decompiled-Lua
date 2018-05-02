@@ -1169,7 +1169,7 @@ slot3 = "CoreUnit"
 core.import(slot1, core)
 
 Layer = Layer or CoreClass.class()
-Layer.init = function (self, owner, save_name)
+function Layer:init(owner, save_name)
 	if not owner then
 		slot6 = "Layer:init was called without parameters owner and save_name"
 
@@ -1204,7 +1204,7 @@ Layer.init = function (self, owner, save_name)
 
 	return 
 end
-Layer._init_unit_highlighter = function (self)
+function Layer:_init_unit_highlighter()
 	slot3 = World
 	slot3 = World.unit_manager(slot2)
 	self._unit_highlighter = World.unit_manager(slot2).unit_highlighter(slot2)
@@ -1220,22 +1220,22 @@ Layer._init_unit_highlighter = function (self)
 
 	return 
 end
-Layer.created_units = function (self)
+function Layer:created_units()
 	return self._created_units
 end
-Layer.created_units_pairs = function (self)
+function Layer:created_units_pairs()
 	return self._created_units_pairs
 end
-Layer.selected_units = function (self)
+function Layer:selected_units()
 	return self._selected_units
 end
-Layer.current_pos = function (self)
+function Layer:current_pos()
 	return self._current_pos
 end
-Layer.uses_continents = function (self)
+function Layer:uses_continents()
 	return self._uses_continents
 end
-Layer.load = function (self, world_holder, offset)
+function Layer:load(world_holder, offset)
 	slot8 = offset
 	local world_units = world_holder.create_world(slot4, world_holder, "world", self._save_name)
 
@@ -1251,7 +1251,7 @@ Layer.load = function (self, world_holder, offset)
 
 	return world_units
 end
-Layer.post_load = function (self)
+function Layer:post_load()
 	if not self._post_register_units then
 		return 
 	end
@@ -1283,7 +1283,7 @@ Layer.post_load = function (self)
 
 	return 
 end
-Layer.add_unit_to_created_units = function (self, unit, skip_register)
+function Layer:add_unit_to_created_units(unit, skip_register)
 	if not skip_register then
 		slot6 = unit
 
@@ -1310,7 +1310,7 @@ Layer.add_unit_to_created_units = function (self, unit, skip_register)
 
 	return 
 end
-Layer.set_up_name_id = function (self, unit)
+function Layer:set_up_name_id(unit)
 	slot4 = unit
 
 	if unit.unit_data(slot3).name_id == "none" then
@@ -1324,7 +1324,7 @@ Layer.set_up_name_id = function (self, unit)
 
 	return 
 end
-Layer.insert_name_id = function (self, unit)
+function Layer:insert_name_id(unit)
 	slot4 = unit
 	slot4 = unit.name(slot3)
 	local name = unit.name(slot3).s(slot3)
@@ -1335,7 +1335,7 @@ Layer.insert_name_id = function (self, unit)
 
 	return 
 end
-Layer.get_name_id = function (self, unit, name)
+function Layer:get_name_id(unit, name)
 	slot5 = unit
 	slot5 = unit.name(slot4)
 	local u_name = unit.name(slot4).s(slot4)
@@ -1387,7 +1387,7 @@ Layer.get_name_id = function (self, unit, name)
 
 	return 
 end
-Layer.remove_name_id = function (self, unit)
+function Layer:remove_name_id(unit)
 	slot4 = unit
 	slot4 = unit.name(slot3)
 	local unit_name = unit.name(slot3).s(slot3)
@@ -1404,7 +1404,7 @@ Layer.remove_name_id = function (self, unit)
 
 	return 
 end
-Layer.set_name_id = function (self, unit, name_id)
+function Layer:set_name_id(unit, name_id)
 	slot5 = unit
 	slot5 = unit.name(slot4)
 	local unit_name = unit.name(slot4).s(slot4)
@@ -1478,7 +1478,7 @@ Layer.set_name_id = function (self, unit, name_id)
 
 	return 
 end
-Layer.widget_affect_object = function (self)
+function Layer:widget_affect_object()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -1488,7 +1488,7 @@ Layer.widget_affect_object = function (self)
 
 
 end
-Layer.use_widget_position = function (self, pos)
+function Layer:use_widget_position(pos)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -1502,7 +1502,7 @@ Layer.use_widget_position = function (self, pos)
 
 
 end
-Layer.use_widget_rotation = function (self, rot)
+function Layer:use_widget_rotation(rot)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -1519,7 +1519,7 @@ Layer.use_widget_rotation = function (self, rot)
 
 
 end
-Layer.update = function (self, t, dt)
+function Layer:update(t, dt)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-16, warpins: 1 ---
@@ -1541,7 +1541,7 @@ Layer.update = function (self, t, dt)
 
 
 end
-Layer._update_widget_affect_object = function (self, t, dt)
+function Layer:_update_widget_affect_object(t, dt)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -1707,7 +1707,7 @@ Layer._update_widget_affect_object = function (self, t, dt)
 
 
 end
-Layer._update_drag_select = function (self, t, dt)
+function Layer:_update_drag_select(t, dt)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1936,7 +1936,7 @@ Layer._update_drag_select = function (self, t, dt)
 
 
 end
-Layer._update_draw_unit_trigger_sequences = function (self, t, dt)
+function Layer:_update_draw_unit_trigger_sequences(t, dt)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -2092,7 +2092,7 @@ Layer._update_draw_unit_trigger_sequences = function (self, t, dt)
 
 
 end
-Layer.authorised_unit_type = function (self, unit)
+function Layer:authorised_unit_type(unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -2177,7 +2177,7 @@ Layer.authorised_unit_type = function (self, unit)
 
 
 end
-Layer.draw_grid = function (self, t, dt)
+function Layer:draw_grid(t, dt)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -2288,7 +2288,7 @@ Layer.draw_grid = function (self, t, dt)
 
 
 end
-Layer.update_always = function (self, t, dt)
+function Layer:update_always(t, dt)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -2346,7 +2346,7 @@ Layer.update_always = function (self, t, dt)
 
 
 end
-Layer.local_rot = function (self)
+function Layer:local_rot()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -2358,7 +2358,7 @@ Layer.local_rot = function (self)
 
 
 end
-Layer.surface_move = function (self)
+function Layer:surface_move()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -2370,7 +2370,7 @@ Layer.surface_move = function (self)
 
 
 end
-Layer.use_snappoints = function (self)
+function Layer:use_snappoints()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -2382,7 +2382,7 @@ Layer.use_snappoints = function (self)
 
 
 end
-Layer.grid_size = function (self)
+function Layer:grid_size()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -2394,7 +2394,7 @@ Layer.grid_size = function (self)
 
 
 end
-Layer.snap_rotation = function (self)
+function Layer:snap_rotation()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -2406,7 +2406,7 @@ Layer.snap_rotation = function (self)
 
 
 end
-Layer.snap_rotation_axis = function (self)
+function Layer:snap_rotation_axis()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -2418,7 +2418,7 @@ Layer.snap_rotation_axis = function (self)
 
 
 end
-Layer.rotation_speed = function (self)
+function Layer:rotation_speed()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -2430,7 +2430,7 @@ Layer.rotation_speed = function (self)
 
 
 end
-Layer.grid_altitude = function (self)
+function Layer:grid_altitude()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -2442,7 +2442,7 @@ Layer.grid_altitude = function (self)
 
 
 end
-Layer.build_units = function (self, params)
+function Layer:build_units(params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -2735,7 +2735,7 @@ Layer.build_units = function (self, params)
 
 
 end
-Layer._stripped_unit_name = function (self, name)
+function Layer:_stripped_unit_name(name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-20, warpins: 1 ---
@@ -2751,7 +2751,7 @@ Layer._stripped_unit_name = function (self, name)
 
 
 end
-Layer.repopulate_units = function (self)
+function Layer:repopulate_units()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -2837,7 +2837,7 @@ Layer.repopulate_units = function (self)
 
 
 end
-Layer.units_notebook = function (self)
+function Layer:units_notebook()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -2847,7 +2847,7 @@ Layer.units_notebook = function (self)
 
 
 end
-Layer.notebook_unit_list = function (self, name)
+function Layer:notebook_unit_list(name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -2857,7 +2857,7 @@ Layer.notebook_unit_list = function (self, name)
 
 
 end
-Layer.toggle_short_name = function (self, data)
+function Layer:toggle_short_name(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -2871,7 +2871,7 @@ Layer.toggle_short_name = function (self, data)
 
 
 end
-Layer.update_filter = function (self, data)
+function Layer:update_filter(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -2972,7 +2972,7 @@ Layer.update_filter = function (self, data)
 
 
 end
-Layer.build_name_id = function (self)
+function Layer:build_name_id()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-55, warpins: 1 ---
@@ -3004,7 +3004,7 @@ Layer.build_name_id = function (self)
 
 
 end
-Layer.update_name_id = function (self, name_id)
+function Layer:update_name_id(name_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -3059,7 +3059,7 @@ Layer.update_name_id = function (self, name_id)
 
 
 end
-Layer.cb_toogle = function (self, data)
+function Layer:cb_toogle(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -3072,7 +3072,7 @@ Layer.cb_toogle = function (self, data)
 
 
 end
-Layer.cb_toogle_trg = function (self, data)
+function Layer:cb_toogle_trg(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-16, warpins: 1 ---
@@ -3090,7 +3090,7 @@ Layer.cb_toogle_trg = function (self, data)
 
 
 end
-Layer.change_combo_box = function (self, data)
+function Layer:change_combo_box(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -3103,7 +3103,7 @@ Layer.change_combo_box = function (self, data)
 
 
 end
-Layer.change_combo_box_trg = function (self, data)
+function Layer:change_combo_box_trg(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -3260,7 +3260,7 @@ Layer.change_combo_box_trg = function (self, data)
 
 
 end
-Layer.use_move_widget = function (self, value)
+function Layer:use_move_widget(value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -3301,7 +3301,7 @@ Layer.use_move_widget = function (self, value)
 
 
 end
-Layer.use_rotate_widget = function (self, value)
+function Layer:use_rotate_widget(value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -3342,7 +3342,7 @@ Layer.use_rotate_widget = function (self, value)
 
 
 end
-Layer.unit_types = function (self)
+function Layer:unit_types()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -3352,7 +3352,7 @@ Layer.unit_types = function (self)
 
 
 end
-Layer.load_unit_map_from_vector = function (self, which)
+function Layer:load_unit_map_from_vector(which)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -3452,7 +3452,7 @@ Layer.load_unit_map_from_vector = function (self, which)
 
 
 end
-Layer.set_unit_map = function (self, map)
+function Layer:set_unit_map(map)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -3464,7 +3464,7 @@ Layer.set_unit_map = function (self, map)
 
 
 end
-Layer.get_unit_map = function (self)
+function Layer:get_unit_map()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -3474,7 +3474,7 @@ Layer.get_unit_map = function (self)
 
 
 end
-Layer.category_map = function (self)
+function Layer:category_map()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -3484,7 +3484,7 @@ Layer.category_map = function (self)
 
 
 end
-Layer.get_layer_name = function (self)
+function Layer:get_layer_name()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -3494,7 +3494,7 @@ Layer.get_layer_name = function (self)
 
 
 end
-Layer.cancel_all = function (self, ctrlr, event)
+function Layer:cancel_all(ctrlr, event)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -3532,7 +3532,7 @@ Layer.cancel_all = function (self, ctrlr, event)
 
 
 end
-Layer.deselect = function (self)
+function Layer:deselect()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -3569,7 +3569,7 @@ Layer.deselect = function (self)
 
 
 end
-Layer.force_editor_state = function (self)
+function Layer:force_editor_state()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -3583,7 +3583,7 @@ Layer.force_editor_state = function (self)
 
 
 end
-Layer.update_unit_settings = function (self)
+function Layer:update_unit_settings()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-34, warpins: 1 ---
@@ -3668,7 +3668,7 @@ Layer.update_unit_settings = function (self)
 
 
 end
-Layer.activate = function (self)
+function Layer:activate()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -3720,7 +3720,7 @@ Layer.activate = function (self)
 
 
 end
-Layer.deactivate = function (self)
+function Layer:deactivate()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -3739,7 +3739,7 @@ Layer.deactivate = function (self)
 
 
 end
-Layer.build_panel = function (self)
+function Layer:build_panel()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -3749,7 +3749,7 @@ Layer.build_panel = function (self)
 
 
 end
-Layer.widget_rot = function (self)
+function Layer:widget_rot()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -3783,7 +3783,7 @@ Layer.widget_rot = function (self)
 
 
 end
-Layer.click_widget = function (self)
+function Layer:click_widget()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-18, warpins: 1 ---
@@ -3954,7 +3954,7 @@ Layer.click_widget = function (self)
 
 
 end
-Layer.release_widget = function (self)
+function Layer:release_widget()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -4013,7 +4013,7 @@ Layer.release_widget = function (self)
 
 
 end
-Layer.cloned_group = function (self)
+function Layer:cloned_group()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -4045,7 +4045,7 @@ Layer.cloned_group = function (self)
 
 
 end
-Layer.using_widget = function (self)
+function Layer:using_widget()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -4055,7 +4055,7 @@ Layer.using_widget = function (self)
 
 
 end
-Layer.reset_widget_values = function (self)
+function Layer:reset_widget_values()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-17, warpins: 1 ---
@@ -4078,7 +4078,7 @@ Layer.reset_widget_values = function (self)
 
 
 end
-Layer.prepare_replace = function (self, names, rules)
+function Layer:prepare_replace(names, rules)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -4237,7 +4237,7 @@ Layer.prepare_replace = function (self, names, rules)
 
 
 end
-Layer.recreate_units = function (self, name, data)
+function Layer:recreate_units(name, data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -4474,7 +4474,7 @@ Layer.recreate_units = function (self, name, data)
 
 
 end
-Layer.replace_unit = function (self, name, all)
+function Layer:replace_unit(name, all)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -4609,7 +4609,7 @@ Layer.replace_unit = function (self, name, all)
 
 
 end
-Layer._replace_units = function (self, name, replace_units)
+function Layer:_replace_units(name, replace_units)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -4711,7 +4711,7 @@ Layer._replace_units = function (self, name, replace_units)
 
 
 end
-Layer.use_grab_info = function (self)
+function Layer:use_grab_info()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -4725,7 +4725,7 @@ Layer.use_grab_info = function (self)
 
 
 end
-Layer.unit_sampler = function (self)
+function Layer:unit_sampler()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -4788,7 +4788,7 @@ Layer.unit_sampler = function (self)
 
 
 end
-Layer.ignore_global_select = function (self)
+function Layer:ignore_global_select()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -4798,7 +4798,7 @@ Layer.ignore_global_select = function (self)
 
 
 end
-Layer.select_unit_authorised = function (self, unit)
+function Layer:select_unit_authorised(unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -4808,7 +4808,7 @@ Layer.select_unit_authorised = function (self, unit)
 
 
 end
-Layer.click_select_unit = function (self)
+function Layer:click_select_unit()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -4826,7 +4826,7 @@ Layer.click_select_unit = function (self)
 
 
 end
-Layer.set_drag_select = function (self)
+function Layer:set_drag_select()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -4870,7 +4870,7 @@ Layer.set_drag_select = function (self)
 
 
 end
-Layer.remove_polyline = function (self)
+function Layer:remove_polyline()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -4903,7 +4903,7 @@ Layer.remove_polyline = function (self)
 
 
 end
-Layer.adding_units = function (self)
+function Layer:adding_units()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -4913,7 +4913,7 @@ Layer.adding_units = function (self)
 
 
 end
-Layer.removing_units = function (self)
+function Layer:removing_units()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -4923,7 +4923,7 @@ Layer.removing_units = function (self)
 
 
 end
-Layer.adding_or_removing_units = function (self)
+function Layer:adding_or_removing_units()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -4952,7 +4952,7 @@ Layer.adding_or_removing_units = function (self)
 
 
 end
-Layer.select_release = function (self)
+function Layer:select_release()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -5039,7 +5039,7 @@ Layer.select_release = function (self)
 
 
 end
-Layer.add_highlighted_unit = function (self, unit, config)
+function Layer:add_highlighted_unit(unit, config)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -5068,7 +5068,7 @@ Layer.add_highlighted_unit = function (self, unit, config)
 
 
 end
-Layer.remove_highlighted_unit = function (self, unit)
+function Layer:remove_highlighted_unit(unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -5078,7 +5078,7 @@ Layer.remove_highlighted_unit = function (self, unit)
 
 
 end
-Layer.clear_highlighted_units = function (self)
+function Layer:clear_highlighted_units()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -5127,7 +5127,7 @@ Layer.clear_highlighted_units = function (self)
 
 
 end
-Layer.clear_selected_units_table = function (self)
+function Layer:clear_selected_units_table()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -5143,7 +5143,7 @@ Layer.clear_selected_units_table = function (self)
 
 
 end
-Layer.clear_selected_units = function (self)
+function Layer:clear_selected_units()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -5165,7 +5165,7 @@ Layer.clear_selected_units = function (self)
 
 
 end
-Layer.set_selected_units = function (self, units)
+function Layer:set_selected_units(units)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -5239,7 +5239,7 @@ Layer.set_selected_units = function (self, units)
 
 
 end
-Layer.select_group = function (self, group)
+function Layer:select_group(group)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-20, warpins: 1 ---
@@ -5311,7 +5311,7 @@ Layer.select_group = function (self, group)
 
 
 end
-Layer.current_group = function (self)
+function Layer:current_group()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -5323,7 +5323,7 @@ Layer.current_group = function (self)
 
 
 end
-Layer.unit_in_group = function (self, unit)
+function Layer:unit_in_group(unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -5424,7 +5424,7 @@ Layer.unit_in_group = function (self, unit)
 
 
 end
-Layer.set_select_group = function (self, unit)
+function Layer:set_select_group(unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -5672,7 +5672,7 @@ Layer.set_select_group = function (self, unit)
 
 
 end
-Layer.set_select_unit = function (self, unit)
+function Layer:set_select_unit(unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -5914,7 +5914,7 @@ Layer.set_select_unit = function (self, unit)
 
 
 end
-Layer.add_select_unit = function (self, unit)
+function Layer:add_select_unit(unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -5997,7 +5997,7 @@ Layer.add_select_unit = function (self, unit)
 
 
 end
-Layer.remove_select_unit = function (self, unit)
+function Layer:remove_select_unit(unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -6034,7 +6034,7 @@ Layer.remove_select_unit = function (self, unit)
 
 
 end
-Layer.check_referens_exists = function (self)
+function Layer:check_referens_exists()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -6091,7 +6091,7 @@ Layer.check_referens_exists = function (self)
 
 
 end
-Layer.set_reference_unit = function (self, unit)
+function Layer:set_reference_unit(unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -6140,7 +6140,7 @@ Layer.set_reference_unit = function (self, unit)
 
 
 end
-Layer._on_reference_unit_unselected = function (self, unit)
+function Layer:_on_reference_unit_unselected(unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -6150,7 +6150,7 @@ Layer._on_reference_unit_unselected = function (self, unit)
 
 
 end
-Layer.recalc_all_locals = function (self)
+function Layer:recalc_all_locals()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -6256,7 +6256,7 @@ Layer.recalc_all_locals = function (self)
 
 
 end
-Layer.recalc_locals = function (self, unit, reference)
+function Layer:recalc_locals(unit, reference)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-33, warpins: 1 ---
@@ -6275,7 +6275,7 @@ Layer.recalc_locals = function (self, unit, reference)
 
 
 end
-Layer.selected_unit = function (self)
+function Layer:selected_unit()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -6285,7 +6285,7 @@ Layer.selected_unit = function (self)
 
 
 end
-Layer.create_unit = function (self, name, pos, rot, to_continent_name)
+function Layer:create_unit(name, pos, rot, to_continent_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -6352,7 +6352,7 @@ Layer.create_unit = function (self, name, pos, rot, to_continent_name)
 
 
 end
-Layer.do_spawn_unit = function (self, name, pos, rot, to_continent_name)
+function Layer:do_spawn_unit(name, pos, rot, to_continent_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -6471,7 +6471,7 @@ Layer.do_spawn_unit = function (self, name, pos, rot, to_continent_name)
 
 
 end
-Layer.remove_unit = function (self, unit)
+function Layer:remove_unit(unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-37, warpins: 1 ---
@@ -6533,7 +6533,7 @@ Layer.remove_unit = function (self, unit)
 
 
 end
-Layer.delete_unit = function (self, unit)
+function Layer:delete_unit(unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -6578,7 +6578,7 @@ Layer.delete_unit = function (self, unit)
 
 
 end
-Layer._on_unit_created = function (self, unit)
+function Layer:_on_unit_created(unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -6588,7 +6588,7 @@ Layer._on_unit_created = function (self, unit)
 
 
 end
-Layer.show_replace_units = function (self)
+function Layer:show_replace_units()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -6629,7 +6629,7 @@ Layer.show_replace_units = function (self)
 
 
 end
-Layer.get_created_unit_by_pattern = function (self, patterns)
+function Layer:get_created_unit_by_pattern(patterns)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -6719,7 +6719,7 @@ Layer.get_created_unit_by_pattern = function (self, patterns)
 
 
 end
-Layer.add_triggers = function (self)
+function Layer:add_triggers()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-91, warpins: 1 ---
@@ -6770,7 +6770,7 @@ Layer.add_triggers = function (self)
 
 
 end
-Layer.clear_triggers = function (self)
+function Layer:clear_triggers()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -6784,7 +6784,7 @@ Layer.clear_triggers = function (self)
 
 
 end
-Layer.get_help = function (self, text)
+function Layer:get_help(text)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -6794,7 +6794,7 @@ Layer.get_help = function (self, text)
 
 
 end
-Layer.undo = function (self)
+function Layer:undo()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -6808,7 +6808,7 @@ Layer.undo = function (self)
 
 
 end
-Layer.clone = function (self)
+function Layer:clone()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -6822,7 +6822,7 @@ Layer.clone = function (self)
 
 
 end
-Layer._cloning_done = function (self)
+function Layer:_cloning_done()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -6832,7 +6832,7 @@ Layer._cloning_done = function (self)
 
 
 end
-Layer.on_center_view_on_selected_unit = function (self)
+function Layer:on_center_view_on_selected_unit()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -6847,7 +6847,7 @@ Layer.on_center_view_on_selected_unit = function (self)
 
 
 end
-Layer.on_clone_edited_values = function (self)
+function Layer:on_clone_edited_values()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -6945,7 +6945,7 @@ Layer.on_clone_edited_values = function (self)
 
 
 end
-Layer.clone_edited_values = function (self, unit, source)
+function Layer:clone_edited_values(unit, source)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -7377,7 +7377,7 @@ Layer.clone_edited_values = function (self, unit, source)
 
 
 end
-Layer._continent_locked = function (self, unit)
+function Layer:_continent_locked(unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -7412,7 +7412,7 @@ Layer._continent_locked = function (self, unit)
 
 
 end
-Layer.set_enabled = function (self, enabled)
+function Layer:set_enabled(enabled)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -7473,7 +7473,7 @@ Layer.set_enabled = function (self, enabled)
 
 
 end
-Layer.hide_all = function (self)
+function Layer:hide_all()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -7534,7 +7534,7 @@ Layer.hide_all = function (self)
 
 
 end
-Layer.unhide_all = function (self)
+function Layer:unhide_all()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -7594,7 +7594,7 @@ Layer.unhide_all = function (self)
 
 
 end
-Layer.clear = function (self)
+function Layer:clear()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -7695,7 +7695,7 @@ Layer.clear = function (self)
 
 
 end
-Layer.set_unit_name = function (self, units)
+function Layer:set_unit_name(units)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -7761,7 +7761,7 @@ Layer.set_unit_name = function (self, units)
 
 
 end
-Layer.get_real_name = function (self, name)
+function Layer:get_real_name(name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -7796,7 +7796,7 @@ Layer.get_real_name = function (self, name)
 
 
 end
-Layer.condition = function (self)
+function Layer:condition()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -7827,7 +7827,7 @@ Layer.condition = function (self)
 
 
 end
-Layer.grab = function (self)
+function Layer:grab()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -7837,7 +7837,7 @@ Layer.grab = function (self)
 
 
 end
-Layer.create_marker = function (self)
+function Layer:create_marker()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -7847,7 +7847,7 @@ Layer.create_marker = function (self)
 
 
 end
-Layer.use_marker = function (self)
+function Layer:use_marker()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -7857,7 +7857,7 @@ Layer.use_marker = function (self)
 
 
 end
-Layer.on_continent_changed = function (self)
+function Layer:on_continent_changed()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -7867,7 +7867,7 @@ Layer.on_continent_changed = function (self)
 
 
 end
-Layer.set_unit_rotations = function (self)
+function Layer:set_unit_rotations()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -7877,7 +7877,7 @@ Layer.set_unit_rotations = function (self)
 
 
 end
-Layer.set_unit_positions = function (self)
+function Layer:set_unit_positions()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -7887,7 +7887,7 @@ Layer.set_unit_positions = function (self)
 
 
 end
-Layer._add_project_save_data = function (self, data)
+function Layer:_add_project_save_data(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -7897,7 +7897,7 @@ Layer._add_project_save_data = function (self, data)
 
 
 end
-Layer._add_project_unit_save_data = function (self, unit, data)
+function Layer:_add_project_unit_save_data(unit, data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -7907,7 +7907,7 @@ Layer._add_project_unit_save_data = function (self, unit, data)
 
 
 end
-Layer.selected_amount_string = function (self)
+function Layer:selected_amount_string()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -7919,7 +7919,7 @@ Layer.selected_amount_string = function (self)
 end
 slot2 = "wpn"
 local idstring_wpn = Idstring("selected_amount_string")
-Layer.save = function (self)
+function Layer:save()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -8034,7 +8034,7 @@ Layer.save = function (self)
 
 
 end
-Layer.test_spawn = function (self, type)
+function Layer:test_spawn(type)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-15, warpins: 1 ---
@@ -8136,7 +8136,7 @@ Layer.test_spawn = function (self, type)
 
 
 end
-Layer.shift = function (self)
+function Layer:shift()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -8146,7 +8146,7 @@ Layer.shift = function (self)
 
 
 end
-Layer.ctrl = function (self)
+function Layer:ctrl()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -8156,7 +8156,7 @@ Layer.ctrl = function (self)
 
 
 end
-Layer.alt = function (self)
+function Layer:alt()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---

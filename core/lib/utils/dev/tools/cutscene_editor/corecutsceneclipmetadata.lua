@@ -57,7 +57,7 @@
 --- BLOCK #0 1-3, warpins: 1 ---
 slot0 = CoreCutsceneClipMetadata or class()
 CoreCutsceneClipMetadata = slot0
-CoreCutsceneClipMetadata.init = function (self, footage, camera)
+function CoreCutsceneClipMetadata:init(footage, camera)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -70,7 +70,7 @@ CoreCutsceneClipMetadata.init = function (self, footage, camera)
 
 
 end
-CoreCutsceneClipMetadata.is_valid = function (self)
+function CoreCutsceneClipMetadata:is_valid()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -110,7 +110,7 @@ CoreCutsceneClipMetadata.is_valid = function (self)
 
 
 end
-CoreCutsceneClipMetadata.footage = function (self)
+function CoreCutsceneClipMetadata:footage()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -120,7 +120,7 @@ CoreCutsceneClipMetadata.footage = function (self)
 
 
 end
-CoreCutsceneClipMetadata.camera = function (self)
+function CoreCutsceneClipMetadata:camera()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -130,7 +130,7 @@ CoreCutsceneClipMetadata.camera = function (self)
 
 
 end
-CoreCutsceneClipMetadata.set_camera = function (self, camera)
+function CoreCutsceneClipMetadata:set_camera(camera)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -142,7 +142,7 @@ CoreCutsceneClipMetadata.set_camera = function (self, camera)
 
 
 end
-CoreCutsceneClipMetadata.camera_index = function (self)
+function CoreCutsceneClipMetadata:camera_index()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -162,7 +162,7 @@ CoreCutsceneClipMetadata.camera_index = function (self)
 
 
 end
-CoreCutsceneClipMetadata.camera_icon_image = function (self)
+function CoreCutsceneClipMetadata:camera_icon_image()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -210,7 +210,7 @@ CoreCutsceneClipMetadata.camera_icon_image = function (self)
 
 
 end
-CoreCutsceneClipMetadata.camera_watermark = function (self)
+function CoreCutsceneClipMetadata:camera_watermark()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -267,7 +267,7 @@ CoreCutsceneClipMetadata.camera_watermark = function (self)
 
 
 end
-CoreCutsceneClipMetadata.prime_cast = function (self, cast)
+function CoreCutsceneClipMetadata:prime_cast(cast)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---

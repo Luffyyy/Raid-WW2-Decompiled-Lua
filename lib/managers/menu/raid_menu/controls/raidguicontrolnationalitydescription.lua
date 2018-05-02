@@ -5,7 +5,7 @@ end
 
 RaidGUIControlNationalityDescription = slot0
 RaidGUIControlNationalityDescription.PREFERRED_NATIONALITY_LABEL_DEFAULT_Y = 242
-RaidGUIControlNationalityDescription.init = function (self, parent, params, item_data)
+function RaidGUIControlNationalityDescription:init(parent, params, item_data)
 	slot9 = item_data
 
 	RaidGUIControlNationalityDescription.super.init(slot5, self, parent, params)
@@ -17,7 +17,7 @@ RaidGUIControlNationalityDescription.init = function (self, parent, params, item
 
 	return 
 end
-RaidGUIControlNationalityDescription._layout = function (self)
+function RaidGUIControlNationalityDescription:_layout()
 	slot4 = {
 		name = "character_info_panel",
 		x = self._params.x,
@@ -100,7 +100,7 @@ RaidGUIControlNationalityDescription._layout = function (self)
 
 	return 
 end
-RaidGUIControlNationalityDescription.set_data = function (self, data)
+function RaidGUIControlNationalityDescription:set_data(data)
 	local nation_icon_data = tweak_data.gui.icons["character_creation_nationality_" .. data.nationality] or tweak_data.gui.icons.ico_flag_empty
 	slot6 = nation_icon_data.texture
 

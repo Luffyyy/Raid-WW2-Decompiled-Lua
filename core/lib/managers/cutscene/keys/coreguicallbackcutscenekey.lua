@@ -23,13 +23,13 @@ slot5 = toboolean
 CoreGuiCallbackCutsceneKey.register_serialized_attribute("Gui Callback", CoreGuiCallbackCutsceneKey, "enabled", true)
 
 CoreGuiCallbackCutsceneKey.control_for_name = CoreCutsceneKeyBase.standard_combo_box_control
-CoreGuiCallbackCutsceneKey.__tostring = function (self)
+function CoreGuiCallbackCutsceneKey:__tostring()
 	slot4 = self
 	slot6 = self
 
 	return "Call " .. self.function_name(slot3) .. " in gui \"" .. self.name(slot5) .. "\"."
 end
-CoreGuiCallbackCutsceneKey.evaluate = function (self, player, fast_forward)
+function CoreGuiCallbackCutsceneKey:evaluate(player, fast_forward)
 	slot5 = self
 
 	if self.enabled(slot4) then
@@ -41,12 +41,12 @@ CoreGuiCallbackCutsceneKey.evaluate = function (self, player, fast_forward)
 
 	return 
 end
-CoreGuiCallbackCutsceneKey.is_valid_name = function (self, name)
+function CoreGuiCallbackCutsceneKey:is_valid_name(name)
 	slot6 = name
 
 	return DB.has(slot3, DB, "gui")
 end
-CoreGuiCallbackCutsceneKey.refresh_control_for_name = function (self, control)
+function CoreGuiCallbackCutsceneKey:refresh_control_for_name(control)
 	slot4 = control
 
 	control.freeze(slot3)

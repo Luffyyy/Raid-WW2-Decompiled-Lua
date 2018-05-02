@@ -17,17 +17,17 @@ CoreDiscontinuityCutsceneKey.register_control("Discontinuity", CoreDiscontinuity
 CoreDiscontinuityCutsceneKey.refresh_control_for_description = CoreCutsceneKeyBase.VOID
 CoreDiscontinuityCutsceneKey.label_for_description = CoreCutsceneKeyBase.VOID
 CoreDiscontinuityCutsceneKey.is_valid_description = CoreCutsceneKeyBase.TRUE
-CoreDiscontinuityCutsceneKey.__tostring = function (self)
+function CoreDiscontinuityCutsceneKey:__tostring()
 	return "Notifies a discontinuity in linear time."
 end
-CoreDiscontinuityCutsceneKey.play = function (self, player, undo, fast_forward)
+function CoreDiscontinuityCutsceneKey:play(player, undo, fast_forward)
 	slot6 = player
 
 	player._notify_discontinuity(slot5)
 
 	return 
 end
-CoreDiscontinuityCutsceneKey.control_for_description = function (self, parent_frame)
+function CoreDiscontinuityCutsceneKey:control_for_description(parent_frame)
 	local text = "Discontinuity keys signify a break in linear time. They enable us to dampen physics, etc. during rapid actor movement.\n\nDiscontinuity keys are inserted by the optimizer as the cutscene is exported to the game, but you can also insert them yourself."
 	slot9 = "NO_BORDER,TE_RICH,TE_MULTILINE,TE_READONLY"
 	local control = EWS.TextCtrl(slot4, EWS, parent_frame, text, "")
@@ -45,7 +45,7 @@ CoreDiscontinuityCutsceneKey.control_for_description = function (self, parent_fr
 
 	return control
 end
-CoreDiscontinuityCutsceneKey.validate_control_for_attribute = function (self, attribute_name)
+function CoreDiscontinuityCutsceneKey:validate_control_for_attribute(attribute_name)
 	if attribute_name ~= "description" then
 		slot5 = attribute_name
 

@@ -12,7 +12,7 @@ if not EditUnitVariation then
 end
 
 EditUnitVariation = slot0
-EditUnitVariation.init = function (self, editor)
+function EditUnitVariation:init(editor)
 	local panel, sizer = editor or managers.editor.add_unit_edit_page(slot3, editor or managers.editor)
 	self._panel = panel
 	self._ctrls = {}
@@ -78,7 +78,7 @@ EditUnitVariation.init = function (self, editor)
 
 	return 
 end
-EditUnitVariation.change_variation = function (self)
+function EditUnitVariation:change_variation()
 	slot3 = self._ctrls.units
 
 	for _, unit in ipairs(slot2) do
@@ -122,7 +122,7 @@ EditUnitVariation.change_variation = function (self)
 
 	return 
 end
-EditUnitVariation.change_material = function (self)
+function EditUnitVariation:change_material()
 	slot3 = self._ctrls.units
 
 	for _, unit in ipairs(slot2) do
@@ -150,7 +150,7 @@ EditUnitVariation.change_material = function (self)
 
 	return 
 end
-EditUnitVariation.is_editable = function (self, unit, units)
+function EditUnitVariation:is_editable(unit, units)
 	slot5 = unit
 
 	if alive(slot4) then
@@ -194,7 +194,7 @@ EditUnitVariation.is_editable = function (self, unit, units)
 
 	return false
 end
-EditUnitVariation.get_material_configs_from_meta = function (self, unit_name)
+function EditUnitVariation:get_material_configs_from_meta(unit_name)
 	self._avalible_material_groups = self._avalible_material_groups or {}
 	slot5 = unit_name
 

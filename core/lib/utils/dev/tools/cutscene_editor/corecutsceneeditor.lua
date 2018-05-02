@@ -1577,7 +1577,7 @@ mixin(slot1, CoreCutsceneEditor)
 
 CoreCutsceneEditor.EDITOR_TITLE = "Cutscene Editor"
 CoreCutsceneEditor.DEFAULT_CAMERA_FAR_RANGE = 50000
-CoreCutsceneEditor._all_keys_sorted_by_time = function (self)
+function CoreCutsceneEditor:_all_keys_sorted_by_time()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-18, warpins: 1 ---
@@ -2254,7 +2254,7 @@ FLOW; TARGET BLOCK #4
 
 -- Decompilation error in this vicinity:
 --- BLOCK #4 267-699, warpins: 1 ---
-CoreCutsceneEditor.init = function (self)
+function CoreCutsceneEditor:init()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-20, warpins: 1 ---
@@ -2278,7 +2278,7 @@ CoreCutsceneEditor.init = function (self)
 
 
 end
-CoreCutsceneEditor._create_viewport = function (self)
+function CoreCutsceneEditor:_create_viewport()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -2420,7 +2420,7 @@ CoreCutsceneEditor._create_viewport = function (self)
 
 
 end
-CoreCutsceneEditor.camera_attributes = function (self)
+function CoreCutsceneEditor:camera_attributes()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -2470,7 +2470,7 @@ CoreCutsceneEditor.camera_attributes = function (self)
 
 
 end
-CoreCutsceneEditor._create_window = function (self)
+function CoreCutsceneEditor:_create_window()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-165, warpins: 1 ---
@@ -2848,7 +2848,7 @@ CoreCutsceneEditor._create_window = function (self)
 
 
 end
-CoreCutsceneEditor._create_menu_bar = function (self)
+function CoreCutsceneEditor:_create_menu_bar()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-315, warpins: 1 ---
@@ -3153,7 +3153,7 @@ CoreCutsceneEditor._create_menu_bar = function (self)
 
 
 end
-CoreCutsceneEditor._create_tool_bar = function (self, parent_frame)
+function CoreCutsceneEditor:_create_tool_bar(parent_frame)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-85, warpins: 1 ---
@@ -3275,7 +3275,7 @@ CoreCutsceneEditor._create_tool_bar = function (self, parent_frame)
 
 
 end
-CoreCutsceneEditor._frame_string_for_frame = function (self, frame)
+function CoreCutsceneEditor:_frame_string_for_frame(frame)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -3287,7 +3287,7 @@ CoreCutsceneEditor._frame_string_for_frame = function (self, frame)
 
 
 end
-CoreCutsceneEditor._time_code_string_for_frame = function (self, frame)
+function CoreCutsceneEditor:_time_code_string_for_frame(frame)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-27, warpins: 1 ---
@@ -3319,7 +3319,7 @@ CoreCutsceneEditor._time_code_string_for_frame = function (self, frame)
 
 
 end
-CoreCutsceneEditor._create_sequencer = function (self, parent_frame)
+function CoreCutsceneEditor:_create_sequencer(parent_frame)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-101, warpins: 1 ---
@@ -3370,7 +3370,7 @@ CoreCutsceneEditor._create_sequencer = function (self, parent_frame)
 
 
 end
-CoreCutsceneEditor._create_attribute_panel = function (self, parent_frame)
+function CoreCutsceneEditor:_create_attribute_panel(parent_frame)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-61, warpins: 1 ---
@@ -3410,7 +3410,7 @@ CoreCutsceneEditor._create_attribute_panel = function (self, parent_frame)
 
 
 end
-CoreCutsceneEditor._refresh_attribute_panel = function (self)
+function CoreCutsceneEditor:_refresh_attribute_panel()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -3513,7 +3513,7 @@ CoreCutsceneEditor._refresh_attribute_panel = function (self)
 
 
 end
-CoreCutsceneEditor._refresh_selected_footage_track = function (self)
+function CoreCutsceneEditor:_refresh_selected_footage_track()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -3647,7 +3647,7 @@ CoreCutsceneEditor._refresh_selected_footage_track = function (self)
 
 
 end
-CoreCutsceneEditor._selected_footage = function (self)
+function CoreCutsceneEditor:_selected_footage()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -3773,7 +3773,7 @@ CoreCutsceneEditor._selected_footage = function (self)
 
 
 end
-CoreCutsceneEditor._display_footage_in_selected_footage_track = function (self, footage)
+function CoreCutsceneEditor:_display_footage_in_selected_footage_track(footage)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -3835,7 +3835,7 @@ CoreCutsceneEditor._display_footage_in_selected_footage_track = function (self, 
 
 
 end
-CoreCutsceneEditor._sizer_with_editable_attributes_for_current_context = function (self, parent_frame)
+function CoreCutsceneEditor:_sizer_with_editable_attributes_for_current_context(parent_frame)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -3913,7 +3913,7 @@ CoreCutsceneEditor._sizer_with_editable_attributes_for_current_context = functio
 
 
 end
-CoreCutsceneEditor._create_selected_footage_track = function (self, parent_frame)
+function CoreCutsceneEditor:_create_selected_footage_track(parent_frame)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-165, warpins: 1 ---
@@ -3998,7 +3998,7 @@ CoreCutsceneEditor._create_selected_footage_track = function (self, parent_frame
 
 
 end
-CoreCutsceneEditor._create_footage_list = function (self, parent_frame)
+function CoreCutsceneEditor:_create_footage_list(parent_frame)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-62, warpins: 1 ---
@@ -4033,7 +4033,7 @@ CoreCutsceneEditor._create_footage_list = function (self, parent_frame)
 
 
 end
-CoreCutsceneEditor._refresh_footage_list = function (self)
+function CoreCutsceneEditor:_refresh_footage_list()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-36, warpins: 1 ---
@@ -4214,7 +4214,7 @@ CoreCutsceneEditor._refresh_footage_list = function (self)
 
 
 end
-CoreCutsceneEditor._evaluated_track = function (self)
+function CoreCutsceneEditor:_evaluated_track()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -4226,7 +4226,7 @@ CoreCutsceneEditor._evaluated_track = function (self)
 
 
 end
-CoreCutsceneEditor._evaluate_current_frame = function (self)
+function CoreCutsceneEditor:_evaluate_current_frame()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-24, warpins: 1 ---
@@ -4277,7 +4277,7 @@ CoreCutsceneEditor._evaluate_current_frame = function (self)
 
 
 end
-CoreCutsceneEditor._evaluate_editor_cutscene_keys_for_frame = function (self, frame)
+function CoreCutsceneEditor:_evaluate_editor_cutscene_keys_for_frame(frame)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -4511,7 +4511,7 @@ CoreCutsceneEditor._evaluate_editor_cutscene_keys_for_frame = function (self, fr
 
 
 end
-CoreCutsceneEditor._evaluate_clip_at_frame = function (self, clip, frame)
+function CoreCutsceneEditor:_evaluate_clip_at_frame(clip, frame)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -4557,7 +4557,7 @@ CoreCutsceneEditor._evaluate_clip_at_frame = function (self, clip, frame)
 
 
 end
-CoreCutsceneEditor._create_cutscene_player = function (self, cutscene)
+function CoreCutsceneEditor:_create_cutscene_player(cutscene)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-17, warpins: 1 ---
@@ -4628,7 +4628,7 @@ CoreCutsceneEditor._create_cutscene_player = function (self, cutscene)
 
 
 end
-CoreCutsceneEditor._evaluate_cutscene_frame = function (self, cutscene, camera, frame)
+function CoreCutsceneEditor:_evaluate_cutscene_frame(cutscene, camera, frame)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -4692,7 +4692,7 @@ CoreCutsceneEditor._evaluate_cutscene_frame = function (self, cutscene, camera, 
 
 
 end
-CoreCutsceneEditor._create_camera_list = function (self, parent_frame)
+function CoreCutsceneEditor:_create_camera_list(parent_frame)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-17, warpins: 1 ---
@@ -4709,7 +4709,7 @@ CoreCutsceneEditor._create_camera_list = function (self, parent_frame)
 
 
 end
-CoreCutsceneEditor._camera_icons_image_list = function (self)
+function CoreCutsceneEditor:_camera_icons_image_list()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -4763,7 +4763,7 @@ CoreCutsceneEditor._camera_icons_image_list = function (self)
 
 
 end
-CoreCutsceneEditor._camera_icon_index = function (self, icon_index)
+function CoreCutsceneEditor:_camera_icon_index(icon_index)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -4781,7 +4781,7 @@ CoreCutsceneEditor._camera_icon_index = function (self, icon_index)
 
 
 end
-CoreCutsceneEditor.cutscene_camera_enabled = function (self)
+function CoreCutsceneEditor:cutscene_camera_enabled()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -4794,7 +4794,7 @@ CoreCutsceneEditor.cutscene_camera_enabled = function (self)
 
 
 end
-CoreCutsceneEditor.set_cutscene_camera_enabled = function (self, enabled)
+function CoreCutsceneEditor:set_cutscene_camera_enabled(enabled)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -4813,7 +4813,7 @@ CoreCutsceneEditor.set_cutscene_camera_enabled = function (self, enabled)
 
 
 end
-CoreCutsceneEditor.widescreen_enabled = function (self)
+function CoreCutsceneEditor:widescreen_enabled()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -4826,7 +4826,7 @@ CoreCutsceneEditor.widescreen_enabled = function (self)
 
 
 end
-CoreCutsceneEditor.set_widescreen_enabled = function (self, enabled)
+function CoreCutsceneEditor:set_widescreen_enabled(enabled)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -4845,7 +4845,7 @@ CoreCutsceneEditor.set_widescreen_enabled = function (self, enabled)
 
 
 end
-CoreCutsceneEditor.load_project = function (self, project)
+function CoreCutsceneEditor:load_project(project)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -4863,7 +4863,7 @@ CoreCutsceneEditor.load_project = function (self, project)
 
 
 end
-CoreCutsceneEditor.save_project = function (self)
+function CoreCutsceneEditor:save_project()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -4900,7 +4900,7 @@ CoreCutsceneEditor.save_project = function (self)
 
 
 end
-CoreCutsceneEditor._serialized_audio_clips = function (self)
+function CoreCutsceneEditor:_serialized_audio_clips()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -5032,7 +5032,7 @@ CoreCutsceneEditor._serialized_audio_clips = function (self)
 
 
 end
-CoreCutsceneEditor._serialized_film_clips = function (self)
+function CoreCutsceneEditor:_serialized_film_clips()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -5176,7 +5176,7 @@ CoreCutsceneEditor._serialized_film_clips = function (self)
 
 
 end
-CoreCutsceneEditor._serialized_cutscene_keys = function (self)
+function CoreCutsceneEditor:_serialized_cutscene_keys()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -5202,7 +5202,7 @@ CoreCutsceneEditor._serialized_cutscene_keys = function (self)
 
 
 end
-CoreCutsceneEditor._all_controlled_unit_types = function (self, include_cameras)
+function CoreCutsceneEditor:_all_controlled_unit_types(include_cameras)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -5278,7 +5278,7 @@ CoreCutsceneEditor._all_controlled_unit_types = function (self, include_cameras)
 
 
 end
-CoreCutsceneEditor._set_current_project = function (self, project)
+function CoreCutsceneEditor:_set_current_project(project)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -5301,7 +5301,7 @@ CoreCutsceneEditor._set_current_project = function (self, project)
 
 
 end
-CoreCutsceneEditor.project_name = function (self)
+function CoreCutsceneEditor:project_name()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -5319,7 +5319,7 @@ CoreCutsceneEditor.project_name = function (self)
 
 
 end
-CoreCutsceneEditor.revert_to_saved = function (self)
+function CoreCutsceneEditor:revert_to_saved()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -5541,7 +5541,7 @@ CoreCutsceneEditor.revert_to_saved = function (self)
 
 
 end
-CoreCutsceneEditor.frames_per_second = function (self)
+function CoreCutsceneEditor:frames_per_second()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -5551,7 +5551,7 @@ CoreCutsceneEditor.frames_per_second = function (self)
 
 
 end
-CoreCutsceneEditor.playhead_position = function (self)
+function CoreCutsceneEditor:playhead_position()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -5563,7 +5563,7 @@ CoreCutsceneEditor.playhead_position = function (self)
 
 
 end
-CoreCutsceneEditor.set_playhead_position = function (self, time)
+function CoreCutsceneEditor:set_playhead_position(time)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -5577,7 +5577,7 @@ CoreCutsceneEditor.set_playhead_position = function (self, time)
 
 
 end
-CoreCutsceneEditor.zoom_around = function (self, time, offset_in_window, delta)
+function CoreCutsceneEditor:zoom_around(time, offset_in_window, delta)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -5631,7 +5631,7 @@ CoreCutsceneEditor.zoom_around = function (self, time, offset_in_window, delta)
 
 
 end
-CoreCutsceneEditor.zoom_around_playhead = function (self, multiplier)
+function CoreCutsceneEditor:zoom_around_playhead(multiplier)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -5671,7 +5671,7 @@ CoreCutsceneEditor.zoom_around_playhead = function (self, multiplier)
 
 
 end
-CoreCutsceneEditor.set_position = function (self, newpos)
+function CoreCutsceneEditor:set_position(newpos)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -5685,7 +5685,7 @@ CoreCutsceneEditor.set_position = function (self, newpos)
 
 
 end
-CoreCutsceneEditor.enqueue_update_action = function (self, callback_func)
+function CoreCutsceneEditor:enqueue_update_action(callback_func)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -5719,7 +5719,7 @@ CoreCutsceneEditor.enqueue_update_action = function (self, callback_func)
 
 
 end
-CoreCutsceneEditor._process_enqueued_update_actions = function (self)
+function CoreCutsceneEditor:_process_enqueued_update_actions()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -5769,7 +5769,7 @@ CoreCutsceneEditor._process_enqueued_update_actions = function (self)
 
 
 end
-CoreCutsceneEditor.refresh_player = function (self)
+function CoreCutsceneEditor:refresh_player()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -5800,7 +5800,7 @@ CoreCutsceneEditor.refresh_player = function (self)
 
 
 end
-CoreCutsceneEditor.update = function (self, time, delta_time)
+function CoreCutsceneEditor:update(time, delta_time)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -6046,7 +6046,7 @@ CoreCutsceneEditor.update = function (self, time, delta_time)
 
 
 end
-CoreCutsceneEditor.end_update = function (self, time, delta_time)
+function CoreCutsceneEditor:end_update(time, delta_time)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -6225,7 +6225,7 @@ CoreCutsceneEditor.end_update = function (self, time, delta_time)
 
 
 end
-CoreCutsceneEditor.close = function (self)
+function CoreCutsceneEditor:close()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -6382,7 +6382,7 @@ CoreCutsceneEditor.close = function (self)
 
 
 end
-CoreCutsceneEditor._process_debug_key_commands = function (self, time, delta_time)
+function CoreCutsceneEditor:_process_debug_key_commands(time, delta_time)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -6511,7 +6511,7 @@ CoreCutsceneEditor._process_debug_key_commands = function (self, time, delta_tim
 
 
 end
-CoreCutsceneEditor._on_exit = function (self)
+function CoreCutsceneEditor:_on_exit()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -6577,7 +6577,7 @@ CoreCutsceneEditor._on_exit = function (self)
 
 
 end
-CoreCutsceneEditor._on_activate = function (self, data, event)
+function CoreCutsceneEditor:_on_activate(data, event)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -6648,7 +6648,7 @@ CoreCutsceneEditor._on_activate = function (self, data, event)
 
 
 end
-CoreCutsceneEditor._on_new_project = function (self)
+function CoreCutsceneEditor:_on_new_project()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -6681,7 +6681,7 @@ CoreCutsceneEditor._on_new_project = function (self)
 
 
 end
-CoreCutsceneEditor._on_open_project = function (self)
+function CoreCutsceneEditor:_on_open_project()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -6720,7 +6720,7 @@ CoreCutsceneEditor._on_open_project = function (self)
 
 
 end
-CoreCutsceneEditor._on_save_project = function (self)
+function CoreCutsceneEditor:_on_save_project()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -6764,7 +6764,7 @@ CoreCutsceneEditor._on_save_project = function (self)
 
 
 end
-CoreCutsceneEditor._on_save_project_as = function (self)
+function CoreCutsceneEditor:_on_save_project_as()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -6835,7 +6835,7 @@ CoreCutsceneEditor._on_save_project_as = function (self)
 
 
 end
-CoreCutsceneEditor._on_show_project_settings = function (self)
+function CoreCutsceneEditor:_on_show_project_settings()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -6854,7 +6854,7 @@ CoreCutsceneEditor._on_show_project_settings = function (self)
 
 
 end
-CoreCutsceneEditor._on_export_to_game = function (self)
+function CoreCutsceneEditor:_on_export_to_game()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -7155,7 +7155,7 @@ CoreCutsceneEditor._on_export_to_game = function (self)
 
 
 end
-CoreCutsceneEditor._on_export_to_maya = function (self)
+function CoreCutsceneEditor:_on_export_to_maya()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -7355,7 +7355,7 @@ CoreCutsceneEditor._on_export_to_maya = function (self)
 
 
 end
-CoreCutsceneEditor._on_export_playblast = function (self)
+function CoreCutsceneEditor:_on_export_playblast()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -7424,7 +7424,7 @@ CoreCutsceneEditor._on_export_playblast = function (self)
 
 
 end
-CoreCutsceneEditor._export_playblast = function (self, start_frame, end_frame, folder_name)
+function CoreCutsceneEditor:_export_playblast(start_frame, end_frame, folder_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -7442,7 +7442,7 @@ CoreCutsceneEditor._export_playblast = function (self, start_frame, end_frame, f
 
 
 end
-CoreCutsceneEditor._on_show_batch_optimizer = function (self)
+function CoreCutsceneEditor:_on_show_batch_optimizer()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -7459,7 +7459,7 @@ CoreCutsceneEditor._on_show_batch_optimizer = function (self)
 
 
 end
-CoreCutsceneEditor._request_asset_name_from_user = function (self, asset_db_type, default_name, duplicate_name_check_func)
+function CoreCutsceneEditor:_request_asset_name_from_user(asset_db_type, default_name, duplicate_name_check_func)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-29, warpins: 1 ---
@@ -7654,7 +7654,7 @@ CoreCutsceneEditor._request_asset_name_from_user = function (self, asset_db_type
 
 
 end
-CoreCutsceneEditor._request_output_maya_ascii_file_from_user = function (self)
+function CoreCutsceneEditor:_request_output_maya_ascii_file_from_user()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -7667,7 +7667,7 @@ CoreCutsceneEditor._request_output_maya_ascii_file_from_user = function (self)
 
 
 end
-CoreCutsceneEditor._request_output_file_from_user = function (self, message, wildcard, default_dir, default_file)
+function CoreCutsceneEditor:_request_output_file_from_user(message, wildcard, default_dir, default_file)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -7733,7 +7733,7 @@ CoreCutsceneEditor._request_output_file_from_user = function (self, message, wil
 
 
 end
-CoreCutsceneEditor._project_db_type = function (self)
+function CoreCutsceneEditor:_project_db_type()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -7765,7 +7765,7 @@ CoreCutsceneEditor._project_db_type = function (self)
 
 
 end
-CoreCutsceneEditor._get_clip_bounds = function (self, clips)
+function CoreCutsceneEditor:_get_clip_bounds(clips)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -7838,7 +7838,7 @@ CoreCutsceneEditor._get_clip_bounds = function (self, clips)
 
 
 end
-CoreCutsceneEditor.mark_items_on_clipboard_as_cut = function (self, style_as_cut)
+function CoreCutsceneEditor:mark_items_on_clipboard_as_cut(style_as_cut)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -7976,7 +7976,7 @@ CoreCutsceneEditor.mark_items_on_clipboard_as_cut = function (self, style_as_cut
 
 
 end
-CoreCutsceneEditor._on_cut = function (self)
+function CoreCutsceneEditor:_on_cut()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-32, warpins: 1 ---
@@ -8009,7 +8009,7 @@ CoreCutsceneEditor._on_cut = function (self)
 
 
 end
-CoreCutsceneEditor._on_copy = function (self)
+function CoreCutsceneEditor:_on_copy()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-20, warpins: 1 ---
@@ -8030,7 +8030,7 @@ CoreCutsceneEditor._on_copy = function (self)
 
 
 end
-CoreCutsceneEditor._on_paste = function (self)
+function CoreCutsceneEditor:_on_paste()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -8193,7 +8193,7 @@ CoreCutsceneEditor._on_paste = function (self)
 
 
 end
-CoreCutsceneEditor._on_select_all = function (self)
+function CoreCutsceneEditor:_on_select_all()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -8207,7 +8207,7 @@ CoreCutsceneEditor._on_select_all = function (self)
 
 
 end
-CoreCutsceneEditor._on_select_all_on_current_track = function (self)
+function CoreCutsceneEditor:_on_select_all_on_current_track()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -8226,7 +8226,7 @@ CoreCutsceneEditor._on_select_all_on_current_track = function (self)
 
 
 end
-CoreCutsceneEditor._on_deselect = function (self)
+function CoreCutsceneEditor:_on_deselect()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -8240,7 +8240,7 @@ CoreCutsceneEditor._on_deselect = function (self)
 
 
 end
-CoreCutsceneEditor._on_delete = function (self)
+function CoreCutsceneEditor:_on_delete()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-16, warpins: 1 ---
@@ -8263,7 +8263,7 @@ CoreCutsceneEditor._on_delete = function (self)
 
 
 end
-CoreCutsceneEditor._on_cleanup_zoom_keys = function (self)
+function CoreCutsceneEditor:_on_cleanup_zoom_keys()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-18, warpins: 1 ---
@@ -8393,7 +8393,7 @@ CoreCutsceneEditor._on_cleanup_zoom_keys = function (self)
 
 
 end
-CoreCutsceneEditor._on_play = function (self)
+function CoreCutsceneEditor:_on_play()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -8405,7 +8405,7 @@ CoreCutsceneEditor._on_play = function (self)
 
 
 end
-CoreCutsceneEditor._on_play_from_start = function (self)
+function CoreCutsceneEditor:_on_play_from_start()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -8423,7 +8423,7 @@ CoreCutsceneEditor._on_play_from_start = function (self)
 
 
 end
-CoreCutsceneEditor._on_pause = function (self)
+function CoreCutsceneEditor:_on_pause()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -8435,7 +8435,7 @@ CoreCutsceneEditor._on_pause = function (self)
 
 
 end
-CoreCutsceneEditor._on_stop = function (self)
+function CoreCutsceneEditor:_on_stop()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -8483,7 +8483,7 @@ CoreCutsceneEditor._on_stop = function (self)
 
 
 end
-CoreCutsceneEditor._on_play_toggle = function (self)
+function CoreCutsceneEditor:_on_play_toggle()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -8525,7 +8525,7 @@ CoreCutsceneEditor._on_play_toggle = function (self)
 
 
 end
-CoreCutsceneEditor._on_zoom_in = function (self)
+function CoreCutsceneEditor:_on_zoom_in()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -8539,7 +8539,7 @@ CoreCutsceneEditor._on_zoom_in = function (self)
 
 
 end
-CoreCutsceneEditor._on_zoom_out = function (self)
+function CoreCutsceneEditor:_on_zoom_out()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -8553,7 +8553,7 @@ CoreCutsceneEditor._on_zoom_out = function (self)
 
 
 end
-CoreCutsceneEditor._on_go_to_start = function (self)
+function CoreCutsceneEditor:_on_go_to_start()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -8609,7 +8609,7 @@ CoreCutsceneEditor._on_go_to_start = function (self)
 
 
 end
-CoreCutsceneEditor._on_go_to_end = function (self)
+function CoreCutsceneEditor:_on_go_to_end()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -8665,7 +8665,7 @@ CoreCutsceneEditor._on_go_to_end = function (self)
 
 
 end
-CoreCutsceneEditor._on_go_to_previous_frame = function (self)
+function CoreCutsceneEditor:_on_go_to_previous_frame()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -8680,7 +8680,7 @@ CoreCutsceneEditor._on_go_to_previous_frame = function (self)
 
 
 end
-CoreCutsceneEditor._on_go_to_next_frame = function (self)
+function CoreCutsceneEditor:_on_go_to_next_frame()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -8695,7 +8695,7 @@ CoreCutsceneEditor._on_go_to_next_frame = function (self)
 
 
 end
-CoreCutsceneEditor._on_sequencer_selection_changed = function (self, sequencer)
+function CoreCutsceneEditor:_on_sequencer_selection_changed(sequencer)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-19, warpins: 1 ---
@@ -8752,7 +8752,7 @@ CoreCutsceneEditor._on_sequencer_selection_changed = function (self, sequencer)
 
 
 end
-CoreCutsceneEditor._on_sequencer_remove_item = function (self, sender, removed_item)
+function CoreCutsceneEditor:_on_sequencer_remove_item(sender, removed_item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -8803,7 +8803,7 @@ CoreCutsceneEditor._on_sequencer_remove_item = function (self, sender, removed_i
 
 
 end
-CoreCutsceneEditor._on_sequencer_drag_item = function (self, sender, dragged_item, drag_mode)
+function CoreCutsceneEditor:_on_sequencer_drag_item(sender, dragged_item, drag_mode)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -8861,7 +8861,7 @@ CoreCutsceneEditor._on_sequencer_drag_item = function (self, sender, dragged_ite
 
 
 end
-CoreCutsceneEditor._on_sequencer_evaluate_frame_at_playhead = function (self, sender, event)
+function CoreCutsceneEditor:_on_sequencer_evaluate_frame_at_playhead(sender, event)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -8875,7 +8875,7 @@ CoreCutsceneEditor._on_sequencer_evaluate_frame_at_playhead = function (self, se
 
 
 end
-CoreCutsceneEditor._on_selected_footage_track_mouse_left_up = function (self, sender, event)
+function CoreCutsceneEditor:_on_selected_footage_track_mouse_left_up(sender, event)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -8933,7 +8933,7 @@ CoreCutsceneEditor._on_selected_footage_track_mouse_left_up = function (self, se
 
 
 end
-CoreCutsceneEditor._on_sequencer_track_mousewheel = function (self, sender, event, track)
+function CoreCutsceneEditor:_on_sequencer_track_mousewheel(sender, event, track)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -8947,7 +8947,7 @@ CoreCutsceneEditor._on_sequencer_track_mousewheel = function (self, sender, even
 
 
 end
-CoreCutsceneEditor._on_track_mousewheel = function (self, sender, event)
+function CoreCutsceneEditor:_on_track_mousewheel(sender, event)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -8991,7 +8991,7 @@ CoreCutsceneEditor._on_track_mousewheel = function (self, sender, event)
 
 
 end
-CoreCutsceneEditor._on_footage_selection_changed = function (self, sender, event)
+function CoreCutsceneEditor:_on_footage_selection_changed(sender, event)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -9091,7 +9091,7 @@ CoreCutsceneEditor._on_footage_selection_changed = function (self, sender, event
 
 
 end
-CoreCutsceneEditor._on_cutscene_camera_toggle = function (self)
+function CoreCutsceneEditor:_on_cutscene_camera_toggle()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -9212,7 +9212,7 @@ CoreCutsceneEditor._on_cutscene_camera_toggle = function (self)
 
 
 end
-CoreCutsceneEditor._on_widescreen_toggle = function (self)
+function CoreCutsceneEditor:_on_widescreen_toggle()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -9245,7 +9245,7 @@ CoreCutsceneEditor._on_widescreen_toggle = function (self)
 
 
 end
-CoreCutsceneEditor._on_play_every_frame_toggle = function (self)
+function CoreCutsceneEditor:_on_play_every_frame_toggle()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -9259,7 +9259,7 @@ CoreCutsceneEditor._on_play_every_frame_toggle = function (self)
 
 
 end
-CoreCutsceneEditor._on_insert_clips_from_selected_footage = function (self, sender, event)
+function CoreCutsceneEditor:_on_insert_clips_from_selected_footage(sender, event)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -9647,7 +9647,7 @@ CoreCutsceneEditor._on_insert_clips_from_selected_footage = function (self, send
 
 
 end
-CoreCutsceneEditor._on_insert_cutscene_key = function (self, element_name)
+function CoreCutsceneEditor:_on_insert_cutscene_key(element_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-29, warpins: 1 ---
@@ -9676,7 +9676,7 @@ CoreCutsceneEditor._on_insert_cutscene_key = function (self, element_name)
 
 
 end
-CoreCutsceneEditor._monkey_patch_cutscene_key = function (self, cutscene_key)
+function CoreCutsceneEditor:_monkey_patch_cutscene_key(cutscene_key)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -9696,7 +9696,7 @@ CoreCutsceneEditor._monkey_patch_cutscene_key = function (self, cutscene_key)
 
 
 end
-CoreCutsceneEditor._draw_focus_planes = function (self)
+function CoreCutsceneEditor:_draw_focus_planes()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -9855,7 +9855,7 @@ CoreCutsceneEditor._draw_focus_planes = function (self)
 
 
 end
-CoreCutsceneEditor._draw_cast_finder = function (self)
+function CoreCutsceneEditor:_draw_cast_finder()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -10026,7 +10026,7 @@ CoreCutsceneEditor._draw_cast_finder = function (self)
 
 
 end
-CoreCutsceneEditor._draw_compass = function (self)
+function CoreCutsceneEditor:_draw_compass()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -10224,7 +10224,7 @@ CoreCutsceneEditor._draw_compass = function (self)
 
 
 end
-CoreCutsceneEditor._draw_locator_object = function (self, object)
+function CoreCutsceneEditor:_draw_locator_object(object)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-34, warpins: 1 ---
@@ -10251,7 +10251,7 @@ CoreCutsceneEditor._draw_locator_object = function (self, object)
 
 
 end
-CoreCutsceneEditor._draw_tracking_line = function (self, object, label)
+function CoreCutsceneEditor:_draw_tracking_line(object, label)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -10407,7 +10407,7 @@ CoreCutsceneEditor._draw_tracking_line = function (self, object, label)
 
 
 end
-CoreCutsceneEditor._draw_cameras = function (self)
+function CoreCutsceneEditor:_draw_cameras()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -10550,7 +10550,7 @@ CoreCutsceneEditor._draw_cameras = function (self)
 
 
 end
-CoreCutsceneEditor._draw_camera_object = function (self, object, color)
+function CoreCutsceneEditor:_draw_camera_object(object, color)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-29, warpins: 1 ---
@@ -10609,7 +10609,7 @@ CoreCutsceneEditor._draw_camera_object = function (self, object, color)
 
 
 end
-CoreCutsceneEditor._draw_hierarchies = function (self)
+function CoreCutsceneEditor:_draw_hierarchies()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -10690,7 +10690,7 @@ CoreCutsceneEditor._draw_hierarchies = function (self)
 
 
 end
-CoreCutsceneEditor._draw_unit_hierarchy = function (self, unit, unit_name, draw_root_point)
+function CoreCutsceneEditor:_draw_unit_hierarchy(unit, unit_name, draw_root_point)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -10790,7 +10790,7 @@ CoreCutsceneEditor._draw_unit_hierarchy = function (self, unit, unit_name, draw_
 
 
 end
-CoreCutsceneEditor._draw_object_hierarchy = function (self, object, parent, max_z)
+function CoreCutsceneEditor:_draw_object_hierarchy(object, parent, max_z)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -10892,7 +10892,7 @@ CoreCutsceneEditor._draw_object_hierarchy = function (self, object, parent, max_
 
 
 end
-CoreCutsceneEditor._draw_label = function (self, text, position)
+function CoreCutsceneEditor:_draw_label(text, position)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -10908,7 +10908,7 @@ CoreCutsceneEditor._draw_label = function (self, text, position)
 
 
 end
-CoreCutsceneEditor._draw_joint = function (self, start_object, end_object, radius)
+function CoreCutsceneEditor:_draw_joint(start_object, end_object, radius)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -11101,7 +11101,7 @@ CoreCutsceneEditor._draw_joint = function (self, start_object, end_object, radiu
 
 
 end
-CoreCutsceneEditor._pen = function (self)
+function CoreCutsceneEditor:_pen()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -11139,7 +11139,7 @@ CoreCutsceneEditor._pen = function (self)
 
 
 end
-CoreCutsceneEditor._text_brush = function (self)
+function CoreCutsceneEditor:_text_brush()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -11177,7 +11177,7 @@ CoreCutsceneEditor._text_brush = function (self)
 
 
 end
-CoreCutsceneEditor._tiny_text_brush = function (self)
+function CoreCutsceneEditor:_tiny_text_brush()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -11215,7 +11215,7 @@ CoreCutsceneEditor._tiny_text_brush = function (self)
 
 
 end
-CoreCutsceneEditor.prime_cutscene_key = function (self, player, key, cast)
+function CoreCutsceneEditor:prime_cutscene_key(player, key, cast)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -11225,7 +11225,7 @@ CoreCutsceneEditor.prime_cutscene_key = function (self, player, key, cast)
 
 
 end
-CoreCutsceneEditor.evaluate_cutscene_key = function (self, player, key, time, last_evaluated_time)
+function CoreCutsceneEditor:evaluate_cutscene_key(player, key, time, last_evaluated_time)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -11235,7 +11235,7 @@ CoreCutsceneEditor.evaluate_cutscene_key = function (self, player, key, time, la
 
 
 end
-CoreCutsceneEditor.revert_cutscene_key = function (self, player, key, time, last_evaluated_time)
+function CoreCutsceneEditor:revert_cutscene_key(player, key, time, last_evaluated_time)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -11245,7 +11245,7 @@ CoreCutsceneEditor.revert_cutscene_key = function (self, player, key, time, last
 
 
 end
-CoreCutsceneEditor.update_cutscene_key = function (self, player, key, time, last_evaluated_time)
+function CoreCutsceneEditor:update_cutscene_key(player, key, time, last_evaluated_time)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -11255,7 +11255,7 @@ CoreCutsceneEditor.update_cutscene_key = function (self, player, key, time, last
 
 
 end
-CoreCutsceneEditor.skip_cutscene_key = function (self, player)
+function CoreCutsceneEditor:skip_cutscene_key(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -11265,7 +11265,7 @@ CoreCutsceneEditor.skip_cutscene_key = function (self, player)
 
 
 end
-CoreCutsceneEditor.time_in_relation_to_cutscene_key = function (self, key)
+function CoreCutsceneEditor:time_in_relation_to_cutscene_key(key)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -11278,7 +11278,7 @@ CoreCutsceneEditor.time_in_relation_to_cutscene_key = function (self, key)
 
 
 end
-CoreCutsceneEditor._debug_get_cast_member = function (self, unit_name)
+function CoreCutsceneEditor:_debug_get_cast_member(unit_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -11290,7 +11290,7 @@ CoreCutsceneEditor._debug_get_cast_member = function (self, unit_name)
 
 
 end
-CoreCutsceneEditor._debug_dump_cast = function (self)
+function CoreCutsceneEditor:_debug_dump_cast()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -11344,7 +11344,7 @@ CoreCutsceneEditor._debug_dump_cast = function (self)
 
 
 end
-CoreCutsceneEditor._debug_dump_cast_member = function (self, unit_name)
+function CoreCutsceneEditor:_debug_dump_cast_member(unit_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -11395,7 +11395,7 @@ CoreCutsceneEditor._debug_dump_cast_member = function (self, unit_name)
 
 
 end
-CoreCutsceneEditor._debug_dump_hierarchy = function (self, object, indent)
+function CoreCutsceneEditor:_debug_dump_hierarchy(object, indent)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---

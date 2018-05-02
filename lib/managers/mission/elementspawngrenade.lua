@@ -8,17 +8,17 @@ if not ElementSpawnGrenade then
 end
 
 ElementSpawnGrenade = slot0
-ElementSpawnGrenade.init = function (self, ...)
+function ElementSpawnGrenade:init(...)
 	slot3 = self
 
 	ElementSpawnGrenade.super.init(slot2, ...)
 
 	return 
 end
-ElementSpawnGrenade.client_on_executed = function (self, ...)
+function ElementSpawnGrenade:client_on_executed(...)
 	return 
 end
-ElementSpawnGrenade.on_executed = function (self, instigator)
+function ElementSpawnGrenade:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

@@ -1,5 +1,5 @@
 SimpleVehicle = SimpleVehicle or class()
-SimpleVehicle.init = function (self, unit)
+function SimpleVehicle:init(unit)
 	self._unit = unit
 	slot4 = self.ANIM_GROUP_NAME
 
@@ -22,7 +22,7 @@ SimpleVehicle.init = function (self, unit)
 
 	return 
 end
-SimpleVehicle.update = function (self, unit, t, dt)
+function SimpleVehicle:update(unit, t, dt)
 	if not self._started then
 		return 
 	end
@@ -141,7 +141,7 @@ SimpleVehicle.update = function (self, unit, t, dt)
 
 	return 
 end
-SimpleVehicle._check_reached_target_anim_time = function (self)
+function SimpleVehicle:_check_reached_target_anim_time()
 	slot4 = self.ANIM_GROUP
 
 	if self._target_anim_time <= self._unit.anim_time(slot2, self._unit) then
@@ -149,12 +149,12 @@ SimpleVehicle._check_reached_target_anim_time = function (self)
 
 	return 
 end
-SimpleVehicle.anim_time = function (self)
+function SimpleVehicle:anim_time()
 	slot4 = self.ANIM_GROUP
 
 	return self._unit.anim_time(slot2, self._unit)
 end
-SimpleVehicle.stop = function (self)
+function SimpleVehicle:stop()
 	slot4 = self.ANIM_GROUP
 	self._runned_end_t = self._unit.anim_time(slot2, self._unit)
 	self._stopped_end_t = self._runned_end_t + 1
@@ -163,14 +163,14 @@ SimpleVehicle.stop = function (self)
 
 	return 
 end
-SimpleVehicle.start = function (self)
+function SimpleVehicle:start()
 	slot6 = self
 
 	self.start_anim_from_to(slot2, self, self.anim_time(20))
 
 	return 
 end
-SimpleVehicle.start_anim_from_to = function (self, from, to, max_time_speed)
+function SimpleVehicle:start_anim_from_to(from, to, max_time_speed)
 	self._max_time_speed = max_time_speed or self._max_time_speed
 	self._state = "start"
 	self._new_time_speed = 1
@@ -201,19 +201,19 @@ SimpleVehicle.start_anim_from_to = function (self, from, to, max_time_speed)
 
 	return 
 end
-SimpleVehicle.anim_set_time = function (self, anim_time)
+function SimpleVehicle:anim_set_time(anim_time)
 	slot6 = anim_time
 
 	self._unit.anim_set_time(slot3, self._unit, self.ANIM_GROUP)
 
 	return 
 end
-SimpleVehicle.set_target_anim_time = function (self, anim_time)
+function SimpleVehicle:set_target_anim_time(anim_time)
 	self._target_anim_time = anim_time
 
 	return 
 end
-SimpleVehicle.set_target_time_speed = function (self, time_speed)
+function SimpleVehicle:set_target_time_speed(time_speed)
 	self._target_time_speed = time_speed
 	slot4 = time_speed - 0
 	self._acc = math.abs(slot3) / self._acc_time
@@ -240,19 +240,19 @@ SimpleVehicle.set_target_time_speed = function (self, time_speed)
 
 	return 
 end
-SimpleVehicle.accelerate_to = function (self, anim_speed)
+function SimpleVehicle:accelerate_to(anim_speed)
 	self._target_anim_speed = anim_speed
 	self._stopped = false
 
 	return 
 end
-SimpleVehicle.deaccelerate_to = function (self, anim_speed)
+function SimpleVehicle:deaccelerate_to(anim_speed)
 	self._target_anim_speed = anim_speed
 	self._stopped = false
 
 	return 
 end
-SimpleVehicle._anim_stop = function (self)
+function SimpleVehicle:_anim_stop()
 	slot3 = "SimpleVehicle:_anim_stop()"
 
 	print(slot2)
@@ -261,28 +261,28 @@ SimpleVehicle._anim_stop = function (self)
 
 	return 
 end
-SimpleVehicle._set_anim_time = function (self, anim_time)
+function SimpleVehicle:_set_anim_time(anim_time)
 	slot6 = anim_time
 
 	self._unit.anim_set_time(slot3, self._unit, self.ANIM_GROUP)
 
 	return 
 end
-SimpleVehicle._set_anim_speed = function (self, anim_speed)
+function SimpleVehicle:_set_anim_speed(anim_speed)
 	return 
 end
-SimpleVehicle.save = function (self, data)
+function SimpleVehicle:save(data)
 	local state = {}
 	data.SimpleVehicle = state
 
 	return 
 end
-SimpleVehicle.load = function (self, data)
+function SimpleVehicle:load(data)
 	local state = data.SimpleVehicle
 
 	return 
 end
-SimpleVehicle.destroy = function (self)
+function SimpleVehicle:destroy()
 	return 
 end
 

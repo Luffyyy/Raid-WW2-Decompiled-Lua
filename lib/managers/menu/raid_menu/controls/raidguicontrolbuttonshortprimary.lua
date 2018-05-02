@@ -10,7 +10,7 @@ RaidGUIControlButtonShortPrimary.DISABLED_ICON = "btn_dissabled_192"
 RaidGUIControlButtonShortPrimary.DISABLED_HOVER_ICON = "btn_dissabled_192_hover"
 RaidGUIControlButtonShortPrimary.W = tweak_data.gui.icons[RaidGUIControlButtonShortPrimary.ICON].texture_rect[3]
 RaidGUIControlButtonShortPrimary.H = tweak_data.gui.icons[RaidGUIControlButtonShortPrimary.ICON].texture_rect[4]
-RaidGUIControlButtonShortPrimary.init = function (self, parent, params)
+function RaidGUIControlButtonShortPrimary:init(parent, params)
 	if not params then
 		slot6 = "Trying to create a short primary button without parameters!"
 
@@ -44,7 +44,7 @@ RaidGUIControlButtonShortPrimary.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlButtonShortPrimary.enable = function (self)
+function RaidGUIControlButtonShortPrimary:enable()
 	if self._object_image then
 		slot4 = self._params.texture
 		slot7 = self._params.texture_rect
@@ -70,7 +70,7 @@ RaidGUIControlButtonShortPrimary.enable = function (self)
 
 	return 
 end
-RaidGUIControlButtonShortPrimary.disable = function (self)
+function RaidGUIControlButtonShortPrimary:disable()
 	slot3 = self
 
 	self.highlight_off(slot2)

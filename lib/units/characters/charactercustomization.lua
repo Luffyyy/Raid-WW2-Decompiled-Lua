@@ -55,14 +55,14 @@ CharacterCustomization.BONES = {
 	"RightLeg",
 	"RightFoot"
 }
-CharacterCustomization.init = function (self, unit)
+function CharacterCustomization:init(unit)
 	self._unit = unit
 	self._visible = true
 	self._loading_units = {}
 
 	return 
 end
-CharacterCustomization.set_visible = function (self, visible)
+function CharacterCustomization:set_visible(visible)
 	self._visible = visible
 
 	if not self._attached_units then
@@ -79,10 +79,10 @@ CharacterCustomization.set_visible = function (self, visible)
 
 	return 
 end
-CharacterCustomization.visible = function (self)
+function CharacterCustomization:visible()
 	return self._visible
 end
-CharacterCustomization.set_unit = function (self, slot, name)
+function CharacterCustomization:set_unit(slot, name)
 	if self._attached_units[slot] then
 		slot5 = self._attached_units[slot]
 
@@ -95,7 +95,7 @@ CharacterCustomization.set_unit = function (self, slot, name)
 
 	return 
 end
-CharacterCustomization._attach_unit = function (self, slot, name, current_version, loading_entire_outfit)
+function CharacterCustomization:_attach_unit(slot, name, current_version, loading_entire_outfit)
 	self._loading_units[name] = true
 	slot11 = name
 	slot10 = DynamicResourceManager.DYN_RESOURCES_PACKAGE
@@ -111,7 +111,7 @@ CharacterCustomization._attach_unit = function (self, slot, name, current_versio
 
 	return 
 end
-CharacterCustomization._part_loaded_callback = function (self, params)
+function CharacterCustomization:_part_loaded_callback(params)
 
 	-- Decompilation error in this vicinity:
 	self._loading_units[params.name] = nil
@@ -196,7 +196,7 @@ CharacterCustomization._part_loaded_callback = function (self, params)
 
 	return 
 end
-CharacterCustomization.attach_all_parts_to_character = function (self, slot_index, current_version)
+function CharacterCustomization:attach_all_parts_to_character(slot_index, current_version)
 	local slot_cache_data = Global.savefile_manager.meta_data_list[slot_index].cache
 
 	if slot_cache_data then
@@ -231,7 +231,7 @@ CharacterCustomization.attach_all_parts_to_character = function (self, slot_inde
 
 	return 
 end
-CharacterCustomization.attach_all_parts_to_character_by_parts = function (self, character_nationality_name, equiped_head_name, equiped_upper_name, equiped_lower_name)
+function CharacterCustomization:attach_all_parts_to_character_by_parts(character_nationality_name, equiped_head_name, equiped_upper_name, equiped_lower_name)
 	slot9 = character_nationality_name
 	local owned_heads = managers.character_customization.get_owned_customizations_indexed(slot6, managers.character_customization, CharacterCustomizationTweakData.PART_TYPE_HEAD)
 	slot11 = equiped_head_name
@@ -251,7 +251,7 @@ CharacterCustomization.attach_all_parts_to_character_by_parts = function (self, 
 
 	return 
 end
-CharacterCustomization.attach_all_parts_to_character_by_parts_for_husk = function (self, character_nationality_name, equiped_head_name, equiped_upper_name, equiped_lower_name, peer)
+function CharacterCustomization:attach_all_parts_to_character_by_parts_for_husk(character_nationality_name, equiped_head_name, equiped_upper_name, equiped_lower_name, peer)
 	slot11 = peer
 	local head_name = managers.character_customization.get_default_part_key_name(slot7, managers.character_customization, peer.character(CharacterCustomizationTweakData.PART_TYPE_HEAD))
 	slot11 = head_name
@@ -278,7 +278,7 @@ CharacterCustomization.attach_all_parts_to_character_by_parts_for_husk = functio
 
 	return 
 end
-CharacterCustomization._attach_unit_parts = function (self, equiped_head_object, equiped_upper_object, equiped_lower_object, current_version)
+function CharacterCustomization:_attach_unit_parts(equiped_head_object, equiped_upper_object, equiped_lower_object, current_version)
 	local lower_path = (equiped_upper_object.length == CharacterCustomizationTweakData.PART_LENGTH_SHORT and equiped_lower_object.path_long) or equiped_lower_object.path_short
 	self._attached_units = {}
 	slot12 = true
@@ -304,7 +304,7 @@ CharacterCustomization._attach_unit_parts = function (self, equiped_head_object,
 
 	return 
 end
-CharacterCustomization.attach_head_for_husk = function (self, head_path)
+function CharacterCustomization:attach_head_for_husk(head_path)
 	local head_unit = self._attached_units[CharacterCustomizationTweakData.PART_TYPE_HEAD]
 
 	if head_unit then
@@ -331,7 +331,7 @@ CharacterCustomization.attach_head_for_husk = function (self, head_path)
 
 	return 
 end
-CharacterCustomization.destroy_all_parts_on_character = function (self)
+function CharacterCustomization:destroy_all_parts_on_character()
 	if self._loading_units then
 		slot3 = self._loading_units
 
@@ -367,7 +367,7 @@ CharacterCustomization.destroy_all_parts_on_character = function (self)
 
 	return 
 end
-CharacterCustomization.destroy = function (self)
+function CharacterCustomization:destroy()
 	slot4 = "[CharacterCustomization][destroy]"
 
 	Application.trace(slot2, Application)

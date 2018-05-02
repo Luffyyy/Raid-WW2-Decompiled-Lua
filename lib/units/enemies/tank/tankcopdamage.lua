@@ -4,19 +4,19 @@ if not TankCopDamage then
 end
 
 TankCopDamage = slot0
-TankCopDamage.init = function (self, ...)
+function TankCopDamage:init(...)
 	slot3 = self
 
 	TankCopDamage.super.init(slot2, ...)
 
 	return 
 end
-TankCopDamage.damage_bullet = function (self, attack_data, ...)
+function TankCopDamage:damage_bullet(attack_data, ...)
 	slot5 = attack_data
 
 	return TankCopDamage.super.damage_bullet(slot3, self, ...)
 end
-TankCopDamage.damage_melee = function (self, attack_data)
+function TankCopDamage:damage_melee(attack_data)
 	local tweak_data = tweak_data.blackmarket.melee_weapons[attack_data.name_id]
 
 	if tweak_data and (tweak_data.type == "knife" or tweak_data.type == "sword" or attack_data.name_id == "boxing_gloves") then
@@ -29,7 +29,7 @@ TankCopDamage.damage_melee = function (self, attack_data)
 
 	return 
 end
-TankCopDamage.seq_clbk_vizor_shatter = function (self)
+function TankCopDamage:seq_clbk_vizor_shatter()
 	slot3 = self._unit
 	slot3 = self._unit.character_damage(slot2)
 

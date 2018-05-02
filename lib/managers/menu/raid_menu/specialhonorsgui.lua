@@ -31,7 +31,7 @@ SpecialHonorsGui.GAMERCARD_BUTTONS = {
 		"BTN_B"
 	}
 }
-SpecialHonorsGui.init = function (self, ws, fullscreen_ws, node, component_name)
+function SpecialHonorsGui:init(ws, fullscreen_ws, node, component_name)
 	slot7 = "[SpecialHonorsGui:init()]"
 
 	print(slot6)
@@ -52,7 +52,7 @@ SpecialHonorsGui.init = function (self, ws, fullscreen_ws, node, component_name)
 
 	return 
 end
-SpecialHonorsGui._set_initial_data = function (self)
+function SpecialHonorsGui:_set_initial_data()
 	slot4 = "menu_header_experience_success"
 
 	self._node.components.raid_menu_header.set_screen_name(slot2, self._node.components.raid_menu_header)
@@ -63,7 +63,7 @@ SpecialHonorsGui._set_initial_data = function (self)
 
 	return 
 end
-SpecialHonorsGui._layout = function (self)
+function SpecialHonorsGui:_layout()
 	slot3 = self
 
 	SpecialHonorsGui.super._layout(slot2)
@@ -86,7 +86,7 @@ SpecialHonorsGui._layout = function (self)
 
 	return 
 end
-SpecialHonorsGui._layout_first_screen = function (self)
+function SpecialHonorsGui:_layout_first_screen()
 	local top_stats_big_panel_params = {
 		halign = "scale",
 		name = "top_stats_big_panel",
@@ -132,14 +132,14 @@ SpecialHonorsGui._layout_first_screen = function (self)
 
 	return 
 end
-SpecialHonorsGui._continue_button_on_click = function (self)
+function SpecialHonorsGui:_continue_button_on_click()
 	slot3 = managers.raid_menu
 
 	managers.raid_menu.close_menu(slot2)
 
 	return 
 end
-SpecialHonorsGui.close = function (self)
+function SpecialHonorsGui:close()
 	if self._closing then
 		return 
 	end
@@ -160,7 +160,7 @@ SpecialHonorsGui.close = function (self)
 
 	return 
 end
-SpecialHonorsGui.show_honors = function (self)
+function SpecialHonorsGui:show_honors()
 	slot4 = "top_stats_title"
 	local top_stats_title = self._top_stats_big_panel.child(slot2, self._top_stats_big_panel)
 	slot9 = "_fade_in_label"
@@ -217,7 +217,7 @@ SpecialHonorsGui.show_honors = function (self)
 
 	return 
 end
-SpecialHonorsGui.show_gamercard = function (self, i)
+function SpecialHonorsGui:show_gamercard(i)
 	local peer_id = game_state_machine.current_state(slot3).special_honors[i].peer_id
 	slot5 = managers.network
 	slot6 = peer_id
@@ -239,7 +239,7 @@ SpecialHonorsGui.show_gamercard = function (self, i)
 
 	return 
 end
-SpecialHonorsGui._fade_in_label = function (self, text, duration, delay)
+function SpecialHonorsGui:_fade_in_label(text, duration, delay)
 	local anim_duration = duration or 0.15
 	slot7 = text
 	local t = text.alpha(slot6) * anim_duration
@@ -266,17 +266,17 @@ SpecialHonorsGui._fade_in_label = function (self, text, duration, delay)
 
 	return 
 end
-SpecialHonorsGui.confirm_pressed = function (self)
+function SpecialHonorsGui:confirm_pressed()
 	slot3 = self
 
 	self._continue_button_on_click(slot2)
 
 	return 
 end
-SpecialHonorsGui.on_escape = function (self)
+function SpecialHonorsGui:on_escape()
 	return true
 end
-SpecialHonorsGui.bind_controller_inputs = function (self)
+function SpecialHonorsGui:bind_controller_inputs()
 	local bindings = {}
 	slot5 = "menu_controller_face_bottom"
 	slot7 = "_continue_button_on_click"

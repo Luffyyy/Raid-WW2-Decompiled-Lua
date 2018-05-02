@@ -45,22 +45,22 @@ CoreSubtitleCutsceneKey.attribute_affects("Subtitle", CoreSubtitleCutsceneKey, "
 CoreSubtitleCutsceneKey.control_for_category = CoreCutsceneKeyBase.standard_combo_box_control
 CoreSubtitleCutsceneKey.control_for_string_id = CoreCutsceneKeyBase.standard_combo_box_control
 CoreSubtitleCutsceneKey.control_for_divider = CoreCutsceneKeyBase.standard_divider_control
-CoreSubtitleCutsceneKey.__tostring = function (self)
+function CoreSubtitleCutsceneKey:__tostring()
 	slot4 = self
 
 	return "Display subtitle \"" .. self.string_id(slot3) .. "\"."
 end
-CoreSubtitleCutsceneKey.can_evaluate_with_player = function (self, player)
+function CoreSubtitleCutsceneKey:can_evaluate_with_player(player)
 	return true
 end
-CoreSubtitleCutsceneKey.unload = function (self, player)
+function CoreSubtitleCutsceneKey:unload(player)
 	slot4 = managers.subtitle
 
 	managers.subtitle.clear_subtitle(slot3)
 
 	return 
 end
-CoreSubtitleCutsceneKey.play = function (self, player, undo, fast_forward)
+function CoreSubtitleCutsceneKey:play(player, undo, fast_forward)
 	if undo then
 		slot6 = managers.subtitle
 
@@ -74,16 +74,16 @@ CoreSubtitleCutsceneKey.play = function (self, player, undo, fast_forward)
 
 	return 
 end
-CoreSubtitleCutsceneKey.is_valid_category = function (self, value)
+function CoreSubtitleCutsceneKey:is_valid_category(value)
 	return value and value ~= ""
 end
-CoreSubtitleCutsceneKey.is_valid_string_id = function (self, value)
+function CoreSubtitleCutsceneKey:is_valid_string_id(value)
 	return value and value ~= ""
 end
-CoreSubtitleCutsceneKey.is_valid_duration = function (self, value)
+function CoreSubtitleCutsceneKey:is_valid_duration(value)
 	return value and 0 < value
 end
-CoreSubtitleCutsceneKey.control_for_localized_text = function (self, parent_frame)
+function CoreSubtitleCutsceneKey:control_for_localized_text(parent_frame)
 	slot8 = "NO_BORDER,TE_RICH,TE_MULTILINE,TE_READONLY"
 	local control = EWS.TextCtrl(slot3, EWS, parent_frame, "", "")
 	slot5 = control
@@ -100,7 +100,7 @@ CoreSubtitleCutsceneKey.control_for_localized_text = function (self, parent_fram
 
 	return control
 end
-CoreSubtitleCutsceneKey.refresh_control_for_category = function (self, control)
+function CoreSubtitleCutsceneKey:refresh_control_for_category(control)
 	slot4 = control
 
 	control.freeze(slot3)
@@ -143,7 +143,7 @@ CoreSubtitleCutsceneKey.refresh_control_for_category = function (self, control)
 
 	return 
 end
-CoreSubtitleCutsceneKey.refresh_control_for_string_id = function (self, control)
+function CoreSubtitleCutsceneKey:refresh_control_for_string_id(control)
 
 	-- Decompilation error in this vicinity:
 	slot4 = control
@@ -161,7 +161,7 @@ CoreSubtitleCutsceneKey.refresh_control_for_string_id = function (self, control)
 
 	return 
 end
-CoreSubtitleCutsceneKey.refresh_control_for_localized_text = function (self, control)
+function CoreSubtitleCutsceneKey:refresh_control_for_localized_text(control)
 	slot4 = self
 	slot7 = self
 
@@ -176,7 +176,7 @@ CoreSubtitleCutsceneKey.refresh_control_for_localized_text = function (self, con
 
 	return 
 end
-CoreSubtitleCutsceneKey.validate_control_for_attribute = function (self, attribute_name)
+function CoreSubtitleCutsceneKey:validate_control_for_attribute(attribute_name)
 	if attribute_name ~= "localized_text" then
 		slot5 = attribute_name
 

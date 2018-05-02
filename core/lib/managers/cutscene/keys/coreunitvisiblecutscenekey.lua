@@ -18,13 +18,13 @@ slot5 = toboolean
 
 CoreUnitVisibleCutsceneKey.register_serialized_attribute("Unit Visibility", CoreUnitVisibleCutsceneKey, "visible", true)
 
-CoreUnitVisibleCutsceneKey.__tostring = function (self)
+function CoreUnitVisibleCutsceneKey:__tostring()
 	slot3 = self
 	slot5 = self
 
 	return ((self.visible(slot2) and "Show") or "Hide") .. " \"" .. self.unit_name(slot4) .. "\"."
 end
-CoreUnitVisibleCutsceneKey.unload = function (self)
+function CoreUnitVisibleCutsceneKey:unload()
 	if self._cast then
 		slot5 = true
 
@@ -33,7 +33,7 @@ CoreUnitVisibleCutsceneKey.unload = function (self)
 
 	return 
 end
-CoreUnitVisibleCutsceneKey.play = function (self, player, undo, fast_forward)
+function CoreUnitVisibleCutsceneKey:play(player, undo, fast_forward)
 	slot8 = self.evaluate
 	slot7 = "Cutscene key must define the \"evaluate\" method to use the default CoreCutsceneKeyBase:play method."
 
@@ -63,7 +63,7 @@ CoreUnitVisibleCutsceneKey.play = function (self, player, undo, fast_forward)
 
 	return 
 end
-CoreUnitVisibleCutsceneKey.evaluate = function (self, player, fast_forward, visible)
+function CoreUnitVisibleCutsceneKey:evaluate(player, fast_forward, visible)
 	slot6 = self._cast
 
 	assert(slot5)

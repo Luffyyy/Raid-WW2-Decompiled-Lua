@@ -21,14 +21,14 @@ MissionJoinGui.FILTER_FONT_SIZE = 19
 MissionJoinGui.FILTER_BUTTON_W = 20
 MissionJoinGui.FILTER_BUTTON_H = 20
 MissionJoinGui.SERVER_TABLE_ROW_HEIGHT = 42
-MissionJoinGui.init = function (self, ws, fullscreen_ws, node, component_name)
+function MissionJoinGui:init(ws, fullscreen_ws, node, component_name)
 	slot11 = component_name
 
 	MissionJoinGui.super.init(slot6, self, ws, fullscreen_ws, node)
 
 	return 
 end
-MissionJoinGui._set_initial_data = function (self)
+function MissionJoinGui:_set_initial_data()
 	self.filters = {}
 	self._tweak_data = tweak_data.gui.server_browser
 	self._max_active_server_jobs = self._tweak_data.max_active_server_jobs
@@ -40,7 +40,7 @@ MissionJoinGui._set_initial_data = function (self)
 
 	return 
 end
-MissionJoinGui._layout = function (self)
+function MissionJoinGui:_layout()
 	slot3 = self
 
 	MissionJoinGui.super._layout(slot2)
@@ -121,7 +121,7 @@ MissionJoinGui._layout = function (self)
 
 	return 
 end
-MissionJoinGui._layout_filters = function (self)
+function MissionJoinGui:_layout_filters()
 	local filter_label_width = 256
 	local filter_control_width = 192
 	local filter_control_width_wide = 250
@@ -257,7 +257,7 @@ MissionJoinGui._layout_filters = function (self)
 
 	return 
 end
-MissionJoinGui._layout_server_list_table = function (self)
+function MissionJoinGui:_layout_server_list_table()
 
 	-- Decompilation error in this vicinity:
 	slot4 = {
@@ -400,7 +400,7 @@ MissionJoinGui._layout_server_list_table = function (self)
 
 	return 
 end
-MissionJoinGui._layout_game_description = function (self)
+function MissionJoinGui:_layout_game_description()
 	local desc_mission_icon_name = tweak_data.operations.missions.flakturm.icon_menu
 	local desc_mission_icon = {
 		texture = tweak_data.gui.icons[desc_mission_icon_name].texture,
@@ -655,7 +655,7 @@ MissionJoinGui._layout_game_description = function (self)
 
 	return 
 end
-MissionJoinGui._layout_footer_buttons = function (self)
+function MissionJoinGui:_layout_footer_buttons()
 	slot4 = {
 		name = "join_button",
 		visible = true,
@@ -726,7 +726,7 @@ MissionJoinGui._layout_footer_buttons = function (self)
 
 	return 
 end
-MissionJoinGui._set_additional_layout = function (self)
+function MissionJoinGui:_set_additional_layout()
 	slot6 = self._footer_buttons_panel
 	slot4 = self._footer_buttons_panel.h(slot5) / 2
 
@@ -763,7 +763,7 @@ MissionJoinGui._set_additional_layout = function (self)
 
 	return 
 end
-MissionJoinGui.close = function (self)
+function MissionJoinGui:close()
 	slot3 = self
 
 	MissionJoinGui.super.close(slot2)
@@ -774,10 +774,10 @@ MissionJoinGui.close = function (self)
 
 	return 
 end
-MissionJoinGui.update = function (self, t, dt)
+function MissionJoinGui:update(t, dt)
 	return 
 end
-MissionJoinGui.friends_only_button_on_click = function (self)
+function MissionJoinGui:friends_only_button_on_click()
 	local friends_only = self._friends_only_button.get_value(slot2)
 	slot5 = friends_only
 
@@ -785,7 +785,7 @@ MissionJoinGui.friends_only_button_on_click = function (self)
 
 	return 
 end
-MissionJoinGui.in_camp_servers_only_button_on_click = function (self)
+function MissionJoinGui:in_camp_servers_only_button_on_click()
 	slot3 = self._in_camp_servers_only
 	local state = (self._in_camp_servers_only.get_value(slot2) and 1) or -1
 	slot7 = "equal"
@@ -794,14 +794,14 @@ MissionJoinGui.in_camp_servers_only_button_on_click = function (self)
 
 	return 
 end
-MissionJoinGui.on_row_clicked_servers_table = function (self, row_data, row_index)
+function MissionJoinGui:on_row_clicked_servers_table(row_data, row_index)
 	slot6 = row_data[5].value
 
 	self._select_server_list_item(slot4, self)
 
 	return 
 end
-MissionJoinGui.on_row_double_clicked_servers_table = function (self, row_data, row_index)
+function MissionJoinGui:on_row_double_clicked_servers_table(row_data, row_index)
 	slot9 = row_data
 
 	Application.trace(slot4, Application, "[MissionJoinGui:on_row_double_clicked_servers_table]", inspect(row_index))
@@ -816,21 +816,21 @@ MissionJoinGui.on_row_double_clicked_servers_table = function (self, row_data, r
 
 	return 
 end
-MissionJoinGui.on_row_selected_servers_table = function (self, row_data, row_index)
+function MissionJoinGui:on_row_selected_servers_table(row_data, row_index)
 	slot6 = row_data[5].value
 
 	self._select_server_list_item(slot4, self)
 
 	return 
 end
-MissionJoinGui.on_cell_click_servers_table = function (self, data)
+function MissionJoinGui:on_cell_click_servers_table(data)
 	slot5 = self._selected_row_data[5].value
 
 	self._select_server_list_item(slot3, self)
 
 	return 
 end
-MissionJoinGui.data_source_servers_table = function (self)
+function MissionJoinGui:data_source_servers_table()
 	local missions = {}
 
 	if not self._gui_jobs then
@@ -899,7 +899,7 @@ MissionJoinGui.data_source_servers_table = function (self)
 
 	return missions
 end
-MissionJoinGui._update_active_controls = function (self)
+function MissionJoinGui:_update_active_controls()
 	local active_controls = managers.menu_component._active_controls
 
 	if self._table_servers then
@@ -910,7 +910,7 @@ MissionJoinGui._update_active_controls = function (self)
 
 	return 
 end
-MissionJoinGui._remove_active_controls = function (self)
+function MissionJoinGui:_remove_active_controls()
 	local active_controls = managers.menu_component._active_controls
 
 	if self._table_servers then
@@ -919,7 +919,7 @@ MissionJoinGui._remove_active_controls = function (self)
 
 	return 
 end
-MissionJoinGui.data_source_distance_filter_stepper = function (self)
+function MissionJoinGui:data_source_distance_filter_stepper()
 	local result = {}
 	slot5 = {
 		value = 0,
@@ -950,7 +950,7 @@ MissionJoinGui.data_source_distance_filter_stepper = function (self)
 
 	return result
 end
-MissionJoinGui.data_source_difficulty_filter_stepper = function (self)
+function MissionJoinGui:data_source_difficulty_filter_stepper()
 	local result = {}
 
 	if tweak_data.difficulties then
@@ -979,7 +979,7 @@ MissionJoinGui.data_source_difficulty_filter_stepper = function (self)
 
 	return result
 end
-MissionJoinGui.data_source_mission_filter_stepper = function (self)
+function MissionJoinGui:data_source_mission_filter_stepper()
 	local result = {}
 	slot11 = "menu_any"
 
@@ -1021,14 +1021,14 @@ MissionJoinGui.data_source_mission_filter_stepper = function (self)
 
 	return result
 end
-MissionJoinGui.on_click_apply_filters_button = function (self)
+function MissionJoinGui:on_click_apply_filters_button()
 	slot3 = self
 
 	self._refresh_server_list(slot2)
 
 	return 
 end
-MissionJoinGui.on_click_show_filters_button = function (self)
+function MissionJoinGui:on_click_show_filters_button()
 	slot6 = self._filters_panel
 	slot4 = not self._filters_panel.visible(slot5)
 
@@ -1043,7 +1043,7 @@ MissionJoinGui.on_click_show_filters_button = function (self)
 
 	return 
 end
-MissionJoinGui.on_click_join_button = function (self)
+function MissionJoinGui:on_click_join_button()
 	slot4 = "[MissionJoinGui:on_click_join_button]"
 
 	Application.trace(slot2, Application)
@@ -1054,7 +1054,7 @@ MissionJoinGui.on_click_join_button = function (self)
 
 	return 
 end
-MissionJoinGui._refresh_server_list = function (self)
+function MissionJoinGui:_refresh_server_list()
 	slot3 = self._apply_filters_button
 
 	self._apply_filters_button.hide(slot2)
@@ -1093,7 +1093,7 @@ MissionJoinGui._refresh_server_list = function (self)
 
 	return 
 end
-MissionJoinGui._select_server_list_item = function (self, data_value)
+function MissionJoinGui:_select_server_list_item(data_value)
 	slot4 = self
 
 	self._select_game_from_list(slot3)
@@ -1104,7 +1104,7 @@ MissionJoinGui._select_server_list_item = function (self, data_value)
 
 	return 
 end
-MissionJoinGui._render_filters = function (self)
+function MissionJoinGui:_render_filters()
 	slot3 = self._friends_only_button
 	slot6 = managers.network.matchmake
 
@@ -1132,7 +1132,7 @@ MissionJoinGui._render_filters = function (self)
 
 	return 
 end
-MissionJoinGui._join_game = function (self)
+function MissionJoinGui:_join_game()
 
 	-- Decompilation error in this vicinity:
 	slot3 = self._table_servers
@@ -1146,7 +1146,7 @@ MissionJoinGui._join_game = function (self)
 
 	return 
 end
-MissionJoinGui._select_game_from_list = function (self)
+function MissionJoinGui:_select_game_from_list()
 	slot3 = self._table_servers
 	local selected_row = self._table_servers.get_selected_row(slot2)
 
@@ -1159,7 +1159,7 @@ MissionJoinGui._select_game_from_list = function (self)
 
 	return 
 end
-MissionJoinGui._set_game_description_data = function (self, data)
+function MissionJoinGui:_set_game_description_data(data)
 
 	-- Decompilation error in this vicinity:
 	local in_camp = data.level_id == "camp"
@@ -1913,7 +1913,7 @@ slot6 = "XB1"
 local is_xb1 = SystemInfo.platform(slot4) == Idstring(SystemInfo)
 slot7 = "PS4"
 local is_ps4 = SystemInfo.platform(slot5) == Idstring(SystemInfo)
-MissionJoinGui._find_online_games = function (self, friends_only)
+function MissionJoinGui:_find_online_games(friends_only)
 	if is_win32 then
 		slot5 = friends_only
 
@@ -1942,7 +1942,7 @@ MissionJoinGui._find_online_games = function (self, friends_only)
 
 	return 
 end
-MissionJoinGui._find_online_games_win32 = function (self, friends_only)
+function MissionJoinGui:_find_online_games_win32(friends_only)
 	local function f(info)
 		slot3 = managers.network.matchmake
 
@@ -2239,22 +2239,22 @@ MissionJoinGui._find_online_games_win32 = function (self, friends_only)
 
 	return 
 end
-MissionJoinGui.add_gui_job = function (self, data)
+function MissionJoinGui:add_gui_job(data)
 	self._gui_jobs[data.id] = data
 
 	return 
 end
-MissionJoinGui.update_gui_job = function (self, data)
+function MissionJoinGui:update_gui_job(data)
 	self._gui_jobs[data.id] = data
 
 	return 
 end
-MissionJoinGui.remove_gui_job = function (self, id)
+function MissionJoinGui:remove_gui_job(id)
 	self._gui_jobs[id] = nil
 
 	return 
 end
-MissionJoinGui.set_players_online = function (self, amount)
+function MissionJoinGui:set_players_online(amount)
 	if self._online_users_count then
 		slot4 = self._online_users_count
 
@@ -2268,7 +2268,7 @@ MissionJoinGui.set_players_online = function (self, amount)
 
 	return 
 end
-MissionJoinGui._filters_set_selected_server_table = function (self)
+function MissionJoinGui:_filters_set_selected_server_table()
 	self._filters_active = false
 	slot4 = false
 
@@ -2302,7 +2302,7 @@ MissionJoinGui._filters_set_selected_server_table = function (self)
 
 	return 
 end
-MissionJoinGui._filters_set_selected_filters = function (self)
+function MissionJoinGui:_filters_set_selected_filters()
 	self._filters_active = true
 	slot4 = true
 
@@ -2336,7 +2336,7 @@ MissionJoinGui._filters_set_selected_filters = function (self)
 
 	return 
 end
-MissionJoinGui.bind_controller_inputs = function (self)
+function MissionJoinGui:bind_controller_inputs()
 	local bindings = {}
 	slot5 = "menu_controller_face_top"
 	slot7 = "_on_refresh"
@@ -2374,7 +2374,7 @@ MissionJoinGui.bind_controller_inputs = function (self)
 
 	return 
 end
-MissionJoinGui.bind_controller_inputs_no_join = function (self)
+function MissionJoinGui:bind_controller_inputs_no_join()
 	local bindings = {}
 	slot5 = "menu_controller_face_top"
 	slot7 = "_on_refresh"
@@ -2411,7 +2411,7 @@ MissionJoinGui.bind_controller_inputs_no_join = function (self)
 
 	return 
 end
-MissionJoinGui.bind_controller_inputs_player_description = function (self)
+function MissionJoinGui:bind_controller_inputs_player_description()
 	local bindings = {}
 	slot5 = "menu_controller_face_top"
 	slot7 = "_on_refresh"
@@ -2452,7 +2452,7 @@ MissionJoinGui.bind_controller_inputs_player_description = function (self)
 
 	return 
 end
-MissionJoinGui._on_refresh = function (self)
+function MissionJoinGui:_on_refresh()
 	slot3 = self
 
 	self.on_click_apply_filters_button(slot2)
@@ -2463,7 +2463,7 @@ MissionJoinGui._on_refresh = function (self)
 
 	return true, nil
 end
-MissionJoinGui._on_filter = function (self)
+function MissionJoinGui:_on_filter()
 	slot3 = self._table_servers
 	local server_table_selected = self._table_servers.is_selected(slot2)
 	local have_any_servers = false
@@ -2499,7 +2499,7 @@ MissionJoinGui._on_filter = function (self)
 
 	return true, nil
 end
-MissionJoinGui.confirm_pressed = function (self)
+function MissionJoinGui:confirm_pressed()
 	slot4 = "[MissionJoinGui:confirm_pressed]"
 
 	Application.trace(slot2, Application)
@@ -2519,7 +2519,7 @@ MissionJoinGui.confirm_pressed = function (self)
 
 	return 
 end
-MissionJoinGui.back_pressed = function (self)
+function MissionJoinGui:back_pressed()
 	slot4 = "[MissionJoinGui:back_pressed]"
 
 	Application.trace(slot2, Application)

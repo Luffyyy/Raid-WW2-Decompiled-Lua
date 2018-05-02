@@ -20,7 +20,7 @@ slot3 = "guis/spectator_mode_fullscreen"
 IngameWaitingForRespawnState.GUI_SPECTATOR_FULLSCREEN = Idstring(slot2)
 slot3 = "guis/spectator_mode_saferect"
 IngameWaitingForRespawnState.GUI_SPECTATOR = Idstring(slot2)
-function IngameWaitingForRespawnState:init(game_state_machine)
+IngameWaitingForRespawnState.init = function (self, game_state_machine)
 	slot6 = game_state_machine
 
 	GameState.init(slot3, self, "ingame_waiting_for_respawn")
@@ -37,7 +37,7 @@ function IngameWaitingForRespawnState:init(game_state_machine)
 
 	return 
 end
-function IngameWaitingForRespawnState:_setup_controller()
+IngameWaitingForRespawnState._setup_controller = function (self)
 	slot7 = managers.controller
 	slot6 = false
 	self._controller = managers.controller.create_controller(slot2, managers.controller, "waiting_for_respawn", managers.controller.get_default_wrapper_index(slot6))
@@ -71,7 +71,7 @@ function IngameWaitingForRespawnState:_setup_controller()
 
 	return 
 end
-function IngameWaitingForRespawnState:_clear_controller()
+IngameWaitingForRespawnState._clear_controller = function (self)
 	if self._controller then
 		slot5 = self._prev_player_cb
 
@@ -102,7 +102,7 @@ function IngameWaitingForRespawnState:_clear_controller()
 
 	return 
 end
-function IngameWaitingForRespawnState:set_controller_enabled(enabled)
+IngameWaitingForRespawnState.set_controller_enabled = function (self, enabled)
 	if self._controller then
 		slot5 = enabled
 
@@ -111,7 +111,7 @@ function IngameWaitingForRespawnState:set_controller_enabled(enabled)
 
 	return 
 end
-function IngameWaitingForRespawnState:_setup_camera()
+IngameWaitingForRespawnState._setup_camera = function (self)
 	slot3 = World
 	self._camera_object = World.create_camera(slot2)
 	slot4 = managers.viewport.CAMERA_NEAR_RANGE
@@ -138,7 +138,7 @@ function IngameWaitingForRespawnState:_setup_camera()
 
 	return 
 end
-function IngameWaitingForRespawnState:_clear_camera()
+IngameWaitingForRespawnState._clear_camera = function (self)
 	slot3 = self._viewport
 
 	self._viewport.destroy(slot2)
@@ -152,7 +152,7 @@ function IngameWaitingForRespawnState:_clear_camera()
 
 	return 
 end
-function IngameWaitingForRespawnState:_setup_sound_listener()
+IngameWaitingForRespawnState._setup_sound_listener = function (self)
 	slot8 = false
 	self._listener_id = managers.listener.add_listener(slot2, managers.listener, "spectator_camera", self._camera_object, self._camera_object, nil)
 	slot5 = {
@@ -172,7 +172,7 @@ function IngameWaitingForRespawnState:_setup_sound_listener()
 
 	return 
 end
-function IngameWaitingForRespawnState:_clear_sound_listener()
+IngameWaitingForRespawnState._clear_sound_listener = function (self)
 	slot4 = self._sound_check_object
 
 	managers.sound_environment.remove_check_object(slot2, managers.sound_environment)
@@ -189,7 +189,7 @@ function IngameWaitingForRespawnState:_clear_sound_listener()
 
 	return 
 end
-function IngameWaitingForRespawnState:_create_spectator_data()
+IngameWaitingForRespawnState._create_spectator_data = function (self)
 	slot3 = managers.groupai
 	slot3 = managers.groupai.state(slot2)
 	local all_teammates = managers.groupai.state(slot2).all_char_criminals(slot2)
@@ -210,7 +210,7 @@ function IngameWaitingForRespawnState:_create_spectator_data()
 
 	return 
 end
-function IngameWaitingForRespawnState:_begin_game_enter_transition()
+IngameWaitingForRespawnState._begin_game_enter_transition = function (self)
 	if self._ready_to_spawn_t then
 		return 
 	end
@@ -291,7 +291,7 @@ IngameWaitingForRespawnState.request_player_spawn = function (peer_to_spawn)
 
 	return 
 end
-function IngameWaitingForRespawnState:update(t, dt)
+IngameWaitingForRespawnState.update = function (self, t, dt)
 	if self._player_state_change_needed then
 		slot7 = managers.player
 
@@ -416,7 +416,7 @@ local mvec3_angle = mvector3.angle
 local mrot_set_axis_angle = mrotation.set_axis_angle
 local mrot_set_look_at = mrotation.set_look_at
 local math_up = math.UP
-function IngameWaitingForRespawnState:_upd_watch(t, dt)
+IngameWaitingForRespawnState._upd_watch = function (self, t, dt)
 	slot5 = self
 
 	self._refresh_teammate_list(slot4)
@@ -641,7 +641,7 @@ function IngameWaitingForRespawnState:_upd_watch(t, dt)
 
 	return 
 end
-function IngameWaitingForRespawnState:at_enter()
+IngameWaitingForRespawnState.at_enter = function (self)
 	slot4 = "[IngameWaitingForRespawnState:at_enter()]"
 
 	Application.trace(slot2, Application)
@@ -834,7 +834,7 @@ function IngameWaitingForRespawnState:at_enter()
 
 	return 
 end
-function IngameWaitingForRespawnState:at_exit()
+IngameWaitingForRespawnState.at_exit = function (self)
 	slot4 = "[IngameWaitingForRespawnState:at_exit()]"
 
 	Application.trace(slot2, Application)
@@ -895,7 +895,7 @@ function IngameWaitingForRespawnState:at_exit()
 
 	return 
 end
-function IngameWaitingForRespawnState:_refresh_teammate_list()
+IngameWaitingForRespawnState._refresh_teammate_list = function (self)
 	local all_teammates = self._spectator_data.teammate_records
 	local teammate_list = self._spectator_data.teammate_list
 	local lost_teammate_at_i = nil
@@ -955,7 +955,7 @@ function IngameWaitingForRespawnState:_refresh_teammate_list()
 
 	return 
 end
-function IngameWaitingForRespawnState:_get_teammate_index_by_unit_key(u_key)
+IngameWaitingForRespawnState._get_teammate_index_by_unit_key = function (self, u_key)
 	slot4 = self._spectator_data.teammate_list
 
 	for i_key, test_u_key in ipairs(slot3) do
@@ -966,7 +966,7 @@ function IngameWaitingForRespawnState:_get_teammate_index_by_unit_key(u_key)
 
 	return 
 end
-function IngameWaitingForRespawnState:cb_next_player()
+IngameWaitingForRespawnState.cb_next_player = function (self)
 	slot3 = self
 
 	self._refresh_teammate_list(slot2)
@@ -992,7 +992,7 @@ function IngameWaitingForRespawnState:cb_next_player()
 
 	return 
 end
-function IngameWaitingForRespawnState:cb_prev_player()
+IngameWaitingForRespawnState.cb_prev_player = function (self)
 	slot3 = self
 
 	self._refresh_teammate_list(slot2)
@@ -1018,14 +1018,14 @@ function IngameWaitingForRespawnState:cb_prev_player()
 
 	return 
 end
-function IngameWaitingForRespawnState:currently_spectated_unit()
+IngameWaitingForRespawnState.currently_spectated_unit = function (self)
 	if self._spectator_data and self._spectator_data.teammate_records and self._spectator_data.watch_u_key and self._spectator_data.teammate_records[self._spectator_data.watch_u_key] then
 		return self._spectator_data.teammate_records[self._spectator_data.watch_u_key].unit
 	end
 
 	return 
 end
-function IngameWaitingForRespawnState:trade_death(respawn_delay, hostages_killed)
+IngameWaitingForRespawnState.trade_death = function (self, respawn_delay, hostages_killed)
 	slot6 = false
 
 	managers.hud.set_custody_can_be_trade_visible(slot4, managers.hud)
@@ -1075,14 +1075,14 @@ function IngameWaitingForRespawnState:trade_death(respawn_delay, hostages_killed
 
 	return 
 end
-function IngameWaitingForRespawnState:finish_trade()
+IngameWaitingForRespawnState.finish_trade = function (self)
 	slot3 = self
 
 	self._begin_game_enter_transition(slot2)
 
 	return 
 end
-function IngameWaitingForRespawnState:begin_trade()
+IngameWaitingForRespawnState.begin_trade = function (self)
 	slot4 = true
 
 	managers.hud.set_custody_can_be_trade_visible(slot2, managers.hud)
@@ -1119,7 +1119,7 @@ function IngameWaitingForRespawnState:begin_trade()
 
 	return 
 end
-function IngameWaitingForRespawnState:cancel_trade()
+IngameWaitingForRespawnState.cancel_trade = function (self)
 	slot4 = false
 
 	managers.hud.set_custody_can_be_trade_visible(slot2, managers.hud)

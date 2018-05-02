@@ -3,19 +3,19 @@ slot3 = "CoreEditorUtils"
 core.import(slot1, core)
 
 CoreEditorGroups = CoreEditorGroups or class()
-CoreEditorGroups.init = function (self)
+function CoreEditorGroups:init()
 	self._groups = {}
 	self._group_names = {}
 
 	return 
 end
-CoreEditorGroups.groups = function (self)
+function CoreEditorGroups:groups()
 	return self._groups
 end
-CoreEditorGroups.group_names = function (self)
+function CoreEditorGroups:group_names()
 	return self._group_names
 end
-CoreEditorGroups.update = function (self, t, dt)
+function CoreEditorGroups:update(t, dt)
 	slot5 = self._groups
 
 	for _, group in pairs(slot4) do
@@ -26,7 +26,7 @@ CoreEditorGroups.update = function (self, t, dt)
 
 	return 
 end
-CoreEditorGroups.create = function (self, name, reference, units)
+function CoreEditorGroups:create(name, reference, units)
 	slot7 = name
 
 	if not table.contains(slot5, self._group_names) then
@@ -41,7 +41,7 @@ CoreEditorGroups.create = function (self, name, reference, units)
 
 	return group
 end
-CoreEditorGroups.add = function (self, name, units)
+function CoreEditorGroups:add(name, units)
 	local group = self._groups[name]
 	slot7 = units
 
@@ -49,7 +49,7 @@ CoreEditorGroups.add = function (self, name, units)
 
 	return 
 end
-CoreEditorGroups.remove = function (self, name)
+function CoreEditorGroups:remove(name)
 	slot5 = name
 
 	table.delete(slot3, self._group_names)
@@ -62,10 +62,10 @@ CoreEditorGroups.remove = function (self, name)
 
 	return 
 end
-CoreEditorGroups.clear = function (self)
+function CoreEditorGroups:clear()
 	return 
 end
-CoreEditorGroups.group_name = function (self)
+function CoreEditorGroups:group_name()
 	slot12 = 0
 	slot9 = true
 	local name = EWS.get_text_from_user(slot2, EWS, Global.frame_panel, "Enter name for the new group:", "Create Group", self.new_group_name(slot8), Vector3(self, -1, -1))
@@ -82,7 +82,7 @@ CoreEditorGroups.group_name = function (self)
 
 	return nil
 end
-CoreEditorGroups.new_group_name = function (self)
+function CoreEditorGroups:new_group_name()
 	local s = "Group0"
 	local i = 1
 
@@ -96,7 +96,7 @@ CoreEditorGroups.new_group_name = function (self)
 
 	return s .. i
 end
-CoreEditorGroups.save = function (self)
+function CoreEditorGroups:save()
 	slot3 = self._group_names
 
 	for _, name in ipairs(slot2) do
@@ -149,7 +149,7 @@ CoreEditorGroups.save = function (self)
 
 	return 
 end
-CoreEditorGroups.load = function (self, world_holder, offset)
+function CoreEditorGroups:load(world_holder, offset)
 	slot8 = offset
 	local load_data = world_holder.create_world(slot4, world_holder, "world", "editor_groups")
 	local group_names = load_data.group_names
@@ -219,7 +219,7 @@ CoreEditorGroups.load = function (self, world_holder, offset)
 
 	return 
 end
-CoreEditorGroups.load_group = function (self)
+function CoreEditorGroups:load_group()
 	slot5 = "XML-file (*.xml)|*.xml"
 	local path = managers.database.open_file_dialog(slot2, managers.database, Global.frame)
 
@@ -231,7 +231,7 @@ CoreEditorGroups.load_group = function (self)
 
 	return 
 end
-CoreEditorGroups.load_group_file = function (self, path)
+function CoreEditorGroups:load_group_file(path)
 	local name = self.group_name(slot3)
 	local node = SystemFS.parse_xml(self, SystemFS)
 	local layer_name = "Statics"
@@ -325,7 +325,7 @@ CoreEditorGroups.load_group_file = function (self, path)
 
 	return 
 end
-CoreEditorGroups.parse_light = function (self, unit, node)
+function CoreEditorGroups:parse_light(unit, node)
 	slot5 = unit
 	slot11 = "name"
 	local light = unit.get_object(slot4, Idstring(node.parameter(slot9, node)))
@@ -385,7 +385,7 @@ CoreEditorGroups.parse_light = function (self, unit, node)
 
 	return 
 end
-CoreEditorGroups.parse_variation = function (self, unit, node)
+function CoreEditorGroups:parse_variation(unit, node)
 	slot6 = "value"
 	local variation = node.parameter(slot4, node)
 
@@ -400,7 +400,7 @@ CoreEditorGroups.parse_variation = function (self, unit, node)
 
 	return 
 end
-CoreEditorGroups.parse_material_variation = function (self, unit, node)
+function CoreEditorGroups:parse_material_variation(unit, node)
 	slot6 = "value"
 	local material_variation = node.parameter(slot4, node)
 
@@ -414,7 +414,7 @@ CoreEditorGroups.parse_material_variation = function (self, unit, node)
 
 	return 
 end
-CoreEditorGroups.parse_editable_gui = function (self, unit, node)
+function CoreEditorGroups:parse_editable_gui(unit, node)
 	slot5 = unit
 	slot5 = unit.editable_gui(slot4)
 
@@ -488,7 +488,7 @@ CoreEditorGroups.parse_editable_gui = function (self, unit, node)
 	return 
 end
 CoreEditorGroup = CoreEditorGroup or class()
-CoreEditorGroup.init = function (self, name, reference, units)
+function CoreEditorGroup:init(name, reference, units)
 	self._name = name
 	self._reference = reference
 	self._units = {}
@@ -506,29 +506,29 @@ CoreEditorGroup.init = function (self, name, reference, units)
 
 	return 
 end
-CoreEditorGroup.closed = function (self)
+function CoreEditorGroup:closed()
 	return self._closed
 end
-CoreEditorGroup.set_closed = function (self, closed)
+function CoreEditorGroup:set_closed(closed)
 	self._closed = closed
 
 	return 
 end
-CoreEditorGroup.name = function (self)
+function CoreEditorGroup:name()
 	return self._name
 end
-CoreEditorGroup.units = function (self)
+function CoreEditorGroup:units()
 	return self._units
 end
-CoreEditorGroup.continent = function (self)
+function CoreEditorGroup:continent()
 	return self._continent
 end
-CoreEditorGroup.set_continent = function (self, continent)
+function CoreEditorGroup:set_continent(continent)
 	self._continent = continent
 
 	return 
 end
-CoreEditorGroup.continent_name = function (self)
+function CoreEditorGroup:continent_name()
 	slot1 = tostring
 
 	if self._continent then
@@ -538,10 +538,10 @@ CoreEditorGroup.continent_name = function (self)
 
 	return slot1(slot2)
 end
-CoreEditorGroup.add = function (self, units)
+function CoreEditorGroup:add(units)
 	return 
 end
-CoreEditorGroup.add_unit = function (self, unit)
+function CoreEditorGroup:add_unit(unit)
 	if not unit then
 		return 
 	end
@@ -558,7 +558,7 @@ CoreEditorGroup.add_unit = function (self, unit)
 
 	return 
 end
-CoreEditorGroup.remove_unit = function (self, unit)
+function CoreEditorGroup:remove_unit(unit)
 	table.delete(slot3, self._units)
 
 	slot6 = unit
@@ -578,7 +578,7 @@ CoreEditorGroup.remove_unit = function (self, unit)
 
 	return 
 end
-CoreEditorGroup.remove = function (self)
+function CoreEditorGroup:remove()
 	slot3 = self._units
 
 	for _, unit in ipairs(slot2) do
@@ -589,15 +589,15 @@ CoreEditorGroup.remove = function (self)
 
 	return 
 end
-CoreEditorGroup.reference = function (self)
+function CoreEditorGroup:reference()
 	return self._reference
 end
-CoreEditorGroup.set_reference = function (self, reference)
+function CoreEditorGroup:set_reference(reference)
 	self._reference = reference
 
 	return 
 end
-CoreEditorGroup.save_to_file = function (self)
+function CoreEditorGroup:save_to_file()
 	slot6 = "XML-file (*.xml)|*.xml"
 	slot9 = self
 	local path = managers.database.save_file_dialog(slot2, managers.database, Global.frame, true, self.name(slot8))
@@ -671,7 +671,7 @@ CoreEditorGroup.save_to_file = function (self)
 
 	return 
 end
-CoreEditorGroup.save_edited_settings = function (self, ...)
+function CoreEditorGroup:save_edited_settings(...)
 	slot3 = self
 
 	self.save_lights(slot2, ...)
@@ -686,7 +686,7 @@ CoreEditorGroup.save_edited_settings = function (self, ...)
 
 	return 
 end
-CoreEditorGroup.save_lights = function (self, file, t, unit, data_table)
+function CoreEditorGroup:save_lights(file, t, unit, data_table)
 	slot7 = unit
 	local lights = CoreEditorUtils.get_editable_lights(slot6) or {}
 	slot8 = lights
@@ -713,7 +713,7 @@ CoreEditorGroup.save_lights = function (self, file, t, unit, data_table)
 
 	return 
 end
-CoreEditorGroup.save_variation = function (self, file, t, unit, data_table)
+function CoreEditorGroup:save_variation(file, t, unit, data_table)
 	slot7 = unit
 
 	if unit.unit_data(slot6).mesh_variation then
@@ -743,7 +743,7 @@ CoreEditorGroup.save_variation = function (self, file, t, unit, data_table)
 
 	return 
 end
-CoreEditorGroup.save_editable_gui = function (self, file, t, unit, data_table)
+function CoreEditorGroup:save_editable_gui(file, t, unit, data_table)
 	slot7 = unit
 
 	if unit.editable_gui(slot6) then
@@ -783,7 +783,7 @@ CoreEditorGroup.save_editable_gui = function (self, file, t, unit, data_table)
 
 	return 
 end
-CoreEditorGroup.draw = function (self, t, dt)
+function CoreEditorGroup:draw(t, dt)
 	local i = 0.25
 	slot6 = managers.editor
 
@@ -824,7 +824,7 @@ if not GroupPresetsDialog then
 end
 
 GroupPresetsDialog = slot0
-GroupPresetsDialog.init = function (self, files, path)
+function GroupPresetsDialog:init(files, path)
 	self._path = path
 	slot13 = 0
 	slot14 = 0
@@ -935,7 +935,7 @@ GroupPresetsDialog.init = function (self, files, path)
 
 	return 
 end
-GroupPresetsDialog.select_group = function (self)
+function GroupPresetsDialog:select_group()
 	slot3 = self._list
 	local i = self._list.selected_index(slot2)
 
@@ -948,7 +948,7 @@ GroupPresetsDialog.select_group = function (self)
 
 	return 
 end
-GroupPresetsDialog.create_group = function (self)
+function GroupPresetsDialog:create_group()
 	if self._file then
 		if self._hide_on_create then
 			slot4 = false
@@ -964,7 +964,7 @@ GroupPresetsDialog.create_group = function (self)
 
 	return 
 end
-GroupPresetsDialog.hide_on_create = function (self, hide)
+function GroupPresetsDialog:hide_on_create(hide)
 	slot4 = hide
 	self._hide_on_create = hide.get_value(slot3)
 

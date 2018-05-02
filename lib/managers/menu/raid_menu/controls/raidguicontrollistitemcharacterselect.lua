@@ -16,7 +16,7 @@ RaidGUIControlListItemCharacterSelect.SLOTS = {
 		y = 0
 	}
 }
-RaidGUIControlListItemCharacterSelect.init = function (self, parent, params, item_data)
+function RaidGUIControlListItemCharacterSelect:init(parent, params, item_data)
 	slot9 = item_data
 
 	RaidGUIControlListItemCharacterSelect.super.init(slot5, self, parent, params)
@@ -55,7 +55,7 @@ RaidGUIControlListItemCharacterSelect.init = function (self, parent, params, ite
 
 	return 
 end
-RaidGUIControlListItemCharacterSelect._layout = function (self)
+function RaidGUIControlListItemCharacterSelect:_layout()
 	slot4 = {
 		visible = false,
 		y = 0,
@@ -108,7 +108,7 @@ RaidGUIControlListItemCharacterSelect._layout = function (self)
 
 	return 
 end
-RaidGUIControlListItemCharacterSelect._load_data = function (self)
+function RaidGUIControlListItemCharacterSelect:_load_data()
 	slot5 = true
 	local profile_name = self.translate(slot2, self, "character_selection_empty_slot")
 	local character_nationality = nil
@@ -204,7 +204,7 @@ RaidGUIControlListItemCharacterSelect._load_data = function (self)
 
 	return 
 end
-RaidGUIControlListItemCharacterSelect._layout_breadcrumb = function (self, character_nationality)
+function RaidGUIControlListItemCharacterSelect:_layout_breadcrumb(character_nationality)
 	local breadcrumb_params = {
 		category = BreadcrumbManager.CATEGORY_CHARACTER_CUSTOMIZATION,
 		identifiers = {
@@ -225,20 +225,20 @@ RaidGUIControlListItemCharacterSelect._layout_breadcrumb = function (self, chara
 
 	return 
 end
-RaidGUIControlListItemCharacterSelect.data = function (self)
+function RaidGUIControlListItemCharacterSelect:data()
 	return self._item_data
 end
-RaidGUIControlListItemCharacterSelect.inside = function (self, x, y)
+function RaidGUIControlListItemCharacterSelect:inside(x, y)
 	return slot3
 end
-RaidGUIControlListItemCharacterSelect.highlight_on = function (self)
+function RaidGUIControlListItemCharacterSelect:highlight_on()
 	slot3 = self._background
 
 	self._background.show(slot2)
 
 	return 
 end
-RaidGUIControlListItemCharacterSelect.highlight_off = function (self)
+function RaidGUIControlListItemCharacterSelect:highlight_off()
 
 	-- Decompilation error in this vicinity:
 	if not self._selected and not self._active and self._background and self._red_selected_line and self._background then
@@ -253,7 +253,7 @@ RaidGUIControlListItemCharacterSelect.highlight_off = function (self)
 
 	return 
 end
-RaidGUIControlListItemCharacterSelect.activate_on = function (self)
+function RaidGUIControlListItemCharacterSelect:activate_on()
 	slot3 = self._background
 
 	self._background.show(slot2)
@@ -272,7 +272,7 @@ RaidGUIControlListItemCharacterSelect.activate_on = function (self)
 
 	return 
 end
-RaidGUIControlListItemCharacterSelect.activate_off = function (self)
+function RaidGUIControlListItemCharacterSelect:activate_off()
 	slot3 = self
 
 	self.highlight_off(slot2)
@@ -309,7 +309,7 @@ RaidGUIControlListItemCharacterSelect.activate_off = function (self)
 
 	return 
 end
-RaidGUIControlListItemCharacterSelect.mouse_released = function (self, o, button, x, y)
+function RaidGUIControlListItemCharacterSelect:mouse_released(o, button, x, y)
 	if self._special_action_buttons then
 		slot7 = self._special_action_buttons
 
@@ -334,7 +334,7 @@ RaidGUIControlListItemCharacterSelect.mouse_released = function (self, o, button
 
 	return 
 end
-RaidGUIControlListItemCharacterSelect.on_mouse_released = function (self, button)
+function RaidGUIControlListItemCharacterSelect:on_mouse_released(button)
 	if self._on_click_callback then
 		slot7 = true
 
@@ -345,7 +345,7 @@ RaidGUIControlListItemCharacterSelect.on_mouse_released = function (self, button
 
 	return 
 end
-RaidGUIControlListItemCharacterSelect.confirm_pressed = function (self)
+function RaidGUIControlListItemCharacterSelect:confirm_pressed()
 	if not self._item_data or not self._item_data.cache then
 		slot3 = self._create_button
 
@@ -362,7 +362,7 @@ RaidGUIControlListItemCharacterSelect.confirm_pressed = function (self)
 
 	return 
 end
-RaidGUIControlListItemCharacterSelect.mouse_double_click = function (self, o, button, x, y)
+function RaidGUIControlListItemCharacterSelect:mouse_double_click(o, button, x, y)
 	if self._on_double_click_callback then
 		slot9 = self._character_slot
 
@@ -373,7 +373,7 @@ RaidGUIControlListItemCharacterSelect.mouse_double_click = function (self, o, bu
 
 	return 
 end
-RaidGUIControlListItemCharacterSelect.select = function (self, dont_trigger_selected_callback)
+function RaidGUIControlListItemCharacterSelect:select(dont_trigger_selected_callback)
 	self._selected = true
 	slot4 = self
 
@@ -427,7 +427,7 @@ RaidGUIControlListItemCharacterSelect.select = function (self, dont_trigger_sele
 
 	return 
 end
-RaidGUIControlListItemCharacterSelect.unselect = function (self)
+function RaidGUIControlListItemCharacterSelect:unselect()
 	self._selected = false
 	slot3 = self
 
@@ -465,10 +465,10 @@ RaidGUIControlListItemCharacterSelect.unselect = function (self)
 
 	return 
 end
-RaidGUIControlListItemCharacterSelect.selected = function (self)
+function RaidGUIControlListItemCharacterSelect:selected()
 	return self._selected
 end
-RaidGUIControlListItemCharacterSelect.activate = function (self)
+function RaidGUIControlListItemCharacterSelect:activate()
 	self._active = true
 	slot3 = self
 
@@ -480,7 +480,7 @@ RaidGUIControlListItemCharacterSelect.activate = function (self)
 
 	return 
 end
-RaidGUIControlListItemCharacterSelect.deactivate = function (self)
+function RaidGUIControlListItemCharacterSelect:deactivate()
 	self._active = false
 	slot3 = self
 
@@ -488,13 +488,13 @@ RaidGUIControlListItemCharacterSelect.deactivate = function (self)
 
 	return 
 end
-RaidGUIControlListItemCharacterSelect.activated = function (self)
+function RaidGUIControlListItemCharacterSelect:activated()
 	return self._active
 end
-RaidGUIControlListItemCharacterSelect.empty = function (self)
+function RaidGUIControlListItemCharacterSelect:empty()
 	return not self._item_data or not self._item_data.cache
 end
-RaidGUIControlListItemCharacterSelect._set_button_slot = function (self, button_ref, slot_index)
+function RaidGUIControlListItemCharacterSelect:_set_button_slot(button_ref, slot_index)
 	slot6 = RaidGUIControlListItemCharacterSelect.SLOTS[slot_index].x
 
 	button_ref.set_x(slot4, button_ref)

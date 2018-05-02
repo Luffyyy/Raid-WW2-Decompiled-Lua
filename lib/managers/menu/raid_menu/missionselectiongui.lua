@@ -39,7 +39,7 @@ MissionSelectionGui.PAPER_STAMP_ICON_CONSUMABLE = "icon_paper_stamp_consumable"
 MissionSelectionGui.SETTINGS_PADDING = 32
 MissionSelectionGui.DISPLAY_FIRST = "first"
 MissionSelectionGui.DISPLAY_SECOND = "second"
-MissionSelectionGui.init = function (self, ws, fullscreen_ws, node, component_name)
+function MissionSelectionGui:init(ws, fullscreen_ws, node, component_name)
 	self._settings_selected = {}
 	self._selected_column = "left"
 	self._selected_tab = "left"
@@ -102,7 +102,7 @@ MissionSelectionGui.init = function (self, ws, fullscreen_ws, node, component_na
 
 	return 
 end
-MissionSelectionGui._set_initial_data = function (self)
+function MissionSelectionGui:_set_initial_data()
 	slot4 = "menu_header_missions_screen_name"
 
 	self._node.components.raid_menu_header.set_screen_name(slot2, self._node.components.raid_menu_header)
@@ -115,7 +115,7 @@ MissionSelectionGui._set_initial_data = function (self)
 
 	return 
 end
-MissionSelectionGui.close = function (self)
+function MissionSelectionGui:close()
 	slot3 = self._primary_paper
 
 	self._primary_paper.stop(slot2)
@@ -138,7 +138,7 @@ MissionSelectionGui.close = function (self)
 
 	return 
 end
-MissionSelectionGui._layout = function (self)
+function MissionSelectionGui:_layout()
 	slot3 = self
 
 	MissionSelectionGui.super._layout(slot2)
@@ -247,7 +247,7 @@ MissionSelectionGui._layout = function (self)
 
 	return 
 end
-MissionSelectionGui._layout_lists = function (self)
+function MissionSelectionGui:_layout_lists()
 	local list_panel_params = {
 		name = "list_panel",
 		h = 690,
@@ -351,7 +351,7 @@ MissionSelectionGui._layout_lists = function (self)
 
 	return 
 end
-MissionSelectionGui._layout_slot_list = function (self)
+function MissionSelectionGui:_layout_slot_list()
 	if self._slot_list_panel then
 		slot3 = self._slot_list_panel
 
@@ -407,7 +407,7 @@ MissionSelectionGui._layout_slot_list = function (self)
 
 	return 
 end
-MissionSelectionGui._layout_operations_list = function (self)
+function MissionSelectionGui:_layout_operations_list()
 	local operations_list_panel_params = {
 		visible = false,
 		name = "operations_list_panel"
@@ -447,7 +447,7 @@ MissionSelectionGui._layout_operations_list = function (self)
 
 	return 
 end
-MissionSelectionGui._layout_raid_wrapper_panel = function (self)
+function MissionSelectionGui:_layout_raid_wrapper_panel()
 	local raid_wrapper_panel_params = {
 		name = "raid_wrapper_panel",
 		y = 0,
@@ -462,7 +462,7 @@ MissionSelectionGui._layout_raid_wrapper_panel = function (self)
 
 	return 
 end
-MissionSelectionGui._layout_right_panel = function (self)
+function MissionSelectionGui:_layout_right_panel()
 	local right_panel_params = {
 		name = "right_panel",
 		h = 640,
@@ -480,7 +480,7 @@ MissionSelectionGui._layout_right_panel = function (self)
 
 	return 
 end
-MissionSelectionGui._layout_settings = function (self)
+function MissionSelectionGui:_layout_settings()
 	slot4 = "[MissionSelectionGui:_layout_settings]"
 
 	Application.trace(slot2, Application)
@@ -624,7 +624,7 @@ MissionSelectionGui._layout_settings = function (self)
 
 	return 
 end
-MissionSelectionGui._layout_operation_tutorialization = function (self)
+function MissionSelectionGui:_layout_operation_tutorialization()
 	local operation_tutorialization_panel_params = {
 		alpha = 0,
 		name = "operation_tutorialization"
@@ -662,7 +662,7 @@ MissionSelectionGui._layout_operation_tutorialization = function (self)
 
 	return 
 end
-MissionSelectionGui._layout_settings_offline = function (self)
+function MissionSelectionGui:_layout_settings_offline()
 	slot4 = "[MissionSelectionGui:_layout_settings_offline]"
 
 	Application.trace(slot2, Application)
@@ -725,7 +725,7 @@ MissionSelectionGui._layout_settings_offline = function (self)
 
 	return 
 end
-MissionSelectionGui._layout_difficulty_warning = function (self)
+function MissionSelectionGui:_layout_difficulty_warning()
 	local difficulty_warning_panel_params = {
 		name = "difficulty_warning_panel"
 	}
@@ -758,7 +758,7 @@ MissionSelectionGui._layout_difficulty_warning = function (self)
 
 	return 
 end
-MissionSelectionGui._layout_folder_front_page = function (self)
+function MissionSelectionGui:_layout_folder_front_page()
 	local front_page_panel_params = {
 		name = "front_page_panel",
 		halign = "center",
@@ -849,7 +849,7 @@ MissionSelectionGui._layout_folder_front_page = function (self)
 
 	return 
 end
-MissionSelectionGui._layout_primary_paper = function (self)
+function MissionSelectionGui:_layout_primary_paper()
 	local paper_image = "menu_paper"
 	local soe_emblem_image = "icon_paper_stamp"
 	local primary_paper_panel_params = {
@@ -965,7 +965,7 @@ MissionSelectionGui._layout_primary_paper = function (self)
 
 	return 
 end
-MissionSelectionGui._layout_raid_description = function (self)
+function MissionSelectionGui:_layout_raid_description()
 	local mission_description_params = {
 		w = 432,
 		name = "mission_descripton",
@@ -990,7 +990,7 @@ MissionSelectionGui._layout_raid_description = function (self)
 
 	return 
 end
-MissionSelectionGui._layout_operation_progress_text = function (self)
+function MissionSelectionGui:_layout_operation_progress_text()
 	local operation_progress_panel_params = {
 		name = "operation_progress_panel",
 		h = 490,
@@ -1024,7 +1024,7 @@ MissionSelectionGui._layout_operation_progress_text = function (self)
 
 	return 
 end
-MissionSelectionGui._layout_operation_list = function (self)
+function MissionSelectionGui:_layout_operation_list()
 	local operation_list_panel_params = {
 		name = "operation_list_panel",
 		h = 448,
@@ -1079,7 +1079,7 @@ MissionSelectionGui._layout_operation_list = function (self)
 
 	return 
 end
-MissionSelectionGui._layout_intel_image_grid = function (self)
+function MissionSelectionGui:_layout_intel_image_grid()
 	local intel_image_grid_params = {
 		name = "intel_image_grid",
 		y = 128,
@@ -1105,14 +1105,14 @@ MissionSelectionGui._layout_intel_image_grid = function (self)
 
 	return 
 end
-MissionSelectionGui._on_intel_image_selected = function (self, image_index, image_data)
+function MissionSelectionGui:_on_intel_image_selected(image_index, image_data)
 	slot8 = image_data.description_id
 
 	self._intel_image_details.set_image(slot4, self._intel_image_details, image_data.photo, image_data.title_id)
 
 	return 
 end
-MissionSelectionGui._layout_info_buttons = function (self)
+function MissionSelectionGui:_layout_info_buttons()
 	local wrapper_panel_padding = 10
 	local info_buttons_panel_params = {
 		name = "info_buttons_panel",
@@ -1214,7 +1214,7 @@ MissionSelectionGui._layout_info_buttons = function (self)
 
 	return 
 end
-MissionSelectionGui._layout_secondary_paper = function (self)
+function MissionSelectionGui:_layout_secondary_paper()
 	local paper_image = "menu_paper"
 	local soe_emblem_image = "icon_paper_stamp"
 	local secondary_paper_panel_params = {
@@ -1280,7 +1280,7 @@ MissionSelectionGui._layout_secondary_paper = function (self)
 
 	return 
 end
-MissionSelectionGui._layout_secondary_intel = function (self)
+function MissionSelectionGui:_layout_secondary_intel()
 	local intel_image_details_params = {
 		name = "intel_image_details",
 		x = 35,
@@ -1292,7 +1292,7 @@ MissionSelectionGui._layout_secondary_intel = function (self)
 
 	return 
 end
-MissionSelectionGui._layout_secondary_save_info = function (self)
+function MissionSelectionGui:_layout_secondary_save_info()
 	local save_info_params = {
 		name = "save_info",
 		y = 0,
@@ -1309,7 +1309,7 @@ MissionSelectionGui._layout_secondary_save_info = function (self)
 
 	return 
 end
-MissionSelectionGui._layout_start_button = function (self)
+function MissionSelectionGui:_layout_start_button()
 	local raid_start_button_params = {
 		name = "raid_start_button",
 		x = 6,
@@ -1359,7 +1359,7 @@ MissionSelectionGui._layout_start_button = function (self)
 
 	return 
 end
-MissionSelectionGui._layout_start_disabled_message = function (self)
+function MissionSelectionGui:_layout_start_disabled_message()
 	local start_disabled_message_params = {
 		name = "start_disabled_message",
 		vertical = "center",
@@ -1381,7 +1381,7 @@ MissionSelectionGui._layout_start_disabled_message = function (self)
 
 	return 
 end
-MissionSelectionGui._layout_delete_button = function (self)
+function MissionSelectionGui:_layout_delete_button()
 	local save_delete_button_params = {
 		name = "save_delete_button",
 		x = 6,
@@ -1413,7 +1413,7 @@ MissionSelectionGui._layout_delete_button = function (self)
 
 	return 
 end
-MissionSelectionGui._layout_progression_unlock_timer = function (self)
+function MissionSelectionGui:_layout_progression_unlock_timer()
 
 	-- Decompilation error in this vicinity:
 	local progression_timer_panel_params = {
@@ -1532,7 +1532,7 @@ MissionSelectionGui._layout_progression_unlock_timer = function (self)
 
 	return 
 end
-MissionSelectionGui._create_video_panels = function (self)
+function MissionSelectionGui:_create_video_panels()
 	slot3 = managers.gui_data
 	self._fullscreen_ws = managers.gui_data.create_fullscreen_16_9_workspace(slot2)
 	slot3 = self._fullscreen_ws
@@ -1549,7 +1549,7 @@ MissionSelectionGui._create_video_panels = function (self)
 
 	return 
 end
-MissionSelectionGui._play_operations_intro_video = function (self)
+function MissionSelectionGui:_play_operations_intro_video()
 	local operations_intro_video = "movies/vanilla/operation_briefings/global/03_operation_brief_op-c3_v004"
 	slot5 = operations_intro_video
 	local operations_intro_video_id = tweak_data.intel.get_control_video_by_path(slot3, tweak_data.intel)
@@ -1672,7 +1672,7 @@ MissionSelectionGui._play_operations_intro_video = function (self)
 
 	return 
 end
-MissionSelectionGui._animate_show_press_any_key_prompt = function (self, prompt)
+function MissionSelectionGui:_animate_show_press_any_key_prompt(prompt)
 	local duration = 0.7
 	local t = 0
 	slot6 = 3
@@ -1695,7 +1695,7 @@ MissionSelectionGui._animate_show_press_any_key_prompt = function (self, prompt)
 
 	return 
 end
-MissionSelectionGui._animate_change_press_any_key_prompt = function (self, prompt)
+function MissionSelectionGui:_animate_change_press_any_key_prompt(prompt)
 	local fade_out_duration = 0.25
 	slot5 = prompt
 	local t = (1 - prompt.alpha(slot4)) * fade_out_duration
@@ -1754,7 +1754,7 @@ MissionSelectionGui._animate_change_press_any_key_prompt = function (self, promp
 
 	return 
 end
-MissionSelectionGui.on_controller_hotswap = function (self)
+function MissionSelectionGui:on_controller_hotswap()
 	slot4 = "press_any_key_prompt"
 	local press_any_key_prompt = self._safe_panel.child(slot2, self._safe_panel)
 
@@ -1771,14 +1771,14 @@ MissionSelectionGui.on_controller_hotswap = function (self)
 
 	return 
 end
-MissionSelectionGui.update = function (self, t, dt)
+function MissionSelectionGui:update(t, dt)
 	if self._playing_briefing_video then
 		slot5 = self
 	end
 
 	return 
 end
-MissionSelectionGui._destroy_operations_intro_video = function (self)
+function MissionSelectionGui:_destroy_operations_intro_video()
 	slot3 = self._control_briefing_video
 
 	self._control_briefing_video.destroy(slot2)
@@ -1828,7 +1828,7 @@ MissionSelectionGui._destroy_operations_intro_video = function (self)
 
 	return true
 end
-MissionSelectionGui.is_playing = function (self)
+function MissionSelectionGui:is_playing()
 	slot3 = self._control_briefing_video
 
 	if alive(slot2) then
@@ -1841,7 +1841,7 @@ MissionSelectionGui.is_playing = function (self)
 
 	return 
 end
-MissionSelectionGui.is_skipped = function (self)
+function MissionSelectionGui:is_skipped()
 	slot3 = self._controller_list
 
 	for _, controller in ipairs(slot2) do
@@ -1854,7 +1854,7 @@ MissionSelectionGui.is_skipped = function (self)
 
 	return false
 end
-MissionSelectionGui._finish_video = function (self)
+function MissionSelectionGui:_finish_video()
 	slot4 = "menu_volume_reset"
 
 	managers.menu_component.post_event(slot2, managers.menu_component)
@@ -1885,7 +1885,7 @@ MissionSelectionGui._finish_video = function (self)
 
 	return 
 end
-MissionSelectionGui._on_mission_type_changed = function (self, mission_type)
+function MissionSelectionGui:_on_mission_type_changed(mission_type)
 	self._current_mission_type = mission_type
 
 	if mission_type == "raids" then
@@ -1900,7 +1900,7 @@ MissionSelectionGui._on_mission_type_changed = function (self, mission_type)
 
 	return 
 end
-MissionSelectionGui._select_raids_tab = function (self)
+function MissionSelectionGui:_select_raids_tab()
 	self._selected_save_slot = nil
 	self._continue_slot_selected = nil
 	slot4 = false
@@ -1933,7 +1933,7 @@ MissionSelectionGui._select_raids_tab = function (self)
 
 	return 
 end
-MissionSelectionGui._select_operations_tab = function (self)
+function MissionSelectionGui:_select_operations_tab()
 	slot4 = false
 
 	self._raid_list.set_selected(slot2, self._raid_list)
@@ -1960,10 +1960,10 @@ MissionSelectionGui._select_operations_tab = function (self)
 
 	return 
 end
-MissionSelectionGui._select_raid = function (self, raid)
+function MissionSelectionGui:_select_raid(raid)
 	return 
 end
-MissionSelectionGui._on_start_button_click = function (self)
+function MissionSelectionGui:_on_start_button_click()
 	slot3 = managers.challenge_cards
 
 	managers.challenge_cards.remove_active_challenge_card(slot2)
@@ -1984,7 +1984,7 @@ MissionSelectionGui._on_start_button_click = function (self)
 
 	return 
 end
-MissionSelectionGui._on_delete_button_click = function (self)
+function MissionSelectionGui:_on_delete_button_click()
 	local selected_job = managers.raid_job.get_save_slots(slot2)[self._continue_slot_selected].current_job
 	slot4 = managers.raid_job
 	local current_job = managers.raid_job.current_job(managers.raid_job)
@@ -2002,7 +2002,7 @@ MissionSelectionGui._on_delete_button_click = function (self)
 
 	return 
 end
-MissionSelectionGui.on_save_slot_delete_confirmed = function (self)
+function MissionSelectionGui:on_save_slot_delete_confirmed()
 	if self._continue_slot_selected then
 		slot4 = self._continue_slot_selected
 
@@ -2029,10 +2029,10 @@ MissionSelectionGui.on_save_slot_delete_confirmed = function (self)
 
 	return 
 end
-MissionSelectionGui._select_save_slot = function (self, slot)
+function MissionSelectionGui:_select_save_slot(slot)
 	return 
 end
-MissionSelectionGui._set_settings_enabled = function (self, enabled)
+function MissionSelectionGui:_set_settings_enabled(enabled)
 	slot4 = self._settings_controls
 
 	for index, setting_control in pairs(slot3) do
@@ -2043,7 +2043,7 @@ MissionSelectionGui._set_settings_enabled = function (self, enabled)
 
 	return 
 end
-MissionSelectionGui._on_raid_clicked = function (self, raid_data)
+function MissionSelectionGui:_on_raid_clicked(raid_data)
 	if self._selected_job_id and self._selected_job_id == raid_data.value then
 		return 
 	end
@@ -2252,20 +2252,20 @@ MissionSelectionGui._on_raid_clicked = function (self, raid_data)
 
 	return 
 end
-MissionSelectionGui.play_short_audio_briefing = function (self, briefing_id)
+function MissionSelectionGui:play_short_audio_briefing(briefing_id)
 	slot5 = briefing_id
 	self._briefing_audio = managers.menu_component.post_event(slot3, managers.menu_component)
 
 	return 
 end
-MissionSelectionGui._on_raid_selected = function (self, raid_data)
+function MissionSelectionGui:_on_raid_selected(raid_data)
 	slot5 = raid_data
 
 	self._on_raid_clicked(slot3, self)
 
 	return 
 end
-MissionSelectionGui._on_mission_list_double_clicked = function (self, raid_data)
+function MissionSelectionGui:_on_mission_list_double_clicked(raid_data)
 
 	-- Decompilation error in this vicinity:
 	slot6 = raid_data.value
@@ -2274,7 +2274,7 @@ MissionSelectionGui._on_mission_list_double_clicked = function (self, raid_data)
 
 	return 
 end
-MissionSelectionGui._on_slot_double_clicked = function (self, slot_data)
+function MissionSelectionGui:_on_slot_double_clicked(slot_data)
 
 	-- Decompilation error in this vicinity:
 	slot4 = managers.progression
@@ -2293,7 +2293,7 @@ MissionSelectionGui._on_slot_double_clicked = function (self, slot_data)
 
 	return 
 end
-MissionSelectionGui._display_second_screen = function (self)
+function MissionSelectionGui:_display_second_screen()
 	self._current_display = MissionSelectionGui.DISPLAY_SECOND
 	slot3 = self._primary_lists_panel
 
@@ -2351,7 +2351,7 @@ MissionSelectionGui._display_second_screen = function (self)
 
 	return true, nil
 end
-MissionSelectionGui._display_first_screen = function (self)
+function MissionSelectionGui:_display_first_screen()
 	self._current_display = MissionSelectionGui.DISPLAY_FIRST
 	slot3 = self._primary_lists_panel
 
@@ -2396,7 +2396,7 @@ MissionSelectionGui._display_first_screen = function (self)
 
 	return true, nil
 end
-MissionSelectionGui._on_operation_selected = function (self, operation_data)
+function MissionSelectionGui:_on_operation_selected(operation_data)
 	self._selected_new_operation_index = operation_data.index
 
 	if self._selected_job_id ~= operation_data.value then
@@ -2519,21 +2519,21 @@ MissionSelectionGui._on_operation_selected = function (self, operation_data)
 
 	return 
 end
-MissionSelectionGui._on_operation_list_selected = function (self)
+function MissionSelectionGui:_on_operation_list_selected()
 	slot3 = self
 
 	self._bind_operation_list_controller_inputs(slot2)
 
 	return 
 end
-MissionSelectionGui._on_operation_list_unselected = function (self)
+function MissionSelectionGui:_on_operation_list_unselected()
 	slot3 = self
 
 	self._bind_empty_slot_controller_inputs(slot2)
 
 	return 
 end
-MissionSelectionGui._on_slot_clicked = function (self, slot_data)
+function MissionSelectionGui:_on_slot_clicked(slot_data)
 	if self._selected_save_slot == slot_data.value then
 		return 
 	end
@@ -2654,14 +2654,14 @@ MissionSelectionGui._on_slot_clicked = function (self, slot_data)
 
 	return 
 end
-MissionSelectionGui._on_slot_selected = function (self, slot_data)
+function MissionSelectionGui:_on_slot_selected(slot_data)
 	slot5 = slot_data
 
 	self._on_slot_clicked(slot3, self)
 
 	return 
 end
-MissionSelectionGui.set_current_slot_progress_report = function (self)
+function MissionSelectionGui:set_current_slot_progress_report()
 	slot3 = managers.raid_job
 	local save_slots = managers.raid_job.get_save_slots(slot2)
 
@@ -2684,7 +2684,7 @@ MissionSelectionGui.set_current_slot_progress_report = function (self)
 
 	return 
 end
-MissionSelectionGui._on_save_selected = function (self)
+function MissionSelectionGui:_on_save_selected()
 	self._selected_job_id = nil
 	self._selected_new_operation_index = nil
 	self._continue_slot_selected = self._selected_save_slot
@@ -2781,7 +2781,7 @@ MissionSelectionGui._on_save_selected = function (self)
 
 	return 
 end
-MissionSelectionGui._on_empty_slot_selected = function (self)
+function MissionSelectionGui:_on_empty_slot_selected()
 	self._continue_slot_selected = nil
 	self._selected_job_id = nil
 	slot3 = self._save_delete_button
@@ -2839,7 +2839,7 @@ MissionSelectionGui._on_empty_slot_selected = function (self)
 
 	return 
 end
-MissionSelectionGui._on_locked_raid_clicked = function (self)
+function MissionSelectionGui:_on_locked_raid_clicked()
 	slot3 = self._info_button
 
 	self._info_button.disable(slot2)
@@ -2902,7 +2902,7 @@ MissionSelectionGui._on_locked_raid_clicked = function (self)
 
 	return 
 end
-MissionSelectionGui._on_info_clicked = function (self, secondary_paper_callback, force)
+function MissionSelectionGui:_on_info_clicked(secondary_paper_callback, force)
 	slot5 = self._info_button
 
 	if self._info_button.active(slot4) and force ~= true then
@@ -3056,7 +3056,7 @@ MissionSelectionGui._on_info_clicked = function (self, secondary_paper_callback,
 
 	return 
 end
-MissionSelectionGui._prepare_intel_image_for_selected_job = function (self)
+function MissionSelectionGui:_prepare_intel_image_for_selected_job()
 	if self._selected_job_id then
 		local first_n_missions = nil
 
@@ -3087,10 +3087,10 @@ MissionSelectionGui._prepare_intel_image_for_selected_job = function (self)
 
 	return 
 end
-MissionSelectionGui._prepare_intel_image_for_selected_save = function (self, ...)
+function MissionSelectionGui:_prepare_intel_image_for_selected_save(...)
 	return 
 end
-MissionSelectionGui._on_intel_clicked = function (self)
+function MissionSelectionGui:_on_intel_clicked()
 	slot3 = self._intel_button
 
 	if self._intel_button.active(slot2) then
@@ -3187,7 +3187,7 @@ MissionSelectionGui._on_intel_clicked = function (self)
 
 	return 
 end
-MissionSelectionGui._on_audio_clicked = function (self)
+function MissionSelectionGui:_on_audio_clicked()
 	local job_id = self._selected_job_id
 
 	if not job_id then
@@ -3208,7 +3208,7 @@ MissionSelectionGui._on_audio_clicked = function (self)
 
 	return 
 end
-MissionSelectionGui._stop_mission_briefing_audio = function (self)
+function MissionSelectionGui:_stop_mission_briefing_audio()
 	slot4 = "play_short_audio_briefing"
 
 	managers.queued_tasks.unqueue(slot2, managers.queued_tasks)
@@ -3235,7 +3235,7 @@ MissionSelectionGui._stop_mission_briefing_audio = function (self)
 
 	return 
 end
-MissionSelectionGui._hide_all_secondary_panels = function (self)
+function MissionSelectionGui:_hide_all_secondary_panels()
 	slot4 = 0
 
 	self._intel_image_details.set_alpha(slot2, self._intel_image_details)
@@ -3254,14 +3254,14 @@ MissionSelectionGui._hide_all_secondary_panels = function (self)
 
 	return 
 end
-MissionSelectionGui._on_difficulty_selected = function (self, data)
+function MissionSelectionGui:_on_difficulty_selected(data)
 	slot4 = self
 
 	self._check_difficulty_warning(slot3)
 
 	return 
 end
-MissionSelectionGui.data_source_difficulty_stepper = function (self)
+function MissionSelectionGui:data_source_difficulty_stepper()
 	local difficulties = {}
 	slot5 = {
 		value = "difficulty_1",
@@ -3301,7 +3301,7 @@ MissionSelectionGui.data_source_difficulty_stepper = function (self)
 
 	return difficulties
 end
-MissionSelectionGui.set_difficulty_stepper_data = function (self, difficulty_available, difficulty_completed)
+function MissionSelectionGui:set_difficulty_stepper_data(difficulty_available, difficulty_completed)
 	if not difficulty_available then
 		slot5 = tweak_data
 		difficulty_available = tweak_data.number_of_difficulties(slot4)
@@ -3328,7 +3328,7 @@ MissionSelectionGui.set_difficulty_stepper_data = function (self, difficulty_ava
 
 	return 
 end
-MissionSelectionGui._check_difficulty_warning = function (self)
+function MissionSelectionGui:_check_difficulty_warning()
 	if self._selected_job_id and tweak_data.operations.missions[self._selected_job_id].consumable then
 		slot3 = self._difficulty_warning_panel
 		slot3 = self._difficulty_warning_panel.get_engine_panel(slot2)
@@ -3447,7 +3447,7 @@ MissionSelectionGui._check_difficulty_warning = function (self)
 
 	return 
 end
-MissionSelectionGui._animate_set_difficulty_warning_message = function (self, o, message)
+function MissionSelectionGui:_animate_set_difficulty_warning_message(o, message)
 	local fade_out_duration = 0.2
 	local t = (1 - self._difficulty_warning.alpha(slot5)) * fade_out_duration
 	slot7 = self._difficulty_warning
@@ -3498,7 +3498,7 @@ MissionSelectionGui._animate_set_difficulty_warning_message = function (self, o,
 
 	return 
 end
-MissionSelectionGui._animate_hide_difficulty_warning_message = function (self, o)
+function MissionSelectionGui:_animate_hide_difficulty_warning_message(o)
 	local fade_out_duration = 0.2
 	slot5 = self._difficulty_warning
 	local t = (1 - self._difficulty_warning.alpha(slot4)) * fade_out_duration
@@ -3519,7 +3519,7 @@ MissionSelectionGui._animate_hide_difficulty_warning_message = function (self, o
 
 	return 
 end
-MissionSelectionGui._animate_slide_in_difficulty_warning_message = function (self, o, message)
+function MissionSelectionGui:_animate_slide_in_difficulty_warning_message(o, message)
 	local slide_duration = 0.4
 	self._difficulty_warning_slide_animation_t = self._difficulty_warning_slide_animation_t or 0
 	local t = self._difficulty_warning_slide_animation_t * slide_duration
@@ -3571,7 +3571,7 @@ MissionSelectionGui._animate_slide_in_difficulty_warning_message = function (sel
 
 	return 
 end
-MissionSelectionGui._animate_slide_out_difficulty_warning_message = function (self, o)
+function MissionSelectionGui:_animate_slide_out_difficulty_warning_message(o)
 	local slide_duration = 0.4
 	self._difficulty_warning_slide_animation_t = self._difficulty_warning_slide_animation_t or 0
 	local t = (1 - self._difficulty_warning_slide_animation_t) * slide_duration
@@ -3614,10 +3614,10 @@ MissionSelectionGui._animate_slide_out_difficulty_warning_message = function (se
 
 	return 
 end
-MissionSelectionGui._on_permission_selected = function (self, data)
+function MissionSelectionGui:_on_permission_selected(data)
 	return 
 end
-MissionSelectionGui.data_source_permission_stepper = function (self)
+function MissionSelectionGui:data_source_permission_stepper()
 	local permissions = {}
 	slot5 = {
 		value = "public",
@@ -3648,16 +3648,16 @@ MissionSelectionGui.data_source_permission_stepper = function (self)
 
 	return permissions
 end
-MissionSelectionGui._on_toggle_drop_in = function (self, button, control, value)
+function MissionSelectionGui:_on_toggle_drop_in(button, control, value)
 	return 
 end
-MissionSelectionGui._on_toggle_team_ai = function (self, button, control, value)
+function MissionSelectionGui:_on_toggle_team_ai(button, control, value)
 	return 
 end
-MissionSelectionGui._on_toggle_auto_kick = function (self, button, control, value)
+function MissionSelectionGui:_on_toggle_auto_kick(button, control, value)
 	return 
 end
-MissionSelectionGui._raid_list_data_source = function (self)
+function MissionSelectionGui:_raid_list_data_source()
 	local non_consumable_list = {}
 	local consumable_list = {}
 	slot7 = tweak_data.operations
@@ -3746,7 +3746,7 @@ MissionSelectionGui._raid_list_data_source = function (self)
 
 	return raid_list
 end
-MissionSelectionGui._operation_list_data_source = function (self)
+function MissionSelectionGui:_operation_list_data_source()
 	local operation_list = {}
 	slot6 = tweak_data.operations
 
@@ -3778,7 +3778,7 @@ MissionSelectionGui._operation_list_data_source = function (self)
 
 	return operation_list
 end
-MissionSelectionGui._slot_list_data_source = function (self)
+function MissionSelectionGui:_slot_list_data_source()
 	slot3 = managers.raid_job
 	local current_save_slots = managers.raid_job.get_save_slots(slot2)
 	local slot_list = {}
@@ -3816,7 +3816,7 @@ MissionSelectionGui._slot_list_data_source = function (self)
 
 	return slot_list
 end
-MissionSelectionGui._continue_operation = function (self)
+function MissionSelectionGui:_continue_operation()
 	if self._continue_slot_selected then
 		slot4 = self._continue_slot_selected
 
@@ -3846,7 +3846,7 @@ MissionSelectionGui._continue_operation = function (self)
 
 	return 
 end
-MissionSelectionGui._start_job = function (self, job_id)
+function MissionSelectionGui:_start_job(job_id)
 	local difficulty = self._difficulty_stepper.get_value(slot3)
 	slot5 = self._team_ai_checkbox
 	local team_ai = self._team_ai_checkbox.get_value(self._difficulty_stepper)
@@ -3909,7 +3909,7 @@ MissionSelectionGui._start_job = function (self, job_id)
 
 	return 
 end
-MissionSelectionGui._select_mission = function (self, job_id)
+function MissionSelectionGui:_select_mission(job_id)
 	self._selected_job_id = job_id
 	slot5 = job_id
 	local job_data = tweak_data.operations.mission_data(slot3, tweak_data.operations)
@@ -3921,12 +3921,12 @@ MissionSelectionGui._select_mission = function (self, job_id)
 
 	return 
 end
-MissionSelectionGui._select_slot = function (self, slot)
+function MissionSelectionGui:_select_slot(slot)
 	self._selected_operation_save_slot = slot
 
 	return 
 end
-MissionSelectionGui._animate_change_primary_paper_control = function (self, control, mid_callback, new_active_control)
+function MissionSelectionGui:_animate_change_primary_paper_control(control, mid_callback, new_active_control)
 	local fade_out_duration = 0.2
 	local t = nil
 
@@ -3984,7 +3984,7 @@ MissionSelectionGui._animate_change_primary_paper_control = function (self, cont
 
 	return 
 end
-MissionSelectionGui._animate_change_secondary_paper_control = function (self, control, mid_callback, new_active_control)
+function MissionSelectionGui:_animate_change_secondary_paper_control(control, mid_callback, new_active_control)
 	local fade_out_duration = 0.2
 	slot7 = self._active_secondary_paper_control
 	local t = (1 - self._active_secondary_paper_control.alpha(slot6)) * fade_out_duration
@@ -4036,7 +4036,7 @@ MissionSelectionGui._animate_change_secondary_paper_control = function (self, co
 
 	return 
 end
-MissionSelectionGui._animate_show_secondary_paper = function (self)
+function MissionSelectionGui:_animate_show_secondary_paper()
 	local duration = 0.5
 	local t = self._paper_animation_t * duration
 	slot6 = false
@@ -4135,7 +4135,7 @@ MissionSelectionGui._animate_show_secondary_paper = function (self)
 
 	return 
 end
-MissionSelectionGui._animate_hide_secondary_paper = function (self)
+function MissionSelectionGui:_animate_hide_secondary_paper()
 	local duration = 0.5
 	local t = (1 - self._paper_animation_t) * duration
 	slot6 = true
@@ -4234,7 +4234,7 @@ MissionSelectionGui._animate_hide_secondary_paper = function (self)
 
 	return 
 end
-MissionSelectionGui._animate_show_front_page = function (self, o)
+function MissionSelectionGui:_animate_show_front_page(o)
 	self._front_page_movement_t = self._front_page_movement_t or 0
 	local fade_in_duration = 0.4
 	local t = self._front_page_movement_t * fade_in_duration
@@ -4289,7 +4289,7 @@ MissionSelectionGui._animate_show_front_page = function (self, o)
 
 	return 
 end
-MissionSelectionGui._animate_hide_front_page = function (self, o)
+function MissionSelectionGui:_animate_hide_front_page(o)
 	self._front_page_movement_t = self._front_page_movement_t or 0
 	local fade_out_duration = 0.45
 	local t = (1 - self._front_page_movement_t) * fade_out_duration
@@ -4348,7 +4348,7 @@ MissionSelectionGui._animate_hide_front_page = function (self, o)
 
 	return 
 end
-MissionSelectionGui._animate_change_front_page_data = function (self, o, icon, text_id, folder_image, text_color, x_offset)
+function MissionSelectionGui:_animate_change_front_page_data(o, icon, text_id, folder_image, text_color, x_offset)
 	local fade_out_duration = 0.2
 	slot10 = self._front_page_content_panel
 	local t = (1 - self._front_page_content_panel.alpha(slot9)) * fade_out_duration
@@ -4487,7 +4487,7 @@ MissionSelectionGui._animate_change_front_page_data = function (self, o, icon, t
 
 	return 
 end
-MissionSelectionGui._fit_front_page_title = function (self)
+function MissionSelectionGui:_fit_front_page_title()
 	local default_font_size = tweak_data.gui.font_sizes.title
 	local font_sizes = {}
 	slot5 = tweak_data.gui.font_sizes
@@ -4520,7 +4520,7 @@ MissionSelectionGui._fit_front_page_title = function (self)
 
 	return 
 end
-MissionSelectionGui._animate_show_operation_tutorialization = function (self)
+function MissionSelectionGui:_animate_show_operation_tutorialization()
 	local fade_out_duration = 0.15
 	slot4 = self._settings_panel
 	local t = (1 - self._settings_panel.alpha(slot3)) * fade_out_duration
@@ -4559,7 +4559,7 @@ MissionSelectionGui._animate_show_operation_tutorialization = function (self)
 
 	return 
 end
-MissionSelectionGui._animate_hide_operation_tutorialization = function (self)
+function MissionSelectionGui:_animate_hide_operation_tutorialization()
 	local fade_out_duration = 0.15
 	slot4 = self._operation_tutorialization_panel
 	local t = (1 - self._operation_tutorialization_panel.alpha(slot3)) * fade_out_duration
@@ -4598,7 +4598,7 @@ MissionSelectionGui._animate_hide_operation_tutorialization = function (self)
 
 	return 
 end
-MissionSelectionGui.special_btn_pressed_old = function (self, ...)
+function MissionSelectionGui:special_btn_pressed_old(...)
 	slot3 = 1
 	local button_pressed = select(slot2, ...)
 
@@ -4644,7 +4644,7 @@ MissionSelectionGui.special_btn_pressed_old = function (self, ...)
 
 	return 
 end
-MissionSelectionGui.back_pressed = function (self)
+function MissionSelectionGui:back_pressed()
 	if self._current_display == MissionSelectionGui.DISPLAY_FIRST then
 		slot3 = managers.controller
 
@@ -4671,7 +4671,7 @@ MissionSelectionGui.back_pressed = function (self)
 
 	return 
 end
-MissionSelectionGui._unselect_right_column = function (self)
+function MissionSelectionGui:_unselect_right_column()
 	slot4 = false
 
 	self._difficulty_stepper.set_selected(slot2, self._difficulty_stepper)
@@ -4696,7 +4696,7 @@ MissionSelectionGui._unselect_right_column = function (self)
 
 	return 
 end
-MissionSelectionGui._unselect_middle_column = function (self)
+function MissionSelectionGui:_unselect_middle_column()
 	slot4 = false
 
 	self._info_button.set_selected(slot2, self._info_button)
@@ -4715,14 +4715,14 @@ MissionSelectionGui._unselect_middle_column = function (self)
 
 	return 
 end
-MissionSelectionGui.bind_controller_inputs = function (self)
+function MissionSelectionGui:bind_controller_inputs()
 	slot3 = self
 
 	self._bind_raid_controller_inputs(slot2)
 
 	return 
 end
-MissionSelectionGui._bind_raid_controller_inputs = function (self)
+function MissionSelectionGui:_bind_raid_controller_inputs()
 	local bindings = {}
 	slot5 = "menu_controller_shoulder_left"
 	slot7 = "_on_list_tabs_left"
@@ -4780,7 +4780,7 @@ MissionSelectionGui._bind_raid_controller_inputs = function (self)
 
 	return 
 end
-MissionSelectionGui._bind_locked_raid_controller_inputs = function (self)
+function MissionSelectionGui:_bind_locked_raid_controller_inputs()
 	local bindings = {}
 	slot5 = "menu_controller_shoulder_left"
 	slot7 = "_on_list_tabs_left"
@@ -4818,7 +4818,7 @@ MissionSelectionGui._bind_locked_raid_controller_inputs = function (self)
 
 	return 
 end
-MissionSelectionGui._bind_save_slot_controller_inputs = function (self)
+function MissionSelectionGui:_bind_save_slot_controller_inputs()
 	local bindings = {}
 	slot5 = "menu_controller_shoulder_left"
 	slot7 = "_on_list_tabs_left"
@@ -4883,7 +4883,7 @@ MissionSelectionGui._bind_save_slot_controller_inputs = function (self)
 
 	return 
 end
-MissionSelectionGui._bind_empty_slot_controller_inputs = function (self)
+function MissionSelectionGui:_bind_empty_slot_controller_inputs()
 	local bindings = {}
 	slot5 = "menu_controller_shoulder_left"
 	slot7 = "_on_list_tabs_left"
@@ -4941,7 +4941,7 @@ MissionSelectionGui._bind_empty_slot_controller_inputs = function (self)
 
 	return 
 end
-MissionSelectionGui._bind_operation_list_controller_inputs = function (self)
+function MissionSelectionGui:_bind_operation_list_controller_inputs()
 	local bindings = {}
 	slot4 = Network
 
@@ -4984,7 +4984,7 @@ MissionSelectionGui._bind_operation_list_controller_inputs = function (self)
 
 	return 
 end
-MissionSelectionGui._bind_locked_operation_list_controller_inputs = function (self)
+function MissionSelectionGui:_bind_locked_operation_list_controller_inputs()
 	local bindings = {}
 
 	self.set_controller_bindings(slot3, self, bindings)
@@ -5007,7 +5007,7 @@ MissionSelectionGui._bind_locked_operation_list_controller_inputs = function (se
 
 	return 
 end
-MissionSelectionGui._on_list_tabs_left = function (self)
+function MissionSelectionGui:_on_list_tabs_left()
 	slot3 = self
 
 	self._unselect_right_column(slot2)
@@ -5025,7 +5025,7 @@ MissionSelectionGui._on_list_tabs_left = function (self)
 
 	return true, nil
 end
-MissionSelectionGui._on_list_tabs_right = function (self)
+function MissionSelectionGui:_on_list_tabs_right()
 	slot3 = self
 
 	self._unselect_right_column(slot2)
@@ -5043,7 +5043,7 @@ MissionSelectionGui._on_list_tabs_right = function (self)
 
 	return true, nil
 end
-MissionSelectionGui._on_column_left = function (self)
+function MissionSelectionGui:_on_column_left()
 
 	-- Decompilation error in this vicinity:
 	if self._selected_column == "left" then
@@ -5062,7 +5062,7 @@ MissionSelectionGui._on_column_left = function (self)
 
 	return true, nil
 end
-MissionSelectionGui._on_column_right = function (self)
+function MissionSelectionGui:_on_column_right()
 	if self._selected_column == "right" then
 		return true, nil
 	end
@@ -5093,42 +5093,42 @@ MissionSelectionGui._on_column_right = function (self)
 
 	return true, nil
 end
-MissionSelectionGui._on_start_raid = function (self)
+function MissionSelectionGui:_on_start_raid()
 	slot3 = self
 
 	self._on_start_button_click(slot2)
 
 	return true, nil
 end
-MissionSelectionGui._on_delete_save = function (self)
+function MissionSelectionGui:_on_delete_save()
 	slot3 = self
 
 	self._on_delete_button_click(slot2)
 
 	return true, nil
 end
-MissionSelectionGui._on_continue_save = function (self)
+function MissionSelectionGui:_on_continue_save()
 	slot3 = self
 
 	self._on_start_button_click(slot2)
 
 	return true, nil
 end
-MissionSelectionGui._on_next_operation = function (self)
+function MissionSelectionGui:_on_next_operation()
 	slot3 = self._operation_list
 
 	self._operation_list.select_next_row(slot2)
 
 	return 
 end
-MissionSelectionGui._on_start_operation = function (self)
+function MissionSelectionGui:_on_start_operation()
 	slot3 = self
 
 	self._on_start_button_click(slot2)
 
 	return true, nil
 end
-MissionSelectionGui._on_select_confirm = function (self)
+function MissionSelectionGui:_on_select_confirm()
 	slot3 = self
 
 	self._on_start_button_click(slot2)

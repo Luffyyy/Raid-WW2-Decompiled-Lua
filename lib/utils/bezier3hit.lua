@@ -6,7 +6,7 @@ local max = math.max
 local curve_recursion_limit = 64
 local curve_flatness_epsilon = 1 * 2^(-curve_recursion_limit - 1)
 local bezier3_to_bezier5, bezier5_roots, bezier5_crossing_count, bezier5_flat_enough, bezier5_split_in_half = nil
-bezier3.hit = function (x0, y0, x1, y1, x2, y2, x3, y3, x4, y4)
+function bezier3.hit(x0, y0, x1, y1, x2, y2, x3, y3, x4, y4)
 	slot21 = y4
 	local ax1, ay1, ax2, ay2, ax3, ay3, ax4, ay4, ax5, ay5, ax6, ay6 = bezier3_to_bezier5(slot11, x0, y0, x1, y1, x2, y2, x3, y3, x4)
 	local mind = inf

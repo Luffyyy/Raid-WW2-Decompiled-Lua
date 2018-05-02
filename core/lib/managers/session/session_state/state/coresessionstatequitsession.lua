@@ -7,7 +7,7 @@ slot3 = "CoreSessionStateInit"
 core.import(slot1, core)
 
 QuitSession = QuitSession or class()
-QuitSession.init = function (self, session)
+function QuitSession:init(session)
 	self._session = session
 	slot4 = self.session_state._quit_session_requester
 
@@ -28,7 +28,7 @@ QuitSession.init = function (self, session)
 
 	return 
 end
-QuitSession.destroy = function (self)
+function QuitSession:destroy()
 	slot3 = self.session_state._quit_session_requester
 
 	self.session_state._quit_session_requester.task_completed(slot2)
@@ -37,7 +37,7 @@ QuitSession.destroy = function (self)
 
 	return 
 end
-QuitSession.transition = function (self)
+function QuitSession:transition()
 	return CoreSessionStateInit.Init, self._session
 end
 

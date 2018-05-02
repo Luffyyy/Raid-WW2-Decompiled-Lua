@@ -29,7 +29,7 @@ else
 end
 
 ElementPlayerSpawner.BASE_DELAY = 2
-ElementPlayerSpawner.init = function (self, ...)
+function ElementPlayerSpawner:init(...)
 	slot3 = self
 
 	ElementPlayerSpawner.super.init(slot2, ...)
@@ -40,7 +40,7 @@ ElementPlayerSpawner.init = function (self, ...)
 
 	return 
 end
-ElementPlayerSpawner.get_spawn_position = function (self)
+function ElementPlayerSpawner:get_spawn_position()
 	slot3 = managers.network
 	slot3 = managers.network.session(slot2)
 	slot3 = managers.network.session(slot2).local_peer(slot2)
@@ -52,10 +52,10 @@ ElementPlayerSpawner.get_spawn_position = function (self)
 
 	return position
 end
-ElementPlayerSpawner.value = function (self, name)
+function ElementPlayerSpawner:value(name)
 	return self._values[name]
 end
-ElementPlayerSpawner.client_on_executed = function (self, ...)
+function ElementPlayerSpawner:client_on_executed(...)
 
 	-- Decompilation error in this vicinity:
 	if not self._values.enabled then
@@ -78,7 +78,7 @@ ElementPlayerSpawner.client_on_executed = function (self, ...)
 
 	return 
 end
-ElementPlayerSpawner.on_executed = function (self, instigator)
+function ElementPlayerSpawner:on_executed(instigator)
 
 	-- Decompilation error in this vicinity:
 	if not self._values.enabled then
@@ -123,7 +123,7 @@ ElementPlayerSpawner.on_executed = function (self, instigator)
 
 	return 
 end
-ElementPlayerSpawner._end_transition = function (self, client)
+function ElementPlayerSpawner:_end_transition(client)
 	local cnt = managers.worldcollection.world_counter or 0
 	local player_spawned = true
 
@@ -162,7 +162,7 @@ ElementPlayerSpawner._end_transition = function (self, client)
 
 	return 
 end
-ElementPlayerSpawner._do_hide_loading_screen = function (self)
+function ElementPlayerSpawner:_do_hide_loading_screen()
 	slot3 = managers.raid_job
 
 	if not managers.raid_job.is_camp_loaded(slot2) then
@@ -188,7 +188,7 @@ ElementPlayerSpawner._do_hide_loading_screen = function (self)
 
 	return 
 end
-ElementPlayerSpawner._first_login_check = function (self)
+function ElementPlayerSpawner:_first_login_check()
 	if managers.worldcollection.first_login_check then
 		managers.worldcollection.first_login_check = false
 		slot3 = managers.raid_menu
@@ -206,7 +206,7 @@ ElementPlayerSpawner._first_login_check = function (self)
 
 	return 
 end
-ElementPlayerSpawner.destroy = function (self)
+function ElementPlayerSpawner:destroy()
 	slot3 = self
 
 	ElementPlayerSpawner.super.destroy(slot2)

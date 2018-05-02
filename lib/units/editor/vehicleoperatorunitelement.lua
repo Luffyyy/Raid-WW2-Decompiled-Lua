@@ -23,7 +23,7 @@ VehicleOperatorUnitElement.ACTIONS = {
 	"disable_accepting_loot",
 	"enable_accepting_loot"
 }
-VehicleOperatorUnitElement.init = function (self, unit)
+function VehicleOperatorUnitElement:init(unit)
 	slot5 = unit
 
 	VehicleOperatorUnitElement.super.init(slot3, self)
@@ -51,7 +51,7 @@ VehicleOperatorUnitElement.init = function (self, unit)
 
 	return 
 end
-VehicleOperatorUnitElement.add_element = function (self)
+function VehicleOperatorUnitElement:add_element()
 	slot4 = {
 		ray_type = "body",
 		sample = true,
@@ -77,7 +77,7 @@ VehicleOperatorUnitElement.add_element = function (self)
 
 	return 
 end
-VehicleOperatorUnitElement.add_triggers = function (self, vc)
+function VehicleOperatorUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "add_element"
 
@@ -85,7 +85,7 @@ VehicleOperatorUnitElement.add_triggers = function (self, vc)
 
 	return 
 end
-VehicleOperatorUnitElement.update_editing = function (self)
+function VehicleOperatorUnitElement:update_editing()
 	slot4 = {
 		ray_type = "body",
 		sample = true,
@@ -108,7 +108,7 @@ VehicleOperatorUnitElement.update_editing = function (self)
 
 	return 
 end
-VehicleOperatorUnitElement.draw_links_unselected = function (self, ...)
+function VehicleOperatorUnitElement:draw_links_unselected(...)
 	slot3 = self
 
 	VehicleOperatorUnitElement.super.draw_links_unselected(slot2, ...)
@@ -140,7 +140,7 @@ VehicleOperatorUnitElement.draw_links_unselected = function (self, ...)
 
 	return 
 end
-VehicleOperatorUnitElement.draw_links_selected = function (self, ...)
+function VehicleOperatorUnitElement:draw_links_selected(...)
 	slot3 = self
 
 	VehicleOperatorUnitElement.super.draw_links_selected(slot2, ...)
@@ -167,7 +167,7 @@ VehicleOperatorUnitElement.draw_links_selected = function (self, ...)
 
 	return 
 end
-VehicleOperatorUnitElement.add_unit_list_btn = function (self)
+function VehicleOperatorUnitElement:add_unit_list_btn()
 	slot3 = self._unit
 	local script = self._unit.mission_element_data(slot2).script
 
@@ -201,7 +201,7 @@ VehicleOperatorUnitElement.add_unit_list_btn = function (self)
 
 	return 
 end
-VehicleOperatorUnitElement.remove_unit_list_btn = function (self)
+function VehicleOperatorUnitElement:remove_unit_list_btn()
 	local function f(unit)
 		slot6 = unit
 		slot4 = unit.unit_data(slot5).unit_id
@@ -221,7 +221,7 @@ VehicleOperatorUnitElement.remove_unit_list_btn = function (self)
 
 	return 
 end
-VehicleOperatorUnitElement._build_panel = function (self, panel, panel_sizer)
+function VehicleOperatorUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

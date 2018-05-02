@@ -4,7 +4,7 @@ if not RaidOptionsBackground then
 end
 
 RaidOptionsBackground = slot0
-RaidOptionsBackground.init = function (self, ws, fullscreen_ws, node, component_name)
+function RaidOptionsBackground:init(ws, fullscreen_ws, node, component_name)
 	slot11 = component_name
 
 	RaidOptionsBackground.super.init(slot6, self, ws, fullscreen_ws, node)

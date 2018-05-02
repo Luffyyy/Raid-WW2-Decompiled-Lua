@@ -4,21 +4,21 @@ if not HuskCopInventory then
 end
 
 HuskCopInventory = slot0
-HuskCopInventory.init = function (self, unit)
+function HuskCopInventory:init(unit)
 	slot5 = unit
 
 	CopInventory.init(slot3, self)
 
 	return 
 end
-HuskCopInventory.set_visibility_state = function (self, state)
+function HuskCopInventory:set_visibility_state(state)
 	slot5 = state
 
 	CopInventory.set_visibility_state(slot3, self)
 
 	return 
 end
-HuskCopInventory.add_unit_by_name = function (self, new_unit_name, equip)
+function HuskCopInventory:add_unit_by_name(new_unit_name, equip)
 	slot7 = Vector3()
 	local new_unit = World.spawn_unit(slot4, World, new_unit_name, Rotation())
 	slot7 = new_unit
@@ -50,42 +50,42 @@ HuskCopInventory.add_unit_by_name = function (self, new_unit_name, equip)
 
 	return 
 end
-HuskCopInventory.get_weapon = function (self)
+function HuskCopInventory:get_weapon()
 	slot3 = self
 
 	CopInventory.get_weapon(slot2)
 
 	return 
 end
-HuskCopInventory.drop_weapon = function (self)
+function HuskCopInventory:drop_weapon()
 	slot3 = self
 
 	CopInventory.drop_weapon(slot2)
 
 	return 
 end
-HuskCopInventory.drop_shield = function (self)
+function HuskCopInventory:drop_shield()
 	slot3 = self
 
 	CopInventory.drop_shield(slot2)
 
 	return 
 end
-HuskCopInventory.destroy_all_items = function (self)
+function HuskCopInventory:destroy_all_items()
 	slot3 = self
 
 	CopInventory.destroy_all_items(slot2)
 
 	return 
 end
-HuskCopInventory.add_unit = function (self, new_unit, equip)
+function HuskCopInventory:add_unit(new_unit, equip)
 	slot7 = equip
 
 	CopInventory.add_unit(slot4, self, new_unit)
 
 	return 
 end
-HuskCopInventory.set_visibility_state = function (self, state)
+function HuskCopInventory:set_visibility_state(state)
 	slot5 = state
 
 	CopInventory.set_visibility_state(slot3, self)

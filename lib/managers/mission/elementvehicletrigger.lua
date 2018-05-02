@@ -4,14 +4,14 @@ if not ElementVehicleTrigger then
 end
 
 ElementVehicleTrigger = slot0
-ElementVehicleTrigger.init = function (self, ...)
+function ElementVehicleTrigger:init(...)
 	slot3 = self
 
 	ElementVehicleTrigger.super.init(slot2, ...)
 
 	return 
 end
-ElementVehicleTrigger.on_script_activated = function (self)
+function ElementVehicleTrigger:on_script_activated()
 	slot3 = Network
 
 	if Network.is_server(slot2) then
@@ -25,28 +25,28 @@ ElementVehicleTrigger.on_script_activated = function (self)
 
 	return 
 end
-ElementVehicleTrigger.on_enter = function (self, instigator)
+function ElementVehicleTrigger:on_enter(instigator)
 	slot5 = instigator
 
 	self.on_executed(slot3, self)
 
 	return 
 end
-ElementVehicleTrigger.on_exit = function (self, instigator)
+function ElementVehicleTrigger:on_exit(instigator)
 	slot5 = instigator
 
 	self.on_executed(slot3, self)
 
 	return 
 end
-ElementVehicleTrigger.on_all_inside = function (self, instigator)
+function ElementVehicleTrigger:on_all_inside(instigator)
 	slot5 = instigator
 
 	self.on_executed(slot3, self)
 
 	return 
 end
-ElementVehicleTrigger.send_to_host = function (self, instigator)
+function ElementVehicleTrigger:send_to_host(instigator)
 	if instigator then
 		slot4 = managers.network
 		slot7 = nil
@@ -56,7 +56,7 @@ ElementVehicleTrigger.send_to_host = function (self, instigator)
 
 	return 
 end
-ElementVehicleTrigger.on_executed = function (self, instigator)
+function ElementVehicleTrigger:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -67,7 +67,7 @@ ElementVehicleTrigger.on_executed = function (self, instigator)
 
 	return 
 end
-ElementVehicleTrigger.on_executed = function (self, instigator)
+function ElementVehicleTrigger:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -78,7 +78,7 @@ ElementVehicleTrigger.on_executed = function (self, instigator)
 
 	return 
 end
-MissionScriptElement.destroy = function (self)
+function MissionScriptElement:destroy()
 	slot3 = Network
 
 	if Network.is_server(slot2) then

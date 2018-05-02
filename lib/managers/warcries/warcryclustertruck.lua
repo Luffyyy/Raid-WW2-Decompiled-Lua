@@ -58,7 +58,7 @@ WarcryClustertruck.team_buffs = {
 		category = "player"
 	}
 }
-WarcryClustertruck.init = function (self)
+function WarcryClustertruck:init()
 	slot3 = self
 
 	WarcryClustertruck.super.init(slot2)
@@ -97,7 +97,7 @@ end)
 local ids_blend_factor = Idstring("time")
 slot4 = "base_color_intensity"
 local ids_base_color_intensity = Idstring("blend_factor")
-WarcryClustertruck.update = function (self, dt)
+function WarcryClustertruck:update(dt)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -139,7 +139,7 @@ WarcryClustertruck.update = function (self, dt)
 
 
 end
-WarcryClustertruck.duration = function (self)
+function WarcryClustertruck:duration()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -151,7 +151,7 @@ WarcryClustertruck.duration = function (self)
 
 
 end
-WarcryClustertruck.get_level_description = function (self, level)
+function WarcryClustertruck:get_level_description(level)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -186,7 +186,7 @@ WarcryClustertruck.get_level_description = function (self, level)
 
 
 end
-WarcryClustertruck.activate = function (self)
+function WarcryClustertruck:activate()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-38, warpins: 1 ---
@@ -216,7 +216,7 @@ WarcryClustertruck.activate = function (self)
 
 
 end
-WarcryClustertruck._on_enemy_killed = function (self, params)
+function WarcryClustertruck:_on_enemy_killed(params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -344,7 +344,7 @@ WarcryClustertruck._on_enemy_killed = function (self, params)
 
 
 end
-WarcryClustertruck.cleanup = function (self)
+function WarcryClustertruck:cleanup()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---

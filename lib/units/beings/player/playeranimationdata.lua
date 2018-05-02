@@ -1,10 +1,10 @@
 PlayerAnimationData = PlayerAnimationData or class()
-PlayerAnimationData.init = function (self, unit)
+function PlayerAnimationData:init(unit)
 	self._unit = unit
 
 	return 
 end
-PlayerAnimationData.anim_clbk_footstep_l = function (self, unit)
+function PlayerAnimationData:anim_clbk_footstep_l(unit)
 	self._footstep = "l"
 	slot4 = unit
 	slot5 = "left"
@@ -13,7 +13,7 @@ PlayerAnimationData.anim_clbk_footstep_l = function (self, unit)
 
 	return 
 end
-PlayerAnimationData.anim_clbk_footstep_r = function (self, unit)
+function PlayerAnimationData:anim_clbk_footstep_r(unit)
 	self._footstep = "r"
 	slot4 = unit
 	slot5 = "right"
@@ -22,20 +22,20 @@ PlayerAnimationData.anim_clbk_footstep_r = function (self, unit)
 
 	return 
 end
-PlayerAnimationData.anim_clbk_startfoot_l = function (self, unit)
+function PlayerAnimationData:anim_clbk_startfoot_l(unit)
 	self._footstep = "l"
 
 	return 
 end
-PlayerAnimationData.anim_clbk_startfoot_r = function (self, unit)
+function PlayerAnimationData:anim_clbk_startfoot_r(unit)
 	self._footstep = "r"
 
 	return 
 end
-PlayerAnimationData.foot = function (self)
+function PlayerAnimationData:foot()
 	return self._footstep
 end
-PlayerAnimationData.anim_clbk_upper_body_empty = function (self, unit)
+function PlayerAnimationData:anim_clbk_upper_body_empty(unit)
 	slot4 = unit
 	slot4 = unit.anim_state_machine(slot3)
 	slot7 = "upper_body"
@@ -44,7 +44,7 @@ PlayerAnimationData.anim_clbk_upper_body_empty = function (self, unit)
 
 	return 
 end
-PlayerAnimationData.anim_clbk_base_empty = function (self, unit)
+function PlayerAnimationData:anim_clbk_base_empty(unit)
 	slot4 = unit
 	slot4 = unit.anim_state_machine(slot3)
 	slot7 = "base"
@@ -53,7 +53,7 @@ PlayerAnimationData.anim_clbk_base_empty = function (self, unit)
 
 	return 
 end
-PlayerAnimationData.anim_clbk_death_exit = function (self, unit)
+function PlayerAnimationData:anim_clbk_death_exit(unit)
 	slot4 = unit
 	slot4 = unit.movement(slot3)
 

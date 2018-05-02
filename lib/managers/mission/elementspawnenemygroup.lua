@@ -8,7 +8,7 @@ if not ElementSpawnEnemyGroup then
 end
 
 ElementSpawnEnemyGroup = slot0
-ElementSpawnEnemyGroup.init = function (self, ...)
+function ElementSpawnEnemyGroup:init(...)
 	slot3 = self
 
 	ElementSpawnEnemyGroup.super.init(slot2, ...)
@@ -26,7 +26,7 @@ ElementSpawnEnemyGroup.init = function (self, ...)
 
 	return 
 end
-ElementSpawnEnemyGroup._finalize_values = function (self)
+function ElementSpawnEnemyGroup:_finalize_values()
 	local values = self._values
 
 	if values.team == "default" then
@@ -35,7 +35,7 @@ ElementSpawnEnemyGroup._finalize_values = function (self)
 
 	return 
 end
-ElementSpawnEnemyGroup.on_script_activated = function (self)
+function ElementSpawnEnemyGroup:on_script_activated()
 	slot3 = self._values.elements
 
 	for i, id in ipairs(slot2) do
@@ -52,7 +52,7 @@ ElementSpawnEnemyGroup.on_script_activated = function (self)
 
 	return 
 end
-ElementSpawnEnemyGroup.add_event_callback = function (self, name, callback)
+function ElementSpawnEnemyGroup:add_event_callback(name, callback)
 	slot5 = self._values.elements
 
 	for _, id in ipairs(slot4) do
@@ -65,7 +65,7 @@ ElementSpawnEnemyGroup.add_event_callback = function (self, name, callback)
 
 	return 
 end
-ElementSpawnEnemyGroup._check_spawn_points = function (self)
+function ElementSpawnEnemyGroup:_check_spawn_points()
 	self._spawn_points = {}
 
 	if not self._group_data.ignore_disabled then
@@ -96,7 +96,7 @@ ElementSpawnEnemyGroup._check_spawn_points = function (self)
 
 	return 
 end
-ElementSpawnEnemyGroup.on_executed = function (self, instigator)
+function ElementSpawnEnemyGroup:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -135,7 +135,7 @@ ElementSpawnEnemyGroup.on_executed = function (self, instigator)
 
 	return 
 end
-ElementSpawnEnemyGroup._get_spawn_point = function (self, i)
+function ElementSpawnEnemyGroup:_get_spawn_point(i)
 	if self._group_data.spawn_type == "ordered" then
 		slot5 = #self._spawn_points
 
@@ -155,7 +155,7 @@ ElementSpawnEnemyGroup._get_spawn_point = function (self, i)
 
 	return table.remove(#self._unused_randoms, self._unused_randoms)
 end
-ElementSpawnEnemyGroup.units = function (self)
+function ElementSpawnEnemyGroup:units()
 	local all_units = {}
 	slot4 = self._group_data.spawn_points
 
@@ -172,7 +172,7 @@ ElementSpawnEnemyGroup.units = function (self)
 
 	return all_units
 end
-ElementSpawnEnemyGroup.unspawn_all_units = function (self)
+function ElementSpawnEnemyGroup:unspawn_all_units()
 	slot3 = self._group_data.spawn_points
 
 	for _, element in ipairs(slot2) do
@@ -183,7 +183,7 @@ ElementSpawnEnemyGroup.unspawn_all_units = function (self)
 
 	return 
 end
-ElementSpawnEnemyGroup.kill_all_units = function (self)
+function ElementSpawnEnemyGroup:kill_all_units()
 	slot3 = self._group_data.spawn_points
 
 	for _, element in ipairs(slot2) do
@@ -194,7 +194,7 @@ ElementSpawnEnemyGroup.kill_all_units = function (self)
 
 	return 
 end
-ElementSpawnEnemyGroup.execute_on_all_units = function (self, func)
+function ElementSpawnEnemyGroup:execute_on_all_units(func)
 	slot4 = self._group_data.spawn_points
 
 	for _, element in ipairs(slot3) do
@@ -205,13 +205,13 @@ ElementSpawnEnemyGroup.execute_on_all_units = function (self, func)
 
 	return 
 end
-ElementSpawnEnemyGroup.spawn_points = function (self)
+function ElementSpawnEnemyGroup:spawn_points()
 	return self._group_data.spawn_points
 end
-ElementSpawnEnemyGroup.spawn_groups = function (self)
+function ElementSpawnEnemyGroup:spawn_groups()
 	return self._values.preferred_spawn_groups
 end
-ElementSpawnEnemyGroup.nationality = function (self)
+function ElementSpawnEnemyGroup:nationality()
 	return self._values.nationality or "german"
 end
 

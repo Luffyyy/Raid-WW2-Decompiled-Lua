@@ -4,14 +4,14 @@ if not ElementExecLuaOperator then
 end
 
 ElementExecLuaOperator = slot0
-ElementExecLuaOperator.init = function (self, ...)
+function ElementExecLuaOperator:init(...)
 	slot3 = self
 
 	ElementExecLuaOperator.super.init(slot2, ...)
 
 	return 
 end
-ElementExecLuaOperator.client_on_executed = function (self, ...)
+function ElementExecLuaOperator:client_on_executed(...)
 	slot4 = "[ElementExecLuaOperator:client_on_executed]"
 
 	Application.debug(slot2, Application, ...)
@@ -22,7 +22,7 @@ ElementExecLuaOperator.client_on_executed = function (self, ...)
 
 	return 
 end
-ElementExecLuaOperator.on_executed = function (self, instigator)
+function ElementExecLuaOperator:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

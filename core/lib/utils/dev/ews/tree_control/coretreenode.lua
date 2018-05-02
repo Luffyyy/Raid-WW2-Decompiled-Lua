@@ -8,20 +8,20 @@ if not CoreTreeNode then
 end
 
 CoreTreeNode = slot0
-CoreTreeNode.init = function (self, text)
+function CoreTreeNode:init(text)
 	self._text = text or ""
 	self._parent = nil
 	self._children = {}
 
 	return 
 end
-CoreTreeNode.set_callback = function (self, event_name, func)
+function CoreTreeNode:set_callback(event_name, func)
 	self._callbacks = self._callbacks or {}
 	self._callbacks[event_name] = func
 
 	return 
 end
-CoreTreeNode._invoke_callback = function (self, event_name, ...)
+function CoreTreeNode:_invoke_callback(event_name, ...)
 	local callback_table = self._callbacks
 
 	if not callback_table then
@@ -36,25 +36,25 @@ CoreTreeNode._invoke_callback = function (self, event_name, ...)
 
 	return 
 end
-CoreTreeNode.text = function (self)
+function CoreTreeNode:text()
 	return self._text
 end
-CoreTreeNode.parent = function (self)
+function CoreTreeNode:parent()
 	if self._parent and self._parent._parent then
 		return self._parent
 	end
 
 	return 
 end
-CoreTreeNode.remove_children = function (self)
+function CoreTreeNode:remove_children()
 	slot3 = self
 
 	return self.super.remove_children(slot2)
 end
-CoreTreeNode.children = function (self)
+function CoreTreeNode:children()
 	return self._children
 end
-CoreTreeNode.append = function (self, text)
+function CoreTreeNode:append(text)
 	slot5 = text
 	local new_node = CoreTreeNode.new(slot3, CoreTreeNode)
 	new_node._callbacks = self._callbacks
@@ -69,7 +69,7 @@ CoreTreeNode.append = function (self, text)
 
 	return new_node
 end
-CoreTreeNode.remove = function (self)
+function CoreTreeNode:remove()
 	slot5 = self
 
 	self._invoke_callback(slot2, self, "on_remove")

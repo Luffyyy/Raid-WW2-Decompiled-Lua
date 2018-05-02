@@ -6,7 +6,7 @@ if not RaidGUIControlIntelControlArchive then
 end
 
 RaidGUIControlIntelControlArchive = slot0
-RaidGUIControlIntelControlArchive.init = function (self, parent, params)
+function RaidGUIControlIntelControlArchive:init(parent, params)
 	RaidGUIControlIntelControlArchive.super.init(slot4, self, parent)
 
 	slot5 = managers.raid_menu
@@ -38,7 +38,7 @@ RaidGUIControlIntelControlArchive.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlIntelControlArchive._layout = function (self)
+function RaidGUIControlIntelControlArchive:_layout()
 	slot4 = {
 		y = 0,
 		visible = false,
@@ -97,7 +97,7 @@ RaidGUIControlIntelControlArchive._layout = function (self)
 
 	return 
 end
-RaidGUIControlIntelControlArchive.set_data = function (self, item_value)
+function RaidGUIControlIntelControlArchive:set_data(item_value)
 	self._data = tweak_data.intel.get_item_data(slot3, tweak_data.intel, self._category_name)
 	slot5 = true
 
@@ -160,10 +160,10 @@ RaidGUIControlIntelControlArchive.set_data = function (self, item_value)
 
 	return 
 end
-RaidGUIControlIntelControlArchive.get_data = function (self)
+function RaidGUIControlIntelControlArchive:get_data()
 	return self._data
 end
-RaidGUIControlIntelControlArchive.mouse_released = function (self, o, button, x, y)
+function RaidGUIControlIntelControlArchive:mouse_released(o, button, x, y)
 	if self._play_panel then
 		slot9 = y
 
@@ -176,7 +176,7 @@ RaidGUIControlIntelControlArchive.mouse_released = function (self, o, button, x,
 
 	return 
 end
-RaidGUIControlIntelControlArchive.mouse_moved = function (self, o, x, y)
+function RaidGUIControlIntelControlArchive:mouse_moved(o, x, y)
 	slot8 = y
 
 	if self.inside(slot5, self, x) then
@@ -210,7 +210,7 @@ RaidGUIControlIntelControlArchive.mouse_moved = function (self, o, x, y)
 
 	return false
 end
-RaidGUIControlIntelControlArchive.update = function (self, t, dt)
+function RaidGUIControlIntelControlArchive:update(t, dt)
 	if self._control_video then
 		slot5 = self
 	end
@@ -225,7 +225,7 @@ RaidGUIControlIntelControlArchive.update = function (self, t, dt)
 
 	return 
 end
-RaidGUIControlIntelControlArchive.close = function (self)
+function RaidGUIControlIntelControlArchive:close()
 	if self._control_video and self._panel then
 		slot3 = self._control_video
 
@@ -259,7 +259,7 @@ RaidGUIControlIntelControlArchive.close = function (self)
 
 	return 
 end
-RaidGUIControlIntelControlArchive.on_escape = function (self)
+function RaidGUIControlIntelControlArchive:on_escape()
 	slot3 = self
 
 	if self.is_playing(slot2) then
@@ -268,7 +268,7 @@ RaidGUIControlIntelControlArchive.on_escape = function (self)
 
 	return 
 end
-RaidGUIControlIntelControlArchive._animate_play_button = function (self)
+function RaidGUIControlIntelControlArchive:_animate_play_button()
 	local duration = 0.1
 	local t = 0
 	local original_width = self._play_panel.w(slot4)
@@ -437,7 +437,7 @@ RaidGUIControlIntelControlArchive._animate_play_button = function (self)
 
 	return 
 end
-RaidGUIControlIntelControlArchive.play_video = function (self)
+function RaidGUIControlIntelControlArchive:play_video()
 	slot3 = self
 
 	if not self.is_playing(slot2) then
@@ -449,7 +449,7 @@ RaidGUIControlIntelControlArchive.play_video = function (self)
 
 	return 
 end
-RaidGUIControlIntelControlArchive._play_video = function (self)
+function RaidGUIControlIntelControlArchive:_play_video()
 	local gui = Overlay.gui(slot2)
 	slot4 = gui
 	self._full_workspace = gui.create_screen_workspace(Overlay)
@@ -543,14 +543,14 @@ RaidGUIControlIntelControlArchive._play_video = function (self)
 
 	return 
 end
-RaidGUIControlIntelControlArchive.is_playing = function (self)
+function RaidGUIControlIntelControlArchive:is_playing()
 	if self._control_video then
 		slot3 = self._control_video
 
 		return self._control_video.loop_count(slot2) < 1
 	end
 end
-RaidGUIControlIntelControlArchive.is_skipped = function (self)
+function RaidGUIControlIntelControlArchive:is_skipped()
 	if 0 < self._disable_input_timer then
 		return 
 	end
@@ -567,7 +567,7 @@ RaidGUIControlIntelControlArchive.is_skipped = function (self)
 
 	return false
 end
-RaidGUIControlIntelControlArchive._animate_show_press_any_key_prompt = function (self, prompt)
+function RaidGUIControlIntelControlArchive:_animate_show_press_any_key_prompt(prompt)
 	local duration = 0.7
 	local t = 0
 	slot6 = 6
@@ -590,7 +590,7 @@ RaidGUIControlIntelControlArchive._animate_show_press_any_key_prompt = function 
 
 	return 
 end
-RaidGUIControlIntelControlArchive._animate_change_press_any_key_prompt = function (self, prompt)
+function RaidGUIControlIntelControlArchive:_animate_change_press_any_key_prompt(prompt)
 	local fade_out_duration = 0.25
 	slot5 = prompt
 	local t = (1 - prompt.alpha(slot4)) * fade_out_duration
@@ -649,7 +649,7 @@ RaidGUIControlIntelControlArchive._animate_change_press_any_key_prompt = functio
 
 	return 
 end
-RaidGUIControlIntelControlArchive.on_controller_hotswap = function (self)
+function RaidGUIControlIntelControlArchive:on_controller_hotswap()
 	slot4 = "press_any_key_prompt"
 	local press_any_key_prompt = self._safe_panel.child(slot2, self._safe_panel)
 
@@ -666,7 +666,7 @@ RaidGUIControlIntelControlArchive.on_controller_hotswap = function (self)
 
 	return 
 end
-RaidGUIControlIntelControlArchive.confirm_pressed = function (self)
+function RaidGUIControlIntelControlArchive:confirm_pressed()
 	return true
 end
 

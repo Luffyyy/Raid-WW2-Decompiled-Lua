@@ -12,17 +12,17 @@ if not Storage then
 end
 
 Storage = slot0
-Storage.save = function (self)
+function Storage:save()
 	return 
 end
-Storage._start_load_task = function (self)
+function Storage:_start_load_task()
 	slot3 = TimerManager
 	slot3 = TimerManager.game(slot2)
 	self._load_started_time = TimerManager.game(slot2).time(slot2)
 
 	return 
 end
-Storage._load_status = function (self)
+function Storage:_load_status()
 	slot3 = TimerManager
 	slot3 = TimerManager.game(slot2)
 	local current_time = TimerManager.game(slot2).time(slot2)
@@ -37,7 +37,7 @@ Storage._load_status = function (self)
 
 	return 
 end
-Storage._close_load_task = function (self)
+function Storage:_close_load_task()
 	self._load_started_time = nil
 
 	return 

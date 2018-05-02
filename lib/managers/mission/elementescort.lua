@@ -16,7 +16,7 @@ if not ElementEscort then
 end
 
 ElementEscort = slot0
-ElementEscort._get_next_point = function (self, mission, next_points)
+function ElementEscort:_get_next_point(mission, next_points)
 	local valid_next_elements = {}
 	slot6 = next_points
 
@@ -43,7 +43,7 @@ ElementEscort._get_next_point = function (self, mission, next_points)
 
 	return table.random(slot5)
 end
-ElementEscort.increment_usage = function (self)
+function ElementEscort:increment_usage()
 	slot4 = "usage_times"
 
 	if self.value(slot2, self) == 0 then
@@ -54,7 +54,7 @@ ElementEscort.increment_usage = function (self)
 
 	return 
 end
-ElementEscort.can_be_used = function (self)
+function ElementEscort:can_be_used()
 
 	-- Decompilation error in this vicinity:
 	slot4 = "usage_times"
@@ -63,7 +63,7 @@ ElementEscort.can_be_used = function (self)
 		return true
 	end
 end
-ElementEscort.start_escort_path = function (self, unit)
+function ElementEscort:start_escort_path(unit)
 	slot4 = unit
 
 	if alive(slot3) then
@@ -171,7 +171,7 @@ ElementEscort.start_escort_path = function (self, unit)
 
 	return 
 end
-ElementEscort.on_executed = function (self, instigator)
+function ElementEscort:on_executed(instigator)
 
 	-- Decompilation error in this vicinity:
 	slot4 = self

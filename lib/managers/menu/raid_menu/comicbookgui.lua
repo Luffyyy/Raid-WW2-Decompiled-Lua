@@ -21,7 +21,7 @@ ComicBookGui.BULLET_HEIGHT = 16
 ComicBookGui.BULLET_PADDING = 2
 ComicBookGui.ANIMATION_DURATION = 1
 ComicBookGui.PAGE_NAME = "ui/comic_book/raid_comic_"
-ComicBookGui.init = function (self, ws, fullscreen_ws, node, component_name)
+function ComicBookGui:init(ws, fullscreen_ws, node, component_name)
 	slot11 = component_name
 
 	ComicBookGui.super.init(slot6, self, ws, fullscreen_ws, node)
@@ -36,21 +36,21 @@ ComicBookGui.init = function (self, ws, fullscreen_ws, node, component_name)
 
 	return 
 end
-ComicBookGui._set_initial_data = function (self)
+function ComicBookGui:_set_initial_data()
 	self._current_page = 1
 	self._bullets_normal = {}
 	self._bullets_active = {}
 
 	return 
 end
-ComicBookGui.close = function (self)
+function ComicBookGui:close()
 	slot3 = self
 
 	ComicBookGui.super.close(slot2)
 
 	return 
 end
-ComicBookGui._layout = function (self)
+function ComicBookGui:_layout()
 	slot3 = self
 
 	self._disable_dof(slot2)
@@ -201,7 +201,7 @@ ComicBookGui._layout = function (self)
 
 	return 
 end
-ComicBookGui._process_comic_book = function (self)
+function ComicBookGui:_process_comic_book()
 	slot4 = "paper_shuffle_menu"
 
 	managers.menu_component.post_event(slot2, managers.menu_component)
@@ -315,7 +315,7 @@ ComicBookGui._process_comic_book = function (self)
 
 	return 
 end
-ComicBookGui._animate_bullets = function (self, params)
+function ComicBookGui:_animate_bullets(params)
 	local current_page = params.current_page
 	local previous_page = params.previous_page
 	slot7 = 0
@@ -346,7 +346,7 @@ ComicBookGui._animate_bullets = function (self, params)
 
 	return 
 end
-ComicBookGui._stop_animation = function (self, current_page, previous_page)
+function ComicBookGui:_stop_animation(current_page, previous_page)
 	if previous_page then
 		slot6 = 0
 
@@ -373,7 +373,7 @@ ComicBookGui._stop_animation = function (self, current_page, previous_page)
 
 	return 
 end
-ComicBookGui._page_left = function (self)
+function ComicBookGui:_page_left()
 	if self._current_page == 1 then
 		return 
 	end
@@ -407,7 +407,7 @@ ComicBookGui._page_left = function (self)
 
 	return 
 end
-ComicBookGui._page_right = function (self)
+function ComicBookGui:_page_right()
 	if self._current_page == ComicBookGui.TOTAL_PAGE_COUNT then
 		return 
 	end
@@ -441,21 +441,21 @@ ComicBookGui._page_right = function (self)
 
 	return 
 end
-ComicBookGui._on_left_arrow_clicked = function (self)
+function ComicBookGui:_on_left_arrow_clicked()
 	slot3 = self
 
 	self._page_left(slot2)
 
 	return 
 end
-ComicBookGui._on_right_arrow_clicked = function (self)
+function ComicBookGui:_on_right_arrow_clicked()
 	slot3 = self
 
 	self._page_right(slot2)
 
 	return 
 end
-ComicBookGui.bind_controller_inputs = function (self)
+function ComicBookGui:bind_controller_inputs()
 	local bindings = {}
 	slot5 = "menu_controller_shoulder_left"
 	slot7 = "_on_left_arrow_clicked"
@@ -493,7 +493,7 @@ ComicBookGui.bind_controller_inputs = function (self)
 
 	return 
 end
-ComicBookGui.bind_controller_inputs_left_only = function (self)
+function ComicBookGui:bind_controller_inputs_left_only()
 	local bindings = {}
 	slot5 = "menu_controller_shoulder_left"
 	slot7 = "_on_left_arrow_clicked"
@@ -524,7 +524,7 @@ ComicBookGui.bind_controller_inputs_left_only = function (self)
 
 	return 
 end
-ComicBookGui.bind_controller_inputs_right_only = function (self)
+function ComicBookGui:bind_controller_inputs_right_only()
 	local bindings = {}
 	slot5 = "menu_controller_shoulder_right"
 	slot7 = "_on_right_arrow_clicked"
@@ -555,7 +555,7 @@ ComicBookGui.bind_controller_inputs_right_only = function (self)
 
 	return 
 end
-ComicBookGui.confirm_pressed = function (self)
+function ComicBookGui:confirm_pressed()
 	return false
 end
 

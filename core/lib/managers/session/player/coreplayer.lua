@@ -7,7 +7,7 @@ slot3 = "CoreAvatar"
 core.import(slot1, core)
 
 Player = Player or class()
-Player.init = function (self, player_slot, player_handler)
+function Player:init(player_slot, player_handler)
 	self._player_slot = player_slot
 	self._player_handler = player_handler
 	slot5 = self._player_handler
@@ -18,7 +18,7 @@ Player.init = function (self, player_slot, player_handler)
 
 	return 
 end
-Player.destroy = function (self)
+function Player:destroy()
 	if self._level_handler then
 		slot4 = self._level_handler
 
@@ -39,16 +39,16 @@ Player.destroy = function (self)
 
 	return 
 end
-Player.avatar = function (self)
+function Player:avatar()
 	return self._avatar
 end
-Player.has_avatar = function (self)
+function Player:has_avatar()
 	return self._avatar ~= nil
 end
-Player.is_alive = function (self)
+function Player:is_alive()
 	return self._player_handler ~= nil
 end
-Player._destroy_avatar = function (self)
+function Player:_destroy_avatar()
 	slot3 = self._player_handler
 
 	self._player_handler.release_avatar(slot2)
@@ -61,10 +61,10 @@ Player._destroy_avatar = function (self)
 
 	return 
 end
-Player.avatar_handler = function (self)
+function Player:avatar_handler()
 	return self._avatar_handler
 end
-Player.enter_level = function (self, level_handler)
+function Player:enter_level(level_handler)
 	slot5 = level_handler
 
 	self._player_handler.enter_level(slot3, self._player_handler)
@@ -81,7 +81,7 @@ Player.enter_level = function (self, level_handler)
 
 	return 
 end
-Player.leave_level = function (self, level_handler)
+function Player:leave_level(level_handler)
 	if self._avatar then
 		slot4 = self
 
@@ -96,15 +96,15 @@ Player.leave_level = function (self, level_handler)
 
 	return 
 end
-Player.player_slot = function (self)
+function Player:player_slot()
 	return self._player_slot
 end
-Player.set_leaderboard_position = function (self, position)
+function Player:set_leaderboard_position(position)
 	self._leaderboard_position = position
 
 	return 
 end
-Player.set_team = function (self, team)
+function Player:set_team(team)
 	self._team = team
 
 	return 

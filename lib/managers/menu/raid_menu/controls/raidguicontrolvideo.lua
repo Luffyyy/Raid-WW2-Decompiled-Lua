@@ -4,7 +4,7 @@ if not RaidGUIControlVideo then
 end
 
 RaidGUIControlVideo = slot0
-RaidGUIControlVideo.init = function (self, parent, params)
+function RaidGUIControlVideo:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlVideo.super.init(slot4, self, parent)
@@ -55,7 +55,7 @@ RaidGUIControlVideo.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlVideo._update = function (self, t, dt)
+function RaidGUIControlVideo:_update(t, dt)
 	slot5 = self._object
 
 	if not alive(slot4) then
@@ -75,7 +75,7 @@ RaidGUIControlVideo._update = function (self, t, dt)
 
 	return 
 end
-RaidGUIControlVideo.destroy = function (self)
+function RaidGUIControlVideo:destroy()
 	slot4 = self._object
 
 	managers.video.remove_video(slot2, managers.video)
@@ -91,22 +91,22 @@ RaidGUIControlVideo.destroy = function (self)
 
 	return 
 end
-RaidGUIControlVideo.loop_count = function (self)
+function RaidGUIControlVideo:loop_count()
 	slot3 = self._object
 
 	return self._object.loop_count(slot2)
 end
-RaidGUIControlVideo.video_height = function (self)
+function RaidGUIControlVideo:video_height()
 	slot3 = self._object
 
 	return self._object.video_height(slot2)
 end
-RaidGUIControlVideo.video_width = function (self)
+function RaidGUIControlVideo:video_width()
 	slot3 = self._object
 
 	return self._object.video_width(slot2)
 end
-RaidGUIControlVideo.alive = function (self)
+function RaidGUIControlVideo:alive()
 	if self._object then
 		slot3 = self._object
 		slot1 = self._object.alive(slot2)

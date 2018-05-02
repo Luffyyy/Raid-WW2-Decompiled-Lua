@@ -26,7 +26,7 @@ RaidGUIControlCardBase.ICON_DOWN_PADDING = 0.0482
 RaidGUIControlCardBase.ICON_LEFT_PADDING = 0.085
 RaidGUIControlCardBase.ICON_TOP_PADDING = 0.045
 RaidGUIControlCardBase.ICON_DISTANCE = 0
-RaidGUIControlCardBase.init = function (self, parent, params, item_data, grid_params)
+function RaidGUIControlCardBase:init(parent, params, item_data, grid_params)
 	slot9 = params
 
 	RaidGUIControlCardBase.super.init(slot6, self, parent)
@@ -313,7 +313,7 @@ RaidGUIControlCardBase.init = function (self, parent, params, item_data, grid_pa
 
 	return 
 end
-RaidGUIControlCardBase._refit_card_title_text = function (self, original_font_size)
+function RaidGUIControlCardBase:_refit_card_title_text(original_font_size)
 	local font_sizes = {}
 	slot5 = tweak_data.gui.font_sizes
 
@@ -349,10 +349,10 @@ RaidGUIControlCardBase._refit_card_title_text = function (self, original_font_si
 
 	return 
 end
-RaidGUIControlCardBase.get_data = function (self)
+function RaidGUIControlCardBase:get_data()
 	return self._item_data
 end
-RaidGUIControlCardBase.set_card = function (self, card_data)
+function RaidGUIControlCardBase:set_card(card_data)
 	self._item_data = card_data
 
 	if self._item_data then
@@ -544,7 +544,7 @@ RaidGUIControlCardBase.set_card = function (self, card_data)
 
 	return 
 end
-RaidGUIControlCardBase.set_card_image = function (self, texture, texture_rect)
+function RaidGUIControlCardBase:set_card_image(texture, texture_rect)
 	slot6 = "[RaidGUIControlCardBase:set_card_image]"
 
 	Application.trace(slot4, Application)
@@ -559,28 +559,28 @@ RaidGUIControlCardBase.set_card_image = function (self, texture, texture_rect)
 
 	return 
 end
-RaidGUIControlCardBase.set_title = function (self, title)
+function RaidGUIControlCardBase:set_title(title)
 	slot5 = title
 
 	self._card_title.set_text(slot3, self._card_title)
 
 	return 
 end
-RaidGUIControlCardBase.set_description = function (self, description)
+function RaidGUIControlCardBase:set_description(description)
 	slot5 = description
 
 	self._card_description.set_text(slot3, self._card_description)
 
 	return 
 end
-RaidGUIControlCardBase.set_xp_bonus = function (self, xp_bonus)
+function RaidGUIControlCardBase:set_xp_bonus(xp_bonus)
 	slot5 = xp_bonus
 
 	self._xp_bonus.set_text(slot3, self._xp_bonus)
 
 	return 
 end
-RaidGUIControlCardBase.set_color = function (self, color)
+function RaidGUIControlCardBase:set_color(color)
 	slot5 = color
 
 	self._card_title.set_color(slot3, self._card_title)
@@ -591,42 +591,42 @@ RaidGUIControlCardBase.set_color = function (self, color)
 
 	return 
 end
-RaidGUIControlCardBase.set_title_visible = function (self, flag)
+function RaidGUIControlCardBase:set_title_visible(flag)
 	slot5 = flag
 
 	self._card_title.set_visible(slot3, self._card_title)
 
 	return 
 end
-RaidGUIControlCardBase.set_description_visible = function (self, flag)
+function RaidGUIControlCardBase:set_description_visible(flag)
 	slot5 = flag
 
 	self._card_description.set_visible(slot3, self._card_description)
 
 	return 
 end
-RaidGUIControlCardBase.set_xp_bonus_visible = function (self, flag)
+function RaidGUIControlCardBase:set_xp_bonus_visible(flag)
 	slot5 = flag
 
 	self._xp_bonus.set_visible(slot3, self._xp_bonus)
 
 	return 
 end
-RaidGUIControlCardBase.set_rarity_icon_visible = function (self, flag)
+function RaidGUIControlCardBase:set_rarity_icon_visible(flag)
 	slot5 = flag
 
 	self._card_type_icon.set_visible(slot3, self._card_type_icon)
 
 	return 
 end
-RaidGUIControlCardBase.set_type_icon_visible = function (self, flag)
+function RaidGUIControlCardBase:set_type_icon_visible(flag)
 	slot5 = flag
 
 	self._card_rarity_icon.set_visible(slot3, self._card_rarity_icon)
 
 	return 
 end
-RaidGUIControlCardBase.set_visible = function (self, flag)
+function RaidGUIControlCardBase:set_visible(flag)
 	slot5 = flag
 
 	self._card_image.set_visible(slot3, self._card_image)
@@ -645,7 +645,7 @@ RaidGUIControlCardBase.set_visible = function (self, flag)
 
 	return 
 end
-RaidGUIControlCardBase.show_card_only = function (self)
+function RaidGUIControlCardBase:show_card_only()
 	slot4 = true
 
 	self._card_image.set_visible(slot2, self._card_image)
@@ -668,14 +668,14 @@ RaidGUIControlCardBase.show_card_only = function (self)
 
 	return 
 end
-RaidGUIControlCardBase.mouse_released = function (self, o, button, x, y)
+function RaidGUIControlCardBase:mouse_released(o, button, x, y)
 	slot10 = y
 
 	self.on_mouse_released(slot6, self, button, x)
 
 	return true
 end
-RaidGUIControlCardBase.on_mouse_released = function (self, button, x, y)
+function RaidGUIControlCardBase:on_mouse_released(button, x, y)
 	if self._on_click_callback then
 		slot8 = self._item_data
 
@@ -684,40 +684,40 @@ RaidGUIControlCardBase.on_mouse_released = function (self, button, x, y)
 
 	return 
 end
-RaidGUIControlCardBase.selected = function (self)
+function RaidGUIControlCardBase:selected()
 	return self._selected
 end
-RaidGUIControlCardBase.select = function (self)
+function RaidGUIControlCardBase:select()
 	self._selected = true
 
 	return 
 end
-RaidGUIControlCardBase.unselect = function (self)
+function RaidGUIControlCardBase:unselect()
 	self._selected = false
 
 	return 
 end
-RaidGUIControlCardBase.w = function (self)
+function RaidGUIControlCardBase:w()
 	slot3 = self._card_image
 
 	return self._card_image.w(slot2)
 end
-RaidGUIControlCardBase.h = function (self)
+function RaidGUIControlCardBase:h()
 	slot3 = self._card_image
 
 	return self._card_image.h(slot2)
 end
-RaidGUIControlCardBase.left = function (self)
+function RaidGUIControlCardBase:left()
 	slot3 = self._card_image
 
 	return self._card_image.x(slot2)
 end
-RaidGUIControlCardBase.right = function (self)
+function RaidGUIControlCardBase:right()
 	slot4 = self
 
 	return self.left(slot2) + self.w(self)
 end
-RaidGUIControlCardBase.set_center_x = function (self, x)
+function RaidGUIControlCardBase:set_center_x(x)
 	slot5 = x
 
 	self._object.set_center_x(slot3, self._object)

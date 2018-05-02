@@ -1,7 +1,7 @@
 CoreParticleEditorInitializers = CoreParticleEditorInitializers or class()
 local min_keys = 1
 local max_keys = 8
-CoreParticleEditorInitializers.create_boxrandomposition = function (self)
+function CoreParticleEditorInitializers:create_boxrandomposition()
 	slot6 = "Position (Box Random)"
 	local initializer = CoreEffectStackMember.new(slot2, CoreEffectStackMember, "boxrandomposition", "initializer")
 	slot5 = "Initializes particle positions randomly within a given box."
@@ -43,7 +43,7 @@ Positions are always offsetted with effect position.]]
 
 	return initializer
 end
-CoreParticleEditorInitializers.create_boxrandomvelocity = function (self)
+function CoreParticleEditorInitializers:create_boxrandomvelocity()
 	slot6 = "Velocity (Box Random)"
 	local initializer = CoreEffectStackMember.new(slot2, CoreEffectStackMember, "boxrandomvelocity", "initializer")
 	slot5 = "Initializes particle velocities randomly within a given box."
@@ -85,7 +85,7 @@ Velocities are always offsetted with effect spawn velocity.]]
 
 	return initializer
 end
-CoreParticleEditorInitializers.create_centervelocity = function (self)
+function CoreParticleEditorInitializers:create_centervelocity()
 	slot6 = "Velocity (To/From Center)"
 	local initializer = CoreEffectStackMember.new(slot2, CoreEffectStackMember, "centervelocity", "initializer")
 	slot5 = "Initializes particle velocities with a vector pointing to/from a point in space."
@@ -148,7 +148,7 @@ CoreParticleEditorInitializers.create_centervelocity = function (self)
 
 	return initializer
 end
-CoreParticleEditorInitializers.create_boxevenposition = function (self)
+function CoreParticleEditorInitializers:create_boxevenposition()
 	slot6 = "Position (Box Even Distribution)"
 	local initializer = CoreEffectStackMember.new(slot2, CoreEffectStackMember, "boxevenposition", "initializer")
 	slot5 = "Initializes particle positions evenly distributed within a given box.\nMay initialize positions outside box if the number of particles is not evenly dividable with the proportions of the box."
@@ -190,7 +190,7 @@ Positions are always offsetted with effect position.]]
 
 	return initializer
 end
-CoreParticleEditorInitializers.create_trail = function (self)
+function CoreParticleEditorInitializers:create_trail()
 	local initializer = CoreEffectStackMember.new(slot2, CoreEffectStackMember, "trail", "initializer")
 	slot4 = initializer
 	slot11 = "Number of segments in trail"
@@ -199,7 +199,7 @@ CoreParticleEditorInitializers.create_trail = function (self)
 
 	return initializer
 end
-CoreParticleEditorInitializers.create_boxrandomrotation = function (self)
+function CoreParticleEditorInitializers:create_boxrandomrotation()
 	slot6 = "Rotation (Box Random)"
 	local initializer = CoreEffectStackMember.new(slot2, CoreEffectStackMember, "boxrandomrotation", "initializer")
 	slot5 = "Initializes particle rotations to random values, with the normal within a specified box and a random angle around the normal."
@@ -246,7 +246,7 @@ CoreParticleEditorInitializers.create_boxrandomrotation = function (self)
 
 	return initializer
 end
-CoreParticleEditorInitializers.create_constantage = function (self)
+function CoreParticleEditorInitializers:create_constantage()
 	slot6 = "Age (Constant)"
 	local initializer = CoreEffectStackMember.new(slot2, CoreEffectStackMember, "constantage", "initializer")
 	slot5 = "Initializes particle ages to specified value.\nThis initializer is useful if you want to create a set of particles that are very old, for initializing\neffect surface type effects."
@@ -261,7 +261,7 @@ CoreParticleEditorInitializers.create_constantage = function (self)
 
 	return initializer
 end
-CoreParticleEditorInitializers.create_boxrandomage = function (self)
+function CoreParticleEditorInitializers:create_boxrandomage()
 	local initializer = CoreEffectStackMember.new(slot2, CoreEffectStackMember, "boxrandomage", "initializer")
 	slot5 = "Initializes particle ages within specified range."
 
@@ -279,7 +279,7 @@ CoreParticleEditorInitializers.create_boxrandomage = function (self)
 
 	return initializer
 end
-CoreParticleEditorInitializers.create_boxrandomcolor = function (self)
+function CoreParticleEditorInitializers:create_boxrandomcolor()
 	slot6 = "Color (Box Random)"
 	local initializer = CoreEffectStackMember.new(slot2, CoreEffectStackMember, "boxrandomcolor", "initializer")
 	slot5 = "Initializes particle colors within a range of colors."
@@ -300,7 +300,7 @@ CoreParticleEditorInitializers.create_boxrandomcolor = function (self)
 
 	return initializer
 end
-CoreParticleEditorInitializers.create_boxrandomcolorgradient = function (self)
+function CoreParticleEditorInitializers:create_boxrandomcolorgradient()
 	slot6 = "Color (Box Random Gradient)"
 	local initializer = CoreEffectStackMember.new(slot2, CoreEffectStackMember, "boxrandomcolorgradient", "initializer")
 	slot5 = "Initializes particle colors with a base color and randomized gradients of this color."
@@ -327,7 +327,7 @@ CoreParticleEditorInitializers.create_boxrandomcolorgradient = function (self)
 
 	return initializer
 end
-CoreParticleEditorInitializers.create_localboxrandomposition = function (self)
+function CoreParticleEditorInitializers:create_localboxrandomposition()
 	slot6 = "Local Position (Box Random)"
 	local initializer = CoreEffectStackMember.new(slot2, CoreEffectStackMember, "localboxrandomposition", "initializer")
 	slot5 = "Initializes particle positions randomly within a given box.\nThe positions are written to the local position channel, and are not transformed by effect orientation."
@@ -349,7 +349,7 @@ CoreParticleEditorInitializers.create_localboxrandomposition = function (self)
 
 	return initializer
 end
-CoreParticleEditorInitializers.create_boxrandomangle = function (self)
+function CoreParticleEditorInitializers:create_boxrandomangle()
 	slot6 = "Angle (Box Random)"
 	local initializer = CoreEffectStackMember.new(slot2, CoreEffectStackMember, "boxrandomangle", "initializer")
 	slot5 = "Initializes angles randomly using a box distribution."
@@ -370,7 +370,7 @@ CoreParticleEditorInitializers.create_boxrandomangle = function (self)
 
 	return initializer
 end
-CoreParticleEditorInitializers.create_boxrandomanglevelocity = function (self)
+function CoreParticleEditorInitializers:create_boxrandomanglevelocity()
 	slot6 = "Angle Velocity (Box Random)"
 	local initializer = CoreEffectStackMember.new(slot2, CoreEffectStackMember, "boxrandomanglevelocity", "initializer")
 	slot5 = "Initializes angle velocities randomly using a box distribution."
@@ -391,7 +391,7 @@ CoreParticleEditorInitializers.create_boxrandomanglevelocity = function (self)
 
 	return initializer
 end
-CoreParticleEditorInitializers.create_boxrandomopacity = function (self)
+function CoreParticleEditorInitializers:create_boxrandomopacity()
 	slot6 = "Opacity (Box Random)"
 	local initializer = CoreEffectStackMember.new(slot2, CoreEffectStackMember, "boxrandomopacity", "initializer")
 	slot5 = "Initializes opacities randomly using a box distribution."
@@ -412,7 +412,7 @@ CoreParticleEditorInitializers.create_boxrandomopacity = function (self)
 
 	return initializer
 end
-CoreParticleEditorInitializers.create_boxrandomsize = function (self)
+function CoreParticleEditorInitializers:create_boxrandomsize()
 	slot6 = "Size (Box Random)"
 	local initializer = CoreEffectStackMember.new(slot2, CoreEffectStackMember, "boxrandomsize", "initializer")
 	slot5 = "Initializes sizes randomly using a box distribution."
@@ -433,7 +433,7 @@ CoreParticleEditorInitializers.create_boxrandomsize = function (self)
 
 	return initializer
 end
-CoreParticleEditorInitializers.create_boxrandomaspectsize = function (self)
+function CoreParticleEditorInitializers:create_boxrandomaspectsize()
 	slot6 = "Size (Box Random Aspect)"
 	local initializer = CoreEffectStackMember.new(slot2, CoreEffectStackMember, "boxrandomaspectsize", "initializer")
 	slot5 = "Initializes sizes randomly with a certain aspect using a box distribution."
@@ -460,7 +460,7 @@ CoreParticleEditorInitializers.create_boxrandomaspectsize = function (self)
 
 	return initializer
 end
-CoreParticleEditorInitializers.create_boxrandomuvoffset = function (self)
+function CoreParticleEditorInitializers:create_boxrandomuvoffset()
 	local initializer = CoreEffectStackMember.new(slot2, CoreEffectStackMember, "boxrandomuvoffset", "initializer")
 	slot5 = "Initializes uv offsets randomly between frames in a texture."
 
@@ -493,7 +493,7 @@ CoreParticleEditorInitializers.create_boxrandomuvoffset = function (self)
 
 	return initializer
 end
-CoreParticleEditorInitializers.create_worldtransform = function (self)
+function CoreParticleEditorInitializers:create_worldtransform()
 	slot6 = "Local -> World Transform"
 	local initializer = CoreEffectStackMember.new(slot2, CoreEffectStackMember, "worldtransform", "initializer")
 	slot5 = "Transforms local positions (and optionally rotations) to world coordinates."
@@ -508,7 +508,7 @@ CoreParticleEditorInitializers.create_worldtransform = function (self)
 
 	return initializer
 end
-CoreParticleEditorInitializers.create_lightcone = function (self)
+function CoreParticleEditorInitializers:create_lightcone()
 	slot6 = "Light Cone"
 	local initializer = CoreEffectStackMember.new(slot2, CoreEffectStackMember, "lightcone", "initializer")
 	slot5 = "Constructs a string of positions along a vector, with associated sizes and opacities. Useful for creating light cones.\nThis initializer will not work very well with atoms of varying size, since the length of the cone will vary with the number of particles."

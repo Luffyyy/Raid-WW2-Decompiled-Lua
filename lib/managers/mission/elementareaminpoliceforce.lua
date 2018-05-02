@@ -8,7 +8,7 @@ if not ElementAreaMinPoliceForce then
 end
 
 ElementAreaMinPoliceForce = slot0
-ElementAreaMinPoliceForce.init = function (self, ...)
+function ElementAreaMinPoliceForce:init(...)
 	slot3 = self
 
 	ElementAreaMinPoliceForce.super.init(slot2, ...)
@@ -17,7 +17,7 @@ ElementAreaMinPoliceForce.init = function (self, ...)
 
 	return 
 end
-ElementAreaMinPoliceForce.on_executed = function (self, instigator)
+function ElementAreaMinPoliceForce:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -32,7 +32,7 @@ ElementAreaMinPoliceForce.on_executed = function (self, instigator)
 
 	return 
 end
-ElementAreaMinPoliceForce.operation_add = function (self)
+function ElementAreaMinPoliceForce:operation_add()
 	slot3 = managers.groupai
 	slot6 = self._values.position
 
@@ -40,7 +40,7 @@ ElementAreaMinPoliceForce.operation_add = function (self)
 
 	return 
 end
-ElementAreaMinPoliceForce.operation_remove = function (self)
+function ElementAreaMinPoliceForce:operation_remove()
 	slot3 = managers.groupai
 	slot4 = self._id
 

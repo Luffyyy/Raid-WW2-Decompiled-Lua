@@ -1,5 +1,5 @@
 CoreMaterialEditorGlobalDialog = CoreMaterialEditorGlobalDialog or class()
-CoreMaterialEditorGlobalDialog.init = function (self, parent, editor)
+function CoreMaterialEditorGlobalDialog:init(parent, editor)
 	self._editor = editor
 	slot13 = 0
 	slot14 = 0
@@ -84,7 +84,7 @@ CoreMaterialEditorGlobalDialog.init = function (self, parent, editor)
 
 	return 
 end
-CoreMaterialEditorGlobalDialog.destroy = function (self, clean)
+function CoreMaterialEditorGlobalDialog:destroy(clean)
 	if clean then
 		slot4 = self._destroy_map
 
@@ -106,7 +106,7 @@ CoreMaterialEditorGlobalDialog.destroy = function (self, clean)
 
 	return 
 end
-CoreMaterialEditorGlobalDialog.on_remove = function (self, custom_data)
+function CoreMaterialEditorGlobalDialog:on_remove(custom_data)
 	local item = custom_data.get_item(slot3)
 	slot6 = item
 
@@ -119,13 +119,13 @@ CoreMaterialEditorGlobalDialog.on_remove = function (self, custom_data)
 
 	return 
 end
-CoreMaterialEditorGlobalDialog._on_ok = function (self)
+function CoreMaterialEditorGlobalDialog:_on_ok()
 	return 
 end
-CoreMaterialEditorGlobalDialog._on_cancel = function (self)
+function CoreMaterialEditorGlobalDialog:_on_cancel()
 	return 
 end
-CoreMaterialEditorGlobalDialog._fill_tree = function (self, id, parent, node)
+function CoreMaterialEditorGlobalDialog:_fill_tree(id, parent, node)
 	slot6 = node
 	local text = node.name(slot5)
 	slot9 = node
@@ -164,7 +164,7 @@ CoreMaterialEditorGlobalDialog._fill_tree = function (self, id, parent, node)
 	return new_id
 end
 CoreMaterialEditorStartDialog = CoreMaterialEditorStartDialog or class()
-CoreMaterialEditorStartDialog.init = function (self, parent, editor)
+function CoreMaterialEditorStartDialog:init(parent, editor)
 	self._editor = editor
 	self._parent = parent
 	slot7 = 0
@@ -222,7 +222,7 @@ CoreMaterialEditorStartDialog.init = function (self, parent, editor)
 
 	return 
 end
-CoreMaterialEditorStartDialog.on_new = function (self)
+function CoreMaterialEditorStartDialog:on_new()
 	slot6 = "Material Configurations (*.material_config)|*.material_config"
 	local path = managers.database.save_file_dialog(slot2, managers.database, self._parent, true)
 
@@ -257,7 +257,7 @@ CoreMaterialEditorStartDialog.on_new = function (self)
 
 	return 
 end
-CoreMaterialEditorStartDialog.on_open = function (self)
+function CoreMaterialEditorStartDialog:on_open()
 	slot5 = "*.material_config"
 	local node, path = managers.database.load_node_dialog(slot2, managers.database, self._parent)
 
@@ -273,7 +273,7 @@ CoreMaterialEditorStartDialog.on_open = function (self)
 
 	return 
 end
-CoreMaterialEditorStartDialog.on_exit = function (self)
+function CoreMaterialEditorStartDialog:on_exit()
 	slot3 = self._frame
 
 	self._frame.destroy(slot2)
@@ -285,7 +285,7 @@ CoreMaterialEditorStartDialog.on_exit = function (self)
 
 	return 
 end
-CoreMaterialEditorStartDialog.running = function (self)
+function CoreMaterialEditorStartDialog:running()
 	if self._running then
 		slot3 = self._frame
 		slot1 = alive(slot2)
@@ -293,7 +293,7 @@ CoreMaterialEditorStartDialog.running = function (self)
 
 	return slot1
 end
-CoreMaterialEditorStartDialog.show_modal = function (self)
+function CoreMaterialEditorStartDialog:show_modal()
 	self._running = true
 	slot4 = false
 
@@ -305,7 +305,7 @@ CoreMaterialEditorStartDialog.show_modal = function (self)
 
 	return 
 end
-CoreMaterialEditorStartDialog.update = function (self, t, dt)
+function CoreMaterialEditorStartDialog:update(t, dt)
 	slot6 = self._parent
 	self._frame_pos = (self._parent.get_position(slot4) + self._parent.get_size(self._parent) * 0.5) - self._frame_size * 0.5
 	slot6 = self._frame_pos
@@ -314,7 +314,7 @@ CoreMaterialEditorStartDialog.update = function (self, t, dt)
 
 	return 
 end
-CoreMaterialEditorStartDialog.end_modal = function (self)
+function CoreMaterialEditorStartDialog:end_modal()
 	self._running = false
 	slot4 = false
 
@@ -331,7 +331,7 @@ CoreMaterialEditorStartDialog.end_modal = function (self)
 	return 
 end
 CoreMaterialEditorCompileWarningDialog = CoreMaterialEditorCompileWarningDialog or class()
-CoreMaterialEditorCompileWarningDialog.init = function (self, parent)
+function CoreMaterialEditorCompileWarningDialog:init(parent)
 	self._parent = parent
 	slot6 = 0
 	local frame_size = Vector3(slot3, 540, 340)
@@ -391,12 +391,12 @@ CoreMaterialEditorCompileWarningDialog.init = function (self, parent)
 
 	return 
 end
-CoreMaterialEditorCompileWarningDialog.show_modal = function (self)
+function CoreMaterialEditorCompileWarningDialog:show_modal()
 	slot3 = self._dialog
 
 	return self._dialog.show_modal(slot2)
 end
-CoreMaterialEditorCompileWarningDialog.end_modal = function (self, data)
+function CoreMaterialEditorCompileWarningDialog:end_modal(data)
 	slot5 = data
 
 	self._dialog.end_modal(slot3, self._dialog)

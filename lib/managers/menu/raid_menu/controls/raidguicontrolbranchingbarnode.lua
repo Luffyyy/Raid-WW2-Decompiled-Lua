@@ -11,7 +11,7 @@ RaidGUIControlBranchingBarNode.STATE_SELECTED = "STATE_SELECTED"
 RaidGUIControlBranchingBarNode.STATE_PENDING = "STATE_PENDING"
 RaidGUIControlBranchingBarNode.STATE_PENDING_BLOCKED = "STATE_PENDING_BLOCKED"
 RaidGUIControlBranchingBarNode.STATE_DISABLED = "STATE_DISABLED"
-RaidGUIControlBranchingBarNode.init = function (self, parent, params)
+function RaidGUIControlBranchingBarNode:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlBranchingBarNode.super.init(slot4, self, parent)
@@ -28,7 +28,7 @@ RaidGUIControlBranchingBarNode.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlBranchingBarNode._create_panel = function (self)
+function RaidGUIControlBranchingBarNode:_create_panel()
 	local panel_params = clone(slot2)
 	panel_params.name = panel_params.name .. "_node"
 	slot4 = self._panel
@@ -42,34 +42,34 @@ RaidGUIControlBranchingBarNode._create_panel = function (self)
 
 	return 
 end
-RaidGUIControlBranchingBarNode.set_inactive = function (self)
+function RaidGUIControlBranchingBarNode:set_inactive()
 	return 
 end
-RaidGUIControlBranchingBarNode.set_selected = function (self)
+function RaidGUIControlBranchingBarNode:set_selected()
 	return 
 end
-RaidGUIControlBranchingBarNode.set_active = function (self)
+function RaidGUIControlBranchingBarNode:set_active()
 	return 
 end
-RaidGUIControlBranchingBarNode.set_pending = function (self)
+function RaidGUIControlBranchingBarNode:set_pending()
 	return 
 end
-RaidGUIControlBranchingBarNode.set_pending_blocked = function (self)
+function RaidGUIControlBranchingBarNode:set_pending_blocked()
 	return 
 end
-RaidGUIControlBranchingBarNode.set_disabled = function (self)
+function RaidGUIControlBranchingBarNode:set_disabled()
 	return 
 end
-RaidGUIControlBranchingBarNode.state = function (self)
+function RaidGUIControlBranchingBarNode:state()
 	return self._state
 end
-RaidGUIControlBranchingBarNode.parents = function (self)
+function RaidGUIControlBranchingBarNode:parents()
 	return self._parents
 end
-RaidGUIControlBranchingBarNode.level = function (self)
+function RaidGUIControlBranchingBarNode:level()
 	return self._level
 end
-RaidGUIControlBranchingBarNode.init_to_state = function (self, state)
+function RaidGUIControlBranchingBarNode:init_to_state(state)
 	return 
 end
 

@@ -4,7 +4,7 @@ if not PlayerParachuting then
 end
 
 PlayerParachuting = slot0
-PlayerParachuting.init = function (self, unit)
+function PlayerParachuting:init(unit)
 	slot5 = unit
 
 	PlayerParachuting.super.init(slot3, self)
@@ -13,7 +13,7 @@ PlayerParachuting.init = function (self, unit)
 
 	return 
 end
-PlayerParachuting.enter = function (self, state_data, enter_data)
+function PlayerParachuting:enter(state_data, enter_data)
 	slot6 = "Enter parachuting state"
 
 	print(slot4, "[PlayerParachuting:enter]")
@@ -43,7 +43,7 @@ PlayerParachuting.enter = function (self, state_data, enter_data)
 
 	return 
 end
-PlayerParachuting._enter = function (self, enter_data)
+function PlayerParachuting:_enter(enter_data)
 	slot4 = self._unit
 	slot4 = self._unit.camera(slot3)
 
@@ -78,7 +78,7 @@ PlayerParachuting._enter = function (self, enter_data)
 
 	return 
 end
-PlayerParachuting.exit = function (self, state_data, new_state_name)
+function PlayerParachuting:exit(state_data, new_state_name)
 	slot6 = "Exiting parachuting state"
 
 	print(slot4, "[PlayerParachuting:exit]")
@@ -104,20 +104,20 @@ PlayerParachuting.exit = function (self, state_data, new_state_name)
 
 	return 
 end
-PlayerParachuting.interaction_blocked = function (self)
+function PlayerParachuting:interaction_blocked()
 	return true
 end
-PlayerParachuting.bleed_out_blocked = function (self)
+function PlayerParachuting:bleed_out_blocked()
 	return true
 end
-PlayerParachuting.update = function (self, t, dt)
+function PlayerParachuting:update(t, dt)
 	slot7 = dt
 
 	PlayerParachuting.super.update(slot4, self, t)
 
 	return 
 end
-PlayerParachuting._update_movement = function (self, t, dt)
+function PlayerParachuting:_update_movement(t, dt)
 	slot6 = "move"
 	local direction = self._controller.get_input_axis(slot4, self._controller)
 
@@ -176,7 +176,7 @@ PlayerParachuting._update_movement = function (self, t, dt)
 
 	return 
 end
-PlayerParachuting._update_check_actions = function (self, t, dt)
+function PlayerParachuting:_update_check_actions(t, dt)
 	slot7 = dt
 	local input = self._get_input(slot4, self, t)
 	slot7 = "move"
@@ -299,10 +299,10 @@ PlayerParachuting._update_check_actions = function (self, t, dt)
 
 	return 
 end
-PlayerParachuting._get_walk_headbob = function (self)
+function PlayerParachuting:_get_walk_headbob()
 	return 0
 end
-PlayerParachuting._set_camera_limits = function (self)
+function PlayerParachuting:_set_camera_limits()
 	slot3 = self._camera_unit
 	slot4 = self._tweak_data.camera.target_pitch
 
@@ -315,7 +315,7 @@ PlayerParachuting._set_camera_limits = function (self)
 
 	return 
 end
-PlayerParachuting._remove_camera_limits = function (self)
+function PlayerParachuting:_remove_camera_limits()
 	slot3 = self._camera_unit
 	self._camera_unit.base(slot2)._p_exit = true
 	slot3 = self._camera_unit
@@ -330,7 +330,7 @@ PlayerParachuting._remove_camera_limits = function (self)
 
 	return 
 end
-PlayerParachuting._check_action_interact = function (self, t, input)
+function PlayerParachuting:_check_action_interact(t, input)
 	local new_action = nil
 	local interaction_wanted = input.btn_interact_press
 
@@ -347,7 +347,7 @@ PlayerParachuting._check_action_interact = function (self, t, input)
 
 	return new_action
 end
-PlayerParachuting._update_foley = function (self, t, input)
+function PlayerParachuting:_update_foley(t, input)
 	if self._gnd_ray then
 		slot5 = self._camera_unit
 		slot6 = 0
@@ -369,7 +369,7 @@ PlayerParachuting._update_foley = function (self, t, input)
 
 	return 
 end
-PlayerParachuting._pitch_up = function (self)
+function PlayerParachuting:_pitch_up()
 	local t = Application.time(slot2)
 	slot4 = self._camera_unit
 	slot8 = 1.7

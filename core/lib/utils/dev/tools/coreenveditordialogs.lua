@@ -17,7 +17,7 @@ slot3 = "CoreColorPickerPanel"
 core.import(slot1, core)
 
 TemplateMixerDummy = TemplateMixerDummy or class()
-TemplateMixerDummy.init = function (self, editor, ...)
+function TemplateMixerDummy:init(editor, ...)
 	self._editor = editor
 	self._args = {
 		...
@@ -47,15 +47,15 @@ TemplateMixerDummy.init = function (self, editor, ...)
 
 	return 
 end
-TemplateMixerDummy.get_value = function (self)
+function TemplateMixerDummy:get_value()
 	return self._val
 end
-TemplateMixerDummy.set_value = function (self, v)
+function TemplateMixerDummy:set_value(v)
 	self._val = v
 
 	return 
 end
-TemplateMixerDummy.update_mix = function (self, env1, env2, blend)
+function TemplateMixerDummy:update_mix(env1, env2, blend)
 	local p1, p2 = nil
 
 	if self._type == "posteffect" then
@@ -96,7 +96,7 @@ TemplateMixerDummy.update_mix = function (self, env1, env2, blend)
 
 	return 
 end
-TemplateMixerDummy.args = function (self)
+function TemplateMixerDummy:args()
 	local v = {}
 	slot4 = self._args
 	v[MULTRES] = unpack(slot3)
@@ -110,7 +110,7 @@ TemplateMixerDummy.args = function (self)
 end
 FormulaMixerDummy = FormulaMixerDummy or class()
 FormulaMixerDummy.STD_TOL = 0.01
-FormulaMixerDummy.init = function (self, editor, master, tol, formula, ...)
+function FormulaMixerDummy:init(editor, master, tol, formula, ...)
 	self._editor = editor
 	self._master = master
 	self._formula = formula
@@ -127,15 +127,15 @@ FormulaMixerDummy.init = function (self, editor, master, tol, formula, ...)
 
 	return 
 end
-FormulaMixerDummy.get_value = function (self)
+function FormulaMixerDummy:get_value()
 	return self._value
 end
-FormulaMixerDummy.set_value = function (self, v)
+function FormulaMixerDummy:set_value(v)
 	self._value = v
 
 	return 
 end
-FormulaMixerDummy.update = function (self, t, dt)
+function FormulaMixerDummy:update(t, dt)
 
 	-- Decompilation error in this vicinity:
 	slot8 = self._params
@@ -145,21 +145,21 @@ FormulaMixerDummy.update = function (self, t, dt)
 	return 
 end
 DummyWidget = DummyWidget or class()
-DummyWidget.init = function (self, t)
+function DummyWidget:init(t)
 	self._val = t
 
 	return 
 end
-DummyWidget.get_value = function (self)
+function DummyWidget:get_value()
 	return self._val
 end
-DummyWidget.set_value = function (self, v)
+function DummyWidget:set_value(v)
 	self._val = v
 
 	return 
 end
 Vector2Slider = Vector2Slider or class()
-Vector2Slider.init = function (self, editor, p, name, picker_bottom, picker_top, min, max, scale, display_scale)
+function Vector2Slider:init(editor, p, name, picker_bottom, picker_top, min, max, scale, display_scale)
 	self._scale = scale
 	self._editor = editor
 
@@ -288,7 +288,7 @@ Vector2Slider.init = function (self, editor, p, name, picker_bottom, picker_top,
 
 	return 
 end
-Vector2Slider.on_slider_changed = function (self)
+function Vector2Slider:on_slider_changed()
 	slot3 = self
 
 	self.set_text(slot2)
@@ -299,44 +299,44 @@ Vector2Slider.on_slider_changed = function (self)
 
 	return 
 end
-Vector2Slider.on_slider = function (self)
+function Vector2Slider:on_slider()
 	slot3 = self
 
 	self.set_text(slot2)
 
 	return 
 end
-Vector2Slider.on_pick_top_depth_button = function (self)
+function Vector2Slider:on_pick_top_depth_button()
 	self._editor._update_pick_element = self
 	self._editor._update_pick_element_type = "depth_x"
 
 	return 
 end
-Vector2Slider.on_pick_top_height_button = function (self)
+function Vector2Slider:on_pick_top_height_button()
 	self._editor._update_pick_element = self
 	self._editor._update_pick_element_type = "height_x"
 
 	return 
 end
-Vector2Slider.on_pick_bottom_depth_button = function (self)
+function Vector2Slider:on_pick_bottom_depth_button()
 	self._editor._update_pick_element = self
 	self._editor._update_pick_element_type = "depth_y"
 
 	return 
 end
-Vector2Slider.on_pick_bottom_height_button = function (self)
+function Vector2Slider:on_pick_bottom_height_button()
 	self._editor._update_pick_element = self
 	self._editor._update_pick_element_type = "height_y"
 
 	return 
 end
-Vector2Slider.get_value = function (self)
+function Vector2Slider:get_value()
 	slot6 = self._slider_g
 	slot5 = 0
 
 	return Vector3(slot2, self._slider_r.get_value(slot4) / self._scale, self._slider_g.get_value(self._slider_r) / self._scale)
 end
-Vector2Slider.on_update_textctrl = function (self)
+function Vector2Slider:on_update_textctrl()
 	slot5 = self._slider_r_textctrl
 	local r = tonumber(self._slider_r_textctrl.get_value(slot4))
 	slot4 = r
@@ -364,7 +364,7 @@ Vector2Slider.on_update_textctrl = function (self)
 
 	return 
 end
-Vector2Slider.set_text = function (self)
+function Vector2Slider:set_text()
 	slot3 = self._slider_r_textctrl
 	slot8 = self._slider_r
 	slot6 = self._slider_r.get_value(slot7) / self._display_scale
@@ -379,7 +379,7 @@ Vector2Slider.set_text = function (self)
 
 	return 
 end
-Vector2Slider.set_value = function (self, v)
+function Vector2Slider:set_value(v)
 	slot5 = v.x * self._scale
 
 	self._slider_r.set_value(slot3, self._slider_r)
@@ -395,7 +395,7 @@ Vector2Slider.set_value = function (self, v)
 	return 
 end
 DBDropdown = DBDropdown or class()
-DBDropdown.init = function (self, editor, p, name, db_key)
+function DBDropdown:init(editor, p, name, db_key)
 	self._editor = editor
 	self._name = name
 	self._db_key = db_key
@@ -429,7 +429,7 @@ DBDropdown.init = function (self, editor, p, name, db_key)
 
 	return 
 end
-DBDropdown.append_values = function (self)
+function DBDropdown:append_values()
 	local value = nil
 	slot6 = LightIntensityDB
 
@@ -451,19 +451,19 @@ DBDropdown.append_values = function (self)
 
 	return 
 end
-DBDropdown.get_value = function (self)
+function DBDropdown:get_value()
 	slot6 = self._combobox
 
 	return "#" .. self._db_key .. "#" .. self._combobox.get_value(slot5)
 end
-DBDropdown.on_combobox_changed = function (self)
+function DBDropdown:on_combobox_changed()
 	slot3 = self._editor
 
 	self._editor.value_is_changed(slot2)
 
 	return 
 end
-DBDropdown.set_value = function (self, v)
+function DBDropdown:set_value(v)
 	slot4 = v
 
 	if type(slot3) == "string" then
@@ -498,7 +498,7 @@ DBDropdown.set_value = function (self, v)
 	return 
 end
 SingelSlider = SingelSlider or class()
-SingelSlider.init = function (self, editor, p, name, picker, min, max, scale, display_scale, picky)
+function SingelSlider:init(editor, p, name, picker, min, max, scale, display_scale, picky)
 	self._scale = scale
 	self._editor = editor
 	self._name = name
@@ -590,7 +590,7 @@ SingelSlider.init = function (self, editor, p, name, picker, min, max, scale, di
 
 	return 
 end
-SingelSlider.get_value = function (self)
+function SingelSlider:get_value()
 	slot3 = self._chackbox
 
 	if self._chackbox.get_value(slot2) then
@@ -603,19 +603,19 @@ SingelSlider.get_value = function (self)
 
 	return 
 end
-SingelSlider.on_pick_depth_button = function (self)
+function SingelSlider:on_pick_depth_button()
 	self._editor._update_pick_element = self
 	self._editor._update_pick_element_type = "depth"
 
 	return 
 end
-SingelSlider.on_pick_height_button = function (self)
+function SingelSlider:on_pick_height_button()
 	self._editor._update_pick_element = self
 	self._editor._update_pick_element_type = "height"
 
 	return 
 end
-SingelSlider.on_slider_changed = function (self)
+function SingelSlider:on_slider_changed()
 	slot3 = self
 
 	self.set_text(slot2)
@@ -626,7 +626,7 @@ SingelSlider.on_slider_changed = function (self)
 
 	return 
 end
-SingelSlider.on_slider = function (self)
+function SingelSlider:on_slider()
 	if self._picky then
 		slot3 = self._editor
 
@@ -639,7 +639,7 @@ SingelSlider.on_slider = function (self)
 
 	return 
 end
-SingelSlider.on_update_textctrl = function (self)
+function SingelSlider:on_update_textctrl()
 	slot5 = self._slider_textctrl
 	local n = tonumber(self._slider_textctrl.get_value(slot4))
 	slot4 = n
@@ -658,7 +658,7 @@ SingelSlider.on_update_textctrl = function (self)
 
 	return 
 end
-SingelSlider.set_text = function (self)
+function SingelSlider:set_text()
 	slot3 = self._slider_textctrl
 	slot8 = self._slider
 	slot6 = self._slider.get_value(slot7) / self._display_scale
@@ -667,7 +667,7 @@ SingelSlider.set_text = function (self)
 
 	return 
 end
-SingelSlider.set_value = function (self, v)
+function SingelSlider:set_value(v)
 	slot5 = v * self._scale
 
 	self._slider.set_value(slot3, self._slider)
@@ -679,7 +679,7 @@ SingelSlider.set_value = function (self, v)
 	return 
 end
 EnvironmentEditorEnvMixer = EnvironmentEditorEnvMixer or class()
-EnvironmentEditorEnvMixer.init = function (self, editor, p, name)
+function EnvironmentEditorEnvMixer:init(editor, p, name)
 	self._editor = editor
 	self._name = name
 	slot9 = name
@@ -716,13 +716,13 @@ EnvironmentEditorEnvMixer.init = function (self, editor, p, name)
 
 	return 
 end
-EnvironmentEditorEnvMixer.get_value = function (self)
+function EnvironmentEditorEnvMixer:get_value()
 	slot5 = self._slider
 	slot3 = self._slider.get_value(slot4) / self._editor.MIX_MUL
 
 	return tostring(slot2) .. " " .. self._name_str
 end
-EnvironmentEditorEnvMixer.on_slider_changed = function (self)
+function EnvironmentEditorEnvMixer:on_slider_changed()
 	slot3 = self._editor
 
 	self._editor.value_is_changed(slot2)
@@ -733,7 +733,7 @@ EnvironmentEditorEnvMixer.on_slider_changed = function (self)
 
 	return 
 end
-EnvironmentEditorEnvMixer.on_slider_change = function (self)
+function EnvironmentEditorEnvMixer:on_slider_change()
 	local val = self._slider.get_value(slot2) / self._editor.MIX_MUL
 	slot4 = val
 	local fval = math.floor(self._slider)
@@ -759,7 +759,7 @@ EnvironmentEditorEnvMixer.on_slider_change = function (self)
 
 	return 
 end
-EnvironmentEditorEnvMixer.update_tool_tip = function (self, env1, env2, blend)
+function EnvironmentEditorEnvMixer:update_tool_tip(env1, env2, blend)
 	slot9 = "%.1f"
 	slot13 = "%.1f"
 	slot16 = blend
@@ -769,7 +769,7 @@ EnvironmentEditorEnvMixer.update_tool_tip = function (self, env1, env2, blend)
 
 	return 
 end
-EnvironmentEditorEnvMixer.set_value = function (self, v)
+function EnvironmentEditorEnvMixer:set_value(v)
 	slot10 = "[%w_.]+"
 	slot5 = tonumber(string.match(slot8, v)) * self._editor.MIX_MUL
 
@@ -778,7 +778,7 @@ EnvironmentEditorEnvMixer.set_value = function (self, v)
 	return 
 end
 RgbBox = RgbBox or class()
-RgbBox.init = function (self, editor, p, name)
+function RgbBox:init(editor, p, name)
 	self._editor = editor
 	slot9 = name
 	self._box = EWS.StaticBoxSizer(slot5, EWS, p, "VERTICAL")
@@ -927,7 +927,7 @@ RgbBox.init = function (self, editor, p, name)
 
 	return 
 end
-RgbBox.on_slider_changed = function (self)
+function RgbBox:on_slider_changed()
 	slot3 = self
 	slot10 = self._slider_b
 	slot8 = self._slider_b.get_value(self._slider_g) / 255
@@ -940,7 +940,7 @@ RgbBox.on_slider_changed = function (self)
 
 	return 
 end
-RgbBox.on_slider = function (self)
+function RgbBox:on_slider()
 	slot3 = self
 	slot10 = self._slider_b
 	slot8 = self._slider_b.get_value(self._slider_g) / 255
@@ -949,7 +949,7 @@ RgbBox.on_slider = function (self)
 
 	return 
 end
-RgbBox.on_color_button = function (self)
+function RgbBox:on_color_button()
 	slot3 = self._color_dialog
 
 	if self._color_dialog.show_modal(slot2) then
@@ -969,13 +969,13 @@ RgbBox.on_color_button = function (self)
 
 	return 
 end
-RgbBox.on_pick_button = function (self)
+function RgbBox:on_pick_button()
 	self._editor._update_pick_element = self
 	self._editor._update_pick_element_type = "color"
 
 	return 
 end
-RgbBox.on_update_textctrl = function (self)
+function RgbBox:on_update_textctrl()
 	slot5 = self._slider_r_textctrl
 	local r = tonumber(self._slider_r_textctrl.get_value(slot4))
 	slot4 = r
@@ -1011,10 +1011,10 @@ RgbBox.on_update_textctrl = function (self)
 
 	return 
 end
-RgbBox.get_value = function (self)
+function RgbBox:get_value()
 	return self._color
 end
-RgbBox.set_text = function (self)
+function RgbBox:set_text()
 	slot3 = self._slider_r_textctrl
 	slot6 = self._color.x * 255
 
@@ -1032,7 +1032,7 @@ RgbBox.set_text = function (self)
 
 	return 
 end
-RgbBox.set_value = function (self, v)
+function RgbBox:set_value(v)
 	self._color = v
 	slot4 = self
 
@@ -1057,7 +1057,7 @@ RgbBox.set_value = function (self, v)
 	return 
 end
 EnvEdColorBox = EnvEdColorBox or class()
-EnvEdColorBox.init = function (self, editor, p, name, no_value)
+function EnvEdColorBox:init(editor, p, name, no_value)
 	self._editor = editor
 	slot10 = name
 	self._box = EWS.StaticBoxSizer(slot6, EWS, p, "VERTICAL")
@@ -1086,30 +1086,30 @@ EnvEdColorBox.init = function (self, editor, p, name, no_value)
 
 	return 
 end
-EnvEdColorBox.update = function (self, t, dt)
+function EnvEdColorBox:update(t, dt)
 	slot7 = dt
 
 	self._picker_panel.update(slot4, self._picker_panel, t)
 
 	return 
 end
-EnvEdColorBox.on_changed = function (self, sender, color)
+function EnvEdColorBox:on_changed(sender, color)
 	slot7 = color.b
 	self._color = Vector3(slot4, color.r, color.g)
 
 	return 
 end
-EnvEdColorBox.on_leftup = function (self)
+function EnvEdColorBox:on_leftup()
 	slot3 = self._editor
 
 	self._editor.value_is_changed(slot2)
 
 	return 
 end
-EnvEdColorBox.get_value = function (self)
+function EnvEdColorBox:get_value()
 	return self._color
 end
-EnvEdColorBox.set_value = function (self, v)
+function EnvEdColorBox:set_value(v)
 	self._color = v
 	slot4 = self._picker_panel
 	slot9 = v.z
@@ -1119,7 +1119,7 @@ EnvEdColorBox.set_value = function (self, v)
 	return 
 end
 EnvEdEditBox = EnvEdEditBox or class()
-EnvEdEditBox.init = function (self, editor, p, name, no_value)
+function EnvEdEditBox:init(editor, p, name, no_value)
 	self._editor = editor
 	slot10 = name
 	self._box = EWS.StaticBoxSizer(slot6, EWS, p, "VERTICAL")
@@ -1136,7 +1136,7 @@ EnvEdEditBox.init = function (self, editor, p, name, no_value)
 
 	return 
 end
-EnvEdEditBox.text_changed = function (self)
+function EnvEdEditBox:text_changed()
 	slot3 = self._textctrl
 	self._value = self._textctrl.get_value(slot2)
 	slot3 = self._editor
@@ -1145,10 +1145,10 @@ EnvEdEditBox.text_changed = function (self)
 
 	return 
 end
-EnvEdEditBox.get_value = function (self)
+function EnvEdEditBox:get_value()
 	return self._value
 end
-EnvEdEditBox.set_value = function (self, value)
+function EnvEdEditBox:set_value(value)
 	self._value = value
 	slot5 = value
 
@@ -1157,7 +1157,7 @@ EnvEdEditBox.set_value = function (self, value)
 	return 
 end
 PathBox = PathBox or class()
-PathBox.init = function (self, editor, p, name)
+function PathBox:init(editor, p, name)
 	self._editor = editor
 	slot9 = name
 	self._box = EWS.StaticBoxSizer(slot5, EWS, p, "VERTICAL")
@@ -1189,7 +1189,7 @@ PathBox.init = function (self, editor, p, name)
 
 	return 
 end
-PathBox.on_path_button = function (self)
+function PathBox:on_path_button()
 	slot3 = self._path_dialog
 
 	if self._path_dialog.show_modal(slot2) then
@@ -1206,10 +1206,10 @@ PathBox.on_path_button = function (self)
 
 	return 
 end
-PathBox.get_value = function (self)
+function PathBox:get_value()
 	return self._path
 end
-PathBox.set_value = function (self, v)
+function PathBox:set_value(v)
 	self._path = v
 	slot5 = self._path
 
@@ -1218,7 +1218,7 @@ PathBox.set_value = function (self, v)
 	return 
 end
 DBPickDialog = DBPickDialog or class()
-DBPickDialog.init = function (self, editor, p, name, pick_type)
+function DBPickDialog:init(editor, p, name, pick_type)
 	self._editor = editor
 	self._parent = p
 	slot10 = name
@@ -1260,7 +1260,7 @@ DBPickDialog.init = function (self, editor, p, name, pick_type)
 
 	return 
 end
-DBPickDialog.on_path_button = function (self)
+function DBPickDialog:on_path_button()
 	slot5 = "Textures (*.dds)|*.dds"
 	local path = managers.database.open_file_dialog(slot2, managers.database, self._parent)
 
@@ -1273,10 +1273,10 @@ DBPickDialog.on_path_button = function (self)
 
 	return 
 end
-DBPickDialog.get_value = function (self)
+function DBPickDialog:get_value()
 	return self._path
 end
-DBPickDialog.set_value = function (self, v)
+function DBPickDialog:set_value(v)
 	self._path = v
 	slot5 = self._path
 
@@ -1285,7 +1285,7 @@ DBPickDialog.set_value = function (self, v)
 	return 
 end
 CustomCheckBox = CustomCheckBox or class()
-CustomCheckBox.init = function (self, editor, p, text)
+function CustomCheckBox:init(editor, p, text)
 	self._editor = editor
 	slot9 = ""
 	self._box = EWS.StaticBoxSizer(slot5, EWS, p, "HORIZONTAL")
@@ -1301,14 +1301,14 @@ CustomCheckBox.init = function (self, editor, p, text)
 
 	return 
 end
-CustomCheckBox.on_checkbox = function (self)
+function CustomCheckBox:on_checkbox()
 	slot3 = self._editor
 
 	self._editor.value_is_changed(slot2)
 
 	return 
 end
-CustomCheckBox.get_value = function (self)
+function CustomCheckBox:get_value()
 	slot3 = self._check_box
 	local v = self._check_box.get_value(slot2)
 
@@ -1320,7 +1320,7 @@ CustomCheckBox.get_value = function (self)
 
 	return 
 end
-CustomCheckBox.set_value = function (self, v)
+function CustomCheckBox:set_value(v)
 	slot5 = 0 < v
 
 	self._check_box.set_value(slot3, self._check_box)
@@ -1328,7 +1328,7 @@ CustomCheckBox.set_value = function (self, v)
 	return 
 end
 ConnectDialog = ConnectDialog or class()
-ConnectDialog.init = function (self, p)
+function ConnectDialog:init(p)
 	slot12 = 0
 	slot13 = 0
 	slot10 = "CAPTION,SYSTEM_MENU"
@@ -1401,7 +1401,7 @@ ConnectDialog.init = function (self, p)
 
 	return 
 end
-ConnectDialog.show_modal = function (self)
+function ConnectDialog:show_modal()
 	self._done = false
 	self._return_val = true
 	slot3 = self._dialog
@@ -1413,7 +1413,7 @@ ConnectDialog.show_modal = function (self)
 
 	return self._return_val
 end
-ConnectDialog.on_connect_button = function (self)
+function ConnectDialog:on_connect_button()
 	self._done = true
 	slot4 = ""
 
@@ -1421,7 +1421,7 @@ ConnectDialog.on_connect_button = function (self)
 
 	return 
 end
-ConnectDialog.on_cancel_button = function (self)
+function ConnectDialog:on_cancel_button()
 	self._done = true
 	self._return_val = false
 	slot4 = ""
@@ -1430,12 +1430,12 @@ ConnectDialog.on_cancel_button = function (self)
 
 	return 
 end
-ConnectDialog.get_ip = function (self)
+function ConnectDialog:get_ip()
 	slot3 = self._text_ctrl
 
 	return self._text_ctrl.get_value(slot2)
 end
-ConnectDialog.get_port = function (self)
+function ConnectDialog:get_port()
 	slot5 = self._port_text_ctrl
 
 	return tonumber(self._port_text_ctrl.get_value(slot4))

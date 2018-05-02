@@ -4,19 +4,19 @@ if not HuskTankCopDamage then
 end
 
 HuskTankCopDamage = slot0
-HuskTankCopDamage.init = function (self, ...)
+function HuskTankCopDamage:init(...)
 	slot3 = self
 
 	HuskTankCopDamage.super.init(slot2, ...)
 
 	return 
 end
-HuskTankCopDamage.damage_bullet = function (self, attack_data, ...)
+function HuskTankCopDamage:damage_bullet(attack_data, ...)
 	slot5 = attack_data
 
 	return HuskTankCopDamage.super.damage_bullet(slot3, self, ...)
 end
-HuskTankCopDamage.damage_melee = function (self, attack_data)
+function HuskTankCopDamage:damage_melee(attack_data)
 	local tweak_data = tweak_data.blackmarket.melee_weapons[attack_data.name_id]
 
 	if tweak_data and (tweak_data.type == "knife" or tweak_data.type == "sword" or attack_data.name_id == "boxing_gloves") then
@@ -29,7 +29,7 @@ HuskTankCopDamage.damage_melee = function (self, attack_data)
 
 	return 
 end
-HuskTankCopDamage.seq_clbk_vizor_shatter = function (self)
+function HuskTankCopDamage:seq_clbk_vizor_shatter()
 	slot3 = self
 
 	TankCopDamage.seq_clbk_vizor_shatter(slot2)

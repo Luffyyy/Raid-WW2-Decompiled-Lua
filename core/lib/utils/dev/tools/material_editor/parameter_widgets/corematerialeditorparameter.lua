@@ -5,7 +5,7 @@ slot2 = "core/lib/utils/dev/tools/material_editor/CoreSmartNode"
 require(slot1)
 
 local CoreMaterialEditorParameter = CoreMaterialEditorParameter or class()
-CoreMaterialEditorParameter.init = function (self, parent, editor, parameter_info, parameter_node)
+function CoreMaterialEditorParameter:init(parent, editor, parameter_info, parameter_node)
 	slot11 = parameter_node
 
 	self.set_params(slot6, self, parent, editor, parameter_info)
@@ -85,7 +85,7 @@ CoreMaterialEditorParameter.init = function (self, parent, editor, parameter_inf
 
 	return 
 end
-CoreMaterialEditorParameter.set_params = function (self, parent, editor, parameter_info, parameter_node)
+function CoreMaterialEditorParameter:set_params(parent, editor, parameter_info, parameter_node)
 	self._parent = parent
 	self._editor = editor
 	self._parameter_info = parameter_info
@@ -120,7 +120,7 @@ CoreMaterialEditorParameter.set_params = function (self, parent, editor, paramet
 
 	return 
 end
-CoreMaterialEditorParameter.on_copy_to_parent = function (self)
+function CoreMaterialEditorParameter:on_copy_to_parent()
 	slot3 = self._editor._parent_combo_box
 
 	if self._editor._parent_combo_box.get_value(slot2) ~= "[NONE]" then
@@ -154,7 +154,7 @@ CoreMaterialEditorParameter.on_copy_to_parent = function (self)
 
 	return 
 end
-CoreMaterialEditorParameter.update_live = function (self)
+function CoreMaterialEditorParameter:update_live()
 	slot6 = self._parameter_info.name
 	slot8 = self._parameter_info.ui_type
 	slot7 = self._value
@@ -163,29 +163,29 @@ CoreMaterialEditorParameter.update_live = function (self)
 
 	return 
 end
-CoreMaterialEditorParameter.update = function (self, t, dt)
+function CoreMaterialEditorParameter:update(t, dt)
 	return 
 end
-CoreMaterialEditorParameter.destroy = function (self)
+function CoreMaterialEditorParameter:destroy()
 	slot3 = self._panel
 
 	self._panel.destroy(slot2)
 
 	return 
 end
-CoreMaterialEditorParameter.panel = function (self)
+function CoreMaterialEditorParameter:panel()
 	return self._panel
 end
-CoreMaterialEditorParameter.get_value = function (self)
+function CoreMaterialEditorParameter:get_value()
 	return self._value
 end
-CoreMaterialEditorParameter.to_slider_range = function (self, v, min, step)
+function CoreMaterialEditorParameter:to_slider_range(v, min, step)
 	return (v - min) / step
 end
-CoreMaterialEditorParameter.from_slider_range = function (self, v, min, step)
+function CoreMaterialEditorParameter:from_slider_range(v, min, step)
 	return v * step + min
 end
-CoreMaterialEditorParameter._create_node = function (self)
+function CoreMaterialEditorParameter:_create_node()
 	if self._parameter_info.type == "vector3" then
 		slot4 = "variable"
 		self._parameter_node = self._editor._current_material_node.make_child(slot2, self._editor._current_material_node)
@@ -231,7 +231,7 @@ CoreMaterialEditorParameter._create_node = function (self)
 
 	return 
 end
-CoreMaterialEditorParameter._load_value = function (self)
+function CoreMaterialEditorParameter:_load_value()
 	slot4 = "src"
 
 	if self._editor._current_material_node.parameter(slot2, self._editor._current_material_node) and not self._customize then
@@ -287,7 +287,7 @@ CoreMaterialEditorParameter._load_value = function (self)
 
 	return 
 end
-CoreMaterialEditorParameter._copy_to_parent = function (self, name)
+function CoreMaterialEditorParameter:_copy_to_parent(name)
 	local material_node = nil
 
 	if name then

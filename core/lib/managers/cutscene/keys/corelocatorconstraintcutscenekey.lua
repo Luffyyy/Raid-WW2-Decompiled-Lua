@@ -25,7 +25,7 @@ CoreLocatorConstraintCutsceneKey.register_serialized_attribute("Locator Constrai
 CoreLocatorConstraintCutsceneKey.control_for_locator_name = CoreCutsceneKeyBase.standard_combo_box_control
 CoreLocatorConstraintCutsceneKey.control_for_parent_unit_name = CoreCutsceneKeyBase.standard_combo_box_control
 CoreLocatorConstraintCutsceneKey.control_for_parent_object_name = CoreCutsceneKeyBase.standard_combo_box_control
-CoreLocatorConstraintCutsceneKey.__tostring = function (self)
+function CoreLocatorConstraintCutsceneKey:__tostring()
 	local attach_point_name = "disabled"
 	slot4 = self
 
@@ -44,10 +44,10 @@ CoreLocatorConstraintCutsceneKey.__tostring = function (self)
 
 	return string.format(slot3, "Set constaint of locator \"%s\" to %s.", self.locator_name(slot6))
 end
-CoreLocatorConstraintCutsceneKey.can_evaluate_with_player = function (self, player)
+function CoreLocatorConstraintCutsceneKey:can_evaluate_with_player(player)
 	return self._cast ~= nil
 end
-CoreLocatorConstraintCutsceneKey.evaluate = function (self, player, fast_forward)
+function CoreLocatorConstraintCutsceneKey:evaluate(player, fast_forward)
 	slot9 = self
 	slot8 = true
 	local parent_object = self._unit_object(slot4, self, self.parent_unit_name(slot7), self.parent_object_name(self))
@@ -57,7 +57,7 @@ CoreLocatorConstraintCutsceneKey.evaluate = function (self, player, fast_forward
 
 	return 
 end
-CoreLocatorConstraintCutsceneKey.revert = function (self, player)
+function CoreLocatorConstraintCutsceneKey:revert(player)
 	slot5 = {
 		locator_name = self.locator_name(slot7)
 	}
@@ -76,7 +76,7 @@ CoreLocatorConstraintCutsceneKey.revert = function (self, player)
 
 	return 
 end
-CoreLocatorConstraintCutsceneKey.update_gui = function (self, time, delta_time, player)
+function CoreLocatorConstraintCutsceneKey:update_gui(time, delta_time, player)
 	slot9 = self
 	slot9 = true
 	local locator_object = self._unit_object(slot5, self, self.locator_name(slot8), "locator")
@@ -132,7 +132,7 @@ CoreLocatorConstraintCutsceneKey.update_gui = function (self, time, delta_time, 
 
 	return 
 end
-CoreLocatorConstraintCutsceneKey.is_valid_locator_name = function (self, locator_name)
+function CoreLocatorConstraintCutsceneKey:is_valid_locator_name(locator_name)
 	slot5 = "locator"
 
 	if string.begins(slot3, locator_name) then
@@ -141,7 +141,7 @@ CoreLocatorConstraintCutsceneKey.is_valid_locator_name = function (self, locator
 		return self._unit_type(slot3, self) == "locator"
 	end
 end
-CoreLocatorConstraintCutsceneKey.is_valid_parent_unit_name = function (self, unit_name)
+function CoreLocatorConstraintCutsceneKey:is_valid_parent_unit_name(unit_name)
 	if unit_name ~= nil and unit_name ~= "" then
 		slot5 = unit_name
 		slot2 = CoreCutsceneKeyBase.is_valid_unit_name(slot3, self)
@@ -155,7 +155,7 @@ CoreLocatorConstraintCutsceneKey.is_valid_parent_unit_name = function (self, uni
 
 	return slot2
 end
-CoreLocatorConstraintCutsceneKey.is_valid_parent_object_name = function (self, object_name)
+function CoreLocatorConstraintCutsceneKey:is_valid_parent_object_name(object_name)
 	if object_name ~= nil and object_name ~= "" then
 		slot5 = object_name
 		slot8 = self
@@ -170,7 +170,7 @@ CoreLocatorConstraintCutsceneKey.is_valid_parent_object_name = function (self, o
 
 	return slot2
 end
-CoreLocatorConstraintCutsceneKey.refresh_control_for_locator_name = function (self, control)
+function CoreLocatorConstraintCutsceneKey:refresh_control_for_locator_name(control)
 	slot4 = control
 
 	control.freeze(slot3)
@@ -216,7 +216,7 @@ CoreLocatorConstraintCutsceneKey.refresh_control_for_locator_name = function (se
 
 	return 
 end
-CoreLocatorConstraintCutsceneKey.refresh_control_for_parent_unit_name = function (self, control)
+function CoreLocatorConstraintCutsceneKey:refresh_control_for_parent_unit_name(control)
 	slot5 = control
 	slot8 = self
 
@@ -236,7 +236,7 @@ CoreLocatorConstraintCutsceneKey.refresh_control_for_parent_unit_name = function
 
 	return 
 end
-CoreLocatorConstraintCutsceneKey.refresh_control_for_parent_object_name = function (self, control)
+function CoreLocatorConstraintCutsceneKey:refresh_control_for_parent_object_name(control)
 	slot6 = self.parent_unit_name(slot7)
 	slot9 = self
 
@@ -256,21 +256,21 @@ CoreLocatorConstraintCutsceneKey.refresh_control_for_parent_object_name = functi
 
 	return 
 end
-CoreLocatorConstraintCutsceneKey.on_attribute_before_changed = function (self, attribute_name, value, previous_value)
+function CoreLocatorConstraintCutsceneKey:on_attribute_before_changed(attribute_name, value, previous_value)
 	slot7 = nil
 
 	self.revert(slot5, self)
 
 	return 
 end
-CoreLocatorConstraintCutsceneKey.on_attribute_changed = function (self, attribute_name, value, previous_value)
+function CoreLocatorConstraintCutsceneKey:on_attribute_changed(attribute_name, value, previous_value)
 	slot7 = nil
 
 	self.evaluate(slot5, self)
 
 	return 
 end
-CoreLocatorConstraintCutsceneKey._constrain_locator_to_object = function (self, parent_object)
+function CoreLocatorConstraintCutsceneKey:_constrain_locator_to_object(parent_object)
 	slot7 = self
 	slot6 = true
 	local locator_unit = self._unit(slot3, self, self.locator_name(slot6))

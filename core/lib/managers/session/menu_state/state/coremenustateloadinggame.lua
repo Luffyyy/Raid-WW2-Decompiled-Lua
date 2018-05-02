@@ -11,7 +11,7 @@ slot3 = "CoreMenuStateStopLoadingGame"
 core.import(slot1, core)
 
 LoadingGame = LoadingGame or class()
-LoadingGame.init = function (self)
+function LoadingGame:init()
 	self.menu_state._set_stable_for_loading(slot2)
 
 	local menu_handler = self.menu_state._menu_handler
@@ -21,14 +21,14 @@ LoadingGame.init = function (self)
 
 	return 
 end
-LoadingGame.destroy = function (self)
+function LoadingGame:destroy()
 	slot3 = self.menu_state
 
 	self.menu_state._not_stable_for_loading(slot2)
 
 	return 
 end
-LoadingGame.transition = function (self)
+function LoadingGame:transition()
 	local game_state = self.menu_state._game_state
 	slot4 = game_state
 

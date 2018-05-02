@@ -20,14 +20,14 @@ if not ObjectDependencyNode then
 end
 
 ObjectDependencyNode = slot0
-ObjectDependencyNode.init = function (self, name, get_dn_cb, database)
+function ObjectDependencyNode:init(name, get_dn_cb, database)
 	slot11 = database
 
 	self.super.init(slot5, self, OBJECT, "object", name, get_dn_cb)
 
 	return 
 end
-ObjectDependencyNode._walkxml2dependencies = function (self, xmlnode, deps)
+function ObjectDependencyNode:_walkxml2dependencies(xmlnode, deps)
 	slot5 = xmlnode
 	local node_name = xmlnode.name(slot4)
 

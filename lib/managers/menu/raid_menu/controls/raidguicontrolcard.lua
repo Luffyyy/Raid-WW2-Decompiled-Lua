@@ -4,7 +4,7 @@ if not RaidGUIControlCard then
 end
 
 RaidGUIControlCard = slot0
-RaidGUIControlCard.init = function (self, parent, item_params, item_data, grid_params)
+function RaidGUIControlCard:init(parent, item_params, item_data, grid_params)
 	slot9 = item_params
 
 	RaidGUIControlCard.super.init(slot6, self, parent)
@@ -107,7 +107,7 @@ RaidGUIControlCard.init = function (self, parent, item_params, item_data, grid_p
 
 	return 
 end
-RaidGUIControlCard._create_border = function (self)
+function RaidGUIControlCard:_create_border()
 	local border_thickness = 1.6
 	slot5 = {
 		name = "border_left",
@@ -216,14 +216,14 @@ RaidGUIControlCard._create_border = function (self)
 
 	return 
 end
-RaidGUIControlCard.mouse_released = function (self, o, button, x, y)
+function RaidGUIControlCard:mouse_released(o, button, x, y)
 	slot8 = button
 
 	self.on_mouse_released(slot6, self)
 
 	return true
 end
-RaidGUIControlCard.on_mouse_released = function (self, button)
+function RaidGUIControlCard:on_mouse_released(button)
 	if self._on_click_callback then
 		slot6 = self._item_data
 
@@ -232,10 +232,10 @@ RaidGUIControlCard.on_mouse_released = function (self, button)
 
 	return 
 end
-RaidGUIControlCard.selected = function (self)
+function RaidGUIControlCard:selected()
 	return self._selected
 end
-RaidGUIControlCard.select = function (self)
+function RaidGUIControlCard:select()
 	self._selected = true
 
 	if self._card_glow then
@@ -254,7 +254,7 @@ RaidGUIControlCard.select = function (self)
 
 	return 
 end
-RaidGUIControlCard.unselect = function (self)
+function RaidGUIControlCard:unselect()
 	self._selected = false
 
 	if self._card_glow then
@@ -269,10 +269,10 @@ RaidGUIControlCard.unselect = function (self)
 
 	return 
 end
-RaidGUIControlCard.locked = function (self)
+function RaidGUIControlCard:locked()
 	return self._locked
 end
-RaidGUIControlCard.lock = function (self)
+function RaidGUIControlCard:lock()
 	self._locked = true
 
 	if self._card_lock_glow then
@@ -291,7 +291,7 @@ RaidGUIControlCard.lock = function (self)
 
 	return 
 end
-RaidGUIControlCard.unlock = function (self)
+function RaidGUIControlCard:unlock()
 	self._locked = false
 
 	if self._card_lock_glow then

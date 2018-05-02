@@ -4,7 +4,7 @@ if not AwardAchievmentElement then
 end
 
 AwardAchievmentElement = slot0
-AwardAchievmentElement.init = function (self, unit)
+function AwardAchievmentElement:init(unit)
 	slot5 = unit
 
 	AwardAchievmentElement.super.init(slot3, self)
@@ -26,7 +26,7 @@ AwardAchievmentElement.init = function (self, unit)
 
 	return 
 end
-AwardAchievmentElement._build_panel = function (self, panel, panel_sizer)
+function AwardAchievmentElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

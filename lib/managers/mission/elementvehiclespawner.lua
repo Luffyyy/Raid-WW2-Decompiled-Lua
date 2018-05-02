@@ -8,7 +8,7 @@ if not ElementVehicleSpawner then
 end
 
 ElementVehicleSpawner = slot0
-ElementVehicleSpawner.init = function (self, ...)
+function ElementVehicleSpawner:init(...)
 	slot3 = self
 
 	ElementVehicleSpawner.super.init(slot2, ...)
@@ -26,17 +26,17 @@ ElementVehicleSpawner.init = function (self, ...)
 
 	return 
 end
-ElementVehicleSpawner.value = function (self, name)
+function ElementVehicleSpawner:value(name)
 	return self._values[name]
 end
-ElementVehicleSpawner.client_on_executed = function (self, ...)
+function ElementVehicleSpawner:client_on_executed(...)
 	if not self._values.enabled then
 		return 
 	end
 
 	return 
 end
-ElementVehicleSpawner.on_executed = function (self, instigator)
+function ElementVehicleSpawner:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -57,7 +57,7 @@ ElementVehicleSpawner.on_executed = function (self, instigator)
 
 	return 
 end
-ElementVehicleSpawner.unspawn_all_units = function (self)
+function ElementVehicleSpawner:unspawn_all_units()
 	slot3 = self._vehicle_units
 
 	for _, vehicle_unit in ipairs(slot2) do
@@ -72,7 +72,7 @@ ElementVehicleSpawner.unspawn_all_units = function (self)
 
 	return 
 end
-ElementVehicleSpawner.stop_simulation = function (self, ...)
+function ElementVehicleSpawner:stop_simulation(...)
 	slot3 = self
 
 	self.unspawn_all_units(slot2)

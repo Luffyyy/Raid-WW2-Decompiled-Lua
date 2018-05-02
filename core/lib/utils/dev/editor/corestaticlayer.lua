@@ -66,7 +66,7 @@ if not StaticLayer then
 end
 
 StaticLayer = slot0
-StaticLayer.init = function (self, owner, save_name, units_vector, slot_mask)
+function StaticLayer:init(owner, save_name, units_vector, slot_mask)
 	slot9 = save_name
 
 	StaticLayer.super.init(slot6, self, owner)
@@ -101,7 +101,7 @@ StaticLayer.init = function (self, owner, save_name, units_vector, slot_mask)
 
 	return 
 end
-StaticLayer.clone_unit = function (self)
+function StaticLayer:clone_unit()
 	slot3 = self
 
 	if self.ctrl(slot2) then
@@ -116,7 +116,7 @@ StaticLayer.clone_unit = function (self)
 
 	return 
 end
-StaticLayer.move_to_continent = function (self, name)
+function StaticLayer:move_to_continent(name)
 	local delete_units = self._selected_units
 	slot6 = name
 
@@ -148,7 +148,7 @@ StaticLayer.move_to_continent = function (self, name)
 
 	return 
 end
-StaticLayer.clone = function (self, to_continent)
+function StaticLayer:clone(to_continent)
 	slot4 = managers.editor
 
 	managers.editor.freeze_gui_lists(slot3)
@@ -208,7 +208,7 @@ StaticLayer.clone = function (self, to_continent)
 
 	return 
 end
-StaticLayer.spawn_unit = function (self)
+function StaticLayer:spawn_unit()
 	if not self._grab then
 		slot3 = self
 
@@ -221,7 +221,7 @@ StaticLayer.spawn_unit = function (self)
 
 	return 
 end
-StaticLayer.do_spawn_unit = function (self, ...)
+function StaticLayer:do_spawn_unit(...)
 	slot3 = self
 	local unit = StaticLayer.super.do_spawn_unit(slot2, ...)
 
@@ -233,7 +233,7 @@ StaticLayer.do_spawn_unit = function (self, ...)
 
 	return unit
 end
-StaticLayer.set_bodies_keyframed = function (self, unit)
+function StaticLayer:set_bodies_keyframed(unit)
 	slot4 = unit
 	local bodies = unit.num_bodies(slot3)
 
@@ -256,7 +256,7 @@ StaticLayer.set_bodies_keyframed = function (self, unit)
 
 	return 
 end
-StaticLayer.use_grab_info = function (self)
+function StaticLayer:use_grab_info()
 	slot3 = self
 
 	StaticLayer.super.use_grab_info(slot2)
@@ -277,7 +277,7 @@ StaticLayer.use_grab_info = function (self)
 
 	return 
 end
-StaticLayer.set_unit_positions = function (self, pos)
+function StaticLayer:set_unit_positions(pos)
 	if not self._grab then
 		slot5 = pos.z
 
@@ -317,7 +317,7 @@ StaticLayer.set_unit_positions = function (self, pos)
 
 	return 
 end
-StaticLayer.set_unit_position = function (self, unit, pos, rot)
+function StaticLayer:set_unit_position(unit, pos, rot)
 	slot6 = unit
 	slot7 = rot
 	local new_pos = pos + unit.unit_data(slot5).local_pos.rotate_with(slot5, unit.unit_data(slot5).local_pos)
@@ -337,7 +337,7 @@ StaticLayer.set_unit_position = function (self, unit, pos, rot)
 
 	return 
 end
-StaticLayer.set_unit_rotations = function (self, rot)
+function StaticLayer:set_unit_rotations(rot)
 	slot4 = managers.editor
 
 	if managers.editor.use_beta_undo(slot3) then
@@ -374,7 +374,7 @@ StaticLayer.set_unit_rotations = function (self, rot)
 
 	return 
 end
-StaticLayer.set_unit_rotation = function (self, unit, rot)
+function StaticLayer:set_unit_rotation(unit, rot)
 	local rot = rot * unit.unit_data(slot4).local_rot
 	slot7 = rot
 
@@ -386,7 +386,7 @@ StaticLayer.set_unit_rotation = function (self, unit, rot)
 
 	return 
 end
-StaticLayer._on_unit_moved = function (self, unit, pos)
+function StaticLayer:_on_unit_moved(unit, pos)
 	slot5 = unit
 
 	if unit.ladder(slot4) then
@@ -411,7 +411,7 @@ StaticLayer._on_unit_moved = function (self, unit, pos)
 
 	return 
 end
-StaticLayer._on_unit_rotated = function (self, unit, rot)
+function StaticLayer:_on_unit_rotated(unit, rot)
 	slot5 = unit
 
 	if unit.ladder(slot4) then
@@ -427,7 +427,7 @@ StaticLayer._on_unit_rotated = function (self, unit, rot)
 
 	return 
 end
-StaticLayer.move_unit = function (self, btn, pressed)
+function StaticLayer:move_unit(btn, pressed)
 	if self._selected_unit then
 		self._grab = true
 		slot6 = self._selected_unit
@@ -437,7 +437,7 @@ StaticLayer.move_unit = function (self, btn, pressed)
 
 	return 
 end
-StaticLayer.rotate_unit = function (self, btn, pressed)
+function StaticLayer:rotate_unit(btn, pressed)
 	if self._selected_unit then
 		slot5 = self
 
@@ -488,7 +488,7 @@ StaticLayer.rotate_unit = function (self, btn, pressed)
 
 	return 
 end
-StaticLayer.position_as = function (self)
+function StaticLayer:position_as()
 	if self._selected_unit then
 		slot3 = self
 
@@ -518,7 +518,7 @@ StaticLayer.position_as = function (self)
 
 	return 
 end
-StaticLayer.set_select_unit = function (self, unit)
+function StaticLayer:set_select_unit(unit)
 	slot5 = unit
 
 	StaticLayer.super.set_select_unit(slot3, self)
@@ -540,7 +540,7 @@ StaticLayer.set_select_unit = function (self, unit)
 
 	return 
 end
-StaticLayer.release_unit = function (self)
+function StaticLayer:release_unit()
 	self._grab = false
 	slot5 = 0
 	self._offset_move_vec = Vector3(slot2, 0, 0)
@@ -554,7 +554,7 @@ StaticLayer.release_unit = function (self)
 
 	return 
 end
-StaticLayer.delete_selected_unit = function (self, btn, pressed)
+function StaticLayer:delete_selected_unit(btn, pressed)
 	slot5 = managers.editor
 
 	managers.editor.freeze_gui_lists(slot4)
@@ -591,7 +591,7 @@ StaticLayer.delete_selected_unit = function (self, btn, pressed)
 
 	return 
 end
-StaticLayer.create_marker = function (self, marker)
+function StaticLayer:create_marker(marker)
 	if self._selected_unit then
 		slot4 = marker
 		slot7 = self._selected_unit
@@ -608,7 +608,7 @@ StaticLayer.create_marker = function (self, marker)
 
 	return 
 end
-StaticLayer.use_marker = function (self, marker)
+function StaticLayer:use_marker(marker)
 	if self._selected_unit then
 		slot5 = marker._pos
 
@@ -623,14 +623,14 @@ StaticLayer.use_marker = function (self, marker)
 
 	return 
 end
-StaticLayer.reset_rotation = function (self)
+function StaticLayer:reset_rotation()
 	if self._selected_unit then
 		slot3 = self
 	end
 
 	return 
 end
-StaticLayer.update = function (self, t, dt)
+function StaticLayer:update(t, dt)
 	slot7 = dt
 
 	self.draw_units(slot4, self, t)
@@ -714,7 +714,7 @@ StaticLayer.update = function (self, t, dt)
 
 	return 
 end
-StaticLayer.draw_marker = function (self, t, dt)
+function StaticLayer:draw_marker(t, dt)
 	slot5 = managers.editor
 
 	if not managers.editor.layer_draw_marker(slot4) then
@@ -760,7 +760,7 @@ StaticLayer.draw_marker = function (self, t, dt)
 
 	return 
 end
-StaticLayer.update_move_triggers = function (self, t, dt)
+function StaticLayer:update_move_triggers(t, dt)
 
 	-- Decompilation error in this vicinity:
 	slot5 = self._selected_unit
@@ -833,7 +833,7 @@ StaticLayer.update_move_triggers = function (self, t, dt)
 
 	return 
 end
-StaticLayer.update_rotate_triggers = function (self, t, dt)
+function StaticLayer:update_rotate_triggers(t, dt)
 
 	-- Decompilation error in this vicinity:
 	slot5 = self._selected_unit
@@ -913,7 +913,7 @@ StaticLayer.update_rotate_triggers = function (self, t, dt)
 
 	return 
 end
-StaticLayer.draw_rotation = function (self, t, dt)
+function StaticLayer:draw_rotation(t, dt)
 	slot5 = self._selected_unit
 
 	if not alive(slot4) then
@@ -938,7 +938,7 @@ StaticLayer.draw_rotation = function (self, t, dt)
 
 	return 
 end
-StaticLayer.draw_units = function (self, t, dt)
+function StaticLayer:draw_units(t, dt)
 	if self._selected_units then
 		slot5 = self._selected_units
 
@@ -970,7 +970,7 @@ StaticLayer.draw_units = function (self, t, dt)
 
 	return 
 end
-StaticLayer.build_panel = function (self, notebook, settings)
+function StaticLayer:build_panel(notebook, settings)
 	slot6 = "StaticLayer:build_panel"
 
 	cat_print(slot4, "editor")
@@ -1030,10 +1030,10 @@ StaticLayer.build_panel = function (self, notebook, settings)
 
 	return self._ews_panel
 end
-StaticLayer.build_btn_toolbar = function (self)
+function StaticLayer:build_btn_toolbar()
 	return 
 end
-StaticLayer.add_btns_to_toolbar = function (self)
+function StaticLayer:add_btns_to_toolbar()
 	slot8 = "toolbar\\hide_16x16.png"
 
 	self._btn_toolbar.add_tool(slot2, self._btn_toolbar, "HIDE_ALL", "Hide All", CoreEws.image_path(slot7))
@@ -1053,7 +1053,7 @@ StaticLayer.add_btns_to_toolbar = function (self)
 
 	return 
 end
-StaticLayer.get_help = function (self, text)
+function StaticLayer:get_help(text)
 	local t = "\t"
 	local n = "\n"
 	text = text .. "Create unit:        Right mouse button" .. n
@@ -1075,7 +1075,7 @@ StaticLayer.get_help = function (self, text)
 
 	return text
 end
-StaticLayer.undo = function (self)
+function StaticLayer:undo()
 	slot3 = managers.editor
 
 	if not managers.editor.use_beta_undo(slot2) then
@@ -1130,14 +1130,14 @@ StaticLayer.undo = function (self)
 
 	return 
 end
-StaticLayer.deactivate = function (self)
+function StaticLayer:deactivate()
 	slot3 = self
 
 	StaticLayer.super.deactivate(slot2)
 
 	return 
 end
-StaticLayer.add_triggers = function (self)
+function StaticLayer:add_triggers()
 	StaticLayer.super.add_triggers(slot2)
 
 	local vc = self._editor_data.virtual_controller

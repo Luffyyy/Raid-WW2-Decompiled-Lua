@@ -18,7 +18,7 @@ EnvironmentManager = EnvironmentManager or CoreClass.class()
 local extension = "environment"
 slot3 = extension
 local ids_extension = Idstring(slot2)
-EnvironmentManager.init = function (self)
+function EnvironmentManager:init()
 	self._env_data_map = {}
 	self._feeder_class_map = {}
 	self._global_feeder_map = {}
@@ -100,7 +100,7 @@ EnvironmentManager.init = function (self)
 
 	return 
 end
-EnvironmentManager.destroy = function (self)
+function EnvironmentManager:destroy()
 	self._env_data_map = nil
 	self._feeder_class_map = nil
 	self._global_feeder_map = nil
@@ -109,7 +109,7 @@ EnvironmentManager.destroy = function (self)
 
 	return 
 end
-EnvironmentManager.preload_environment = function (self, path)
+function EnvironmentManager:preload_environment(path)
 	if not self._env_data_map[path] then
 		slot6 = path
 		self._env_data_map[path] = self._load(slot4, self)
@@ -117,13 +117,13 @@ EnvironmentManager.preload_environment = function (self, path)
 
 	return 
 end
-EnvironmentManager.has_data_path_key = function (self, data_path_key)
+function EnvironmentManager:has_data_path_key(data_path_key)
 	return self._feeder_class_map[data_path_key] ~= nil
 end
-EnvironmentManager.get_predefined_environment_filter_map = function (self)
+function EnvironmentManager:get_predefined_environment_filter_map()
 	return self._predefined_environment_filter_map
 end
-EnvironmentManager.get_value = function (self, path, data_path_key)
+function EnvironmentManager:get_value(path, data_path_key)
 	slot6 = path
 	local env_data = self._get_data(slot4, self)
 
@@ -145,7 +145,7 @@ EnvironmentManager.get_value = function (self, path, data_path_key)
 
 	return value
 end
-EnvironmentManager.set_global_environment_modifier = function (self, data_path_key, is_override, modifier_func)
+function EnvironmentManager:set_global_environment_modifier(data_path_key, is_override, modifier_func)
 	local global_modifier_data = nil
 
 	if modifier_func then
@@ -159,24 +159,24 @@ EnvironmentManager.set_global_environment_modifier = function (self, data_path_k
 
 	return 
 end
-EnvironmentManager.set_default_environment = function (self, default_environment_path)
+function EnvironmentManager:set_default_environment(default_environment_path)
 	self._default_environment_path = default_environment_path
 
 	return 
 end
-EnvironmentManager.default_environment = function (self)
+function EnvironmentManager:default_environment()
 	return self._default_environment_path
 end
-EnvironmentManager.game_default_environment = function (self)
+function EnvironmentManager:game_default_environment()
 	return self._game_default_environment_path
 end
-EnvironmentManager._set_global_feeder = function (self, feeder)
+function EnvironmentManager:_set_global_feeder(feeder)
 	local old_feeder = self._global_feeder_map[feeder.DATA_PATH_KEY]
 	self._global_feeder_map[feeder.DATA_PATH_KEY] = feeder
 
 	return old_feeder
 end
-EnvironmentManager.editor_add_created_callback = function (self, func)
+function EnvironmentManager:editor_add_created_callback(func)
 	self._created_callback_list = self._created_callback_list or {}
 	slot5 = func
 
@@ -184,7 +184,7 @@ EnvironmentManager.editor_add_created_callback = function (self, func)
 
 	return 
 end
-EnvironmentManager.editor_reload = function (self, path)
+function EnvironmentManager:editor_reload(path)
 	slot5 = path .. "." .. extension
 	local entry_path = managers.database.entry_relative_path(slot3, managers.database)
 	slot6 = entry_path
@@ -248,7 +248,7 @@ EnvironmentManager.editor_reload = function (self, path)
 
 	return 
 end
-EnvironmentManager._get_data = function (self, path)
+function EnvironmentManager:_get_data(path)
 	local env_data = self._env_data_map[path]
 
 	if not env_data then
@@ -268,7 +268,7 @@ EnvironmentManager._get_data = function (self, path)
 
 	return env_data
 end
-EnvironmentManager._create_feeder = function (self, data_path_key, value)
+function EnvironmentManager:_create_feeder(data_path_key, value)
 	slot6 = value
 	local feeder = self._feeder_class_map[data_path_key].new(slot4, self._feeder_class_map[data_path_key])
 	local global_modifier_data = self._global_environment_modifier_map[data_path_key]
@@ -281,7 +281,7 @@ EnvironmentManager._create_feeder = function (self, data_path_key, value)
 
 	return feeder
 end
-EnvironmentManager._load = function (self, path)
+function EnvironmentManager:_load(path)
 	local raw_data = nil
 	slot5 = Application
 
@@ -302,7 +302,7 @@ EnvironmentManager._load = function (self, path)
 
 	return env_data
 end
-EnvironmentManager._load_env_data = function (self, data_path, env_data, raw_data, path)
+function EnvironmentManager:_load_env_data(data_path, env_data, raw_data, path)
 	slot7 = raw_data
 
 	for _, sub_raw_data in ipairs(slot6) do

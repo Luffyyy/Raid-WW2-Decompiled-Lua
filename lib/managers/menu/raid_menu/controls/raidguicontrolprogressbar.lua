@@ -5,7 +5,7 @@ end
 
 RaidGUIControlProgressBar = slot0
 RaidGUIControlProgressBar.SLIDER_STEP = 0.1
-RaidGUIControlProgressBar.init = function (self, parent, params)
+function RaidGUIControlProgressBar:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlProgressBar.super.init(slot4, self, parent)
@@ -87,7 +87,7 @@ RaidGUIControlProgressBar.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlProgressBar.close = function (self)
+function RaidGUIControlProgressBar:close()
 	RaidGUIControlScrollbar.super.close()
 
 	self._dragging = false
@@ -95,7 +95,7 @@ RaidGUIControlProgressBar.close = function (self)
 
 	return 
 end
-RaidGUIControlProgressBar.set_progress = function (self, progress)
+function RaidGUIControlProgressBar:set_progress(progress)
 	slot6 = 1
 	self._progress = math.clamp(slot3, progress, 0)
 	local width = self._progress * self._width
@@ -105,10 +105,10 @@ RaidGUIControlProgressBar.set_progress = function (self, progress)
 
 	return 
 end
-RaidGUIControlProgressBar.get_progress = function (self)
+function RaidGUIControlProgressBar:get_progress()
 	return self._progress
 end
-RaidGUIControlProgressBar.on_mouse_moved = function (self, o, x, y)
+function RaidGUIControlProgressBar:on_mouse_moved(o, x, y)
 	if not self._draggable then
 		return 
 	end
@@ -134,7 +134,7 @@ RaidGUIControlProgressBar.on_mouse_moved = function (self, o, x, y)
 
 	return true, "grab"
 end
-RaidGUIControlProgressBar.on_mouse_over = function (self, x, y)
+function RaidGUIControlProgressBar:on_mouse_over(x, y)
 	if not self._draggable then
 		return 
 	end
@@ -147,7 +147,7 @@ RaidGUIControlProgressBar.on_mouse_over = function (self, x, y)
 
 	return 
 end
-RaidGUIControlProgressBar.on_mouse_out = function (self, x, y)
+function RaidGUIControlProgressBar:on_mouse_out(x, y)
 	if not self._draggable then
 		return 
 	end
@@ -180,7 +180,7 @@ RaidGUIControlProgressBar.on_mouse_out = function (self, x, y)
 
 	return 
 end
-RaidGUIControlProgressBar.on_mouse_pressed = function (self)
+function RaidGUIControlProgressBar:on_mouse_pressed()
 	if not self._draggable then
 		return 
 	end
@@ -195,7 +195,7 @@ RaidGUIControlProgressBar.on_mouse_pressed = function (self)
 
 	return 
 end
-RaidGUIControlProgressBar.on_mouse_released = function (self)
+function RaidGUIControlProgressBar:on_mouse_released()
 	if not self._draggable then
 		return 
 	end
@@ -209,7 +209,7 @@ RaidGUIControlProgressBar.on_mouse_released = function (self)
 
 	return 
 end
-RaidGUIControlProgressBar.show = function (self)
+function RaidGUIControlProgressBar:show()
 	slot3 = self._object
 
 	self._object.show(slot2)
@@ -224,7 +224,7 @@ RaidGUIControlProgressBar.show = function (self)
 
 	return 
 end
-RaidGUIControlProgressBar.hide = function (self)
+function RaidGUIControlProgressBar:hide()
 	slot3 = self._object
 
 	self._object.hide(slot2)
@@ -239,7 +239,7 @@ RaidGUIControlProgressBar.hide = function (self)
 
 	return 
 end
-RaidGUIControlProgressBar.set_selected = function (self, value)
+function RaidGUIControlProgressBar:set_selected(value)
 	self._selected = value
 
 	if self._selected then
@@ -254,7 +254,7 @@ RaidGUIControlProgressBar.set_selected = function (self, value)
 
 	return 
 end
-RaidGUIControlProgressBar.highlight_on = function (self)
+function RaidGUIControlProgressBar:highlight_on()
 	if self._params.no_highlight then
 		return 
 	end
@@ -265,7 +265,7 @@ RaidGUIControlProgressBar.highlight_on = function (self)
 
 	return 
 end
-RaidGUIControlProgressBar.highlight_off = function (self)
+function RaidGUIControlProgressBar:highlight_off()
 	if self._params.no_highlight or self._selected then
 		return 
 	end
@@ -276,7 +276,7 @@ RaidGUIControlProgressBar.highlight_off = function (self)
 
 	return 
 end
-RaidGUIControlProgressBar.confirm_pressed = function (self)
+function RaidGUIControlProgressBar:confirm_pressed()
 	if self._selected then
 		self._selected_control = not self._selected_control
 		slot4 = self._selected_control
@@ -288,7 +288,7 @@ RaidGUIControlProgressBar.confirm_pressed = function (self)
 
 	return 
 end
-RaidGUIControlProgressBar._select_control = function (self, value)
+function RaidGUIControlProgressBar:_select_control(value)
 	local color = (value and Color.white) or self._bg_color
 	slot6 = color
 
@@ -296,7 +296,7 @@ RaidGUIControlProgressBar._select_control = function (self, value)
 
 	return 
 end
-RaidGUIControlProgressBar.move_down = function (self)
+function RaidGUIControlProgressBar:move_down()
 	if self._selected then
 		if self._selected_control then
 			self._selected_control = false
@@ -312,7 +312,7 @@ RaidGUIControlProgressBar.move_down = function (self)
 
 	return 
 end
-RaidGUIControlProgressBar.move_up = function (self)
+function RaidGUIControlProgressBar:move_up()
 	if self._selected then
 		if self._selected_control then
 			self._selected_control = false
@@ -328,7 +328,7 @@ RaidGUIControlProgressBar.move_up = function (self)
 
 	return 
 end
-RaidGUIControlProgressBar.move_left = function (self)
+function RaidGUIControlProgressBar:move_left()
 	if self._selected then
 		if self._selected_control then
 			local current_progress = self.get_progress(slot2)
@@ -350,7 +350,7 @@ RaidGUIControlProgressBar.move_left = function (self)
 
 	return 
 end
-RaidGUIControlProgressBar.move_right = function (self)
+function RaidGUIControlProgressBar:move_right()
 	if self._selected then
 		if self._selected_control then
 			local current_progress = self.get_progress(slot2)

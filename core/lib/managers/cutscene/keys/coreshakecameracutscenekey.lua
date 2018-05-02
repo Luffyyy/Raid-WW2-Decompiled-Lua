@@ -26,12 +26,12 @@ slot5 = tonumber
 
 CoreShakeCameraCutsceneKey.register_serialized_attribute("Camera Shake", CoreShakeCameraCutsceneKey, "offset", 0)
 
-CoreShakeCameraCutsceneKey.__tostring = function (self)
+function CoreShakeCameraCutsceneKey:__tostring()
 	slot4 = self
 
 	return "Trigger camera shake \"" .. self.name(slot3) .. "\"."
 end
-CoreShakeCameraCutsceneKey.play = function (self, player, undo, fast_forward)
+function CoreShakeCameraCutsceneKey:play(player, undo, fast_forward)
 	if undo then
 		slot6 = self
 
@@ -48,7 +48,7 @@ CoreShakeCameraCutsceneKey.play = function (self, player, undo, fast_forward)
 
 	return 
 end
-CoreShakeCameraCutsceneKey.stop = function (self)
+function CoreShakeCameraCutsceneKey:stop()
 	if self._shake_abort_func then
 		self._shake_abort_func()
 

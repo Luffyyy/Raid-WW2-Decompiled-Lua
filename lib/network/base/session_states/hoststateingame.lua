@@ -14,7 +14,7 @@ if not HostStateInGame then
 end
 
 HostStateInGame = slot0
-HostStateInGame.enter = function (self, data, enter_params)
+function HostStateInGame:enter(data, enter_params)
 	slot6 = data
 	slot9 = enter_params
 
@@ -22,7 +22,7 @@ HostStateInGame.enter = function (self, data, enter_params)
 
 	return 
 end
-HostStateInGame.on_join_request_received = function (self, data, peer_name, client_preferred_character, dlcs, xuid, peer_level, gameversion, join_attempt_identifier, auth_ticket, sender)
+function HostStateInGame:on_join_request_received(data, peer_name, client_preferred_character, dlcs, xuid, peer_level, gameversion, join_attempt_identifier, auth_ticket, sender)
 
 	-- Decompilation error in this vicinity:
 	slot21 = join_attempt_identifier
@@ -282,7 +282,7 @@ HostStateInGame.on_join_request_received = function (self, data, peer_name, clie
 
 	return 
 end
-HostStateInGame.on_peer_finished_loading = function (self, data, peer)
+function HostStateInGame:on_peer_finished_loading(data, peer)
 	slot12 = peer
 	slot12 = peer.xuid(slot13)
 	slot15 = peer
@@ -301,7 +301,7 @@ HostStateInGame.on_peer_finished_loading = function (self, data, peer)
 
 	return 
 end
-HostStateInGame.is_joinable = function (self, data)
+function HostStateInGame:is_joinable(data)
 	return not data.wants_to_load_level
 end
 

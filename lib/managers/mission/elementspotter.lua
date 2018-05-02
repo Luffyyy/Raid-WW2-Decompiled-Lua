@@ -10,7 +10,7 @@ if not ElementSpotter then
 end
 
 ElementSpotter = slot0
-ElementSpotter.init = function (self, ...)
+function ElementSpotter:init(...)
 	slot3 = self
 
 	ElementSpotter.super.init(slot2, ...)
@@ -21,7 +21,7 @@ ElementSpotter.init = function (self, ...)
 
 	return 
 end
-ElementSpotter.on_script_activated = function (self)
+function ElementSpotter:on_script_activated()
 	if self._values.enabled then
 		slot3 = self
 
@@ -30,7 +30,7 @@ ElementSpotter.on_script_activated = function (self)
 
 	return 
 end
-ElementSpotter.set_enabled = function (self, enabled)
+function ElementSpotter:set_enabled(enabled)
 	slot5 = enabled
 
 	ElementSpotter.super.set_enabled(slot3, self)
@@ -47,7 +47,7 @@ ElementSpotter.set_enabled = function (self, enabled)
 
 	return 
 end
-ElementSpotter.add_callback = function (self)
+function ElementSpotter:add_callback()
 	slot3 = Network
 
 	if not Network.is_server(slot2) then
@@ -62,7 +62,7 @@ ElementSpotter.add_callback = function (self)
 
 	return 
 end
-ElementSpotter.remove_callback = function (self)
+function ElementSpotter:remove_callback()
 	if self._callback then
 		slot4 = self._callback
 
@@ -73,7 +73,7 @@ ElementSpotter.remove_callback = function (self)
 
 	return 
 end
-ElementSpotter.on_executed = function (self, instigator, ...)
+function ElementSpotter:on_executed(instigator, ...)
 	if not self._values.enabled then
 		return 
 	end
@@ -85,7 +85,7 @@ ElementSpotter.on_executed = function (self, instigator, ...)
 	return 
 end
 local mvec1 = Vector3()
-ElementSpotter.update_spotter = function (self)
+function ElementSpotter:update_spotter()
 	if not self._values.enabled then
 		return 
 	end

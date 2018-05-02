@@ -27,7 +27,7 @@ end
 
 CoreCutsceneMayaExporter = slot0
 CoreCutsceneMayaExporter.MAYA_VERSION = 8.5
-CoreCutsceneMayaExporter.init = function (self, parent_window, cutscene_editor, start_frame, end_frame, output_path)
+function CoreCutsceneMayaExporter:init(parent_window, cutscene_editor, start_frame, end_frame, output_path)
 	slot12 = end_frame
 
 	self.super.init(slot7, self, parent_window, cutscene_editor, start_frame)
@@ -42,7 +42,7 @@ CoreCutsceneMayaExporter.init = function (self, parent_window, cutscene_editor, 
 
 	return 
 end
-CoreCutsceneMayaExporter.add_unit = function (self, unit_name, unit)
+function CoreCutsceneMayaExporter:add_unit(unit_name, unit)
 	local existing_unit = self.__sampled_units[unit_name]
 
 	if existing_unit == nil then
@@ -56,14 +56,14 @@ CoreCutsceneMayaExporter.add_unit = function (self, unit_name, unit)
 
 	return 
 end
-CoreCutsceneMayaExporter._visit_frame = function (self, frame)
+function CoreCutsceneMayaExporter:_visit_frame(frame)
 	slot4 = self
 
 	self._sample_animation_curves(slot3)
 
 	return 
 end
-CoreCutsceneMayaExporter._done = function (self, aborted)
+function CoreCutsceneMayaExporter:_done(aborted)
 	if not aborted then
 		slot5 = "w"
 		local file = io.open(slot3, self.__output_path)
@@ -91,7 +91,7 @@ CoreCutsceneMayaExporter._done = function (self, aborted)
 
 	return 
 end
-CoreCutsceneMayaExporter._combined_camera_node_name = function (self)
+function CoreCutsceneMayaExporter:_combined_camera_node_name()
 	local node_name = "camera_directed"
 
 	while self.__sampled_units[node_name] ~= nil do
@@ -103,7 +103,7 @@ CoreCutsceneMayaExporter._combined_camera_node_name = function (self)
 
 	return node_name
 end
-CoreCutsceneMayaExporter._write_header = function (self, file)
+function CoreCutsceneMayaExporter:_write_header(file)
 	slot4 = file
 	slot8 = self.MAYA_VERSION
 
@@ -392,7 +392,7 @@ CoreCutsceneMayaExporter._write_header = function (self, file)
 
 	return 
 end
-CoreCutsceneMayaExporter._write_hierarchies = function (self, file)
+function CoreCutsceneMayaExporter:_write_hierarchies(file)
 	slot4 = self.__sampled_units
 
 	for unit_name, unit in pairs(slot3) do
@@ -442,7 +442,7 @@ CoreCutsceneMayaExporter._write_hierarchies = function (self, file)
 
 	return 
 end
-CoreCutsceneMayaExporter._write_hierarchy_entry_for_object = function (self, file, unit_name, object, parent_object)
+function CoreCutsceneMayaExporter:_write_hierarchy_entry_for_object(file, unit_name, object, parent_object)
 
 	-- Decompilation error in this vicinity:
 	slot9 = object
@@ -486,7 +486,7 @@ CoreCutsceneMayaExporter._write_hierarchy_entry_for_object = function (self, fil
 
 	return 
 end
-CoreCutsceneMayaExporter._write_camera_node = function (self, file, camera_name)
+function CoreCutsceneMayaExporter:_write_camera_node(file, camera_name)
 	slot6 = "createNode transform -name \"" .. camera_name .. "\";\n"
 
 	file.write(slot4, file)
@@ -542,7 +542,7 @@ CoreCutsceneMayaExporter._write_camera_node = function (self, file, camera_name)
 
 	return 
 end
-CoreCutsceneMayaExporter._write_animation_curves = function (self, file)
+function CoreCutsceneMayaExporter:_write_animation_curves(file)
 	slot4 = self.__curve_sets
 
 	for unit_name, curve_sets in pairs(slot3) do
@@ -563,7 +563,7 @@ CoreCutsceneMayaExporter._write_animation_curves = function (self, file)
 
 	return 
 end
-CoreCutsceneMayaExporter._sample_animation_curves = function (self)
+function CoreCutsceneMayaExporter:_sample_animation_curves()
 	slot3 = self.__sampled_units
 
 	for unit_name, unit in pairs(slot2) do
@@ -592,7 +592,7 @@ CoreCutsceneMayaExporter._sample_animation_curves = function (self)
 
 	return 
 end
-CoreCutsceneMayaExporter._sample_animation_curves_for_hierarchy = function (self, unit_name, object)
+function CoreCutsceneMayaExporter:_sample_animation_curves_for_hierarchy(unit_name, object)
 
 	-- Decompilation error in this vicinity:
 	slot7 = object
@@ -608,7 +608,7 @@ CoreCutsceneMayaExporter._sample_animation_curves_for_hierarchy = function (self
 
 	return 
 end
-CoreCutsceneMayaExporter._curve_set = function (self, unit_name, object)
+function CoreCutsceneMayaExporter:_curve_set(unit_name, object)
 	local curve_sets_for_unit = self.__curve_sets[unit_name]
 	local curve_set = curve_sets_for_unit and curve_sets_for_unit[object]
 
@@ -627,7 +627,7 @@ CoreCutsceneMayaExporter._curve_set = function (self, unit_name, object)
 
 	return curve_set
 end
-CoreCutsceneMayaExporter._combined_camera_focal_length_curve = function (self)
+function CoreCutsceneMayaExporter:_combined_camera_focal_length_curve()
 	if self.__combined_camera_focal_length_curve == nil then
 		slot7 = self
 		slot6 = "focalLength"
@@ -636,18 +636,18 @@ CoreCutsceneMayaExporter._combined_camera_focal_length_curve = function (self)
 
 	return self.__combined_camera_focal_length_curve
 end
-CoreCutsceneMayaExporter._fov_to_focal_length = function (self, fov)
+function CoreCutsceneMayaExporter:_fov_to_focal_length(fov)
 	slot6 = 0.00872665 * fov
 	local focal_length = math.tan(math.deg(slot5))
 
 	return 0.89 / (focal_length * 0.03937)
 end
-CoreCutsceneMayaExporter._should_export = function (self, unit_name, object)
+function CoreCutsceneMayaExporter:_should_export(unit_name, object)
 	slot5 = object
 
 	return type_name(slot4) == "Object3D"
 end
-CoreCutsceneMayaExporter._maya_node_name = function (self, unit_name, object, full_path)
+function CoreCutsceneMayaExporter:_maya_node_name(unit_name, object, full_path)
 
 	-- Decompilation error in this vicinity:
 	slot7 = "camera"

@@ -4,7 +4,7 @@ if not RaidGUIControlListItemCharacterCreateClass then
 end
 
 RaidGUIControlListItemCharacterCreateClass = slot0
-RaidGUIControlListItemCharacterCreateClass.init = function (self, parent, params, item_data)
+function RaidGUIControlListItemCharacterCreateClass:init(parent, params, item_data)
 	slot9 = item_data
 
 	RaidGUIControlListItemCharacterCreateClass.super.init(slot5, self, parent, params)
@@ -27,7 +27,7 @@ RaidGUIControlListItemCharacterCreateClass.init = function (self, parent, params
 
 	return 
 end
-RaidGUIControlListItemCharacterCreateClass._layout = function (self)
+function RaidGUIControlListItemCharacterCreateClass:_layout()
 	local class_icon_data = tweak_data.gui.icons["ico_class_" .. self._class_name] or tweak_data.gui.icons.ico_flag_empty
 	slot5 = {
 		visible = false,
@@ -90,17 +90,17 @@ RaidGUIControlListItemCharacterCreateClass._layout = function (self)
 
 	return 
 end
-RaidGUIControlListItemCharacterCreateClass.data = function (self)
+function RaidGUIControlListItemCharacterCreateClass:data()
 	return self._data
 end
-RaidGUIControlListItemCharacterCreateClass.highlight_on = function (self)
+function RaidGUIControlListItemCharacterCreateClass:highlight_on()
 	slot3 = self._background
 
 	self._background.show(slot2)
 
 	return 
 end
-RaidGUIControlListItemCharacterCreateClass.highlight_off = function (self)
+function RaidGUIControlListItemCharacterCreateClass:highlight_off()
 	if not self._selected and not self._active and self._background and self._red_selected_line then
 		slot3 = self._background
 
@@ -113,7 +113,7 @@ RaidGUIControlListItemCharacterCreateClass.highlight_off = function (self)
 
 	return 
 end
-RaidGUIControlListItemCharacterCreateClass.activate_on = function (self)
+function RaidGUIControlListItemCharacterCreateClass:activate_on()
 	slot3 = self._background
 
 	self._background.show(slot2)
@@ -142,7 +142,7 @@ RaidGUIControlListItemCharacterCreateClass.activate_on = function (self)
 
 	return 
 end
-RaidGUIControlListItemCharacterCreateClass.activate_off = function (self)
+function RaidGUIControlListItemCharacterCreateClass:activate_off()
 	slot3 = self
 
 	self.highlight_off(slot2)
@@ -169,7 +169,7 @@ RaidGUIControlListItemCharacterCreateClass.activate_off = function (self)
 
 	return 
 end
-RaidGUIControlListItemCharacterCreateClass.mouse_released = function (self, o, button, x, y)
+function RaidGUIControlListItemCharacterCreateClass:mouse_released(o, button, x, y)
 	slot9 = y
 
 	if self.inside(slot6, self, x) then
@@ -180,7 +180,7 @@ RaidGUIControlListItemCharacterCreateClass.mouse_released = function (self, o, b
 
 	return 
 end
-RaidGUIControlListItemCharacterCreateClass.on_mouse_released = function (self, button)
+function RaidGUIControlListItemCharacterCreateClass:on_mouse_released(button)
 	if self.on_click_callback then
 		slot6 = self._data
 
@@ -191,7 +191,7 @@ RaidGUIControlListItemCharacterCreateClass.on_mouse_released = function (self, b
 
 	return 
 end
-RaidGUIControlListItemCharacterCreateClass.select = function (self)
+function RaidGUIControlListItemCharacterCreateClass:select()
 	self._selected = true
 	slot4 = tweak_data.gui.colors.raid_red
 
@@ -209,7 +209,7 @@ RaidGUIControlListItemCharacterCreateClass.select = function (self)
 
 	return 
 end
-RaidGUIControlListItemCharacterCreateClass.unselect = function (self)
+function RaidGUIControlListItemCharacterCreateClass:unselect()
 	self._selected = false
 	slot4 = tweak_data.gui.colors.raid_dirty_white
 
@@ -221,10 +221,10 @@ RaidGUIControlListItemCharacterCreateClass.unselect = function (self)
 
 	return 
 end
-RaidGUIControlListItemCharacterCreateClass.selected = function (self)
+function RaidGUIControlListItemCharacterCreateClass:selected()
 	return self._selected
 end
-RaidGUIControlListItemCharacterCreateClass.activate = function (self)
+function RaidGUIControlListItemCharacterCreateClass:activate()
 	self._active = true
 	slot3 = self
 
@@ -236,7 +236,7 @@ RaidGUIControlListItemCharacterCreateClass.activate = function (self)
 
 	return 
 end
-RaidGUIControlListItemCharacterCreateClass.deactivate = function (self)
+function RaidGUIControlListItemCharacterCreateClass:deactivate()
 	self._active = false
 	slot3 = self
 
@@ -244,10 +244,10 @@ RaidGUIControlListItemCharacterCreateClass.deactivate = function (self)
 
 	return 
 end
-RaidGUIControlListItemCharacterCreateClass.activated = function (self)
+function RaidGUIControlListItemCharacterCreateClass:activated()
 	return self._active
 end
-RaidGUIControlListItemCharacterCreateClass.confirm_pressed = function (self)
+function RaidGUIControlListItemCharacterCreateClass:confirm_pressed()
 	if not self._selected then
 		return false
 	end
@@ -262,7 +262,7 @@ RaidGUIControlListItemCharacterCreateClass.confirm_pressed = function (self)
 
 	return 
 end
-RaidGUIControlListItemCharacterCreateClass.mouse_double_click = function (self, o, button, x, y)
+function RaidGUIControlListItemCharacterCreateClass:mouse_double_click(o, button, x, y)
 	if self._on_double_click_callback then
 		slot9 = self._data
 

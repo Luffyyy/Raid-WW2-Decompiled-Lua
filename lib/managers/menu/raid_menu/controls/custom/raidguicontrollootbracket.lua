@@ -24,7 +24,7 @@ RaidGUIControlLootBracket.NOTCH_COLOR_INACTIVE = Color(slot2)
 RaidGUIControlLootBracket.NOTCH_COLOR_ACTIVE = tweak_data.gui.colors.raid_red
 RaidGUIControlLootBracket.NOTCH_PADDING_TOP = 19
 RaidGUIControlLootBracket.NOTCH_PADDING_BOTTOM = 13
-RaidGUIControlLootBracket.init = function (self, parent, params)
+function RaidGUIControlLootBracket:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlLootBracket.super.init(slot4, self, parent)
@@ -52,7 +52,7 @@ RaidGUIControlLootBracket.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlLootBracket._create_panel = function (self)
+function RaidGUIControlLootBracket:_create_panel()
 	slot3 = self._params
 	local control_params = clone(slot2)
 	control_params.name = control_params.name .. "_panel"
@@ -71,7 +71,7 @@ RaidGUIControlLootBracket._create_panel = function (self)
 
 	return 
 end
-RaidGUIControlLootBracket._create_notch = function (self)
+function RaidGUIControlLootBracket:_create_notch()
 	local notch_params = {
 		name = "notch",
 		y = 0,
@@ -96,7 +96,7 @@ RaidGUIControlLootBracket._create_notch = function (self)
 
 	return 
 end
-RaidGUIControlLootBracket._create_bracket_icon = function (self)
+function RaidGUIControlLootBracket:_create_bracket_icon()
 	local bracket_icon_params = {
 		name = "bracket_icon",
 		y = 0,
@@ -125,7 +125,7 @@ RaidGUIControlLootBracket._create_bracket_icon = function (self)
 
 	return 
 end
-RaidGUIControlLootBracket.activate = function (self)
+function RaidGUIControlLootBracket:activate()
 	slot3 = self._bracket_icon
 
 	self._bracket_icon.stop(slot2)
@@ -137,7 +137,7 @@ RaidGUIControlLootBracket.activate = function (self)
 
 	return 
 end
-RaidGUIControlLootBracket.deactivate = function (self)
+function RaidGUIControlLootBracket:deactivate()
 	slot3 = self._bracket_icon
 
 	self._bracket_icon.stop(slot2)
@@ -149,7 +149,7 @@ RaidGUIControlLootBracket.deactivate = function (self)
 
 	return 
 end
-RaidGUIControlLootBracket._animate_activate = function (self)
+function RaidGUIControlLootBracket:_animate_activate()
 	local duration = 0.25
 	slot5 = self._object
 	local t = (self._bracket_icon.w(slot3) - RaidGUIControlLootBracket.ICON_INACTIVE_SIZE) / (self._object.w(self._bracket_icon) - RaidGUIControlLootBracket.ICON_INACTIVE_SIZE) * duration
@@ -222,7 +222,7 @@ RaidGUIControlLootBracket._animate_activate = function (self)
 
 	return 
 end
-RaidGUIControlLootBracket._animate_deactivate = function (self)
+function RaidGUIControlLootBracket:_animate_deactivate()
 	local duration = 0.25
 	slot5 = self._object
 	local t = (1 - (self._bracket_icon.w(slot3) - RaidGUIControlLootBracket.ICON_INACTIVE_SIZE) / (self._object.w(self._bracket_icon) - RaidGUIControlLootBracket.ICON_INACTIVE_SIZE)) * duration

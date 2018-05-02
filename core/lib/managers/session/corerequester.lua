@@ -3,25 +3,25 @@ slot3 = "CoreRequester"
 core.module(slot1, core)
 
 Requester = Requester or class()
-Requester.request = function (self)
+function Requester:request()
 	self._requested = true
 
 	return 
 end
-Requester.cancel_request = function (self)
+function Requester:cancel_request()
 	self._requested = nil
 
 	return 
 end
-Requester.is_requested = function (self)
+function Requester:is_requested()
 	return self._requested == true
 end
-Requester.task_started = function (self)
+function Requester:task_started()
 	self._task_is_running = true
 
 	return 
 end
-Requester.task_completed = function (self)
+function Requester:task_completed()
 	slot4 = "The task can not be completed, since it hasn't started"
 
 	assert(slot2, self._task_is_running ~= nil)
@@ -31,10 +31,10 @@ Requester.task_completed = function (self)
 
 	return 
 end
-Requester.is_task_running = function (self)
+function Requester:is_task_running()
 	return self._task_is_running
 end
-Requester.force_task_completed = function (self)
+function Requester:force_task_completed()
 	self._task_is_running = nil
 	self._requested = nil
 

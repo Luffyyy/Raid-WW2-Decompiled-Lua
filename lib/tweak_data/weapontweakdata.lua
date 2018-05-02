@@ -15,7 +15,7 @@ WeaponTweakData.DAMAGE_TYPE_MELEE = "melee"
 WeaponTweakData.DAMAGE_TYPE_EXPLOSION = "explosion"
 WeaponTweakData.HIT_INDICATOR_PERCENT = 0.05
 WeaponTweakData.HIT_INDICATOR_ABSOLUTE = 2.5
-function WeaponTweakData:init(tweak_data)
+WeaponTweakData.init = function (self, tweak_data)
 	local difficulty = (Global.game_settings and Global.game_settings.difficulty) or Global.DEFAULT_DIFFICULTY
 	slot6 = difficulty
 	local difficulty_index = tweak_data.difficulty_to_index(slot4, tweak_data)
@@ -225,7 +225,7 @@ function WeaponTweakData:init(tweak_data)
 
 	return 
 end
-function WeaponTweakData:_set_difficulty_1()
+WeaponTweakData._set_difficulty_1 = function (self)
 	self.tiger_main_gun_module.HEALTH_INIT = 7000
 	self.tiger_main_gun_module.SHIELD_HEALTH_INIT = 100
 	self.tiger_main_gun_module.DAMAGE = 30
@@ -235,7 +235,7 @@ function WeaponTweakData:_set_difficulty_1()
 
 	return 
 end
-function WeaponTweakData:_set_difficulty_2()
+WeaponTweakData._set_difficulty_2 = function (self)
 	self.tiger_main_gun_module.HEALTH_INIT = 7000
 	self.tiger_main_gun_module.SHIELD_HEALTH_INIT = 100
 	self.tiger_main_gun_module.DAMAGE = 60
@@ -245,7 +245,7 @@ function WeaponTweakData:_set_difficulty_2()
 
 	return 
 end
-function WeaponTweakData:_set_difficulty_3()
+WeaponTweakData._set_difficulty_3 = function (self)
 	self.tiger_main_gun_module.HEALTH_INIT = 27500
 	self.tiger_main_gun_module.SHIELD_HEALTH_INIT = 400
 	self.tiger_main_gun_module.DAMAGE = 20
@@ -255,7 +255,7 @@ function WeaponTweakData:_set_difficulty_3()
 
 	return 
 end
-function WeaponTweakData:_set_difficulty_4()
+WeaponTweakData._set_difficulty_4 = function (self)
 	self.tiger_main_gun_module.HEALTH_INIT = 50000
 	self.tiger_main_gun_module.SHIELD_HEALTH_INIT = 750
 	self.tiger_main_gun_module.DAMAGE = 30
@@ -265,7 +265,7 @@ function WeaponTweakData:_set_difficulty_4()
 
 	return 
 end
-function WeaponTweakData:_init_data_npc_melee()
+WeaponTweakData._init_data_npc_melee = function (self)
 	self.npc_melee = {
 		fists = {}
 	}
@@ -276,7 +276,7 @@ function WeaponTweakData:_init_data_npc_melee()
 
 	return 
 end
-function WeaponTweakData:_set_npc_weapon_damage_multiplier(mul)
+WeaponTweakData._set_npc_weapon_damage_multiplier = function (self, mul)
 	slot4 = self.npc_melee
 
 	for name, data in pairs(slot3) do
@@ -285,7 +285,7 @@ function WeaponTweakData:_set_npc_weapon_damage_multiplier(mul)
 
 	return 
 end
-function WeaponTweakData:_init_data_m1911_npc()
+WeaponTweakData._init_data_m1911_npc = function (self)
 	self.m1911_npc = {
 		sounds = {},
 		use_data = {},
@@ -310,7 +310,7 @@ function WeaponTweakData:_init_data_m1911_npc()
 
 	return 
 end
-function WeaponTweakData:_init_data_geco_npc()
+WeaponTweakData._init_data_geco_npc = function (self)
 	self.geco_npc = {
 		sounds = {},
 		use_data = {},
@@ -337,7 +337,7 @@ function WeaponTweakData:_init_data_geco_npc()
 
 	return 
 end
-function WeaponTweakData:_init_data_dp28_npc()
+WeaponTweakData._init_data_dp28_npc = function (self)
 	self.dp28_npc = {
 		sounds = {},
 		use_data = {},
@@ -364,7 +364,7 @@ function WeaponTweakData:_init_data_dp28_npc()
 
 	return 
 end
-function WeaponTweakData:_init_data_bren_npc()
+WeaponTweakData._init_data_bren_npc = function (self)
 	self.bren_npc = {
 		sounds = {},
 		use_data = {},
@@ -391,7 +391,7 @@ function WeaponTweakData:_init_data_bren_npc()
 
 	return 
 end
-function WeaponTweakData:_init_data_tt33_npc()
+WeaponTweakData._init_data_tt33_npc = function (self)
 	self.tt33_npc = {
 		sounds = {},
 		use_data = {},
@@ -417,7 +417,7 @@ function WeaponTweakData:_init_data_tt33_npc()
 
 	return 
 end
-function WeaponTweakData:_init_data_sten_npc()
+WeaponTweakData._init_data_sten_npc = function (self)
 	self.sten_npc = {
 		sounds = {},
 		use_data = {},
@@ -445,7 +445,7 @@ function WeaponTweakData:_init_data_sten_npc()
 
 	return 
 end
-function WeaponTweakData:_init_data_garand_npc()
+WeaponTweakData._init_data_garand_npc = function (self)
 	self.garand_npc = {
 		sounds = {},
 		use_data = {},
@@ -472,7 +472,7 @@ function WeaponTweakData:_init_data_garand_npc()
 
 	return 
 end
-function WeaponTweakData:_init_data_garand_golden_npc()
+WeaponTweakData._init_data_garand_golden_npc = function (self)
 	self.garand_golden_npc = {
 		sounds = {},
 		use_data = {},
@@ -499,7 +499,7 @@ function WeaponTweakData:_init_data_garand_golden_npc()
 
 	return 
 end
-function WeaponTweakData:_init_data_m1918_npc()
+WeaponTweakData._init_data_m1918_npc = function (self)
 	self.m1918_npc = {
 		sounds = {},
 		use_data = {},
@@ -526,7 +526,7 @@ function WeaponTweakData:_init_data_m1918_npc()
 
 	return 
 end
-function WeaponTweakData:_init_data_m24()
+WeaponTweakData._init_data_m24 = function (self)
 	self.m24 = {
 		sounds = {},
 		use_data = {},
@@ -578,7 +578,7 @@ function WeaponTweakData:_init_data_m24()
 
 	return 
 end
-function WeaponTweakData:_init_data_concrete()
+WeaponTweakData._init_data_concrete = function (self)
 	self.concrete = {
 		sounds = {},
 		use_data = {},
@@ -630,7 +630,7 @@ function WeaponTweakData:_init_data_concrete()
 
 	return 
 end
-function WeaponTweakData:_init_data_d343()
+WeaponTweakData._init_data_d343 = function (self)
 	self.d343 = {
 		sounds = {},
 		use_data = {},
@@ -682,7 +682,7 @@ function WeaponTweakData:_init_data_d343()
 
 	return 
 end
-function WeaponTweakData:_init_data_mills()
+WeaponTweakData._init_data_mills = function (self)
 	self.mills = {
 		sounds = {},
 		use_data = {},
@@ -734,7 +734,7 @@ function WeaponTweakData:_init_data_mills()
 
 	return 
 end
-function WeaponTweakData:_init_data_molotov()
+WeaponTweakData._init_data_molotov = function (self)
 	self.molotov = {
 		sounds = {},
 		use_data = {},
@@ -776,7 +776,7 @@ function WeaponTweakData:_init_data_molotov()
 
 	return 
 end
-function WeaponTweakData:_init_data_m1903_npc()
+WeaponTweakData._init_data_m1903_npc = function (self)
 	self.m1903_npc = {
 		sounds = {},
 		use_data = {},
@@ -803,7 +803,7 @@ function WeaponTweakData:_init_data_m1903_npc()
 
 	return 
 end
-function WeaponTweakData:_init_data_kar_98k_npc()
+WeaponTweakData._init_data_kar_98k_npc = function (self)
 	self.kar_98k_npc = {
 		sounds = {},
 		use_data = {},
@@ -830,7 +830,7 @@ function WeaponTweakData:_init_data_kar_98k_npc()
 
 	return 
 end
-function WeaponTweakData:_init_data_lee_enfield_npc()
+WeaponTweakData._init_data_lee_enfield_npc = function (self)
 	self.lee_enfield_npc = {
 		sounds = {},
 		use_data = {},
@@ -857,7 +857,7 @@ function WeaponTweakData:_init_data_lee_enfield_npc()
 
 	return 
 end
-function WeaponTweakData:_init_data_m1912_npc()
+WeaponTweakData._init_data_m1912_npc = function (self)
 	self.m1912_npc = {
 		sounds = {},
 		use_data = {},
@@ -884,7 +884,7 @@ function WeaponTweakData:_init_data_m1912_npc()
 
 	return 
 end
-function WeaponTweakData:_init_data_ithaca_npc()
+WeaponTweakData._init_data_ithaca_npc = function (self)
 	self.ithaca_npc = {
 		sounds = {},
 		use_data = {},
@@ -911,7 +911,7 @@ function WeaponTweakData:_init_data_ithaca_npc()
 
 	return 
 end
-function WeaponTweakData:_init_data_browning_npc()
+WeaponTweakData._init_data_browning_npc = function (self)
 	self.browning_npc = {
 		sounds = {},
 		use_data = {},
@@ -938,7 +938,7 @@ function WeaponTweakData:_init_data_browning_npc()
 
 	return 
 end
-function WeaponTweakData:_init_data_mp38_npc()
+WeaponTweakData._init_data_mp38_npc = function (self)
 	self.mp38_npc = {
 		sounds = {},
 		use_data = {},
@@ -967,7 +967,7 @@ function WeaponTweakData:_init_data_mp38_npc()
 
 	return 
 end
-function WeaponTweakData:_init_data_mp44_npc()
+WeaponTweakData._init_data_mp44_npc = function (self)
 	self.mp44_npc = {
 		sounds = {},
 		use_data = {},
@@ -996,7 +996,7 @@ function WeaponTweakData:_init_data_mp44_npc()
 
 	return 
 end
-function WeaponTweakData:_init_data_mg42_npc()
+WeaponTweakData._init_data_mg42_npc = function (self)
 	self.mg42_npc = {
 		sounds = {},
 		use_data = {},
@@ -1027,7 +1027,7 @@ function WeaponTweakData:_init_data_mg42_npc()
 
 	return 
 end
-function WeaponTweakData:_init_data_c96_npc()
+WeaponTweakData._init_data_c96_npc = function (self)
 	self.c96_npc = {}
 	self.c96_npc = {
 		sounds = {},
@@ -1053,7 +1053,7 @@ function WeaponTweakData:_init_data_c96_npc()
 
 	return 
 end
-function WeaponTweakData:_init_data_webley_npc()
+WeaponTweakData._init_data_webley_npc = function (self)
 	self.webley_npc = {}
 	self.webley_npc = {
 		sounds = {},
@@ -1078,7 +1078,7 @@ function WeaponTweakData:_init_data_webley_npc()
 
 	return 
 end
-function WeaponTweakData:_init_data_mosin_npc()
+WeaponTweakData._init_data_mosin_npc = function (self)
 	self.mosin_npc = {
 		sounds = {},
 		use_data = {},
@@ -1105,7 +1105,7 @@ function WeaponTweakData:_init_data_mosin_npc()
 
 	return 
 end
-function WeaponTweakData:_init_data_sterling_npc()
+WeaponTweakData._init_data_sterling_npc = function (self)
 	self.sterling_npc = {
 		sounds = {},
 		use_data = {},
@@ -1133,7 +1133,7 @@ function WeaponTweakData:_init_data_sterling_npc()
 
 	return 
 end
-function WeaponTweakData:_init_data_shotty_npc()
+WeaponTweakData._init_data_shotty_npc = function (self)
 	self.shotty_npc = {
 		sounds = {},
 		use_data = {},
@@ -1160,7 +1160,7 @@ function WeaponTweakData:_init_data_shotty_npc()
 
 	return 
 end
-function WeaponTweakData:_init_data_c45_npc()
+WeaponTweakData._init_data_c45_npc = function (self)
 	self.c45_npc = {
 		sounds = {},
 		use_data = {},
@@ -1188,7 +1188,7 @@ function WeaponTweakData:_init_data_c45_npc()
 
 	return 
 end
-function WeaponTweakData:_init_data_m4_npc()
+WeaponTweakData._init_data_m4_npc = function (self)
 	self.m4_npc = {
 		sounds = {},
 		use_data = {},
@@ -1216,7 +1216,7 @@ function WeaponTweakData:_init_data_m4_npc()
 
 	return 
 end
-function WeaponTweakData:_init_data_mp5_npc()
+WeaponTweakData._init_data_mp5_npc = function (self)
 	self.mp5_npc = {
 		sounds = {},
 		use_data = {},
@@ -1246,7 +1246,7 @@ function WeaponTweakData:_init_data_mp5_npc()
 
 	return 
 end
-function WeaponTweakData:_init_data_tiger_main_gun_module_npc(difficulty_index)
+WeaponTweakData._init_data_tiger_main_gun_module_npc = function (self, difficulty_index)
 	self.tiger_main_gun_module = {
 		sounds = {},
 		auto = {},
@@ -1377,7 +1377,7 @@ function WeaponTweakData:_init_data_tiger_main_gun_module_npc(difficulty_index)
 
 	return 
 end
-function WeaponTweakData:_init_data_tiger_machinegun_module_npc(difficulty_index)
+WeaponTweakData._init_data_tiger_machinegun_module_npc = function (self, difficulty_index)
 	self.tiger_machinegun_module = {
 		sounds = {},
 		auto = {},
@@ -1485,7 +1485,7 @@ function WeaponTweakData:_init_data_tiger_machinegun_module_npc(difficulty_index
 
 	return 
 end
-function WeaponTweakData:_init_data_junker_machinegun_module_npc(difficulty_index)
+WeaponTweakData._init_data_junker_machinegun_module_npc = function (self, difficulty_index)
 	self.junker_machinegun_module = {
 		sounds = {},
 		auto = {},
@@ -1593,7 +1593,7 @@ function WeaponTweakData:_init_data_junker_machinegun_module_npc(difficulty_inde
 
 	return 
 end
-function WeaponTweakData:_init_data_ger_luger_npc()
+WeaponTweakData._init_data_ger_luger_npc = function (self)
 	self.ger_luger_npc = {
 		sounds = {},
 		use_data = {},
@@ -1618,7 +1618,7 @@ function WeaponTweakData:_init_data_ger_luger_npc()
 
 	return 
 end
-function WeaponTweakData:_init_data_ger_stg44_npc()
+WeaponTweakData._init_data_ger_stg44_npc = function (self)
 	self.ger_stg44_npc = {
 		sounds = {},
 		use_data = {},
@@ -1645,7 +1645,7 @@ function WeaponTweakData:_init_data_ger_stg44_npc()
 
 	return 
 end
-function WeaponTweakData:_init_data_usa_garand_npc()
+WeaponTweakData._init_data_usa_garand_npc = function (self)
 	self.usa_garand_npc = {
 		sounds = {},
 		use_data = {},
@@ -1669,7 +1669,7 @@ function WeaponTweakData:_init_data_usa_garand_npc()
 
 	return 
 end
-function WeaponTweakData:_init_data_usa_m1911_npc()
+WeaponTweakData._init_data_usa_m1911_npc = function (self)
 	self.usa_m1911_npc = {
 		sounds = {},
 		use_data = {},
@@ -1694,7 +1694,7 @@ function WeaponTweakData:_init_data_usa_m1911_npc()
 
 	return 
 end
-function WeaponTweakData:_init_data_thompson_npc()
+WeaponTweakData._init_data_thompson_npc = function (self)
 	self.thompson_npc = {
 		sounds = {},
 		use_data = {},
@@ -1723,7 +1723,7 @@ function WeaponTweakData:_init_data_thompson_npc()
 
 	return 
 end
-function WeaponTweakData:_init_data_usa_sten_npc()
+WeaponTweakData._init_data_usa_sten_npc = function (self)
 	self.usa_sten_npc = {
 		sounds = {},
 		use_data = {},
@@ -1751,7 +1751,7 @@ function WeaponTweakData:_init_data_usa_sten_npc()
 
 	return 
 end
-function WeaponTweakData:_init_data_ger_geco_npc()
+WeaponTweakData._init_data_ger_geco_npc = function (self)
 	self.ger_geco_npc = {
 		sounds = {},
 		use_data = {},
@@ -1775,7 +1775,7 @@ function WeaponTweakData:_init_data_ger_geco_npc()
 
 	return 
 end
-function WeaponTweakData:_init_data_ger_mp38_npc()
+WeaponTweakData._init_data_ger_mp38_npc = function (self)
 	self.ger_mp38_npc = {
 		sounds = {}
 	}
@@ -1805,7 +1805,7 @@ function WeaponTweakData:_init_data_ger_mp38_npc()
 
 	return 
 end
-function WeaponTweakData:_init_data_carbine_npc()
+WeaponTweakData._init_data_carbine_npc = function (self)
 	self.carbine_npc = {
 		sounds = {},
 		use_data = {},
@@ -1831,7 +1831,7 @@ function WeaponTweakData:_init_data_carbine_npc()
 
 	return 
 end
-function WeaponTweakData:_init_data_kar98_npc()
+WeaponTweakData._init_data_kar98_npc = function (self)
 	self.ger_kar98_npc = {
 		sounds = {},
 		use_data = {},
@@ -1854,7 +1854,7 @@ function WeaponTweakData:_init_data_kar98_npc()
 
 	return 
 end
-function WeaponTweakData:_init_data_sniper_kar98_npc()
+WeaponTweakData._init_data_sniper_kar98_npc = function (self)
 	self.sniper_kar98_npc = {
 		sounds = {},
 		use_data = {},
@@ -1877,7 +1877,7 @@ function WeaponTweakData:_init_data_sniper_kar98_npc()
 
 	return 
 end
-function WeaponTweakData:_init_data_spotting_optics_npc()
+WeaponTweakData._init_data_spotting_optics_npc = function (self)
 	self.spotting_optics_npc = {
 		sounds = {},
 		use_data = {},
@@ -1899,7 +1899,7 @@ function WeaponTweakData:_init_data_spotting_optics_npc()
 
 	return 
 end
-function WeaponTweakData:_init_data_m42_flammenwerfer_npc(difficulty_index)
+WeaponTweakData._init_data_m42_flammenwerfer_npc = function (self, difficulty_index)
 	self.m42_flammenwerfer_npc = {
 		sounds = {},
 		use_data = {},
@@ -1945,7 +1945,7 @@ function WeaponTweakData:_init_data_m42_flammenwerfer_npc(difficulty_index)
 
 	return 
 end
-function WeaponTweakData:_init_data_panzerfaust_60_npc()
+WeaponTweakData._init_data_panzerfaust_60_npc = function (self)
 	self.panzerfaust_60_npc = {
 		sounds = {},
 		use_data = {},
@@ -1973,7 +1973,7 @@ function WeaponTweakData:_init_data_panzerfaust_60_npc()
 
 	return 
 end
-function WeaponTweakData:_init_data_player_weapons(tweak_data)
+WeaponTweakData._init_data_player_weapons = function (self, tweak_data)
 	local autohit_rifle_default, autohit_pistol_default, autohit_shotgun_default, autohit_lmg_default, autohit_snp_default, autohit_smg_default, autohit_minigun_default, aim_assist_rifle_default, aim_assist_pistol_default, aim_assist_shotgun_default, aim_assist_lmg_default, aim_assist_snp_default, aim_assist_smg_default, aim_assist_minigun_default = nil
 	slot19 = "WIN32"
 
@@ -2163,7 +2163,7 @@ function WeaponTweakData:_init_data_player_weapons(tweak_data)
 
 	return 
 end
-function WeaponTweakData:_collect_all_fps_animation_weights()
+WeaponTweakData._collect_all_fps_animation_weights = function (self)
 	self._all_fps_animation_weights = {}
 	slot3 = self.factory.parts
 
@@ -2177,7 +2177,7 @@ function WeaponTweakData:_collect_all_fps_animation_weights()
 
 	return 
 end
-function WeaponTweakData:_init_data_turrets()
+WeaponTweakData._init_data_turrets = function (self)
 	self.turret_m2 = {
 		heat_material = "blinn2",
 		heat_material_parameter = "intensity",
@@ -2614,7 +2614,7 @@ function WeaponTweakData:_init_data_turrets()
 
 	return 
 end
-function WeaponTweakData:_init_stats()
+WeaponTweakData._init_stats = function (self)
 	self.stats = {
 		alert_size = {
 			30000,
@@ -2781,7 +2781,7 @@ function WeaponTweakData:_init_stats()
 
 	return 
 end
-function WeaponTweakData:_pickup_chance(max_ammo, selection_index)
+WeaponTweakData._pickup_chance = function (self, max_ammo, selection_index)
 	local low, high = nil
 
 	if selection_index == 2 then
@@ -2797,7 +2797,7 @@ function WeaponTweakData:_pickup_chance(max_ammo, selection_index)
 		max_ammo * high
 	}
 end
-function WeaponTweakData:_init_new_weapons(weapon_data)
+WeaponTweakData._init_new_weapons = function (self, weapon_data)
 	local total_damage_primary = 300
 	local total_damage_secondary = 150
 	self.default_values = {
@@ -2967,7 +2967,7 @@ function WeaponTweakData:_init_new_weapons(weapon_data)
 
 	return 
 end
-function WeaponTweakData:_init_flamethrower_mk2(weapon_data)
+WeaponTweakData._init_flamethrower_mk2 = function (self, weapon_data)
 	self.flamethrower_mk2 = {
 		inventory_texture = "ui/temp/customization_temp_df",
 		category = WeaponTweakData.WEAPON_CATEGORY_FLAMETHROWER,
@@ -3081,7 +3081,7 @@ function WeaponTweakData:_init_flamethrower_mk2(weapon_data)
 
 	return 
 end
-function WeaponTweakData:_init_c96(weapon_data)
+WeaponTweakData._init_c96 = function (self, weapon_data)
 	self.c96 = {
 		inventory_texture = "ui/temp/customization_temp_df",
 		category = WeaponTweakData.WEAPON_CATEGORY_PISTOL,
@@ -3243,7 +3243,7 @@ function WeaponTweakData:_init_c96(weapon_data)
 
 	return 
 end
-function WeaponTweakData:_init_tt33(weapon_data)
+WeaponTweakData._init_tt33 = function (self, weapon_data)
 	self.tt33 = {
 		inventory_texture = "ui/temp/customization_temp_df",
 		category = WeaponTweakData.WEAPON_CATEGORY_PISTOL,
@@ -3405,7 +3405,7 @@ function WeaponTweakData:_init_tt33(weapon_data)
 
 	return 
 end
-function WeaponTweakData:_init_webley(weapon_data)
+WeaponTweakData._init_webley = function (self, weapon_data)
 	self.webley = {
 		inventory_texture = "ui/temp/customization_temp_df",
 		category = WeaponTweakData.WEAPON_CATEGORY_PISTOL,
@@ -3566,7 +3566,7 @@ function WeaponTweakData:_init_webley(weapon_data)
 
 	return 
 end
-function WeaponTweakData:_init_m1911(weapon_data)
+WeaponTweakData._init_m1911 = function (self, weapon_data)
 	self.m1911 = {
 		inventory_texture = "ui/temp/customization_temp_df",
 		category = WeaponTweakData.WEAPON_CATEGORY_PISTOL,
@@ -3728,7 +3728,7 @@ function WeaponTweakData:_init_m1911(weapon_data)
 
 	return 
 end
-function WeaponTweakData:_init_m1912_winchester(weapon_data)
+WeaponTweakData._init_m1912_winchester = function (self, weapon_data)
 	self.m1912 = {
 		inventory_texture = "ui/temp/customization_temp_df",
 		category = WeaponTweakData.WEAPON_CATEGORY_SHOTGUN,
@@ -3893,7 +3893,7 @@ function WeaponTweakData:_init_m1912_winchester(weapon_data)
 
 	return 
 end
-function WeaponTweakData:_init_ithaca(weapon_data)
+WeaponTweakData._init_ithaca = function (self, weapon_data)
 	self.ithaca = {
 		inventory_texture = "ui/temp/customization_temp_df",
 		category = WeaponTweakData.WEAPON_CATEGORY_SHOTGUN,
@@ -4058,7 +4058,7 @@ function WeaponTweakData:_init_ithaca(weapon_data)
 
 	return 
 end
-function WeaponTweakData:_init_browning(weapon_data)
+WeaponTweakData._init_browning = function (self, weapon_data)
 	self.browning = {
 		inventory_texture = "ui/temp/customization_temp_df",
 		category = WeaponTweakData.WEAPON_CATEGORY_SHOTGUN,
@@ -4223,7 +4223,7 @@ function WeaponTweakData:_init_browning(weapon_data)
 
 	return 
 end
-function WeaponTweakData:_init_shotty(weapon_data)
+WeaponTweakData._init_shotty = function (self, weapon_data)
 	self.shotty = {
 		inventory_texture = "ui/temp/customization_temp_df",
 		category = WeaponTweakData.WEAPON_CATEGORY_SHOTGUN,
@@ -4385,7 +4385,7 @@ function WeaponTweakData:_init_shotty(weapon_data)
 
 	return 
 end
-function WeaponTweakData:_init_geco(weapon_data)
+WeaponTweakData._init_geco = function (self, weapon_data)
 	self.geco = {
 		inventory_texture = "ui/temp/customization_temp_df",
 		category = WeaponTweakData.WEAPON_CATEGORY_SHOTGUN,
@@ -4547,7 +4547,7 @@ function WeaponTweakData:_init_geco(weapon_data)
 
 	return 
 end
-function WeaponTweakData:_init_sten_mk2(weapon_data)
+WeaponTweakData._init_sten_mk2 = function (self, weapon_data)
 	self.sten = {
 		inventory_texture = "ui/temp/customization_temp_df",
 		category = WeaponTweakData.WEAPON_CATEGORY_SMG,
@@ -4730,7 +4730,7 @@ function WeaponTweakData:_init_sten_mk2(weapon_data)
 
 	return 
 end
-function WeaponTweakData:_init_thompson(weapon_data)
+WeaponTweakData._init_thompson = function (self, weapon_data)
 	self.thompson = {
 		inventory_texture = "ui/temp/customization_temp_df",
 		category = WeaponTweakData.WEAPON_CATEGORY_SMG,
@@ -4911,7 +4911,7 @@ function WeaponTweakData:_init_thompson(weapon_data)
 
 	return 
 end
-function WeaponTweakData:_init_mp38(weapon_data)
+WeaponTweakData._init_mp38 = function (self, weapon_data)
 	self.mp38 = {
 		inventory_texture = "ui/temp/customization_temp_df",
 		category = WeaponTweakData.WEAPON_CATEGORY_SMG,
@@ -5073,7 +5073,7 @@ function WeaponTweakData:_init_mp38(weapon_data)
 
 	return 
 end
-function WeaponTweakData:_init_sterling(weapon_data)
+WeaponTweakData._init_sterling = function (self, weapon_data)
 	self.sterling = {
 		inventory_texture = "ui/temp/customization_temp_df",
 		category = WeaponTweakData.WEAPON_CATEGORY_SMG,
@@ -5237,7 +5237,7 @@ function WeaponTweakData:_init_sterling(weapon_data)
 
 	return 
 end
-function WeaponTweakData:_init_m1_carbine(weapon_data)
+WeaponTweakData._init_m1_carbine = function (self, weapon_data)
 	self.carbine = {
 		inventory_texture = "ui/temp/customization_temp_df",
 		category = WeaponTweakData.WEAPON_CATEGORY_ASSAULT_RIFLE,
@@ -5414,7 +5414,7 @@ function WeaponTweakData:_init_m1_carbine(weapon_data)
 
 	return 
 end
-function WeaponTweakData:_init_m1_garand(weapon_data)
+WeaponTweakData._init_m1_garand = function (self, weapon_data)
 	self.garand = {
 		inventory_texture = "ui/temp/customization_temp_df",
 		category = WeaponTweakData.WEAPON_CATEGORY_ASSAULT_RIFLE,
@@ -5600,7 +5600,7 @@ function WeaponTweakData:_init_m1_garand(weapon_data)
 
 	return 
 end
-function WeaponTweakData:_init_mp44(weapon_data)
+WeaponTweakData._init_mp44 = function (self, weapon_data)
 	self.mp44 = {
 		inventory_texture = "ui/temp/customization_temp_df",
 		category = WeaponTweakData.WEAPON_CATEGORY_ASSAULT_RIFLE,
@@ -5779,7 +5779,7 @@ function WeaponTweakData:_init_mp44(weapon_data)
 
 	return 
 end
-function WeaponTweakData:_init_m1918_bar(weapon_data)
+WeaponTweakData._init_m1918_bar = function (self, weapon_data)
 	self.m1918 = {
 		inventory_texture = "ui/temp/customization_temp_df",
 		category = WeaponTweakData.WEAPON_CATEGORY_LMG,
@@ -5956,7 +5956,7 @@ function WeaponTweakData:_init_m1918_bar(weapon_data)
 
 	return 
 end
-function WeaponTweakData:_init_dp28(weapon_data)
+WeaponTweakData._init_dp28 = function (self, weapon_data)
 	self.dp28 = {
 		inventory_texture = "ui/temp/customization_temp_df",
 		category = WeaponTweakData.WEAPON_CATEGORY_LMG,
@@ -6134,7 +6134,7 @@ function WeaponTweakData:_init_dp28(weapon_data)
 
 	return 
 end
-function WeaponTweakData:_init_bren(weapon_data)
+WeaponTweakData._init_bren = function (self, weapon_data)
 	self.bren = {
 		inventory_texture = "ui/temp/customization_temp_df",
 		category = WeaponTweakData.WEAPON_CATEGORY_LMG,
@@ -6311,7 +6311,7 @@ function WeaponTweakData:_init_bren(weapon_data)
 
 	return 
 end
-function WeaponTweakData:_init_mg42(weapon_data)
+WeaponTweakData._init_mg42 = function (self, weapon_data)
 	self.mg42 = {
 		inventory_texture = "ui/temp/customization_temp_df",
 		category = WeaponTweakData.WEAPON_CATEGORY_LMG,
@@ -6482,7 +6482,7 @@ function WeaponTweakData:_init_mg42(weapon_data)
 
 	return 
 end
-function WeaponTweakData:_init_m1903_springfield(weapon_data)
+WeaponTweakData._init_m1903_springfield = function (self, weapon_data)
 	self.m1903 = {
 		inventory_texture = "ui/temp/customization_temp_df",
 		category = WeaponTweakData.WEAPON_CATEGORY_SNP,
@@ -6665,7 +6665,7 @@ function WeaponTweakData:_init_m1903_springfield(weapon_data)
 
 	return 
 end
-function WeaponTweakData:_init_kar_98k(weapon_data)
+WeaponTweakData._init_kar_98k = function (self, weapon_data)
 	self.kar_98k = {
 		inventory_texture = "ui/temp/customization_temp_df",
 		category = WeaponTweakData.WEAPON_CATEGORY_SNP,
@@ -6849,7 +6849,7 @@ function WeaponTweakData:_init_kar_98k(weapon_data)
 
 	return 
 end
-function WeaponTweakData:_init_lee_enfield(weapon_data)
+WeaponTweakData._init_lee_enfield = function (self, weapon_data)
 	self.lee_enfield = {
 		inventory_texture = "ui/temp/customization_temp_df",
 		category = WeaponTweakData.WEAPON_CATEGORY_SNP,
@@ -7034,7 +7034,7 @@ function WeaponTweakData:_init_lee_enfield(weapon_data)
 
 	return 
 end
-function WeaponTweakData:_init_mosin(weapon_data)
+WeaponTweakData._init_mosin = function (self, weapon_data)
 	self.mosin = {
 		inventory_texture = "ui/temp/customization_temp_df",
 		category = WeaponTweakData.WEAPON_CATEGORY_SNP,
@@ -7219,7 +7219,7 @@ function WeaponTweakData:_init_mosin(weapon_data)
 
 	return 
 end
-function WeaponTweakData:_init_data_offhand_weapons()
+WeaponTweakData._init_data_offhand_weapons = function (self)
 	return 
 end
 

@@ -34,20 +34,20 @@ CoreVolumeSetCutsceneKey.control_for_action = CoreCutsceneKeyBase.standard_combo
 CoreVolumeSetCutsceneKey.control_for_name = CoreCutsceneKeyBase.standard_combo_box_control
 slot5 = CoreVolumeSetCutsceneKey.VALID_ACTIONS
 CoreVolumeSetCutsceneKey.refresh_control_for_action = CoreCutsceneKeyBase.standard_combo_box_control_refresh(CoreVolumeSetCutsceneKey, CoreCutsceneKeyBase, "action")
-CoreVolumeSetCutsceneKey.__tostring = function (self)
+function CoreVolumeSetCutsceneKey:__tostring()
 	slot5 = self
 	slot5 = self
 
 	return string.capitalize(self.action(slot4)) .. " volume set \"" .. self.name(slot4) .. "\"."
 end
-CoreVolumeSetCutsceneKey.unload = function (self, player)
+function CoreVolumeSetCutsceneKey:unload(player)
 	slot6 = true
 
 	self.play(slot3, self, player)
 
 	return 
 end
-CoreVolumeSetCutsceneKey.play = function (self, player, undo, fast_forward)
+function CoreVolumeSetCutsceneKey:play(player, undo, fast_forward)
 	if managers.volume == nil then
 		return 
 	end
@@ -67,12 +67,12 @@ CoreVolumeSetCutsceneKey.play = function (self, player, undo, fast_forward)
 
 	return 
 end
-CoreVolumeSetCutsceneKey.inverse_action = function (self)
+function CoreVolumeSetCutsceneKey:inverse_action()
 	slot3 = self
 
 	return (self.action(slot2) == "activate" and "deactivate") or "activate"
 end
-CoreVolumeSetCutsceneKey._perform_action = function (self, action)
+function CoreVolumeSetCutsceneKey:_perform_action(action)
 	if action == "deactivate" then
 		slot4 = managers.volume
 		slot7 = self
@@ -90,14 +90,14 @@ CoreVolumeSetCutsceneKey._perform_action = function (self, action)
 
 	return 
 end
-CoreVolumeSetCutsceneKey.is_valid_action = function (self, action)
+function CoreVolumeSetCutsceneKey:is_valid_action(action)
 	slot5 = action
 
 	return table.contains(slot3, self.VALID_ACTIONS)
 end
-CoreVolumeSetCutsceneKey.is_valid_name = function (self, name)
+function CoreVolumeSetCutsceneKey:is_valid_name(name)
 end
-CoreVolumeSetCutsceneKey.refresh_control_for_name = function (self, control)
+function CoreVolumeSetCutsceneKey:refresh_control_for_name(control)
 
 	-- Decompilation error in this vicinity:
 	slot4 = control

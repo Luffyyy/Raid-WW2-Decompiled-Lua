@@ -149,7 +149,7 @@
 --- BLOCK #0 1-3, warpins: 1 ---
 slot0 = LevelLoadingScreenGuiScript or class()
 LevelLoadingScreenGuiScript = slot0
-function LevelLoadingScreenGuiScript:init(scene_gui, res, progress, base_layer)
+LevelLoadingScreenGuiScript.init = function (self, scene_gui, res, progress, base_layer)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-24, warpins: 1 ---
@@ -449,7 +449,7 @@ function LevelLoadingScreenGuiScript:init(scene_gui, res, progress, base_layer)
 
 
 end
-function LevelLoadingScreenGuiScript:setup(res, progress)
+LevelLoadingScreenGuiScript.setup = function (self, res, progress)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-72, warpins: 1 ---
@@ -904,7 +904,7 @@ function LevelLoadingScreenGuiScript:setup(res, progress)
 
 
 end
-function LevelLoadingScreenGuiScript:update(progress, t, dt)
+LevelLoadingScreenGuiScript.update = function (self, progress, t, dt)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -914,7 +914,7 @@ function LevelLoadingScreenGuiScript:update(progress, t, dt)
 
 
 end
-function LevelLoadingScreenGuiScript:get_loading_text(dot_count)
+LevelLoadingScreenGuiScript.get_loading_text = function (self, dot_count)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -927,7 +927,7 @@ function LevelLoadingScreenGuiScript:get_loading_text(dot_count)
 
 
 end
-function LevelLoadingScreenGuiScript:set_text(text)
+LevelLoadingScreenGuiScript.set_text = function (self, text)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -943,7 +943,7 @@ function LevelLoadingScreenGuiScript:set_text(text)
 
 
 end
-function LevelLoadingScreenGuiScript:destroy()
+LevelLoadingScreenGuiScript.destroy = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -1051,7 +1051,7 @@ function LevelLoadingScreenGuiScript:destroy()
 
 
 end
-function LevelLoadingScreenGuiScript:visible()
+LevelLoadingScreenGuiScript.visible = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -1063,7 +1063,7 @@ function LevelLoadingScreenGuiScript:visible()
 
 
 end
-function LevelLoadingScreenGuiScript:set_visible(visible)
+LevelLoadingScreenGuiScript.set_visible = function (self, visible)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---

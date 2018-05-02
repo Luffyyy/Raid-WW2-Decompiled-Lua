@@ -21,14 +21,14 @@ RaidJobManager.get_instance = function ()
 
 	return Global.raid_job_manager
 end
-function RaidJobManager:init()
+RaidJobManager.init = function (self)
 	slot3 = self
 
 	self._setup(slot2)
 
 	return 
 end
-function RaidJobManager:_setup()
+RaidJobManager._setup = function (self)
 	self._save_slots = {}
 	self._loot_data = {}
 	slot4 = RaidJobManager.CAMP_ID
@@ -37,7 +37,7 @@ function RaidJobManager:_setup()
 
 	return 
 end
-function RaidJobManager:set_selected_job(job_id)
+RaidJobManager.set_selected_job = function (self, job_id)
 	slot4 = Network
 
 	if not Network.is_server(slot3) then
@@ -71,7 +71,7 @@ function RaidJobManager:set_selected_job(job_id)
 
 	return 
 end
-function RaidJobManager:_set_selected_job(job_id)
+RaidJobManager._set_selected_job = function (self, job_id)
 	slot5 = job_id
 	local selected_job = tweak_data.operations.mission_data(slot3, tweak_data.operations)
 	self._current_job = nil
@@ -113,7 +113,7 @@ function RaidJobManager:_set_selected_job(job_id)
 
 	return 
 end
-function RaidJobManager:_select_raid()
+RaidJobManager._select_raid = function (self)
 	self._current_save_slot = nil
 	slot4 = self._selected_job.mission_state
 
@@ -121,7 +121,7 @@ function RaidJobManager:_select_raid()
 
 	return 
 end
-function RaidJobManager:_select_operation()
+RaidJobManager._select_operation = function (self)
 	slot3 = self
 	self._current_save_slot = self.get_available_save_slot(slot2)
 	slot5 = 1
@@ -137,14 +137,14 @@ function RaidJobManager:_select_operation()
 
 	return 
 end
-function RaidJobManager:set_current_event(operation, index)
+RaidJobManager.set_current_event = function (self, operation, index)
 	operation.current_event = index
 	local event_id = operation.events_index[index]
 	operation.current_event_data = operation.events[event_id]
 
 	return 
 end
-function RaidJobManager:start_selected_job()
+RaidJobManager.start_selected_job = function (self)
 	slot3 = self
 
 	self.on_mission_started(slot2)
@@ -185,7 +185,7 @@ function RaidJobManager:start_selected_job()
 
 	return 
 end
-function RaidJobManager:on_mission_started()
+RaidJobManager.on_mission_started = function (self)
 	slot4 = "[RaidJobManager:on_mission_started()]"
 
 	Application.debug(slot2, Application)
@@ -205,7 +205,7 @@ function RaidJobManager:on_mission_started()
 
 	return 
 end
-function RaidJobManager:on_mission_ended()
+RaidJobManager.on_mission_ended = function (self)
 	self.memory = nil
 	self.shortterm_memory = nil
 	slot3 = self
@@ -214,7 +214,7 @@ function RaidJobManager:on_mission_ended()
 
 	return 
 end
-function RaidJobManager:on_restart_to_camp()
+RaidJobManager.on_restart_to_camp = function (self)
 	slot3 = self
 
 	self._on_restart_to_camp(slot2)
@@ -230,14 +230,14 @@ function RaidJobManager:on_restart_to_camp()
 
 	return 
 end
-function RaidJobManager:synced_on_restart_to_camp()
+RaidJobManager.synced_on_restart_to_camp = function (self)
 	slot3 = self
 
 	self._on_restart_to_camp(slot2)
 
 	return 
 end
-function RaidJobManager:_on_restart_to_camp()
+RaidJobManager._on_restart_to_camp = function (self)
 	slot4 = {
 		success = false,
 		quit = true
@@ -280,14 +280,14 @@ function RaidJobManager:_on_restart_to_camp()
 
 	return 
 end
-function RaidJobManager:start_selected_raid()
+RaidJobManager.start_selected_raid = function (self)
 	slot3 = self
 
 	self.start_selected_job(slot2)
 
 	return 
 end
-function RaidJobManager:start_selected_operation()
+RaidJobManager.start_selected_operation = function (self)
 	slot4 = "[RaidJobManager:start_selected_operation()]"
 
 	Application.debug(slot2, Application)
@@ -308,22 +308,22 @@ function RaidJobManager:start_selected_operation()
 
 	return 
 end
-function RaidJobManager:selected_job()
+RaidJobManager.selected_job = function (self)
 	return self._selected_job
 end
-function RaidJobManager:current_job()
+RaidJobManager.current_job = function (self)
 	return self._current_job
 end
-function RaidJobManager:is_in_tutorial()
+RaidJobManager.is_in_tutorial = function (self)
 	return self._current_job and self._current_job.level_id == "tutorial"
 end
-function RaidJobManager:current_job_id()
+RaidJobManager.current_job_id = function (self)
 	return self._current_job and self._current_job.job_id
 end
-function RaidJobManager:current_level_id()
+RaidJobManager.current_level_id = function (self)
 	return self._current_job and self._current_job.level_id
 end
-function RaidJobManager:current_job_type()
+RaidJobManager.current_job_type = function (self)
 	if self._selected_job then
 		return self._selected_job.job_type
 	elseif self._current_job then
@@ -332,7 +332,7 @@ function RaidJobManager:current_job_type()
 
 	return nil
 end
-function RaidJobManager:on_mission_restart()
+RaidJobManager.on_mission_restart = function (self)
 	slot3 = managers.challenge_cards
 
 	managers.challenge_cards.remove_active_challenge_card(slot2)
@@ -363,7 +363,7 @@ function RaidJobManager:on_mission_restart()
 
 	return 
 end
-function RaidJobManager:external_start_mission()
+RaidJobManager.external_start_mission = function (self)
 	slot3 = Network
 
 	if not Network.is_server(slot2) then
@@ -396,7 +396,7 @@ function RaidJobManager:external_start_mission()
 
 	return 
 end
-function RaidJobManager:do_external_start_mission(mission, event_index)
+RaidJobManager.do_external_start_mission = function (self, mission, event_index)
 	slot5 = managers.system_menu
 
 	managers.system_menu.force_close_all(slot4)
@@ -466,7 +466,7 @@ function RaidJobManager:do_external_start_mission(mission, event_index)
 
 	return 
 end
-function RaidJobManager:external_start_mission_clbk()
+RaidJobManager.external_start_mission_clbk = function (self)
 	slot5 = self.reload_mission_flag
 
 	Application.debug(slot2, Application, "[RaidJobManager:external_start_mission_clbk()]")
@@ -540,7 +540,7 @@ function RaidJobManager:external_start_mission_clbk()
 
 	return 
 end
-function RaidJobManager:external_end_mission(restart_camp, is_failed)
+RaidJobManager.external_end_mission = function (self, restart_camp, is_failed)
 	managers.worldcollection.level_transition_in_progress = true
 	slot6 = true
 
@@ -572,18 +572,18 @@ function RaidJobManager:external_end_mission(restart_camp, is_failed)
 
 	return 
 end
-function RaidJobManager:tutorial_ended()
+RaidJobManager.tutorial_ended = function (self)
 	self._tutorial_ended = true
 
 	return 
 end
-function RaidJobManager:set_temp_play_flag()
+RaidJobManager.set_temp_play_flag = function (self)
 	self._play_tutorial = true
 	self._temp_play_flag = true
 
 	return 
 end
-function RaidJobManager:revert_temp_play_flag()
+RaidJobManager.revert_temp_play_flag = function (self)
 	if self._temp_play_flag then
 		self._play_tutorial = false
 	end
@@ -592,10 +592,10 @@ function RaidJobManager:revert_temp_play_flag()
 
 	return 
 end
-function RaidJobManager:played_tutorial()
+RaidJobManager.played_tutorial = function (self)
 	return not self._play_tutorial
 end
-function RaidJobManager:do_external_end_mission(restart_camp)
+RaidJobManager.do_external_end_mission = function (self, restart_camp)
 	slot4 = managers.system_menu
 
 	managers.system_menu.force_close_all(slot3)
@@ -737,7 +737,7 @@ function RaidJobManager:do_external_end_mission(restart_camp)
 
 	return 
 end
-function RaidJobManager:save_tutorial_played_flag(value)
+RaidJobManager.save_tutorial_played_flag = function (self, value)
 	self._play_tutorial = not value
 	slot5 = SavefileManager.SETTING_SLOT
 
@@ -745,19 +745,19 @@ function RaidJobManager:save_tutorial_played_flag(value)
 
 	return 
 end
-function RaidJobManager:set_tutorial_played_flag(value)
+RaidJobManager.set_tutorial_played_flag = function (self, value)
 	self._play_tutorial = not value
 
 	return 
 end
-function RaidJobManager:restart_camp()
+RaidJobManager.restart_camp = function (self)
 	slot3 = self
 
 	self.deactivate_current_job(slot2)
 
 	return 
 end
-function RaidJobManager:external_end_mission_clbk()
+RaidJobManager.external_end_mission_clbk = function (self)
 	slot4 = "[RaidJobManager:external_end_mission_clbk()]"
 
 	Application.debug(slot2, Application)
@@ -821,7 +821,7 @@ function RaidJobManager:external_end_mission_clbk()
 
 	return 
 end
-function RaidJobManager:is_camp_loaded()
+RaidJobManager.is_camp_loaded = function (self)
 	slot4 = RaidJobManager.WORLD_POINT_CAMP
 	local camp_wp = managers.mission.get_element_by_name(slot2, managers.mission)
 	local result = false
@@ -832,10 +832,10 @@ function RaidJobManager:is_camp_loaded()
 
 	return result
 end
-function RaidJobManager:has_active_job()
+RaidJobManager.has_active_job = function (self)
 	return (self._current_job and true) or false
 end
-function RaidJobManager:get_available_save_slot()
+RaidJobManager.get_available_save_slot = function (self)
 	local available_save_slot = nil
 
 	for i = 1, RaidJobManager.NUMBER_OF_SAVE_SLOTS, 1 do
@@ -848,7 +848,7 @@ function RaidJobManager:get_available_save_slot()
 
 	return available_save_slot
 end
-function RaidJobManager:get_first_save_slot()
+RaidJobManager.get_first_save_slot = function (self)
 	if self._save_slots then
 		slot3 = self._save_slots
 		slot1 = next(slot2)
@@ -856,7 +856,7 @@ function RaidJobManager:get_first_save_slot()
 
 	return slot1
 end
-function RaidJobManager:has_available_save_slot()
+RaidJobManager.has_available_save_slot = function (self)
 	for i = 1, RaidJobManager.NUMBER_OF_SAVE_SLOTS, 1 do
 		if not self._save_slots[i] then
 			return true
@@ -865,7 +865,7 @@ function RaidJobManager:has_available_save_slot()
 
 	return false
 end
-function RaidJobManager:is_at_last_event()
+RaidJobManager.is_at_last_event = function (self)
 	local job = self._current_job or game_state_machine._current_state._current_job_data
 
 	if not job then
@@ -886,7 +886,7 @@ function RaidJobManager:is_at_last_event()
 
 	return false
 end
-function RaidJobManager:complete_current_event()
+RaidJobManager.complete_current_event = function (self)
 	slot4 = "[RaidJobManager][complete_current_event]"
 
 	Application.trace(slot2, Application)
@@ -939,7 +939,7 @@ function RaidJobManager:complete_current_event()
 
 	return 
 end
-function RaidJobManager:sync_current_event_index(current_event)
+RaidJobManager.sync_current_event_index = function (self, current_event)
 	slot6 = current_event
 
 	self.set_current_event(slot3, self, self._current_job)
@@ -950,7 +950,7 @@ function RaidJobManager:sync_current_event_index(current_event)
 
 	return 
 end
-function RaidJobManager:sync_event_loot_data(loot_acquired, loot_spawned)
+RaidJobManager.sync_event_loot_data = function (self, loot_acquired, loot_spawned)
 	slot6 = "[RaidJobManager][sync_event_loot_data]"
 
 	Application.trace(slot4, Application)
@@ -969,10 +969,10 @@ function RaidJobManager:sync_event_loot_data(loot_acquired, loot_spawned)
 
 	return 
 end
-function RaidJobManager:job_loot_data()
+RaidJobManager.job_loot_data = function (self)
 	return self._loot_data
 end
-function RaidJobManager:loot_acquired_in_job()
+RaidJobManager.loot_acquired_in_job = function (self)
 	local loot_acquired = 0
 	slot4 = self._loot_data
 
@@ -982,7 +982,7 @@ function RaidJobManager:loot_acquired_in_job()
 
 	return loot_acquired
 end
-function RaidJobManager:loot_spawned_in_job()
+RaidJobManager.loot_spawned_in_job = function (self)
 	local loot_spawned = 0
 	slot4 = self._loot_data
 
@@ -992,20 +992,20 @@ function RaidJobManager:loot_spawned_in_job()
 
 	return loot_spawned
 end
-function RaidJobManager:is_at_checkpoint()
+RaidJobManager.is_at_checkpoint = function (self)
 	slot3 = self
 	local current_event = self.current_operation_event(slot2)
 
 	return current_event and current_event.checkpoint
 end
-function RaidJobManager:current_operation_event()
+RaidJobManager.current_operation_event = function (self)
 	if not self._current_job then
 		return nil
 	end
 
 	return self._current_job.events[self._current_job.events_index[self._current_job.current_event]]
 end
-function RaidJobManager:start_next_event()
+RaidJobManager.start_next_event = function (self)
 	if self._current_job.current_event then
 		if self._stage_success then
 			slot4 = self._current_job.current_event + 1
@@ -1026,7 +1026,7 @@ function RaidJobManager:start_next_event()
 
 	return 
 end
-function RaidJobManager:start_event(event_id)
+RaidJobManager.start_event = function (self, event_id)
 	slot6 = event_id
 
 	Application.debug(slot3, Application, "[RaidJobManager:start_event]")
@@ -1090,7 +1090,7 @@ function RaidJobManager:start_event(event_id)
 
 	return 
 end
-function RaidJobManager:complete_job()
+RaidJobManager.complete_job = function (self)
 	slot3 = Network
 
 	if Network.is_server(slot2) and self._current_job.job_type == OperationsTweakData.JOB_TYPE_OPERATION then
@@ -1125,7 +1125,7 @@ function RaidJobManager:complete_job()
 
 	return 
 end
-function RaidJobManager:continue_operation(slot)
+RaidJobManager.continue_operation = function (self, slot)
 	slot4 = managers.global_state
 
 	managers.global_state.reset_all_flags(slot3)
@@ -1183,7 +1183,7 @@ function RaidJobManager:continue_operation(slot)
 
 	return 
 end
-function RaidJobManager:clear_operations_save_slots()
+RaidJobManager.clear_operations_save_slots = function (self)
 	for i = 1, RaidJobManager.NUMBER_OF_SAVE_SLOTS, 1 do
 		self._save_slots[i] = nil
 	end
@@ -1195,7 +1195,7 @@ function RaidJobManager:clear_operations_save_slots()
 
 	return 
 end
-function RaidJobManager:delete_save(slot)
+RaidJobManager.delete_save = function (self, slot)
 	self._save_slots[slot] = nil
 	self._current_save_slot = nil
 	slot5 = SavefileManager.SETTING_SLOT
@@ -1204,10 +1204,10 @@ function RaidJobManager:delete_save(slot)
 
 	return 
 end
-function RaidJobManager:get_save_slots()
+RaidJobManager.get_save_slots = function (self)
 	return self._save_slots
 end
-function RaidJobManager:save_progress()
+RaidJobManager.save_progress = function (self)
 	if self._current_job and self._current_job.job_type == OperationsTweakData.JOB_TYPE_OPERATION then
 		self._need_to_save = true
 		slot4 = SavefileManager.SETTING_SLOT
@@ -1217,7 +1217,7 @@ function RaidJobManager:save_progress()
 
 	return 
 end
-function RaidJobManager:on_challenge_card_failed()
+RaidJobManager.on_challenge_card_failed = function (self)
 	if self._current_job and self._current_job.job_type == OperationsTweakData.JOB_TYPE_OPERATION then
 		self._save_slots[self._current_save_slot].active_card.status = ChallengeCardsManager.CARD_STATUS_FAILED
 		slot4 = SavefileManager.SETTING_SLOT
@@ -1227,10 +1227,10 @@ function RaidJobManager:on_challenge_card_failed()
 
 	return 
 end
-function RaidJobManager:get_current_save_slot()
+RaidJobManager.get_current_save_slot = function (self)
 	return self._current_save_slot
 end
-function RaidJobManager:load_game(data)
+RaidJobManager.load_game = function (self, data)
 	slot5 = "[RaidJobManager:load_game] "
 
 	Application.trace(slot3, Application)
@@ -1247,7 +1247,7 @@ function RaidJobManager:load_game(data)
 
 	return 
 end
-function RaidJobManager:save_game(data)
+RaidJobManager.save_game = function (self, data)
 	data.job_manager = {
 		tutorial_played = not self._play_tutorial
 	}
@@ -1339,7 +1339,7 @@ function RaidJobManager:save_game(data)
 
 	return 
 end
-function RaidJobManager:_prepare_peer_save_data()
+RaidJobManager._prepare_peer_save_data = function (self)
 	local peer_save_data = {}
 	local local_player_data = {}
 	slot7 = managers.player
@@ -1393,7 +1393,7 @@ function RaidJobManager:_prepare_peer_save_data()
 
 	return peer_save_data
 end
-function RaidJobManager:sync_current_job(job_id)
+RaidJobManager.sync_current_job = function (self, job_id)
 	self._selected_job = nil
 	self._current_job = nil
 	slot5 = job_id
@@ -1411,7 +1411,7 @@ function RaidJobManager:sync_current_job(job_id)
 
 	return 
 end
-function RaidJobManager:set_memory(key, value, is_shortterm)
+RaidJobManager.set_memory = function (self, key, value, is_shortterm)
 	if self.memory and not is_shortterm then
 		self.memory[key] = value
 	elseif self.shortterm_memory then
@@ -1420,7 +1420,7 @@ function RaidJobManager:set_memory(key, value, is_shortterm)
 
 	return false
 end
-function RaidJobManager:get_memory(key, is_shortterm)
+RaidJobManager.get_memory = function (self, key, is_shortterm)
 	if is_shortterm then
 		return self.shortterm_memory and self.shortterm_memory[key]
 	else
@@ -1429,7 +1429,7 @@ function RaidJobManager:get_memory(key, is_shortterm)
 
 	return 
 end
-function RaidJobManager:sync_save(data)
+RaidJobManager.sync_save = function (self, data)
 	local state = {
 		selected_job_id = self._selected_job and self._selected_job.job_id,
 		current_job_id = self._current_job and self._current_job.job_id,
@@ -1449,7 +1449,7 @@ function RaidJobManager:sync_save(data)
 
 	return 
 end
-function RaidJobManager:sync_load(data)
+RaidJobManager.sync_load = function (self, data)
 	local state = data.RaidJobManager
 	slot6 = "[RaidJobManager:sync_load]"
 	slot9 = state
@@ -1486,7 +1486,7 @@ function RaidJobManager:sync_load(data)
 
 	return 
 end
-function RaidJobManager:cleanup()
+RaidJobManager.cleanup = function (self)
 	self._current_save_slot = {}
 	self._selected_job = nil
 	self._current_job = nil
@@ -1496,7 +1496,7 @@ function RaidJobManager:cleanup()
 
 	return 
 end
-function RaidJobManager:reset()
+RaidJobManager.reset = function (self)
 	slot3 = self
 
 	self.cleanup(slot2)
@@ -1505,7 +1505,7 @@ function RaidJobManager:reset()
 
 	return 
 end
-function RaidJobManager:on_simulation_ended()
+RaidJobManager.on_simulation_ended = function (self)
 	self._save_slots = {}
 	slot3 = self
 
@@ -1513,13 +1513,13 @@ function RaidJobManager:on_simulation_ended()
 
 	return 
 end
-function RaidJobManager:stop_sounds()
+RaidJobManager.stop_sounds = function (self)
 	slot4 = "cleanup"
 	local cleanup = SoundDevice.create_source(slot2, SoundDevice)
 
 	return 
 end
-function RaidJobManager:set_stage_success(success)
+RaidJobManager.set_stage_success = function (self, success)
 	slot5 = success
 
 	print(slot3, "[RaidJobManager:set_stage_success]")
@@ -1528,10 +1528,10 @@ function RaidJobManager:set_stage_success(success)
 
 	return 
 end
-function RaidJobManager:stage_success()
+RaidJobManager.stage_success = function (self)
 	return self._stage_success
 end
-function RaidJobManager:deactivate_current_job()
+RaidJobManager.deactivate_current_job = function (self)
 	self._current_job = nil
 	self._selected_job = nil
 	self._stage_success = nil
@@ -1556,16 +1556,16 @@ function RaidJobManager:deactivate_current_job()
 
 	return 
 end
-function RaidJobManager:set_camp(job_id)
+RaidJobManager.set_camp = function (self, job_id)
 	local job = tweak_data.operations.missions[job_id]
 	self._camp = job
 
 	return true
 end
-function RaidJobManager:camp()
+RaidJobManager.camp = function (self)
 	return self._camp
 end
-function RaidJobManager:has_active_job()
+RaidJobManager.has_active_job = function (self)
 	return self._current_job ~= nil
 end
 

@@ -5,10 +5,10 @@ end
 
 CommanderBrain = slot0
 CommanderBrain.INTENSITY_INCREASE = 0.2
-CommanderBrain.stealth_action_allowed = function (self)
+function CommanderBrain:stealth_action_allowed()
 	return false
 end
-CommanderBrain.init = function (self, unit)
+function CommanderBrain:init(unit)
 	slot5 = unit
 
 	CommanderBrain.super.init(slot3, self)
@@ -25,7 +25,7 @@ CommanderBrain.init = function (self, unit)
 
 	return 
 end
-CommanderBrain.pre_destroy = function (self, unit)
+function CommanderBrain:pre_destroy(unit)
 	slot5 = unit
 
 	CommanderBrain.super.pre_destroy(slot3, self)
@@ -42,7 +42,7 @@ CommanderBrain.pre_destroy = function (self, unit)
 
 	return 
 end
-CommanderBrain.clbk_death = function (self, my_unit, damage_info)
+function CommanderBrain:clbk_death(my_unit, damage_info)
 	slot7 = damage_info
 
 	CommanderBrain.super.clbk_death(slot4, self, my_unit)

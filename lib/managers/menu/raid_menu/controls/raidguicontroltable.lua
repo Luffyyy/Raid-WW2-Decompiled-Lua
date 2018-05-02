@@ -5,7 +5,7 @@ end
 
 RaidGUIControlTable = slot0
 RaidGUIControlTable.DIVIDER_HEIGHT = 1
-RaidGUIControlTable.init = function (self, parent, params)
+function RaidGUIControlTable:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlTable.super.init(slot4, self, parent)
@@ -51,7 +51,7 @@ RaidGUIControlTable.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlTable.is_alive = function (self)
+function RaidGUIControlTable:is_alive()
 	if self._object then
 		slot3 = self._object._engine_panel
 		slot1 = alive(slot2)
@@ -59,7 +59,7 @@ RaidGUIControlTable.is_alive = function (self)
 
 	return slot1
 end
-RaidGUIControlTable.close = function (self)
+function RaidGUIControlTable:close()
 	slot3 = self
 
 	self._delete_items(slot2)
@@ -70,7 +70,7 @@ RaidGUIControlTable.close = function (self)
 
 	return 
 end
-RaidGUIControlTable._create_table_panel = function (self)
+function RaidGUIControlTable:_create_table_panel()
 	slot3 = self._params
 	local table_params = clone(slot2)
 	table_params.name = table_params.name .. "_table"
@@ -82,7 +82,7 @@ RaidGUIControlTable._create_table_panel = function (self)
 
 	return 
 end
-RaidGUIControlTable._fit_panel = function (self)
+function RaidGUIControlTable:_fit_panel()
 	local header_height = 0
 	local row_height = 0
 	local dividers_height = 0
@@ -106,7 +106,7 @@ RaidGUIControlTable._fit_panel = function (self)
 
 	return 
 end
-RaidGUIControlTable._create_items = function (self, use_row_dividers)
+function RaidGUIControlTable:_create_items(use_row_dividers)
 	local table_data = self._data_source_callback()
 
 	if table_data and #table_data == 0 then
@@ -199,7 +199,7 @@ RaidGUIControlTable._create_items = function (self, use_row_dividers)
 
 	return 
 end
-RaidGUIControlTable._create_header = function (self)
+function RaidGUIControlTable:_create_header()
 	local header_params = {
 		y = 0,
 		x = 0,
@@ -247,7 +247,7 @@ RaidGUIControlTable._create_header = function (self)
 
 	return 
 end
-RaidGUIControlTable._create_row = function (self, row_params, row_data, table_params)
+function RaidGUIControlTable:_create_row(row_params, row_data, table_params)
 	row_params.x = 0
 	row_params.w = table_params.w
 	slot8 = "on_row_clicked"
@@ -260,7 +260,7 @@ RaidGUIControlTable._create_row = function (self, row_params, row_data, table_pa
 
 	return row
 end
-RaidGUIControlTable.on_row_clicked = function (self, row_data, row_index)
+function RaidGUIControlTable:on_row_clicked(row_data, row_index)
 	slot6 = row_index
 
 	self.select_table_row_by_row_idx(slot4, self)
@@ -273,7 +273,7 @@ RaidGUIControlTable.on_row_clicked = function (self, row_data, row_index)
 
 	return 
 end
-RaidGUIControlTable.on_row_double_clicked = function (self, row_data, row_index)
+function RaidGUIControlTable:on_row_double_clicked(row_data, row_index)
 	slot6 = row_index
 
 	self.select_table_row_by_row_idx(slot4, self)
@@ -286,10 +286,10 @@ RaidGUIControlTable.on_row_double_clicked = function (self, row_data, row_index)
 
 	return 
 end
-RaidGUIControlTable.get_selected_row = function (self)
+function RaidGUIControlTable:get_selected_row()
 	return self._selected_row
 end
-RaidGUIControlTable._create_row_separator = function (self, y)
+function RaidGUIControlTable:_create_row_separator(y)
 	slot5 = {
 		h = 1,
 		x = 0,
@@ -303,7 +303,7 @@ RaidGUIControlTable._create_row_separator = function (self, y)
 
 	return 
 end
-RaidGUIControlTable._delete_items = function (self)
+function RaidGUIControlTable:_delete_items()
 	self._table_rows = {}
 	self._selected_row = nil
 	slot3 = self._table_panel
@@ -312,32 +312,32 @@ RaidGUIControlTable._delete_items = function (self)
 
 	return 
 end
-RaidGUIControlTable.get_rows = function (self)
+function RaidGUIControlTable:get_rows()
 	return self._table_rows
 end
-RaidGUIControlTable.get_row = function (self, i)
+function RaidGUIControlTable:get_row(i)
 	return self._table_rows[i]
 end
-RaidGUIControlTable.get_last_row = function (self)
+function RaidGUIControlTable:get_last_row()
 	return self._table_rows and self._table_rows[#self._table_rows]
 end
-RaidGUIControlTable.mouse_moved = function (self, o, x, y)
+function RaidGUIControlTable:mouse_moved(o, x, y)
 	slot9 = y
 
 	return self._table_panel.mouse_moved(slot5, self._table_panel, o, x)
 end
-RaidGUIControlTable.mouse_released = function (self, o, button, x, y)
+function RaidGUIControlTable:mouse_released(o, button, x, y)
 	slot10 = y
 
 	return self._table_panel.mouse_released(slot6, self._table_panel, o, x)
 end
-RaidGUIControlTable.highlight_on = function (self)
+function RaidGUIControlTable:highlight_on()
 	return 
 end
-RaidGUIControlTable.highlight_off = function (self)
+function RaidGUIControlTable:highlight_off()
 	return 
 end
-RaidGUIControlTable.refresh_data = function (self)
+function RaidGUIControlTable:refresh_data()
 	slot3 = self
 
 	self._delete_items(slot2)
@@ -348,7 +348,7 @@ RaidGUIControlTable.refresh_data = function (self)
 
 	return 
 end
-RaidGUIControlTable.select_table_row_by_row_idx = function (self, row_index)
+function RaidGUIControlTable:select_table_row_by_row_idx(row_index)
 	if self._selected_row then
 		slot4 = self._selected_row
 
@@ -366,7 +366,7 @@ RaidGUIControlTable.select_table_row_by_row_idx = function (self, row_index)
 
 	return 
 end
-RaidGUIControlTable.select_table_row_by_row = function (self, table_row)
+function RaidGUIControlTable:select_table_row_by_row(table_row)
 	if self._selected_row then
 		slot4 = self._selected_row
 
@@ -380,10 +380,10 @@ RaidGUIControlTable.select_table_row_by_row = function (self, table_row)
 
 	return 
 end
-RaidGUIControlTable.selected_table_row = function (self)
+function RaidGUIControlTable:selected_table_row()
 	return self._selected_row
 end
-RaidGUIControlTable.set_selected = function (self, value)
+function RaidGUIControlTable:set_selected(value)
 	self._selected = value
 	slot4 = self
 
@@ -407,7 +407,7 @@ RaidGUIControlTable.set_selected = function (self, value)
 
 	return 
 end
-RaidGUIControlTable._unselect_all = function (self)
+function RaidGUIControlTable:_unselect_all()
 	self._selected_row = nil
 	slot3 = self._table_rows
 
@@ -419,7 +419,7 @@ RaidGUIControlTable._unselect_all = function (self)
 
 	return 
 end
-RaidGUIControlTable.move_up = function (self)
+function RaidGUIControlTable:move_up()
 	if self._selected then
 		slot3 = self
 
@@ -454,7 +454,7 @@ RaidGUIControlTable.move_up = function (self)
 
 	return 
 end
-RaidGUIControlTable.move_down = function (self)
+function RaidGUIControlTable:move_down()
 	if self._selected then
 		slot3 = self
 
@@ -489,7 +489,7 @@ RaidGUIControlTable.move_down = function (self)
 
 	return 
 end
-RaidGUIControlTable.move_left = function (self)
+function RaidGUIControlTable:move_left()
 	if self._selected then
 		slot3 = self
 
@@ -498,7 +498,7 @@ RaidGUIControlTable.move_left = function (self)
 
 	return 
 end
-RaidGUIControlTable.confirm_pressed = function (self)
+function RaidGUIControlTable:confirm_pressed()
 	if self._selected and self._selected_row then
 		slot3 = self._selected_row
 
@@ -509,7 +509,7 @@ RaidGUIControlTable.confirm_pressed = function (self)
 
 	return 
 end
-RaidGUIControlTable._previous_row_idx = function (self)
+function RaidGUIControlTable:_previous_row_idx()
 	self._selected_row_idx = self._selected_row_idx - 1
 
 	if self._selected_row_idx <= 0 then
@@ -524,7 +524,7 @@ RaidGUIControlTable._previous_row_idx = function (self)
 
 	return true
 end
-RaidGUIControlTable._next_row_idx = function (self)
+function RaidGUIControlTable:_next_row_idx()
 	self._selected_row_idx = self._selected_row_idx + 1
 
 	if #self._table_rows < self._selected_row_idx then
@@ -539,7 +539,7 @@ RaidGUIControlTable._next_row_idx = function (self)
 
 	return true
 end
-RaidGUIControlTable._calculate_selected_item_position = function (self)
+function RaidGUIControlTable:_calculate_selected_item_position()
 	self._selected_item = self._selected_row
 
 	if not self._selected_item or not self._params.scrollable_area_ref then

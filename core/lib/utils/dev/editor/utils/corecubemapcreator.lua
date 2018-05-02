@@ -1,5 +1,5 @@
 CubeMapCreator = CubeMapCreator or class()
-CubeMapCreator.init = function (self)
+function CubeMapCreator:init()
 	slot3 = World
 	self._camera = World.create_camera(slot2)
 	slot7 = 1
@@ -28,7 +28,7 @@ CubeMapCreator.init = function (self)
 
 	return 
 end
-CubeMapCreator.destroy = function (self)
+function CubeMapCreator:destroy()
 	if self._vp then
 		slot4 = self._vp
 
@@ -39,7 +39,7 @@ CubeMapCreator.destroy = function (self)
 
 	return 
 end
-CubeMapCreator.set_camera_rot = function (self, rot)
+function CubeMapCreator:set_camera_rot(rot)
 	local yaw = rot.yaw(slot3)
 	local pitch = rot.pitch(rot)
 	slot6 = self._camera
@@ -49,7 +49,7 @@ CubeMapCreator.set_camera_rot = function (self, rot)
 
 	return 
 end
-CubeMapCreator.render = function (self)
+function CubeMapCreator:render()
 	if self._creating_cube_map then
 		self._creating_cube_map = false
 		slot3 = self
@@ -59,7 +59,7 @@ CubeMapCreator.render = function (self)
 
 	return 
 end
-CubeMapCreator.start_cube_map = function (self, pos)
+function CubeMapCreator:start_cube_map(pos)
 	slot5 = pos
 
 	self._camera.set_position(slot3, self._camera)
@@ -68,7 +68,7 @@ CubeMapCreator.start_cube_map = function (self, pos)
 
 	return 
 end
-CubeMapCreator.create_cube_map = function (self)
+function CubeMapCreator:create_cube_map()
 	slot6 = 512
 	local ypos = Application.create_texture(slot2, Application, "render_target", 512)
 	slot7 = 512

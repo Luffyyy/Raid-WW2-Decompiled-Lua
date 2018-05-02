@@ -1168,7 +1168,7 @@ CopActionAct._act_redirects = {
 		"spotter_cbt_sup_throw_flare"
 	}
 }
-CopActionAct.init = function (self, action_desc, common_data)
+function CopActionAct:init(action_desc, common_data)
 	self._common_data = common_data
 	self._action_desc = action_desc
 	self._ext_base = common_data.ext_base
@@ -1228,7 +1228,7 @@ CopActionAct.init = function (self, action_desc, common_data)
 
 	return true
 end
-CopActionAct.on_exit = function (self)
+function CopActionAct:on_exit()
 	if self._changed_driving then
 		slot4 = "script"
 
@@ -1285,7 +1285,7 @@ CopActionAct.on_exit = function (self)
 
 	return 
 end
-CopActionAct._init_ik = function (self)
+function CopActionAct:_init_ik()
 	slot3 = self._common_data.fwd
 	self._look_vec = mvector3.copy(slot2)
 	slot5 = "_ik_update_func"
@@ -1298,7 +1298,7 @@ CopActionAct._init_ik = function (self)
 
 	return 
 end
-CopActionAct._ik_update_func = function (self, t)
+function CopActionAct:_ik_update_func(t)
 	slot4 = self
 
 	self._update_ik_type(slot3)
@@ -1424,7 +1424,7 @@ CopActionAct._ik_update_func = function (self, t)
 
 	return 
 end
-CopActionAct.on_attention = function (self, attention)
+function CopActionAct:on_attention(attention)
 	slot4 = self
 
 	self._update_ik_type(slot3)
@@ -1448,7 +1448,7 @@ CopActionAct.on_attention = function (self, attention)
 
 	return 
 end
-CopActionAct._update_ik_type = function (self)
+function CopActionAct:_update_ik_type()
 	local new_ik_type = self._ext_anim.ik_type
 
 	if self._ik_type ~= new_ik_type then
@@ -1479,7 +1479,7 @@ CopActionAct._update_ik_type = function (self)
 
 	return 
 end
-CopActionAct._upd_wait_for_full_blend = function (self)
+function CopActionAct:_upd_wait_for_full_blend()
 	if not self._ext_anim.idle or (self._ext_anim.idle_full_blend and not self._ext_anim.to_idle) then
 		self._waiting_full_blend = nil
 		slot3 = self
@@ -1504,7 +1504,7 @@ CopActionAct._upd_wait_for_full_blend = function (self)
 
 	return 
 end
-CopActionAct._clamping_update = function (self, t)
+function CopActionAct:_clamping_update(t)
 	if self._ext_anim.act then
 		slot4 = self._unit
 
@@ -1540,7 +1540,7 @@ CopActionAct._clamping_update = function (self, t)
 
 	return 
 end
-CopActionAct.update = function (self, t)
+function CopActionAct:update(t)
 	slot4 = self._ext_base
 	local vis_state = self._ext_base.lod_stage(slot3)
 	vis_state = vis_state or 4
@@ -1643,13 +1643,13 @@ CopActionAct.update = function (self, t)
 
 	return 
 end
-CopActionAct.type = function (self)
+function CopActionAct:type()
 	return "act"
 end
-CopActionAct.expired = function (self)
+function CopActionAct:expired()
 	return self._expired
 end
-CopActionAct.save = function (self, save_data)
+function CopActionAct:save(save_data)
 	slot4 = self._action_desc
 
 	for k, v in pairs(slot3) do
@@ -1678,15 +1678,15 @@ CopActionAct.save = function (self, save_data)
 
 	return 
 end
-CopActionAct.need_upd = function (self)
+function CopActionAct:need_upd()
 	return self._attention or self._waiting_full_blend
 end
-CopActionAct.chk_block = function (self, action_type, t)
+function CopActionAct:chk_block(action_type, t)
 	local unblock_t = self._blocks[action_type]
 
 	return unblock_t and (unblock_t == -1 or t < unblock_t)
 end
-CopActionAct._create_blocks_table = function (self, block_desc)
+function CopActionAct:_create_blocks_table(block_desc)
 	local blocks = self._blocks or {}
 
 	if block_desc then
@@ -1703,7 +1703,7 @@ CopActionAct._create_blocks_table = function (self, block_desc)
 
 	return 
 end
-CopActionAct._get_act_index = function (self, anim_name)
+function CopActionAct:_get_act_index(anim_name)
 	local cat_offset = 0
 	slot5 = self._ACT_CATEGORY_INDEX
 
@@ -1726,7 +1726,7 @@ CopActionAct._get_act_index = function (self, anim_name)
 
 	return 1
 end
-CopActionAct._get_act_name_from_index = function (self, index)
+function CopActionAct:_get_act_name_from_index(index)
 	slot4 = self._ACT_CATEGORY_INDEX
 
 	for _, category_name in ipairs(slot3) do
@@ -1745,7 +1745,7 @@ CopActionAct._get_act_name_from_index = function (self, index)
 
 	return 
 end
-CopActionAct._play_anim = function (self)
+function CopActionAct:_play_anim()
 	if self._ext_anim.upper_body_active and not self._ext_anim.upper_body_empty then
 		slot4 = "up_idle"
 
@@ -1851,7 +1851,7 @@ CopActionAct._play_anim = function (self)
 
 	return true
 end
-CopActionAct._sync_anim_play = function (self)
+function CopActionAct:_sync_anim_play()
 	slot3 = Network
 
 	if Network.is_server(slot2) then
@@ -1886,7 +1886,7 @@ CopActionAct._sync_anim_play = function (self)
 
 	return 
 end
-CopActionAct._set_updator = function (self, func_name)
+function CopActionAct:_set_updator(func_name)
 	self.update = (func_name and self[func_name]) or nil
 
 	return 

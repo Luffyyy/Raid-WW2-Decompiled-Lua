@@ -11,14 +11,14 @@ if not LogicChanceUnitElement then
 end
 
 LogicChanceUnitElement = slot0
-LogicChanceUnitElement.init = function (self, ...)
+function LogicChanceUnitElement:init(...)
 	slot3 = self
 
 	CoreLogicChanceUnitElement.init(slot2, ...)
 
 	return 
 end
-CoreLogicChanceUnitElement.init = function (self, unit)
+function CoreLogicChanceUnitElement:init(unit)
 	slot5 = unit
 
 	MissionElement.init(slot3, self)
@@ -35,7 +35,7 @@ CoreLogicChanceUnitElement.init = function (self, unit)
 
 	return 
 end
-CoreLogicChanceUnitElement._build_panel = function (self, panel, panel_sizer)
+function CoreLogicChanceUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -52,12 +52,12 @@ CoreLogicChanceUnitElement._build_panel = function (self, panel, panel_sizer)
 
 	return 
 end
-CoreLogicChanceUnitElement.register_debug_output_unit = function (self, output_monitor_id)
+function CoreLogicChanceUnitElement:register_debug_output_unit(output_monitor_id)
 	self._hed.output_monitor_id = output_monitor_id
 
 	return 
 end
-CoreLogicChanceUnitElement.unregister_debug_output_unit = function (self)
+function CoreLogicChanceUnitElement:unregister_debug_output_unit()
 	self._hed.output_monitor_id = nil
 
 	return 
@@ -76,14 +76,14 @@ if not LogicChanceOperatorUnitElement then
 end
 
 LogicChanceOperatorUnitElement = slot0
-LogicChanceOperatorUnitElement.init = function (self, ...)
+function LogicChanceOperatorUnitElement:init(...)
 	slot3 = self
 
 	LogicChanceOperatorUnitElement.super.init(slot2, ...)
 
 	return 
 end
-CoreLogicChanceOperatorUnitElement.init = function (self, unit)
+function CoreLogicChanceOperatorUnitElement:init(unit)
 	slot5 = unit
 
 	CoreLogicChanceOperatorUnitElement.super.init(slot3, self)
@@ -105,7 +105,7 @@ CoreLogicChanceOperatorUnitElement.init = function (self, unit)
 
 	return 
 end
-CoreLogicChanceOperatorUnitElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function CoreLogicChanceOperatorUnitElement:draw_links(t, dt, selected_unit, all_units)
 	slot10 = selected_unit
 
 	CoreLogicChanceOperatorUnitElement.super.draw_links(slot6, self, t, dt)
@@ -131,7 +131,7 @@ CoreLogicChanceOperatorUnitElement.draw_links = function (self, t, dt, selected_
 
 	return 
 end
-CoreLogicChanceOperatorUnitElement.get_links_to_unit = function (self, ...)
+function CoreLogicChanceOperatorUnitElement:get_links_to_unit(...)
 	slot3 = self
 
 	CoreLogicChanceOperatorUnitElement.super.get_links_to_unit(slot2, ...)
@@ -142,10 +142,10 @@ CoreLogicChanceOperatorUnitElement.get_links_to_unit = function (self, ...)
 
 	return 
 end
-CoreLogicChanceOperatorUnitElement.update_editing = function (self)
+function CoreLogicChanceOperatorUnitElement:update_editing()
 	return 
 end
-CoreLogicChanceOperatorUnitElement.add_element = function (self)
+function CoreLogicChanceOperatorUnitElement:add_element()
 	slot4 = {
 		ray_type = "editor",
 		mask = 10
@@ -173,7 +173,7 @@ CoreLogicChanceOperatorUnitElement.add_element = function (self)
 
 	return 
 end
-CoreLogicChanceOperatorUnitElement.remove_links = function (self, unit)
+function CoreLogicChanceOperatorUnitElement:remove_links(unit)
 	slot4 = self._hed.elements
 
 	for _, id in ipairs(slot3) do
@@ -188,7 +188,7 @@ CoreLogicChanceOperatorUnitElement.remove_links = function (self, unit)
 
 	return 
 end
-CoreLogicChanceOperatorUnitElement.add_triggers = function (self, vc)
+function CoreLogicChanceOperatorUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "add_element"
 
@@ -196,7 +196,7 @@ CoreLogicChanceOperatorUnitElement.add_triggers = function (self, vc)
 
 	return 
 end
-CoreLogicChanceOperatorUnitElement._build_panel = function (self, panel, panel_sizer)
+function CoreLogicChanceOperatorUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -248,14 +248,14 @@ if not LogicChanceTriggerUnitElement then
 end
 
 LogicChanceTriggerUnitElement = slot0
-LogicChanceTriggerUnitElement.init = function (self, ...)
+function LogicChanceTriggerUnitElement:init(...)
 	slot3 = self
 
 	LogicChanceTriggerUnitElement.super.init(slot2, ...)
 
 	return 
 end
-CoreLogicChanceTriggerUnitElement.init = function (self, unit)
+function CoreLogicChanceTriggerUnitElement:init(unit)
 	slot5 = unit
 
 	CoreLogicChanceTriggerUnitElement.super.init(slot3, self)
@@ -272,7 +272,7 @@ CoreLogicChanceTriggerUnitElement.init = function (self, unit)
 
 	return 
 end
-CoreLogicChanceTriggerUnitElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function CoreLogicChanceTriggerUnitElement:draw_links(t, dt, selected_unit, all_units)
 	slot10 = selected_unit
 
 	CoreLogicChanceTriggerUnitElement.super.draw_links(slot6, self, t, dt)
@@ -298,7 +298,7 @@ CoreLogicChanceTriggerUnitElement.draw_links = function (self, t, dt, selected_u
 
 	return 
 end
-CoreLogicChanceTriggerUnitElement.get_links_to_unit = function (self, ...)
+function CoreLogicChanceTriggerUnitElement:get_links_to_unit(...)
 	slot3 = self
 
 	CoreLogicChanceTriggerUnitElement.super.get_links_to_unit(slot2, ...)
@@ -309,10 +309,10 @@ CoreLogicChanceTriggerUnitElement.get_links_to_unit = function (self, ...)
 
 	return 
 end
-CoreLogicChanceTriggerUnitElement.update_editing = function (self)
+function CoreLogicChanceTriggerUnitElement:update_editing()
 	return 
 end
-CoreLogicChanceTriggerUnitElement.add_element = function (self)
+function CoreLogicChanceTriggerUnitElement:add_element()
 	slot4 = {
 		ray_type = "editor",
 		mask = 10
@@ -340,7 +340,7 @@ CoreLogicChanceTriggerUnitElement.add_element = function (self)
 
 	return 
 end
-CoreLogicChanceTriggerUnitElement.remove_links = function (self, unit)
+function CoreLogicChanceTriggerUnitElement:remove_links(unit)
 	slot4 = self._hed.elements
 
 	for _, id in ipairs(slot3) do
@@ -355,7 +355,7 @@ CoreLogicChanceTriggerUnitElement.remove_links = function (self, unit)
 
 	return 
 end
-CoreLogicChanceTriggerUnitElement.add_triggers = function (self, vc)
+function CoreLogicChanceTriggerUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "add_element"
 
@@ -363,7 +363,7 @@ CoreLogicChanceTriggerUnitElement.add_triggers = function (self, vc)
 
 	return 
 end
-CoreLogicChanceTriggerUnitElement._build_panel = function (self, panel, panel_sizer)
+function CoreLogicChanceTriggerUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

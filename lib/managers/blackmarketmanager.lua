@@ -3220,14 +3220,14 @@ local CRAFT_TO_INV = Idstring("inventory_to_crafted")
 local CRAFT_ADD = Idstring("crafted_to_inventroy")
 slot5 = "remove_from_crafted"
 local CRAFT_REMOVE = Idstring("add_to_crafted")
-function BlackMarketManager:init()
+BlackMarketManager.init = function (self)
 	slot3 = self
 
 	self._setup(slot2)
 
 	return 
 end
-function BlackMarketManager:_setup()
+BlackMarketManager._setup = function (self)
 	self._defaults = {
 		character = "american",
 		armor = "level_1",
@@ -3272,7 +3272,7 @@ function BlackMarketManager:_setup()
 
 	return 
 end
-function BlackMarketManager:init_finalize()
+BlackMarketManager.init_finalize = function (self)
 	slot3 = "BlackMarketManager:init_finalize()"
 
 	print(slot2)
@@ -3283,7 +3283,7 @@ function BlackMarketManager:init_finalize()
 
 	return 
 end
-function BlackMarketManager:_setup_armors()
+BlackMarketManager._setup_armors = function (self)
 	local armors = {}
 	Global.blackmarket_manager.armors = armors
 	slot4 = tweak_data.blackmarket.armors
@@ -3302,7 +3302,7 @@ function BlackMarketManager:_setup_armors()
 
 	return 
 end
-function BlackMarketManager:_setup_grenades()
+BlackMarketManager._setup_grenades = function (self)
 	local grenades = {}
 	Global.blackmarket_manager.grenades = grenades
 	slot4 = tweak_data.projectiles
@@ -3329,7 +3329,7 @@ function BlackMarketManager:_setup_grenades()
 
 	return 
 end
-function BlackMarketManager:_setup_melee_weapons()
+BlackMarketManager._setup_melee_weapons = function (self)
 	local melee_weapons = {}
 	Global.blackmarket_manager.melee_weapons = melee_weapons
 	slot4 = tweak_data.blackmarket.melee_weapons
@@ -3352,7 +3352,7 @@ function BlackMarketManager:_setup_melee_weapons()
 
 	return 
 end
-function BlackMarketManager:_setup_characters()
+BlackMarketManager._setup_characters = function (self)
 	local characters = {}
 	Global.blackmarket_manager.characters = characters
 	slot4 = tweak_data.blackmarket.characters
@@ -3374,7 +3374,7 @@ function BlackMarketManager:_setup_characters()
 
 	return 
 end
-function BlackMarketManager:_setup_unlocked_weapon_slots()
+BlackMarketManager._setup_unlocked_weapon_slots = function (self)
 	local unlocked_weapon_slots = {}
 	Global.blackmarket_manager.unlocked_weapon_slots = unlocked_weapon_slots
 	unlocked_weapon_slots.primaries = unlocked_weapon_slots.primaries or {}
@@ -3390,7 +3390,7 @@ function BlackMarketManager:_setup_unlocked_weapon_slots()
 
 	return 
 end
-function BlackMarketManager:_setup_weapons()
+BlackMarketManager._setup_weapons = function (self)
 	local weapons = {}
 	Global.blackmarket_manager.weapons = weapons
 	slot4 = tweak_data.weapon
@@ -3421,17 +3421,17 @@ BlackMarketManager.weapons_to_buy = {
 	mac11 = true,
 	raging_bull = true
 }
-function BlackMarketManager:weapon_unlocked(weapon_id)
+BlackMarketManager.weapon_unlocked = function (self, weapon_id)
 	return Global.blackmarket_manager.weapons[weapon_id].unlocked
 end
-function BlackMarketManager:weapon_unlocked_by_crafted(category, slot)
+BlackMarketManager.weapon_unlocked_by_crafted = function (self, category, slot)
 	local crafted = self._global.crafted_items[category][slot]
 	local weapon_id = crafted.weapon_id
 	local unlocked = Global.blackmarket_manager.weapons[weapon_id].unlocked
 
 	return unlocked
 end
-function BlackMarketManager:weapon_level(weapon_id)
+BlackMarketManager.weapon_level = function (self, weapon_id)
 	slot4 = tweak_data.upgrades.level_tree
 
 	for level, level_data in pairs(slot3) do
@@ -3446,7 +3446,7 @@ function BlackMarketManager:weapon_level(weapon_id)
 
 	return 0
 end
-function BlackMarketManager:equipped_item(category)
+BlackMarketManager.equipped_item = function (self, category)
 	if category == "primaries" then
 		slot4 = self
 
@@ -3475,7 +3475,7 @@ function BlackMarketManager:equipped_item(category)
 
 	return 
 end
-function BlackMarketManager:equipped_character()
+BlackMarketManager.equipped_character = function (self)
 	slot3 = tweak_data.blackmarket.characters
 
 	for character_id, data in pairs(slot2) do
@@ -3486,7 +3486,7 @@ function BlackMarketManager:equipped_character()
 
 	return 
 end
-function BlackMarketManager:equipped_deployable()
+BlackMarketManager.equipped_deployable = function (self)
 	if managers.player then
 		slot4 = 1
 		slot1 = managers.player.equipment_in_slot(slot2, managers.player)
@@ -3494,7 +3494,7 @@ function BlackMarketManager:equipped_deployable()
 
 	return slot1
 end
-function BlackMarketManager:equipped_armor(chk_armor_kit, chk_player_state)
+BlackMarketManager.equipped_armor = function (self, chk_armor_kit, chk_player_state)
 	if chk_player_state then
 		slot5 = managers.player
 
@@ -3524,12 +3524,12 @@ function BlackMarketManager:equipped_armor(chk_armor_kit, chk_player_state)
 
 	return self._defaults.armor
 end
-function BlackMarketManager:equipped_projectile()
+BlackMarketManager.equipped_projectile = function (self)
 	slot3 = self
 
 	return self.equipped_grenade(slot2)
 end
-function BlackMarketManager:equipped_grenade()
+BlackMarketManager.equipped_grenade = function (self)
 	local grenade = nil
 	slot4 = tweak_data.projectiles
 
@@ -3543,7 +3543,7 @@ function BlackMarketManager:equipped_grenade()
 
 	return self._defaults.grenade, Global.blackmarket_manager.grenades[self._defaults.grenade].amount
 end
-function BlackMarketManager:equipped_melee_weapon()
+BlackMarketManager.equipped_melee_weapon = function (self)
 	local melee_weapon = nil
 	slot4 = tweak_data.blackmarket.melee_weapons
 
@@ -3557,7 +3557,7 @@ function BlackMarketManager:equipped_melee_weapon()
 
 	return self._defaults.melee_weapon
 end
-function BlackMarketManager:equipped_melee_weapon_damage_info(lerp_value)
+BlackMarketManager.equipped_melee_weapon_damage_info = function (self, lerp_value)
 	lerp_value = lerp_value or 0
 	slot4 = self
 	local melee_entry = self.equipped_melee_weapon(slot3)
@@ -3569,7 +3569,7 @@ function BlackMarketManager:equipped_melee_weapon_damage_info(lerp_value)
 
 	return dmg, dmg_effect
 end
-function BlackMarketManager:equipped_secondary()
+BlackMarketManager.equipped_secondary = function (self)
 	if not Global.blackmarket_manager.crafted_items.secondaries then
 		return 
 	end
@@ -3584,7 +3584,7 @@ function BlackMarketManager:equipped_secondary()
 
 	return 
 end
-function BlackMarketManager:equipped_primary()
+BlackMarketManager.equipped_primary = function (self)
 	if not Global.blackmarket_manager.crafted_items.primaries then
 		return 
 	end
@@ -3599,7 +3599,7 @@ function BlackMarketManager:equipped_primary()
 
 	return 
 end
-function BlackMarketManager:equipped_weapon_slot(category)
+BlackMarketManager.equipped_weapon_slot = function (self, category)
 	if not Global.blackmarket_manager.crafted_items[category] then
 		return nil
 	end
@@ -3614,7 +3614,7 @@ function BlackMarketManager:equipped_weapon_slot(category)
 
 	return nil
 end
-function BlackMarketManager:equipped_armor_slot()
+BlackMarketManager.equipped_armor_slot = function (self)
 	if not Global.blackmarket_manager.armors then
 		return nil
 	end
@@ -3629,7 +3629,7 @@ function BlackMarketManager:equipped_armor_slot()
 
 	return nil
 end
-function BlackMarketManager:equipped_grenade_slot()
+BlackMarketManager.equipped_grenade_slot = function (self)
 	if not Global.blackmarket_manager.grenades then
 		return nil
 	end
@@ -3644,7 +3644,7 @@ function BlackMarketManager:equipped_grenade_slot()
 
 	return nil
 end
-function BlackMarketManager:equipped_melee_weapon_slot()
+BlackMarketManager.equipped_melee_weapon_slot = function (self)
 	if not Global.blackmarket_manager.melee_weapons then
 		return nil
 	end
@@ -3659,7 +3659,7 @@ function BlackMarketManager:equipped_melee_weapon_slot()
 
 	return nil
 end
-function BlackMarketManager:equip_weapon(category, slot)
+BlackMarketManager.equip_weapon = function (self, category, slot)
 	if not Global.blackmarket_manager.crafted_items[category] then
 		return false
 	end
@@ -3699,7 +3699,7 @@ function BlackMarketManager:equip_weapon(category, slot)
 
 	return true
 end
-function BlackMarketManager:equip_deployable(deployable_id, loading)
+BlackMarketManager.equip_deployable = function (self, deployable_id, loading)
 	Global.player_manager.kit.equipment_slots[1] = deployable_id
 
 	if not loading then
@@ -3714,7 +3714,7 @@ function BlackMarketManager:equip_deployable(deployable_id, loading)
 
 	return 
 end
-function BlackMarketManager:equip_character(character_id)
+BlackMarketManager.equip_character = function (self, character_id)
 	slot4 = Global.blackmarket_manager.characters
 
 	for s, data in pairs(slot3) do
@@ -3731,7 +3731,7 @@ function BlackMarketManager:equip_character(character_id)
 
 	return 
 end
-function BlackMarketManager:equip_armor(armor_id)
+BlackMarketManager.equip_armor = function (self, armor_id)
 	slot4 = Global.blackmarket_manager.armors
 
 	for s, data in pairs(slot3) do
@@ -3748,7 +3748,7 @@ function BlackMarketManager:equip_armor(armor_id)
 
 	return 
 end
-function BlackMarketManager:equip_grenade(grenade_id)
+BlackMarketManager.equip_grenade = function (self, grenade_id)
 	slot4 = Global.blackmarket_manager.grenades
 
 	for s, data in pairs(slot3) do
@@ -3765,7 +3765,7 @@ function BlackMarketManager:equip_grenade(grenade_id)
 
 	return 
 end
-function BlackMarketManager:equip_melee_weapon(melee_weapon_id)
+BlackMarketManager.equip_melee_weapon = function (self, melee_weapon_id)
 	slot4 = Global.blackmarket_manager.melee_weapons
 
 	for s, data in pairs(slot3) do
@@ -3782,7 +3782,7 @@ function BlackMarketManager:equip_melee_weapon(melee_weapon_id)
 
 	return 
 end
-function BlackMarketManager:_outfit_string_mask()
+BlackMarketManager._outfit_string_mask = function (self)
 	local s = ""
 	s = s .. " " .. "none"
 	s = s .. " " .. "nothing"
@@ -3791,7 +3791,7 @@ function BlackMarketManager:_outfit_string_mask()
 
 	return s
 end
-function BlackMarketManager:outfit_string_index(type)
+BlackMarketManager.outfit_string_index = function (self, type)
 	if type == "armor" then
 		return 5
 	end
@@ -3866,7 +3866,7 @@ function BlackMarketManager:outfit_string_index(type)
 
 	return 
 end
-function BlackMarketManager:unpack_outfit_from_string(outfit_string)
+BlackMarketManager.unpack_outfit_from_string = function (self, outfit_string)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -4201,7 +4201,7 @@ function BlackMarketManager:unpack_outfit_from_string(outfit_string)
 
 
 end
-function BlackMarketManager:outfit_string()
+BlackMarketManager.outfit_string = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-39, warpins: 1 ---
@@ -4553,7 +4553,7 @@ function BlackMarketManager:outfit_string()
 
 
 end
-function BlackMarketManager:outfit_string_from_list(outfit)
+BlackMarketManager.outfit_string_from_list = function (self, outfit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-87, warpins: 1 ---
@@ -4750,7 +4750,7 @@ function BlackMarketManager:outfit_string_from_list(outfit)
 
 
 end
-function BlackMarketManager:signature()
+BlackMarketManager.signature = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -4762,7 +4762,7 @@ function BlackMarketManager:signature()
 
 
 end
-function BlackMarketManager:load_equipped_weapons()
+BlackMarketManager.load_equipped_weapons = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-37, warpins: 1 ---
@@ -4783,7 +4783,7 @@ function BlackMarketManager:load_equipped_weapons()
 
 
 end
-function BlackMarketManager:load_all_crafted_weapons()
+BlackMarketManager.load_all_crafted_weapons = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -4889,7 +4889,7 @@ function BlackMarketManager:load_all_crafted_weapons()
 
 
 end
-function BlackMarketManager:preload_equipped_weapons()
+BlackMarketManager.preload_equipped_weapons = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -4907,7 +4907,7 @@ function BlackMarketManager:preload_equipped_weapons()
 
 
 end
-function BlackMarketManager:preload_primary_weapon()
+BlackMarketManager.preload_primary_weapon = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -4922,7 +4922,7 @@ function BlackMarketManager:preload_primary_weapon()
 
 
 end
-function BlackMarketManager:preload_secondary_weapon()
+BlackMarketManager.preload_secondary_weapon = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -4937,7 +4937,7 @@ function BlackMarketManager:preload_secondary_weapon()
 
 
 end
-function BlackMarketManager:preload_weapon_blueprint(category, factory_id, blueprint, spawn_workbench)
+BlackMarketManager.preload_weapon_blueprint = function (self, category, factory_id, blueprint, spawn_workbench)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-43, warpins: 1 ---
@@ -5017,7 +5017,7 @@ function BlackMarketManager:preload_weapon_blueprint(category, factory_id, bluep
 
 
 end
-function BlackMarketManager:resource_loaded_callback(category, loaded_table, parts)
+BlackMarketManager.resource_loaded_callback = function (self, category, loaded_table, parts)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -5100,7 +5100,7 @@ function BlackMarketManager:resource_loaded_callback(category, loaded_table, par
 
 
 end
-function BlackMarketManager:release_preloaded_category(category)
+BlackMarketManager.release_preloaded_category = function (self, category)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -5189,7 +5189,7 @@ function BlackMarketManager:release_preloaded_category(category)
 
 
 end
-function BlackMarketManager:release_preloaded_blueprints()
+BlackMarketManager.release_preloaded_blueprints = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -5288,7 +5288,7 @@ function BlackMarketManager:release_preloaded_blueprints()
 
 
 end
-function BlackMarketManager:is_preloading_weapons()
+BlackMarketManager.is_preloading_weapons = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -5326,7 +5326,7 @@ function BlackMarketManager:is_preloading_weapons()
 
 
 end
-function BlackMarketManager:create_preload_ws()
+BlackMarketManager.create_preload_ws = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -5714,7 +5714,7 @@ function BlackMarketManager:create_preload_ws()
 
 
 end
-function BlackMarketManager:is_weapon_slot_unlocked(category, slot)
+BlackMarketManager.is_weapon_slot_unlocked = function (self, category, slot)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -5743,7 +5743,7 @@ function BlackMarketManager:is_weapon_slot_unlocked(category, slot)
 
 
 end
-function BlackMarketManager:is_weapon_modified(factory_id, blueprint)
+BlackMarketManager.is_weapon_modified = function (self, factory_id, blueprint)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -5828,7 +5828,7 @@ function BlackMarketManager:is_weapon_modified(factory_id, blueprint)
 
 
 end
-function BlackMarketManager:update(t, dt)
+BlackMarketManager.update = function (self, t, dt)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -6207,7 +6207,7 @@ function BlackMarketManager:update(t, dt)
 
 
 end
-function BlackMarketManager:get_crafted_category(category)
+BlackMarketManager.get_crafted_category = function (self, category)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -6236,7 +6236,7 @@ function BlackMarketManager:get_crafted_category(category)
 
 
 end
-function BlackMarketManager:get_crafted_category_slot(category, slot)
+BlackMarketManager.get_crafted_category_slot = function (self, category, slot)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -6284,7 +6284,7 @@ function BlackMarketManager:get_crafted_category_slot(category, slot)
 
 
 end
-function BlackMarketManager:get_weapon_data(weapon_id)
+BlackMarketManager.get_weapon_data = function (self, weapon_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -6294,7 +6294,7 @@ function BlackMarketManager:get_weapon_data(weapon_id)
 
 
 end
-function BlackMarketManager:get_crafted_custom_name(category, slot, add_quotation)
+BlackMarketManager.get_crafted_custom_name = function (self, category, slot, add_quotation)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -6364,7 +6364,7 @@ function BlackMarketManager:get_crafted_custom_name(category, slot, add_quotatio
 
 
 end
-function BlackMarketManager:set_crafted_custom_name(category, slot, custom_name)
+BlackMarketManager.set_crafted_custom_name = function (self, category, slot, custom_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -6437,7 +6437,7 @@ function BlackMarketManager:set_crafted_custom_name(category, slot, custom_name)
 
 
 end
-function BlackMarketManager:get_weapon_name_by_category_slot(category, slot)
+BlackMarketManager.get_weapon_name_by_category_slot = function (self, category, slot)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -6552,7 +6552,7 @@ function BlackMarketManager:get_weapon_name_by_category_slot(category, slot)
 
 
 end
-function BlackMarketManager:get_weapon_category(category)
+BlackMarketManager.get_weapon_category = function (self, category)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -6637,7 +6637,7 @@ function BlackMarketManager:get_weapon_category(category)
 
 
 end
-function BlackMarketManager:get_weapon_names_category(category)
+BlackMarketManager.get_weapon_names_category = function (self, category)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -6718,7 +6718,7 @@ function BlackMarketManager:get_weapon_names_category(category)
 
 
 end
-function BlackMarketManager:get_weapon_blueprint(category, slot)
+BlackMarketManager.get_weapon_blueprint = function (self, category, slot)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -6785,7 +6785,7 @@ function BlackMarketManager:get_weapon_blueprint(category, slot)
 
 
 end
-function BlackMarketManager:get_perks_from_weapon_blueprint(factory_id, blueprint)
+BlackMarketManager.get_perks_from_weapon_blueprint = function (self, factory_id, blueprint)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -6797,7 +6797,7 @@ function BlackMarketManager:get_perks_from_weapon_blueprint(factory_id, blueprin
 
 
 end
-function BlackMarketManager:get_perks_from_part(part_id)
+BlackMarketManager.get_perks_from_part = function (self, part_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -6809,7 +6809,7 @@ function BlackMarketManager:get_perks_from_part(part_id)
 
 
 end
-function BlackMarketManager:get_melee_weapon_stats(melee_weapon_id)
+BlackMarketManager.get_melee_weapon_stats = function (self, melee_weapon_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -6841,7 +6841,7 @@ function BlackMarketManager:get_melee_weapon_stats(melee_weapon_id)
 
 
 end
-function BlackMarketManager:_get_weapon_stats(weapon_id, blueprint, cosmetics)
+BlackMarketManager._get_weapon_stats = function (self, weapon_id, blueprint, cosmetics)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -7019,7 +7019,7 @@ function BlackMarketManager:_get_weapon_stats(weapon_id, blueprint, cosmetics)
 
 
 end
-function BlackMarketManager:get_weapon_stats(category, slot, blueprint)
+BlackMarketManager.get_weapon_stats = function (self, category, slot, blueprint)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -7095,7 +7095,7 @@ function BlackMarketManager:get_weapon_stats(category, slot, blueprint)
 
 
 end
-function BlackMarketManager:get_weapon_stats_without_mod(category, slot, part_id)
+BlackMarketManager.get_weapon_stats_without_mod = function (self, category, slot, part_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -7107,7 +7107,7 @@ function BlackMarketManager:get_weapon_stats_without_mod(category, slot, part_id
 
 
 end
-function BlackMarketManager:get_weapon_stats_with_mod(category, slot, part_id, remove_mod)
+BlackMarketManager.get_weapon_stats_with_mod = function (self, category, slot, part_id, remove_mod)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -7169,7 +7169,7 @@ function BlackMarketManager:get_weapon_stats_with_mod(category, slot, part_id, r
 
 
 end
-function BlackMarketManager:_get_stats(name, category, slot, blueprint)
+BlackMarketManager._get_stats = function (self, name, category, slot, blueprint)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -7279,7 +7279,7 @@ function BlackMarketManager:_get_stats(name, category, slot, blueprint)
 
 
 end
-function BlackMarketManager:_get_base_stats(name)
+BlackMarketManager._get_base_stats = function (self, name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-31, warpins: 1 ---
@@ -7723,7 +7723,7 @@ function BlackMarketManager:_get_base_stats(name)
 
 
 end
-function BlackMarketManager:_get_skill_stats(name, category, slot, base_stats, mods_stats, silencer, single_mod, auto_mod, blueprint)
+BlackMarketManager._get_skill_stats = function (self, name, category, slot, base_stats, mods_stats, silencer, single_mod, auto_mod, blueprint)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -8406,7 +8406,7 @@ function BlackMarketManager:_get_skill_stats(name, category, slot, base_stats, m
 
 
 end
-function BlackMarketManager:_get_mods_stats(name, base_stats, equipped_mods, bonus_stats)
+BlackMarketManager._get_mods_stats = function (self, name, base_stats, equipped_mods, bonus_stats)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -9232,7 +9232,7 @@ function BlackMarketManager:_get_mods_stats(name, base_stats, equipped_mods, bon
 
 
 end
-function BlackMarketManager:get_weapon_ammo_info(weapon_id, extra_ammo, total_ammo_mod)
+BlackMarketManager.get_weapon_ammo_info = function (self, weapon_id, extra_ammo, total_ammo_mod)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-29, warpins: 1 ---
@@ -9466,7 +9466,7 @@ function BlackMarketManager:get_weapon_ammo_info(weapon_id, extra_ammo, total_am
 
 
 end
-function BlackMarketManager:_get_melee_weapon_stats(name)
+BlackMarketManager._get_melee_weapon_stats = function (self, name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-65, warpins: 1 ---
@@ -10000,7 +10000,7 @@ function BlackMarketManager:_get_melee_weapon_stats(name)
 
 
 end
-function BlackMarketManager:calculate_weapon_visibility(weapon)
+BlackMarketManager.calculate_weapon_visibility = function (self, weapon)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -10012,7 +10012,7 @@ function BlackMarketManager:calculate_weapon_visibility(weapon)
 
 
 end
-function BlackMarketManager:calculate_armor_visibility(armor)
+BlackMarketManager.calculate_armor_visibility = function (self, armor)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -10046,7 +10046,7 @@ function BlackMarketManager:calculate_armor_visibility(armor)
 
 
 end
-function BlackMarketManager:calculate_melee_weapon_visibility(melee_weapon)
+BlackMarketManager.calculate_melee_weapon_visibility = function (self, melee_weapon)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -10080,7 +10080,7 @@ function BlackMarketManager:calculate_melee_weapon_visibility(melee_weapon)
 
 
 end
-function BlackMarketManager:calculate_weapon_concealment(weapon)
+BlackMarketManager.calculate_weapon_concealment = function (self, weapon)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -10112,7 +10112,7 @@ function BlackMarketManager:calculate_weapon_concealment(weapon)
 
 
 end
-function BlackMarketManager:calculate_armor_concealment(armor)
+BlackMarketManager.calculate_armor_concealment = function (self, armor)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -10145,7 +10145,7 @@ function BlackMarketManager:calculate_armor_concealment(armor)
 
 
 end
-function BlackMarketManager:_calculate_weapon_concealment(weapon)
+BlackMarketManager._calculate_weapon_concealment = function (self, weapon)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -10308,7 +10308,7 @@ function BlackMarketManager:_calculate_weapon_concealment(weapon)
 
 
 end
-function BlackMarketManager:_calculate_armor_concealment(armor)
+BlackMarketManager._calculate_armor_concealment = function (self, armor)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -10321,7 +10321,7 @@ function BlackMarketManager:_calculate_armor_concealment(armor)
 
 
 end
-function BlackMarketManager:_calculate_melee_weapon_concealment(melee_weapon)
+BlackMarketManager._calculate_melee_weapon_concealment = function (self, melee_weapon)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -10352,7 +10352,7 @@ function BlackMarketManager:_calculate_melee_weapon_concealment(melee_weapon)
 
 
 end
-function BlackMarketManager:_get_concealment(primary, secondary, armor, melee_weapon, modifier)
+BlackMarketManager._get_concealment = function (self, primary, secondary, armor, melee_weapon, modifier)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-21, warpins: 1 ---
@@ -10396,7 +10396,7 @@ function BlackMarketManager:_get_concealment(primary, secondary, armor, melee_we
 
 
 end
-function BlackMarketManager:_get_concealment_from_local_player(ignore_armor_kit)
+BlackMarketManager._get_concealment_from_local_player = function (self, ignore_armor_kit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-19, warpins: 1 ---
@@ -10410,7 +10410,7 @@ function BlackMarketManager:_get_concealment_from_local_player(ignore_armor_kit)
 
 
 end
-function BlackMarketManager:_get_concealment_from_outfit_string(outfit_string)
+BlackMarketManager._get_concealment_from_outfit_string = function (self, outfit_string)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -10446,7 +10446,7 @@ function BlackMarketManager:_get_concealment_from_outfit_string(outfit_string)
 
 
 end
-function BlackMarketManager:_get_concealment_from_peer(peer)
+BlackMarketManager._get_concealment_from_peer = function (self, peer)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -10484,7 +10484,7 @@ function BlackMarketManager:_get_concealment_from_peer(peer)
 
 
 end
-function BlackMarketManager:get_real_visibility_index_from_custom_data(data)
+BlackMarketManager.get_real_visibility_index_from_custom_data = function (self, data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -10550,7 +10550,7 @@ function BlackMarketManager:get_real_visibility_index_from_custom_data(data)
 
 
 end
-function BlackMarketManager:get_real_visibility_index_of_local_player()
+BlackMarketManager.get_real_visibility_index_of_local_player = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-28, warpins: 1 ---
@@ -10572,7 +10572,7 @@ function BlackMarketManager:get_real_visibility_index_of_local_player()
 
 
 end
-function BlackMarketManager:get_suspicion_of_local_player()
+BlackMarketManager.get_suspicion_of_local_player = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -10584,7 +10584,7 @@ function BlackMarketManager:get_suspicion_of_local_player()
 
 
 end
-function BlackMarketManager:get_concealment_of_peer(peer)
+BlackMarketManager.get_concealment_of_peer = function (self, peer)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -10596,7 +10596,7 @@ function BlackMarketManager:get_concealment_of_peer(peer)
 
 
 end
-function BlackMarketManager:_get_concealment_of_outfit_string(outfit_string)
+BlackMarketManager._get_concealment_of_outfit_string = function (self, outfit_string)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -10608,7 +10608,7 @@ function BlackMarketManager:_get_concealment_of_outfit_string(outfit_string)
 
 
 end
-function BlackMarketManager:_calculate_suspicion_offset(index, lerp)
+BlackMarketManager._calculate_suspicion_offset = function (self, index, lerp)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-41, warpins: 1 ---
@@ -10628,7 +10628,7 @@ function BlackMarketManager:_calculate_suspicion_offset(index, lerp)
 
 
 end
-function BlackMarketManager:get_suspicion_offset_of_outfit_string(outfit_string, lerp)
+BlackMarketManager.get_suspicion_offset_of_outfit_string = function (self, outfit_string, lerp)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -10670,7 +10670,7 @@ function BlackMarketManager:get_suspicion_offset_of_outfit_string(outfit_string,
 
 
 end
-function BlackMarketManager:get_suspicion_offset_of_peer(peer, lerp)
+BlackMarketManager.get_suspicion_offset_of_peer = function (self, peer, lerp)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -10683,7 +10683,7 @@ function BlackMarketManager:get_suspicion_offset_of_peer(peer, lerp)
 
 
 end
-function BlackMarketManager:get_suspicion_offset_of_local(lerp, ignore_armor_kit)
+BlackMarketManager.get_suspicion_offset_of_local = function (self, lerp, ignore_armor_kit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -10777,7 +10777,7 @@ function BlackMarketManager:get_suspicion_offset_of_local(lerp, ignore_armor_kit
 
 
 end
-function BlackMarketManager:get_suspicion_offset_from_custom_data(data, lerp)
+BlackMarketManager.get_suspicion_offset_from_custom_data = function (self, data, lerp)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-20, warpins: 1 ---
@@ -10873,7 +10873,7 @@ function BlackMarketManager:get_suspicion_offset_from_custom_data(data, lerp)
 
 
 end
-function BlackMarketManager:visibility_modifiers()
+BlackMarketManager.visibility_modifiers = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-29, warpins: 1 ---
@@ -10891,7 +10891,7 @@ function BlackMarketManager:visibility_modifiers()
 
 
 end
-function BlackMarketManager:concealment_modifier(type)
+BlackMarketManager.concealment_modifier = function (self, type)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -10944,7 +10944,7 @@ function BlackMarketManager:concealment_modifier(type)
 
 
 end
-function BlackMarketManager:has_parts_for_blueprint(category, blueprint)
+BlackMarketManager.has_parts_for_blueprint = function (self, category, blueprint)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -11010,7 +11010,7 @@ function BlackMarketManager:has_parts_for_blueprint(category, blueprint)
 
 
 end
-function BlackMarketManager:get_crafted_item_amount(category, id)
+BlackMarketManager.get_crafted_item_amount = function (self, category, id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -11144,7 +11144,7 @@ function BlackMarketManager:get_crafted_item_amount(category, id)
 
 
 end
-function BlackMarketManager:get_crafted_part_global_value(category, slot, part_id)
+BlackMarketManager.get_crafted_part_global_value = function (self, category, slot, part_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -11175,7 +11175,7 @@ function BlackMarketManager:get_crafted_part_global_value(category, slot, part_i
 
 
 end
-function BlackMarketManager:craft_item(category, slot, blueprint)
+BlackMarketManager.craft_item = function (self, category, slot, blueprint)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -11234,7 +11234,7 @@ function BlackMarketManager:craft_item(category, slot, blueprint)
 
 
 end
-function BlackMarketManager:_get_free_weapon_slot(category)
+BlackMarketManager._get_free_weapon_slot = function (self, category)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -11328,7 +11328,7 @@ function BlackMarketManager:_get_free_weapon_slot(category)
 
 
 end
-function BlackMarketManager:equip_previous_weapon(category)
+BlackMarketManager.equip_previous_weapon = function (self, category)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -11499,7 +11499,7 @@ function BlackMarketManager:equip_previous_weapon(category)
 
 
 end
-function BlackMarketManager:equip_next_weapon(category)
+BlackMarketManager.equip_next_weapon = function (self, category)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -11670,7 +11670,7 @@ function BlackMarketManager:equip_next_weapon(category)
 
 
 end
-function BlackMarketManager:get_sorted_melee_weapons(hide_locked)
+BlackMarketManager.get_sorted_melee_weapons = function (self, hide_locked)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -12234,7 +12234,7 @@ function BlackMarketManager:get_sorted_melee_weapons(hide_locked)
 
 
 end
-function BlackMarketManager:equip_next_melee_weapon()
+BlackMarketManager.equip_next_melee_weapon = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -12565,7 +12565,7 @@ function BlackMarketManager:equip_next_melee_weapon()
 
 
 end
-function BlackMarketManager:equip_previous_melee_weapon()
+BlackMarketManager.equip_previous_melee_weapon = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -12933,7 +12933,7 @@ function BlackMarketManager:equip_previous_melee_weapon()
 
 
 end
-function BlackMarketManager:equip_previous_grenade()
+BlackMarketManager.equip_previous_grenade = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -13076,7 +13076,7 @@ function BlackMarketManager:equip_previous_grenade()
 
 
 end
-function BlackMarketManager:equip_next_grenade()
+BlackMarketManager.equip_next_grenade = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -13200,7 +13200,7 @@ function BlackMarketManager:equip_next_grenade()
 
 
 end
-function BlackMarketManager:equip_previous_armor()
+BlackMarketManager.equip_previous_armor = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -13343,7 +13343,7 @@ function BlackMarketManager:equip_previous_armor()
 
 
 end
-function BlackMarketManager:equip_next_armor()
+BlackMarketManager.equip_next_armor = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -13467,7 +13467,7 @@ function BlackMarketManager:equip_next_armor()
 
 
 end
-function BlackMarketManager:equip_previous_deployable()
+BlackMarketManager.equip_previous_deployable = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -13610,7 +13610,7 @@ function BlackMarketManager:equip_previous_deployable()
 
 
 end
-function BlackMarketManager:equip_next_deployable()
+BlackMarketManager.equip_next_deployable = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -13734,7 +13734,7 @@ function BlackMarketManager:equip_next_deployable()
 
 
 end
-function BlackMarketManager:on_aquired_weapon_platform(upgrade, id, loading)
+BlackMarketManager.on_aquired_weapon_platform = function (self, upgrade, id, loading)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -13830,7 +13830,7 @@ function BlackMarketManager:on_aquired_weapon_platform(upgrade, id, loading)
 
 
 end
-function BlackMarketManager:on_unaquired_weapon_platform(upgrade, id)
+BlackMarketManager.on_unaquired_weapon_platform = function (self, upgrade, id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -13891,7 +13891,7 @@ function BlackMarketManager:on_unaquired_weapon_platform(upgrade, id)
 
 
 end
-function BlackMarketManager:on_aquired_melee_weapon(upgrade, id, loading)
+BlackMarketManager.on_aquired_melee_weapon = function (self, upgrade, id, loading)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -13927,7 +13927,7 @@ function BlackMarketManager:on_aquired_melee_weapon(upgrade, id, loading)
 
 
 end
-function BlackMarketManager:on_unaquired_melee_weapon(upgrade, id)
+BlackMarketManager.on_unaquired_melee_weapon = function (self, upgrade, id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-17, warpins: 1 ---
@@ -13964,7 +13964,7 @@ function BlackMarketManager:on_unaquired_melee_weapon(upgrade, id)
 
 
 end
-function BlackMarketManager:on_aquired_grenade(upgrade, id, loading)
+BlackMarketManager.on_aquired_grenade = function (self, upgrade, id, loading)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -14000,7 +14000,7 @@ function BlackMarketManager:on_aquired_grenade(upgrade, id, loading)
 
 
 end
-function BlackMarketManager:on_unaquired_grenade(upgrade, id)
+BlackMarketManager.on_unaquired_grenade = function (self, upgrade, id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-17, warpins: 1 ---
@@ -14037,7 +14037,7 @@ function BlackMarketManager:on_unaquired_grenade(upgrade, id)
 
 
 end
-function BlackMarketManager:aquire_default_weapons(only_enable)
+BlackMarketManager.aquire_default_weapons = function (self, only_enable)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -14098,7 +14098,7 @@ function BlackMarketManager:aquire_default_weapons(only_enable)
 
 
 end
-function BlackMarketManager:equip_class_default_primary()
+BlackMarketManager.equip_class_default_primary = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-19, warpins: 1 ---
@@ -14173,7 +14173,7 @@ function BlackMarketManager:equip_class_default_primary()
 
 
 end
-function BlackMarketManager:equip_class_default_secondary()
+BlackMarketManager.equip_class_default_secondary = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-19, warpins: 1 ---
@@ -14248,7 +14248,7 @@ function BlackMarketManager:equip_class_default_secondary()
 
 
 end
-function BlackMarketManager:_aquire_class_default_secondary(class, only_enable)
+BlackMarketManager._aquire_class_default_secondary = function (self, class, only_enable)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -14347,7 +14347,7 @@ function BlackMarketManager:_aquire_class_default_secondary(class, only_enable)
 
 
 end
-function BlackMarketManager:_aquire_class_default_primary(class, only_enable)
+BlackMarketManager._aquire_class_default_primary = function (self, class, only_enable)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -14446,7 +14446,7 @@ function BlackMarketManager:_aquire_class_default_primary(class, only_enable)
 
 
 end
-function BlackMarketManager:_aquire_generic_default_secondary(only_enable)
+BlackMarketManager._aquire_generic_default_secondary = function (self, only_enable)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -14529,7 +14529,7 @@ function BlackMarketManager:_aquire_generic_default_secondary(only_enable)
 
 
 end
-function BlackMarketManager:_aquire_generic_default_primary(only_enable)
+BlackMarketManager._aquire_generic_default_primary = function (self, only_enable)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -14612,7 +14612,7 @@ function BlackMarketManager:_aquire_generic_default_primary(only_enable)
 
 
 end
-function BlackMarketManager:_aquire_generic_default_melee(only_enable)
+BlackMarketManager._aquire_generic_default_melee = function (self, only_enable)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -14691,7 +14691,7 @@ function BlackMarketManager:_aquire_generic_default_melee(only_enable)
 
 
 end
-function BlackMarketManager:on_buy_weapon_platform(category, weapon_id, slot, free)
+BlackMarketManager.on_buy_weapon_platform = function (self, category, weapon_id, slot, free)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -14857,7 +14857,7 @@ function BlackMarketManager:on_buy_weapon_platform(category, weapon_id, slot, fr
 
 
 end
-function BlackMarketManager:get_melee_weapon_data(melee_weapon_id)
+BlackMarketManager.get_melee_weapon_data = function (self, melee_weapon_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -14867,7 +14867,7 @@ function BlackMarketManager:get_melee_weapon_data(melee_weapon_id)
 
 
 end
-function BlackMarketManager:set_melee_weapon_favorite(melee_weapon_id, favorite)
+BlackMarketManager.set_melee_weapon_favorite = function (self, melee_weapon_id, favorite)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -14898,7 +14898,7 @@ function BlackMarketManager:set_melee_weapon_favorite(melee_weapon_id, favorite)
 
 
 end
-function BlackMarketManager:get_sorted_grenades(hide_locked)
+BlackMarketManager.get_sorted_grenades = function (self, hide_locked)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -15161,7 +15161,7 @@ function BlackMarketManager:get_sorted_grenades(hide_locked)
 
 
 end
-function BlackMarketManager:get_sorted_armors(hide_locked)
+BlackMarketManager.get_sorted_armors = function (self, hide_locked)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -15440,7 +15440,7 @@ function BlackMarketManager:get_sorted_armors(hide_locked)
 
 
 end
-function BlackMarketManager:get_sorted_deployables(hide_locked)
+BlackMarketManager.get_sorted_deployables = function (self, hide_locked)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -15528,7 +15528,7 @@ function BlackMarketManager:get_sorted_deployables(hide_locked)
 
 
 end
-function BlackMarketManager:get_hold_crafted_item()
+BlackMarketManager.get_hold_crafted_item = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -15538,7 +15538,7 @@ function BlackMarketManager:get_hold_crafted_item()
 
 
 end
-function BlackMarketManager:drop_hold_crafted_item()
+BlackMarketManager.drop_hold_crafted_item = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -15550,7 +15550,7 @@ function BlackMarketManager:drop_hold_crafted_item()
 
 
 end
-function BlackMarketManager:pickup_crafted_item(category, slot)
+BlackMarketManager.pickup_crafted_item = function (self, category, slot)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -15565,7 +15565,7 @@ function BlackMarketManager:pickup_crafted_item(category, slot)
 
 
 end
-function BlackMarketManager:place_crafted_item(category, slot)
+BlackMarketManager.place_crafted_item = function (self, category, slot)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -15620,7 +15620,7 @@ function BlackMarketManager:place_crafted_item(category, slot)
 
 
 end
-function BlackMarketManager:on_aquired_armor(upgrade, id, loading)
+BlackMarketManager.on_aquired_armor = function (self, upgrade, id, loading)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -15656,7 +15656,7 @@ function BlackMarketManager:on_aquired_armor(upgrade, id, loading)
 
 
 end
-function BlackMarketManager:on_unaquired_armor(upgrade, id)
+BlackMarketManager.on_unaquired_armor = function (self, upgrade, id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-19, warpins: 1 ---
@@ -15694,7 +15694,7 @@ function BlackMarketManager:on_unaquired_armor(upgrade, id)
 
 
 end
-function BlackMarketManager:_verify_preferred_characters()
+BlackMarketManager._verify_preferred_characters = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -15833,7 +15833,7 @@ function BlackMarketManager:_verify_preferred_characters()
 
 
 end
-function BlackMarketManager:_update_preferred_character(update_character)
+BlackMarketManager._update_preferred_character = function (self, update_character)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -15919,7 +15919,7 @@ function BlackMarketManager:_update_preferred_character(update_character)
 
 
 end
-function BlackMarketManager:swap_preferred_character(first_index, second_index)
+BlackMarketManager.swap_preferred_character = function (self, first_index, second_index)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-16, warpins: 1 ---
@@ -15965,7 +15965,7 @@ function BlackMarketManager:swap_preferred_character(first_index, second_index)
 
 
 end
-function BlackMarketManager:clear_preferred_characters()
+BlackMarketManager.clear_preferred_characters = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -16008,7 +16008,7 @@ function BlackMarketManager:clear_preferred_characters()
 
 
 end
-function BlackMarketManager:set_preferred_character(character, index)
+BlackMarketManager.set_preferred_character = function (self, character, index)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -16141,7 +16141,7 @@ function BlackMarketManager:set_preferred_character(character, index)
 
 
 end
-function BlackMarketManager:get_character_id_by_character_name(character_name)
+BlackMarketManager.get_character_id_by_character_name = function (self, character_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -16173,7 +16173,7 @@ function BlackMarketManager:get_character_id_by_character_name(character_name)
 
 
 end
-function BlackMarketManager:get_preferred_characters_list()
+BlackMarketManager.get_preferred_characters_list = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -16185,7 +16185,7 @@ function BlackMarketManager:get_preferred_characters_list()
 
 
 end
-function BlackMarketManager:num_preferred_characters()
+BlackMarketManager.num_preferred_characters = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -16195,7 +16195,7 @@ function BlackMarketManager:num_preferred_characters()
 
 
 end
-function BlackMarketManager:get_preferred_character(index)
+BlackMarketManager.get_preferred_character = function (self, index)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -16213,7 +16213,7 @@ function BlackMarketManager:get_preferred_character(index)
 
 
 end
-function BlackMarketManager:get_preferred_character_string()
+BlackMarketManager.get_preferred_character_string = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -16310,7 +16310,7 @@ function BlackMarketManager:get_preferred_character_string()
 
 
 end
-function BlackMarketManager:get_preferred_character_real_name(index)
+BlackMarketManager.get_preferred_character_real_name = function (self, index)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -16347,7 +16347,7 @@ function BlackMarketManager:get_preferred_character_real_name(index)
 
 
 end
-function BlackMarketManager:get_category_default(category)
+BlackMarketManager.get_category_default = function (self, category)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -16376,7 +16376,7 @@ function BlackMarketManager:get_category_default(category)
 
 
 end
-function BlackMarketManager:get_weapon_texture_switches(category, slot, weapon)
+BlackMarketManager.get_weapon_texture_switches = function (self, category, slot, weapon)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -16424,7 +16424,7 @@ function BlackMarketManager:get_weapon_texture_switches(category, slot, weapon)
 
 
 end
-function BlackMarketManager:character_sequence_by_character_id(character_id, peer_id)
+BlackMarketManager.character_sequence_by_character_id = function (self, character_id, peer_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -16566,7 +16566,7 @@ function BlackMarketManager:character_sequence_by_character_id(character_id, pee
 
 
 end
-function BlackMarketManager:character_sequence_by_character_name(character, peer_id)
+BlackMarketManager.character_sequence_by_character_name = function (self, character, peer_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -16683,7 +16683,7 @@ function BlackMarketManager:character_sequence_by_character_name(character, peer
 
 
 end
-function BlackMarketManager:tradable_outfit()
+BlackMarketManager.tradable_outfit = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -16742,7 +16742,7 @@ function BlackMarketManager:tradable_outfit()
 
 
 end
-function BlackMarketManager:reset()
+BlackMarketManager.reset = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-25, warpins: 1 ---
@@ -16781,7 +16781,7 @@ function BlackMarketManager:reset()
 
 
 end
-function BlackMarketManager:reset_equipped()
+BlackMarketManager.reset_equipped = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-24, warpins: 1 ---
@@ -16819,7 +16819,7 @@ function BlackMarketManager:reset_equipped()
 
 
 end
-function BlackMarketManager:save(data)
+BlackMarketManager.save = function (self, data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-27, warpins: 1 ---
@@ -16843,7 +16843,7 @@ function BlackMarketManager:save(data)
 
 
 end
-function BlackMarketManager:load(data)
+BlackMarketManager.load = function (self, data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -17804,7 +17804,7 @@ function BlackMarketManager:load(data)
 
 
 end
-function BlackMarketManager:_load_done()
+BlackMarketManager._load_done = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -17849,7 +17849,7 @@ function BlackMarketManager:_load_done()
 
 
 end
-function BlackMarketManager:verify_dlc_items()
+BlackMarketManager.verify_dlc_items = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -17890,7 +17890,7 @@ function BlackMarketManager:verify_dlc_items()
 
 
 end
-function BlackMarketManager:_cleanup_blackmarket()
+BlackMarketManager._cleanup_blackmarket = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -18308,7 +18308,7 @@ function BlackMarketManager:_cleanup_blackmarket()
 
 
 end
-function BlackMarketManager:test_clean()
+BlackMarketManager.test_clean = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -18318,7 +18318,7 @@ function BlackMarketManager:test_clean()
 
 
 end
-function BlackMarketManager:_verify_dlc_items()
+BlackMarketManager._verify_dlc_items = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-28, warpins: 1 ---
@@ -19045,7 +19045,7 @@ function BlackMarketManager:_verify_dlc_items()
 
 
 end
-function BlackMarketManager:_verfify_equipped()
+BlackMarketManager._verfify_equipped = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-21, warpins: 1 ---
@@ -19075,7 +19075,7 @@ function BlackMarketManager:_verfify_equipped()
 
 
 end
-function BlackMarketManager:_verfify_equipped_category(category)
+BlackMarketManager._verfify_equipped_category = function (self, category)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -19911,7 +19911,7 @@ function BlackMarketManager:_verfify_equipped_category(category)
 
 
 end
-function BlackMarketManager:_convert_add_to_mul(value)
+BlackMarketManager._convert_add_to_mul = function (self, value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -19969,7 +19969,7 @@ function BlackMarketManager:_convert_add_to_mul(value)
 
 
 end
-function BlackMarketManager:fire_rate_multiplier(name, category, silencer, detection_risk, current_state, blueprint)
+BlackMarketManager.fire_rate_multiplier = function (self, name, category, silencer, detection_risk, current_state, blueprint)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-18, warpins: 1 ---
@@ -19984,7 +19984,7 @@ function BlackMarketManager:fire_rate_multiplier(name, category, silencer, detec
 
 
 end
-function BlackMarketManager:damage_addend(name, category, silencer, detection_risk, current_state, blueprint)
+BlackMarketManager.damage_addend = function (self, name, category, silencer, detection_risk, current_state, blueprint)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -20024,7 +20024,7 @@ function BlackMarketManager:damage_addend(name, category, silencer, detection_ri
 
 
 end
-function BlackMarketManager:damage_multiplier(name, category, silencer, detection_risk, current_state, blueprint)
+BlackMarketManager.damage_multiplier = function (self, name, category, silencer, detection_risk, current_state, blueprint)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -20306,7 +20306,7 @@ function BlackMarketManager:damage_multiplier(name, category, silencer, detectio
 
 
 end
-function BlackMarketManager:threat_multiplier(name, category, silencer)
+BlackMarketManager.threat_multiplier = function (self, name, category, silencer)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-35, warpins: 1 ---
@@ -20325,7 +20325,7 @@ function BlackMarketManager:threat_multiplier(name, category, silencer)
 
 
 end
-function BlackMarketManager:accuracy_addend(name, category, spread_index, silencer, current_state, fire_mode, blueprint)
+BlackMarketManager.accuracy_addend = function (self, name, category, spread_index, silencer, current_state, fire_mode, blueprint)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -20451,7 +20451,7 @@ function BlackMarketManager:accuracy_addend(name, category, spread_index, silenc
 
 
 end
-function BlackMarketManager:accuracy_multiplier(name, category, silencer, current_state, spread_moving, fire_mode, blueprint)
+BlackMarketManager.accuracy_multiplier = function (self, name, category, silencer, current_state, spread_moving, fire_mode, blueprint)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -20719,7 +20719,7 @@ function BlackMarketManager:accuracy_multiplier(name, category, silencer, curren
 
 
 end
-function BlackMarketManager:recoil_addend(name, category, recoil_index, silencer, blueprint)
+BlackMarketManager.recoil_addend = function (self, name, category, recoil_index, silencer, blueprint)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -20889,7 +20889,7 @@ function BlackMarketManager:recoil_addend(name, category, recoil_index, silencer
 
 
 end
-function BlackMarketManager:recoil_multiplier(name, category, silencer, blueprint)
+BlackMarketManager.recoil_multiplier = function (self, name, category, silencer, blueprint)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-18, warpins: 1 ---

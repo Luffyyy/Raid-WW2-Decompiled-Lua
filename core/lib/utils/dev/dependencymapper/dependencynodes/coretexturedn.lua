@@ -18,14 +18,14 @@ if not TextureDependencyNode then
 end
 
 TextureDependencyNode = slot0
-TextureDependencyNode.init = function (self, name, get_dn_cb, database)
+function TextureDependencyNode:init(name, get_dn_cb, database)
 	slot11 = database
 
 	self.super.init(slot5, self, TEXTURE, "texture", name, get_dn_cb)
 
 	return 
 end
-TextureDependencyNode._parse = function (self)
+function TextureDependencyNode:_parse()
 	return {}
 end
 

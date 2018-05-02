@@ -4,7 +4,7 @@ if not CopInventory then
 end
 
 CopInventory = slot0
-CopInventory.init = function (self, unit)
+function CopInventory:init(unit)
 	CopInventory.super.init(slot3, self)
 
 	self._unit = unit
@@ -28,14 +28,14 @@ CopInventory.init = function (self, unit)
 
 	return 
 end
-CopInventory._send_equipped_weapon = function (self)
+function CopInventory:_send_equipped_weapon()
 	slot4 = PlayerInventory.SEND_WEAPON_TYPE_TEAMAI_COPS
 
 	CopInventory.super._send_equipped_weapon(slot2, self)
 
 	return 
 end
-CopInventory.add_unit_by_name = function (self, new_unit_name, equip)
+function CopInventory:add_unit_by_name(new_unit_name, equip)
 	slot7 = Vector3()
 	local new_unit = World.spawn_unit(slot4, World, new_unit_name, Rotation())
 	slot7 = new_unit
@@ -71,7 +71,7 @@ CopInventory.add_unit_by_name = function (self, new_unit_name, equip)
 
 	return 
 end
-CopInventory._chk_spawn_shield = function (self, weapon_unit)
+function CopInventory:_chk_spawn_shield(weapon_unit)
 	if self._shield_unit_name then
 		slot4 = self._shield_unit
 
@@ -96,27 +96,27 @@ CopInventory._chk_spawn_shield = function (self, weapon_unit)
 
 	return 
 end
-CopInventory.add_unit = function (self, new_unit, equip)
+function CopInventory:add_unit(new_unit, equip)
 	slot7 = equip
 
 	CopInventory.super.add_unit(slot4, self, new_unit)
 
 	return 
 end
-CopInventory.get_sync_data = function (self, sync_data)
+function CopInventory:get_sync_data(sync_data)
 	slot5 = sync_data
 
 	MPPlayerInventory.get_sync_data(slot3, self)
 
 	return 
 end
-CopInventory.get_weapon = function (self)
+function CopInventory:get_weapon()
 	local selection = self._available_selections[self._equipped_selection]
 	local unit = selection and selection.unit
 
 	return unit
 end
-CopInventory.drop_weapon = function (self)
+function CopInventory:drop_weapon()
 	local selection = self._available_selections[self._equipped_selection]
 	local unit = selection and selection.unit
 
@@ -145,7 +145,7 @@ CopInventory.drop_weapon = function (self)
 
 	return 
 end
-CopInventory.drop_shield = function (self)
+function CopInventory:drop_shield()
 	slot3 = self._shield_unit
 
 	if alive(slot2) then
@@ -165,7 +165,7 @@ CopInventory.drop_shield = function (self)
 
 	return 
 end
-CopInventory.anim_clbk_weapon_attached = function (self, unit, state)
+function CopInventory:anim_clbk_weapon_attached(unit, state)
 	slot6 = state
 
 	print(slot4, "[CopInventory:anim_clbk_weapon_attached]")
@@ -195,7 +195,7 @@ CopInventory.anim_clbk_weapon_attached = function (self, unit, state)
 
 	return 
 end
-CopInventory.destroy_all_items = function (self)
+function CopInventory:destroy_all_items()
 	slot3 = self
 
 	CopInventory.super.destroy_all_items(slot2)
@@ -212,7 +212,7 @@ CopInventory.destroy_all_items = function (self)
 
 	return 
 end
-CopInventory.anim_clbk_equip_enter = function (self, unit)
+function CopInventory:anim_clbk_equip_enter(unit)
 	slot4 = self
 
 	self.show_equipped_unit(slot3)

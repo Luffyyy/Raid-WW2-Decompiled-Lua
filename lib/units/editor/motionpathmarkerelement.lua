@@ -19,7 +19,7 @@ MotionpathMarkerUnitElement.PATH_TYPES = {
 	"airborne",
 	"ground"
 }
-MotionpathMarkerUnitElement.init = function (self, unit)
+function MotionpathMarkerUnitElement:init(unit)
 	slot5 = unit
 
 	MotionpathMarkerUnitElement.super.init(slot3, self)
@@ -69,14 +69,14 @@ MotionpathMarkerUnitElement.init = function (self, unit)
 
 	return 
 end
-MotionpathMarkerUnitElement._add_wp_options = function (self)
+function MotionpathMarkerUnitElement:_add_wp_options()
 	self._text_options = {
 		"debug_none"
 	}
 
 	return 
 end
-MotionpathMarkerUnitElement._set_text = function (self)
+function MotionpathMarkerUnitElement:_set_text()
 	slot3 = self._text
 	slot7 = self._hed.text_id
 
@@ -84,7 +84,7 @@ MotionpathMarkerUnitElement._set_text = function (self)
 
 	return 
 end
-MotionpathMarkerUnitElement.set_element_data = function (self, params, ...)
+function MotionpathMarkerUnitElement:set_element_data(params, ...)
 	slot5 = params
 
 	MotionpathMarkerUnitElement.super.set_element_data(slot3, self, ...)
@@ -101,7 +101,7 @@ MotionpathMarkerUnitElement.set_element_data = function (self, params, ...)
 
 	return 
 end
-MotionpathMarkerUnitElement.add_triggers = function (self, vc)
+function MotionpathMarkerUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "add_element"
 
@@ -109,7 +109,7 @@ MotionpathMarkerUnitElement.add_triggers = function (self, vc)
 
 	return 
 end
-MotionpathMarkerUnitElement.add_trigger = function (self, id, outcome, callback)
+function MotionpathMarkerUnitElement:add_trigger(id, outcome, callback)
 	self._triggers[id] = {
 		outcome = outcome,
 		callback = callback
@@ -117,10 +117,10 @@ MotionpathMarkerUnitElement.add_trigger = function (self, id, outcome, callback)
 
 	return 
 end
-MotionpathMarkerUnitElement.on_unselected = function (self)
+function MotionpathMarkerUnitElement:on_unselected()
 	return 
 end
-MotionpathMarkerUnitElement.clear = function (self)
+function MotionpathMarkerUnitElement:clear()
 	slot6 = self._unit
 	slot4 = self._unit.unit_data(slot5).unit_id
 	local path = managers.motion_path.get_path_of_marker(slot2, managers.motion_path)
@@ -207,7 +207,7 @@ MotionpathMarkerUnitElement.clear = function (self)
 
 	return 
 end
-MotionpathMarkerUnitElement._is_infinite_loop = function (self, candidate_unit)
+function MotionpathMarkerUnitElement:_is_infinite_loop(candidate_unit)
 	local linked_markers = MotionpathMarkerUnitElement._linked_markers
 	local candidate_unit_id = candidate_unit.unit_data(slot4).unit_id
 	slot6 = linked_markers
@@ -220,7 +220,7 @@ MotionpathMarkerUnitElement._is_infinite_loop = function (self, candidate_unit)
 
 	return false
 end
-MotionpathMarkerUnitElement._bridge_exists = function (self, unit_id_from, unit_id_to)
+function MotionpathMarkerUnitElement:_bridge_exists(unit_id_from, unit_id_to)
 	slot5 = self._hed.bridges
 
 	for idx, bridge in ipairs(slot4) do
@@ -231,7 +231,7 @@ MotionpathMarkerUnitElement._bridge_exists = function (self, unit_id_from, unit_
 
 	return -1
 end
-MotionpathMarkerUnitElement.add_element = function (self)
+function MotionpathMarkerUnitElement:add_element()
 	slot4 = {
 		ray_type = "body editor",
 		mask = managers.slot.get_mask(slot6, managers.slot)
@@ -326,7 +326,7 @@ MotionpathMarkerUnitElement.add_element = function (self)
 
 	return 
 end
-MotionpathMarkerUnitElement.remove_unit = function (self, unit_id)
+function MotionpathMarkerUnitElement:remove_unit(unit_id)
 	slot5 = unit_id
 	local index = table.index_of(slot3, self._hed.markers.units)
 
@@ -338,7 +338,7 @@ MotionpathMarkerUnitElement.remove_unit = function (self, unit_id)
 
 	return 
 end
-MotionpathMarkerUnitElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function MotionpathMarkerUnitElement:draw_links(t, dt, selected_unit, all_units)
 	slot10 = selected_unit
 
 	MotionpathMarkerUnitElement.super.draw_links(slot6, self, t, dt)
@@ -418,7 +418,7 @@ MotionpathMarkerUnitElement.draw_links = function (self, t, dt, selected_unit, a
 
 	return 
 end
-MotionpathMarkerUnitElement.update_editing = function (self)
+function MotionpathMarkerUnitElement:update_editing()
 	slot4 = {
 		ray_type = "body editor",
 		sample = true,
@@ -435,7 +435,7 @@ MotionpathMarkerUnitElement.update_editing = function (self)
 
 	return 
 end
-MotionpathMarkerUnitElement._build_panel = function (self, panel, panel_sizer)
+function MotionpathMarkerUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -561,10 +561,10 @@ local scale = 0.1
 local width = 0
 local angle_tolerance = 0
 local cusp_limit = 0
-MotionpathMarkerUnitElement.update_unselected = function (self, t, dt, selected_unit, all_units)
+function MotionpathMarkerUnitElement:update_unselected(t, dt, selected_unit, all_units)
 	return 
 end
-MotionpathMarkerUnitElement.update_selected = function (self, t, dt, selected_unit, all_units)
+function MotionpathMarkerUnitElement:update_selected(t, dt, selected_unit, all_units)
 	slot12 = self._unit
 	slot12 = self._unit.rotation(self._unit)
 	slot13 = 0.01
@@ -581,7 +581,7 @@ MotionpathMarkerUnitElement.update_selected = function (self, t, dt, selected_un
 
 	return 
 end
-MotionpathMarkerUnitElement._add_marker_to_path = function (self)
+function MotionpathMarkerUnitElement:_add_marker_to_path()
 	local target_marker_id = self._hed.markers.child or self._hed.markers.parent
 
 	if not target_marker_id then
@@ -638,7 +638,7 @@ MotionpathMarkerUnitElement._add_marker_to_path = function (self)
 
 	return 
 end
-MotionpathMarkerUnitElement._get_middle_point = function (self, path, selected_marker_id, target_marker_id)
+function MotionpathMarkerUnitElement:_get_middle_point(path, selected_marker_id, target_marker_id)
 	local selected_point_offset, target_point_offset = nil
 	slot8 = path.marker_checkpoints
 
@@ -659,7 +659,7 @@ MotionpathMarkerUnitElement._get_middle_point = function (self, path, selected_m
 
 	return path.points[offset]
 end
-MotionpathMarkerUnitElement._recreate_motion_path = function (self, selected_unit, force_update, skip_recreate)
+function MotionpathMarkerUnitElement:_recreate_motion_path(selected_unit, force_update, skip_recreate)
 	if not force_update then
 		slot7 = selected_unit
 	end
@@ -926,7 +926,7 @@ MotionpathMarkerUnitElement._recreate_motion_path = function (self, selected_uni
 
 	return 
 end
-MotionpathMarkerUnitElement._get_unit = function (self, unit_id)
+function MotionpathMarkerUnitElement:_get_unit(unit_id)
 	slot4 = Application
 
 	if Application.editor(slot3) then
@@ -941,7 +941,7 @@ MotionpathMarkerUnitElement._get_unit = function (self, unit_id)
 
 	return 
 end
-MotionpathMarkerUnitElement._build_points = function (self, from_unit, to_unit)
+function MotionpathMarkerUnitElement:_build_points(from_unit, to_unit)
 	slot6 = from_unit
 	slot7 = from_unit
 	local cp1 = from_unit.position(slot4) + from_unit.rotation(from_unit).y(from_unit) * from_unit.mission_element_data(from_unit.rotation(from_unit)).cp_length * -1
@@ -986,7 +986,7 @@ MotionpathMarkerUnitElement._build_points = function (self, from_unit, to_unit)
 		z4
 	}
 end
-MotionpathMarkerUnitElement.bez_interpolate = function (self, x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4, ...)
+function MotionpathMarkerUnitElement:bez_interpolate(x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4, ...)
 	local n = 0
 	self._bezier_points = {}
 	slot31 = cusp_limit
@@ -1004,7 +1004,7 @@ MotionpathMarkerUnitElement.bez_interpolate = function (self, x1, y1, z1, x2, y2
 
 	return n
 end
-MotionpathMarkerUnitElement.bez_draw = function (self, id, b, t)
+function MotionpathMarkerUnitElement:bez_draw(id, b, t)
 	slot8 = b
 	local x, y, z, w, h, d = bezier3.bounding_box(unpack(slot7))
 	local ax1, ay1, az1, ax2, ay2, az2, ax3, ay3, az3, ax4, ay4, az4, bx1, by1, bz1, bx2, by2, bz2, bx3, by3, bz3, bx4, by4, bz4 = nil

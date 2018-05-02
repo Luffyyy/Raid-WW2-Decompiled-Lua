@@ -8,21 +8,21 @@ if not ElementHint then
 end
 
 ElementHint = slot0
-ElementHint.init = function (self, ...)
+function ElementHint:init(...)
 	slot3 = self
 
 	ElementHint.super.init(slot2, ...)
 
 	return 
 end
-ElementHint.client_on_executed = function (self, ...)
+function ElementHint:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementHint.on_executed = function (self, instigator)
+function ElementHint:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

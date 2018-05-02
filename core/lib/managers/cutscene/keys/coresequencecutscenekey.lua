@@ -27,13 +27,13 @@ slot4 = "name"
 CoreSequenceCutsceneKey.attribute_affects("Sequence", CoreSequenceCutsceneKey, "unit_name")
 
 CoreSequenceCutsceneKey.control_for_name = CoreCutsceneKeyBase.standard_combo_box_control
-CoreSequenceCutsceneKey.__tostring = function (self)
+function CoreSequenceCutsceneKey:__tostring()
 	slot4 = self
 	slot6 = self
 
 	return "Trigger sequence \"" .. self.name(slot3) .. "\" on \"" .. self.unit_name(slot5) .. "\"."
 end
-CoreSequenceCutsceneKey.evaluate = function (self, player, fast_forward)
+function CoreSequenceCutsceneKey:evaluate(player, fast_forward)
 	slot8 = self
 	slot5 = self._unit_extension(slot4, self, self.unit_name(slot7))
 	slot8 = self
@@ -42,7 +42,7 @@ CoreSequenceCutsceneKey.evaluate = function (self, player, fast_forward)
 
 	return 
 end
-CoreSequenceCutsceneKey.revert = function (self, player)
+function CoreSequenceCutsceneKey:revert(player)
 	slot8 = self
 	slot5 = "undo_" .. self.name(slot7)
 
@@ -50,7 +50,7 @@ CoreSequenceCutsceneKey.revert = function (self, player)
 
 	return 
 end
-CoreSequenceCutsceneKey.skip = function (self, player)
+function CoreSequenceCutsceneKey:skip(player)
 	slot8 = self
 	slot5 = "skip_" .. self.name(slot7)
 
@@ -58,7 +58,7 @@ CoreSequenceCutsceneKey.skip = function (self, player)
 
 	return 
 end
-CoreSequenceCutsceneKey.is_valid_unit_name = function (self, unit_name)
+function CoreSequenceCutsceneKey:is_valid_unit_name(unit_name)
 	slot5 = unit_name
 
 	if not self.super.is_valid_unit_name(slot3, self) then
@@ -81,7 +81,7 @@ CoreSequenceCutsceneKey.is_valid_unit_name = function (self, unit_name)
 
 	return slot3
 end
-CoreSequenceCutsceneKey.is_valid_name = function (self, name)
+function CoreSequenceCutsceneKey:is_valid_name(name)
 	slot7 = self
 	slot6 = true
 	local unit = self._unit(slot3, self, self.unit_name(slot6))
@@ -98,7 +98,7 @@ CoreSequenceCutsceneKey.is_valid_name = function (self, name)
 
 	return slot3
 end
-CoreSequenceCutsceneKey.refresh_control_for_name = function (self, control)
+function CoreSequenceCutsceneKey:refresh_control_for_name(control)
 
 	-- Decompilation error in this vicinity:
 	slot4 = control
@@ -118,7 +118,7 @@ CoreSequenceCutsceneKey.refresh_control_for_name = function (self, control)
 
 	return 
 end
-CoreSequenceCutsceneKey._run_sequence_if_exists = function (self, sequence_name)
+function CoreSequenceCutsceneKey:_run_sequence_if_exists(sequence_name)
 	local unit = self._unit(slot3, self.unit_name(slot6))
 	slot8 = self
 	slot7 = sequence_name

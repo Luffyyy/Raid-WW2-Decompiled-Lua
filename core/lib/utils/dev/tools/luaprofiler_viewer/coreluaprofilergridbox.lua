@@ -24,7 +24,7 @@ local SECONDS = 1
 local PLAIN = 2
 local DEFAULT_FORMAT = PERCENT
 LuaProfilerGridBox = LuaProfilerGridBox or CoreClass.class()
-LuaProfilerGridBox.init = function (self, ...)
+function LuaProfilerGridBox:init(...)
 	local args = CoreKeywordArguments.KeywordArguments.new(slot2, ...)
 	slot5 = "parent"
 	self._ews_parent = args.mandatory_object(CoreKeywordArguments.KeywordArguments, args)
@@ -77,7 +77,7 @@ LuaProfilerGridBox.init = function (self, ...)
 
 	return 
 end
-LuaProfilerGridBox.set_treeview = function (self, ...)
+function LuaProfilerGridBox:set_treeview(...)
 	slot4 = "table:treeview"
 	self._treeview = parse_kwargs(slot2, {
 		...
@@ -85,7 +85,7 @@ LuaProfilerGridBox.set_treeview = function (self, ...)
 
 	return 
 end
-LuaProfilerGridBox.destroy = function (self)
+function LuaProfilerGridBox:destroy()
 	self._lpd = nil
 	self._item2fnid = {}
 	slot3 = self._listctrl
@@ -101,7 +101,7 @@ LuaProfilerGridBox.destroy = function (self)
 
 	return 
 end
-LuaProfilerGridBox.set_profilerdata = function (self, ...)
+function LuaProfilerGridBox:set_profilerdata(...)
 	slot5 = "number:displayformat"
 	self._lpd, self._displayformat = parse_kwargs(slot2, {
 		...
@@ -150,7 +150,7 @@ LuaProfilerGridBox.set_profilerdata = function (self, ...)
 
 	return 
 end
-LuaProfilerGridBox.set_displayformat = function (self, ...)
+function LuaProfilerGridBox:set_displayformat(...)
 	slot4 = "number:displayformat"
 	self._displayformat = parse_kwargs(slot2, {
 		...
@@ -203,7 +203,7 @@ LuaProfilerGridBox.set_displayformat = function (self, ...)
 
 	return 
 end
-LuaProfilerGridBox._redraw = function (self)
+function LuaProfilerGridBox:_redraw()
 	if self._lpd ~= nil then
 		slot3 = self
 
@@ -309,7 +309,7 @@ LuaProfilerGridBox._redraw = function (self)
 
 	return 
 end
-LuaProfilerGridBox._sort_funcnodes = function (self)
+function LuaProfilerGridBox:_sort_funcnodes()
 	local convert = nil
 
 	if self._sortcolumn == 1 then
@@ -400,7 +400,7 @@ LuaProfilerGridBox._sort_funcnodes = function (self)
 
 	return 
 end
-LuaProfilerGridBox.deselect_and_highlight = function (self, ...)
+function LuaProfilerGridBox:deselect_and_highlight(...)
 	slot4 = "number:fnid"
 	local fnid = parse_kwargs(slot2, {
 		...
@@ -415,7 +415,7 @@ LuaProfilerGridBox.deselect_and_highlight = function (self, ...)
 
 	return 
 end
-LuaProfilerGridBox._highlight = function (self, fnid)
+function LuaProfilerGridBox:_highlight(fnid)
 	self._highlightedfuncnode = fnid
 	slot4 = self._item2fnid
 
@@ -433,7 +433,7 @@ LuaProfilerGridBox._highlight = function (self, fnid)
 
 	return 
 end
-LuaProfilerGridBox._on_select = function (self)
+function LuaProfilerGridBox:_on_select()
 	local i = self._listctrl.selected_item(slot2)
 	slot5 = {
 		fnid = self._item2fnid[i + 1]
@@ -447,7 +447,7 @@ LuaProfilerGridBox._on_select = function (self)
 
 	return 
 end
-LuaProfilerGridBox._on_activate = function (self)
+function LuaProfilerGridBox:_on_activate()
 	local i = self._listctrl.selected_item(slot2)
 	slot5 = {
 		fnid = self._item2fnid[i + 1]
@@ -457,7 +457,7 @@ LuaProfilerGridBox._on_activate = function (self)
 
 	return 
 end
-LuaProfilerGridBox._on_column = function (self, id, f)
+function LuaProfilerGridBox:_on_column(id, f)
 	slot5 = f
 	local column = f.get_column(slot4) + 1
 

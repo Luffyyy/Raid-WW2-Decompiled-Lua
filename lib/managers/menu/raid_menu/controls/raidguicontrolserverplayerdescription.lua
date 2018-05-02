@@ -4,7 +4,7 @@ if not RaidGUIControlServerPlayerDescription then
 end
 
 RaidGUIControlServerPlayerDescription = slot0
-RaidGUIControlServerPlayerDescription.init = function (self, parent, params)
+function RaidGUIControlServerPlayerDescription:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlServerPlayerDescription.super.init(slot4, self, parent)
@@ -24,7 +24,7 @@ RaidGUIControlServerPlayerDescription.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlServerPlayerDescription._create_selector = function (self)
+function RaidGUIControlServerPlayerDescription:_create_selector()
 	local selector_params = {
 		name = "selector",
 		visible = false,
@@ -36,7 +36,7 @@ RaidGUIControlServerPlayerDescription._create_selector = function (self)
 
 	return 
 end
-RaidGUIControlServerPlayerDescription._layout = function (self)
+function RaidGUIControlServerPlayerDescription:_layout()
 	local class_icon = tweak_data.gui.icons.ico_class_assault
 	slot5 = {
 		name = "class_icon",
@@ -128,7 +128,7 @@ RaidGUIControlServerPlayerDescription._layout = function (self)
 
 	return 
 end
-RaidGUIControlServerPlayerDescription.set_data = function (self, data)
+function RaidGUIControlServerPlayerDescription:set_data(data)
 	if data == NetworkMatchMakingSTEAM.EMPTY_PLAYER_INFO or not data then
 		slot4 = self
 
@@ -226,7 +226,7 @@ RaidGUIControlServerPlayerDescription.set_data = function (self, data)
 
 	return 
 end
-RaidGUIControlServerPlayerDescription.set_host = function (self, flag)
+function RaidGUIControlServerPlayerDescription:set_host(flag)
 	if flag then
 		slot4 = self._host_icon
 
@@ -239,7 +239,7 @@ RaidGUIControlServerPlayerDescription.set_host = function (self, flag)
 
 	return 
 end
-RaidGUIControlServerPlayerDescription.set_selected = function (self, value)
+function RaidGUIControlServerPlayerDescription:set_selected(value)
 	self._selected = value
 	slot5 = self._selected
 
@@ -251,21 +251,21 @@ RaidGUIControlServerPlayerDescription.set_selected = function (self, value)
 
 	return 
 end
-RaidGUIControlServerPlayerDescription.show = function (self)
+function RaidGUIControlServerPlayerDescription:show()
 	slot3 = self._object
 
 	self._object.show(slot2)
 
 	return 
 end
-RaidGUIControlServerPlayerDescription.hide = function (self)
+function RaidGUIControlServerPlayerDescription:hide()
 	slot3 = self._object
 
 	self._object.hide(slot2)
 
 	return 
 end
-RaidGUIControlServerPlayerDescription.confirm_pressed = function (self)
+function RaidGUIControlServerPlayerDescription:confirm_pressed()
 	if self._selected then
 		slot3 = self._xuid
 

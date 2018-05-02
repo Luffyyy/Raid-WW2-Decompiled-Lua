@@ -1,7 +1,7 @@
 TankTrackAnimation = TankTrackAnimation or class()
 slot2 = "uv_offset"
 local ids_uv_offset = Idstring(slot1)
-TankTrackAnimation.init = function (self, unit)
+function TankTrackAnimation:init(unit)
 	self._unit = unit
 	slot7 = "tank_track_animation"
 
@@ -98,7 +98,7 @@ TankTrackAnimation.init = function (self, unit)
 
 	return 
 end
-TankTrackAnimation.update = function (self, unit, t, dt)
+function TankTrackAnimation:update(unit, t, dt)
 	local curr_left_tension_pos = self._left_tesnion.position(slot5)
 	local curr_left_pos = self._left_ref_object.position(self._left_tesnion)
 	slot8 = curr_left_pos - curr_left_tension_pos

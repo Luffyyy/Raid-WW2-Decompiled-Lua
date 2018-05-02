@@ -4,7 +4,7 @@ if not HuskTeamAIInventory then
 end
 
 HuskTeamAIInventory = slot0
-HuskTeamAIInventory.add_unit_by_name = function (self, new_unit_name, equip)
+function HuskTeamAIInventory:add_unit_by_name(new_unit_name, equip)
 	slot7 = Vector3()
 	local new_unit = World.spawn_unit(slot4, World, new_unit_name, Rotation())
 	local setup_data = {
@@ -31,7 +31,7 @@ HuskTeamAIInventory.add_unit_by_name = function (self, new_unit_name, equip)
 
 	return 
 end
-HuskTeamAIInventory.pre_destroy = function (self)
+function HuskTeamAIInventory:pre_destroy()
 	slot3 = self
 
 	HuskTeamAIInventory.super.pre_destroy(slot2)

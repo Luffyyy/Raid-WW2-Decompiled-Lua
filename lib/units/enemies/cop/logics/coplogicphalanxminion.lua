@@ -32,7 +32,7 @@ CopLogicPhalanxMinion.allowed_transitional_actions = {
 		"crouch"
 	}
 }
-CopLogicPhalanxMinion.enter = function (data, new_logic_name, enter_params)
+function CopLogicPhalanxMinion.enter(data, new_logic_name, enter_params)
 	local my_data = {
 		unit = data.unit
 	}
@@ -130,7 +130,7 @@ CopLogicPhalanxMinion.enter = function (data, new_logic_name, enter_params)
 
 	return 
 end
-CopLogicPhalanxMinion.exit = function (data, new_logic_name, enter_params)
+function CopLogicPhalanxMinion.exit(data, new_logic_name, enter_params)
 	slot7 = enter_params
 
 	CopLogicBase.exit(slot4, data, new_logic_name)
@@ -155,7 +155,7 @@ CopLogicPhalanxMinion.exit = function (data, new_logic_name, enter_params)
 
 	return 
 end
-CopLogicPhalanxMinion.queued_update = function (data)
+function CopLogicPhalanxMinion.queued_update(data)
 	local my_data = data.internal_data
 	slot4 = data
 	local delay = data.logic._upd_enemy_detection(slot3)
@@ -216,9 +216,9 @@ CopLogicPhalanxMinion.queued_update = function (data)
 
 	return 
 end
-CopLogicPhalanxMinion.chk_should_turn = function (data, my_data)
+function CopLogicPhalanxMinion.chk_should_turn(data, my_data)
 end
-CopLogicPhalanxMinion.register_in_group_ai = function (unit)
+function CopLogicPhalanxMinion.register_in_group_ai(unit)
 
 	-- Decompilation error in this vicinity:
 	slot3 = managers.groupai
@@ -234,7 +234,7 @@ CopLogicPhalanxMinion.register_in_group_ai = function (unit)
 
 	return 
 end
-CopLogicPhalanxMinion.chk_should_breakup = function ()
+function CopLogicPhalanxMinion.chk_should_breakup()
 	slot2 = managers.groupai
 	slot2 = managers.groupai.state(slot1)
 	local phalanx_minion_count = managers.groupai.state(slot1).get_phalanx_minion_count(slot1)
@@ -246,7 +246,7 @@ CopLogicPhalanxMinion.chk_should_breakup = function ()
 
 	return 
 end
-CopLogicPhalanxMinion.chk_should_reposition = function ()
+function CopLogicPhalanxMinion.chk_should_reposition()
 	slot2 = managers.groupai
 	slot2 = managers.groupai.state(slot1)
 	local phalanx_minion_count = managers.groupai.state(slot1).get_phalanx_minion_count(slot1)
@@ -259,7 +259,7 @@ CopLogicPhalanxMinion.chk_should_reposition = function ()
 
 	return 
 end
-CopLogicPhalanxMinion.breakup = function (remote_call)
+function CopLogicPhalanxMinion.breakup(remote_call)
 	local groupai = managers.groupai.state(slot2)
 	local phalanx_minions = groupai.phalanx_minions(managers.groupai)
 	slot5 = groupai
@@ -322,7 +322,7 @@ CopLogicPhalanxMinion.breakup = function (remote_call)
 
 	return 
 end
-CopLogicPhalanxMinion._upd_enemy_detection = function (data)
+function CopLogicPhalanxMinion._upd_enemy_detection(data)
 	slot3 = managers.groupai
 	slot4 = data.unit
 
@@ -344,7 +344,7 @@ CopLogicPhalanxMinion._upd_enemy_detection = function (data)
 
 	return delay
 end
-CopLogicPhalanxMinion._upd_turn_outwards = function (data, my_data)
+function CopLogicPhalanxMinion._upd_turn_outwards(data, my_data)
 	slot5 = my_data
 
 	if not CopLogicAttack.action_taken(slot3, data) then
@@ -367,7 +367,7 @@ CopLogicPhalanxMinion._upd_turn_outwards = function (data, my_data)
 
 	return 
 end
-CopLogicPhalanxMinion.on_action_completed = function (data, action)
+function CopLogicPhalanxMinion.on_action_completed(data, action)
 	slot4 = action
 	local action_type = action.type(slot3)
 
@@ -395,10 +395,10 @@ CopLogicPhalanxMinion.on_action_completed = function (data, action)
 
 	return 
 end
-CopLogicPhalanxMinion.is_available_for_assignment = function (data, objective)
+function CopLogicPhalanxMinion.is_available_for_assignment(data, objective)
 	return false
 end
-CopLogicPhalanxMinion._calc_phalanx_circle_radius = function (phalanx_minion_count)
+function CopLogicPhalanxMinion._calc_phalanx_circle_radius(phalanx_minion_count)
 	local distance = tweak_data.group_ai.phalanx.minions.distance
 	local circumfence = distance * phalanx_minion_count
 	local radius = circumfence / math.pi / 2
@@ -406,7 +406,7 @@ CopLogicPhalanxMinion._calc_phalanx_circle_radius = function (phalanx_minion_cou
 
 	return math.max(slot5, radius)
 end
-CopLogicPhalanxMinion._calc_pos_on_phalanx_circle = function (center_pos, angle, phalanx_minion_count)
+function CopLogicPhalanxMinion._calc_pos_on_phalanx_circle(center_pos, angle, phalanx_minion_count)
 	local radius = CopLogicPhalanxMinion._calc_phalanx_circle_radius(slot4)
 	slot6 = radius
 	slot6 = Vector3(phalanx_minion_count)
@@ -415,7 +415,7 @@ CopLogicPhalanxMinion._calc_pos_on_phalanx_circle = function (center_pos, angle,
 
 	return result
 end
-CopLogicPhalanxMinion._i_am_nth_neighbour = function (diffs_to_fixed_angle, my_diff, fixed_angle_free)
+function CopLogicPhalanxMinion._i_am_nth_neighbour(diffs_to_fixed_angle, my_diff, fixed_angle_free)
 	if my_diff == 0 then
 		return 0
 	end
@@ -440,7 +440,7 @@ CopLogicPhalanxMinion._i_am_nth_neighbour = function (diffs_to_fixed_angle, my_d
 
 	return result
 end
-CopLogicPhalanxMinion._get_diff_to_angle = function (fixed_angle, angle)
+function CopLogicPhalanxMinion._get_diff_to_angle(fixed_angle, angle)
 	local diff = angle - fixed_angle
 	slot5 = diff
 
@@ -461,7 +461,7 @@ CopLogicPhalanxMinion._get_diff_to_angle = function (fixed_angle, angle)
 
 	return diff
 end
-CopLogicPhalanxMinion._get_next_neighbour_angle = function (neighbour_num, phalanx_minion_count, fixed_angle)
+function CopLogicPhalanxMinion._get_next_neighbour_angle(neighbour_num, phalanx_minion_count, fixed_angle)
 	local angle_step = 360 / phalanx_minion_count
 	local result = fixed_angle + neighbour_num * angle_step
 
@@ -473,12 +473,12 @@ CopLogicPhalanxMinion._get_next_neighbour_angle = function (neighbour_num, phala
 
 	return result
 end
-CopLogicPhalanxMinion._get_random_angle = function ()
+function CopLogicPhalanxMinion._get_random_angle()
 	slot2 = 360
 
 	return math.random(slot1)
 end
-CopLogicPhalanxMinion._reposition_phalanx = function (fixed_angle)
+function CopLogicPhalanxMinion._reposition_phalanx(fixed_angle)
 	slot3 = managers.groupai
 	local phalanx_minion_count = managers.groupai.state(slot2).get_phalanx_minion_count(slot2)
 	slot4 = managers.groupai
@@ -561,7 +561,7 @@ CopLogicPhalanxMinion._reposition_phalanx = function (fixed_angle)
 
 	return 
 end
-CopLogicPhalanxMinion.calc_initial_phalanx_pos = function (own_pos, objective)
+function CopLogicPhalanxMinion.calc_initial_phalanx_pos(own_pos, objective)
 	if not objective.angle then
 		local center_pos = managers.groupai.state(slot3)._phalanx_center_pos
 		slot5 = managers.groupai

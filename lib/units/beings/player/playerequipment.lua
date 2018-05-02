@@ -205,12 +205,12 @@
 -- WARNING: Error occurred during decompilation.
 --   Code may be incomplete or incorrect.
 PlayerEquipment = PlayerEquipment or class()
-PlayerEquipment.init = function (self, unit)
+function PlayerEquipment:init(unit)
 	self._unit = unit
 
 	return 
 end
-PlayerEquipment.on_deploy_interupted = function (self)
+function PlayerEquipment:on_deploy_interupted()
 	slot3 = self._dummy_unit
 
 	if alive(slot2) then
@@ -223,7 +223,7 @@ PlayerEquipment.on_deploy_interupted = function (self)
 
 	return 
 end
-PlayerEquipment.valid_look_at_placement = function (self, equipment_data)
+function PlayerEquipment:valid_look_at_placement(equipment_data)
 	slot4 = self._unit
 	local from = self._unit.movement(slot3).m_head_pos(slot3)
 	slot5 = self._unit
@@ -267,7 +267,7 @@ PlayerEquipment.valid_look_at_placement = function (self, equipment_data)
 
 	return ray
 end
-PlayerEquipment.valid_placement = function (self, equipment_data)
+function PlayerEquipment:valid_placement(equipment_data)
 	slot4 = self._unit
 	slot4 = self._unit.movement(slot3)
 	local valid = not self._unit.movement(slot3).current_state(slot3).in_air(slot3)
@@ -356,7 +356,7 @@ end)
 local ids_contour_opacity = Idstring("contour_color")
 slot4 = "material"
 local ids_material = Idstring("contour_opacity")
-PlayerEquipment._disable_contour = function (self, unit)
+function PlayerEquipment:_disable_contour(unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -407,7 +407,7 @@ PlayerEquipment._disable_contour = function (self, unit)
 
 
 end
-PlayerEquipment.use_ammo_bag = function (self)
+function PlayerEquipment:use_ammo_bag()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -515,7 +515,7 @@ PlayerEquipment.use_ammo_bag = function (self)
 
 
 end
-PlayerEquipment.use_doctor_bag = function (self)
+function PlayerEquipment:use_doctor_bag()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -600,7 +600,7 @@ PlayerEquipment.use_doctor_bag = function (self)
 
 
 end
-PlayerEquipment.use_first_aid_kit = function (self)
+function PlayerEquipment:use_first_aid_kit()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -693,7 +693,7 @@ PlayerEquipment.use_first_aid_kit = function (self)
 
 
 end
-PlayerEquipment.use_armor_kit = function (self)
+function PlayerEquipment:use_armor_kit()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -759,7 +759,7 @@ PlayerEquipment.use_armor_kit = function (self)
 
 
 end
-PlayerEquipment.use_armor_kit_dropin_penalty = function (self)
+function PlayerEquipment:use_armor_kit_dropin_penalty()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -773,7 +773,7 @@ PlayerEquipment.use_armor_kit_dropin_penalty = function (self)
 
 
 end
-PlayerEquipment.use_satchel = function (self)
+function PlayerEquipment:use_satchel()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -838,7 +838,7 @@ PlayerEquipment.use_satchel = function (self)
 
 
 end
-PlayerEquipment._spawn_dummy = function (self, dummy_name, pos, rot)
+function PlayerEquipment:_spawn_dummy(dummy_name, pos, rot)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -904,7 +904,7 @@ PlayerEquipment._spawn_dummy = function (self, dummy_name, pos, rot)
 
 
 end
-PlayerEquipment.valid_shape_placement = function (self, equipment_id, equipment_data)
+function PlayerEquipment:valid_shape_placement(equipment_id, equipment_data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-37, warpins: 1 ---
@@ -1159,7 +1159,7 @@ PlayerEquipment.valid_shape_placement = function (self, equipment_id, equipment_
 
 
 end
-PlayerEquipment.use_sentry_gun = function (self, selected_index)
+function PlayerEquipment:use_sentry_gun(selected_index)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1296,7 +1296,7 @@ PlayerEquipment.use_sentry_gun = function (self, selected_index)
 
 
 end
-PlayerEquipment.use_flash_grenade = function (self)
+function PlayerEquipment:use_flash_grenade()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -1308,7 +1308,7 @@ PlayerEquipment.use_flash_grenade = function (self)
 
 
 end
-PlayerEquipment.use_smoke_grenade = function (self)
+function PlayerEquipment:use_smoke_grenade()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -1320,7 +1320,7 @@ PlayerEquipment.use_smoke_grenade = function (self)
 
 
 end
-PlayerEquipment.use_frag_grenade = function (self)
+function PlayerEquipment:use_frag_grenade()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -1332,7 +1332,7 @@ PlayerEquipment.use_frag_grenade = function (self)
 
 
 end
-PlayerEquipment.throw_flash_grenade = function (self)
+function PlayerEquipment:throw_flash_grenade()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1384,7 +1384,7 @@ PlayerEquipment.throw_flash_grenade = function (self)
 
 
 end
-PlayerEquipment.throw_projectile = function (self)
+function PlayerEquipment:throw_projectile()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-46, warpins: 1 ---
@@ -1522,7 +1522,7 @@ PlayerEquipment.throw_projectile = function (self)
 
 
 end
-PlayerEquipment.throw_grenade = function (self)
+function PlayerEquipment:throw_grenade()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-62, warpins: 1 ---
@@ -1622,7 +1622,7 @@ PlayerEquipment.throw_grenade = function (self)
 
 
 end
-PlayerEquipment.use_duck = function (self)
+function PlayerEquipment:use_duck()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -1638,7 +1638,7 @@ PlayerEquipment.use_duck = function (self)
 
 
 end
-PlayerEquipment.from_server_sentry_gun_place_result = function (self)
+function PlayerEquipment:from_server_sentry_gun_place_result()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1650,7 +1650,7 @@ PlayerEquipment.from_server_sentry_gun_place_result = function (self)
 
 
 end
-PlayerEquipment.destroy = function (self)
+function PlayerEquipment:destroy()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---

@@ -8,21 +8,21 @@ if not ElementModifyPlayer then
 end
 
 ElementModifyPlayer = slot0
-ElementModifyPlayer.init = function (self, ...)
+function ElementModifyPlayer:init(...)
 	slot3 = self
 
 	ElementModifyPlayer.super.init(slot2, ...)
 
 	return 
 end
-ElementModifyPlayer.client_on_executed = function (self, ...)
+function ElementModifyPlayer:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementModifyPlayer.on_executed = function (self, instigator)
+function ElementModifyPlayer:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

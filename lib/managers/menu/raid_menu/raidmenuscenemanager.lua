@@ -148,7 +148,7 @@ end
 
 slot2 = Application
 local is_editor = Application.editor("comic_book_menu")
-RaidMenuSceneManager.init = function (self)
+function RaidMenuSceneManager:init()
 	self._menu_stack = {}
 	self._character_sync_player_data = {}
 	self._close_menu_allowed = true
@@ -162,18 +162,18 @@ RaidMenuSceneManager.init = function (self)
 
 	return 
 end
-RaidMenuSceneManager.is_offline_mode = function (self)
+function RaidMenuSceneManager:is_offline_mode()
 	local callback_handler = RaidMenuCallbackHandler.new(slot2)
 	slot4 = callback_handler
 
 	return callback_handler.is_singleplayer(RaidMenuCallbackHandler)
 end
-RaidMenuSceneManager.register_on_escape_callback = function (self, callback_ref)
+function RaidMenuSceneManager:register_on_escape_callback(callback_ref)
 	self._component_on_escape_callback = callback_ref
 
 	return 
 end
-RaidMenuSceneManager.show_background = function (self)
+function RaidMenuSceneManager:show_background()
 	slot3 = managers.menu
 
 	managers.menu.hide_loading_screen(slot2)
@@ -184,14 +184,14 @@ RaidMenuSceneManager.show_background = function (self)
 
 	return 
 end
-RaidMenuSceneManager.hide_background = function (self)
+function RaidMenuSceneManager:hide_background()
 	slot4 = false
 
 	self._background_image.set_visible(slot2, self._background_image)
 
 	return 
 end
-RaidMenuSceneManager.clean_up_background = function (self)
+function RaidMenuSceneManager:clean_up_background()
 	slot3 = self
 
 	self.close_all_menus(slot2)
@@ -204,24 +204,24 @@ RaidMenuSceneManager.clean_up_background = function (self)
 
 	return 
 end
-RaidMenuSceneManager.set_pause_menu_enabled = function (self, enabled)
+function RaidMenuSceneManager:set_pause_menu_enabled(enabled)
 	self._pause_menu_enabled = enabled
 
 	return 
 end
-RaidMenuSceneManager.is_any_menu_open = function (self)
+function RaidMenuSceneManager:is_any_menu_open()
 	local menu_open = self._menu_stack and 0 < #self._menu_stack
 
 	return menu_open
 end
-RaidMenuSceneManager.ct_open_menus = function (self)
+function RaidMenuSceneManager:ct_open_menus()
 	if not self._menu_stack then
 		return 0
 	end
 
 	return #self._menu_stack
 end
-RaidMenuSceneManager.open_menu = function (self, name, dont_add_on_stack)
+function RaidMenuSceneManager:open_menu(name, dont_add_on_stack)
 	if name == "raid_main_menu" and not self._pause_menu_enabled then
 		return 
 	end
@@ -282,7 +282,7 @@ RaidMenuSceneManager.open_menu = function (self, name, dont_add_on_stack)
 
 	return true
 end
-RaidMenuSceneManager.close_all_menus = function (self)
+function RaidMenuSceneManager:close_all_menus()
 	slot3 = managers.mouse_pointer
 
 	managers.mouse_pointer.acquire_input(slot2)
@@ -308,7 +308,7 @@ RaidMenuSceneManager.close_all_menus = function (self)
 
 	return 
 end
-RaidMenuSceneManager.close_menu = function (self, dont_remove_from_stack)
+function RaidMenuSceneManager:close_menu(dont_remove_from_stack)
 	if not is_editor and #self._menu_stack == 1 and not dont_remove_from_stack then
 		slot4 = managers.mouse_pointer
 
@@ -391,7 +391,7 @@ RaidMenuSceneManager.close_menu = function (self, dont_remove_from_stack)
 
 	return 
 end
-RaidMenuSceneManager.add_menu_name_on_stack = function (self, menu_name)
+function RaidMenuSceneManager:add_menu_name_on_stack(menu_name)
 	slot5 = menu_name
 
 	table.insert(slot3, self._menu_stack)
@@ -426,7 +426,7 @@ RaidMenuSceneManager.add_menu_name_on_stack = function (self, menu_name)
 
 	return 
 end
-RaidMenuSceneManager.remove_menu_name_from_stack = function (self, menu_name)
+function RaidMenuSceneManager:remove_menu_name_from_stack(menu_name)
 	for i = 1, #self._menu_stack, 1 do
 		if self._menu_stack[i] == menu_name then
 			slot9 = i
@@ -439,7 +439,7 @@ RaidMenuSceneManager.remove_menu_name_from_stack = function (self, menu_name)
 
 	return 
 end
-RaidMenuSceneManager.on_escape = function (self, flag_close_all_menus)
+function RaidMenuSceneManager:on_escape(flag_close_all_menus)
 	if self._component_on_escape_callback then
 		local handles = self._component_on_escape_callback()
 
@@ -525,15 +525,15 @@ RaidMenuSceneManager.on_escape = function (self, flag_close_all_menus)
 
 	return 
 end
-RaidMenuSceneManager.get_close_menu_allowed = function (self)
+function RaidMenuSceneManager:get_close_menu_allowed()
 	return self._close_menu_allowed
 end
-RaidMenuSceneManager.set_close_menu_allowed = function (self, flag)
+function RaidMenuSceneManager:set_close_menu_allowed(flag)
 	self._close_menu_allowed = flag
 
 	return 
 end
-RaidMenuSceneManager._set_menu_state = function (self, menu)
+function RaidMenuSceneManager:_set_menu_state(menu)
 	local camera_name = menu.camera
 
 	if camera_name then
@@ -546,7 +546,7 @@ RaidMenuSceneManager._set_menu_state = function (self, menu)
 
 	return 
 end
-RaidMenuSceneManager._reinitialize_viewports = function (self)
+function RaidMenuSceneManager:_reinitialize_viewports()
 	local players = managers.player.players(slot2)
 	slot4 = managers.subtitle
 
@@ -578,7 +578,7 @@ RaidMenuSceneManager._reinitialize_viewports = function (self)
 
 	return 
 end
-RaidMenuSceneManager._start_menu_camera = function (self, menu)
+function RaidMenuSceneManager:_start_menu_camera(menu)
 	local camera_name = menu.camera
 
 	if camera_name then
@@ -591,20 +591,20 @@ RaidMenuSceneManager._start_menu_camera = function (self, menu)
 
 	return 
 end
-RaidMenuSceneManager.get_active_control = function (self, control)
+function RaidMenuSceneManager:get_active_control(control)
 	return self._active_control
 end
-RaidMenuSceneManager.set_active_control = function (self, control)
+function RaidMenuSceneManager:set_active_control(control)
 	self._active_control = control
 
 	return 
 end
-RaidMenuSceneManager.clear_active_control = function (self)
+function RaidMenuSceneManager:clear_active_control()
 	self._active_control = nil
 
 	return 
 end
-RaidMenuSceneManager.save_sync_player_data = function (self)
+function RaidMenuSceneManager:save_sync_player_data()
 	slot4 = managers.player._global.synced_ammo_info
 	managers.raid_menu._character_sync_player_data.synced_ammo_info = clone(slot3)
 	slot4 = managers.player._global.synced_bipod
@@ -632,7 +632,7 @@ RaidMenuSceneManager.save_sync_player_data = function (self)
 
 	return 
 end
-RaidMenuSceneManager.load_sync_player_data = function (self)
+function RaidMenuSceneManager:load_sync_player_data()
 	slot4 = managers.raid_menu._character_sync_player_data.synced_ammo_info
 	managers.player._global.synced_ammo_info = clone(slot3)
 	slot4 = managers.raid_menu._character_sync_player_data.synced_bipod
@@ -660,7 +660,7 @@ RaidMenuSceneManager.load_sync_player_data = function (self)
 
 	return 
 end
-RaidMenuSceneManager.first_login_check = function (self)
+function RaidMenuSceneManager:first_login_check()
 	slot4 = "[RaidMenuSceneManager:first_login_check]"
 
 	Application.trace(slot2, Application)
@@ -690,7 +690,7 @@ RaidMenuSceneManager.first_login_check = function (self)
 
 	return 
 end
-RaidMenuSceneManager.system_start_raid = function (self)
+function RaidMenuSceneManager:system_start_raid()
 	slot4 = "[RaidMenuSceneManager:system_start_raid]"
 
 	Application.trace(slot2, Application)
@@ -709,15 +709,15 @@ RaidMenuSceneManager.system_start_raid = function (self)
 
 	return 
 end
-RaidMenuSceneManager.set_current_legend_control = function (self, control)
+function RaidMenuSceneManager:set_current_legend_control(control)
 	self._current_legend_control = control
 
 	return 
 end
-RaidMenuSceneManager.current_legend_control = function (self)
+function RaidMenuSceneManager:current_legend_control()
 	return self._current_legend_control
 end
-RaidMenuSceneManager.set_legend_labels = function (self, legend)
+function RaidMenuSceneManager:set_legend_labels(legend)
 	if not self._current_legend_control then
 		slot5 = "[RaidMenuSceneManager:set_legend_labels] Trying to set controller legend while no legend control is present"
 
@@ -732,7 +732,7 @@ RaidMenuSceneManager.set_legend_labels = function (self, legend)
 
 	return 
 end
-RaidMenuSceneManager.toggle_fullscreen_raid = function (self)
+function RaidMenuSceneManager:toggle_fullscreen_raid()
 	local is_fullscreen = managers.viewport.is_fullscreen(slot2)
 	slot5 = not is_fullscreen
 
@@ -740,14 +740,14 @@ RaidMenuSceneManager.toggle_fullscreen_raid = function (self)
 
 	return 
 end
-RaidMenuSceneManager.is_pc_controller = function (self)
+function RaidMenuSceneManager:is_pc_controller()
 
 	-- Decompilation error in this vicinity:
 	slot3 = managers.controller
 
 	return 
 end
-RaidMenuSceneManager.refresh_footer_gold_amount = function (self)
+function RaidMenuSceneManager:refresh_footer_gold_amount()
 	if not managers.menu_component._active_components.raid_menu_footer.component_object then
 		return 
 	end
@@ -758,7 +758,7 @@ RaidMenuSceneManager.refresh_footer_gold_amount = function (self)
 
 	return 
 end
-RaidMenuSceneManager.show_dialog_join_others_forbidden = function (self)
+function RaidMenuSceneManager:show_dialog_join_others_forbidden()
 	local dialog_data = {}
 	slot5 = "dialog_warning_title"
 	dialog_data.title = managers.localization.text(slot3, managers.localization)
@@ -778,7 +778,7 @@ RaidMenuSceneManager.show_dialog_join_others_forbidden = function (self)
 
 	return 
 end
-RaidMenuSceneManager.show_dialog_disconnected_from_steam = function (self)
+function RaidMenuSceneManager:show_dialog_disconnected_from_steam()
 	local dialog_data = {}
 	slot5 = "dialog_warning_title"
 	dialog_data.title = managers.localization.text(slot3, managers.localization)
@@ -798,7 +798,7 @@ RaidMenuSceneManager.show_dialog_disconnected_from_steam = function (self)
 
 	return 
 end
-RaidMenuSceneManager.show_dialog_already_in_game = function (self)
+function RaidMenuSceneManager:show_dialog_already_in_game()
 	local dialog_data = {}
 	slot5 = "dialog_warning_title"
 	dialog_data.title = managers.localization.text(slot3, managers.localization)
@@ -818,7 +818,7 @@ RaidMenuSceneManager.show_dialog_already_in_game = function (self)
 
 	return 
 end
-RaidMenuSceneManager.show_release_dialog_helper = function (self, message)
+function RaidMenuSceneManager:show_release_dialog_helper(message)
 	local dialog_data = {
 		title = "release dialog helper",
 		text = message

@@ -7,7 +7,7 @@ slot3 = "CoreInitState"
 core.import(slot1, core)
 
 GameStateMachine = GameStateMachine or class()
-GameStateMachine.init = function (self, start_state)
+function GameStateMachine:init(start_state)
 	self._states = {}
 	self._transitions = {}
 	local init = CoreInitState._InitState.new(slot3, CoreInitState._InitState)
@@ -27,7 +27,7 @@ GameStateMachine.init = function (self, start_state)
 
 	return 
 end
-GameStateMachine.destroy = function (self)
+function GameStateMachine:destroy()
 	slot3 = self._states
 
 	for _, state in pairs(slot2) do
@@ -41,7 +41,7 @@ GameStateMachine.destroy = function (self)
 
 	return 
 end
-GameStateMachine.add_transition = function (self, from, to, trans_func)
+function GameStateMachine:add_transition(from, to, trans_func)
 	slot7 = from
 	self._states[from.name(slot6)] = from
 	slot7 = to
@@ -51,16 +51,16 @@ GameStateMachine.add_transition = function (self, from, to, trans_func)
 
 	return 
 end
-GameStateMachine.current_state = function (self)
+function GameStateMachine:current_state()
 	return self._current_state
 end
-GameStateMachine.can_change_state = function (self, state)
+function GameStateMachine:can_change_state(state)
 	local state_from = (self._queued_transitions and self._queued_transitions[#self._queued_transitions][1]) or self._current_state
 	local valid_transitions = self._transitions[state_from]
 
 	return valid_transitions and valid_transitions[state] ~= nil
 end
-GameStateMachine.change_state = function (self, state, params)
+function GameStateMachine:change_state(state, params)
 	slot6 = "[GameStateMachine][change_state]"
 	slot11 = state
 
@@ -102,12 +102,12 @@ GameStateMachine.change_state = function (self, state, params)
 
 	return 
 end
-GameStateMachine.current_state_name = function (self)
+function GameStateMachine:current_state_name()
 	slot3 = self._current_state
 
 	return self._current_state.name(slot2)
 end
-GameStateMachine.can_change_state_by_name = function (self, state_name)
+function GameStateMachine:can_change_state_by_name(state_name)
 	slot8 = state_name
 	slot5 = "[GameStateMachine] Name '" .. tostring(slot7) .. "' does not correspond to a valid state."
 	local state = assert(slot3, self._states[state_name])
@@ -115,7 +115,7 @@ GameStateMachine.can_change_state_by_name = function (self, state_name)
 
 	return self.can_change_state(self._states[state_name], self)
 end
-GameStateMachine.change_state_by_name = function (self, state_name, params)
+function GameStateMachine:change_state_by_name(state_name, params)
 	slot9 = state_name
 	slot6 = "[GameStateMachine] Name '" .. tostring(slot8) .. "' does not correspond to a valid state."
 	local state = assert(slot4, self._states[state_name])
@@ -125,7 +125,7 @@ GameStateMachine.change_state_by_name = function (self, state_name, params)
 
 	return 
 end
-GameStateMachine.update = function (self, t, dt)
+function GameStateMachine:update(t, dt)
 	if self._current_state.update then
 		slot7 = dt
 
@@ -134,7 +134,7 @@ GameStateMachine.update = function (self, t, dt)
 
 	return 
 end
-GameStateMachine.paused_update = function (self, t, dt)
+function GameStateMachine:paused_update(t, dt)
 	if self._current_state.paused_update then
 		slot7 = dt
 
@@ -143,7 +143,7 @@ GameStateMachine.paused_update = function (self, t, dt)
 
 	return 
 end
-GameStateMachine.end_update = function (self, t, dt)
+function GameStateMachine:end_update(t, dt)
 	if self._queued_transitions then
 		slot5 = self
 
@@ -152,7 +152,7 @@ GameStateMachine.end_update = function (self, t, dt)
 
 	return 
 end
-GameStateMachine._do_state_change = function (self)
+function GameStateMachine:_do_state_change()
 	if not self._queued_transitions then
 		return 
 	end
@@ -202,7 +202,7 @@ GameStateMachine._do_state_change = function (self)
 
 	return 
 end
-GameStateMachine.last_queued_state_name = function (self)
+function GameStateMachine:last_queued_state_name()
 	if self._queued_transitions then
 		slot3 = self._queued_transitions[#self._queued_transitions][1]
 

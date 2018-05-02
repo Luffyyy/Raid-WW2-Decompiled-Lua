@@ -12,7 +12,7 @@ if not EditZipLine then
 end
 
 EditZipLine = slot0
-EditZipLine.init = function (self, editor)
+function EditZipLine:init(editor)
 	local panel, sizer = editor or managers.editor.add_unit_edit_page(slot3, editor or managers.editor)
 	self._panel = panel
 	slot7 = "HORIZONTAL"
@@ -155,7 +155,7 @@ EditZipLine.init = function (self, editor)
 
 	return 
 end
-EditZipLine.update = function (self, t, dt)
+function EditZipLine:update(t, dt)
 	slot5 = self._selected_units
 
 	for _, unit in ipairs(slot4) do
@@ -171,7 +171,7 @@ EditZipLine.update = function (self, t, dt)
 
 	return 
 end
-EditZipLine._use_camera_pos = function (self)
+function EditZipLine:_use_camera_pos()
 	slot3 = self._selected_units
 
 	for _, unit in ipairs(slot2) do
@@ -188,7 +188,7 @@ EditZipLine._use_camera_pos = function (self)
 
 	return 
 end
-EditZipLine._use_camera_pos_for_line = function (self)
+function EditZipLine:_use_camera_pos_for_line()
 	slot3 = self._selected_units
 
 	for _, unit in ipairs(slot2) do
@@ -205,7 +205,7 @@ EditZipLine._use_camera_pos_for_line = function (self)
 
 	return 
 end
-EditZipLine._update_speed = function (self, params)
+function EditZipLine:_update_speed(params)
 	slot4 = self._selected_units
 
 	for _, unit in ipairs(slot3) do
@@ -221,7 +221,7 @@ EditZipLine._update_speed = function (self, params)
 
 	return 
 end
-EditZipLine._update_slack = function (self, params)
+function EditZipLine:_update_slack(params)
 	slot4 = self._selected_units
 
 	for _, unit in ipairs(slot3) do
@@ -237,7 +237,7 @@ EditZipLine._update_slack = function (self, params)
 
 	return 
 end
-EditZipLine._change_type = function (self)
+function EditZipLine:_change_type()
 	slot3 = self._selected_units
 
 	for _, unit in ipairs(slot2) do
@@ -258,7 +258,7 @@ EditZipLine._change_type = function (self)
 
 	return 
 end
-EditZipLine.set_ai_ignores_bag = function (self)
+function EditZipLine:set_ai_ignores_bag()
 	slot3 = self._selected_units
 
 	for _, unit in ipairs(slot2) do
@@ -279,7 +279,7 @@ EditZipLine.set_ai_ignores_bag = function (self)
 
 	return 
 end
-EditZipLine.is_editable = function (self, unit, units)
+function EditZipLine:is_editable(unit, units)
 	slot5 = unit
 
 	if alive(slot4) then

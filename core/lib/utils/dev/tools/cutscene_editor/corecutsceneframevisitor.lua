@@ -1,5 +1,5 @@
 CoreCutsceneFrameVisitor = CoreCutsceneFrameVisitor or class()
-CoreCutsceneFrameVisitor.init = function (self, parent_window, cutscene_editor, start_frame, end_frame)
+function CoreCutsceneFrameVisitor:init(parent_window, cutscene_editor, start_frame, end_frame)
 	slot7 = parent_window
 	self.__parent_window = assert(slot6)
 	slot7 = cutscene_editor
@@ -16,7 +16,7 @@ CoreCutsceneFrameVisitor.init = function (self, parent_window, cutscene_editor, 
 
 	return 
 end
-CoreCutsceneFrameVisitor.begin = function (self)
+function CoreCutsceneFrameVisitor:begin()
 	slot5 = self.__parent_window
 
 	assert(slot2, alive("Parent window has been destroyed."))
@@ -43,7 +43,7 @@ CoreCutsceneFrameVisitor.begin = function (self)
 
 	return 
 end
-CoreCutsceneFrameVisitor.update = function (self, time, delta_time)
+function CoreCutsceneFrameVisitor:update(time, delta_time)
 	slot6 = 0.03333333333333333
 
 	Application.set_forced_timestep(slot4, Application)
@@ -91,7 +91,7 @@ CoreCutsceneFrameVisitor.update = function (self, time, delta_time)
 
 	return is_done
 end
-CoreCutsceneFrameVisitor.end_update = function (self, time, delta_time)
+function CoreCutsceneFrameVisitor:end_update(time, delta_time)
 	if self.__should_visit_frame_at_end_update then
 		slot6 = self.__frame
 
@@ -103,18 +103,18 @@ CoreCutsceneFrameVisitor.end_update = function (self, time, delta_time)
 
 	return 
 end
-CoreCutsceneFrameVisitor._done = function (self, aborted)
+function CoreCutsceneFrameVisitor:_done(aborted)
 	return 
 end
-CoreCutsceneFrameVisitor._is_ready_to_go = function (self)
+function CoreCutsceneFrameVisitor:_is_ready_to_go()
 	self.__sync_frames = (self.__sync_frames or 30) - 1
 
 	return self.__sync_frames <= 0
 end
-CoreCutsceneFrameVisitor._progress_message = function (self, frame)
+function CoreCutsceneFrameVisitor:_progress_message(frame)
 	return "Processing frame " .. frame
 end
-CoreCutsceneFrameVisitor._cleanup = function (self)
+function CoreCutsceneFrameVisitor:_cleanup()
 	slot4 = 0
 
 	Application.set_forced_timestep(slot2, Application)

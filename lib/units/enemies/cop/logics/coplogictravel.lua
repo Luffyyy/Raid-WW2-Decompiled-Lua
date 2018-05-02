@@ -34,7 +34,7 @@ slot4 = CopLogicBase
 CopLogicTravel = class(slot3)
 CopLogicTravel.death_clbk = CopLogicAttack.death_clbk
 CopLogicTravel.on_criminal_neutralized = CopLogicAttack.on_criminal_neutralized
-CopLogicTravel.enter = function (data, new_logic_name, enter_params)
+function CopLogicTravel.enter(data, new_logic_name, enter_params)
 	if not data.objective then
 		return 
 	end
@@ -264,7 +264,7 @@ CopLogicTravel.enter = function (data, new_logic_name, enter_params)
 
 	return 
 end
-CopLogicTravel.exit = function (data, new_logic_name, enter_params)
+function CopLogicTravel.exit(data, new_logic_name, enter_params)
 	slot7 = enter_params
 
 	CopLogicBase.exit(slot4, data, new_logic_name)
@@ -294,7 +294,7 @@ CopLogicTravel.exit = function (data, new_logic_name, enter_params)
 
 	return 
 end
-CopLogicTravel.queued_update = function (data)
+function CopLogicTravel.queued_update(data)
 	local my_data = data.internal_data
 	slot4 = TimerManager
 	slot4 = TimerManager.game(slot3)
@@ -330,7 +330,7 @@ CopLogicTravel.queued_update = function (data)
 
 	return 
 end
-CopLogicTravel.upd_advance = function (data)
+function CopLogicTravel.upd_advance(data)
 	local unit = data.unit
 	local my_data = data.internal_data
 	local objective = data.objective
@@ -447,7 +447,7 @@ CopLogicTravel.upd_advance = function (data)
 
 	return 
 end
-CopLogicTravel._verifiy_coarse_path = function (nav_seg, path)
+function CopLogicTravel._verifiy_coarse_path(nav_seg, path)
 	if not nav_seg or not path then
 		return true
 	end
@@ -458,7 +458,7 @@ CopLogicTravel._verifiy_coarse_path = function (nav_seg, path)
 
 	return false
 end
-CopLogicTravel._upd_enemy_detection = function (data)
+function CopLogicTravel._upd_enemy_detection(data)
 	slot3 = managers.groupai
 	slot4 = data.unit
 
@@ -552,7 +552,7 @@ CopLogicTravel._upd_enemy_detection = function (data)
 
 	return delay
 end
-CopLogicTravel._upd_pathing = function (data, my_data)
+function CopLogicTravel._upd_pathing(data, my_data)
 	if data.pathing_results then
 		local pathing_results = data.pathing_results
 		data.pathing_results = nil
@@ -624,7 +624,7 @@ CopLogicTravel._upd_pathing = function (data, my_data)
 
 	return 
 end
-CopLogicTravel._update_cover = function (ignore_this, data)
+function CopLogicTravel._update_cover(ignore_this, data)
 	local my_data = data.internal_data
 	slot6 = my_data.cover_update_task_key
 
@@ -671,7 +671,7 @@ CopLogicTravel._update_cover = function (ignore_this, data)
 
 	return 
 end
-CopLogicTravel._chk_request_action_turn_to_cover = function (data, my_data)
+function CopLogicTravel._chk_request_action_turn_to_cover(data, my_data)
 	slot4 = data.unit
 	slot4 = data.unit.movement(slot3)
 	local fwd = data.unit.movement(slot3).m_rot(slot3).y(slot3)
@@ -704,7 +704,7 @@ CopLogicTravel._chk_request_action_turn_to_cover = function (data, my_data)
 
 	return 
 end
-CopLogicTravel._chk_cover_height = function (data, cover, slotmask)
+function CopLogicTravel._chk_cover_height(data, cover, slotmask)
 	local ray_from = tmp_vec1
 	slot7 = math.UP
 
@@ -736,7 +736,7 @@ CopLogicTravel._chk_cover_height = function (data, cover, slotmask)
 
 	return ray
 end
-CopLogicTravel.on_action_completed = function (data, action)
+function CopLogicTravel.on_action_completed(data, action)
 	local my_data = data.internal_data
 	slot5 = action
 	local action_type = action.type(slot4)
@@ -880,7 +880,7 @@ CopLogicTravel.on_action_completed = function (data, action)
 
 	return 
 end
-CopLogicTravel._get_pos_accross_door = function (guard_door, nav_seg)
+function CopLogicTravel._get_pos_accross_door(guard_door, nav_seg)
 	local rooms = guard_door.rooms
 	local room_1_seg = guard_door.low_seg
 	local accross_vec = guard_door.high_pos - guard_door.low_pos
@@ -965,7 +965,7 @@ CopLogicTravel._get_pos_accross_door = function (guard_door, nav_seg)
 
 	return 
 end
-CopLogicTravel.is_available_for_assignment = function (data, new_objective)
+function CopLogicTravel.is_available_for_assignment(data, new_objective)
 	if new_objective and new_objective.forced then
 		return true
 	elseif data.objective and data.objective.type == "act" then
@@ -982,14 +982,14 @@ CopLogicTravel.is_available_for_assignment = function (data, new_objective)
 
 	return 
 end
-CopLogicTravel.is_advancing = function (data)
+function CopLogicTravel.is_advancing(data)
 	if data.internal_data.advancing and data.pos_rsrv.move_dest then
 		return data.pos_rsrv.move_dest.position
 	end
 
 	return 
 end
-CopLogicTravel._reserve_pos_along_vec = function (look_pos, wanted_pos)
+function CopLogicTravel._reserve_pos_along_vec(look_pos, wanted_pos)
 	local step_vec = look_pos - wanted_pos
 	slot7 = step_vec
 	local max_pos_mul = math.floor(slot4)
@@ -1012,7 +1012,7 @@ CopLogicTravel._reserve_pos_along_vec = function (look_pos, wanted_pos)
 
 	return res_data
 end
-CopLogicTravel._rsrv_pos_along_vec_step_clbk = function (shait, data, test_pos)
+function CopLogicTravel._rsrv_pos_along_vec_step_clbk(shait, data, test_pos)
 	local step_mul = data.step_mul
 	local nav_manager = managers.navigation
 	local step_vec = data.step_vec
@@ -1076,13 +1076,13 @@ CopLogicTravel._rsrv_pos_along_vec_step_clbk = function (shait, data, test_pos)
 
 	return true
 end
-CopLogicTravel._investigate_coarse_path_verify_clbk = function (shait, nav_seg)
+function CopLogicTravel._investigate_coarse_path_verify_clbk(shait, nav_seg)
 	slot4 = managers.groupai
 	slot5 = nav_seg
 
 	return managers.groupai.state(slot3).is_nav_seg_safe(slot3, managers.groupai.state(slot3))
 end
-CopLogicTravel.on_intimidated = function (data, amount, aggressor_unit)
+function CopLogicTravel.on_intimidated(data, amount, aggressor_unit)
 	slot7 = aggressor_unit
 	local surrender = CopLogicBase.on_intimidated(slot4, data, amount)
 
@@ -1094,7 +1094,7 @@ CopLogicTravel.on_intimidated = function (data, amount, aggressor_unit)
 
 	return 
 end
-CopLogicTravel._chk_request_action_walk_to_advance_pos = function (data, my_data, speed, end_rot, no_strafe, end_pose)
+function CopLogicTravel._chk_request_action_walk_to_advance_pos(data, my_data, speed, end_rot, no_strafe, end_pose)
 
 	-- Decompilation error in this vicinity:
 	slot8 = data.unit
@@ -1102,7 +1102,7 @@ CopLogicTravel._chk_request_action_walk_to_advance_pos = function (data, my_data
 
 	return 
 end
-CopLogicTravel._determine_destination_occupation = function (data, objective)
+function CopLogicTravel._determine_destination_occupation(data, objective)
 	local occupation = nil
 
 	if objective.type == "defend_area" then
@@ -1315,7 +1315,7 @@ CopLogicTravel._determine_destination_occupation = function (data, objective)
 
 	return occupation
 end
-CopLogicTravel._get_pos_on_wall = function (from_pos, max_dist, step_offset, is_recurse)
+function CopLogicTravel._get_pos_on_wall(from_pos, max_dist, step_offset, is_recurse)
 	local nav_manager = managers.navigation
 	local nr_rays = 7
 
@@ -1413,7 +1413,7 @@ CopLogicTravel._get_pos_on_wall = function (from_pos, max_dist, step_offset, is_
 
 	return from_pos
 end
-CopLogicTravel.queue_update = function (data, my_data, delay)
+function CopLogicTravel.queue_update(data, my_data, delay)
 	if data.important then
 		delay = 0
 	elseif not delay then
@@ -1435,7 +1435,7 @@ CopLogicTravel.queue_update = function (data, my_data, delay)
 
 	return 
 end
-CopLogicTravel._try_anounce = function (data, my_data)
+function CopLogicTravel._try_anounce(data, my_data)
 	local my_pos = data.m_pos
 	local max_dis_sq = 2250000
 	local my_key = data.key
@@ -1463,17 +1463,17 @@ CopLogicTravel._try_anounce = function (data, my_data)
 
 	return 
 end
-CopLogicTravel._get_all_paths = function (data)
+function CopLogicTravel._get_all_paths(data)
 	return {
 		advance_path = data.internal_data.advance_path
 	}
 end
-CopLogicTravel._set_verified_paths = function (data, verified_paths)
+function CopLogicTravel._set_verified_paths(data, verified_paths)
 	data.internal_data.advance_path = verified_paths.advance_path
 
 	return 
 end
-CopLogicTravel.chk_should_turn = function (data, my_data)
+function CopLogicTravel.chk_should_turn(data, my_data)
 	if not my_data.advancing and not my_data.turning and not my_data.has_old_action then
 		slot4 = data.unit
 		slot5 = "walk"
@@ -1487,7 +1487,7 @@ CopLogicTravel.chk_should_turn = function (data, my_data)
 
 	return slot2
 end
-CopLogicTravel.complete_coarse_path = function (data, my_data, coarse_path)
+function CopLogicTravel.complete_coarse_path(data, my_data, coarse_path)
 	local first_seg_id = coarse_path[1][1]
 	slot6 = data.unit
 	slot6 = data.unit.movement(slot5)
@@ -1618,7 +1618,7 @@ CopLogicTravel.complete_coarse_path = function (data, my_data, coarse_path)
 
 	return 1
 end
-CopLogicTravel._chk_close_to_criminal = function (data, my_data)
+function CopLogicTravel._chk_close_to_criminal(data, my_data)
 	if my_data.close_to_criminal == nil then
 		my_data.close_to_criminal = false
 		slot4 = managers.groupai
@@ -1647,7 +1647,7 @@ CopLogicTravel._chk_close_to_criminal = function (data, my_data)
 
 	return my_data.close_to_criminal
 end
-CopLogicTravel.chk_group_ready_to_move = function (data, my_data)
+function CopLogicTravel.chk_group_ready_to_move(data, my_data)
 	local my_objective = data.objective
 
 	if not my_objective.grp_objective then
@@ -1689,7 +1689,7 @@ CopLogicTravel.chk_group_ready_to_move = function (data, my_data)
 
 	return true
 end
-CopLogicTravel.apply_wall_offset_to_cover = function (data, my_data, cover, wall_fwd_offset)
+function CopLogicTravel.apply_wall_offset_to_cover(data, my_data, cover, wall_fwd_offset)
 	local to_pos_fwd = tmp_vec1
 	slot8 = cover[NavigationManager.COVER_FORWARD]
 
@@ -1745,7 +1745,7 @@ CopLogicTravel.apply_wall_offset_to_cover = function (data, my_data, cover, wall
 
 	return slot12
 end
-CopLogicTravel._find_cover = function (data, search_nav_seg, near_pos)
+function CopLogicTravel._find_cover(data, search_nav_seg, near_pos)
 	local cover = nil
 	slot6 = managers.groupai
 	slot7 = search_nav_seg
@@ -1807,7 +1807,7 @@ CopLogicTravel._find_cover = function (data, search_nav_seg, near_pos)
 
 	return cover
 end
-CopLogicTravel._get_allowed_travel_nav_segs = function (data, my_data, to_pos)
+function CopLogicTravel._get_allowed_travel_nav_segs(data, my_data, to_pos)
 	local nav_segs = {}
 	local added_segs = {}
 	slot7 = my_data.coarse_path
@@ -1864,7 +1864,7 @@ CopLogicTravel._get_allowed_travel_nav_segs = function (data, my_data, to_pos)
 
 	return nav_segs
 end
-CopLogicTravel._check_start_path_ahead = function (data)
+function CopLogicTravel._check_start_path_ahead(data)
 	local my_data = data.internal_data
 
 	if my_data.processing_advance_path then
@@ -1953,7 +1953,7 @@ CopLogicTravel._check_start_path_ahead = function (data)
 
 	return 
 end
-CopLogicTravel.get_pathing_prio = function (data)
+function CopLogicTravel.get_pathing_prio(data)
 	local prio = nil
 	local objective = data.objective
 
@@ -1962,7 +1962,7 @@ CopLogicTravel.get_pathing_prio = function (data)
 
 	return prio
 end
-CopLogicTravel._get_exact_move_pos = function (data, nav_index)
+function CopLogicTravel._get_exact_move_pos(data, nav_index)
 	local my_data = data.internal_data
 	local objective = data.objective
 	local to_pos = nil
@@ -2087,7 +2087,7 @@ CopLogicTravel._get_exact_move_pos = function (data, nav_index)
 
 	return to_pos
 end
-CopLogicTravel._on_destination_reached = function (data)
+function CopLogicTravel._on_destination_reached(data)
 	local objective = data.objective
 	objective.in_place = true
 
@@ -2142,7 +2142,7 @@ CopLogicTravel._on_destination_reached = function (data)
 
 	return 
 end
-CopLogicTravel._chk_start_pathing_to_next_nav_point = function (data, my_data)
+function CopLogicTravel._chk_start_pathing_to_next_nav_point(data, my_data)
 	slot5 = my_data
 
 	if not CopLogicTravel.chk_group_ready_to_move(slot3, data) then
@@ -2200,7 +2200,7 @@ CopLogicTravel._chk_start_pathing_to_next_nav_point = function (data, my_data)
 
 	return 
 end
-CopLogicTravel._begin_coarse_pathing = function (data, my_data)
+function CopLogicTravel._begin_coarse_pathing(data, my_data)
 	local verify_clbk = nil
 
 	if my_data.path_safely then
@@ -2226,7 +2226,7 @@ CopLogicTravel._begin_coarse_pathing = function (data, my_data)
 
 	return 
 end
-CopLogicTravel._chk_begin_advance = function (data, my_data)
+function CopLogicTravel._chk_begin_advance(data, my_data)
 	slot4 = data.unit
 	slot5 = "walk"
 
@@ -2318,7 +2318,7 @@ CopLogicTravel._chk_begin_advance = function (data, my_data)
 
 	return 
 end
-CopLogicTravel._chk_stop_for_follow_unit = function (data, my_data)
+function CopLogicTravel._chk_stop_for_follow_unit(data, my_data)
 
 	-- Decompilation error in this vicinity:
 	local objective = data.objective

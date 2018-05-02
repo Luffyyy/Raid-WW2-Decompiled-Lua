@@ -1978,7 +1978,7 @@ WorldDefinition.ASYNC_CALLBACKS = Global.STREAM_ALL_PACKAGES
 WorldDefinition.VEHICLES_CONTINENT_NAME = "NOT_USED_vehicles"
 WorldDefinition.MAX_WORLD_UNIT_ID = 15
 WorldDefinition.UNIT_ID_BASE = 1000000
-WorldDefinition.init = function (self, params)
+function WorldDefinition:init(params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-27, warpins: 1 ---
@@ -2777,7 +2777,7 @@ WorldDefinition.init = function (self, params)
 
 
 end
-WorldDefinition._serialize_to_script = function (self, type, name)
+function WorldDefinition:_serialize_to_script(type, name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -2847,7 +2847,7 @@ WorldDefinition._serialize_to_script = function (self, type, name)
 
 
 end
-WorldDefinition.translation = function (self)
+function WorldDefinition:translation()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -2857,7 +2857,7 @@ WorldDefinition.translation = function (self)
 
 
 end
-WorldDefinition.world_id = function (self)
+function WorldDefinition:world_id()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -2867,7 +2867,7 @@ WorldDefinition.world_id = function (self)
 
 
 end
-WorldDefinition.created_by_editor = function (self)
+function WorldDefinition:created_by_editor()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -2877,7 +2877,7 @@ WorldDefinition.created_by_editor = function (self)
 
 
 end
-WorldDefinition.get_max_id = function (self)
+function WorldDefinition:get_max_id()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -2887,7 +2887,7 @@ WorldDefinition.get_max_id = function (self)
 
 
 end
-WorldDefinition._parse_replace_unit = function (self)
+function WorldDefinition:_parse_replace_unit()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -2964,7 +2964,7 @@ WorldDefinition._parse_replace_unit = function (self)
 
 
 end
-WorldDefinition._translate_entries = function (self, entries)
+function WorldDefinition:_translate_entries(entries)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -3032,7 +3032,7 @@ WorldDefinition._translate_entries = function (self, entries)
 
 
 end
-WorldDefinition._translate_covers = function (self, cover_data)
+function WorldDefinition:_translate_covers(cover_data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -3105,7 +3105,7 @@ WorldDefinition._translate_covers = function (self, cover_data)
 
 
 end
-WorldDefinition._translate_unit_entries = function (self, entries, base_id)
+function WorldDefinition:_translate_unit_entries(entries, base_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -3210,7 +3210,7 @@ WorldDefinition._translate_unit_entries = function (self, entries, base_id)
 
 
 end
-WorldDefinition._add_translation = function (self)
+function WorldDefinition:_add_translation()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -3295,7 +3295,7 @@ WorldDefinition._add_translation = function (self)
 
 
 end
-WorldDefinition.world_dir = function (self)
+function WorldDefinition:world_dir()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -3305,7 +3305,7 @@ WorldDefinition.world_dir = function (self)
 
 
 end
-WorldDefinition.continent_excluded = function (self, name)
+function WorldDefinition:continent_excluded(name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -3315,7 +3315,7 @@ WorldDefinition.continent_excluded = function (self, name)
 
 
 end
-WorldDefinition._load_world_package = function (self)
+function WorldDefinition:_load_world_package()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -3488,7 +3488,7 @@ WorldDefinition._load_world_package = function (self)
 
 
 end
-WorldDefinition._load_sound_package = function (self)
+function WorldDefinition:_load_sound_package()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -3569,7 +3569,7 @@ WorldDefinition._load_sound_package = function (self)
 
 
 end
-WorldDefinition._load_continent_init_package = function (self, path, cb_name, key)
+function WorldDefinition:_load_continent_init_package(path, cb_name, key)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -3691,7 +3691,7 @@ WorldDefinition._load_continent_init_package = function (self, path, cb_name, ke
 
 
 end
-WorldDefinition.on_world_package_loaded = function (self, params, package)
+function WorldDefinition:on_world_package_loaded(params, package)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -3705,7 +3705,7 @@ WorldDefinition.on_world_package_loaded = function (self, params, package)
 
 
 end
-WorldDefinition.on_continent_package_loaded = function (self, params, package)
+function WorldDefinition:on_continent_package_loaded(params, package)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-30, warpins: 1 ---
@@ -3865,7 +3865,7 @@ WorldDefinition.on_continent_package_loaded = function (self, params, package)
 
 
 end
-WorldDefinition.on_instance_package_loaded = function (self, params, package)
+function WorldDefinition:on_instance_package_loaded(params, package)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-25, warpins: 1 ---
@@ -3942,7 +3942,7 @@ WorldDefinition.on_instance_package_loaded = function (self, params, package)
 
 
 end
-WorldDefinition._do_instance_loaded = function (self, key)
+function WorldDefinition:_do_instance_loaded(key)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-19, warpins: 1 ---
@@ -4154,7 +4154,7 @@ WorldDefinition._do_instance_loaded = function (self, key)
 
 
 end
-WorldDefinition._load_continent_package = function (self, path, cb_name, key)
+function WorldDefinition:_load_continent_package(path, cb_name, key)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -4272,7 +4272,7 @@ WorldDefinition._load_continent_package = function (self, path, cb_name, key)
 
 
 end
-WorldDefinition.unload_packages = function (self)
+function WorldDefinition:unload_packages()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -4372,7 +4372,7 @@ WorldDefinition.unload_packages = function (self)
 
 
 end
-WorldDefinition._unload_package = function (self, package)
+function WorldDefinition:_unload_package(package)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -4422,7 +4422,7 @@ WorldDefinition._unload_package = function (self, package)
 
 
 end
-WorldDefinition._parse_world_setting = function (self, world_setting, excluded_continents)
+function WorldDefinition:_parse_world_setting(world_setting, excluded_continents)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -4610,7 +4610,7 @@ WorldDefinition._parse_world_setting = function (self, world_setting, excluded_c
 
 
 end
-WorldDefinition.parse_continents = function (self, node, t)
+function WorldDefinition:parse_continents(node, t)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-15, warpins: 1 ---
@@ -4857,7 +4857,7 @@ WorldDefinition.parse_continents = function (self, node, t)
 
 
 end
-WorldDefinition.get_next_unique_id = function (self, base_id)
+function WorldDefinition:get_next_unique_id(base_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -4911,7 +4911,7 @@ WorldDefinition.get_next_unique_id = function (self, base_id)
 
 
 end
-WorldDefinition.get_next_unique_instance_id = function (self, old_id)
+function WorldDefinition:get_next_unique_instance_id(old_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -4923,7 +4923,7 @@ WorldDefinition.get_next_unique_instance_id = function (self, old_id)
 
 
 end
-WorldDefinition._get_new_id = function (self, old_id, base_id)
+function WorldDefinition:_get_new_id(old_id, base_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -4938,7 +4938,7 @@ WorldDefinition._get_new_id = function (self, old_id, base_id)
 
 
 end
-WorldDefinition._get_new_instance_id = function (self, old_id, offset)
+function WorldDefinition:_get_new_instance_id(old_id, offset)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -4953,7 +4953,7 @@ WorldDefinition._get_new_instance_id = function (self, old_id, offset)
 
 
 end
-WorldDefinition._add_continent_translation = function (self)
+function WorldDefinition:_add_continent_translation()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -5029,7 +5029,7 @@ WorldDefinition._add_continent_translation = function (self)
 
 
 end
-WorldDefinition._insert_instances = function (self)
+function WorldDefinition:_insert_instances()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -5358,7 +5358,7 @@ WorldDefinition._insert_instances = function (self)
 
 
 end
-WorldDefinition._continent_editor_only = function (self, data)
+function WorldDefinition:_continent_editor_only(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -5409,7 +5409,7 @@ WorldDefinition._continent_editor_only = function (self, data)
 
 
 end
-WorldDefinition.init_done = function (self)
+function WorldDefinition:init_done()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -5460,7 +5460,7 @@ WorldDefinition.init_done = function (self)
 
 
 end
-WorldDefinition._measure_lap_time = function (self, name)
+function WorldDefinition:_measure_lap_time(name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -5500,7 +5500,7 @@ WorldDefinition._measure_lap_time = function (self, name)
 
 
 end
-WorldDefinition.create = function (self, layer, offset, world_in_world, nav_graph_loaded)
+function WorldDefinition:create(layer, offset, world_in_world, nav_graph_loaded)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-19, warpins: 1 ---
@@ -6922,7 +6922,7 @@ WorldDefinition.create = function (self, layer, offset, world_in_world, nav_grap
 
 
 end
-WorldDefinition.destroy = function (self)
+function WorldDefinition:destroy()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-27, warpins: 1 ---
@@ -6949,7 +6949,7 @@ WorldDefinition.destroy = function (self)
 
 
 end
-WorldDefinition._load_level_settings = function (self, data, offset)
+function WorldDefinition:_load_level_settings(data, offset)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -6959,7 +6959,7 @@ WorldDefinition._load_level_settings = function (self, data, offset)
 
 
 end
-WorldDefinition._load_ai_nav_graphs = function (self, data, offset)
+function WorldDefinition:_load_ai_nav_graphs(data, offset)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -7063,7 +7063,7 @@ WorldDefinition._load_ai_nav_graphs = function (self, data, offset)
 
 
 end
-WorldDefinition._load_ai_mop_graphs = function (self, data, offset)
+function WorldDefinition:_load_ai_mop_graphs(data, offset)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -7119,7 +7119,7 @@ WorldDefinition._load_ai_mop_graphs = function (self, data, offset)
 
 
 end
-WorldDefinition._load_ai_settings = function (self, data, offset)
+function WorldDefinition:_load_ai_settings(data, offset)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-16, warpins: 1 ---
@@ -7137,7 +7137,7 @@ WorldDefinition._load_ai_settings = function (self, data, offset)
 
 
 end
-WorldDefinition._create_portal = function (self, data, offset)
+function WorldDefinition:_create_portal(data, offset)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -7382,7 +7382,7 @@ WorldDefinition._create_portal = function (self, data, offset)
 
 
 end
-WorldDefinition._create_editor_groups = function (self)
+function WorldDefinition:_create_editor_groups()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -7541,7 +7541,7 @@ WorldDefinition._create_editor_groups = function (self)
 
 
 end
-WorldDefinition._add_sound_translation = function (self, values)
+function WorldDefinition:_add_sound_translation(values)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -7582,7 +7582,7 @@ WorldDefinition._add_sound_translation = function (self, values)
 
 
 end
-WorldDefinition._create_cover_data = function (self)
+function WorldDefinition:_create_cover_data()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -7638,7 +7638,7 @@ WorldDefinition._create_cover_data = function (self)
 
 
 end
-WorldDefinition.get_cover_data = function (self)
+function WorldDefinition:get_cover_data()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -7648,7 +7648,7 @@ WorldDefinition.get_cover_data = function (self)
 
 
 end
-WorldDefinition._create_sounds = function (self, data)
+function WorldDefinition:_create_sounds(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -7824,7 +7824,7 @@ WorldDefinition._create_sounds = function (self, data)
 
 end
 local zero_rot = Rotation()
-WorldDefinition._create_massunit = function (self, data, offset)
+function WorldDefinition:_create_massunit(data, offset)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -8078,7 +8078,7 @@ function check_is_environment_vanilla(environment_name)
 
 end
 
-WorldDefinition._set_environment = function (self, environment_name)
+function WorldDefinition:_set_environment(environment_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -8143,7 +8143,7 @@ WorldDefinition._set_environment = function (self, environment_name)
 
 
 end
-WorldDefinition._create_environment = function (self, data, offset, world_in_world)
+function WorldDefinition:_create_environment(data, offset, world_in_world)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -8487,7 +8487,7 @@ WorldDefinition._create_environment = function (self, data, offset, world_in_wor
 
 
 end
-WorldDefinition._create_world_cameras = function (self, data, translation)
+function WorldDefinition:_create_world_cameras(data, translation)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -8558,7 +8558,7 @@ WorldDefinition._create_world_cameras = function (self, data, translation)
 
 
 end
-WorldDefinition._create_mission_unit = function (self, data, offset)
+function WorldDefinition:_create_mission_unit(data, offset)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -8641,7 +8641,7 @@ WorldDefinition._create_mission_unit = function (self, data, offset)
 
 
 end
-WorldDefinition._create_wires_unit = function (self, data, offset)
+function WorldDefinition:_create_wires_unit(data, offset)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -8696,7 +8696,7 @@ WorldDefinition._create_wires_unit = function (self, data, offset)
 
 
 end
-WorldDefinition._create_statics_unit = function (self, data, offset, world_in_world, continent_name)
+function WorldDefinition:_create_statics_unit(data, offset, world_in_world, continent_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -8712,7 +8712,7 @@ WorldDefinition._create_statics_unit = function (self, data, offset, world_in_wo
 
 
 end
-WorldDefinition._create_dynamics_unit = function (self, data, offset)
+function WorldDefinition:_create_dynamics_unit(data, offset)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -8728,7 +8728,7 @@ WorldDefinition._create_dynamics_unit = function (self, data, offset)
 
 
 end
-WorldDefinition._create_ai_editor_unit = function (self, data, offset)
+function WorldDefinition:_create_ai_editor_unit(data, offset)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -8788,7 +8788,7 @@ WorldDefinition._create_ai_editor_unit = function (self, data, offset)
 
 
 end
-WorldDefinition.preload_unit = function (self, name)
+function WorldDefinition:preload_unit(name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -8935,7 +8935,7 @@ local is_editor = Application.editor(function (self, name)
 
 
 end)
-WorldDefinition.make_unit = function (self, data, offset, world_in_world, continent_name)
+function WorldDefinition:make_unit(data, offset, world_in_world, continent_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -9691,7 +9691,7 @@ local is_editor = Application.editor(function (self, data, offset, world_in_worl
 
 
 end)
-WorldDefinition.assign_unit_data = function (self, unit, data, world_in_world)
+function WorldDefinition:assign_unit_data(unit, data, world_in_world)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -9926,7 +9926,7 @@ WorldDefinition.assign_unit_data = function (self, unit, data, world_in_world)
 
 
 end
-WorldDefinition._setup_unit_id = function (self, unit, data)
+function WorldDefinition:_setup_unit_id(unit, data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-20, warpins: 1 ---
@@ -9995,7 +9995,7 @@ WorldDefinition._setup_unit_id = function (self, unit, data)
 
 
 end
-WorldDefinition._setup_editor_unit_data = function (self, unit, data)
+function WorldDefinition:_setup_editor_unit_data(unit, data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -10033,7 +10033,7 @@ WorldDefinition._setup_editor_unit_data = function (self, unit, data)
 
 
 end
-WorldDefinition._setup_lights = function (self, unit, data)
+function WorldDefinition:_setup_lights(unit, data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -10247,7 +10247,7 @@ WorldDefinition._setup_lights = function (self, unit, data)
 
 
 end
-WorldDefinition.setup_lights = function (self, ...)
+function WorldDefinition:setup_lights(...)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -10261,7 +10261,7 @@ WorldDefinition.setup_lights = function (self, ...)
 
 
 end
-WorldDefinition._setup_variations = function (self, unit, data)
+function WorldDefinition:_setup_variations(unit, data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -10325,7 +10325,7 @@ WorldDefinition._setup_variations = function (self, unit, data)
 
 
 end
-WorldDefinition._setup_editable_gui = function (self, unit, data)
+function WorldDefinition:_setup_editable_gui(unit, data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -10463,7 +10463,7 @@ WorldDefinition._setup_editable_gui = function (self, unit, data)
 
 
 end
-WorldDefinition._setup_ladder = function (self, unit, data)
+function WorldDefinition:_setup_ladder(unit, data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -10527,7 +10527,7 @@ WorldDefinition._setup_ladder = function (self, unit, data)
 
 
 end
-WorldDefinition._setup_zipline = function (self, unit, data)
+function WorldDefinition:_setup_zipline(unit, data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -10606,7 +10606,7 @@ WorldDefinition._setup_zipline = function (self, unit, data)
 
 
 end
-WorldDefinition.external_set_only_visible_in_editor = function (self, unit)
+function WorldDefinition:external_set_only_visible_in_editor(unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -10620,7 +10620,7 @@ WorldDefinition.external_set_only_visible_in_editor = function (self, unit)
 
 
 end
-WorldDefinition._set_only_visible_in_editor = function (self, unit, data, world_in_world)
+function WorldDefinition:_set_only_visible_in_editor(unit, data, world_in_world)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -10674,7 +10674,7 @@ WorldDefinition._set_only_visible_in_editor = function (self, unit, data, world_
 
 
 end
-WorldDefinition._setup_cutscene_actor = function (self, unit, data)
+function WorldDefinition:_setup_cutscene_actor(unit, data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -10709,7 +10709,7 @@ WorldDefinition._setup_cutscene_actor = function (self, unit, data)
 
 
 end
-WorldDefinition._setup_disable_shadow = function (self, unit, data)
+function WorldDefinition:_setup_disable_shadow(unit, data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -10764,7 +10764,7 @@ WorldDefinition._setup_disable_shadow = function (self, unit, data)
 
 
 end
-WorldDefinition._setup_hide_on_projection_light = function (self, unit, data)
+function WorldDefinition:_setup_hide_on_projection_light(unit, data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -10815,7 +10815,7 @@ WorldDefinition._setup_hide_on_projection_light = function (self, unit, data)
 
 
 end
-WorldDefinition._setup_disable_on_ai_graph = function (self, unit, data)
+function WorldDefinition:_setup_disable_on_ai_graph(unit, data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -10866,7 +10866,7 @@ WorldDefinition._setup_disable_on_ai_graph = function (self, unit, data)
 
 
 end
-WorldDefinition._add_to_portal = function (self, unit, data)
+function WorldDefinition:_add_to_portal(unit, data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -10929,7 +10929,7 @@ WorldDefinition._add_to_portal = function (self, unit, data)
 
 
 end
-WorldDefinition._setup_projection_light = function (self, unit, data)
+function WorldDefinition:_setup_projection_light(unit, data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -11107,7 +11107,7 @@ WorldDefinition._setup_projection_light = function (self, unit, data)
 
 
 end
-WorldDefinition.setup_projection_light = function (self, ...)
+function WorldDefinition:setup_projection_light(...)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -11121,7 +11121,7 @@ WorldDefinition.setup_projection_light = function (self, ...)
 
 
 end
-WorldDefinition._project_assign_unit_data = function (self, ...)
+function WorldDefinition:_project_assign_unit_data(...)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -11131,7 +11131,7 @@ WorldDefinition._project_assign_unit_data = function (self, ...)
 
 
 end
-WorldDefinition.add_trigger_sequence = function (self, unit, triggers)
+function WorldDefinition:add_trigger_sequence(unit, triggers)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -11252,7 +11252,7 @@ WorldDefinition.add_trigger_sequence = function (self, unit, triggers)
 
 
 end
-WorldDefinition.use_me = function (self, unit, is_editor)
+function WorldDefinition:use_me(unit, is_editor)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -11451,7 +11451,7 @@ WorldDefinition.use_me = function (self, unit, is_editor)
 
 
 end
-WorldDefinition.get_unit_on_load = function (self, id, call)
+function WorldDefinition:get_unit_on_load(id, call)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -11532,7 +11532,7 @@ WorldDefinition.get_unit_on_load = function (self, id, call)
 
 
 end
-WorldDefinition._on_dropin_unit_added = function (self, unit)
+function WorldDefinition:_on_dropin_unit_added(unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -11550,7 +11550,7 @@ WorldDefinition._on_dropin_unit_added = function (self, unit)
 
 
 end
-WorldDefinition.get_original_unit_id = function (self, id)
+function WorldDefinition:get_original_unit_id(id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -11581,7 +11581,7 @@ WorldDefinition.get_original_unit_id = function (self, id)
 
 
 end
-WorldDefinition.get_unique_id = function (self, id)
+function WorldDefinition:get_unique_id(id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -11612,7 +11612,7 @@ WorldDefinition.get_unique_id = function (self, id)
 
 
 end
-WorldDefinition.id_convert_old_to_new = function (self, id)
+function WorldDefinition:id_convert_old_to_new(id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -11641,7 +11641,7 @@ WorldDefinition.id_convert_old_to_new = function (self, id)
 
 
 end
-WorldDefinition.id_convert_new_to_old = function (self, id)
+function WorldDefinition:id_convert_new_to_old(id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -11670,7 +11670,7 @@ WorldDefinition.id_convert_new_to_old = function (self, id)
 
 
 end
-WorldDefinition.get_unit_by_id = function (self, id)
+function WorldDefinition:get_unit_by_id(id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -11699,7 +11699,7 @@ WorldDefinition.get_unit_by_id = function (self, id)
 
 
 end
-WorldDefinition.register_spawned_unit = function (self, unit)
+function WorldDefinition:register_spawned_unit(unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -11713,7 +11713,7 @@ WorldDefinition.register_spawned_unit = function (self, unit)
 
 
 end
-WorldDefinition.cleanup_spawned_units = function (self, unit)
+function WorldDefinition:cleanup_spawned_units(unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -11778,7 +11778,7 @@ WorldDefinition.cleanup_spawned_units = function (self, unit)
 
 
 end
-WorldDefinition.add_mission_element_unit = function (self, unit)
+function WorldDefinition:add_mission_element_unit(unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -11791,7 +11791,7 @@ WorldDefinition.add_mission_element_unit = function (self, unit)
 
 
 end
-WorldDefinition.get_mission_element_unit = function (self, id)
+function WorldDefinition:get_mission_element_unit(id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -11801,7 +11801,7 @@ WorldDefinition.get_mission_element_unit = function (self, id)
 
 
 end
-WorldDefinition.update_load = function (self, t, dt)
+function WorldDefinition:update_load(t, dt)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -11941,7 +11941,7 @@ WorldDefinition.update_load = function (self, t, dt)
 
 
 end
-WorldDefinition.update_prepare = function (self, t, dt)
+function WorldDefinition:update_prepare(t, dt)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -12112,7 +12112,7 @@ WorldDefinition.update_prepare = function (self, t, dt)
 
 
 end
-WorldDefinition._add_loading_counter = function (self, callback_method, pkg)
+function WorldDefinition:_add_loading_counter(callback_method, pkg)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -12191,7 +12191,7 @@ WorldDefinition._add_loading_counter = function (self, callback_method, pkg)
 
 
 end
-WorldDefinition._remove_loading_counter = function (self, callback_method, pkg)
+function WorldDefinition:_remove_loading_counter(callback_method, pkg)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-19, warpins: 1 ---
@@ -12245,7 +12245,7 @@ WorldDefinition._remove_loading_counter = function (self, callback_method, pkg)
 
 
 end
-WorldDefinition._test_loading_counter = function (self, callback_method)
+function WorldDefinition:_test_loading_counter(callback_method)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -12276,7 +12276,7 @@ WorldDefinition._test_loading_counter = function (self, callback_method)
 
 
 end
-WorldDefinition._load_package_async = function (self, pkg, callback_method, key, init_pkg)
+function WorldDefinition:_load_package_async(pkg, callback_method, key, init_pkg)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -12639,7 +12639,7 @@ WorldDefinition._load_package_async = function (self, pkg, callback_method, key,
 
 
 end
-WorldDefinition._load_package = function (self, package)
+function WorldDefinition:_load_package(package)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -12725,7 +12725,7 @@ WorldDefinition._load_package = function (self, package)
 
 
 end
-WorldDefinition.sync_unit_data = function (self, unit, editor_id)
+function WorldDefinition:sync_unit_data(unit, editor_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -12817,7 +12817,7 @@ WorldDefinition.sync_unit_data = function (self, unit, editor_id)
 
 
 end
-WorldDefinition.sync_unit_reference_data = function (self, unit_id, editor_id)
+function WorldDefinition:sync_unit_reference_data(unit_id, editor_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -12835,7 +12835,7 @@ WorldDefinition.sync_unit_reference_data = function (self, unit_id, editor_id)
 
 
 end
-WorldDefinition.next_key = function (self)
+function WorldDefinition:next_key()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -12847,7 +12847,7 @@ WorldDefinition.next_key = function (self)
 
 
 end
-WorldDefinition._all_world_packages_loaded = function (self)
+function WorldDefinition:_all_world_packages_loaded()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -12890,7 +12890,7 @@ WorldDefinition._all_world_packages_loaded = function (self)
 
 
 end
-WorldDefinition._all_continent_packages_loaded = function (self)
+function WorldDefinition:_all_continent_packages_loaded()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -12930,7 +12930,7 @@ WorldDefinition._all_continent_packages_loaded = function (self)
 
 
 end
-WorldDefinition.keep_alive = function (self, t)
+function WorldDefinition:keep_alive(t)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---

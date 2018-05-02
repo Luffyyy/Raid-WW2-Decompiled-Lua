@@ -18,7 +18,7 @@ RaidGUIControlGoldBarPeerLoot.DESCRIPTION_COLOR = tweak_data.gui.colors.raid_gre
 RaidGUIControlGoldBarPeerLoot.DESCRIPTION_FONT_SIZE = tweak_data.gui.font_sizes.size_24
 RaidGUIControlGoldBarPeerLoot.IMAGE_PADDING_RIGHT = 10
 RaidGUIControlGoldBarPeerLoot.TEXT_X = 128
-RaidGUIControlGoldBarPeerLoot.init = function (self, parent, params)
+function RaidGUIControlGoldBarPeerLoot:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlGoldBarPeerLoot.super.init(slot4, self, parent)
@@ -41,7 +41,7 @@ RaidGUIControlGoldBarPeerLoot.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlGoldBarPeerLoot._create_control_panel = function (self)
+function RaidGUIControlGoldBarPeerLoot:_create_control_panel()
 	slot3 = self._params
 	local control_params = clone(slot2)
 	control_params.x = control_params.x
@@ -56,7 +56,7 @@ RaidGUIControlGoldBarPeerLoot._create_control_panel = function (self)
 
 	return 
 end
-RaidGUIControlGoldBarPeerLoot._create_gold_bar_details = function (self)
+function RaidGUIControlGoldBarPeerLoot:_create_gold_bar_details()
 	local params_gold_bar_image = {
 		name = "melee_weapon_image",
 		y = 0,
@@ -113,7 +113,7 @@ RaidGUIControlGoldBarPeerLoot._create_gold_bar_details = function (self)
 
 	return 
 end
-RaidGUIControlGoldBarPeerLoot.set_player_name = function (self, name)
+function RaidGUIControlGoldBarPeerLoot:set_player_name(name)
 	slot4 = self._name_label
 	slot7 = name
 
@@ -125,7 +125,7 @@ RaidGUIControlGoldBarPeerLoot.set_player_name = function (self, name)
 
 	return 
 end
-RaidGUIControlGoldBarPeerLoot._layout_text = function (self)
+function RaidGUIControlGoldBarPeerLoot:_layout_text()
 	slot3 = self._name_label
 	local _, _, _, h = self._name_label.text_rect(slot2)
 	slot8 = h
@@ -143,7 +143,7 @@ RaidGUIControlGoldBarPeerLoot._layout_text = function (self)
 
 	return 
 end
-RaidGUIControlGoldBarPeerLoot.set_gold_bar_reward = function (self, amount)
+function RaidGUIControlGoldBarPeerLoot:set_gold_bar_reward(amount)
 	slot11 = true
 	slot5 = (amount or 0) .. " " .. self.translate(slot8, self, "menu_loot_screen_gold_bars")
 
@@ -151,7 +151,7 @@ RaidGUIControlGoldBarPeerLoot.set_gold_bar_reward = function (self, amount)
 
 	return 
 end
-RaidGUIControlGoldBarPeerLoot.set_gold_bar_reward = function (self, amount)
+function RaidGUIControlGoldBarPeerLoot:set_gold_bar_reward(amount)
 	local text = ""
 
 	if amount == 1 then

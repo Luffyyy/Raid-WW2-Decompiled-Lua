@@ -8,7 +8,7 @@ CopLogicSniper = class(slot2)
 CopLogicSniper.damage_clbk = CopLogicBase.damage_clbk
 CopLogicSniper.is_available_for_assignment = CopLogicAttack.is_available_for_assignment
 CopLogicSniper.death_clbk = CopLogicAttack.death_clbk
-CopLogicSniper.enter = function (data, new_logic_name, enter_params)
+function CopLogicSniper.enter(data, new_logic_name, enter_params)
 	local my_data = {
 		unit = data.unit
 	}
@@ -111,7 +111,7 @@ CopLogicSniper.enter = function (data, new_logic_name, enter_params)
 
 	return 
 end
-CopLogicSniper.exit = function (data, new_logic_name, enter_params)
+function CopLogicSniper.exit(data, new_logic_name, enter_params)
 	slot7 = enter_params
 
 	CopLogicBase.exit(slot4, data, new_logic_name)
@@ -153,7 +153,7 @@ CopLogicSniper.exit = function (data, new_logic_name, enter_params)
 
 	return 
 end
-CopLogicSniper._upd_enemy_detection = function (data)
+function CopLogicSniper._upd_enemy_detection(data)
 	slot3 = managers.groupai
 
 	managers.groupai.state(slot2).on_unit_detection_updated(slot2, managers.groupai.state(slot2))
@@ -232,7 +232,7 @@ CopLogicSniper._upd_enemy_detection = function (data)
 
 	return 
 end
-CopLogicSniper._chk_stand_visibility = function (my_pos, target_pos, slotmask)
+function CopLogicSniper._chk_stand_visibility(my_pos, target_pos, slotmask)
 	slot6 = my_pos
 
 	mvector3.set(slot4, tmp_vec1)
@@ -246,7 +246,7 @@ CopLogicSniper._chk_stand_visibility = function (my_pos, target_pos, slotmask)
 
 	return ray
 end
-CopLogicSniper._chk_crouch_visibility = function (my_pos, target_pos, slotmask)
+function CopLogicSniper._chk_crouch_visibility(my_pos, target_pos, slotmask)
 	slot6 = my_pos
 
 	mvector3.set(slot4, tmp_vec1)
@@ -260,7 +260,7 @@ CopLogicSniper._chk_crouch_visibility = function (my_pos, target_pos, slotmask)
 
 	return ray
 end
-CopLogicSniper.on_action_completed = function (data, action)
+function CopLogicSniper.on_action_completed(data, action)
 	slot4 = action
 	local action_type = action.type(slot3)
 	local my_data = data.internal_data
@@ -281,7 +281,7 @@ CopLogicSniper.on_action_completed = function (data, action)
 
 	return 
 end
-CopLogicSniper._upd_aim = function (data, my_data)
+function CopLogicSniper._upd_aim(data, my_data)
 	slot5 = my_data
 	local aim, shoot = data.logic._should_aim_or_shoot(slot3, data)
 	local focus_enemy = data.attention_obj
@@ -322,7 +322,7 @@ CopLogicSniper._upd_aim = function (data, my_data)
 
 	return 
 end
-CopLogicSniper._upd_aim_action = function (data, my_data)
+function CopLogicSniper._upd_aim_action(data, my_data)
 	local focus_enemy = data.attention_obj
 	local action_taken = nil
 	slot6 = data.unit
@@ -404,7 +404,7 @@ CopLogicSniper._upd_aim_action = function (data, my_data)
 
 	return action_taken
 end
-CopLogicSniper._should_aim_or_shoot = function (data, my_data)
+function CopLogicSniper._should_aim_or_shoot(data, my_data)
 	local aim, shoot = nil
 	local focus_enemy = data.attention_obj
 
@@ -429,7 +429,7 @@ CopLogicSniper._should_aim_or_shoot = function (data, my_data)
 
 	return aim, shoot
 end
-CopLogicSniper._aim_or_shoot = function (data, my_data, aim, shoot)
+function CopLogicSniper._aim_or_shoot(data, my_data, aim, shoot)
 	local focus_enemy = data.attention_obj
 
 	if aim or shoot then
@@ -491,7 +491,7 @@ CopLogicSniper._aim_or_shoot = function (data, my_data, aim, shoot)
 
 	return 
 end
-CopLogicSniper._request_action_shoot = function (data, my_data)
+function CopLogicSniper._request_action_shoot(data, my_data)
 
 	-- Decompilation error in this vicinity:
 	local shoot_action = {
@@ -507,7 +507,7 @@ CopLogicSniper._request_action_shoot = function (data, my_data)
 
 	return 
 end
-CopLogicSniper._chk_reaction_to_attention_object = function (data, attention_data, stationary)
+function CopLogicSniper._chk_reaction_to_attention_object(data, attention_data, stationary)
 	local record = attention_data.criminal_record
 
 	if not record or not attention_data.is_person then
@@ -541,7 +541,7 @@ CopLogicSniper._chk_reaction_to_attention_object = function (data, attention_dat
 
 	return math.min(slot7, attention_data.settings.reaction)
 end
-CopLogicSniper.should_duck_on_alert = function (data, alert_data)
+function CopLogicSniper.should_duck_on_alert(data, alert_data)
 	if data.internal_data.attitude == "avoid" then
 		slot5 = alert_data
 		slot2 = CopLogicBase.should_duck_on_alert(slot3, data)

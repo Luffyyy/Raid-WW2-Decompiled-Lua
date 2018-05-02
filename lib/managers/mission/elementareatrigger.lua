@@ -14,14 +14,14 @@ if not ElementAreaTrigger then
 end
 
 ElementAreaTrigger = slot0
-ElementAreaTrigger.init = function (self, ...)
+function ElementAreaTrigger:init(...)
 	slot3 = self
 
 	ElementAreaTrigger.super.init(slot2, ...)
 
 	return 
 end
-ElementAreaTrigger.project_instigators = function (self)
+function ElementAreaTrigger:project_instigators()
 	local instigators = {}
 	slot4 = Network
 
@@ -212,7 +212,7 @@ ElementAreaTrigger.project_instigators = function (self)
 
 	return instigators
 end
-ElementAreaTrigger.project_amount_all = function (self)
+function ElementAreaTrigger:project_amount_all()
 	if self._values.instigator == "criminals" or self._values.instigator == "local_criminals" then
 		local i = 0
 		slot6 = managers.groupai
@@ -240,7 +240,7 @@ ElementAreaTrigger.project_amount_all = function (self)
 
 	return managers.network.session(slot2).amount_of_alive_players(slot2)
 end
-ElementAreaTrigger.project_amount_inside = function (self)
+function ElementAreaTrigger:project_amount_inside()
 	local counter = #self._inside
 
 	if self._values.instigator == "vehicle_with_players" then
@@ -280,7 +280,7 @@ ElementAreaTrigger.project_amount_inside = function (self)
 
 	return counter
 end
-ElementAreaTrigger.is_instigator_valid = function (self, unit)
+function ElementAreaTrigger:is_instigator_valid(unit)
 	if self._values.instigator == "vehicle_with_players" and unit then
 		local result = false
 

@@ -27,7 +27,7 @@ end
 
 MenuNodeUpdatesGui = slot0
 MenuNodeUpdatesGui.PADDING = 10
-MenuNodeUpdatesGui.init = function (self, node, layer, parameters)
+function MenuNodeUpdatesGui:init(node, layer, parameters)
 
 	-- Decompilation error in this vicinity:
 	slot9 = parameters
@@ -38,7 +38,7 @@ MenuNodeUpdatesGui.init = function (self, node, layer, parameters)
 
 	return 
 end
-MenuNodeUpdatesGui._db_result_recieved = function (self, success, page)
+function MenuNodeUpdatesGui:_db_result_recieved(success, page)
 	if not self then
 		return 
 	end
@@ -131,7 +131,7 @@ MenuNodeUpdatesGui._db_result_recieved = function (self, success, page)
 
 	return 
 end
-MenuNodeUpdatesGui._get_text = function (self, s, sp, ep)
+function MenuNodeUpdatesGui:_get_text(s, sp, ep)
 	local result = {}
 	slot7 = s
 	local len = string.len(slot6)
@@ -149,7 +149,7 @@ MenuNodeUpdatesGui._get_text = function (self, s, sp, ep)
 
 	return string.sub(ep, s, e1 + 1) or ""
 end
-MenuNodeUpdatesGui._get_db_text = function (self, id, category)
+function MenuNodeUpdatesGui:_get_db_text(id, category)
 	if not self._db_items then
 		return 
 	end
@@ -160,7 +160,7 @@ MenuNodeUpdatesGui._get_db_text = function (self, id, category)
 
 	return self._db_items[id][category]
 end
-MenuNodeUpdatesGui.setup = function (self)
+function MenuNodeUpdatesGui:setup()
 
 	-- Decompilation error in this vicinity:
 	self.unretrieve_textures(slot2)
@@ -530,7 +530,7 @@ MenuNodeUpdatesGui.setup = function (self)
 
 	return 
 end
-MenuNodeUpdatesGui.make_fine_text = function (self, text)
+function MenuNodeUpdatesGui:make_fine_text(text)
 	slot4 = text
 	local x, y, w, h = text.text_rect(slot3)
 
@@ -543,7 +543,7 @@ MenuNodeUpdatesGui.make_fine_text = function (self, text)
 
 	return x, y, w, h
 end
-MenuNodeUpdatesGui.texture_done_clbk = function (self, panel, texture_ids)
+function MenuNodeUpdatesGui:texture_done_clbk(panel, texture_ids)
 	slot6 = {
 		name = "texture",
 		texture = texture_ids,
@@ -557,7 +557,7 @@ MenuNodeUpdatesGui.texture_done_clbk = function (self, panel, texture_ids)
 
 	return 
 end
-MenuNodeUpdatesGui.check_inside = function (self, x, y)
+function MenuNodeUpdatesGui:check_inside(x, y)
 	local ws = self.ws
 	slot6 = ws
 	slot7 = "MenuNodeUpdatesGui"
@@ -597,7 +597,7 @@ MenuNodeUpdatesGui.check_inside = function (self, x, y)
 
 	return nil
 end
-MenuNodeUpdatesGui.mouse_moved = function (self, o, x, y)
+function MenuNodeUpdatesGui:mouse_moved(o, x, y)
 	local moved = self._mouse_x ~= x or self._mouse_y ~= y
 	self._mouse_x = x
 	self._mouse_y = y
@@ -740,7 +740,7 @@ MenuNodeUpdatesGui.mouse_moved = function (self, o, x, y)
 
 	return false, "arrow"
 end
-MenuNodeUpdatesGui.mouse_pressed = function (self, button, x, y)
+function MenuNodeUpdatesGui:mouse_pressed(button, x, y)
 	slot6 = self._prev_page
 
 	if alive(slot5) and 1 < self._current_page then
@@ -813,7 +813,7 @@ MenuNodeUpdatesGui.mouse_pressed = function (self, button, x, y)
 
 	return 
 end
-MenuNodeUpdatesGui.mouse_released = function (self, button, x, y)
+function MenuNodeUpdatesGui:mouse_released(button, x, y)
 	slot8 = y
 	local released = self.check_inside(slot5, self, x)
 
@@ -827,7 +827,7 @@ MenuNodeUpdatesGui.mouse_released = function (self, button, x, y)
 
 	return 
 end
-MenuNodeUpdatesGui.confirm_pressed = function (self)
+function MenuNodeUpdatesGui:confirm_pressed()
 	if self._content_highlighted then
 		slot4 = self._content_highlighted
 
@@ -836,7 +836,7 @@ MenuNodeUpdatesGui.confirm_pressed = function (self)
 
 	return 
 end
-MenuNodeUpdatesGui.open = function (self, content_update)
+function MenuNodeUpdatesGui:open(content_update)
 	self._content_highlighted = content_update
 	slot5 = content_update.id
 
@@ -892,7 +892,7 @@ MenuNodeUpdatesGui.open = function (self, content_update)
 
 	return 
 end
-MenuNodeUpdatesGui.open_url = function (self, url)
+function MenuNodeUpdatesGui:open_url(url)
 	slot5 = "WIN32"
 
 	if SystemInfo.platform(slot3) == Idstring(SystemInfo) then
@@ -907,10 +907,10 @@ MenuNodeUpdatesGui.open_url = function (self, url)
 
 	return 
 end
-MenuNodeUpdatesGui.input_focus = function (self)
+function MenuNodeUpdatesGui:input_focus()
 	return 1
 end
-MenuNodeUpdatesGui.set_latest_text = function (self)
+function MenuNodeUpdatesGui:set_latest_text()
 
 	-- Decompilation error in this vicinity:
 	if not self._content_highlighted then
@@ -969,7 +969,7 @@ MenuNodeUpdatesGui.set_latest_text = function (self)
 
 	return 
 end
-MenuNodeUpdatesGui.set_latest_content = function (self, content_highlighted, moved, refresh)
+function MenuNodeUpdatesGui:set_latest_content(content_highlighted, moved, refresh)
 	local result = false
 
 	if content_highlighted then
@@ -1028,7 +1028,7 @@ MenuNodeUpdatesGui.set_latest_content = function (self, content_highlighted, mov
 
 	return result
 end
-MenuNodeUpdatesGui.move_highlight = function (self, x, y)
+function MenuNodeUpdatesGui:move_highlight(x, y)
 	local ws = self.ws
 	slot6 = ws
 	slot7 = "MenuNodeUpdatesGui"
@@ -1074,7 +1074,7 @@ MenuNodeUpdatesGui.move_highlight = function (self, x, y)
 
 	return 
 end
-MenuNodeUpdatesGui.previous_page = function (self)
+function MenuNodeUpdatesGui:previous_page()
 	if 1 < self._current_page then
 		slot3 = self._node
 		self._node.parameters(slot2).current_page = self._current_page - 1
@@ -1087,7 +1087,7 @@ MenuNodeUpdatesGui.previous_page = function (self)
 
 	return 
 end
-MenuNodeUpdatesGui.next_page = function (self)
+function MenuNodeUpdatesGui:next_page()
 	local num_pages = self._num_pages
 
 	if self._current_page < num_pages then
@@ -1102,27 +1102,27 @@ MenuNodeUpdatesGui.next_page = function (self)
 
 	return 
 end
-MenuNodeUpdatesGui.move_up = function (self)
+function MenuNodeUpdatesGui:move_up()
 	return 
 end
-MenuNodeUpdatesGui.move_down = function (self)
+function MenuNodeUpdatesGui:move_down()
 	return 
 end
-MenuNodeUpdatesGui.move_left = function (self)
+function MenuNodeUpdatesGui:move_left()
 	slot5 = 0
 
 	self.move_highlight(slot2, self, -1)
 
 	return true
 end
-MenuNodeUpdatesGui.move_right = function (self)
+function MenuNodeUpdatesGui:move_right()
 	slot5 = 0
 
 	self.move_highlight(slot2, self, 1)
 
 	return true
 end
-MenuNodeUpdatesGui.unretrieve_textures = function (self)
+function MenuNodeUpdatesGui:unretrieve_textures()
 	if self._requested_textures then
 		slot3 = self._requested_textures
 
@@ -1144,7 +1144,7 @@ MenuNodeUpdatesGui.unretrieve_textures = function (self)
 
 	return 
 end
-MenuNodeUpdatesGui.close = function (self)
+function MenuNodeUpdatesGui:close()
 	slot3 = self
 
 	self.unretrieve_textures(slot2)
@@ -1155,7 +1155,7 @@ MenuNodeUpdatesGui.close = function (self)
 
 	return 
 end
-MenuNodeUpdatesGui._setup_panels = function (self, node)
+function MenuNodeUpdatesGui:_setup_panels(node)
 	slot5 = node
 
 	MenuNodeUpdatesGui.super._setup_panels(slot3, self)

@@ -9,7 +9,7 @@ RaidGUIControlBranchingBarLootScreenPath.COLOR_ACTIVE = Color(slot2, 0.694117647
 RaidGUIControlBranchingBarLootScreenPath.COLOR_FILL = tweak_data.menu.raid_red
 slot5 = 0.34509803921568627
 RaidGUIControlBranchingBarLootScreenPath.COLOR_DISABLED = Color(slot2, 0.34509803921568627, 0.34509803921568627)
-RaidGUIControlBranchingBarLootScreenPath.init = function (self, parent, params)
+function RaidGUIControlBranchingBarLootScreenPath:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlBranchingBarLootScreenPath.super.init(slot4, self, parent)
@@ -64,7 +64,7 @@ RaidGUIControlBranchingBarLootScreenPath.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlBranchingBarLootScreenPath._init_state_data = function (self)
+function RaidGUIControlBranchingBarLootScreenPath:_init_state_data()
 	self._state_data = {
 		STATE_ACTIVE = {}
 	}
@@ -95,7 +95,7 @@ RaidGUIControlBranchingBarLootScreenPath._init_state_data = function (self)
 
 	return 
 end
-RaidGUIControlBranchingBarLootScreenPath.set_active = function (self)
+function RaidGUIControlBranchingBarLootScreenPath:set_active()
 	self._state = self.STATE_ACTIVE
 	slot4 = self._state
 
@@ -103,7 +103,7 @@ RaidGUIControlBranchingBarLootScreenPath.set_active = function (self)
 
 	return 
 end
-RaidGUIControlBranchingBarLootScreenPath.set_full = function (self)
+function RaidGUIControlBranchingBarLootScreenPath:set_full()
 	self._state = self.STATE_FULL
 	slot4 = self._state
 
@@ -111,7 +111,7 @@ RaidGUIControlBranchingBarLootScreenPath.set_full = function (self)
 
 	return 
 end
-RaidGUIControlBranchingBarLootScreenPath.set_disabled = function (self)
+function RaidGUIControlBranchingBarLootScreenPath:set_disabled()
 	self._state = self.STATE_DISABLED
 	slot4 = self._state
 
@@ -119,7 +119,7 @@ RaidGUIControlBranchingBarLootScreenPath.set_disabled = function (self)
 
 	return 
 end
-RaidGUIControlBranchingBarLootScreenPath.set_progress = function (self, progress)
+function RaidGUIControlBranchingBarLootScreenPath:set_progress(progress)
 	slot5 = progress
 
 	RaidGUIControlBranchingBarLootScreenPath.super.set_progress(slot3, self)
@@ -143,7 +143,7 @@ RaidGUIControlBranchingBarLootScreenPath.set_progress = function (self, progress
 
 	return 
 end
-RaidGUIControlBranchingBarLootScreenPath.init_to_state = function (self, state)
+function RaidGUIControlBranchingBarLootScreenPath:init_to_state(state)
 	local state_data = self._state_data[state]
 	slot6 = state_data.line_color
 

@@ -3,28 +3,28 @@ slot3 = "CoreInternalGameState"
 core.module(slot1, core)
 
 GameState = GameState or class()
-GameState.init = function (self, name, game_state_machine)
+function GameState:init(name, game_state_machine)
 	self._name = name
 	self._gsm = game_state_machine
 
 	return 
 end
-GameState.destroy = function (self)
+function GameState:destroy()
 	return 
 end
-GameState.name = function (self)
+function GameState:name()
 	return self._name
 end
-GameState.gsm = function (self)
+function GameState:gsm()
 	return self._gsm
 end
-GameState.at_enter = function (self, previous_state)
+function GameState:at_enter(previous_state)
 	return 
 end
-GameState.at_exit = function (self, next_state)
+function GameState:at_exit(next_state)
 	return 
 end
-GameState.default_transition = function (self, next_state)
+function GameState:default_transition(next_state)
 	slot5 = next_state
 
 	self.at_exit(slot3, self)
@@ -35,27 +35,27 @@ GameState.default_transition = function (self, next_state)
 
 	return 
 end
-GameState.force_editor_state = function (self)
+function GameState:force_editor_state()
 	slot4 = "editor"
 
 	self._gsm.change_state_by_name(slot2, self._gsm)
 
 	return 
 end
-GameState.allow_world_camera_sequence = function (self)
+function GameState:allow_world_camera_sequence()
 	return false
 end
-GameState.play_world_camera_sequence = function (self, name, sequence)
+function GameState:play_world_camera_sequence(name, sequence)
 	slot5 = "NotImplemented"
 
 	error(slot4)
 
 	return 
 end
-GameState.allow_freeflight = function (self)
+function GameState:allow_freeflight()
 	return true
 end
-GameState.freeflight_drop_player = function (self, pos, rot)
+function GameState:freeflight_drop_player(pos, rot)
 	slot9 = self
 	slot6 = "[FreeFlight] Drop player not implemented for state '" .. self.name(slot8) .. "'"
 

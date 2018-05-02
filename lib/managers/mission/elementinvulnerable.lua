@@ -8,14 +8,14 @@ if not ElementInvulnerable then
 end
 
 ElementInvulnerable = slot0
-ElementInvulnerable.init = function (self, ...)
+function ElementInvulnerable:init(...)
 	slot3 = self
 
 	ElementInvulnerable.super.init(slot2, ...)
 
 	return 
 end
-ElementInvulnerable.on_executed = function (self, instigator)
+function ElementInvulnerable:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

@@ -5,7 +5,7 @@ end
 
 RaidGUIControlScrollableArea = slot0
 RaidGUIControlScrollableArea.SCROLLBAR_WIDTH = 5
-RaidGUIControlScrollableArea.init = function (self, parent, params)
+function RaidGUIControlScrollableArea:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlScrollableArea.super.init(slot4, self, parent)
@@ -44,10 +44,10 @@ RaidGUIControlScrollableArea.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlScrollableArea.get_panel = function (self)
+function RaidGUIControlScrollableArea:get_panel()
 	return self._inner_panel
 end
-RaidGUIControlScrollableArea.setup_scroll_area = function (self)
+function RaidGUIControlScrollableArea:setup_scroll_area()
 	slot4 = 0
 
 	self._inner_panel.set_y(slot2, self._inner_panel)
@@ -97,7 +97,7 @@ RaidGUIControlScrollableArea.setup_scroll_area = function (self)
 
 	return 
 end
-RaidGUIControlScrollableArea.move_scrollbar_manually = function (self)
+function RaidGUIControlScrollableArea:move_scrollbar_manually()
 	local new_y = self._inner_panel.y(slot2)
 	local ep_h = self._inner_panel.h(self._inner_panel)
 	slot6 = new_y
@@ -111,7 +111,7 @@ RaidGUIControlScrollableArea.move_scrollbar_manually = function (self)
 
 	return 
 end
-RaidGUIControlScrollableArea.mouse_scroll_up = function (self, o, button, x, y)
+function RaidGUIControlScrollableArea:mouse_scroll_up(o, button, x, y)
 	if self._scrolling_enabled then
 		local ep_h = self._inner_panel.h(slot6)
 		local top_clip_y = -self._inner_panel.y(self._inner_panel)
@@ -134,7 +134,7 @@ RaidGUIControlScrollableArea.mouse_scroll_up = function (self, o, button, x, y)
 
 	return self._inner_panel.mouse_scroll_up(slot6, self._inner_panel, o, button, x)
 end
-RaidGUIControlScrollableArea.mouse_scroll_down = function (self, o, button, x, y)
+function RaidGUIControlScrollableArea:mouse_scroll_down(o, button, x, y)
 	if self._scrolling_enabled then
 		local ep_y = self._inner_panel.y(slot6)
 		local ep_h = self._inner_panel.h(self._inner_panel)
@@ -161,7 +161,7 @@ RaidGUIControlScrollableArea.mouse_scroll_down = function (self, o, button, x, y
 
 	return self._inner_panel.mouse_scroll_down(slot6, self._inner_panel, o, button, x)
 end
-RaidGUIControlScrollableArea.scroll_up = function (self)
+function RaidGUIControlScrollableArea:scroll_up()
 	if self._scrolling_enabled then
 		local ep_h = self._inner_panel.h(slot2)
 		local top_clip_y = -self._inner_panel.y(self._inner_panel)
@@ -182,7 +182,7 @@ RaidGUIControlScrollableArea.scroll_up = function (self)
 
 	return 
 end
-RaidGUIControlScrollableArea.scroll_down = function (self)
+function RaidGUIControlScrollableArea:scroll_down()
 	if self._scrolling_enabled then
 		local ep_y = self._inner_panel.y(slot2)
 		local ep_h = self._inner_panel.h(self._inner_panel)
@@ -207,10 +207,10 @@ RaidGUIControlScrollableArea.scroll_down = function (self)
 
 	return 
 end
-RaidGUIControlScrollableArea.highlight_on = function (self)
+function RaidGUIControlScrollableArea:highlight_on()
 	return 
 end
-RaidGUIControlScrollableArea.highlight_off = function (self)
+function RaidGUIControlScrollableArea:highlight_off()
 	return 
 end
 

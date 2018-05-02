@@ -12,7 +12,7 @@ VehicleTriggerUnitElement.events = {
 	VehicleTriggerUnitElement.ON_EXIT,
 	VehicleTriggerUnitElement.ON_ALL_INSIDE
 }
-VehicleTriggerUnitElement.init = function (self, unit)
+function VehicleTriggerUnitElement:init(unit)
 	slot5 = "VehicleTriggerUnitElement:init"
 
 	Application.debug(slot3, Application)
@@ -29,7 +29,7 @@ VehicleTriggerUnitElement.init = function (self, unit)
 
 	return 
 end
-VehicleTriggerUnitElement._build_panel = function (self, panel, panel_sizer)
+function VehicleTriggerUnitElement:_build_panel(panel, panel_sizer)
 	slot6 = "VehicleTriggerUnitElement:_build_panel"
 
 	Application.debug(slot4, Application)

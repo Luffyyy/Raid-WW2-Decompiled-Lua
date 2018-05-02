@@ -10,7 +10,7 @@ DummyCorpseBase.is_in_original_material = CopBase.is_in_original_material
 DummyCorpseBase.set_material_state = CopBase.set_material_state
 DummyCorpseBase.set_allow_invisible = CopBase.set_allow_invisible
 DummyCorpseBase.on_material_applied = CopBase.on_material_applied
-DummyCorpseBase.init = function (self, unit)
+function DummyCorpseBase:init(unit)
 	slot6 = false
 
 	UnitBase.init(slot3, self, unit)

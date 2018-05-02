@@ -15,20 +15,20 @@ slot3 = "CoreFiniteStateMachine"
 core.import(slot1, core)
 
 PreFrontEnd = PreFrontEnd or class()
-PreFrontEnd.init = function (self)
+function PreFrontEnd:init()
 	slot6 = self
 	self._state = CoreFiniteStateMachine.FiniteStateMachine.new(slot2, CoreFiniteStateMachine.FiniteStateMachine, CoreMenuStateStart.Start, "pre_front_end")
 
 	return 
 end
-PreFrontEnd.destroy = function (self)
+function PreFrontEnd:destroy()
 	slot3 = self._state
 
 	self._state.destroy(slot2)
 
 	return 
 end
-PreFrontEnd.transition = function (self)
+function PreFrontEnd:transition()
 	self._state.transition(slot2)
 
 	local state = self.menu_state._game_state

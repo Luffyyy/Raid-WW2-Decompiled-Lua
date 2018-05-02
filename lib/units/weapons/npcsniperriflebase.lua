@@ -13,7 +13,7 @@ local idstr_trail = Idstring("enable_sniper_effect")
 local idstr_simulator_length = Idstring("trail")
 slot4 = "size"
 local idstr_size = Idstring("simulator_length")
-NPCSniperRifleBase.init = function (self, unit)
+function NPCSniperRifleBase:init(unit)
 	slot5 = unit
 
 	NPCSniperRifleBase.super.init(slot3, self)
@@ -24,7 +24,7 @@ NPCSniperRifleBase.init = function (self, unit)
 
 	return 
 end
-NPCSniperRifleBase.set_laser_enabled = function (self, enabled)
+function NPCSniperRifleBase:set_laser_enabled(enabled)
 	slot6 = self._unit
 	slot9 = self._unit
 
@@ -59,7 +59,7 @@ NPCSniperRifleBase.set_laser_enabled = function (self, enabled)
 
 	return 
 end
-NPCSniperRifleBase._spawn_trail_effect = function (self, direction, col_ray)
+function NPCSniperRifleBase:_spawn_trail_effect(direction, col_ray)
 	slot6 = self._trail_effect_table.position
 
 	self._obj_fire.m_position(slot4, self._obj_fire)

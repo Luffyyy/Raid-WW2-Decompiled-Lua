@@ -4,7 +4,7 @@ if not FilterUnitElement then
 end
 
 FilterUnitElement = slot0
-FilterUnitElement.init = function (self, unit)
+function FilterUnitElement:init(unit)
 	slot5 = unit
 
 	FilterUnitElement.super.init(slot3, self)
@@ -83,7 +83,7 @@ FilterUnitElement.init = function (self, unit)
 
 	return 
 end
-FilterUnitElement.post_init = function (self, ...)
+function FilterUnitElement:post_init(...)
 	slot3 = self
 
 	FilterUnitElement.super.post_init(slot2, ...)
@@ -94,14 +94,14 @@ FilterUnitElement.post_init = function (self, ...)
 
 	return 
 end
-FilterUnitElement._check_convertion = function (self)
+function FilterUnitElement:_check_convertion()
 	if self._hed.difficulty_overkill_290 == nil then
 		self._hed.difficulty_overkill_290 = self._hed.difficulty_overkill_145
 	end
 
 	return 
 end
-FilterUnitElement._build_panel = function (self, panel, panel_sizer)
+function FilterUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._check_convertion(slot4)

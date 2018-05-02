@@ -4,7 +4,7 @@ if not PlayerStateTriggerUnitElement then
 end
 
 PlayerStateTriggerUnitElement = slot0
-PlayerStateTriggerUnitElement.init = function (self, unit)
+function PlayerStateTriggerUnitElement:init(unit)
 	slot5 = unit
 
 	PlayerStateTriggerUnitElement.super.init(slot3, self)
@@ -18,7 +18,7 @@ PlayerStateTriggerUnitElement.init = function (self, unit)
 
 	return 
 end
-PlayerStateTriggerUnitElement._build_panel = function (self, panel, panel_sizer)
+function PlayerStateTriggerUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

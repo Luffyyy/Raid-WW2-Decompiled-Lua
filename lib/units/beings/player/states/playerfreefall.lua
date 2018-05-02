@@ -4,7 +4,7 @@ if not PlayerFreefall then
 end
 
 PlayerFreefall = slot0
-PlayerFreefall.init = function (self, unit)
+function PlayerFreefall:init(unit)
 	slot5 = unit
 
 	PlayerFreefall.super.init(slot3, self)
@@ -14,7 +14,7 @@ PlayerFreefall.init = function (self, unit)
 
 	return 
 end
-PlayerFreefall.enter = function (self, state_data, enter_data)
+function PlayerFreefall:enter(state_data, enter_data)
 	slot6 = "Enter freefall state"
 
 	print(slot4, "[PlayerFreefall:enter]")
@@ -83,7 +83,7 @@ PlayerFreefall.enter = function (self, state_data, enter_data)
 
 	return 
 end
-PlayerFreefall._enter = function (self, enter_data)
+function PlayerFreefall:_enter(enter_data)
 	slot4 = self._ext_camera
 
 	if self._ext_camera.anim_data(slot3).equipped then
@@ -115,7 +115,7 @@ PlayerFreefall._enter = function (self, enter_data)
 
 	return 
 end
-PlayerFreefall.exit = function (self, state_data, new_state_name)
+function PlayerFreefall:exit(state_data, new_state_name)
 	slot6 = "Exiting freefall state"
 
 	print(slot4, "[PlayerFreefall:exit]")
@@ -140,13 +140,13 @@ PlayerFreefall.exit = function (self, state_data, new_state_name)
 
 	return 
 end
-PlayerFreefall.interaction_blocked = function (self)
+function PlayerFreefall:interaction_blocked()
 	return true
 end
-PlayerFreefall.bleed_out_blocked = function (self)
+function PlayerFreefall:bleed_out_blocked()
 	return true
 end
-PlayerFreefall._chk_play_falling_anim = function (self)
+function PlayerFreefall:_chk_play_falling_anim()
 	if not self._played_unequip_animation then
 		slot3 = self._ext_camera
 
@@ -166,7 +166,7 @@ PlayerFreefall._chk_play_falling_anim = function (self)
 
 	return 
 end
-PlayerFreefall.update = function (self, t, dt)
+function PlayerFreefall:update(t, dt)
 	slot7 = dt
 
 	PlayerFreefall.super.update(slot4, self, t)
@@ -193,7 +193,7 @@ PlayerFreefall.update = function (self, t, dt)
 
 	return 
 end
-PlayerFreefall._update_movement = function (self, t, dt)
+function PlayerFreefall:_update_movement(t, dt)
 	slot6 = "move"
 	local direction = self._controller.get_input_axis(slot4, self._controller)
 
@@ -252,7 +252,7 @@ PlayerFreefall._update_movement = function (self, t, dt)
 
 	return 
 end
-PlayerFreefall._update_check_actions = function (self, t, dt)
+function PlayerFreefall:_update_check_actions(t, dt)
 	slot7 = dt
 	local input = self._get_input(slot4, self, t)
 	slot7 = "move"
@@ -292,10 +292,10 @@ PlayerFreefall._update_check_actions = function (self, t, dt)
 
 	return 
 end
-PlayerFreefall._get_walk_headbob = function (self)
+function PlayerFreefall:_get_walk_headbob()
 	return 0
 end
-PlayerFreefall._set_camera_limits = function (self)
+function PlayerFreefall:_set_camera_limits()
 	slot3 = self._camera_unit
 	slot4 = self._tweak_data.camera.target_pitch
 
@@ -308,7 +308,7 @@ PlayerFreefall._set_camera_limits = function (self)
 
 	return 
 end
-PlayerFreefall._remove_camera_limits = function (self)
+function PlayerFreefall:_remove_camera_limits()
 	slot3 = self._camera_unit
 	slot3 = self._camera_unit.base(slot2)
 
@@ -321,7 +321,7 @@ PlayerFreefall._remove_camera_limits = function (self)
 
 	return 
 end
-PlayerFreefall._check_action_interact = function (self, t, input)
+function PlayerFreefall:_check_action_interact(t, input)
 	local new_action = nil
 	local interaction_wanted = input.btn_interact_press
 
@@ -338,7 +338,7 @@ PlayerFreefall._check_action_interact = function (self, t, input)
 
 	return new_action
 end
-PlayerFreefall._pitch_down = function (self)
+function PlayerFreefall:_pitch_down()
 	local t = Application.time(slot2)
 	slot4 = self._camera_unit
 	slot8 = 1.7

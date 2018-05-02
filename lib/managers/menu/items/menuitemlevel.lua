@@ -9,7 +9,7 @@ end
 
 MenuItemLevel = slot0
 MenuItemLevel.TYPE = "level"
-MenuItemLevel.init = function (self, data_node, parameters)
+function MenuItemLevel:init(data_node, parameters)
 	slot7 = parameters
 
 	CoreMenuItem.Item.init(slot4, self, data_node)

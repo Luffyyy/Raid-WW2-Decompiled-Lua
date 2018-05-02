@@ -10,7 +10,7 @@ if not CoreMaterialEditorDBValue then
 	local CoreMaterialEditorDBValue = class(slot2)
 end
 
-CoreMaterialEditorDBValue.init = function (self, parent, editor, parameter_info, parameter_node)
+function CoreMaterialEditorDBValue:init(parent, editor, parameter_info, parameter_node)
 	slot11 = parameter_node
 
 	CoreMaterialEditorParameter.init(slot6, self, parent, editor, parameter_info)
@@ -35,21 +35,21 @@ CoreMaterialEditorDBValue.init = function (self, parent, editor, parameter_info,
 
 	return 
 end
-CoreMaterialEditorDBValue.update = function (self, t, dt)
+function CoreMaterialEditorDBValue:update(t, dt)
 	slot7 = dt
 
 	CoreMaterialEditorParameter.update(slot4, self, t)
 
 	return 
 end
-CoreMaterialEditorDBValue.destroy = function (self)
+function CoreMaterialEditorDBValue:destroy()
 	slot3 = self
 
 	CoreMaterialEditorParameter.destroy(slot2)
 
 	return 
 end
-CoreMaterialEditorDBValue.on_toggle_customize = function (self)
+function CoreMaterialEditorDBValue:on_toggle_customize()
 	self._customize = not self._customize
 	slot3 = self
 
@@ -73,7 +73,7 @@ CoreMaterialEditorDBValue.on_toggle_customize = function (self)
 
 	return 
 end
-CoreMaterialEditorDBValue._on_combobox_changed = function (self)
+function CoreMaterialEditorDBValue:_on_combobox_changed()
 	slot3 = self._combobox
 	self._value = self._combobox.get_value(slot2)
 	slot4 = "value"
@@ -87,7 +87,7 @@ CoreMaterialEditorDBValue._on_combobox_changed = function (self)
 
 	return 
 end
-CoreMaterialEditorDBValue._fill_combobox = function (self)
+function CoreMaterialEditorDBValue:_fill_combobox()
 	slot5 = LightIntensityDB
 
 	for _, v in ipairs(LightIntensityDB.list(slot4)) do

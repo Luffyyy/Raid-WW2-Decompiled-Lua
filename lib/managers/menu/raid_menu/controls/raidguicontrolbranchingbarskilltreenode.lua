@@ -10,7 +10,7 @@ RaidGUIControlBranchingBarSkilltreeNode.PADDING_HORIZONTAL = 12
 RaidGUIControlBranchingBarSkilltreeNode.PADDING_VERTICAL = 8
 RaidGUIControlBranchingBarSkilltreeNode.SELECTOR_TRIANGLE_W = 16
 RaidGUIControlBranchingBarSkilltreeNode.SELECTOR_TRIANGLE_H = 16
-RaidGUIControlBranchingBarSkilltreeNode.init = function (self, parent, params)
+function RaidGUIControlBranchingBarSkilltreeNode:init(parent, params)
 	params.w = RaidGUIControlBranchingBarSkilltreeNode.W
 	params.h = RaidGUIControlBranchingBarSkilltreeNode.H
 	local icon = tweak_data.skilltree.skills[params.value.skill].icon or "skill_placeholder"
@@ -51,7 +51,7 @@ RaidGUIControlBranchingBarSkilltreeNode.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlBranchingBarSkilltreeNode._layout_breadcrumb = function (self)
+function RaidGUIControlBranchingBarSkilltreeNode:_layout_breadcrumb()
 	local breadcrumb_params = {
 		padding = 3,
 		category = BreadcrumbManager.CATEGORY_RANK_REWARD,
@@ -74,7 +74,7 @@ RaidGUIControlBranchingBarSkilltreeNode._layout_breadcrumb = function (self)
 
 	return 
 end
-RaidGUIControlBranchingBarSkilltreeNode._create_selector = function (self)
+function RaidGUIControlBranchingBarSkilltreeNode:_create_selector()
 	local selector_panel_params = {
 		halign = "scale",
 		name = "selector_panel",
@@ -137,7 +137,7 @@ RaidGUIControlBranchingBarSkilltreeNode._create_selector = function (self)
 
 	return 
 end
-RaidGUIControlBranchingBarSkilltreeNode._create_icon = function (self)
+function RaidGUIControlBranchingBarSkilltreeNode:_create_icon()
 	local icon = tweak_data.skilltree.skills[self._data.skill].icon or "skill_placeholder"
 	local icon_params = {
 		name = "skill_icon",
@@ -163,7 +163,7 @@ RaidGUIControlBranchingBarSkilltreeNode._create_icon = function (self)
 
 	return 
 end
-RaidGUIControlBranchingBarSkilltreeNode._init_state_data = function (self)
+function RaidGUIControlBranchingBarSkilltreeNode:_init_state_data()
 	self._state_data = {
 		STATE_INACTIVE = {}
 	}
@@ -206,7 +206,7 @@ RaidGUIControlBranchingBarSkilltreeNode._init_state_data = function (self)
 
 	return 
 end
-RaidGUIControlBranchingBarSkilltreeNode.set_inactive = function (self)
+function RaidGUIControlBranchingBarSkilltreeNode:set_inactive()
 	self._state = self.STATE_INACTIVE
 	slot3 = self
 
@@ -214,7 +214,7 @@ RaidGUIControlBranchingBarSkilltreeNode.set_inactive = function (self)
 
 	return 
 end
-RaidGUIControlBranchingBarSkilltreeNode.set_hovered = function (self)
+function RaidGUIControlBranchingBarSkilltreeNode:set_hovered()
 	slot4 = 1
 
 	self._selector_panel.set_alpha(slot2, self._selector_panel)
@@ -225,7 +225,7 @@ RaidGUIControlBranchingBarSkilltreeNode.set_hovered = function (self)
 
 	return 
 end
-RaidGUIControlBranchingBarSkilltreeNode.set_selected = function (self)
+function RaidGUIControlBranchingBarSkilltreeNode:set_selected()
 	self._state = self.STATE_SELECTED
 	slot3 = self
 
@@ -241,7 +241,7 @@ RaidGUIControlBranchingBarSkilltreeNode.set_selected = function (self)
 
 	return 
 end
-RaidGUIControlBranchingBarSkilltreeNode.set_active = function (self)
+function RaidGUIControlBranchingBarSkilltreeNode:set_active()
 	self._state = self.STATE_ACTIVE
 	slot3 = self
 
@@ -249,7 +249,7 @@ RaidGUIControlBranchingBarSkilltreeNode.set_active = function (self)
 
 	return 
 end
-RaidGUIControlBranchingBarSkilltreeNode.set_pending = function (self)
+function RaidGUIControlBranchingBarSkilltreeNode:set_pending()
 	self._state = self.STATE_PENDING
 	slot3 = self
 
@@ -257,7 +257,7 @@ RaidGUIControlBranchingBarSkilltreeNode.set_pending = function (self)
 
 	return 
 end
-RaidGUIControlBranchingBarSkilltreeNode.set_pending_blocked = function (self)
+function RaidGUIControlBranchingBarSkilltreeNode:set_pending_blocked()
 	self._state = self.STATE_PENDING_BLOCKED
 	slot3 = self
 
@@ -265,7 +265,7 @@ RaidGUIControlBranchingBarSkilltreeNode.set_pending_blocked = function (self)
 
 	return 
 end
-RaidGUIControlBranchingBarSkilltreeNode.set_disabled = function (self)
+function RaidGUIControlBranchingBarSkilltreeNode:set_disabled()
 	self._state = self.STATE_DISABLED
 	slot3 = self
 
@@ -273,7 +273,7 @@ RaidGUIControlBranchingBarSkilltreeNode.set_disabled = function (self)
 
 	return 
 end
-RaidGUIControlBranchingBarSkilltreeNode.refresh_current_state = function (self)
+function RaidGUIControlBranchingBarSkilltreeNode:refresh_current_state()
 	slot4 = self._state_data[self._state].color
 
 	self._icon.set_color(slot2, self._icon)
@@ -298,7 +298,7 @@ RaidGUIControlBranchingBarSkilltreeNode.refresh_current_state = function (self)
 
 	return 
 end
-RaidGUIControlBranchingBarSkilltreeNode.init_to_state = function (self, state)
+function RaidGUIControlBranchingBarSkilltreeNode:init_to_state(state)
 	slot5 = self._state_data[state].color
 
 	self._icon.set_color(slot3, self._icon)
@@ -309,7 +309,7 @@ RaidGUIControlBranchingBarSkilltreeNode.init_to_state = function (self, state)
 
 	return 
 end
-RaidGUIControlBranchingBarSkilltreeNode.mouse_clicked = function (self, o, button, x, y)
+function RaidGUIControlBranchingBarSkilltreeNode:mouse_clicked(o, button, x, y)
 	slot9 = y
 
 	if self.inside(slot6, self, x) then
@@ -322,7 +322,7 @@ RaidGUIControlBranchingBarSkilltreeNode.mouse_clicked = function (self, o, butto
 
 	return false
 end
-RaidGUIControlBranchingBarSkilltreeNode.on_mouse_clicked = function (self, button)
+function RaidGUIControlBranchingBarSkilltreeNode:on_mouse_clicked(button)
 	if self._on_click_callback then
 		slot5 = self._data
 
@@ -331,7 +331,7 @@ RaidGUIControlBranchingBarSkilltreeNode.on_mouse_clicked = function (self, butto
 
 	return 
 end
-RaidGUIControlBranchingBarSkilltreeNode.on_mouse_pressed = function (self)
+function RaidGUIControlBranchingBarSkilltreeNode:on_mouse_pressed()
 	if self._on_mouse_pressed_callback then
 		self._on_mouse_pressed_callback()
 	end
@@ -346,7 +346,7 @@ RaidGUIControlBranchingBarSkilltreeNode.on_mouse_pressed = function (self)
 
 	return 
 end
-RaidGUIControlBranchingBarSkilltreeNode.on_mouse_moved = function (self, o, x, y)
+function RaidGUIControlBranchingBarSkilltreeNode:on_mouse_moved(o, x, y)
 	if self._pressed and self._on_mouse_moved_callback then
 		slot8 = y
 
@@ -355,7 +355,7 @@ RaidGUIControlBranchingBarSkilltreeNode.on_mouse_moved = function (self, o, x, y
 
 	return 
 end
-RaidGUIControlBranchingBarSkilltreeNode.on_mouse_released = function (self)
+function RaidGUIControlBranchingBarSkilltreeNode:on_mouse_released()
 	if self._on_mouse_released_callback then
 		self._on_mouse_released_callback()
 	end
@@ -364,7 +364,7 @@ RaidGUIControlBranchingBarSkilltreeNode.on_mouse_released = function (self)
 
 	return 
 end
-RaidGUIControlBranchingBarSkilltreeNode.on_mouse_over = function (self, x, y)
+function RaidGUIControlBranchingBarSkilltreeNode:on_mouse_over(x, y)
 	self._mouse_inside = true
 
 	if self._on_mouse_enter_callback then
@@ -383,7 +383,7 @@ RaidGUIControlBranchingBarSkilltreeNode.on_mouse_over = function (self, x, y)
 
 	return 
 end
-RaidGUIControlBranchingBarSkilltreeNode.on_mouse_out = function (self, x, y)
+function RaidGUIControlBranchingBarSkilltreeNode:on_mouse_out(x, y)
 	self._mouse_inside = false
 
 	if self._on_mouse_exit_callback then
@@ -394,7 +394,7 @@ RaidGUIControlBranchingBarSkilltreeNode.on_mouse_out = function (self, x, y)
 
 	return 
 end
-RaidGUIControlBranchingBarSkilltreeNode._animate_pressed = function (self)
+function RaidGUIControlBranchingBarSkilltreeNode:_animate_pressed()
 	local t = 0
 	local duration = 0.15
 	slot5 = self._icon

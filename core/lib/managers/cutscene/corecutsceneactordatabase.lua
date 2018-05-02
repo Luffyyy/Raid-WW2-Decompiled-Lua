@@ -8,10 +8,10 @@
 --   Code may be incomplete or incorrect.
 CoreCutsceneActorDatabase = CoreCutsceneActorDatabase or class()
 CoreCutsceneActorDatabaseUnitTypeInfo = CoreCutsceneActorDatabaseUnitTypeInfo or class()
-CoreCutsceneActorDatabase.unit_type_info = function (self, unit_type)
+function CoreCutsceneActorDatabase:unit_type_info(unit_type)
 	return unit_type and self._registered_unit_types and self._registered_unit_types[unit_type]
 end
-CoreCutsceneActorDatabase.append_unit_info = function (self, unit)
+function CoreCutsceneActorDatabase:append_unit_info(unit)
 	self._registered_unit_types = self._registered_unit_types or {}
 	slot2 = self._registered_unit_types
 	slot5 = unit
@@ -32,27 +32,27 @@ CoreCutsceneActorDatabase.append_unit_info = function (self, unit)
 
 	return 
 end
-CoreCutsceneActorDatabaseUnitTypeInfo.init = function (self, unit_type)
+function CoreCutsceneActorDatabaseUnitTypeInfo:init(unit_type)
 	self._unit_type = unit_type
 
 	return 
 end
-CoreCutsceneActorDatabaseUnitTypeInfo.unit_type = function (self)
+function CoreCutsceneActorDatabaseUnitTypeInfo:unit_type()
 	return self._unit_type
 end
-CoreCutsceneActorDatabaseUnitTypeInfo.object_names = function (self)
+function CoreCutsceneActorDatabaseUnitTypeInfo:object_names()
 	return self._object_names or {}
 end
-CoreCutsceneActorDatabaseUnitTypeInfo.initial_object_visibility = function (self, object_name)
+function CoreCutsceneActorDatabaseUnitTypeInfo:initial_object_visibility(object_name)
 	return (self._object_visibilities and self._object_visibilities[object_name]) or false
 end
-CoreCutsceneActorDatabaseUnitTypeInfo.extensions = function (self)
+function CoreCutsceneActorDatabaseUnitTypeInfo:extensions()
 	return self._extensions or {}
 end
-CoreCutsceneActorDatabaseUnitTypeInfo.animation_groups = function (self)
+function CoreCutsceneActorDatabaseUnitTypeInfo:animation_groups()
 	return self._animation_groups or {}
 end
-CoreCutsceneActorDatabaseUnitTypeInfo._append_unit_info = function (self, unit)
+function CoreCutsceneActorDatabaseUnitTypeInfo:_append_unit_info(unit)
 	slot7 = unit
 	slot4 = self.unit_type(slot5) == unit.name(self)
 
@@ -131,7 +131,7 @@ CoreCutsceneActorDatabaseUnitTypeInfo._append_unit_info = function (self, unit)
 
 	return 
 end
-CoreCutsceneActorDatabaseUnitTypeInfo._argument_names_for_function = function (self, func)
+function CoreCutsceneActorDatabaseUnitTypeInfo:_argument_names_for_function(func)
 
 	-- Decompilation error in this vicinity:
 	slot4 = Application
@@ -154,7 +154,7 @@ CoreCutsceneActorDatabaseUnitTypeInfo._argument_names_for_function = function (s
 	slot10 = "%((.+)%)"
 	local arg_list = string.match(slot8, string.match(info.linedefined, func_definition) or "")
 end
-CoreCutsceneActorDatabaseUnitTypeInfo._file_line = function (self, file, line)
+function CoreCutsceneActorDatabaseUnitTypeInfo:_file_line(file, line)
 	slot5 = file
 
 	while not file.at_end(slot4) do

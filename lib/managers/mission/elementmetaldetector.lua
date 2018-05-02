@@ -8,17 +8,17 @@ if not ElementMetalDetector then
 end
 
 ElementMetalDetector = slot0
-ElementMetalDetector.init = function (self, ...)
+function ElementMetalDetector:init(...)
 	slot3 = self
 
 	ElementMetalDetector.super.init(slot2, ...)
 
 	return 
 end
-ElementMetalDetector.client_on_executed = function (self, ...)
+function ElementMetalDetector:client_on_executed(...)
 	return 
 end
-ElementMetalDetector.on_executed = function (self, instigator)
+function ElementMetalDetector:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

@@ -1,5 +1,5 @@
 CoreBaseTreeNode = CoreBaseTreeNode or class()
-CoreBaseTreeNode.path = function (self, separator)
+function CoreBaseTreeNode:path(separator)
 	separator = separator or "/"
 	slot4 = self
 	local parent = self.parent(slot3)
@@ -15,12 +15,12 @@ CoreBaseTreeNode.path = function (self, separator)
 
 	return self.text(slot4)
 end
-CoreBaseTreeNode.has_children = function (self)
+function CoreBaseTreeNode:has_children()
 	slot5 = self
 
 	return 0 < table.getn(self.children(slot4))
 end
-CoreBaseTreeNode.child = function (self, text, separator)
+function CoreBaseTreeNode:child(text, separator)
 	slot7 = self
 
 	for _, child in ipairs(self.children(slot6)) do
@@ -33,7 +33,7 @@ CoreBaseTreeNode.child = function (self, text, separator)
 
 	return 
 end
-CoreBaseTreeNode.child_at_path = function (self, path, separator)
+function CoreBaseTreeNode:child_at_path(path, separator)
 	separator = separator or "/"
 	slot8 = 1
 	local first_path_component, remaining_path = string.split(slot4, path, separator, false)
@@ -48,7 +48,7 @@ CoreBaseTreeNode.child_at_path = function (self, path, separator)
 
 	return child
 end
-CoreBaseTreeNode.append_path = function (self, path, separator)
+function CoreBaseTreeNode:append_path(path, separator)
 	separator = separator or "/"
 	slot10 = 1
 	local first_path_component, remaining_path = unpack(string.split(slot6, path, separator, false))
@@ -67,7 +67,7 @@ CoreBaseTreeNode.append_path = function (self, path, separator)
 
 	return node
 end
-CoreBaseTreeNode.append_copy_of_node = function (self, node, recurse)
+function CoreBaseTreeNode:append_copy_of_node(node, recurse)
 	slot5 = self
 	slot8 = node
 	local new_node = self.append(slot4, node.text(slot7))
@@ -84,7 +84,7 @@ CoreBaseTreeNode.append_copy_of_node = function (self, node, recurse)
 
 	return new_node
 end
-CoreBaseTreeNode.for_each_child = function (self, func, recurse)
+function CoreBaseTreeNode:for_each_child(func, recurse)
 	slot9 = self
 
 	for _, child in ipairs(table.list_copy(self.children(slot8))) do
@@ -103,7 +103,7 @@ CoreBaseTreeNode.for_each_child = function (self, func, recurse)
 
 	return 
 end
-CoreBaseTreeNode.remove_children = function (self)
+function CoreBaseTreeNode:remove_children()
 	slot7 = self
 
 	for _, child in ipairs(table.list_copy(self.children(slot6))) do

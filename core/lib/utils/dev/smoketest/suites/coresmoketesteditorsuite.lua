@@ -16,7 +16,7 @@ if not EditorSuite then
 end
 
 EditorSuite = slot0
-EditorSuite.init = function (self)
+function EditorSuite:init()
 	slot3 = self
 
 	EditorSuite.super.init(slot2)
@@ -33,7 +33,7 @@ EditorSuite.init = function (self)
 
 	return 
 end
-EditorSuite.load_level = function (self)
+function EditorSuite:load_level()
 	slot7 = "editor_dir"
 	slot4 = self.get_argument(slot5, self)
 	slot8 = "editor_level"
@@ -42,21 +42,21 @@ EditorSuite.load_level = function (self)
 
 	return 
 end
-EditorSuite.run_mission_simulation = function (self)
+function EditorSuite:run_mission_simulation()
 	slot4 = true
 
 	managers.editor.run_simulation_callback(slot2, managers.editor)
 
 	return 
 end
-EditorSuite.stop_mission_simulation = function (self)
+function EditorSuite:stop_mission_simulation()
 	slot4 = true
 
 	managers.editor.run_simulation_callback(slot2, managers.editor)
 
 	return 
 end
-EditorSuite.environment_editor = function (self)
+function EditorSuite:environment_editor()
 	slot4 = "Environment Editor"
 
 	managers.toolhub.open(slot2, managers.toolhub)

@@ -6,7 +6,7 @@ end
 TeamRelationElement = slot0
 TeamRelationElement.SAVE_UNIT_POSITION = false
 TeamRelationElement.SAVE_UNIT_ROTATION = false
-TeamRelationElement.init = function (self, unit)
+function TeamRelationElement:init(unit)
 	slot5 = unit
 
 	MissionElement.init(slot3, self)
@@ -33,7 +33,7 @@ TeamRelationElement.init = function (self, unit)
 
 	return 
 end
-TeamRelationElement._build_panel = function (self, panel, panel_sizer)
+function TeamRelationElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

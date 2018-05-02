@@ -11,14 +11,14 @@ if not RumbleHubElement then
 end
 
 RumbleHubElement = slot0
-RumbleHubElement.init = function (self, ...)
+function RumbleHubElement:init(...)
 	slot3 = self
 
 	CoreRumbleHubElement.init(slot2, ...)
 
 	return 
 end
-CoreRumbleHubElement.init = function (self, unit)
+function CoreRumbleHubElement:init(unit)
 	slot5 = unit
 
 	HubElement.init(slot3, self)
@@ -50,7 +50,7 @@ CoreRumbleHubElement.init = function (self, unit)
 
 	return 
 end
-CoreRumbleHubElement._build_panel = function (self, panel, panel_sizer)
+function CoreRumbleHubElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

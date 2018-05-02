@@ -1,14 +1,14 @@
 -- WARNING: Error occurred during decompilation.
 --   Code may be incomplete or incorrect.
 ManageSpawnedUnits = ManageSpawnedUnits or class()
-ManageSpawnedUnits.init = function (self, unit)
+function ManageSpawnedUnits:init(unit)
 	self._unit = unit
 	self._spawned_units = {}
 	self._temp_link_units = {}
 
 	return 
 end
-ManageSpawnedUnits.spawn_unit = function (self, unit_id, align_obj_name, unit)
+function ManageSpawnedUnits:spawn_unit(unit_id, align_obj_name, unit)
 	slot6 = self._unit
 	slot9 = align_obj_name
 	local align_obj = self._unit.get_object(slot5, Idstring(slot8))
@@ -57,7 +57,7 @@ ManageSpawnedUnits.spawn_unit = function (self, unit_id, align_obj_name, unit)
 
 	return 
 end
-ManageSpawnedUnits.sync_link_unit = function (self, align_obj_name, spawn_unit)
+function ManageSpawnedUnits:sync_link_unit(align_obj_name, spawn_unit)
 	if align_obj_name and spawn_unit then
 		slot8 = align_obj_name
 		slot10 = spawn_unit
@@ -68,7 +68,7 @@ ManageSpawnedUnits.sync_link_unit = function (self, align_obj_name, spawn_unit)
 
 	return 
 end
-ManageSpawnedUnits.spawn_and_link_unit = function (self, joint_table, unit_id, unit)
+function ManageSpawnedUnits:spawn_and_link_unit(joint_table, unit_id, unit)
 	if not self[joint_table] then
 		slot9 = "in unit file:"
 		slot12 = self._unit
@@ -119,7 +119,7 @@ ManageSpawnedUnits.spawn_and_link_unit = function (self, joint_table, unit_id, u
 
 	return 
 end
-ManageSpawnedUnits.spawn_run_sequence = function (self, unit_id, sequence_name)
+function ManageSpawnedUnits:spawn_run_sequence(unit_id, sequence_name)
 	local entry = self._spawned_units[unit_id]
 
 	if not entry then
@@ -147,7 +147,7 @@ ManageSpawnedUnits.spawn_run_sequence = function (self, unit_id, sequence_name)
 
 	return 
 end
-ManageSpawnedUnits.local_push_child_unit = function (self, unit_id, mass, pow, vec3_a, vec3_b)
+function ManageSpawnedUnits:local_push_child_unit(unit_id, mass, pow, vec3_a, vec3_b)
 	if not unit_id then
 		slot10 = "nil:\n"
 		slot13 = self._spawned_units[unit_id].unit
@@ -242,7 +242,7 @@ ManageSpawnedUnits.local_push_child_unit = function (self, unit_id, mass, pow, v
 
 	return 
 end
-ManageSpawnedUnits.remove_unit = function (self, unit_id)
+function ManageSpawnedUnits:remove_unit(unit_id)
 	local entry = self._spawned_units[unit_id]
 	slot5 = Network
 
@@ -260,7 +260,7 @@ ManageSpawnedUnits.remove_unit = function (self, unit_id)
 
 	return 
 end
-ManageSpawnedUnits.destroy = function (self, unit)
+function ManageSpawnedUnits:destroy(unit)
 	slot4 = self._spawned_units
 
 	for i, entry in pairs(slot3) do
@@ -277,7 +277,7 @@ ManageSpawnedUnits.destroy = function (self, unit)
 
 	return 
 end
-ManageSpawnedUnits.save = function (self, data)
+function ManageSpawnedUnits:save(data)
 
 	-- Decompilation error in this vicinity:
 	slot4 = self._unit
@@ -299,7 +299,7 @@ ManageSpawnedUnits.save = function (self, data)
 
 	return 
 end
-ManageSpawnedUnits.load = function (self, data)
+function ManageSpawnedUnits:load(data)
 	if not data.managed_spawned_units then
 		return 
 	end
@@ -308,7 +308,7 @@ ManageSpawnedUnits.load = function (self, data)
 
 	return 
 end
-ManageSpawnedUnits._spawn_run_sequence = function (self, unit_id, sequence_name)
+function ManageSpawnedUnits:_spawn_run_sequence(unit_id, sequence_name)
 	local entry = self._spawned_units[unit_id]
 
 	if not entry then
@@ -346,7 +346,7 @@ ManageSpawnedUnits._spawn_run_sequence = function (self, unit_id, sequence_name)
 
 	return 
 end
-ManageSpawnedUnits._link_joints = function (self, unit_id, joint_table)
+function ManageSpawnedUnits:_link_joints(unit_id, joint_table)
 	slot5 = self[joint_table]
 
 	for index, value in ipairs(slot4) do
@@ -375,7 +375,7 @@ ManageSpawnedUnits._link_joints = function (self, unit_id, joint_table)
 
 	return 
 end
-ManageSpawnedUnits.sync_unit_spawn = function (self, unit_id)
+function ManageSpawnedUnits:sync_unit_spawn(unit_id)
 	if self._sync_spawn_and_link and self._sync_spawn_and_link[unit_id] then
 		slot6 = self._sync_spawn_and_link[unit_id].joint_table
 

@@ -8,7 +8,7 @@ if not CoreAnimationStateTreePanel then
 end
 
 CoreAnimationStateTreePanel = slot0
-CoreAnimationStateTreePanel.init = function (self, parent_frame, unit)
+function CoreAnimationStateTreePanel:init(parent_frame, unit)
 	slot6 = parent_frame
 
 	self.super.init(slot4, self)
@@ -19,10 +19,10 @@ CoreAnimationStateTreePanel.init = function (self, parent_frame, unit)
 
 	return 
 end
-CoreAnimationStateTreePanel.unit = function (self)
+function CoreAnimationStateTreePanel:unit()
 	return self._unit
 end
-CoreAnimationStateTreePanel.set_unit = function (self, unit)
+function CoreAnimationStateTreePanel:set_unit(unit)
 	self._unit = unit
 	slot4 = self
 
@@ -30,7 +30,7 @@ CoreAnimationStateTreePanel.set_unit = function (self, unit)
 
 	return 
 end
-CoreAnimationStateTreePanel._refresh_tree = function (self)
+function CoreAnimationStateTreePanel:_refresh_tree()
 	slot3 = self
 	slot3 = self._tree_control(slot2)
 

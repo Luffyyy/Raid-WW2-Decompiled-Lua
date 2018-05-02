@@ -23,7 +23,7 @@ slot3 = "CoreMenuItemToggle"
 core.import(slot1, core)
 
 MenuNode = MenuNode or class()
-MenuNode.init = function (self, data_node)
+function MenuNode:init(data_node)
 	local parameters = {}
 	slot5 = data_node
 
@@ -123,7 +123,7 @@ MenuNode.init = function (self, data_node)
 
 	return 
 end
-MenuNode._parse_items = function (self, data_node)
+function MenuNode:_parse_items(data_node)
 	self._items = {}
 	self._legends = {}
 	slot4 = data_node
@@ -152,15 +152,15 @@ MenuNode._parse_items = function (self, data_node)
 
 	return 
 end
-MenuNode.update = function (self, t, dt)
+function MenuNode:update(t, dt)
 	return 
 end
-MenuNode.clean_items = function (self)
+function MenuNode:clean_items()
 	self._items = {}
 
 	return 
 end
-MenuNode.create_item = function (self, data_node, parameters)
+function MenuNode:create_item(data_node, parameters)
 	local item = CoreMenuItem.Item
 
 	if data_node then
@@ -178,23 +178,23 @@ MenuNode.create_item = function (self, data_node, parameters)
 
 	return item
 end
-MenuNode.default_item_name = function (self)
+function MenuNode:default_item_name()
 	return self._default_item_name
 end
-MenuNode.set_default_item_name = function (self, default_item_name)
+function MenuNode:set_default_item_name(default_item_name)
 	self._default_item_name = default_item_name
 
 	return 
 end
-MenuNode.parameters = function (self)
+function MenuNode:parameters()
 	return self._parameters
 end
-MenuNode.set_parameters = function (self, parameters)
+function MenuNode:set_parameters(parameters)
 	self._parameters = parameters
 
 	return 
 end
-MenuNode.add_item = function (self, item)
+function MenuNode:add_item(item)
 	slot6 = "item_dirty"
 	item.dirty_callback = callback(slot3, self, self)
 
@@ -227,7 +227,7 @@ MenuNode.add_item = function (self, item)
 
 	return 
 end
-MenuNode.insert_item = function (self, item, i)
+function MenuNode:insert_item(item, i)
 	slot7 = "item_dirty"
 	item.dirty_callback = callback(slot4, self, self)
 
@@ -243,7 +243,7 @@ MenuNode.insert_item = function (self, item, i)
 
 	return 
 end
-MenuNode.delete_item = function (self, item_name)
+function MenuNode:delete_item(item_name)
 	slot6 = self
 
 	for i, item in ipairs(self.items(slot5)) do
@@ -268,7 +268,7 @@ MenuNode.delete_item = function (self, item_name)
 
 	return 
 end
-MenuNode.item = function (self, item_name)
+function MenuNode:item(item_name)
 	item_name = item_name or self._default_item_name
 	local item = nil
 	slot7 = self
@@ -278,18 +278,18 @@ MenuNode.item = function (self, item_name)
 
 	return item
 end
-MenuNode.items = function (self)
+function MenuNode:items()
 	return self._items
 end
-MenuNode.set_items = function (self, items)
+function MenuNode:set_items(items)
 	self._items = items
 
 	return 
 end
-MenuNode.selected_item = function (self)
+function MenuNode:selected_item()
 	return self._selected_item
 end
-MenuNode.select_item = function (self, item_name)
+function MenuNode:select_item(item_name)
 
 	-- Decompilation error in this vicinity:
 	if not item_name then
@@ -321,7 +321,7 @@ MenuNode.select_item = function (self, item_name)
 
 	return 
 end
-MenuNode.set_callback_handler = function (self, callback_handler)
+function MenuNode:set_callback_handler(callback_handler)
 	self.callback_handler = callback_handler
 	slot4 = self._parameters.back_callback_name
 
@@ -351,7 +351,7 @@ MenuNode.set_callback_handler = function (self, callback_handler)
 
 	return 
 end
-MenuNode.trigger_back = function (self)
+function MenuNode:trigger_back()
 	slot3 = self
 
 	if self.parameters(slot2).block_back then
@@ -371,7 +371,7 @@ MenuNode.trigger_back = function (self)
 
 	return block_back
 end
-MenuNode.trigger_focus_changed = function (self, in_focus, ...)
+function MenuNode:trigger_focus_changed(in_focus, ...)
 	slot6 = self
 	slot4 = self.parameters(slot5).focus_changed_callback
 
@@ -383,7 +383,7 @@ MenuNode.trigger_focus_changed = function (self, in_focus, ...)
 
 	return 
 end
-MenuNode.item_dirty = function (self, item)
+function MenuNode:item_dirty(item)
 	if self.dirty_callback then
 		slot5 = item
 
@@ -392,7 +392,7 @@ MenuNode.item_dirty = function (self, item)
 
 	return 
 end
-MenuNode.legends = function (self)
+function MenuNode:legends()
 	return self._legends
 end
 

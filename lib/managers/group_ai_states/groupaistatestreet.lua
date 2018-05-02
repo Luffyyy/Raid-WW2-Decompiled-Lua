@@ -4,18 +4,18 @@ if not GroupAIStateStreet then
 end
 
 GroupAIStateStreet = slot0
-GroupAIStateStreet.init = function (self)
+function GroupAIStateStreet:init()
 	slot3 = self
 
 	GroupAIStateStreet.super.init(slot2)
 
 	return 
 end
-GroupAIStateStreet.nav_ready_listener_key = function (self)
+function GroupAIStateStreet:nav_ready_listener_key()
 	return "GroupAIStateStreet"
 end
 GroupAIStateStreet.MAX_SPAWN_RANGE = 10000
-GroupAIStateStreet._begin_new_tasks = function (self)
+function GroupAIStateStreet:_begin_new_tasks()
 	local all_areas = self._area_data
 	local nav_manager = managers.navigation
 	local all_nav_segs = nav_manager._nav_segments
@@ -209,7 +209,7 @@ GroupAIStateStreet._begin_new_tasks = function (self)
 
 	return 
 end
-GroupAIStateStreet._begin_assault = function (self)
+function GroupAIStateStreet:_begin_assault()
 	local assault_data = self._task_data.assault
 	assault_data.active = true
 	assault_data.next_dispatch_t = nil
@@ -260,7 +260,7 @@ GroupAIStateStreet._begin_assault = function (self)
 
 	return 
 end
-GroupAIStateStreet._upd_assault_task = function (self, task_data)
+function GroupAIStateStreet:_upd_assault_task(task_data)
 	local assault_data = self._task_data.assault
 
 	if not assault_data or not task_data.target_area or not task_data.target_area.pos then
@@ -333,7 +333,7 @@ GroupAIStateStreet._upd_assault_task = function (self, task_data)
 
 	return 
 end
-GroupAIStateStreet._begin_reenforce_task = function (self, reenforce_area)
+function GroupAIStateStreet:_begin_reenforce_task(reenforce_area)
 	local new_task = {
 		use_spawn_event = true,
 		target_area = reenforce_area,
@@ -348,7 +348,7 @@ GroupAIStateStreet._begin_reenforce_task = function (self, reenforce_area)
 
 	return 
 end
-GroupAIStateStreet._upd_assault_tasks = function (self)
+function GroupAIStateStreet:_upd_assault_tasks()
 	local assault_data = self._task_data.assault
 
 	if not assault_data or not assault_data.active or not assault_data.tasks then

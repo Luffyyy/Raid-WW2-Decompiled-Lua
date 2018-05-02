@@ -4,7 +4,7 @@ if not SpawnGrenadeUnitElement then
 end
 
 SpawnGrenadeUnitElement = slot0
-SpawnGrenadeUnitElement.init = function (self, unit)
+function SpawnGrenadeUnitElement:init(unit)
 	slot5 = unit
 
 	SpawnGrenadeUnitElement.super.init(slot3, self)
@@ -27,7 +27,7 @@ SpawnGrenadeUnitElement.init = function (self, unit)
 
 	return 
 end
-SpawnGrenadeUnitElement.test_element = function (self)
+function SpawnGrenadeUnitElement:test_element()
 	if self._hed.grenade_type == "m24" then
 		slot6 = self._unit
 		slot5 = self._hed.spawn_dir * self._hed.strength
@@ -37,7 +37,7 @@ SpawnGrenadeUnitElement.test_element = function (self)
 
 	return 
 end
-SpawnGrenadeUnitElement.update_selected = function (self, time, rel_time)
+function SpawnGrenadeUnitElement:update_selected(time, rel_time)
 	slot9 = self._unit
 	slot11 = 0.075
 
@@ -45,7 +45,7 @@ SpawnGrenadeUnitElement.update_selected = function (self, time, rel_time)
 
 	return 
 end
-SpawnGrenadeUnitElement.update_editing = function (self, time, rel_time)
+function SpawnGrenadeUnitElement:update_editing(time, rel_time)
 	slot5 = Input
 	local kb = Input.keyboard(slot4)
 	local speed = 60 * rel_time
@@ -104,7 +104,7 @@ SpawnGrenadeUnitElement.update_editing = function (self, time, rel_time)
 
 	return 
 end
-SpawnGrenadeUnitElement._build_panel = function (self, panel, panel_sizer)
+function SpawnGrenadeUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

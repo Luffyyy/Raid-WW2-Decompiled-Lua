@@ -16,7 +16,7 @@ RaidGUIControlCharacterCustomizationPeerLoot.NAME_FONT_SIZE = tweak_data.gui.fon
 RaidGUIControlCharacterCustomizationPeerLoot.DESCRIPTION_COLOR = tweak_data.gui.colors.raid_grey_effects
 RaidGUIControlCharacterCustomizationPeerLoot.DESCRIPTION_FONT_SIZE = tweak_data.gui.font_sizes.size_24
 RaidGUIControlCharacterCustomizationPeerLoot.TEXT_X = 128
-RaidGUIControlCharacterCustomizationPeerLoot.init = function (self, parent, params)
+function RaidGUIControlCharacterCustomizationPeerLoot:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlCharacterCustomizationPeerLoot.super.init(slot4, self, parent)
@@ -39,7 +39,7 @@ RaidGUIControlCharacterCustomizationPeerLoot.init = function (self, parent, para
 
 	return 
 end
-RaidGUIControlCharacterCustomizationPeerLoot._create_control_panel = function (self)
+function RaidGUIControlCharacterCustomizationPeerLoot:_create_control_panel()
 	slot3 = self._params
 	local control_params = clone(slot2)
 	control_params.x = control_params.x
@@ -54,7 +54,7 @@ RaidGUIControlCharacterCustomizationPeerLoot._create_control_panel = function (s
 
 	return 
 end
-RaidGUIControlCharacterCustomizationPeerLoot._create_customization_details = function (self, params)
+function RaidGUIControlCharacterCustomizationPeerLoot:_create_customization_details(params)
 	local icon = nil
 
 	if params.customization.part_type == CharacterCustomizationTweakData.PART_TYPE_UPPER then
@@ -114,7 +114,7 @@ RaidGUIControlCharacterCustomizationPeerLoot._create_customization_details = fun
 
 	return 
 end
-RaidGUIControlCharacterCustomizationPeerLoot.set_customization = function (self, customization)
+function RaidGUIControlCharacterCustomizationPeerLoot:set_customization(customization)
 	self._customization = customization
 	slot4 = self._customization_description
 	slot9 = true
@@ -127,7 +127,7 @@ RaidGUIControlCharacterCustomizationPeerLoot.set_customization = function (self,
 
 	return 
 end
-RaidGUIControlCharacterCustomizationPeerLoot.set_player_name = function (self, name)
+function RaidGUIControlCharacterCustomizationPeerLoot:set_player_name(name)
 	slot4 = self._name_label
 	slot7 = name
 
@@ -139,7 +139,7 @@ RaidGUIControlCharacterCustomizationPeerLoot.set_player_name = function (self, n
 
 	return 
 end
-RaidGUIControlCharacterCustomizationPeerLoot._layout_text = function (self)
+function RaidGUIControlCharacterCustomizationPeerLoot:_layout_text()
 	slot3 = self._name_label
 	local _, _, _, h = self._name_label.text_rect(slot2)
 	slot8 = h

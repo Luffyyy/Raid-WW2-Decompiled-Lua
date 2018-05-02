@@ -13,7 +13,7 @@ RaidGUIControlListItemRaids.LOCK_ICON = "ico_locker"
 RaidGUIControlListItemRaids.LOCK_ICON_CENTER_DISTANCE_FROM_RIGHT = 43
 RaidGUIControlListItemRaids.LOCKED_COLOR = tweak_data.gui.colors.raid_dark_grey
 RaidGUIControlListItemRaids.UNLOCKED_COLOR = tweak_data.gui.colors.raid_dirty_white
-RaidGUIControlListItemRaids.init = function (self, parent, params, data)
+function RaidGUIControlListItemRaids:init(parent, params, data)
 	slot8 = params
 
 	RaidGUIControlListItemRaids.super.init(slot5, self, parent)
@@ -99,7 +99,7 @@ RaidGUIControlListItemRaids.init = function (self, parent, params, data)
 
 	return 
 end
-RaidGUIControlListItemRaids._layout_panel = function (self, params)
+function RaidGUIControlListItemRaids:_layout_panel(params)
 	local panel_params = {
 		name = "list_item_" .. self._name,
 		x = params.x,
@@ -112,7 +112,7 @@ RaidGUIControlListItemRaids._layout_panel = function (self, params)
 
 	return 
 end
-RaidGUIControlListItemRaids._layout_background = function (self, params)
+function RaidGUIControlListItemRaids:_layout_background(params)
 	local background_params = {
 		y = 1,
 		visible = false,
@@ -128,7 +128,7 @@ RaidGUIControlListItemRaids._layout_background = function (self, params)
 
 	return 
 end
-RaidGUIControlListItemRaids._layout_highlight_marker = function (self)
+function RaidGUIControlListItemRaids:_layout_highlight_marker()
 	local marker_params = {
 		y = 1,
 		w = 3,
@@ -144,7 +144,7 @@ RaidGUIControlListItemRaids._layout_highlight_marker = function (self)
 
 	return 
 end
-RaidGUIControlListItemRaids._layout_icon = function (self, params, data)
+function RaidGUIControlListItemRaids:_layout_icon(params, data)
 	local icon_params = {
 		name = "list_item_icon_" .. self._name,
 		x = RaidGUIControlListItemRaids.ICON_PADDING,
@@ -166,7 +166,7 @@ RaidGUIControlListItemRaids._layout_icon = function (self, params, data)
 
 	return 
 end
-RaidGUIControlListItemRaids._layout_raid_name = function (self, params, data)
+function RaidGUIControlListItemRaids:_layout_raid_name(params, data)
 	local raid_name_params = {
 		vertical = "center",
 		y = 0,
@@ -189,7 +189,7 @@ RaidGUIControlListItemRaids._layout_raid_name = function (self, params, data)
 
 	return 
 end
-RaidGUIControlListItemRaids._layout_consumable_mission_label = function (self)
+function RaidGUIControlListItemRaids:_layout_consumable_mission_label()
 	local consumable_mission_label_params = {
 		vertical = "center",
 		name = "list_item_label_" .. self._name
@@ -228,7 +228,7 @@ RaidGUIControlListItemRaids._layout_consumable_mission_label = function (self)
 
 	return 
 end
-RaidGUIControlListItemRaids._layout_difficulty_locked = function (self)
+function RaidGUIControlListItemRaids:_layout_difficulty_locked()
 	local difficulty_locked_params = {
 		text = "--",
 		vertical = "center",
@@ -257,7 +257,7 @@ RaidGUIControlListItemRaids._layout_difficulty_locked = function (self)
 
 	return 
 end
-RaidGUIControlListItemRaids._layout_difficulty = function (self)
+function RaidGUIControlListItemRaids:_layout_difficulty()
 	local difficulty_params = {}
 	slot5 = self._item_icon
 	difficulty_params.x = self._item_icon.x(slot3) + self._item_icon.w(self._item_icon) + RaidGUIControlListItemRaids.ICON_PADDING
@@ -271,7 +271,7 @@ RaidGUIControlListItemRaids._layout_difficulty = function (self)
 
 	return 
 end
-RaidGUIControlListItemRaids._layout_lock_icon = function (self)
+function RaidGUIControlListItemRaids:_layout_lock_icon()
 	local lock_icon_params = {
 		texture = tweak_data.gui.icons[RaidGUIControlListItemRaids.LOCK_ICON].texture,
 		texture_rect = tweak_data.gui.icons[RaidGUIControlListItemRaids.LOCK_ICON].texture_rect,
@@ -291,7 +291,7 @@ RaidGUIControlListItemRaids._layout_lock_icon = function (self)
 
 	return 
 end
-RaidGUIControlListItemRaids._layout_breadcrumb = function (self)
+function RaidGUIControlListItemRaids:_layout_breadcrumb()
 	local breadcrumb_params = {
 		category = self._data.breadcrumb.category,
 		identifiers = self._data.breadcrumb.identifiers
@@ -310,7 +310,7 @@ RaidGUIControlListItemRaids._layout_breadcrumb = function (self)
 
 	return 
 end
-RaidGUIControlListItemRaids._apply_progression_layout = function (self)
+function RaidGUIControlListItemRaids:_apply_progression_layout()
 	if self._unlocked then
 		slot3 = self._lock_icon
 
@@ -364,7 +364,7 @@ RaidGUIControlListItemRaids._apply_progression_layout = function (self)
 
 	return 
 end
-RaidGUIControlListItemRaids.on_mouse_released = function (self, button)
+function RaidGUIControlListItemRaids:on_mouse_released(button)
 	if self._data.breadcrumb then
 		slot6 = self._data.breadcrumb.identifiers
 
@@ -391,7 +391,7 @@ RaidGUIControlListItemRaids.on_mouse_released = function (self, button)
 
 	return 
 end
-RaidGUIControlListItemRaids.mouse_double_click = function (self, o, button, x, y)
+function RaidGUIControlListItemRaids:mouse_double_click(o, button, x, y)
 	if self._params.no_click then
 		return 
 	end
@@ -406,10 +406,10 @@ RaidGUIControlListItemRaids.mouse_double_click = function (self, o, button, x, y
 
 	return 
 end
-RaidGUIControlListItemRaids.selected = function (self)
+function RaidGUIControlListItemRaids:selected()
 	return self._selected
 end
-RaidGUIControlListItemRaids.select = function (self)
+function RaidGUIControlListItemRaids:select()
 	self._selected = true
 	slot3 = self._item_background
 
@@ -439,7 +439,7 @@ RaidGUIControlListItemRaids.select = function (self)
 
 	return 
 end
-RaidGUIControlListItemRaids.unfocus = function (self)
+function RaidGUIControlListItemRaids:unfocus()
 	slot3 = self._item_background
 
 	self._item_background.hide(slot2)
@@ -450,7 +450,7 @@ RaidGUIControlListItemRaids.unfocus = function (self)
 
 	return 
 end
-RaidGUIControlListItemRaids.unselect = function (self)
+function RaidGUIControlListItemRaids:unselect()
 	self._selected = false
 	slot3 = self._item_background
 
@@ -468,10 +468,10 @@ RaidGUIControlListItemRaids.unselect = function (self)
 
 	return 
 end
-RaidGUIControlListItemRaids.data = function (self)
+function RaidGUIControlListItemRaids:data()
 	return self._data
 end
-RaidGUIControlListItemRaids.highlight_on = function (self)
+function RaidGUIControlListItemRaids:highlight_on()
 	slot3 = self._item_background
 
 	self._item_background.show(slot2)
@@ -498,7 +498,7 @@ RaidGUIControlListItemRaids.highlight_on = function (self)
 
 	return 
 end
-RaidGUIControlListItemRaids.highlight_off = function (self)
+function RaidGUIControlListItemRaids:highlight_off()
 	slot3 = managers.menu
 
 	if not managers.menu.is_pc_controller(slot2) then
@@ -519,7 +519,7 @@ RaidGUIControlListItemRaids.highlight_off = function (self)
 
 	return 
 end
-RaidGUIControlListItemRaids.confirm_pressed = function (self)
+function RaidGUIControlListItemRaids:confirm_pressed()
 	if self._selected then
 		slot4 = self._name
 

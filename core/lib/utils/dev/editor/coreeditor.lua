@@ -339,7 +339,7 @@ slot2 = "core/lib/utils/dev/editor/utils/CoreFCCEditorController"
 
 require(slot1)
 
-CoreEditor.init = function (self, game_state_machine, session_state)
+function CoreEditor:init(game_state_machine, session_state)
 	slot5 = game_state_machine
 
 	assert(slot4)
@@ -488,7 +488,7 @@ CoreEditor.init = function (self, game_state_machine, session_state)
 
 	return 
 end
-CoreEditor._load_packages = function (self)
+function CoreEditor:_load_packages()
 	slot4 = "core/packages/editor"
 
 	if not PackageManager.loaded(slot2, PackageManager) then
@@ -499,7 +499,7 @@ CoreEditor._load_packages = function (self)
 
 	return 
 end
-CoreEditor._init_viewport = function (self)
+function CoreEditor:_init_viewport()
 	self._camera_fov = 75
 	self._camera_near_range = 20
 	self._camera_far_range = 250000
@@ -532,7 +532,7 @@ CoreEditor._init_viewport = function (self)
 
 	return 
 end
-CoreEditor._init_listener = function (self)
+function CoreEditor:_init_listener()
 	slot8 = self._vp
 	slot8 = true
 	self._listener_id = managers.listener.add_listener(slot2, managers.listener, "editor", self._vp.camera(slot6), self._vp.camera(self._vp), nil)
@@ -554,7 +554,7 @@ CoreEditor._init_listener = function (self)
 
 	return 
 end
-CoreEditor._init_mute = function (self)
+function CoreEditor:_init_mute()
 	slot4 = "editor_mute"
 	self._mute_source = SoundDevice.create_source(slot2, SoundDevice)
 	self._mute_states = {
@@ -564,7 +564,7 @@ CoreEditor._init_mute = function (self)
 
 	return 
 end
-CoreEditor._init_gui = function (self)
+function CoreEditor:_init_gui()
 	slot3 = Overlay
 	slot3 = Overlay.newgui(slot2)
 	self._workspace = Overlay.newgui(slot2).create_screen_workspace(slot2)
@@ -593,7 +593,7 @@ CoreEditor._init_gui = function (self)
 
 	return 
 end
-CoreEditor._align_gui = function (self)
+function CoreEditor:_align_gui()
 	slot6 = "camera"
 	slot5 = self._gui.child(slot4, self._gui)
 
@@ -611,7 +611,7 @@ CoreEditor._align_gui = function (self)
 
 	return 
 end
-CoreEditor._init_editor_data = function (self)
+function CoreEditor:_init_editor_data()
 	self._editor_data = {
 		keyboard_available = true
 	}
@@ -620,7 +620,7 @@ CoreEditor._init_editor_data = function (self)
 
 	return 
 end
-CoreEditor._init_groups = function (self)
+function CoreEditor:_init_groups()
 	self._using_groups = false
 	self._debug_draw_groups = false
 	slot3 = CoreEditorGroups
@@ -628,7 +628,7 @@ CoreEditor._init_groups = function (self)
 
 	return 
 end
-CoreEditor._init_layer_classes = function (self)
+function CoreEditor:_init_layer_classes()
 	self._layers = {}
 	self._current_layer = nil
 	self._mission_layer_name = "Mission"
@@ -697,10 +697,10 @@ CoreEditor._init_layer_classes = function (self)
 
 	return 
 end
-CoreEditor._project_init_layer_classes = function (self)
+function CoreEditor:_project_init_layer_classes()
 	return 
 end
-CoreEditor._clear_values = function (self)
+function CoreEditor:_clear_values()
 	self._values = {
 		world = {}
 	}
@@ -708,7 +708,7 @@ CoreEditor._clear_values = function (self)
 
 	return 
 end
-CoreEditor._init_configuration_values = function (self)
+function CoreEditor:_init_configuration_values()
 	self._autosave_time = 5
 	self._autosave_timer = 0
 	self._notes = "Hail to the King!"
@@ -724,7 +724,7 @@ CoreEditor._init_configuration_values = function (self)
 
 	return 
 end
-CoreEditor._init_slot_masks = function (self)
+function CoreEditor:_init_slot_masks()
 	slot4 = "surface_move"
 	self._surface_move_mask = managers.slot.get_mask(slot2, managers.slot)
 	slot6 = 38
@@ -737,10 +737,10 @@ CoreEditor._init_slot_masks = function (self)
 
 	return 
 end
-CoreEditor._project_init_slot_masks = function (self)
+function CoreEditor:_project_init_slot_masks()
 	return 
 end
-CoreEditor._init_layer_values = function (self)
+function CoreEditor:_init_layer_values()
 	self._coordinate_systems = {
 		"Local",
 		"World"
@@ -782,7 +782,7 @@ CoreEditor._init_layer_values = function (self)
 
 	return 
 end
-CoreEditor._init_edit_setting_values = function (self)
+function CoreEditor:_init_edit_setting_values()
 	self._edit_setting_values = {}
 	slot4 = "_coordinate_system"
 
@@ -814,7 +814,7 @@ CoreEditor._init_edit_setting_values = function (self)
 
 	return 
 end
-CoreEditor._replace_unit_categories = function (self)
+function CoreEditor:_replace_unit_categories()
 	self._replace_unit_categories = {
 		"none",
 		"mission_element"
@@ -825,7 +825,7 @@ CoreEditor._replace_unit_categories = function (self)
 
 	return 
 end
-CoreEditor._init_paths = function (self)
+function CoreEditor:_init_paths()
 	self._lastdir = "levels\\"
 	self._version_path = "lib/utils/dev/editor/xml/version"
 	self._configuration_path = "lib/utils/dev/editor/xml/editor_configuration"
@@ -864,7 +864,7 @@ CoreEditor._init_paths = function (self)
 
 	return 
 end
-CoreEditor._init_mission_difficulties = function (self)
+function CoreEditor:_init_mission_difficulties()
 	self._mission_difficulties = {
 		{
 			"easy",
@@ -883,7 +883,7 @@ CoreEditor._init_mission_difficulties = function (self)
 
 	return 
 end
-CoreEditor._init_mission_players = function (self)
+function CoreEditor:_init_mission_players()
 	self._mission_players = {
 		1
 	}
@@ -891,7 +891,7 @@ CoreEditor._init_mission_players = function (self)
 
 	return 
 end
-CoreEditor._init_mission_platforms = function (self)
+function CoreEditor:_init_mission_platforms()
 	self._mission_platforms = {
 		"WIN32",
 		"PS3"
@@ -900,7 +900,7 @@ CoreEditor._init_mission_platforms = function (self)
 
 	return 
 end
-CoreEditor._init_title_messages = function (self)
+function CoreEditor:_init_title_messages()
 	self._title_messages = {}
 	slot4 = "Ask yourself, is this good for the company? "
 
@@ -924,7 +924,7 @@ CoreEditor._init_title_messages = function (self)
 
 	return 
 end
-CoreEditor._init_edit_unit_dialog = function (self)
+function CoreEditor:_init_edit_unit_dialog()
 	slot5 = "EditUnitDialog"
 
 	self.show_dialog(slot2, self, "edit_unit")
@@ -959,7 +959,7 @@ CoreEditor._init_edit_unit_dialog = function (self)
 
 	return 
 end
-CoreEditor._populate_replace_unit_categories_from_layer_types = function (self)
+function CoreEditor:_populate_replace_unit_categories_from_layer_types()
 	for layer_name, types in pairs(CoreEditorUtils.get_layer_types()) do
 		slot8 = types
 
@@ -972,7 +972,7 @@ CoreEditor._populate_replace_unit_categories_from_layer_types = function (self)
 
 	return 
 end
-CoreEditor._init_head_lamp = function (self)
+function CoreEditor:_init_head_lamp()
 	slot4 = "omni|specular"
 	self._light = World.create_light(slot2, World)
 	slot4 = 20000
@@ -1003,14 +1003,14 @@ CoreEditor._init_head_lamp = function (self)
 
 	return 
 end
-CoreEditor.add_title_message = function (self, msg)
+function CoreEditor:add_title_message(msg)
 	slot5 = msg
 
 	table.insert(slot3, self._title_messages)
 
 	return 
 end
-CoreEditor.add_layer = function (self, name, layer_class)
+function CoreEditor:add_layer(name, layer_class)
 	if self._layers[name] then
 		slot6 = "[CoreEditor] Layer referens named " .. name .. " already added. (Probably because Statics and Dynamics have been moved from project to Core. Remove project added layer from project WorldEditor)"
 
@@ -1022,7 +1022,7 @@ CoreEditor.add_layer = function (self, name, layer_class)
 
 	return 
 end
-CoreEditor.check_news = function (self, file, devices)
+function CoreEditor:check_news(file, devices)
 	slot5 = WorldEditorNews
 	self._world_editor_news = WorldEditorNews.new(slot4)
 	slot7 = self._version_path
@@ -1061,25 +1061,25 @@ CoreEditor.check_news = function (self, file, devices)
 
 	return 
 end
-CoreEditor.ctrl_bindings = function (self)
+function CoreEditor:ctrl_bindings()
 	return self._ctrl_bindings
 end
-CoreEditor.ctrl_layer_bindings = function (self)
+function CoreEditor:ctrl_layer_bindings()
 	return self._ctrl_layer_bindings
 end
-CoreEditor.ctrl_menu_bindings = function (self)
+function CoreEditor:ctrl_menu_bindings()
 	return self._ctrl_menu_bindings
 end
-CoreEditor.ctrl_binding = function (self, name)
+function CoreEditor:ctrl_binding(name)
 	return self._ctrl_bindings[name] or ""
 end
-CoreEditor.ctrl_layer_binding = function (self, name)
+function CoreEditor:ctrl_layer_binding(name)
 	return self._ctrl_layer_bindings[name] or ""
 end
-CoreEditor.ctrl_menu_binding = function (self, name)
+function CoreEditor:ctrl_menu_binding(name)
 	return self._ctrl_menu_bindings[name] or ""
 end
-CoreEditor._parse_controller_file = function (self, file, devices)
+function CoreEditor:_parse_controller_file(file, devices)
 	slot7 = file
 
 	if DB.has(slot4, DB, "controller") then
@@ -1130,7 +1130,7 @@ CoreEditor._parse_controller_file = function (self, file, devices)
 
 	return 
 end
-CoreEditor._init_controller = function (self)
+function CoreEditor:_init_controller()
 	local mouse = Input.mouse(slot2)
 	slot4 = Input
 	local kb = Input.keyboard(Input)
@@ -1281,17 +1281,17 @@ CoreEditor._init_controller = function (self)
 
 	return 
 end
-CoreEditor.viewport = function (self)
+function CoreEditor:viewport()
 	return self._vp
 end
-CoreEditor._set_vp_active = function (self, active)
+function CoreEditor:_set_vp_active(active)
 	slot5 = active
 
 	self._vp.set_active(slot3, self._vp)
 
 	return 
 end
-CoreEditor.set_camera = function (self, pos, rot)
+function CoreEditor:set_camera(pos, rot)
 	slot6 = pos
 
 	self._camera_controller.set_camera_pos(slot4, self._camera_controller)
@@ -1302,7 +1302,7 @@ CoreEditor.set_camera = function (self, pos, rot)
 
 	return 
 end
-CoreEditor.set_camera_roll = function (self, roll)
+function CoreEditor:set_camera_roll(roll)
 	if not self._camera_controller then
 		return 
 	end
@@ -1313,25 +1313,25 @@ CoreEditor.set_camera_roll = function (self, roll)
 
 	return 
 end
-CoreEditor.camera = function (self)
+function CoreEditor:camera()
 	slot3 = self._vp
 
 	return self._vp.camera(slot2)
 end
-CoreEditor.camera_position = function (self)
+function CoreEditor:camera_position()
 	slot3 = self._camera_controller
 
 	return self._camera_controller.get_camera_pos(slot2)
 end
-CoreEditor.camera_rotation = function (self)
+function CoreEditor:camera_rotation()
 	slot3 = self._camera_controller
 
 	return self._camera_controller.get_camera_rot(slot2)
 end
-CoreEditor.default_camera_fov = function (self)
+function CoreEditor:default_camera_fov()
 	return self._camera_fov
 end
-CoreEditor.set_default_camera_fov = function (self, fov)
+function CoreEditor:set_default_camera_fov(fov)
 	self._camera_fov = fov
 	slot5 = self._camera_fov
 
@@ -1339,13 +1339,13 @@ CoreEditor.set_default_camera_fov = function (self, fov)
 
 	return 
 end
-CoreEditor.camera_fov = function (self)
+function CoreEditor:camera_fov()
 	slot3 = self
 	slot3 = self.camera(slot2)
 
 	return self.camera(slot2).fov(slot2)
 end
-CoreEditor.set_camera_fov = function (self, fov)
+function CoreEditor:set_camera_fov(fov)
 	slot6 = self
 	slot6 = self.camera(slot5)
 
@@ -1366,30 +1366,30 @@ CoreEditor.set_camera_fov = function (self, fov)
 
 	return 
 end
-CoreEditor.camera_far_range = function (self)
+function CoreEditor:camera_far_range()
 	slot3 = self
 	slot3 = self.camera(slot2)
 
 	return self.camera(slot2).far_range(slot2)
 end
-CoreEditor.set_camera_near_range = function (self, range)
+function CoreEditor:set_camera_near_range(range)
 	self._camera_near_range = range
 	slot4 = self
 	slot5 = self._camera_near_range
 
 	return self.camera(slot3).set_near_range(slot3, self.camera(slot3))
 end
-CoreEditor.set_camera_far_range = function (self, range)
+function CoreEditor:set_camera_far_range(range)
 	self._camera_far_range = range
 	slot4 = self
 	slot5 = self._camera_far_range
 
 	return self.camera(slot3).set_far_range(slot3, self.camera(slot3))
 end
-CoreEditor.groups = function (self)
+function CoreEditor:groups()
 	return self._groups
 end
-CoreEditor.create_group = function (self, ...)
+function CoreEditor:create_group(...)
 	local group = self._groups.create(slot2, ...)
 	slot5 = group
 
@@ -1397,7 +1397,7 @@ CoreEditor.create_group = function (self, ...)
 
 	return 
 end
-CoreEditor.remove_group = function (self, name, ...)
+function CoreEditor:remove_group(name, ...)
 	slot7 = self._groups
 	slot5 = self._groups.groups(slot6)[name]
 
@@ -1409,7 +1409,7 @@ CoreEditor.remove_group = function (self, name, ...)
 
 	return 
 end
-CoreEditor.toggle = function (self)
+function CoreEditor:toggle()
 	if self._current then
 		slot3 = self
 
@@ -1422,7 +1422,7 @@ CoreEditor.toggle = function (self)
 
 	return 
 end
-CoreEditor.open = function (self)
+function CoreEditor:open()
 	if managers.editor and not self._current then
 		slot3 = self
 
@@ -1449,7 +1449,7 @@ CoreEditor.open = function (self)
 
 	return 
 end
-CoreEditor.close = function (self)
+function CoreEditor:close()
 	if self._current then
 		slot3 = self
 
@@ -1475,7 +1475,7 @@ CoreEditor.close = function (self)
 
 	return 
 end
-CoreEditor.pickup_tool = function (self)
+function CoreEditor:pickup_tool()
 
 	-- Decompilation error in this vicinity:
 	slot4 = "CoreEditor:pickup_tool"
@@ -1715,7 +1715,7 @@ CoreEditor.pickup_tool = function (self)
 
 	return 
 end
-CoreEditor.run_simulation_callback = function (self, ...)
+function CoreEditor:run_simulation_callback(...)
 	if self._stopping_simulation then
 		return 
 	end
@@ -1726,7 +1726,7 @@ CoreEditor.run_simulation_callback = function (self, ...)
 
 	return 
 end
-CoreEditor.run_simulation = function (self, with_mission)
+function CoreEditor:run_simulation(with_mission)
 	if not Global.running_simulation then
 		if self._lastdir then
 		end
@@ -1901,7 +1901,7 @@ CoreEditor.run_simulation = function (self, with_mission)
 
 	return 
 end
-CoreEditor._simulation_disable_continents = function (self)
+function CoreEditor:_simulation_disable_continents()
 	local t = {}
 
 	if self._simulation_world_setting_path then
@@ -1919,13 +1919,13 @@ CoreEditor._simulation_disable_continents = function (self)
 
 	return 
 end
-CoreEditor.project_prestart_up = function (self, with_mission)
+function CoreEditor:project_prestart_up(with_mission)
 	return 
 end
-CoreEditor.project_run_simulation = function (self, with_mission)
+function CoreEditor:project_run_simulation(with_mission)
 	return 
 end
-CoreEditor.set_up_portals = function (self, mask)
+function CoreEditor:set_up_portals(mask)
 	local portals = self._layers.Portals
 	slot7 = portals
 
@@ -1980,7 +1980,7 @@ CoreEditor.set_up_portals = function (self, mask)
 
 	return 
 end
-CoreEditor.go_through_all_units = function (self, mask)
+function CoreEditor:go_through_all_units(mask)
 	slot6 = mask
 	local units = World.find_units_quick(slot3, World, "all")
 	slot5 = units
@@ -2026,10 +2026,10 @@ CoreEditor.go_through_all_units = function (self, mask)
 
 	return units
 end
-CoreEditor._project_check_unit = function (self, ...)
+function CoreEditor:_project_check_unit(...)
 	return 
 end
-CoreEditor._hide_dialogs = function (self)
+function CoreEditor:_hide_dialogs()
 	if self._dialogs.edit_unit then
 		slot4 = false
 
@@ -2038,7 +2038,7 @@ CoreEditor._hide_dialogs = function (self)
 
 	return 
 end
-CoreEditor.force_editor_state = function (self)
+function CoreEditor:force_editor_state()
 	slot3 = self._gsm
 	slot3 = self._gsm.current_state(slot2)
 
@@ -2046,7 +2046,7 @@ CoreEditor.force_editor_state = function (self)
 
 	return 
 end
-CoreEditor.stop_simulation = function (self)
+function CoreEditor:stop_simulation()
 	self._stopping_simulation = true
 	slot4 = true
 
@@ -2126,7 +2126,7 @@ CoreEditor.stop_simulation = function (self)
 
 	return 
 end
-CoreEditor.clear_layers_and_units = function (self)
+function CoreEditor:clear_layers_and_units()
 	slot3 = self
 
 	self.clear_layers(slot2)
@@ -2155,22 +2155,22 @@ CoreEditor.clear_layers_and_units = function (self)
 
 	return 
 end
-CoreEditor.clear_units = function (self)
+function CoreEditor:clear_units()
 	return 
 end
-CoreEditor.project_stop_simulation = function (self)
+function CoreEditor:project_stop_simulation()
 	return 
 end
-CoreEditor.project_clear_layers = function (self)
+function CoreEditor:project_clear_layers()
 	return 
 end
-CoreEditor.project_clear_units = function (self)
+function CoreEditor:project_clear_units()
 	return 
 end
-CoreEditor.project_recreate_layers = function (self)
+function CoreEditor:project_recreate_layers()
 	return 
 end
-CoreEditor._show_error_log = function (self)
+function CoreEditor:_show_error_log()
 	if self._error_log and 0 < #self._error_log then
 		local errors = "You have " .. #self._error_log .. " new errors:\n\n"
 		slot4 = self._error_log
@@ -2201,7 +2201,7 @@ CoreEditor._show_error_log = function (self)
 
 	return 
 end
-CoreEditor.show_text_box = function (self, title, text)
+function CoreEditor:show_text_box(title, text)
 	slot13 = 0
 	slot14 = 0
 	slot11 = "DEFAULT_DIALOG_STYLE,RESIZE_BORDER,STAY_ON_TOP,MAXIMIZE_BOX"
@@ -2223,7 +2223,7 @@ CoreEditor.show_text_box = function (self, title, text)
 
 	return 
 end
-CoreEditor.connect_slave = function (self)
+function CoreEditor:connect_slave()
 	if not self._slave_host_name or self._slave_host_name == "" then
 		slot3 = self
 
@@ -2257,7 +2257,7 @@ CoreEditor.connect_slave = function (self)
 
 	return 
 end
-CoreEditor.clear_layers = function (self)
+function CoreEditor:clear_layers()
 	slot3 = self._layers[self._mission_layer_name]
 
 	self._layers[self._mission_layer_name].clear(self._mission_layer_name)
@@ -2284,7 +2284,7 @@ CoreEditor.clear_layers = function (self)
 
 	return 
 end
-CoreEditor.recreate_layers = function (self)
+function CoreEditor:recreate_layers()
 	slot4 = self._world_holder
 	slot9 = 0
 
@@ -2307,7 +2307,7 @@ CoreEditor.recreate_layers = function (self)
 
 	return 
 end
-CoreEditor.reset_layers = function (self)
+function CoreEditor:reset_layers()
 	slot4 = self._world_holder
 	slot9 = 0
 
@@ -2331,7 +2331,7 @@ CoreEditor.reset_layers = function (self)
 
 	return 
 end
-CoreEditor.set_show_camera_info = function (self, value)
+function CoreEditor:set_show_camera_info(value)
 	slot5 = "camera"
 	slot5 = value
 
@@ -2339,7 +2339,7 @@ CoreEditor.set_show_camera_info = function (self, value)
 
 	return 
 end
-CoreEditor.build_editor_controls = function (self)
+function CoreEditor:build_editor_controls()
 	slot4 = "VERTICAL"
 	local editor_sizer = EWS.BoxSizer(slot2, EWS)
 	slot7 = self
@@ -2372,7 +2372,7 @@ CoreEditor.build_editor_controls = function (self)
 
 	return editor_sizer
 end
-CoreEditor.close_editing = function (self)
+function CoreEditor:close_editing()
 	slot3 = self._edit_buttons
 
 	for _, btn in pairs(slot2) do
@@ -2399,7 +2399,7 @@ CoreEditor.close_editing = function (self)
 
 	return 
 end
-CoreEditor.output_error = function (self, text, no_time_stamp)
+function CoreEditor:output_error(text, no_time_stamp)
 	slot12 = 0
 
 	self.output(slot4, self, text, no_time_stamp, Vector3("FONTWEIGHT_BOLD", 255, 0))
@@ -2417,21 +2417,21 @@ CoreEditor.output_error = function (self, text, no_time_stamp)
 
 	return 
 end
-CoreEditor.output_warning = function (self, text, no_time_stamp)
+function CoreEditor:output_warning(text, no_time_stamp)
 	slot12 = 0
 
 	self.output(slot4, self, text, no_time_stamp, Vector3("FONTWEIGHT_BOLD", 200, 200))
 
 	return 
 end
-CoreEditor.output_info = function (self, text, no_time_stamp)
+function CoreEditor:output_info(text, no_time_stamp)
 	slot12 = 0
 
 	self.output(slot4, self, text, no_time_stamp, Vector3("FONTWEIGHT_BOLD", 0, 200))
 
 	return 
 end
-CoreEditor.output = function (self, text, no_time_stamp, colour, weight)
+function CoreEditor:output(text, no_time_stamp, colour, weight)
 	if colour then
 		slot8 = colour
 
@@ -2480,17 +2480,17 @@ CoreEditor.output = function (self, text, no_time_stamp, colour, weight)
 
 	return 
 end
-CoreEditor.toggle_mixed_input_mode = function (self)
+function CoreEditor:toggle_mixed_input_mode()
 	slot4 = not self._in_mixed_input_mode
 
 	self.set_in_mixed_input_mode(slot2, self)
 
 	return 
 end
-CoreEditor.in_mixed_input_mode = function (self)
+function CoreEditor:in_mixed_input_mode()
 	return self._in_mixed_input_mode
 end
-CoreEditor.set_in_mixed_input_mode = function (self, mixed_input)
+function CoreEditor:set_in_mixed_input_mode(mixed_input)
 	self._in_mixed_input_mode = mixed_input
 
 	if not self._in_mixed_input_mode then
@@ -2543,7 +2543,7 @@ CoreEditor.set_in_mixed_input_mode = function (self, mixed_input)
 
 	return 
 end
-CoreEditor.set_camera_locked = function (self, locked)
+function CoreEditor:set_camera_locked(locked)
 	self._camera_locked = locked
 	slot4 = self._workspace
 
@@ -2558,10 +2558,10 @@ CoreEditor.set_camera_locked = function (self, locked)
 
 	return 
 end
-CoreEditor.hidden_units = function (self)
+function CoreEditor:hidden_units()
 	return self._hidden_units
 end
-CoreEditor.on_hide_selected = function (self)
+function CoreEditor:on_hide_selected()
 	if self._current_layer then
 		if self._current_layer.on_hide_selected then
 			slot3 = self._current_layer
@@ -2584,7 +2584,7 @@ CoreEditor.on_hide_selected = function (self)
 
 	return 
 end
-CoreEditor.on_hide_unselected = function (self)
+function CoreEditor:on_hide_unselected()
 	slot3 = self._layers
 
 	for _, layer in pairs(slot2) do
@@ -2603,7 +2603,7 @@ CoreEditor.on_hide_unselected = function (self)
 
 	return 
 end
-CoreEditor.on_unhide_all = function (self)
+function CoreEditor:on_unhide_all()
 	local to_hide = clone(slot2)
 	slot4 = to_hide
 
@@ -2615,7 +2615,7 @@ CoreEditor.on_unhide_all = function (self)
 
 	return 
 end
-CoreEditor.on_hide_current_layer = function (self)
+function CoreEditor:on_hide_current_layer()
 	if self._current_layer then
 		slot3 = self._current_layer
 
@@ -2624,7 +2624,7 @@ CoreEditor.on_hide_current_layer = function (self)
 
 	return 
 end
-CoreEditor.on_hide_all_layers = function (self)
+function CoreEditor:on_hide_all_layers()
 	slot3 = self._layers
 
 	for _, layer in pairs(slot2) do
@@ -2637,7 +2637,7 @@ CoreEditor.on_hide_all_layers = function (self)
 
 	return 
 end
-CoreEditor.set_unit_visible = function (self, unit, visible)
+function CoreEditor:set_unit_visible(unit, visible)
 	slot5 = unit
 
 	if unit.mission_element(slot4) then
@@ -2679,7 +2679,7 @@ CoreEditor.set_unit_visible = function (self, unit, visible)
 
 	return 
 end
-CoreEditor.unselect_unit = function (self, unit)
+function CoreEditor:unselect_unit(unit)
 	slot5 = unit
 	local layer = self.unit_in_layer(slot3, self)
 
@@ -2695,7 +2695,7 @@ CoreEditor.unselect_unit = function (self, unit)
 
 	return 
 end
-CoreEditor.insert_hidden_unit = function (self, unit)
+function CoreEditor:insert_hidden_unit(unit)
 	slot5 = unit
 
 	table.insert(slot3, self._hidden_units)
@@ -2714,7 +2714,7 @@ CoreEditor.insert_hidden_unit = function (self, unit)
 
 	return 
 end
-CoreEditor.delete_hidden_unit = function (self, unit)
+function CoreEditor:delete_hidden_unit(unit)
 	slot5 = unit
 
 	table.delete(slot3, self._hidden_units)
@@ -2727,7 +2727,7 @@ CoreEditor.delete_hidden_unit = function (self, unit)
 
 	return 
 end
-CoreEditor.deleted_unit = function (self, unit)
+function CoreEditor:deleted_unit(unit)
 	slot5 = unit
 
 	self.delete_hidden_unit(slot3, self)
@@ -2784,7 +2784,7 @@ CoreEditor.deleted_unit = function (self, unit)
 
 	return 
 end
-CoreEditor.spawned_unit = function (self, unit)
+function CoreEditor:spawned_unit(unit)
 	if self._unit_list then
 		slot5 = unit
 
@@ -2827,7 +2827,7 @@ CoreEditor.spawned_unit = function (self, unit)
 
 	return 
 end
-CoreEditor.unit_name_changed = function (self, unit)
+function CoreEditor:unit_name_changed(unit)
 	if self._unit_list then
 		slot5 = unit
 
@@ -2854,7 +2854,7 @@ CoreEditor.unit_name_changed = function (self, unit)
 
 	return 
 end
-CoreEditor.on_selected_unit = function (self, unit)
+function CoreEditor:on_selected_unit(unit)
 	if self._unit_list then
 		slot5 = unit
 
@@ -2872,7 +2872,7 @@ CoreEditor.on_selected_unit = function (self, unit)
 
 	return 
 end
-CoreEditor.on_reference_unit = function (self, unit)
+function CoreEditor:on_reference_unit(unit)
 	if self._move_transform_type_in then
 		slot5 = unit
 
@@ -2887,7 +2887,7 @@ CoreEditor.on_reference_unit = function (self, unit)
 
 	return 
 end
-CoreEditor.group_created = function (self, group)
+function CoreEditor:group_created(group)
 	if self._dialogs.select_group_by_name then
 		slot5 = group
 
@@ -2896,7 +2896,7 @@ CoreEditor.group_created = function (self, group)
 
 	return 
 end
-CoreEditor.group_removed = function (self, group)
+function CoreEditor:group_removed(group)
 	if self._dialogs.select_group_by_name then
 		slot5 = group
 
@@ -2905,7 +2905,7 @@ CoreEditor.group_removed = function (self, group)
 
 	return 
 end
-CoreEditor.group_selected = function (self, group)
+function CoreEditor:group_selected(group)
 	if self._dialogs.select_group_by_name then
 		slot5 = group
 
@@ -2914,7 +2914,7 @@ CoreEditor.group_selected = function (self, group)
 
 	return 
 end
-CoreEditor.set_selected_units_position = function (self, pos)
+function CoreEditor:set_selected_units_position(pos)
 	if self._current_layer then
 		slot5 = pos
 
@@ -2923,7 +2923,7 @@ CoreEditor.set_selected_units_position = function (self, pos)
 
 	return 
 end
-CoreEditor.set_selected_units_rotation = function (self, rot)
+function CoreEditor:set_selected_units_rotation(rot)
 	if self._current_layer then
 		slot5 = rot
 
@@ -2932,7 +2932,7 @@ CoreEditor.set_selected_units_rotation = function (self, rot)
 
 	return 
 end
-CoreEditor.selected_units = function (self, units)
+function CoreEditor:selected_units(units)
 	if self._dialogs.select_by_name then
 		slot5 = units
 
@@ -2941,7 +2941,7 @@ CoreEditor.selected_units = function (self, units)
 
 	return 
 end
-CoreEditor.show_layer_replace_dialog = function (self, layer)
+function CoreEditor:show_layer_replace_dialog(layer)
 	slot5 = layer
 	local layer_name = self.layer_name(slot3, self)
 
@@ -2956,7 +2956,7 @@ CoreEditor.show_layer_replace_dialog = function (self, layer)
 
 	return 
 end
-CoreEditor.layer_name = function (self, layer)
+function CoreEditor:layer_name(layer)
 	slot4 = self._layers
 
 	for name, l in pairs(slot3) do
@@ -2967,15 +2967,15 @@ CoreEditor.layer_name = function (self, layer)
 
 	return 
 end
-CoreEditor.current_layer_name = function (self)
+function CoreEditor:current_layer_name()
 	slot4 = self._current_layer
 
 	return self.layer_name(slot2, self)
 end
-CoreEditor.current_layer = function (self)
+function CoreEditor:current_layer()
 	return self._current_layer
 end
-CoreEditor.freeze_gui_lists = function (self)
+function CoreEditor:freeze_gui_lists()
 	if self._unit_list then
 		slot3 = self._unit_list
 
@@ -2990,7 +2990,7 @@ CoreEditor.freeze_gui_lists = function (self)
 
 	return 
 end
-CoreEditor.thaw_gui_lists = function (self)
+function CoreEditor:thaw_gui_lists()
 	if self._unit_list then
 		slot3 = self._unit_list
 
@@ -3005,7 +3005,7 @@ CoreEditor.thaw_gui_lists = function (self)
 
 	return 
 end
-CoreEditor.reset_dialog = function (self, name)
+function CoreEditor:reset_dialog(name)
 	if self._dialogs[name] then
 		slot4 = self._dialogs[name]
 
@@ -3014,7 +3014,7 @@ CoreEditor.reset_dialog = function (self, name)
 
 	return 
 end
-CoreEditor._reset_dialogs = function (self)
+function CoreEditor:_reset_dialogs()
 	slot3 = self._dialogs
 
 	for name, dialog in pairs(slot2) do
@@ -3025,7 +3025,7 @@ CoreEditor._reset_dialogs = function (self)
 
 	return 
 end
-CoreEditor._recreate_dialogs = function (self)
+function CoreEditor:_recreate_dialogs()
 	slot3 = self._dialogs
 
 	for name, dialog in pairs(slot2) do
@@ -3036,7 +3036,7 @@ CoreEditor._recreate_dialogs = function (self)
 
 	return 
 end
-CoreEditor.get_real_name = function (self, name)
+function CoreEditor:get_real_name(name)
 	local fs = " %*"
 	slot6 = fs
 
@@ -3049,7 +3049,7 @@ CoreEditor.get_real_name = function (self, name)
 
 	return name
 end
-CoreEditor.add_selected_unit_callback = function (self, callback_func)
+function CoreEditor:add_selected_unit_callback(callback_func)
 	self._selected_unit_callbacks = self._selected_unit_callbacks or {}
 	slot5 = callback_func
 
@@ -3057,7 +3057,7 @@ CoreEditor.add_selected_unit_callback = function (self, callback_func)
 
 	return callback_func
 end
-CoreEditor.remove_selected_unit_callback = function (self, callback_func)
+function CoreEditor:remove_selected_unit_callback(callback_func)
 	if self._selected_unit_callbacks then
 		slot5 = callback_func
 
@@ -3066,13 +3066,13 @@ CoreEditor.remove_selected_unit_callback = function (self, callback_func)
 
 	return 
 end
-CoreEditor.set_open_file_and_dir = function (self, path, dir)
+function CoreEditor:set_open_file_and_dir(path, dir)
 	self._openfile = path
 	self._opendir = dir
 
 	return 
 end
-CoreEditor.update_load_progress = function (self, num, title)
+function CoreEditor:update_load_progress(num, title)
 	if self._load_progress then
 		slot7 = title
 
@@ -3081,7 +3081,7 @@ CoreEditor.update_load_progress = function (self, num, title)
 
 	return 
 end
-CoreEditor.recent_file = function (self, path)
+function CoreEditor:recent_file(path)
 	slot4 = self._recent_files
 
 	for _, file in ipairs(slot3) do
@@ -3092,7 +3092,7 @@ CoreEditor.recent_file = function (self, path)
 
 	return 
 end
-CoreEditor.save_editor_settings = function (self, path, dir)
+function CoreEditor:save_editor_settings(path, dir)
 	self._lastfile = path
 	self._lastdir = dir
 	self._title = self._editor_name .. " - " .. self._lastfile
@@ -3166,7 +3166,7 @@ CoreEditor.save_editor_settings = function (self, path, dir)
 
 	return 
 end
-CoreEditor._load_editor_settings = function (self)
+function CoreEditor:_load_editor_settings()
 	slot5 = self._editor_settings_path
 
 	if DB.has(slot2, DB, "xml") then
@@ -3205,7 +3205,7 @@ CoreEditor._load_editor_settings = function (self)
 
 	return 
 end
-CoreEditor.save_layout = function (self)
+function CoreEditor:save_layout()
 	local params = {
 		save_dialog_states = self._save_dialog_states,
 		dialogs = self._dialogs,
@@ -3219,7 +3219,7 @@ CoreEditor.save_layout = function (self)
 
 	return 
 end
-CoreEditor.load_layout = function (self)
+function CoreEditor:load_layout()
 	slot5 = self._layout_path
 
 	if DB.has(slot2, DB, "editor_layout") then
@@ -3235,7 +3235,7 @@ CoreEditor.load_layout = function (self)
 
 	return 
 end
-CoreEditor.show_dialog = function (self, name, class_name)
+function CoreEditor:show_dialog(name, class_name)
 	if not self._dialogs[name] then
 		local settings = self._dialogs_settings[name]
 		slot8 = settings
@@ -3248,7 +3248,7 @@ CoreEditor.show_dialog = function (self, name, class_name)
 
 	return 
 end
-CoreEditor.hide_dialog = function (self, name)
+function CoreEditor:hide_dialog(name)
 	if self._dialogs[name] then
 		slot5 = false
 
@@ -3257,7 +3257,7 @@ CoreEditor.hide_dialog = function (self, name)
 
 	return 
 end
-CoreEditor.save_configuration = function (self)
+function CoreEditor:save_configuration()
 	slot6 = managers.database
 	local f = SystemFS.open(slot2, SystemFS, managers.database.base_path("w") .. self._configuration_path .. ".xml")
 	slot5 = "<editor_configuration>"
@@ -3285,7 +3285,7 @@ CoreEditor.save_configuration = function (self)
 
 	return 
 end
-CoreEditor._load_configuration = function (self)
+function CoreEditor:_load_configuration()
 	slot5 = self._configuration_path
 
 	if DB.has(slot2, DB, "xml") then
@@ -3303,7 +3303,7 @@ CoreEditor._load_configuration = function (self)
 
 	return 
 end
-CoreEditor.save_edit_setting_values = function (self)
+function CoreEditor:save_edit_setting_values()
 	if not self._save_edit_setting_values then
 		slot6 = managers.database
 		slot4 = managers.database.base_path(slot5) .. self._edit_setting_values_path .. ".xml"
@@ -3345,7 +3345,7 @@ CoreEditor.save_edit_setting_values = function (self)
 
 	return 
 end
-CoreEditor._load_edit_setting_values = function (self)
+function CoreEditor:_load_edit_setting_values()
 	slot5 = self._edit_setting_values_path
 
 	if not DB.has(slot2, DB, "xml") then
@@ -3365,7 +3365,7 @@ CoreEditor._load_edit_setting_values = function (self)
 
 	return 
 end
-CoreEditor.select_unit_name = function (self, name)
+function CoreEditor:select_unit_name(name)
 	slot6 = name
 	local ud = CoreEngineAccess._editor_unit_data(name.id(slot5))
 	slot5 = self._layers
@@ -3451,7 +3451,7 @@ CoreEditor.select_unit_name = function (self, name)
 
 	return name.s(slot4) .. " type " .. ud.type(slot6).s(slot6) .. " is in no layer."
 end
-CoreEditor.select_unit = function (self, unit)
+function CoreEditor:select_unit(unit)
 	slot4 = unit
 
 	if unit.unit_data(slot3).instance then
@@ -3500,7 +3500,7 @@ CoreEditor.select_unit = function (self, unit)
 
 	return 
 end
-CoreEditor.select_unit_by_unit_id = function (self, unit_id)
+function CoreEditor:select_unit_by_unit_id(unit_id)
 	slot4 = self._layers
 
 	for layer_name, layer in pairs(slot3) do
@@ -3522,7 +3522,7 @@ CoreEditor.select_unit_by_unit_id = function (self, unit_id)
 
 	return 
 end
-CoreEditor.show_replace_unit = function (self)
+function CoreEditor:show_replace_unit()
 	if not self._replace_dialog then
 		slot5 = self._replace_unit_categories
 		self._replace_dialog = ReplaceUnit.new(slot2, ReplaceUnit, "Replace Units")
@@ -3536,7 +3536,7 @@ CoreEditor.show_replace_unit = function (self)
 
 	return self._replace_dialog.result(slot2)
 end
-CoreEditor.show_replace_massunit = function (self)
+function CoreEditor:show_replace_massunit()
 	if not self._replace_massunit_dialog then
 		slot5 = {
 			"brush"
@@ -3552,7 +3552,7 @@ CoreEditor.show_replace_massunit = function (self)
 
 	return self._replace_massunit_dialog.result(slot2)
 end
-CoreEditor.reload_units = function (self, unit_names, small_compile, skip_replace_units)
+function CoreEditor:reload_units(unit_names, small_compile, skip_replace_units)
 	if #unit_names <= 0 then
 		return 
 	end
@@ -3671,7 +3671,7 @@ CoreEditor.reload_units = function (self, unit_names, small_compile, skip_replac
 
 	return 
 end
-CoreEditor.entering_window = function (self, user_data, event_object)
+function CoreEditor:entering_window(user_data, event_object)
 	if Global.running_simulation then
 		slot6 = false
 
@@ -3695,7 +3695,7 @@ CoreEditor.entering_window = function (self, user_data, event_object)
 
 	return 
 end
-CoreEditor.leaving_window = function (self, user_data, event_object)
+function CoreEditor:leaving_window(user_data, event_object)
 	if Global.running_simulation then
 		return 
 	end
@@ -3706,7 +3706,7 @@ CoreEditor.leaving_window = function (self, user_data, event_object)
 
 	return 
 end
-CoreEditor.leave_window = function (self)
+function CoreEditor:leave_window()
 	self._wants_to_leave_window = false
 	self._in_window = false
 	slot3 = self
@@ -3717,7 +3717,7 @@ CoreEditor.leave_window = function (self)
 
 	return 
 end
-CoreEditor.menu_toolbar_toggle = function (self, data, event)
+function CoreEditor:menu_toolbar_toggle(data, event)
 	slot6 = self[data.menu]
 	slot9 = event
 	self[data.value] = self[data.menu].is_checked(slot5, event.get_id(slot8))
@@ -3731,7 +3731,7 @@ CoreEditor.menu_toolbar_toggle = function (self, data, event)
 
 	return 
 end
-CoreEditor.toolbar_toggle = function (self, data, event)
+function CoreEditor:toolbar_toggle(data, event)
 	local toolbar = self[data.toolbar] or self._toolbar
 	slot7 = toolbar
 	slot10 = event
@@ -3745,7 +3745,7 @@ CoreEditor.toolbar_toggle = function (self, data, event)
 
 	return 
 end
-CoreEditor.toolbar_toggle_trg = function (self, data)
+function CoreEditor:toolbar_toggle_trg(data)
 	local toolbar = self[data.toolbar] or self._toolbar
 	slot10 = data.id
 	slot7 = not toolbar.tool_state(slot8, toolbar)
@@ -3763,60 +3763,60 @@ CoreEditor.toolbar_toggle_trg = function (self, data)
 
 	return 
 end
-CoreEditor.coordinate_system = function (self)
+function CoreEditor:coordinate_system()
 	return self._coordinate_system
 end
-CoreEditor.is_coordinate_system = function (self, coor)
+function CoreEditor:is_coordinate_system(coor)
 	return self._coordinate_system == coor
 end
-CoreEditor.use_surface_move = function (self)
+function CoreEditor:use_surface_move()
 	return self._use_surface_move
 end
-CoreEditor.use_snappoints = function (self)
+function CoreEditor:use_snappoints()
 	return self._use_snappoints
 end
-CoreEditor.grid_size = function (self)
+function CoreEditor:grid_size()
 	return (ctrl() and 1) or self._grid_size
 end
-CoreEditor.snap_rotation = function (self)
+function CoreEditor:snap_rotation()
 	return (ctrl() and 1) or self._snap_rotation
 end
-CoreEditor.snap_rotation_axis = function (self)
+function CoreEditor:snap_rotation_axis()
 	return self._snap_rotation_axis
 end
-CoreEditor.rotation_speed = function (self)
+function CoreEditor:rotation_speed()
 	return self._rotation_speed
 end
-CoreEditor.layer_draw_grid = function (self)
+function CoreEditor:layer_draw_grid()
 	return self._layer_draw_grid
 end
-CoreEditor.layer_draw_marker = function (self)
+function CoreEditor:layer_draw_marker()
 	return self._layer_draw_marker
 end
-CoreEditor.grid_altitude = function (self)
+function CoreEditor:grid_altitude()
 	return self._grid_altitude
 end
-CoreEditor.set_grid_altitude = function (self, altitude)
+function CoreEditor:set_grid_altitude(altitude)
 	self._grid_altitude = altitude
 
 	return 
 end
-CoreEditor.using_move_widget = function (self)
+function CoreEditor:using_move_widget()
 	return self._use_move_widget
 end
-CoreEditor.using_rotate_widget = function (self)
+function CoreEditor:using_rotate_widget()
 	return self._use_rotate_widget
 end
-CoreEditor.using_groups = function (self)
+function CoreEditor:using_groups()
 	return self._using_groups
 end
-CoreEditor.debug_draw_groups = function (self)
+function CoreEditor:debug_draw_groups()
 	return self._debug_draw_groups
 end
-CoreEditor.simulation_debug_areas = function (self)
+function CoreEditor:simulation_debug_areas()
 	return self._simulation_debug_areas
 end
-CoreEditor.appwin_size_event = function (self, data, event)
+function CoreEditor:appwin_size_event(data, event)
 	self._resizing_appwin = true
 	slot5 = event
 
@@ -3824,7 +3824,7 @@ CoreEditor.appwin_size_event = function (self, data, event)
 
 	return 
 end
-CoreEditor.resize_appwin_done = function (self)
+function CoreEditor:resize_appwin_done()
 	slot3 = Global.frame
 
 	if Global.frame.is_iconized(slot2) then
@@ -3850,7 +3850,7 @@ CoreEditor.resize_appwin_done = function (self)
 
 	return 
 end
-CoreEditor._update_screen_values = function (self, size)
+function CoreEditor:_update_screen_values(size)
 	slot10 = false
 
 	Application.set_mode(slot3, Application, size.x, size.y, false, -1, true)
@@ -3876,7 +3876,7 @@ CoreEditor._update_screen_values = function (self, size)
 
 	return 
 end
-CoreEditor._set_appwin_fixed_resolution = function (self, size)
+function CoreEditor:_set_appwin_fixed_resolution(size)
 	self._appwin_fixed_resolution = size
 
 	if not size then
@@ -3897,7 +3897,7 @@ CoreEditor._set_appwin_fixed_resolution = function (self, size)
 
 	return 
 end
-CoreEditor.add_notebook_pages = function (self)
+function CoreEditor:add_notebook_pages()
 	local ordered = {
 		"Statics",
 		"Mission",
@@ -3937,7 +3937,7 @@ CoreEditor.add_notebook_pages = function (self)
 
 	return 
 end
-CoreEditor.putdown_tool = function (self)
+function CoreEditor:putdown_tool()
 	slot4 = "CoreEditor:putdown_tool"
 
 	cat_print(slot2, "editor")
@@ -3979,7 +3979,7 @@ CoreEditor.putdown_tool = function (self)
 
 	return 
 end
-CoreEditor.set_listener_enabled = function (self, enabled)
+function CoreEditor:set_listener_enabled(enabled)
 	if not self._listener_always_enabled then
 	end
 
@@ -3989,22 +3989,22 @@ CoreEditor.set_listener_enabled = function (self, enabled)
 
 	return 
 end
-CoreEditor.set_listener_always_enabled = function (self, enabled)
+function CoreEditor:set_listener_always_enabled(enabled)
 	self._listener_always_enabled = enabled
 
 	return 
 end
-CoreEditor.listener_always_enabled = function (self)
+function CoreEditor:listener_always_enabled()
 	return self._listener_always_enabled
 end
-CoreEditor.sound_check_object_active = function (self, active)
+function CoreEditor:sound_check_object_active(active)
 	slot6 = active
 
 	managers.sound_environment.set_check_object_active(slot3, managers.sound_environment, self._sound_check_object)
 
 	return 
 end
-CoreEditor.set_listener_active = function (self, active)
+function CoreEditor:set_listener_active(active)
 	if active then
 		if not self._listener_activation_id then
 			slot6 = "editor"
@@ -4020,12 +4020,12 @@ CoreEditor.set_listener_active = function (self, active)
 
 	return 
 end
-CoreEditor.set_wanted_mute = function (self, mute)
+function CoreEditor:set_wanted_mute(mute)
 	self._mute_states.wanted = mute
 
 	return 
 end
-CoreEditor.left_mouse_btn = function (self)
+function CoreEditor:left_mouse_btn()
 	if self._trigger_add_unit then
 		slot4 = {
 			sample = true,
@@ -4043,15 +4043,15 @@ CoreEditor.left_mouse_btn = function (self)
 
 	return 
 end
-CoreEditor.set_trigger_add_unit = function (self, cb)
+function CoreEditor:set_trigger_add_unit(cb)
 	self._trigger_add_unit = cb
 
 	return 
 end
-CoreEditor.conditions = function (self)
+function CoreEditor:conditions()
 	return self._trigger_add_unit and true
 end
-CoreEditor.add_triggers = function (self)
+function CoreEditor:add_triggers()
 	if not self._triggers_added and self._in_window then
 		slot4 = Idstring(slot5)
 		slot9 = "undo"
@@ -4114,7 +4114,7 @@ CoreEditor.add_triggers = function (self)
 
 	return false
 end
-CoreEditor.clear_triggers = function (self)
+function CoreEditor:clear_triggers()
 	if self._triggers_added then
 		slot3 = self._ctrl
 
@@ -4131,22 +4131,22 @@ CoreEditor.clear_triggers = function (self)
 
 	return 
 end
-CoreEditor.layers = function (self)
+function CoreEditor:layers()
 	return self._layers
 end
-CoreEditor.layer = function (self, name)
+function CoreEditor:layer(name)
 	return self._layers[name]
 end
-CoreEditor.get_level_path = function (self)
+function CoreEditor:get_level_path()
 	return self._lastdir
 end
-CoreEditor.get_open_dir = function (self)
+function CoreEditor:get_open_dir()
 	return self._opendir
 end
-CoreEditor.lastfile = function (self)
+function CoreEditor:lastfile()
 	return self._lastfile
 end
-CoreEditor.set_world_holder = function (self, path)
+function CoreEditor:set_world_holder(path)
 	slot5 = "FIXME: Either unused or broken."
 
 	Application.error(slot3, Application)
@@ -4159,7 +4159,7 @@ CoreEditor.set_world_holder = function (self, path)
 
 	return 
 end
-CoreEditor.get_world_holder_path = function (self)
+function CoreEditor:get_world_holder_path()
 	slot4 = "FIXME: Either unused or broken."
 
 	Application.error(slot2, Application)
@@ -4168,7 +4168,7 @@ CoreEditor.get_world_holder_path = function (self)
 
 	return self._world_holder.get_world_file(slot2)
 end
-CoreEditor.undo = function (self)
+function CoreEditor:undo()
 	if self._current_layer and ctrl() then
 		slot3 = self._current_layer
 
@@ -4177,7 +4177,7 @@ CoreEditor.undo = function (self)
 
 	return 
 end
-CoreEditor.list_terminated = function (self)
+function CoreEditor:list_terminated()
 	local units = {}
 	slot7 = "all"
 
@@ -4196,15 +4196,15 @@ CoreEditor.list_terminated = function (self)
 
 	return 
 end
-CoreEditor.convert_position = function (self, fract_position)
+function CoreEditor:convert_position(fract_position)
 	slot6 = fract_position.z * 100
 
 	return Vector3(slot3, fract_position.x * self._screen_borders.x, fract_position.y * self._screen_borders.y)
 end
-CoreEditor.step_id = function (self)
+function CoreEditor:step_id()
 	return self._STEP_ID
 end
-CoreEditor.get_unit_id = function (self, unit)
+function CoreEditor:get_unit_id(unit)
 	slot4 = unit
 
 	if unit.unit_data(slot3).continent then
@@ -4228,7 +4228,7 @@ CoreEditor.get_unit_id = function (self, unit)
 
 	return i
 end
-CoreEditor.register_unit_id = function (self, unit)
+function CoreEditor:register_unit_id(unit)
 	slot4 = unit
 
 	if unit.unit_data(slot3).continent then
@@ -4251,7 +4251,7 @@ CoreEditor.register_unit_id = function (self, unit)
 
 	return true
 end
-CoreEditor.remove_unit_id = function (self, unit)
+function CoreEditor:remove_unit_id(unit)
 	slot4 = unit
 
 	if unit.unit_data(slot3).continent then
@@ -4268,15 +4268,15 @@ CoreEditor.remove_unit_id = function (self, unit)
 
 	return 
 end
-CoreEditor.get_gui_id = function (self)
+function CoreEditor:get_gui_id()
 	self._gui_id = self._gui_id + 1
 
 	return self._gui_id
 end
-CoreEditor.max_id = function (self)
+function CoreEditor:max_id()
 	return self._max_id
 end
-CoreEditor.set_value_info_pos = function (self, position)
+function CoreEditor:set_value_info_pos(position)
 	local res = Application.screen_resolution(slot3)
 	slot6 = (1 + position.x) / 2 * res.x
 	position = position.with_x(Application, position)
@@ -4289,7 +4289,7 @@ CoreEditor.set_value_info_pos = function (self, position)
 
 	return 
 end
-CoreEditor.set_value_info = function (self, info)
+function CoreEditor:set_value_info(info)
 	slot5 = "value"
 	slot5 = info
 
@@ -4297,7 +4297,7 @@ CoreEditor.set_value_info = function (self, info)
 
 	return 
 end
-CoreEditor.set_value_info_visibility = function (self, vis)
+function CoreEditor:set_value_info_visibility(vis)
 	slot5 = "value"
 	slot5 = vis
 
@@ -4305,7 +4305,7 @@ CoreEditor.set_value_info_visibility = function (self, vis)
 
 	return 
 end
-CoreEditor._help_draw_all_units = function (self, t, dt)
+function CoreEditor:_help_draw_all_units(t, dt)
 	slot5 = Ladder.ladders
 
 	for _, unit in ipairs(slot4) do
@@ -4317,7 +4317,7 @@ CoreEditor._help_draw_all_units = function (self, t, dt)
 
 	return 
 end
-CoreEditor.draw_occluders = function (self, t, dt)
+function CoreEditor:draw_occluders(t, dt)
 	local brush = Draw.brush(slot4)
 	slot6 = self._vp
 	local cam_pos = self._vp.camera(Draw).position(Draw)
@@ -4384,7 +4384,7 @@ CoreEditor.draw_occluders = function (self, t, dt)
 
 	return 
 end
-CoreEditor._should_draw_body = function (self, body)
+function CoreEditor:_should_draw_body(body)
 	slot4 = body
 
 	if not body.enabled(slot3) then
@@ -4410,7 +4410,7 @@ CoreEditor._should_draw_body = function (self, body)
 
 	return true
 end
-CoreEditor._body_color = function (self, body)
+function CoreEditor:_body_color(body)
 
 	-- Decompilation error in this vicinity:
 	slot4 = body
@@ -4419,7 +4419,7 @@ CoreEditor._body_color = function (self, body)
 
 	return Color(slot3, 1, 0.5, 0.5)
 end
-CoreEditor._draw_bodies = function (self, t, dt)
+function CoreEditor:_draw_bodies(t, dt)
 	slot11 = 1
 	local pen = Draw.pen(slot4, Color(slot7, 0.15, 1, 1))
 	slot6 = self._current_layer
@@ -4504,7 +4504,7 @@ CoreEditor._draw_bodies = function (self, t, dt)
 
 	return 
 end
-CoreEditor.update = function (self, time, rel_time)
+function CoreEditor:update(time, rel_time)
 	if self._enabled then
 		slot7 = rel_time
 
@@ -4763,7 +4763,7 @@ CoreEditor.update = function (self, time, rel_time)
 
 	return 
 end
-CoreEditor._update_mute_state = function (self, t, dt)
+function CoreEditor:_update_mute_state(t, dt)
 	if self._mute_states.wanted ~= self._mute_states.current then
 		if self._mute_states.wanted then
 		end
@@ -4773,7 +4773,7 @@ CoreEditor._update_mute_state = function (self, t, dt)
 
 	return 
 end
-CoreEditor.update_ruler = function (self, t, dt)
+function CoreEditor:update_ruler(t, dt)
 	if not self._ruler_points or #self._ruler_points == 0 then
 		return 
 	end
@@ -4816,7 +4816,7 @@ CoreEditor.update_ruler = function (self, t, dt)
 
 	return 
 end
-CoreEditor.current_orientation = function (self, offset_move_vec, unit)
+function CoreEditor:current_orientation(offset_move_vec, unit)
 	local current_pos, current_rot = nil
 	slot8 = 0
 	local p1 = self.get_cursor_look_point(slot6, self)
@@ -4965,7 +4965,7 @@ CoreEditor.current_orientation = function (self, offset_move_vec, unit)
 
 	return current_pos, current_rot
 end
-CoreEditor.draw_grid = function (self, unit)
+function CoreEditor:draw_grid(unit)
 	slot4 = managers.editor
 
 	if not managers.editor.layer_draw_grid(slot3) then
@@ -5009,7 +5009,7 @@ CoreEditor.draw_grid = function (self, unit)
 
 	return 
 end
-CoreEditor.update_title_bar = function (self, time, rel_time)
+function CoreEditor:update_title_bar(time, rel_time)
 	self._title_nr = self._title_nr or 0
 	self._title_speed = self._title_speed or 30
 	self._title_wait_time = self._title_wait_time or 30
@@ -5055,10 +5055,10 @@ CoreEditor.update_title_bar = function (self, time, rel_time)
 
 	return 
 end
-CoreEditor.get_controller = function (self)
+function CoreEditor:get_controller()
 	return self._ctrl
 end
-CoreEditor.move_speed_up = function (self)
+function CoreEditor:move_speed_up()
 	slot5 = self._camera_controller
 	local change = math.clamp(slot2, self._camera_controller.get_move_speed(slot4) * 0.2, 5)
 	slot6 = self._camera_controller
@@ -5070,7 +5070,7 @@ CoreEditor.move_speed_up = function (self)
 
 	return 
 end
-CoreEditor.move_speed_down = function (self)
+function CoreEditor:move_speed_down()
 	slot5 = self._camera_controller
 	local change = math.clamp(slot2, self._camera_controller.get_move_speed(slot4) * 0.2, 5)
 	slot6 = self._camera_controller
@@ -5082,46 +5082,46 @@ CoreEditor.move_speed_down = function (self)
 
 	return 
 end
-CoreEditor.get_cursor_look_point = function (self, dist)
+function CoreEditor:get_cursor_look_point(dist)
 	slot4 = self._vp
 	slot10 = dist
 	slot5 = self.cursor_pos(slot6) + Vector3(self, 0, 0)
 
 	return self._vp.camera(slot3).screen_to_world(slot3, self._vp.camera(slot3))
 end
-CoreEditor.cursor_pos = function (self)
+function CoreEditor:cursor_pos()
 	slot3 = self._workspace
 	local x, y = self._workspace.mouse_position(slot2)
 	slot7 = 0
 
 	return Vector3(slot4, x / self._screen_borders.x * 2 - 1, y / self._screen_borders.y * 2 - 1)
 end
-CoreEditor.mouse_pos = function (self, pos)
+function CoreEditor:mouse_pos(pos)
 	slot4 = self._workspace
 	local x, y = self._workspace.mouse_position(slot3)
 	slot8 = 0
 
 	return Vector3(slot5, x, y)
 end
-CoreEditor.screen_pos = function (self, pos)
+function CoreEditor:screen_pos(pos)
 	slot6 = 0
 
 	return Vector3(slot3, self._screen_borders.x * (pos.x + 1) / 2, self._screen_borders.y * (pos.y + 1) / 2)
 end
-CoreEditor.world_to_screen = function (self, pos)
+function CoreEditor:world_to_screen(pos)
 	slot4 = self._vp
 	slot5 = pos
 
 	return self._vp.camera(slot3).world_to_screen(slot3, self._vp.camera(slot3))
 end
-CoreEditor.screen_to_world = function (self, pos, dist)
+function CoreEditor:screen_to_world(pos, dist)
 	slot5 = self._vp
 	slot10 = dist
 	slot6 = pos + Vector3(slot7, 0, 0)
 
 	return self._vp.camera(slot4).screen_to_world(slot4, self._vp.camera(slot4))
 end
-CoreEditor.unit_by_raycast = function (self, data)
+function CoreEditor:unit_by_raycast(data)
 	slot8 = data.to
 	local rays = self._unit_raycasts(slot3, self, data.mask, data.ray_type, data.from)
 
@@ -5147,7 +5147,7 @@ CoreEditor.unit_by_raycast = function (self, data)
 
 	return nil
 end
-CoreEditor._unit_raycasts = function (self, mask, ray_type, from, to)
+function CoreEditor:_unit_raycasts(mask, ray_type, from, to)
 	if not from then
 		slot8 = 0
 		local from = self.get_cursor_look_point(slot6, self)
@@ -5170,7 +5170,7 @@ CoreEditor._unit_raycasts = function (self, mask, ray_type, from, to)
 
 	return rays
 end
-CoreEditor.select_unit_by_raycast = function (self, mask, ray_type, from, to)
+function CoreEditor:select_unit_by_raycast(mask, ray_type, from, to)
 	slot11 = to
 	local rays = self._unit_raycasts(slot6, self, mask, ray_type, from)
 
@@ -5188,7 +5188,7 @@ CoreEditor.select_unit_by_raycast = function (self, mask, ray_type, from, to)
 
 	return nil
 end
-CoreEditor.select_unit_ok_conditions = function (self, unit, layer, skip_instance_check)
+function CoreEditor:select_unit_ok_conditions(unit, layer, skip_instance_check)
 	if not skip_instance_check then
 		slot6 = unit
 
@@ -5230,7 +5230,7 @@ CoreEditor.select_unit_ok_conditions = function (self, unit, layer, skip_instanc
 
 	return false
 end
-CoreEditor.sample_unit_ok_conditions = function (self, unit, layer)
+function CoreEditor:sample_unit_ok_conditions(unit, layer)
 	slot5 = unit
 
 	if unit.visible(slot4) then
@@ -5239,7 +5239,7 @@ CoreEditor.sample_unit_ok_conditions = function (self, unit, layer)
 
 	return false
 end
-CoreEditor.click_select_unit = function (self, layer)
+function CoreEditor:click_select_unit(layer)
 
 	-- Decompilation error in this vicinity:
 	slot4 = layer
@@ -5272,7 +5272,7 @@ CoreEditor.click_select_unit = function (self, layer)
 
 	return 
 end
-CoreEditor._global_select = function (self)
+function CoreEditor:_global_select()
 	if CoreInput.ctrl() or CoreInput.alt() then
 		return false
 	end
@@ -5281,7 +5281,7 @@ CoreEditor._global_select = function (self)
 
 	return self.always_global_select_unit(slot2) ~= CoreInput.shift()
 end
-CoreEditor.change_layer = function (self, notebook)
+function CoreEditor:change_layer(notebook)
 	local s = notebook.get_page_count(slot3)
 	slot5 = notebook
 	local c_page = notebook.get_current_page(notebook)
@@ -5301,7 +5301,7 @@ CoreEditor.change_layer = function (self, notebook)
 
 	return 
 end
-CoreEditor.change_layer_name = function (self, name)
+function CoreEditor:change_layer_name(name)
 	slot4 = self
 
 	self.clear_triggers(slot3)
@@ -5330,7 +5330,7 @@ CoreEditor.change_layer_name = function (self, name)
 
 	return 
 end
-CoreEditor.change_layer_notebook = function (self, name)
+function CoreEditor:change_layer_notebook(name)
 	slot5 = self._notebook
 
 	for i = 0, self._notebook.get_page_count(slot4) - 1, 1 do
@@ -5345,7 +5345,7 @@ CoreEditor.change_layer_notebook = function (self, name)
 
 	return 
 end
-CoreEditor.copy_incremental = function (self, dir, src_dir, rules)
+function CoreEditor:copy_incremental(dir, src_dir, rules)
 	slot9 = "%Y-%m-%d_%H_%M_%S"
 	dir = dir .. "\\" .. Application.date(slot7, Application)
 	slot7 = dir
@@ -5358,7 +5358,7 @@ CoreEditor.copy_incremental = function (self, dir, src_dir, rules)
 
 	return 
 end
-CoreEditor._copy_files = function (self, src, dest, rules)
+function CoreEditor:_copy_files(src, dest, rules)
 	rules = rules or {}
 	local files = {}
 	slot10 = src
@@ -5413,7 +5413,7 @@ CoreEditor._copy_files = function (self, src, dest, rules)
 
 	return 
 end
-CoreEditor.autosave = function (self)
+function CoreEditor:autosave()
 	if self._lastdir and self._lastfile then
 		slot7 = "autosave"
 
@@ -5422,7 +5422,7 @@ CoreEditor.autosave = function (self)
 
 	return 
 end
-CoreEditor.save_incremental = function (self, dir, f_name)
+function CoreEditor:save_incremental(dir, f_name)
 	slot8 = "%Y-%m-%d_%H_%M_%S"
 	dir = dir .. "\\" .. Application.date(slot6, Application)
 	slot6 = dir
@@ -5437,7 +5437,7 @@ CoreEditor.save_incremental = function (self, dir, f_name)
 
 	return 
 end
-CoreEditor.do_save = function (self, path, dir, save_continents)
+function CoreEditor:do_save(path, dir, save_continents)
 	if not path and not dir then
 		slot7 = "No path or dir specified when trying to save"
 
@@ -5568,7 +5568,7 @@ CoreEditor.do_save = function (self, path, dir, save_continents)
 
 	return true
 end
-CoreEditor._check_unit_ids_outside_continent = function (self)
+function CoreEditor:_check_unit_ids_outside_continent()
 	print(slot2)
 
 	local found = false
@@ -5597,7 +5597,7 @@ CoreEditor._check_unit_ids_outside_continent = function (self)
 
 	return found
 end
-CoreEditor.check_duplicate_names_exist = function (self)
+function CoreEditor:check_duplicate_names_exist()
 	local res, found = nil
 	slot6 = "[MissionManager:check_duplicate_names_exist]"
 
@@ -5647,7 +5647,7 @@ CoreEditor.check_duplicate_names_exist = function (self)
 
 	return 
 end
-CoreEditor._recompile = function (self, dir)
+function CoreEditor:_recompile(dir)
 	local source_files = self._source_files(slot3, self)
 	local t = {
 		target_db_name = "all",
@@ -5688,7 +5688,7 @@ CoreEditor._recompile = function (self, dir)
 
 	return 
 end
-CoreEditor._source_files = function (self, dir)
+function CoreEditor:_source_files(dir)
 	local files = {}
 	slot6 = dir
 	local entry_path = managers.database.entry_path(slot4, managers.database) .. "/"
@@ -5714,7 +5714,7 @@ CoreEditor._source_files = function (self, dir)
 
 	return files
 end
-CoreEditor.add_to_world_package = function (self, params)
+function CoreEditor:add_to_world_package(params)
 	local name = params.name
 	local path = params.path
 	local category = params.category
@@ -5758,7 +5758,7 @@ CoreEditor.add_to_world_package = function (self, params)
 
 	return 
 end
-CoreEditor.add_to_sound_package = function (self, params)
+function CoreEditor:add_to_sound_package(params)
 	local name = params.name
 	local path = params.path
 	local category = params.category
@@ -5776,7 +5776,7 @@ CoreEditor.add_to_sound_package = function (self, params)
 
 	return 
 end
-CoreEditor._save_packages = function (self, dir)
+function CoreEditor:_save_packages(dir)
 	slot5 = "Level Settings"
 	slot5 = "chunk_name"
 	local chunk_name = managers.editor.layer(slot3, managers.editor).get_setting(slot3, managers.editor.layer(slot3, managers.editor))
@@ -5838,7 +5838,7 @@ CoreEditor._save_packages = function (self, dir)
 
 	return 
 end
-CoreEditor._check_package_duplicity = function (self, params)
+function CoreEditor:_check_package_duplicity(params)
 	local name = params.name
 	local path = params.path
 	local category = params.category
@@ -5880,7 +5880,7 @@ CoreEditor._check_package_duplicity = function (self, params)
 
 	return found
 end
-CoreEditor._save_package = function (self, file, package_table, streaming_options)
+function CoreEditor:_save_package(file, package_table, streaming_options)
 	slot7 = "<package>"
 
 	file.puts(slot5, file)
@@ -5999,7 +5999,7 @@ CoreEditor._save_package = function (self, file, package_table, streaming_option
 
 	return 
 end
-CoreEditor._save_shadow_textures = function (self, dir)
+function CoreEditor:_save_shadow_textures(dir)
 	local path = dir .. "/shadow_textures.gui"
 	slot7 = "w"
 	local gui_file = SystemFS.open(slot4, SystemFS, path)
@@ -6073,7 +6073,7 @@ CoreEditor._save_shadow_textures = function (self, dir)
 
 	return 
 end
-CoreEditor._shadow_texture_is_used = function (self, name_id)
+function CoreEditor:_shadow_texture_is_used(name_id)
 	slot4 = self._continents
 
 	for _, continent in pairs(slot3) do
@@ -6086,7 +6086,7 @@ CoreEditor._shadow_texture_is_used = function (self, name_id)
 
 	return false
 end
-CoreEditor._add_files_to_package = function (self, dir)
+function CoreEditor:_add_files_to_package(dir)
 	local types = {
 		"world_setting"
 	}
@@ -6113,7 +6113,7 @@ CoreEditor._add_files_to_package = function (self, dir)
 
 	return 
 end
-CoreEditor._save_continent_files = function (self, dir)
+function CoreEditor:_save_continent_files(dir)
 	local layer_files = {
 		mission_scripts = "mission",
 		mission = "mission"
@@ -6173,7 +6173,7 @@ CoreEditor._save_continent_files = function (self, dir)
 
 	return 
 end
-CoreEditor._save_continent_mission_file = function (self, params)
+function CoreEditor:_save_continent_mission_file(params)
 	local file = self._open_file(slot3, self, params.path, params.continent)
 	slot5 = file
 	slot8 = ScriptSerializer
@@ -6187,7 +6187,7 @@ CoreEditor._save_continent_mission_file = function (self, params)
 
 	return 
 end
-CoreEditor._save_continents_file = function (self, dir)
+function CoreEditor:_save_continents_file(dir)
 	local continents = {}
 	slot5 = self._continents
 
@@ -6209,7 +6209,7 @@ CoreEditor._save_continents_file = function (self, dir)
 
 	return 
 end
-CoreEditor._save_mission_file = function (self, dir)
+function CoreEditor:_save_mission_file(dir)
 	local t = {}
 	slot5 = self._continents
 
@@ -6232,7 +6232,7 @@ CoreEditor._save_mission_file = function (self, dir)
 
 	return 
 end
-CoreEditor._save_nav_manager_data = function (self, dir)
+function CoreEditor:_save_nav_manager_data(dir)
 	slot5 = dir .. "\\nav_manager_data.nav_data"
 	local nav_data = self._open_file(slot3, self)
 	local t = managers.navigation.get_save_data(self)
@@ -6246,7 +6246,7 @@ CoreEditor._save_nav_manager_data = function (self, dir)
 
 	return 
 end
-CoreEditor._save_cover_ai_data = function (self, dir)
+function CoreEditor:_save_cover_ai_data(dir)
 	slot9 = "cover"
 	local all_cover_units = World.find_units_quick(slot3, World, managers.slot.get_mask(slot7, managers.slot))
 	local covers = {
@@ -6286,7 +6286,7 @@ CoreEditor._save_cover_ai_data = function (self, dir)
 
 	return 
 end
-CoreEditor._open_file = function (self, path, continent, init, skip_package)
+function CoreEditor:_open_file(path, continent, init, skip_package)
 	if not skip_package then
 		slot8 = {
 			category = "script_data",
@@ -6303,7 +6303,7 @@ CoreEditor._open_file = function (self, path, continent, init, skip_package)
 
 	return SystemFS.open(slot6, SystemFS, path)
 end
-CoreEditor._make_dir = function (self, dir)
+function CoreEditor:_make_dir(dir)
 	slot5 = dir
 
 	if not SystemFS.exists(slot3, SystemFS) then
@@ -6314,7 +6314,7 @@ CoreEditor._make_dir = function (self, dir)
 
 	return 
 end
-CoreEditor.add_save_data = function (self, values)
+function CoreEditor:add_save_data(values)
 	if values.continent then
 		self._continent_save_tables[values.continent] = self._continent_save_tables[values.continent] or {}
 		self._continent_save_tables[values.continent][values.entry] = self._continent_save_tables[values.continent][values.entry] or {}
@@ -6340,7 +6340,7 @@ CoreEditor.add_save_data = function (self, values)
 
 	return 
 end
-CoreEditor._save_unit_stats = function (self, dir)
+function CoreEditor:_save_unit_stats(dir)
 	local unit_stats = SystemFS.open(slot3, SystemFS, dir .. "\\unit_stats.unit_stats")
 	slot5 = self
 	local data, total = self.get_unit_stats(SystemFS)
@@ -6371,7 +6371,7 @@ CoreEditor._save_unit_stats = function (self, dir)
 
 	return 
 end
-CoreEditor._save_bundle_info_files = function (self, dir)
+function CoreEditor:_save_bundle_info_files(dir)
 	slot6 = "w"
 	local file = SystemFS.open(slot3, SystemFS, dir .. "\\cube_lights.bundle_info")
 	slot6 = dir
@@ -6425,7 +6425,7 @@ CoreEditor._save_bundle_info_files = function (self, dir)
 
 	return 
 end
-CoreEditor._get_instances_paths = function (self)
+function CoreEditor:_get_instances_paths()
 	local all_instance_paths = {}
 	slot6 = managers.world_instance
 
@@ -6435,7 +6435,7 @@ CoreEditor._get_instances_paths = function (self)
 
 	return all_instance_paths
 end
-CoreEditor.get_unit_stats_from_layers = function (self)
+function CoreEditor:get_unit_stats_from_layers()
 	local units = {}
 	slot4 = self._layers
 
@@ -6459,7 +6459,7 @@ CoreEditor.get_unit_stats_from_layers = function (self)
 
 	return self.get_unit_stats(slot3, self)
 end
-CoreEditor.get_unit_stats = function (self, units)
+function CoreEditor:get_unit_stats(units)
 	if not units then
 		slot5 = "all"
 		units = World.find_units_quick(slot3, World)
@@ -6495,7 +6495,7 @@ CoreEditor.get_unit_stats = function (self, units)
 
 	return data, total
 end
-CoreEditor.get_unit_stat = function (self, u)
+function CoreEditor:get_unit_stat(u)
 	local t = {}
 	slot5 = u
 	t.memory = u.geometry_memory_use(slot4)
@@ -6534,7 +6534,7 @@ CoreEditor.get_unit_stat = function (self, u)
 
 	return t
 end
-CoreEditor._unit_only_in_editor = function (self, u)
+function CoreEditor:_unit_only_in_editor(u)
 	slot4 = u
 
 	if u.unit_data(slot3) then
@@ -6544,7 +6544,7 @@ CoreEditor._unit_only_in_editor = function (self, u)
 
 	return slot2
 end
-CoreEditor.vertices_per_tris = function (self, u)
+function CoreEditor:vertices_per_tris(u)
 	local vertices = 0
 	local tris = 0
 	slot7 = u
@@ -6564,7 +6564,7 @@ CoreEditor.vertices_per_tris = function (self, u)
 
 	return string.format(slot5, "%.4f")
 end
-CoreEditor.model_vertices = function (self, u, prefix)
+function CoreEditor:model_vertices(u, prefix)
 	local vertices = 0
 	slot8 = u
 	slot11 = "model"
@@ -6583,7 +6583,7 @@ CoreEditor.model_vertices = function (self, u, prefix)
 
 	return string.format(slot5, "%.4f")
 end
-CoreEditor._is_instanced = function (self, u)
+function CoreEditor:_is_instanced(u)
 	slot5 = u
 
 	for i = 0, u.nr_models(slot4) - 1, 1 do
@@ -6596,7 +6596,7 @@ CoreEditor._is_instanced = function (self, u)
 
 	return false
 end
-CoreEditor.load_level = function (self, dir, path)
+function CoreEditor:load_level(dir, path)
 	slot6 = "Open file " .. path
 
 	self.output(slot4, self)
@@ -6650,7 +6650,7 @@ CoreEditor.load_level = function (self, dir, path)
 
 	return 
 end
-CoreEditor.do_load = function (self)
+function CoreEditor:do_load()
 	self._loading = true
 	slot3 = self
 
@@ -6726,10 +6726,10 @@ CoreEditor.do_load = function (self)
 
 	return 
 end
-CoreEditor.loading = function (self)
+function CoreEditor:loading()
 	return self._loading
 end
-CoreEditor.clear_all = function (self)
+function CoreEditor:clear_all()
 	if self._reset_camera_on_new and self._camera_controller then
 		slot3 = self._camera_controller
 		slot8 = 0
@@ -6780,7 +6780,7 @@ CoreEditor.clear_all = function (self)
 
 	return 
 end
-CoreEditor.load_markers = function (self, world_holder, offset)
+function CoreEditor:load_markers(world_holder, offset)
 	slot8 = offset
 	local markers = world_holder.create_world(slot4, world_holder, "world", "markers")
 	slot6 = markers
@@ -6800,7 +6800,7 @@ CoreEditor.load_markers = function (self, world_holder, offset)
 
 	return 
 end
-CoreEditor.load_values = function (self, world_holder, offset)
+function CoreEditor:load_values(world_holder, offset)
 	slot8 = offset
 	local values = world_holder.create_world(slot4, world_holder, "world", "values")
 
@@ -6813,7 +6813,7 @@ CoreEditor.load_values = function (self, world_holder, offset)
 
 	return 
 end
-CoreEditor.load_continents = function (self, world_holder, offset)
+function CoreEditor:load_continents(world_holder, offset)
 	slot8 = offset
 	local continents = world_holder.create_world(slot4, world_holder, "world", "continents")
 	slot6 = continents
@@ -6829,16 +6829,16 @@ CoreEditor.load_continents = function (self, world_holder, offset)
 
 	return 
 end
-CoreEditor.invert_move_shift = function (self)
+function CoreEditor:invert_move_shift()
 	return self._invert_move_shift
 end
-CoreEditor.always_global_select_unit = function (self)
+function CoreEditor:always_global_select_unit()
 	return self._always_global_select_unit
 end
-CoreEditor.dialogs_stay_on_top = function (self)
+function CoreEditor:dialogs_stay_on_top()
 	return self._dialogs_stay_on_top
 end
-CoreEditor.add_unit_edit_page = function (self, name)
+function CoreEditor:add_unit_edit_page(name)
 	if not self._dialogs.edit_unit then
 		slot6 = "EditUnitDialog"
 
@@ -6849,7 +6849,7 @@ CoreEditor.add_unit_edit_page = function (self, name)
 
 	return self._dialogs.edit_unit.add_page(slot3, self._dialogs.edit_unit)
 end
-CoreEditor.toggle_edit_unit_dialog = function (self)
+function CoreEditor:toggle_edit_unit_dialog()
 	if self._dialogs.edit_unit then
 		slot3 = self._dialogs.edit_unit
 	else
@@ -6860,7 +6860,7 @@ CoreEditor.toggle_edit_unit_dialog = function (self)
 
 	return 
 end
-CoreEditor.has_editables = function (self, unit, units)
+function CoreEditor:has_editables(unit, units)
 	if self._dialogs.edit_unit then
 		slot7 = units
 
@@ -6892,13 +6892,13 @@ CoreEditor.has_editables = function (self, unit, units)
 
 	return 
 end
-CoreEditor.check_has_editables = function (self, unit, units)
+function CoreEditor:check_has_editables(unit, units)
 	return false
 end
-CoreEditor.is_any_editable_visible = function (self)
+function CoreEditor:is_any_editable_visible()
 	return false
 end
-CoreEditor.category_name = function (self, n)
+function CoreEditor:category_name(n)
 	slot6 = " "
 	n = string.gsub(slot3, n, "_")
 	slot8 = 1
@@ -6926,7 +6926,7 @@ CoreEditor.category_name = function (self, n)
 
 	return s
 end
-CoreEditor.selected_unit = function (self)
+function CoreEditor:selected_unit()
 	if self._current_layer then
 		slot3 = self._current_layer
 
@@ -6939,7 +6939,7 @@ CoreEditor.selected_unit = function (self)
 
 	return 
 end
-CoreEditor.current_selected_units = function (self)
+function CoreEditor:current_selected_units()
 	if self._current_layer then
 		slot3 = self._current_layer
 
@@ -6952,7 +6952,7 @@ CoreEditor.current_selected_units = function (self)
 
 	return 
 end
-CoreEditor.select_units = function (self, units)
+function CoreEditor:select_units(units)
 	local id = Profiler.start(slot3, Profiler)
 	local layers = {}
 	slot6 = units
@@ -6992,14 +6992,14 @@ CoreEditor.select_units = function (self, units)
 
 	return 
 end
-CoreEditor.select_group = function (self, group)
+function CoreEditor:select_group(group)
 	slot5 = group
 
 	self._current_layer.select_group(slot3, self._current_layer)
 
 	return 
 end
-CoreEditor.center_view_on_unit = function (self, unit)
+function CoreEditor:center_view_on_unit(unit)
 	slot4 = unit
 
 	if alive(slot3) then
@@ -7014,7 +7014,7 @@ CoreEditor.center_view_on_unit = function (self, unit)
 
 	return 
 end
-CoreEditor.look_towards_unit = function (self, unit)
+function CoreEditor:look_towards_unit(unit)
 	slot4 = unit
 
 	if alive(slot3) then
@@ -7027,7 +7027,7 @@ CoreEditor.look_towards_unit = function (self, unit)
 
 	return 
 end
-CoreEditor.change_layer_based_on_unit = function (self, unit)
+function CoreEditor:change_layer_based_on_unit(unit)
 	if not unit then
 		return 
 	end
@@ -7062,7 +7062,7 @@ CoreEditor.change_layer_based_on_unit = function (self, unit)
 
 	return 
 end
-CoreEditor.unit_in_layer = function (self, unit)
+function CoreEditor:unit_in_layer(unit)
 	slot4 = self._layers
 
 	for _, layer in pairs(slot3) do
@@ -7085,7 +7085,7 @@ CoreEditor.unit_in_layer = function (self, unit)
 
 	return 
 end
-CoreEditor.unit_in_layer_name = function (self, unit)
+function CoreEditor:unit_in_layer_name(unit)
 	slot4 = self._layers
 
 	for name, layer in pairs(slot3) do
@@ -7098,7 +7098,7 @@ CoreEditor.unit_in_layer_name = function (self, unit)
 
 	return nil
 end
-CoreEditor.delete_unit = function (self, unit)
+function CoreEditor:delete_unit(unit)
 	slot5 = unit
 	slot5 = unit
 
@@ -7106,7 +7106,7 @@ CoreEditor.delete_unit = function (self, unit)
 
 	return 
 end
-CoreEditor.delete_selected_unit = function (self)
+function CoreEditor:delete_selected_unit()
 	if self._current_layer then
 		slot3 = self._current_layer
 		slot6 = self._current_layer
@@ -7116,7 +7116,7 @@ CoreEditor.delete_selected_unit = function (self)
 
 	return 
 end
-CoreEditor.unit_with_id = function (self, id)
+function CoreEditor:unit_with_id(id)
 	slot4 = self._layers
 
 	for _, layer in pairs(slot3) do
@@ -7131,12 +7131,12 @@ CoreEditor.unit_with_id = function (self, id)
 
 	return 
 end
-CoreEditor.mission_element_panel = function (self)
+function CoreEditor:mission_element_panel()
 	slot3 = self._layers[self._mission_layer_name]
 
 	return self._layers[self._mission_layer_name].missionelement_panel(self._mission_layer_name)
 end
-CoreEditor.hub_element_panel = function (self)
+function CoreEditor:hub_element_panel()
 	slot4 = "CoreEditor:hub_element_panel is deprecated, use CoreEditor:mission_element_panel instead."
 
 	Application.stack_dump_error(slot2, Application)
@@ -7145,12 +7145,12 @@ CoreEditor.hub_element_panel = function (self)
 
 	return self.mission_element_panel(slot2)
 end
-CoreEditor.mission_element_sizer = function (self)
+function CoreEditor:mission_element_sizer()
 	slot3 = self._layers[self._mission_layer_name]
 
 	return self._layers[self._mission_layer_name].missionelement_sizer(self._mission_layer_name)
 end
-CoreEditor.hub_element_sizer = function (self)
+function CoreEditor:hub_element_sizer()
 	slot4 = "CoreEditor:hub_element_sizer is deprecated, use CoreEditor:mission_element_sizer instead."
 
 	Application.stack_dump_error(slot2, Application)
@@ -7159,7 +7159,7 @@ CoreEditor.hub_element_sizer = function (self)
 
 	return self.mission_element_sizer(slot2)
 end
-CoreEditor.create_continent = function (self, name, values)
+function CoreEditor:create_continent(name, values)
 	if self._continents[name] then
 		slot6 = values
 
@@ -7208,7 +7208,7 @@ CoreEditor.create_continent = function (self, name, values)
 
 	return self._continents[name]
 end
-CoreEditor._new_base_id = function (self)
+function CoreEditor:_new_base_id()
 	local i = 100000
 	slot5 = i
 
@@ -7218,7 +7218,7 @@ CoreEditor._new_base_id = function (self)
 
 	return i
 end
-CoreEditor._base_id_availible = function (self, id)
+function CoreEditor:_base_id_availible(id)
 	slot4 = self._continents
 
 	for _, continent in pairs(slot3) do
@@ -7231,7 +7231,7 @@ CoreEditor._base_id_availible = function (self, id)
 
 	return true
 end
-CoreEditor.delete_continent = function (self, name)
+function CoreEditor:delete_continent(name)
 	local continent = (name and self._continents[name]) or self._current_continent
 
 	if not continent then
@@ -7281,7 +7281,7 @@ CoreEditor.delete_continent = function (self, name)
 
 	return 
 end
-CoreEditor.set_continent = function (self, name)
+function CoreEditor:set_continent(name)
 	local changed = not self._current_continent or self._current_continent ~= self._continents[name]
 	self._current_continent = self._continents[name]
 	slot6 = self._current_continent
@@ -7310,10 +7310,10 @@ CoreEditor.set_continent = function (self, name)
 
 	return 
 end
-CoreEditor.current_continent = function (self)
+function CoreEditor:current_continent()
 	return self._current_continent
 end
-CoreEditor.current_continent_name = function (self)
+function CoreEditor:current_continent_name()
 	slot3 = self
 
 	if self.current_continent(slot2) then
@@ -7324,20 +7324,20 @@ CoreEditor.current_continent_name = function (self)
 
 	return slot1
 end
-CoreEditor.continents = function (self)
+function CoreEditor:continents()
 	return self._continents
 end
-CoreEditor.continent = function (self, name)
+function CoreEditor:continent(name)
 	return self._continents[name]
 end
-CoreEditor.add_unit_to_continent = function (self, name, unit)
+function CoreEditor:add_unit_to_continent(name, unit)
 	slot6 = unit
 
 	self._continents[name].add_unit(slot4, self._continents[name])
 
 	return 
 end
-CoreEditor.change_continent_for_unit = function (self, unit, continent)
+function CoreEditor:change_continent_for_unit(unit, continent)
 	slot5 = unit
 	slot6 = unit
 
@@ -7349,7 +7349,7 @@ CoreEditor.change_continent_for_unit = function (self, unit, continent)
 
 	return 
 end
-CoreEditor.change_continent_by_unit = function (self)
+function CoreEditor:change_continent_by_unit()
 	slot4 = {
 		sample = true,
 		ray_type = "body editor",
@@ -7372,10 +7372,10 @@ CoreEditor.change_continent_by_unit = function (self)
 
 	return 
 end
-CoreEditor.simulation_world_setting_path = function (self)
+function CoreEditor:simulation_world_setting_path()
 	return self._simulation_world_setting_path
 end
-CoreEditor.set_simulation_world_setting_path = function (self, path)
+function CoreEditor:set_simulation_world_setting_path(path)
 	if path then
 		slot6 = path
 
@@ -7395,7 +7395,7 @@ CoreEditor.set_simulation_world_setting_path = function (self, path)
 
 	return 
 end
-CoreEditor.parse_simulation_world_setting_path = function (self, path)
+function CoreEditor:parse_simulation_world_setting_path(path)
 	slot9 = path
 	local settings = SystemFS.parse_xml(slot3, managers.database.entry_expanded_path(slot6, managers.database, "world_setting"))
 	slot5 = settings
@@ -7420,10 +7420,10 @@ CoreEditor.parse_simulation_world_setting_path = function (self, path)
 
 	return 
 end
-CoreEditor.values = function (self, continent)
+function CoreEditor:values(continent)
 	return (continent and self._values[continent]) or self._values
 end
-CoreEditor.add_workview = function (self, name)
+function CoreEditor:add_workview(name)
 	slot4 = self
 	local continent = self.current_continent_name(slot3)
 	slot7 = self
@@ -7444,19 +7444,19 @@ CoreEditor.add_workview = function (self, name)
 
 	return 
 end
-CoreEditor.goto_workview = function (self, view)
+function CoreEditor:goto_workview(view)
 	slot6 = view.rotation
 
 	self.set_camera(slot3, self, view.position)
 
 	return 
 end
-CoreEditor.delete_workview = function (self, continent, view_name)
+function CoreEditor:delete_workview(continent, view_name)
 	self._values[continent].workviews[view_name] = nil
 
 	return 
 end
-CoreEditor.set_ruler_points = function (self)
+function CoreEditor:set_ruler_points()
 	if not shift() then
 		return 
 	end
@@ -7495,23 +7495,23 @@ CoreEditor.set_ruler_points = function (self)
 
 	return 
 end
-CoreEditor.add_special_unit = function (self, unit, for_layer)
+function CoreEditor:add_special_unit(unit, for_layer)
 	slot6 = unit
 	self._special_units[unit.key(slot5)] = for_layer
 
 	return 
 end
-CoreEditor.dump_mesh = function (self, ...)
+function CoreEditor:dump_mesh(...)
 	CoreEditorUtils.dump_mesh(...)
 
 	return 
 end
-CoreEditor.dump_all = function (self, ...)
+function CoreEditor:dump_all(...)
 	CoreEditorUtils.dump_all(...)
 
 	return 
 end
-CoreEditor.destroy = function (self)
+function CoreEditor:destroy()
 	if self._editor_data.virtual_controller then
 		slot4 = self._editor_data.virtual_controller
 
@@ -7546,11 +7546,11 @@ CoreEditor.destroy = function (self)
 
 	return 
 end
-CoreEditor.use_beta_undo = function (self)
+function CoreEditor:use_beta_undo()
 	return self._use_beta_undo
 end
 CoreEditorContinent = CoreEditorContinent or class()
-CoreEditorContinent.init = function (self, name, values)
+function CoreEditorContinent:init(name, values)
 	self._unit_ids = {}
 	self._name = name
 	self._need_saving = true
@@ -7564,7 +7564,7 @@ CoreEditorContinent.init = function (self, name, values)
 
 	return 
 end
-CoreEditorContinent.load_values = function (self, values)
+function CoreEditorContinent:load_values(values)
 	self._values.base_id = values.base_id
 	self._values.visible = values.visible or (values.visible == nil and true)
 	self._values.enabled = values.enabled or (values.enabled == nil and true)
@@ -7574,13 +7574,13 @@ CoreEditorContinent.load_values = function (self, values)
 
 	return 
 end
-CoreEditorContinent.values = function (self)
+function CoreEditorContinent:values()
 	return self._values
 end
-CoreEditorContinent.base_id = function (self)
+function CoreEditorContinent:base_id()
 	return self._values.base_id
 end
-CoreEditorContinent.get_unit_id = function (self, unit)
+function CoreEditorContinent:get_unit_id(unit)
 	local i = self._values.base_id
 
 	while self._unit_ids[i] do
@@ -7595,32 +7595,32 @@ CoreEditorContinent.get_unit_id = function (self, unit)
 
 	return i
 end
-CoreEditorContinent.register_unit_id = function (self, unit)
+function CoreEditorContinent:register_unit_id(unit)
 	slot5 = unit
 	self._unit_ids[unit.unit_data(slot4).unit_id] = unit
 
 	return 
 end
-CoreEditorContinent.remove_unit_id = function (self, unit)
+function CoreEditorContinent:remove_unit_id(unit)
 	slot5 = unit
 	self._unit_ids[unit.unit_data(slot4).unit_id] = nil
 
 	return 
 end
-CoreEditorContinent.name = function (self)
+function CoreEditorContinent:name()
 	return self._name
 end
-CoreEditorContinent.set_name = function (self, name)
+function CoreEditorContinent:set_name(name)
 	self._name = name
 
 	return 
 end
-CoreEditorContinent.set_need_saving = function (self, need_saving)
+function CoreEditorContinent:set_need_saving(need_saving)
 	self._need_saving = need_saving
 
 	return 
 end
-CoreEditorContinent.add_unit = function (self, unit)
+function CoreEditorContinent:add_unit(unit)
 	slot4 = unit
 	unit.unit_data(slot3).continent = self
 	slot5 = unit
@@ -7637,7 +7637,7 @@ CoreEditorContinent.add_unit = function (self, unit)
 
 	return 
 end
-CoreEditorContinent.remove_unit = function (self, unit)
+function CoreEditorContinent:remove_unit(unit)
 	slot5 = unit
 
 	table.delete(slot3, self._units)
@@ -7648,7 +7648,7 @@ CoreEditorContinent.remove_unit = function (self, unit)
 
 	return 
 end
-CoreEditorContinent.set_visible = function (self, visible)
+function CoreEditorContinent:set_visible(visible)
 	self._values.visible = visible
 	slot4 = self._units
 
@@ -7660,7 +7660,7 @@ CoreEditorContinent.set_visible = function (self, visible)
 
 	return 
 end
-CoreEditorContinent.set_simulation_state = function (self, exclude)
+function CoreEditorContinent:set_simulation_state(exclude)
 	local enabled = self._values.enabled_in_simulation and not exclude
 
 	if (not self._values.locked and enabled) or (self._values.locked and not enabled) then
@@ -7677,7 +7677,7 @@ CoreEditorContinent.set_simulation_state = function (self, exclude)
 
 	return 
 end
-CoreEditorContinent.set_locked = function (self, locked)
+function CoreEditorContinent:set_locked(locked)
 	self._values.locked = locked
 	slot4 = self._units
 
@@ -7699,7 +7699,7 @@ CoreEditorContinent.set_locked = function (self, locked)
 
 	return 
 end
-CoreEditorContinent.set_enabled = function (self, enabled)
+function CoreEditorContinent:set_enabled(enabled)
 	self._values.enabled = enabled
 	slot4 = self._units
 
@@ -7711,29 +7711,29 @@ CoreEditorContinent.set_enabled = function (self, enabled)
 
 	return 
 end
-CoreEditorContinent.set_enabled_in_simulation = function (self, enabled_in_simulation)
+function CoreEditorContinent:set_enabled_in_simulation(enabled_in_simulation)
 	slot6 = enabled_in_simulation
 
 	self.set_value(slot3, self, "enabled_in_simulation")
 
 	return 
 end
-CoreEditorContinent.set_editor_only = function (self, editor_only)
+function CoreEditorContinent:set_editor_only(editor_only)
 	slot6 = editor_only
 
 	self.set_value(slot3, self, "editor_only")
 
 	return 
 end
-CoreEditorContinent.set_value = function (self, value, new_value)
+function CoreEditorContinent:set_value(value, new_value)
 	self._values[value] = new_value
 
 	return 
 end
-CoreEditorContinent.value = function (self, value)
+function CoreEditorContinent:value(value)
 	return self._values[value]
 end
-CoreEditorContinent.delete = function (self)
+function CoreEditorContinent:delete()
 	slot5 = self._units
 
 	for _, unit in ipairs(clone(slot4)) do

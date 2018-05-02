@@ -9,7 +9,7 @@ CarryData.EVENT_IDS = {
 	explode = 2,
 	will_explode = 1
 }
-CarryData.init = function (self, unit)
+function CarryData:init(unit)
 	self._unit = unit
 	self._dye_initiated = false
 	self._has_dye_pack = false
@@ -28,12 +28,12 @@ CarryData.init = function (self, unit)
 
 	return 
 end
-CarryData.set_mission_element = function (self, mission_element)
+function CarryData:set_mission_element(mission_element)
 	self._mission_element = mission_element
 
 	return 
 end
-CarryData.trigger_load = function (self, instigator)
+function CarryData:trigger_load(instigator)
 	if not self._mission_element then
 		return 
 	end
@@ -44,7 +44,7 @@ CarryData.trigger_load = function (self, instigator)
 
 	return 
 end
-CarryData.update = function (self, unit, t, dt)
+function CarryData:update(unit, t, dt)
 	slot6 = Network
 
 	if not Network.is_server(slot5) then
@@ -60,7 +60,7 @@ CarryData.update = function (self, unit, t, dt)
 
 	return 
 end
-CarryData._check_dye_explode = function (self)
+function CarryData:_check_dye_explode()
 	return 
 
 	slot3 = 1
@@ -80,14 +80,14 @@ CarryData._check_dye_explode = function (self)
 
 	return 
 end
-CarryData.sync_dye_exploded = function (self)
+function CarryData:sync_dye_exploded()
 	slot3 = self
 
 	self._dye_exploded(slot2)
 
 	return 
 end
-CarryData._dye_exploded = function (self)
+function CarryData:_dye_exploded()
 	return 
 
 	slot3 = "CarryData DYE BOOM"
@@ -101,7 +101,7 @@ CarryData._dye_exploded = function (self)
 
 	return 
 end
-CarryData.check_explodes_on_impact = function (self, velocity, air_time)
+function CarryData:check_explodes_on_impact(velocity, air_time)
 	slot5 = Network
 
 	if not Network.is_server(slot4) then
@@ -143,10 +143,10 @@ CarryData.check_explodes_on_impact = function (self, velocity, air_time)
 
 	return 
 end
-CarryData.explode_sequence_started = function (self)
+function CarryData:explode_sequence_started()
 	return (self._explode_t and true) or false
 end
-CarryData.can_explode = function (self)
+function CarryData:can_explode()
 	if self._disarmed then
 		return false
 	end
@@ -155,7 +155,7 @@ CarryData.can_explode = function (self)
 
 	return tweak_data.carry.types[tweak_info.type].can_explode
 end
-CarryData.start_explosion = function (self)
+function CarryData:start_explosion()
 	if self._explode_t then
 		return 
 	end
@@ -184,7 +184,7 @@ CarryData.start_explosion = function (self)
 
 	return 
 end
-CarryData._start_explosion = function (self)
+function CarryData:_start_explosion()
 	slot3 = self._unit
 	slot4 = false
 
@@ -192,13 +192,13 @@ CarryData._start_explosion = function (self)
 
 	return 
 end
-CarryData.disarm = function (self)
+function CarryData:disarm()
 	self._explode_t = nil
 	self._disarmed = true
 
 	return 
 end
-CarryData.bullet_hit = function (self)
+function CarryData:bullet_hit()
 	slot3 = self
 
 	if self.can_explode(slot2) then
@@ -221,7 +221,7 @@ CarryData.EXPLOSION_CUSTOM_PARAMS = {
 	effect = CarryData.EXPLOSION_SETTINGS.effect
 }
 local mvec1 = Vector3()
-CarryData._explode = function (self)
+function CarryData:_explode()
 	slot4 = "loot_exploded"
 
 	managers.mission.call_global_event(slot2, managers.mission)
@@ -304,7 +304,7 @@ CarryData._explode = function (self)
 
 	return 
 end
-CarryData._local_player_explosion_damage = function (self)
+function CarryData:_local_player_explosion_damage()
 	slot3 = self._unit
 	local pos = self._unit.position(slot2)
 	local range = CarryData.EXPLOSION_SETTINGS.range
@@ -314,7 +314,7 @@ CarryData._local_player_explosion_damage = function (self)
 
 	return 
 end
-CarryData.sync_net_event = function (self, event_id)
+function CarryData:sync_net_event(event_id)
 	if event_id == CarryData.EVENT_IDS.explode then
 		local range = CarryData.EXPLOSION_SETTINGS.range
 		slot5 = self
@@ -333,7 +333,7 @@ CarryData.sync_net_event = function (self, event_id)
 
 	return 
 end
-CarryData.clbk_out_of_world = function (self)
+function CarryData:clbk_out_of_world()
 	if self._bodies_to_revert then
 		slot3 = self._bodies_to_revert
 
@@ -407,10 +407,10 @@ CarryData.clbk_out_of_world = function (self)
 
 	return 
 end
-CarryData.carry_id = function (self)
+function CarryData:carry_id()
 	return self._carry_id
 end
-CarryData.set_carry_id = function (self, carry_id)
+function CarryData:set_carry_id(carry_id)
 	self._carry_id = carry_id
 	self._register_steal_SO_clbk_id = "CarryDataregiserSO" .. tostring(self._unit.key(slot6))
 	slot10 = "clbk_register_steal_SO"
@@ -420,7 +420,7 @@ CarryData.set_carry_id = function (self, carry_id)
 
 	return 
 end
-CarryData.clbk_register_steal_SO = function (self, carry_id)
+function CarryData:clbk_register_steal_SO(carry_id)
 	self._register_steal_SO_clbk_id = nil
 	slot4 = self
 
@@ -428,21 +428,21 @@ CarryData.clbk_register_steal_SO = function (self, carry_id)
 
 	return 
 end
-CarryData.set_dye_initiated = function (self, initiated)
+function CarryData:set_dye_initiated(initiated)
 	self._dye_initiated = initiated
 
 	return 
 end
-CarryData.dye_initiated = function (self)
+function CarryData:dye_initiated()
 	return self._dye_initiated
 end
-CarryData.has_dye_pack = function (self)
+function CarryData:has_dye_pack()
 	return self._has_dye_pack
 end
-CarryData.dye_value_multiplier = function (self)
+function CarryData:dye_value_multiplier()
 	return self._dye_value_multiplier
 end
-CarryData.set_dye_pack_data = function (self, dye_initiated, has_dye_pack, dye_value_multiplier)
+function CarryData:set_dye_pack_data(dye_initiated, has_dye_pack, dye_value_multiplier)
 	self._dye_initiated = dye_initiated
 	self._has_dye_pack = has_dye_pack
 	self._dye_value_multiplier = dye_value_multiplier
@@ -460,38 +460,38 @@ CarryData.set_dye_pack_data = function (self, dye_initiated, has_dye_pack, dye_v
 
 	return 
 end
-CarryData.dye_pack_data = function (self)
+function CarryData:dye_pack_data()
 	return self._dye_initiated, self._has_dye_pack, self._dye_value_multiplier
 end
-CarryData._disable_dye_pack = function (self)
+function CarryData:_disable_dye_pack()
 	self._dye_risk = false
 
 	return 
 end
-CarryData.value = function (self)
+function CarryData:value()
 	return self._value
 end
-CarryData.set_value = function (self, value)
+function CarryData:set_value(value)
 	self._value = value
 
 	return 
 end
-CarryData.multiplier = function (self)
+function CarryData:multiplier()
 	return self._multiplier
 end
-CarryData.set_multiplier = function (self, multiplier)
+function CarryData:set_multiplier(multiplier)
 	self._multiplier = multiplier
 
 	return 
 end
-CarryData.sequence_clbk_secured = function (self)
+function CarryData:sequence_clbk_secured()
 	slot3 = self
 
 	self._disable_dye_pack(slot2)
 
 	return 
 end
-CarryData._unregister_steal_SO = function (self)
+function CarryData:_unregister_steal_SO()
 	if not self._steal_SO_data then
 		return 
 	end
@@ -531,7 +531,7 @@ CarryData._unregister_steal_SO = function (self)
 
 	return 
 end
-CarryData._chk_register_steal_SO = function (self)
+function CarryData:_chk_register_steal_SO()
 
 	-- Decompilation error in this vicinity:
 	slot4 = "hinge_body_1"
@@ -700,7 +700,7 @@ CarryData._chk_register_steal_SO = function (self)
 
 	return 
 end
-CarryData.clbk_pickup_SO_verification = function (self, candidate_unit)
+function CarryData:clbk_pickup_SO_verification(candidate_unit)
 	if not self._steal_SO_data or not self._steal_SO_data.SO_id then
 		slot7 = candidate_unit
 		slot10 = self._steal_SO_data
@@ -735,7 +735,7 @@ CarryData.clbk_pickup_SO_verification = function (self, candidate_unit)
 
 	return true
 end
-CarryData.on_pickup_SO_administered = function (self, thief)
+function CarryData:on_pickup_SO_administered(thief)
 	if self._steal_SO_data.thief then
 		slot6 = self._steal_SO_data.thief
 
@@ -752,7 +752,7 @@ CarryData.on_pickup_SO_administered = function (self, thief)
 
 	return 
 end
-CarryData.on_pickup_SO_completed = function (self, thief)
+function CarryData:on_pickup_SO_completed(thief)
 	if thief ~= self._steal_SO_data.thief then
 		slot6 = thief
 
@@ -768,7 +768,7 @@ CarryData.on_pickup_SO_completed = function (self, thief)
 
 	return 
 end
-CarryData.on_pickup_SO_failed = function (self, thief)
+function CarryData:on_pickup_SO_failed(thief)
 	if not self._steal_SO_data.thief then
 		return 
 	end
@@ -788,7 +788,7 @@ CarryData.on_pickup_SO_failed = function (self, thief)
 
 	return 
 end
-CarryData.on_secure_SO_completed = function (self, thief)
+function CarryData:on_secure_SO_completed(thief)
 	if thief ~= self._steal_SO_data.thief then
 		slot6 = thief
 
@@ -809,7 +809,7 @@ CarryData.on_secure_SO_completed = function (self, thief)
 
 	return 
 end
-CarryData.on_secure_SO_failed = function (self, thief)
+function CarryData:on_secure_SO_failed(thief)
 	if not self._steal_SO_data.thief then
 		return 
 	end
@@ -833,7 +833,7 @@ CarryData.on_secure_SO_failed = function (self, thief)
 
 	return 
 end
-CarryData.link_to = function (self, parent_unit)
+function CarryData:link_to(parent_unit)
 	slot5 = "hinge_body_1"
 
 	if not self._unit.body(slot3, self._unit) then
@@ -898,7 +898,7 @@ CarryData.link_to = function (self, parent_unit)
 
 	return 
 end
-CarryData.unlink = function (self)
+function CarryData:unlink()
 	slot3 = self._unit
 
 	self._unit.unlink(slot2)
@@ -937,7 +937,7 @@ CarryData.unlink = function (self)
 
 	return 
 end
-CarryData.clbk_body_active_state = function (self, tag, unit, body, activated)
+function CarryData:clbk_body_active_state(tag, unit, body, activated)
 	slot8 = body
 
 	if not self._has_body_activation_clbk[body.key(slot7)] then
@@ -976,7 +976,7 @@ CarryData.clbk_body_active_state = function (self, tag, unit, body, activated)
 
 	return 
 end
-CarryData.clbk_send_link = function (self)
+function CarryData:clbk_send_link()
 	slot3 = self._unit
 
 	if alive(slot2) and self._steal_SO_data and self._steal_SO_data.thief and self._steal_SO_data.picked_up then
@@ -988,7 +988,7 @@ CarryData.clbk_send_link = function (self)
 
 	return 
 end
-CarryData.set_zipline_unit = function (self, zipline_unit)
+function CarryData:set_zipline_unit(zipline_unit)
 	self._zipline_unit = zipline_unit
 	slot4 = Network
 
@@ -1014,10 +1014,10 @@ CarryData.set_zipline_unit = function (self, zipline_unit)
 
 	return 
 end
-CarryData.is_attached_to_zipline_unit = function (self)
+function CarryData:is_attached_to_zipline_unit()
 	return self._zipline_unit and true
 end
-CarryData._on_load_attach_to_zipline = function (self, zipline_unit)
+function CarryData:_on_load_attach_to_zipline(zipline_unit)
 	slot4 = zipline_unit
 
 	if alive(slot3) then
@@ -1029,13 +1029,13 @@ CarryData._on_load_attach_to_zipline = function (self, zipline_unit)
 
 	return 
 end
-CarryData.on_thrown = function (self)
+function CarryData:on_thrown()
 	return 
 end
-CarryData.on_pickup = function (self)
+function CarryData:on_pickup()
 	return 
 end
-CarryData.save = function (self, data)
+function CarryData:save(data)
 	local state = {
 		carry_id = self._carry_id,
 		value = self._value,
@@ -1062,7 +1062,7 @@ CarryData.save = function (self, data)
 
 	return 
 end
-CarryData.load = function (self, data)
+function CarryData:load(data)
 	local state = data.CarryData
 	self._carry_id = state.carry_id
 	self._value = state.value
@@ -1075,7 +1075,7 @@ CarryData.load = function (self, data)
 
 	return 
 end
-CarryData.destroy = function (self)
+function CarryData:destroy()
 	if self._register_steal_SO_clbk_id then
 		slot4 = self._register_steal_SO_clbk_id
 
@@ -1106,12 +1106,12 @@ CarryData.destroy = function (self)
 
 	return 
 end
-CarryData.set_latest_peer_id = function (self, peer_id)
+function CarryData:set_latest_peer_id(peer_id)
 	self._latest_peer_id = peer_id
 
 	return 
 end
-CarryData.latest_peer_id = function (self)
+function CarryData:latest_peer_id()
 	return self._latest_peer_id
 end
 

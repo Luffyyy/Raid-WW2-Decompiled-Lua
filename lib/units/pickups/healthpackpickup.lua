@@ -4,7 +4,7 @@ if not HealthPackPickup then
 end
 
 HealthPackPickup = slot0
-HealthPackPickup.init = function (self, unit)
+function HealthPackPickup:init(unit)
 	slot5 = unit
 
 	HealthPackPickup.super.init(slot3, self)
@@ -15,7 +15,7 @@ HealthPackPickup.init = function (self, unit)
 
 	return 
 end
-HealthPackPickup._pickup = function (self, unit)
+function HealthPackPickup:_pickup(unit)
 	if self._picked_up then
 		return 
 	end
@@ -89,10 +89,10 @@ HealthPackPickup._pickup = function (self, unit)
 
 	return false
 end
-HealthPackPickup.sync_net_event = function (self, event, peer)
+function HealthPackPickup:sync_net_event(event, peer)
 	return 
 end
-HealthPackPickup.get_pickup_type = function (self)
+function HealthPackPickup:get_pickup_type()
 	return "health"
 end
 

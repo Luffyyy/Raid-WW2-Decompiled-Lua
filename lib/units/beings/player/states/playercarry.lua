@@ -7,14 +7,14 @@ end
 
 PlayerCarry = slot0
 PlayerCarry.target_tilt = -5
-PlayerCarry.init = function (self, unit)
+function PlayerCarry:init(unit)
 	slot5 = unit
 
 	PlayerCarry.super.init(slot3, self)
 
 	return 
 end
-PlayerCarry.enter = function (self, state_data, enter_data)
+function PlayerCarry:enter(state_data, enter_data)
 	slot7 = enter_data
 
 	PlayerCarry.super.enter(slot4, self, state_data)
@@ -28,7 +28,7 @@ PlayerCarry.enter = function (self, state_data, enter_data)
 
 	return 
 end
-PlayerCarry._enter = function (self, enter_data)
+function PlayerCarry:_enter(enter_data)
 	slot4 = managers.player
 	local my_carry_data = managers.player.get_my_carry_data(slot3)
 
@@ -82,7 +82,7 @@ PlayerCarry._enter = function (self, enter_data)
 
 	return 
 end
-PlayerCarry.exit = function (self, state_data, new_state_name)
+function PlayerCarry:exit(state_data, new_state_name)
 	slot7 = new_state_name
 
 	PlayerCarry.super.exit(slot4, self, state_data)
@@ -108,7 +108,7 @@ PlayerCarry.exit = function (self, state_data, new_state_name)
 
 	return exit_data
 end
-PlayerCarry.update = function (self, t, dt)
+function PlayerCarry:update(t, dt)
 	slot7 = dt
 
 	PlayerCarry.super.update(slot4, self, t)
@@ -121,7 +121,7 @@ PlayerCarry.update = function (self, t, dt)
 
 	return 
 end
-PlayerCarry.set_tweak_data = function (self, name)
+function PlayerCarry:set_tweak_data(name)
 	self._tweak_data_name = name
 	slot4 = self
 
@@ -129,7 +129,7 @@ PlayerCarry.set_tweak_data = function (self, name)
 
 	return 
 end
-PlayerCarry._check_dye_pack = function (self)
+function PlayerCarry:_check_dye_pack()
 	slot3 = managers.player
 	local my_carry_data = managers.player.get_my_carry_data(slot2)
 
@@ -142,7 +142,7 @@ PlayerCarry._check_dye_pack = function (self)
 
 	return 
 end
-PlayerCarry._check_dye_explode = function (self)
+function PlayerCarry:_check_dye_explode()
 	slot3 = 1
 	local chance = math.rand(slot2)
 
@@ -165,7 +165,7 @@ PlayerCarry._check_dye_explode = function (self)
 
 	return 
 end
-PlayerCarry._update_check_actions = function (self, t, dt)
+function PlayerCarry:_update_check_actions(t, dt)
 	slot7 = dt
 	local input = self._get_input(slot4, self, t)
 	slot6 = self
@@ -322,10 +322,10 @@ PlayerCarry._update_check_actions = function (self, t, dt)
 
 	return 
 end
-PlayerCarry._check_action_run = function (self, t, input)
+function PlayerCarry:_check_action_run(t, input)
 	return 
 end
-PlayerCarry._check_use_item = function (self, t, input)
+function PlayerCarry:_check_use_item(t, input)
 
 	-- Decompilation error in this vicinity:
 	local new_action = nil
@@ -371,31 +371,31 @@ PlayerCarry._check_use_item = function (self, t, input)
 
 	return new_action
 end
-PlayerCarry._check_change_weapon = function (self, ...)
+function PlayerCarry:_check_change_weapon(...)
 	slot3 = self
 
 	return PlayerCarry.super._check_change_weapon(slot2, ...)
 end
-PlayerCarry._check_action_equip = function (self, ...)
+function PlayerCarry:_check_action_equip(...)
 	slot3 = self
 
 	return PlayerCarry.super._check_action_equip(slot2, ...)
 end
-PlayerCarry._update_movement = function (self, t, dt)
+function PlayerCarry:_update_movement(t, dt)
 	slot7 = dt
 
 	PlayerCarry.super._update_movement(slot4, self, t)
 
 	return 
 end
-PlayerCarry._start_action_jump = function (self, ...)
+function PlayerCarry:_start_action_jump(...)
 	slot3 = self
 
 	PlayerCarry.super._start_action_jump(slot2, ...)
 
 	return 
 end
-PlayerCarry._perform_jump = function (self, jump_vec)
+function PlayerCarry:_perform_jump(jump_vec)
 	slot6 = "movement_penalty_nullifier"
 
 	if not managers.player.has_category_upgrade(slot3, managers.player, "carry") then
@@ -415,7 +415,7 @@ PlayerCarry._perform_jump = function (self, jump_vec)
 
 	return 
 end
-PlayerCarry._get_max_walk_speed = function (self, ...)
+function PlayerCarry:_get_max_walk_speed(...)
 	local multiplier = tweak_data.carry.types[self._tweak_data_name].move_speed_modifier
 	slot5 = BuffEffectManager.EFFECT_BAG_WEIGHT
 
@@ -438,15 +438,15 @@ PlayerCarry._get_max_walk_speed = function (self, ...)
 
 	return PlayerCarry.super._get_max_walk_speed(slot3, ...) * multiplier
 end
-PlayerCarry._get_walk_headbob = function (self, ...)
+function PlayerCarry:_get_walk_headbob(...)
 	slot3 = self
 
 	return PlayerCarry.super._get_walk_headbob(slot2, ...) * tweak_data.carry.types[self._tweak_data_name].move_speed_modifier
 end
-PlayerCarry.pre_destroy = function (self, unit)
+function PlayerCarry:pre_destroy(unit)
 	return 
 end
-PlayerCarry.destroy = function (self)
+function PlayerCarry:destroy()
 	return 
 end
 

@@ -8,7 +8,7 @@ if not ElementInstigatorRule then
 end
 
 ElementInstigatorRule = slot0
-ElementInstigatorRule.init = function (self, ...)
+function ElementInstigatorRule:init(...)
 	slot3 = self
 
 	ElementInstigatorRule.super.init(slot2, ...)
@@ -38,7 +38,7 @@ ElementInstigatorRule.init = function (self, ...)
 
 	return 
 end
-ElementInstigatorRule.on_script_activated = function (self, ...)
+function ElementInstigatorRule:on_script_activated(...)
 	slot3 = self
 
 	ElementInstigatorRule.super.on_script_activated(slot2, ...)
@@ -49,14 +49,14 @@ ElementInstigatorRule.on_script_activated = function (self, ...)
 
 	return 
 end
-ElementInstigatorRule.client_on_executed = function (self, ...)
+function ElementInstigatorRule:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementInstigatorRule.check_rules = function (self, instigator_type, instigator)
+function ElementInstigatorRule:check_rules(instigator_type, instigator)
 	if not self._values.enabled then
 		return true
 	end
@@ -95,7 +95,7 @@ ElementInstigatorRule.check_rules = function (self, instigator_type, instigator)
 
 	return check_result
 end
-ElementInstigatorRule._check_player_rules = function (self, rules, instigator)
+function ElementInstigatorRule:_check_player_rules(rules, instigator)
 	slot5 = rules
 
 	for rule, data in pairs(slot4) do
@@ -132,7 +132,7 @@ ElementInstigatorRule._check_player_rules = function (self, rules, instigator)
 
 	return true
 end
-ElementInstigatorRule._check_enemies_rules = function (self, rules, instigator)
+function ElementInstigatorRule:_check_enemies_rules(rules, instigator)
 	slot5 = rules
 
 	for rule, data in pairs(slot4) do
@@ -157,7 +157,7 @@ ElementInstigatorRule._check_enemies_rules = function (self, rules, instigator)
 
 	return true
 end
-ElementInstigatorRule._check_civilians_rules = function (self, rules, instigator)
+function ElementInstigatorRule:_check_civilians_rules(rules, instigator)
 	slot5 = rules
 
 	for rule, data in pairs(slot4) do
@@ -182,7 +182,7 @@ ElementInstigatorRule._check_civilians_rules = function (self, rules, instigator
 
 	return true
 end
-ElementInstigatorRule._check_loot_rules = function (self, rules, instigator)
+function ElementInstigatorRule:_check_loot_rules(rules, instigator)
 	slot5 = rules
 
 	for rule, data in pairs(slot4) do
@@ -198,7 +198,7 @@ ElementInstigatorRule._check_loot_rules = function (self, rules, instigator)
 
 	return true
 end
-ElementInstigatorRule.on_executed = function (self, instigator)
+function ElementInstigatorRule:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

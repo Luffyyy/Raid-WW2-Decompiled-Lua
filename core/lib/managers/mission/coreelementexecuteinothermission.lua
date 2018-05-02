@@ -14,21 +14,21 @@ if not ElementExecuteInOtherMission then
 end
 
 ElementExecuteInOtherMission = slot0
-ElementExecuteInOtherMission.init = function (self, ...)
+function ElementExecuteInOtherMission:init(...)
 	slot3 = self
 
 	ElementExecuteInOtherMission.super.init(slot2, ...)
 
 	return 
 end
-ElementExecuteInOtherMission.client_on_executed = function (self, ...)
+function ElementExecuteInOtherMission:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementExecuteInOtherMission.get_mission_element = function (self, id)
+function ElementExecuteInOtherMission:get_mission_element(id)
 	return 
 end
 

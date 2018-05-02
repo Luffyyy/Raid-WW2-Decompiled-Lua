@@ -6,7 +6,7 @@
 --   Code may be incomplete or incorrect.
 slot2 = CopLogicBase
 CopLogicFlee = class(slot1)
-CopLogicFlee.enter = function (data, new_logic_name, enter_params)
+function CopLogicFlee.enter(data, new_logic_name, enter_params)
 	local my_data = {
 		unit = data.unit
 	}
@@ -74,7 +74,7 @@ CopLogicFlee.enter = function (data, new_logic_name, enter_params)
 
 	return 
 end
-CopLogicFlee.exit = function (data, new_logic_name, enter_params)
+function CopLogicFlee.exit(data, new_logic_name, enter_params)
 	slot7 = enter_params
 
 	CopLogicBase.exit(slot4, data, new_logic_name)
@@ -95,7 +95,7 @@ CopLogicFlee.exit = function (data, new_logic_name, enter_params)
 
 	return 
 end
-CopLogicFlee.update = function (data)
+function CopLogicFlee.update(data)
 	local exit_state = nil
 	local unit = data.unit
 	local my_data = data.internal_data
@@ -331,7 +331,7 @@ CopLogicFlee.update = function (data)
 
 	return 
 end
-CopLogicFlee._update_enemy_detection = function (data)
+function CopLogicFlee._update_enemy_detection(data)
 	slot3 = managers.groupai
 
 	managers.groupai.state(slot2).on_unit_detection_updated(slot2, managers.groupai.state(slot2))
@@ -402,7 +402,7 @@ CopLogicFlee._update_enemy_detection = function (data)
 
 	return 
 end
-CopLogicFlee._upd_shoot = function (data, my_data)
+function CopLogicFlee._upd_shoot(data, my_data)
 	local shoot = nil
 	local focus_enemy = data.attention_obj
 	slot6 = data.unit
@@ -444,7 +444,7 @@ CopLogicFlee._upd_shoot = function (data, my_data)
 
 	return 
 end
-CopLogicFlee._update_pathing = function (data, my_data)
+function CopLogicFlee._update_pathing(data, my_data)
 	if data.pathing_results then
 		local path = my_data.flee_path_search_id and data.pathing_results[my_data.flee_path_search_id]
 
@@ -491,7 +491,7 @@ CopLogicFlee._update_pathing = function (data, my_data)
 
 	return 
 end
-CopLogicFlee._update_cover_pathing = function (data, my_data)
+function CopLogicFlee._update_cover_pathing(data, my_data)
 	if data.pathing_results then
 		local path = data.pathing_results[my_data.cover_path_search_id]
 
@@ -516,7 +516,7 @@ CopLogicFlee._update_cover_pathing = function (data, my_data)
 
 	return 
 end
-CopLogicFlee._chk_reaction_to_attention_object = function (data, attention_data, stationary)
+function CopLogicFlee._chk_reaction_to_attention_object(data, attention_data, stationary)
 	local record = attention_data.criminal_record
 
 	if not record or not attention_data.is_person then
@@ -601,7 +601,7 @@ CopLogicFlee._chk_reaction_to_attention_object = function (data, attention_data,
 
 	return AIAttentionObject.REACT_IDLE
 end
-CopLogicFlee.on_action_completed = function (data, action)
+function CopLogicFlee.on_action_completed(data, action)
 	slot4 = action
 	local action_type = action.type(slot3)
 
@@ -693,7 +693,7 @@ CopLogicFlee.on_action_completed = function (data, action)
 
 	return 
 end
-CopLogicFlee._update_cover = function (data)
+function CopLogicFlee._update_cover(data)
 	local my_data = data.internal_data
 	local cover_release_dis = 100
 	local best_cover = my_data.best_cover
@@ -739,7 +739,7 @@ CopLogicFlee._update_cover = function (data)
 
 	return 
 end
-CopLogicFlee._cancel_cover_pathing = function (data, my_data)
+function CopLogicFlee._cancel_cover_pathing(data, my_data)
 	if my_data.cover_pathing then
 		if data.active_searches[my_data.cover_path_search_id] then
 			slot5 = my_data.cover_path_search_id
@@ -758,7 +758,7 @@ CopLogicFlee._cancel_cover_pathing = function (data, my_data)
 
 	return 
 end
-CopLogicFlee._cancel_flee_pathing = function (data, my_data)
+function CopLogicFlee._cancel_flee_pathing(data, my_data)
 	if my_data.flee_path_search_id then
 		if data.active_searches[my_data.flee_path_search_id] then
 			slot5 = my_data.flee_path_search_id
@@ -787,53 +787,53 @@ CopLogicFlee._cancel_flee_pathing = function (data, my_data)
 
 	return 
 end
-CopLogicFlee.damage_clbk = function (data, damage_info)
+function CopLogicFlee.damage_clbk(data, damage_info)
 	slot5 = damage_info
 
 	CopLogicBase.damage_clbk(slot3, data)
 
 	return 
 end
-CopLogicFlee.death_clbk = function (data, damage_info)
+function CopLogicFlee.death_clbk(data, damage_info)
 	slot5 = damage_info
 
 	CopLogicAttack.death_clbk(slot3, data)
 
 	return 
 end
-CopLogicFlee.is_available_for_assignment = function (data, objective)
+function CopLogicFlee.is_available_for_assignment(data, objective)
 	if objective and objective.forced then
 		return true
 	end
 
 	return false
 end
-CopLogicFlee._flee_coarse_path_verify_clbk = function (shait, nav_seg)
+function CopLogicFlee._flee_coarse_path_verify_clbk(shait, nav_seg)
 	slot4 = managers.groupai
 	slot5 = nav_seg
 
 	return managers.groupai.state(slot3).is_nav_seg_safe(slot3, managers.groupai.state(slot3))
 end
-CopLogicFlee.on_new_objective = function (data, old_objective)
+function CopLogicFlee.on_new_objective(data, old_objective)
 	slot5 = old_objective
 
 	CopLogicBase.update_follow_unit(slot3, data)
 
 	return 
 end
-CopLogicFlee.on_intimidated = function (data, amount, aggressor_unit)
+function CopLogicFlee.on_intimidated(data, amount, aggressor_unit)
 	slot6 = amount
 
 	CopLogicBase._surrender(slot4, data)
 
 	return 
 end
-CopLogicFlee._get_all_paths = function (data)
+function CopLogicFlee._get_all_paths(data)
 	return {
 		flee_path = data.internal_data.flee_path
 	}
 end
-CopLogicFlee._set_verified_paths = function (data, verified_paths)
+function CopLogicFlee._set_verified_paths(data, verified_paths)
 	data.internal_data.flee_path = verified_paths.flee_path
 
 	return 

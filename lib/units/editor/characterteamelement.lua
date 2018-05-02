@@ -8,7 +8,7 @@ end
 CharacterTeamElement = slot0
 CharacterTeamElement.SAVE_UNIT_POSITION = false
 CharacterTeamElement.SAVE_UNIT_ROTATION = false
-CharacterTeamElement.init = function (self, unit)
+function CharacterTeamElement:init(unit)
 	slot5 = unit
 
 	MissionElement.init(slot3, self)
@@ -35,17 +35,17 @@ CharacterTeamElement.init = function (self, unit)
 
 	return 
 end
-CharacterTeamElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function CharacterTeamElement:draw_links(t, dt, selected_unit, all_units)
 	slot11 = all_units
 
 	MissionElement.draw_links(slot6, self, t, dt, selected_unit)
 
 	return 
 end
-CharacterTeamElement.update_editing = function (self)
+function CharacterTeamElement:update_editing()
 	return 
 end
-CharacterTeamElement.update_selected = function (self, t, dt, selected_unit, all_units)
+function CharacterTeamElement:update_selected(t, dt, selected_unit, all_units)
 	slot7 = self._hed.elements
 
 	for _, id in ipairs(slot6) do
@@ -67,7 +67,7 @@ CharacterTeamElement.update_selected = function (self, t, dt, selected_unit, all
 
 	return 
 end
-CharacterTeamElement.add_element = function (self)
+function CharacterTeamElement:add_element()
 	slot4 = {
 		ray_type = "editor",
 		mask = 10
@@ -82,7 +82,7 @@ CharacterTeamElement.add_element = function (self)
 
 	return 
 end
-CharacterTeamElement.remove_links = function (self, unit)
+function CharacterTeamElement:remove_links(unit)
 	slot4 = self._hed.elements
 
 	for _, id in ipairs(slot3) do
@@ -97,7 +97,7 @@ CharacterTeamElement.remove_links = function (self, unit)
 
 	return 
 end
-CharacterTeamElement.add_triggers = function (self, vc)
+function CharacterTeamElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "add_element"
 
@@ -105,7 +105,7 @@ CharacterTeamElement.add_triggers = function (self, vc)
 
 	return 
 end
-CharacterTeamElement._build_panel = function (self, panel, panel_sizer)
+function CharacterTeamElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

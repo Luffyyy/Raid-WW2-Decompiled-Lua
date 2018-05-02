@@ -17,14 +17,14 @@ if not AreaTriggerUnitElement then
 end
 
 AreaTriggerUnitElement = slot0
-AreaTriggerUnitElement.init = function (self, ...)
+function AreaTriggerUnitElement:init(...)
 	slot3 = self
 
 	CoreAreaTriggerUnitElement.init(slot2, ...)
 
 	return 
 end
-CoreAreaTriggerUnitElement.init = function (self, unit)
+function CoreAreaTriggerUnitElement:init(unit)
 	slot5 = unit
 
 	MissionElement.init(slot3, self)
@@ -106,7 +106,7 @@ CoreAreaTriggerUnitElement.init = function (self, unit)
 
 	return 
 end
-CoreAreaTriggerUnitElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function CoreAreaTriggerUnitElement:draw_links(t, dt, selected_unit, all_units)
 	slot11 = all_units
 
 	MissionElement.draw_links(slot6, self, t, dt, selected_unit)
@@ -218,7 +218,7 @@ CoreAreaTriggerUnitElement.draw_links = function (self, t, dt, selected_unit, al
 
 	return 
 end
-CoreAreaTriggerUnitElement._check_removed_units = function (self, all_units)
+function CoreAreaTriggerUnitElement:_check_removed_units(all_units)
 	if self._hed.use_shape_element_ids then
 		slot6 = self._hed.use_shape_element_ids
 
@@ -251,10 +251,10 @@ CoreAreaTriggerUnitElement._check_removed_units = function (self, all_units)
 
 	return 
 end
-CoreAreaTriggerUnitElement.update_editing = function (self)
+function CoreAreaTriggerUnitElement:update_editing()
 	return 
 end
-CoreAreaTriggerUnitElement.add_element = function (self)
+function CoreAreaTriggerUnitElement:add_element()
 	slot4 = {
 		ray_type = "editor",
 		mask = 10
@@ -334,7 +334,7 @@ CoreAreaTriggerUnitElement.add_element = function (self)
 
 	return 
 end
-CoreAreaTriggerUnitElement._add_unit_id = function (self, id)
+function CoreAreaTriggerUnitElement:_add_unit_id(id)
 	slot5 = id
 
 	table.insert(slot3, self._hed.unit_ids)
@@ -347,7 +347,7 @@ CoreAreaTriggerUnitElement._add_unit_id = function (self, id)
 
 	return 
 end
-CoreAreaTriggerUnitElement._remove_unit_id = function (self, id)
+function CoreAreaTriggerUnitElement:_remove_unit_id(id)
 	slot5 = id
 
 	table.delete(slot3, self._hed.unit_ids)
@@ -363,7 +363,7 @@ CoreAreaTriggerUnitElement._remove_unit_id = function (self, id)
 
 	return 
 end
-CoreAreaTriggerUnitElement.remove_links = function (self, unit)
+function CoreAreaTriggerUnitElement:remove_links(unit)
 	slot4 = self._hed.spawn_unit_elements
 
 	for _, id in ipairs(slot3) do
@@ -378,7 +378,7 @@ CoreAreaTriggerUnitElement.remove_links = function (self, unit)
 
 	return 
 end
-CoreAreaTriggerUnitElement.update_selected = function (self, t, dt, selected_unit, all_units)
+function CoreAreaTriggerUnitElement:update_selected(t, dt, selected_unit, all_units)
 	if not self._hed.use_shape_element_ids then
 		slot7 = self
 		local shape = self.get_shape(slot6)
@@ -411,7 +411,7 @@ CoreAreaTriggerUnitElement.update_selected = function (self, t, dt, selected_uni
 
 	return 
 end
-CoreAreaTriggerUnitElement.get_shape = function (self)
+function CoreAreaTriggerUnitElement:get_shape()
 	if not self._shape then
 		slot3 = self
 
@@ -420,7 +420,7 @@ CoreAreaTriggerUnitElement.get_shape = function (self)
 
 	return (self._hed.shape_type == "box" and self._shape) or (self._hed.shape_type == "cylinder" and self._cylinder_shape)
 end
-CoreAreaTriggerUnitElement.set_shape_property = function (self, params)
+function CoreAreaTriggerUnitElement:set_shape_property(params)
 	slot6 = self._hed[params.value]
 
 	self._shape.set_property(slot3, self._shape, params.property)
@@ -431,7 +431,7 @@ CoreAreaTriggerUnitElement.set_shape_property = function (self, params)
 
 	return 
 end
-CoreAreaTriggerUnitElement.add_triggers = function (self, vc)
+function CoreAreaTriggerUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "add_element"
 
@@ -439,7 +439,7 @@ CoreAreaTriggerUnitElement.add_triggers = function (self, vc)
 
 	return 
 end
-CoreAreaTriggerUnitElement._set_shape_type = function (self)
+function CoreAreaTriggerUnitElement:_set_shape_type()
 	local is_box = self._hed.shape_type == "box"
 	local is_cylinder = self._hed.shape_type == "cylinder"
 	local uses_external = self._hed.use_shape_element_ids
@@ -504,7 +504,7 @@ CoreAreaTriggerUnitElement._set_shape_type = function (self)
 
 	return 
 end
-CoreAreaTriggerUnitElement._create_shapes = function (self)
+function CoreAreaTriggerUnitElement:_create_shapes()
 	slot4 = {
 		width = self._hed.width,
 		depth = self._hed.depth,
@@ -526,7 +526,7 @@ CoreAreaTriggerUnitElement._create_shapes = function (self)
 
 	return 
 end
-CoreAreaTriggerUnitElement._recreate_shapes = function (self)
+function CoreAreaTriggerUnitElement:_recreate_shapes()
 	self._shape = nil
 	self._cylinder_shape = nil
 	slot3 = self
@@ -535,7 +535,7 @@ CoreAreaTriggerUnitElement._recreate_shapes = function (self)
 
 	return 
 end
-CoreAreaTriggerUnitElement.set_element_data = function (self, params, ...)
+function CoreAreaTriggerUnitElement:set_element_data(params, ...)
 	slot5 = params
 
 	CoreAreaTriggerUnitElement.super.set_element_data(slot3, self, ...)
@@ -555,7 +555,7 @@ CoreAreaTriggerUnitElement.set_element_data = function (self, params, ...)
 
 	return 
 end
-CoreAreaTriggerUnitElement.create_values_ctrlrs = function (self, panel, panel_sizer, disable)
+function CoreAreaTriggerUnitElement:create_values_ctrlrs(panel, panel_sizer, disable)
 	slot11 = "Set the check interval for the area, in seconds."
 
 	self._build_value_number(slot5, self, panel, panel_sizer, "interval", {
@@ -602,7 +602,7 @@ CoreAreaTriggerUnitElement.create_values_ctrlrs = function (self, panel, panel_s
 
 	return 
 end
-CoreAreaTriggerUnitElement._build_panel = function (self, panel, panel_sizer, disable_params)
+function CoreAreaTriggerUnitElement:_build_panel(panel, panel_sizer, disable_params)
 	slot6 = self
 
 	self._create_panel(slot5)
@@ -744,7 +744,7 @@ CoreAreaTriggerUnitElement._build_panel = function (self, panel, panel_sizer, di
 
 	return 
 end
-CoreAreaTriggerUnitElement.scale_slider = function (self, panel, sizer, number_ctrlr_params, value, name)
+function CoreAreaTriggerUnitElement:scale_slider(panel, sizer, number_ctrlr_params, value, name)
 	slot9 = "HORIZONTAL"
 	local slider_sizer = EWS.BoxSizer(slot7, EWS)
 	slot16 = "ALIGN_LEFT"
@@ -800,7 +800,7 @@ CoreAreaTriggerUnitElement.scale_slider = function (self, panel, sizer, number_c
 
 	return 
 end
-CoreAreaTriggerUnitElement.set_size = function (self, params)
+function CoreAreaTriggerUnitElement:set_size(params)
 	slot5 = params.ctrlr
 	local value = (self._hed[params.value] * params.ctrlr.get_value(slot4)) / 100
 	slot7 = value
@@ -817,7 +817,7 @@ CoreAreaTriggerUnitElement.set_size = function (self, params)
 
 	return 
 end
-CoreAreaTriggerUnitElement.size_release = function (self, params)
+function CoreAreaTriggerUnitElement:size_release(params)
 	self._hed[params.value] = params.number_ctrlr_params.value
 	slot5 = 100
 
@@ -825,7 +825,7 @@ CoreAreaTriggerUnitElement.size_release = function (self, params)
 
 	return 
 end
-CoreAreaTriggerUnitElement.clone_data = function (self, ...)
+function CoreAreaTriggerUnitElement:clone_data(...)
 	slot3 = self
 
 	CoreAreaTriggerUnitElement.super.clone_data(slot2, ...)
@@ -852,14 +852,14 @@ if not AreaOperatorUnitElement then
 end
 
 AreaOperatorUnitElement = slot0
-AreaOperatorUnitElement.init = function (self, ...)
+function AreaOperatorUnitElement:init(...)
 	slot3 = self
 
 	AreaOperatorUnitElement.super.init(slot2, ...)
 
 	return 
 end
-CoreAreaOperatorUnitElement.init = function (self, unit)
+function CoreAreaOperatorUnitElement:init(unit)
 	slot5 = unit
 
 	CoreAreaOperatorUnitElement.super.init(slot3, self)
@@ -903,7 +903,7 @@ CoreAreaOperatorUnitElement.init = function (self, unit)
 
 	return 
 end
-CoreAreaOperatorUnitElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function CoreAreaOperatorUnitElement:draw_links(t, dt, selected_unit, all_units)
 	slot10 = selected_unit
 
 	CoreAreaOperatorUnitElement.super.draw_links(slot6, self, t, dt)
@@ -929,10 +929,10 @@ CoreAreaOperatorUnitElement.draw_links = function (self, t, dt, selected_unit, a
 
 	return 
 end
-CoreAreaOperatorUnitElement.update_editing = function (self)
+function CoreAreaOperatorUnitElement:update_editing()
 	return 
 end
-CoreAreaOperatorUnitElement.add_element = function (self)
+function CoreAreaOperatorUnitElement:add_element()
 	slot4 = {
 		ray_type = "editor",
 		mask = 10
@@ -961,7 +961,7 @@ CoreAreaOperatorUnitElement.add_element = function (self)
 
 	return 
 end
-CoreAreaOperatorUnitElement.remove_links = function (self, unit)
+function CoreAreaOperatorUnitElement:remove_links(unit)
 	slot4 = self._hed.elements
 
 	for _, id in ipairs(slot3) do
@@ -976,7 +976,7 @@ CoreAreaOperatorUnitElement.remove_links = function (self, unit)
 
 	return 
 end
-CoreAreaOperatorUnitElement.add_triggers = function (self, vc)
+function CoreAreaOperatorUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "add_element"
 
@@ -984,7 +984,7 @@ CoreAreaOperatorUnitElement.add_triggers = function (self, vc)
 
 	return 
 end
-CoreAreaOperatorUnitElement._build_panel = function (self, panel, panel_sizer)
+function CoreAreaOperatorUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -1056,7 +1056,7 @@ if not AreaReportTriggerUnitElement then
 end
 
 AreaReportTriggerUnitElement = slot0
-AreaReportTriggerUnitElement.init = function (self, ...)
+function AreaReportTriggerUnitElement:init(...)
 	slot3 = self
 
 	AreaReportTriggerUnitElement.super.init(slot2, ...)
@@ -1065,7 +1065,7 @@ AreaReportTriggerUnitElement.init = function (self, ...)
 
 	return 
 end
-AreaReportTriggerUnitElement._build_panel = function (self, panel, panel_sizer)
+function AreaReportTriggerUnitElement:_build_panel(panel, panel_sizer)
 	slot8 = {
 		trigger_type = true
 	}

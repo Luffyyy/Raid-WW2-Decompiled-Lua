@@ -12,7 +12,7 @@ if not ElementNavigationStitcher then
 end
 
 ElementNavigationStitcher = slot0
-ElementNavigationStitcher.init = function (self, ...)
+function ElementNavigationStitcher:init(...)
 	slot3 = self
 
 	ElementNavigationStitcher.super.init(slot2, ...)
@@ -22,7 +22,7 @@ ElementNavigationStitcher.init = function (self, ...)
 
 	return 
 end
-ElementNavigationStitcher.on_script_activated = function (self)
+function ElementNavigationStitcher:on_script_activated()
 	self._on_script_activated_done = true
 	slot4 = self._id
 
@@ -30,14 +30,14 @@ ElementNavigationStitcher.on_script_activated = function (self)
 
 	return 
 end
-ElementNavigationStitcher.set_enabled = function (self, enabled)
+function ElementNavigationStitcher:set_enabled(enabled)
 	slot5 = enabled
 
 	ElementNavigationStitcher.super.set_enabled(slot3, self)
 
 	return 
 end
-ElementNavigationStitcher.on_executed = function (self, instigator, ...)
+function ElementNavigationStitcher:on_executed(instigator, ...)
 	if not self._values.enabled then
 		return 
 	end
@@ -48,14 +48,14 @@ ElementNavigationStitcher.on_executed = function (self, instigator, ...)
 
 	return 
 end
-ElementNavigationStitcher.pre_destroy = function (self)
+function ElementNavigationStitcher:pre_destroy()
 	slot3 = self
 
 	self.tear(slot2)
 
 	return 
 end
-ElementNavigationStitcher.debug_draw = function (self)
+function ElementNavigationStitcher:debug_draw()
 	if not self._debug_shape then
 		slot4 = {
 			position = self._values.position,
@@ -73,12 +73,12 @@ ElementNavigationStitcher.debug_draw = function (self)
 
 	return 
 end
-ElementNavigationStitcher._snap_to_grid = function (self, coord)
+function ElementNavigationStitcher:_snap_to_grid(coord)
 	coord = coord + self._grid_size / 2
 
 	return coord - coord % self._grid_size
 end
-ElementNavigationStitcher._snap_pos_to_grid = function (self, pos)
+function ElementNavigationStitcher:_snap_pos_to_grid(pos)
 	slot4 = pos
 	slot8 = pos.x
 
@@ -91,7 +91,7 @@ ElementNavigationStitcher._snap_pos_to_grid = function (self, pos)
 
 	return 
 end
-ElementNavigationStitcher._calculate_extents = function (self)
+function ElementNavigationStitcher:_calculate_extents()
 	local x_half_extent = self._values.width / 2 * self._values.rotation.x(slot3)
 	slot5 = self._values.rotation
 	local y_half_extent = self._values.depth / 2 * self._values.rotation.y(self._values.rotation)
@@ -139,7 +139,7 @@ ElementNavigationStitcher._calculate_extents = function (self)
 
 	return 
 end
-ElementNavigationStitcher._create_nav_data = function (self)
+function ElementNavigationStitcher:_create_nav_data()
 	self._nav_data = {
 		version = 6,
 		door_high_pos = {},
@@ -178,7 +178,7 @@ ElementNavigationStitcher._create_nav_data = function (self)
 
 	return 
 end
-ElementNavigationStitcher._create_quad = function (self, x, y)
+function ElementNavigationStitcher:_create_quad(x, y)
 	slot5 = self._nav_data.quad_borders_x_pos
 	slot11 = x + self._grid_size / 2
 	slot8 = self._snap_to_grid(slot9, self) / self._grid_size
@@ -226,7 +226,7 @@ ElementNavigationStitcher._create_quad = function (self, x, y)
 
 	return i_quad
 end
-ElementNavigationStitcher._create_top_door = function (self, i_x, i_y, z)
+function ElementNavigationStitcher:_create_top_door(i_x, i_y, z)
 	local i_top_quad = self._quad_grid[i_y - 1][i_x]
 	local i_bottom_quad = self._quad_grid[i_y][i_x]
 	local xp = self._nav_data.quad_borders_x_pos[i_top_quad]
@@ -252,7 +252,7 @@ ElementNavigationStitcher._create_top_door = function (self, i_x, i_y, z)
 
 	return 
 end
-ElementNavigationStitcher._create_left_door = function (self, i_x, i_y, z)
+function ElementNavigationStitcher:_create_left_door(i_x, i_y, z)
 	local i_left_quad = self._quad_grid[i_y][i_x - 1]
 	local i_right_quad = self._quad_grid[i_y][i_x]
 	local xp = self._nav_data.quad_borders_x_pos[i_left_quad]
@@ -278,7 +278,7 @@ ElementNavigationStitcher._create_left_door = function (self, i_x, i_y, z)
 
 	return 
 end
-ElementNavigationStitcher._create_quads = function (self)
+function ElementNavigationStitcher:_create_quads()
 	local z = self._extents.height
 	local i_x = 1
 	local i_y = 1
@@ -330,7 +330,7 @@ ElementNavigationStitcher._create_quads = function (self)
 
 	return 
 end
-ElementNavigationStitcher._collect_external_top_door = function (self, x, y, z, i_quad)
+function ElementNavigationStitcher:_collect_external_top_door(x, y, z, i_quad)
 	slot9 = z + 0.9
 	local door_high_pos = Vector3(slot6, self._nav_data.quad_borders_x_pos[i_quad] * self._grid_size, self._nav_data.quad_borders_y_pos[i_quad] * self._grid_size)
 	slot10 = z + 0.9
@@ -351,7 +351,7 @@ ElementNavigationStitcher._collect_external_top_door = function (self, x, y, z, 
 
 	return 
 end
-ElementNavigationStitcher._collect_external_left_door = function (self, x, y, z, i_quad)
+function ElementNavigationStitcher:_collect_external_left_door(x, y, z, i_quad)
 	slot9 = z + 0.9
 	local door_high_pos = Vector3(slot6, self._nav_data.quad_borders_x_neg[i_quad] * self._grid_size, self._nav_data.quad_borders_y_pos[i_quad] * self._grid_size)
 	slot10 = z + 0.9
@@ -372,7 +372,7 @@ ElementNavigationStitcher._collect_external_left_door = function (self, x, y, z,
 
 	return 
 end
-ElementNavigationStitcher._collect_external_bottom_door = function (self, x, y, z, i_quad)
+function ElementNavigationStitcher:_collect_external_bottom_door(x, y, z, i_quad)
 	slot9 = z + 0.9
 	local door_high_pos = Vector3(slot6, self._nav_data.quad_borders_x_neg[i_quad] * self._grid_size, self._nav_data.quad_borders_y_neg[i_quad] * self._grid_size)
 	slot10 = z + 0.9
@@ -393,7 +393,7 @@ ElementNavigationStitcher._collect_external_bottom_door = function (self, x, y, 
 
 	return 
 end
-ElementNavigationStitcher._collect_external_right_door = function (self, x, y, z, i_quad)
+function ElementNavigationStitcher:_collect_external_right_door(x, y, z, i_quad)
 	slot9 = z + 0.9
 	local door_high_pos = Vector3(slot6, self._nav_data.quad_borders_x_pos[i_quad] * self._grid_size, self._nav_data.quad_borders_y_neg[i_quad] * self._grid_size)
 	slot10 = z + 0.9
@@ -414,7 +414,7 @@ ElementNavigationStitcher._collect_external_right_door = function (self, x, y, z
 
 	return 
 end
-ElementNavigationStitcher._collect_external_doors = function (self)
+function ElementNavigationStitcher:_collect_external_doors()
 	self._external_doors = {}
 	local i_x = 1
 	local i_y = 1
@@ -479,7 +479,7 @@ ElementNavigationStitcher._collect_external_doors = function (self)
 
 	return 
 end
-ElementNavigationStitcher._create_external_doors = function (self)
+function ElementNavigationStitcher:_create_external_doors()
 	slot3 = self._external_doors
 
 	for _, door in ipairs(slot2) do
@@ -490,7 +490,7 @@ ElementNavigationStitcher._create_external_doors = function (self)
 
 	return 
 end
-ElementNavigationStitcher._clear_data = function (self)
+function ElementNavigationStitcher:_clear_data()
 	self._extents = {}
 	self._nav_data = {}
 	self._external_doors = {}
@@ -498,7 +498,7 @@ ElementNavigationStitcher._clear_data = function (self)
 
 	return 
 end
-ElementNavigationStitcher.stitch = function (self, from_dropin)
+function ElementNavigationStitcher:stitch(from_dropin)
 	if self._has_created and not from_dropin then
 		return 
 	end
@@ -564,7 +564,7 @@ ElementNavigationStitcher.stitch = function (self, from_dropin)
 
 	return 
 end
-ElementNavigationStitcher.tear = function (self)
+function ElementNavigationStitcher:tear()
 	if not self._has_created then
 		return 
 	end
@@ -579,14 +579,14 @@ ElementNavigationStitcher.tear = function (self)
 
 	return 
 end
-ElementNavigationStitcher.save = function (self, data)
+function ElementNavigationStitcher:save(data)
 	data.enabled = self._values.enabled
 	data.has_created = self._has_created
 	data.world_id = self._world_id
 
 	return 
 end
-ElementNavigationStitcher.load = function (self, data)
+function ElementNavigationStitcher:load(data)
 	if not self._on_script_activated_done then
 		slot4 = self
 
@@ -627,7 +627,7 @@ ElementNavigationStitcher.load = function (self, data)
 
 	return 
 end
-ElementNavigationStitcher._queue_stitch = function (self)
+function ElementNavigationStitcher:_queue_stitch()
 	slot4 = "[ElementNavigationStitcher:load] Stitching from queue!"
 
 	Application.debug(slot2, Application)

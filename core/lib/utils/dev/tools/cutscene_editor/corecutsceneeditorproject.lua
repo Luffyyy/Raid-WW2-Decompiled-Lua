@@ -286,7 +286,7 @@ CoreCutsceneEditorProject.VALID_EXPORT_TYPES = {
 	"footage_use"
 }
 CoreCutsceneEditorProject.DEFAULT_EXPORT_TYPE = "in_game_use"
-CoreCutsceneEditorProject.path = function (self)
+function CoreCutsceneEditorProject:path()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -296,7 +296,7 @@ CoreCutsceneEditorProject.path = function (self)
 
 
 end
-CoreCutsceneEditorProject.set_path = function (self, absolute_path)
+function CoreCutsceneEditorProject:set_path(absolute_path)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -310,7 +310,7 @@ CoreCutsceneEditorProject.set_path = function (self, absolute_path)
 
 
 end
-CoreCutsceneEditorProject.name = function (self)
+function CoreCutsceneEditorProject:name()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -330,7 +330,7 @@ CoreCutsceneEditorProject.name = function (self)
 
 
 end
-CoreCutsceneEditorProject.export_type = function (self)
+function CoreCutsceneEditorProject:export_type()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -415,7 +415,7 @@ CoreCutsceneEditorProject.export_type = function (self)
 
 
 end
-CoreCutsceneEditorProject.save = function (self, audio_clips, film_clips, cutscene_keys, settings)
+function CoreCutsceneEditorProject:save(audio_clips, film_clips, cutscene_keys, settings)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-25, warpins: 1 ---
@@ -1051,7 +1051,7 @@ CoreCutsceneEditorProject.save = function (self, audio_clips, film_clips, cutsce
 
 
 end
-CoreCutsceneEditorProject.audio_clips = function (self)
+function CoreCutsceneEditorProject:audio_clips()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -1160,7 +1160,7 @@ CoreCutsceneEditorProject.audio_clips = function (self)
 
 
 end
-CoreCutsceneEditorProject.film_clips = function (self)
+function CoreCutsceneEditorProject:film_clips()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -1365,7 +1365,7 @@ CoreCutsceneEditorProject.film_clips = function (self)
 
 
 end
-CoreCutsceneEditorProject.cutscene_keys = function (self, key_collection)
+function CoreCutsceneEditorProject:cutscene_keys(key_collection)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -1454,7 +1454,7 @@ CoreCutsceneEditorProject.cutscene_keys = function (self, key_collection)
 
 
 end
-CoreCutsceneEditorProject.animation_patches = function (self)
+function CoreCutsceneEditorProject:animation_patches()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -1620,7 +1620,7 @@ CoreCutsceneEditorProject.animation_patches = function (self)
 
 
 end
-CoreCutsceneEditorProject.root_node = function (self)
+function CoreCutsceneEditorProject:root_node()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1651,7 +1651,7 @@ CoreCutsceneEditorProject.root_node = function (self)
 
 
 end
-CoreCutsceneEditorProject.child_node = function (self, child_name, parent_node, child_properties)
+function CoreCutsceneEditorProject:child_node(child_name, parent_node, child_properties)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---

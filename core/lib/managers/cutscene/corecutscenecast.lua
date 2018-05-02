@@ -389,7 +389,7 @@
 --- BLOCK #0 1-3, warpins: 1 ---
 slot0 = CoreCutsceneCast or class()
 CoreCutsceneCast = slot0
-CoreCutsceneCast.prime = function (self, cutscene)
+function CoreCutsceneCast:prime(cutscene)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -434,7 +434,7 @@ CoreCutsceneCast.prime = function (self, cutscene)
 
 
 end
-CoreCutsceneCast.unload = function (self)
+function CoreCutsceneCast:unload()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -642,7 +642,7 @@ CoreCutsceneCast.unload = function (self)
 
 
 end
-CoreCutsceneCast.is_ready = function (self, cutscene)
+function CoreCutsceneCast:is_ready(cutscene)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -712,7 +712,7 @@ CoreCutsceneCast.is_ready = function (self, cutscene)
 
 
 end
-CoreCutsceneCast.set_timer = function (self, timer)
+function CoreCutsceneCast:set_timer(timer)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -795,7 +795,7 @@ CoreCutsceneCast.set_timer = function (self, timer)
 
 
 end
-CoreCutsceneCast.set_cutscene_visible = function (self, cutscene, visible)
+function CoreCutsceneCast:set_cutscene_visible(cutscene, visible)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -896,7 +896,7 @@ CoreCutsceneCast.set_cutscene_visible = function (self, cutscene, visible)
 
 
 end
-CoreCutsceneCast.set_unit_visible = function (self, unit_name, visible)
+function CoreCutsceneCast:set_unit_visible(unit_name, visible)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -1005,7 +1005,7 @@ CoreCutsceneCast.set_unit_visible = function (self, unit_name, visible)
 
 
 end
-CoreCutsceneCast.unit_visible = function (self, unit_name)
+function CoreCutsceneCast:unit_visible(unit_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1062,7 +1062,7 @@ CoreCutsceneCast.unit_visible = function (self, unit_name)
 
 
 end
-CoreCutsceneCast.unit = function (self, unit_name)
+function CoreCutsceneCast:unit(unit_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1091,7 +1091,7 @@ CoreCutsceneCast.unit = function (self, unit_name)
 
 
 end
-CoreCutsceneCast.actor_unit = function (self, unit_name, cutscene)
+function CoreCutsceneCast:actor_unit(unit_name, cutscene)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -1134,7 +1134,7 @@ CoreCutsceneCast.actor_unit = function (self, unit_name, cutscene)
 
 
 end
-CoreCutsceneCast.unit_names = function (self)
+function CoreCutsceneCast:unit_names()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1152,7 +1152,7 @@ CoreCutsceneCast.unit_names = function (self)
 
 
 end
-CoreCutsceneCast.evaluate_cutscene_at_time = function (self, cutscene, time)
+function CoreCutsceneCast:evaluate_cutscene_at_time(cutscene, time)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1442,7 +1442,7 @@ CoreCutsceneCast.evaluate_cutscene_at_time = function (self, cutscene, time)
 
 
 end
-CoreCutsceneCast.evaluate_object_at_time = function (self, cutscene, unit_name, object_name, time)
+function CoreCutsceneCast:evaluate_object_at_time(cutscene, unit_name, object_name, time)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-15, warpins: 1 ---
@@ -1491,7 +1491,7 @@ CoreCutsceneCast.evaluate_object_at_time = function (self, cutscene, unit_name, 
 
 
 end
-CoreCutsceneCast.spawn_unit = function (self, unit_name, unit_type)
+function CoreCutsceneCast:spawn_unit(unit_name, unit_type)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -1661,7 +1661,7 @@ CoreCutsceneCast.spawn_unit = function (self, unit_name, unit_type)
 
 
 end
-CoreCutsceneCast.delete_unit = function (self, unit_name)
+function CoreCutsceneCast:delete_unit(unit_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -1773,7 +1773,7 @@ CoreCutsceneCast.delete_unit = function (self, unit_name)
 
 
 end
-CoreCutsceneCast.rename_unit = function (self, unit_name, new_unit_name)
+function CoreCutsceneCast:rename_unit(unit_name, new_unit_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -1828,7 +1828,7 @@ CoreCutsceneCast.rename_unit = function (self, unit_name, new_unit_name)
 
 
 end
-CoreCutsceneCast._stop_animations_on_actor_units_in_cutscene = function (self, cutscene)
+function CoreCutsceneCast:_stop_animations_on_actor_units_in_cutscene(cutscene)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -1912,7 +1912,7 @@ CoreCutsceneCast._stop_animations_on_actor_units_in_cutscene = function (self, c
 
 
 end
-CoreCutsceneCast._state_machine_is_playing_raw_animation = function (self, machine, animation)
+function CoreCutsceneCast:_state_machine_is_playing_raw_animation(machine, animation)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-17, warpins: 1 ---
@@ -2016,7 +2016,7 @@ CoreCutsceneCast._state_machine_is_playing_raw_animation = function (self, machi
 
 
 end
-CoreCutsceneCast._reparent_to_locator_unit = function (self, parent, child)
+function CoreCutsceneCast:_reparent_to_locator_unit(parent, child)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-24, warpins: 1 ---
@@ -2040,7 +2040,7 @@ CoreCutsceneCast._reparent_to_locator_unit = function (self, parent, child)
 
 
 end
-CoreCutsceneCast._set_unit_and_children_visible = function (self, unit, visible, excluded_units)
+function CoreCutsceneCast:_set_unit_and_children_visible(unit, visible, excluded_units)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -2157,7 +2157,7 @@ CoreCutsceneCast._set_unit_and_children_visible = function (self, unit, visible,
 
 
 end
-CoreCutsceneCast._animation_blob_controller = function (self, cutscene, preloading)
+function CoreCutsceneCast:_animation_blob_controller(cutscene, preloading)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -2254,7 +2254,7 @@ CoreCutsceneCast._animation_blob_controller = function (self, cutscene, preloadi
 
 
 end
-CoreCutsceneCast._actor_units_in_cutscene = function (self, cutscene)
+function CoreCutsceneCast:_actor_units_in_cutscene(cutscene)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -2412,7 +2412,7 @@ CoreCutsceneCast._actor_units_in_cutscene = function (self, cutscene)
 
 
 end
-CoreCutsceneCast._root_unit = function (self)
+function CoreCutsceneCast:_root_unit()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---

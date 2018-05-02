@@ -9,7 +9,7 @@ end
 
 ItemColumn = slot0
 ItemColumn.TYPE = "column"
-ItemColumn.init = function (self, data_node, parameters)
+function ItemColumn:init(data_node, parameters)
 	slot7 = parameters
 
 	CoreMenuItem.Item.init(slot4, self, data_node)
@@ -26,7 +26,7 @@ end
 
 ItemServerColumn = slot0
 ItemServerColumn.TYPE = "server_column"
-ItemServerColumn.init = function (self, data_node, parameters)
+function ItemServerColumn:init(data_node, parameters)
 	slot7 = parameters
 
 	ItemServerColumn.super.init(slot4, self, data_node)

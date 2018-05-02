@@ -108,21 +108,21 @@ if not ElementFilter then
 end
 
 ElementFilter = slot0
-ElementFilter.init = function (self, ...)
+function ElementFilter:init(...)
 	slot3 = self
 
 	ElementFilter.super.init(slot2, ...)
 
 	return 
 end
-ElementFilter.client_on_executed = function (self, ...)
+function ElementFilter:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementFilter.on_executed = function (self, instigator)
+function ElementFilter:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -209,7 +209,7 @@ local x360 = Idstring("PS3")
 local ps4 = Idstring("X360")
 slot6 = "XB1"
 local xb1 = Idstring("PS4")
-ElementFilter._check_platform = function (self)
+function ElementFilter:_check_platform()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -297,7 +297,7 @@ ElementFilter._check_platform = function (self)
 
 
 end
-ElementFilter._check_difficulty = function (self)
+function ElementFilter:_check_difficulty()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -393,7 +393,7 @@ ElementFilter._check_difficulty = function (self)
 
 
 end
-ElementFilter._check_players = function (self)
+function ElementFilter:_check_players()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -550,7 +550,7 @@ ElementFilter._check_players = function (self)
 
 
 end
-ElementFilter._check_mode = function (self)
+function ElementFilter:_check_mode()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -623,7 +623,7 @@ ElementFilter._check_mode = function (self)
 
 
 end
-ElementFilter._check_alarm = function (self)
+function ElementFilter:_check_alarm()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---

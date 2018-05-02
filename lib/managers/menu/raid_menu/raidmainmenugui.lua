@@ -9,7 +9,7 @@ RaidMainMenuGui.WIDGET_PANEL_W = 576
 RaidMainMenuGui.WIDGET_PANEL_H = 256
 RaidMainMenuGui.STEAM_GROUP_BUTTON_W = 544
 RaidMainMenuGui.STEAM_GROUP_BUTTON_H = 306
-RaidMainMenuGui.init = function (self, ws, fullscreen_ws, node, component_name)
+function RaidMainMenuGui:init(ws, fullscreen_ws, node, component_name)
 	slot11 = component_name
 
 	RaidMainMenuGui.super.init(slot6, self, ws, fullscreen_ws, node)
@@ -28,7 +28,7 @@ RaidMainMenuGui.init = function (self, ws, fullscreen_ws, node, component_name)
 
 	return 
 end
-RaidMainMenuGui._setup_properties = function (self)
+function RaidMainMenuGui:_setup_properties()
 	slot3 = self
 
 	RaidMainMenuGui.super._setup_properties(slot2)
@@ -37,7 +37,7 @@ RaidMainMenuGui._setup_properties = function (self)
 
 	return 
 end
-RaidMainMenuGui._layout = function (self)
+function RaidMainMenuGui:_layout()
 	slot4 = "WIN32"
 	self._display_invite_widget = SystemInfo.platform(slot2) ~= Idstring(SystemInfo)
 	slot3 = self
@@ -84,7 +84,7 @@ RaidMainMenuGui._layout = function (self)
 
 	return 
 end
-RaidMainMenuGui.close = function (self)
+function RaidMainMenuGui:close()
 	slot4 = "main_menu_drop_in"
 
 	managers.system_event_listener.remove_listener(slot2, managers.system_event_listener)
@@ -103,7 +103,7 @@ RaidMainMenuGui.close = function (self)
 
 	return 
 end
-RaidMainMenuGui._layout_title_logo = function (self)
+function RaidMainMenuGui:_layout_title_logo()
 	slot4 = {
 		text = "",
 		h = 64,
@@ -279,10 +279,10 @@ RaidMainMenuGui._layout_title_logo = function (self)
 
 	return 
 end
-RaidMainMenuGui._layout_logo = function (self)
+function RaidMainMenuGui:_layout_logo()
 	return 
 end
-RaidMainMenuGui._layout_list_menu = function (self)
+function RaidMainMenuGui:_layout_list_menu()
 	local list_menu_params = {
 		selection_enabled = true,
 		name = "list_menu",
@@ -305,7 +305,7 @@ RaidMainMenuGui._layout_list_menu = function (self)
 
 	return 
 end
-RaidMainMenuGui._layout_steam_group_button = function (self)
+function RaidMainMenuGui:_layout_steam_group_button()
 	local steam_group_panel_params = {
 		layer = 50,
 		name = "steam_group_panel",
@@ -373,7 +373,7 @@ RaidMainMenuGui._layout_steam_group_button = function (self)
 
 	return 
 end
-RaidMainMenuGui.mouse_over_steam_group_button = function (self)
+function RaidMainMenuGui:mouse_over_steam_group_button()
 	slot3 = self._steam_group_button_frame
 	slot6 = "ff8880"
 
@@ -381,7 +381,7 @@ RaidMainMenuGui.mouse_over_steam_group_button = function (self)
 
 	return 
 end
-RaidMainMenuGui.mouse_exit_steam_group_button = function (self)
+function RaidMainMenuGui:mouse_exit_steam_group_button()
 	slot4 = Color.white
 
 	self._steam_group_button_frame.set_color(slot2, self._steam_group_button_frame)
@@ -397,7 +397,7 @@ RaidMainMenuGui.mouse_exit_steam_group_button = function (self)
 
 	return 
 end
-RaidMainMenuGui.mouse_pressed_steam_group_button = function (self)
+function RaidMainMenuGui:mouse_pressed_steam_group_button()
 	slot3 = self._steam_group_button_frame
 
 	self._steam_group_button_frame.stop(slot2)
@@ -409,7 +409,7 @@ RaidMainMenuGui.mouse_pressed_steam_group_button = function (self)
 
 	return 
 end
-RaidMainMenuGui.mouse_released_steam_group_button = function (self)
+function RaidMainMenuGui:mouse_released_steam_group_button()
 	slot3 = self._steam_group_button_frame
 
 	self._steam_group_button_frame.stop(slot2)
@@ -425,7 +425,7 @@ RaidMainMenuGui.mouse_released_steam_group_button = function (self)
 
 	return 
 end
-RaidMainMenuGui._animate_steam_group_button_press = function (self, o)
+function RaidMainMenuGui:_animate_steam_group_button_press(o)
 	local duration = 0.15
 	local t = self._steam_button_t * duration
 	local center_x = self._steam_group_panel.center_x(slot5)
@@ -476,7 +476,7 @@ RaidMainMenuGui._animate_steam_group_button_press = function (self, o)
 
 	return 
 end
-RaidMainMenuGui._animate_steam_group_button_release = function (self, o)
+function RaidMainMenuGui:_animate_steam_group_button_release(o)
 	local duration = 0.15
 	local t = (1 - self._steam_button_t) * duration
 	local center_x = self._steam_group_panel.center_x(slot5)
@@ -529,7 +529,7 @@ RaidMainMenuGui._animate_steam_group_button_release = function (self, o)
 
 	return 
 end
-RaidMainMenuGui._layout_kick_mute_widget = function (self)
+function RaidMainMenuGui:_layout_kick_mute_widget()
 	if self._widget_panel then
 		slot3 = self._widget_panel
 
@@ -769,7 +769,7 @@ RaidMainMenuGui._layout_kick_mute_widget = function (self)
 
 	return 
 end
-RaidMainMenuGui.on_widget_button_selected = function (self, button)
+function RaidMainMenuGui:on_widget_button_selected(button)
 	local widget_action = nil
 
 	if button == "kick" then
@@ -791,14 +791,14 @@ RaidMainMenuGui.on_widget_button_selected = function (self, button)
 
 	return 
 end
-RaidMainMenuGui.on_widget_button_unselected = function (self, button)
+function RaidMainMenuGui:on_widget_button_unselected(button)
 	slot5 = ""
 
 	self._widget_action_title.set_text(slot3, self._widget_action_title)
 
 	return 
 end
-RaidMainMenuGui._list_menu_data_source = function (self)
+function RaidMainMenuGui:_list_menu_data_source()
 	local _list_items = {}
 	slot5 = {
 		callback = "raid_play_online",
@@ -1122,7 +1122,7 @@ RaidMainMenuGui._list_menu_data_source = function (self)
 
 	return _list_items
 end
-RaidMainMenuGui._on_list_menu_item_selected = function (self, data)
+function RaidMainMenuGui:_on_list_menu_item_selected(data)
 	if not data.callback then
 		return 
 	end

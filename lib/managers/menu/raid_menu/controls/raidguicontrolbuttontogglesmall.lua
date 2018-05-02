@@ -15,7 +15,7 @@ RaidGUIControlButtonToggleSmall = slot0
 RaidGUIControlButtonToggleSmall.BORDER_ICON = "players_icon_outline"
 RaidGUIControlButtonToggleSmall.BORDER_COLOR = tweak_data.gui.colors.raid_grey
 RaidGUIControlButtonToggleSmall.BORDER_HOVER_COLOR = tweak_data.gui.colors.raid_red
-RaidGUIControlButtonToggleSmall.init = function (self, parent, params)
+function RaidGUIControlButtonToggleSmall:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlButtonToggleSmall.super.init(slot4, self, parent)
@@ -53,7 +53,7 @@ RaidGUIControlButtonToggleSmall.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlButtonToggleSmall._create_panel = function (self)
+function RaidGUIControlButtonToggleSmall:_create_panel()
 	local panel_params = {}
 	slot5 = self._name
 	slot3 = tostring(slot4)
@@ -67,7 +67,7 @@ RaidGUIControlButtonToggleSmall._create_panel = function (self)
 
 	return 
 end
-RaidGUIControlButtonToggleSmall._create_image_panel = function (self)
+function RaidGUIControlButtonToggleSmall:_create_image_panel()
 	local image_panel_params = {
 		name = "image_panel"
 	}
@@ -76,7 +76,7 @@ RaidGUIControlButtonToggleSmall._create_image_panel = function (self)
 
 	return 
 end
-RaidGUIControlButtonToggleSmall._create_border = function (self)
+function RaidGUIControlButtonToggleSmall:_create_border()
 	local checkbox_border_params = {
 		valign = "scale",
 		halign = "scale",
@@ -89,7 +89,7 @@ RaidGUIControlButtonToggleSmall._create_border = function (self)
 
 	return 
 end
-RaidGUIControlButtonToggleSmall._create_active_icon = function (self)
+function RaidGUIControlButtonToggleSmall:_create_active_icon()
 	local active_icon = (self._params.active_icon ~= nil and self._params.active_icon) or self._params.inactive_icon
 	local active_icon_params = {
 		valign = "scale",
@@ -106,7 +106,7 @@ RaidGUIControlButtonToggleSmall._create_active_icon = function (self)
 
 	return 
 end
-RaidGUIControlButtonToggleSmall._create_inactive_icon = function (self)
+function RaidGUIControlButtonToggleSmall:_create_inactive_icon()
 	local inactive_icon = (self._params.inactive_icon ~= nil and self._params.inactive_icon) or self._params.active_icon
 	local inactive_icon_params = {
 		valign = "scale",
@@ -123,7 +123,7 @@ RaidGUIControlButtonToggleSmall._create_inactive_icon = function (self)
 
 	return 
 end
-RaidGUIControlButtonToggleSmall.highlight_on = function (self)
+function RaidGUIControlButtonToggleSmall:highlight_on()
 	if self._object then
 		slot3 = self._object._engine_panel
 
@@ -153,7 +153,7 @@ RaidGUIControlButtonToggleSmall.highlight_on = function (self)
 
 	return 
 end
-RaidGUIControlButtonToggleSmall.highlight_off = function (self)
+function RaidGUIControlButtonToggleSmall:highlight_off()
 	if self._object then
 		slot3 = self._object._engine_panel
 
@@ -177,7 +177,7 @@ RaidGUIControlButtonToggleSmall.highlight_off = function (self)
 
 	return 
 end
-RaidGUIControlButtonToggleSmall.mouse_pressed = function (self, o, button, x, y)
+function RaidGUIControlButtonToggleSmall:mouse_pressed(o, button, x, y)
 	slot9 = y
 
 	if self.inside(slot6, self, x) then
@@ -193,7 +193,7 @@ RaidGUIControlButtonToggleSmall.mouse_pressed = function (self, o, button, x, y)
 
 	return 
 end
-RaidGUIControlButtonToggleSmall.mouse_released = function (self, o, button, x, y)
+function RaidGUIControlButtonToggleSmall:mouse_released(o, button, x, y)
 
 	-- Decompilation error in this vicinity:
 	slot9 = y
@@ -233,15 +233,15 @@ RaidGUIControlButtonToggleSmall.mouse_released = function (self, o, button, x, y
 
 	return 
 end
-RaidGUIControlButtonToggleSmall.set_value = function (self, value)
+function RaidGUIControlButtonToggleSmall:set_value(value)
 	self._value = value
 
 	return 
 end
-RaidGUIControlButtonToggleSmall.get_value = function (self)
+function RaidGUIControlButtonToggleSmall:get_value()
 	return self._value
 end
-RaidGUIControlButtonToggleSmall.set_value_and_render = function (self, value)
+function RaidGUIControlButtonToggleSmall:set_value_and_render(value)
 	slot5 = value
 
 	self.set_value(slot3, self)
@@ -252,7 +252,7 @@ RaidGUIControlButtonToggleSmall.set_value_and_render = function (self, value)
 
 	return 
 end
-RaidGUIControlButtonToggleSmall._render_images = function (self)
+function RaidGUIControlButtonToggleSmall:_render_images()
 	if self._visible == false then
 		slot3 = self
 
@@ -285,21 +285,21 @@ RaidGUIControlButtonToggleSmall._render_images = function (self)
 
 	return 
 end
-RaidGUIControlButtonToggleSmall.show = function (self)
+function RaidGUIControlButtonToggleSmall:show()
 	slot3 = self._object
 
 	self._object.show(slot2)
 
 	return 
 end
-RaidGUIControlButtonToggleSmall.hide = function (self)
+function RaidGUIControlButtonToggleSmall:hide()
 	slot3 = self._object
 
 	self._object.hide(slot2)
 
 	return 
 end
-RaidGUIControlButtonToggleSmall.set_visible = function (self, flag)
+function RaidGUIControlButtonToggleSmall:set_visible(flag)
 	self._visible = flag
 	slot4 = self
 
@@ -307,7 +307,7 @@ RaidGUIControlButtonToggleSmall.set_visible = function (self, flag)
 
 	return 
 end
-RaidGUIControlButtonToggleSmall.confirm_pressed = function (self)
+function RaidGUIControlButtonToggleSmall:confirm_pressed()
 
 	-- Decompilation error in this vicinity:
 	if self._selected then
@@ -334,7 +334,7 @@ RaidGUIControlButtonToggleSmall.confirm_pressed = function (self)
 
 	return false
 end
-RaidGUIControlButtonToggleSmall._animate_highlight_on = function (self)
+function RaidGUIControlButtonToggleSmall:_animate_highlight_on()
 	local duration = 0.2
 	local t = duration - (1 - self._highlight_animation_t) * duration
 
@@ -360,7 +360,7 @@ RaidGUIControlButtonToggleSmall._animate_highlight_on = function (self)
 
 	return 
 end
-RaidGUIControlButtonToggleSmall._animate_highlight_off = function (self)
+function RaidGUIControlButtonToggleSmall:_animate_highlight_off()
 	local duration = 0.2
 	local t = duration - self._highlight_animation_t * duration
 
@@ -386,7 +386,7 @@ RaidGUIControlButtonToggleSmall._animate_highlight_off = function (self)
 
 	return 
 end
-RaidGUIControlButtonToggleSmall._animate_press = function (self)
+function RaidGUIControlButtonToggleSmall:_animate_press()
 	local t = 0
 	slot5 = RaidGUIControlButtonToggleSmall.BORDER_ICON
 	local original_w = tweak_data.gui.icon_w(slot3, tweak_data.gui)
@@ -430,7 +430,7 @@ RaidGUIControlButtonToggleSmall._animate_press = function (self)
 
 	return 
 end
-RaidGUIControlButtonToggleSmall._animate_release = function (self)
+function RaidGUIControlButtonToggleSmall:_animate_release()
 	local t = 0
 	local duration = 0.25
 	slot6 = RaidGUIControlButtonToggleSmall.BORDER_ICON

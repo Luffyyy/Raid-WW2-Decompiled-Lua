@@ -6,7 +6,7 @@ if not AIAttentionElement then
 end
 
 AIAttentionElement = slot0
-AIAttentionElement.init = function (self, unit)
+function AIAttentionElement:init(unit)
 	slot5 = unit
 
 	AIAttentionElement.super.init(slot3, self)
@@ -65,14 +65,14 @@ AIAttentionElement.init = function (self, unit)
 
 	return 
 end
-AIAttentionElement.post_init = function (self, ...)
+function AIAttentionElement:post_init(...)
 	slot3 = self
 
 	AIAttentionElement.super.post_init(slot2, ...)
 
 	return 
 end
-AIAttentionElement.save = function (self, t)
+function AIAttentionElement:save(t)
 	slot4 = self._hed.instigator_ids
 
 	if not next(slot3) then
@@ -81,7 +81,7 @@ AIAttentionElement.save = function (self, t)
 
 	return 
 end
-AIAttentionElement.layer_finished = function (self)
+function AIAttentionElement:layer_finished()
 	slot3 = self
 
 	AIAttentionElement.super.layer_finished(slot2)
@@ -106,7 +106,7 @@ AIAttentionElement.layer_finished = function (self)
 
 	return 
 end
-AIAttentionElement.load_parent_unit = function (self, unit)
+function AIAttentionElement:load_parent_unit(unit)
 	self._parent_unit = unit
 
 	if self._parent_unit then
@@ -117,12 +117,12 @@ AIAttentionElement.load_parent_unit = function (self, unit)
 
 	return 
 end
-AIAttentionElement.load_att_obj_unit = function (self, unit)
+function AIAttentionElement:load_att_obj_unit(unit)
 	self._att_obj_unit = unit
 
 	return 
 end
-AIAttentionElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function AIAttentionElement:draw_links(t, dt, selected_unit, all_units)
 	slot10 = selected_unit
 
 	AIAttentionElement.super.draw_links(slot6, self, t, dt)
@@ -176,7 +176,7 @@ AIAttentionElement.draw_links = function (self, t, dt, selected_unit, all_units)
 
 	return 
 end
-AIAttentionElement.update_selected = function (self, t, dt, selected_unit, all_units)
+function AIAttentionElement:update_selected(t, dt, selected_unit, all_units)
 	slot7 = self
 
 	self._chk_units_alive(slot6)
@@ -226,14 +226,14 @@ AIAttentionElement.update_selected = function (self, t, dt, selected_unit, all_u
 
 	return 
 end
-AIAttentionElement.update_unselected = function (self, t, dt, selected_unit, all_units)
+function AIAttentionElement:update_unselected(t, dt, selected_unit, all_units)
 	slot7 = self
 
 	self._chk_units_alive(slot6)
 
 	return 
 end
-AIAttentionElement._chk_units_alive = function (self)
+function AIAttentionElement:_chk_units_alive()
 	if self._parent_unit then
 		slot3 = self._parent_unit
 
@@ -262,7 +262,7 @@ AIAttentionElement._chk_units_alive = function (self)
 
 	return 
 end
-AIAttentionElement.update_editing = function (self)
+function AIAttentionElement:update_editing()
 	slot3 = self
 
 	self._find_parent_raycast(slot2)
@@ -281,7 +281,7 @@ AIAttentionElement.update_editing = function (self)
 
 	return 
 end
-AIAttentionElement._find_parent_raycast = function (self)
+function AIAttentionElement:_find_parent_raycast()
 	slot4 = 0
 	local from = managers.editor.get_cursor_look_point(slot2, managers.editor)
 	slot5 = 100000
@@ -306,7 +306,7 @@ AIAttentionElement._find_parent_raycast = function (self)
 
 	return ray
 end
-AIAttentionElement._find_att_obj_raycast = function (self)
+function AIAttentionElement:_find_att_obj_raycast()
 	slot4 = {
 		mask = 38
 	}
@@ -322,7 +322,7 @@ AIAttentionElement._find_att_obj_raycast = function (self)
 
 	return ray.unit
 end
-AIAttentionElement._find_instigator_raycast = function (self)
+function AIAttentionElement:_find_instigator_raycast()
 
 	-- Decompilation error in this vicinity:
 	slot4 = {
@@ -342,7 +342,7 @@ AIAttentionElement._find_instigator_raycast = function (self)
 
 	return id
 end
-AIAttentionElement._raycast = function (self)
+function AIAttentionElement:_raycast()
 	slot4 = 0
 	local from = managers.editor.get_cursor_look_point(slot2, managers.editor)
 	slot5 = 100000
@@ -361,7 +361,7 @@ AIAttentionElement._raycast = function (self)
 
 	return nil
 end
-AIAttentionElement._lmb = function (self)
+function AIAttentionElement:_lmb()
 	slot3 = self
 	local unit = self._find_att_obj_raycast(slot2)
 
@@ -433,7 +433,7 @@ AIAttentionElement._lmb = function (self)
 
 	return 
 end
-AIAttentionElement.add_triggers = function (self, vc)
+function AIAttentionElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "_lmb"
 
@@ -441,7 +441,7 @@ AIAttentionElement.add_triggers = function (self, vc)
 
 	return 
 end
-AIAttentionElement.selected = function (self)
+function AIAttentionElement:selected()
 	slot3 = self
 
 	AIAttentionElement.super.selected(slot2)
@@ -456,7 +456,7 @@ AIAttentionElement.selected = function (self)
 
 	return 
 end
-AIAttentionElement._build_panel = function (self, panel, panel_sizer)
+function AIAttentionElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -498,10 +498,10 @@ AIAttentionElement._build_panel = function (self, panel, panel_sizer)
 
 	return 
 end
-AIAttentionElement.add_to_mission_package = function (self)
+function AIAttentionElement:add_to_mission_package()
 	return 
 end
-AIAttentionElement._chk_set_link_values = function (self)
+function AIAttentionElement:_chk_set_link_values()
 	if self._att_obj_unit and self._parent_unit then
 		local att_obj_pos = self._att_obj_unit.position(slot2)
 		local att_obj_rot = self._att_obj_unit.rotation(self._att_obj_unit)

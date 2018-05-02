@@ -11,7 +11,7 @@ GrenadeBase.EVENT_IDS = {
 }
 local mvec1 = Vector3()
 local mvec2 = Vector3()
-GrenadeBase._setup_server_data = function (self)
+function GrenadeBase:_setup_server_data()
 	slot4 = "trip_mine_targets"
 	self._slot_mask = managers.slot.get_mask(slot2, managers.slot)
 
@@ -21,10 +21,10 @@ GrenadeBase._setup_server_data = function (self)
 
 	return 
 end
-GrenadeBase.setup = function (self, unit, t, dt)
+function GrenadeBase:setup(unit, t, dt)
 	return 
 end
-GrenadeBase.update = function (self, unit, t, dt)
+function GrenadeBase:update(unit, t, dt)
 	if self._hand_held then
 		return 
 	end
@@ -48,35 +48,35 @@ GrenadeBase.update = function (self, unit, t, dt)
 
 	return 
 end
-GrenadeBase.clbk_impact = function (self, ...)
+function GrenadeBase:clbk_impact(...)
 	slot3 = self
 
 	self._detonate(slot2)
 
 	return 
 end
-GrenadeBase._on_collision = function (self, col_ray)
+function GrenadeBase:_on_collision(col_ray)
 	slot4 = self
 
 	self._detonate(slot3)
 
 	return 
 end
-GrenadeBase._detonate = function (self)
+function GrenadeBase:_detonate()
 	slot3 = "no _detonate function for grenade base"
 
 	print(slot2)
 
 	return 
 end
-GrenadeBase._detonate_on_client = function (self)
+function GrenadeBase:_detonate_on_client()
 	slot3 = "no _detonate_on_client function for grenade base"
 
 	print(slot2)
 
 	return 
 end
-GrenadeBase.sync_net_event = function (self, event_id)
+function GrenadeBase:sync_net_event(event_id)
 	if event_id == GrenadeBase.EVENT_IDS.detonate then
 		slot4 = self
 
@@ -85,7 +85,7 @@ GrenadeBase.sync_net_event = function (self, event_id)
 
 	return 
 end
-GrenadeBase.throw = function (self, ...)
+function GrenadeBase:throw(...)
 	GrenadeBase.super.throw(slot2, ...)
 
 	slot4 = self
@@ -102,7 +102,7 @@ GrenadeBase.throw = function (self, ...)
 
 	return 
 end
-GrenadeBase.add_damage_result = function (self, unit, is_dead, damage_percent)
+function GrenadeBase:add_damage_result(unit, is_dead, damage_percent)
 
 	-- Decompilation error in this vicinity:
 	slot6 = self._thrower_unit
@@ -146,7 +146,7 @@ GrenadeBase.add_damage_result = function (self, unit, is_dead, damage_percent)
 
 	return 
 end
-GrenadeBase.get_use_data = function (self, character_setup)
+function GrenadeBase:get_use_data(character_setup)
 	local use_data = {
 		equip = {
 			align_place = "right_hand"
@@ -159,7 +159,7 @@ GrenadeBase.get_use_data = function (self, character_setup)
 
 	return use_data
 end
-GrenadeBase.tweak_data_anim_play = function (self, anim, ...)
+function GrenadeBase:tweak_data_anim_play(anim, ...)
 	slot4 = self
 	local animations = self.weapon_tweak_data(slot3).animations
 
@@ -173,7 +173,7 @@ GrenadeBase.tweak_data_anim_play = function (self, anim, ...)
 
 	return false
 end
-GrenadeBase.anim_play = function (self, anim, speed_multiplier)
+function GrenadeBase:anim_play(anim, speed_multiplier)
 	if anim then
 		slot5 = self._unit
 		slot8 = anim
@@ -192,7 +192,7 @@ GrenadeBase.anim_play = function (self, anim, speed_multiplier)
 
 	return 
 end
-GrenadeBase.tweak_data_anim_stop = function (self, anim, ...)
+function GrenadeBase:tweak_data_anim_stop(anim, ...)
 	slot4 = self
 	local animations = self.weapon_tweak_data(slot3).animations
 
@@ -207,7 +207,7 @@ GrenadeBase.tweak_data_anim_stop = function (self, anim, ...)
 
 	return false
 end
-GrenadeBase.anim_stop = function (self, anim)
+function GrenadeBase:anim_stop(anim)
 	slot4 = self._unit
 	slot7 = anim
 
@@ -215,100 +215,100 @@ GrenadeBase.anim_stop = function (self, anim)
 
 	return 
 end
-GrenadeBase.melee_damage_info = function (self)
+function GrenadeBase:melee_damage_info()
 	slot3 = self
 	local my_tweak_data = self.weapon_tweak_data(slot2)
 
 	return my_tweak_data.damage_melee, my_tweak_data.damage_melee_effect_mul
 end
-GrenadeBase.ammo_info = function (self)
+function GrenadeBase:ammo_info()
 	return 
 end
-GrenadeBase.add_ammo = function (self, ratio, add_amount_override, add_amount_multiplier)
+function GrenadeBase:add_ammo(ratio, add_amount_override, add_amount_multiplier)
 	return false, 0
 end
-GrenadeBase.add_ammo_from_bag = function (self, available)
+function GrenadeBase:add_ammo_from_bag(available)
 	return 0
 end
-GrenadeBase.set_hand_held = function (self, value)
+function GrenadeBase:set_hand_held(value)
 	self._hand_held = value
 
 	return 
 end
-GrenadeBase.on_equip = function (self)
+function GrenadeBase:on_equip()
 	return 
 end
-GrenadeBase.on_unequip = function (self)
+function GrenadeBase:on_unequip()
 	return 
 end
-GrenadeBase.on_enabled = function (self)
+function GrenadeBase:on_enabled()
 	self._enabled = true
 
 	return 
 end
-GrenadeBase.on_disabled = function (self)
+function GrenadeBase:on_disabled()
 	self._enabled = false
 
 	return 
 end
-GrenadeBase.enabled = function (self)
+function GrenadeBase:enabled()
 	return self._enabled
 end
-GrenadeBase.get_stance_id = function (self)
+function GrenadeBase:get_stance_id()
 	slot3 = self
 
 	return self.weapon_tweak_data(slot2).stance
 end
-GrenadeBase.transition_duration = function (self)
+function GrenadeBase:transition_duration()
 	slot3 = self
 
 	return self.weapon_tweak_data(slot2).transition_duration
 end
-GrenadeBase.enter_steelsight_speed_multiplier = function (self)
+function GrenadeBase:enter_steelsight_speed_multiplier()
 	return 1
 end
-GrenadeBase.exit_run_speed_multiplier = function (self)
+function GrenadeBase:exit_run_speed_multiplier()
 	slot3 = self
 
 	return self.weapon_tweak_data(slot2).exit_run_speed_multiplier
 end
-GrenadeBase.weapon_tweak_data = function (self)
+function GrenadeBase:weapon_tweak_data()
 	return tweak_data.projectiles[self.name_id]
 end
-GrenadeBase.weapon_hold = function (self)
+function GrenadeBase:weapon_hold()
 	slot3 = self
 
 	return self.weapon_tweak_data(slot2).weapon_hold
 end
-GrenadeBase.selection_index = function (self)
+function GrenadeBase:selection_index()
 	return PlayerInventory.SLOT_3
 end
-GrenadeBase.has_range_distance_scope = function (self)
+function GrenadeBase:has_range_distance_scope()
 	return false
 end
-GrenadeBase.set_visibility_state = function (self, state)
+function GrenadeBase:set_visibility_state(state)
 	slot5 = state
 
 	self._unit.set_visible(slot3, self._unit)
 
 	return 
 end
-GrenadeBase.movement_penalty = function (self)
+function GrenadeBase:movement_penalty()
 	slot3 = self
 
 	return self.weapon_tweak_data(slot2).weapon_movement_penalty or 1
 end
-GrenadeBase.clbk_impact = function (self, tag, unit, body, other_unit, other_body, position, normal, collision_velocity, velocity, other_velocity, new_velocity, direction, damage, ...)
+function GrenadeBase:clbk_impact(tag, unit, body, other_unit, other_body, position, normal, collision_velocity, velocity, other_velocity, new_velocity, direction, damage, ...)
 	slot29 = damage
 
 	self._detonate(slot15, self, tag, unit, body, other_unit, other_body, position, normal, collision_velocity, velocity, other_velocity, new_velocity, direction, ...)
 
 	return 
 end
-GrenadeBase.start_shooting_allowed = function (self)
+function GrenadeBase:start_shooting_allowed()
 	return true
 end
-GrenadeBase.save = function (self, data)
+function GrenadeBase:save(data)
 	local state = {
 		timer = self._timer
 	}
@@ -316,16 +316,16 @@ GrenadeBase.save = function (self, data)
 
 	return 
 end
-GrenadeBase.load = function (self, data)
+function GrenadeBase:load(data)
 	local state = data.GrenadeBase
 	self._timer = state.timer
 
 	return 
 end
-GrenadeBase.uses_ammo = function (self)
+function GrenadeBase:uses_ammo()
 	return false
 end
-GrenadeBase.replenish = function (self)
+function GrenadeBase:replenish()
 	slot3 = managers.blackmarket
 	local name, amount = managers.blackmarket.equipped_grenade(slot2)
 	slot6 = amount

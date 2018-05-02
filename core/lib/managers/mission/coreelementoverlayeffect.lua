@@ -20,21 +20,21 @@ if not ElementOverlayEffect then
 end
 
 ElementOverlayEffect = slot0
-ElementOverlayEffect.init = function (self, ...)
+function ElementOverlayEffect:init(...)
 	slot3 = self
 
 	ElementOverlayEffect.super.init(slot2, ...)
 
 	return 
 end
-ElementOverlayEffect.client_on_executed = function (self, ...)
+function ElementOverlayEffect:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementOverlayEffect.on_executed = function (self, instigator)
+function ElementOverlayEffect:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

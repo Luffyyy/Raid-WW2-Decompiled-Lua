@@ -7,7 +7,7 @@ HUDCarry.PROMPT_FONT = tweak_data.gui.fonts.din_compressed_outlined_24
 HUDCarry.PROMPT_FONT_SIZE = tweak_data.gui.font_sizes.size_24
 HUDCarry.PROMPT_TEXT_ID = "hud_carry_throw_prompt"
 HUDCarry.GENERIC_THROW_ID = "carry_item_generic"
-function HUDCarry:init(hud)
+HUDCarry.init = function (self, hud)
 	slot5 = hud
 
 	self._create_panel(slot3, self)
@@ -22,7 +22,7 @@ function HUDCarry:init(hud)
 
 	return 
 end
-function HUDCarry:_create_panel(hud)
+HUDCarry._create_panel = function (self, hud)
 	local panel_params = {
 		name = "carry_panel",
 		halign = "center",
@@ -35,7 +35,7 @@ function HUDCarry:_create_panel(hud)
 
 	return 
 end
-function HUDCarry:_create_icon()
+HUDCarry._create_icon = function (self)
 	local placeholder_icon = "carry_planks"
 	local icon_params = {
 		name = "icon",
@@ -49,7 +49,7 @@ function HUDCarry:_create_icon()
 
 	return 
 end
-function HUDCarry:_create_prompt()
+HUDCarry._create_prompt = function (self)
 	local prompt_params = {
 		vertical = "top",
 		wrap = true,
@@ -69,7 +69,7 @@ function HUDCarry:_create_prompt()
 
 	return 
 end
-function HUDCarry:_size_panel()
+HUDCarry._size_panel = function (self)
 	slot4 = 0
 
 	self._icon.set_x(slot2, self._icon)
@@ -109,7 +109,7 @@ function HUDCarry:_size_panel()
 
 	return 
 end
-function HUDCarry:show_carry_item(carry_id)
+HUDCarry.show_carry_item = function (self, carry_id)
 	local carry_data = tweak_data.carry[carry_id]
 	local item_icon = carry_data.hud_icon or "carry_planks"
 	slot7 = tweak_data.gui.icons[item_icon].texture
@@ -148,7 +148,7 @@ function HUDCarry:show_carry_item(carry_id)
 
 	return 
 end
-function HUDCarry:hide_carry_item()
+HUDCarry.hide_carry_item = function (self)
 	slot3 = self._object
 
 	self._object.stop(slot2)
@@ -160,31 +160,31 @@ function HUDCarry:hide_carry_item()
 
 	return 
 end
-function HUDCarry:w()
+HUDCarry.w = function (self)
 	slot3 = self._object
 
 	return self._object.w(slot2)
 end
-function HUDCarry:h()
+HUDCarry.h = function (self)
 	slot3 = self._object
 
 	return self._object.h(slot2)
 end
-function HUDCarry:set_x(x)
+HUDCarry.set_x = function (self, x)
 	slot5 = x
 
 	self._object.set_x(slot3, self._object)
 
 	return 
 end
-function HUDCarry:set_y(y)
+HUDCarry.set_y = function (self, y)
 	slot5 = y
 
 	self._object.set_y(slot3, self._object)
 
 	return 
 end
-function HUDCarry:_animate_show_carry()
+HUDCarry._animate_show_carry = function (self)
 	local duration = 0.5
 	slot4 = self._object
 	local t = self._object.alpha(slot3) * duration
@@ -218,7 +218,7 @@ function HUDCarry:_animate_show_carry()
 
 	return 
 end
-function HUDCarry:_animate_hide_carry()
+HUDCarry._animate_hide_carry = function (self)
 	local duration = 0.25
 	slot4 = self._object
 	local t = (1 - self._object.alpha(slot3)) * duration

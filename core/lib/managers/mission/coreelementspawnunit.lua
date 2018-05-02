@@ -16,7 +16,7 @@ if not ElementSpawnUnit then
 end
 
 ElementSpawnUnit = slot0
-ElementSpawnUnit.init = function (self, ...)
+function ElementSpawnUnit:init(...)
 	slot3 = self
 
 	ElementSpawnUnit.super.init(slot2, ...)
@@ -25,7 +25,7 @@ ElementSpawnUnit.init = function (self, ...)
 
 	return 
 end
-ElementSpawnUnit.client_on_executed = function (self, ...)
+function ElementSpawnUnit:client_on_executed(...)
 	if self._values.unit_name ~= "none" then
 		slot6 = self._values.unit_name
 		slot5 = ""
@@ -43,7 +43,7 @@ ElementSpawnUnit.client_on_executed = function (self, ...)
 
 	return 
 end
-ElementSpawnUnit.on_executed = function (self, instigator)
+function ElementSpawnUnit:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -77,10 +77,10 @@ ElementSpawnUnit.on_executed = function (self, instigator)
 
 	return 
 end
-ElementSpawnUnit.units = function (self)
+function ElementSpawnUnit:units()
 	return self._units
 end
-ElementSpawnUnit.delete_units = function (self)
+function ElementSpawnUnit:delete_units()
 	slot3 = self._units
 
 	for _, unit in ipairs(slot2) do
@@ -93,7 +93,7 @@ ElementSpawnUnit.delete_units = function (self)
 
 	return 
 end
-ElementSpawnUnit.destroy = function (self)
+function ElementSpawnUnit:destroy()
 	slot3 = Network
 
 	if Network.is_server(slot2) then

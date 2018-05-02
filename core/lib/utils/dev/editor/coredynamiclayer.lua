@@ -28,7 +28,7 @@ if not DynamicLayer then
 end
 
 DynamicLayer = slot0
-DynamicLayer.init = function (self, owner, save_name, units_vector, slot_mask)
+function DynamicLayer:init(owner, save_name, units_vector, slot_mask)
 	slot9 = save_name
 
 	DynamicLayer.super.init(slot6, self, owner)
@@ -45,7 +45,7 @@ DynamicLayer.init = function (self, owner, save_name, units_vector, slot_mask)
 
 	return 
 end
-DynamicLayer.pickup_unit = function (self)
+function DynamicLayer:pickup_unit()
 	if self._selected_unit and not self._unit_picked then
 		slot3 = self._selected_unit
 		slot3 = self._selected_unit.rotation(slot2)
@@ -62,7 +62,7 @@ DynamicLayer.pickup_unit = function (self)
 
 	return 
 end
-DynamicLayer.spawn_unit = function (self)
+function DynamicLayer:spawn_unit()
 	if self._selected_unit and self._unit_picked then
 		slot3 = self
 
@@ -81,7 +81,7 @@ DynamicLayer.spawn_unit = function (self)
 
 	return 
 end
-DynamicLayer.do_spawn_unit = function (self, name, pos, rot)
+function DynamicLayer:do_spawn_unit(name, pos, rot)
 	slot9 = rot
 	local unit = DynamicLayer.super.do_spawn_unit(slot5, self, name, pos)
 
@@ -99,7 +99,7 @@ DynamicLayer.do_spawn_unit = function (self, name, pos, rot)
 
 	return unit
 end
-DynamicLayer.set_distance = function (self, d)
+function DynamicLayer:set_distance(d)
 	slot6 = 4000
 	self._distance = math.clamp(slot3, d, 100)
 	slot5 = self._distance
@@ -108,7 +108,7 @@ DynamicLayer.set_distance = function (self, d)
 
 	return 
 end
-DynamicLayer.set_select_unit = function (self, unit)
+function DynamicLayer:set_select_unit(unit)
 	if self._selected_unit and self._selected_unit == unit then
 		if not self._unit_picked then
 			slot4 = self
@@ -131,7 +131,7 @@ DynamicLayer.set_select_unit = function (self, unit)
 
 	return 
 end
-DynamicLayer.release_unit = function (self)
+function DynamicLayer:release_unit()
 	if self._selected_unit and self._unit_picked then
 		slot4 = self._lift_effect
 
@@ -146,7 +146,7 @@ DynamicLayer.release_unit = function (self)
 
 	return 
 end
-DynamicLayer.delete_selected_unit = function (self)
+function DynamicLayer:delete_selected_unit()
 	if self._selected_unit then
 		slot3 = self
 
@@ -173,7 +173,7 @@ DynamicLayer.delete_selected_unit = function (self)
 
 	return 
 end
-DynamicLayer.update = function (self, t, dt)
+function DynamicLayer:update(t, dt)
 	slot7 = dt
 
 	DynamicLayer.super.update(slot4, self, t)
@@ -353,7 +353,7 @@ DynamicLayer.update = function (self, t, dt)
 
 	return 
 end
-DynamicLayer.build_panel = function (self, notebook)
+function DynamicLayer:build_panel(notebook)
 	slot5 = "DynamicLayer:build_panel"
 
 	cat_print(slot3, "editor")
@@ -405,7 +405,7 @@ DynamicLayer.build_panel = function (self, notebook)
 
 	return self._ews_panel
 end
-DynamicLayer.update_ews_distance = function (self, slider)
+function DynamicLayer:update_ews_distance(slider)
 	slot4 = self
 	slot7 = slider
 
@@ -413,7 +413,7 @@ DynamicLayer.update_ews_distance = function (self, slider)
 
 	return 
 end
-DynamicLayer.deselect = function (self)
+function DynamicLayer:deselect()
 	if self._selected_unit then
 		slot3 = self
 
@@ -426,7 +426,7 @@ DynamicLayer.deselect = function (self)
 
 	return 
 end
-DynamicLayer.get_help = function (self, text)
+function DynamicLayer:get_help(text)
 	local t = "\t"
 	local n = "\n"
 	text = text .. "Select unit:     Click left mouse button" .. n
@@ -439,7 +439,7 @@ DynamicLayer.get_help = function (self, text)
 
 	return text
 end
-DynamicLayer.add_triggers = function (self)
+function DynamicLayer:add_triggers()
 	DynamicLayer.super.add_triggers(slot2)
 
 	local vc = self._editor_data.virtual_controller
@@ -469,7 +469,7 @@ DynamicLayer.add_triggers = function (self)
 
 	return 
 end
-DynamicLayer.deactivate = function (self)
+function DynamicLayer:deactivate()
 	slot3 = self
 
 	DynamicLayer.super.deactivate(slot2)
@@ -480,7 +480,7 @@ DynamicLayer.deactivate = function (self)
 
 	return 
 end
-DynamicLayer.clear_triggers = function (self)
+function DynamicLayer:clear_triggers()
 	slot3 = self._editor_data.virtual_controller
 
 	self._editor_data.virtual_controller.clear_triggers(slot2)

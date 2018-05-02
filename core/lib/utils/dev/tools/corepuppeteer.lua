@@ -4,7 +4,7 @@ require(slot1)
 
 CorePuppeteer = CorePuppeteer or class()
 CorePuppeteer.EDITOR_TITLE = "Puppeteer"
-CorePuppeteer.init = function (self, unit)
+function CorePuppeteer:init(unit)
 	if not unit and managers.editor then
 		slot4 = managers.editor
 		unit = managers.editor.selected_unit(slot3)
@@ -32,7 +32,7 @@ CorePuppeteer.init = function (self, unit)
 
 	return 
 end
-CorePuppeteer._create_window = function (self, unit)
+function CorePuppeteer:_create_window(unit)
 	slot10 = 0
 	slot11 = 0
 	self._window = EWS.Frame(slot3, EWS, CorePuppeteer.EDITOR_TITLE, Vector3(slot7, 100, 500), Vector3(100, 255, 450))
@@ -65,7 +65,7 @@ CorePuppeteer._create_window = function (self, unit)
 
 	return self._window
 end
-CorePuppeteer._create_options_panel = function (self)
+function CorePuppeteer:_create_options_panel()
 	slot6 = ""
 	local panel = EWS.Panel(slot2, EWS, self._window, "")
 	slot5 = "VERTICAL"
@@ -110,21 +110,21 @@ CorePuppeteer._create_options_panel = function (self)
 
 	return panel
 end
-CorePuppeteer.set_position = function (self, newpos)
+function CorePuppeteer:set_position(newpos)
 	slot5 = newpos
 
 	self._window.set_position(slot3, self._window)
 
 	return 
 end
-CorePuppeteer.update = function (self, time, delta_time)
+function CorePuppeteer:update(time, delta_time)
 	slot7 = delta_time
 
 	self._state_tree_panel.update(slot4, self._state_tree_panel, time)
 
 	return 
 end
-CorePuppeteer.destroy = function (self)
+function CorePuppeteer:destroy()
 	slot3 = self._window
 
 	if alive(slot2) then
@@ -137,7 +137,7 @@ CorePuppeteer.destroy = function (self)
 
 	return 
 end
-CorePuppeteer.close = function (self)
+function CorePuppeteer:close()
 	if managers.editor and self._selected_unit_callback then
 		slot4 = self._selected_unit_callback
 
@@ -150,7 +150,7 @@ CorePuppeteer.close = function (self)
 
 	return 
 end
-CorePuppeteer.unit = function (self)
+function CorePuppeteer:unit()
 	if self._state_tree_panel then
 		slot3 = self._state_tree_panel
 
@@ -159,14 +159,14 @@ CorePuppeteer.unit = function (self)
 
 	return 
 end
-CorePuppeteer._on_close = function (self)
+function CorePuppeteer:_on_close()
 	slot4 = CorePuppeteer.EDITOR_TITLE
 
 	managers.toolhub.close(slot2, managers.toolhub)
 
 	return 
 end
-CorePuppeteer._on_tree_item_activated = function (self, data, event)
+function CorePuppeteer:_on_tree_item_activated(data, event)
 	slot5 = event
 	local tree_node = event.get_item(slot4)
 
@@ -185,7 +185,7 @@ CorePuppeteer._on_tree_item_activated = function (self, data, event)
 
 	return 
 end
-CorePuppeteer._on_drive_movement_checkbox_clicked = function (self, data, event)
+function CorePuppeteer:_on_drive_movement_checkbox_clicked(data, event)
 	slot5 = self
 
 	if not self.unit(slot4) then
@@ -201,7 +201,7 @@ CorePuppeteer._on_drive_movement_checkbox_clicked = function (self, data, event)
 
 	return 
 end
-CorePuppeteer._on_time_multiplier_slider_updated = function (self, slider, event)
+function CorePuppeteer:_on_time_multiplier_slider_updated(slider, event)
 	slot5 = TimerManager
 	slot8 = slider
 	slot6 = slider.get_value(slot7) / 100
@@ -210,7 +210,7 @@ CorePuppeteer._on_time_multiplier_slider_updated = function (self, slider, event
 
 	return 
 end
-CorePuppeteer._on_selected_unit_changed = function (self, selected_unit)
+function CorePuppeteer:_on_selected_unit_changed(selected_unit)
 	slot4 = self
 
 	if selected_unit == self.unit(slot3) then

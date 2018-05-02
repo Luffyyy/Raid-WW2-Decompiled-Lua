@@ -16,7 +16,7 @@ if not SpecialObjectiveGroupElement then
 end
 
 SpecialObjectiveGroupElement = slot0
-SpecialObjectiveGroupElement.init = function (self, unit)
+function SpecialObjectiveGroupElement:init(unit)
 	slot5 = unit
 
 	SpecialObjectiveGroupElement.super.init(slot3, self)
@@ -53,14 +53,14 @@ SpecialObjectiveGroupElement.init = function (self, unit)
 
 	return 
 end
-SpecialObjectiveGroupElement.post_init = function (self, ...)
+function SpecialObjectiveGroupElement:post_init(...)
 	slot3 = self
 
 	SpecialObjectiveGroupElement.super.post_init(slot2, ...)
 
 	return 
 end
-SpecialObjectiveGroupElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function SpecialObjectiveGroupElement:draw_links(t, dt, selected_unit, all_units)
 	slot8 = all_units
 
 	self._remove_deleted_units(slot6, self)
@@ -105,7 +105,7 @@ SpecialObjectiveGroupElement.draw_links = function (self, t, dt, selected_unit, 
 
 	return 
 end
-SpecialObjectiveGroupElement.update_selected = function (self, t, dt, selected_unit, all_units)
+function SpecialObjectiveGroupElement:update_selected(t, dt, selected_unit, all_units)
 	slot9 = all_units
 
 	self._draw_follow_up(slot6, self, selected_unit)
@@ -133,7 +133,7 @@ SpecialObjectiveGroupElement.update_selected = function (self, t, dt, selected_u
 
 	return 
 end
-SpecialObjectiveGroupElement.update_unselected = function (self, t, dt, selected_unit, all_units)
+function SpecialObjectiveGroupElement:update_unselected(t, dt, selected_unit, all_units)
 	if self._hed.followup_elements then
 		local followup_elements = self._hed.followup_elements
 		local i = #followup_elements
@@ -172,7 +172,7 @@ SpecialObjectiveGroupElement.update_unselected = function (self, t, dt, selected
 
 	return 
 end
-SpecialObjectiveGroupElement._remove_deleted_units = function (self, all_units)
+function SpecialObjectiveGroupElement:_remove_deleted_units(all_units)
 	if self._hed.followup_patrol_elements then
 		local followup_elements = self._hed.followup_patrol_elements
 		local i = #followup_elements
@@ -193,14 +193,14 @@ SpecialObjectiveGroupElement._remove_deleted_units = function (self, all_units)
 
 	return 
 end
-SpecialObjectiveGroupElement._draw_follow_up = function (self, selected_unit, all_units)
+function SpecialObjectiveGroupElement:_draw_follow_up(selected_unit, all_units)
 	slot7 = all_units
 
 	SpecialObjectiveUnitElement._draw_follow_up(slot4, self, selected_unit)
 
 	return 
 end
-SpecialObjectiveGroupElement.update_editing = function (self)
+function SpecialObjectiveGroupElement:update_editing()
 	slot3 = self
 
 	self._so_raycast(slot2)
@@ -215,7 +215,7 @@ SpecialObjectiveGroupElement.update_editing = function (self)
 
 	return 
 end
-SpecialObjectiveGroupElement._so_raycast = function (self)
+function SpecialObjectiveGroupElement:_so_raycast()
 	slot4 = {
 		ray_type = "editor",
 		mask = 10
@@ -230,7 +230,7 @@ SpecialObjectiveGroupElement._so_raycast = function (self)
 
 	return nil
 end
-SpecialObjectiveGroupElement._spawn_raycast = function (self)
+function SpecialObjectiveGroupElement:_spawn_raycast()
 
 	-- Decompilation error in this vicinity:
 	slot4 = {
@@ -250,7 +250,7 @@ SpecialObjectiveGroupElement._spawn_raycast = function (self)
 
 	return id
 end
-SpecialObjectiveGroupElement._raycast = function (self)
+function SpecialObjectiveGroupElement:_raycast()
 	slot4 = 0
 	local from = managers.editor.get_cursor_look_point(slot2, managers.editor)
 	slot5 = 100000
@@ -269,7 +269,7 @@ SpecialObjectiveGroupElement._raycast = function (self)
 
 	return nil
 end
-SpecialObjectiveGroupElement._element_type = function (self, element_id)
+function SpecialObjectiveGroupElement:_element_type(element_id)
 	slot5 = element_id
 	local unit = managers.editor.unit_with_id(slot3, managers.editor)
 	slot7 = unit
@@ -278,7 +278,7 @@ SpecialObjectiveGroupElement._element_type = function (self, element_id)
 
 	return string.match(managers.editor, unit.name(slot6).s(slot6))
 end
-SpecialObjectiveGroupElement._clear_followups = function (self, element_id)
+function SpecialObjectiveGroupElement:_clear_followups(element_id)
 	slot5 = element_id
 	local pso = managers.editor.unit_with_id(slot3, managers.editor)
 	slot5 = pso
@@ -288,7 +288,7 @@ SpecialObjectiveGroupElement._clear_followups = function (self, element_id)
 
 	return 
 end
-SpecialObjectiveGroupElement._relink_patrol_followups = function (self)
+function SpecialObjectiveGroupElement:_relink_patrol_followups()
 	local ai_so_group_targets = {}
 	slot4 = self._hed.followup_patrol_elements
 
@@ -323,7 +323,7 @@ SpecialObjectiveGroupElement._relink_patrol_followups = function (self)
 
 	return 
 end
-SpecialObjectiveGroupElement._lmb = function (self)
+function SpecialObjectiveGroupElement:_lmb()
 	slot3 = self
 	local id = self._so_raycast(slot2)
 
@@ -419,7 +419,7 @@ SpecialObjectiveGroupElement._lmb = function (self)
 
 	return 
 end
-SpecialObjectiveGroupElement.add_triggers = function (self, vc)
+function SpecialObjectiveGroupElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "_lmb"
 
@@ -427,14 +427,14 @@ SpecialObjectiveGroupElement.add_triggers = function (self, vc)
 
 	return 
 end
-SpecialObjectiveGroupElement.selected = function (self)
+function SpecialObjectiveGroupElement:selected()
 	slot3 = self
 
 	SpecialObjectiveUnitElement.super.selected(slot2)
 
 	return 
 end
-SpecialObjectiveGroupElement.add_unit_list_btn = function (self)
+function SpecialObjectiveGroupElement:add_unit_list_btn()
 	slot3 = self._unit
 	local script = self._unit.mission_element_data(slot2).script
 
@@ -482,7 +482,7 @@ SpecialObjectiveGroupElement.add_unit_list_btn = function (self)
 
 	return 
 end
-SpecialObjectiveGroupElement.remove_unit_list_btn = function (self)
+function SpecialObjectiveGroupElement:remove_unit_list_btn()
 	local function f(unit)
 		return slot1
 	end
@@ -511,7 +511,7 @@ SpecialObjectiveGroupElement.remove_unit_list_btn = function (self)
 
 	return 
 end
-SpecialObjectiveGroupElement._build_panel = function (self, panel, panel_sizer)
+function SpecialObjectiveGroupElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -619,7 +619,7 @@ SpecialObjectiveGroupElement._build_panel = function (self, panel, panel_sizer)
 
 	return 
 end
-SpecialObjectiveGroupElement.add_to_mission_package = function (self)
+function SpecialObjectiveGroupElement:add_to_mission_package()
 	return 
 end
 

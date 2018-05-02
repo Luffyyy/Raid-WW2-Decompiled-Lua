@@ -7,21 +7,21 @@ slot3 = "CoreClass"
 core.import(slot1, core)
 
 Suite = Suite or CoreClass.class()
-Suite.start = function (self, session_state, reporter, suite_arguments)
+function Suite:start(session_state, reporter, suite_arguments)
 	slot7 = "Not implemented"
 
 	assert(slot5, false)
 
 	return 
 end
-Suite.is_done = function (self)
+function Suite:is_done()
 	slot4 = "Not implemented"
 
 	assert(slot2, false)
 
 	return 
 end
-Suite.update = function (self, t, dt)
+function Suite:update(t, dt)
 	slot6 = "Not implemented"
 
 	assert(slot4, false)

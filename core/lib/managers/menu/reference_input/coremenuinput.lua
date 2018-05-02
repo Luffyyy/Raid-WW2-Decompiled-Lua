@@ -25,7 +25,7 @@ slot3 = "CoreMenuItemToggle"
 core.import(slot1, core)
 
 MenuInput = MenuInput or class()
-MenuInput.init = function (self, logic, menu_name)
+function MenuInput:init(logic, menu_name)
 	self._logic = logic
 	self._menu_name = menu_name
 	self._accept_input = true
@@ -51,47 +51,47 @@ MenuInput.init = function (self, logic, menu_name)
 
 	return 
 end
-MenuInput.open = function (self, ...)
+function MenuInput:open(...)
 	slot3 = self
 
 	self.create_controller(slot2)
 
 	return 
 end
-MenuInput.close = function (self)
+function MenuInput:close()
 	slot3 = self
 
 	self.destroy_controller(slot2)
 
 	return 
 end
-MenuInput.axis_timer = function (self)
+function MenuInput:axis_timer()
 	return self._axis_delay_timer
 end
-MenuInput.set_axis_x_timer = function (self, time)
+function MenuInput:set_axis_x_timer(time)
 	self._axis_delay_timer.x = time
 
 	return 
 end
-MenuInput.set_axis_y_timer = function (self, time)
+function MenuInput:set_axis_y_timer(time)
 	self._axis_delay_timer.y = time
 
 	return 
 end
-MenuInput.scroll_timer = function (self)
+function MenuInput:scroll_timer()
 	return self._scroll_delay_timer
 end
-MenuInput.set_scroll_x_timer = function (self, time)
+function MenuInput:set_scroll_x_timer(time)
 	self._scroll_delay_timer.x = time
 
 	return 
 end
-MenuInput.set_scroll_y_timer = function (self, time)
+function MenuInput:set_scroll_y_timer(time)
 	self._scroll_delay_timer.y = time
 
 	return 
 end
-MenuInput._input_hijacked = function (self)
+function MenuInput:_input_hijacked()
 	slot3 = managers.menu
 	local active_menu = managers.menu.active_menu(slot2)
 
@@ -102,7 +102,7 @@ MenuInput._input_hijacked = function (self)
 
 	return slot2
 end
-MenuInput.input_item = function (self, item, controller, mouse_click)
+function MenuInput:input_item(item, controller, mouse_click)
 	slot7 = "confirm"
 
 	if controller.get_input_pressed(slot5, controller) or mouse_click then
@@ -153,7 +153,7 @@ MenuInput.input_item = function (self, item, controller, mouse_click)
 
 	return 
 end
-MenuInput.input_slider = function (self, item, controller)
+function MenuInput:input_slider(item, controller)
 	local slider_delay_down = 0.1
 	local slider_delay_pressed = 0.2
 	slot7 = self
@@ -224,7 +224,7 @@ MenuInput.input_slider = function (self, item, controller)
 
 	return 
 end
-MenuInput.input_toggle = function (self, item, controller, mouse_click)
+function MenuInput:input_toggle(item, controller, mouse_click)
 	local toggle_delay_down = 0.3
 	local toggle_delay_pressed = 0.6
 	slot9 = "confirm"
@@ -241,7 +241,7 @@ MenuInput.input_toggle = function (self, item, controller, mouse_click)
 
 	return 
 end
-MenuInput.update = function (self, t, dt)
+function MenuInput:update(t, dt)
 	slot5 = self
 
 	self._check_releases(slot4)
@@ -363,7 +363,7 @@ MenuInput.update = function (self, t, dt)
 
 	return true
 end
-MenuInput.menu_up_input_bool = function (self)
+function MenuInput:menu_up_input_bool()
 	if self._controller then
 		slot4 = "menu_up"
 
@@ -372,7 +372,7 @@ MenuInput.menu_up_input_bool = function (self)
 
 	return false
 end
-MenuInput.menu_up_pressed = function (self)
+function MenuInput:menu_up_pressed()
 	if self._controller then
 		slot4 = "menu_up"
 
@@ -381,7 +381,7 @@ MenuInput.menu_up_pressed = function (self)
 
 	return false
 end
-MenuInput.menu_up_released = function (self)
+function MenuInput:menu_up_released()
 	if self._controller then
 		slot4 = "menu_up"
 
@@ -390,7 +390,7 @@ MenuInput.menu_up_released = function (self)
 
 	return false
 end
-MenuInput.menu_down_input_bool = function (self)
+function MenuInput:menu_down_input_bool()
 	if self._controller then
 		slot4 = "menu_down"
 
@@ -399,7 +399,7 @@ MenuInput.menu_down_input_bool = function (self)
 
 	return false
 end
-MenuInput.menu_down_pressed = function (self)
+function MenuInput:menu_down_pressed()
 	if self._controller then
 		slot4 = "menu_down"
 
@@ -408,7 +408,7 @@ MenuInput.menu_down_pressed = function (self)
 
 	return false
 end
-MenuInput.menu_down_released = function (self)
+function MenuInput:menu_down_released()
 	if self._controller then
 		slot4 = "menu_down"
 
@@ -417,7 +417,7 @@ MenuInput.menu_down_released = function (self)
 
 	return false
 end
-MenuInput.menu_left_input_bool = function (self)
+function MenuInput:menu_left_input_bool()
 	if self._controller then
 		slot4 = "menu_left"
 
@@ -426,7 +426,7 @@ MenuInput.menu_left_input_bool = function (self)
 
 	return false
 end
-MenuInput.menu_left_pressed = function (self)
+function MenuInput:menu_left_pressed()
 	if self._controller then
 		slot4 = "menu_left"
 
@@ -435,7 +435,7 @@ MenuInput.menu_left_pressed = function (self)
 
 	return false
 end
-MenuInput.menu_left_released = function (self)
+function MenuInput:menu_left_released()
 	if self._controller then
 		slot4 = "menu_left"
 
@@ -444,7 +444,7 @@ MenuInput.menu_left_released = function (self)
 
 	return false
 end
-MenuInput.menu_right_input_bool = function (self)
+function MenuInput:menu_right_input_bool()
 	if self._controller then
 		slot4 = "menu_right"
 
@@ -453,7 +453,7 @@ MenuInput.menu_right_input_bool = function (self)
 
 	return false
 end
-MenuInput.menu_right_pressed = function (self)
+function MenuInput:menu_right_pressed()
 	if self._controller then
 		slot4 = "menu_right"
 
@@ -462,7 +462,7 @@ MenuInput.menu_right_pressed = function (self)
 
 	return false
 end
-MenuInput.menu_right_released = function (self)
+function MenuInput:menu_right_released()
 	if self._controller then
 		slot4 = "menu_right"
 
@@ -471,7 +471,7 @@ MenuInput.menu_right_released = function (self)
 
 	return false
 end
-MenuInput._check_releases = function (self)
+function MenuInput:_check_releases()
 
 	-- Decompilation error in this vicinity:
 	slot3 = self
@@ -479,12 +479,12 @@ MenuInput._check_releases = function (self)
 
 	return 
 end
-MenuInput.accept_input = function (self, accept)
+function MenuInput:accept_input(accept)
 	self._accept_input = accept
 
 	return 
 end
-MenuInput.focus = function (self, focus)
+function MenuInput:focus(focus)
 	if focus then
 		slot4 = self
 
@@ -497,7 +497,7 @@ MenuInput.focus = function (self, focus)
 
 	return 
 end
-MenuInput.controller_hotswap_triggered = function (self)
+function MenuInput:controller_hotswap_triggered()
 	self._controller = nil
 	slot3 = self
 
@@ -505,7 +505,7 @@ MenuInput.controller_hotswap_triggered = function (self)
 
 	return 
 end
-MenuInput.create_controller = function (self)
+function MenuInput:create_controller()
 	if not self._controller then
 		slot6 = false
 		local controller = managers.controller.create_controller(slot2, managers.controller, nil, nil)
@@ -527,7 +527,7 @@ MenuInput.create_controller = function (self)
 
 	return 
 end
-MenuInput.destroy_controller = function (self)
+function MenuInput:destroy_controller()
 	if self._controller then
 		slot3 = self._controller
 
@@ -538,10 +538,10 @@ MenuInput.destroy_controller = function (self)
 
 	return 
 end
-MenuInput.logic_changed = function (self)
+function MenuInput:logic_changed()
 	return 
 end
-MenuInput.next_item = function (self)
+function MenuInput:next_item()
 	if not self._accept_input then
 		return 
 	end
@@ -585,7 +585,7 @@ MenuInput.next_item = function (self)
 
 	return 
 end
-MenuInput.prev_item = function (self)
+function MenuInput:prev_item()
 	slot3 = self._logic
 	local current_item = self._logic.selected_item(slot2)
 
@@ -625,7 +625,7 @@ MenuInput.prev_item = function (self)
 
 	return 
 end
-MenuInput.back = function (self, queue, skip_nodes)
+function MenuInput:back(queue, skip_nodes)
 	slot5 = self
 
 	if self._input_hijacked(slot4) == true then
@@ -650,7 +650,7 @@ MenuInput.back = function (self, queue, skip_nodes)
 
 	return 
 end
-MenuInput.select_node = function (self)
+function MenuInput:select_node()
 	slot3 = self._logic
 	local item = self._logic.selected_item(slot2)
 
@@ -682,7 +682,7 @@ MenuInput.select_node = function (self)
 
 	return 
 end
-MenuInput.any_keyboard_used = function (self)
+function MenuInput:any_keyboard_used()
 
 	-- Decompilation error in this vicinity:
 	slot3 = {

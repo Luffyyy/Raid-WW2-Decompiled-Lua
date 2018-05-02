@@ -25,7 +25,7 @@ SentryGunBrain = SentryGunBrain or class()
 SentryGunBrain._create_attention_setting_from_descriptor = PlayerMovement._create_attention_setting_from_descriptor
 SentryGunBrain.TURRET_TYPE_TANK = "tank"
 SentryGunBrain.TANK_ATTENTION_TIME = 5
-SentryGunBrain.init = function (self, unit)
+function SentryGunBrain:init(unit)
 	self._unit = unit
 	self._active = false
 	slot7 = "brain"
@@ -47,20 +47,20 @@ SentryGunBrain.init = function (self, unit)
 
 	return 
 end
-SentryGunBrain.destroy = function (self, unit)
+function SentryGunBrain:destroy(unit)
 	slot6 = self
 
 	managers.queued_tasks.unqueue_all(slot3, managers.queued_tasks, self._ukey)
 
 	return 
 end
-SentryGunBrain.post_init = function (self)
+function SentryGunBrain:post_init()
 	slot3 = self._unit
 	self._ext_movement = self._unit.movement(slot2)
 
 	return 
 end
-SentryGunBrain.update = function (self, unit, t, dt)
+function SentryGunBrain:update(unit, t, dt)
 	slot6 = Network
 
 	if Network.is_server(slot5) then
@@ -87,7 +87,7 @@ SentryGunBrain.update = function (self, unit, t, dt)
 
 	return 
 end
-SentryGunBrain.setup = function (self, shaprness_mul)
+function SentryGunBrain:setup(shaprness_mul)
 	self._shaprness_mul = shaprness_mul or 1
 	slot4 = Network
 
@@ -99,7 +99,7 @@ SentryGunBrain.setup = function (self, shaprness_mul)
 
 	return 
 end
-SentryGunBrain.on_activated = function (self, tweak_table_id)
+function SentryGunBrain:on_activated(tweak_table_id)
 	self._allow_turret_abandon = false
 	self._tweak_data = tweak_data.weapon[tweak_table_id]
 	slot4 = self
@@ -108,7 +108,7 @@ SentryGunBrain.on_activated = function (self, tweak_table_id)
 
 	return 
 end
-SentryGunBrain._update_SO_access = function (self)
+function SentryGunBrain:_update_SO_access()
 	slot3 = self._unit
 	slot3 = self._unit.movement(slot2)
 	local team_data = self._unit.movement(slot2).team(slot2)
@@ -137,10 +137,10 @@ SentryGunBrain._update_SO_access = function (self)
 
 	return 
 end
-SentryGunBrain.is_active = function (self)
+function SentryGunBrain:is_active()
 	return self._active
 end
-SentryGunBrain.set_active = function (self, state)
+function SentryGunBrain:set_active(state)
 	if state then
 		state = true
 	else
@@ -178,7 +178,7 @@ SentryGunBrain.set_active = function (self, state)
 
 	return 
 end
-SentryGunBrain._upd_detection = function (self, t)
+function SentryGunBrain:_upd_detection(t)
 
 	-- Decompilation error in this vicinity:
 	slot4 = self._ext_movement
@@ -245,7 +245,7 @@ SentryGunBrain._upd_detection = function (self, t)
 
 	return 
 end
-SentryGunBrain._update_noticing = function (self, t, my_pos, attention_info, ignore_units, max_detection_range)
+function SentryGunBrain:_update_noticing(t, my_pos, attention_info, ignore_units, max_detection_range)
 	local noticable = nil
 	slot14 = max_detection_range
 	local distance = self._distance_chk(slot8, self, my_pos, attention_info.handler, attention_info.settings, nil)
@@ -322,7 +322,7 @@ SentryGunBrain._update_noticing = function (self, t, my_pos, attention_info, ign
 
 	return 
 end
-SentryGunBrain._update_verify = function (self, t, my_pos, attention_info, ignore_units, update_delay, max_detection_range, my_team)
+function SentryGunBrain:_update_verify(t, my_pos, attention_info, ignore_units, update_delay, max_detection_range, my_team)
 	update_delay = math.min(slot9, update_delay)
 	attention_info.nearly_visible = nil
 	local verified, vis_ray = nil
@@ -399,7 +399,7 @@ SentryGunBrain._update_verify = function (self, t, my_pos, attention_info, ignor
 
 	return update_delay
 end
-SentryGunBrain._distance_chk = function (self, my_pos, handler, settings, attention_pos, max_detection_range)
+function SentryGunBrain:_distance_chk(my_pos, handler, settings, attention_pos, max_detection_range)
 	if not attention_pos then
 		slot8 = handler
 		attention_pos = handler.get_detection_m_pos(slot7)
@@ -422,7 +422,7 @@ SentryGunBrain._distance_chk = function (self, my_pos, handler, settings, attent
 
 	return 
 end
-SentryGunBrain._nearly_visible_chk = function (self, attention_info, detect_pos, my_pos, ignore_units)
+function SentryGunBrain:_nearly_visible_chk(attention_info, detect_pos, my_pos, ignore_units)
 	local near_pos = tmp_vec1
 
 	if attention_info.verified_dis < 2000 then
@@ -493,7 +493,7 @@ SentryGunBrain._nearly_visible_chk = function (self, attention_info, detect_pos,
 
 	return 
 end
-SentryGunBrain._select_focus_attention = function (self, t)
+function SentryGunBrain:_select_focus_attention(t)
 	local current_focus = self._attention_obj
 	slot5 = self._ext_movement
 	local current_pos = self._ext_movement.m_head_pos(slot4)
@@ -586,7 +586,7 @@ SentryGunBrain._select_focus_attention = function (self, t)
 
 	return 
 end
-SentryGunBrain._destroy_detected_attention_object_data = function (self, attention_info)
+function SentryGunBrain:_destroy_detected_attention_object_data(attention_info)
 	slot10 = self._unit
 	slot5 = "detect_" .. tostring(self._unit.key(slot9))
 
@@ -624,7 +624,7 @@ SentryGunBrain._destroy_detected_attention_object_data = function (self, attenti
 
 	return 
 end
-SentryGunBrain._player_seen_decrease = function (self)
+function SentryGunBrain:_player_seen_decrease()
 	slot3 = self._unit
 	local p = self._unit.unit_data(slot2).parent_unit
 
@@ -647,7 +647,7 @@ SentryGunBrain._player_seen_decrease = function (self)
 
 	return 
 end
-SentryGunBrain._upd_abandon_turret = function (self, t, target_is_visible)
+function SentryGunBrain:_upd_abandon_turret(t, target_is_visible)
 	if self._tweak_data.WAIT_FOR_TARGET then
 		slot5 = self
 
@@ -675,7 +675,7 @@ SentryGunBrain._upd_abandon_turret = function (self, t, target_is_visible)
 
 	return 
 end
-SentryGunBrain._upd_fire = function (self, t)
+function SentryGunBrain:_upd_fire(t)
 
 	-- Decompilation error in this vicinity:
 	slot4 = self._unit
@@ -726,7 +726,7 @@ SentryGunBrain._upd_fire = function (self, t)
 
 	return 
 end
-SentryGunBrain._upd_flash_grenade = function (self, t)
+function SentryGunBrain:_upd_flash_grenade(t)
 	if not self._tweak_data.FLASH_GRENADE then
 		return 
 	end
@@ -791,7 +791,7 @@ SentryGunBrain._upd_flash_grenade = function (self, t)
 
 	return 
 end
-SentryGunBrain._upd_go_idle = function (self, t)
+function SentryGunBrain:_upd_go_idle(t)
 	slot4 = Network
 
 	if not Network.is_server(slot3) or not self._tweak_data.CAN_GO_IDLE then
@@ -875,7 +875,7 @@ SentryGunBrain._upd_go_idle = function (self, t)
 
 	return 
 end
-SentryGunBrain.on_detected_attention_obj_modified = function (self, modified_u_key)
+function SentryGunBrain:on_detected_attention_obj_modified(modified_u_key)
 	slot4 = self._unit
 
 	if not alive(slot3) then
@@ -923,7 +923,7 @@ SentryGunBrain.on_detected_attention_obj_modified = function (self, modified_u_k
 
 	return 
 end
-SentryGunBrain.on_damage_received = function (self, attacker_unit)
+function SentryGunBrain:on_damage_received(attacker_unit)
 	slot4 = Network
 
 	if not Network.is_server(slot3) or not attacker_unit then
@@ -944,7 +944,7 @@ SentryGunBrain.on_damage_received = function (self, attacker_unit)
 
 	return 
 end
-SentryGunBrain.on_team_set = function (self, team_data)
+function SentryGunBrain:on_team_set(team_data)
 	if self._attention_handler then
 		slot5 = team_data
 
@@ -970,7 +970,7 @@ SentryGunBrain.on_team_set = function (self, team_data)
 
 	return 
 end
-SentryGunBrain.set_idle = function (self, state)
+function SentryGunBrain:set_idle(state)
 	self._idle = state
 	slot5 = not state
 
@@ -987,10 +987,10 @@ SentryGunBrain.set_idle = function (self, state)
 
 	return 
 end
-SentryGunBrain.get_repair_counter = function (self)
+function SentryGunBrain:get_repair_counter()
 	return self._auto_repair_counter
 end
-SentryGunBrain.switch_off = function (self, fixed)
+function SentryGunBrain:switch_off(fixed)
 	slot4 = self._unit
 	slot5 = "laser_off"
 
@@ -1049,7 +1049,7 @@ SentryGunBrain.switch_off = function (self, fixed)
 
 	return 
 end
-SentryGunBrain.switch_on = function (self)
+function SentryGunBrain:switch_on()
 
 	-- Decompilation error in this vicinity:
 	slot3 = self._unit
@@ -1105,7 +1105,7 @@ SentryGunBrain.switch_on = function (self)
 
 	return 
 end
-SentryGunBrain._setup_attention_handler = function (self)
+function SentryGunBrain:_setup_attention_handler()
 	slot4 = self._unit
 	self._attention_handler = CharacterAttentionObject.new(slot2, CharacterAttentionObject)
 	slot3 = self._attention_handler
@@ -1121,13 +1121,13 @@ SentryGunBrain._setup_attention_handler = function (self)
 
 	return 
 end
-SentryGunBrain.attention_handler = function (self)
+function SentryGunBrain:attention_handler()
 	return self._attention_handler
 end
-SentryGunBrain.SO_access = function (self)
+function SentryGunBrain:SO_access()
 	return self._SO_access
 end
-SentryGunBrain.on_hacked_start = function (self)
+function SentryGunBrain:on_hacked_start()
 	slot4 = {
 		"sentry_gun_enemy_cbt_hacked"
 	}
@@ -1136,7 +1136,7 @@ SentryGunBrain.on_hacked_start = function (self)
 
 	return 
 end
-SentryGunBrain.on_hacked_end = function (self)
+function SentryGunBrain:on_hacked_end()
 	slot4 = {
 		"sentry_gun_enemy_cbt"
 	}
@@ -1145,7 +1145,7 @@ SentryGunBrain.on_hacked_end = function (self)
 
 	return 
 end
-SentryGunBrain.save = function (self, save_data)
+function SentryGunBrain:save(save_data)
 	local my_save_data = {}
 	save_data.brain = my_save_data
 	my_save_data.shaprness_mul = self._shaprness_mul
@@ -1157,7 +1157,7 @@ SentryGunBrain.save = function (self, save_data)
 
 	return 
 end
-SentryGunBrain.load = function (self, save_data)
+function SentryGunBrain:load(save_data)
 	if not save_data or not save_data.brain then
 		return 
 	end
@@ -1172,7 +1172,7 @@ SentryGunBrain.load = function (self, save_data)
 
 	return 
 end
-SentryGunBrain.pre_destroy = function (self)
+function SentryGunBrain:pre_destroy()
 	slot3 = self._detected_attention_objects
 
 	for key, attention_info in pairs(slot2) do
@@ -1195,15 +1195,15 @@ SentryGunBrain.pre_destroy = function (self)
 
 	return 
 end
-SentryGunBrain.on_intimidated = function (self, amount, aggressor_unit)
+function SentryGunBrain:on_intimidated(amount, aggressor_unit)
 	return 
 end
-SentryGunBrain.keep_ai_attached = function (self)
+function SentryGunBrain:keep_ai_attached()
 	self._keep_ai_attached = true
 
 	return 
 end
-SentryGunBrain.allow_turret_abandon = function (self)
+function SentryGunBrain:allow_turret_abandon()
 	return self._allow_turret_abandon and not self._keep_ai_attached
 end
 

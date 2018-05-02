@@ -7,7 +7,7 @@ RaidGUIControlIntelImageGrid = slot0
 RaidGUIControlIntelImageGrid.DEFAULT_W = 474
 RaidGUIControlIntelImageGrid.DEFAULT_H = 528
 RaidGUIControlIntelImageGrid.SCROLL_ADVANCE = 20
-RaidGUIControlIntelImageGrid.init = function (self, parent, params)
+function RaidGUIControlIntelImageGrid:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlIntelImageGrid.super.init(slot4, self, parent)
@@ -33,7 +33,7 @@ RaidGUIControlIntelImageGrid.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlIntelImageGrid._create_panels = function (self)
+function RaidGUIControlIntelImageGrid:_create_panels()
 	slot3 = self._params
 	local panel_params = clone(slot2)
 	panel_params.name = panel_params.name .. "_panel"
@@ -55,7 +55,7 @@ RaidGUIControlIntelImageGrid._create_panels = function (self)
 
 	return 
 end
-RaidGUIControlIntelImageGrid._create_photos = function (self, only_first_n_events)
+function RaidGUIControlIntelImageGrid:_create_photos(only_first_n_events)
 	slot4 = self._inner_panel
 
 	self._inner_panel.clear(slot3)
@@ -115,7 +115,7 @@ RaidGUIControlIntelImageGrid._create_photos = function (self, only_first_n_event
 
 	return 
 end
-RaidGUIControlIntelImageGrid._on_photo_clicked = function (self, photo_index)
+function RaidGUIControlIntelImageGrid:_on_photo_clicked(photo_index)
 	if self._selected_index == photo_index then
 		return 
 	end
@@ -173,7 +173,7 @@ RaidGUIControlIntelImageGrid._on_photo_clicked = function (self, photo_index)
 
 	return 
 end
-RaidGUIControlIntelImageGrid.set_data = function (self, data)
+function RaidGUIControlIntelImageGrid:set_data(data)
 	self._mission = data.mission
 
 	if data.image_selected then
@@ -203,7 +203,7 @@ RaidGUIControlIntelImageGrid.set_data = function (self, data)
 
 	return 
 end
-RaidGUIControlIntelImageGrid.select = function (self, index)
+function RaidGUIControlIntelImageGrid:select(index)
 	if self._mission_photos[index] then
 		slot5 = index
 
@@ -212,12 +212,12 @@ RaidGUIControlIntelImageGrid.select = function (self, index)
 
 	return 
 end
-RaidGUIControlIntelImageGrid.clear_selection = function (self)
+function RaidGUIControlIntelImageGrid:clear_selection()
 	self._selected_index = nil
 
 	return 
 end
-RaidGUIControlIntelImageGrid.set_selected = function (self, value, dont_trigger_selected_callback)
+function RaidGUIControlIntelImageGrid:set_selected(value, dont_trigger_selected_callback)
 	self._selected = value
 
 	if self._selected_index then
@@ -242,7 +242,7 @@ RaidGUIControlIntelImageGrid.set_selected = function (self, value, dont_trigger_
 
 	return 
 end
-RaidGUIControlIntelImageGrid.move_up = function (self)
+function RaidGUIControlIntelImageGrid:move_up()
 	if self._selected and self._selected_index and self._photos[self._selected_index - 2] then
 		slot4 = false
 
@@ -268,7 +268,7 @@ RaidGUIControlIntelImageGrid.move_up = function (self)
 
 	return false
 end
-RaidGUIControlIntelImageGrid.move_down = function (self)
+function RaidGUIControlIntelImageGrid:move_down()
 	if self._selected and self._selected_index and self._photos[self._selected_index + 2] then
 		slot4 = false
 
@@ -294,7 +294,7 @@ RaidGUIControlIntelImageGrid.move_down = function (self)
 
 	return false
 end
-RaidGUIControlIntelImageGrid.move_right = function (self)
+function RaidGUIControlIntelImageGrid:move_right()
 	if self._selected and self._selected_index and self._selected_index % 2 ~= 0 and self._photos[self._selected_index + 1] then
 		slot4 = false
 
@@ -320,7 +320,7 @@ RaidGUIControlIntelImageGrid.move_right = function (self)
 
 	return false
 end
-RaidGUIControlIntelImageGrid.move_left = function (self)
+function RaidGUIControlIntelImageGrid:move_left()
 	if self._selected and self._selected_index and self._selected_index % 2 == 0 and self._photos[self._selected_index - 1] then
 		slot4 = false
 
@@ -346,7 +346,7 @@ RaidGUIControlIntelImageGrid.move_left = function (self)
 
 	return false
 end
-RaidGUIControlIntelImageGrid._get_mission_photos = function (self, only_first_n_events)
+function RaidGUIControlIntelImageGrid:_get_mission_photos(only_first_n_events)
 	local mission_tweak_data = tweak_data.operations.missions[self._mission]
 	local photos = {}
 
@@ -397,7 +397,7 @@ RaidGUIControlIntelImageGrid._get_mission_photos = function (self, only_first_n_
 
 	return photos
 end
-RaidGUIControlIntelImageGrid._check_scrollability = function (self)
+function RaidGUIControlIntelImageGrid:_check_scrollability()
 	slot4 = self._object
 
 	if self._inner_panel.h(slot2) <= self._object.h(self._inner_panel) then
@@ -408,7 +408,7 @@ RaidGUIControlIntelImageGrid._check_scrollability = function (self)
 
 	return 
 end
-RaidGUIControlIntelImageGrid.on_mouse_scroll_up = function (self)
+function RaidGUIControlIntelImageGrid:on_mouse_scroll_up()
 	if not self._scrollable then
 		return false
 	end
@@ -428,7 +428,7 @@ RaidGUIControlIntelImageGrid.on_mouse_scroll_up = function (self)
 
 	return true
 end
-RaidGUIControlIntelImageGrid.on_mouse_scroll_down = function (self)
+function RaidGUIControlIntelImageGrid:on_mouse_scroll_down()
 	if not self._scrollable then
 		return false
 	end
@@ -449,7 +449,7 @@ RaidGUIControlIntelImageGrid.on_mouse_scroll_down = function (self)
 
 	return true
 end
-RaidGUIControlIntelImageGrid.close = function (self)
+function RaidGUIControlIntelImageGrid:close()
 	return 
 end
 

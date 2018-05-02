@@ -8,7 +8,7 @@ if not MolotovGrenade then
 end
 
 MolotovGrenade = slot0
-MolotovGrenade.destroy = function (self, unit)
+function MolotovGrenade:destroy(unit)
 	slot4 = self._molotov_damage_effect_table
 
 	for _, damage_effect_entry in pairs(slot3) do
@@ -20,7 +20,7 @@ MolotovGrenade.destroy = function (self, unit)
 
 	return 
 end
-MolotovGrenade._setup_from_tweak_data = function (self)
+function MolotovGrenade:_setup_from_tweak_data()
 	local grenade_entry = self.tweak_data or "molotov"
 	self._tweak_data = tweak_data.projectiles[grenade_entry]
 	self._init_timer = self._tweak_data.init_timer or 10
@@ -57,7 +57,7 @@ MolotovGrenade._setup_from_tweak_data = function (self)
 
 	return 
 end
-MolotovGrenade.update = function (self, unit, t, dt)
+function MolotovGrenade:update(unit, t, dt)
 	if self._hand_held then
 		return 
 	end
@@ -122,7 +122,7 @@ MolotovGrenade.update = function (self, unit, t, dt)
 
 	return 
 end
-MolotovGrenade._do_damage = function (self)
+function MolotovGrenade:_do_damage()
 	local pos = self._detonated_position
 	local normal = math.UP
 	local range = self._range
@@ -205,14 +205,14 @@ MolotovGrenade._do_damage = function (self)
 
 	return 
 end
-MolotovGrenade.clbk_impact = function (self, tag, unit, body, other_unit, other_body, position, normal, collision_velocity, velocity, other_velocity)
+function MolotovGrenade:clbk_impact(tag, unit, body, other_unit, other_body, position, normal, collision_velocity, velocity, other_velocity)
 	slot14 = normal
 
 	self._detonate(slot12, self)
 
 	return 
 end
-MolotovGrenade.detonate = function (self, normal)
+function MolotovGrenade:detonate(normal)
 
 	-- Decompilation error in this vicinity:
 	slot5 = {
@@ -403,7 +403,7 @@ MolotovGrenade.detonate = function (self, normal)
 
 	return 
 end
-MolotovGrenade._detonate = function (self, normal)
+function MolotovGrenade:_detonate(normal)
 	if self._detonated == false then
 		slot5 = normal
 
@@ -417,7 +417,7 @@ MolotovGrenade._detonate = function (self, normal)
 
 	return 
 end
-MolotovGrenade.sync_detonate_molotov_grenade = function (self, event_id, normal)
+function MolotovGrenade:sync_detonate_molotov_grenade(event_id, normal)
 	if event_id == GrenadeBase.EVENT_IDS.detonate then
 		slot6 = normal
 
@@ -426,7 +426,7 @@ MolotovGrenade.sync_detonate_molotov_grenade = function (self, event_id, normal)
 
 	return 
 end
-MolotovGrenade._detonate_on_client = function (self, normal)
+function MolotovGrenade:_detonate_on_client(normal)
 	if self._detonated == false then
 		slot5 = normal
 
@@ -435,7 +435,7 @@ MolotovGrenade._detonate_on_client = function (self, normal)
 
 	return 
 end
-MolotovGrenade._detonate_on_client_OLD = function (self, normal)
+function MolotovGrenade:_detonate_on_client_OLD(normal)
 	if self._detonated == false then
 		slot4 = self._unit
 		self._detonated_position = self._unit.position(slot3)
@@ -455,7 +455,7 @@ MolotovGrenade._detonate_on_client_OLD = function (self, normal)
 
 	return 
 end
-MolotovGrenade.bullet_hit = function (self)
+function MolotovGrenade:bullet_hit()
 	slot3 = Network
 
 	if not Network.is_server(slot2) then
@@ -469,7 +469,7 @@ MolotovGrenade.bullet_hit = function (self)
 
 	return 
 end
-MolotovGrenade.add_damage_result = function (self, unit, is_dead, damage_percent)
+function MolotovGrenade:add_damage_result(unit, is_dead, damage_percent)
 
 	-- Decompilation error in this vicinity:
 	slot6 = self._thrower_unit

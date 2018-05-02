@@ -11,7 +11,7 @@ slot3 = "CoreMenuStatePreFrontEnd"
 core.import(slot1, core)
 
 FrontEnd = FrontEnd or class()
-FrontEnd.init = function (self)
+function FrontEnd:init()
 	local menu_handler = self.menu_state._menu_handler
 	slot4 = menu_handler
 
@@ -19,7 +19,7 @@ FrontEnd.init = function (self)
 
 	return 
 end
-FrontEnd.transition = function (self)
+function FrontEnd:transition()
 	local game_state = self.menu_state._game_state
 	slot4 = game_state
 

@@ -2,12 +2,12 @@ ExplodingProp = ExplodingProp or class()
 ExplodingProp.DETONATE_EVENT_ID = 1
 ExplodingProp.EXTENSION = "base"
 ExplodingProp.DEFAULT_EXPLODE_EVENT = "grenade_explode"
-ExplodingProp.init = function (self, unit)
+function ExplodingProp:init(unit)
 	self._unit = unit
 
 	return 
 end
-ExplodingProp.detonate = function (self, pos, range, damage, player_damage)
+function ExplodingProp:detonate(pos, range, damage, player_damage)
 	if not pos or not range or not damage or not player_damage then
 		slot11 = pos
 		slot13 = range
@@ -106,7 +106,7 @@ ExplodingProp.detonate = function (self, pos, range, damage, player_damage)
 
 	return 
 end
-ExplodingProp.sync_net_event = function (self, event_id)
+function ExplodingProp:sync_net_event(event_id)
 	if event_id == ExplodingProp.DETONATE_EVENT_ID then
 		slot4 = self
 
@@ -115,7 +115,7 @@ ExplodingProp.sync_net_event = function (self, event_id)
 
 	return 
 end
-ExplodingProp._detonate_on_client = function (self)
+function ExplodingProp:_detonate_on_client()
 	self._recieved_detonate_on_client = true
 	slot3 = self
 
@@ -123,7 +123,7 @@ ExplodingProp._detonate_on_client = function (self)
 
 	return 
 end
-ExplodingProp._check_detonation_ready = function (self)
+function ExplodingProp:_check_detonation_ready()
 	if not self._recieved_detonate_on_client then
 		return 
 	end

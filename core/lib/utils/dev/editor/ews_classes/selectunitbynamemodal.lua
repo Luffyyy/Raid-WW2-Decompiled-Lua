@@ -4,7 +4,7 @@ if not SelectUnitByNameModal then
 end
 
 SelectUnitByNameModal = slot0
-SelectUnitByNameModal.init = function (self, name, unit_filter_function, ...)
+function SelectUnitByNameModal:init(name, unit_filter_function, ...)
 	slot7 = unit_filter_function
 
 	UnitByName.init(slot4, self, name, ...)
@@ -15,7 +15,7 @@ SelectUnitByNameModal.init = function (self, name, unit_filter_function, ...)
 
 	return 
 end
-SelectUnitByNameModal._build_buttons = function (self, panel, sizer)
+function SelectUnitByNameModal:_build_buttons(panel, sizer)
 	slot9 = "BU_BOTTOM"
 	local select_btn = EWS.Button(slot4, EWS, panel, "Select", "")
 	slot10 = "RIGHT,LEFT"
@@ -37,14 +37,14 @@ SelectUnitByNameModal._build_buttons = function (self, panel, sizer)
 
 	return 
 end
-SelectUnitByNameModal._on_select_unit = function (self)
+function SelectUnitByNameModal:_on_select_unit()
 	slot3 = self
 
 	self.end_modal(slot2)
 
 	return 
 end
-SelectUnitByNameModal.on_cancel = function (self)
+function SelectUnitByNameModal:on_cancel()
 	self._cancelled = true
 	slot3 = self
 
@@ -52,17 +52,17 @@ SelectUnitByNameModal.on_cancel = function (self)
 
 	return 
 end
-SelectUnitByNameModal.end_modal = function (self)
+function SelectUnitByNameModal:end_modal()
 	slot4 = "hello"
 
 	self._dialog.end_modal(slot2, self._dialog)
 
 	return 
 end
-SelectUnitByNameModal.cancelled = function (self)
+function SelectUnitByNameModal:cancelled()
 	return self._cancelled
 end
-SelectUnitByNameModal.selected_units = function (self)
+function SelectUnitByNameModal:selected_units()
 	slot3 = self
 
 	return self._selected_item_units(slot2)

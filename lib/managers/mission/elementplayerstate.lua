@@ -10,21 +10,21 @@ if not ElementPlayerState then
 end
 
 ElementPlayerState = slot0
-ElementPlayerState.init = function (self, ...)
+function ElementPlayerState:init(...)
 	slot3 = self
 
 	ElementPlayerState.super.init(slot2, ...)
 
 	return 
 end
-ElementPlayerState.client_on_executed = function (self, ...)
+function ElementPlayerState:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementPlayerState.on_executed = function (self, instigator)
+function ElementPlayerState:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -63,14 +63,14 @@ if not ElementPlayerStateTrigger then
 end
 
 ElementPlayerStateTrigger = slot0
-ElementPlayerStateTrigger.init = function (self, ...)
+function ElementPlayerStateTrigger:init(...)
 	slot3 = self
 
 	ElementPlayerStateTrigger.super.init(slot2, ...)
 
 	return 
 end
-ElementPlayerStateTrigger.on_script_activated = function (self)
+function ElementPlayerStateTrigger:on_script_activated()
 	slot6 = self
 	slot5 = {
 		self._values.state
@@ -82,7 +82,7 @@ ElementPlayerStateTrigger.on_script_activated = function (self)
 
 	return 
 end
-ElementPlayerStateTrigger.send_to_host = function (self, instigator)
+function ElementPlayerStateTrigger:send_to_host(instigator)
 	if instigator then
 		slot4 = managers.network
 		slot8 = instigator
@@ -92,7 +92,7 @@ ElementPlayerStateTrigger.send_to_host = function (self, instigator)
 
 	return 
 end
-ElementPlayerStateTrigger.on_executed = function (self, instigator)
+function ElementPlayerStateTrigger:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

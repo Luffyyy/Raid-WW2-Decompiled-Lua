@@ -11,7 +11,7 @@ slot3 = "CoreMenuStateInEditor"
 core.import(slot1, core)
 
 None = None or class()
-None.transition = function (self)
+function None:transition()
 	local state = self.menu_state._game_state
 	slot4 = state
 

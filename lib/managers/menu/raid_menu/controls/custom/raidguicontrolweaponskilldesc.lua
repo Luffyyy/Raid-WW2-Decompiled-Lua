@@ -22,7 +22,7 @@ RaidGUIControlWeaponSkillDesc.CHALLENGE_LOCKED_TEXT = "menu_weapon_challenge_loc
 RaidGUIControlWeaponSkillDesc.CHALLENGE_IN_PROGRESS_TEXT = "menu_weapon_challenge_in_progress"
 RaidGUIControlWeaponSkillDesc.CHALLENGE_COMPLETED_TEXT = "menu_weapon_challenge_completed"
 RaidGUIControlWeaponSkillDesc.CHALLENGE_LOCKED_DESCRIPTION = "weapon_skill_challenge_locked"
-RaidGUIControlWeaponSkillDesc.init = function (self, parent, params)
+function RaidGUIControlWeaponSkillDesc:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlWeaponSkillDesc.super.init(slot4, self, parent)
@@ -39,7 +39,7 @@ RaidGUIControlWeaponSkillDesc.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlWeaponSkillDesc.set_weapon_skill = function (self, skill_data)
+function RaidGUIControlWeaponSkillDesc:set_weapon_skill(skill_data)
 
 	-- Decompilation error in this vicinity:
 	local skill = skill_data.value
@@ -81,7 +81,7 @@ RaidGUIControlWeaponSkillDesc.set_weapon_skill = function (self, skill_data)
 
 	return 
 end
-RaidGUIControlWeaponSkillDesc._create_labels = function (self)
+function RaidGUIControlWeaponSkillDesc:_create_labels()
 	local params_name_label = {
 		text = "UNKNOWN SKILL NAME",
 		h = 38,
@@ -145,7 +145,7 @@ RaidGUIControlWeaponSkillDesc._create_labels = function (self)
 
 	return 
 end
-RaidGUIControlWeaponSkillDesc._create_progress_bar = function (self)
+function RaidGUIControlWeaponSkillDesc:_create_progress_bar()
 	local progress_bar_panel_params = {
 		vertical = "bottom",
 		h = 32,
@@ -226,7 +226,7 @@ RaidGUIControlWeaponSkillDesc._create_progress_bar = function (self)
 
 	return 
 end
-RaidGUIControlWeaponSkillDesc.set_progress = function (self, count, target)
+function RaidGUIControlWeaponSkillDesc:set_progress(count, target)
 	slot8 = self._progress_bar_panel
 	slot6 = self._progress_bar_panel.w(slot7) * count / target
 
@@ -247,13 +247,13 @@ RaidGUIControlWeaponSkillDesc.set_progress = function (self, count, target)
 
 	return 
 end
-RaidGUIControlWeaponSkillDesc.on_click_weapon_skill_button = function (self)
+function RaidGUIControlWeaponSkillDesc:on_click_weapon_skill_button()
 	return 
 end
-RaidGUIControlWeaponSkillDesc.on_mouse_enter_weapon_skill_button = function (self)
+function RaidGUIControlWeaponSkillDesc:on_mouse_enter_weapon_skill_button()
 	return 
 end
-RaidGUIControlWeaponSkillDesc.on_mouse_exit_weapon_skill_button = function (self)
+function RaidGUIControlWeaponSkillDesc:on_mouse_exit_weapon_skill_button()
 	return 
 end
 

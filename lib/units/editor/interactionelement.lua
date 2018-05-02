@@ -9,7 +9,7 @@ InteractionUnitElement.ON_EXECUTED_ALTERNATIVES = {
 	"interupt",
 	"start"
 }
-InteractionUnitElement.init = function (self, unit)
+function InteractionUnitElement:init(unit)
 	slot5 = unit
 
 	InteractionUnitElement.super.init(slot3, self)
@@ -26,7 +26,7 @@ InteractionUnitElement.init = function (self, unit)
 
 	return 
 end
-InteractionUnitElement._build_panel = function (self, panel, panel_sizer)
+function InteractionUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -54,7 +54,7 @@ InteractionUnitElement._build_panel = function (self, panel, panel_sizer)
 
 	return 
 end
-InteractionUnitElement.add_to_mission_package = function (self)
+function InteractionUnitElement:add_to_mission_package()
 	slot4 = {
 		name = "units/dev_tools/mission_elements/point_interaction/interaction_dummy",
 		category = "units",

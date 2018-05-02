@@ -27,7 +27,7 @@ NetworkAccountSTEAM.lb_levels = {
 	bank = "First World Bank",
 	heat_street = "Heat Street"
 }
-function NetworkAccountSTEAM:init()
+NetworkAccountSTEAM.init = function (self)
 	slot3 = self
 
 	NetworkAccount.init(slot2)
@@ -100,7 +100,7 @@ function NetworkAccountSTEAM:init()
 
 	return 
 end
-function NetworkAccountSTEAM:_load_done(...)
+NetworkAccountSTEAM._load_done = function (self, ...)
 	slot3 = "NetworkAccountSTEAM:_load_done()"
 
 	print(slot2, ...)
@@ -111,14 +111,14 @@ function NetworkAccountSTEAM:_load_done(...)
 
 	return 
 end
-function NetworkAccountSTEAM:update()
+NetworkAccountSTEAM.update = function (self)
 	slot3 = self
 
 	self._chk_inventory_outfit_refresh(slot2)
 
 	return 
 end
-function NetworkAccountSTEAM:_set_presences()
+NetworkAccountSTEAM._set_presences = function (self)
 	slot4 = "level"
 	slot7 = managers.experience
 
@@ -126,14 +126,14 @@ function NetworkAccountSTEAM:_set_presences()
 
 	return 
 end
-function NetworkAccountSTEAM:set_presences_peer_id(peer_id)
+NetworkAccountSTEAM.set_presences_peer_id = function (self, peer_id)
 	slot6 = peer_id
 
 	Steam.set_rich_presence(slot3, Steam, "peer_id")
 
 	return 
 end
-function NetworkAccountSTEAM:get_win_ratio(difficulty, level)
+NetworkAccountSTEAM.get_win_ratio = function (self, difficulty, level)
 	slot5 = Steam
 	slot7 = 30
 	local plays = Steam.sa_handler(slot4).get_global_stat(slot4, Steam.sa_handler(slot4), difficulty .. "_" .. level .. "_plays")
@@ -158,7 +158,7 @@ function NetworkAccountSTEAM:get_win_ratio(difficulty, level)
 
 	return ratio[#ratio / 2]
 end
-function NetworkAccountSTEAM:set_lightfx()
+NetworkAccountSTEAM.set_lightfx = function (self)
 	slot4 = "use_lightfx"
 
 	if managers.user.get_setting(slot2, managers.user) then
@@ -234,10 +234,10 @@ NetworkAccountSTEAM._on_dev_group_recieved = function (success, page)
 
 	return 
 end
-function NetworkAccountSTEAM:has_alienware()
+NetworkAccountSTEAM.has_alienware = function (self)
 	return self._has_alienware
 end
-function NetworkAccountSTEAM:_call_listeners(event, params)
+NetworkAccountSTEAM._call_listeners = function (self, event, params)
 	if self._listener_holder then
 		slot7 = params
 
@@ -246,21 +246,21 @@ function NetworkAccountSTEAM:_call_listeners(event, params)
 
 	return 
 end
-function NetworkAccountSTEAM:add_overlay_listener(key, events, clbk)
+NetworkAccountSTEAM.add_overlay_listener = function (self, key, events, clbk)
 	slot9 = clbk
 
 	self._listener_holder.add(slot5, self._listener_holder, key, events)
 
 	return 
 end
-function NetworkAccountSTEAM:remove_overlay_listener(key)
+NetworkAccountSTEAM.remove_overlay_listener = function (self, key)
 	slot5 = key
 
 	self._listener_holder.remove(slot3, self._listener_holder)
 
 	return 
 end
-function NetworkAccountSTEAM:_on_open_overlay()
+NetworkAccountSTEAM._on_open_overlay = function (self)
 	if self._overlay_opened then
 		return 
 	end
@@ -276,7 +276,7 @@ function NetworkAccountSTEAM:_on_open_overlay()
 
 	return 
 end
-function NetworkAccountSTEAM:_on_close_overlay()
+NetworkAccountSTEAM._on_close_overlay = function (self)
 	if not self._overlay_opened then
 		return 
 	end
@@ -300,7 +300,7 @@ function NetworkAccountSTEAM:_on_close_overlay()
 
 	return 
 end
-function NetworkAccountSTEAM:_on_gamepad_text_submitted(submitted, submitted_text)
+NetworkAccountSTEAM._on_gamepad_text_submitted = function (self, submitted, submitted_text)
 	slot9 = submitted_text
 
 	print(slot4, "[NetworkAccountSTEAM:_on_gamepad_text_submitted]", "submitted", submitted, "submitted_text")
@@ -317,10 +317,10 @@ function NetworkAccountSTEAM:_on_gamepad_text_submitted(submitted, submitted_tex
 
 	return 
 end
-function NetworkAccountSTEAM:show_gamepad_text_input(id, callback, params)
+NetworkAccountSTEAM.show_gamepad_text_input = function (self, id, callback, params)
 	return false
 end
-function NetworkAccountSTEAM:add_gamepad_text_listener(id, clbk)
+NetworkAccountSTEAM.add_gamepad_text_listener = function (self, id, clbk)
 	if self._gamepad_text_listeners[id] then
 		slot10 = clbk
 
@@ -331,7 +331,7 @@ function NetworkAccountSTEAM:add_gamepad_text_listener(id, clbk)
 
 	return 
 end
-function NetworkAccountSTEAM:remove_gamepad_text_listener(id)
+NetworkAccountSTEAM.remove_gamepad_text_listener = function (self, id)
 	if not self._gamepad_text_listeners[id] then
 		slot5 = id
 
@@ -342,17 +342,17 @@ function NetworkAccountSTEAM:remove_gamepad_text_listener(id)
 
 	return 
 end
-function NetworkAccountSTEAM:achievements_fetched()
+NetworkAccountSTEAM.achievements_fetched = function (self)
 	self._achievements_fetched = true
 
 	return 
 end
-function NetworkAccountSTEAM:challenges_loaded()
+NetworkAccountSTEAM.challenges_loaded = function (self)
 	self._challenges_loaded = true
 
 	return 
 end
-function NetworkAccountSTEAM:experience_loaded()
+NetworkAccountSTEAM.experience_loaded = function (self)
 	self._experience_loaded = true
 
 	return 
@@ -383,19 +383,19 @@ NetworkAccountSTEAM._on_stats_stored = function (status)
 
 	return 
 end
-function NetworkAccountSTEAM:get_stat(key)
+NetworkAccountSTEAM.get_stat = function (self, key)
 	slot4 = Steam
 	slot5 = key
 
 	return Steam.sa_handler(slot3).get_stat(slot3, Steam.sa_handler(slot3))
 end
-function NetworkAccountSTEAM:get_lifetime_stat(key)
+NetworkAccountSTEAM.get_lifetime_stat = function (self, key)
 	slot4 = Steam
 	slot5 = key
 
 	return Steam.sa_handler(slot3).get_lifetime_stat(slot3, Steam.sa_handler(slot3))
 end
-function NetworkAccountSTEAM:get_global_stat(key, days)
+NetworkAccountSTEAM.get_global_stat = function (self, key, days)
 	local value = 0
 	local global_stat = nil
 
@@ -428,7 +428,7 @@ function NetworkAccountSTEAM:get_global_stat(key, days)
 
 	return value
 end
-function NetworkAccountSTEAM:publish_statistics(stats, force_store)
+NetworkAccountSTEAM.publish_statistics = function (self, stats, force_store)
 	slot5 = managers.dlc
 
 	if managers.dlc.is_trial(slot4) then
@@ -665,7 +665,7 @@ NetworkAccountSTEAM._on_connect_fail = function (ip, pw)
 
 	return 
 end
-function NetworkAccountSTEAM:signin_state()
+NetworkAccountSTEAM.signin_state = function (self)
 	slot3 = self
 
 	if self.local_signin_state(slot2) == true then
@@ -674,40 +674,40 @@ function NetworkAccountSTEAM:signin_state()
 
 	return "not signed in"
 end
-function NetworkAccountSTEAM:local_signin_state()
+NetworkAccountSTEAM.local_signin_state = function (self)
 	slot3 = Steam
 
 	return Steam.logged_on(slot2)
 end
-function NetworkAccountSTEAM:username_id()
+NetworkAccountSTEAM.username_id = function (self)
 	slot3 = Steam
 
 	return Steam.username(slot2)
 end
-function NetworkAccountSTEAM:username_by_id(id)
+NetworkAccountSTEAM.username_by_id = function (self, id)
 	slot5 = id
 
 	return Steam.username(slot3, Steam)
 end
-function NetworkAccountSTEAM:player_id()
+NetworkAccountSTEAM.player_id = function (self)
 	slot3 = Steam
 
 	return Steam.userid(slot2)
 end
-function NetworkAccountSTEAM:is_connected()
+NetworkAccountSTEAM.is_connected = function (self)
 	return true
 end
-function NetworkAccountSTEAM:lan_connection()
+NetworkAccountSTEAM.lan_connection = function (self)
 	return true
 end
-function NetworkAccountSTEAM:set_playing(state)
+NetworkAccountSTEAM.set_playing = function (self, state)
 	slot5 = state
 
 	Steam.set_playing(slot3, Steam)
 
 	return 
 end
-function NetworkAccountSTEAM:_load_globals()
+NetworkAccountSTEAM._load_globals = function (self)
 	if Global.steam and Global.steam.account then
 		if Global.steam.account.outfit_signature then
 			slot3 = Global.steam.account.outfit_signature
@@ -727,7 +727,7 @@ function NetworkAccountSTEAM:_load_globals()
 
 	return 
 end
-function NetworkAccountSTEAM:_save_globals()
+NetworkAccountSTEAM._save_globals = function (self)
 	Global.steam = Global.steam or {}
 	Global.steam.account = {}
 	slot1 = Global.steam.account
@@ -741,10 +741,10 @@ function NetworkAccountSTEAM:_save_globals()
 
 	return 
 end
-function NetworkAccountSTEAM:is_ready_to_close()
+NetworkAccountSTEAM.is_ready_to_close = function (self)
 	return not self._inventory_is_loading and not self._inventory_outfit_refresh_requested and not self._inventory_outfit_refresh_in_progress
 end
-function NetworkAccountSTEAM:inventory_load(callback_ref)
+NetworkAccountSTEAM.inventory_load = function (self, callback_ref)
 	if self._inventory_is_loading then
 		return 
 	end
@@ -772,7 +772,7 @@ function NetworkAccountSTEAM:inventory_load(callback_ref)
 
 	return 
 end
-function NetworkAccountSTEAM:_clbk_inventory_load(error, list)
+NetworkAccountSTEAM._clbk_inventory_load = function (self, error, list)
 	self._inventory_is_loading = nil
 
 	if error then
@@ -793,7 +793,7 @@ function NetworkAccountSTEAM:_clbk_inventory_load(error, list)
 
 	return 
 end
-function NetworkAccountSTEAM:_verify_filter_cards(card_list)
+NetworkAccountSTEAM._verify_filter_cards = function (self, card_list)
 	local filtered_list = {}
 	local result = {}
 
@@ -831,10 +831,10 @@ function NetworkAccountSTEAM:_verify_filter_cards(card_list)
 
 	return result
 end
-function NetworkAccountSTEAM:inventory_is_loading()
+NetworkAccountSTEAM.inventory_is_loading = function (self)
 	return self._inventory_is_loading
 end
-function NetworkAccountSTEAM:inventory_reward(item_def_id, callback_ref)
+NetworkAccountSTEAM.inventory_reward = function (self, item_def_id, callback_ref)
 	item_def_id = item_def_id or 1
 
 	if callback_ref then
@@ -850,7 +850,7 @@ function NetworkAccountSTEAM:inventory_reward(item_def_id, callback_ref)
 
 	return true
 end
-function NetworkAccountSTEAM:_clbk_inventory_reward(error, tradable_list)
+NetworkAccountSTEAM._clbk_inventory_reward = function (self, error, tradable_list)
 	slot6 = "[NetworkAccountSTEAM:_clbk_inventory_reward]"
 
 	Application.trace(slot4, Application)
@@ -867,7 +867,7 @@ function NetworkAccountSTEAM:_clbk_inventory_reward(error, tradable_list)
 
 	return 
 end
-function NetworkAccountSTEAM:inventory_remove(instance_id)
+NetworkAccountSTEAM.inventory_remove = function (self, instance_id)
 	slot6 = instance_id
 
 	Application.trace(slot3, Application, "[ChallengeCardsManager:inventory_remove] instance_id ")
@@ -877,18 +877,18 @@ function NetworkAccountSTEAM:inventory_remove(instance_id)
 
 	return 
 end
-function NetworkAccount:inventory_reward_open(safe, safe_instance_id, reward_unlock_callback)
+NetworkAccount.inventory_reward_open = function (self, safe, safe_instance_id, reward_unlock_callback)
 	return 
 end
-function NetworkAccountSTEAM:inventory_reward_dlc(def_id, reward_promo_callback)
+NetworkAccountSTEAM.inventory_reward_dlc = function (self, def_id, reward_promo_callback)
 	return 
 end
-function NetworkAccountSTEAM:inventory_outfit_refresh()
+NetworkAccountSTEAM.inventory_outfit_refresh = function (self)
 	self._inventory_outfit_refresh_requested = true
 
 	return 
 end
-function NetworkAccountSTEAM:_inventory_outfit_refresh()
+NetworkAccountSTEAM._inventory_outfit_refresh = function (self)
 	local outfit = managers.blackmarket.tradable_outfit(slot2)
 	slot5 = "outfit: "
 	slot8 = outfit
@@ -914,7 +914,7 @@ function NetworkAccountSTEAM:_inventory_outfit_refresh()
 
 	return 
 end
-function NetworkAccountSTEAM:_chk_inventory_outfit_refresh()
+NetworkAccountSTEAM._chk_inventory_outfit_refresh = function (self)
 	if not self._inventory_outfit_refresh_requested then
 		return 
 	end
@@ -930,7 +930,7 @@ function NetworkAccountSTEAM:_chk_inventory_outfit_refresh()
 
 	return 
 end
-function NetworkAccountSTEAM:inventory_outfit_verify(steam_id, outfit_data, outfit_callback)
+NetworkAccountSTEAM.inventory_outfit_verify = function (self, steam_id, outfit_data, outfit_callback)
 	if outfit_data == "" then
 		if outfit_callback then
 			slot8 = {}
@@ -946,13 +946,13 @@ function NetworkAccountSTEAM:inventory_outfit_verify(steam_id, outfit_data, outf
 
 	return 
 end
-function NetworkAccountSTEAM:inventory_outfit_signature()
+NetworkAccountSTEAM.inventory_outfit_signature = function (self)
 	return self._outfit_signature
 end
-function NetworkAccountSTEAM:inventory_repair_list(list)
+NetworkAccountSTEAM.inventory_repair_list = function (self, list)
 	return 
 end
-function NetworkAccountSTEAM:_clbk_tradable_outfit_data(error, outfit_signature)
+NetworkAccountSTEAM._clbk_tradable_outfit_data = function (self, error, outfit_signature)
 	slot11 = "\n"
 
 	print(slot4, "[NetworkAccountSTEAM:_clbk_tradable_outfit_data] error: ", error, ", self._outfit_signature: ", self._outfit_signature, "\n outfit_signature: ", outfit_signature)

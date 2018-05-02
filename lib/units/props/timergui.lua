@@ -76,7 +76,7 @@ TimerGui.EVENT_IDS = {
 	jammed = 1,
 	unjammed = 2
 }
-TimerGui.init = function (self, unit)
+function TimerGui:init(unit)
 	self._unit = unit
 	self._visible = true
 	self._powered = true
@@ -110,17 +110,17 @@ TimerGui.init = function (self, unit)
 
 	return 
 end
-TimerGui.set_can_jam = function (self, can_jam)
+function TimerGui:set_can_jam(can_jam)
 	self._can_jam = can_jam
 
 	return 
 end
-TimerGui.set_override_timer = function (self, override_timer)
+function TimerGui:set_override_timer(override_timer)
 	self._override_timer = override_timer
 
 	return 
 end
-TimerGui.add_workspace = function (self, gui_object)
+function TimerGui:add_workspace(gui_object)
 	slot7 = gui_object
 	slot12 = 0
 	self._ws = self._new_gui.create_object_workspace(slot3, self._new_gui, 0, 0, Vector3(slot9, 0, 0))
@@ -133,7 +133,7 @@ TimerGui.add_workspace = function (self, gui_object)
 
 	return 
 end
-TimerGui.get_upgrade_icon_color = function (self, upgrade_color)
+function TimerGui:get_upgrade_icon_color(upgrade_color)
 	if not self.THEME then
 		return TimerGui.upgrade_colors[upgrade_color]
 	end
@@ -142,7 +142,7 @@ TimerGui.get_upgrade_icon_color = function (self, upgrade_color)
 
 	return (theme and theme[upgrade_color]) or TimerGui.upgrade_colors[upgrade_color]
 end
-TimerGui._set_theme = function (self, theme_name)
+function TimerGui:_set_theme(theme_name)
 	local theme = TimerGui.themes[theme_name]
 
 	if not theme then
@@ -211,7 +211,7 @@ TimerGui._set_theme = function (self, theme_name)
 
 	return 
 end
-TimerGui._set_original_colors = function (self)
+function TimerGui:_set_original_colors()
 	self._original_colors = {}
 	slot5 = self._gui_script.panel
 
@@ -222,7 +222,7 @@ TimerGui._set_original_colors = function (self)
 
 	return 
 end
-TimerGui.setup = function (self)
+function TimerGui:setup()
 	slot3 = self._gui_script.working_text
 	slot6 = "Text"
 
@@ -380,12 +380,12 @@ TimerGui.setup = function (self)
 
 	return 
 end
-TimerGui.reset = function (self)
+function TimerGui:reset()
 	self._started = false
 
 	return 
 end
-TimerGui._start = function (self, timer, current_timer)
+function TimerGui:_start(timer, current_timer)
 	self._started = true
 	self._done = false
 	self._timer = timer or 5
@@ -441,7 +441,7 @@ TimerGui._start = function (self, timer, current_timer)
 
 	return 
 end
-TimerGui._set_jamming_values = function (self)
+function TimerGui:_set_jamming_values()
 	if not self._can_jam then
 		return 
 	end
@@ -462,19 +462,19 @@ TimerGui._set_jamming_values = function (self)
 
 	return 
 end
-TimerGui.set_timer_multiplier = function (self, multiplier)
+function TimerGui:set_timer_multiplier(multiplier)
 	self._timer_multiplier = multiplier
 
 	return 
 end
-TimerGui.set_skill = function (self, skill)
+function TimerGui:set_skill(skill)
 	if self._skill == nil or self._skill < skill then
 		self._skill = skill
 	end
 
 	return 
 end
-TimerGui.set_background_icons = function (self, background_icons)
+function TimerGui:set_background_icons(background_icons)
 	local panel = self._gui_script.panel
 	slot6 = "background_icons_panel"
 
@@ -529,7 +529,7 @@ TimerGui.set_background_icons = function (self, background_icons)
 
 	return 
 end
-TimerGui.start = function (self, timer)
+function TimerGui:start(timer)
 	if not self._override_timer then
 	end
 
@@ -568,14 +568,14 @@ TimerGui.start = function (self, timer)
 
 	return 
 end
-TimerGui.sync_start = function (self, timer)
+function TimerGui:sync_start(timer)
 	slot5 = timer
 
 	self._start(slot3, self)
 
 	return 
 end
-TimerGui.update = function (self, unit, t, dt)
+function TimerGui:update(unit, t, dt)
 	if self._jammed then
 		slot6 = self._gui_script.drill_screen_background
 		slot9 = self._gui_script.drill_screen_background
@@ -648,7 +648,7 @@ TimerGui.update = function (self, unit, t, dt)
 
 	return 
 end
-TimerGui.set_visible = function (self, visible)
+function TimerGui:set_visible(visible)
 	self._visible = visible
 	slot5 = visible
 
@@ -656,10 +656,10 @@ TimerGui.set_visible = function (self, visible)
 
 	return 
 end
-TimerGui.is_visible = function (self)
+function TimerGui:is_visible()
 	return self._visible
 end
-TimerGui.sync_net_event = function (self, event_id)
+function TimerGui:sync_net_event(event_id)
 	if event_id == TimerGui.EVENT_IDS.jammed then
 		slot5 = true
 
@@ -672,7 +672,7 @@ TimerGui.sync_net_event = function (self, event_id)
 
 	return 
 end
-TimerGui.set_jammed = function (self, jammed)
+function TimerGui:set_jammed(jammed)
 	slot4 = managers.network
 
 	if managers.network.session(slot3) then
@@ -689,7 +689,7 @@ TimerGui.set_jammed = function (self, jammed)
 
 	return 
 end
-TimerGui._set_jammed = function (self, jammed)
+function TimerGui:_set_jammed(jammed)
 	self._jammed = jammed
 
 	if self._jammed then
@@ -843,14 +843,14 @@ TimerGui._set_jammed = function (self, jammed)
 
 	return 
 end
-TimerGui.set_powered = function (self, powered, enable_interaction)
+function TimerGui:set_powered(powered, enable_interaction)
 	slot7 = enable_interaction
 
 	self._set_powered(slot4, self, powered)
 
 	return 
 end
-TimerGui._set_powered = function (self, powered, enable_interaction)
+function TimerGui:_set_powered(powered, enable_interaction)
 	self._powered = powered
 
 	if not self._powered then
@@ -952,7 +952,7 @@ TimerGui._set_powered = function (self, powered, enable_interaction)
 
 	return 
 end
-TimerGui.done = function (self)
+function TimerGui:done()
 	slot3 = self
 
 	self._set_done(slot2)
@@ -981,7 +981,7 @@ TimerGui.done = function (self)
 
 	return 
 end
-TimerGui._set_done = function (self)
+function TimerGui:_set_done()
 	self._done = true
 	slot4 = self._timer_lenght
 
@@ -1013,7 +1013,7 @@ TimerGui._set_done = function (self)
 
 	return 
 end
-TimerGui.update_sound_event = function (self)
+function TimerGui:update_sound_event()
 	if self._done or not self._started or self._jammed or not self._powered then
 		return 
 	end
@@ -1024,7 +1024,7 @@ TimerGui.update_sound_event = function (self)
 
 	return 
 end
-TimerGui.lock_gui = function (self)
+function TimerGui:lock_gui()
 	slot4 = self._cull_distance
 
 	self._ws.set_cull_distance(slot2, self._ws)
@@ -1035,7 +1035,7 @@ TimerGui.lock_gui = function (self)
 
 	return 
 end
-TimerGui.destroy = function (self)
+function TimerGui:destroy()
 	slot3 = self._new_gui
 
 	if alive(slot2) then
@@ -1053,7 +1053,7 @@ TimerGui.destroy = function (self)
 
 	return 
 end
-TimerGui.save = function (self, data)
+function TimerGui:save(data)
 	local state = {
 		update_enabled = self._update_enabled,
 		timer = self._timer,
@@ -1070,7 +1070,7 @@ TimerGui.save = function (self, data)
 
 	return 
 end
-TimerGui.load = function (self, data)
+function TimerGui:load(data)
 	local state = data.TimerGui
 	slot6 = state.skill or 1
 
@@ -1123,7 +1123,7 @@ TimerGui.load = function (self, data)
 
 	return 
 end
-TimerGui.post_event = function (self, event)
+function TimerGui:post_event(event)
 	if not event then
 		return 
 	end
@@ -1161,7 +1161,7 @@ if not DrillTimerGui then
 end
 
 DrillTimerGui = slot0
-DrillTimerGui.post_event = function (self, event)
+function DrillTimerGui:post_event(event)
 	if not event then
 		return 
 	end

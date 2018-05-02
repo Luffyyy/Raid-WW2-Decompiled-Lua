@@ -8,17 +8,17 @@ if not ElementSpawnDeployable then
 end
 
 ElementSpawnDeployable = slot0
-ElementSpawnDeployable.init = function (self, ...)
+function ElementSpawnDeployable:init(...)
 	slot3 = self
 
 	ElementSpawnDeployable.super.init(slot2, ...)
 
 	return 
 end
-ElementSpawnDeployable.client_on_executed = function (self, ...)
+function ElementSpawnDeployable:client_on_executed(...)
 	return 
 end
-ElementSpawnDeployable.on_executed = function (self, instigator)
+function ElementSpawnDeployable:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

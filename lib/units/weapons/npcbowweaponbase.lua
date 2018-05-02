@@ -4,14 +4,14 @@ if not NPCBowWeaponBase then
 end
 
 NPCBowWeaponBase = slot0
-NPCBowWeaponBase.init = function (self, ...)
+function NPCBowWeaponBase:init(...)
 	slot3 = self
 
 	NPCBowWeaponBase.super.init(slot2, ...)
 
 	return 
 end
-NPCBowWeaponBase.fire_blank = function (self, direction, impact)
+function NPCBowWeaponBase:fire_blank(direction, impact)
 	slot5 = self
 
 	self._sound_singleshot(slot4)

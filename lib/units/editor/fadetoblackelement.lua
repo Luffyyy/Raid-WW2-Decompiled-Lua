@@ -4,7 +4,7 @@ if not FadeToBlackElement then
 end
 
 FadeToBlackElement = slot0
-FadeToBlackElement.init = function (self, unit)
+function FadeToBlackElement:init(unit)
 	slot5 = unit
 
 	FadeToBlackElement.super.init(slot3, self)
@@ -16,7 +16,7 @@ FadeToBlackElement.init = function (self, unit)
 
 	return 
 end
-FadeToBlackElement._build_panel = function (self, panel, panel_sizer)
+function FadeToBlackElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

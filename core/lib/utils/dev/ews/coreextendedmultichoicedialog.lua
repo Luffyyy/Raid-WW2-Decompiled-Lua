@@ -17,7 +17,7 @@ if Application.ews_enabled(slot1) then
 	rawset(rawget, ews, "ExtendedMultiChoiceDialog")
 end
 
-CoreExtendedMultiChoiceDialog.init = function (self, parent, caption, message, pos, size, style, objects)
+function CoreExtendedMultiChoiceDialog:init(parent, caption, message, pos, size, style, objects)
 	self._objects = objects or {}
 	slot10 = EWS
 	slot8 = EWS.Dialog
@@ -118,7 +118,7 @@ CoreExtendedMultiChoiceDialog.init = function (self, parent, caption, message, p
 
 	return 
 end
-CoreExtendedMultiChoiceDialog.show_modal = function (self)
+function CoreExtendedMultiChoiceDialog:show_modal()
 	self._value_map = {}
 	slot3 = self._left_list_box
 
@@ -140,7 +140,7 @@ CoreExtendedMultiChoiceDialog.show_modal = function (self)
 
 	return self._dialog.show_modal(slot2)
 end
-CoreExtendedMultiChoiceDialog.on_ok_button = function (self)
+function CoreExtendedMultiChoiceDialog:on_ok_button()
 	slot4 = self._right_list_box
 
 	for i = 0, self._right_list_box.nr_items(slot3) - 1, 1 do
@@ -156,14 +156,14 @@ CoreExtendedMultiChoiceDialog.on_ok_button = function (self)
 
 	return 
 end
-CoreExtendedMultiChoiceDialog.on_cancel_button = function (self)
+function CoreExtendedMultiChoiceDialog:on_cancel_button()
 	slot4 = "ID_CANCEL"
 
 	self._dialog.end_modal(slot2, self._dialog)
 
 	return 
 end
-CoreExtendedMultiChoiceDialog.on_left_box = function (self)
+function CoreExtendedMultiChoiceDialog:on_left_box()
 	slot3 = self._left_list_box
 	local index = self._left_list_box.selected_index(slot2)
 
@@ -181,7 +181,7 @@ CoreExtendedMultiChoiceDialog.on_left_box = function (self)
 
 	return 
 end
-CoreExtendedMultiChoiceDialog.on_right_box = function (self)
+function CoreExtendedMultiChoiceDialog:on_right_box()
 	slot3 = self._right_list_box
 	local index = self._right_list_box.selected_index(slot2)
 
@@ -199,7 +199,7 @@ CoreExtendedMultiChoiceDialog.on_right_box = function (self)
 
 	return 
 end
-CoreExtendedMultiChoiceDialog.get_value = function (self)
+function CoreExtendedMultiChoiceDialog:get_value()
 	return self._value_map
 end
 

@@ -20,7 +20,7 @@ if not Vector3SpinCtrl then
 end
 
 Vector3SpinCtrl = slot0
-Vector3SpinCtrl.init = function (self, parent, min, max, step, value, name, dec, style)
+function Vector3SpinCtrl:init(parent, min, max, step, value, name, dec, style)
 	slot11 = parent
 
 	assert(slot10)
@@ -108,16 +108,16 @@ Vector3SpinCtrl.init = function (self, parent, min, max, step, value, name, dec,
 
 	return 
 end
-Vector3SpinCtrl.window = function (self)
+function Vector3SpinCtrl:window()
 	return self._panel
 end
-Vector3SpinCtrl.get_value = function (self)
+function Vector3SpinCtrl:get_value()
 	slot4 = self._y.get_value(self._x)
 	slot7 = self._z
 
 	return Vector3(slot2, self._x.get_value(slot4), self._z.get_value(self._y))
 end
-Vector3SpinCtrl.set_value = function (self, value)
+function Vector3SpinCtrl:set_value(value)
 	slot5 = value.x
 
 	self._x.set_value(slot3, self._x)
@@ -132,7 +132,7 @@ Vector3SpinCtrl.set_value = function (self, value)
 
 	return 
 end
-Vector3SpinCtrl.change_value = function (self, value)
+function Vector3SpinCtrl:change_value(value)
 	slot5 = value.x
 
 	self._x.change_value(slot3, self._x)
@@ -147,7 +147,7 @@ Vector3SpinCtrl.change_value = function (self, value)
 
 	return 
 end
-Vector3SpinCtrl._updated = function (self)
+function Vector3SpinCtrl:_updated()
 	slot4 = "EVT_VECTOR3_SPIN_CTRL_UPDATED"
 	slot7 = self
 
@@ -155,7 +155,7 @@ Vector3SpinCtrl._updated = function (self)
 
 	return 
 end
-Vector3SpinCtrl._enter = function (self)
+function Vector3SpinCtrl:_enter()
 	slot4 = "EVT_VECTOR3_SPIN_CTRL_ENTER"
 	slot7 = self
 

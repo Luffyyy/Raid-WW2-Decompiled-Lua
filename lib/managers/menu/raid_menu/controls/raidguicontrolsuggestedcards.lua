@@ -5,7 +5,7 @@ end
 
 RaidGUIControlSuggestedCards = slot0
 RaidGUIControlSuggestedCards.PLAYERS_COUNT = 4
-RaidGUIControlSuggestedCards.init = function (self, parent, params)
+function RaidGUIControlSuggestedCards:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlSuggestedCards.super.init(slot4, self, parent)
@@ -23,7 +23,7 @@ RaidGUIControlSuggestedCards.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlSuggestedCards.layout = function (self)
+function RaidGUIControlSuggestedCards:layout()
 	slot5 = true
 	self._suggested_cards_panel = self._panel.panel(slot2, self._panel, {
 		name = "suggested_cards_panel",
@@ -39,7 +39,7 @@ RaidGUIControlSuggestedCards.layout = function (self)
 
 	return 
 end
-RaidGUIControlSuggestedCards._create_items = function (self)
+function RaidGUIControlSuggestedCards:_create_items()
 	local item_data = {}
 	local item_params = {}
 	slot7 = self._object
@@ -98,7 +98,7 @@ RaidGUIControlSuggestedCards._create_items = function (self)
 
 	return 
 end
-RaidGUIControlSuggestedCards._delete_items = function (self)
+function RaidGUIControlSuggestedCards:_delete_items()
 	slot3 = self._suggested_cards_panel._controls
 
 	for slot4, slot5 in pairs(slot2) do
@@ -110,7 +110,7 @@ RaidGUIControlSuggestedCards._delete_items = function (self)
 
 	return 
 end
-RaidGUIControlSuggestedCards.refresh_data = function (self)
+function RaidGUIControlSuggestedCards:refresh_data()
 	slot3 = self
 
 	self._delete_items(slot2)
@@ -121,7 +121,7 @@ RaidGUIControlSuggestedCards.refresh_data = function (self)
 
 	return 
 end
-RaidGUIControlSuggestedCards.mouse_released = function (self, o, button, x, y)
+function RaidGUIControlSuggestedCards:mouse_released(o, button, x, y)
 	slot7 = self._grid_items
 
 	for _, grid_item in ipairs(slot6) do
@@ -143,7 +143,7 @@ RaidGUIControlSuggestedCards.mouse_released = function (self, o, button, x, y)
 
 	return false
 end
-RaidGUIControlSuggestedCards.select_grid_item_by_item = function (self, grid_item)
+function RaidGUIControlSuggestedCards:select_grid_item_by_item(grid_item)
 	if self._selected_item then
 		slot4 = self._selected_item
 
@@ -160,7 +160,7 @@ RaidGUIControlSuggestedCards.select_grid_item_by_item = function (self, grid_ite
 
 	return 
 end
-RaidGUIControlSuggestedCards.selected_grid_item = function (self)
+function RaidGUIControlSuggestedCards:selected_grid_item()
 	slot3 = self._grid_items
 
 	for index, grid_item in ipairs(slot2) do
@@ -171,7 +171,7 @@ RaidGUIControlSuggestedCards.selected_grid_item = function (self)
 
 	return nil, nil
 end
-RaidGUIControlSuggestedCards.lock_selected_grid_item = function (self)
+function RaidGUIControlSuggestedCards:lock_selected_grid_item()
 	if self._selected_item then
 		self._locked_item = self._selected_item
 		slot3 = self._locked_item
@@ -181,7 +181,7 @@ RaidGUIControlSuggestedCards.lock_selected_grid_item = function (self)
 
 	return 
 end
-RaidGUIControlSuggestedCards.unlock_grid_item = function (self)
+function RaidGUIControlSuggestedCards:unlock_grid_item()
 	if self._locked_item then
 		slot3 = self._locked_item
 
@@ -192,10 +192,10 @@ RaidGUIControlSuggestedCards.unlock_grid_item = function (self)
 
 	return 
 end
-RaidGUIControlSuggestedCards.locked_grid_item = function (self)
+function RaidGUIControlSuggestedCards:locked_grid_item()
 	return self._locked_item
 end
-RaidGUIControlSuggestedCards.mouse_moved = function (self, o, x, y)
+function RaidGUIControlSuggestedCards:mouse_moved(o, x, y)
 	if self._grid_items then
 		for i = 1, #self._grid_items, 1 do
 			slot13 = y

@@ -3,12 +3,12 @@ slot3 = "CoreAvatar"
 core.module(slot1, core)
 
 Avatar = Avatar or class()
-Avatar.init = function (self, avatar_handler)
+function Avatar:init(avatar_handler)
 	self._avatar_handler = avatar_handler
 
 	return 
 end
-Avatar.destroy = function (self)
+function Avatar:destroy()
 	if self._input_input_provider then
 		slot3 = self
 
@@ -21,7 +21,7 @@ Avatar.destroy = function (self)
 
 	return 
 end
-Avatar.set_input = function (self, input_input_provider)
+function Avatar:set_input(input_input_provider)
 	slot5 = input_input_provider
 
 	self._avatar_handler.enable_input(slot3, self._avatar_handler)
@@ -30,7 +30,7 @@ Avatar.set_input = function (self, input_input_provider)
 
 	return 
 end
-Avatar.release_input = function (self)
+function Avatar:release_input()
 	slot3 = self._avatar_handler
 
 	self._avatar_handler.disable_input(slot2)
@@ -39,7 +39,7 @@ Avatar.release_input = function (self)
 
 	return 
 end
-Avatar.avatar_handler = function (self)
+function Avatar:avatar_handler()
 	return self._avatar_handler
 end
 

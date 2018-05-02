@@ -11,19 +11,19 @@ slot3 = "CoreEvent"
 core.import(slot1, core)
 
 UnitCamera = UnitCamera or CoreClass.class()
-UnitCamera.init = function (self, unit)
+function UnitCamera:init(unit)
 	self._unit = unit
 	self._active_count = 0
 
 	return 
 end
-UnitCamera.destroy = function (self)
+function UnitCamera:destroy()
 	return 
 end
-UnitCamera.create_layers = function (self)
+function UnitCamera:create_layers()
 	return 
 end
-UnitCamera.activate = function (self)
+function UnitCamera:activate()
 	local is_deactivated = self._active_count == 0
 	self._active_count = self._active_count + 1
 
@@ -35,7 +35,7 @@ UnitCamera.activate = function (self)
 
 	return 
 end
-UnitCamera.deactivate = function (self)
+function UnitCamera:deactivate()
 	slot3 = 0 < self._active_count
 
 	assert(slot2)
@@ -51,13 +51,13 @@ UnitCamera.deactivate = function (self)
 
 	return should_deactivate
 end
-UnitCamera.on_activate = function (self, active)
+function UnitCamera:on_activate(active)
 	return 
 end
-UnitCamera.is_active = function (self)
+function UnitCamera:is_active()
 	return 0 < self._active_count
 end
-UnitCamera.apply_camera = function (self, camera_manager)
+function UnitCamera:apply_camera(camera_manager)
 	return 
 end
 

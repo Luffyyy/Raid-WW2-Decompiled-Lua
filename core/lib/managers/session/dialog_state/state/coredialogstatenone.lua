@@ -3,19 +3,19 @@ slot3 = "CoreDialogStateNone"
 core.module(slot1, core)
 
 None = None or class()
-None.init = function (self)
+function None:init()
 	slot3 = self.dialog_state
 
 	self.dialog_state._set_stable_for_loading(slot2)
 
 	return 
 end
-None.destroy = function (self)
+function None:destroy()
 	self.dialog_state._not_stable_for_loading()
 
 	return 
 end
-None.transition = function (self)
+function None:transition()
 	return 
 end
 

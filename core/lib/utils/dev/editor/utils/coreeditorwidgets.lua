@@ -11,7 +11,7 @@ slot3 = "CoreTable"
 core.import(slot1, core)
 
 Widget = Widget or CoreClass.class()
-Widget.init = function (self, layer, name)
+function Widget:init(layer, name)
 	self._layer = layer
 	slot8 = "core/units/" .. name .. "/" .. name
 	slot6 = Idstring(slot7)
@@ -32,47 +32,47 @@ Widget.init = function (self, layer, name)
 
 	return 
 end
-Widget.widget = function (self)
+function Widget:widget()
 	return self._widget
 end
-Widget.set_enabled = function (self, enabled)
+function Widget:set_enabled(enabled)
 	slot5 = self._use and enabled
 
 	self._widget.set_enabled(slot3, self._widget)
 
 	return 
 end
-Widget.set_use = function (self, use)
+function Widget:set_use(use)
 	self._use = use
 
 	return 
 end
-Widget.enabled = function (self)
+function Widget:enabled()
 	slot3 = self._widget
 
 	return self._widget.enabled(slot2)
 end
-Widget.set_position = function (self, pos)
+function Widget:set_position(pos)
 	slot5 = pos
 
 	self._widget.set_position(slot3, self._widget)
 
 	return 
 end
-Widget.set_rotation = function (self, rot)
+function Widget:set_rotation(rot)
 	slot5 = rot
 
 	self._widget.set_rotation(slot3, self._widget)
 
 	return 
 end
-Widget.update = function (self)
+function Widget:update()
 	return 
 end
-Widget.calculate = function (self)
+function Widget:calculate()
 	return 
 end
-Widget.reset_values = function (self)
+function Widget:reset_values()
 	return 
 end
 
@@ -82,7 +82,7 @@ if not MoveWidget then
 end
 
 MoveWidget = slot0
-MoveWidget.init = function (self, layer)
+function MoveWidget:init(layer)
 	slot6 = "move_widget"
 
 	MoveWidget.super.init(slot3, self, layer)
@@ -96,14 +96,14 @@ MoveWidget.init = function (self, layer)
 
 	return 
 end
-MoveWidget.reset_values = function (self)
+function MoveWidget:reset_values()
 	self._move_widget_axis = {}
 	self._draw_axis = {}
 	self._move_widget_offset = Vector3()
 
 	return 
 end
-MoveWidget.update = function (self, t, dt)
+function MoveWidget:update(t, dt)
 	local u_pos = self._widget.position(slot4)
 	local u_rot = self._widget.rotation(self._widget)
 	slot11 = u_rot
@@ -233,14 +233,14 @@ MoveWidget.update = function (self, t, dt)
 
 	return 
 end
-MoveWidget.calculate = function (self, unit, widget_rot)
+function MoveWidget:calculate(unit, widget_rot)
 	slot7 = widget_rot
 	local result_pos = self.calc_move_widget_pos(slot4, self, unit)
 	result_pos = result_pos + self._move_widget_offset
 
 	return result_pos
 end
-MoveWidget.calc_move_widget_pos = function (self, unit, widget_rot)
+function MoveWidget:calc_move_widget_pos(unit, widget_rot)
 	local result_pos = Vector3()
 
 	if #self._move_widget_axis == 2 then
@@ -299,7 +299,7 @@ MoveWidget.calc_move_widget_pos = function (self, unit, widget_rot)
 
 	return result_pos + self._unit_start_pos
 end
-MoveWidget.add_move_widget_axis = function (self, axis)
+function MoveWidget:add_move_widget_axis(axis)
 	if axis == "x" then
 		slot5 = "x"
 
@@ -388,7 +388,7 @@ MoveWidget.add_move_widget_axis = function (self, axis)
 
 	return table
 end
-MoveWidget.set_move_widget_offset = function (self, unit, widget_rot)
+function MoveWidget:set_move_widget_offset(unit, widget_rot)
 	slot5 = unit
 	self._unit_start_pos = unit.position(slot4)
 	slot8 = widget_rot
@@ -403,7 +403,7 @@ if not RotationWidget then
 end
 
 RotationWidget = slot0
-RotationWidget.init = function (self, layer)
+function RotationWidget:init(layer)
 	slot6 = "rotation_widget"
 
 	RotationWidget.super.init(slot3, self, layer)
@@ -412,33 +412,33 @@ RotationWidget.init = function (self, layer)
 
 	return 
 end
-RotationWidget.reset_values = function (self)
+function RotationWidget:reset_values()
 	self._rotate_widget_axis = nil
 
 	return 
 end
-RotationWidget.set_rotate_widget_axis = function (self, axis)
+function RotationWidget:set_rotate_widget_axis(axis)
 	self._rotate_widget_axis = axis
 
 	return 
 end
-RotationWidget.set_rotate_widget_start_screen_position = function (self, pos)
+function RotationWidget:set_rotate_widget_start_screen_position(pos)
 	self._rotate_widget_start_screen_position = pos
 
 	return 
 end
-RotationWidget.set_rotate_widget_unit_rot = function (self, rot)
+function RotationWidget:set_rotate_widget_unit_rot(rot)
 	self._rotate_widget_unit_rot = rot
 
 	return 
 end
-RotationWidget.set_world_dir = function (self, ray_pos)
+function RotationWidget:set_world_dir(ray_pos)
 	slot4 = self._widget
 	self._world_dir = ray_pos - self._widget.position(slot3)
 
 	return 
 end
-RotationWidget.update = function (self, t, dt)
+function RotationWidget:update(t, dt)
 	local u_pos = self._widget.position(slot4)
 	local u_rot = self._widget.rotation(self._widget)
 	slot10 = 2.5
@@ -482,7 +482,7 @@ RotationWidget.update = function (self, t, dt)
 
 	return 
 end
-RotationWidget.calculate = function (self, unit, widget_rot, widget_pos, widget_screen_pos)
+function RotationWidget:calculate(unit, widget_rot, widget_pos, widget_screen_pos)
 	slot7 = managers.editor
 	slot10 = unit
 

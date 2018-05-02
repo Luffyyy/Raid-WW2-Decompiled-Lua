@@ -11,7 +11,7 @@ RaidGUIControlBreadcrumb.ATTRACT_MAX_ANGLE = 6
 RaidGUIControlBreadcrumb.HIDE_ANIMATION_ROTATION = 30
 RaidGUIControlBreadcrumb.HIDE_ANIMATION_INITIAL_SCALE = 0.8
 RaidGUIControlBreadcrumb.HIDE_ANIMATION_FINAL_SCALE = 1.6
-RaidGUIControlBreadcrumb.init = function (self, parent, params)
+function RaidGUIControlBreadcrumb:init(parent, params)
 	slot7 = params or {}
 
 	RaidGUIControlBreadcrumb.super.init(slot4, self, parent)
@@ -45,7 +45,7 @@ RaidGUIControlBreadcrumb.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlBreadcrumb._create_panel = function (self)
+function RaidGUIControlBreadcrumb:_create_panel()
 	local panel_params = {
 		name = "breadcrumb_panel",
 		halign = "right",
@@ -61,7 +61,7 @@ RaidGUIControlBreadcrumb._create_panel = function (self)
 
 	return 
 end
-RaidGUIControlBreadcrumb._create_breadcrumb_icon = function (self)
+function RaidGUIControlBreadcrumb:_create_breadcrumb_icon()
 	local icon_params = {
 		name = "breadcrumb_icon",
 		valign = "center",
@@ -84,7 +84,7 @@ RaidGUIControlBreadcrumb._create_breadcrumb_icon = function (self)
 
 	return 
 end
-RaidGUIControlBreadcrumb._subscribe_to_relevant_events = function (self)
+function RaidGUIControlBreadcrumb:_subscribe_to_relevant_events()
 	if self._params.category or self._params.identifiers then
 		slot7 = self._id
 		slot6 = self._params.identifiers
@@ -95,7 +95,7 @@ RaidGUIControlBreadcrumb._subscribe_to_relevant_events = function (self)
 
 	return 
 end
-RaidGUIControlBreadcrumb.check_presence = function (self)
+function RaidGUIControlBreadcrumb:check_presence()
 	if not self._params then
 		return 
 	end
@@ -131,7 +131,7 @@ RaidGUIControlBreadcrumb.check_presence = function (self)
 
 	return 
 end
-RaidGUIControlBreadcrumb.consume = function (self)
+function RaidGUIControlBreadcrumb:consume()
 	if self._consumed then
 		return 
 	end
@@ -153,7 +153,7 @@ RaidGUIControlBreadcrumb.consume = function (self)
 
 	return 
 end
-RaidGUIControlBreadcrumb.close = function (self)
+function RaidGUIControlBreadcrumb:close()
 	slot7 = self._id
 	slot4 = "breadcrumb_" .. tostring(slot6) .. "_event_listener"
 
@@ -183,7 +183,7 @@ RaidGUIControlBreadcrumb.close = function (self)
 
 	return 
 end
-RaidGUIControlBreadcrumb._animate_show = function (self, icon, delay)
+function RaidGUIControlBreadcrumb:_animate_show(icon, delay)
 	local t = 0
 	local duration = 0.25
 	slot8 = 0
@@ -210,7 +210,7 @@ RaidGUIControlBreadcrumb._animate_show = function (self, icon, delay)
 
 	return 
 end
-RaidGUIControlBreadcrumb._animate_attract = function (self, icon, delay)
+function RaidGUIControlBreadcrumb:_animate_attract(icon, delay)
 	while true do
 		local t = 0
 		local duration = 0.8
@@ -268,13 +268,13 @@ RaidGUIControlBreadcrumb._animate_attract = function (self, icon, delay)
 
 	return 
 end
-RaidGUIControlBreadcrumb._get_sine_wave_interpolation = function (self, amplitude, t, duration)
+function RaidGUIControlBreadcrumb:_get_sine_wave_interpolation(amplitude, t, duration)
 	slot9 = 17 * math.pi
 	slot7 = (math.deg(math.pi) * t) / duration
 
 	return amplitude * math.sin(slot5) * math.sin((math.deg(slot7) * t) / duration)
 end
-RaidGUIControlBreadcrumb._animate_hide = function (self, icon)
+function RaidGUIControlBreadcrumb:_animate_hide(icon)
 	local t = 0
 	local duration = 0.4
 	slot10 = RaidGUIControlBreadcrumb.IMAGE

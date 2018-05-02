@@ -4,7 +4,7 @@ if not UnitByName then
 end
 
 UnitByName = slot0
-UnitByName.init = function (self, name, unit_filter_function, ...)
+function UnitByName:init(name, unit_filter_function, ...)
 	self._dialog_name = self._dialog_name or name or "UnitByName"
 	self._unit_filter_function = unit_filter_function
 	slot13 = 0
@@ -249,7 +249,7 @@ UnitByName.init = function (self, name, unit_filter_function, ...)
 
 	return 
 end
-UnitByName._build_buttons = function (self, panel, sizer)
+function UnitByName:_build_buttons(panel, sizer)
 	slot9 = ""
 	local cancel_btn = EWS.Button(slot4, EWS, panel, "Cancel", "")
 	slot10 = "RIGHT,LEFT"
@@ -267,14 +267,14 @@ UnitByName._build_buttons = function (self, panel, sizer)
 
 	return 
 end
-UnitByName._on_set_filter = function (self)
+function UnitByName:_on_set_filter()
 	slot3 = self
 
 	self.fill_unit_list(slot2)
 
 	return 
 end
-UnitByName._get_filter_type = function (self)
+function UnitByName:_get_filter_type()
 	slot3 = self._filter_buttons
 
 	for name, ctrlr in pairs(slot2) do
@@ -287,7 +287,7 @@ UnitByName._get_filter_type = function (self)
 
 	return 
 end
-UnitByName.on_all_layers = function (self)
+function UnitByName:on_all_layers()
 	slot3 = self._layer_cbs
 
 	for name, cb in pairs(slot2) do
@@ -302,7 +302,7 @@ UnitByName.on_all_layers = function (self)
 
 	return 
 end
-UnitByName.on_none_layers = function (self)
+function UnitByName:on_none_layers()
 	slot3 = self._layer_cbs
 
 	for name, cb in pairs(slot2) do
@@ -317,7 +317,7 @@ UnitByName.on_none_layers = function (self)
 
 	return 
 end
-UnitByName.on_invert_layers = function (self)
+function UnitByName:on_invert_layers()
 	slot3 = self._layer_cbs
 
 	for name, cb in pairs(slot2) do
@@ -333,7 +333,7 @@ UnitByName.on_invert_layers = function (self)
 
 	return 
 end
-UnitByName.key_delete = function (self, ctrlr, event)
+function UnitByName:key_delete(ctrlr, event)
 	slot5 = event
 
 	event.skip(slot4)
@@ -349,7 +349,7 @@ UnitByName.key_delete = function (self, ctrlr, event)
 
 	return 
 end
-UnitByName.key_cancel = function (self, ctrlr, event)
+function UnitByName:key_cancel(ctrlr, event)
 	slot5 = event
 
 	event.skip(slot4)
@@ -365,30 +365,30 @@ UnitByName.key_cancel = function (self, ctrlr, event)
 
 	return 
 end
-UnitByName.on_layer_cb = function (self, data)
+function UnitByName:on_layer_cb(data)
 	slot4 = self
 
 	self.fill_unit_list(slot3)
 
 	return 
 end
-UnitByName.on_cancel = function (self)
+function UnitByName:on_cancel()
 	slot4 = false
 
 	self._dialog.set_visible(slot2, self._dialog)
 
 	return 
 end
-UnitByName._on_delete = function (self)
+function UnitByName:_on_delete()
 	return 
 end
-UnitByName._on_mark_unit = function (self)
+function UnitByName:_on_mark_unit()
 	return 
 end
-UnitByName._on_select_unit = function (self)
+function UnitByName:_on_select_unit()
 	return 
 end
-UnitByName._selected_item_units = function (self)
+function UnitByName:_selected_item_units()
 	if self._cancelled then
 		return {}
 	end
@@ -410,7 +410,7 @@ UnitByName._selected_item_units = function (self)
 
 	return units
 end
-UnitByName._selected_item_unit = function (self)
+function UnitByName:_selected_item_unit()
 	slot3 = self._list
 	local index = self._list.selected_item(slot2)
 
@@ -422,7 +422,7 @@ UnitByName._selected_item_unit = function (self)
 
 	return 
 end
-UnitByName.deleted_unit = function (self, unit)
+function UnitByName:deleted_unit(unit)
 	slot5 = self._list
 
 	for i = 0, self._list.item_count(slot4) - 1, 1 do
@@ -439,7 +439,7 @@ UnitByName.deleted_unit = function (self, unit)
 
 	return 
 end
-UnitByName.spawned_unit = function (self, unit)
+function UnitByName:spawned_unit(unit)
 	slot7 = unit
 	local i = self._list.append_item(slot3, self._list)
 	local j = #self._units + 1
@@ -450,7 +450,7 @@ UnitByName.spawned_unit = function (self, unit)
 
 	return 
 end
-UnitByName.selected_unit = function (self, unit)
+function UnitByName:selected_unit(unit)
 	slot6 = self._list
 
 	for _, i in ipairs(self._list.selected_items(slot5)) do
@@ -479,7 +479,7 @@ UnitByName.selected_unit = function (self, unit)
 
 	return 
 end
-UnitByName.selected_units = function (self, units)
+function UnitByName:selected_units(units)
 	if self._blocked then
 		return 
 	end
@@ -541,7 +541,7 @@ UnitByName.selected_units = function (self, units)
 
 	return 
 end
-UnitByName.unit_name_changed = function (self, unit)
+function UnitByName:unit_name_changed(unit)
 	slot5 = self._list
 
 	for i = 0, self._list.item_count(slot4) - 1, 1 do
@@ -607,14 +607,14 @@ UnitByName.unit_name_changed = function (self, unit)
 
 	return 
 end
-UnitByName.update_filter = function (self)
+function UnitByName:update_filter()
 	slot3 = self
 
 	self.fill_unit_list(slot2)
 
 	return 
 end
-UnitByName.fill_unit_list = function (self)
+function UnitByName:fill_unit_list()
 	slot3 = self._list
 
 	self._list.freeze(slot2)
@@ -691,7 +691,7 @@ UnitByName.fill_unit_list = function (self)
 
 	return 
 end
-UnitByName._get_filter_string = function (self, unit)
+function UnitByName:_get_filter_string(unit)
 	slot4 = self
 	local filter = self._get_filter_type(slot3)
 
@@ -716,7 +716,7 @@ UnitByName._get_filter_string = function (self, unit)
 
 	return 
 end
-UnitByName._continent_locked = function (self, unit)
+function UnitByName:_continent_locked(unit)
 	slot4 = unit
 	local continent = unit.unit_data(slot3).continent
 
@@ -729,7 +729,7 @@ UnitByName._continent_locked = function (self, unit)
 
 	return unit.unit_data(slot4).continent.value(slot4, unit.unit_data(slot4).continent)
 end
-UnitByName._unit_condition = function (self, unit)
+function UnitByName:_unit_condition(unit)
 	if self._unit_filter_function then
 		slot4 = unit
 
@@ -740,21 +740,21 @@ UnitByName._unit_condition = function (self, unit)
 
 	return not unit.unit_data(slot3).instance
 end
-UnitByName.reset = function (self)
+function UnitByName:reset()
 	slot3 = self
 
 	self.fill_unit_list(slot2)
 
 	return 
 end
-UnitByName.freeze = function (self)
+function UnitByName:freeze()
 	slot3 = self._list
 
 	self._list.freeze(slot2)
 
 	return 
 end
-UnitByName.thaw = function (self)
+function UnitByName:thaw()
 	slot3 = self._list
 
 	self._list.thaw(slot2)

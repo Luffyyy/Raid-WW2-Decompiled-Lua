@@ -1,5 +1,5 @@
 CoreAiEditorData = CoreAiEditorData or class()
-CoreAiEditorData.init = function (self, unit)
+function CoreAiEditorData:init(unit)
 	self.visibilty_exlude_filter = {}
 	self.visibilty_include_filter = {}
 	self.location_id = "location_unknown"

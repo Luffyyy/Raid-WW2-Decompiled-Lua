@@ -46,7 +46,7 @@ local DESELECTED = Color(slot12, 0.5, 0.5)
 slot16 = 1
 local SELECTED = Color(0.5, 1, 1)
 FreeFlight = FreeFlight or class()
-FreeFlight.init = function (self, gsm, viewport_manager, controller_manager)
+function FreeFlight:init(gsm, viewport_manager, controller_manager)
 	slot6 = gsm
 
 	assert(slot5)
@@ -95,10 +95,10 @@ FreeFlight.init = function (self, gsm, viewport_manager, controller_manager)
 
 	return 
 end
-FreeFlight._setup_F9_key = function (self)
+function FreeFlight:_setup_F9_key()
 	return 
 end
-FreeFlight._setup_modifiers = function (self)
+function FreeFlight:_setup_modifiers()
 	local FFM = CoreFreeFlightModifier.FreeFlightModifier
 	slot7 = 9
 	local ms = FFM.new(slot3, FFM, "MOVE SPEED", {
@@ -205,7 +205,7 @@ FreeFlight._setup_modifiers = function (self)
 
 	return 
 end
-FreeFlight._setup_actions = function (self)
+function FreeFlight:_setup_actions()
 	local FFA = CoreFreeFlightAction.FreeFlightAction
 	local FFAT = CoreFreeFlightAction.FreeFlightActionToggle
 	slot6 = "DROP PLAYER"
@@ -244,7 +244,7 @@ FreeFlight._setup_actions = function (self)
 
 	return 
 end
-FreeFlight._setup_viewport = function (self, viewport_manager)
+function FreeFlight:_setup_viewport(viewport_manager)
 	slot4 = World
 	self._camera_object = World.create_camera(slot3)
 	slot5 = FAR_RANGE_MAX
@@ -269,7 +269,7 @@ FreeFlight._setup_viewport = function (self, viewport_manager)
 
 	return 
 end
-FreeFlight._setup_controller = function (self, controller_manager)
+function FreeFlight:_setup_controller(controller_manager)
 	slot8 = PRIO_FREEFLIGHT
 	self._con = controller_manager.create_controller(slot3, controller_manager, "freeflight", nil, true)
 	slot5 = "freeflight_action_toggle"
@@ -304,7 +304,7 @@ FreeFlight._setup_controller = function (self, controller_manager)
 
 	return 
 end
-FreeFlight._setup_gui = function (self)
+function FreeFlight:_setup_gui()
 	slot3 = Overlay
 	local gui_scene = Overlay.gui(slot2)
 	local res = RenderSettings.resolution
@@ -450,7 +450,7 @@ FreeFlight._setup_gui = function (self)
 
 	return 
 end
-FreeFlight.enable = function (self)
+function FreeFlight:enable()
 	slot3 = self._gsm
 	slot3 = self._gsm.current_state(slot2)
 
@@ -498,7 +498,7 @@ FreeFlight.enable = function (self)
 
 	return 
 end
-FreeFlight.disable = function (self)
+function FreeFlight:disable()
 	slot3 = self._actions
 
 	for _, a in ipairs(slot2) do
@@ -528,10 +528,10 @@ FreeFlight.disable = function (self)
 
 	return 
 end
-FreeFlight.enabled = function (self)
+function FreeFlight:enabled()
 	return self._state ~= FF_OFF
 end
-FreeFlight._on_F9 = function (self)
+function FreeFlight:_on_F9()
 	slot3 = Application
 
 	if Application.editor(slot2) and not Global.running_simulation then
@@ -555,7 +555,7 @@ FreeFlight._on_F9 = function (self)
 
 	return 
 end
-FreeFlight._action_toggle = function (self)
+function FreeFlight:_action_toggle()
 	slot3 = self
 
 	if self._actions_are_visible(slot2) then
@@ -575,7 +575,7 @@ FreeFlight._action_toggle = function (self)
 
 	return 
 end
-FreeFlight._action_execute = function (self)
+function FreeFlight:_action_execute()
 	slot3 = self
 
 	if self._actions_are_visible(slot2) then
@@ -591,7 +591,7 @@ FreeFlight._action_execute = function (self)
 
 	return 
 end
-FreeFlight._quick_action_execute = function (self)
+function FreeFlight:_quick_action_execute()
 	slot3 = self
 	slot3 = self._current_action(slot2)
 
@@ -599,14 +599,14 @@ FreeFlight._quick_action_execute = function (self)
 
 	return 
 end
-FreeFlight._exit_freeflight = function (self)
+function FreeFlight:_exit_freeflight()
 	slot3 = self
 
 	self.disable(slot2)
 
 	return 
 end
-FreeFlight._yield_control = function (self)
+function FreeFlight:_yield_control()
 	slot3 = self._state == FF_ON
 
 	assert(slot2)
@@ -618,7 +618,7 @@ FreeFlight._yield_control = function (self)
 
 	return 
 end
-FreeFlight._drop_player = function (self)
+function FreeFlight:_drop_player()
 	slot5 = self._camera_rot
 	slot3 = self._camera_rot.yaw(slot4)
 	slot5 = 0
@@ -630,7 +630,7 @@ FreeFlight._drop_player = function (self)
 
 	return 
 end
-FreeFlight._position_debug = function (self)
+function FreeFlight:_position_debug()
 	local p = self._camera_pos
 	slot5 = "CAMERA POSITION: Vector3(" .. p.x .. "," .. p.y .. "," .. p.z .. ")"
 
@@ -638,21 +638,21 @@ FreeFlight._position_debug = function (self)
 
 	return 
 end
-FreeFlight._pause = function (self)
+function FreeFlight:_pause()
 	slot4 = true
 
 	Application.set_pause(slot2, Application)
 
 	return 
 end
-FreeFlight._unpause = function (self)
+function FreeFlight:_unpause()
 	slot4 = false
 
 	Application.set_pause(slot2, Application)
 
 	return 
 end
-FreeFlight._frustum_freeze = function (self)
+function FreeFlight:_frustum_freeze()
 	local old_cam = self._camera_object
 	local new_cam = World.create_camera(slot3)
 	slot5 = new_cam
@@ -706,7 +706,7 @@ FreeFlight._frustum_freeze = function (self)
 
 	return 
 end
-FreeFlight._frustum_unfreeze = function (self)
+function FreeFlight:_frustum_unfreeze()
 	local old_cam = self._frozen_camera
 	slot5 = FAR_RANGE_MAX
 
@@ -721,7 +721,7 @@ FreeFlight._frustum_unfreeze = function (self)
 
 	return 
 end
-FreeFlight._next_modifier_toggle = function (self)
+function FreeFlight:_next_modifier_toggle()
 	slot3 = self
 
 	if self._modifiers_are_visible(slot2) then
@@ -741,7 +741,7 @@ FreeFlight._next_modifier_toggle = function (self)
 
 	return 
 end
-FreeFlight._curr_modifier_up = function (self)
+function FreeFlight:_curr_modifier_up()
 	slot3 = self
 
 	if self._modifiers_are_visible(slot2) then
@@ -763,7 +763,7 @@ FreeFlight._curr_modifier_up = function (self)
 
 	return 
 end
-FreeFlight._curr_modifier_down = function (self)
+function FreeFlight:_curr_modifier_down()
 	slot3 = self
 
 	if self._modifiers_are_visible(slot2) then
@@ -785,14 +785,14 @@ FreeFlight._curr_modifier_down = function (self)
 
 	return 
 end
-FreeFlight._set_fov = function (self, value)
+function FreeFlight:_set_fov(value)
 	slot5 = value
 
 	self._camera_object.set_fov(slot3, self._camera_object)
 
 	return 
 end
-FreeFlight._set_game_timer = function (self, value)
+function FreeFlight:_set_game_timer(value)
 	slot4 = TimerManager
 	slot5 = value
 
@@ -805,27 +805,27 @@ FreeFlight._set_game_timer = function (self, value)
 
 	return 
 end
-FreeFlight._current_action = function (self)
+function FreeFlight:_current_action()
 	return self._actions[self._action_index]
 end
-FreeFlight._current_modifier = function (self)
+function FreeFlight:_current_modifier()
 	return self._modifiers[self._modifier_index]
 end
-FreeFlight._actions_are_visible = function (self)
+function FreeFlight:_actions_are_visible()
 	slot3 = TimerManager
 	slot3 = TimerManager.main(slot2)
 	local t = TimerManager.main(slot2).time(slot2)
 
 	return self._action_vis_time and t + TEXT_FADE_TIME < self._action_vis_time
 end
-FreeFlight._modifiers_are_visible = function (self)
+function FreeFlight:_modifiers_are_visible()
 	slot3 = TimerManager
 	slot3 = TimerManager.main(slot2)
 	local t = TimerManager.main(slot2).time(slot2)
 
 	return self._modifier_vis_time and t + TEXT_FADE_TIME < self._modifier_vis_time
 end
-FreeFlight._draw_actions = function (self)
+function FreeFlight:_draw_actions()
 	slot3 = self
 
 	if not self._actions_are_visible(slot2) then
@@ -858,7 +858,7 @@ FreeFlight._draw_actions = function (self)
 
 	return 
 end
-FreeFlight._draw_modifiers = function (self)
+function FreeFlight:_draw_modifiers()
 	slot3 = self
 
 	if not self._modifiers_are_visible(slot2) then
@@ -882,14 +882,14 @@ FreeFlight._draw_modifiers = function (self)
 
 	return 
 end
-FreeFlight._set_camera = function (self, pos, rot)
+function FreeFlight:_set_camera(pos, rot)
 
 	-- Decompilation error in this vicinity:
 	slot5 = self._camera_object
 	slot3 = self._camera_object.set_position
 	slot8 = self._attached_to_unit
 end
-FreeFlight.update = function (self, t, dt)
+function FreeFlight:update(t, dt)
 	slot5 = TimerManager
 	local main_t = TimerManager.main(slot4).time(slot4)
 	slot6 = TimerManager
@@ -916,10 +916,10 @@ FreeFlight.update = function (self, t, dt)
 
 	return 
 end
-FreeFlight._update_controller = function (self, t, dt)
+function FreeFlight:_update_controller(t, dt)
 	return 
 end
-FreeFlight._update_gui = function (self, t, dt)
+function FreeFlight:_update_gui(t, dt)
 	if self._action_vis_time and self._action_vis_time < t then
 		slot5 = self._action_gui
 
@@ -956,7 +956,7 @@ FreeFlight._update_gui = function (self, t, dt)
 
 	return 
 end
-FreeFlight._update_camera = function (self, t, dt)
+function FreeFlight:_update_camera(t, dt)
 	slot6 = "freeflight_axis_move"
 	local axis_move = self._con.get_input_axis(slot4, self._con)
 	slot7 = "freeflight_axis_look"
@@ -989,7 +989,7 @@ FreeFlight._update_camera = function (self, t, dt)
 
 	return 
 end
-FreeFlight._attach_unit = function (self)
+function FreeFlight:_attach_unit()
 	local cam = self._camera_object
 	slot10 = cam
 	slot10 = cam.rotation(cam)
@@ -1025,7 +1025,7 @@ FreeFlight._attach_unit = function (self)
 
 	return 
 end
-FreeFlight.attach_to_unit = function (self, unit)
+function FreeFlight:attach_to_unit(unit)
 
 	-- Decompilation error in this vicinity:
 	slot4 = unit
@@ -1043,7 +1043,7 @@ FreeFlight.attach_to_unit = function (self, unit)
 
 	return 
 end
-FreeFlight._update_frustum_debug_box = function (self, t, dt)
+function FreeFlight:_update_frustum_debug_box(t, dt)
 	if self._frozen_camera then
 		local near = self._frozen_camera.near_range(slot4)
 		slot6 = self._frozen_camera
@@ -1118,7 +1118,7 @@ FreeFlight._update_frustum_debug_box = function (self, t, dt)
 
 	return 
 end
-FreeFlight.destroy = function (self)
+function FreeFlight:destroy()
 	slot3 = self._con_toggle
 
 	if alive(slot2) then

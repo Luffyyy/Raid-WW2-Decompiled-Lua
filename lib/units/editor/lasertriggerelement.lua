@@ -41,7 +41,7 @@ LaserTriggerUnitElement.COLORS = {
 		0.1
 	}
 }
-LaserTriggerUnitElement.init = function (self, unit)
+function LaserTriggerUnitElement:init(unit)
 	slot5 = unit
 
 	LaserTriggerUnitElement.super.init(slot3, self)
@@ -111,7 +111,7 @@ LaserTriggerUnitElement.init = function (self, unit)
 
 	return 
 end
-LaserTriggerUnitElement.update_editing = function (self, ...)
+function LaserTriggerUnitElement:update_editing(...)
 	slot3 = self
 	local ray = self._raycast(slot2)
 
@@ -124,13 +124,13 @@ LaserTriggerUnitElement.update_editing = function (self, ...)
 
 	return 
 end
-LaserTriggerUnitElement.begin_editing = function (self, ...)
+function LaserTriggerUnitElement:begin_editing(...)
 	slot5 = Vector3()
 	self._dummy_unit = World.spawn_unit(slot2, World, self._dummy_unit_name, Rotation())
 
 	return 
 end
-LaserTriggerUnitElement.end_editing = function (self, ...)
+function LaserTriggerUnitElement:end_editing(...)
 	slot3 = self
 
 	LaserTriggerUnitElement.super.end_editing(slot2, ...)
@@ -149,7 +149,7 @@ LaserTriggerUnitElement.end_editing = function (self, ...)
 
 	return 
 end
-LaserTriggerUnitElement.update_selected = function (self, t, dt, selected_unit, all_units)
+function LaserTriggerUnitElement:update_selected(t, dt, selected_unit, all_units)
 	slot11 = all_units
 
 	LaserTriggerUnitElement.super.update_selected(slot6, self, t, dt, selected_unit)
@@ -160,7 +160,7 @@ LaserTriggerUnitElement.update_selected = function (self, t, dt, selected_unit, 
 
 	return 
 end
-LaserTriggerUnitElement._draw_selected = function (self)
+function LaserTriggerUnitElement:_draw_selected()
 	slot3 = self._hed.points
 
 	for _, point in pairs(slot2) do
@@ -190,7 +190,7 @@ LaserTriggerUnitElement._draw_selected = function (self)
 
 	return 
 end
-LaserTriggerUnitElement._raycast = function (self)
+function LaserTriggerUnitElement:_raycast()
 	slot4 = 0
 	local from = managers.editor.get_cursor_look_point(slot2, managers.editor)
 	slot5 = 100000
@@ -248,7 +248,7 @@ LaserTriggerUnitElement._raycast = function (self)
 
 	return nil
 end
-LaserTriggerUnitElement._get_close_point = function (self, points, pos)
+function LaserTriggerUnitElement:_get_close_point(points, pos)
 	slot5 = points
 
 	for i, point in pairs(slot4) do
@@ -261,7 +261,7 @@ LaserTriggerUnitElement._get_close_point = function (self, points, pos)
 
 	return nil, nil
 end
-LaserTriggerUnitElement._draw_point = function (self, pos, rot, r, g, b)
+function LaserTriggerUnitElement:_draw_point(pos, rot, r, g, b)
 	r = r or 1
 	g = g or 1
 	b = b or 1
@@ -288,7 +288,7 @@ LaserTriggerUnitElement._draw_point = function (self, pos, rot, r, g, b)
 
 	return 
 end
-LaserTriggerUnitElement._remove_any_close_point = function (self, pos)
+function LaserTriggerUnitElement:_remove_any_close_point(pos)
 	slot6 = pos
 	local index, point = self._get_close_point(slot3, self, self._hed.points)
 
@@ -304,7 +304,7 @@ LaserTriggerUnitElement._remove_any_close_point = function (self, pos)
 
 	return false
 end
-LaserTriggerUnitElement._break_creating_connection = function (self)
+function LaserTriggerUnitElement:_break_creating_connection()
 	slot3 = self._dummy_unit
 
 	if alive(slot2) then
@@ -317,13 +317,13 @@ LaserTriggerUnitElement._break_creating_connection = function (self)
 
 	return 
 end
-LaserTriggerUnitElement._break_moving_point = function (self)
+function LaserTriggerUnitElement:_break_moving_point()
 	self._moving_point = nil
 	self._moving_point_undo = nil
 
 	return 
 end
-LaserTriggerUnitElement._rmb = function (self)
+function LaserTriggerUnitElement:_rmb()
 	if self._moving_point then
 		self._hed.points[self._moving_point] = self._moving_point_undo
 		slot3 = self
@@ -370,7 +370,7 @@ LaserTriggerUnitElement._rmb = function (self)
 
 	return 
 end
-LaserTriggerUnitElement._lmb = function (self)
+function LaserTriggerUnitElement:_lmb()
 	slot3 = "LaserTriggerUnitElement:_lmb()"
 
 	print(slot2)
@@ -450,7 +450,7 @@ LaserTriggerUnitElement._lmb = function (self)
 
 	return 
 end
-LaserTriggerUnitElement._emb = function (self)
+function LaserTriggerUnitElement:_emb()
 	if self._creating_connection then
 		return 
 	end
@@ -485,7 +485,7 @@ LaserTriggerUnitElement._emb = function (self)
 
 	return 
 end
-LaserTriggerUnitElement._release_emb = function (self)
+function LaserTriggerUnitElement:_release_emb()
 	slot3 = "LaserTriggerUnitElement:_release_emb()"
 
 	print(slot2)
@@ -498,7 +498,7 @@ LaserTriggerUnitElement._release_emb = function (self)
 
 	return 
 end
-LaserTriggerUnitElement._check_remove_index = function (self, index)
+function LaserTriggerUnitElement:_check_remove_index(index)
 	slot6 = self._hed.connections
 
 	for i, connection in ipairs(clone(slot5)) do
@@ -525,7 +525,7 @@ LaserTriggerUnitElement._check_remove_index = function (self, index)
 
 	return 
 end
-LaserTriggerUnitElement._check_remove_connection = function (self, i1, i2)
+function LaserTriggerUnitElement:_check_remove_connection(i1, i2)
 	slot7 = self._hed.connections
 
 	for i, connection in ipairs(clone(slot6)) do
@@ -548,7 +548,7 @@ LaserTriggerUnitElement._check_remove_connection = function (self, i1, i2)
 
 	return false
 end
-LaserTriggerUnitElement.add_triggers = function (self, vc)
+function LaserTriggerUnitElement:add_triggers(vc)
 	slot5 = vc
 
 	LaserTriggerUnitElement.super.add_triggers(slot3, self)
@@ -575,7 +575,7 @@ LaserTriggerUnitElement.add_triggers = function (self, vc)
 
 	return 
 end
-LaserTriggerUnitElement._on_clicked_connections_box = function (self)
+function LaserTriggerUnitElement:_on_clicked_connections_box()
 	slot3 = "LaserTriggerUnitElement:_on_clicked_connections_box()"
 
 	print(slot2)
@@ -598,7 +598,7 @@ LaserTriggerUnitElement._on_clicked_connections_box = function (self)
 
 	return 
 end
-LaserTriggerUnitElement._fill_connections_box = function (self)
+function LaserTriggerUnitElement:_fill_connections_box()
 	slot3 = self._connections_box
 
 	self._connections_box.clear(slot2)
@@ -613,7 +613,7 @@ LaserTriggerUnitElement._fill_connections_box = function (self)
 
 	return 
 end
-LaserTriggerUnitElement._move_connection_up = function (self)
+function LaserTriggerUnitElement:_move_connection_up()
 	slot3 = "LaserTriggerUnitElement:_move_connection_up()"
 
 	print(slot2)
@@ -642,7 +642,7 @@ LaserTriggerUnitElement._move_connection_up = function (self)
 
 	return 
 end
-LaserTriggerUnitElement._move_connection_down = function (self)
+function LaserTriggerUnitElement:_move_connection_down()
 	slot3 = "LaserTriggerUnitElement:_move_connection_down()"
 
 	print(slot2)
@@ -671,7 +671,7 @@ LaserTriggerUnitElement._move_connection_down = function (self)
 
 	return 
 end
-LaserTriggerUnitElement.set_element_data = function (self, params, ...)
+function LaserTriggerUnitElement:set_element_data(params, ...)
 	slot5 = params
 
 	LaserTriggerUnitElement.super.set_element_data(slot3, self, ...)
@@ -685,7 +685,7 @@ LaserTriggerUnitElement.set_element_data = function (self, params, ...)
 
 	return 
 end
-LaserTriggerUnitElement._build_panel = function (self, panel, panel_sizer)
+function LaserTriggerUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -806,7 +806,7 @@ LaserTriggerUnitElement._build_panel = function (self, panel, panel_sizer)
 
 	return 
 end
-LaserTriggerUnitElement.add_to_mission_package = function (self)
+function LaserTriggerUnitElement:add_to_mission_package()
 	local unit_name = self._dummy_unit_name
 	slot5 = {
 		category = "units",

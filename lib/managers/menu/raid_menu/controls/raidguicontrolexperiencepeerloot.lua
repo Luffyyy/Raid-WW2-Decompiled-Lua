@@ -15,7 +15,7 @@ RaidGUIControlExperiencePeerLoot.NAME_FONT_SIZE = tweak_data.gui.font_sizes.size
 RaidGUIControlExperiencePeerLoot.XP_VALUE_COLOR = tweak_data.gui.colors.raid_grey_effects
 RaidGUIControlExperiencePeerLoot.XP_VALUE_FONT_SIZE = tweak_data.gui.font_sizes.size_24
 RaidGUIControlExperiencePeerLoot.TEXT_X = 128
-RaidGUIControlExperiencePeerLoot.init = function (self, parent, params)
+function RaidGUIControlExperiencePeerLoot:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlExperiencePeerLoot.super.init(slot4, self, parent)
@@ -38,10 +38,10 @@ RaidGUIControlExperiencePeerLoot.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlExperiencePeerLoot.close = function (self)
+function RaidGUIControlExperiencePeerLoot:close()
 	return 
 end
-RaidGUIControlExperiencePeerLoot._create_control_panel = function (self)
+function RaidGUIControlExperiencePeerLoot:_create_control_panel()
 	slot3 = self._params
 	local control_params = clone(slot2)
 	control_params.x = control_params.x
@@ -56,7 +56,7 @@ RaidGUIControlExperiencePeerLoot._create_control_panel = function (self)
 
 	return 
 end
-RaidGUIControlExperiencePeerLoot._create_experience_details = function (self)
+function RaidGUIControlExperiencePeerLoot:_create_experience_details()
 	local params_xp_image = {
 		name = "xp_image",
 		x = 0,
@@ -116,7 +116,7 @@ RaidGUIControlExperiencePeerLoot._create_experience_details = function (self)
 
 	return 
 end
-RaidGUIControlExperiencePeerLoot.set_xp = function (self, xp)
+function RaidGUIControlExperiencePeerLoot:set_xp(xp)
 	slot12 = true
 	slot5 = "+" .. xp .. " " .. self.translate(slot9, self, "experience_points")
 
@@ -128,7 +128,7 @@ RaidGUIControlExperiencePeerLoot.set_xp = function (self, xp)
 
 	return 
 end
-RaidGUIControlExperiencePeerLoot.set_player_name = function (self, name)
+function RaidGUIControlExperiencePeerLoot:set_player_name(name)
 	slot4 = self._name_label
 	slot7 = name
 
@@ -140,7 +140,7 @@ RaidGUIControlExperiencePeerLoot.set_player_name = function (self, name)
 
 	return 
 end
-RaidGUIControlExperiencePeerLoot._layout_text = function (self)
+function RaidGUIControlExperiencePeerLoot:_layout_text()
 	slot3 = self._name_label
 	local _, _, _, h = self._name_label.text_rect(slot2)
 	slot8 = h

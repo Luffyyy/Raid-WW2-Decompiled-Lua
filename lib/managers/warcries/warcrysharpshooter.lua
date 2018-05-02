@@ -66,7 +66,7 @@ if not WarcrySharpshooter then
 end
 
 WarcrySharpshooter = slot0
-WarcrySharpshooter.init = function (self)
+function WarcrySharpshooter:init()
 	slot3 = self
 
 	WarcrySharpshooter.super.init(slot2)
@@ -102,7 +102,7 @@ local ids_layer1_animate_factor = Idstring(function (self)
 end)
 slot3 = "blend_factor"
 local ids_blend_factor = Idstring("layer1_animate_factor")
-WarcrySharpshooter.update = function (self, dt)
+function WarcrySharpshooter:update(dt)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -276,7 +276,7 @@ local ids_contour = Idstring("contour_post_processor")
 local ids_empty = Idstring("contour")
 slot7 = "contour_color"
 local ids_contour_color = Idstring("empty")
-WarcrySharpshooter.activate = function (self)
+function WarcrySharpshooter:activate()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-25, warpins: 1 ---
@@ -320,7 +320,7 @@ WarcrySharpshooter.activate = function (self)
 
 
 end
-WarcrySharpshooter.deactivate = function (self)
+function WarcrySharpshooter:deactivate()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -389,7 +389,7 @@ WarcrySharpshooter.deactivate = function (self)
 
 
 end
-WarcrySharpshooter.duration = function (self)
+function WarcrySharpshooter:duration()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -401,7 +401,7 @@ WarcrySharpshooter.duration = function (self)
 
 
 end
-WarcrySharpshooter.get_level_description = function (self, level)
+function WarcrySharpshooter:get_level_description(level)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-20, warpins: 1 ---
@@ -416,7 +416,7 @@ WarcrySharpshooter.get_level_description = function (self, level)
 
 
 end
-WarcrySharpshooter._on_enemy_killed = function (self, params)
+function WarcrySharpshooter:_on_enemy_killed(params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -483,7 +483,7 @@ WarcrySharpshooter._on_enemy_killed = function (self, params)
 
 
 end
-WarcrySharpshooter.cleanup = function (self)
+function WarcrySharpshooter:cleanup()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---

@@ -20,7 +20,7 @@ if not Simulation then
 end
 
 Simulation = slot0
-Simulation.transition = function (self)
+function Simulation:transition()
 	slot3 = self.game_state._front_end_requester
 
 	if not self.game_state._front_end_requester.is_requested(slot2) then

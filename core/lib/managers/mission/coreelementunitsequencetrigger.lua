@@ -16,7 +16,7 @@ if not ElementUnitSequenceTrigger then
 end
 
 ElementUnitSequenceTrigger = slot0
-ElementUnitSequenceTrigger.init = function (self, ...)
+function ElementUnitSequenceTrigger:init(...)
 	slot3 = self
 
 	ElementUnitSequenceTrigger.super.init(slot2, ...)
@@ -32,7 +32,7 @@ ElementUnitSequenceTrigger.init = function (self, ...)
 
 	return 
 end
-ElementUnitSequenceTrigger.on_script_activated = function (self)
+function ElementUnitSequenceTrigger:on_script_activated()
 	slot3 = Network
 
 	if Network.is_client(slot2) then
@@ -65,7 +65,7 @@ ElementUnitSequenceTrigger.on_script_activated = function (self)
 
 	return 
 end
-ElementUnitSequenceTrigger.send_to_host = function (self, instigator)
+function ElementUnitSequenceTrigger:send_to_host(instigator)
 	slot4 = instigator
 
 	if alive(slot3) then
@@ -77,10 +77,10 @@ ElementUnitSequenceTrigger.send_to_host = function (self, instigator)
 
 	return 
 end
-ElementUnitSequenceTrigger.client_on_executed = function (self, ...)
+function ElementUnitSequenceTrigger:client_on_executed(...)
 	return 
 end
-ElementUnitSequenceTrigger.on_executed = function (self, instigator)
+function ElementUnitSequenceTrigger:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -91,13 +91,13 @@ ElementUnitSequenceTrigger.on_executed = function (self, instigator)
 
 	return 
 end
-ElementUnitSequenceTrigger.save = function (self, data)
+function ElementUnitSequenceTrigger:save(data)
 	data.enabled = self._values.enabled
 	data.save_me = true
 
 	return 
 end
-ElementUnitSequenceTrigger.load = function (self, data)
+function ElementUnitSequenceTrigger:load(data)
 	self._values.enabled = data.enabled
 
 	if not self._has_active_callback then

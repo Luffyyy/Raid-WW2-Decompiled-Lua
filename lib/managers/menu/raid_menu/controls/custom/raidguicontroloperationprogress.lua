@@ -13,7 +13,7 @@ RaidGUIControlOperationProgress.PARAGRAPH_FONT_SIZE = 16
 RaidGUIControlOperationProgress.PARAGRAPH_COLOR = tweak_data.gui.colors.raid_black
 RaidGUIControlOperationProgress.PADDING_DOWN = 10
 RaidGUIControlOperationProgress.SCROLL_ADVANCE = 20
-RaidGUIControlOperationProgress.init = function (self, parent, params)
+function RaidGUIControlOperationProgress:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlOperationProgress.super.init(slot4, self, parent)
@@ -35,7 +35,7 @@ RaidGUIControlOperationProgress.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlOperationProgress._create_panels = function (self)
+function RaidGUIControlOperationProgress:_create_panels()
 	local panel_params = clone(slot2)
 	panel_params.name = panel_params.name .. "_panel"
 	slot4 = self._panel
@@ -51,7 +51,7 @@ RaidGUIControlOperationProgress._create_panels = function (self)
 
 	return 
 end
-RaidGUIControlOperationProgress._create_progress_report = function (self, current_operation_stage)
+function RaidGUIControlOperationProgress:_create_progress_report(current_operation_stage)
 	slot4 = self._inner_panel
 
 	self._inner_panel.clear(slot3)
@@ -95,7 +95,7 @@ RaidGUIControlOperationProgress._create_progress_report = function (self, curren
 
 	return 
 end
-RaidGUIControlOperationProgress._create_part = function (self, i, y, header_id, paragraph_id)
+function RaidGUIControlOperationProgress:_create_part(i, y, header_id, paragraph_id)
 	local panel_params = {
 		x = 0
 	}
@@ -164,24 +164,24 @@ RaidGUIControlOperationProgress._create_part = function (self, i, y, header_id, 
 
 	return part_panel
 end
-RaidGUIControlOperationProgress.set_operation = function (self, operation)
+function RaidGUIControlOperationProgress:set_operation(operation)
 	self._operation = operation
 
 	return 
 end
-RaidGUIControlOperationProgress.set_number_drawn = function (self, number)
+function RaidGUIControlOperationProgress:set_number_drawn(number)
 	slot5 = number
 
 	self._create_progress_report(slot3, self)
 
 	return 
 end
-RaidGUIControlOperationProgress.set_event_index = function (self, event_index)
+function RaidGUIControlOperationProgress:set_event_index(event_index)
 	self._event_index = event_index
 
 	return 
 end
-RaidGUIControlOperationProgress._check_scrollability = function (self)
+function RaidGUIControlOperationProgress:_check_scrollability()
 	slot4 = self._object
 
 	if self._inner_panel.h(slot2) <= self._object.h(self._inner_panel) then
@@ -192,7 +192,7 @@ RaidGUIControlOperationProgress._check_scrollability = function (self)
 
 	return 
 end
-RaidGUIControlOperationProgress.on_mouse_scroll_up = function (self)
+function RaidGUIControlOperationProgress:on_mouse_scroll_up()
 	if not self._scrollable then
 		return false
 	end
@@ -212,7 +212,7 @@ RaidGUIControlOperationProgress.on_mouse_scroll_up = function (self)
 
 	return true
 end
-RaidGUIControlOperationProgress.on_mouse_scroll_down = function (self)
+function RaidGUIControlOperationProgress:on_mouse_scroll_down()
 	if not self._scrollable then
 		return false
 	end
@@ -233,7 +233,7 @@ RaidGUIControlOperationProgress.on_mouse_scroll_down = function (self)
 
 	return true
 end
-RaidGUIControlOperationProgress.close = function (self)
+function RaidGUIControlOperationProgress:close()
 	return 
 end
 

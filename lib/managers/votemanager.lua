@@ -730,7 +730,7 @@ VoteManager.REASON = {
 	many_grenades = 4,
 	invalid_weapon = 9
 }
-function VoteManager:init()
+VoteManager.init = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -740,7 +740,7 @@ function VoteManager:init()
 
 
 end
-function VoteManager:kick(peer_id)
+VoteManager.kick = function (self, peer_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -754,7 +754,7 @@ function VoteManager:kick(peer_id)
 
 
 end
-function VoteManager:host_kick(peer)
+VoteManager.host_kick = function (self, peer)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -805,7 +805,7 @@ function VoteManager:host_kick(peer)
 
 
 end
-function VoteManager:kick_auto(reason, peer, loading)
+VoteManager.kick_auto = function (self, reason, peer, loading)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -908,7 +908,7 @@ function VoteManager:kick_auto(reason, peer, loading)
 
 
 end
-function VoteManager:restart()
+VoteManager.restart = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -922,7 +922,7 @@ function VoteManager:restart()
 
 
 end
-function VoteManager:restart_mission()
+VoteManager.restart_mission = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -936,7 +936,7 @@ function VoteManager:restart_mission()
 
 
 end
-function VoteManager:restart_auto()
+VoteManager.restart_auto = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-19, warpins: 1 ---
@@ -955,7 +955,7 @@ function VoteManager:restart_auto()
 
 
 end
-function VoteManager:restart_mission_auto()
+VoteManager.restart_mission_auto = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-19, warpins: 1 ---
@@ -974,7 +974,7 @@ function VoteManager:restart_mission_auto()
 
 
 end
-function VoteManager:response(state)
+VoteManager.response = function (self, state)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1031,7 +1031,7 @@ function VoteManager:response(state)
 
 
 end
-function VoteManager:abort_vote(peer_id)
+VoteManager.abort_vote = function (self, peer_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1064,7 +1064,7 @@ function VoteManager:abort_vote(peer_id)
 
 
 end
-function VoteManager:available()
+VoteManager.available = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1113,7 +1113,7 @@ function VoteManager:available()
 
 
 end
-function VoteManager:kick_reason_to_string(reason)
+VoteManager.kick_reason_to_string = function (self, reason)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -1260,7 +1260,7 @@ function VoteManager:kick_reason_to_string(reason)
 
 
 end
-function VoteManager:is_restarting()
+VoteManager.is_restarting = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1298,7 +1298,7 @@ function VoteManager:is_restarting()
 
 
 end
-function VoteManager:_request_vote(vote_type, vote_network, peer_id)
+VoteManager._request_vote = function (self, vote_type, vote_network, peer_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1431,7 +1431,7 @@ function VoteManager:_request_vote(vote_type, vote_network, peer_id)
 
 
 end
-function VoteManager:_host_start(vote_type, voter_peer_id, kicked_peer_id)
+VoteManager._host_start = function (self, vote_type, voter_peer_id, kicked_peer_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1663,7 +1663,7 @@ function VoteManager:_host_start(vote_type, voter_peer_id, kicked_peer_id)
 
 
 end
-function VoteManager:_host_finish(success)
+VoteManager._host_finish = function (self, success)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -1806,7 +1806,7 @@ function VoteManager:_host_finish(success)
 
 
 end
-function VoteManager:_host_register(peer_id, response)
+VoteManager._host_register = function (self, peer_id, response)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1869,7 +1869,7 @@ function VoteManager:_host_register(peer_id, response)
 
 
 end
-function VoteManager:_host_count(abort)
+VoteManager._host_count = function (self, abort)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -2137,7 +2137,7 @@ function VoteManager:_host_count(abort)
 
 
 end
-function VoteManager:_start(type, kick_peer)
+VoteManager._start = function (self, type, kick_peer)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-16, warpins: 1 ---
@@ -2221,7 +2221,7 @@ function VoteManager:_start(type, kick_peer)
 
 
 end
-function VoteManager:_stop()
+VoteManager._stop = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -2275,7 +2275,7 @@ function VoteManager:_stop()
 
 
 end
-function VoteManager:_restart_counter(callback_type)
+VoteManager._restart_counter = function (self, callback_type)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -2311,7 +2311,7 @@ function VoteManager:_restart_counter(callback_type)
 
 
 end
-function VoteManager:_message(response, peer_id, kick_peer_id)
+VoteManager._message = function (self, response, peer_id, kick_peer_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -2563,7 +2563,7 @@ function VoteManager:_message(response, peer_id, kick_peer_id)
 
 
 end
-function VoteManager:_refresh_menu()
+VoteManager._refresh_menu = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -2644,7 +2644,7 @@ function VoteManager:_refresh_menu()
 
 
 end
-function VoteManager:help_text()
+VoteManager.help_text = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -2682,7 +2682,7 @@ function VoteManager:help_text()
 
 
 end
-function VoteManager:network_package(type, value, result, peer_id)
+VoteManager.network_package = function (self, type, value, result, peer_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -3100,7 +3100,7 @@ function VoteManager:network_package(type, value, result, peer_id)
 
 
 end
-function VoteManager:update(t, dt)
+VoteManager.update = function (self, t, dt)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -3600,7 +3600,7 @@ function VoteManager:update(t, dt)
 
 
 end
-function VoteManager:stop()
+VoteManager.stop = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -3615,7 +3615,7 @@ function VoteManager:stop()
 
 
 end
-function VoteManager:message_vote()
+VoteManager.message_vote = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -4199,7 +4199,7 @@ function VoteManager:message_vote()
 
 
 end
-function VoteManager:message_host_kick(peer)
+VoteManager.message_host_kick = function (self, peer)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-54, warpins: 1 ---
@@ -4275,7 +4275,7 @@ function VoteManager:message_host_kick(peer)
 
 
 end
-function VoteManager:sync_server_kick_option(peer)
+VoteManager.sync_server_kick_option = function (self, peer)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -4289,7 +4289,7 @@ function VoteManager:sync_server_kick_option(peer)
 
 
 end
-function VoteManager:option_vote_kick()
+VoteManager.option_vote_kick = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -4309,7 +4309,7 @@ function VoteManager:option_vote_kick()
 
 
 end
-function VoteManager:option_host_kick()
+VoteManager.option_host_kick = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -4368,7 +4368,7 @@ function VoteManager:option_host_kick()
 
 
 end
-function VoteManager:option_no_kick()
+VoteManager.option_no_kick = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -4427,7 +4427,7 @@ function VoteManager:option_no_kick()
 
 
 end
-function VoteManager:option_vote_restart()
+VoteManager.option_vote_restart = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -4486,7 +4486,7 @@ function VoteManager:option_vote_restart()
 
 
 end
-function VoteManager:option_host_restart()
+VoteManager.option_host_restart = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---

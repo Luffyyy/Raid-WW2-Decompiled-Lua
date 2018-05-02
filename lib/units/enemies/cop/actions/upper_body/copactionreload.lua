@@ -1,7 +1,7 @@
 -- WARNING: Error occurred during decompilation.
 --   Code may be incomplete or incorrect.
 CopActionReload = CopActionReload or class()
-CopActionReload.init = function (self, action_desc, common_data)
+function CopActionReload:init(action_desc, common_data)
 
 	-- Decompilation error in this vicinity:
 	self._unit = common_data.unit
@@ -24,10 +24,10 @@ CopActionReload.init = function (self, action_desc, common_data)
 
 	return 
 end
-CopActionReload.type = function (self)
+function CopActionReload:type()
 	return "reload"
 end
-CopActionReload.update = function (self, t)
+function CopActionReload:update(t)
 	if self._modifier_on then
 		local target_pos = nil
 
@@ -70,7 +70,7 @@ CopActionReload.update = function (self, t)
 
 	return 
 end
-CopActionReload._play_reload = function (self)
+function CopActionReload:_play_reload()
 	slot4 = self._unit
 
 	managers.voice_over.enemy_reload(slot2, managers.voice_over)
@@ -90,10 +90,10 @@ CopActionReload._play_reload = function (self)
 
 	return redir_res
 end
-CopActionReload.expired = function (self)
+function CopActionReload:expired()
 	return self._expired
 end
-CopActionReload.on_attention = function (self, attention)
+function CopActionReload:on_attention(attention)
 	if attention then
 		self._modifier_on = true
 		slot5 = self._modifier_name
@@ -110,7 +110,7 @@ CopActionReload.on_attention = function (self, attention)
 
 	return 
 end
-CopActionReload.on_exit = function (self)
+function CopActionReload:on_exit()
 	if self._modifier_on then
 		self._modifier_on = nil
 		slot4 = self._modifier_name
@@ -120,12 +120,12 @@ CopActionReload.on_exit = function (self)
 
 	return 
 end
-CopActionReload.chk_block = function (self, action_type, t)
+function CopActionReload:chk_block(action_type, t)
 	slot7 = t
 
 	return CopActionAct.chk_block(slot4, self, action_type)
 end
-CopActionReload.need_upd = function (self)
+function CopActionReload:need_upd()
 	return true
 end
 

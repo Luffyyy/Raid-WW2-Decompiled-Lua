@@ -14,17 +14,17 @@ ElementTeleportPlayer.PEER_OFFSETS = {
 	-1,
 	2
 }
-ElementTeleportPlayer.init = function (self, ...)
+function ElementTeleportPlayer:init(...)
 	slot3 = self
 
 	ElementTeleportPlayer.super.init(slot2, ...)
 
 	return 
 end
-ElementTeleportPlayer.value = function (self, name)
+function ElementTeleportPlayer:value(name)
 	return self._values[name]
 end
-ElementTeleportPlayer.get_spawn_position = function (self)
+function ElementTeleportPlayer:get_spawn_position()
 	slot3 = managers.network
 	slot3 = managers.network.session(slot2)
 	slot3 = managers.network.session(slot2).local_peer(slot2)
@@ -36,7 +36,7 @@ ElementTeleportPlayer.get_spawn_position = function (self)
 
 	return position
 end
-ElementTeleportPlayer.client_on_executed = function (self, ...)
+function ElementTeleportPlayer:client_on_executed(...)
 	if not self._values.enabled then
 		return 
 	end
@@ -68,7 +68,7 @@ ElementTeleportPlayer.client_on_executed = function (self, ...)
 
 	return 
 end
-ElementTeleportPlayer.on_executed = function (self, instigator)
+function ElementTeleportPlayer:on_executed(instigator)
 	slot6 = self._sync_id
 
 	Application.debug(slot3, Application, "[ElementTeleportPlayer:on_executed]")
@@ -119,7 +119,7 @@ ElementTeleportPlayer.on_executed = function (self, instigator)
 
 	return 
 end
-ElementTeleportPlayer._spawnt_team_ai = function (self)
+function ElementTeleportPlayer:_spawnt_team_ai()
 	managers.worldcollection.team_ai_transition = false
 	slot3 = managers.groupai
 	slot4 = true

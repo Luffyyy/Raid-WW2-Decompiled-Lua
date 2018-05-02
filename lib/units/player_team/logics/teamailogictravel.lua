@@ -37,7 +37,7 @@ TeamAILogicTravel._set_verified_paths = CopLogicTravel._set_verified_paths
 TeamAILogicTravel.get_pathing_prio = CopLogicTravel.get_pathing_prio
 TeamAILogicTravel.on_action_completed = CopLogicTravel.on_action_completed
 TeamAILogicTravel.on_intimidated = TeamAILogicIdle.on_intimidated
-TeamAILogicTravel.enter = function (data, new_logic_name, enter_params)
+function TeamAILogicTravel.enter(data, new_logic_name, enter_params)
 
 	-- Decompilation error in this vicinity:
 	local my_data = {
@@ -127,7 +127,7 @@ TeamAILogicTravel.enter = function (data, new_logic_name, enter_params)
 
 	return 
 end
-TeamAILogicTravel.exit = function (data, new_logic_name, enter_params)
+function TeamAILogicTravel.exit(data, new_logic_name, enter_params)
 	slot7 = enter_params
 
 	TeamAILogicBase.exit(slot4, data, new_logic_name)
@@ -152,7 +152,7 @@ TeamAILogicTravel.exit = function (data, new_logic_name, enter_params)
 
 	return 
 end
-TeamAILogicTravel.update = function (data)
+function TeamAILogicTravel.update(data)
 	slot3 = data
 
 	TeamAILogicTravel._upd_ai_perceptors(slot2)
@@ -161,7 +161,7 @@ TeamAILogicTravel.update = function (data)
 
 	return CopLogicTravel.upd_advance(slot2)
 end
-TeamAILogicTravel._upd_enemy_detection = function (data)
+function TeamAILogicTravel._upd_enemy_detection(data)
 	slot3 = TimerManager
 	slot3 = TimerManager.game(slot2)
 	data.t = TimerManager.game(slot2).time(slot2)
@@ -252,7 +252,7 @@ TeamAILogicTravel._upd_enemy_detection = function (data)
 
 	return 
 end
-TeamAILogicTravel._remove_enemy_attention = function (param)
+function TeamAILogicTravel._remove_enemy_attention(param)
 	local data = param.data
 
 	if not data.attention_obj or data.attention_obj.u_key ~= param.target_key then
@@ -265,7 +265,7 @@ TeamAILogicTravel._remove_enemy_attention = function (param)
 
 	return 
 end
-TeamAILogicTravel.is_available_for_assignment = function (data, new_objective)
+function TeamAILogicTravel.is_available_for_assignment(data, new_objective)
 	if new_objective and new_objective.forced then
 		return true
 	elseif data.objective and data.objective.type == "act" then
@@ -282,7 +282,7 @@ TeamAILogicTravel.is_available_for_assignment = function (data, new_objective)
 
 	return 
 end
-TeamAILogicTravel._upd_ai_perceptors = function (data)
+function TeamAILogicTravel._upd_ai_perceptors(data)
 	if not TeamAILogicTravel._ai_perceptors_t then
 		TeamAILogicTravel._ai_perceptors_t = data.t
 	end
@@ -404,7 +404,7 @@ TeamAILogicTravel._upd_ai_perceptors = function (data)
 
 	return 
 end
-TeamAILogicTravel._is_player_camping = function (p)
+function TeamAILogicTravel._is_player_camping(p)
 	if not TeamAILogicTravel._ai_perceptors then
 		return 
 	end
@@ -416,7 +416,7 @@ TeamAILogicTravel._is_player_camping = function (p)
 
 	return not TeamAILogicTravel._ai_perceptors[id].is_moving and not TeamAILogicTravel._ai_perceptors[id].is_rotating
 end
-TeamAILogicTravel._players_that_are_camping = function ()
+function TeamAILogicTravel._players_that_are_camping()
 	slot2 = managers.player
 	local players = managers.player.players(slot1)
 	local campers = {}
@@ -434,7 +434,7 @@ TeamAILogicTravel._players_that_are_camping = function ()
 
 	return campers
 end
-TeamAILogicTravel._unit_cones = function (units, cone_depth)
+function TeamAILogicTravel._unit_cones(units, cone_depth)
 	local cones = {}
 	slot5 = units
 
@@ -470,7 +470,7 @@ TeamAILogicTravel._unit_cones = function (units, cone_depth)
 
 	return cones
 end
-TeamAILogicTravel._determine_destination_occupation = function (data, objective)
+function TeamAILogicTravel._determine_destination_occupation(data, objective)
 	local occupation = nil
 
 	if objective.type == "defend_area" then
@@ -671,7 +671,7 @@ TeamAILogicTravel._determine_destination_occupation = function (data, objective)
 
 	return occupation
 end
-TeamAILogicTravel._draw_debug_unit_cones = function (cones)
+function TeamAILogicTravel._draw_debug_unit_cones(cones)
 	slot7 = 0.5
 	slot5 = 2
 	local brush = Draw.brush(slot2, Draw, Color.green.with_alpha(slot5, Color.green))

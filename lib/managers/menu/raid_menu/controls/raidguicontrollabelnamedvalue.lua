@@ -4,7 +4,7 @@ if not RaidGUIControlLabelNamedValue then
 end
 
 RaidGUIControlLabelNamedValue = slot0
-RaidGUIControlLabelNamedValue.init = function (self, parent, params)
+function RaidGUIControlLabelNamedValue:init(parent, params)
 	slot6 = params
 	self._object = parent.panel(slot4, parent)
 	slot5 = params
@@ -37,7 +37,7 @@ RaidGUIControlLabelNamedValue.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlLabelNamedValue.set_text = function (self, text)
+function RaidGUIControlLabelNamedValue:set_text(text)
 	self._text = text
 	slot5 = text
 
@@ -45,12 +45,12 @@ RaidGUIControlLabelNamedValue.set_text = function (self, text)
 
 	return 
 end
-RaidGUIControlLabelNamedValue.text = function (self)
+function RaidGUIControlLabelNamedValue:text()
 	slot3 = self._label_text
 
 	return self._label_text.text(slot2)
 end
-RaidGUIControlLabelNamedValue.set_value = function (self, text)
+function RaidGUIControlLabelNamedValue:set_value(text)
 	slot5 = text
 
 	self._label_value.set_text(slot3, self._label_value)
@@ -68,21 +68,21 @@ RaidGUIControlLabelNamedValue.set_value = function (self, text)
 
 	return 
 end
-RaidGUIControlLabelNamedValue.value = function (self)
+function RaidGUIControlLabelNamedValue:value()
 	slot3 = self._label_value
 
 	return self._label_value.text(slot2)
 end
-RaidGUIControlLabelNamedValue.highlight_on = function (self)
+function RaidGUIControlLabelNamedValue:highlight_on()
 	return 
 end
-RaidGUIControlLabelNamedValue.highlight_off = function (self)
+function RaidGUIControlLabelNamedValue:highlight_off()
 	return 
 end
-RaidGUIControlLabelNamedValue.mouse_released = function (self, o, button, x, y)
+function RaidGUIControlLabelNamedValue:mouse_released(o, button, x, y)
 	return false
 end
-RaidGUIControlLabelNamedValue.set_label_color = function (self, color)
+function RaidGUIControlLabelNamedValue:set_label_color(color)
 	slot5 = color
 
 	self._label_value.set_color(slot3, self._label_value)
@@ -93,7 +93,7 @@ RaidGUIControlLabelNamedValue.set_label_color = function (self, color)
 
 	return 
 end
-RaidGUIControlLabelNamedValue.set_label_default_color = function (self)
+function RaidGUIControlLabelNamedValue:set_label_default_color()
 	slot4 = self._params.value_color or tweak_data.gui.colors.raid_white
 
 	self._label_value.set_color(slot2, self._label_value)

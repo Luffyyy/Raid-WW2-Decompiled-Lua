@@ -6,7 +6,7 @@ end
 InstigatorRuleUnitElement = slot0
 InstigatorRuleUnitElement.SAVE_UNIT_POSITION = false
 InstigatorRuleUnitElement.SAVE_UNIT_ROTATION = false
-InstigatorRuleUnitElement.init = function (self, unit)
+function InstigatorRuleUnitElement:init(unit)
 	slot5 = unit
 
 	InstigatorRuleUnitElement.super.init(slot3, self)
@@ -28,20 +28,20 @@ InstigatorRuleUnitElement.init = function (self, unit)
 
 	return 
 end
-InstigatorRuleUnitElement._rule_updated = function (self, category, value)
+function InstigatorRuleUnitElement:_rule_updated(category, value)
 	self._hed.rules[self._hed.instigator] = self._hed.rules[self._hed.instigator] or {}
 	self._hed.rules[self._hed.instigator][category] = (0 < #value and value) or nil
 
 	return 
 end
-InstigatorRuleUnitElement._instigator_changed = function (self, params)
+function InstigatorRuleUnitElement:_instigator_changed(params)
 	slot4 = self
 
 	self._update_rules_panel(slot3)
 
 	return 
 end
-InstigatorRuleUnitElement._build_panel = function (self, panel, panel_sizer)
+function InstigatorRuleUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -101,7 +101,7 @@ InstigatorRuleUnitElement._build_panel = function (self, panel, panel_sizer)
 
 	return 
 end
-InstigatorRuleUnitElement._update_rules_panel = function (self, panel, panel_sizer)
+function InstigatorRuleUnitElement:_update_rules_panel(panel, panel_sizer)
 	panel = self._rules_panel
 	panel_sizer = self._rules_panel_sizer
 	slot5 = self._rules_panel

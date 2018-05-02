@@ -91,7 +91,7 @@ BaseNetworkHandler._gamestate_filter = {
 		ingame_lobby_menu = true
 	}
 }
-BaseNetworkHandler._verify_in_session = function ()
+function BaseNetworkHandler._verify_in_session()
 	slot2 = managers.network
 	local session = managers.network.session(slot1)
 
@@ -107,7 +107,7 @@ BaseNetworkHandler._verify_in_session = function ()
 
 	return session
 end
-BaseNetworkHandler._verify_in_server_session = function ()
+function BaseNetworkHandler._verify_in_server_session()
 	slot2 = managers.network
 	local session = managers.network.session(slot1)
 
@@ -128,7 +128,7 @@ BaseNetworkHandler._verify_in_server_session = function ()
 
 	return session
 end
-BaseNetworkHandler._verify_in_client_session = function ()
+function BaseNetworkHandler._verify_in_client_session()
 	slot2 = managers.network
 	local session = managers.network.session(slot1)
 
@@ -149,7 +149,7 @@ BaseNetworkHandler._verify_in_client_session = function ()
 
 	return session
 end
-BaseNetworkHandler._verify_sender = function (rpc)
+function BaseNetworkHandler._verify_sender(rpc)
 	slot3 = managers.network
 	local session = managers.network.session(slot2)
 	local peer = nil
@@ -189,7 +189,7 @@ BaseNetworkHandler._verify_sender = function (rpc)
 
 	return 
 end
-BaseNetworkHandler._verify_character_and_sender = function (unit, rpc)
+function BaseNetworkHandler._verify_character_and_sender(unit, rpc)
 	slot4 = rpc
 
 	if BaseNetworkHandler._verify_sender(slot3) then
@@ -199,7 +199,7 @@ BaseNetworkHandler._verify_character_and_sender = function (unit, rpc)
 
 	return slot2
 end
-BaseNetworkHandler._verify_character = function (unit)
+function BaseNetworkHandler._verify_character(unit)
 	slot3 = unit
 
 	if alive(slot2) then
@@ -210,7 +210,7 @@ BaseNetworkHandler._verify_character = function (unit)
 
 	return slot1
 end
-BaseNetworkHandler._verify_gamestate = function (acceptable_gamestates)
+function BaseNetworkHandler._verify_gamestate(acceptable_gamestates)
 	slot3 = game_state_machine
 	local correct_state = acceptable_gamestates[game_state_machine.last_queued_state_name(slot2)]
 
@@ -229,7 +229,7 @@ BaseNetworkHandler._verify_gamestate = function (acceptable_gamestates)
 
 	return 
 end
-BaseNetworkHandler._chk_flush_unit_too_early_packets = function (self, unit)
+function BaseNetworkHandler:_chk_flush_unit_too_early_packets(unit)
 	if self._flushing_unit_too_early_packets then
 		return 
 	end
@@ -287,7 +287,7 @@ BaseNetworkHandler._chk_flush_unit_too_early_packets = function (self, unit)
 
 	return 
 end
-BaseNetworkHandler._chk_unit_too_early = function (self, unit, unit_id_str, fun_name, unit_param_index, ...)
+function BaseNetworkHandler:_chk_unit_too_early(unit, unit_id_str, fun_name, unit_param_index, ...)
 	if self._flushing_unit_too_early_packets then
 		return 
 	end

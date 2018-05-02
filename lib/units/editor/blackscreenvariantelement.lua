@@ -4,7 +4,7 @@ if not BlackscreenVariantElement then
 end
 
 BlackscreenVariantElement = slot0
-BlackscreenVariantElement.init = function (self, unit)
+function BlackscreenVariantElement:init(unit)
 	slot5 = unit
 
 	BlackscreenVariantElement.super.init(slot3, self)
@@ -16,7 +16,7 @@ BlackscreenVariantElement.init = function (self, unit)
 
 	return 
 end
-BlackscreenVariantElement._build_panel = function (self, panel, panel_sizer)
+function BlackscreenVariantElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -45,7 +45,7 @@ BlackscreenVariantElement._build_panel = function (self, panel, panel_sizer)
 
 	return 
 end
-BlackscreenVariantElement._get_params = function (self, panel, panel_sizer)
+function BlackscreenVariantElement:_get_params(panel, panel_sizer)
 	local bscreen_params = {
 		default = "0",
 		name = "Blackscreen variant:",
@@ -99,14 +99,14 @@ if not EndscreenVariantElement then
 end
 
 EndscreenVariantElement = slot0
-EndscreenVariantElement.init = function (self, unit)
+function EndscreenVariantElement:init(unit)
 	slot5 = unit
 
 	EndscreenVariantElement.super.init(slot3, self)
 
 	return 
 end
-EndscreenVariantElement._get_params = function (self, panel, panel_sizer)
+function EndscreenVariantElement:_get_params(panel, panel_sizer)
 	local bscreen_params = {
 		default = "0",
 		name = "Endscreen variant:",

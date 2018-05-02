@@ -20,14 +20,14 @@ if not Material_configDependencyNode then
 end
 
 Material_configDependencyNode = slot0
-Material_configDependencyNode.init = function (self, name, get_dn_cb, database)
+function Material_configDependencyNode:init(name, get_dn_cb, database)
 	slot11 = database
 
 	self.super.init(slot5, self, MATERIAL_CONFIG, "material_config", name, get_dn_cb)
 
 	return 
 end
-Material_configDependencyNode._walkxml2dependencies = function (self, xmlnode, deps)
+function Material_configDependencyNode:_walkxml2dependencies(xmlnode, deps)
 	local mf = self._get_dn(slot4)
 	slot7 = mf
 

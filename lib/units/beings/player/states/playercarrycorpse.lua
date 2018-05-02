@@ -4,14 +4,14 @@ if not PlayerCarryCorpse then
 end
 
 PlayerCarryCorpse = slot0
-PlayerCarryCorpse.init = function (self, unit)
+function PlayerCarryCorpse:init(unit)
 	slot5 = unit
 
 	PlayerCarryCorpse.super.init(slot3, self)
 
 	return 
 end
-PlayerCarryCorpse.enter = function (self, state_data, enter_data)
+function PlayerCarryCorpse:enter(state_data, enter_data)
 	if enter_data then
 		enter_data.skip_equip = true
 	end
@@ -69,7 +69,7 @@ PlayerCarryCorpse.enter = function (self, state_data, enter_data)
 
 	return 
 end
-PlayerCarryCorpse._enter = function (self, enter_data)
+function PlayerCarryCorpse:_enter(enter_data)
 	slot5 = enter_data
 
 	PlayerCarryCorpse.super._enter(slot3, self)
@@ -84,7 +84,7 @@ PlayerCarryCorpse._enter = function (self, enter_data)
 
 	return 
 end
-PlayerCarryCorpse.exit = function (self, state_data, new_state_name)
+function PlayerCarryCorpse:exit(state_data, new_state_name)
 	slot5 = self._unit
 	slot5 = self._unit.camera(slot4)
 	slot8 = "carry_corpse_unequip"
@@ -97,14 +97,14 @@ PlayerCarryCorpse.exit = function (self, state_data, new_state_name)
 
 	return exit_data
 end
-PlayerCarryCorpse.update = function (self, t, dt)
+function PlayerCarryCorpse:update(t, dt)
 	slot7 = dt
 
 	PlayerCarryCorpse.super.update(slot4, self, t)
 
 	return 
 end
-PlayerCarryCorpse.set_tweak_data = function (self, name)
+function PlayerCarryCorpse:set_tweak_data(name)
 	self._tweak_data_name = name
 	slot4 = self
 
@@ -112,13 +112,13 @@ PlayerCarryCorpse.set_tweak_data = function (self, name)
 
 	return 
 end
-PlayerCarryCorpse._check_change_weapon = function (self, ...)
+function PlayerCarryCorpse:_check_change_weapon(...)
 	return false
 end
-PlayerCarryCorpse._check_action_equip = function (self, ...)
+function PlayerCarryCorpse:_check_action_equip(...)
 	return false
 end
-PlayerCarryCorpse._check_action_interact = function (self, t, input)
+function PlayerCarryCorpse:_check_action_interact(t, input)
 	local new_action, timer, interact_object = nil
 
 	if input.btn_interact_press then
@@ -144,21 +144,21 @@ PlayerCarryCorpse._check_action_interact = function (self, t, input)
 
 	return new_action
 end
-PlayerCarryCorpse._update_movement = function (self, t, dt)
+function PlayerCarryCorpse:_update_movement(t, dt)
 	slot7 = dt
 
 	PlayerCarryCorpse.super._update_movement(slot4, self, t)
 
 	return 
 end
-PlayerCarryCorpse._start_action_jump = function (self, ...)
+function PlayerCarryCorpse:_start_action_jump(...)
 	slot3 = self
 
 	PlayerCarryCorpse.super._start_action_jump(slot2, ...)
 
 	return 
 end
-PlayerCarryCorpse._perform_jump = function (self, jump_vec)
+function PlayerCarryCorpse:_perform_jump(jump_vec)
 	slot6 = "movement_penalty_nullifier"
 
 	if not managers.player.has_category_upgrade(slot3, managers.player, "carry") then
@@ -178,7 +178,7 @@ PlayerCarryCorpse._perform_jump = function (self, jump_vec)
 
 	return 
 end
-PlayerCarryCorpse._update_check_actions = function (self, t, dt)
+function PlayerCarryCorpse:_update_check_actions(t, dt)
 	slot7 = dt
 	local input = self._get_input(slot4, self, t)
 	slot6 = self

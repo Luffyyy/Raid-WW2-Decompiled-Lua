@@ -15,14 +15,14 @@ if not ShapeUnitElement then
 end
 
 ShapeUnitElement = slot0
-ShapeUnitElement.init = function (self, ...)
+function ShapeUnitElement:init(...)
 	slot3 = self
 
 	CoreShapeUnitElement.init(slot2, ...)
 
 	return 
 end
-CoreShapeUnitElement.init = function (self, unit)
+function CoreShapeUnitElement:init(unit)
 	slot5 = unit
 
 	MissionElement.init(slot3, self)
@@ -69,7 +69,7 @@ CoreShapeUnitElement.init = function (self, unit)
 
 	return 
 end
-CoreShapeUnitElement.update_selected = function (self, t, dt, selected_unit, all_units)
+function CoreShapeUnitElement:update_selected(t, dt, selected_unit, all_units)
 	slot7 = self
 	local shape = self.get_shape(slot6)
 
@@ -81,7 +81,7 @@ CoreShapeUnitElement.update_selected = function (self, t, dt, selected_unit, all
 
 	return 
 end
-CoreShapeUnitElement.get_shape = function (self)
+function CoreShapeUnitElement:get_shape()
 	if not self._shape then
 		slot3 = self
 
@@ -90,7 +90,7 @@ CoreShapeUnitElement.get_shape = function (self)
 
 	return (self._hed.shape_type == "box" and self._shape) or (self._hed.shape_type == "cylinder" and self._cylinder_shape)
 end
-CoreShapeUnitElement.set_shape_property = function (self, params)
+function CoreShapeUnitElement:set_shape_property(params)
 	slot6 = self._hed[params.value]
 
 	self._shape.set_property(slot3, self._shape, params.property)
@@ -101,7 +101,7 @@ CoreShapeUnitElement.set_shape_property = function (self, params)
 
 	return 
 end
-CoreShapeUnitElement._set_shape_type = function (self)
+function CoreShapeUnitElement:_set_shape_type()
 	local is_box = self._hed.shape_type == "box"
 	local is_cylinder = self._hed.shape_type == "cylinder"
 	local is_unit = self._hed.shape_type == "unit"
@@ -147,7 +147,7 @@ CoreShapeUnitElement._set_shape_type = function (self)
 
 	return 
 end
-CoreShapeUnitElement._create_shapes = function (self)
+function CoreShapeUnitElement:_create_shapes()
 	slot4 = {
 		width = self._hed.width,
 		depth = self._hed.depth,
@@ -169,7 +169,7 @@ CoreShapeUnitElement._create_shapes = function (self)
 
 	return 
 end
-CoreShapeUnitElement.set_element_data = function (self, params, ...)
+function CoreShapeUnitElement:set_element_data(params, ...)
 	slot5 = params
 
 	CoreShapeUnitElement.super.set_element_data(slot3, self, ...)
@@ -182,7 +182,7 @@ CoreShapeUnitElement.set_element_data = function (self, params, ...)
 
 	return 
 end
-CoreShapeUnitElement._build_panel = function (self, panel, panel_sizer)
+function CoreShapeUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -335,7 +335,7 @@ CoreShapeUnitElement._build_panel = function (self, panel, panel_sizer)
 
 	return 
 end
-CoreShapeUnitElement.scale_slider = function (self, panel, sizer, number_ctrlr_params, value, name)
+function CoreShapeUnitElement:scale_slider(panel, sizer, number_ctrlr_params, value, name)
 	slot9 = "HORIZONTAL"
 	local slider_sizer = EWS.BoxSizer(slot7, EWS)
 	slot16 = "ALIGN_LEFT"
@@ -391,7 +391,7 @@ CoreShapeUnitElement.scale_slider = function (self, panel, sizer, number_ctrlr_p
 
 	return 
 end
-CoreShapeUnitElement.set_size = function (self, params)
+function CoreShapeUnitElement:set_size(params)
 	slot5 = params.ctrlr
 	local value = (self._hed[params.value] * params.ctrlr.get_value(slot4)) / 100
 	slot7 = value
@@ -408,7 +408,7 @@ CoreShapeUnitElement.set_size = function (self, params)
 
 	return 
 end
-CoreShapeUnitElement.size_release = function (self, params)
+function CoreShapeUnitElement:size_release(params)
 	self._hed[params.value] = params.number_ctrlr_params.value
 	slot5 = 100
 
@@ -416,7 +416,7 @@ CoreShapeUnitElement.size_release = function (self, params)
 
 	return 
 end
-CoreShapeUnitElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function CoreShapeUnitElement:draw_links(t, dt, selected_unit, all_units)
 	slot11 = all_units
 
 	MissionElement.draw_links(slot6, self, t, dt, selected_unit)
@@ -457,7 +457,7 @@ CoreShapeUnitElement.draw_links = function (self, t, dt, selected_unit, all_unit
 
 	return 
 end
-CoreShapeUnitElement.add_element = function (self)
+function CoreShapeUnitElement:add_element()
 	slot4 = {
 		ray_type = "body editor",
 		sample = true,
@@ -484,14 +484,14 @@ CoreShapeUnitElement.add_element = function (self)
 
 	return 
 end
-CoreShapeUnitElement._add_unit_id = function (self, id)
+function CoreShapeUnitElement:_add_unit_id(id)
 	slot5 = id
 
 	table.insert(slot3, self._hed.unit_ids)
 
 	return 
 end
-CoreShapeUnitElement._remove_unit_id = function (self, id)
+function CoreShapeUnitElement:_remove_unit_id(id)
 	slot5 = id
 
 	table.delete(slot3, self._hed.unit_ids)
@@ -500,10 +500,10 @@ CoreShapeUnitElement._remove_unit_id = function (self, id)
 
 	return 
 end
-CoreShapeUnitElement.update_editing = function (self)
+function CoreShapeUnitElement:update_editing()
 	return 
 end
-CoreShapeUnitElement.add_triggers = function (self, vc)
+function CoreShapeUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "add_element"
 

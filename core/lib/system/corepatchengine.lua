@@ -1,29 +1,29 @@
 -- WARNING: Error occurred during decompilation.
 --   Code may be incomplete or incorrect.
-function Idstring:id()
+Idstring.id = function (self)
 	return self
 end
-function string:id()
+string.id = function (self)
 	slot3 = self
 
 	return Idstring(slot2)
 end
-function string:t()
+string.t = function (self)
 	slot3 = self
 	slot3 = Idstring(slot2)
 
 	return Idstring(slot2).t(slot2)
 end
-function string:s()
+string.s = function (self)
 	return self
 end
-function string:key()
+string.key = function (self)
 	slot3 = self
 	slot3 = Idstring(slot2)
 
 	return Idstring(slot2).key(slot2)
 end
-function string:raw()
+string.raw = function (self)
 	slot3 = self
 	slot3 = Idstring(slot2)
 
@@ -36,13 +36,13 @@ if Vector3 then
 
 		return tostring(slot3) .. tostring(o1)
 	end
-	function Vector3:flat(v)
+	Vector3.flat = function (self, v)
 		slot7 = self
 		slot5 = v
 
 		return math.cross(slot3, math.cross(slot5, v))
 	end
-	function Vector3:orthogonal(ratio)
+	Vector3.orthogonal = function (self, ratio)
 		slot4 = self
 		slot4 = ratio
 
@@ -50,7 +50,7 @@ if Vector3 then
 		-- Decompilation error in this vicinity:
 		self.orthogonal_func(slot3)(slot3)
 	end
-	function Vector3:orthogonal_func(start_dir)
+	Vector3.orthogonal_func = function (self, start_dir)
 		slot2 = Rotation
 		slot4 = self
 
@@ -69,13 +69,13 @@ if Vector3 then
 			return -rot.z(slot2) * math.cos(rot) + rot.x(rot) * math.cos(rot).normalized(rot.x(rot) * math.cos(rot))
 		end
 	end
-	function Vector3:unpack()
+	Vector3.unpack = function (self)
 		return self.x, self.y, self.z
 	end
 end
 
 if Color then
-	function Color:unpack()
+	Color.unpack = function (self)
 		return self.r, self.g, self.b
 	end
 end
@@ -84,7 +84,7 @@ slot2 = Application
 local AppClass = getmetatable(slot1)
 
 if AppClass then
-	function AppClass:draw_box(s_pos, e_pos, r, g, b)
+	AppClass.draw_box = function (self, s_pos, e_pos, r, g, b)
 		slot14 = s_pos.z
 		slot13 = b
 
@@ -156,7 +156,7 @@ if AppClass then
 
 		return 
 	end
-	function AppClass:draw_box_rotation(pos, rot, width, depth, height, r, g, b)
+	AppClass.draw_box_rotation = function (self, pos, rot, width, depth, height, r, g, b)
 		local c1 = pos
 		local c2 = pos + rot.x(slot11) * width
 		local c3 = pos + rot.y(rot) * depth
@@ -216,7 +216,7 @@ if AppClass then
 
 		return 
 	end
-	function AppClass:draw_rotation_size(pos, rot, size)
+	AppClass.draw_rotation_size = function (self, pos, rot, size)
 		slot10 = rot
 		slot11 = 0
 
@@ -234,7 +234,7 @@ if AppClass then
 
 		return 
 	end
-	function AppClass:draw_arrow(from, to, r, g, b, scale)
+	AppClass.draw_arrow = function (self, from, to, r, g, b, scale)
 		scale = scale or 1
 		local len = to - from.length(slot8)
 		slot10 = to - from
@@ -250,7 +250,7 @@ if AppClass then
 
 		return 
 	end
-	function AppClass:stack_dump_error(...)
+	AppClass.stack_dump_error = function (self, ...)
 		slot3 = Application
 
 		Application.error(slot2, ...)
@@ -268,7 +268,7 @@ if Draw then
 
 	Draw.pen(slot2)
 
-	function Pen:arrow(from, to, scale)
+	Pen.arrow = function (self, from, to, scale)
 		scale = scale or 1
 		local len = to - from.length(slot5)
 		slot7 = to - from
@@ -323,7 +323,7 @@ if SteamClass then
 		return 
 	end
 
-	function SteamClass:http_request(path, clbk, id_key)
+	SteamClass.http_request = function (self, path, clbk, id_key)
 		if id_key then
 			if current_request and current_request[3] and current_request[3] == id_key then
 				return 

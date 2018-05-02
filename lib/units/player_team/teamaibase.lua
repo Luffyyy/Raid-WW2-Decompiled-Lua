@@ -4,7 +4,7 @@ if not TeamAIBase then
 end
 
 TeamAIBase = slot0
-TeamAIBase.post_init = function (self)
+function TeamAIBase:post_init()
 	slot3 = self._unit
 	self._ext_movement = self._unit.movement(slot2)
 	slot3 = self._unit
@@ -34,19 +34,19 @@ TeamAIBase.post_init = function (self)
 
 	return 
 end
-TeamAIBase.nick_name = function (self)
+function TeamAIBase:nick_name()
 	local name = self._tweak_table
 	slot5 = "menu_" .. name
 
 	return managers.localization.text(slot3, managers.localization)
 end
-TeamAIBase.default_weapon_name = function (self, slot)
+function TeamAIBase:default_weapon_name(slot)
 	return tweak_data.character[self._tweak_table].weapon.weapons_of_choice[slot or "primary"]
 end
-TeamAIBase.arrest_settings = function (self)
+function TeamAIBase:arrest_settings()
 	return tweak_data.character[self._tweak_table].arrest
 end
-TeamAIBase.pre_destroy = function (self, unit)
+function TeamAIBase:pre_destroy(unit)
 	slot4 = self
 
 	self.remove_from_vehicle(slot3)
@@ -61,14 +61,14 @@ TeamAIBase.pre_destroy = function (self, unit)
 
 	return 
 end
-TeamAIBase.save = function (self, data)
+function TeamAIBase:save(data)
 	data.base = {
 		tweak_table = self._tweak_table
 	}
 
 	return 
 end
-TeamAIBase.on_death_exit = function (self)
+function TeamAIBase:on_death_exit()
 	slot3 = self
 
 	TeamAIBase.super.on_death_exit(slot2)
@@ -83,7 +83,7 @@ TeamAIBase.on_death_exit = function (self)
 
 	return 
 end
-TeamAIBase._register = function (self)
+function TeamAIBase:_register()
 	if not self._registered then
 		slot3 = managers.groupai
 		slot4 = self._unit
@@ -95,7 +95,7 @@ TeamAIBase._register = function (self)
 
 	return 
 end
-TeamAIBase.unregister = function (self)
+function TeamAIBase:unregister()
 	if self._registered then
 		slot3 = Network
 
@@ -124,7 +124,7 @@ TeamAIBase.unregister = function (self)
 
 	return 
 end
-TeamAIBase.remove_from_vehicle = function (self)
+function TeamAIBase:remove_from_vehicle()
 	slot3 = self._unit
 	local unit_movement = self._unit.movement(slot2)
 
@@ -137,7 +137,7 @@ TeamAIBase.remove_from_vehicle = function (self)
 
 	return 
 end
-TeamAIBase.chk_freeze_anims = function (self)
+function TeamAIBase:chk_freeze_anims()
 	return 
 end
 

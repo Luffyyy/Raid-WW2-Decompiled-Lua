@@ -6,14 +6,14 @@ if not VehicleStateBroken then
 end
 
 VehicleStateBroken = slot0
-VehicleStateBroken.init = function (self, unit)
+function VehicleStateBroken:init(unit)
 	slot5 = unit
 
 	BaseVehicleState.init(slot3, self)
 
 	return 
 end
-VehicleStateBroken.enter = function (self, state_data, enter_data)
+function VehicleStateBroken:enter(state_data, enter_data)
 	slot5 = self._unit
 	slot5 = self._unit.vehicle_driving(slot4)
 
@@ -65,7 +65,7 @@ VehicleStateBroken.enter = function (self, state_data, enter_data)
 
 	return 
 end
-VehicleStateBroken.adjust_interactions = function (self)
+function VehicleStateBroken:adjust_interactions()
 	slot3 = self
 
 	VehicleStateBroken.super.adjust_interactions(slot2)
@@ -121,7 +121,7 @@ VehicleStateBroken.adjust_interactions = function (self)
 
 	return 
 end
-VehicleStateBroken.get_action_for_interaction = function (self, pos, locator, tweak_data)
+function VehicleStateBroken:get_action_for_interaction(pos, locator, tweak_data)
 	local action = VehicleDrivingExt.INTERACT_INVALID
 	slot7 = self._unit
 	local seat, seat_distance = self._unit.vehicle_driving(slot6).get_available_seat(slot6, self._unit.vehicle_driving(slot6))
@@ -142,10 +142,10 @@ VehicleStateBroken.get_action_for_interaction = function (self, pos, locator, tw
 
 	return action
 end
-VehicleStateBroken.stop_vehicle = function (self)
+function VehicleStateBroken:stop_vehicle()
 	return true
 end
-VehicleStateBroken.exit = function (self, state_data)
+function VehicleStateBroken:exit(state_data)
 	slot4 = self._unit
 	slot4 = self._unit.vehicle_driving(slot3)
 

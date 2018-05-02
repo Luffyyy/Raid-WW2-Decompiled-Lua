@@ -15,7 +15,7 @@ slot3 = "CoreInputContext"
 core.import(slot1, core)
 
 Layer = Layer or class()
-Layer.init = function (self, input_provider, layer_description)
+function Layer:init(input_provider, layer_description)
 	slot5 = CoreInputContextStack.Stack
 	self._input_context_stack = CoreInputContextStack.Stack.new(slot4)
 	self._layer_description = layer_description
@@ -23,7 +23,7 @@ Layer.init = function (self, input_provider, layer_description)
 
 	return 
 end
-Layer.destroy = function (self)
+function Layer:destroy()
 	slot3 = self._input_context_stack
 
 	self._input_context_stack.destroy(slot2)
@@ -34,15 +34,15 @@ Layer.destroy = function (self)
 
 	return 
 end
-Layer.context = function (self)
+function Layer:context()
 	slot3 = self._input_context_stack
 
 	return self._input_context_stack.active_context(slot2)
 end
-Layer.layer_description = function (self)
+function Layer:layer_description()
 	return self._layer_description
 end
-Layer.create_context = function (self)
+function Layer:create_context()
 	local context_description = self._layer_description.context_description(slot2)
 	slot6 = self._input_context_stack
 

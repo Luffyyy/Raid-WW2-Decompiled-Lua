@@ -4,7 +4,7 @@ if not VehicleStateInvalid then
 end
 
 VehicleStateInvalid = slot0
-VehicleStateInvalid.init = function (self, unit)
+function VehicleStateInvalid:init(unit)
 	slot5 = unit
 
 	BaseVehicleState.init(slot3, self)

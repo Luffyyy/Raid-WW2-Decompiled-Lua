@@ -1,15 +1,15 @@
 AmmoPickup = AmmoPickup or class()
-AmmoPickup.init = function (self, unit)
+function AmmoPickup:init(unit)
 	self._unit = unit
 
 	return 
 end
-AmmoPickup.set_multiplier = function (self, mul)
+function AmmoPickup:set_multiplier(mul)
 	self._ammo_mul = mul
 
 	return 
 end
-AmmoPickup.pickup = function (self)
+function AmmoPickup:pickup()
 	if self._ammo_mul then
 		slot3 = managers.player
 		local player_unit = managers.player.player_unit(slot2)

@@ -18,14 +18,14 @@ if not ModelDependencyNode then
 end
 
 ModelDependencyNode = slot0
-ModelDependencyNode.init = function (self, name, get_dn_cb, database)
+function ModelDependencyNode:init(name, get_dn_cb, database)
 	slot11 = database
 
 	self.super.init(slot5, self, MODEL, "model", name, get_dn_cb)
 
 	return 
 end
-ModelDependencyNode._parse = function (self)
+function ModelDependencyNode:_parse()
 	return {}
 end
 

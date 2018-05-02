@@ -1,5 +1,5 @@
 CoreEnvEditor = CoreEnvEditor or class()
-CoreEnvEditor.create_interface = function (self)
+function CoreEnvEditor:create_interface()
 	slot4 = "sun_ray_color"
 	slot12 = "Global illumination"
 	local gui = self.add_sky_param(slot2, self, EnvEdColorBox.new(slot6, EnvEdColorBox, self, self.get_tab("Sun color", self)))
@@ -308,7 +308,7 @@ CoreEnvEditor.create_interface = function (self)
 
 	return 
 end
-CoreEnvEditor.create_simple_interface = function (self)
+function CoreEnvEditor:create_simple_interface()
 	return 
 end
 

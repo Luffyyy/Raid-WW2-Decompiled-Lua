@@ -263,7 +263,7 @@ slot0 = CoreCutsceneKey or {
 	_classes = {}
 }
 CoreCutsceneKey = slot0
-CoreCutsceneKey.create = function (self, element_name, key_collection)
+function CoreCutsceneKey:create(element_name, key_collection)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -277,7 +277,7 @@ CoreCutsceneKey.create = function (self, element_name, key_collection)
 
 
 end
-CoreCutsceneKey.register_class = function (self, path)
+function CoreCutsceneKey:register_class(path)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-28, warpins: 1 ---
@@ -342,7 +342,7 @@ CoreCutsceneKey.register_class = function (self, path)
 
 
 end
-CoreCutsceneKey.types = function (self)
+function CoreCutsceneKey:types()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -433,7 +433,7 @@ CoreCutsceneKey.types = function (self)
 
 
 end
-CoreCutsceneKey.next_available_colour = function (self)
+function CoreCutsceneKey:next_available_colour()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -486,7 +486,7 @@ CoreCutsceneKey.next_available_colour = function (self)
 
 
 end
-CoreCutsceneKey.colour_palette = function (self)
+function CoreCutsceneKey:colour_palette()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---

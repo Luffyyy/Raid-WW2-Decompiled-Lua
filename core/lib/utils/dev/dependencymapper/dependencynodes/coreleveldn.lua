@@ -40,14 +40,14 @@ if not LevelDependencyNode then
 end
 
 LevelDependencyNode = slot0
-LevelDependencyNode.init = function (self, name, get_dn_cb, database)
+function LevelDependencyNode:init(name, get_dn_cb, database)
 	slot11 = database
 
 	self.super.init(slot5, self, LEVEL, nil, name, get_dn_cb)
 
 	return 
 end
-LevelDependencyNode._parse = function (self)
+function LevelDependencyNode:_parse()
 	slot4 = self._name
 	local file = string.format(slot2, LEVEL_FILE)
 	local f = File.open(LEVEL_FILE, File, file)
@@ -71,7 +71,7 @@ LevelDependencyNode._parse = function (self)
 		mission_node
 	}
 end
-LevelDependencyNode._walkxml2dependencies = function (self, xmlnode, deps)
+function LevelDependencyNode:_walkxml2dependencies(xmlnode, deps)
 	slot5 = xmlnode
 	local node_name = xmlnode.name(slot4)
 

@@ -8,14 +8,14 @@ if not ElementSpecialObjectiveTrigger then
 end
 
 ElementSpecialObjectiveTrigger = slot0
-ElementSpecialObjectiveTrigger.init = function (self, ...)
+function ElementSpecialObjectiveTrigger:init(...)
 	slot3 = self
 
 	ElementSpecialObjectiveTrigger.super.init(slot2, ...)
 
 	return 
 end
-ElementSpecialObjectiveTrigger.on_script_activated = function (self)
+function ElementSpecialObjectiveTrigger:on_script_activated()
 	slot3 = self._values.elements
 
 	for _, id in ipairs(slot2) do
@@ -29,7 +29,7 @@ ElementSpecialObjectiveTrigger.on_script_activated = function (self)
 
 	return 
 end
-ElementSpecialObjectiveTrigger.on_executed = function (self, instigator)
+function ElementSpecialObjectiveTrigger:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

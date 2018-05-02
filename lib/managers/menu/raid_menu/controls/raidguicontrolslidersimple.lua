@@ -13,7 +13,7 @@ RaidGUIControlSliderSimple.SLIDER_HIGHLIGHT_COLOR = tweak_data.gui.colors.raid_r
 RaidGUIControlSliderSimple.DISABLED_COLOR = tweak_data.gui.colors.raid_dark_grey
 RaidGUIControlSliderSimple.SLIDER_LINE_HEIGHT = 4
 RaidGUIControlSliderSimple.CONTROLLER_STEP = 4
-RaidGUIControlSliderSimple.init = function (self, parent, params)
+function RaidGUIControlSliderSimple:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlSliderSimple.super.init(slot4, self, parent)
@@ -47,7 +47,7 @@ RaidGUIControlSliderSimple.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlSliderSimple._create_slider_panel = function (self)
+function RaidGUIControlSliderSimple:_create_slider_panel()
 	local slider_params = clone(slot2)
 	slider_params.name = slider_params.name .. "_simple_slider"
 	slot4 = self._panel
@@ -60,7 +60,7 @@ RaidGUIControlSliderSimple._create_slider_panel = function (self)
 
 	return 
 end
-RaidGUIControlSliderSimple._create_slider_controls = function (self)
+function RaidGUIControlSliderSimple:_create_slider_controls()
 	local w = self._params.w or RaidGUIControlSliderSimple.DEFAULT_WIDTH
 	slot5 = {
 		name = self._name .. "_slider_line_panel",
@@ -118,7 +118,7 @@ RaidGUIControlSliderSimple._create_slider_controls = function (self)
 
 	return 
 end
-RaidGUIControlSliderSimple.on_mouse_pressed = function (self)
+function RaidGUIControlSliderSimple:on_mouse_pressed()
 	if not self._enabled then
 		return 
 	end
@@ -136,7 +136,7 @@ RaidGUIControlSliderSimple.on_mouse_pressed = function (self)
 
 	return 
 end
-RaidGUIControlSliderSimple.on_mouse_released = function (self)
+function RaidGUIControlSliderSimple:on_mouse_released()
 	if not self._enabled then
 		return 
 	end
@@ -152,7 +152,7 @@ RaidGUIControlSliderSimple.on_mouse_released = function (self)
 
 	return 
 end
-RaidGUIControlSliderSimple.on_mouse_moved = function (self, o, x, y)
+function RaidGUIControlSliderSimple:on_mouse_moved(o, x, y)
 	if not self._enabled then
 		return 
 	end
@@ -174,7 +174,7 @@ RaidGUIControlSliderSimple.on_mouse_moved = function (self, o, x, y)
 
 	return 
 end
-RaidGUIControlSliderSimple.on_mouse_out = function (self, x, y)
+function RaidGUIControlSliderSimple:on_mouse_out(x, y)
 	slot7 = y
 
 	RaidGUIControlSliderSimple.super.on_mouse_out(slot4, self, x)
@@ -185,7 +185,7 @@ RaidGUIControlSliderSimple.on_mouse_out = function (self, x, y)
 
 	return 
 end
-RaidGUIControlSliderSimple.set_enabled = function (self, enabled)
+function RaidGUIControlSliderSimple:set_enabled(enabled)
 	slot5 = enabled
 
 	RaidGUIControlSliderSimple.super.set_enabled(slot3, self)
@@ -218,7 +218,7 @@ RaidGUIControlSliderSimple.set_enabled = function (self, enabled)
 
 	return 
 end
-RaidGUIControlSliderSimple.set_value_by_x_coord = function (self, selected_coord_x)
+function RaidGUIControlSliderSimple:set_value_by_x_coord(selected_coord_x)
 	slot4 = self._slider_line_panel
 	local value = selected_coord_x / self._slider_line_panel.w(slot3) * 100
 
@@ -236,15 +236,15 @@ RaidGUIControlSliderSimple.set_value_by_x_coord = function (self, selected_coord
 
 	return 
 end
-RaidGUIControlSliderSimple.get_value = function (self)
+function RaidGUIControlSliderSimple:get_value()
 	return self._value
 end
-RaidGUIControlSliderSimple.set_value = function (self, value)
+function RaidGUIControlSliderSimple:set_value(value)
 	self._value = value
 
 	return 
 end
-RaidGUIControlSliderSimple.set_value_and_render = function (self, value)
+function RaidGUIControlSliderSimple:set_value_and_render(value)
 	slot5 = value
 
 	self.set_value(slot3, self)
@@ -259,7 +259,7 @@ RaidGUIControlSliderSimple.set_value_and_render = function (self, value)
 
 	return 
 end
-RaidGUIControlSliderSimple.render_value = function (self)
+function RaidGUIControlSliderSimple:render_value()
 	slot5 = 100
 	self._value = math.clamp(slot2, self._value, 0)
 	slot4 = self._slider_line_panel
@@ -275,7 +275,7 @@ RaidGUIControlSliderSimple.render_value = function (self)
 
 	return 
 end
-RaidGUIControlSliderSimple.highlight_on = function (self)
+function RaidGUIControlSliderSimple:highlight_on()
 	if not self._enabled then
 		return 
 	end
@@ -292,7 +292,7 @@ RaidGUIControlSliderSimple.highlight_on = function (self)
 
 	return 
 end
-RaidGUIControlSliderSimple.highlight_off = function (self)
+function RaidGUIControlSliderSimple:highlight_off()
 	if not self._enabled then
 		return 
 	end
@@ -309,21 +309,21 @@ RaidGUIControlSliderSimple.highlight_off = function (self)
 
 	return 
 end
-RaidGUIControlSliderSimple.set_right = function (self, value)
+function RaidGUIControlSliderSimple:set_right(value)
 	slot5 = value
 
 	self._object.set_right(slot3, self._object)
 
 	return 
 end
-RaidGUIControlSliderSimple.set_left = function (self, value)
+function RaidGUIControlSliderSimple:set_left(value)
 	slot5 = value
 
 	self._object.set_left(slot3, self._object)
 
 	return 
 end
-RaidGUIControlSliderSimple.move_left = function (self)
+function RaidGUIControlSliderSimple:move_left()
 	slot6 = self._selected
 
 	Application.trace(slot2, Application, "[RaidGUIControlSliderSimple:move_left] ", self._name)
@@ -339,7 +339,7 @@ RaidGUIControlSliderSimple.move_left = function (self)
 
 	return 
 end
-RaidGUIControlSliderSimple.move_right = function (self)
+function RaidGUIControlSliderSimple:move_right()
 	slot6 = self._selected
 
 	Application.trace(slot2, Application, "[RaidGUIControlSliderSimple:move_right] ", self._name)
@@ -355,7 +355,7 @@ RaidGUIControlSliderSimple.move_right = function (self)
 
 	return 
 end
-RaidGUIControlSliderSimple._animate_highlight_on = function (self)
+function RaidGUIControlSliderSimple:_animate_highlight_on()
 	local t = 0
 	slot4 = self._slider_line_active
 	local starting_color = self._slider_line_active.color(slot3)
@@ -390,7 +390,7 @@ RaidGUIControlSliderSimple._animate_highlight_on = function (self)
 
 	return 
 end
-RaidGUIControlSliderSimple._animate_highlight_off = function (self)
+function RaidGUIControlSliderSimple:_animate_highlight_off()
 	local t = 0
 	slot4 = self._slider_line_active
 	local starting_color = self._slider_line_active.color(slot3)
@@ -425,7 +425,7 @@ RaidGUIControlSliderSimple._animate_highlight_off = function (self)
 
 	return 
 end
-RaidGUIControlSliderSimple._animate_thumb_press = function (self)
+function RaidGUIControlSliderSimple:_animate_thumb_press()
 	local t = 0
 	local original_w = tweak_data.gui.icons[RaidGUIControlSliderSimple.SLIDER_ICON].texture_rect[3]
 	local original_h = tweak_data.gui.icons[RaidGUIControlSliderSimple.SLIDER_ICON].texture_rect[4]
@@ -467,7 +467,7 @@ RaidGUIControlSliderSimple._animate_thumb_press = function (self)
 
 	return 
 end
-RaidGUIControlSliderSimple._animate_thumb_release = function (self)
+function RaidGUIControlSliderSimple:_animate_thumb_release()
 	local t = 0
 	local duration = 0.25
 	local target_w = tweak_data.gui.icons[RaidGUIControlSliderSimple.SLIDER_ICON].texture_rect[3]

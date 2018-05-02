@@ -11,14 +11,14 @@ if not WorldCameraTriggerUnitElement then
 end
 
 WorldCameraTriggerUnitElement = slot0
-WorldCameraTriggerUnitElement.init = function (self, ...)
+function WorldCameraTriggerUnitElement:init(...)
 	slot3 = self
 
 	CoreWorldCameraTriggerUnitElement.init(slot2, ...)
 
 	return 
 end
-CoreWorldCameraTriggerUnitElement.init = function (self, unit)
+function CoreWorldCameraTriggerUnitElement:init(unit)
 	slot5 = unit
 
 	MissionElement.init(slot3, self)
@@ -35,7 +35,7 @@ CoreWorldCameraTriggerUnitElement.init = function (self, unit)
 
 	return 
 end
-CoreWorldCameraTriggerUnitElement.selected = function (self)
+function CoreWorldCameraTriggerUnitElement:selected()
 	slot3 = self
 
 	MissionElement.selected(slot2)
@@ -59,7 +59,7 @@ CoreWorldCameraTriggerUnitElement.selected = function (self)
 
 	return 
 end
-CoreWorldCameraTriggerUnitElement._populate_sequences = function (self)
+function CoreWorldCameraTriggerUnitElement:_populate_sequences()
 	slot3 = self._sequences
 
 	self._sequences.clear(slot2)
@@ -79,7 +79,7 @@ CoreWorldCameraTriggerUnitElement._populate_sequences = function (self)
 
 	return 
 end
-CoreWorldCameraTriggerUnitElement._populate_after_clip = function (self)
+function CoreWorldCameraTriggerUnitElement:_populate_after_clip()
 	slot3 = self._after_clip
 
 	self._after_clip.clear(slot2)
@@ -113,7 +113,7 @@ CoreWorldCameraTriggerUnitElement._populate_after_clip = function (self)
 
 	return 
 end
-CoreWorldCameraTriggerUnitElement._build_panel = function (self, panel, panel_sizer)
+function CoreWorldCameraTriggerUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

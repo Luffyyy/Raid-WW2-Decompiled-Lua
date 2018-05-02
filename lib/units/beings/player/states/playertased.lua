@@ -11,14 +11,14 @@ end
 
 PlayerTased = slot0
 PlayerTased._update_movement = PlayerBleedOut._update_movement
-PlayerTased.init = function (self, unit)
+function PlayerTased:init(unit)
 	slot5 = unit
 
 	PlayerTased.super.init(slot3, self)
 
 	return 
 end
-PlayerTased.enter = function (self, state_data, enter_data)
+function PlayerTased:enter(state_data, enter_data)
 	PlayerTased.super.enter(slot4, self, state_data)
 
 	slot5 = "tased_boost"
@@ -118,7 +118,7 @@ PlayerTased.enter = function (self, state_data, enter_data)
 
 	return 
 end
-PlayerTased._enter = function (self, enter_data)
+function PlayerTased:_enter(enter_data)
 	slot4 = self._unit
 	slot6 = 2
 
@@ -155,7 +155,7 @@ PlayerTased._enter = function (self, enter_data)
 
 	return 
 end
-PlayerTased.exit = function (self, state_data, enter_data)
+function PlayerTased:exit(state_data, enter_data)
 	slot7 = enter_data
 
 	PlayerTased.super.exit(slot4, self, state_data)
@@ -215,17 +215,17 @@ PlayerTased.exit = function (self, state_data, enter_data)
 
 	return 
 end
-PlayerTased.interaction_blocked = function (self)
+function PlayerTased:interaction_blocked()
 	return true
 end
-PlayerTased.update = function (self, t, dt)
+function PlayerTased:update(t, dt)
 	slot7 = dt
 
 	PlayerTased.super.update(slot4, self, t)
 
 	return 
 end
-PlayerTased._update_check_actions = function (self, t, dt)
+function PlayerTased:_update_check_actions(t, dt)
 	slot7 = dt
 	local input = self._get_input(slot4, self, t)
 
@@ -344,7 +344,7 @@ PlayerTased._update_check_actions = function (self, t, dt)
 
 	return 
 end
-PlayerTased._check_action_primary_attack = function (self, t, input)
+function PlayerTased:_check_action_primary_attack(t, input)
 	local new_action = nil
 	slot7 = "primary_attack"
 	local action_forbidden = self.chk_action_forbidden(slot5, self)
@@ -576,7 +576,7 @@ PlayerTased._check_action_primary_attack = function (self, t, input)
 
 	return new_action
 end
-PlayerTased._check_action_interact = function (self, t, input)
+function PlayerTased:_check_action_interact(t, input)
 	if input.btn_interact_press and (not self._intimidate_t or tweak_data.player.movement_state.interaction_delay < t - self._intimidate_t) then
 		slot5 = self._counter_taser_unit
 
@@ -590,7 +590,7 @@ PlayerTased._check_action_interact = function (self, t, input)
 
 	return 
 end
-PlayerTased.call_teammate = function (self, line, t, no_gesture, skip_alert)
+function PlayerTased:call_teammate(line, t, no_gesture, skip_alert)
 	slot12 = false
 	local voice_type, plural, prime_target = self._get_unit_intimidation_action(slot6, self, true, false, false, true)
 	local interact_type, queue_name = nil
@@ -628,7 +628,7 @@ PlayerTased.call_teammate = function (self, line, t, no_gesture, skip_alert)
 
 	return 
 end
-PlayerTased._start_action_tased = function (self, t, non_lethal)
+function PlayerTased:_start_action_tased(t, non_lethal)
 	slot6 = t
 
 	self._interupt_action_running(slot4, self)
@@ -653,7 +653,7 @@ PlayerTased._start_action_tased = function (self, t, non_lethal)
 
 	return 
 end
-PlayerTased._start_action_counter_tase = function (self, t, prime_target)
+function PlayerTased:_start_action_counter_tase(t, prime_target)
 	self._counter_taser_unit = prime_target.unit
 	slot5 = self._unit
 	slot6 = self._ids_counter_tase
@@ -662,7 +662,7 @@ PlayerTased._start_action_counter_tase = function (self, t, prime_target)
 
 	return 
 end
-PlayerTased._register_revive_SO = function (self)
+function PlayerTased:_register_revive_SO()
 	local objective = {
 		scan = true,
 		destroy_clbk_key = false,
@@ -692,7 +692,7 @@ PlayerTased._register_revive_SO = function (self)
 
 	return 
 end
-PlayerTased.clbk_exit_to_fatal = function (self)
+function PlayerTased:clbk_exit_to_fatal()
 	self._fatal_delayed_clbk = nil
 	slot4 = "incapacitated"
 
@@ -700,7 +700,7 @@ PlayerTased.clbk_exit_to_fatal = function (self)
 
 	return 
 end
-PlayerTased.clbk_exit_to_std = function (self)
+function PlayerTased:clbk_exit_to_std()
 
 	-- Decompilation error in this vicinity:
 	self._recover_delayed_clbk = nil
@@ -723,7 +723,7 @@ PlayerTased.clbk_exit_to_std = function (self)
 
 	return 
 end
-PlayerTased.on_tase_ended = function (self)
+function PlayerTased:on_tase_ended()
 	self._tase_ended = true
 
 	if self._fatal_delayed_clbk then
@@ -756,14 +756,14 @@ PlayerTased.on_tase_ended = function (self)
 
 	return 
 end
-PlayerTased._on_tased_event = function (self, taser_unit, tased_unit)
+function PlayerTased:_on_tased_event(taser_unit, tased_unit)
 	if self._unit == tased_unit then
 		self._taser_unit = taser_unit
 	end
 
 	return 
 end
-PlayerTased.give_shock_to_taser = function (self)
+function PlayerTased:give_shock_to_taser()
 	slot3 = self._counter_taser_unit
 
 	if not alive(slot2) then
@@ -778,7 +778,7 @@ PlayerTased.give_shock_to_taser = function (self)
 
 	return 
 end
-PlayerTased._give_shock_to_taser = function (self, taser_unit)
+function PlayerTased:_give_shock_to_taser(taser_unit)
 	return 
 
 	local action_data = {
@@ -804,7 +804,7 @@ PlayerTased._give_shock_to_taser = function (self, taser_unit)
 
 	return 
 end
-PlayerTased.give_shock_to_taser_no_damage = function (self)
+function PlayerTased:give_shock_to_taser_no_damage()
 	slot3 = self._taser_unit
 
 	if not alive(slot2) then
@@ -839,7 +839,7 @@ PlayerTased.give_shock_to_taser_no_damage = function (self)
 
 	return 
 end
-PlayerTased._on_malfunction_to_taser_event = function (self)
+function PlayerTased:_on_malfunction_to_taser_event()
 	slot3 = self._taser_unit
 
 	if not alive(slot2) then

@@ -1,4 +1,4 @@
-CoreEditor.build_marker_panel = function (self)
+function CoreEditor:build_marker_panel()
 	slot6 = "TAB_TRAVERSAL"
 	self._marker_panel = EWS.Panel(slot2, EWS, self._ews_editor_frame, "Markers")
 	slot4 = "VERTICAL"
@@ -57,7 +57,7 @@ CoreEditor.build_marker_panel = function (self)
 
 	return self._marker_panel
 end
-CoreEditor.marker_name = function (self)
+function CoreEditor:marker_name()
 	local i = 1
 
 	while self._markers["marker" .. i] do
@@ -66,7 +66,7 @@ CoreEditor.marker_name = function (self)
 
 	return "marker" .. i
 end
-CoreEditor.on_make_marker = function (self)
+function CoreEditor:on_make_marker()
 	slot12 = 0
 	slot9 = true
 	local name = EWS.get_text_from_user(slot2, EWS, Global.frame_panel, "Enter name for the marker:", "Create Marker", self.marker_name(slot8), Vector3(self, -1, -1))
@@ -85,7 +85,7 @@ CoreEditor.on_make_marker = function (self)
 
 	return 
 end
-CoreEditor.make_marker = function (self, name)
+function CoreEditor:make_marker(name)
 	if self._current_layer then
 		slot5 = name
 		local m = Marker.new(slot3, Marker)
@@ -102,7 +102,7 @@ CoreEditor.make_marker = function (self, name)
 
 	return 
 end
-CoreEditor.on_use_marker = function (self)
+function CoreEditor:on_use_marker()
 	slot3 = self
 	local s = self.get_marker_string(slot2)
 
@@ -114,7 +114,7 @@ CoreEditor.on_use_marker = function (self)
 
 	return 
 end
-CoreEditor.use_marker = function (self, name)
+function CoreEditor:use_marker(name)
 	if self._current_layer and self._markers[name] then
 		slot5 = self._markers[name]
 
@@ -123,7 +123,7 @@ CoreEditor.use_marker = function (self, name)
 
 	return 
 end
-CoreEditor.on_delete_marker = function (self)
+function CoreEditor:on_delete_marker()
 	slot3 = self
 	local s = self.get_marker_string(slot2)
 
@@ -135,7 +135,7 @@ CoreEditor.on_delete_marker = function (self)
 
 	return 
 end
-CoreEditor.delete_marker = function (self, name)
+function CoreEditor:delete_marker(name)
 	if self._markers[name] then
 		self._markers[name] = nil
 	end
@@ -146,7 +146,7 @@ CoreEditor.delete_marker = function (self, name)
 
 	return 
 end
-CoreEditor.get_marker_string = function (self)
+function CoreEditor:get_marker_string()
 	slot3 = self._ews_markers
 
 	if 0 < self._ews_markers.nr_items(slot2) then
@@ -162,7 +162,7 @@ CoreEditor.get_marker_string = function (self)
 
 	return nil
 end
-CoreEditor.remove_marker_from_list = function (self, s)
+function CoreEditor:remove_marker_from_list(s)
 	local i = 0
 	slot5 = self._ews_markers
 	local size = self._ews_markers.nr_items(slot4)
@@ -183,20 +183,20 @@ CoreEditor.remove_marker_from_list = function (self, s)
 
 	return 
 end
-CoreEditor.create_marker = function (self, name, pos, rot)
+function CoreEditor:create_marker(name, pos, rot)
 	slot10 = rot
 	self._markers[name] = Marker.new(slot6, Marker, name, pos)
 
 	return 
 end
-CoreEditor.get_marker = function (self, name)
+function CoreEditor:get_marker(name)
 	if self._markers[name] then
 		return self._markers[name]
 	end
 
 	return nil
 end
-CoreEditor.clear_markers = function (self)
+function CoreEditor:clear_markers()
 	slot3 = self._ews_markers
 
 	self._ews_markers.clear(slot2)
@@ -206,24 +206,24 @@ CoreEditor.clear_markers = function (self)
 	return 
 end
 Marker = Marker or class()
-Marker.init = function (self, name, pos, rot)
+function Marker:init(name, pos, rot)
 	self._name = name
 	self._pos = pos
 	self._rot = rot
 
 	return 
 end
-Marker.set_pos = function (self, pos)
+function Marker:set_pos(pos)
 	self._pos = pos
 
 	return 
 end
-Marker.set_rot = function (self, rot)
+function Marker:set_rot(rot)
 	self._rot = rot
 
 	return 
 end
-Marker.draw = function (self)
+function Marker:draw()
 	local l = 2000
 	slot9 = self._rot
 	slot9 = 0
@@ -242,7 +242,7 @@ Marker.draw = function (self)
 
 	return 
 end
-Marker.save = function (self, file, t)
+function Marker:save(file, t)
 	t = t .. "\t"
 	slot18 = self._rot
 	slot20 = self._rot

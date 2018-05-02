@@ -1,5 +1,5 @@
 CoreXMLTextCtrl = CoreXMLTextCtrl or class()
-CoreXMLTextCtrl.init = function (self, parent, value, id, syntax_colors, style)
+function CoreXMLTextCtrl:init(parent, value, id, syntax_colors, style)
 	if syntax_colors then
 		self._syntax_colors = syntax_colors
 	else
@@ -26,7 +26,7 @@ CoreXMLTextCtrl.init = function (self, parent, value, id, syntax_colors, style)
 
 	return 
 end
-CoreXMLTextCtrl.update = function (self, t)
+function CoreXMLTextCtrl:update(t)
 	self._skip_event = nil
 
 	if self._check_syntax then
@@ -93,19 +93,19 @@ CoreXMLTextCtrl.update = function (self, t)
 
 	return 
 end
-CoreXMLTextCtrl.text_ctrl = function (self)
+function CoreXMLTextCtrl:text_ctrl()
 	return self._text_ctrl
 end
-CoreXMLTextCtrl.xml_ok = function (self)
+function CoreXMLTextCtrl:xml_ok()
 	return self._xml_ok == true
 end
-CoreXMLTextCtrl.check = function (self)
+function CoreXMLTextCtrl:check()
 	self._check_syntax = true
 	self._last_syntax_check = 0
 
 	return 
 end
-CoreXMLTextCtrl.set_value = function (self, value)
+function CoreXMLTextCtrl:set_value(value)
 	slot5 = value
 
 	self._text_ctrl.set_value(slot3, self._text_ctrl)
@@ -120,7 +120,7 @@ CoreXMLTextCtrl.set_value = function (self, value)
 
 	return 
 end
-CoreXMLTextCtrl._on_text_change = function (self)
+function CoreXMLTextCtrl:_on_text_change()
 	if not self._skip_event then
 		self._check_syntax = true
 		self._last_syntax_check = nil
@@ -128,7 +128,7 @@ CoreXMLTextCtrl._on_text_change = function (self)
 
 	return 
 end
-CoreXMLTextCtrl._draw_text_with_color = function (self, level, node)
+function CoreXMLTextCtrl:_draw_text_with_color(level, node)
 	slot5 = node
 
 	for child in node.children(slot4) do
@@ -188,7 +188,7 @@ CoreXMLTextCtrl._draw_text_with_color = function (self, level, node)
 
 	return 
 end
-CoreXMLTextCtrl._set_tc_color = function (self, color)
+function CoreXMLTextCtrl:_set_tc_color(color)
 	slot5 = self._syntax_colors[color]
 
 	self._text_ctrl.set_default_style_colour(slot3, self._text_ctrl)

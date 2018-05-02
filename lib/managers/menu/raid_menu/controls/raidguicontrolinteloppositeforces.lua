@@ -4,7 +4,7 @@ if not RaidGUIControlIntelOppositeForces then
 end
 
 RaidGUIControlIntelOppositeForces = slot0
-RaidGUIControlIntelOppositeForces.init = function (self, parent, params)
+function RaidGUIControlIntelOppositeForces:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlIntelOppositeForces.super.init(slot4, self, parent)
@@ -18,7 +18,7 @@ RaidGUIControlIntelOppositeForces.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlIntelOppositeForces._layout = function (self)
+function RaidGUIControlIntelOppositeForces:_layout()
 	slot4 = {
 		y = 0,
 		x = 0,
@@ -95,7 +95,7 @@ RaidGUIControlIntelOppositeForces._layout = function (self)
 
 	return 
 end
-RaidGUIControlIntelOppositeForces.set_data = function (self, item_value)
+function RaidGUIControlIntelOppositeForces:set_data(item_value)
 	self._data = tweak_data.intel.get_item_data(slot3, tweak_data.intel, self._category_name)
 	slot4 = self._title
 	slot9 = true
@@ -127,7 +127,7 @@ RaidGUIControlIntelOppositeForces.set_data = function (self, item_value)
 
 	return 
 end
-RaidGUIControlIntelOppositeForces.get_data = function (self)
+function RaidGUIControlIntelOppositeForces:get_data()
 	return self._data
 end
 

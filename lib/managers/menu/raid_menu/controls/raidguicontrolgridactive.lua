@@ -4,14 +4,14 @@ if not RaidGUIControlGridActive then
 end
 
 RaidGUIControlGridActive = slot0
-RaidGUIControlGridActive.init = function (self, parent, params)
+function RaidGUIControlGridActive:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlGridActive.super.init(slot4, self, parent)
 
 	return 
 end
-RaidGUIControlGridActive.activate_item_by_value = function (self, params)
+function RaidGUIControlGridActive:activate_item_by_value(params)
 	slot4 = self._grid_items
 
 	for grid_item_index, grid_item in ipairs(slot3) do
@@ -34,10 +34,10 @@ RaidGUIControlGridActive.activate_item_by_value = function (self, params)
 
 	return self._active_item
 end
-RaidGUIControlGridActive.get_active_item = function (self)
+function RaidGUIControlGridActive:get_active_item()
 	return self._active_item
 end
-RaidGUIControlGridActive.set_selected = function (self, value, dont_fire_select_callback)
+function RaidGUIControlGridActive:set_selected(value, dont_fire_select_callback)
 	if value then
 		local first_item_data = self._grid_items[1].get_data(slot4)
 		slot7 = {

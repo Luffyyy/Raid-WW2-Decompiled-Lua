@@ -13,7 +13,7 @@ slot3 = "CoreSessionResponse"
 core.import(slot1, core)
 
 Attract = Attract or class()
-Attract.init = function (self)
+function Attract:init()
 	local menu_handler = self.pre_front_end.menu_state._menu_handler
 	slot4 = CoreSessionResponse.Done
 	self._response = CoreSessionResponse.Done.new(slot3)
@@ -23,14 +23,14 @@ Attract.init = function (self)
 
 	return 
 end
-Attract.destroy = function (self)
+function Attract:destroy()
 	slot3 = self._response
 
 	self._response.destroy(slot2)
 
 	return 
 end
-Attract.transition = function (self)
+function Attract:transition()
 
 	-- Decompilation error in this vicinity:
 	slot3 = self._response

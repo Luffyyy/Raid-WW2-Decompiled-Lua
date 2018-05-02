@@ -5,7 +5,7 @@ end
 
 FragGrenade = slot0
 FragGrenade.MAX_CLUSTER_ATTEMPTS = 15
-FragGrenade._setup_from_tweak_data = function (self)
+function FragGrenade:_setup_from_tweak_data()
 	local grenade_entry = self.name_id
 	self._tweak_data = tweak_data.projectiles[grenade_entry]
 	self._init_timer = self._tweak_data.init_timer or 2.5
@@ -42,7 +42,7 @@ FragGrenade._setup_from_tweak_data = function (self)
 
 	return 
 end
-FragGrenade.set_thrower_unit = function (self, unit)
+function FragGrenade:set_thrower_unit(unit)
 	slot5 = unit
 
 	FragGrenade.super.set_thrower_unit(slot3, self)
@@ -81,21 +81,21 @@ FragGrenade.set_thrower_unit = function (self, unit)
 
 	return 
 end
-FragGrenade.clbk_impact = function (self, tag, unit, body, other_unit, other_body, position, normal, collision_velocity, velocity, other_velocity, new_velocity, direction, damage, ...)
+function FragGrenade:clbk_impact(tag, unit, body, other_unit, other_body, position, normal, collision_velocity, velocity, other_velocity, new_velocity, direction, damage, ...)
 	slot29 = damage
 
 	self._detonate(slot15, self, tag, unit, body, other_unit, other_body, position, normal, collision_velocity, velocity, other_velocity, new_velocity, direction, ...)
 
 	return 
 end
-FragGrenade._on_collision = function (self, col_ray)
+function FragGrenade:_on_collision(col_ray)
 	slot4 = self
 
 	self._detonate(slot3)
 
 	return 
 end
-FragGrenade._detonate = function (self, tag, unit, body, other_unit, other_body, position, normal, collision_velocity, velocity, other_velocity, new_velocity, direction, damage, ...)
+function FragGrenade:_detonate(tag, unit, body, other_unit, other_body, position, normal, collision_velocity, velocity, other_velocity, new_velocity, direction, damage, ...)
 	slot16 = self._unit
 	local pos = self._unit.position(slot15)
 	local normal = math.UP
@@ -246,7 +246,7 @@ FragGrenade._detonate = function (self, tag, unit, body, other_unit, other_body,
 
 	return 
 end
-FragGrenade._detonate_on_client = function (self)
+function FragGrenade:_detonate_on_client()
 	slot3 = self._unit
 	local pos = self._unit.position(slot2)
 	local range = self._range
@@ -260,7 +260,7 @@ FragGrenade._detonate_on_client = function (self)
 
 	return 
 end
-FragGrenade.bullet_hit = function (self)
+function FragGrenade:bullet_hit()
 	slot3 = Network
 
 	if not Network.is_server(slot2) then

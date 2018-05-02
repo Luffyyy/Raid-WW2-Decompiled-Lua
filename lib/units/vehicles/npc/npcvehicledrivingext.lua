@@ -455,7 +455,7 @@ NpcVehicleDrivingExt.DRIVE_CONTROLS_GEAR_FIRST = 2
 NpcVehicleDrivingExt.DRIVE_CONTROLS_STEER_STRAIGHT = 0
 NpcVehicleDrivingExt.DRIVE_CONTROLS_STEER_FULL_LEFT = 1
 NpcVehicleDrivingExt.DRIVE_CONTROLS_STEER_FULL_RIGHT = -1
-NpcVehicleDrivingExt.init = function (self, unit)
+function NpcVehicleDrivingExt:init(unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-40, warpins: 1 ---
@@ -556,7 +556,7 @@ NpcVehicleDrivingExt.init = function (self, unit)
 
 
 end
-NpcVehicleDrivingExt.activate = function (self)
+function NpcVehicleDrivingExt:activate()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -593,7 +593,7 @@ NpcVehicleDrivingExt.activate = function (self)
 
 
 end
-NpcVehicleDrivingExt.deactivate = function (self)
+function NpcVehicleDrivingExt:deactivate()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -612,7 +612,7 @@ NpcVehicleDrivingExt.deactivate = function (self)
 
 
 end
-NpcVehicleDrivingExt.is_active = function (self)
+function NpcVehicleDrivingExt:is_active()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -624,7 +624,7 @@ NpcVehicleDrivingExt.is_active = function (self)
 
 
 end
-NpcVehicleDrivingExt.is_chasing = function (self)
+function NpcVehicleDrivingExt:is_chasing()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -634,7 +634,7 @@ NpcVehicleDrivingExt.is_chasing = function (self)
 
 
 end
-NpcVehicleDrivingExt.on_vehicle_death = function (self)
+function NpcVehicleDrivingExt:on_vehicle_death()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -699,7 +699,7 @@ NpcVehicleDrivingExt.on_vehicle_death = function (self)
 
 
 end
-NpcVehicleDrivingExt.start = function (self)
+function NpcVehicleDrivingExt:start()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -748,7 +748,7 @@ NpcVehicleDrivingExt.start = function (self)
 
 
 end
-NpcVehicleDrivingExt.sync_start = function (self)
+function NpcVehicleDrivingExt:sync_start()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -762,7 +762,7 @@ NpcVehicleDrivingExt.sync_start = function (self)
 
 
 end
-NpcVehicleDrivingExt._start = function (self)
+function NpcVehicleDrivingExt:_start()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -861,7 +861,7 @@ NpcVehicleDrivingExt._start = function (self)
 
 
 end
-NpcVehicleDrivingExt.stop = function (self)
+function NpcVehicleDrivingExt:stop()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -910,7 +910,7 @@ NpcVehicleDrivingExt.stop = function (self)
 
 
 end
-NpcVehicleDrivingExt.sync_stop = function (self)
+function NpcVehicleDrivingExt:sync_stop()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -924,7 +924,7 @@ NpcVehicleDrivingExt.sync_stop = function (self)
 
 
 end
-NpcVehicleDrivingExt._stop = function (self)
+function NpcVehicleDrivingExt:_stop()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -967,7 +967,7 @@ NpcVehicleDrivingExt._stop = function (self)
 
 
 end
-NpcVehicleDrivingExt.update = function (self, unit, t, dt)
+function NpcVehicleDrivingExt:update(unit, t, dt)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -1060,7 +1060,7 @@ NpcVehicleDrivingExt.update = function (self, unit, t, dt)
 
 
 end
-NpcVehicleDrivingExt._display_debug_info = function (self)
+function NpcVehicleDrivingExt:_display_debug_info()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1324,7 +1324,7 @@ AI cost:  %.2f ms ( %.2f %% of fps)]], nav_paths.unit_id, nav_paths.unit_name, n
 
 
 end
-NpcVehicleDrivingExt.set_target_unit = function (self, unit)
+function NpcVehicleDrivingExt:set_target_unit(unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -1336,7 +1336,7 @@ NpcVehicleDrivingExt.set_target_unit = function (self, unit)
 
 
 end
-NpcVehicleDrivingExt._get_target_unit = function (self)
+function NpcVehicleDrivingExt:_get_target_unit()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -1349,7 +1349,7 @@ NpcVehicleDrivingExt._get_target_unit = function (self)
 
 
 end
-NpcVehicleDrivingExt._choose_target_path_direction = function (self, player_path, target_marker)
+function NpcVehicleDrivingExt:_choose_target_path_direction(player_path, target_marker)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -1545,7 +1545,7 @@ NpcVehicleDrivingExt._choose_target_path_direction = function (self, player_path
 
 
 end
-NpcVehicleDrivingExt.drive_to_point = function (self, cop_path, unit_and_pos, dt)
+function NpcVehicleDrivingExt:drive_to_point(cop_path, unit_and_pos, dt)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1792,7 +1792,7 @@ NpcVehicleDrivingExt.drive_to_point = function (self, cop_path, unit_and_pos, dt
 
 
 end
-NpcVehicleDrivingExt.calc_cop_position_info = function (self, cop_points, unit_and_pos)
+function NpcVehicleDrivingExt:calc_cop_position_info(cop_points, unit_and_pos)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-59, warpins: 1 ---
@@ -1855,7 +1855,7 @@ NpcVehicleDrivingExt.calc_cop_position_info = function (self, cop_points, unit_a
 
 
 end
-NpcVehicleDrivingExt._choose_next_checkpoint = function (self, cop_path, cop_points, target_path, unit_and_pos, cop_position_info, distance_threshold)
+function NpcVehicleDrivingExt:_choose_next_checkpoint(cop_path, cop_points, target_path, unit_and_pos, cop_position_info, distance_threshold)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-18, warpins: 1 ---
@@ -2011,7 +2011,7 @@ NpcVehicleDrivingExt._choose_next_checkpoint = function (self, cop_path, cop_poi
 
 
 end
-NpcVehicleDrivingExt._find_bridge = function (self, cop_path, target_path, unit_and_pos)
+function NpcVehicleDrivingExt:_find_bridge(cop_path, target_path, unit_and_pos)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -2276,7 +2276,7 @@ NpcVehicleDrivingExt._find_bridge = function (self, cop_path, target_path, unit_
 
 
 end
-NpcVehicleDrivingExt._get_marker_position = function (self, player_path, marker_to)
+function NpcVehicleDrivingExt:_get_marker_position(player_path, marker_to)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -2362,7 +2362,7 @@ NpcVehicleDrivingExt._get_marker_position = function (self, player_path, marker_
 
 
 end
-NpcVehicleDrivingExt._get_player_speed = function (self)
+function NpcVehicleDrivingExt:_get_player_speed()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -2409,7 +2409,7 @@ NpcVehicleDrivingExt._get_player_speed = function (self)
 
 
 end
-NpcVehicleDrivingExt._drive = function (self, steering, speed_limit, controls_override)
+function NpcVehicleDrivingExt:_drive(steering, speed_limit, controls_override)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -2493,7 +2493,7 @@ NpcVehicleDrivingExt._drive = function (self, steering, speed_limit, controls_ov
 
 
 end
-NpcVehicleDrivingExt.set_input = function (self, acceleration, steering, brake, handbrake, geer_up, geer_down, force_gear)
+function NpcVehicleDrivingExt:set_input(acceleration, steering, brake, handbrake, geer_up, geer_down, force_gear)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -2527,7 +2527,7 @@ NpcVehicleDrivingExt.set_input = function (self, acceleration, steering, brake, 
 
 
 end
-NpcVehicleDrivingExt.brake = function (self)
+function NpcVehicleDrivingExt:brake()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -2541,7 +2541,7 @@ NpcVehicleDrivingExt.brake = function (self)
 
 
 end
-NpcVehicleDrivingExt._is_last_checkpoint = function (self, path, unit_and_pos)
+function NpcVehicleDrivingExt:_is_last_checkpoint(path, unit_and_pos)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -2579,7 +2579,7 @@ NpcVehicleDrivingExt._is_last_checkpoint = function (self, path, unit_and_pos)
 
 
 end
-NpcVehicleDrivingExt._debug_show = function (self)
+function NpcVehicleDrivingExt:_debug_show()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -2628,7 +2628,7 @@ NpcVehicleDrivingExt._debug_show = function (self)
 
 
 end
-NpcVehicleDrivingExt.destroy = function (self)
+function NpcVehicleDrivingExt:destroy()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -2664,7 +2664,7 @@ NpcVehicleDrivingExt.destroy = function (self)
 
 
 end
-NpcVehicleDrivingExt._get_unit = function (self, unit_id)
+function NpcVehicleDrivingExt:_get_unit(unit_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -2706,7 +2706,7 @@ NpcVehicleDrivingExt._get_unit = function (self, unit_id)
 
 
 end
-NpcVehicleDrivingExt._init_states = function (self)
+function NpcVehicleDrivingExt:_init_states()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-57, warpins: 1 ---
@@ -2739,7 +2739,7 @@ NpcVehicleDrivingExt._init_states = function (self)
 
 
 end
-NpcVehicleDrivingExt._set_state = function (self, new_state)
+function NpcVehicleDrivingExt:_set_state(new_state)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -2776,7 +2776,7 @@ NpcVehicleDrivingExt._set_state = function (self, new_state)
 
 
 end
-NpcVehicleDrivingExt.set_state = function (self, new_state)
+function NpcVehicleDrivingExt:set_state(new_state)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---

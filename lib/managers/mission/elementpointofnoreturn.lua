@@ -8,21 +8,21 @@ if not ElementPointOfNoReturn then
 end
 
 ElementPointOfNoReturn = slot0
-ElementPointOfNoReturn.init = function (self, ...)
+function ElementPointOfNoReturn:init(...)
 	slot3 = self
 
 	ElementPointOfNoReturn.super.init(slot2, ...)
 
 	return 
 end
-ElementPointOfNoReturn.client_on_executed = function (self, ...)
+function ElementPointOfNoReturn:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementPointOfNoReturn.on_executed = function (self, instigator)
+function ElementPointOfNoReturn:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

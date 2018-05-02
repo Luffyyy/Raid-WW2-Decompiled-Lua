@@ -14,10 +14,10 @@ slot3 = CoreCutsceneKeyCollection
 mixin(slot1, CoreCutscene)
 
 local CUTSCENE_FRAMES_PER_SECOND = 30
-CoreCutscene._all_keys_sorted_by_time = function (self)
+function CoreCutscene:_all_keys_sorted_by_time()
 	return self._keys or {}
 end
-CoreCutscene.init = function (self, cutscene_node, cutscene_manager)
+function CoreCutscene:init(cutscene_node, cutscene_manager)
 	slot6 = "No cutscene XML node supplied."
 
 	assert(slot4, cutscene_node)
@@ -103,7 +103,7 @@ CoreCutscene.init = function (self, cutscene_node, cutscene_manager)
 
 	return 
 end
-CoreCutscene.is_valid = function (self)
+function CoreCutscene:is_valid()
 	slot3 = self._unit_types
 
 	if not table.empty(slot2) then
@@ -114,34 +114,34 @@ CoreCutscene.is_valid = function (self)
 
 	return slot1
 end
-CoreCutscene.name = function (self)
+function CoreCutscene:name()
 	return self._name or ""
 end
-CoreCutscene.unit_name = function (self)
+function CoreCutscene:unit_name()
 	return self._unit_name or ""
 end
-CoreCutscene.frames_per_second = function (self)
+function CoreCutscene:frames_per_second()
 	return CUTSCENE_FRAMES_PER_SECOND
 end
-CoreCutscene.frame_count = function (self)
+function CoreCutscene:frame_count()
 	return self._frame_count or 1
 end
-CoreCutscene.duration = function (self)
+function CoreCutscene:duration()
 	slot4 = self
 
 	return self.frame_count(slot2) / self.frames_per_second(self)
 end
-CoreCutscene.is_optimized = function (self)
+function CoreCutscene:is_optimized()
 	slot3 = self._unit_animations
 
 	return table.empty(slot2)
 end
-CoreCutscene.has_cameras = function (self)
+function CoreCutscene:has_cameras()
 	slot3 = self._camera_names
 
 	return not table.empty(slot2)
 end
-CoreCutscene.has_unit = function (self, unit_name, include_units_spawned_through_keys)
+function CoreCutscene:has_unit(unit_name, include_units_spawned_through_keys)
 	slot5 = self
 
 	if self.controlled_unit_types(slot4)[unit_name] ~= nil then
@@ -162,13 +162,13 @@ CoreCutscene.has_unit = function (self, unit_name, include_units_spawned_through
 
 	return false
 end
-CoreCutscene.controlled_unit_types = function (self)
+function CoreCutscene:controlled_unit_types()
 	return self._unit_types
 end
-CoreCutscene.camera_names = function (self)
+function CoreCutscene:camera_names()
 	return self._camera_names
 end
-CoreCutscene.default_camera = function (self)
+function CoreCutscene:default_camera()
 	slot5 = self
 
 	for _, name in ipairs(self.camera_names(slot4)) do
@@ -177,28 +177,28 @@ CoreCutscene.default_camera = function (self)
 
 	return 
 end
-CoreCutscene.objects_in_unit = function (self, unit_name)
+function CoreCutscene:objects_in_unit(unit_name)
 	slot5 = unit_name
 	slot4 = self._actor_database_info(slot3, self)
 
 	return self._actor_database_info(slot3, self).object_names(slot3)
 end
-CoreCutscene.extensions_on_unit = function (self, unit_name)
+function CoreCutscene:extensions_on_unit(unit_name)
 	slot5 = unit_name
 	slot4 = self._actor_database_info(slot3, self)
 
 	return self._actor_database_info(slot3, self).extensions(slot3)
 end
-CoreCutscene.animation_for_unit = function (self, unit_name)
+function CoreCutscene:animation_for_unit(unit_name)
 	return self._unit_animations[unit_name]
 end
-CoreCutscene.blend_set_for_unit = function (self, unit_name)
+function CoreCutscene:blend_set_for_unit(unit_name)
 	return self._unit_blend_sets[unit_name] or "all"
 end
-CoreCutscene.animation_blobs = function (self)
+function CoreCutscene:animation_blobs()
 	return self._animation_blobs
 end
-CoreCutscene.find_spawned_orientation_unit = function (self)
+function CoreCutscene:find_spawned_orientation_unit()
 	slot3 = World
 	slot7 = "cutscenes"
 	local spawned_cutscene_units = World.unit_manager(slot2).get_units(slot2, managers.slot.get_mask(slot5, managers.slot))
@@ -214,7 +214,7 @@ CoreCutscene.find_spawned_orientation_unit = function (self)
 
 	return 
 end
-CoreCutscene._parse_animation_blobs = function (self, cutscene_node)
+function CoreCutscene:_parse_animation_blobs(cutscene_node)
 	slot5 = cutscene_node
 
 	if not self._parse_animation_blob_list(slot3, self) then
@@ -224,7 +224,7 @@ CoreCutscene._parse_animation_blobs = function (self, cutscene_node)
 
 	return slot2
 end
-CoreCutscene._parse_animation_blob_list = function (self, cutscene_node)
+function CoreCutscene:_parse_animation_blob_list(cutscene_node)
 	slot4 = cutscene_node
 
 	for collection_node in cutscene_node.children(slot3) do
@@ -246,7 +246,7 @@ CoreCutscene._parse_animation_blob_list = function (self, cutscene_node)
 
 	return nil
 end
-CoreCutscene._parse_single_animation_blob = function (self, cutscene_node)
+function CoreCutscene:_parse_single_animation_blob(cutscene_node)
 	slot4 = cutscene_node
 
 	for collection_node in cutscene_node.children(slot3) do
@@ -264,7 +264,7 @@ CoreCutscene._parse_single_animation_blob = function (self, cutscene_node)
 
 	return nil
 end
-CoreCutscene._actor_database_info = function (self, unit_name)
+function CoreCutscene:_actor_database_info(unit_name)
 	slot8 = unit_name
 	local unit_type = assert(slot3, string.format(self, "Unit \"%s\" is not in cutscene \"%s\".", self.name(slot10)))
 	slot7 = managers.cutscene
@@ -275,7 +275,7 @@ CoreCutscene._actor_database_info = function (self, unit_name)
 
 	return unit_info
 end
-CoreCutscene._cutscene_specific_unit_type = function (self, unit_type)
+function CoreCutscene:_cutscene_specific_unit_type(unit_type)
 	if unit_type ~= "locator" then
 		slot6 = unit_type .. "_cutscene"
 
@@ -286,7 +286,7 @@ CoreCutscene._cutscene_specific_unit_type = function (self, unit_type)
 
 	return unit_type
 end
-CoreCutscene._debug_persistent_keys = function (self)
+function CoreCutscene:_debug_persistent_keys()
 	local persistent_keys = {}
 	local unit_types = self.controlled_unit_types(slot3)
 	slot6 = CoreSequenceCutsceneKey.ELEMENT_NAME

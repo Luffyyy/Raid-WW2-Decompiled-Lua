@@ -160,7 +160,7 @@ if not AnimatedVehicleBase then
 end
 
 AnimatedVehicleBase = slot0
-AnimatedVehicleBase.init = function (self, unit)
+function AnimatedVehicleBase:init(unit)
 	slot6 = false
 
 	AnimatedVehicleBase.super.init(slot3, self, unit)
@@ -188,7 +188,7 @@ AnimatedVehicleBase.init = function (self, unit)
 
 	return 
 end
-AnimatedVehicleBase.update = function (self, unit, t, dt)
+function AnimatedVehicleBase:update(unit, t, dt)
 	slot6 = self._obj_com
 	local new_pos = self._obj_com.position(slot5)
 
@@ -222,7 +222,7 @@ AnimatedVehicleBase.update = function (self, unit, t, dt)
 
 	return 
 end
-AnimatedVehicleBase._set_anim_lod = function (self, dis)
+function AnimatedVehicleBase:_set_anim_lod(dis)
 	if 9000 < dis then
 		if self._lod_high then
 			self._lod_high = false
@@ -233,7 +233,7 @@ AnimatedVehicleBase._set_anim_lod = function (self, dis)
 
 	return 
 end
-AnimatedVehicleBase.start_doppler = function (self)
+function AnimatedVehicleBase:start_doppler()
 	slot4 = true
 
 	self.set_enabled(slot2, self)
@@ -250,7 +250,7 @@ AnimatedVehicleBase.start_doppler = function (self)
 
 	return 
 end
-AnimatedVehicleBase.stop_doppler = function (self)
+function AnimatedVehicleBase:stop_doppler()
 	slot4 = false
 
 	self.set_enabled(slot2, self)
@@ -260,7 +260,7 @@ AnimatedVehicleBase.stop_doppler = function (self)
 
 	return 
 end
-AnimatedVehicleBase.set_enabled = function (self, state)
+function AnimatedVehicleBase:set_enabled(state)
 	if state then
 		if self._ext_enabled_count then
 			self._ext_enabled_count = self._ext_enabled_count + 1
@@ -283,7 +283,7 @@ AnimatedVehicleBase.set_enabled = function (self, state)
 
 	return 
 end
-AnimatedVehicleBase.anim_clbk_empty_full_blend = function (self, unit)
+function AnimatedVehicleBase:anim_clbk_empty_full_blend(unit)
 	slot4 = self
 
 	self.stop_doppler(slot3)
@@ -298,7 +298,7 @@ AnimatedVehicleBase.anim_clbk_empty_full_blend = function (self, unit)
 
 	return 
 end
-AnimatedVehicleBase.anim_clbk_empty_exit = function (self, unit)
+function AnimatedVehicleBase:anim_clbk_empty_exit(unit)
 	slot4 = self
 
 	self.start_doppler(slot3)
@@ -309,7 +309,7 @@ AnimatedVehicleBase.anim_clbk_empty_exit = function (self, unit)
 
 	return 
 end
-AnimatedVehicleBase.anim_clbk_animated_driving = function (self, unit, state)
+function AnimatedVehicleBase:anim_clbk_animated_driving(unit, state)
 	if state and self._driving ~= "animation" then
 		slot6 = "animation"
 
@@ -326,7 +326,7 @@ AnimatedVehicleBase.anim_clbk_animated_driving = function (self, unit, state)
 
 	return 
 end
-AnimatedVehicleBase.anim_clbk_save_pose = function (self, unit, pose_id)
+function AnimatedVehicleBase:anim_clbk_save_pose(unit, pose_id)
 	self._saved_poses = self._saved_poses or {}
 	slot7 = unit
 	slot7 = unit
@@ -337,7 +337,7 @@ AnimatedVehicleBase.anim_clbk_save_pose = function (self, unit, pose_id)
 
 	return 
 end
-AnimatedVehicleBase.anim_clbk_recall_pose = function (self, unit, pose_id, delete)
+function AnimatedVehicleBase:anim_clbk_recall_pose(unit, pose_id, delete)
 	local pose_info = self._saved_poses[pose_id]
 	slot8 = pose_info.position
 
@@ -358,7 +358,7 @@ AnimatedVehicleBase.anim_clbk_recall_pose = function (self, unit, pose_id, delet
 
 	return 
 end
-AnimatedVehicleBase.spawn_module = function (self, module_unit_name, align_obj_name, module_id)
+function AnimatedVehicleBase:spawn_module(module_unit_name, align_obj_name, module_id)
 	slot6 = self._unit
 	slot9 = align_obj_name
 	local align_obj = self._unit.get_object(slot5, Idstring(slot8))
@@ -427,7 +427,7 @@ AnimatedVehicleBase.spawn_module = function (self, module_unit_name, align_obj_n
 
 	return 
 end
-AnimatedVehicleBase.run_module_sequence = function (self, module_id, sequence_name)
+function AnimatedVehicleBase:run_module_sequence(module_id, sequence_name)
 	if not self._modules then
 		return 
 	end
@@ -458,7 +458,7 @@ AnimatedVehicleBase.run_module_sequence = function (self, module_id, sequence_na
 
 	return 
 end
-AnimatedVehicleBase.clbk_module_unit_destroyed = function (self, module_id, module_unit)
+function AnimatedVehicleBase:clbk_module_unit_destroyed(module_id, module_unit)
 	if not self._modules then
 		return 
 	end
@@ -473,7 +473,7 @@ AnimatedVehicleBase.clbk_module_unit_destroyed = function (self, module_id, modu
 
 	return 
 end
-AnimatedVehicleBase.run_module_function = function (self, module_id, extension_name, func_name, param1, param2)
+function AnimatedVehicleBase:run_module_function(module_id, extension_name, func_name, param1, param2)
 	if not self._modules then
 		return 
 	end
@@ -546,7 +546,7 @@ AnimatedVehicleBase.run_module_function = function (self, module_id, extension_n
 
 	return 
 end
-AnimatedVehicleBase.run_module_function_unsafe = function (self, module_id, extension_name, func_name, param1, param2)
+function AnimatedVehicleBase:run_module_function_unsafe(module_id, extension_name, func_name, param1, param2)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -601,7 +601,7 @@ AnimatedVehicleBase.run_module_function_unsafe = function (self, module_id, exte
 
 
 end
-AnimatedVehicleBase.clbk_send_modules = function (self, module_units_to_sync)
+function AnimatedVehicleBase:clbk_send_modules(module_units_to_sync)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -719,7 +719,7 @@ AnimatedVehicleBase.clbk_send_modules = function (self, module_units_to_sync)
 
 
 end
-AnimatedVehicleBase.anim_clbk_blackhawk_1_at_loop_end = function (self, unit)
+function AnimatedVehicleBase:anim_clbk_blackhawk_1_at_loop_end(unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -753,7 +753,7 @@ AnimatedVehicleBase.anim_clbk_blackhawk_1_at_loop_end = function (self, unit)
 
 
 end
-AnimatedVehicleBase.clbk_request_anim_redirect = function (self, redirect_name)
+function AnimatedVehicleBase:clbk_request_anim_redirect(redirect_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -789,7 +789,7 @@ AnimatedVehicleBase.clbk_request_anim_redirect = function (self, redirect_name)
 
 
 end
-AnimatedVehicleBase.save = function (self, save_data)
+function AnimatedVehicleBase:save(save_data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1010,7 +1010,7 @@ AnimatedVehicleBase.save = function (self, save_data)
 
 
 end
-AnimatedVehicleBase.load = function (self, save_data)
+function AnimatedVehicleBase:load(save_data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1097,7 +1097,7 @@ AnimatedVehicleBase.load = function (self, save_data)
 
 
 end
-AnimatedVehicleBase.destroy = function (self, unit)
+function AnimatedVehicleBase:destroy(unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1162,7 +1162,7 @@ AnimatedVehicleBase.destroy = function (self, unit)
 
 
 end
-AnimatedVehicleBase.allow_sync_stored_pos = function (self, sync)
+function AnimatedVehicleBase:allow_sync_stored_pos(sync)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -1174,7 +1174,7 @@ AnimatedVehicleBase.allow_sync_stored_pos = function (self, sync)
 
 
 end
-AnimatedVehicleBase.store_current_pos = function (self)
+function AnimatedVehicleBase:store_current_pos()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-49, warpins: 1 ---
@@ -1195,7 +1195,7 @@ AnimatedVehicleBase.store_current_pos = function (self)
 
 
 end
-AnimatedVehicleBase.move_to_stored_pos = function (self)
+function AnimatedVehicleBase:move_to_stored_pos()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1240,7 +1240,7 @@ AnimatedVehicleBase.move_to_stored_pos = function (self)
 
 
 end
-AnimatedVehicleBase.sync_stored_pos = function (self, sync, pos, rot)
+function AnimatedVehicleBase:sync_stored_pos(sync, pos, rot)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -1254,7 +1254,7 @@ AnimatedVehicleBase.sync_stored_pos = function (self, sync, pos, rot)
 
 
 end
-AnimatedVehicleBase.set_local_anim_position_start = function (self, x, y, z)
+function AnimatedVehicleBase:set_local_anim_position_start(x, y, z)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -1268,7 +1268,7 @@ AnimatedVehicleBase.set_local_anim_position_start = function (self, x, y, z)
 
 
 end
-AnimatedVehicleBase.set_local_anim_position_end = function (self, x, y, z)
+function AnimatedVehicleBase:set_local_anim_position_end(x, y, z)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -1282,7 +1282,7 @@ AnimatedVehicleBase.set_local_anim_position_end = function (self, x, y, z)
 
 
 end
-AnimatedVehicleBase.set_local_anim_rotation_start = function (self, h, p, b)
+function AnimatedVehicleBase:set_local_anim_rotation_start(h, p, b)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-15, warpins: 1 ---
@@ -1301,7 +1301,7 @@ AnimatedVehicleBase.set_local_anim_rotation_start = function (self, h, p, b)
 
 
 end
-AnimatedVehicleBase.set_local_anim_rotation_end = function (self, h, p, b)
+function AnimatedVehicleBase:set_local_anim_rotation_end(h, p, b)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-15, warpins: 1 ---
@@ -1320,7 +1320,7 @@ AnimatedVehicleBase.set_local_anim_rotation_end = function (self, h, p, b)
 
 
 end
-AnimatedVehicleBase.offset_position_rotation_forward = function (self)
+function AnimatedVehicleBase:offset_position_rotation_forward()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-66, warpins: 1 ---
@@ -1352,7 +1352,7 @@ AnimatedVehicleBase.offset_position_rotation_forward = function (self)
 
 
 end
-AnimatedVehicleBase.offset_position_rotation_backward = function (self)
+function AnimatedVehicleBase:offset_position_rotation_backward()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-75, warpins: 1 ---

@@ -1,5 +1,5 @@
 VehicleCamera = VehicleCamera or class()
-VehicleCamera.init = function (self, unit)
+function VehicleCamera:init(unit)
 	self._unit = unit
 	slot4 = World
 	self._camera = World.create_camera(slot3)
@@ -18,7 +18,7 @@ VehicleCamera.init = function (self, unit)
 
 	return 
 end
-VehicleCamera.setup = function (self)
+function VehicleCamera:setup()
 	slot3 = managers.viewport
 	self._viewport = managers.viewport.first_active_viewport(slot2)
 	slot3 = self._viewport
@@ -60,7 +60,7 @@ VehicleCamera.setup = function (self)
 
 	return 
 end
-VehicleCamera._setup_sound_listener = function (self)
+function VehicleCamera:_setup_sound_listener()
 	slot8 = false
 	self._listener_id = managers.listener.add_listener(slot2, managers.listener, "access_camera", self._camera, self._camera, nil)
 	slot5 = {
@@ -83,7 +83,7 @@ VehicleCamera._setup_sound_listener = function (self)
 end
 local pos = Vector3()
 local target = Vector3()
-VehicleCamera.update_camera = function (self)
+function VehicleCamera:update_camera()
 	if not self._active then
 		return 
 	end
@@ -127,7 +127,7 @@ VehicleCamera.update_camera = function (self)
 
 	return 
 end
-VehicleCamera.activate = function (self, player_unit)
+function VehicleCamera:activate(player_unit)
 	self._active = true
 
 	if self._viewport then
@@ -155,7 +155,7 @@ VehicleCamera.activate = function (self, player_unit)
 
 	return 
 end
-VehicleCamera.deactivate = function (self, player_unit)
+function VehicleCamera:deactivate(player_unit)
 	self._active = false
 	self._rear_cam_active = false
 
@@ -184,7 +184,7 @@ VehicleCamera.deactivate = function (self, player_unit)
 
 	return 
 end
-VehicleCamera.show_next = function (self, player_unit)
+function VehicleCamera:show_next(player_unit)
 	if #self._camera_list == 0 then
 		return 
 	end
@@ -206,7 +206,7 @@ VehicleCamera.show_next = function (self, player_unit)
 
 	return 
 end
-VehicleCamera.set_rear_cam_active = function (self, active, player_unit)
+function VehicleCamera:set_rear_cam_active(active, player_unit)
 	if not self._back_camera_object then
 		return 
 	end
@@ -237,10 +237,10 @@ VehicleCamera.set_rear_cam_active = function (self, active, player_unit)
 
 	return 
 end
-VehicleCamera.rear_cam_active = function (self)
+function VehicleCamera:rear_cam_active()
 	return self._rear_cam_active
 end
-VehicleCamera.destroy = function (self)
+function VehicleCamera:destroy()
 	slot3 = self._camera
 
 	if alive(slot2) then

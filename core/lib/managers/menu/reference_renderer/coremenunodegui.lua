@@ -27,7 +27,7 @@ slot3 = "CoreUnit"
 core.import(slot1, core)
 
 NodeGui = NodeGui or class()
-NodeGui.init = function (self, node, layer, parameters)
+function NodeGui:init(node, layer, parameters)
 	self.node = node
 	slot6 = node
 	self.name = node.parameters(slot5).name
@@ -116,13 +116,13 @@ NodeGui.init = function (self, node, layer, parameters)
 
 	return 
 end
-NodeGui.item_panel_parent = function (self)
+function NodeGui:item_panel_parent()
 	return self._item_panel_parent
 end
-NodeGui._setup_panels = function (self, node)
+function NodeGui:_setup_panels(node)
 	return 
 end
-NodeGui._setup_item_rows = function (self, node)
+function NodeGui:_setup_item_rows(node)
 	slot4 = node
 	local items = node.items(slot3)
 	local items_count = #items
@@ -224,7 +224,7 @@ NodeGui._setup_item_rows = function (self, node)
 
 	return 
 end
-NodeGui._insert_row_item = function (self, item, node, i)
+function NodeGui:_insert_row_item(item, node, i)
 	slot6 = item
 
 	if item.visible(slot5) then
@@ -291,7 +291,7 @@ NodeGui._insert_row_item = function (self, item, node, i)
 
 	return 
 end
-NodeGui._delete_row_item = function (self, item)
+function NodeGui:_delete_row_item(item)
 	slot4 = self.row_items
 
 	for i, row_item in ipairs(slot3) do
@@ -316,7 +316,7 @@ NodeGui._delete_row_item = function (self, item)
 
 	return 
 end
-NodeGui.refresh_gui = function (self, node)
+function NodeGui:refresh_gui(node)
 	slot4 = self
 
 	self._clear_gui(slot3)
@@ -327,7 +327,7 @@ NodeGui.refresh_gui = function (self, node)
 
 	return 
 end
-NodeGui._clear_gui = function (self)
+function NodeGui:_clear_gui()
 	local to = #self.row_items
 
 	for i = 1, to, 1 do
@@ -367,7 +367,7 @@ NodeGui._clear_gui = function (self)
 
 	return 
 end
-NodeGui.close = function (self)
+function NodeGui:close()
 	slot3 = Overlay
 	slot4 = self.ws
 
@@ -377,10 +377,10 @@ NodeGui.close = function (self)
 
 	return 
 end
-NodeGui.layer = function (self)
+function NodeGui:layer()
 	return self.layers.last
 end
-NodeGui.set_visible = function (self, visible)
+function NodeGui:set_visible(visible)
 	if visible then
 		slot4 = self.ws
 
@@ -393,7 +393,7 @@ NodeGui.set_visible = function (self, visible)
 
 	return 
 end
-NodeGui.reload_item = function (self, item)
+function NodeGui:reload_item(item)
 	slot4 = item
 	local type = item.type(slot3)
 
@@ -411,7 +411,7 @@ NodeGui.reload_item = function (self, item)
 
 	return 
 end
-NodeGui._reload_item = function (self, item)
+function NodeGui:_reload_item(item)
 	slot5 = item
 	local row_item = self.row_item(slot3, self)
 	slot5 = item
@@ -437,10 +437,10 @@ NodeGui._reload_item = function (self, item)
 
 	return 
 end
-NodeGui._create_menu_item = function (self, row_item)
+function NodeGui:_create_menu_item(row_item)
 	return 
 end
-NodeGui._reposition_items = function (self, highlighted_row_item)
+function NodeGui:_reposition_items(highlighted_row_item)
 	slot4 = managers.viewport
 	local safe_rect = managers.viewport.get_safe_rect_pixels(slot3)
 	local dy = 0
@@ -593,7 +593,7 @@ NodeGui._reposition_items = function (self, highlighted_row_item)
 
 	return 
 end
-NodeGui.scroll_setup = function (self)
+function NodeGui:scroll_setup()
 	self._scroll_data = {
 		max_scroll_duration = 0.5,
 		scroll_speed = (self.font_size + self.spacing * 2) / 0.1,
@@ -603,7 +603,7 @@ NodeGui.scroll_setup = function (self)
 
 	return 
 end
-NodeGui.scroll_start = function (self, dy)
+function NodeGui:scroll_start(dy)
 	local speed = self._scroll_data.scroll_speed
 
 	if 0 < speed then
@@ -626,7 +626,7 @@ NodeGui.scroll_start = function (self, dy)
 
 	return 
 end
-NodeGui.scroll_update = function (self, dt)
+function NodeGui:scroll_update(dt)
 	local dy_left = self._scroll_data.dy_left
 
 	if dy_left ~= 0 then
@@ -660,7 +660,7 @@ NodeGui.scroll_update = function (self, dt)
 
 	return 
 end
-NodeGui.wheel_scroll_start = function (self, dy)
+function NodeGui:wheel_scroll_start(dy)
 	local speed = 30
 
 	if 0 < dy then
@@ -699,7 +699,7 @@ NodeGui.wheel_scroll_start = function (self, dy)
 
 	return true
 end
-NodeGui.highlight_item = function (self, item, mouse_over)
+function NodeGui:highlight_item(item, mouse_over)
 	if not item then
 		return 
 	end
@@ -719,7 +719,7 @@ NodeGui.highlight_item = function (self, item, mouse_over)
 
 	return 
 end
-NodeGui._highlight_row_item = function (self, row_item, mouse_over)
+function NodeGui:_highlight_row_item(row_item, mouse_over)
 	if row_item then
 		row_item.highlighted = true
 		slot5 = row_item.item
@@ -731,7 +731,7 @@ NodeGui._highlight_row_item = function (self, row_item, mouse_over)
 
 	return 
 end
-NodeGui.fade_item = function (self, item)
+function NodeGui:fade_item(item)
 	local item_name = item.parameters(slot3).name
 	slot6 = item
 	local row_item = self.row_item(item, self)
@@ -741,7 +741,7 @@ NodeGui.fade_item = function (self, item)
 
 	return 
 end
-NodeGui._fade_row_item = function (self, row_item)
+function NodeGui:_fade_row_item(row_item)
 	if row_item then
 		row_item.highlighted = false
 		slot4 = row_item.item
@@ -753,7 +753,7 @@ NodeGui._fade_row_item = function (self, row_item)
 
 	return 
 end
-NodeGui.row_item = function (self, item)
+function NodeGui:row_item(item)
 	local item_name = item.parameters(slot3).name
 	slot5 = self.row_items
 
@@ -765,7 +765,7 @@ NodeGui.row_item = function (self, item)
 
 	return nil
 end
-NodeGui.row_item_by_name = function (self, item_name)
+function NodeGui:row_item_by_name(item_name)
 	slot4 = self.row_items
 
 	for _, row_item in ipairs(slot3) do
@@ -776,7 +776,7 @@ NodeGui.row_item_by_name = function (self, item_name)
 
 	return nil
 end
-NodeGui.update = function (self, t, dt)
+function NodeGui:update(t, dt)
 	slot6 = dt
 	local scrolled = self.scroll_update(slot4, self)
 
@@ -816,20 +816,20 @@ NodeGui.update = function (self, t, dt)
 
 	return 
 end
-NodeGui._get_node_padding = function (self)
+function NodeGui:_get_node_padding()
 	local menu_node_padding = 0
 	menu_node_padding = 30
 
 	return menu_node_padding
 end
-NodeGui._get_node_background_width = function (self)
+function NodeGui:_get_node_background_width()
 	slot3 = self.item_panel
 	local bg_width = self.item_panel.w(slot2)
 	bg_width = bg_width * 0.4
 
 	return bg_width
 end
-NodeGui._set_icon_position = function (self, row_item)
+function NodeGui:_set_icon_position(row_item)
 	slot4 = row_item.icon
 
 	if alive(slot3) and row_item.icon then
@@ -851,10 +851,10 @@ NodeGui._set_icon_position = function (self, row_item)
 
 	return 
 end
-NodeGui._set_topic_position = function (self)
+function NodeGui:_set_topic_position()
 	return 
 end
-NodeGui._item_panel_height = function (self)
+function NodeGui:_item_panel_height()
 	local height = self.height_padding * 2
 	slot4 = self.row_items
 
@@ -878,7 +878,7 @@ NodeGui._item_panel_height = function (self)
 
 	return height
 end
-NodeGui._set_item_positions = function (self)
+function NodeGui:_set_item_positions()
 	slot3 = self
 	local total_height = self._item_panel_height(slot2)
 	local current_y = self.height_padding
@@ -988,7 +988,7 @@ NodeGui._set_item_positions = function (self)
 
 	return 
 end
-NodeGui.resolution_changed = function (self)
+function NodeGui:resolution_changed()
 	slot3 = self
 
 	self._setup_size(slot2)
@@ -1003,20 +1003,20 @@ NodeGui.resolution_changed = function (self)
 
 	return 
 end
-NodeGui._setup_item_panel_parent = function (self, safe_rect)
+function NodeGui:_setup_item_panel_parent(safe_rect)
 	slot8 = safe_rect.height
 
 	self._item_panel_parent.set_shape(slot3, self._item_panel_parent, safe_rect.x, safe_rect.y, safe_rect.width)
 
 	return 
 end
-NodeGui._set_width_and_height = function (self, safe_rect)
+function NodeGui:_set_width_and_height(safe_rect)
 	self.width = safe_rect.width
 	self.height = safe_rect.height
 
 	return 
 end
-NodeGui._setup_item_panel = function (self, safe_rect, res)
+function NodeGui:_setup_item_panel(safe_rect, res)
 	local item_panel_offset = safe_rect.height * 0.5 - #self.row_items * 0.5 * (self.font_size + self.spacing)
 
 	if item_panel_offset < 0 then
@@ -1029,12 +1029,12 @@ NodeGui._setup_item_panel = function (self, safe_rect, res)
 
 	return 
 end
-NodeGui._scaled_size = function (self)
+function NodeGui:_scaled_size()
 	slot3 = managers.gui_data
 
 	return managers.gui_data.scaled_size(slot2)
 end
-NodeGui._setup_size = function (self)
+function NodeGui:_setup_size()
 	local safe_rect = managers.viewport.get_safe_rect_pixels(slot2)
 	slot4 = managers.gui_data
 	local scaled_size = managers.gui_data.scaled_size(managers.viewport)
@@ -1131,10 +1131,10 @@ NodeGui._setup_size = function (self)
 
 	return 
 end
-NodeGui._setup_item_size = function (self, row_item)
+function NodeGui:_setup_item_size(row_item)
 	return 
 end
-NodeGui.mouse_pressed = function (self, button, x, y)
+function NodeGui:mouse_pressed(button, x, y)
 	slot8 = y
 
 	if self.item_panel.inside(slot5, self.item_panel, x) then

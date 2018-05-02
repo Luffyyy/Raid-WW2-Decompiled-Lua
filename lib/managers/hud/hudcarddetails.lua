@@ -10,7 +10,7 @@ HUDCardDetails.EFFECT_DISTANCE = 12
 HUDCardDetails.TEXT_X = 75
 HUDCardDetails.TEXT_FONT = tweak_data.gui.fonts.lato
 HUDCardDetails.TEXT_FONT_SIZE = tweak_data.gui.font_sizes.size_20
-function HUDCardDetails:init(panel, params)
+HUDCardDetails.init = function (self, panel, params)
 	self._params = params
 	slot7 = params
 
@@ -30,7 +30,7 @@ function HUDCardDetails:init(panel, params)
 
 	return 
 end
-function HUDCardDetails:_create_panel(panel, params)
+HUDCardDetails._create_panel = function (self, panel, params)
 	local panel_params = {
 		name = "card_details_panel",
 		x = params.x or 0,
@@ -55,7 +55,7 @@ function HUDCardDetails:_create_panel(panel, params)
 
 	return 
 end
-function HUDCardDetails:_create_card()
+HUDCardDetails._create_card = function (self)
 	local card_panel_params = {
 		visible = true,
 		name = "card_panel",
@@ -81,7 +81,7 @@ function HUDCardDetails:_create_card()
 
 	return 
 end
-function HUDCardDetails:_create_bonus()
+HUDCardDetails._create_bonus = function (self)
 	local bonus_panel_params = {
 		name = "bonus_panel",
 		x = 0,
@@ -122,7 +122,7 @@ function HUDCardDetails:_create_bonus()
 
 	return 
 end
-function HUDCardDetails:_create_malus()
+HUDCardDetails._create_malus = function (self)
 	local malus_panel_params = {
 		name = "malus_panel",
 		x = 0,
@@ -163,7 +163,7 @@ function HUDCardDetails:_create_malus()
 
 	return 
 end
-function HUDCardDetails:set_card(card)
+HUDCardDetails.set_card = function (self, card)
 	slot5 = card
 
 	self._card.set_card(slot3, self._card)

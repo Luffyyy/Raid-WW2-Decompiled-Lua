@@ -56,7 +56,7 @@ if not MenuRenderer then
 end
 
 MenuRenderer = slot0
-function MenuRenderer:init(logic, ...)
+MenuRenderer.init = function (self, logic, ...)
 	slot5 = logic
 
 	MenuRenderer.super.init(slot3, self, ...)
@@ -66,7 +66,7 @@ function MenuRenderer:init(logic, ...)
 
 	return 
 end
-function MenuRenderer:show_node(node)
+MenuRenderer.show_node = function (self, node)
 	local gui_class = MenuNodeGui
 	slot5 = node
 
@@ -97,7 +97,7 @@ function MenuRenderer:show_node(node)
 
 	return 
 end
-function MenuRenderer:open(...)
+MenuRenderer.open = function (self, ...)
 	slot3 = self
 
 	MenuRenderer.super.open(slot2, ...)
@@ -168,7 +168,7 @@ MenuRenderer.get_blackborder_workspace_instance = function ()
 
 	return Global.blackborder_workspace
 end
-function MenuRenderer:close(...)
+MenuRenderer.close = function (self, ...)
 	slot3 = self
 
 	MenuRenderer.super.close(slot2, ...)
@@ -275,7 +275,7 @@ MenuRenderer._create_blackborders = function ()
 
 	return 
 end
-function MenuRenderer:update(t, dt)
+MenuRenderer.update = function (self, t, dt)
 	slot7 = dt
 
 	MenuRenderer.super.update(slot4, self, t)
@@ -308,7 +308,7 @@ local mugshot_stencil = {
 		60
 	}
 }
-function MenuRenderer:highlight_item(item, ...)
+MenuRenderer.highlight_item = function (self, item, ...)
 	slot5 = item
 
 	MenuRenderer.super.highlight_item(slot3, self, ...)
@@ -319,7 +319,7 @@ function MenuRenderer:highlight_item(item, ...)
 
 	return 
 end
-function MenuRenderer:trigger_item(item)
+MenuRenderer.trigger_item = function (self, item)
 	slot5 = item
 
 	MenuRenderer.super.trigger_item(slot3, self)
@@ -364,14 +364,14 @@ function MenuRenderer:trigger_item(item)
 
 	return 
 end
-function MenuRenderer:post_event(event)
+MenuRenderer.post_event = function (self, event)
 	slot5 = event
 
 	self._sound_source.post_event(slot3, self._sound_source)
 
 	return 
 end
-function MenuRenderer:navigate_back()
+MenuRenderer.navigate_back = function (self)
 	slot3 = self
 
 	MenuRenderer.super.navigate_back(slot2)
@@ -387,7 +387,7 @@ function MenuRenderer:navigate_back()
 
 	return 
 end
-function MenuRenderer:resolution_changed(...)
+MenuRenderer.resolution_changed = function (self, ...)
 	slot3 = self
 
 	MenuRenderer.super.resolution_changed(slot2, ...)
@@ -405,7 +405,7 @@ function MenuRenderer:resolution_changed(...)
 
 	return 
 end
-function MenuRenderer:current_menu_text(topic_id)
+MenuRenderer.current_menu_text = function (self, topic_id)
 	local ids = {}
 	slot5 = self._node_gui_stack
 
@@ -431,14 +431,14 @@ function MenuRenderer:current_menu_text(topic_id)
 
 	return s
 end
-function MenuRenderer:accept_input(accept)
+MenuRenderer.accept_input = function (self, accept)
 	slot5 = accept
 
 	managers.menu_component.accept_input(slot3, managers.menu_component)
 
 	return 
 end
-function MenuRenderer:input_focus()
+MenuRenderer.input_focus = function (self)
 	slot3 = self
 
 	if self.active_node_gui(slot2) then
@@ -459,7 +459,7 @@ function MenuRenderer:input_focus()
 
 	return managers.menu_component.input_focus(slot2)
 end
-function MenuRenderer:mouse_pressed(o, button, x, y)
+MenuRenderer.mouse_pressed = function (self, o, button, x, y)
 	slot7 = self
 
 	if self.active_node_gui(slot6) then
@@ -483,7 +483,7 @@ function MenuRenderer:mouse_pressed(o, button, x, y)
 
 	return 
 end
-function MenuRenderer:mouse_released(o, button, x, y)
+MenuRenderer.mouse_released = function (self, o, button, x, y)
 	slot7 = self
 
 	if self.active_node_gui(slot6) then
@@ -507,7 +507,7 @@ function MenuRenderer:mouse_released(o, button, x, y)
 
 	return false
 end
-function MenuRenderer:mouse_clicked(o, button, x, y)
+MenuRenderer.mouse_clicked = function (self, o, button, x, y)
 	slot11 = y
 
 	if managers.menu_component.mouse_clicked(slot6, managers.menu_component, o, button, x) then
@@ -516,7 +516,7 @@ function MenuRenderer:mouse_clicked(o, button, x, y)
 
 	return false
 end
-function MenuRenderer:mouse_double_click(o, button, x, y)
+MenuRenderer.mouse_double_click = function (self, o, button, x, y)
 	slot11 = y
 
 	if managers.menu_component.mouse_double_click(slot6, managers.menu_component, o, button, x) then
@@ -525,7 +525,7 @@ function MenuRenderer:mouse_double_click(o, button, x, y)
 
 	return false
 end
-function MenuRenderer:mouse_moved(o, x, y)
+MenuRenderer.mouse_moved = function (self, o, x, y)
 	local wanted_pointer = "arrow"
 	slot7 = self
 
@@ -562,17 +562,17 @@ function MenuRenderer:mouse_moved(o, x, y)
 
 	return false, wanted_pointer
 end
-function MenuRenderer:scroll_up()
+MenuRenderer.scroll_up = function (self)
 	slot3 = managers.menu_component
 
 	return managers.menu_component.scroll_up(slot2)
 end
-function MenuRenderer:scroll_down()
+MenuRenderer.scroll_down = function (self)
 	slot3 = managers.menu_component
 
 	return managers.menu_component.scroll_down(slot2)
 end
-function MenuRenderer:move_up()
+MenuRenderer.move_up = function (self)
 	slot3 = self
 
 	if self.active_node_gui(slot2) then
@@ -592,7 +592,7 @@ function MenuRenderer:move_up()
 
 	return managers.menu_component.move_up(slot2)
 end
-function MenuRenderer:move_down()
+MenuRenderer.move_down = function (self)
 	slot3 = self
 
 	if self.active_node_gui(slot2) then
@@ -612,7 +612,7 @@ function MenuRenderer:move_down()
 
 	return managers.menu_component.move_down(slot2)
 end
-function MenuRenderer:move_left()
+MenuRenderer.move_left = function (self)
 	slot3 = self
 
 	if self.active_node_gui(slot2) then
@@ -632,7 +632,7 @@ function MenuRenderer:move_left()
 
 	return managers.menu_component.move_left(slot2)
 end
-function MenuRenderer:move_right()
+MenuRenderer.move_right = function (self)
 	slot3 = self
 
 	if self.active_node_gui(slot2) then
@@ -652,7 +652,7 @@ function MenuRenderer:move_right()
 
 	return managers.menu_component.move_right(slot2)
 end
-function MenuRenderer:scroll_up()
+MenuRenderer.scroll_up = function (self)
 	slot3 = self
 
 	if self.active_node_gui(slot2) then
@@ -672,7 +672,7 @@ function MenuRenderer:scroll_up()
 
 	return managers.menu_component.scroll_up(slot2)
 end
-function MenuRenderer:scroll_down()
+MenuRenderer.scroll_down = function (self)
 	slot3 = self
 
 	if self.active_node_gui(slot2) then
@@ -692,7 +692,7 @@ function MenuRenderer:scroll_down()
 
 	return managers.menu_component.scroll_down(slot2)
 end
-function MenuRenderer:scroll_left()
+MenuRenderer.scroll_left = function (self)
 	slot3 = self
 
 	if self.active_node_gui(slot2) then
@@ -712,7 +712,7 @@ function MenuRenderer:scroll_left()
 
 	return managers.menu_component.scroll_left(slot2)
 end
-function MenuRenderer:scroll_right()
+MenuRenderer.scroll_right = function (self)
 	slot3 = self
 
 	if self.active_node_gui(slot2) then
@@ -732,7 +732,7 @@ function MenuRenderer:scroll_right()
 
 	return managers.menu_component.scroll_right(slot2)
 end
-function MenuRenderer:next_page()
+MenuRenderer.next_page = function (self)
 	slot3 = self
 
 	if self.active_node_gui(slot2) then
@@ -752,7 +752,7 @@ function MenuRenderer:next_page()
 
 	return managers.menu_component.next_page(slot2)
 end
-function MenuRenderer:previous_page()
+MenuRenderer.previous_page = function (self)
 	slot3 = self
 
 	if self.active_node_gui(slot2) then
@@ -772,7 +772,7 @@ function MenuRenderer:previous_page()
 
 	return managers.menu_component.previous_page(slot2)
 end
-function MenuRenderer:confirm_pressed()
+MenuRenderer.confirm_pressed = function (self)
 	slot3 = self
 
 	if self.active_node_gui(slot2) then
@@ -792,12 +792,12 @@ function MenuRenderer:confirm_pressed()
 
 	return managers.menu_component.confirm_pressed(slot2)
 end
-function MenuRenderer:back_pressed()
+MenuRenderer.back_pressed = function (self)
 	slot3 = managers.menu_component
 
 	return managers.menu_component.back_pressed(slot2)
 end
-function MenuRenderer:special_btn_pressed(...)
+MenuRenderer.special_btn_pressed = function (self, ...)
 	slot3 = self
 
 	if self.active_node_gui(slot2) then
@@ -817,7 +817,7 @@ function MenuRenderer:special_btn_pressed(...)
 
 	return managers.menu_component.special_btn_pressed(slot2, ...)
 end
-function MenuRenderer:ws_test()
+MenuRenderer.ws_test = function (self)
 	slot3 = self._test_safe
 
 	if alive(slot2) then

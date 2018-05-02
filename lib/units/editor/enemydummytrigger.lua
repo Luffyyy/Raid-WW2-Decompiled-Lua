@@ -4,7 +4,7 @@ if not EnemyDummyTriggerUnitElement then
 end
 
 EnemyDummyTriggerUnitElement = slot0
-EnemyDummyTriggerUnitElement.init = function (self, unit)
+function EnemyDummyTriggerUnitElement:init(unit)
 	slot5 = unit
 
 	MissionElement.init(slot3, self)
@@ -21,7 +21,7 @@ EnemyDummyTriggerUnitElement.init = function (self, unit)
 
 	return 
 end
-EnemyDummyTriggerUnitElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function EnemyDummyTriggerUnitElement:draw_links(t, dt, selected_unit, all_units)
 	slot10 = selected_unit
 
 	MissionElement.draw_links(slot6, self, t, dt)
@@ -47,7 +47,7 @@ EnemyDummyTriggerUnitElement.draw_links = function (self, t, dt, selected_unit, 
 
 	return 
 end
-EnemyDummyTriggerUnitElement.get_links_to_unit = function (self, ...)
+function EnemyDummyTriggerUnitElement:get_links_to_unit(...)
 	slot3 = self
 
 	EnemyDummyTriggerUnitElement.super.get_links_to_unit(slot2, ...)
@@ -58,10 +58,10 @@ EnemyDummyTriggerUnitElement.get_links_to_unit = function (self, ...)
 
 	return 
 end
-EnemyDummyTriggerUnitElement.update_editing = function (self)
+function EnemyDummyTriggerUnitElement:update_editing()
 	return 
 end
-EnemyDummyTriggerUnitElement.add_element = function (self)
+function EnemyDummyTriggerUnitElement:add_element()
 	slot4 = {
 		ray_type = "editor",
 		mask = 10
@@ -91,7 +91,7 @@ EnemyDummyTriggerUnitElement.add_element = function (self)
 
 	return 
 end
-EnemyDummyTriggerUnitElement._correct_unit = function (self, u_name)
+function EnemyDummyTriggerUnitElement:_correct_unit(u_name)
 	local names = {
 		"ai_spawn_enemy",
 		"ai_enemy_group",
@@ -110,7 +110,7 @@ EnemyDummyTriggerUnitElement._correct_unit = function (self, u_name)
 
 	return false
 end
-EnemyDummyTriggerUnitElement.remove_links = function (self, unit)
+function EnemyDummyTriggerUnitElement:remove_links(unit)
 	slot4 = self._hed.elements
 
 	for _, id in ipairs(slot3) do
@@ -125,7 +125,7 @@ EnemyDummyTriggerUnitElement.remove_links = function (self, unit)
 
 	return 
 end
-EnemyDummyTriggerUnitElement.add_triggers = function (self, vc)
+function EnemyDummyTriggerUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "add_element"
 
@@ -133,7 +133,7 @@ EnemyDummyTriggerUnitElement.add_triggers = function (self, vc)
 
 	return 
 end
-EnemyDummyTriggerUnitElement._build_panel = function (self, panel, panel_sizer)
+function EnemyDummyTriggerUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

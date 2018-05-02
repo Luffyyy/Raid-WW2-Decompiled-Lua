@@ -88,7 +88,7 @@ if not GameStateMachine then
 end
 
 GameStateMachine = slot0
-GameStateMachine.init = function (self)
+function GameStateMachine:init()
 	if not Global.game_state_machine then
 		Global.game_state_machine = {
 			is_boot_intro_done = false,
@@ -939,7 +939,7 @@ GameStateMachine.init = function (self)
 
 	return 
 end
-GameStateMachine.init_finilize = function (self)
+function GameStateMachine:init_finilize()
 	if managers.hud then
 		slot3 = managers.hud
 		slot8 = "chatinput_changed_callback"
@@ -949,48 +949,48 @@ GameStateMachine.init_finilize = function (self)
 
 	return 
 end
-GameStateMachine.set_boot_intro_done = function (self, is_boot_intro_done)
+function GameStateMachine:set_boot_intro_done(is_boot_intro_done)
 	Global.game_state_machine.is_boot_intro_done = is_boot_intro_done
 	self._is_boot_intro_done = is_boot_intro_done
 
 	return 
 end
-GameStateMachine.is_boot_intro_done = function (self)
+function GameStateMachine:is_boot_intro_done()
 	return self._is_boot_intro_done
 end
-GameStateMachine.set_boot_from_sign_out = function (self, is_boot_from_sign_out)
+function GameStateMachine:set_boot_from_sign_out(is_boot_from_sign_out)
 	Global.game_state_machine.is_boot_from_sign_out = is_boot_from_sign_out
 
 	return 
 end
-GameStateMachine.is_boot_from_sign_out = function (self)
+function GameStateMachine:is_boot_from_sign_out()
 	return self._is_boot_from_sign_out
 end
-GameStateMachine.menu_active_changed_callback = function (self, active)
+function GameStateMachine:menu_active_changed_callback(active)
 	slot5 = not active
 
 	self._set_controller_enabled(slot3, self)
 
 	return 
 end
-GameStateMachine.dialog_active_changed_callback = function (self, active)
+function GameStateMachine:dialog_active_changed_callback(active)
 	slot5 = not active
 
 	self._set_controller_enabled(slot3, self)
 
 	return 
 end
-GameStateMachine.chatinput_changed_callback = function (self, active)
+function GameStateMachine:chatinput_changed_callback(active)
 	slot5 = not active
 
 	self._set_controller_enabled(slot3, self)
 
 	return 
 end
-GameStateMachine.is_controller_enabled = function (self)
+function GameStateMachine:is_controller_enabled()
 	return 0 < self._controller_enabled_count
 end
-GameStateMachine._set_controller_enabled = function (self, enabled)
+function GameStateMachine:_set_controller_enabled(enabled)
 	slot4 = self
 	local was_enabled = self.is_controller_enabled(slot3)
 	local old_controller_enabled_count = self._controller_enabled_count

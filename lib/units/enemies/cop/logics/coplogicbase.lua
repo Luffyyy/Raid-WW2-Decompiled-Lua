@@ -1412,7 +1412,7 @@ CopLogicBase._SUSPICIOUS_SO_ANIMS = {
 		"e_so_suspicious_pistol_v02"
 	}
 }
-CopLogicBase.enter = function (data, new_logic_name, enter_params, my_data)
+function CopLogicBase.enter(data, new_logic_name, enter_params, my_data)
 	local old_internal_data = data.internal_data
 
 	if old_internal_data then
@@ -1433,7 +1433,7 @@ CopLogicBase.enter = function (data, new_logic_name, enter_params, my_data)
 
 	return 
 end
-CopLogicBase.exit = function (data, new_logic_name, enter_params)
+function CopLogicBase.exit(data, new_logic_name, enter_params)
 	local my_data = data.internal_data
 
 	if data.internal_data then
@@ -1460,22 +1460,22 @@ CopLogicBase.exit = function (data, new_logic_name, enter_params)
 
 	return 
 end
-CopLogicBase.action_data = function (data)
+function CopLogicBase.action_data(data)
 	return data.action_data
 end
-CopLogicBase.can_activate = function (data)
+function CopLogicBase.can_activate(data)
 	return true
 end
-CopLogicBase.on_intimidated = function (data, amount, aggressor_unit)
+function CopLogicBase.on_intimidated(data, amount, aggressor_unit)
 	return 
 end
-CopLogicBase.on_tied = function (data, aggressor_unit)
+function CopLogicBase.on_tied(data, aggressor_unit)
 	return 
 end
-CopLogicBase.on_criminal_neutralized = function (data, criminal_key)
+function CopLogicBase.on_criminal_neutralized(data, criminal_key)
 	return 
 end
-CopLogicBase._set_attention_on_unit = function (data, attention_unit)
+function CopLogicBase._set_attention_on_unit(data, attention_unit)
 	local attention_data = {
 		unit = attention_unit
 	}
@@ -1486,7 +1486,7 @@ CopLogicBase._set_attention_on_unit = function (data, attention_unit)
 
 	return 
 end
-CopLogicBase._set_attention = function (data, attention_info, reaction)
+function CopLogicBase._set_attention(data, attention_info, reaction)
 	local attention_data = {
 		unit = attention_info.unit,
 		u_key = attention_info.u_key,
@@ -1500,7 +1500,7 @@ CopLogicBase._set_attention = function (data, attention_info, reaction)
 
 	return 
 end
-CopLogicBase._set_attention_on_pos = function (data, pos)
+function CopLogicBase._set_attention_on_pos(data, pos)
 	local attention_data = {
 		pos = pos
 	}
@@ -1511,7 +1511,7 @@ CopLogicBase._set_attention_on_pos = function (data, pos)
 
 	return 
 end
-CopLogicBase._reset_attention = function (data)
+function CopLogicBase._reset_attention(data)
 	slot3 = data.unit
 	slot3 = data.unit.movement(slot2)
 
@@ -1519,10 +1519,10 @@ CopLogicBase._reset_attention = function (data)
 
 	return 
 end
-CopLogicBase.is_available_for_assignment = function (data)
+function CopLogicBase.is_available_for_assignment(data)
 	return true
 end
-CopLogicBase._nav_point_pos = function (nav_point)
+function CopLogicBase._nav_point_pos(nav_point)
 	if nav_point.x then
 		return nav_point
 	end
@@ -1532,10 +1532,10 @@ CopLogicBase._nav_point_pos = function (nav_point)
 
 	return nav_point.script_data(slot2).element.value(slot2, nav_point.script_data(slot2).element)
 end
-CopLogicBase.on_action_completed = function (data, action)
+function CopLogicBase.on_action_completed(data, action)
 	return 
 end
-CopLogicBase.request_action_timeout_callback = function (data)
+function CopLogicBase.request_action_timeout_callback(data)
 	local my_data = data.internal_data
 	slot5 = data.key
 	my_data.action_timeout_clbk_id = "CopLogicBase_action_timeout" .. tostring(slot4)
@@ -1548,7 +1548,7 @@ CopLogicBase.request_action_timeout_callback = function (data)
 
 	return 
 end
-CopLogicBase.action_timeout_clbk = function (ignore_this, data)
+function CopLogicBase.action_timeout_clbk(ignore_this, data)
 	local my_data = data.internal_data
 	slot6 = my_data.action_timeout_clbk_id
 
@@ -1583,7 +1583,7 @@ CopLogicBase.action_timeout_clbk = function (ignore_this, data)
 
 	return 
 end
-CopLogicBase.damage_clbk = function (data, damage_info)
+function CopLogicBase.damage_clbk(data, damage_info)
 	local enemy = damage_info.attacker_unit
 	local enemy_data = nil
 
@@ -1682,7 +1682,7 @@ CopLogicBase.damage_clbk = function (data, damage_info)
 
 	return 
 end
-CopLogicBase.death_clbk = function (data, damage_info)
+function CopLogicBase.death_clbk(data, damage_info)
 	slot4 = managers.groupai
 	slot4 = managers.groupai.state(slot3)
 
@@ -1746,7 +1746,7 @@ CopLogicBase.death_clbk = function (data, damage_info)
 
 	return 
 end
-CopLogicBase.on_alert = function (data, alert_data)
+function CopLogicBase.on_alert(data, alert_data)
 	slot4 = managers.player
 
 	if not managers.player.local_player(slot3) then
@@ -1819,10 +1819,10 @@ CopLogicBase.on_alert = function (data, alert_data)
 
 	return 
 end
-CopLogicBase.on_area_safety = function (data, nav_seg, safe)
+function CopLogicBase.on_area_safety(data, nav_seg, safe)
 	return 
 end
-CopLogicBase.draw_reserved_positions = function (data)
+function CopLogicBase.draw_reserved_positions(data)
 	local my_pos = data.m_pos
 	local my_data = data.internal_data
 	local rsrv_pos = data.pos_rsrv
@@ -1882,7 +1882,7 @@ CopLogicBase.draw_reserved_positions = function (data)
 
 	return 
 end
-CopLogicBase.draw_reserved_covers = function (data)
+function CopLogicBase.draw_reserved_covers(data)
 	local my_pos = data.m_pos
 	local my_data = data.internal_data
 
@@ -1921,7 +1921,7 @@ CopLogicBase.draw_reserved_covers = function (data)
 
 	return 
 end
-CopLogicBase.release_reserved_covers = function (data)
+function CopLogicBase.release_reserved_covers(data)
 	local my_pos = data.m_pos
 	local my_data = data.internal_data
 
@@ -1960,7 +1960,7 @@ CopLogicBase.release_reserved_covers = function (data)
 
 	return 
 end
-CopLogicBase._exit = function (unit, state_name, params)
+function CopLogicBase._exit(unit, state_name, params)
 	slot5 = unit
 
 	if unit.brain(slot4).logic_queued_key then
@@ -1995,13 +1995,13 @@ CopLogicBase._exit = function (unit, state_name, params)
 
 	return 
 end
-CopLogicBase.on_detected_enemy_destroyed = function (data, enemy_unit)
+function CopLogicBase.on_detected_enemy_destroyed(data, enemy_unit)
 	return 
 end
-CopLogicBase._can_move = function (data)
+function CopLogicBase._can_move(data)
 	return true
 end
-CopLogicBase._report_detections = function (enemies)
+function CopLogicBase._report_detections(enemies)
 	local group = managers.groupai.state(slot2)
 	slot4 = enemies
 
@@ -2015,10 +2015,10 @@ CopLogicBase._report_detections = function (enemies)
 
 	return 
 end
-CopLogicBase.on_importance = function (data)
+function CopLogicBase.on_importance(data)
 	return 
 end
-CopLogicBase.queue_task = function (internal_data, id, func, data, exec_t, asap)
+function CopLogicBase.queue_task(internal_data, id, func, data, exec_t, asap)
 	if internal_data.unit then
 		slot8 = internal_data.unit
 
@@ -2052,7 +2052,7 @@ CopLogicBase.queue_task = function (internal_data, id, func, data, exec_t, asap)
 
 	return 
 end
-CopLogicBase.cancel_queued_tasks = function (internal_data)
+function CopLogicBase.cancel_queued_tasks(internal_data)
 	local qd_tasks = internal_data.queued_tasks
 
 	if qd_tasks then
@@ -2070,7 +2070,7 @@ CopLogicBase.cancel_queued_tasks = function (internal_data)
 
 	return 
 end
-CopLogicBase.unqueue_task = function (internal_data, id)
+function CopLogicBase.unqueue_task(internal_data, id)
 	slot5 = id
 
 	managers.enemy.unqueue_task(slot3, managers.enemy)
@@ -2084,7 +2084,7 @@ CopLogicBase.unqueue_task = function (internal_data, id)
 
 	return 
 end
-CopLogicBase.chk_unqueue_task = function (internal_data, id)
+function CopLogicBase.chk_unqueue_task(internal_data, id)
 	if internal_data.queued_tasks and internal_data.queued_tasks[id] then
 		slot5 = id
 
@@ -2100,7 +2100,7 @@ CopLogicBase.chk_unqueue_task = function (internal_data, id)
 
 	return 
 end
-CopLogicBase.on_queued_task = function (ignore_this, internal_data, id)
+function CopLogicBase.on_queued_task(ignore_this, internal_data, id)
 	if not internal_data.queued_tasks or not internal_data.queued_tasks[id] then
 		slot7 = id
 
@@ -2118,7 +2118,7 @@ CopLogicBase.on_queued_task = function (ignore_this, internal_data, id)
 
 	return 
 end
-CopLogicBase.add_delayed_clbk = function (internal_data, id, clbk, exec_t)
+function CopLogicBase.add_delayed_clbk(internal_data, id, clbk, exec_t)
 	if internal_data.unit then
 		slot6 = internal_data.unit
 
@@ -2151,7 +2151,7 @@ CopLogicBase.add_delayed_clbk = function (internal_data, id, clbk, exec_t)
 
 	return 
 end
-CopLogicBase.cancel_delayed_clbks = function (internal_data)
+function CopLogicBase.cancel_delayed_clbks(internal_data)
 	local clbks = internal_data.delayed_clbks
 
 	if clbks then
@@ -2169,7 +2169,7 @@ CopLogicBase.cancel_delayed_clbks = function (internal_data)
 
 	return 
 end
-CopLogicBase.cancel_delayed_clbk = function (internal_data, id)
+function CopLogicBase.cancel_delayed_clbk(internal_data, id)
 	if not internal_data.delayed_clbks or not internal_data.delayed_clbks[id] then
 		slot2 = debug_pause
 		slot4 = "[CopLogicBase.cancel_delayed_clbk] Tried to cancel inexistent clbk"
@@ -2199,7 +2199,7 @@ CopLogicBase.cancel_delayed_clbk = function (internal_data, id)
 
 	return 
 end
-CopLogicBase.chk_cancel_delayed_clbk = function (internal_data, id)
+function CopLogicBase.chk_cancel_delayed_clbk(internal_data, id)
 	if internal_data.delayed_clbks and internal_data.delayed_clbks[id] then
 		slot5 = id
 
@@ -2215,7 +2215,7 @@ CopLogicBase.chk_cancel_delayed_clbk = function (internal_data, id)
 
 	return 
 end
-CopLogicBase.on_delayed_clbk = function (internal_data, id)
+function CopLogicBase.on_delayed_clbk(internal_data, id)
 	if not internal_data.delayed_clbks or not internal_data.delayed_clbks[id] then
 		slot2 = debug_pause
 		slot4 = "[CopLogicBase.on_delayed_clbk] Callback not added"
@@ -2241,10 +2241,10 @@ CopLogicBase.on_delayed_clbk = function (internal_data, id)
 
 	return 
 end
-CopLogicBase.on_objective_unit_damaged = function (data, unit, attacker_unit)
+function CopLogicBase.on_objective_unit_damaged(data, unit, attacker_unit)
 	return 
 end
-CopLogicBase.on_objective_unit_destroyed = function (data, unit)
+function CopLogicBase.on_objective_unit_destroyed(data, unit)
 	slot4 = data.unit
 
 	if not alive(slot3) then
@@ -2264,7 +2264,7 @@ CopLogicBase.on_objective_unit_destroyed = function (data, unit)
 
 	return 
 end
-CopLogicBase.update_follow_unit = function (data, old_objective)
+function CopLogicBase.update_follow_unit(data, old_objective)
 	if old_objective and old_objective.follow_unit then
 		if old_objective.destroy_clbk_key then
 			slot4 = old_objective.follow_unit
@@ -2316,7 +2316,7 @@ CopLogicBase.update_follow_unit = function (data, old_objective)
 
 	return 
 end
-CopLogicBase.on_new_objective = function (data, old_objective)
+function CopLogicBase.on_new_objective(data, old_objective)
 	local new_objective = data.objective
 	slot6 = old_objective
 
@@ -2396,13 +2396,13 @@ CopLogicBase.on_new_objective = function (data, old_objective)
 
 	return 
 end
-CopLogicBase.is_advancing = function (data)
+function CopLogicBase.is_advancing(data)
 	return 
 end
-CopLogicBase.anim_clbk = function (...)
+function CopLogicBase.anim_clbk(...)
 	return 
 end
-CopLogicBase._angle_chk = function (handler, settings, data, my_pos, strictness)
+function CopLogicBase._angle_chk(handler, settings, data, my_pos, strictness)
 	local attention_pos = handler.get_detection_m_pos(slot6)
 	slot10 = attention_pos
 	local dis = mvector3.direction(handler, tmp_vec1, my_pos)
@@ -2425,7 +2425,7 @@ CopLogicBase._angle_chk = function (handler, settings, data, my_pos, strictness)
 
 	return 
 end
-CopLogicBase._angle_and_dis_chk = function (handler, settings, data, my_pos)
+function CopLogicBase._angle_and_dis_chk(handler, settings, data, my_pos)
 	local attention_pos = handler.get_detection_m_pos(slot5)
 	slot9 = attention_pos
 	local dis = mvector3.direction(handler, tmp_vec1, my_pos)
@@ -2510,7 +2510,7 @@ CopLogicBase._angle_and_dis_chk = function (handler, settings, data, my_pos)
 
 	return unpack(slot18)
 end
-CopLogicBase._nearly_visible_chk = function (data, attention_info, my_pos, detect_pos)
+function CopLogicBase._nearly_visible_chk(data, attention_info, my_pos, detect_pos)
 	local near_pos = tmp_vec1
 
 	if attention_info.verified_dis < 2000 then
@@ -2581,7 +2581,7 @@ CopLogicBase._nearly_visible_chk = function (data, attention_info, my_pos, detec
 
 	return 
 end
-CopLogicBase._chk_record_acquired_attention_importance_wgt = function (attention_info, player_importance_wgt, my_pos)
+function CopLogicBase._chk_record_acquired_attention_importance_wgt(attention_info, player_importance_wgt, my_pos)
 	if not player_importance_wgt or not attention_info.is_human_player then
 		return 
 	end
@@ -2614,7 +2614,7 @@ CopLogicBase._chk_record_acquired_attention_importance_wgt = function (attention
 
 	return 
 end
-CopLogicBase._chk_record_attention_obj_importance_wgt = function (u_key, attention_info, player_importance_wgt, my_pos)
+function CopLogicBase._chk_record_attention_obj_importance_wgt(u_key, attention_info, player_importance_wgt, my_pos)
 	if not player_importance_wgt then
 		return 
 	end
@@ -2673,7 +2673,7 @@ CopLogicBase._chk_record_attention_obj_importance_wgt = function (u_key, attenti
 
 	return 
 end
-CopLogicBase._upd_attention_obj_detection = function (data, min_reaction, max_reaction)
+function CopLogicBase._upd_attention_obj_detection(data, min_reaction, max_reaction)
 	local t = data.t
 	local detected_obj = data.detected_attention_objects
 	local my_data = data.internal_data
@@ -2951,7 +2951,7 @@ CopLogicBase._upd_attention_obj_detection = function (data, min_reaction, max_re
 
 	return delay
 end
-CopLogicBase._detection_obj_lost = function (data, attention_info)
+function CopLogicBase._detection_obj_lost(data, attention_info)
 	slot5 = attention_info
 
 	CopLogicBase._destroy_detected_attention_object_data(slot3, data)
@@ -3010,7 +3010,7 @@ CopLogicBase._detection_obj_lost = function (data, attention_info)
 
 	return 
 end
-CopLogicBase.on_search_SO_failed = function (cop, params)
+function CopLogicBase.on_search_SO_failed(cop, params)
 	slot4 = managers.groupai
 	slot5 = cop
 
@@ -3018,7 +3018,7 @@ CopLogicBase.on_search_SO_failed = function (cop, params)
 
 	return 
 end
-CopLogicBase.on_search_SO_completed = function (cop, params)
+function CopLogicBase.on_search_SO_completed(cop, params)
 	slot5 = cop
 
 	managers.voice_over.guard_back_to_patrol(slot3, managers.voice_over)
@@ -3042,7 +3042,7 @@ CopLogicBase.on_search_SO_completed = function (cop, params)
 
 	return 
 end
-CopLogicBase.on_search_SO_started = function (cop, params)
+function CopLogicBase.on_search_SO_started(cop, params)
 	slot5 = cop
 
 	managers.voice_over.guard_investigate(slot3, managers.voice_over)
@@ -3054,7 +3054,7 @@ CopLogicBase.on_search_SO_started = function (cop, params)
 
 	return 
 end
-CopLogicBase._upd_look_for_player = function (data, attention_info)
+function CopLogicBase._upd_look_for_player(data, attention_info)
 	if not data.attention_obj or data.attention_obj.u_key ~= attention_info.u_key then
 		slot5 = attention_info
 
@@ -3085,7 +3085,7 @@ CopLogicBase._upd_look_for_player = function (data, attention_info)
 
 	return 
 end
-CopLogicBase._create_return_from_search_SO = function (cop, old_objective)
+function CopLogicBase._create_return_from_search_SO(cop, old_objective)
 	slot6 = cop
 	slot6 = cop.movement(slot5)
 	local pos = mvector3.copy(cop.movement(slot5).m_pos(slot5))
@@ -3121,7 +3121,7 @@ CopLogicBase._create_return_from_search_SO = function (cop, old_objective)
 
 	return objective
 end
-CopLogicBase.register_search_SO = function (cop, attention_info, position)
+function CopLogicBase.register_search_SO(cop, attention_info, position)
 
 	-- Decompilation error in this vicinity:
 	slot8 = position
@@ -3239,7 +3239,7 @@ CopLogicBase.register_search_SO = function (cop, attention_info, position)
 
 	return true
 end
-CopLogicBase.register_stop_and_look_SO = function (data, attention_info)
+function CopLogicBase.register_stop_and_look_SO(data, attention_info)
 	local cop = data.unit
 	slot5 = cop
 	slot5 = cop.brain(slot4)
@@ -3288,7 +3288,7 @@ CopLogicBase.register_stop_and_look_SO = function (data, attention_info)
 
 	return 
 end
-CopLogicBase.register_alert_SO = function (data)
+function CopLogicBase.register_alert_SO(data)
 
 	-- Decompilation error in this vicinity:
 	slot3 = data.unit
@@ -3302,7 +3302,7 @@ CopLogicBase.register_alert_SO = function (data)
 
 	return 
 end
-CopLogicBase.on_alert_administered = function (cop, params)
+function CopLogicBase.on_alert_administered(cop, params)
 	slot4 = cop
 
 	if alive(slot3) then
@@ -3332,7 +3332,7 @@ CopLogicBase.on_alert_administered = function (cop, params)
 
 	return 
 end
-CopLogicBase.on_alert_completed = function (cop, params)
+function CopLogicBase.on_alert_completed(cop, params)
 	params.alert_point.executing = false
 	params.data.internal_data.is_on_alert_SO = false
 	slot4 = params.alert_point
@@ -3406,7 +3406,7 @@ CopLogicBase.on_alert_completed = function (cop, params)
 
 	return 
 end
-CopLogicBase.on_alert_failed = function (cop, params)
+function CopLogicBase.on_alert_failed(cop, params)
 	params.alert_point.executing = false
 	params.data.internal_data.is_on_alert_SO = false
 	slot4 = params.alert_point
@@ -3425,7 +3425,7 @@ CopLogicBase.on_alert_failed = function (cop, params)
 
 	return 
 end
-CopLogicBase._create_detected_attention_object_data = function (time, my_unit, u_key, attention_info, settings)
+function CopLogicBase._create_detected_attention_object_data(time, my_unit, u_key, attention_info, settings)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-34, warpins: 1 ---
@@ -3614,7 +3614,7 @@ CopLogicBase._create_detected_attention_object_data = function (time, my_unit, u
 
 
 end
-CopLogicBase._destroy_detected_attention_object_data = function (data, attention_info)
+function CopLogicBase._destroy_detected_attention_object_data(data, attention_info)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -3696,7 +3696,7 @@ CopLogicBase._destroy_detected_attention_object_data = function (data, attention
 
 
 end
-CopLogicBase._destroy_all_detected_attention_object_data = function (data)
+function CopLogicBase._destroy_all_detected_attention_object_data(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -3805,7 +3805,7 @@ CopLogicBase._destroy_all_detected_attention_object_data = function (data)
 
 
 end
-CopLogicBase.on_detected_attention_obj_modified = function (data, modified_u_key)
+function CopLogicBase.on_detected_attention_obj_modified(data, modified_u_key)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -4200,7 +4200,7 @@ CopLogicBase.on_detected_attention_obj_modified = function (data, modified_u_key
 
 
 end
-CopLogicBase._set_attention_obj = function (data, new_att_obj, new_reaction)
+function CopLogicBase._set_attention_obj(data, new_att_obj, new_reaction)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -4601,7 +4601,7 @@ CopLogicBase._set_attention_obj = function (data, new_att_obj, new_reaction)
 
 
 end
-CopLogicBase._is_important_to_player = function (record, my_key)
+function CopLogicBase._is_important_to_player(record, my_key)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -4666,7 +4666,7 @@ CopLogicBase._is_important_to_player = function (record, my_key)
 
 
 end
-CopLogicBase.should_duck_on_alert = function (data, alert_data)
+function CopLogicBase.should_duck_on_alert(data, alert_data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -4717,7 +4717,7 @@ CopLogicBase.should_duck_on_alert = function (data, alert_data)
 
 
 end
-CopLogicBase._chk_nearly_visible_chk_needed = function (data, attention_info, u_key)
+function CopLogicBase._chk_nearly_visible_chk_needed(data, attention_info, u_key)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -4776,7 +4776,7 @@ CopLogicBase._chk_nearly_visible_chk_needed = function (data, attention_info, u_
 
 
 end
-CopLogicBase._chk_relocate = function (data)
+function CopLogicBase._chk_relocate(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -5267,7 +5267,7 @@ CopLogicBase._chk_relocate = function (data)
 
 
 end
-CopLogicBase.is_obstructed = function (data, objective, strictness, attention)
+function CopLogicBase.is_obstructed(data, objective, strictness, attention)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -5565,7 +5565,7 @@ CopLogicBase.is_obstructed = function (data, objective, strictness, attention)
 
 
 end
-CopLogicBase._get_priority_attention = function (data, attention_objects, reaction_func)
+function CopLogicBase._get_priority_attention(data, attention_objects, reaction_func)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -6707,7 +6707,7 @@ CopLogicBase._get_priority_attention = function (data, attention_objects, reacti
 
 
 end
-CopLogicBase._upd_suspicion = function (data, my_data, attention_obj)
+function CopLogicBase._upd_suspicion(data, my_data, attention_obj)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -6931,7 +6931,7 @@ CopLogicBase._upd_suspicion = function (data, my_data, attention_obj)
 
 
 end
-CopLogicBase.upd_suspicion_decay = function (data)
+function CopLogicBase.upd_suspicion_decay(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -7019,7 +7019,7 @@ CopLogicBase.upd_suspicion_decay = function (data)
 
 
 end
-CopLogicBase._get_logic_state_from_reaction = function (data, reaction)
+function CopLogicBase._get_logic_state_from_reaction(data, reaction)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -7163,7 +7163,7 @@ CopLogicBase._get_logic_state_from_reaction = function (data, reaction)
 
 
 end
-CopLogicBase._chk_call_the_police = function (data)
+function CopLogicBase._chk_call_the_police(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -7299,7 +7299,7 @@ CopLogicBase._chk_call_the_police = function (data)
 
 
 end
-CopLogicBase.identify_attention_obj_instant = function (data, att_u_key)
+function CopLogicBase.identify_attention_obj_instant(data, att_u_key)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -7492,7 +7492,7 @@ CopLogicBase.identify_attention_obj_instant = function (data, att_u_key)
 
 
 end
-CopLogicBase.is_alert_aggressive = function (alert_type)
+function CopLogicBase.is_alert_aggressive(alert_type)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -7502,7 +7502,7 @@ CopLogicBase.is_alert_aggressive = function (alert_type)
 
 
 end
-CopLogicBase.is_alert_dangerous = function (alert_type)
+function CopLogicBase.is_alert_dangerous(alert_type)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -7512,7 +7512,7 @@ CopLogicBase.is_alert_dangerous = function (alert_type)
 
 
 end
-CopLogicBase._evaluate_reason_to_surrender = function (data, my_data, aggressor_unit)
+function CopLogicBase._evaluate_reason_to_surrender(data, my_data, aggressor_unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -7565,7 +7565,7 @@ CopLogicBase._evaluate_reason_to_surrender = function (data, my_data, aggressor_
 	--- BLOCK #2 22-43, warpins: 2 ---
 	local hold_chance = 1
 	local surrender_chk = {}
-	surrender_chk.health = function (health_surrender)
+	function surrender_chk.health(health_surrender)
 
 		-- Decompilation error in this vicinity:
 		--- BLOCK #0 1-11, warpins: 1 ---
@@ -7681,7 +7681,7 @@ CopLogicBase._evaluate_reason_to_surrender = function (data, my_data, aggressor_
 
 
 	end
-	surrender_chk.aggressor_dis = function (agg_dis_surrender)
+	function surrender_chk.aggressor_dis(agg_dis_surrender)
 
 		-- Decompilation error in this vicinity:
 		--- BLOCK #0 1-16, warpins: 1 ---
@@ -7788,7 +7788,7 @@ CopLogicBase._evaluate_reason_to_surrender = function (data, my_data, aggressor_
 
 
 	end
-	surrender_chk.weapon_down = function (weap_down_surrender)
+	function surrender_chk.weapon_down(weap_down_surrender)
 
 		-- Decompilation error in this vicinity:
 		--- BLOCK #0 1-8, warpins: 1 ---
@@ -7884,7 +7884,7 @@ CopLogicBase._evaluate_reason_to_surrender = function (data, my_data, aggressor_
 
 
 	end
-	surrender_chk.flanked = function (flanked_surrender)
+	function surrender_chk.flanked(flanked_surrender)
 
 		-- Decompilation error in this vicinity:
 		--- BLOCK #0 1-15, warpins: 1 ---
@@ -7933,7 +7933,7 @@ CopLogicBase._evaluate_reason_to_surrender = function (data, my_data, aggressor_
 
 
 	end
-	surrender_chk.unaware_of_aggressor = function (unaware_of_aggressor_surrender)
+	function surrender_chk.unaware_of_aggressor(unaware_of_aggressor_surrender)
 
 		-- Decompilation error in this vicinity:
 		--- BLOCK #0 1-9, warpins: 1 ---
@@ -7965,7 +7965,7 @@ CopLogicBase._evaluate_reason_to_surrender = function (data, my_data, aggressor_
 
 
 	end
-	surrender_chk.enemy_weap_cold = function (enemy_weap_cold_surrender)
+	function surrender_chk.enemy_weap_cold(enemy_weap_cold_surrender)
 
 		-- Decompilation error in this vicinity:
 		--- BLOCK #0 1-10, warpins: 1 ---
@@ -7997,7 +7997,7 @@ CopLogicBase._evaluate_reason_to_surrender = function (data, my_data, aggressor_
 
 
 	end
-	surrender_chk.isolated = function (isolated_surrender)
+	function surrender_chk.isolated(isolated_surrender)
 
 		-- Decompilation error in this vicinity:
 		--- BLOCK #0 1-4, warpins: 1 ---
@@ -8104,7 +8104,7 @@ CopLogicBase._evaluate_reason_to_surrender = function (data, my_data, aggressor_
 
 
 	end
-	surrender_chk.pants_down = function (pants_down_surrender)
+	function surrender_chk.pants_down(pants_down_surrender)
 
 		-- Decompilation error in this vicinity:
 		--- BLOCK #0 1-10, warpins: 1 ---
@@ -8388,7 +8388,7 @@ CopLogicBase._evaluate_reason_to_surrender = function (data, my_data, aggressor_
 
 
 end
-CopLogicBase.on_intimidated = function (data, amount, aggressor_unit)
+function CopLogicBase.on_intimidated(data, amount, aggressor_unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-28, warpins: 1 ---
@@ -8702,7 +8702,7 @@ CopLogicBase.on_intimidated = function (data, amount, aggressor_unit)
 
 
 end
-CopLogicBase._surrender = function (data, amount, aggressor_unit)
+function CopLogicBase._surrender(data, amount, aggressor_unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -8722,7 +8722,7 @@ CopLogicBase._surrender = function (data, amount, aggressor_unit)
 
 
 end
-CopLogicBase._can_arrest = function (data)
+function CopLogicBase._can_arrest(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -8770,7 +8770,7 @@ CopLogicBase._can_arrest = function (data)
 
 
 end
-CopLogicBase.on_attention_obj_identified = function (data, attention_u_key, attention_info, reason)
+function CopLogicBase.on_attention_obj_identified(data, attention_u_key, attention_info, reason)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -9037,7 +9037,7 @@ CopLogicBase.on_attention_obj_identified = function (data, attention_u_key, atte
 
 
 end
-CopLogicBase.on_suppressed_state = function (data)
+function CopLogicBase.on_suppressed_state(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -9079,7 +9079,7 @@ CopLogicBase.on_suppressed_state = function (data)
 
 
 end
-CopLogicBase.chk_start_action_dodge = function (data, reason)
+function CopLogicBase.chk_start_action_dodge(data, reason)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -9730,7 +9730,7 @@ CopLogicBase.chk_start_action_dodge = function (data, reason)
 
 
 end
-CopLogicBase.chk_am_i_aimed_at = function (data, attention_obj, max_dot)
+function CopLogicBase.chk_am_i_aimed_at(data, attention_obj, max_dot)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -9824,7 +9824,7 @@ CopLogicBase.chk_am_i_aimed_at = function (data, attention_obj, max_dot)
 
 
 end
-CopLogicBase._chk_alert_obstructed = function (my_listen_pos, alert_data)
+function CopLogicBase._chk_alert_obstructed(my_listen_pos, alert_data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -9961,7 +9961,7 @@ CopLogicBase._chk_alert_obstructed = function (my_listen_pos, alert_data)
 
 
 end
-CopLogicBase._chk_has_old_action = function (data, my_data)
+function CopLogicBase._chk_has_old_action(data, my_data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -10025,7 +10025,7 @@ CopLogicBase._chk_has_old_action = function (data, my_data)
 
 
 end
-CopLogicBase._upd_stop_old_action = function (data, my_data, objective)
+function CopLogicBase._upd_stop_old_action(data, my_data, objective)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -10153,7 +10153,7 @@ CopLogicBase._upd_stop_old_action = function (data, my_data, objective)
 
 
 end
-CopLogicBase._chk_focus_on_attention_object = function (data, my_data)
+function CopLogicBase._chk_focus_on_attention_object(data, my_data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -10410,7 +10410,7 @@ CopLogicBase._chk_focus_on_attention_object = function (data, my_data)
 
 
 end
-CopLogicBase._chk_request_action_turn_to_look_pos = function (data, my_data, my_pos, look_pos)
+function CopLogicBase._chk_request_action_turn_to_look_pos(data, my_data, my_pos, look_pos)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -10432,7 +10432,7 @@ CopLogicBase._chk_request_action_turn_to_look_pos = function (data, my_data, my_
 
 
 end
-CopLogicBase._chk_turn_needed = function (data, my_data, my_pos, look_pos)
+function CopLogicBase._chk_turn_needed(data, my_data, my_pos, look_pos)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-25, warpins: 1 ---
@@ -10503,7 +10503,7 @@ CopLogicBase._chk_turn_needed = function (data, my_data, my_pos, look_pos)
 
 
 end
-CopLogicBase._turn_by_spin = function (data, my_data, spin)
+function CopLogicBase._turn_by_spin(data, my_data, spin)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -10541,7 +10541,7 @@ CopLogicBase._turn_by_spin = function (data, my_data, spin)
 
 
 end
-CopLogicBase._start_idle_action_from_act = function (data)
+function CopLogicBase._start_idle_action_from_act(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -10570,7 +10570,7 @@ CopLogicBase._start_idle_action_from_act = function (data)
 
 
 end
-CopLogicBase._upd_aim_at_player = function (data, my_data)
+function CopLogicBase._upd_aim_at_player(data, my_data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -10623,7 +10623,7 @@ CopLogicBase._upd_aim_at_player = function (data, my_data)
 
 
 end
-CopLogicBase.chk_should_turn = function (data, my_data)
+function CopLogicBase.chk_should_turn(data, my_data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---

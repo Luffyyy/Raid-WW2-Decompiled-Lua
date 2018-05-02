@@ -7,7 +7,7 @@
 -- WARNING: Error occurred during decompilation.
 --   Code may be incomplete or incorrect.
 CoreWorldInstanceManager = CoreWorldInstanceManager or class()
-function CoreWorldInstanceManager:init()
+CoreWorldInstanceManager.init = function (self)
 	self._instance_data = {}
 	self._registered_input_elements = {}
 	self._registered_output_event_elements = {}
@@ -16,17 +16,17 @@ function CoreWorldInstanceManager:init()
 
 	return 
 end
-function CoreWorldInstanceManager:start_offset_index()
+CoreWorldInstanceManager.start_offset_index = function (self)
 	return self._start_offset_index
 end
-function CoreWorldInstanceManager:add_instance_data(data)
+CoreWorldInstanceManager.add_instance_data = function (self, data)
 	slot5 = data
 
 	table.insert(slot3, self._instance_data)
 
 	return 
 end
-function CoreWorldInstanceManager:get_instance_data_by_name(name, worlddefinition_id)
+CoreWorldInstanceManager.get_instance_data_by_name = function (self, name, worlddefinition_id)
 	slot5 = self._instance_data
 
 	for _, instance_data in ipairs(slot4) do
@@ -37,7 +37,7 @@ function CoreWorldInstanceManager:get_instance_data_by_name(name, worlddefinitio
 
 	return false
 end
-function CoreWorldInstanceManager:remove_instances_for_world(worlddefinition_id)
+CoreWorldInstanceManager.remove_instances_for_world = function (self, worlddefinition_id)
 	for i = #self._instance_data, 1, -1 do
 		if self._instance_data[i].worlddefinition_id == worlddefinition_id then
 			slot9 = i
@@ -48,7 +48,7 @@ function CoreWorldInstanceManager:remove_instances_for_world(worlddefinition_id)
 
 	return 
 end
-function CoreWorldInstanceManager:has_instance(name)
+CoreWorldInstanceManager.has_instance = function (self, name)
 	slot4 = self._instance_data
 
 	for _, instance_data in ipairs(slot3) do
@@ -59,7 +59,7 @@ function CoreWorldInstanceManager:has_instance(name)
 
 	return false
 end
-function CoreWorldInstanceManager:get_safe_name(instance_name, name)
+CoreWorldInstanceManager.get_safe_name = function (self, instance_name, name)
 	local start_number = 1
 
 	if name then
@@ -105,7 +105,7 @@ function CoreWorldInstanceManager:get_safe_name(instance_name, name)
 
 	return 
 end
-function CoreWorldInstanceManager:get_safe_start_index(index_size, continent, dry_run)
+CoreWorldInstanceManager.get_safe_start_index = function (self, index_size, continent, dry_run)
 	local start_indices = {}
 	local end_indices = {}
 	local t = self._instance_data
@@ -152,7 +152,7 @@ function CoreWorldInstanceManager:get_safe_start_index(index_size, continent, dr
 
 	return 0
 end
-function CoreWorldInstanceManager:get_used_indices(continent)
+CoreWorldInstanceManager.get_used_indices = function (self, continent)
 	local start_indices = {}
 	local end_indices = {}
 	slot6 = self._instance_data
@@ -179,7 +179,7 @@ function CoreWorldInstanceManager:get_used_indices(continent)
 
 	return start_indices, end_indices
 end
-function CoreWorldInstanceManager:rename_instance(name, new_name)
+CoreWorldInstanceManager.rename_instance = function (self, name, new_name)
 	slot6 = name
 	local data = self.get_instance_data_by_name(slot4, self)
 
@@ -189,10 +189,10 @@ function CoreWorldInstanceManager:rename_instance(name, new_name)
 
 	return 
 end
-function CoreWorldInstanceManager:instance_data()
+CoreWorldInstanceManager.instance_data = function (self)
 	return self._instance_data
 end
-function CoreWorldInstanceManager:instance_save_data()
+CoreWorldInstanceManager.instance_save_data = function (self)
 	local data = {}
 	slot4 = self._instance_data
 
@@ -209,7 +209,7 @@ function CoreWorldInstanceManager:instance_save_data()
 
 	return data
 end
-function CoreWorldInstanceManager:debug_recalculate_instance_size(ignore_not_found)
+CoreWorldInstanceManager.debug_recalculate_instance_size = function (self, ignore_not_found)
 	print(slot3)
 
 	self._instance_data_dry_run = {}
@@ -290,7 +290,7 @@ function CoreWorldInstanceManager:debug_recalculate_instance_size(ignore_not_fou
 
 	return 
 end
-function CoreWorldInstanceManager:_parse_instance_name_from_folder(folder)
+CoreWorldInstanceManager._parse_instance_name_from_folder = function (self, folder)
 	slot6 = managers.editor
 	slot4 = managers.editor.layers(slot5).Instances._predefined_instances
 
@@ -302,7 +302,7 @@ function CoreWorldInstanceManager:_parse_instance_name_from_folder(folder)
 
 	return 
 end
-function CoreWorldInstanceManager:instance_names_by_script(script)
+CoreWorldInstanceManager.instance_names_by_script = function (self, script)
 	local names = {}
 	slot5 = self._instance_data
 
@@ -320,7 +320,7 @@ function CoreWorldInstanceManager:instance_names_by_script(script)
 
 	return names
 end
-function CoreWorldInstanceManager:instance_names(continent)
+CoreWorldInstanceManager.instance_names = function (self, continent)
 	local names = {}
 	slot5 = self._instance_data
 
@@ -338,7 +338,7 @@ function CoreWorldInstanceManager:instance_names(continent)
 
 	return names
 end
-function CoreWorldInstanceManager:instances_data_by_continent(continent)
+CoreWorldInstanceManager.instances_data_by_continent = function (self, continent)
 	local instances = {}
 	slot5 = self._instance_data
 
@@ -352,7 +352,7 @@ function CoreWorldInstanceManager:instances_data_by_continent(continent)
 
 	return instances
 end
-function CoreWorldInstanceManager:packages_by_instance(instance)
+CoreWorldInstanceManager.packages_by_instance = function (self, instance)
 	local folder = instance.folder
 	local package = folder .. "/" .. "world"
 	local init_package = folder .. "/" .. "world_init"
@@ -362,7 +362,7 @@ function CoreWorldInstanceManager:packages_by_instance(instance)
 		init_package = init_package
 	}
 end
-function CoreWorldInstanceManager:custom_create_instance(instance_name, worlddefinition_id, custom_data)
+CoreWorldInstanceManager.custom_create_instance = function (self, instance_name, worlddefinition_id, custom_data)
 
 	-- Decompilation error in this vicinity:
 	if worlddefinition_id ~= 0 then
@@ -431,7 +431,7 @@ function CoreWorldInstanceManager:custom_create_instance(instance_name, worlddef
 
 	return 
 end
-function CoreWorldInstanceManager:_get_instance_continent_data(path)
+CoreWorldInstanceManager._get_instance_continent_data = function (self, path)
 	slot4 = Application
 
 	if Application.editor(slot3) then
@@ -453,7 +453,7 @@ function CoreWorldInstanceManager:_get_instance_continent_data(path)
 
 	return deep_clone(self._serialize_to_script(self._instance_continent_data[path], self, "continent"))
 end
-function CoreWorldInstanceManager:prepare_unit_data(instance, continent_data, worlddefinition)
+CoreWorldInstanceManager.prepare_unit_data = function (self, instance, continent_data, worlddefinition)
 	local start_index = instance.start_index
 	local folder = instance.folder
 	local path = folder .. "/" .. "world"
@@ -500,12 +500,12 @@ function CoreWorldInstanceManager:prepare_unit_data(instance, continent_data, wo
 
 	return instance_data
 end
-function CoreWorldInstanceManager:_get_mod_id(id)
+CoreWorldInstanceManager._get_mod_id = function (self, id)
 	slot5 = 100000
 
 	return math.mod(slot3, id)
 end
-function CoreWorldInstanceManager:prepare_serialized_instance_data(instance)
+CoreWorldInstanceManager.prepare_serialized_instance_data = function (self, instance)
 	local folder = instance.folder
 	local path = folder .. "/" .. "world"
 	slot7 = path
@@ -518,7 +518,7 @@ function CoreWorldInstanceManager:prepare_serialized_instance_data(instance)
 
 	return 
 end
-function CoreWorldInstanceManager:check_highest_id(instance)
+CoreWorldInstanceManager.check_highest_id = function (self, instance)
 	local folder = instance.folder
 	local highest_id = 0
 	local amount = 0
@@ -558,14 +558,14 @@ function CoreWorldInstanceManager:check_highest_id(instance)
 
 	return highest_id, amount, type_amount
 end
-function CoreWorldInstanceManager:prepare_mission_data_by_name(name, worlddefinition_id)
+CoreWorldInstanceManager.prepare_mission_data_by_name = function (self, name, worlddefinition_id)
 	slot7 = worlddefinition_id
 	local instance_data = self.get_instance_data_by_name(slot4, self, name)
 	slot7 = instance_data
 
 	return self.prepare_mission_data(self, self)
 end
-function CoreWorldInstanceManager:_get_instance_mission_data(path)
+CoreWorldInstanceManager._get_instance_mission_data = function (self, path)
 	slot4 = Application
 
 	if Application.editor(slot3) then
@@ -587,7 +587,7 @@ function CoreWorldInstanceManager:_get_instance_mission_data(path)
 
 	return deep_clone(self._serialize_to_script(self._instance_mission_data[path], self, "mission"))
 end
-function CoreWorldInstanceManager:prepare_mission_data(instance)
+CoreWorldInstanceManager.prepare_mission_data = function (self, instance)
 
 	-- Decompilation error in this vicinity:
 	local start_index = instance.start_index
@@ -634,7 +634,7 @@ CoreWorldInstanceManager.translate_element_values = function (element, position,
 
 	return 
 end
-function CoreWorldInstanceManager:_convert_table(convert_list, convert_table, continent_data, start_index)
+CoreWorldInstanceManager._convert_table = function (self, convert_list, convert_table, continent_data, start_index)
 	slot7 = convert_table
 
 	for key, value in pairs(slot6) do
@@ -660,14 +660,14 @@ function CoreWorldInstanceManager:_convert_table(convert_list, convert_table, co
 
 	return 
 end
-function CoreWorldInstanceManager:get_mission_inputs_by_name(name)
+CoreWorldInstanceManager.get_mission_inputs_by_name = function (self, name)
 	slot5 = name
 	local instance_data = self.get_instance_data_by_name(slot3, self)
 	slot6 = instance_data
 
 	return self.get_mission_inputs(self, self)
 end
-function CoreWorldInstanceManager:get_mission_inputs(instance)
+CoreWorldInstanceManager.get_mission_inputs = function (self, instance)
 	local start_index = instance.start_index
 	local folder = instance.folder
 	local path = folder .. "/" .. "world"
@@ -695,14 +695,14 @@ function CoreWorldInstanceManager:get_mission_inputs(instance)
 
 	return mission_inputs
 end
-function CoreWorldInstanceManager:get_mission_outputs_by_name(name)
+CoreWorldInstanceManager.get_mission_outputs_by_name = function (self, name)
 	slot5 = name
 	local instance_data = self.get_instance_data_by_name(slot3, self)
 	slot6 = instance_data
 
 	return self.get_mission_outputs(self, self)
 end
-function CoreWorldInstanceManager:get_mission_outputs(instance)
+CoreWorldInstanceManager.get_mission_outputs = function (self, instance)
 	local start_index = instance.start_index
 	local folder = instance.folder
 	local path = folder .. "/" .. "world"
@@ -730,14 +730,14 @@ function CoreWorldInstanceManager:get_mission_outputs(instance)
 
 	return mission_inputs
 end
-function CoreWorldInstanceManager:get_instance_params_by_name(name)
+CoreWorldInstanceManager.get_instance_params_by_name = function (self, name)
 	slot5 = name
 	local instance_data = self.get_instance_data_by_name(slot3, self)
 	slot6 = instance_data
 
 	return self.get_instance_params(self, self)
 end
-function CoreWorldInstanceManager:get_instance_params(instance)
+CoreWorldInstanceManager.get_instance_params = function (self, instance)
 	local folder = instance.folder
 	local path = folder .. "/" .. "world"
 	slot8 = path
@@ -763,7 +763,7 @@ function CoreWorldInstanceManager:get_instance_params(instance)
 
 	return instance_params
 end
-function CoreWorldInstanceManager:_serialize_to_script(type, name)
+CoreWorldInstanceManager._serialize_to_script = function (self, type, name)
 	slot5 = Application
 
 	if Application.editor(slot4) then
@@ -789,17 +789,17 @@ function CoreWorldInstanceManager:_serialize_to_script(type, name)
 
 	return 
 end
-function CoreWorldInstanceManager:unregister_input_elements(mission_id)
+CoreWorldInstanceManager.unregister_input_elements = function (self, mission_id)
 	self._registered_input_elements[mission_id] = {}
 
 	return 
 end
-function CoreWorldInstanceManager:unregister_output_event_elements(mission_id)
+CoreWorldInstanceManager.unregister_output_event_elements = function (self, mission_id)
 	self._registered_output_event_elements[mission_id] = {}
 
 	return 
 end
-function CoreWorldInstanceManager:register_input_element(mission_id, instance_name, instance_input, mission_element)
+CoreWorldInstanceManager.register_input_element = function (self, mission_id, instance_name, instance_input, mission_element)
 	self._registered_input_elements[mission_id] = self._registered_input_elements[mission_id] or {}
 	local t = self._registered_input_elements[mission_id]
 	t[instance_name] = t[instance_name] or {}
@@ -810,7 +810,7 @@ function CoreWorldInstanceManager:register_input_element(mission_id, instance_na
 
 	return 
 end
-function CoreWorldInstanceManager:get_registered_input_elements(mission_id, instance_name, instance_input)
+CoreWorldInstanceManager.get_registered_input_elements = function (self, mission_id, instance_name, instance_input)
 	local t = self._registered_input_elements[mission_id]
 
 	if not t then
@@ -827,7 +827,7 @@ function CoreWorldInstanceManager:get_registered_input_elements(mission_id, inst
 
 	return t[instance_name][instance_input]
 end
-function CoreWorldInstanceManager:register_output_event_element(mission_id, instance_name, instance_output, mission_element)
+CoreWorldInstanceManager.register_output_event_element = function (self, mission_id, instance_name, instance_output, mission_element)
 	self._registered_output_event_elements[mission_id] = self._registered_output_event_elements[mission_id] or {}
 	local t = self._registered_output_event_elements[mission_id]
 	t[instance_name] = t[instance_name] or {}
@@ -838,7 +838,7 @@ function CoreWorldInstanceManager:register_output_event_element(mission_id, inst
 
 	return 
 end
-function CoreWorldInstanceManager:get_registered_output_event_elements(mission_id, instance_name, instance_output)
+CoreWorldInstanceManager.get_registered_output_event_elements = function (self, mission_id, instance_name, instance_output)
 	local t = self._registered_output_event_elements[mission_id]
 
 	if not t then
@@ -855,18 +855,18 @@ function CoreWorldInstanceManager:get_registered_output_event_elements(mission_i
 
 	return t[instance_name][instance_output]
 end
-function CoreWorldInstanceManager:set_instance_params(mission_id, instance_name, params)
+CoreWorldInstanceManager.set_instance_params = function (self, mission_id, instance_name, params)
 	self._instance_params[mission_id] = self._instance_params[mission_id] or {}
 	self._instance_params[mission_id][instance_name] = params
 
 	return 
 end
-function CoreWorldInstanceManager:remove_instance_params(mission_id)
+CoreWorldInstanceManager.remove_instance_params = function (self, mission_id)
 	self._instance_params[mission_id] = {}
 
 	return 
 end
-function CoreWorldInstanceManager:get_instance_param(mission_id, instance_name, var_name)
+CoreWorldInstanceManager.get_instance_param = function (self, mission_id, instance_name, var_name)
 	if not self._instance_params[mission_id] then
 		return nil
 	end
@@ -877,7 +877,7 @@ function CoreWorldInstanceManager:get_instance_param(mission_id, instance_name, 
 
 	return self._instance_params[mission_id][instance_name][var_name]
 end
-function CoreWorldInstanceManager:sync_save(data)
+CoreWorldInstanceManager.sync_save = function (self, data)
 	local state = {
 		instance_params = self._instance_params
 	}
@@ -885,7 +885,7 @@ function CoreWorldInstanceManager:sync_save(data)
 
 	return 
 end
-function CoreWorldInstanceManager:sync_load(data)
+CoreWorldInstanceManager.sync_load = function (self, data)
 	local state = data.CoreWorldInstanceManager
 
 	if state then
@@ -894,14 +894,14 @@ function CoreWorldInstanceManager:sync_load(data)
 
 	return 
 end
-function CoreWorldInstanceManager:on_simulation_ended()
+CoreWorldInstanceManager.on_simulation_ended = function (self)
 	self._registered_input_elements = {}
 	self._registered_output_event_elements = {}
 	self._instance_params = {}
 
 	return 
 end
-function CoreWorldInstanceManager:clear()
+CoreWorldInstanceManager.clear = function (self)
 	self._instance_data = {}
 
 	return 

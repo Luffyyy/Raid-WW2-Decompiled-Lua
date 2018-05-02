@@ -13,7 +13,7 @@
 SentryGunDamage = SentryGunDamage or class()
 SentryGunDamage._HEALTH_GRANULARITY = CopDamage._HEALTH_GRANULARITY
 SentryGunDamage._ATTACK_VARIANTS = CopDamage._ATTACK_VARIANTS
-SentryGunDamage.init = function (self, unit)
+function SentryGunDamage:init(unit)
 	self._unit = unit
 	slot4 = unit
 	self._ext_movement = unit.movement(slot3)
@@ -94,7 +94,7 @@ SentryGunDamage.init = function (self, unit)
 
 	return 
 end
-SentryGunDamage.set_health = function (self, amount, shield_health_amount)
+function SentryGunDamage:set_health(amount, shield_health_amount)
 	self._health = amount
 	self._HEALTH_INIT = amount
 	self._HEALTH_INIT_PERCENT = self._HEALTH_INIT / self._HEALTH_GRANULARITY
@@ -104,7 +104,7 @@ SentryGunDamage.set_health = function (self, amount, shield_health_amount)
 
 	return 
 end
-SentryGunDamage.sync_health = function (self, health_ratio)
+function SentryGunDamage:sync_health(health_ratio)
 	self._health_ratio = health_ratio / self._HEALTH_GRANULARITY
 
 	if health_ratio == 0 then
@@ -115,7 +115,7 @@ SentryGunDamage.sync_health = function (self, health_ratio)
 
 	return 
 end
-SentryGunDamage.shoot_pos_mid = function (self, m_pos)
+function SentryGunDamage:shoot_pos_mid(m_pos)
 	slot4 = m_pos
 	slot7 = self._ext_movement
 
@@ -123,7 +123,7 @@ SentryGunDamage.shoot_pos_mid = function (self, m_pos)
 
 	return 
 end
-SentryGunDamage.damage_bullet = function (self, attack_data)
+function SentryGunDamage:damage_bullet(attack_data)
 
 	-- Decompilation error in this vicinity:
 	local hit_body = attack_data.col_ray.body
@@ -249,7 +249,7 @@ SentryGunDamage.damage_bullet = function (self, attack_data)
 
 	return result
 end
-SentryGunDamage.damage_fire = function (self, attack_data)
+function SentryGunDamage:damage_fire(attack_data)
 
 	-- Decompilation error in this vicinity:
 	local attacker_unit = attack_data.attacker_unit
@@ -338,7 +338,7 @@ SentryGunDamage.damage_fire = function (self, attack_data)
 
 	return 
 end
-SentryGunDamage.damage_explosion = function (self, attack_data)
+function SentryGunDamage:damage_explosion(attack_data)
 
 	-- Decompilation error in this vicinity:
 	local attacker_unit = attack_data.attacker_unit
@@ -452,13 +452,13 @@ SentryGunDamage.damage_explosion = function (self, attack_data)
 
 	return 
 end
-SentryGunDamage.dead = function (self)
+function SentryGunDamage:dead()
 	return self._dead
 end
-SentryGunDamage.needs_repair = function (self)
+function SentryGunDamage:needs_repair()
 	return self._shield_health == 0
 end
-SentryGunDamage.repair_shield = function (self)
+function SentryGunDamage:repair_shield()
 	self._shield_health = self._SHIELD_HEALTH_INIT
 	slot3 = self
 	slot6 = self
@@ -484,16 +484,16 @@ SentryGunDamage.repair_shield = function (self)
 
 	return 
 end
-SentryGunDamage.health_ratio = function (self)
+function SentryGunDamage:health_ratio()
 	return self._health / self._HEALTH_INIT
 end
-SentryGunDamage.shield_health_ratio = function (self)
+function SentryGunDamage:shield_health_ratio()
 	return self._shield_health / self._SHIELD_HEALTH_INIT
 end
-SentryGunDamage.focus_delay_mul = function (self)
+function SentryGunDamage:focus_delay_mul()
 	return 1
 end
-SentryGunDamage.die = function (self)
+function SentryGunDamage:die()
 	self._health = 0
 	self._dead = true
 	slot4 = 26
@@ -585,7 +585,7 @@ SentryGunDamage.die = function (self)
 
 	return 
 end
-SentryGunDamage.sync_damage_bullet = function (self, attacker_unit, damage_percent, i_body, hit_offset_height, death)
+function SentryGunDamage:sync_damage_bullet(attacker_unit, damage_percent, i_body, hit_offset_height, death)
 	if self._dead then
 		return 
 	end
@@ -623,7 +623,7 @@ SentryGunDamage.sync_damage_bullet = function (self, attacker_unit, damage_perce
 
 	return 
 end
-SentryGunDamage.sync_damage_fire = function (self, attacker_unit, damage_percent, death, direction)
+function SentryGunDamage:sync_damage_fire(attacker_unit, damage_percent, death, direction)
 	if self._dead then
 		return 
 	end
@@ -650,7 +650,7 @@ SentryGunDamage.sync_damage_fire = function (self, attacker_unit, damage_percent
 
 	return 
 end
-SentryGunDamage.sync_damage_explosion = function (self, attacker_unit, damage_percent, i_attack_variant, death, direction)
+function SentryGunDamage:sync_damage_explosion(attacker_unit, damage_percent, i_attack_variant, death, direction)
 	if self._dead then
 		return 
 	end
@@ -678,7 +678,7 @@ SentryGunDamage.sync_damage_explosion = function (self, attacker_unit, damage_pe
 
 	return 
 end
-SentryGunDamage._apply_damage = function (self, damage, dmg_shield, dmg_body, is_local)
+function SentryGunDamage:_apply_damage(damage, dmg_shield, dmg_body, is_local)
 	if dmg_shield and 0 < self._shield_health then
 		local damage_percent = nil
 		local shield_dmg = (damage ~= "death" and damage) or self._SHIELD_HEALTH_INIT
@@ -795,7 +795,7 @@ SentryGunDamage._apply_damage = function (self, damage, dmg_shield, dmg_body, is
 
 	return 
 end
-SentryGunDamage.update_shield_smoke_level = function (self, ratio, up)
+function SentryGunDamage:update_shield_smoke_level(ratio, up)
 	local num_shield_smoke_levels = self._num_shield_smoke_levels
 	local new_smoke_level = num_shield_smoke_levels - ratio * num_shield_smoke_levels
 
@@ -816,7 +816,7 @@ SentryGunDamage.update_shield_smoke_level = function (self, ratio, up)
 
 	return 
 end
-SentryGunDamage._make_shield_smoke = function (self)
+function SentryGunDamage:_make_shield_smoke()
 	if self._shield_smoke_level == 0 then
 		slot3 = self._unit
 		slot4 = self._shield_smoke_level_0
@@ -831,7 +831,7 @@ SentryGunDamage._make_shield_smoke = function (self)
 
 	return 
 end
-SentryGunDamage.save = function (self, save_data)
+function SentryGunDamage:save(save_data)
 	local my_save_data = {}
 	save_data.char_damage = my_save_data
 	my_save_data.ignore_client_damage = self._ignore_client_damage
@@ -843,7 +843,7 @@ SentryGunDamage.save = function (self, save_data)
 
 	return 
 end
-SentryGunDamage.load = function (self, save_data)
+function SentryGunDamage:load(save_data)
 	if not save_data or not save_data.char_damage then
 		return 
 	end
@@ -872,10 +872,10 @@ SentryGunDamage.load = function (self, save_data)
 
 	return 
 end
-SentryGunDamage.destroy = function (self, unit)
+function SentryGunDamage:destroy(unit)
 	return 
 end
-SentryGunDamage.shield_smoke_level = function (self)
+function SentryGunDamage:shield_smoke_level()
 	return self._shield_smoke_level
 end
 

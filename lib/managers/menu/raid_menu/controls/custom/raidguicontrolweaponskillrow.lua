@@ -14,7 +14,7 @@ RaidGUIControlWeaponSkillRow.LINE_STRIDE = 96
 RaidGUIControlWeaponSkillRow.LINE_Y = 56
 RaidGUIControlWeaponSkillRow.LINE_LENGTH = 64
 RaidGUIControlWeaponSkillRow.LINE_THICKNESS = 3
-RaidGUIControlWeaponSkillRow.init = function (self, parent, params)
+function RaidGUIControlWeaponSkillRow:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlWeaponSkillRow.super.init(slot4, self, parent)
@@ -31,7 +31,7 @@ RaidGUIControlWeaponSkillRow.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlWeaponSkillRow.set_weapon_skill = function (self, weapon_id, weapon_skills, i_skill)
+function RaidGUIControlWeaponSkillRow:set_weapon_skill(weapon_id, weapon_skills, i_skill)
 	self._weapon_id = weapon_id
 	self._weapon_skills = weapon_skills
 	self._i_skill = i_skill
@@ -62,7 +62,7 @@ RaidGUIControlWeaponSkillRow.set_weapon_skill = function (self, weapon_id, weapo
 
 	return 
 end
-RaidGUIControlWeaponSkillRow._create_skill_label = function (self)
+function RaidGUIControlWeaponSkillRow:_create_skill_label()
 	local name_label_params = {
 		vertical = "center",
 		h = 24,
@@ -83,7 +83,7 @@ RaidGUIControlWeaponSkillRow._create_skill_label = function (self)
 
 	return 
 end
-RaidGUIControlWeaponSkillRow._create_items = function (self)
+function RaidGUIControlWeaponSkillRow:_create_items()
 	local lines_params = {
 		x = RaidGUIControlWeaponSkillRow.LINE_START_X,
 		y = RaidGUIControlWeaponSkillRow.LINE_Y,
@@ -138,19 +138,19 @@ RaidGUIControlWeaponSkillRow._create_items = function (self)
 
 	return 
 end
-RaidGUIControlWeaponSkillRow.get_skill_buttons = function (self)
+function RaidGUIControlWeaponSkillRow:get_skill_buttons()
 	return self._buttons
 end
-RaidGUIControlWeaponSkillRow.on_click_weapon_skill_button = function (self)
+function RaidGUIControlWeaponSkillRow:on_click_weapon_skill_button()
 	return 
 end
-RaidGUIControlWeaponSkillRow.on_mouse_enter_weapon_skill_button = function (self)
+function RaidGUIControlWeaponSkillRow:on_mouse_enter_weapon_skill_button()
 	return 
 end
-RaidGUIControlWeaponSkillRow.on_mouse_exit_weapon_skill_button = function (self)
+function RaidGUIControlWeaponSkillRow:on_mouse_exit_weapon_skill_button()
 	return 
 end
-RaidGUIControlWeaponSkillRow.mouse_moved = function (self, o, x, y)
+function RaidGUIControlWeaponSkillRow:mouse_moved(o, x, y)
 	return 
 end
 

@@ -1,5 +1,5 @@
 CopActionWarp = CopActionWarp or class()
-CopActionWarp.init = function (self, action_desc, common_data)
+function CopActionWarp:init(action_desc, common_data)
 	self._unit = common_data.unit
 	slot5 = self._unit
 
@@ -87,7 +87,7 @@ CopActionWarp.init = function (self, action_desc, common_data)
 
 	return true
 end
-CopActionWarp.update = function (self, t)
+function CopActionWarp:update(t)
 	if self._i_update < 1 then
 		self._i_update = self._i_update + 1
 
@@ -105,16 +105,16 @@ CopActionWarp.update = function (self, t)
 
 	return 
 end
-CopActionWarp.type = function (self)
+function CopActionWarp:type()
 	return "warp"
 end
-CopActionWarp.expired = function (self)
+function CopActionWarp:expired()
 	return self._expired
 end
-CopActionWarp.need_upd = function (self)
+function CopActionWarp:need_upd()
 	return true
 end
-CopActionWarp.chk_block = function (self, action_type, t)
+function CopActionWarp:chk_block(action_type, t)
 	if action_type == "death" then
 		return false
 	end

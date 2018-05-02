@@ -26,14 +26,14 @@ slot5 = toboolean
 
 CoreObjectVisibleCutsceneKey.register_serialized_attribute("Object Visibility", CoreObjectVisibleCutsceneKey, "visible", true)
 
-CoreObjectVisibleCutsceneKey.__tostring = function (self)
+function CoreObjectVisibleCutsceneKey:__tostring()
 	slot3 = self
 	slot5 = self
 	slot7 = self
 
 	return ((self.visible(slot2) and "Show") or "Hide") .. " \"" .. self.object_name(slot4) .. "\" in \"" .. self.unit_name(slot6) .. "\"."
 end
-CoreObjectVisibleCutsceneKey.unload = function (self, player)
+function CoreObjectVisibleCutsceneKey:unload(player)
 	if player and self._cast then
 		slot6 = true
 
@@ -42,7 +42,7 @@ CoreObjectVisibleCutsceneKey.unload = function (self, player)
 
 	return 
 end
-CoreObjectVisibleCutsceneKey.skip = function (self, player)
+function CoreObjectVisibleCutsceneKey:skip(player)
 	if self._cast then
 		slot5 = player
 
@@ -51,7 +51,7 @@ CoreObjectVisibleCutsceneKey.skip = function (self, player)
 
 	return 
 end
-CoreObjectVisibleCutsceneKey.play = function (self, player, undo, fast_forward)
+function CoreObjectVisibleCutsceneKey:play(player, undo, fast_forward)
 	if undo then
 		slot7 = {
 			unit_name = self.unit_name(slot9),
@@ -80,7 +80,7 @@ CoreObjectVisibleCutsceneKey.play = function (self, player, undo, fast_forward)
 
 	return 
 end
-CoreObjectVisibleCutsceneKey.evaluate = function (self, player, fast_forward, visible)
+function CoreObjectVisibleCutsceneKey:evaluate(player, fast_forward, visible)
 
 	-- Decompilation error in this vicinity:
 	slot6 = self._cast
@@ -93,7 +93,7 @@ CoreObjectVisibleCutsceneKey.evaluate = function (self, player, fast_forward, vi
 	slot7 = object
 	slot5 = object.set_visibility
 end
-CoreObjectVisibleCutsceneKey.is_valid_object_name = function (self, object_name)
+function CoreObjectVisibleCutsceneKey:is_valid_object_name(object_name)
 	slot5 = object_name
 
 	if not self.super.is_valid_object_name(slot3, self) then

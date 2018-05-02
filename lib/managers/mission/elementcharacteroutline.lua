@@ -8,21 +8,21 @@ if not ElementCharacterOutline then
 end
 
 ElementCharacterOutline = slot0
-ElementCharacterOutline.init = function (self, ...)
+function ElementCharacterOutline:init(...)
 	slot3 = self
 
 	ElementCharacterOutline.super.init(slot2, ...)
 
 	return 
 end
-ElementCharacterOutline.client_on_executed = function (self, ...)
+function ElementCharacterOutline:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementCharacterOutline.on_executed = function (self, instigator)
+function ElementCharacterOutline:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

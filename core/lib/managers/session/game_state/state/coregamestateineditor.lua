@@ -7,7 +7,7 @@ slot3 = "CoreGameStateInEditorPrepareStartSimulation"
 core.import(slot1, core)
 
 InEditor = InEditor or class()
-InEditor.init = function (self)
+function InEditor:init()
 	self.game_state._is_in_editor = true
 	slot6 = "game_state_editor"
 
@@ -15,12 +15,12 @@ InEditor.init = function (self)
 
 	return 
 end
-InEditor.destroy = function (self)
+function InEditor:destroy()
 	self.game_state._is_in_editor = false
 
 	return 
 end
-InEditor.transition = function (self)
+function InEditor:transition()
 	slot3 = self.game_state._game_requester
 
 	if not self.game_state._game_requester.is_requested(slot2) then

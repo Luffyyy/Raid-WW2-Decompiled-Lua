@@ -3,7 +3,7 @@ slot3 = "CoreMenuLogic"
 core.module(slot1, core)
 
 Logic = Logic or class()
-Logic.init = function (self, menu_data)
+function Logic:init(menu_data)
 	self._data = menu_data
 	self._node_stack = {}
 	self._callback_map = {
@@ -39,7 +39,7 @@ Logic.init = function (self, menu_data)
 
 	return 
 end
-Logic.open = function (self, ...)
+function Logic:open(...)
 	slot3 = managers.system_menu
 	self._accept_input = not managers.system_menu.is_active(slot2)
 	slot5 = true
@@ -48,7 +48,7 @@ Logic.open = function (self, ...)
 
 	return 
 end
-Logic._queue_action = function (self, action_name, ...)
+function Logic:_queue_action(action_name, ...)
 	slot5 = {
 		action_name = action_name,
 		parameters = {
@@ -60,7 +60,7 @@ Logic._queue_action = function (self, action_name, ...)
 
 	return 
 end
-Logic._execute_action_queue = function (self)
+function Logic:_execute_action_queue()
 	while self._accept_input and 0 < #self._action_queue do
 		local action = self._action_queue[1]
 
@@ -77,7 +77,7 @@ Logic._execute_action_queue = function (self)
 
 	return 
 end
-Logic.update = function (self, t, dt)
+function Logic:update(t, dt)
 	slot5 = self
 
 	if self.selected_node(slot4) then
@@ -93,7 +93,7 @@ Logic.update = function (self, t, dt)
 
 	return 
 end
-Logic.select_node = function (self, node_name, queue, ...)
+function Logic:select_node(node_name, queue, ...)
 	if self._accept_input or queue then
 		slot7 = node_name
 
@@ -102,7 +102,7 @@ Logic.select_node = function (self, node_name, queue, ...)
 
 	return 
 end
-Logic._select_node = function (self, node_name, ...)
+function Logic:_select_node(node_name, ...)
 	slot5 = node_name
 	local node = self.get_node(slot3, self, ...)
 	local has_active_menu = (managers.menu._open_menus and 0 < #managers.menu._open_menus and true) or false
@@ -153,14 +153,14 @@ Logic._select_node = function (self, node_name, ...)
 
 	return 
 end
-Logic.refresh_node_stack = function (self, queue, ...)
+function Logic:refresh_node_stack(queue, ...)
 	slot5 = "refresh_node_stack"
 
 	self._queue_action(slot3, self, ...)
 
 	return 
 end
-Logic._refresh_node_stack = function (self, ...)
+function Logic:_refresh_node_stack(...)
 	slot3 = self._node_stack
 
 	for i, node in ipairs(slot2) do
@@ -195,14 +195,14 @@ Logic._refresh_node_stack = function (self, ...)
 
 	return 
 end
-Logic.refresh_node = function (self, node_name, queue, ...)
+function Logic:refresh_node(node_name, queue, ...)
 	slot7 = node_name
 
 	self._queue_action(slot4, self, "refresh_node", ...)
 
 	return 
 end
-Logic._refresh_node = function (self, node_name, ...)
+function Logic:_refresh_node(node_name, ...)
 	slot4 = self
 	local node = self.selected_node(slot3)
 
@@ -245,14 +245,14 @@ Logic._refresh_node = function (self, node_name, ...)
 
 	return 
 end
-Logic.update_node = function (self, node_name, queue, ...)
+function Logic:update_node(node_name, queue, ...)
 	slot7 = node_name
 
 	self._queue_action(slot4, self, "update_node", ...)
 
 	return 
 end
-Logic._update_node = function (self, node_name, ...)
+function Logic:_update_node(node_name, ...)
 	slot4 = self
 	local node = self.selected_node(slot3)
 
@@ -276,7 +276,7 @@ Logic._update_node = function (self, node_name, ...)
 
 	return 
 end
-Logic.navigate_back = function (self, queue, skip_nodes)
+function Logic:navigate_back(queue, skip_nodes)
 	if self._accept_input or queue then
 		slot7 = skip_nodes
 
@@ -285,7 +285,7 @@ Logic.navigate_back = function (self, queue, skip_nodes)
 
 	return 
 end
-Logic._navigate_back = function (self, skip_nodes)
+function Logic:_navigate_back(skip_nodes)
 	local node = self._node_stack[#self._node_stack]
 
 	if node then
@@ -337,7 +337,7 @@ Logic._navigate_back = function (self, skip_nodes)
 
 	return 
 end
-Logic.soft_open = function (self)
+function Logic:soft_open()
 	local node = self._node_stack[#self._node_stack]
 
 	if node then
@@ -356,16 +356,16 @@ Logic.soft_open = function (self)
 
 	return 
 end
-Logic.selected_node = function (self)
+function Logic:selected_node()
 	return self._node_stack[#self._node_stack]
 end
-Logic.selected_node_name = function (self)
+function Logic:selected_node_name()
 	slot3 = self
 	slot3 = self.selected_node(slot2)
 
 	return self.selected_node(slot2).parameters(slot2).name
 end
-Logic.select_item = function (self, item_name, queue)
+function Logic:select_item(item_name, queue)
 	if self._accept_input or queue then
 		slot7 = item_name
 
@@ -374,7 +374,7 @@ Logic.select_item = function (self, item_name, queue)
 
 	return 
 end
-Logic.mouse_over_select_item = function (self, item_name, queue)
+function Logic:mouse_over_select_item(item_name, queue)
 	if self._accept_input or queue then
 		slot8 = true
 
@@ -383,7 +383,7 @@ Logic.mouse_over_select_item = function (self, item_name, queue)
 
 	return 
 end
-Logic._select_item = function (self, item_name, mouse_over)
+function Logic:_select_item(item_name, mouse_over)
 	slot5 = self
 	local current_node = self.selected_node(slot4)
 
@@ -408,7 +408,7 @@ Logic._select_item = function (self, item_name, mouse_over)
 
 	return 
 end
-Logic.trigger_item = function (self, queue, item)
+function Logic:trigger_item(queue, item)
 	if self._accept_input or queue then
 		slot7 = item
 
@@ -417,7 +417,7 @@ Logic.trigger_item = function (self, queue, item)
 
 	return 
 end
-Logic._trigger_item = function (self, item)
+function Logic:_trigger_item(item)
 	if not item then
 		slot4 = self
 		item = self.selected_item(slot3)
@@ -435,7 +435,7 @@ Logic._trigger_item = function (self, item)
 
 	return 
 end
-Logic.selected_item = function (self)
+function Logic:selected_item()
 	local item = nil
 	slot4 = self
 	local node = self.selected_node(slot3)
@@ -447,7 +447,7 @@ Logic.selected_item = function (self)
 
 	return item
 end
-Logic.get_item = function (self, name)
+function Logic:get_item(name)
 	local item = nil
 	slot5 = self
 	local node = self.selected_node(slot4)
@@ -459,7 +459,7 @@ Logic.get_item = function (self, name)
 
 	return item
 end
-Logic.get_node = function (self, node_name, ...)
+function Logic:get_node(node_name, ...)
 	slot5 = node_name
 	local node = self._data.get_node(slot3, self._data, ...)
 
@@ -470,7 +470,7 @@ Logic.get_node = function (self, node_name, ...)
 
 	return node
 end
-Logic.accept_input = function (self, accept)
+function Logic:accept_input(accept)
 	self._accept_input = accept
 	slot6 = accept
 
@@ -478,12 +478,12 @@ Logic.accept_input = function (self, accept)
 
 	return 
 end
-Logic.register_callback = function (self, id, callback)
+function Logic:register_callback(id, callback)
 	self._callback_map[id] = callback
 
 	return 
 end
-Logic._call_callback = function (self, id, ...)
+function Logic:_call_callback(id, ...)
 	if self._callback_map[id] then
 		self._callback_map[id](...)
 	else
@@ -494,21 +494,21 @@ Logic._call_callback = function (self, id, ...)
 
 	return 
 end
-Logic.node_item_dirty = function (self, node, item)
+function Logic:node_item_dirty(node, item)
 	slot8 = item
 
 	self._call_callback(slot4, self, "renderer_node_item_dirty", node)
 
 	return 
 end
-Logic.renderer_closed = function (self)
+function Logic:renderer_closed()
 	slot4 = "menu_manager_menu_closed"
 
 	self._call_callback(slot2, self)
 
 	return 
 end
-Logic.close = function (self, closing_menu)
+function Logic:close(closing_menu)
 	local selected_node = self.selected_node(slot3)
 	slot6 = {}
 

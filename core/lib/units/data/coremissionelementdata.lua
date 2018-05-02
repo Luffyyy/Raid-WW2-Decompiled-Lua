@@ -6,14 +6,14 @@ if not MissionElementData then
 end
 
 MissionElementData = slot0
-MissionElementData.init = function (self, ...)
+function MissionElementData:init(...)
 	slot3 = self
 
 	CoreMissionElementData.init(slot2, ...)
 
 	return 
 end
-CoreMissionElementData.init = function (self, unit)
+function CoreMissionElementData:init(unit)
 	return 
 end
 

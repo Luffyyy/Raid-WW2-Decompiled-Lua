@@ -4,21 +4,21 @@ if not RaidMenuOptionsSound then
 end
 
 RaidMenuOptionsSound = slot0
-RaidMenuOptionsSound.init = function (self, ws, fullscreen_ws, node, component_name)
+function RaidMenuOptionsSound:init(ws, fullscreen_ws, node, component_name)
 	slot11 = component_name
 
 	RaidMenuOptionsSound.super.init(slot6, self, ws, fullscreen_ws, node)
 
 	return 
 end
-RaidMenuOptionsSound._set_initial_data = function (self)
+function RaidMenuOptionsSound:_set_initial_data()
 	slot5 = "menu_header_options_sound_subtitle"
 
 	self._node.components.raid_menu_header.set_screen_name(slot2, self._node.components.raid_menu_header, "menu_header_options_main_screen_name")
 
 	return 
 end
-RaidMenuOptionsSound._layout = function (self)
+function RaidMenuOptionsSound:_layout()
 	slot3 = self
 
 	RaidMenuOptionsSound.super._layout(slot2)
@@ -41,7 +41,7 @@ RaidMenuOptionsSound._layout = function (self)
 
 	return 
 end
-RaidMenuOptionsSound.close = function (self)
+function RaidMenuOptionsSound:close()
 	slot3 = self
 
 	self._save_sound_values(slot2)
@@ -57,7 +57,7 @@ RaidMenuOptionsSound.close = function (self)
 
 	return 
 end
-RaidMenuOptionsSound._layout_sound = function (self)
+function RaidMenuOptionsSound:_layout_sound()
 	local start_x = 0
 	local start_y = 320
 	local default_width = 512
@@ -173,7 +173,7 @@ RaidMenuOptionsSound._layout_sound = function (self)
 
 	return 
 end
-RaidMenuOptionsSound._load_sound_values = function (self)
+function RaidMenuOptionsSound:_load_sound_values()
 	slot6 = "master_volume"
 	local master_volume = math.clamp(slot2, managers.user.get_setting(slot4, managers.user), 0)
 	slot7 = "music_volume"
@@ -219,7 +219,7 @@ RaidMenuOptionsSound._load_sound_values = function (self)
 
 	return 
 end
-RaidMenuOptionsSound._save_sound_values = function (self)
+function RaidMenuOptionsSound:_save_sound_values()
 	slot3 = self
 
 	self.on_value_change_master_volume(slot2)
@@ -255,7 +255,7 @@ RaidMenuOptionsSound._save_sound_values = function (self)
 
 	return 
 end
-RaidMenuOptionsSound.on_value_change_master_volume = function (self)
+function RaidMenuOptionsSound:on_value_change_master_volume()
 	slot5 = self._progress_bar_menu_master_volume
 	slot3 = self._progress_bar_menu_master_volume.get_value(slot4)
 	slot5 = 100
@@ -267,7 +267,7 @@ RaidMenuOptionsSound.on_value_change_master_volume = function (self)
 
 	return 
 end
-RaidMenuOptionsSound.on_value_change_music_volume = function (self)
+function RaidMenuOptionsSound:on_value_change_music_volume()
 	slot5 = self._progress_bar_menu_music_volume
 	slot3 = self._progress_bar_menu_music_volume.get_value(slot4)
 	slot5 = 100
@@ -279,7 +279,7 @@ RaidMenuOptionsSound.on_value_change_music_volume = function (self)
 
 	return 
 end
-RaidMenuOptionsSound.on_value_change_sfx_volume = function (self)
+function RaidMenuOptionsSound:on_value_change_sfx_volume()
 	slot5 = self._progress_bar_menu_sfx_volume
 	slot3 = self._progress_bar_menu_sfx_volume.get_value(slot4)
 	slot5 = 100
@@ -291,7 +291,7 @@ RaidMenuOptionsSound.on_value_change_sfx_volume = function (self)
 
 	return 
 end
-RaidMenuOptionsSound.on_value_change_voice_over_volume = function (self)
+function RaidMenuOptionsSound:on_value_change_voice_over_volume()
 	slot5 = self._progress_bar_menu_voice_over_volume
 	slot3 = self._progress_bar_menu_voice_over_volume.get_value(slot4)
 	slot5 = 100
@@ -303,7 +303,7 @@ RaidMenuOptionsSound.on_value_change_voice_over_volume = function (self)
 
 	return 
 end
-RaidMenuOptionsSound.on_value_change_voice_volume = function (self)
+function RaidMenuOptionsSound:on_value_change_voice_volume()
 	slot5 = self._progress_bar_menu_voice_volume
 	slot3 = self._progress_bar_menu_voice_volume.get_value(slot4)
 	slot5 = 100
@@ -315,7 +315,7 @@ RaidMenuOptionsSound.on_value_change_voice_volume = function (self)
 
 	return 
 end
-RaidMenuOptionsSound.on_click_voice_chat = function (self)
+function RaidMenuOptionsSound:on_click_voice_chat()
 	local voice_chat = self._toggle_menu_voicechat_toggle.get_value(slot2)
 	slot4 = managers.menu
 	slot5 = voice_chat
@@ -328,7 +328,7 @@ RaidMenuOptionsSound.on_click_voice_chat = function (self)
 
 	return 
 end
-RaidMenuOptionsSound.on_click_push_to_talk = function (self)
+function RaidMenuOptionsSound:on_click_push_to_talk()
 	local push_to_talk = self._toggle_menu_push_to_talk_toggle.get_value(slot2)
 	slot4 = managers.menu
 	slot5 = push_to_talk
@@ -341,7 +341,7 @@ RaidMenuOptionsSound.on_click_push_to_talk = function (self)
 
 	return 
 end
-RaidMenuOptionsSound.close = function (self)
+function RaidMenuOptionsSound:close()
 	slot4 = "RaidMenuOptionsSound:close()"
 
 	Application.trace(slot2, Application)
@@ -356,7 +356,7 @@ RaidMenuOptionsSound.close = function (self)
 
 	return 
 end
-RaidMenuOptionsSound.bind_controller_inputs = function (self)
+function RaidMenuOptionsSound:bind_controller_inputs()
 	local legend = {
 		controller = {
 			"menu_legend_back"

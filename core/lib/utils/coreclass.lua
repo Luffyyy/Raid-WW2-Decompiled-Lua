@@ -292,7 +292,7 @@ function responder_map(response_table)
 end
 
 GetSet = GetSet or class()
-function GetSet:init(t)
+GetSet.init = function (self, t)
 	slot4 = t
 
 	for k, v in pairs(slot3) do

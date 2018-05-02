@@ -498,7 +498,7 @@
 --   Code may be incomplete or incorrect.
 -- WARNING: Error occurred during decompilation.
 --   Code may be incomplete or incorrect.
-function MenuManager:show_retrieving_servers_dialog()
+MenuManager.show_retrieving_servers_dialog = function (self)
 	local dialog_data = {}
 	slot5 = "dialog_retrieving_servers_title"
 	dialog_data.title = managers.localization.text(slot3, managers.localization)
@@ -512,7 +512,7 @@ function MenuManager:show_retrieving_servers_dialog()
 
 	return 
 end
-function MenuManager:show_get_world_list_dialog(params)
+MenuManager.show_get_world_list_dialog = function (self, params)
 	local dialog_data = {}
 	slot6 = "dialog_logging_in"
 	dialog_data.title = managers.localization.text(slot4, managers.localization)
@@ -533,7 +533,7 @@ function MenuManager:show_get_world_list_dialog(params)
 
 	return 
 end
-function MenuManager:show_game_permission_changed_dialog()
+MenuManager.show_game_permission_changed_dialog = function (self)
 	local dialog_data = {}
 	slot5 = "dialog_error_title"
 	dialog_data.title = managers.localization.text(slot3, managers.localization)
@@ -551,7 +551,7 @@ function MenuManager:show_game_permission_changed_dialog()
 
 	return 
 end
-function MenuManager:show_too_low_level()
+MenuManager.show_too_low_level = function (self)
 	local dialog_data = {}
 	slot5 = "dialog_error_title"
 	dialog_data.title = managers.localization.text(slot3, managers.localization)
@@ -569,7 +569,7 @@ function MenuManager:show_too_low_level()
 
 	return 
 end
-function MenuManager:show_too_low_level_ovk145()
+MenuManager.show_too_low_level_ovk145 = function (self)
 	local dialog_data = {}
 	slot5 = "dialog_error_title"
 	dialog_data.title = managers.localization.text(slot3, managers.localization)
@@ -587,7 +587,7 @@ function MenuManager:show_too_low_level_ovk145()
 
 	return 
 end
-function MenuManager:show_does_not_own_heist()
+MenuManager.show_does_not_own_heist = function (self)
 	local dialog_data = {}
 	slot5 = "dialog_error_title"
 	dialog_data.title = managers.localization.text(slot3, managers.localization)
@@ -605,7 +605,7 @@ function MenuManager:show_does_not_own_heist()
 
 	return 
 end
-function MenuManager:show_does_not_own_heist_info(heist, player)
+MenuManager.show_does_not_own_heist_info = function (self, heist, player)
 	local dialog_data = {}
 	slot7 = "dialog_error_title"
 	dialog_data.title = managers.localization.text(slot5, managers.localization)
@@ -628,7 +628,7 @@ function MenuManager:show_does_not_own_heist_info(heist, player)
 
 	return 
 end
-function MenuManager:show_failed_joining_dialog()
+MenuManager.show_failed_joining_dialog = function (self)
 	local dialog_data = {}
 	slot5 = "dialog_error_title"
 	dialog_data.title = managers.localization.text(slot3, managers.localization)
@@ -646,7 +646,7 @@ function MenuManager:show_failed_joining_dialog()
 
 	return 
 end
-function MenuManager:show_ok_only_dialog(title, text)
+MenuManager.show_ok_only_dialog = function (self, title, text)
 	local dialog_data = {}
 	slot7 = title
 	dialog_data.title = managers.localization.text(slot5, managers.localization)
@@ -664,7 +664,7 @@ function MenuManager:show_ok_only_dialog(title, text)
 
 	return 
 end
-function MenuManager:show_smartmatch_inexact_match_dialog(params)
+MenuManager.show_smartmatch_inexact_match_dialog = function (self, params)
 	local dialog_data = {
 		id = "confirm_inexact_match"
 	}
@@ -749,7 +749,7 @@ function MenuManager:show_smartmatch_inexact_match_dialog(params)
 
 	return 
 end
-function MenuManager:show_cant_join_from_game_dialog()
+MenuManager.show_cant_join_from_game_dialog = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-33, warpins: 1 ---
@@ -774,7 +774,7 @@ function MenuManager:show_cant_join_from_game_dialog()
 
 
 end
-function MenuManager:show_game_started_dialog()
+MenuManager.show_game_started_dialog = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-33, warpins: 1 ---
@@ -881,7 +881,7 @@ function _stop_autofire_sound()
 
 end
 
-function MenuManager:show_joining_lobby_dialog()
+MenuManager.show_joining_lobby_dialog = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-28, warpins: 1 ---
@@ -903,7 +903,7 @@ function MenuManager:show_joining_lobby_dialog()
 
 
 end
-function MenuManager:show_searching_match_dialog(params)
+MenuManager.show_searching_match_dialog = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-39, warpins: 1 ---
@@ -933,7 +933,7 @@ function MenuManager:show_searching_match_dialog(params)
 
 
 end
-function MenuManager:show_fetching_status_dialog()
+MenuManager.show_fetching_status_dialog = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-28, warpins: 1 ---
@@ -955,7 +955,7 @@ function MenuManager:show_fetching_status_dialog()
 
 
 end
-function MenuManager:show_no_connection_to_game_servers_dialog()
+MenuManager.show_no_connection_to_game_servers_dialog = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-33, warpins: 1 ---
@@ -980,7 +980,7 @@ function MenuManager:show_no_connection_to_game_servers_dialog()
 
 
 end
-function MenuManager:show_person_joining(id, nick)
+MenuManager.show_person_joining = function (self, id, nick)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-38, warpins: 1 ---
@@ -1005,7 +1005,7 @@ function MenuManager:show_person_joining(id, nick)
 
 
 end
-function MenuManager:show_corrupt_dlc()
+MenuManager.show_corrupt_dlc = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-33, warpins: 1 ---
@@ -1030,7 +1030,7 @@ function MenuManager:show_corrupt_dlc()
 
 
 end
-function MenuManager:close_person_joining(id)
+MenuManager.close_person_joining = function (self, id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -1044,7 +1044,7 @@ function MenuManager:close_person_joining(id)
 
 
 end
-function MenuManager:update_person_joining(id, progress_percentage)
+MenuManager.update_person_joining = function (self, id, progress_percentage)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -1100,7 +1100,7 @@ function MenuManager:update_person_joining(id, progress_percentage)
 
 
 end
-function MenuManager:show_host_left_dialog(message, clbk)
+MenuManager.show_host_left_dialog = function (self, message, clbk)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -1146,7 +1146,7 @@ function MenuManager:show_host_left_dialog(message, clbk)
 
 
 end
-function MenuManager:show_lost_connection_to_host_dialog()
+MenuManager.show_lost_connection_to_host_dialog = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-33, warpins: 1 ---
@@ -1171,7 +1171,7 @@ function MenuManager:show_lost_connection_to_host_dialog()
 
 
 end
-function MenuManager:show_deleting_current_operation_save_dialog()
+MenuManager.show_deleting_current_operation_save_dialog = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-33, warpins: 1 ---
@@ -1196,7 +1196,7 @@ function MenuManager:show_deleting_current_operation_save_dialog()
 
 
 end
-function MenuManager:show_peer_kicked_dialog(params)
+MenuManager.show_peer_kicked_dialog = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -1216,7 +1216,7 @@ function MenuManager:show_peer_kicked_dialog(params)
 
 
 end
-function MenuManager:show_peer_already_kicked_from_game_dialog(params)
+MenuManager.show_peer_already_kicked_from_game_dialog = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -1269,7 +1269,7 @@ function MenuManager:show_peer_already_kicked_from_game_dialog(params)
 
 
 end
-function MenuManager:show_default_option_dialog(params)
+MenuManager.show_default_option_dialog = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-43, warpins: 1 ---
@@ -1300,7 +1300,7 @@ function MenuManager:show_default_option_dialog(params)
 
 
 end
-function MenuManager:show_option_dialog(params)
+MenuManager.show_option_dialog = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-38, warpins: 1 ---
@@ -1330,7 +1330,7 @@ function MenuManager:show_option_dialog(params)
 
 
 end
-function MenuManager:show_character_delete_dialog(params)
+MenuManager.show_character_delete_dialog = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-49, warpins: 1 ---
@@ -1361,7 +1361,7 @@ function MenuManager:show_character_delete_dialog(params)
 
 
 end
-function MenuManager:show_last_character_delete_forbiden_in_multiplayer(params)
+MenuManager.show_last_character_delete_forbiden_in_multiplayer = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-28, warpins: 1 ---
@@ -1385,7 +1385,7 @@ function MenuManager:show_last_character_delete_forbiden_in_multiplayer(params)
 
 
 end
-function MenuManager:show_respec_dialog(params)
+MenuManager.show_respec_dialog = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-59, warpins: 1 ---
@@ -1419,7 +1419,7 @@ function MenuManager:show_respec_dialog(params)
 
 
 end
-function MenuManager:show_character_customization_purchase_dialog(params)
+MenuManager.show_character_customization_purchase_dialog = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-61, warpins: 1 ---
@@ -1454,7 +1454,7 @@ function MenuManager:show_character_customization_purchase_dialog(params)
 
 
 end
-function MenuManager:show_gold_asset_store_purchase_dialog(params)
+MenuManager.show_gold_asset_store_purchase_dialog = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-61, warpins: 1 ---
@@ -1489,7 +1489,7 @@ function MenuManager:show_gold_asset_store_purchase_dialog(params)
 
 
 end
-function MenuManager:show_skill_selection_invalid_dialog()
+MenuManager.show_skill_selection_invalid_dialog = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-46, warpins: 1 ---
@@ -1516,7 +1516,7 @@ function MenuManager:show_skill_selection_invalid_dialog()
 
 
 end
-function MenuManager:show_skill_selection_confirm_dialog(params)
+MenuManager.show_skill_selection_confirm_dialog = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-62, warpins: 1 ---
@@ -1549,7 +1549,7 @@ function MenuManager:show_skill_selection_confirm_dialog(params)
 
 
 end
-function MenuManager:show_kick_peer_dialog(params)
+MenuManager.show_kick_peer_dialog = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-65, warpins: 1 ---
@@ -1584,7 +1584,7 @@ function MenuManager:show_kick_peer_dialog(params)
 
 
 end
-function MenuManager:show_save_slot_delete_confirm_dialog(params)
+MenuManager.show_save_slot_delete_confirm_dialog = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-62, warpins: 1 ---
@@ -1617,7 +1617,7 @@ function MenuManager:show_save_slot_delete_confirm_dialog(params)
 
 
 end
-function MenuManager:show_redeem_character_customization_dialog(params)
+MenuManager.show_redeem_character_customization_dialog = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-61, warpins: 1 ---
@@ -1653,7 +1653,7 @@ function MenuManager:show_redeem_character_customization_dialog(params)
 
 
 end
-function MenuManager:show_redeem_weapon_point_dialog(params)
+MenuManager.show_redeem_weapon_point_dialog = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-61, warpins: 1 ---
@@ -1689,7 +1689,7 @@ function MenuManager:show_redeem_weapon_point_dialog(params)
 
 
 end
-function MenuManager:show_character_create_dialog(params)
+MenuManager.show_character_create_dialog = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-60, warpins: 1 ---
@@ -1724,7 +1724,7 @@ function MenuManager:show_character_create_dialog(params)
 
 
 end
-function MenuManager:show_err_character_name_dialog(params)
+MenuManager.show_err_character_name_dialog = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-43, warpins: 1 ---
@@ -1751,7 +1751,7 @@ function MenuManager:show_err_character_name_dialog(params)
 
 
 end
-function MenuManager:show_err_not_signed_in_dialog()
+MenuManager.show_err_not_signed_in_dialog = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-41, warpins: 1 ---
@@ -1789,7 +1789,7 @@ function MenuManager:show_err_not_signed_in_dialog()
 
 
 end
-function MenuManager:show_mp_disconnected_internet_dialog(params)
+MenuManager.show_mp_disconnected_internet_dialog = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-40, warpins: 1 ---
@@ -1816,7 +1816,7 @@ function MenuManager:show_mp_disconnected_internet_dialog(params)
 
 
 end
-function MenuManager:show_internet_connection_required()
+MenuManager.show_internet_connection_required = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-38, warpins: 1 ---
@@ -1842,7 +1842,7 @@ function MenuManager:show_internet_connection_required()
 
 
 end
-function MenuManager:show_err_no_chat_parental_control()
+MenuManager.show_err_no_chat_parental_control = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -1898,7 +1898,7 @@ function MenuManager:show_err_no_chat_parental_control()
 
 
 end
-function MenuManager:show_err_under_age()
+MenuManager.show_err_under_age = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-38, warpins: 1 ---
@@ -1924,7 +1924,7 @@ function MenuManager:show_err_under_age()
 
 
 end
-function MenuManager:show_err_new_patch()
+MenuManager.show_err_new_patch = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-38, warpins: 1 ---
@@ -1950,7 +1950,7 @@ function MenuManager:show_err_new_patch()
 
 
 end
-function MenuManager:show_waiting_for_server_response(params)
+MenuManager.show_waiting_for_server_response = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-39, warpins: 1 ---
@@ -1978,7 +1978,7 @@ function MenuManager:show_waiting_for_server_response(params)
 
 
 end
-function MenuManager:show_request_timed_out_dialog()
+MenuManager.show_request_timed_out_dialog = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-33, warpins: 1 ---
@@ -2003,7 +2003,7 @@ function MenuManager:show_request_timed_out_dialog()
 
 
 end
-function MenuManager:show_restart_game_dialog(params)
+MenuManager.show_restart_game_dialog = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-48, warpins: 1 ---
@@ -2035,7 +2035,7 @@ function MenuManager:show_restart_game_dialog(params)
 
 
 end
-function MenuManager:show_return_to_camp_dialog(params)
+MenuManager.show_return_to_camp_dialog = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-48, warpins: 1 ---
@@ -2067,7 +2067,7 @@ function MenuManager:show_return_to_camp_dialog(params)
 
 
 end
-function MenuManager:show_restart_mission_dialog(params)
+MenuManager.show_restart_mission_dialog = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-48, warpins: 1 ---
@@ -2099,7 +2099,7 @@ function MenuManager:show_restart_mission_dialog(params)
 
 
 end
-function MenuManager:show_no_invites_message()
+MenuManager.show_no_invites_message = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-33, warpins: 1 ---
@@ -2124,7 +2124,7 @@ function MenuManager:show_no_invites_message()
 
 
 end
-function MenuManager:show_invite_wrong_version_message()
+MenuManager.show_invite_wrong_version_message = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-33, warpins: 1 ---
@@ -2149,7 +2149,7 @@ function MenuManager:show_invite_wrong_version_message()
 
 
 end
-function MenuManager:show_invite_wrong_room_message()
+MenuManager.show_invite_wrong_room_message = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-33, warpins: 1 ---
@@ -2174,7 +2174,7 @@ function MenuManager:show_invite_wrong_room_message()
 
 
 end
-function MenuManager:show_invite_join_message(params)
+MenuManager.show_invite_join_message = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-37, warpins: 1 ---
@@ -2201,7 +2201,7 @@ function MenuManager:show_invite_join_message(params)
 
 
 end
-function MenuManager:show_pending_invite_message(params)
+MenuManager.show_pending_invite_message = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-40, warpins: 1 ---
@@ -2228,7 +2228,7 @@ function MenuManager:show_pending_invite_message(params)
 
 
 end
-function MenuManager:show_game_is_installing()
+MenuManager.show_game_is_installing = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-38, warpins: 1 ---
@@ -2254,7 +2254,7 @@ function MenuManager:show_game_is_installing()
 
 
 end
-function MenuManager:show_game_is_installing_menu()
+MenuManager.show_game_is_installing_menu = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-38, warpins: 1 ---
@@ -2280,7 +2280,7 @@ function MenuManager:show_game_is_installing_menu()
 
 
 end
-function MenuManager:show_NPCommerce_open_fail(params)
+MenuManager.show_NPCommerce_open_fail = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-38, warpins: 1 ---
@@ -2306,7 +2306,7 @@ function MenuManager:show_NPCommerce_open_fail(params)
 
 
 end
-function MenuManager:show_NPCommerce_checkout_fail(params)
+MenuManager.show_NPCommerce_checkout_fail = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-33, warpins: 1 ---
@@ -2331,7 +2331,7 @@ function MenuManager:show_NPCommerce_checkout_fail(params)
 
 
 end
-function MenuManager:show_waiting_NPCommerce_open(params)
+MenuManager.show_waiting_NPCommerce_open = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-30, warpins: 1 ---
@@ -2354,7 +2354,7 @@ function MenuManager:show_waiting_NPCommerce_open(params)
 
 
 end
-function MenuManager:show_NPCommerce_browse_fail()
+MenuManager.show_NPCommerce_browse_fail = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-35, warpins: 1 ---
@@ -2380,7 +2380,7 @@ function MenuManager:show_NPCommerce_browse_fail()
 
 
 end
-function MenuManager:show_NPCommerce_browse_success()
+MenuManager.show_NPCommerce_browse_success = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-33, warpins: 1 ---
@@ -2405,7 +2405,7 @@ function MenuManager:show_NPCommerce_browse_success()
 
 
 end
-function MenuManager:show_dlc_require_restart()
+MenuManager.show_dlc_require_restart = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -2450,7 +2450,7 @@ function MenuManager:show_dlc_require_restart()
 
 
 end
-function MenuManager:show_video_message_dialog(params)
+MenuManager.show_video_message_dialog = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -2623,7 +2623,7 @@ function MenuManager:show_video_message_dialog(params)
 
 
 end
-function MenuManager:show_new_message_dialog(params)
+MenuManager.show_new_message_dialog = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -2795,7 +2795,7 @@ function MenuManager:show_new_message_dialog(params)
 
 
 end
-function MenuManager:show_accept_gfx_settings_dialog(func)
+MenuManager.show_accept_gfx_settings_dialog = function (self, func)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-57, warpins: 1 ---
@@ -2953,7 +2953,7 @@ function MenuManager:show_accept_gfx_settings_dialog(func)
 
 
 end
-function MenuManager:show_key_binding_collision(params)
+MenuManager.show_key_binding_collision = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-34, warpins: 1 ---
@@ -2978,7 +2978,7 @@ function MenuManager:show_key_binding_collision(params)
 
 
 end
-function MenuManager:show_key_binding_forbidden(params)
+MenuManager.show_key_binding_forbidden = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-34, warpins: 1 ---
@@ -3003,7 +3003,7 @@ function MenuManager:show_key_binding_forbidden(params)
 
 
 end
-function MenuManager:show_no_active_characters()
+MenuManager.show_no_active_characters = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-33, warpins: 1 ---
@@ -3028,7 +3028,7 @@ function MenuManager:show_no_active_characters()
 
 
 end
-function MenuManager:show_no_safe_for_this_drill(params)
+MenuManager.show_no_safe_for_this_drill = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-33, warpins: 1 ---
@@ -3053,7 +3053,7 @@ function MenuManager:show_no_safe_for_this_drill(params)
 
 
 end
-function MenuManager:show_and_more_tradable_item_received(params)
+MenuManager.show_and_more_tradable_item_received = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-38, warpins: 1 ---
@@ -3081,7 +3081,7 @@ function MenuManager:show_and_more_tradable_item_received(params)
 
 
 end
-function MenuManager:show_mask_mods_available(params)
+MenuManager.show_mask_mods_available = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-32, warpins: 1 ---
@@ -3108,7 +3108,7 @@ function MenuManager:show_mask_mods_available(params)
 
 
 end
-function MenuManager:show_confirm_skillpoints(params)
+MenuManager.show_confirm_skillpoints = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-66, warpins: 1 ---
@@ -3148,7 +3148,7 @@ function MenuManager:show_confirm_skillpoints(params)
 
 
 end
-function MenuManager:show_confirm_respec_skilltree(params)
+MenuManager.show_confirm_respec_skilltree = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-67, warpins: 1 ---
@@ -3186,7 +3186,7 @@ function MenuManager:show_confirm_respec_skilltree(params)
 
 
 end
-function MenuManager:show_confirm_respec_skilltree_all(params)
+MenuManager.show_confirm_respec_skilltree_all = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-54, warpins: 1 ---
@@ -3221,7 +3221,7 @@ function MenuManager:show_confirm_respec_skilltree_all(params)
 
 
 end
-function MenuManager:show_skilltree_reseted()
+MenuManager.show_skilltree_reseted = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-33, warpins: 1 ---
@@ -3246,7 +3246,7 @@ function MenuManager:show_skilltree_reseted()
 
 
 end
-function MenuManager:show_confirm_infamypoints(params)
+MenuManager.show_confirm_infamypoints = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-59, warpins: 1 ---
@@ -3284,7 +3284,7 @@ function MenuManager:show_confirm_infamypoints(params)
 
 
 end
-function MenuManager:show_infamytree_reseted()
+MenuManager.show_infamytree_reseted = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-33, warpins: 1 ---
@@ -3309,7 +3309,7 @@ function MenuManager:show_infamytree_reseted()
 
 
 end
-function MenuManager:show_enable_steam_overlay()
+MenuManager.show_enable_steam_overlay = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-33, warpins: 1 ---
@@ -3334,7 +3334,7 @@ function MenuManager:show_enable_steam_overlay()
 
 
 end
-function MenuManager:show_requires_big_picture()
+MenuManager.show_requires_big_picture = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-33, warpins: 1 ---
@@ -3359,7 +3359,7 @@ function MenuManager:show_requires_big_picture()
 
 
 end
-function MenuManager:show_buying_tradable_item_dialog()
+MenuManager.show_buying_tradable_item_dialog = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-39, warpins: 1 ---
@@ -3400,7 +3400,7 @@ function MenuManager:show_buying_tradable_item_dialog()
 
 
 end
-function MenuManager:show_canceled_tradable_item_dialog()
+MenuManager.show_canceled_tradable_item_dialog = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-33, warpins: 1 ---
@@ -3425,7 +3425,7 @@ function MenuManager:show_canceled_tradable_item_dialog()
 
 
 end
-function MenuManager:show_success_tradable_item_dialog()
+MenuManager.show_success_tradable_item_dialog = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-33, warpins: 1 ---
@@ -3450,7 +3450,7 @@ function MenuManager:show_success_tradable_item_dialog()
 
 
 end
-function MenuManager:show_enable_steam_overlay_tradable_item()
+MenuManager.show_enable_steam_overlay_tradable_item = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-33, warpins: 1 ---
@@ -3475,7 +3475,7 @@ function MenuManager:show_enable_steam_overlay_tradable_item()
 
 
 end
-function MenuManager:show_error_tradable_item_dialog()
+MenuManager.show_error_tradable_item_dialog = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-33, warpins: 1 ---
@@ -3500,7 +3500,7 @@ function MenuManager:show_error_tradable_item_dialog()
 
 
 end
-function MenuManager:show_failed_tradable_item_dialog()
+MenuManager.show_failed_tradable_item_dialog = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-33, warpins: 1 ---
@@ -3525,7 +3525,7 @@ function MenuManager:show_failed_tradable_item_dialog()
 
 
 end
-function MenuManager:show_confirm_blackmarket_sell_no_slot(params)
+MenuManager.show_confirm_blackmarket_sell_no_slot = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-66, warpins: 1 ---
@@ -3564,7 +3564,7 @@ function MenuManager:show_confirm_blackmarket_sell_no_slot(params)
 
 
 end
-function MenuManager:show_confirm_blackmarket_mask_remove(params)
+MenuManager.show_confirm_blackmarket_mask_remove = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-29, warpins: 1 ---
@@ -3691,7 +3691,7 @@ function MenuManager:show_confirm_blackmarket_mask_remove(params)
 
 
 end
-function MenuManager:show_confirm_blackmarket_mask_sell(params)
+MenuManager.show_confirm_blackmarket_mask_sell = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-34, warpins: 1 ---
@@ -3782,7 +3782,7 @@ function MenuManager:show_confirm_blackmarket_mask_sell(params)
 
 
 end
-function MenuManager:show_confirm_blackmarket_sell(params)
+MenuManager.show_confirm_blackmarket_sell = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-68, warpins: 1 ---
@@ -3822,7 +3822,7 @@ function MenuManager:show_confirm_blackmarket_sell(params)
 
 
 end
-function MenuManager:show_confirm_blackmarket_buy_weapon_slot(params)
+MenuManager.show_confirm_blackmarket_buy_weapon_slot = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-55, warpins: 1 ---
@@ -3858,7 +3858,7 @@ function MenuManager:show_confirm_blackmarket_buy_weapon_slot(params)
 
 
 end
-function MenuManager:show_confirm_blackmarket_buy_mask_slot(params)
+MenuManager.show_confirm_blackmarket_buy_mask_slot = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-55, warpins: 1 ---
@@ -3894,7 +3894,7 @@ function MenuManager:show_confirm_blackmarket_buy_mask_slot(params)
 
 
 end
-function MenuManager:show_confirm_blackmarket_buy(params)
+MenuManager.show_confirm_blackmarket_buy = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -3959,7 +3959,7 @@ function MenuManager:show_confirm_blackmarket_buy(params)
 
 
 end
-function MenuManager:show_confirm_blackmarket_mod(params)
+MenuManager.show_confirm_blackmarket_mod = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-26, warpins: 1 ---
@@ -4172,7 +4172,7 @@ function MenuManager:show_confirm_blackmarket_mod(params)
 
 
 end
-function MenuManager:show_confirm_weapon_cosmetics(params)
+MenuManager.show_confirm_weapon_cosmetics = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-28, warpins: 1 ---
@@ -4303,7 +4303,7 @@ function MenuManager:show_confirm_weapon_cosmetics(params)
 
 
 end
-function MenuManager:show_confirm_blackmarket_assemble(params)
+MenuManager.show_confirm_blackmarket_assemble = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -4367,7 +4367,7 @@ function MenuManager:show_confirm_blackmarket_assemble(params)
 
 
 end
-function MenuManager:show_confirm_blackmarket_abort(params)
+MenuManager.show_confirm_blackmarket_abort = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-52, warpins: 1 ---
@@ -4401,7 +4401,7 @@ function MenuManager:show_confirm_blackmarket_abort(params)
 
 
 end
-function MenuManager:show_confirm_blackmarket_finalize(params)
+MenuManager.show_confirm_blackmarket_finalize = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-67, warpins: 1 ---
@@ -4442,7 +4442,7 @@ function MenuManager:show_confirm_blackmarket_finalize(params)
 
 
 end
-function MenuManager:show_storage_removed_dialog(params)
+MenuManager.show_storage_removed_dialog = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-35, warpins: 1 ---
@@ -4468,7 +4468,7 @@ function MenuManager:show_storage_removed_dialog(params)
 
 
 end
-function MenuManager:show_game_no_longer_exists(params)
+MenuManager.show_game_no_longer_exists = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-33, warpins: 1 ---
@@ -4493,7 +4493,7 @@ function MenuManager:show_game_no_longer_exists(params)
 
 
 end
-function MenuManager:show_game_is_full(params)
+MenuManager.show_game_is_full = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-33, warpins: 1 ---
@@ -4518,7 +4518,7 @@ function MenuManager:show_game_is_full(params)
 
 
 end
-function MenuManager:show_wrong_version_message()
+MenuManager.show_wrong_version_message = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-33, warpins: 1 ---
@@ -4543,7 +4543,7 @@ function MenuManager:show_wrong_version_message()
 
 
 end
-function MenuManager:show_inactive_user_accepted_invite(params)
+MenuManager.show_inactive_user_accepted_invite = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-37, warpins: 1 ---
@@ -4570,7 +4570,7 @@ function MenuManager:show_inactive_user_accepted_invite(params)
 
 
 end
-function MenuManager:show_question_start_tutorial(params)
+MenuManager.show_question_start_tutorial = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-48, warpins: 1 ---
@@ -4602,7 +4602,7 @@ function MenuManager:show_question_start_tutorial(params)
 
 
 end
-function MenuManager:show_leave_safehouse_dialog(params)
+MenuManager.show_leave_safehouse_dialog = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-46, warpins: 1 ---
@@ -4633,7 +4633,7 @@ function MenuManager:show_leave_safehouse_dialog(params)
 
 
 end
-function MenuManager:show_save_settings_failed(params)
+MenuManager.show_save_settings_failed = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-33, warpins: 1 ---
@@ -4658,7 +4658,7 @@ function MenuManager:show_save_settings_failed(params)
 
 
 end
-function MenuManager:show_play_safehouse_question(params)
+MenuManager.show_play_safehouse_question = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-50, warpins: 1 ---
@@ -4691,7 +4691,7 @@ function MenuManager:show_play_safehouse_question(params)
 
 
 end
-function MenuManager:show_savefile_wrong_version(params)
+MenuManager.show_savefile_wrong_version = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-35, warpins: 1 ---
@@ -4717,7 +4717,7 @@ function MenuManager:show_savefile_wrong_version(params)
 
 
 end
-function MenuManager:show_savefile_wrong_user(params)
+MenuManager.show_savefile_wrong_user = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-35, warpins: 1 ---
@@ -4743,7 +4743,7 @@ function MenuManager:show_savefile_wrong_user(params)
 
 
 end
-function MenuManager:show_account_picker_dialog(params)
+MenuManager.show_account_picker_dialog = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-48, warpins: 1 ---
@@ -4775,7 +4775,7 @@ function MenuManager:show_account_picker_dialog(params)
 
 
 end
-function MenuManager:show_abort_mission_dialog(params)
+MenuManager.show_abort_mission_dialog = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-48, warpins: 1 ---
@@ -4807,7 +4807,7 @@ function MenuManager:show_abort_mission_dialog(params)
 
 
 end
-function MenuManager:show_safe_error_dialog(params)
+MenuManager.show_safe_error_dialog = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-35, warpins: 1 ---
@@ -4833,7 +4833,7 @@ function MenuManager:show_safe_error_dialog(params)
 
 
 end
-function MenuManager:show_specialization_xp_convert(xp_present, points_present)
+MenuManager.show_specialization_xp_convert = function (self, xp_present, points_present)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-32, warpins: 1 ---
@@ -4860,7 +4860,7 @@ function MenuManager:show_specialization_xp_convert(xp_present, points_present)
 
 
 end
-function MenuManager:show_infamous_message(can_become_infamous)
+MenuManager.show_infamous_message = function (self, can_become_infamous)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-30, warpins: 1 ---
@@ -4885,7 +4885,7 @@ function MenuManager:show_infamous_message(can_become_infamous)
 
 
 end
-function MenuManager:show_challenge_warn_choose_reward(params)
+MenuManager.show_challenge_warn_choose_reward = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-59, warpins: 1 ---
@@ -4923,7 +4923,7 @@ function MenuManager:show_challenge_warn_choose_reward(params)
 
 
 end
-function MenuManager:show_challenge_reward(reward)
+MenuManager.show_challenge_reward = function (self, reward)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -5318,7 +5318,7 @@ function MenuManager:show_challenge_reward(reward)
 
 
 end
-function MenuManager:show_inventory_load_fail_dialog()
+MenuManager.show_inventory_load_fail_dialog = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-33, warpins: 1 ---
@@ -5343,7 +5343,7 @@ function MenuManager:show_inventory_load_fail_dialog()
 
 
 end
-function MenuManager:show_really_quit_the_game_dialog(params)
+MenuManager.show_really_quit_the_game_dialog = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-48, warpins: 1 ---
@@ -5374,7 +5374,7 @@ function MenuManager:show_really_quit_the_game_dialog(params)
 
 
 end
-function MenuManager:show_unlock_mission_confirm_dialog(params)
+MenuManager.show_unlock_mission_confirm_dialog = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-51, warpins: 1 ---

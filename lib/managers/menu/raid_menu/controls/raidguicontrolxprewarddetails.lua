@@ -34,7 +34,7 @@ RaidGUIControlXPRewardDetails.XP_VALUE_DESCRIPTION_PADDING = 20
 RaidGUIControlXPRewardDetails.XP_VALUE_LABEL_FONT_SIZE = tweak_data.gui.font_sizes.size_20
 RaidGUIControlXPRewardDetails.XP_VALUE_LABEL_COLOR = tweak_data.gui.colors.raid_grey
 RaidGUIControlXPRewardDetails.XP_VALUE_LABEL_VALUE_PADDING = 0
-RaidGUIControlXPRewardDetails.init = function (self, parent, params)
+function RaidGUIControlXPRewardDetails:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlXPRewardDetails.super.init(slot4, self, parent)
@@ -79,7 +79,7 @@ RaidGUIControlXPRewardDetails.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlXPRewardDetails._create_control_panel = function (self)
+function RaidGUIControlXPRewardDetails:_create_control_panel()
 	slot3 = self._params
 	local control_params = clone(slot2)
 	control_params.x = control_params.x
@@ -94,7 +94,7 @@ RaidGUIControlXPRewardDetails._create_control_panel = function (self)
 
 	return 
 end
-RaidGUIControlXPRewardDetails._create_left_panel = function (self)
+function RaidGUIControlXPRewardDetails:_create_left_panel()
 	local left_panel_params = {
 		name = "left_panel",
 		w = RaidGUIControlXPRewardDetails.LEFT_PANEL_W
@@ -106,7 +106,7 @@ RaidGUIControlXPRewardDetails._create_left_panel = function (self)
 
 	return 
 end
-RaidGUIControlXPRewardDetails._create_title = function (self)
+function RaidGUIControlXPRewardDetails:_create_title()
 	local title_description_params = {
 		name = "title_description",
 		vertical = "center",
@@ -149,7 +149,7 @@ RaidGUIControlXPRewardDetails._create_title = function (self)
 
 	return 
 end
-RaidGUIControlXPRewardDetails._layout_title = function (self)
+function RaidGUIControlXPRewardDetails:_layout_title()
 	slot3 = self._customization_name
 	local _, _, w, h = self._customization_name.text_rect(slot2)
 	slot8 = w
@@ -172,7 +172,7 @@ RaidGUIControlXPRewardDetails._layout_title = function (self)
 
 	return 
 end
-RaidGUIControlXPRewardDetails._create_reward_image = function (self)
+function RaidGUIControlXPRewardDetails:_create_reward_image()
 	local reward_image_panel_params = {
 		name = "reward_image_panel",
 		y = RaidGUIControlXPRewardDetails.REWARD_ICON_PANEL_Y
@@ -202,7 +202,7 @@ RaidGUIControlXPRewardDetails._create_reward_image = function (self)
 
 	return 
 end
-RaidGUIControlXPRewardDetails._create_xp_value = function (self)
+function RaidGUIControlXPRewardDetails:_create_xp_value()
 	local xp_value_params = {
 		text = "456 XP",
 		name = "xp_value",
@@ -230,7 +230,7 @@ RaidGUIControlXPRewardDetails._create_xp_value = function (self)
 
 	return 
 end
-RaidGUIControlXPRewardDetails._layout_xp_value = function (self)
+function RaidGUIControlXPRewardDetails:_layout_xp_value()
 	slot3 = self._xp_value_text
 	local _, _, w, h = self._xp_value_text.text_rect(slot2)
 	slot8 = w
@@ -273,7 +273,7 @@ RaidGUIControlXPRewardDetails._layout_xp_value = function (self)
 
 	return 
 end
-RaidGUIControlXPRewardDetails.show = function (self)
+function RaidGUIControlXPRewardDetails:show()
 	slot3 = self
 
 	RaidGUIControlXPRewardDetails.super.show(slot2)
@@ -454,7 +454,7 @@ RaidGUIControlXPRewardDetails.show = function (self)
 
 	return 
 end
-RaidGUIControlXPRewardDetails._create_right_panel = function (self)
+function RaidGUIControlXPRewardDetails:_create_right_panel()
 	local right_panel_params = {
 		name = "right_panel"
 	}
@@ -472,7 +472,7 @@ RaidGUIControlXPRewardDetails._create_right_panel = function (self)
 
 	return 
 end
-RaidGUIControlXPRewardDetails._create_description = function (self)
+function RaidGUIControlXPRewardDetails:_create_description()
 	local description_params = {
 		vertical = "top",
 		name = "description",
@@ -518,7 +518,7 @@ RaidGUIControlXPRewardDetails._create_description = function (self)
 
 	return 
 end
-RaidGUIControlXPRewardDetails._layout_description = function (self)
+function RaidGUIControlXPRewardDetails:_layout_description()
 	slot3 = self._description
 	local x, y, w, h = self._description.text_rect(slot2)
 	slot8 = w
@@ -531,7 +531,7 @@ RaidGUIControlXPRewardDetails._layout_description = function (self)
 
 	return 
 end
-RaidGUIControlXPRewardDetails.set_xp_reward = function (self, xp_reward)
+function RaidGUIControlXPRewardDetails:set_xp_reward(xp_reward)
 	slot5 = "+" .. xp_reward
 
 	self._xp_value_text.set_text(slot3, self._xp_value_text)

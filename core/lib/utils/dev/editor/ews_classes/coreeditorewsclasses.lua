@@ -12,7 +12,7 @@ if not CoreEditorEwsDialog then
 end
 
 CoreEditorEwsDialog = slot0
-CoreEditorEwsDialog.init = function (self, parent, caption, id, position, size, style, settings)
+function CoreEditorEwsDialog:init(parent, caption, id, position, size, style, settings)
 	self._default_position = position
 	self._default_size = size
 	local pos = (settings and settings.position) or self._default_position
@@ -36,14 +36,14 @@ CoreEditorEwsDialog.init = function (self, parent, caption, id, position, size, 
 
 	return 
 end
-CoreEditorEwsDialog._evt_close_window = function (self)
+function CoreEditorEwsDialog:_evt_close_window()
 	slot3 = self
 
 	self.on_cancel(slot2)
 
 	return 
 end
-CoreEditorEwsDialog.create_panel = function (self, orientation)
+function CoreEditorEwsDialog:create_panel(orientation)
 	slot7 = "TAB_TRAVERSAL"
 	self._panel = EWS.Panel(slot3, EWS, self._dialog, "")
 	slot5 = orientation
@@ -54,66 +54,66 @@ CoreEditorEwsDialog.create_panel = function (self, orientation)
 
 	return 
 end
-CoreEditorEwsDialog.update = function (self, t, dt)
+function CoreEditorEwsDialog:update(t, dt)
 	return 
 end
-CoreEditorEwsDialog.dialog = function (self)
+function CoreEditorEwsDialog:dialog()
 	return self._dialog
 end
-CoreEditorEwsDialog.panel = function (self)
+function CoreEditorEwsDialog:panel()
 	return self._panel
 end
-CoreEditorEwsDialog.set_visible = function (self, visible)
+function CoreEditorEwsDialog:set_visible(visible)
 	slot5 = visible
 
 	self._dialog.set_visible(slot3, self._dialog)
 
 	return 
 end
-CoreEditorEwsDialog.visible = function (self)
+function CoreEditorEwsDialog:visible()
 	slot3 = self._dialog
 
 	return self._dialog.visible(slot2)
 end
-CoreEditorEwsDialog.set_enabled = function (self, enabled)
+function CoreEditorEwsDialog:set_enabled(enabled)
 	slot5 = enabled
 
 	self._dialog.set_enabled(slot3, self._dialog)
 
 	return 
 end
-CoreEditorEwsDialog.enabled = function (self)
+function CoreEditorEwsDialog:enabled()
 	slot3 = self._dialog
 
 	return self._dialog.enabled(slot2)
 end
-CoreEditorEwsDialog.show_modal = function (self)
+function CoreEditorEwsDialog:show_modal()
 	slot3 = self._dialog
 
 	self._dialog.show_modal(slot2)
 
 	return 
 end
-CoreEditorEwsDialog.end_modal = function (self, code)
+function CoreEditorEwsDialog:end_modal(code)
 	slot5 = code
 
 	self._dialog.end_modal(slot3, self._dialog)
 
 	return 
 end
-CoreEditorEwsDialog.size = function (self)
+function CoreEditorEwsDialog:size()
 	slot3 = self._dialog
 
 	return self._dialog.get_size(slot2)
 end
-CoreEditorEwsDialog.set_size = function (self, size)
+function CoreEditorEwsDialog:set_size(size)
 	slot5 = size
 
 	self._dialog.set_size(slot3, self._dialog)
 
 	return 
 end
-CoreEditorEwsDialog.key_cancel = function (self, ctrlr, event)
+function CoreEditorEwsDialog:key_cancel(ctrlr, event)
 	slot5 = event
 
 	event.skip(slot4)
@@ -129,39 +129,39 @@ CoreEditorEwsDialog.key_cancel = function (self, ctrlr, event)
 
 	return 
 end
-CoreEditorEwsDialog.on_cancel = function (self)
+function CoreEditorEwsDialog:on_cancel()
 	slot4 = false
 
 	self._dialog.set_visible(slot2, self._dialog)
 
 	return 
 end
-CoreEditorEwsDialog.position = function (self)
+function CoreEditorEwsDialog:position()
 	slot3 = self._dialog
 
 	return self._dialog.get_position(slot2)
 end
-CoreEditorEwsDialog.set_position = function (self, pos)
+function CoreEditorEwsDialog:set_position(pos)
 	slot5 = pos
 
 	self._dialog.set_position(slot3, self._dialog)
 
 	return 
 end
-CoreEditorEwsDialog.set_caption = function (self, caption)
+function CoreEditorEwsDialog:set_caption(caption)
 	slot5 = caption
 
 	self._dialog.set_caption(slot3, self._dialog)
 
 	return 
 end
-CoreEditorEwsDialog.reset = function (self)
+function CoreEditorEwsDialog:reset()
 	return 
 end
-CoreEditorEwsDialog.recreate = function (self)
+function CoreEditorEwsDialog:recreate()
 	return 
 end
-CoreEditorEwsDialog.destroy = function (self)
+function CoreEditorEwsDialog:destroy()
 	slot3 = self._dialog
 
 	self._dialog.destroy(slot2)
@@ -169,7 +169,7 @@ CoreEditorEwsDialog.destroy = function (self)
 	return 
 end
 UnitList = UnitList or class()
-UnitList.init = function (self)
+function UnitList:init()
 	slot11 = 0
 	slot12 = 0
 	slot9 = "DEFAULT_DIALOG_STYLE,RESIZE_BORDER"
@@ -559,7 +559,7 @@ UnitList.init = function (self)
 
 	return 
 end
-UnitList.key_delete = function (self, ctrlr, event)
+function UnitList:key_delete(ctrlr, event)
 	slot5 = event
 
 	event.skip(slot4)
@@ -575,7 +575,7 @@ UnitList.key_delete = function (self, ctrlr, event)
 
 	return 
 end
-UnitList.key_cancel = function (self, ctrlr, event)
+function UnitList:key_cancel(ctrlr, event)
 	slot5 = event
 
 	event.skip(slot4)
@@ -591,14 +591,14 @@ UnitList.key_cancel = function (self, ctrlr, event)
 
 	return 
 end
-UnitList.on_cancel = function (self)
+function UnitList:on_cancel()
 	slot4 = false
 
 	self._dialog.set_visible(slot2, self._dialog)
 
 	return 
 end
-UnitList.on_delete = function (self)
+function UnitList:on_delete()
 	slot3 = managers.editor
 
 	managers.editor.freeze_gui_lists(slot2)
@@ -617,7 +617,7 @@ UnitList.on_delete = function (self)
 
 	return 
 end
-UnitList.selected_item_units = function (self)
+function UnitList:selected_item_units()
 	local units = {}
 	slot6 = self._unit_list
 
@@ -631,7 +631,7 @@ UnitList.selected_item_units = function (self)
 
 	return units
 end
-UnitList.column_click_list = function (self, data, event)
+function UnitList:column_click_list(data, event)
 	slot5 = event
 	local column = event.get_column(slot4) + 1
 	local value = self._column_states[column].value
@@ -681,7 +681,7 @@ UnitList.column_click_list = function (self, data, event)
 
 	return 
 end
-UnitList.on_changed_layer = function (self)
+function UnitList:on_changed_layer()
 	slot3 = self._list
 	local index = self._list.selected_item(slot2)
 
@@ -697,7 +697,7 @@ UnitList.on_changed_layer = function (self)
 
 	return 
 end
-UnitList.on_select_unit_list = function (self, ignore_unit)
+function UnitList:on_select_unit_list(ignore_unit)
 	local list = self._list
 	local unit_list = self._unit_list
 	slot6 = list
@@ -762,7 +762,7 @@ UnitList.on_select_unit_list = function (self, ignore_unit)
 
 	return 
 end
-UnitList.on_select_unit_list_unit = function (self)
+function UnitList:on_select_unit_list_unit()
 	local list = self._list
 	local unit_list = self._unit_list
 	slot5 = unit_list
@@ -783,7 +783,7 @@ UnitList.on_select_unit_list_unit = function (self)
 
 	return 
 end
-UnitList.reset = function (self)
+function UnitList:reset()
 	slot4 = "all"
 
 	self.fill_unit_list(slot2, self)
@@ -794,7 +794,7 @@ UnitList.reset = function (self)
 
 	return 
 end
-UnitList.deleted_unit = function (self, unit)
+function UnitList:deleted_unit(unit)
 	slot4 = self
 
 	self.freeze(slot3)
@@ -841,7 +841,7 @@ UnitList.deleted_unit = function (self, unit)
 
 	return 
 end
-UnitList.spawned_unit = function (self, unit)
+function UnitList:spawned_unit(unit)
 	slot4 = self
 
 	self.freeze(slot3)
@@ -894,7 +894,7 @@ UnitList.spawned_unit = function (self, unit)
 
 	return 
 end
-UnitList.selected_unit = function (self, unit)
+function UnitList:selected_unit(unit)
 	slot6 = self._list
 
 	for _, i in ipairs(self._list.selected_items(slot5)) do
@@ -949,7 +949,7 @@ UnitList.selected_unit = function (self, unit)
 
 	return 
 end
-UnitList.unit_name_changed = function (self, unit)
+function UnitList:unit_name_changed(unit)
 	slot4 = self._list
 	local index = self._list.selected_item(slot3)
 	slot6 = self._list
@@ -972,7 +972,7 @@ UnitList.unit_name_changed = function (self, unit)
 
 	return 
 end
-UnitList.fill_unit_list = function (self, type)
+function UnitList:fill_unit_list(type)
 	self.freeze(slot3)
 
 	local list = self._list
@@ -1026,7 +1026,7 @@ UnitList.fill_unit_list = function (self, type)
 
 	return 
 end
-UnitList._autosize_columns = function (self)
+function UnitList:_autosize_columns()
 	slot4 = self._list
 
 	for i = 0, self._list.column_count(slot3) - 1, 1 do
@@ -1037,7 +1037,7 @@ UnitList._autosize_columns = function (self)
 
 	return 
 end
-UnitList.append_item = function (self, name, t)
+function UnitList:append_item(name, t)
 	slot6 = name
 	local i = self._list.append_item(slot4, self._list)
 	slot9 = t.amount
@@ -1115,21 +1115,21 @@ UnitList.append_item = function (self, name, t)
 
 	return 
 end
-UnitList.set_visible = function (self, visible)
+function UnitList:set_visible(visible)
 	slot5 = visible
 
 	self._dialog.set_visible(slot3, self._dialog)
 
 	return 
 end
-UnitList.visible = function (self)
+function UnitList:visible()
 	slot3 = self._dialog
 
 	self._dialog.visible(slot2)
 
 	return 
 end
-UnitList.freeze = function (self)
+function UnitList:freeze()
 	slot3 = self._list
 
 	self._list.freeze(slot2)
@@ -1140,7 +1140,7 @@ UnitList.freeze = function (self)
 
 	return 
 end
-UnitList.thaw = function (self)
+function UnitList:thaw()
 	slot3 = self._unit_list
 
 	self._unit_list.thaw(slot2)
@@ -1158,7 +1158,7 @@ if not UnitTreeBrowser then
 end
 
 UnitTreeBrowser = slot0
-UnitTreeBrowser.init = function (self, ...)
+function UnitTreeBrowser:init(...)
 	slot11 = 0
 	slot12 = 0
 	slot9 = "DEFAULT_DIALOG_STYLE,RESIZE_BORDER"
@@ -1290,7 +1290,7 @@ UnitTreeBrowser.init = function (self, ...)
 
 	return 
 end
-UnitTreeBrowser.create_image_list = function (self)
+function UnitTreeBrowser:create_image_list()
 	self._image_list = EWS.ImageList(slot2, EWS, 16)
 	slot3 = self._image_list
 	slot6 = "connection_16x16.png"
@@ -1319,7 +1319,7 @@ UnitTreeBrowser.create_image_list = function (self)
 
 	return 
 end
-UnitTreeBrowser.update_tree = function (self)
+function UnitTreeBrowser:update_tree()
 	slot3 = self
 
 	self._create_tree_data(slot2)
@@ -1330,7 +1330,7 @@ UnitTreeBrowser.update_tree = function (self)
 
 	return 
 end
-UnitTreeBrowser._create_tree_data = function (self)
+function UnitTreeBrowser:_create_tree_data()
 	self._tree_data = {
 		total_units = 0,
 		total_units_preview = 0,
@@ -1403,7 +1403,7 @@ UnitTreeBrowser._create_tree_data = function (self)
 
 	return 
 end
-UnitTreeBrowser._populate_unit_paths = function (self, path, id)
+function UnitTreeBrowser:_populate_unit_paths(path, id)
 	local x_unit, y_unit = nil
 
 	local function sort(x, y)
@@ -1466,7 +1466,7 @@ UnitTreeBrowser._populate_unit_paths = function (self, path, id)
 
 	return size
 end
-UnitTreeBrowser._populate_tree = function (self)
+function UnitTreeBrowser:_populate_tree()
 	slot3 = self._unit_tree
 
 	self._unit_tree.freeze(slot2)
@@ -1523,7 +1523,7 @@ UnitTreeBrowser._populate_tree = function (self)
 
 	return 
 end
-UnitTreeBrowser.sorted_map = function (self, map)
+function UnitTreeBrowser:sorted_map(map)
 	local sorted = {}
 	slot5 = map
 
@@ -1539,7 +1539,7 @@ UnitTreeBrowser.sorted_map = function (self, map)
 
 	return sorted
 end
-UnitTreeBrowser.on_select = function (self, a, event)
+function UnitTreeBrowser:on_select(a, event)
 	slot5 = event
 	local id = event.get_item(slot4)
 
@@ -1554,7 +1554,7 @@ UnitTreeBrowser.on_select = function (self, a, event)
 
 	return 
 end
-UnitTreeBrowser.has_preview = function (self, name)
+function UnitTreeBrowser:has_preview(name)
 	slot6 = name
 
 	if DB.has(slot3, DB, "preview_texture") then
@@ -1565,7 +1565,7 @@ UnitTreeBrowser.has_preview = function (self, name)
 
 	return nil
 end
-UnitTreeBrowser.on_expand_all = function (self)
+function UnitTreeBrowser:on_expand_all()
 	slot3 = self._unit_tree
 
 	self._unit_tree.freeze(slot2)
@@ -1581,7 +1581,7 @@ UnitTreeBrowser.on_expand_all = function (self)
 
 	return 
 end
-UnitTreeBrowser.expand_children = function (self, children)
+function UnitTreeBrowser:expand_children(children)
 	slot4 = children
 
 	for _, child in ipairs(slot3) do
@@ -1597,7 +1597,7 @@ UnitTreeBrowser.expand_children = function (self, children)
 
 	return 
 end
-UnitTreeBrowser.on_collapse_all = function (self)
+function UnitTreeBrowser:on_collapse_all()
 	slot3 = self._unit_tree
 
 	self._unit_tree.freeze(slot2)
@@ -1613,7 +1613,7 @@ UnitTreeBrowser.on_collapse_all = function (self)
 
 	return 
 end
-UnitTreeBrowser.collapse_children = function (self, children)
+function UnitTreeBrowser:collapse_children(children)
 	slot4 = children
 
 	for _, child in ipairs(slot3) do
@@ -1636,7 +1636,7 @@ if not GlobalSelectUnit then
 end
 
 GlobalSelectUnit = slot0
-GlobalSelectUnit.init = function (self, ...)
+function GlobalSelectUnit:init(...)
 	slot11 = 0
 	slot12 = 0
 	slot9 = "DEFAULT_DIALOG_STYLE,RESIZE_BORDER,MINIMIZE_BOX,MAXIMIZE_BOX"
@@ -1905,7 +1905,7 @@ GlobalSelectUnit.init = function (self, ...)
 
 	return 
 end
-GlobalSelectUnit.key_down = function (self, ctrlr, event)
+function GlobalSelectUnit:key_down(ctrlr, event)
 	slot5 = event
 
 	event.skip(slot4)
@@ -1934,7 +1934,7 @@ GlobalSelectUnit.key_down = function (self, ctrlr, event)
 
 	return 
 end
-GlobalSelectUnit.key_up = function (self, ctrlr, event)
+function GlobalSelectUnit:key_up(ctrlr, event)
 	slot5 = event
 
 	event.skip(slot4)
@@ -1963,7 +1963,7 @@ GlobalSelectUnit.key_up = function (self, ctrlr, event)
 
 	return 
 end
-GlobalSelectUnit._show_unit_preview = function (self)
+function GlobalSelectUnit:_show_unit_preview()
 	slot3 = self
 
 	if self._is_unit_being_previewed(slot2) then
@@ -1981,14 +1981,14 @@ GlobalSelectUnit._show_unit_preview = function (self)
 
 	return 
 end
-GlobalSelectUnit._on_units_focus_lost = function (self, ctrlr, event)
+function GlobalSelectUnit:_on_units_focus_lost(ctrlr, event)
 	slot5 = self
 
 	self._on_unit_preview_end(slot4)
 
 	return 
 end
-GlobalSelectUnit._on_unit_preview_start = function (self, unit_to_preview)
+function GlobalSelectUnit:_on_unit_preview_start(unit_to_preview)
 	self._preview_unit = unit_to_preview
 	local previewed_unit_height = self._calculate_bounding_sphere_radius(slot3, self)
 	local desired_distance_to_camera = previewed_unit_height
@@ -2013,7 +2013,7 @@ GlobalSelectUnit._on_unit_preview_start = function (self, unit_to_preview)
 
 	return 
 end
-GlobalSelectUnit._on_unit_preview_update = function (self)
+function GlobalSelectUnit:_on_unit_preview_update()
 	local degrees_per_second = 45
 	slot4 = Application
 	local time = Application.time(slot3)
@@ -2035,7 +2035,7 @@ GlobalSelectUnit._on_unit_preview_update = function (self)
 
 	return 
 end
-GlobalSelectUnit._on_unit_preview_end = function (self)
+function GlobalSelectUnit:_on_unit_preview_end()
 	slot3 = self
 
 	if not self._is_unit_being_previewed(slot2) then
@@ -2064,10 +2064,10 @@ GlobalSelectUnit._on_unit_preview_end = function (self)
 
 	return 
 end
-GlobalSelectUnit._is_unit_being_previewed = function (self)
+function GlobalSelectUnit:_is_unit_being_previewed()
 	return self._preview_unit
 end
-GlobalSelectUnit._get_selected_unit = function (self)
+function GlobalSelectUnit:_get_selected_unit()
 	slot3 = self._units
 
 	if self._units.selected_item(slot2) == -1 then
@@ -2084,7 +2084,7 @@ GlobalSelectUnit._get_selected_unit = function (self)
 
 	return CoreUnit.safe_spawn_unit(managers.editor, name, Rotation(Application, 0, 0))
 end
-GlobalSelectUnit._setup_preview_camera = function (self, previewed_unit_height, desired_distance_to_camera)
+function GlobalSelectUnit:_setup_preview_camera(previewed_unit_height, desired_distance_to_camera)
 	local one_km = 10000
 	slot6 = managers.viewport
 	slot6 = managers.viewport.get_current_camera(slot5)
@@ -2108,7 +2108,7 @@ GlobalSelectUnit._setup_preview_camera = function (self, previewed_unit_height, 
 
 	return 
 end
-GlobalSelectUnit._calculate_bounding_sphere_radius = function (self, unit)
+function GlobalSelectUnit:_calculate_bounding_sphere_radius(unit)
 	slot6 = unit
 	slot7 = unit
 	slot7 = unit.oobb(unit.oobb(slot5))
@@ -2123,7 +2123,7 @@ GlobalSelectUnit._calculate_bounding_sphere_radius = function (self, unit)
 
 	return oobb_diagonal_length * 2
 end
-GlobalSelectUnit._rotate_around_point = function (self, unit, point_to_rotate_around, axis, dt, speed)
+function GlobalSelectUnit:_rotate_around_point(unit, point_to_rotate_around, axis, dt, speed)
 	slot11 = unit
 	slot9 = unit.position(slot10) - point_to_rotate_around * dt
 
@@ -2141,7 +2141,7 @@ GlobalSelectUnit._rotate_around_point = function (self, unit, point_to_rotate_ar
 
 	return 
 end
-GlobalSelectUnit._stripped_unit_name = function (self, name)
+function GlobalSelectUnit:_stripped_unit_name(name)
 	local reverse = string.reverse(slot3)
 	slot6 = "/"
 	local i = string.find(name, reverse)
@@ -2150,7 +2150,7 @@ GlobalSelectUnit._stripped_unit_name = function (self, name)
 
 	return name
 end
-GlobalSelectUnit._all_unit_names = function (self)
+function GlobalSelectUnit:_all_unit_names()
 	local names = {}
 	local layers = managers.editor.layers(slot3)
 	slot5 = layers
@@ -2171,7 +2171,7 @@ GlobalSelectUnit._all_unit_names = function (self)
 
 	return names
 end
-GlobalSelectUnit._current_unit_names = function (self)
+function GlobalSelectUnit:_current_unit_names()
 	slot3 = managers.editor
 	local layers = managers.editor.layers(slot2)
 	local current_names = {}
@@ -2204,7 +2204,7 @@ GlobalSelectUnit._current_unit_names = function (self)
 
 	return names
 end
-GlobalSelectUnit.on_only_list_used_units = function (self, data)
+function GlobalSelectUnit:on_only_list_used_units(data)
 	slot4 = data.cb
 	self._only_list_used_units = data.cb.get_value(slot3)
 	slot4 = self
@@ -2213,7 +2213,7 @@ GlobalSelectUnit.on_only_list_used_units = function (self, data)
 
 	return 
 end
-GlobalSelectUnit.on_reload = function (self)
+function GlobalSelectUnit:on_reload()
 	slot3 = self._units
 	local i = self._units.selected_item(slot2)
 
@@ -2229,7 +2229,7 @@ GlobalSelectUnit.on_reload = function (self)
 
 	return 
 end
-GlobalSelectUnit.on_select_unit_dialog = function (self, units)
+function GlobalSelectUnit:on_select_unit_dialog(units)
 	slot5 = "GlobalSelectUnit:on_select_unit_dialog( units )"
 
 	Application.trace(slot3, Application)
@@ -2248,7 +2248,7 @@ GlobalSelectUnit.on_select_unit_dialog = function (self, units)
 
 	return 
 end
-GlobalSelectUnit.update_list = function (self, current)
+function GlobalSelectUnit:update_list(current)
 	slot4 = self._units
 
 	self._units.freeze(slot3)
@@ -2297,7 +2297,7 @@ GlobalSelectUnit.update_list = function (self, current)
 
 	return 
 end
-GlobalSelectUnit.spawned_unit = function (self, unit)
+function GlobalSelectUnit:spawned_unit(unit)
 	if self._only_list_used_units then
 		slot4 = self._current
 
@@ -2334,7 +2334,7 @@ GlobalSelectUnit.spawned_unit = function (self, unit)
 
 	return 
 end
-GlobalSelectUnit.deleted_unit = function (self, unit)
+function GlobalSelectUnit:deleted_unit(unit)
 	if self._only_list_used_units then
 		slot4 = self._current
 
@@ -2360,7 +2360,7 @@ GlobalSelectUnit.deleted_unit = function (self, unit)
 
 	return 
 end
-GlobalSelectUnit.set_visible = function (self, ...)
+function GlobalSelectUnit:set_visible(...)
 	slot3 = self
 
 	CoreEditorEwsDialog.set_visible(slot2, ...)
@@ -2375,14 +2375,14 @@ GlobalSelectUnit.set_visible = function (self, ...)
 
 	return 
 end
-GlobalSelectUnit.reset = function (self)
+function GlobalSelectUnit:reset()
 	slot3 = self
 
 	self.update_list(slot2)
 
 	return 
 end
-GlobalSelectUnit.on_all_layers = function (self)
+function GlobalSelectUnit:on_all_layers()
 	slot3 = self._layer_cbs
 
 	for name, cb in pairs(slot2) do
@@ -2397,7 +2397,7 @@ GlobalSelectUnit.on_all_layers = function (self)
 
 	return 
 end
-GlobalSelectUnit.on_none_layers = function (self)
+function GlobalSelectUnit:on_none_layers()
 	slot3 = self._layer_cbs
 
 	for name, cb in pairs(slot2) do
@@ -2412,7 +2412,7 @@ GlobalSelectUnit.on_none_layers = function (self)
 
 	return 
 end
-GlobalSelectUnit.on_invert_layers = function (self)
+function GlobalSelectUnit:on_invert_layers()
 	slot3 = self._layer_cbs
 
 	for name, cb in pairs(slot2) do
@@ -2428,7 +2428,7 @@ GlobalSelectUnit.on_invert_layers = function (self)
 
 	return 
 end
-GlobalSelectUnit.on_layer_cb = function (self, data)
+function GlobalSelectUnit:on_layer_cb(data)
 	slot4 = self
 
 	self.update_list(slot3)
@@ -2442,7 +2442,7 @@ if not ReplaceUnit then
 end
 
 ReplaceUnit = slot0
-ReplaceUnit.init = function (self, name, types)
+function ReplaceUnit:init(name, types)
 	slot13 = 0
 	slot14 = 0
 	slot11 = "DEFAULT_DIALOG_STYLE,RESIZE_BORDER"
@@ -2653,7 +2653,7 @@ ReplaceUnit.init = function (self, name, types)
 
 	return 
 end
-ReplaceUnit.replace_unit_name = function (self, units)
+function ReplaceUnit:replace_unit_name(units)
 	slot4 = self._all_unit_lists
 
 	for _, units_list in ipairs(slot3) do
@@ -2679,7 +2679,7 @@ ReplaceUnit.replace_unit_name = function (self, units)
 
 	return 
 end
-ReplaceUnit.update_filter = function (self, data)
+function ReplaceUnit:update_filter(data)
 	local filter = data.filter.get_value(slot3)
 	slot5 = data.units
 
@@ -2707,7 +2707,7 @@ ReplaceUnit.update_filter = function (self, data)
 
 	return 
 end
-ReplaceUnit.close_replace_unit = function (self, data)
+function ReplaceUnit:close_replace_unit(data)
 	self._made_replace_choice = data.value
 	slot4 = self
 
@@ -2715,7 +2715,7 @@ ReplaceUnit.close_replace_unit = function (self, data)
 
 	return 
 end
-ReplaceUnit.result = function (self)
+function ReplaceUnit:result()
 	if self._made_replace_choice and self._replace_unit_name then
 		return self._replace_unit_name
 	end
@@ -2729,7 +2729,7 @@ if not LayerReplaceUnit then
 end
 
 LayerReplaceUnit = slot0
-LayerReplaceUnit.init = function (self, layer)
+function LayerReplaceUnit:init(layer)
 	slot12 = 0
 	slot13 = 0
 	slot10 = "DEFAULT_DIALOG_STYLE,RESIZE_BORDER,STAY_ON_TOP"
@@ -2869,7 +2869,7 @@ LayerReplaceUnit.init = function (self, layer)
 
 	return 
 end
-LayerReplaceUnit._all_unit_names = function (self, layer)
+function LayerReplaceUnit:_all_unit_names(layer)
 	local names = {}
 	slot7 = layer
 
@@ -2885,7 +2885,7 @@ LayerReplaceUnit._all_unit_names = function (self, layer)
 
 	return names
 end
-LayerReplaceUnit.replace_unit = function (self, data)
+function LayerReplaceUnit:replace_unit(data)
 	slot4 = self._layer
 
 	if self._layer.selected_unit(slot3) and data then
@@ -2904,7 +2904,7 @@ LayerReplaceUnit.replace_unit = function (self, data)
 
 	return 
 end
-LayerReplaceUnit._current_unit_names = function (self)
+function LayerReplaceUnit:_current_unit_names()
 	local current_names = {}
 	slot6 = self._layer
 
@@ -2931,7 +2931,7 @@ LayerReplaceUnit._current_unit_names = function (self)
 
 	return names
 end
-LayerReplaceUnit.on_only_list_used_units = function (self, data)
+function LayerReplaceUnit:on_only_list_used_units(data)
 	slot4 = data.cb
 	self._only_list_used_units = data.cb.get_value(slot3)
 	slot4 = self
@@ -2940,7 +2940,7 @@ LayerReplaceUnit.on_only_list_used_units = function (self, data)
 
 	return 
 end
-LayerReplaceUnit.update_list = function (self, current)
+function LayerReplaceUnit:update_list(current)
 	slot4 = self._units
 
 	self._units.freeze(slot3)
@@ -2987,7 +2987,7 @@ LayerReplaceUnit.update_list = function (self, current)
 
 	return 
 end
-LayerReplaceUnit.set_visible = function (self, visible)
+function LayerReplaceUnit:set_visible(visible)
 	slot5 = visible
 
 	CoreEditorEwsDialog.set_visible(slot3, self)
@@ -2998,7 +2998,7 @@ LayerReplaceUnit.set_visible = function (self, visible)
 
 	return 
 end
-LayerReplaceUnit.spawned_unit = function (self, unit)
+function LayerReplaceUnit:spawned_unit(unit)
 	if self._only_list_used_units then
 		slot4 = self._current
 
@@ -3035,7 +3035,7 @@ LayerReplaceUnit.spawned_unit = function (self, unit)
 
 	return 
 end
-LayerReplaceUnit.deleted_unit = function (self, unit)
+function LayerReplaceUnit:deleted_unit(unit)
 	if self._only_list_used_units then
 		slot4 = self._current
 
@@ -3061,7 +3061,7 @@ LayerReplaceUnit.deleted_unit = function (self, unit)
 
 	return 
 end
-LayerReplaceUnit.reset = function (self)
+function LayerReplaceUnit:reset()
 	slot3 = self
 
 	self.update_list(slot2)
@@ -3075,7 +3075,7 @@ if not MoveTransformTypeIn then
 end
 
 MoveTransformTypeIn = slot0
-MoveTransformTypeIn.init = function (self)
+function MoveTransformTypeIn:init()
 	slot11 = 0
 	slot12 = 0
 	slot9 = "DEFAULT_DIALOG_STYLE,RESIZE_BORDER,STAY_ON_TOP"
@@ -3122,7 +3122,7 @@ MoveTransformTypeIn.init = function (self)
 
 	return 
 end
-MoveTransformTypeIn._create_ctrl = function (self, name, coor, value, type, sizer)
+function MoveTransformTypeIn:_create_ctrl(name, coor, value, type, sizer)
 	slot9 = "HORIZONTAL"
 	local ctrl_sizer = EWS.BoxSizer(slot7, EWS)
 	slot16 = "ALIGN_LEFT"
@@ -3212,7 +3212,7 @@ MoveTransformTypeIn._create_ctrl = function (self, name, coor, value, type, size
 
 	return ctrl
 end
-MoveTransformTypeIn.update_spin = function (self, data)
+function MoveTransformTypeIn:update_spin(data)
 	slot6 = data.ctrl
 
 	if not tonumber(data.ctrl.get_value(slot5)) then
@@ -3233,7 +3233,7 @@ MoveTransformTypeIn.update_spin = function (self, data)
 
 	return 
 end
-MoveTransformTypeIn.update_absolut = function (self, data)
+function MoveTransformTypeIn:update_absolut(data)
 	slot6 = data.ctrl
 	local value = tonumber(data.ctrl.get_value(slot5)) or 0
 
@@ -3265,7 +3265,7 @@ MoveTransformTypeIn.update_absolut = function (self, data)
 
 	return 
 end
-MoveTransformTypeIn.update_offset = function (self, data, event)
+function MoveTransformTypeIn:update_offset(data, event)
 	slot7 = data.ctrl
 	local value = tonumber(data.ctrl.get_value(slot6)) or 0
 	slot6 = self._unit
@@ -3300,7 +3300,7 @@ MoveTransformTypeIn.update_offset = function (self, data, event)
 
 	return 
 end
-MoveTransformTypeIn.set_unit = function (self, unit)
+function MoveTransformTypeIn:set_unit(unit)
 	self._unit = unit
 	slot4 = self._panel
 	slot7 = self._unit
@@ -3309,7 +3309,7 @@ MoveTransformTypeIn.set_unit = function (self, unit)
 
 	return 
 end
-MoveTransformTypeIn.update = function (self, t, dt)
+function MoveTransformTypeIn:update(t, dt)
 	slot5 = self._unit
 
 	if alive(slot4) then
@@ -3351,7 +3351,7 @@ if not RotateTransformTypeIn then
 end
 
 RotateTransformTypeIn = slot0
-RotateTransformTypeIn.init = function (self)
+function RotateTransformTypeIn:init()
 	slot11 = 0
 	slot12 = 0
 	slot9 = "DEFAULT_DIALOG_STYLE,RESIZE_BORDER,STAY_ON_TOP"
@@ -3398,7 +3398,7 @@ RotateTransformTypeIn.init = function (self)
 
 	return 
 end
-RotateTransformTypeIn._create_ctrl = function (self, name, coor, value, type, sizer)
+function RotateTransformTypeIn:_create_ctrl(name, coor, value, type, sizer)
 	slot9 = "HORIZONTAL"
 	local ctrl_sizer = EWS.BoxSizer(slot7, EWS)
 	slot16 = "ALIGN_LEFT"
@@ -3488,7 +3488,7 @@ RotateTransformTypeIn._create_ctrl = function (self, name, coor, value, type, si
 
 	return ctrl
 end
-RotateTransformTypeIn.update_spin = function (self, data)
+function RotateTransformTypeIn:update_spin(data)
 	slot6 = data.ctrl
 
 	if not tonumber(data.ctrl.get_value(slot5)) then
@@ -3509,7 +3509,7 @@ RotateTransformTypeIn.update_spin = function (self, data)
 
 	return 
 end
-RotateTransformTypeIn.update_absolut = function (self, data)
+function RotateTransformTypeIn:update_absolut(data)
 	slot6 = data.ctrl
 	local value = tonumber(data.ctrl.get_value(slot5)) or 0
 
@@ -3553,7 +3553,7 @@ RotateTransformTypeIn.update_absolut = function (self, data)
 
 	return 
 end
-RotateTransformTypeIn.update_offset = function (self, data, event)
+function RotateTransformTypeIn:update_offset(data, event)
 	slot7 = data.ctrl
 	local value = tonumber(data.ctrl.get_value(slot6)) or 0
 	slot6 = self._unit
@@ -3587,7 +3587,7 @@ RotateTransformTypeIn.update_offset = function (self, data, event)
 
 	return 
 end
-RotateTransformTypeIn.set_unit = function (self, unit)
+function RotateTransformTypeIn:set_unit(unit)
 	self._unit = unit
 	slot4 = self._panel
 	slot7 = self._unit
@@ -3596,7 +3596,7 @@ RotateTransformTypeIn.set_unit = function (self, unit)
 
 	return 
 end
-RotateTransformTypeIn.update = function (self, t, dt)
+function RotateTransformTypeIn:update(t, dt)
 	slot5 = self._unit
 
 	if alive(slot4) then
@@ -3641,7 +3641,7 @@ if not CameraTransformTypeIn then
 end
 
 CameraTransformTypeIn = slot0
-CameraTransformTypeIn.init = function (self)
+function CameraTransformTypeIn:init()
 	slot11 = 0
 	slot12 = 0
 	slot9 = "DEFAULT_DIALOG_STYLE,RESIZE_BORDER,STAY_ON_TOP"
@@ -3704,7 +3704,7 @@ CameraTransformTypeIn.init = function (self)
 
 	return 
 end
-CameraTransformTypeIn._create_fov_ctrl = function (self, sizer)
+function CameraTransformTypeIn:_create_fov_ctrl(sizer)
 	slot5 = "HORIZONTAL"
 	local ctrl_sizer = EWS.BoxSizer(slot3, EWS)
 	slot12 = "ALIGN_LEFT"
@@ -3740,7 +3740,7 @@ CameraTransformTypeIn._create_fov_ctrl = function (self, sizer)
 
 	return ctrl
 end
-CameraTransformTypeIn._create_far_range_ctrl = function (self, sizer)
+function CameraTransformTypeIn:_create_far_range_ctrl(sizer)
 	slot5 = "HORIZONTAL"
 	local ctrl_sizer = EWS.BoxSizer(slot3, EWS)
 	slot12 = "ALIGN_LEFT"
@@ -3776,7 +3776,7 @@ CameraTransformTypeIn._create_far_range_ctrl = function (self, sizer)
 
 	return ctrl
 end
-CameraTransformTypeIn._create_ctrl = function (self, name, coor, value, type, sizer)
+function CameraTransformTypeIn:_create_ctrl(name, coor, value, type, sizer)
 	slot9 = "HORIZONTAL"
 	local ctrl_sizer = EWS.BoxSizer(slot7, EWS)
 	slot16 = "ALIGN_LEFT"
@@ -3879,7 +3879,7 @@ CameraTransformTypeIn._create_ctrl = function (self, name, coor, value, type, si
 
 	return ctrl
 end
-CameraTransformTypeIn.update_position_spin = function (self, data)
+function CameraTransformTypeIn:update_position_spin(data)
 	slot6 = data.ctrl
 
 	if not tonumber(data.ctrl.get_value(slot5)) then
@@ -3900,7 +3900,7 @@ CameraTransformTypeIn.update_position_spin = function (self, data)
 
 	return 
 end
-CameraTransformTypeIn.update_rotation_spin = function (self, data)
+function CameraTransformTypeIn:update_rotation_spin(data)
 	slot6 = data.ctrl
 
 	if not tonumber(data.ctrl.get_value(slot5)) then
@@ -3921,7 +3921,7 @@ CameraTransformTypeIn.update_rotation_spin = function (self, data)
 
 	return 
 end
-CameraTransformTypeIn.update_position = function (self, data)
+function CameraTransformTypeIn:update_position(data)
 	slot6 = data.ctrl
 	local value = tonumber(data.ctrl.get_value(slot5)) or 0
 
@@ -3949,7 +3949,7 @@ CameraTransformTypeIn.update_position = function (self, data)
 
 	return 
 end
-CameraTransformTypeIn.update_rotation = function (self, data)
+function CameraTransformTypeIn:update_rotation(data)
 	slot6 = data.ctrl
 	local value = tonumber(data.ctrl.get_value(slot5)) or 0
 
@@ -3988,7 +3988,7 @@ CameraTransformTypeIn.update_rotation = function (self, data)
 
 	return 
 end
-CameraTransformTypeIn.update_fov = function (self)
+function CameraTransformTypeIn:update_fov()
 	slot5 = self._fov
 
 	if not tonumber(self._fov.get_value(slot4)) then
@@ -4012,7 +4012,7 @@ CameraTransformTypeIn.update_fov = function (self)
 
 	return 
 end
-CameraTransformTypeIn.update_far_range = function (self)
+function CameraTransformTypeIn:update_far_range()
 	slot5 = self._far_range
 
 	if not tonumber(self._far_range.get_value(slot4)) then
@@ -4040,7 +4040,7 @@ CameraTransformTypeIn.update_far_range = function (self)
 
 	return 
 end
-CameraTransformTypeIn.update = function (self, t, dt)
+function CameraTransformTypeIn:update(t, dt)
 	local pos = managers.editor.camera_position(slot4)
 	slot6 = self._ax
 
@@ -4129,7 +4129,7 @@ if not EditControllerBindings then
 end
 
 EditControllerBindings = slot0
-EditControllerBindings.init = function (self, ...)
+function EditControllerBindings:init(...)
 	slot11 = 0
 	slot12 = 0
 	slot9 = "DEFAULT_DIALOG_STYLE,RESIZE_BORDER,STAY_ON_TOP"
@@ -4248,7 +4248,7 @@ EditControllerBindings.init = function (self, ...)
 
 	return 
 end
-EditControllerBindings.add_list = function (self, list)
+function EditControllerBindings:add_list(list)
 	local names = {}
 	slot5 = list
 
@@ -4281,7 +4281,7 @@ if not MissionGraph then
 end
 
 MissionGraph = slot0
-MissionGraph.init = function (self, ...)
+function MissionGraph:init(...)
 	slot11 = 0
 	slot12 = 0
 	slot9 = "DEFAULT_DIALOG_STYLE,RESIZE_BORDER,,MINIMIZE_BOX,MAXIMIZE_BOX,STAY_ON_TOP"
@@ -4357,7 +4357,7 @@ MissionGraph.init = function (self, ...)
 
 	return 
 end
-MissionGraph.update = function (self, t, dt)
+function MissionGraph:update(t, dt)
 	slot6 = dt
 
 	self._graph_view.update_graph(slot4, self._graph_view)
@@ -4375,7 +4375,7 @@ if not WorldEditorNews then
 end
 
 WorldEditorNews = slot0
-WorldEditorNews.init = function (self)
+function WorldEditorNews:init()
 	slot11 = 0
 	slot12 = 0
 	slot9 = "DEFAULT_DIALOG_STYLE,RESIZE_BORDER,STAY_ON_TOP"
@@ -4463,7 +4463,7 @@ WorldEditorNews.init = function (self)
 
 	return 
 end
-WorldEditorNews.set_visible = function (self, visible)
+function WorldEditorNews:set_visible(visible)
 	if visible then
 		slot8 = #self._captions
 		slot5 = self._captions[math.random(slot7)]
@@ -4481,7 +4481,7 @@ WorldEditorNews.set_visible = function (self, visible)
 
 	return 
 end
-WorldEditorNews.version = function (self)
+function WorldEditorNews:version()
 	slot3 = self._text
 
 	return self._text.get_last_position(slot2)
@@ -4493,7 +4493,7 @@ if not UnitDuality then
 end
 
 UnitDuality = slot0
-UnitDuality.init = function (self, collisions, pos)
+function UnitDuality:init(collisions, pos)
 	if not pos then
 		slot7 = 0
 		pos = Vector3(slot4, 120, 130)
@@ -4624,7 +4624,7 @@ UnitDuality.init = function (self, collisions, pos)
 
 	return 
 end
-UnitDuality.calc_size = function (self, collisions, y_size)
+function UnitDuality:calc_size(collisions, y_size)
 	slot5 = self._dialog
 	local size = self._dialog.get_size(slot4)
 	local y = (#collisions.complete + #collisions.only_positions) * 25 + 50 + 40 + y_size
@@ -4635,7 +4635,7 @@ UnitDuality.calc_size = function (self, collisions, y_size)
 
 	return 
 end
-UnitDuality.build_collision = function (self, collision)
+function UnitDuality:build_collision(collision)
 	local u1 = collision.u1
 	local u2 = collision.u2
 	local pos = collision.pos
@@ -4730,7 +4730,7 @@ UnitDuality.build_collision = function (self, collision)
 
 	return panel
 end
-UnitDuality.goto = function (self, collision)
+function UnitDuality:goto(collision)
 	local u1 = collision.u1
 	local u2 = collision.u2
 	local pos = collision.pos
@@ -4746,7 +4746,7 @@ UnitDuality.goto = function (self, collision)
 
 	return 
 end
-UnitDuality.delete_unit = function (self, data)
+function UnitDuality:delete_unit(data)
 	slot4 = data.unit
 
 	if alive(slot3) then
@@ -4765,7 +4765,7 @@ UnitDuality.delete_unit = function (self, data)
 
 	return 
 end
-UnitDuality.on_check_again = function (self)
+function UnitDuality:on_check_again()
 	slot3 = managers.editor
 
 	managers.editor.on_check_duality(slot2)
@@ -4779,7 +4779,7 @@ if not BrushLayerDebug then
 end
 
 BrushLayerDebug = slot0
-BrushLayerDebug.init = function (self, ...)
+function BrushLayerDebug:init(...)
 	slot11 = 0
 	slot12 = 0
 
@@ -4913,14 +4913,14 @@ BrushLayerDebug.init = function (self, ...)
 
 	return 
 end
-BrushLayerDebug._toolbar_toggle = function (self, params, event)
+function BrushLayerDebug:_toolbar_toggle(params, event)
 	slot6 = params.toolbar
 	slot9 = event
 	self[params.value] = params.toolbar.tool_state(slot5, event.get_id(slot8))
 
 	return 
 end
-BrushLayerDebug._on_gui_delete = function (self)
+function BrushLayerDebug:_on_gui_delete()
 	local current_data = self._current_data(slot2)
 	slot6 = current_data
 
@@ -4939,7 +4939,7 @@ BrushLayerDebug._on_gui_delete = function (self)
 
 	return 
 end
-BrushLayerDebug._on_gui_help = function (self)
+function BrushLayerDebug:_on_gui_help()
 	local text = "Since brush units are not always visible, this dialog shows actual amount of units in the level."
 	text = text .. "\n\nSorting can be done by clicking the column namnes."
 	text = text .. "\n\nDelete all units with a certain name by clicking the delete icon on toolbar."
@@ -4949,7 +4949,7 @@ BrushLayerDebug._on_gui_help = function (self)
 
 	return 
 end
-BrushLayerDebug.fill_unit_list = function (self)
+function BrushLayerDebug:fill_unit_list()
 	slot3 = self
 
 	self.freeze(slot2)
@@ -4988,7 +4988,7 @@ BrushLayerDebug.fill_unit_list = function (self)
 
 	return 
 end
-BrushLayerDebug._autosize_columns = function (self, list)
+function BrushLayerDebug:_autosize_columns(list)
 	slot5 = list
 
 	for i = 0, list.column_count(slot4) - 1, 1 do
@@ -4999,7 +4999,7 @@ BrushLayerDebug._autosize_columns = function (self, list)
 
 	return 
 end
-BrushLayerDebug.key_cancel = function (self, ctrlr, event)
+function BrushLayerDebug:key_cancel(ctrlr, event)
 	slot5 = event
 
 	event.skip(slot4)
@@ -5015,7 +5015,7 @@ BrushLayerDebug.key_cancel = function (self, ctrlr, event)
 
 	return 
 end
-BrushLayerDebug._on_select_unit = function (self)
+function BrushLayerDebug:_on_select_unit()
 	slot3 = self
 	local current_data = self._current_data(slot2)
 
@@ -5027,7 +5027,7 @@ BrushLayerDebug._on_select_unit = function (self)
 
 	return 
 end
-BrushLayerDebug.column_click_list = function (self, ...)
+function BrushLayerDebug:column_click_list(...)
 	self._list = self._unit_list
 	slot3 = self
 
@@ -5035,13 +5035,13 @@ BrushLayerDebug.column_click_list = function (self, ...)
 
 	return 
 end
-BrushLayerDebug._right_clicked = function (self, list)
+function BrushLayerDebug:_right_clicked(list)
 	slot5 = list
 	local item_data = self._selected_list_data(slot3, self)
 
 	return 
 end
-BrushLayerDebug._current_data = function (self)
+function BrushLayerDebug:_current_data()
 	slot3 = self._unit_list
 	local index = self._unit_list.selected_item(slot2)
 
@@ -5053,7 +5053,7 @@ BrushLayerDebug._current_data = function (self)
 
 	return self._unit_list.get_item_data_ref(slot3, self._unit_list)
 end
-BrushLayerDebug._selected_list_data = function (self, list)
+function BrushLayerDebug:_selected_list_data(list)
 	slot4 = list
 	local index = list.selected_item(slot3)
 
@@ -5065,17 +5065,17 @@ BrushLayerDebug._selected_list_data = function (self, list)
 
 	return list.get_item_data_ref(slot4, list)
 end
-BrushLayerDebug.reset = function (self)
+function BrushLayerDebug:reset()
 	return 
 end
-BrushLayerDebug.freeze = function (self)
+function BrushLayerDebug:freeze()
 	slot3 = self._unit_list
 
 	self._unit_list.freeze(slot2)
 
 	return 
 end
-BrushLayerDebug.thaw = function (self)
+function BrushLayerDebug:thaw()
 	slot3 = self._unit_list
 
 	self._unit_list.thaw(slot2)

@@ -16,7 +16,7 @@ ControllerWrapperPS4.TYPE = "ps4"
 ControllerWrapperPS4.CONTROLLER_TYPE_LIST = {
 	"ps4_controller"
 }
-ControllerWrapperPS4.init = function (self, manager, id, name, controller, setup, debug, skip_virtual_controller)
+function ControllerWrapperPS4:init(manager, id, name, controller, setup, debug, skip_virtual_controller)
 	local func_map = {}
 	slot13 = "virtual_connect_confirm"
 	func_map.confirm = callback(slot10, self, self)
@@ -32,7 +32,7 @@ ControllerWrapperPS4.init = function (self, manager, id, name, controller, setup
 
 	return 
 end
-ControllerWrapperPS4.virtual_connect_confirm = function (self, controller_id, controller, input_name, connection_name, connection)
+function ControllerWrapperPS4:virtual_connect_confirm(controller_id, controller, input_name, connection_name, connection)
 	slot8 = self
 
 	if self.is_confirm_cancel_inverted(slot7) then
@@ -47,7 +47,7 @@ ControllerWrapperPS4.virtual_connect_confirm = function (self, controller_id, co
 
 	return 
 end
-ControllerWrapperPS4.virtual_connect_cancel = function (self, controller_id, controller, input_name, connection_name, connection)
+function ControllerWrapperPS4:virtual_connect_cancel(controller_id, controller, input_name, connection_name, connection)
 	slot8 = self
 
 	if self.is_confirm_cancel_inverted(slot7) then
@@ -78,7 +78,7 @@ local is_PS4 = SystemInfo.platform(function (self, controller_id, controller, in
 
 	return 
 end) == Idstring(SystemInfo)
-ControllerWrapperPS4.is_confirm_cancel_inverted = function (self)
+function ControllerWrapperPS4:is_confirm_cancel_inverted()
 	if is_PS4 then
 		slot3 = PS3
 		slot1 = PS3.pad_cross_circle_inverted(slot2)

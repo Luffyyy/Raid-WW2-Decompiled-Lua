@@ -4,7 +4,7 @@ require(slot1)
 
 slot2 = CopLogicBase
 CivilianLogicBase = class(slot1)
-CivilianLogicBase.on_objective_unit_destroyed = function (data, unit)
+function CivilianLogicBase.on_objective_unit_destroyed(data, unit)
 	slot4 = data.unit
 
 	if not alive(slot3) then

@@ -8,7 +8,7 @@ end
 CharacterSequenceElement = slot0
 CharacterSequenceElement.SAVE_UNIT_POSITION = false
 CharacterSequenceElement.SAVE_UNIT_ROTATION = false
-CharacterSequenceElement.init = function (self, unit)
+function CharacterSequenceElement:init(unit)
 	slot5 = unit
 
 	CharacterSequenceElement.super.init(slot3, self)
@@ -29,7 +29,7 @@ CharacterSequenceElement.init = function (self, unit)
 
 	return 
 end
-CharacterSequenceElement._build_panel = function (self, panel, panel_sizer)
+function CharacterSequenceElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -70,7 +70,7 @@ CharacterSequenceElement._build_panel = function (self, panel, panel_sizer)
 
 	return 
 end
-CharacterSequenceElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function CharacterSequenceElement:draw_links(t, dt, selected_unit, all_units)
 	slot10 = selected_unit
 
 	CharacterSequenceElement.super.draw_links(slot6, self, t, dt)
@@ -96,7 +96,7 @@ CharacterSequenceElement.draw_links = function (self, t, dt, selected_unit, all_
 
 	return 
 end
-CharacterSequenceElement.remove_links = function (self, unit)
+function CharacterSequenceElement:remove_links(unit)
 	slot4 = self._hed.elements
 
 	for _, id in ipairs(slot3) do
@@ -111,7 +111,7 @@ CharacterSequenceElement.remove_links = function (self, unit)
 
 	return 
 end
-CharacterSequenceElement.on_lmb = function (self)
+function CharacterSequenceElement:on_lmb()
 	slot4 = {
 		ray_type = "editor",
 		mask = 10
@@ -126,7 +126,7 @@ CharacterSequenceElement.on_lmb = function (self)
 
 	return 
 end
-CharacterSequenceElement.add_triggers = function (self, vc)
+function CharacterSequenceElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "on_lmb"
 
@@ -134,7 +134,7 @@ CharacterSequenceElement.add_triggers = function (self, vc)
 
 	return 
 end
-CharacterSequenceElement.update_editing = function (self)
+function CharacterSequenceElement:update_editing()
 	return 
 end
 

@@ -27,7 +27,7 @@ PlayerDriving.IDS_EQUIP = Idstring(slot2)
 PlayerDriving.EXIT_VEHICLE_TIMER = 0.4
 PlayerDriving.STANCE_NORMAL = 0
 PlayerDriving.STANCE_SHOOTING = 1
-PlayerDriving.init = function (self, unit)
+function PlayerDriving:init(unit)
 	slot5 = unit
 
 	PlayerDriving.super.init(slot3, self)
@@ -41,7 +41,7 @@ PlayerDriving.init = function (self, unit)
 
 	return 
 end
-PlayerDriving.enter = function (self, state_data, enter_data)
+function PlayerDriving:enter(state_data, enter_data)
 	slot5 = "PlayerDriving:enter( enter_data )"
 
 	print(slot4)
@@ -69,7 +69,7 @@ PlayerDriving.enter = function (self, state_data, enter_data)
 
 	return 
 end
-PlayerDriving._enter = function (self, enter_data)
+function PlayerDriving:_enter(enter_data)
 	slot4 = self
 
 	self._get_vehicle(slot3)
@@ -157,7 +157,7 @@ PlayerDriving._enter = function (self, enter_data)
 
 	return 
 end
-PlayerDriving._setup = function (self)
+function PlayerDriving:_setup()
 	self._wheel_idle = false
 
 	if self._seat.driving then
@@ -209,7 +209,7 @@ PlayerDriving._setup = function (self)
 
 	return 
 end
-PlayerDriving.exit = function (self, state_data, new_state_name)
+function PlayerDriving:exit(state_data, new_state_name)
 	slot5 = "[DRIVING] PlayerDriving: Exiting vehicle"
 
 	print(slot4)
@@ -408,7 +408,7 @@ PlayerDriving.exit = function (self, state_data, new_state_name)
 
 	return exit_data
 end
-PlayerDriving._hide_hud_prompts = function (self)
+function PlayerDriving:_hide_hud_prompts()
 	slot3 = managers.player
 	slot3 = managers.player.local_player(slot2)
 	slot3 = managers.player.local_player(slot2).inventory(slot2)
@@ -439,7 +439,7 @@ PlayerDriving._hide_hud_prompts = function (self)
 
 	return 
 end
-PlayerDriving._show_hud_prompts = function (self)
+function PlayerDriving:_show_hud_prompts()
 	if self._out_of_ammo_prompt_hidden then
 		slot4 = "hud_no_ammo_prompt"
 		slot10 = "hint_no_ammo"
@@ -461,7 +461,7 @@ PlayerDriving._show_hud_prompts = function (self)
 
 	return 
 end
-PlayerDriving.update = function (self, t, dt)
+function PlayerDriving:update(t, dt)
 	slot5 = self._unit
 	slot5 = self._unit.base(slot4)
 	self._controller = self._unit.base(slot4).controller(slot4)
@@ -551,10 +551,10 @@ PlayerDriving.update = function (self, t, dt)
 
 	return 
 end
-PlayerDriving.set_tweak_data = function (self, name)
+function PlayerDriving:set_tweak_data(name)
 	return 
 end
-PlayerDriving._update_hud = function (self, t, dt)
+function PlayerDriving:_update_hud(t, dt)
 	if self._vehicle_ext.respawn_available then
 		if not self._respawn_hint_shown and self._seat.driving then
 			local string_macros = {}
@@ -581,7 +581,7 @@ PlayerDriving._update_hud = function (self, t, dt)
 
 	return 
 end
-PlayerDriving._update_check_actions_driver = function (self, t, dt, input)
+function PlayerDriving:_update_check_actions_driver(t, dt, input)
 	slot6 = managers.menu
 
 	if managers.menu.is_pc_controller(slot5) then
@@ -602,7 +602,7 @@ PlayerDriving._update_check_actions_driver = function (self, t, dt, input)
 
 	return 
 end
-PlayerDriving._update_check_actions_passenger = function (self, t, dt, input)
+function PlayerDriving:_update_check_actions_passenger(t, dt, input)
 	slot8 = dt
 
 	self._update_check_actions(slot5, self, t)
@@ -613,7 +613,7 @@ PlayerDriving._update_check_actions_passenger = function (self, t, dt, input)
 
 	return 
 end
-PlayerDriving._update_check_actions_passenger_no_shoot = function (self, t, dt, input)
+function PlayerDriving:_update_check_actions_passenger_no_shoot(t, dt, input)
 	slot9 = input
 
 	self._check_stats_screen(slot5, self, t, dt)
@@ -624,27 +624,27 @@ PlayerDriving._update_check_actions_passenger_no_shoot = function (self, t, dt, 
 
 	return 
 end
-PlayerDriving._check_warcry = function (self, t, input)
+function PlayerDriving:_check_warcry(t, input)
 	return 
 end
-PlayerDriving.on_action_reload_success = function (self)
+function PlayerDriving:on_action_reload_success()
 	self._can_reload_prompt_hidden = false
 
 	return 
 end
-PlayerDriving._check_action_jump = function (self, t, input)
+function PlayerDriving:_check_action_jump(t, input)
 	return false
 end
-PlayerDriving._check_action_interact = function (self, t, input)
+function PlayerDriving:_check_action_interact(t, input)
 	return false
 end
-PlayerDriving._check_action_duck = function (self)
+function PlayerDriving:_check_action_duck()
 	return false
 end
-PlayerDriving.interaction_blocked = function (self)
+function PlayerDriving:interaction_blocked()
 	return true
 end
-PlayerDriving._check_action_shooting_stance = function (self, t, input)
+function PlayerDriving:_check_action_shooting_stance(t, input)
 	slot5 = self._vehicle_ext
 
 	if self._vehicle_ext.shooting_stance_allowed(slot4) then
@@ -689,7 +689,7 @@ PlayerDriving._check_action_shooting_stance = function (self, t, input)
 
 	return 
 end
-PlayerDriving.enter_shooting_stance = function (self)
+function PlayerDriving:enter_shooting_stance()
 	self._stance = PlayerDriving.STANCE_SHOOTING
 	slot3 = self
 
@@ -715,7 +715,7 @@ PlayerDriving.enter_shooting_stance = function (self)
 
 	return 
 end
-PlayerDriving.exit_shooting_stance = function (self)
+function PlayerDriving:exit_shooting_stance()
 	self._stance = PlayerDriving.STANCE_NORMAL
 	slot4 = self._seat
 
@@ -735,7 +735,7 @@ PlayerDriving.exit_shooting_stance = function (self)
 
 	return 
 end
-PlayerDriving._apply_allowed_shooting = function (self)
+function PlayerDriving:_apply_allowed_shooting()
 	if not self._seat.allow_shooting then
 		slot3 = managers.player
 		local t = managers.player.player_timer(slot2).time(slot2)
@@ -799,7 +799,7 @@ PlayerDriving._apply_allowed_shooting = function (self)
 
 	return 
 end
-PlayerDriving._check_action_exit_vehicle = function (self, t, input)
+function PlayerDriving:_check_action_exit_vehicle(t, input)
 	if input.btn_vehicle_exit_press then
 		if self._vehicle_ext.respawn_available then
 			if self._seat.driving then
@@ -826,7 +826,7 @@ PlayerDriving._check_action_exit_vehicle = function (self, t, input)
 
 	return 
 end
-PlayerDriving._start_action_exit_vehicle = function (self, t)
+function PlayerDriving:_start_action_exit_vehicle(t)
 	slot4 = self._vehicle_ext
 
 	if not self._vehicle_ext.allow_exit(slot3) then
@@ -849,12 +849,12 @@ PlayerDriving._start_action_exit_vehicle = function (self, t)
 
 	return 
 end
-PlayerDriving._interacting = function (self)
+function PlayerDriving:_interacting()
 	slot3 = self
 
 	return PlayerDriving.super._interacting(slot2) or self._exit_vehicle_expire_t
 end
-PlayerDriving._interupt_action_exit_vehicle = function (self, t, input, complete)
+function PlayerDriving:_interupt_action_exit_vehicle(t, input, complete)
 	if self._exit_vehicle_expire_t then
 		self._exit_vehicle_expire_t = nil
 		slot7 = complete
@@ -864,7 +864,7 @@ PlayerDriving._interupt_action_exit_vehicle = function (self, t, input, complete
 
 	return 
 end
-PlayerDriving._update_action_timers = function (self, t, input)
+function PlayerDriving:_update_action_timers(t, input)
 	if self._exit_vehicle_expire_t then
 		local deploy_timer = PlayerDriving.EXIT_VEHICLE_TIMER
 		slot8 = deploy_timer
@@ -882,7 +882,7 @@ PlayerDriving._update_action_timers = function (self, t, input)
 
 	return 
 end
-PlayerDriving._end_action_exit_vehicle = function (self)
+function PlayerDriving:_end_action_exit_vehicle()
 	slot4 = true
 
 	managers.hud.hide_progress_timer_bar(slot2, managers.hud)
@@ -893,10 +893,10 @@ PlayerDriving._end_action_exit_vehicle = function (self)
 
 	return 
 end
-PlayerDriving._check_action_change_camera = function (self, t, input)
+function PlayerDriving:_check_action_change_camera(t, input)
 	return 
 end
-PlayerDriving._check_action_rear_cam = function (self, t, input)
+function PlayerDriving:_check_action_rear_cam(t, input)
 	if not self._seat.driving then
 		return 
 	end
@@ -921,16 +921,16 @@ PlayerDriving._check_action_rear_cam = function (self, t, input)
 
 	return 
 end
-PlayerDriving._check_action_run = function (self, ...)
+function PlayerDriving:_check_action_run(...)
 	return 
 end
-PlayerDriving.pre_destroy = function (self, unit)
+function PlayerDriving:pre_destroy(unit)
 	return 
 end
-PlayerDriving.stance = function (self)
+function PlayerDriving:stance()
 	return self._stance
 end
-PlayerDriving._set_camera_limits = function (self, mode)
+function PlayerDriving:_set_camera_limits(mode)
 	if mode == "seat" then
 		if self._seat.camera_limits then
 			slot4 = self._camera_unit
@@ -952,7 +952,7 @@ PlayerDriving._set_camera_limits = function (self, mode)
 
 	return 
 end
-PlayerDriving._remove_camera_limits = function (self)
+function PlayerDriving:_remove_camera_limits()
 	slot3 = self._unit
 	slot3 = self._unit.camera(slot2)
 	slot3 = self._unit.camera(slot2).camera_unit(slot2)
@@ -962,7 +962,7 @@ PlayerDriving._remove_camera_limits = function (self)
 
 	return 
 end
-PlayerDriving._position_player_on_seat = function (self, seat)
+function PlayerDriving:_position_player_on_seat(seat)
 	local rot = self._seat.object.rotation(slot3)
 	slot6 = rot
 
@@ -999,7 +999,7 @@ PlayerDriving._position_player_on_seat = function (self, seat)
 
 	return 
 end
-PlayerDriving._move_to_next_seat = function (self)
+function PlayerDriving:_move_to_next_seat()
 	slot4 = self._vehicle_unit
 
 	managers.player.move_to_next_seat(slot2, managers.player)
@@ -1029,7 +1029,7 @@ PlayerDriving._move_to_next_seat = function (self)
 
 	return 
 end
-PlayerDriving.sync_move_to_next_seat = function (self)
+function PlayerDriving:sync_move_to_next_seat()
 	slot4 = self._unit
 	self._seat = self._vehicle_ext.find_seat_for_player(slot2, self._vehicle_ext)
 	slot3 = self
@@ -1051,10 +1051,10 @@ PlayerDriving.sync_move_to_next_seat = function (self)
 
 	return 
 end
-PlayerDriving.destroy = function (self)
+function PlayerDriving:destroy()
 	return 
 end
-PlayerDriving._get_vehicle = function (self)
+function PlayerDriving:_get_vehicle()
 	slot3 = managers.player
 	self._vehicle_unit = managers.player.get_vehicle(slot2).vehicle_unit
 
@@ -1073,7 +1073,7 @@ PlayerDriving._get_vehicle = function (self)
 
 	return 
 end
-PlayerDriving.cb_leave = function (self)
+function PlayerDriving:cb_leave()
 	slot4 = self._unit
 	local exit_position = self._vehicle_ext.find_exit_position(slot2, self._vehicle_ext)
 
@@ -1109,7 +1109,7 @@ PlayerDriving.cb_leave = function (self)
 
 	return 
 end
-PlayerDriving._update_input = function (self, dt)
+function PlayerDriving:_update_input(dt)
 	slot4 = self._controller
 	local pressed = self._controller.get_any_input(slot3)
 
@@ -1370,7 +1370,7 @@ PlayerDriving._update_input = function (self, dt)
 
 	return 
 end
-PlayerDriving.on_inventory_event = function (self, unit, event)
+function PlayerDriving:on_inventory_event(unit, event)
 	slot5 = self._unit
 	local weapon = self._unit.inventory(slot4).equipped_unit(slot4)
 	slot6 = weapon
@@ -1397,7 +1397,7 @@ PlayerDriving.on_inventory_event = function (self, unit, event)
 
 	return 
 end
-PlayerDriving.smoothstep = function (self, a, b, step, n)
+function PlayerDriving:smoothstep(a, b, step, n)
 	local v = step / n
 	v = 1 - (1 - v) * (1 - v)
 	local x = a * v + b * (1 - v)

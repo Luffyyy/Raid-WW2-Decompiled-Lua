@@ -7,7 +7,7 @@ slot3 = "CoreMenuStateAttract"
 core.import(slot1, core)
 
 Start = Start or class()
-Start.init = function (self)
+function Start:init()
 	slot3 = TimerManager
 	self._start_time = TimerManager.game(slot2).time(slot2)
 	local player_slots = self.pre_front_end.menu_state._player_slots
@@ -23,14 +23,14 @@ Start.init = function (self)
 
 	return 
 end
-Start.destroy = function (self)
+function Start:destroy()
 	slot3 = self._primary_slot
 
 	self._primary_slot.stop_local_user_binding(slot2)
 
 	return 
 end
-Start.transition = function (self)
+function Start:transition()
 	slot3 = TimerManager
 	slot3 = TimerManager.game(slot2)
 	local current_time = TimerManager.game(slot2).time(slot2)

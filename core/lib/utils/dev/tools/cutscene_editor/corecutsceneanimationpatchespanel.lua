@@ -12,7 +12,7 @@ if not CoreCutsceneAnimationPatchesPanel then
 end
 
 CoreCutsceneAnimationPatchesPanel = slot0
-CoreCutsceneAnimationPatchesPanel.init = function (self, parent)
+function CoreCutsceneAnimationPatchesPanel:init(parent)
 	slot5 = parent
 
 	self.super.init(slot3, self)
@@ -40,10 +40,10 @@ CoreCutsceneAnimationPatchesPanel.init = function (self, parent)
 
 	return 
 end
-CoreCutsceneAnimationPatchesPanel.unit_types = function (self)
+function CoreCutsceneAnimationPatchesPanel:unit_types()
 	return self.__unit_types or {}
 end
-CoreCutsceneAnimationPatchesPanel.set_unit_types = function (self, unit_types)
+function CoreCutsceneAnimationPatchesPanel:set_unit_types(unit_types)
 	slot2 = assert
 	slot6 = unit_types
 
@@ -82,7 +82,7 @@ CoreCutsceneAnimationPatchesPanel.set_unit_types = function (self, unit_types)
 
 	return 
 end
-CoreCutsceneAnimationPatchesPanel.patches = function (self)
+function CoreCutsceneAnimationPatchesPanel:patches()
 	local patches = {}
 	local list_ctrl = self.__list_ctrl
 	slot5 = list_ctrl
@@ -101,7 +101,7 @@ CoreCutsceneAnimationPatchesPanel.patches = function (self)
 
 	return patches
 end
-CoreCutsceneAnimationPatchesPanel.set_patches = function (self, patches)
+function CoreCutsceneAnimationPatchesPanel:set_patches(patches)
 	slot4 = self
 
 	self.freeze(slot3)
@@ -129,7 +129,7 @@ CoreCutsceneAnimationPatchesPanel.set_patches = function (self, patches)
 
 	return 
 end
-CoreCutsceneAnimationPatchesPanel._sizer_with_editable_fields = function (self, parent)
+function CoreCutsceneAnimationPatchesPanel:_sizer_with_editable_fields(parent)
 	slot5 = "VERTICAL"
 	local sizer = EWS.BoxSizer(slot3, EWS)
 	slot5 = self
@@ -183,7 +183,7 @@ CoreCutsceneAnimationPatchesPanel._sizer_with_editable_fields = function (self, 
 
 	return sizer
 end
-CoreCutsceneAnimationPatchesPanel._create_unit_name_dropdown = function (self, parent)
+function CoreCutsceneAnimationPatchesPanel:_create_unit_name_dropdown(parent)
 	slot5 = "Unit Name"
 	local value = self.selected_item_value(slot3, self)
 	slot9 = "CB_DROPDOWN,CB_READONLY,CB_SORT"
@@ -225,7 +225,7 @@ CoreCutsceneAnimationPatchesPanel._create_unit_name_dropdown = function (self, p
 
 	return control
 end
-CoreCutsceneAnimationPatchesPanel._create_animation_text_field = function (self, parent)
+function CoreCutsceneAnimationPatchesPanel:_create_animation_text_field(parent)
 	slot5 = "HORIZONTAL"
 	local sizer = EWS.BoxSizer(slot3, EWS)
 	slot6 = "VERTICAL"
@@ -253,7 +253,7 @@ CoreCutsceneAnimationPatchesPanel._create_animation_text_field = function (self,
 
 	return sizer
 end
-CoreCutsceneAnimationPatchesPanel._refresh_buttons_panel = function (self)
+function CoreCutsceneAnimationPatchesPanel:_refresh_buttons_panel()
 	slot3 = self
 
 	self.super._refresh_buttons_panel(slot2)
@@ -265,7 +265,7 @@ CoreCutsceneAnimationPatchesPanel._refresh_buttons_panel = function (self)
 
 	return 
 end
-CoreCutsceneAnimationPatchesPanel._on_browse_for_animation = function (self, text_ctrl)
+function CoreCutsceneAnimationPatchesPanel:_on_browse_for_animation(text_ctrl)
 	slot4 = self
 	slot7 = text_ctrl
 	local dir, path = self._absolute_dir_and_path(slot3, text_ctrl.get_value(slot6))
@@ -295,7 +295,7 @@ CoreCutsceneAnimationPatchesPanel._on_browse_for_animation = function (self, tex
 
 	return 
 end
-CoreCutsceneAnimationPatchesPanel._absolute_dir_and_path = function (self, relative_path)
+function CoreCutsceneAnimationPatchesPanel:_absolute_dir_and_path(relative_path)
 	slot6 = false
 	relative_path = Application.nice_path(slot3, Application, relative_path or "")
 	slot5 = "data\\"

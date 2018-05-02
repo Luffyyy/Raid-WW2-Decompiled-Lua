@@ -4,7 +4,7 @@ if not TeammateCommentUnitElement then
 end
 
 TeammateCommentUnitElement = slot0
-TeammateCommentUnitElement.init = function (self, unit)
+function TeammateCommentUnitElement:init(unit)
 	slot5 = unit
 
 	TeammateCommentUnitElement.super.init(slot3, self)
@@ -32,14 +32,14 @@ TeammateCommentUnitElement.init = function (self, unit)
 
 	return 
 end
-TeammateCommentUnitElement.post_init = function (self, ...)
+function TeammateCommentUnitElement:post_init(...)
 	slot3 = self
 
 	TeammateCommentUnitElement.super.post_init(slot2, ...)
 
 	return 
 end
-TeammateCommentUnitElement.update_selected = function (self, t, dt)
+function TeammateCommentUnitElement:update_selected(t, dt)
 	if self._hed.radius ~= 0 then
 		local brush = Draw.brush(slot4)
 		slot6 = brush
@@ -62,7 +62,7 @@ TeammateCommentUnitElement.update_selected = function (self, t, dt)
 
 	return 
 end
-TeammateCommentUnitElement.test_element = function (self)
+function TeammateCommentUnitElement:test_element()
 	if self._hed.comment then
 		slot4 = false
 
@@ -111,7 +111,7 @@ TeammateCommentUnitElement.test_element = function (self)
 
 	return 
 end
-TeammateCommentUnitElement.stop_test_element = function (self)
+function TeammateCommentUnitElement:stop_test_element()
 	slot4 = true
 
 	managers.editor.set_wanted_mute(slot2, managers.editor)
@@ -128,7 +128,7 @@ TeammateCommentUnitElement.stop_test_element = function (self)
 
 	return 
 end
-TeammateCommentUnitElement._build_panel = function (self, panel, panel_sizer)
+function TeammateCommentUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -171,7 +171,7 @@ TeammateCommentUnitElement._build_panel = function (self, panel, panel_sizer)
 
 	return 
 end
-TeammateCommentUnitElement.destroy = function (self)
+function TeammateCommentUnitElement:destroy()
 	slot3 = self
 
 	self.stop_test_element(slot2)

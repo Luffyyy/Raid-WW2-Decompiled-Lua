@@ -14,7 +14,7 @@ RaidGUIControlStepperSimple.TEXT_COLOR = tweak_data.gui.colors.raid_white
 RaidGUIControlStepperSimple.TEXT_COLOR_DISABLED = tweak_data.gui.colors.raid_dark_grey
 RaidGUIControlStepperSimple.FONT = tweak_data.gui.fonts.din_compressed
 RaidGUIControlStepperSimple.FONT_SIZE = tweak_data.gui.font_sizes.small
-RaidGUIControlStepperSimple.init = function (self, parent, params)
+function RaidGUIControlStepperSimple:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlStepperSimple.super.init(slot4, self, parent)
@@ -56,7 +56,7 @@ RaidGUIControlStepperSimple.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlStepperSimple.refresh_data = function (self, sort_descending)
+function RaidGUIControlStepperSimple:refresh_data(sort_descending)
 	slot4 = self
 
 	self._delete_items(slot3)
@@ -71,7 +71,7 @@ RaidGUIControlStepperSimple.refresh_data = function (self, sort_descending)
 
 	return 
 end
-RaidGUIControlStepperSimple.set_disabled_items = function (self, disabled_item_data)
+function RaidGUIControlStepperSimple:set_disabled_items(disabled_item_data)
 	slot4 = self._stepper_data
 
 	for index, data in pairs(slot3) do
@@ -90,7 +90,7 @@ RaidGUIControlStepperSimple.set_disabled_items = function (self, disabled_item_d
 
 	return 
 end
-RaidGUIControlStepperSimple._delete_items = function (self)
+function RaidGUIControlStepperSimple:_delete_items()
 	self._stepper_data = {}
 	self._selected_item = nil
 	slot3 = self._object
@@ -99,7 +99,7 @@ RaidGUIControlStepperSimple._delete_items = function (self)
 
 	return 
 end
-RaidGUIControlStepperSimple._create_stepper_panel = function (self)
+function RaidGUIControlStepperSimple:_create_stepper_panel()
 	local stepper_params = clone(slot2)
 	stepper_params.name = stepper_params.name .. "_stepper"
 	slot4 = self._panel
@@ -112,7 +112,7 @@ RaidGUIControlStepperSimple._create_stepper_panel = function (self)
 
 	return 
 end
-RaidGUIControlStepperSimple._create_stepper_controls = function (self, sort_descending)
+function RaidGUIControlStepperSimple:_create_stepper_controls(sort_descending)
 	local left_arrow_params = {
 		name = "stepper_simple_left_arrow",
 		x = 0
@@ -203,10 +203,10 @@ RaidGUIControlStepperSimple._create_stepper_controls = function (self, sort_desc
 
 	return 
 end
-RaidGUIControlStepperSimple.selected_item = function (self)
+function RaidGUIControlStepperSimple:selected_item()
 	return self._stepper_data[self._selected_item_index]
 end
-RaidGUIControlStepperSimple._select_item = function (self, index, skip_animation)
+function RaidGUIControlStepperSimple:_select_item(index, skip_animation)
 	local item = self._stepper_data[index]
 
 	if not item.text then
@@ -270,7 +270,7 @@ RaidGUIControlStepperSimple._select_item = function (self, index, skip_animation
 
 	return 
 end
-RaidGUIControlStepperSimple.select_item_by_value = function (self, value)
+function RaidGUIControlStepperSimple:select_item_by_value(value)
 	if self._stepper_data then
 		slot4 = self._stepper_data
 
@@ -287,12 +287,12 @@ RaidGUIControlStepperSimple.select_item_by_value = function (self, value)
 
 	return 
 end
-RaidGUIControlStepperSimple.get_value = function (self)
+function RaidGUIControlStepperSimple:get_value()
 	local item = self._stepper_data[self._selected_item_index]
 
 	return item.value
 end
-RaidGUIControlStepperSimple.set_value_and_render = function (self, value_to_select, skip_animation)
+function RaidGUIControlStepperSimple:set_value_and_render(value_to_select, skip_animation)
 	if self._stepper_data then
 		slot5 = self._stepper_data
 
@@ -325,14 +325,14 @@ RaidGUIControlStepperSimple.set_value_and_render = function (self, value_to_sele
 
 	return 
 end
-RaidGUIControlStepperSimple._delete_stepper_items = function (self)
+function RaidGUIControlStepperSimple:_delete_stepper_items()
 	slot3 = self._stepper_panel
 
 	self._stepper_panel.clear(slot2)
 
 	return 
 end
-RaidGUIControlStepperSimple.on_left_arrow_clicked = function (self)
+function RaidGUIControlStepperSimple:on_left_arrow_clicked()
 	if not self._enabled then
 		return 
 	end
@@ -355,7 +355,7 @@ RaidGUIControlStepperSimple.on_left_arrow_clicked = function (self)
 
 	return 
 end
-RaidGUIControlStepperSimple.on_right_arrow_clicked = function (self)
+function RaidGUIControlStepperSimple:on_right_arrow_clicked()
 	if not self._enabled then
 		return 
 	end
@@ -378,7 +378,7 @@ RaidGUIControlStepperSimple.on_right_arrow_clicked = function (self)
 
 	return 
 end
-RaidGUIControlStepperSimple.mouse_moved = function (self, o, x, y)
+function RaidGUIControlStepperSimple:mouse_moved(o, x, y)
 	slot8 = y
 
 	if not self.inside(slot5, self, x) then
@@ -412,10 +412,10 @@ RaidGUIControlStepperSimple.mouse_moved = function (self, o, x, y)
 
 	return used, pointer
 end
-RaidGUIControlStepperSimple.mouse_released = function (self, o, button, x, y)
+function RaidGUIControlStepperSimple:mouse_released(o, button, x, y)
 	return false
 end
-RaidGUIControlStepperSimple.on_mouse_scroll_up = function (self)
+function RaidGUIControlStepperSimple:on_mouse_scroll_up()
 	if not self._enabled then
 		return 
 	end
@@ -426,7 +426,7 @@ RaidGUIControlStepperSimple.on_mouse_scroll_up = function (self)
 
 	return 
 end
-RaidGUIControlStepperSimple.on_mouse_scroll_down = function (self)
+function RaidGUIControlStepperSimple:on_mouse_scroll_down()
 	if not self._enabled then
 		return 
 	end
@@ -437,17 +437,17 @@ RaidGUIControlStepperSimple.on_mouse_scroll_down = function (self)
 
 	return 
 end
-RaidGUIControlStepperSimple.x = function (self)
+function RaidGUIControlStepperSimple:x()
 	slot3 = self._stepper_panel._engine_panel
 
 	return self._stepper_panel._engine_panel.x(slot2)
 end
-RaidGUIControlStepperSimple.w = function (self)
+function RaidGUIControlStepperSimple:w()
 	slot3 = self._stepper_panel._engine_panel
 
 	return self._stepper_panel._engine_panel.w(slot2)
 end
-RaidGUIControlStepperSimple.confirm_pressed = function (self)
+function RaidGUIControlStepperSimple:confirm_pressed()
 	if not self._enabled then
 		return 
 	end
@@ -463,13 +463,13 @@ RaidGUIControlStepperSimple.confirm_pressed = function (self)
 
 	return 
 end
-RaidGUIControlStepperSimple.is_selected_control = function (self)
+function RaidGUIControlStepperSimple:is_selected_control()
 	return self._selected_control
 end
-RaidGUIControlStepperSimple._select_control = function (self, value)
+function RaidGUIControlStepperSimple:_select_control(value)
 	return 
 end
-RaidGUIControlStepperSimple.move_down = function (self)
+function RaidGUIControlStepperSimple:move_down()
 	if self._selected then
 		self._selected_control = false
 		slot4 = false
@@ -483,7 +483,7 @@ RaidGUIControlStepperSimple.move_down = function (self)
 
 	return 
 end
-RaidGUIControlStepperSimple.move_up = function (self)
+function RaidGUIControlStepperSimple:move_up()
 	if self._selected then
 		self._selected_control = false
 		slot4 = false
@@ -497,7 +497,7 @@ RaidGUIControlStepperSimple.move_up = function (self)
 
 	return 
 end
-RaidGUIControlStepperSimple.set_enabled = function (self, enabled)
+function RaidGUIControlStepperSimple:set_enabled(enabled)
 	slot5 = enabled
 
 	RaidGUIControlStepperSimple.super.set_enabled(slot3, self)
@@ -528,7 +528,7 @@ RaidGUIControlStepperSimple.set_enabled = function (self, enabled)
 
 	return 
 end
-RaidGUIControlStepperSimple._animate_value_change = function (self, o, text, disabled)
+function RaidGUIControlStepperSimple:_animate_value_change(o, text, disabled)
 	slot6 = self._value_label
 	local starting_alpha = self._value_label.alpha(slot5)
 	local duration = 0.13

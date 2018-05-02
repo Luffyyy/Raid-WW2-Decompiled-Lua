@@ -8,17 +8,17 @@ if not ElementSmokeGrenade then
 end
 
 ElementSmokeGrenade = slot0
-ElementSmokeGrenade.init = function (self, ...)
+function ElementSmokeGrenade:init(...)
 	slot3 = self
 
 	ElementSmokeGrenade.super.init(slot2, ...)
 
 	return 
 end
-ElementSmokeGrenade.client_on_executed = function (self, ...)
+function ElementSmokeGrenade:client_on_executed(...)
 	return 
 end
-ElementSmokeGrenade.on_executed = function (self, instigator)
+function ElementSmokeGrenade:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

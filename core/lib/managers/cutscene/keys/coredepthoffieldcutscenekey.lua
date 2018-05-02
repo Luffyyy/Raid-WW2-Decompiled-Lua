@@ -144,10 +144,10 @@ CoreDepthOfFieldCutsceneKey.control_for_divider1 = CoreCutsceneKeyBase.standard_
 CoreDepthOfFieldCutsceneKey.control_for_divider2 = CoreCutsceneKeyBase.standard_divider_control
 CoreDepthOfFieldCutsceneKey.control_for_target_tracked_unit_name = CoreCutsceneKeyBase.standard_combo_box_control
 CoreDepthOfFieldCutsceneKey.control_for_target_tracked_object_name = CoreCutsceneKeyBase.standard_combo_box_control
-CoreDepthOfFieldCutsceneKey.__tostring = function (self)
+function CoreDepthOfFieldCutsceneKey:__tostring()
 	return "Change camera focus."
 end
-CoreDepthOfFieldCutsceneKey.populate_from_editor = function (self, cutscene_editor)
+function CoreDepthOfFieldCutsceneKey:populate_from_editor(cutscene_editor)
 	slot5 = cutscene_editor
 
 	self.super.populate_from_editor(slot3, self)
@@ -174,7 +174,7 @@ CoreDepthOfFieldCutsceneKey.populate_from_editor = function (self, cutscene_edit
 
 	return 
 end
-CoreDepthOfFieldCutsceneKey.play = function (self, player, undo, fast_forward)
+function CoreDepthOfFieldCutsceneKey:play(player, undo, fast_forward)
 	if undo then
 		slot6 = self
 		local preceeding_key = self.preceeding_key(slot5)
@@ -210,7 +210,7 @@ CoreDepthOfFieldCutsceneKey.play = function (self, player, undo, fast_forward)
 
 	return 
 end
-CoreDepthOfFieldCutsceneKey.update = function (self, player, time)
+function CoreDepthOfFieldCutsceneKey:update(player, time)
 
 	-- Decompilation error in this vicinity:
 	slot5 = self
@@ -239,7 +239,7 @@ CoreDepthOfFieldCutsceneKey.update = function (self, player, time)
 
 	return 
 end
-CoreDepthOfFieldCutsceneKey.update_gui = function (self, time, delta_time, player)
+function CoreDepthOfFieldCutsceneKey:update_gui(time, delta_time, player)
 	if player then
 		slot6 = player
 		local cutscene_camera_enabled = player.is_viewport_enabled(slot5)
@@ -287,13 +287,13 @@ CoreDepthOfFieldCutsceneKey.update_gui = function (self, time, delta_time, playe
 
 	return 
 end
-CoreDepthOfFieldCutsceneKey.is_valid_near_distance = function (self, value)
+function CoreDepthOfFieldCutsceneKey:is_valid_near_distance(value)
 	return value == nil or 0 <= value
 end
-CoreDepthOfFieldCutsceneKey.is_valid_far_distance = function (self, value)
+function CoreDepthOfFieldCutsceneKey:is_valid_far_distance(value)
 	return value == nil or 0 <= value
 end
-CoreDepthOfFieldCutsceneKey.is_valid_tracked_unit_name = function (self, value)
+function CoreDepthOfFieldCutsceneKey:is_valid_tracked_unit_name(value)
 	if value ~= nil and value ~= "" then
 		slot5 = value
 		slot2 = CoreCutsceneKeyBase.is_valid_unit_name(slot3, self)
@@ -307,20 +307,20 @@ CoreDepthOfFieldCutsceneKey.is_valid_tracked_unit_name = function (self, value)
 
 	return slot2
 end
-CoreDepthOfFieldCutsceneKey.is_valid_tracked_object_name = function (self, value)
+function CoreDepthOfFieldCutsceneKey:is_valid_tracked_object_name(value)
 end
-CoreDepthOfFieldCutsceneKey.is_valid_transition_time = function (self, value)
+function CoreDepthOfFieldCutsceneKey:is_valid_transition_time(value)
 
 	-- Decompilation error in this vicinity:
 	return value and 0 <= value
 end
-CoreDepthOfFieldCutsceneKey.is_valid_target_near_distance = function (self, value)
+function CoreDepthOfFieldCutsceneKey:is_valid_target_near_distance(value)
 	return value == nil or 0 <= value
 end
-CoreDepthOfFieldCutsceneKey.is_valid_target_far_distance = function (self, value)
+function CoreDepthOfFieldCutsceneKey:is_valid_target_far_distance(value)
 	return value == nil or 0 <= value
 end
-CoreDepthOfFieldCutsceneKey.is_valid_target_tracked_unit_name = function (self, value)
+function CoreDepthOfFieldCutsceneKey:is_valid_target_tracked_unit_name(value)
 	if value ~= nil and value ~= "" then
 		slot5 = value
 		slot2 = CoreCutsceneKeyBase.is_valid_unit_name(slot3, self)
@@ -334,9 +334,9 @@ CoreDepthOfFieldCutsceneKey.is_valid_target_tracked_unit_name = function (self, 
 
 	return slot2
 end
-CoreDepthOfFieldCutsceneKey.is_valid_target_tracked_object_name = function (self, value)
+function CoreDepthOfFieldCutsceneKey:is_valid_target_tracked_object_name(value)
 end
-CoreDepthOfFieldCutsceneKey.control_for_near_distance = function (self, parent_frame, callback_func)
+function CoreDepthOfFieldCutsceneKey:control_for_near_distance(parent_frame, callback_func)
 	slot6 = parent_frame
 	slot9 = self
 	self.__near_distance_control = CoreCameraDistancePicker.new(slot4, CoreCameraDistancePicker, self.near_distance(slot8))
@@ -346,7 +346,7 @@ CoreDepthOfFieldCutsceneKey.control_for_near_distance = function (self, parent_f
 
 	return self.__near_distance_control
 end
-CoreDepthOfFieldCutsceneKey.control_for_far_distance = function (self, parent_frame, callback_func)
+function CoreDepthOfFieldCutsceneKey:control_for_far_distance(parent_frame, callback_func)
 	slot6 = parent_frame
 	slot9 = self
 	self.__far_distance_control = CoreCameraDistancePicker.new(slot4, CoreCameraDistancePicker, self.far_distance(slot8))
@@ -356,7 +356,7 @@ CoreDepthOfFieldCutsceneKey.control_for_far_distance = function (self, parent_fr
 
 	return self.__far_distance_control
 end
-CoreDepthOfFieldCutsceneKey.control_for_target_near_distance = function (self, parent_frame, callback_func)
+function CoreDepthOfFieldCutsceneKey:control_for_target_near_distance(parent_frame, callback_func)
 	slot6 = parent_frame
 	slot9 = self
 	self.__target_near_distance_control = CoreCameraDistancePicker.new(slot4, CoreCameraDistancePicker, self.target_near_distance(slot8))
@@ -366,7 +366,7 @@ CoreDepthOfFieldCutsceneKey.control_for_target_near_distance = function (self, p
 
 	return self.__target_near_distance_control
 end
-CoreDepthOfFieldCutsceneKey.control_for_target_far_distance = function (self, parent_frame, callback_func)
+function CoreDepthOfFieldCutsceneKey:control_for_target_far_distance(parent_frame, callback_func)
 	slot6 = parent_frame
 	slot9 = self
 	self.__target_far_distance_control = CoreCameraDistancePicker.new(slot4, CoreCameraDistancePicker, self.target_far_distance(slot8))
@@ -376,7 +376,7 @@ CoreDepthOfFieldCutsceneKey.control_for_target_far_distance = function (self, pa
 
 	return self.__target_far_distance_control
 end
-CoreDepthOfFieldCutsceneKey.refresh_control_for_tracked_unit_name = function (self, control)
+function CoreDepthOfFieldCutsceneKey:refresh_control_for_tracked_unit_name(control)
 
 	-- Decompilation error in this vicinity:
 	slot5 = control
@@ -398,7 +398,7 @@ CoreDepthOfFieldCutsceneKey.refresh_control_for_tracked_unit_name = function (se
 
 	return 
 end
-CoreDepthOfFieldCutsceneKey.refresh_control_for_tracked_object_name = function (self, control)
+function CoreDepthOfFieldCutsceneKey:refresh_control_for_tracked_object_name(control)
 
 	-- Decompilation error in this vicinity:
 	slot6 = self.tracked_unit_name(slot7)
@@ -414,7 +414,7 @@ CoreDepthOfFieldCutsceneKey.refresh_control_for_tracked_object_name = function (
 
 	return 
 end
-CoreDepthOfFieldCutsceneKey.refresh_control_for_target_tracked_unit_name = function (self, control)
+function CoreDepthOfFieldCutsceneKey:refresh_control_for_target_tracked_unit_name(control)
 	slot5 = control
 	slot8 = self
 
@@ -439,7 +439,7 @@ CoreDepthOfFieldCutsceneKey.refresh_control_for_target_tracked_unit_name = funct
 
 	return 
 end
-CoreDepthOfFieldCutsceneKey.refresh_control_for_target_tracked_object_name = function (self, control)
+function CoreDepthOfFieldCutsceneKey:refresh_control_for_target_tracked_object_name(control)
 
 	-- Decompilation error in this vicinity:
 	slot6 = self.target_tracked_unit_name(slot7)
@@ -456,7 +456,7 @@ CoreDepthOfFieldCutsceneKey.refresh_control_for_target_tracked_object_name = fun
 	slot2 = control.set_enabled
 	slot7 = self
 end
-CoreDepthOfFieldCutsceneKey.refresh_control_for_near_distance = function (self, control)
+function CoreDepthOfFieldCutsceneKey:refresh_control_for_near_distance(control)
 	slot4 = control
 
 	control.set_value(slot3, tostring(self.near_distance(slot8)))
@@ -469,7 +469,7 @@ CoreDepthOfFieldCutsceneKey.refresh_control_for_near_distance = function (self, 
 
 	return 
 end
-CoreDepthOfFieldCutsceneKey.refresh_control_for_far_distance = function (self, control)
+function CoreDepthOfFieldCutsceneKey:refresh_control_for_far_distance(control)
 	slot4 = control
 
 	control.set_value(slot3, tostring(self.far_distance(slot8)))
@@ -482,7 +482,7 @@ CoreDepthOfFieldCutsceneKey.refresh_control_for_far_distance = function (self, c
 
 	return 
 end
-CoreDepthOfFieldCutsceneKey.refresh_control_for_target_near_distance = function (self, control)
+function CoreDepthOfFieldCutsceneKey:refresh_control_for_target_near_distance(control)
 	slot4 = control
 	slot9 = self
 
@@ -508,7 +508,7 @@ CoreDepthOfFieldCutsceneKey.refresh_control_for_target_near_distance = function 
 
 	return 
 end
-CoreDepthOfFieldCutsceneKey.refresh_control_for_target_far_distance = function (self, control)
+function CoreDepthOfFieldCutsceneKey:refresh_control_for_target_far_distance(control)
 	slot4 = control
 	slot9 = self
 
@@ -534,7 +534,7 @@ CoreDepthOfFieldCutsceneKey.refresh_control_for_target_far_distance = function (
 
 	return 
 end
-CoreDepthOfFieldCutsceneKey._set_camera_depth_of_field = function (self, player, near, far)
+function CoreDepthOfFieldCutsceneKey:_set_camera_depth_of_field(player, near, far)
 	slot7 = near
 	slot11 = near
 
@@ -542,7 +542,7 @@ CoreDepthOfFieldCutsceneKey._set_camera_depth_of_field = function (self, player,
 
 	return 
 end
-CoreDepthOfFieldCutsceneKey._is_editing_initial_values = function (self)
+function CoreDepthOfFieldCutsceneKey:_is_editing_initial_values()
 	slot3 = Application
 
 	if Application.ews_enabled(slot2) then
@@ -550,7 +550,7 @@ CoreDepthOfFieldCutsceneKey._is_editing_initial_values = function (self)
 
 	return slot1
 end
-CoreDepthOfFieldCutsceneKey._is_editing_target_values = function (self)
+function CoreDepthOfFieldCutsceneKey:_is_editing_target_values()
 	slot3 = Application
 
 	if Application.ews_enabled(slot2) then
@@ -558,7 +558,7 @@ CoreDepthOfFieldCutsceneKey._is_editing_target_values = function (self)
 
 	return slot1
 end
-CoreDepthOfFieldCutsceneKey._final_near_distance = function (self, player)
+function CoreDepthOfFieldCutsceneKey:_final_near_distance(player)
 	slot5 = self.tracked_unit_name(slot6)
 	slot8 = self
 	local distance = player.distance_from_camera(slot3, player, self.tracked_object_name(self))
@@ -575,7 +575,7 @@ CoreDepthOfFieldCutsceneKey._final_near_distance = function (self, player)
 
 	return 
 end
-CoreDepthOfFieldCutsceneKey._final_far_distance = function (self, player)
+function CoreDepthOfFieldCutsceneKey:_final_far_distance(player)
 	slot5 = self.tracked_unit_name(slot6)
 	slot8 = self
 	local distance = player.distance_from_camera(slot3, player, self.tracked_object_name(self))
@@ -592,7 +592,7 @@ CoreDepthOfFieldCutsceneKey._final_far_distance = function (self, player)
 
 	return 
 end
-CoreDepthOfFieldCutsceneKey._final_target_near_distance = function (self, player)
+function CoreDepthOfFieldCutsceneKey:_final_target_near_distance(player)
 	slot5 = self.target_tracked_unit_name(slot6)
 	slot8 = self
 	local distance = player.distance_from_camera(slot3, player, self.target_tracked_object_name(self))
@@ -609,7 +609,7 @@ CoreDepthOfFieldCutsceneKey._final_target_near_distance = function (self, player
 
 	return 
 end
-CoreDepthOfFieldCutsceneKey._final_target_far_distance = function (self, player)
+function CoreDepthOfFieldCutsceneKey:_final_target_far_distance(player)
 	slot5 = self.target_tracked_unit_name(slot6)
 	slot8 = self
 	local distance = player.distance_from_camera(slot3, player, self.target_tracked_object_name(self))
@@ -626,10 +626,10 @@ CoreDepthOfFieldCutsceneKey._final_target_far_distance = function (self, player)
 
 	return 
 end
-CoreDepthOfFieldCutsceneKey._hyperfocal_distance = function (self)
+function CoreDepthOfFieldCutsceneKey:_hyperfocal_distance()
 	return 1433
 end
-CoreDepthOfFieldCutsceneKey._calc_interpolation = function (self, t)
+function CoreDepthOfFieldCutsceneKey:_calc_interpolation(t)
 	return 3 * t^2 - 2 * t^3
 end
 

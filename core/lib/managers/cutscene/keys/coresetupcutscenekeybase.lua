@@ -8,26 +8,26 @@ if not CoreSetupCutsceneKeyBase then
 end
 
 CoreSetupCutsceneKeyBase = slot0
-CoreSetupCutsceneKeyBase.populate_from_editor = function (self, cutscene_editor)
+function CoreSetupCutsceneKeyBase:populate_from_editor(cutscene_editor)
 	return 
 end
-CoreSetupCutsceneKeyBase.frame = function (self)
+function CoreSetupCutsceneKeyBase:frame()
 	return 0
 end
-CoreSetupCutsceneKeyBase.set_frame = function (self, frame)
+function CoreSetupCutsceneKeyBase:set_frame(frame)
 	return 
 end
-CoreSetupCutsceneKeyBase.on_gui_representation_changed = function (self, sender, sequencer_clip)
+function CoreSetupCutsceneKeyBase:on_gui_representation_changed(sender, sequencer_clip)
 	return 
 end
-CoreSetupCutsceneKeyBase.prime = function (self, player)
+function CoreSetupCutsceneKeyBase:prime(player)
 	slot4 = "Cutscene keys deriving from CoreSetupCutsceneKeyBase must define the \"prime\" method."
 
 	error(slot3)
 
 	return 
 end
-CoreSetupCutsceneKeyBase.play = function (self, player, undo, fast_forward)
+function CoreSetupCutsceneKeyBase:play(player, undo, fast_forward)
 	return 
 end
 

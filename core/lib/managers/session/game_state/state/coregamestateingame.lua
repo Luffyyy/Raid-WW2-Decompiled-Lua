@@ -7,7 +7,7 @@ slot3 = "CoreGameStatePrepareLoadingFrontEnd"
 core.import(slot1, core)
 
 InGame = InGame or class()
-InGame.init = function (self, level_handler)
+function InGame:init(level_handler)
 	self._level_handler = level_handler
 	self.game_state._is_in_game = true
 	slot7 = "game_state_ingame"
@@ -16,12 +16,12 @@ InGame.init = function (self, level_handler)
 
 	return 
 end
-InGame.destroy = function (self)
+function InGame:destroy()
 	self.game_state._is_in_game = nil
 
 	return 
 end
-InGame.transition = function (self)
+function InGame:transition()
 	slot3 = self.game_state._front_end_requester
 
 	if not self.game_state._front_end_requester.is_requested(slot2) then
@@ -36,7 +36,7 @@ InGame.transition = function (self)
 
 	return 
 end
-InGame.end_update = function (self, t, dt)
+function InGame:end_update(t, dt)
 	slot7 = dt
 
 	self._level_handler.end_update(slot4, self._level_handler, t)

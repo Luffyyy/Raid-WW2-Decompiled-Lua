@@ -1,5 +1,5 @@
 RepelRopeBase = RepelRopeBase or class()
-RepelRopeBase.init = function (self, unit)
+function RepelRopeBase:init(unit)
 	self._tmp_vec3 = Vector3()
 	slot5 = self._tmp_vec3
 
@@ -15,7 +15,7 @@ RepelRopeBase.init = function (self, unit)
 
 	return 
 end
-RepelRopeBase.update = function (self, unit, t, dt)
+function RepelRopeBase:update(unit, t, dt)
 	if self._retracting then
 		local prog = (t - self._retract_start_t) / self._retract_duration
 
@@ -51,7 +51,7 @@ RepelRopeBase.update = function (self, unit, t, dt)
 
 	return 
 end
-RepelRopeBase.setup = function (self, attach_object)
+function RepelRopeBase:setup(attach_object)
 	self._attach_obj = attach_object
 	slot7 = "base"
 
@@ -59,7 +59,7 @@ RepelRopeBase.setup = function (self, attach_object)
 
 	return 
 end
-RepelRopeBase.retract = function (self)
+function RepelRopeBase:retract()
 	if not self._retracting then
 		self._retracting = true
 		slot3 = TimerManager

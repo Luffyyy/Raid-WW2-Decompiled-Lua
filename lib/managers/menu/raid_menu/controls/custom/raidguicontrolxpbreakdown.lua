@@ -20,7 +20,7 @@ RaidGUIControlXPBreakdown.TABLE_ROW_HEIGHT = 32
 RaidGUIControlXPBreakdown.TABLE_COLUMN_HEIGHT = 32
 RaidGUIControlXPBreakdown.TABLE_DESCRIPTION_W_PERCENT = 80
 RaidGUIControlXPBreakdown.TABLE_VALUE_W_PERCENT = 20
-RaidGUIControlXPBreakdown.init = function (self, parent, params)
+function RaidGUIControlXPBreakdown:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlXPBreakdown.super.init(slot4, self, parent)
@@ -58,10 +58,10 @@ RaidGUIControlXPBreakdown.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlXPBreakdown.close = function (self)
+function RaidGUIControlXPBreakdown:close()
 	return 
 end
-RaidGUIControlXPBreakdown._create_control_panel = function (self)
+function RaidGUIControlXPBreakdown:_create_control_panel()
 	local control_params = clone(slot2)
 	control_params.name = control_params.name .. "_customization_panel"
 	slot4 = self._panel
@@ -74,7 +74,7 @@ RaidGUIControlXPBreakdown._create_control_panel = function (self)
 
 	return 
 end
-RaidGUIControlXPBreakdown._create_experience_label = function (self)
+function RaidGUIControlXPBreakdown:_create_experience_label()
 	local experience_label_params = {
 		name = "experience_label",
 		vertical = "center",
@@ -93,7 +93,7 @@ RaidGUIControlXPBreakdown._create_experience_label = function (self)
 
 	return 
 end
-RaidGUIControlXPBreakdown._create_breakdown_table = function (self, params)
+function RaidGUIControlXPBreakdown:_create_breakdown_table(params)
 	local breakdown_table_params = {
 		name = "breakdown_table",
 		x = 0
@@ -133,10 +133,10 @@ RaidGUIControlXPBreakdown._create_breakdown_table = function (self, params)
 
 	return 
 end
-RaidGUIControlXPBreakdown._create_total = function (self)
+function RaidGUIControlXPBreakdown:_create_total()
 	return 
 end
-RaidGUIControlXPBreakdown._fit_panel = function (self)
+function RaidGUIControlXPBreakdown:_fit_panel()
 	slot7 = self._breakdown_table
 	slot4 = self._breakdown_table.y(slot5) + self._breakdown_table.h(self._breakdown_table)
 
@@ -144,10 +144,10 @@ RaidGUIControlXPBreakdown._fit_panel = function (self)
 
 	return 
 end
-RaidGUIControlXPBreakdown.fade_in_total = function (self, duration)
+function RaidGUIControlXPBreakdown:fade_in_total(duration)
 	return 
 end
-RaidGUIControlXPBreakdown.animate_fade_in_total = function (self, label, duration)
+function RaidGUIControlXPBreakdown:animate_fade_in_total(label, duration)
 	local t = 0
 	local anim_duration = duration or 0.15
 
@@ -167,10 +167,10 @@ RaidGUIControlXPBreakdown.animate_fade_in_total = function (self, label, duratio
 
 	return 
 end
-RaidGUIControlXPBreakdown.set_total = function (self, total, animate)
+function RaidGUIControlXPBreakdown:set_total(total, animate)
 	return 
 end
-RaidGUIControlXPBreakdown.hide = function (self)
+function RaidGUIControlXPBreakdown:hide()
 	slot4 = 0
 
 	self._breakdown_table._table_panel.set_alpha(slot2, self._breakdown_table._table_panel)
@@ -181,7 +181,7 @@ RaidGUIControlXPBreakdown.hide = function (self)
 
 	return 
 end
-RaidGUIControlXPBreakdown.fade_in = function (self)
+function RaidGUIControlXPBreakdown:fade_in()
 	slot3 = self._experience_label
 	slot8 = "_animate_table_fade_in"
 
@@ -189,7 +189,7 @@ RaidGUIControlXPBreakdown.fade_in = function (self)
 
 	return 
 end
-RaidGUIControlXPBreakdown._animate_table_fade_in = function (self)
+function RaidGUIControlXPBreakdown:_animate_table_fade_in()
 	local t = 0
 	local label_duration = 0.4
 	local table_duration = 0.2
@@ -241,7 +241,7 @@ RaidGUIControlXPBreakdown._animate_table_fade_in = function (self)
 
 	return 
 end
-RaidGUIControlXPBreakdown.set_debug = function (self, value)
+function RaidGUIControlXPBreakdown:set_debug(value)
 	slot5 = value
 
 	self._control_border.set_debug(slot3, self._control_border)

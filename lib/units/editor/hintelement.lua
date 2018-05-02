@@ -4,7 +4,7 @@ if not HintUnitElement then
 end
 
 HintUnitElement = slot0
-HintUnitElement.init = function (self, unit)
+function HintUnitElement:init(unit)
 	slot5 = unit
 
 	HintUnitElement.super.init(slot3, self)
@@ -16,10 +16,10 @@ HintUnitElement.init = function (self, unit)
 
 	return 
 end
-HintUnitElement._set_text = function (self)
+function HintUnitElement:_set_text()
 	return 
 end
-HintUnitElement.set_element_data = function (self, params, ...)
+function HintUnitElement:set_element_data(params, ...)
 	slot5 = params
 
 	HintUnitElement.super.set_element_data(slot3, self, ...)
@@ -32,7 +32,7 @@ HintUnitElement.set_element_data = function (self, params, ...)
 
 	return 
 end
-HintUnitElement._build_panel = function (self, panel, panel_sizer)
+function HintUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

@@ -17,7 +17,7 @@ RaidGUIControlPeerRewardCardPack.DESCRIPTION_COLOR = tweak_data.gui.colors.raid_
 RaidGUIControlPeerRewardCardPack.DESCRIPTION_FONT_SIZE = tweak_data.gui.font_sizes.size_24
 RaidGUIControlPeerRewardCardPack.IMAGE_PADDING_RIGHT = 10
 RaidGUIControlPeerRewardCardPack.TEXT_X = 128
-RaidGUIControlPeerRewardCardPack.init = function (self, parent, params)
+function RaidGUIControlPeerRewardCardPack:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlPeerRewardCardPack.super.init(slot4, self, parent)
@@ -40,7 +40,7 @@ RaidGUIControlPeerRewardCardPack.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlPeerRewardCardPack._create_control_panel = function (self)
+function RaidGUIControlPeerRewardCardPack:_create_control_panel()
 	slot3 = self._params
 	local control_params = clone(slot2)
 	control_params.x = control_params.x
@@ -55,7 +55,7 @@ RaidGUIControlPeerRewardCardPack._create_control_panel = function (self)
 
 	return 
 end
-RaidGUIControlPeerRewardCardPack._create_card_pack_details = function (self)
+function RaidGUIControlPeerRewardCardPack:_create_card_pack_details()
 	local params_weapon_point_image = {
 		name = "card_pack_image",
 		y = 0,
@@ -112,7 +112,7 @@ RaidGUIControlPeerRewardCardPack._create_card_pack_details = function (self)
 
 	return 
 end
-RaidGUIControlPeerRewardCardPack.set_player_name = function (self, name)
+function RaidGUIControlPeerRewardCardPack:set_player_name(name)
 	slot4 = self._name_label
 	slot7 = name
 
@@ -124,7 +124,7 @@ RaidGUIControlPeerRewardCardPack.set_player_name = function (self, name)
 
 	return 
 end
-RaidGUIControlPeerRewardCardPack._layout_text = function (self)
+function RaidGUIControlPeerRewardCardPack:_layout_text()
 	slot3 = self._name_label
 	local _, _, _, h = self._name_label.text_rect(slot2)
 	slot8 = h

@@ -16,7 +16,7 @@ if not StartSimulation then
 end
 
 StartSimulation = slot0
-StartSimulation.transition = function (self)
+function StartSimulation:transition()
 	return CoregameStateInEditorSimulation.Simulation
 end
 

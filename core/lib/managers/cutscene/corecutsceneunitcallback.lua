@@ -1,20 +1,20 @@
 CoreCutsceneUnitCallback = CoreCutsceneUnitCallback or class()
-CoreCutsceneUnitCallback.init = function (self, callback_name)
+function CoreCutsceneUnitCallback:init(callback_name)
 	self._callback_name = callback_name
 	self._params = {}
 
 	return 
 end
-CoreCutsceneUnitCallback.add_parameter = function (self, param)
+function CoreCutsceneUnitCallback:add_parameter(param)
 	self._params[param._name] = param
 
 	return 
 end
-CoreCutsceneUnitCallback.get_parameter_map = function (self)
+function CoreCutsceneUnitCallback:get_parameter_map()
 	return self._params
 end
 CoreCutsceneInputParam = CoreCutsceneInputParam or class()
-CoreCutsceneInputParam.init = function (self, name, value_type, default_value, min_value, max_value, decimals)
+function CoreCutsceneInputParam:init(name, value_type, default_value, min_value, max_value, decimals)
 	self._name = name
 	self._value_type = value_type
 	self._default_value = default_value
@@ -24,7 +24,7 @@ CoreCutsceneInputParam.init = function (self, name, value_type, default_value, m
 
 	return 
 end
-CoreCutsceneInputParam.float_to_string = function (self, number, decimals)
+function CoreCutsceneInputParam:float_to_string(number, decimals)
 	slot5 = number
 
 	if type(slot4) == "boolean" then
@@ -43,7 +43,7 @@ CoreCutsceneInputParam.float_to_string = function (self, number, decimals)
 
 	return 
 end
-CoreCutsceneInputParam.validate = function (self, value)
+function CoreCutsceneInputParam:validate(value)
 	if self._value_type == "number" then
 		slot13 = self._decimals
 		value = self.float_to_string(slot3, self, self.validate_number(self._decimals, self, self._value_type, value, self._min_value, self._max_value, self._default_value))
@@ -54,7 +54,7 @@ CoreCutsceneInputParam.validate = function (self, value)
 
 	return value
 end
-CoreCutsceneInputParam.validate_number = function (self, number, min_value, max_value, default_value, decimals)
+function CoreCutsceneInputParam:validate_number(number, min_value, max_value, default_value, decimals)
 	slot8 = number
 
 	if type(slot7) == "string" then
@@ -99,7 +99,7 @@ CoreCutsceneInputParam.validate_number = function (self, number, min_value, max_
 
 	return number
 end
-CoreCutsceneInputParam.validate_boolean = function (self, boolean)
+function CoreCutsceneInputParam:validate_boolean(boolean)
 	slot4 = boolean
 
 	if type(slot3) == "string" then

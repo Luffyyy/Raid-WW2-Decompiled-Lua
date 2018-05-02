@@ -9,7 +9,7 @@ IntelGui.CATEGORY_OPERATIONAL_STATUS = "operational_status"
 IntelGui.CATEGORY_RAID_PERSONEL = "raid_personnel"
 IntelGui.CATEGORY_OPPOSITION_FORCES = "opposition_forces"
 IntelGui.CATEGORY_CONTROL_ARCHIVE = "control_archive"
-IntelGui.init = function (self, ws, fullscreen_ws, node, component_name)
+function IntelGui:init(ws, fullscreen_ws, node, component_name)
 	slot11 = component_name
 
 	IntelGui.super.init(slot6, self, ws, fullscreen_ws, node)
@@ -20,12 +20,12 @@ IntelGui.init = function (self, ws, fullscreen_ws, node, component_name)
 
 	return 
 end
-IntelGui._set_initial_data = function (self)
+function IntelGui:_set_initial_data()
 	self._selected_category = IntelGui.CATEGORY_RAID_PERSONEL
 
 	return 
 end
-IntelGui._layout = function (self)
+function IntelGui:_layout()
 	slot3 = self
 
 	self._disable_dof(slot2)
@@ -52,7 +52,7 @@ IntelGui._layout = function (self)
 
 	return 
 end
-IntelGui._layout_tab_categories = function (self)
+function IntelGui:_layout_tab_categories()
 	local category_tabs_params = {
 		name = "category_tabs",
 		tab_width = 220,
@@ -84,7 +84,7 @@ IntelGui._layout_tab_categories = function (self)
 
 	return 
 end
-IntelGui._layout_list = function (self)
+function IntelGui:_layout_list()
 	local category_items_list_scrollable_area_params = {
 		scrollbar_width = 3,
 		name = "category_items_list_scrollable_area",
@@ -125,7 +125,7 @@ IntelGui._layout_list = function (self)
 
 	return 
 end
-IntelGui._layout_content = function (self)
+function IntelGui:_layout_content()
 	slot4 = self._selected_category
 
 	self._create_category_controls(slot2, self)
@@ -136,14 +136,14 @@ IntelGui._layout_content = function (self)
 
 	return 
 end
-IntelGui.close = function (self)
+function IntelGui:close()
 	slot3 = self
 
 	IntelGui.super.close(slot2)
 
 	return 
 end
-IntelGui.on_intel_category_selected = function (self, data)
+function IntelGui:on_intel_category_selected(data)
 	self._selected_category = data
 	slot5 = self._selected_category
 
@@ -173,21 +173,21 @@ IntelGui.on_intel_category_selected = function (self, data)
 
 	return 
 end
-IntelGui.on_item_clicked_category_items_list = function (self, data)
+function IntelGui:on_item_clicked_category_items_list(data)
 	slot5 = data.value
 
 	self._list_item_selected(slot3, self)
 
 	return 
 end
-IntelGui.on_item_selected_category_items_list = function (self, data)
+function IntelGui:on_item_selected_category_items_list(data)
 	slot5 = data.value
 
 	self._list_item_selected(slot3, self)
 
 	return 
 end
-IntelGui.data_source_category_items_list = function (self)
+function IntelGui:data_source_category_items_list()
 	local result = {}
 	local is_unlocked = true
 	local data_source_table = tweak_data.intel.categories[self._selected_category].items
@@ -237,14 +237,14 @@ IntelGui.data_source_category_items_list = function (self)
 
 	return result
 end
-IntelGui._list_item_selected = function (self, list_item_value)
+function IntelGui:_list_item_selected(list_item_value)
 	slot5 = list_item_value
 
 	self._show_selected_list_item_data(slot3, self)
 
 	return 
 end
-IntelGui._create_category_controls = function (self, selected_category)
+function IntelGui:_create_category_controls(selected_category)
 	slot6 = {
 		visible = false,
 		h = 752,
@@ -288,7 +288,7 @@ IntelGui._create_category_controls = function (self, selected_category)
 
 	return 
 end
-IntelGui._setup_category_controls = function (self, selected_category)
+function IntelGui:_setup_category_controls(selected_category)
 	if selected_category == IntelGui.CATEGORY_BULLETINS then
 		self._active_category_control = self._bulletins_control
 		slot5 = true
@@ -398,7 +398,7 @@ IntelGui._setup_category_controls = function (self, selected_category)
 
 	return 
 end
-IntelGui._show_selected_list_item_data = function (self, list_item_value)
+function IntelGui:_show_selected_list_item_data(list_item_value)
 	slot5 = list_item_value
 
 	self._active_category_control.set_data(slot3, self._active_category_control)
@@ -416,7 +416,7 @@ IntelGui._show_selected_list_item_data = function (self, list_item_value)
 
 	return 
 end
-IntelGui.update = function (self, t, dt)
+function IntelGui:update(t, dt)
 	if self._control_archive_control then
 		slot7 = dt
 
@@ -425,13 +425,13 @@ IntelGui.update = function (self, t, dt)
 
 	return 
 end
-IntelGui._play_intel_audio = function (self, intel_audio_id)
+function IntelGui:_play_intel_audio(intel_audio_id)
 	slot5 = intel_audio_id
 	self._intel_audio = managers.menu_component.post_event(slot3, managers.menu_component)
 
 	return 
 end
-IntelGui._stop_intel_audio = function (self)
+function IntelGui:_stop_intel_audio()
 	slot4 = "play_intel_audio"
 
 	managers.queued_tasks.unqueue(slot2, managers.queued_tasks)
@@ -448,7 +448,7 @@ IntelGui._stop_intel_audio = function (self)
 
 	return 
 end
-IntelGui.bind_controller_inputs = function (self)
+function IntelGui:bind_controller_inputs()
 	local bindings = {}
 	slot5 = "menu_controller_shoulder_left"
 	slot7 = "_on_weapon_category_tab_left"
@@ -485,7 +485,7 @@ IntelGui.bind_controller_inputs = function (self)
 
 	return 
 end
-IntelGui.bind_controller_inputs_play_video = function (self)
+function IntelGui:bind_controller_inputs_play_video()
 	local bindings = {}
 	slot5 = "menu_controller_shoulder_left"
 	slot7 = "_on_weapon_category_tab_left"
@@ -523,21 +523,21 @@ IntelGui.bind_controller_inputs_play_video = function (self)
 
 	return 
 end
-IntelGui._on_weapon_category_tab_left = function (self)
+function IntelGui:_on_weapon_category_tab_left()
 	slot3 = self._category_tabs
 
 	self._category_tabs._move_left(slot2)
 
 	return true, nil
 end
-IntelGui._on_weapon_category_tab_right = function (self)
+function IntelGui:_on_weapon_category_tab_right()
 	slot3 = self._category_tabs
 
 	self._category_tabs._move_right(slot2)
 
 	return true, nil
 end
-IntelGui.confirm_pressed = function (self)
+function IntelGui:confirm_pressed()
 	if self._selected_category == IntelGui.CATEGORY_CONTROL_ARCHIVE then
 		slot3 = self._category_items_list
 		local selected_item = self._category_items_list.selected_item(slot2)

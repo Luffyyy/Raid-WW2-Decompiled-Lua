@@ -29,7 +29,7 @@ slot3 = "CoreSubtitleSequencePlayer"
 core.import(slot1, core)
 
 SubtitleManager = SubtitleManager or CoreClass.class()
-SubtitleManager.init = function (self)
+function SubtitleManager:init()
 	self.__subtitle_sequences = {}
 	self.__loaded_sequence_file_paths = {}
 	slot3 = CoreSubtitlePresenter.DebugPresenter
@@ -40,19 +40,19 @@ SubtitleManager.init = function (self)
 
 	return 
 end
-SubtitleManager.destroy = function (self)
+function SubtitleManager:destroy()
 	slot4 = nil
 
 	self.set_presenter(slot2, self)
 
 	return 
 end
-SubtitleManager.presenter = function (self)
+function SubtitleManager:presenter()
 	slot4 = "Invalid presenter. SubtitleManager might have been destroyed."
 
 	return assert(slot2, self.__presenter)
 end
-SubtitleManager.set_presenter = function (self, presenter)
+function SubtitleManager:set_presenter(presenter)
 
 	-- Decompilation error in this vicinity:
 	slot2 = assert
@@ -66,7 +66,7 @@ SubtitleManager.set_presenter = function (self, presenter)
 
 	return 
 end
-SubtitleManager.load_sequences = function (self, sequence_file_path)
+function SubtitleManager:load_sequences(sequence_file_path)
 	local root_node = DB.load_node(slot3, DB, "subtitle_sequence")
 	slot7 = root_node
 	slot6 = "File is not a subtitle sequence file."
@@ -88,7 +88,7 @@ SubtitleManager.load_sequences = function (self, sequence_file_path)
 
 	return 
 end
-SubtitleManager.reload_sequences = function (self)
+function SubtitleManager:reload_sequences()
 	self.__subtitle_sequences = {}
 	slot3 = self.__loaded_sequence_file_paths
 
@@ -100,7 +100,7 @@ SubtitleManager.reload_sequences = function (self)
 
 	return 
 end
-SubtitleManager.update = function (self, time, delta_time)
+function SubtitleManager:update(time, delta_time)
 	if self.__player then
 		slot7 = delta_time
 
@@ -120,10 +120,10 @@ SubtitleManager.update = function (self, time, delta_time)
 
 	return 
 end
-SubtitleManager.enabled = function (self)
+function SubtitleManager:enabled()
 	return Global.__SubtitleManager__enabled or false
 end
-SubtitleManager.set_enabled = function (self, enabled)
+function SubtitleManager:set_enabled(enabled)
 	Global.__SubtitleManager__enabled = not not enabled
 	slot4 = self
 
@@ -131,10 +131,10 @@ SubtitleManager.set_enabled = function (self, enabled)
 
 	return 
 end
-SubtitleManager.visible = function (self)
+function SubtitleManager:visible()
 	return not self.__hidden
 end
-SubtitleManager.set_visible = function (self, visible)
+function SubtitleManager:set_visible(visible)
 	self.__hidden = not visible or nil
 	slot4 = self
 
@@ -142,14 +142,14 @@ SubtitleManager.set_visible = function (self, visible)
 
 	return 
 end
-SubtitleManager.clear_subtitle = function (self)
+function SubtitleManager:clear_subtitle()
 	slot4 = ""
 
 	self.show_subtitle_localized(slot2, self)
 
 	return 
 end
-SubtitleManager.is_showing_subtitles = function (self)
+function SubtitleManager:is_showing_subtitles()
 	slot3 = self
 
 	if self.enabled(slot2) then
@@ -158,7 +158,7 @@ SubtitleManager.is_showing_subtitles = function (self)
 		return self.visible(slot2) and self.__player ~= nil
 	end
 end
-SubtitleManager.show_subtitle = function (self, string_id, duration, macros, color, nationality_icon)
+function SubtitleManager:show_subtitle(string_id, duration, macros, color, nationality_icon)
 	slot13 = macros
 	slot12 = nationality_icon
 
@@ -166,7 +166,7 @@ SubtitleManager.show_subtitle = function (self, string_id, duration, macros, col
 
 	return 
 end
-SubtitleManager.show_subtitle_localized = function (self, localized_string, duration, color, nationality_icon)
+function SubtitleManager:show_subtitle_localized(localized_string, duration, color, nationality_icon)
 	local sequence = CoreSubtitleSequence.SubtitleSequence.new(slot6)
 	slot8 = sequence
 	slot16 = nationality_icon
@@ -179,7 +179,7 @@ SubtitleManager.show_subtitle_localized = function (self, localized_string, dura
 
 	return 
 end
-SubtitleManager.run_subtitle_sequence = function (self, sequence_id)
+function SubtitleManager:run_subtitle_sequence(sequence_id)
 	if sequence_id then
 		slot4 = self.__subtitle_sequences[sequence_id]
 		slot8 = sequence_id
@@ -196,15 +196,15 @@ SubtitleManager.run_subtitle_sequence = function (self, sequence_id)
 
 	return 
 end
-SubtitleManager.subtitle_sequence_ids = function (self)
+function SubtitleManager:subtitle_sequence_ids()
 	slot3 = self.__subtitle_sequences or {}
 
 	return CoreTable.table.map_keys(slot2)
 end
-SubtitleManager.has_subtitle_sequence = function (self, sequence_id)
+function SubtitleManager:has_subtitle_sequence(sequence_id)
 	return (self.__subtitle_sequences and self.__subtitle_sequences[sequence_id]) ~= nil
 end
-SubtitleManager._update_presenter_visibility = function (self)
+function SubtitleManager:_update_presenter_visibility()
 	local presenter = self.presenter(slot2)
 	slot4 = self
 

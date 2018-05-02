@@ -20,7 +20,7 @@ if not PointPicker then
 end
 
 PointPicker = slot0
-PointPicker.init = function (self, viewport, slotmask)
+function PointPicker:init(viewport, slotmask)
 	self.__viewport = viewport
 	self.__enabled = false
 
@@ -33,7 +33,7 @@ PointPicker.init = function (self, viewport, slotmask)
 
 	return 
 end
-PointPicker.update = function (self, time, delta_time)
+function PointPicker:update(time, delta_time)
 	if self.__enabled then
 		local camera = self.__viewport.camera(slot4)
 		slot6 = managers.editor
@@ -66,24 +66,24 @@ PointPicker.update = function (self, time, delta_time)
 
 	return 
 end
-PointPicker.start_picking = function (self)
+function PointPicker:start_picking()
 	self.__enabled = true
 
 	return 
 end
-PointPicker.stop_picking = function (self)
+function PointPicker:stop_picking()
 	self.__enabled = false
 
 	return 
 end
-PointPicker._mouse_moved = function (self, raycast)
+function PointPicker:_mouse_moved(raycast)
 	slot6 = raycast
 
 	self._send_event(slot3, self, "EVT_PICKING")
 
 	return 
 end
-PointPicker._mouse_left_down = function (self, raycast)
+function PointPicker:_mouse_left_down(raycast)
 	slot6 = raycast
 
 	self._send_event(slot3, self, "EVT_FINISHED_PICKING")

@@ -16,7 +16,7 @@ if not LevelSettingsLayer then
 end
 
 LevelSettingsLayer = slot0
-LevelSettingsLayer.init = function (self, owner)
+function LevelSettingsLayer:init(owner)
 	slot6 = "level_settings"
 
 	LevelSettingsLayer.super.init(slot3, self, owner)
@@ -26,13 +26,13 @@ LevelSettingsLayer.init = function (self, owner)
 
 	return 
 end
-LevelSettingsLayer.get_layer_name = function (self)
+function LevelSettingsLayer:get_layer_name()
 	return "Level Settings"
 end
-LevelSettingsLayer.get_setting = function (self, setting)
+function LevelSettingsLayer:get_setting(setting)
 	return self._settings[setting]
 end
-LevelSettingsLayer.get_mission_filter = function (self)
+function LevelSettingsLayer:get_mission_filter()
 	local t = {}
 
 	for i = 1, 5, 1 do
@@ -47,7 +47,7 @@ LevelSettingsLayer.get_mission_filter = function (self)
 
 	return t
 end
-LevelSettingsLayer.load = function (self, world_holder, offset)
+function LevelSettingsLayer:load(world_holder, offset)
 	slot8 = offset
 	self._settings = world_holder.create_world(slot4, world_holder, "world", self._save_name)
 	slot5 = self._settings_ctrlrs
@@ -62,7 +62,7 @@ LevelSettingsLayer.load = function (self, world_holder, offset)
 
 	return 
 end
-LevelSettingsLayer.save = function (self, save_params)
+function LevelSettingsLayer:save(save_params)
 	local t = {
 		single_data_block = true,
 		entry = self._save_name,
@@ -80,10 +80,10 @@ LevelSettingsLayer.save = function (self, save_params)
 
 	return 
 end
-LevelSettingsLayer.update = function (self, t, dt)
+function LevelSettingsLayer:update(t, dt)
 	return 
 end
-LevelSettingsLayer.build_panel = function (self, notebook)
+function LevelSettingsLayer:build_panel(notebook)
 	slot5 = "LevelSettingsLayer:build_panel"
 
 	cat_print(slot3, "editor")
@@ -116,7 +116,7 @@ LevelSettingsLayer.build_panel = function (self, notebook)
 
 	return self._ews_panel
 end
-LevelSettingsLayer._add_simulation_level_id = function (self, sizer)
+function LevelSettingsLayer:_add_simulation_level_id(sizer)
 	local id = "simulation_level_id"
 	local params = {
 		default = "none",
@@ -150,7 +150,7 @@ LevelSettingsLayer._add_simulation_level_id = function (self, sizer)
 
 	return 
 end
-LevelSettingsLayer._add_simulation_mission_filter = function (self, sizer)
+function LevelSettingsLayer:_add_simulation_mission_filter(sizer)
 	for i = 1, 5, 1 do
 		local id = "mission_filter_" .. i
 		slot12 = ""
@@ -180,7 +180,7 @@ LevelSettingsLayer._add_simulation_mission_filter = function (self, sizer)
 
 	return 
 end
-LevelSettingsLayer._add_chunk_name = function (self, panel, sizer)
+function LevelSettingsLayer:_add_chunk_name(panel, sizer)
 	local id = "chunk_name"
 	slot7 = "HORIZONTAL"
 	local horizontal_sizer = EWS.BoxSizer(slot5, EWS)
@@ -221,7 +221,7 @@ LevelSettingsLayer._add_chunk_name = function (self, panel, sizer)
 
 	return 
 end
-LevelSettingsLayer._set_data = function (self, data)
+function LevelSettingsLayer:_set_data(data)
 	slot6 = data.ctrlr
 	self._settings[data.value] = data.ctrlr.get_value(slot5)
 	slot6 = self._settings[data.value]
@@ -229,7 +229,7 @@ LevelSettingsLayer._set_data = function (self, data)
 
 	return 
 end
-LevelSettingsLayer.add_triggers = function (self)
+function LevelSettingsLayer:add_triggers()
 	slot3 = self
 
 	LevelSettingsLayer.super.add_triggers(slot2)
@@ -238,21 +238,21 @@ LevelSettingsLayer.add_triggers = function (self)
 
 	return 
 end
-LevelSettingsLayer.activate = function (self)
+function LevelSettingsLayer:activate()
 	slot3 = self
 
 	LevelSettingsLayer.super.activate(slot2)
 
 	return 
 end
-LevelSettingsLayer.deactivate = function (self)
+function LevelSettingsLayer:deactivate()
 	slot3 = self
 
 	LevelSettingsLayer.super.deactivate(slot2)
 
 	return 
 end
-LevelSettingsLayer.clear = function (self)
+function LevelSettingsLayer:clear()
 	slot3 = self
 
 	LevelSettingsLayer.super.clear(slot2)

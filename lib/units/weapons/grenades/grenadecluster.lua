@@ -4,14 +4,14 @@ if not GrenadeCluster then
 end
 
 GrenadeCluster = slot0
-GrenadeCluster.init = function (self, unit)
+function GrenadeCluster:init(unit)
 	slot5 = unit
 
 	GrenadeCluster.super.init(slot3, self)
 
 	return 
 end
-GrenadeCluster._setup_from_tweak_data = function (self)
+function GrenadeCluster:_setup_from_tweak_data()
 	local grenade_entry = self.name_id
 	self._tweak_data = tweak_data.projectiles[grenade_entry]
 	self._mass_look_up_modifier = self._tweak_data.mass_look_up_modifier
@@ -33,21 +33,21 @@ GrenadeCluster._setup_from_tweak_data = function (self)
 
 	return 
 end
-GrenadeCluster.clbk_impact = function (self, tag, unit, body, other_unit, other_body, position, normal, collision_velocity, velocity, other_velocity, new_velocity, direction, damage, ...)
+function GrenadeCluster:clbk_impact(tag, unit, body, other_unit, other_body, position, normal, collision_velocity, velocity, other_velocity, new_velocity, direction, damage, ...)
 	slot29 = damage
 
 	self._detonate(slot15, self, tag, unit, body, other_unit, other_body, position, normal, collision_velocity, velocity, other_velocity, new_velocity, direction, ...)
 
 	return 
 end
-GrenadeCluster._on_collision = function (self, col_ray)
+function GrenadeCluster:_on_collision(col_ray)
 	slot4 = self
 
 	self._detonate(slot3)
 
 	return 
 end
-GrenadeCluster._detonate = function (self, tag, unit, body, other_unit, other_body, position, normal, collision_velocity, velocity, other_velocity, new_velocity, direction, damage, ...)
+function GrenadeCluster:_detonate(tag, unit, body, other_unit, other_body, position, normal, collision_velocity, velocity, other_velocity, new_velocity, direction, damage, ...)
 	slot16 = self._unit
 	local pos = self._unit.position(slot15)
 	local normal = math.UP
@@ -106,17 +106,17 @@ GrenadeCluster._detonate = function (self, tag, unit, body, other_unit, other_bo
 
 	return 
 end
-GrenadeCluster.set_range = function (self, range)
+function GrenadeCluster:set_range(range)
 	self._range = range
 
 	return 
 end
-GrenadeCluster.set_damage = function (self, damage)
+function GrenadeCluster:set_damage(damage)
 	self._damage = damage
 
 	return 
 end
-GrenadeCluster._detonate_on_client = function (self)
+function GrenadeCluster:_detonate_on_client()
 	slot3 = self._unit
 	local pos = self._unit.position(slot2)
 	local range = self._range
@@ -154,7 +154,7 @@ GrenadeCluster._detonate_on_client = function (self)
 
 	return 
 end
-GrenadeCluster.bullet_hit = function (self)
+function GrenadeCluster:bullet_hit()
 	slot3 = Network
 
 	if not Network.is_server(slot2) then

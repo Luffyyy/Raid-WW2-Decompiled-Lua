@@ -51,7 +51,7 @@ for _, data in pairs(slot6) do
 	end
 end
 
-CopBase.init = function (self, unit)
+function CopBase:init(unit)
 	slot6 = false
 
 	UnitBase.init(slot3, self, unit)
@@ -70,7 +70,7 @@ CopBase.init = function (self, unit)
 
 	return 
 end
-CopBase.post_init = function (self)
+function CopBase:post_init()
 	slot3 = self._unit
 	self._ext_movement = self._unit.movement(slot2)
 	slot3 = self._unit
@@ -100,10 +100,10 @@ CopBase.post_init = function (self)
 
 	return 
 end
-CopBase._chk_spawn_gear = function (self)
+function CopBase:_chk_spawn_gear()
 	return 
 end
-CopBase.default_weapon_name = function (self)
+function CopBase:default_weapon_name()
 	local default_weapon_id = self._default_weapon_id
 	local weap_ids = tweak_data.character.weap_ids
 	slot5 = weap_ids
@@ -116,25 +116,25 @@ CopBase.default_weapon_name = function (self)
 
 	return 
 end
-CopBase.is_special = function (self)
+function CopBase:is_special()
 	if self._char_tweak.is_special == true then
 		return true
 	end
 
 	return false
 end
-CopBase.visibility_state = function (self)
+function CopBase:visibility_state()
 	return self._visibility_state
 end
-CopBase.lod_stage = function (self)
+function CopBase:lod_stage()
 	return self._lod_stage
 end
-CopBase.set_allow_invisible = function (self, allow)
+function CopBase:set_allow_invisible(allow)
 	self._allow_invisible = allow
 
 	return 
 end
-CopBase.set_visibility_state = function (self, stage)
+function CopBase:set_visibility_state(stage)
 	local state = stage and true
 
 	if not state and not self._allow_invisible then
@@ -221,7 +221,7 @@ CopBase.set_visibility_state = function (self, stage)
 
 	return 
 end
-CopBase.set_anim_lod = function (self, stage)
+function CopBase:set_anim_lod(stage)
 	slot4 = self._unit
 	slot7 = self._anim_lods[stage]
 
@@ -229,14 +229,14 @@ CopBase.set_anim_lod = function (self, stage)
 
 	return 
 end
-CopBase.on_death_exit = function (self)
+function CopBase:on_death_exit()
 	slot4 = false
 
 	self._unit.set_animations_enabled(slot2, self._unit)
 
 	return 
 end
-CopBase.chk_freeze_anims = function (self)
+function CopBase:chk_freeze_anims()
 	if (not self._lod_stage or 1 < self._lod_stage) and self._ext_anim.can_freeze and self._ext_anim.upper_body_empty then
 		if not self._anims_frozen then
 			self._anims_frozen = true
@@ -261,7 +261,7 @@ CopBase.chk_freeze_anims = function (self)
 
 	return 
 end
-CopBase.anim_act_clbk = function (self, unit, anim_act, send_to_action)
+function CopBase:anim_act_clbk(unit, anim_act, send_to_action)
 	if send_to_action then
 		slot6 = unit
 		slot7 = anim_act
@@ -280,7 +280,7 @@ CopBase.anim_act_clbk = function (self, unit, anim_act, send_to_action)
 
 	return 
 end
-CopBase.save = function (self, data)
+function CopBase:save(data)
 	slot4 = self._unit
 
 	if self._unit.interaction(slot3) then
@@ -299,7 +299,7 @@ CopBase.save = function (self, data)
 
 	return 
 end
-CopBase.load = function (self, data)
+function CopBase:load(data)
 	if data.is_hostage_trade then
 		slot6 = false
 
@@ -313,7 +313,7 @@ CopBase.load = function (self, data)
 
 	return 
 end
-CopBase.swap_material_config = function (self, material_applied_clbk)
+function CopBase:swap_material_config(material_applied_clbk)
 	slot2 = self._material_translation_map
 
 	if not self._loading_material_key then
@@ -360,7 +360,7 @@ CopBase.swap_material_config = function (self, material_applied_clbk)
 
 	return 
 end
-CopBase.on_material_applied = function (self, material_applied_clbk)
+function CopBase:on_material_applied(material_applied_clbk)
 	slot4 = self._unit
 
 	if not alive(slot3) then
@@ -383,10 +383,10 @@ CopBase.on_material_applied = function (self, material_applied_clbk)
 
 	return 
 end
-CopBase.is_in_original_material = function (self)
+function CopBase:is_in_original_material()
 	return self._is_in_original_material
 end
-CopBase.set_material_state = function (self, original)
+function CopBase:set_material_state(original)
 	if (original and not self._is_in_original_material) or (not original and self._is_in_original_material) then
 		slot4 = self
 
@@ -395,13 +395,13 @@ CopBase.set_material_state = function (self, original)
 
 	return 
 end
-CopBase.char_tweak = function (self)
+function CopBase:char_tweak()
 	return self._char_tweak
 end
-CopBase.melee_weapon = function (self)
+function CopBase:melee_weapon()
 	return self._melee_weapon_table or self._char_tweak.melee_weapon or "weapon"
 end
-CopBase.pre_destroy = function (self, unit)
+function CopBase:pre_destroy(unit)
 	slot4 = self._unit
 
 	if self._unit.movement(slot3) then

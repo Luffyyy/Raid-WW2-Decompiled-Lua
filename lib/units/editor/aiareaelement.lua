@@ -5,7 +5,7 @@ end
 
 AIAreaElement = slot0
 AIAreaElement.SAVE_UNIT_ROTATION = false
-AIAreaElement.init = function (self, unit)
+function AIAreaElement:init(unit)
 	slot5 = unit
 
 	AIAreaElement.super.init(slot3, self)
@@ -17,14 +17,14 @@ AIAreaElement.init = function (self, unit)
 
 	return 
 end
-AIAreaElement.post_init = function (self, ...)
+function AIAreaElement:post_init(...)
 	slot3 = self
 
 	AIAreaElement.super.post_init(slot2, ...)
 
 	return 
 end
-AIAreaElement.layer_finished = function (self)
+function AIAreaElement:layer_finished()
 	slot3 = self
 
 	AIAreaElement.super.layer_finished(slot2)
@@ -47,13 +47,13 @@ AIAreaElement.layer_finished = function (self)
 
 	return 
 end
-AIAreaElement.load_nav_seg_unit = function (self, unit)
+function AIAreaElement:load_nav_seg_unit(unit)
 	slot5 = unit
 	self._nav_seg_units[unit.unit_data(slot4).unit_id] = unit
 
 	return 
 end
-AIAreaElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function AIAreaElement:draw_links(t, dt, selected_unit, all_units)
 	slot10 = selected_unit
 
 	AIAreaElement.super.draw_links(slot6, self, t, dt)
@@ -82,7 +82,7 @@ AIAreaElement.draw_links = function (self, t, dt, selected_unit, all_units)
 
 	return 
 end
-AIAreaElement.update_selected = function (self, t, dt, selected_unit, all_units)
+function AIAreaElement:update_selected(t, dt, selected_unit, all_units)
 	slot7 = self
 
 	self._chk_units_alive(slot6)
@@ -102,14 +102,14 @@ AIAreaElement.update_selected = function (self, t, dt, selected_unit, all_units)
 
 	return 
 end
-AIAreaElement.update_unselected = function (self, t, dt, selected_unit, all_units)
+function AIAreaElement:update_unselected(t, dt, selected_unit, all_units)
 	slot7 = self
 
 	self._chk_units_alive(slot6)
 
 	return 
 end
-AIAreaElement._chk_units_alive = function (self)
+function AIAreaElement:_chk_units_alive()
 	slot3 = self._nav_seg_units
 
 	for u_id, unit in pairs(slot2) do
@@ -125,14 +125,14 @@ AIAreaElement._chk_units_alive = function (self)
 
 	return 
 end
-AIAreaElement.update_editing = function (self)
+function AIAreaElement:update_editing()
 	slot3 = self
 
 	self._raycast(slot2)
 
 	return 
 end
-AIAreaElement._raycast = function (self)
+function AIAreaElement:_raycast()
 	slot4 = {
 		ray_type = "editor",
 		mask = 19
@@ -160,7 +160,7 @@ AIAreaElement._raycast = function (self)
 
 	return 
 end
-AIAreaElement._lmb = function (self)
+function AIAreaElement:_lmb()
 	slot3 = self
 	local unit = self._raycast(slot2)
 
@@ -183,7 +183,7 @@ AIAreaElement._lmb = function (self)
 
 	return 
 end
-AIAreaElement._add_unit = function (self, unit)
+function AIAreaElement:_add_unit(unit)
 	local u_id = unit.unit_data(slot3).unit_id
 	self._nav_seg_units[u_id] = unit
 	slot6 = unit
@@ -192,7 +192,7 @@ AIAreaElement._add_unit = function (self, unit)
 
 	return 
 end
-AIAreaElement._remove_unit = function (self, unit)
+function AIAreaElement:_remove_unit(unit)
 	slot4 = unit
 	local u_id = unit.unit_data(slot3).unit_id
 	self._nav_seg_units[u_id] = nil
@@ -202,7 +202,7 @@ AIAreaElement._remove_unit = function (self, unit)
 
 	return 
 end
-AIAreaElement.add_triggers = function (self, vc)
+function AIAreaElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "_lmb"
 
@@ -210,7 +210,7 @@ AIAreaElement.add_triggers = function (self, vc)
 
 	return 
 end
-AIAreaElement.selected = function (self)
+function AIAreaElement:selected()
 	slot3 = self
 
 	AIAreaElement.super.selected(slot2)
@@ -221,7 +221,7 @@ AIAreaElement.selected = function (self)
 
 	return 
 end
-AIAreaElement._build_panel = function (self, panel, panel_sizer)
+function AIAreaElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -257,7 +257,7 @@ AIAreaElement._build_panel = function (self, panel, panel_sizer)
 
 	return 
 end
-AIAreaElement.add_unit_list_btn = function (self)
+function AIAreaElement:add_unit_list_btn()
 	local function f(unit)
 		slot4 = unit
 
@@ -292,7 +292,7 @@ AIAreaElement.add_unit_list_btn = function (self)
 
 	return 
 end
-AIAreaElement.remove_unit_list_btn = function (self)
+function AIAreaElement:remove_unit_list_btn()
 	local function f(unit)
 		slot4 = unit
 
@@ -314,10 +314,10 @@ AIAreaElement.remove_unit_list_btn = function (self)
 
 	return 
 end
-AIAreaElement.add_to_mission_package = function (self)
+function AIAreaElement:add_to_mission_package()
 	return 
 end
-AIAreaElement._add_nav_seg = function (self, unit)
+function AIAreaElement:_add_nav_seg(unit)
 	self._hed.nav_segs = self._hed.nav_segs or {}
 	slot7 = unit
 	slot5 = unit.unit_data(slot6).unit_id
@@ -326,7 +326,7 @@ AIAreaElement._add_nav_seg = function (self, unit)
 
 	return 
 end
-AIAreaElement._remove_nav_seg = function (self, u_id)
+function AIAreaElement:_remove_nav_seg(u_id)
 	slot4 = self._hed.nav_segs
 
 	for i, test_u_id in ipairs(slot3) do

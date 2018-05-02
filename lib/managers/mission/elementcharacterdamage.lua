@@ -8,7 +8,7 @@ if not ElementCharacterDamage then
 end
 
 ElementCharacterDamage = slot0
-ElementCharacterDamage.init = function (self, ...)
+function ElementCharacterDamage:init(...)
 	slot3 = self
 
 	ElementCharacterDamage.super.init(slot2, ...)
@@ -32,13 +32,13 @@ ElementCharacterDamage.init = function (self, ...)
 
 	return 
 end
-ElementCharacterDamage.destroy = function (self)
+function ElementCharacterDamage:destroy()
 	return 
 end
-ElementCharacterDamage.on_created = function (self)
+function ElementCharacterDamage:on_created()
 	return 
 end
-ElementCharacterDamage.on_script_activated = function (self)
+function ElementCharacterDamage:on_script_activated()
 	slot6 = "elements"
 
 	for _, id in ipairs(self.value(slot4, self)) do
@@ -55,7 +55,7 @@ ElementCharacterDamage.on_script_activated = function (self)
 
 	return 
 end
-ElementCharacterDamage.unit_spawned = function (self, unit)
+function ElementCharacterDamage:unit_spawned(unit)
 	slot4 = unit
 
 	if alive(slot3) then
@@ -73,7 +73,7 @@ ElementCharacterDamage.unit_spawned = function (self, unit)
 
 	return 
 end
-ElementCharacterDamage.clbk_linked_unit_took_damage = function (self, unit, damage_info)
+function ElementCharacterDamage:clbk_linked_unit_took_damage(unit, damage_info)
 	slot5 = unit
 
 	if not alive(slot4) then
@@ -94,7 +94,7 @@ ElementCharacterDamage.clbk_linked_unit_took_damage = function (self, unit, dama
 
 	return 
 end
-ElementCharacterDamage.on_executed = function (self, instigator, damage, damage_type)
+function ElementCharacterDamage:on_executed(instigator, damage, damage_type)
 	if not self._values.enabled then
 		return 
 	end
@@ -123,12 +123,12 @@ ElementCharacterDamage.on_executed = function (self, instigator, damage, damage_
 
 	return 
 end
-ElementCharacterDamage.save = function (self, data)
+function ElementCharacterDamage:save(data)
 	data.enabled = self._values.enabled
 
 	return 
 end
-ElementCharacterDamage.load = function (self, data)
+function ElementCharacterDamage:load(data)
 	slot5 = data.enabled
 
 	self.set_enabled(slot3, self)

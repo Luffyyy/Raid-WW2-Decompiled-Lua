@@ -1010,7 +1010,7 @@ if not MenuNodeGui then
 end
 
 MenuNodeGui = slot0
-MenuNodeGui.init = function (self, node, layer, parameters)
+function MenuNodeGui:init(node, layer, parameters)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -1639,7 +1639,7 @@ MenuNodeGui.init = function (self, node, layer, parameters)
 
 
 end
-MenuNodeGui.align_line_padding = function (self)
+function MenuNodeGui:align_line_padding()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -1649,7 +1649,7 @@ MenuNodeGui.align_line_padding = function (self)
 
 
 end
-MenuNodeGui._mid_align = function (self)
+function MenuNodeGui:_mid_align()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -1662,7 +1662,7 @@ MenuNodeGui._mid_align = function (self)
 
 
 end
-MenuNodeGui._right_align = function (self, align_line_proportions)
+function MenuNodeGui:_right_align(align_line_proportions)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -1695,7 +1695,7 @@ MenuNodeGui._right_align = function (self, align_line_proportions)
 
 
 end
-MenuNodeGui._left_align = function (self, align_line_proportions)
+function MenuNodeGui:_left_align(align_line_proportions)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -1708,7 +1708,7 @@ MenuNodeGui._left_align = function (self, align_line_proportions)
 
 
 end
-MenuNodeGui._world_right_align = function (self)
+function MenuNodeGui:_world_right_align()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -1721,7 +1721,7 @@ MenuNodeGui._world_right_align = function (self)
 
 
 end
-MenuNodeGui._world_left_align = function (self)
+function MenuNodeGui:_world_left_align()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -1738,7 +1738,7 @@ local mvector_tl = Vector3()
 local mvector_tr = Vector3()
 local mvector_bl = Vector3()
 local mvector_br = Vector3()
-MenuNodeGui._setup_panels = function (self, node)
+function MenuNodeGui:_setup_panels(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-43, warpins: 1 ---
@@ -1903,7 +1903,7 @@ MenuNodeGui._setup_panels = function (self, node)
 
 
 end
-MenuNodeGui.set_mini_info = function (self, text)
+function MenuNodeGui:set_mini_info(text)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -1917,7 +1917,7 @@ MenuNodeGui.set_mini_info = function (self, text)
 
 
 end
-MenuNodeGui._create_legends = function (self, node)
+function MenuNodeGui:_create_legends(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-43, warpins: 1 ---
@@ -2051,7 +2051,7 @@ MenuNodeGui._create_legends = function (self, node)
 
 
 end
-MenuNodeGui._create_align = function (self, node)
+function MenuNodeGui:_create_align(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-25, warpins: 1 ---
@@ -2073,7 +2073,7 @@ MenuNodeGui._create_align = function (self, node)
 
 
 end
-MenuNodeGui._create_marker = function (self, node)
+function MenuNodeGui:_create_marker(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -2093,7 +2093,7 @@ MenuNodeGui._create_marker = function (self, node)
 
 
 end
-MenuNodeGui._setup_item_panel_parent = function (self, safe_rect, shape)
+function MenuNodeGui:_setup_item_panel_parent(safe_rect, shape)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -2205,7 +2205,7 @@ MenuNodeGui._setup_item_panel_parent = function (self, safe_rect, shape)
 
 
 end
-MenuNodeGui._setup_item_panel = function (self, safe_rect, res)
+function MenuNodeGui:_setup_item_panel(safe_rect, res)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -2310,7 +2310,7 @@ MenuNodeGui._setup_item_panel = function (self, safe_rect, res)
 
 
 end
-MenuNodeGui._set_topic_position = function (self)
+function MenuNodeGui:_set_topic_position()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-23, warpins: 1 ---
@@ -2367,7 +2367,7 @@ MenuNodeGui._set_topic_position = function (self)
 
 
 end
-MenuNodeGui._create_menu_item = function (self, row_item)
+function MenuNodeGui:_create_menu_item(row_item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -2976,7 +2976,7 @@ MenuNodeGui._create_menu_item = function (self, row_item)
 
 
 end
-MenuNodeGui._setup_trial_buy = function (self, row_item)
+function MenuNodeGui:_setup_trial_buy(row_item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -2992,7 +2992,7 @@ MenuNodeGui._setup_trial_buy = function (self, row_item)
 
 
 end
-MenuNodeGui._setup_fake_disabled = function (self, row_item)
+function MenuNodeGui:_setup_fake_disabled(row_item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -3007,7 +3007,7 @@ MenuNodeGui._setup_fake_disabled = function (self, row_item)
 
 
 end
-MenuNodeGui._create_info_panel = function (self, row_item)
+function MenuNodeGui:_create_info_panel(row_item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-68, warpins: 1 ---
@@ -3059,7 +3059,7 @@ MenuNodeGui._create_info_panel = function (self, row_item)
 
 
 end
-MenuNodeGui._set_lobby_campaign = function (self, row_item)
+function MenuNodeGui:_set_lobby_campaign(row_item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -3102,7 +3102,7 @@ MenuNodeGui._set_lobby_campaign = function (self, row_item)
 
 
 end
-MenuNodeGui._create_lobby_campaign = function (self, row_item)
+function MenuNodeGui:_create_lobby_campaign(row_item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-105, warpins: 1 ---
@@ -3162,7 +3162,7 @@ MenuNodeGui._create_lobby_campaign = function (self, row_item)
 
 
 end
-MenuNodeGui._align_lobby_campaign = function (self, row_item)
+function MenuNodeGui:_align_lobby_campaign(row_item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-25, warpins: 1 ---
@@ -3215,7 +3215,7 @@ MenuNodeGui._align_lobby_campaign = function (self, row_item)
 
 
 end
-MenuNodeGui._highlight_lobby_campaign = function (self, row_item)
+function MenuNodeGui:_highlight_lobby_campaign(row_item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -3250,7 +3250,7 @@ MenuNodeGui._highlight_lobby_campaign = function (self, row_item)
 
 
 end
-MenuNodeGui._fade_lobby_campaign = function (self, row_item)
+function MenuNodeGui:_fade_lobby_campaign(row_item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -3264,7 +3264,7 @@ MenuNodeGui._fade_lobby_campaign = function (self, row_item)
 
 
 end
-MenuNodeGui._reload_lobby_campaign = function (self, row_item)
+function MenuNodeGui:_reload_lobby_campaign(row_item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -3343,7 +3343,7 @@ MenuNodeGui._reload_lobby_campaign = function (self, row_item)
 
 
 end
-MenuNodeGui._create_lobby_difficulty = function (self, row_item)
+function MenuNodeGui:_create_lobby_difficulty(row_item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-101, warpins: 1 ---
@@ -3411,7 +3411,7 @@ MenuNodeGui._create_lobby_difficulty = function (self, row_item)
 
 
 end
-MenuNodeGui._align_lobby_difficulty = function (self, row_item)
+function MenuNodeGui:_align_lobby_difficulty(row_item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-53, warpins: 1 ---
@@ -3450,7 +3450,7 @@ MenuNodeGui._align_lobby_difficulty = function (self, row_item)
 
 
 end
-MenuNodeGui._align_lobby_difficulty_help_text = function (self, row_item)
+function MenuNodeGui:_align_lobby_difficulty_help_text(row_item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-37, warpins: 1 ---
@@ -3480,7 +3480,7 @@ MenuNodeGui._align_lobby_difficulty_help_text = function (self, row_item)
 
 
 end
-MenuNodeGui._highlight_lobby_difficulty = function (self, row_item)
+function MenuNodeGui:_highlight_lobby_difficulty(row_item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -3494,7 +3494,7 @@ MenuNodeGui._highlight_lobby_difficulty = function (self, row_item)
 
 
 end
-MenuNodeGui._fade_lobby_difficulty = function (self, row_item)
+function MenuNodeGui:_fade_lobby_difficulty(row_item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -3508,7 +3508,7 @@ MenuNodeGui._fade_lobby_difficulty = function (self, row_item)
 
 
 end
-MenuNodeGui._reload_lobby_difficulty = function (self, row_item)
+function MenuNodeGui:_reload_lobby_difficulty(row_item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-23, warpins: 1 ---
@@ -3527,7 +3527,7 @@ MenuNodeGui._reload_lobby_difficulty = function (self, row_item)
 
 
 end
-MenuNodeGui._align_friend = function (self, row_item)
+function MenuNodeGui:_align_friend(row_item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-36, warpins: 1 ---
@@ -3653,7 +3653,7 @@ MenuNodeGui._align_friend = function (self, row_item)
 
 
 end
-MenuNodeGui.activate_customize_controller = function (self, item)
+function MenuNodeGui:activate_customize_controller(item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-82, warpins: 1 ---
@@ -3746,7 +3746,7 @@ MenuNodeGui.activate_customize_controller = function (self, item)
 
 
 end
-MenuNodeGui._key_press = function (self, o, key, input_id, item, no_add)
+function MenuNodeGui:_key_press(o, key, input_id, item, no_add)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -4246,7 +4246,7 @@ MenuNodeGui._key_press = function (self, o, key, input_id, item, no_add)
 
 
 end
-MenuNodeGui._end_customize_controller = function (self, o, item)
+function MenuNodeGui:_end_customize_controller(o, item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-50, warpins: 1 ---
@@ -4309,7 +4309,7 @@ MenuNodeGui._end_customize_controller = function (self, o, item)
 
 
 end
-MenuNodeGui._cb_chat = function (self, row_item)
+function MenuNodeGui:_cb_chat(row_item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -4381,7 +4381,7 @@ MenuNodeGui._cb_chat = function (self, row_item)
 
 
 end
-MenuNodeGui.sync_say = function (self, message, row_item, id)
+function MenuNodeGui:sync_say(message, row_item, id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -4395,7 +4395,7 @@ MenuNodeGui.sync_say = function (self, message, row_item, id)
 
 
 end
-MenuNodeGui._say = function (self, message, row_item, id)
+function MenuNodeGui:_say(message, row_item, id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -4436,7 +4436,7 @@ MenuNodeGui._say = function (self, message, row_item, id)
 
 
 end
-MenuNodeGui._cb_unlock = function (self)
+function MenuNodeGui:_cb_unlock()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -4446,7 +4446,7 @@ MenuNodeGui._cb_unlock = function (self)
 
 
 end
-MenuNodeGui._cb_lock = function (self)
+function MenuNodeGui:_cb_lock()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -4456,7 +4456,7 @@ MenuNodeGui._cb_lock = function (self)
 
 
 end
-MenuNodeGui._text_item_part = function (self, row_item, panel, align_x, text_align)
+function MenuNodeGui:_text_item_part(row_item, panel, align_x, text_align)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-15, warpins: 1 ---
@@ -4559,7 +4559,7 @@ MenuNodeGui._text_item_part = function (self, row_item, panel, align_x, text_ali
 
 
 end
-MenuNodeGui.scroll_update = function (self, dt)
+function MenuNodeGui:scroll_update(dt)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -4625,7 +4625,7 @@ MenuNodeGui.scroll_update = function (self, dt)
 
 
 end
-MenuNodeGui.reload_item = function (self, item)
+function MenuNodeGui:reload_item(item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -4783,7 +4783,7 @@ MenuNodeGui.reload_item = function (self, item)
 
 
 end
-MenuNodeGui._collaps_others = function (self, my_item)
+function MenuNodeGui:_collaps_others(my_item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -4871,7 +4871,7 @@ MenuNodeGui._collaps_others = function (self, my_item)
 
 
 end
-MenuNodeGui._reload_expand = function (self, item)
+function MenuNodeGui:_reload_expand(item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -4984,7 +4984,7 @@ MenuNodeGui._reload_expand = function (self, item)
 
 
 end
-MenuNodeGui._delete_row_item = function (self, item)
+function MenuNodeGui:_delete_row_item(item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -5068,7 +5068,7 @@ MenuNodeGui._delete_row_item = function (self, item)
 
 
 end
-MenuNodeGui._clear_gui = function (self)
+function MenuNodeGui:_clear_gui()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -5133,7 +5133,7 @@ MenuNodeGui._clear_gui = function (self)
 
 
 end
-MenuNodeGui.need_repositioning = function (self)
+function MenuNodeGui:need_repositioning()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -5155,7 +5155,7 @@ MenuNodeGui.need_repositioning = function (self)
 
 
 end
-MenuNodeGui.update_item_icon_visibility = function (self)
+function MenuNodeGui:update_item_icon_visibility()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -5236,7 +5236,7 @@ MenuNodeGui.update_item_icon_visibility = function (self)
 
 
 end
-MenuNodeGui._reload_friend = function (self, item)
+function MenuNodeGui:_reload_friend(item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-25, warpins: 1 ---
@@ -5256,7 +5256,7 @@ MenuNodeGui._reload_friend = function (self, item)
 
 
 end
-MenuNodeGui._setup_item_size = function (self, row_item)
+function MenuNodeGui:_setup_item_size(row_item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -5290,7 +5290,7 @@ MenuNodeGui._setup_item_size = function (self, row_item)
 
 
 end
-MenuNodeGui._setup_level_size = function (self, row_item)
+function MenuNodeGui:_setup_level_size(row_item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-43, warpins: 1 ---
@@ -5316,7 +5316,7 @@ MenuNodeGui._setup_level_size = function (self, row_item)
 
 
 end
-MenuNodeGui._highlight_row_item = function (self, row_item, mouse_over)
+function MenuNodeGui:_highlight_row_item(row_item, mouse_over)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -5795,7 +5795,7 @@ MenuNodeGui._highlight_row_item = function (self, row_item, mouse_over)
 
 
 end
-MenuNodeGui._align_marker = function (self, row_item)
+function MenuNodeGui:_align_marker(row_item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -6107,7 +6107,7 @@ MenuNodeGui._align_marker = function (self, row_item)
 
 
 end
-MenuNodeGui._fade_row_item = function (self, row_item)
+function MenuNodeGui:_fade_row_item(row_item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -6550,7 +6550,7 @@ MenuNodeGui._fade_row_item = function (self, row_item)
 
 
 end
-MenuNodeGui._align_item_gui_info_panel = function (self, panel)
+function MenuNodeGui:_align_item_gui_info_panel(panel)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-38, warpins: 1 ---
@@ -6566,7 +6566,7 @@ MenuNodeGui._align_item_gui_info_panel = function (self, panel)
 
 end
 local xl_pad = 64
-MenuNodeGui._align_info_panel = function (self, row_item)
+function MenuNodeGui:_align_info_panel(row_item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-66, warpins: 1 ---
@@ -6613,7 +6613,7 @@ MenuNodeGui._align_info_panel = function (self, row_item)
 
 
 end
-MenuNodeGui._align_normal = function (self, row_item)
+function MenuNodeGui:_align_normal(row_item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -6822,7 +6822,7 @@ MenuNodeGui._align_normal = function (self, row_item)
 
 
 end
-MenuNodeGui._align_chat = function (self, row_item)
+function MenuNodeGui:_align_chat(row_item)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-137, warpins: 1 ---
@@ -6935,7 +6935,7 @@ MenuNodeGui._align_chat = function (self, row_item)
 
 
 end
-MenuNodeGui._update_scaled_values = function (self)
+function MenuNodeGui:_update_scaled_values()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-17, warpins: 1 ---
@@ -6949,7 +6949,7 @@ MenuNodeGui._update_scaled_values = function (self)
 
 
 end
-MenuNodeGui.resolution_changed = function (self)
+function MenuNodeGui:resolution_changed()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-28, warpins: 1 ---
@@ -7150,7 +7150,7 @@ MenuNodeGui.resolution_changed = function (self)
 
 
 end
-MenuNodeGui._layout_legends = function (self)
+function MenuNodeGui:_layout_legends()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-25, warpins: 1 ---
@@ -7219,7 +7219,7 @@ MenuNodeGui._layout_legends = function (self)
 
 
 end
-MenuNodeGui.set_visible = function (self, visible)
+function MenuNodeGui:set_visible(visible)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -7299,7 +7299,7 @@ MenuNodeGui.set_visible = function (self, visible)
 
 
 end
-MenuNodeGui.close = function (self, ...)
+function MenuNodeGui:close(...)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -7394,7 +7394,7 @@ if not MenuNodeMainGui then
 end
 
 MenuNodeMainGui = slot5
-MenuNodeMainGui._setup_item_rows = function (self, node)
+function MenuNodeMainGui:_setup_item_rows(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---

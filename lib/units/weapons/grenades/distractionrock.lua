@@ -4,7 +4,7 @@ if not DistractionRock then
 end
 
 DistractionRock = slot0
-DistractionRock._setup_from_tweak_data = function (self)
+function DistractionRock:_setup_from_tweak_data()
 	local grenade_entry = self.name_id
 	self._tweak_data = tweak_data.projectiles[grenade_entry]
 	self._init_timer = self._tweak_data.init_timer or 2.5
@@ -22,21 +22,21 @@ DistractionRock._setup_from_tweak_data = function (self)
 
 	return 
 end
-DistractionRock.clbk_impact = function (self, tag, unit, body, other_unit, other_body, position, normal, collision_velocity, velocity, other_velocity, new_velocity, direction, damage, ...)
+function DistractionRock:clbk_impact(tag, unit, body, other_unit, other_body, position, normal, collision_velocity, velocity, other_velocity, new_velocity, direction, damage, ...)
 	slot17 = "[DistractionRock:clbk_impact]"
 
 	Application.debug(slot15, Application)
 
 	return 
 end
-DistractionRock._on_collision = function (self, col_ray)
+function DistractionRock:_on_collision(col_ray)
 	slot5 = "[DistractionRock:_on_collision]"
 
 	Application.debug(slot3, Application)
 
 	return 
 end
-DistractionRock._detonate = function (self, tag, unit, body, other_unit, other_body, position, normal, collision_velocity, velocity, other_velocity, new_velocity, direction, damage, ...)
+function DistractionRock:_detonate(tag, unit, body, other_unit, other_body, position, normal, collision_velocity, velocity, other_velocity, new_velocity, direction, damage, ...)
 	if self._hand_held then
 		return 
 	end
@@ -78,7 +78,7 @@ DistractionRock._detonate = function (self, tag, unit, body, other_unit, other_b
 
 	return 
 end
-DistractionRock.clbk_pathing_results = function (self, search_id, path)
+function DistractionRock:clbk_pathing_results(search_id, path)
 	local search = self._pathing_searches[search_id]
 
 	if path and search then
@@ -113,7 +113,7 @@ DistractionRock.clbk_pathing_results = function (self, search_id, path)
 
 	return 
 end
-DistractionRock._abort_all_unfinished_pathing = function (self)
+function DistractionRock:_abort_all_unfinished_pathing()
 	slot3 = self._pathing_searches
 
 	for search_id, search in pairs(slot2) do
@@ -126,17 +126,17 @@ DistractionRock._abort_all_unfinished_pathing = function (self)
 
 	return 
 end
-DistractionRock._detonate_on_client = function (self)
+function DistractionRock:_detonate_on_client()
 	return 
 end
-DistractionRock.bullet_hit = function (self)
+function DistractionRock:bullet_hit()
 	slot4 = "[DistractionRock:bullet_hit]"
 
 	Application.debug(slot2, Application)
 
 	return 
 end
-DistractionRock.set_attention_state = function (self, state)
+function DistractionRock:set_attention_state(state)
 	if state then
 		if not self._attention_setting then
 			slot6 = true
@@ -165,7 +165,7 @@ DistractionRock.set_attention_state = function (self, state)
 
 	return 
 end
-DistractionRock.update_attention_settings = function (self, descriptor)
+function DistractionRock:update_attention_settings(descriptor)
 	local tweak_data = tweak_data.attention.settings[descriptor]
 
 	if tweak_data and self._attention_handler then

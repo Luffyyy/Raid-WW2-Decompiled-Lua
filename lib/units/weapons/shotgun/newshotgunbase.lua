@@ -14,7 +14,7 @@ if not NewShotgunBase then
 end
 
 NewShotgunBase = slot0
-NewShotgunBase.init = function (self, ...)
+function NewShotgunBase:init(...)
 	slot3 = self
 
 	NewShotgunBase.super.init(slot2, ...)
@@ -25,7 +25,7 @@ NewShotgunBase.init = function (self, ...)
 
 	return 
 end
-NewShotgunBase.setup_default = function (self)
+function NewShotgunBase:setup_default()
 	self._damage_falloff_near = tweak_data.weapon[self._name_id].damage_falloff_near
 	self._damage_falloff_far = tweak_data.weapon[self._name_id].damage_falloff_far
 	self._DAMAGE_AT_FAR = tweak_data.weapon[self._name_id].DAMAGE_AT_FAR or 1
@@ -35,7 +35,7 @@ NewShotgunBase.setup_default = function (self)
 
 	return 
 end
-NewShotgunBase._create_use_setups = function (self)
+function NewShotgunBase:_create_use_setups()
 	local use_data = {}
 	local player_setup = {
 		selection_index = tweak_data.weapon[self._name_id].use_data.selection_index,
@@ -51,7 +51,7 @@ NewShotgunBase._create_use_setups = function (self)
 
 	return 
 end
-NewShotgunBase._update_stats_values = function (self)
+function NewShotgunBase:_update_stats_values()
 	slot3 = self
 
 	NewShotgunBase.super._update_stats_values(slot2)
@@ -81,7 +81,7 @@ local mvec_temp = Vector3()
 local mvec_to = Vector3()
 local mvec_direction = Vector3()
 local mvec_spread_direction = Vector3()
-NewShotgunBase._fire_raycast = function (self, user_unit, from_pos, direction, dmg_mul, shoot_player, spread_mul, autohit_mul, suppr_mul, shoot_through_data)
+function NewShotgunBase:_fire_raycast(user_unit, from_pos, direction, dmg_mul, shoot_player, spread_mul, autohit_mul, suppr_mul, shoot_through_data)
 
 	-- Decompilation error in this vicinity:
 	local result = nil
@@ -310,7 +310,7 @@ if not SaigaShotgun then
 end
 
 SaigaShotgun = slot4
-SaigaShotgun.init = function (self, ...)
+function SaigaShotgun:init(...)
 	slot3 = self
 
 	SaigaShotgun.super.init(slot2, ...)
@@ -326,7 +326,7 @@ if not InstantElectricBulletBase then
 end
 
 InstantElectricBulletBase = slot4
-InstantElectricBulletBase.give_impact_damage = function (self, col_ray, weapon_unit, user_unit, damage, armor_piercing)
+function InstantElectricBulletBase:give_impact_damage(col_ray, weapon_unit, user_unit, damage, armor_piercing)
 
 	-- Decompilation error in this vicinity:
 	local hit_unit = col_ray.unit

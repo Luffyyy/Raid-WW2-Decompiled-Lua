@@ -11,14 +11,14 @@ if not ActivateScriptUnitElement then
 end
 
 ActivateScriptUnitElement = slot0
-ActivateScriptUnitElement.init = function (self, ...)
+function ActivateScriptUnitElement:init(...)
 	slot3 = self
 
 	CoreActivateScriptUnitElement.init(slot2, ...)
 
 	return 
 end
-CoreActivateScriptUnitElement.init = function (self, unit)
+function CoreActivateScriptUnitElement:init(unit)
 	slot5 = unit
 
 	MissionElement.init(slot3, self)
@@ -30,7 +30,7 @@ CoreActivateScriptUnitElement.init = function (self, unit)
 
 	return 
 end
-CoreActivateScriptUnitElement.selected = function (self)
+function CoreActivateScriptUnitElement:selected()
 	slot3 = self
 
 	MissionElement.selected(slot2)
@@ -55,13 +55,13 @@ CoreActivateScriptUnitElement.selected = function (self)
 
 	return 
 end
-CoreActivateScriptUnitElement._scripts = function (self)
+function CoreActivateScriptUnitElement:_scripts()
 	slot4 = "Mission"
 	slot3 = managers.editor.layer(slot2, managers.editor)
 
 	return managers.editor.layer(slot2, managers.editor).script_names(slot2)
 end
-CoreActivateScriptUnitElement._build_panel = function (self, panel, panel_sizer)
+function CoreActivateScriptUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

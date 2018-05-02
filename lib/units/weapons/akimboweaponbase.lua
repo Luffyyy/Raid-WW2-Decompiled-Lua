@@ -7,7 +7,7 @@ end
 
 AkimboWeaponBase = slot0
 AkimboWeaponBase.AKIMBO = true
-AkimboWeaponBase.init = function (self, ...)
+function AkimboWeaponBase:init(...)
 	slot3 = self
 
 	AkimboWeaponBase.super.init(slot2, ...)
@@ -17,7 +17,7 @@ AkimboWeaponBase.init = function (self, ...)
 
 	return 
 end
-AkimboWeaponBase._create_second_gun = function (self)
+function AkimboWeaponBase:_create_second_gun()
 	local factory_weapon = tweak_data.weapon.factory[self._factory_id]
 	local ids_unit_name = Idstring(slot3)
 	slot7 = Vector3()
@@ -74,7 +74,7 @@ AkimboWeaponBase._create_second_gun = function (self)
 
 	return 
 end
-AkimboWeaponBase.create_second_gun = function (self)
+function AkimboWeaponBase:create_second_gun()
 	slot3 = self
 
 	self._create_second_gun(slot2)
@@ -89,7 +89,7 @@ AkimboWeaponBase.create_second_gun = function (self)
 
 	return 
 end
-AkimboWeaponBase.fire = function (self, ...)
+function AkimboWeaponBase:fire(...)
 	if not self._manual_fire_second_gun then
 		local result = AkimboWeaponBase.super.fire(slot2, ...)
 		slot4 = self._second_gun
@@ -148,7 +148,7 @@ AkimboWeaponBase.fire = function (self, ...)
 
 	return 
 end
-AkimboWeaponBase._fire_second = function (self, params)
+function AkimboWeaponBase:_fire_second(params)
 	slot4 = self._second_gun
 
 	if alive(slot3) and self._setup then
@@ -183,7 +183,7 @@ AkimboWeaponBase._fire_second = function (self, params)
 
 	return 
 end
-AkimboWeaponBase.on_enabled = function (self, ...)
+function AkimboWeaponBase:on_enabled(...)
 	slot3 = self
 
 	AkimboWeaponBase.super.on_enabled(slot2, ...)
@@ -199,7 +199,7 @@ AkimboWeaponBase.on_enabled = function (self, ...)
 
 	return 
 end
-AkimboWeaponBase.on_disabled = function (self, ...)
+function AkimboWeaponBase:on_disabled(...)
 	slot3 = self
 
 	AkimboWeaponBase.super.on_disabled(slot2, ...)
@@ -215,7 +215,7 @@ AkimboWeaponBase.on_disabled = function (self, ...)
 
 	return 
 end
-AkimboWeaponBase.set_gadget_on = function (self, ...)
+function AkimboWeaponBase:set_gadget_on(...)
 	slot3 = self
 
 	AkimboWeaponBase.super.set_gadget_on(slot2, ...)
@@ -231,7 +231,7 @@ AkimboWeaponBase.set_gadget_on = function (self, ...)
 
 	return 
 end
-AkimboWeaponBase._second_gun_tweak_data_anim_version = function (self, anim)
+function AkimboWeaponBase:_second_gun_tweak_data_anim_version(anim)
 	slot4 = self
 
 	if not self.weapon_tweak_data(slot3).animations.second_gun_versions then
@@ -242,7 +242,7 @@ AkimboWeaponBase._second_gun_tweak_data_anim_version = function (self, anim)
 
 	return self.weapon_tweak_data(slot3).animations.second_gun_versions[anim] or anim
 end
-AkimboWeaponBase.tweak_data_anim_play = function (self, anim, ...)
+function AkimboWeaponBase:tweak_data_anim_play(anim, ...)
 	slot4 = self._second_gun
 
 	if alive(slot3) and anim ~= "fire" then
@@ -258,7 +258,7 @@ AkimboWeaponBase.tweak_data_anim_play = function (self, anim, ...)
 
 	return AkimboWeaponBase.super.tweak_data_anim_play(slot3, self, ...)
 end
-AkimboWeaponBase.tweak_data_anim_stop = function (self, anim, ...)
+function AkimboWeaponBase:tweak_data_anim_stop(anim, ...)
 	slot5 = anim
 
 	AkimboWeaponBase.super.tweak_data_anim_stop(slot3, self, ...)
@@ -276,7 +276,7 @@ AkimboWeaponBase.tweak_data_anim_stop = function (self, anim, ...)
 
 	return 
 end
-AkimboWeaponBase.destroy = function (self, ...)
+function AkimboWeaponBase:destroy(...)
 	slot3 = self
 
 	AkimboWeaponBase.super.destroy(slot2, ...)
@@ -299,7 +299,7 @@ end
 
 NPCAkimboWeaponBase = slot0
 NPCAkimboWeaponBase.AKIMBO = true
-NPCAkimboWeaponBase.init = function (self, ...)
+function NPCAkimboWeaponBase:init(...)
 	slot3 = self
 
 	NPCAkimboWeaponBase.super.init(slot2, ...)
@@ -309,7 +309,7 @@ NPCAkimboWeaponBase.init = function (self, ...)
 
 	return 
 end
-NPCAkimboWeaponBase.create_second_gun = function (self)
+function NPCAkimboWeaponBase:create_second_gun()
 	slot3 = self
 
 	AkimboWeaponBase._create_second_gun(slot2)
@@ -323,7 +323,7 @@ NPCAkimboWeaponBase.create_second_gun = function (self)
 
 	return 
 end
-NPCAkimboWeaponBase.fire_blank = function (self, ...)
+function NPCAkimboWeaponBase:fire_blank(...)
 	if not self._manual_fire_second_gun then
 		slot3 = self
 
@@ -370,7 +370,7 @@ NPCAkimboWeaponBase.fire_blank = function (self, ...)
 
 	return 
 end
-NPCAkimboWeaponBase._fire_blank_second = function (self, params)
+function NPCAkimboWeaponBase:_fire_blank_second(params)
 	slot4 = self._second_gun
 
 	if alive(slot3) then
@@ -387,7 +387,7 @@ NPCAkimboWeaponBase._fire_blank_second = function (self, params)
 
 	return 
 end
-NPCAkimboWeaponBase.on_enabled = function (self, ...)
+function NPCAkimboWeaponBase:on_enabled(...)
 	slot3 = self
 
 	NPCAkimboWeaponBase.super.on_enabled(slot2, ...)
@@ -403,7 +403,7 @@ NPCAkimboWeaponBase.on_enabled = function (self, ...)
 
 	return 
 end
-NPCAkimboWeaponBase.on_disabled = function (self, ...)
+function NPCAkimboWeaponBase:on_disabled(...)
 	slot3 = self
 
 	NPCAkimboWeaponBase.super.on_disabled(slot2, ...)
@@ -419,7 +419,7 @@ NPCAkimboWeaponBase.on_disabled = function (self, ...)
 
 	return 
 end
-NPCAkimboWeaponBase.on_melee_item_shown = function (self)
+function NPCAkimboWeaponBase:on_melee_item_shown()
 	slot3 = self._second_gun
 
 	if alive(slot2) then
@@ -431,7 +431,7 @@ NPCAkimboWeaponBase.on_melee_item_shown = function (self)
 
 	return 
 end
-NPCAkimboWeaponBase.on_melee_item_hidden = function (self)
+function NPCAkimboWeaponBase:on_melee_item_hidden()
 	slot3 = self._second_gun
 
 	if alive(slot2) then
@@ -449,7 +449,7 @@ NPCAkimboWeaponBase.on_melee_item_hidden = function (self)
 
 	return 
 end
-NPCAkimboWeaponBase.set_gadget_on = function (self, ...)
+function NPCAkimboWeaponBase:set_gadget_on(...)
 	slot3 = self
 
 	NPCAkimboWeaponBase.super.set_gadget_on(slot2, ...)
@@ -465,7 +465,7 @@ NPCAkimboWeaponBase.set_gadget_on = function (self, ...)
 
 	return 
 end
-NPCAkimboWeaponBase.destroy = function (self, ...)
+function NPCAkimboWeaponBase:destroy(...)
 	slot3 = self
 
 	NPCAkimboWeaponBase.super.destroy(slot2, ...)

@@ -33,7 +33,7 @@ RaidGUIControlXPProgressBar.NEW_XP_H = 64
 RaidGUIControlXPProgressBar.NEW_XP_TEXT_FONT = tweak_data.gui.fonts.din_compressed
 RaidGUIControlXPProgressBar.NEW_XP_TEXT_FONT_SIZE = tweak_data.gui.font_sizes.size_32
 RaidGUIControlXPProgressBar.NEW_XP_TEXT_COLOR = tweak_data.gui.colors.raid_white
-RaidGUIControlXPProgressBar.init = function (self, parent, params)
+function RaidGUIControlXPProgressBar:init(parent, params)
 	params.horizontal_padding = params.horizontal_padding or 0
 	slot7 = params
 
@@ -82,10 +82,10 @@ RaidGUIControlXPProgressBar.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlXPProgressBar.close = function (self)
+function RaidGUIControlXPProgressBar:close()
 	return 
 end
-RaidGUIControlXPProgressBar._create_panels = function (self)
+function RaidGUIControlXPProgressBar:_create_panels()
 	local control_params = clone(slot2)
 	control_params.name = control_params.name .. "_panel"
 	slot4 = self._panel
@@ -104,7 +104,7 @@ RaidGUIControlXPProgressBar._create_panels = function (self)
 
 	return 
 end
-RaidGUIControlXPProgressBar._create_progress_bar = function (self)
+function RaidGUIControlXPProgressBar:_create_progress_bar()
 	local progress_bar_params = {
 		left = "slider_large_left",
 		name = "progress_bar",
@@ -128,7 +128,7 @@ RaidGUIControlXPProgressBar._create_progress_bar = function (self)
 
 	return 
 end
-RaidGUIControlXPProgressBar._create_slider_pimples = function (self)
+function RaidGUIControlXPProgressBar:_create_slider_pimples()
 	local icon = RaidGUIControlXPProgressBar.SLIDER_PIMPLE_ICON
 	slot5 = icon
 	local icon_w = tweak_data.gui.icon_w(slot3, tweak_data.gui)
@@ -188,7 +188,7 @@ RaidGUIControlXPProgressBar._create_slider_pimples = function (self)
 
 	return 
 end
-RaidGUIControlXPProgressBar._create_level_marks_on_progress_bar = function (self)
+function RaidGUIControlXPProgressBar:_create_level_marks_on_progress_bar()
 	local level_marks_panel_params = {
 		name = "level_marks_panel",
 		y = 0,
@@ -236,7 +236,7 @@ RaidGUIControlXPProgressBar._create_level_marks_on_progress_bar = function (self
 
 	return 
 end
-RaidGUIControlXPProgressBar._create_level_and_weapons_info = function (self)
+function RaidGUIControlXPProgressBar:_create_level_and_weapons_info()
 	local level_labels_panel_params = {
 		name = "level_labels_panel",
 		y = 0,
@@ -283,7 +283,7 @@ RaidGUIControlXPProgressBar._create_level_and_weapons_info = function (self)
 
 	return 
 end
-RaidGUIControlXPProgressBar._create_new_xp_label = function (self)
+function RaidGUIControlXPProgressBar:_create_new_xp_label()
 	local new_xp_params = {
 		vertical = "center",
 		name = "new_xp_text",
@@ -305,7 +305,7 @@ RaidGUIControlXPProgressBar._create_new_xp_label = function (self)
 
 	return 
 end
-RaidGUIControlXPProgressBar._create_label_for_level = function (self, level, draw_level_label, number_of_weapon_unlocks)
+function RaidGUIControlXPProgressBar:_create_label_for_level(level, draw_level_label, number_of_weapon_unlocks)
 	local level_label_panel_params = {
 		y = 0,
 		x = 0
@@ -475,7 +475,7 @@ RaidGUIControlXPProgressBar._create_label_for_level = function (self, level, dra
 
 	return level_label_panel
 end
-RaidGUIControlXPProgressBar.set_progress = function (self, progress, points_added_total)
+function RaidGUIControlXPProgressBar:set_progress(progress, points_added_total)
 	slot6 = self._progress_padding + progress * self._progress_multiplier
 
 	self._progress_bar.set_foreground_progress(slot4, self._progress_bar)
@@ -522,7 +522,7 @@ RaidGUIControlXPProgressBar.set_progress = function (self, progress, points_adde
 
 	return 
 end
-RaidGUIControlXPProgressBar.unlock_level = function (self, level)
+function RaidGUIControlXPProgressBar:unlock_level(level)
 	for i = self._current_level, level, 1 do
 		if self._weapon_unlock_icons[i] then
 			slot9 = 1
@@ -561,7 +561,7 @@ RaidGUIControlXPProgressBar.unlock_level = function (self, level)
 
 	return 
 end
-RaidGUIControlXPProgressBar.set_level = function (self, level)
+function RaidGUIControlXPProgressBar:set_level(level)
 	for i = 1, level, 1 do
 		if self._weapon_unlock_icons[i] then
 			slot9 = 1
@@ -593,14 +593,14 @@ RaidGUIControlXPProgressBar.set_level = function (self, level)
 
 	return 
 end
-RaidGUIControlXPProgressBar.hide = function (self)
+function RaidGUIControlXPProgressBar:hide()
 	slot4 = 0
 
 	self._object.set_alpha(slot2, self._object)
 
 	return 
 end
-RaidGUIControlXPProgressBar.fade_in = function (self)
+function RaidGUIControlXPProgressBar:fade_in()
 	slot3 = self._object
 	slot3 = self._object.get_engine_panel(slot2)
 	slot8 = "_animate_fade_in"
@@ -609,7 +609,7 @@ RaidGUIControlXPProgressBar.fade_in = function (self)
 
 	return 
 end
-RaidGUIControlXPProgressBar._animate_fade_in = function (self)
+function RaidGUIControlXPProgressBar:_animate_fade_in()
 	local duration = 0.3
 	slot4 = self._object
 	local t = self._object.alpha(slot3) * duration
@@ -630,7 +630,7 @@ RaidGUIControlXPProgressBar._animate_fade_in = function (self)
 
 	return 
 end
-RaidGUIControlXPProgressBar._animate_fade_in_object = function (self, object)
+function RaidGUIControlXPProgressBar:_animate_fade_in_object(object)
 	local duration = 0.3
 	slot5 = object
 	local t = object.alpha(slot4) * duration
@@ -651,7 +651,7 @@ RaidGUIControlXPProgressBar._animate_fade_in_object = function (self, object)
 
 	return 
 end
-RaidGUIControlXPProgressBar._animate_inner_panel_position = function (self, panel, new_x)
+function RaidGUIControlXPProgressBar:_animate_inner_panel_position(panel, new_x)
 	local duration = 0.7
 	local t = 0
 	slot7 = panel

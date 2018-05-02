@@ -13,7 +13,7 @@ NewFlamethrowerBase = slot0
 NewFlamethrowerBase.EVENT_IDS = {
 	flamethrower_effect = 1
 }
-NewFlamethrowerBase.init = function (self, ...)
+function NewFlamethrowerBase:init(...)
 	slot3 = self
 
 	NewFlamethrowerBase.super.init(slot2, ...)
@@ -24,7 +24,7 @@ NewFlamethrowerBase.init = function (self, ...)
 
 	return 
 end
-NewFlamethrowerBase.setup_default = function (self)
+function NewFlamethrowerBase:setup_default()
 	self._rays = tweak_data.weapon[self._name_id].rays or 6
 	self._range = tweak_data.weapon[self._name_id].flame_max_range or 1000
 	self._flame_max_range = tweak_data.weapon[self._name_id].flame_max_range
@@ -33,10 +33,10 @@ NewFlamethrowerBase.setup_default = function (self)
 
 	return 
 end
-NewFlamethrowerBase.update = function (self, unit, t, dt)
+function NewFlamethrowerBase:update(unit, t, dt)
 	return 
 end
-NewFlamethrowerBase._create_use_setups = function (self)
+function NewFlamethrowerBase:_create_use_setups()
 	local use_data = {}
 	local player_setup = {
 		selection_index = tweak_data.weapon[self._name_id].use_data.selection_index,
@@ -52,7 +52,7 @@ NewFlamethrowerBase._create_use_setups = function (self)
 
 	return 
 end
-NewFlamethrowerBase._update_stats_values = function (self)
+function NewFlamethrowerBase:_update_stats_values()
 	slot3 = self
 
 	NewFlamethrowerBase.super._update_stats_values(slot2)
@@ -67,10 +67,10 @@ NewFlamethrowerBase._update_stats_values = function (self)
 
 	return 
 end
-NewFlamethrowerBase.get_damage_falloff = function (self, damage, col_ray, user_unit)
+function NewFlamethrowerBase:get_damage_falloff(damage, col_ray, user_unit)
 	return 
 end
-NewFlamethrowerBase._spawn_muzzle_effect = function (self, from_pos, direction)
+function NewFlamethrowerBase:_spawn_muzzle_effect(from_pos, direction)
 	slot5 = self._unit
 	slot7 = direction
 
@@ -81,7 +81,7 @@ end
 local mvec_to = Vector3()
 local mvec_direction = Vector3()
 local mvec_spread_direction = Vector3()
-NewFlamethrowerBase._fire_raycast = function (self, user_unit, from_pos, direction, dmg_mul, shoot_player, spread_mul, autohit_mul, suppr_mul, shoot_through_data)
+function NewFlamethrowerBase:_fire_raycast(user_unit, from_pos, direction, dmg_mul, shoot_player, spread_mul, autohit_mul, suppr_mul, shoot_through_data)
 
 	-- Decompilation error in this vicinity:
 	if self._rays == 1 then
@@ -255,13 +255,13 @@ NewFlamethrowerBase._fire_raycast = function (self, user_unit, from_pos, directi
 
 	return result
 end
-NewFlamethrowerBase.reload_interuptable = function (self)
+function NewFlamethrowerBase:reload_interuptable()
 	return false
 end
-NewFlamethrowerBase.calculate_vertical_recoil_kick = function (self)
+function NewFlamethrowerBase:calculate_vertical_recoil_kick()
 	return 0
 end
-NewFlamethrowerBase.third_person_important = function (self)
+function NewFlamethrowerBase:third_person_important()
 	return true
 end
 

@@ -44,7 +44,7 @@ if not MissionLayer then
 end
 
 MissionLayer = slot0
-MissionLayer.init = function (self, owner)
+function MissionLayer:init(owner)
 	slot4 = "mission"
 	local types = CoreEditorUtils.layer_type(slot3) or {
 		"mission_element"
@@ -81,7 +81,7 @@ MissionLayer.init = function (self, owner)
 
 	return 
 end
-MissionLayer.load = function (self, world_holder, offset)
+function MissionLayer:load(world_holder, offset)
 	slot8 = offset
 	local data = world_holder.create_world(slot4, world_holder, "world", "mission_scripts")
 	self._scripts = data.scripts or self._scripts
@@ -128,7 +128,7 @@ MissionLayer.load = function (self, world_holder, offset)
 
 	return 
 end
-MissionLayer.save = function (self)
+function MissionLayer:save()
 	slot3 = self._created_units
 
 	for _, unit in ipairs(slot2) do
@@ -186,7 +186,7 @@ MissionLayer.save = function (self)
 
 	return 
 end
-MissionLayer.save_mission = function (self, params)
+function MissionLayer:save_mission(params)
 	local all_script_units = {}
 	slot5 = self._created_units
 
@@ -245,7 +245,7 @@ MissionLayer.save_mission = function (self, params)
 
 	return scripts
 end
-MissionLayer.do_spawn_unit = function (self, name, pos, rot)
+function MissionLayer:do_spawn_unit(name, pos, rot)
 	slot6 = self
 
 	if not self.current_script(slot5) then
@@ -272,7 +272,7 @@ MissionLayer.do_spawn_unit = function (self, name, pos, rot)
 
 	return MissionLayer.super.do_spawn_unit(slot5, self, name, pos)
 end
-MissionLayer._on_unit_created = function (self, unit, ...)
+function MissionLayer:_on_unit_created(unit, ...)
 	slot5 = unit
 
 	MissionLayer.super._on_unit_created(slot3, self, ...)
@@ -282,17 +282,17 @@ MissionLayer._on_unit_created = function (self, unit, ...)
 
 	return 
 end
-MissionLayer.condition = function (self)
+function MissionLayer:condition()
 	slot3 = self
 
 	return MissionLayer.super.condition(slot2) or self._editing_mission_element
 end
-MissionLayer.select_unit_ray_authorised = function (self, ray)
+function MissionLayer:select_unit_ray_authorised(ray)
 	slot5 = ray.unit
 
 	return self.authorised_unit_type(slot3, self)
 end
-MissionLayer.select_unit_authorised = function (self, unit)
+function MissionLayer:select_unit_authorised(unit)
 	if unit then
 		slot5 = ray.unit
 		slot2 = self.authorised_unit_type(slot3, self)
@@ -300,7 +300,7 @@ MissionLayer.select_unit_authorised = function (self, unit)
 
 	return slot2
 end
-MissionLayer.adding_to_mission = function (self)
+function MissionLayer:adding_to_mission()
 	local vc = self._editor_data.virtual_controller
 	slot4 = vc
 	slot7 = "add_on_executed"
@@ -323,7 +323,7 @@ MissionLayer.adding_to_mission = function (self)
 
 	return slot2
 end
-MissionLayer.set_select_unit = function (self, unit, ...)
+function MissionLayer:set_select_unit(unit, ...)
 	slot4 = unit
 
 	if alive(slot3) then
@@ -358,7 +358,7 @@ MissionLayer.set_select_unit = function (self, unit, ...)
 
 	return 
 end
-MissionLayer._add_on_executed = function (self, unit)
+function MissionLayer:_add_on_executed(unit)
 	slot4 = unit
 
 	if not alive(slot3) then
@@ -407,7 +407,7 @@ MissionLayer._add_on_executed = function (self, unit)
 
 	return false
 end
-MissionLayer.delete_unit = function (self, del_unit)
+function MissionLayer:delete_unit(del_unit)
 	if not self._editing_mission_element then
 		slot4 = del_unit
 
@@ -445,7 +445,7 @@ MissionLayer.delete_unit = function (self, del_unit)
 
 	return 
 end
-MissionLayer.refresh_list_flow = function (self)
+function MissionLayer:refresh_list_flow()
 	if self._list_flow then
 		slot3 = self._list_flow
 
@@ -458,7 +458,7 @@ MissionLayer.refresh_list_flow = function (self)
 
 	return 
 end
-MissionLayer.clone_edited_values = function (self, unit, source)
+function MissionLayer:clone_edited_values(unit, source)
 	slot7 = source
 
 	MissionLayer.super.clone_edited_values(slot4, self, unit)
@@ -493,7 +493,7 @@ MissionLayer.clone_edited_values = function (self, unit, source)
 
 	return 
 end
-MissionLayer.hide_all = function (self)
+function MissionLayer:hide_all()
 	slot3 = self._created_units
 
 	for _, unit in ipairs(slot2) do
@@ -516,7 +516,7 @@ MissionLayer.hide_all = function (self)
 
 	return 
 end
-MissionLayer.set_enabled = function (self, enabled)
+function MissionLayer:set_enabled(enabled)
 	self._layer_enabled = enabled
 	slot4 = self._created_units
 
@@ -552,7 +552,7 @@ MissionLayer.set_enabled = function (self, enabled)
 
 	return true
 end
-MissionLayer.widget_affect_object = function (self)
+function MissionLayer:widget_affect_object()
 	slot3 = self
 	local object = MissionLayer.super.widget_affect_object(slot2)
 
@@ -570,7 +570,7 @@ MissionLayer.widget_affect_object = function (self)
 
 	return object
 end
-MissionLayer.use_widget_position = function (self, pos)
+function MissionLayer:use_widget_position(pos)
 	if self._editing_mission_element then
 		slot4 = self._selected_unit
 
@@ -590,7 +590,7 @@ MissionLayer.use_widget_position = function (self, pos)
 
 	return 
 end
-MissionLayer._units_as_pairs = function (self, units)
+function MissionLayer:_units_as_pairs(units)
 	local t = {}
 	slot5 = units
 
@@ -601,7 +601,7 @@ MissionLayer._units_as_pairs = function (self, units)
 
 	return t
 end
-MissionLayer._on_reference_unit_unselected = function (self, unit)
+function MissionLayer:_on_reference_unit_unselected(unit)
 	slot4 = unit
 
 	if alive(slot3) then
@@ -617,7 +617,7 @@ MissionLayer._on_reference_unit_unselected = function (self, unit)
 
 	return 
 end
-MissionLayer.update = function (self, time, rel_time)
+function MissionLayer:update(time, rel_time)
 	slot7 = rel_time
 
 	MissionLayer.super.update(slot4, self, time)
@@ -767,7 +767,7 @@ MissionLayer.update = function (self, time, rel_time)
 
 	return 
 end
-MissionLayer._cloning_done = function (self)
+function MissionLayer:_cloning_done()
 	slot3 = self._selected_unit
 
 	if alive(slot2) then
@@ -783,7 +783,7 @@ MissionLayer._cloning_done = function (self)
 
 	return 
 end
-MissionLayer.update_unit_settings = function (self)
+function MissionLayer:update_unit_settings()
 
 	-- Decompilation error in this vicinity:
 	slot3 = self
@@ -823,14 +823,14 @@ MissionLayer.update_unit_settings = function (self)
 
 	return 
 end
-MissionLayer.set_current_panel_visible = function (self, visible)
+function MissionLayer:set_current_panel_visible(visible)
 	if self._current_panel then
 		slot4 = self._current_panel
 	end
 
 	return 
 end
-MissionLayer.show_timeline = function (self)
+function MissionLayer:show_timeline()
 	slot3 = self
 
 	if self.ctrl(slot2) then
@@ -846,7 +846,7 @@ MissionLayer.show_timeline = function (self)
 
 	return 
 end
-MissionLayer.test_element = function (self)
+function MissionLayer:test_element()
 	slot3 = self._selected_unit
 	slot3 = self._selected_unit.mission_element(slot2)
 
@@ -854,7 +854,7 @@ MissionLayer.test_element = function (self)
 
 	return 
 end
-MissionLayer.stop_test_element = function (self)
+function MissionLayer:stop_test_element()
 	slot3 = self._selected_unit
 	slot3 = self._selected_unit.mission_element(slot2)
 
@@ -862,7 +862,7 @@ MissionLayer.stop_test_element = function (self)
 
 	return 
 end
-MissionLayer.toggle_update_selected_on = function (self)
+function MissionLayer:toggle_update_selected_on()
 	slot3 = self._selected_unit
 	slot3 = self._selected_unit.mission_element(slot2)
 	slot7 = "UPDATE_SELECTED_ON"
@@ -871,7 +871,7 @@ MissionLayer.toggle_update_selected_on = function (self)
 
 	return 
 end
-MissionLayer._on_gui_mission_element_help = function (self)
+function MissionLayer:_on_gui_mission_element_help()
 	slot6 = self._selected_unit
 	slot6 = self._selected_unit.name(slot5)
 	local short_name = self._stripped_unit_name(slot2, self._selected_unit.name(slot5).s(slot5))
@@ -881,7 +881,7 @@ MissionLayer._on_gui_mission_element_help = function (self)
 
 	return 
 end
-MissionLayer.toolbar_toggle = function (self, data, event)
+function MissionLayer:toolbar_toggle(data, event)
 	slot6 = event
 
 	CoreEditorUtils.toolbar_toggle(slot4, data)
@@ -902,7 +902,7 @@ MissionLayer.toolbar_toggle = function (self, data, event)
 
 	return 
 end
-MissionLayer.toolbar_toggle_trg = function (self, data)
+function MissionLayer:toolbar_toggle_trg(data)
 	if data.value == "_editing_mission_element" then
 		slot4 = self._selected_unit
 	end
@@ -935,13 +935,13 @@ MissionLayer.toolbar_toggle_trg = function (self, data)
 
 	return 
 end
-MissionLayer.missionelement_panel = function (self)
+function MissionLayer:missionelement_panel()
 	return self._missionelement_panel
 end
-MissionLayer.missionelement_sizer = function (self)
+function MissionLayer:missionelement_sizer()
 	return self._missionelement_sizer
 end
-MissionLayer.do_layout = function (self)
+function MissionLayer:do_layout()
 	slot3 = self._missionelement_panel
 
 	self._missionelement_panel.layout(slot2)
@@ -952,7 +952,7 @@ MissionLayer.do_layout = function (self)
 
 	return 
 end
-MissionLayer.build_panel = function (self, notebook)
+function MissionLayer:build_panel(notebook)
 	slot6 = {
 		units_noteboook_proportion = 0,
 		units_notebook_min_size = Vector3(slot8, -1, 160)
@@ -1068,7 +1068,7 @@ MissionLayer.build_panel = function (self, notebook)
 
 	return self._ews_panel
 end
-MissionLayer._build_scripts = function (self)
+function MissionLayer:_build_scripts()
 	slot6 = "Scripts"
 	local sizer = EWS.StaticBoxSizer(slot2, EWS, self._ews_panel, "HORIZONTAL")
 	slot7 = "TB_FLAT,TB_NODIVIDER"
@@ -1163,7 +1163,7 @@ MissionLayer._build_scripts = function (self)
 
 	return 
 end
-MissionLayer.add_btns_to_toolbar = function (self, ...)
+function MissionLayer:add_btns_to_toolbar(...)
 	slot3 = self
 
 	MissionLayer.super.add_btns_to_toolbar(slot2, ...)
@@ -1266,7 +1266,7 @@ MissionLayer.add_btns_to_toolbar = function (self, ...)
 
 	return 
 end
-MissionLayer.toggle_persistent_debug = function (self, params)
+function MissionLayer:toggle_persistent_debug(params)
 	slot4 = managers.mission
 	slot8 = "PERSISTENT_DEBUG"
 
@@ -1274,7 +1274,7 @@ MissionLayer.toggle_persistent_debug = function (self, params)
 
 	return 
 end
-MissionLayer._show_list_flow = function (self)
+function MissionLayer:_show_list_flow()
 	if not self._list_flow then
 		slot3 = _G.MissionElementListFlow
 		slot1 = _G.MissionElementListFlow.new(slot2)
@@ -1295,14 +1295,14 @@ MissionLayer._show_list_flow = function (self)
 
 	return 
 end
-MissionLayer._on_activate_on_parsed = function (self)
+function MissionLayer:_on_activate_on_parsed()
 	slot4 = self
 	slot5 = "ACTIVATE_ON_PARSED"
 	self._scripts[self.current_script(slot3)].activate_on_parsed = self._scripts_toolbar.tool_state(slot3, self._scripts_toolbar)
 
 	return 
 end
-MissionLayer._on_create_script = function (self)
+function MissionLayer:_on_create_script()
 	slot12 = 0
 	slot9 = true
 	local name = EWS.get_text_from_user(slot2, EWS, Global.frame_panel, "Enter name for new script:", "Create new script", "", Vector3(slot9, -1, -1))
@@ -1321,7 +1321,7 @@ MissionLayer._on_create_script = function (self)
 
 	return 
 end
-MissionLayer._on_set_script = function (self)
+function MissionLayer:_on_set_script()
 	slot3 = self
 
 	if not self.current_script(slot2) then
@@ -1350,7 +1350,7 @@ MissionLayer._on_set_script = function (self)
 
 	return 
 end
-MissionLayer._populate_scripts_combobox = function (self)
+function MissionLayer:_populate_scripts_combobox()
 	slot3 = self._scripts_combobox
 
 	self._scripts_combobox.clear(slot2)
@@ -1365,21 +1365,21 @@ MissionLayer._populate_scripts_combobox = function (self)
 
 	return 
 end
-MissionLayer._clear_scripts_combobox = function (self)
+function MissionLayer:_clear_scripts_combobox()
 	slot3 = self._scripts_combobox
 
 	self._scripts_combobox.clear(slot2)
 
 	return 
 end
-MissionLayer._append_scripts_combobox = function (self, name)
+function MissionLayer:_append_scripts_combobox(name)
 	slot5 = name
 
 	self._scripts_combobox.append(slot3, self._scripts_combobox)
 
 	return 
 end
-MissionLayer._set_scripts_combobox = function (self, name)
+function MissionLayer:_set_scripts_combobox(name)
 	if self._scripts[name] then
 	end
 
@@ -1399,7 +1399,7 @@ MissionLayer._set_scripts_combobox = function (self, name)
 
 	return 
 end
-MissionLayer._get_script_combobox_name = function (self, continent)
+function MissionLayer:_get_script_combobox_name(continent)
 	slot4 = self._scripts
 
 	for name, script in pairs(slot3) do
@@ -1407,7 +1407,7 @@ MissionLayer._get_script_combobox_name = function (self, continent)
 
 	return 
 end
-MissionLayer._set_toolbar_settings = function (self)
+function MissionLayer:_set_toolbar_settings()
 	slot4 = self
 	local script = self._scripts[self.current_script(slot3)]
 	slot6 = script.activate_on_parsed
@@ -1416,7 +1416,7 @@ MissionLayer._set_toolbar_settings = function (self)
 
 	return 
 end
-MissionLayer.current_script = function (self)
+function MissionLayer:current_script()
 
 	-- Decompilation error in this vicinity:
 	slot3 = self._scripts_combobox
@@ -1431,7 +1431,7 @@ MissionLayer.current_script = function (self)
 
 	return 
 end
-MissionLayer.scripts_by_continent = function (self, continent)
+function MissionLayer:scripts_by_continent(continent)
 	local scripts = {}
 	slot5 = self._scripts
 
@@ -1445,7 +1445,7 @@ MissionLayer.scripts_by_continent = function (self, continent)
 
 	return scripts
 end
-MissionLayer._reset_scripts = function (self)
+function MissionLayer:_reset_scripts()
 	slot3 = self
 
 	self._clear_scripts_combobox(slot2)
@@ -1459,7 +1459,7 @@ MissionLayer._reset_scripts = function (self)
 
 	return 
 end
-MissionLayer._create_script = function (self, name, values)
+function MissionLayer:_create_script(name, values)
 	if not name then
 		return 
 	end
@@ -1484,7 +1484,7 @@ MissionLayer._create_script = function (self, name, values)
 
 	return 
 end
-MissionLayer.set_script = function (self, name)
+function MissionLayer:set_script(name)
 	slot5 = name
 
 	self._set_scripts_combobox(slot3, self)
@@ -1495,7 +1495,7 @@ MissionLayer.set_script = function (self, name)
 
 	return 
 end
-MissionLayer._on_delete_script = function (self)
+function MissionLayer:_on_delete_script()
 	slot3 = self
 
 	if not self.current_script(slot2) then
@@ -1518,7 +1518,7 @@ MissionLayer._on_delete_script = function (self)
 
 	return 
 end
-MissionLayer._delete_script = function (self, name)
+function MissionLayer:_delete_script(name)
 	slot5 = managers.editor
 	slot5 = managers.editor.current_continent(slot4)
 
@@ -1558,7 +1558,7 @@ MissionLayer._delete_script = function (self, name)
 
 	return 
 end
-MissionLayer._on_rename_script = function (self)
+function MissionLayer:_on_rename_script()
 	slot3 = self
 
 	if not self.current_script(slot2) then
@@ -1597,7 +1597,7 @@ MissionLayer._on_rename_script = function (self)
 
 	return 
 end
-MissionLayer._rename_script = function (self, name, new_name)
+function MissionLayer:_rename_script(name, new_name)
 	slot5 = self._created_units
 
 	for _, unit in ipairs(slot4) do
@@ -1626,14 +1626,14 @@ MissionLayer._rename_script = function (self, name, new_name)
 
 	return 
 end
-MissionLayer._set_script = function (self, name)
+function MissionLayer:_set_script(name)
 	if not self._scripts[name] then
 		return 
 	end
 
 	return 
 end
-MissionLayer._hide_all_scripts = function (self)
+function MissionLayer:_hide_all_scripts()
 	slot3 = self._scripts
 
 	for name, _ in pairs(slot2) do
@@ -1644,7 +1644,7 @@ MissionLayer._hide_all_scripts = function (self)
 
 	return 
 end
-MissionLayer._show_all_mission_scripts = function (self)
+function MissionLayer:_show_all_mission_scripts()
 	slot3 = self._scripts
 
 	for name, _ in pairs(slot2) do
@@ -1655,7 +1655,7 @@ MissionLayer._show_all_mission_scripts = function (self)
 
 	return 
 end
-MissionLayer._hide_script = function (self, name)
+function MissionLayer:_hide_script(name)
 	if not self._scripts[name] then
 		return 
 	end
@@ -1683,7 +1683,7 @@ MissionLayer._hide_script = function (self, name)
 
 	return 
 end
-MissionLayer._show_script = function (self, name)
+function MissionLayer:_show_script(name)
 	if not self._scripts[name] then
 		return 
 	end
@@ -1715,7 +1715,7 @@ MissionLayer._show_script = function (self, name)
 
 	return 
 end
-MissionLayer.script_names = function (self)
+function MissionLayer:script_names()
 	local names = {}
 	slot4 = self._scripts
 
@@ -1727,7 +1727,7 @@ MissionLayer.script_names = function (self)
 
 	return names
 end
-MissionLayer.set_show_all_scripts = function (self, show_all_scripts)
+function MissionLayer:set_show_all_scripts(show_all_scripts)
 	self._show_all_scripts = show_all_scripts
 
 	if self._show_all_scripts then
@@ -1747,10 +1747,10 @@ MissionLayer.set_show_all_scripts = function (self, show_all_scripts)
 
 	return 
 end
-MissionLayer.show_all_scripts = function (self, show_all_scripts)
+function MissionLayer:show_all_scripts(show_all_scripts)
 	return self._show_all_scripts
 end
-MissionLayer.set_iconsize = function (self, size)
+function MissionLayer:set_iconsize(size)
 	Global.iconsize = size
 	slot4 = self._created_units
 
@@ -1763,13 +1763,13 @@ MissionLayer.set_iconsize = function (self, size)
 
 	return 
 end
-MissionLayer.visualize_flow = function (self)
+function MissionLayer:visualize_flow()
 	return self._visualize_flow
 end
-MissionLayer.use_colored_links = function (self)
+function MissionLayer:use_colored_links()
 	return self._use_colored_links
 end
-MissionLayer.clear = function (self)
+function MissionLayer:clear()
 	slot3 = self._created_units
 
 	for _, unit in ipairs(slot2) do
@@ -1800,10 +1800,10 @@ MissionLayer.clear = function (self)
 
 	return 
 end
-MissionLayer.simulate_with_current_script = function (self)
+function MissionLayer:simulate_with_current_script()
 	return self._simulate_with_current_script
 end
-MissionLayer.get_unit_links = function (self, to_unit)
+function MissionLayer:get_unit_links(to_unit)
 	local links = {
 		executers = {},
 		on_executed = {}
@@ -1819,7 +1819,7 @@ MissionLayer.get_unit_links = function (self, to_unit)
 
 	return links
 end
-MissionLayer.activate = function (self, ...)
+function MissionLayer:activate(...)
 	slot3 = self
 
 	MissionLayer.super.activate(slot2, ...)
@@ -1834,7 +1834,7 @@ MissionLayer.activate = function (self, ...)
 
 	return 
 end
-MissionLayer.deactivate = function (self, ...)
+function MissionLayer:deactivate(...)
 	slot3 = self
 
 	MissionLayer.super.deactivate(slot2, ...)
@@ -1849,7 +1849,7 @@ MissionLayer.deactivate = function (self, ...)
 
 	return 
 end
-MissionLayer.add_triggers = function (self)
+function MissionLayer:add_triggers()
 	MissionLayer.super.add_triggers(slot2)
 
 	local vc = self._editor_data.virtual_controller

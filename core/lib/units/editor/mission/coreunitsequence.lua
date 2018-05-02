@@ -11,14 +11,14 @@ if not UnitSequenceUnitElement then
 end
 
 UnitSequenceUnitElement = slot0
-UnitSequenceUnitElement.init = function (self, ...)
+function UnitSequenceUnitElement:init(...)
 	slot3 = self
 
 	CoreUnitSequenceUnitElement.init(slot2, ...)
 
 	return 
 end
-CoreUnitSequenceUnitElement.init = function (self, unit)
+function CoreUnitSequenceUnitElement:init(unit)
 	slot5 = unit
 
 	MissionElement.init(slot3, self)
@@ -30,14 +30,14 @@ CoreUnitSequenceUnitElement.init = function (self, unit)
 
 	return 
 end
-CoreUnitSequenceUnitElement.update_unselected = function (self, ...)
+function CoreUnitSequenceUnitElement:update_unselected(...)
 	slot3 = self
 
 	MissionElement.update_unselected(slot2, ...)
 
 	return 
 end
-CoreUnitSequenceUnitElement.update_selected = function (self, ...)
+function CoreUnitSequenceUnitElement:update_selected(...)
 	slot3 = self
 
 	MissionElement.update_selected(slot2, ...)
@@ -48,7 +48,7 @@ CoreUnitSequenceUnitElement.update_selected = function (self, ...)
 
 	return 
 end
-CoreUnitSequenceUnitElement.get_links_to_unit = function (self, to_unit, links, all_units)
+function CoreUnitSequenceUnitElement:get_links_to_unit(to_unit, links, all_units)
 	slot9 = all_units
 
 	CoreUnitSequenceUnitElement.super.get_links_to_unit(slot5, self, to_unit, links)
@@ -68,7 +68,7 @@ CoreUnitSequenceUnitElement.get_links_to_unit = function (self, to_unit, links, 
 
 	return 
 end
-CoreUnitSequenceUnitElement.draw_links_unselected = function (self, ...)
+function CoreUnitSequenceUnitElement:draw_links_unselected(...)
 	slot3 = self
 
 	CoreUnitSequenceUnitElement.super.draw_links_unselected(slot2, ...)
@@ -79,7 +79,7 @@ CoreUnitSequenceUnitElement.draw_links_unselected = function (self, ...)
 
 	return 
 end
-CoreUnitSequenceUnitElement._get_sequence_units = function (self)
+function CoreUnitSequenceUnitElement:_get_sequence_units()
 	local units = {}
 	slot4 = self._unit
 	slot4 = self._unit.damage(slot3)
@@ -111,7 +111,7 @@ CoreUnitSequenceUnitElement._get_sequence_units = function (self)
 
 	return units
 end
-CoreUnitSequenceUnitElement._draw_trigger_units = function (self, r, g, b)
+function CoreUnitSequenceUnitElement:_draw_trigger_units(r, g, b)
 	slot8 = self
 
 	for _, unit in ipairs(self._get_sequence_units(slot7)) do
@@ -133,7 +133,7 @@ CoreUnitSequenceUnitElement._draw_trigger_units = function (self, r, g, b)
 
 	return 
 end
-CoreUnitSequenceUnitElement.new_save_values = function (self, ...)
+function CoreUnitSequenceUnitElement:new_save_values(...)
 	slot3 = self
 
 	self._set_trigger_list(slot2)
@@ -142,7 +142,7 @@ CoreUnitSequenceUnitElement.new_save_values = function (self, ...)
 
 	return MissionElement.new_save_values(slot2, ...)
 end
-CoreUnitSequenceUnitElement.save_values = function (self, ...)
+function CoreUnitSequenceUnitElement:save_values(...)
 	slot3 = self
 
 	self._set_trigger_list(slot2)
@@ -153,7 +153,7 @@ CoreUnitSequenceUnitElement.save_values = function (self, ...)
 
 	return 
 end
-CoreUnitSequenceUnitElement._set_trigger_list = function (self)
+function CoreUnitSequenceUnitElement:_set_trigger_list()
 	self._hed.trigger_list = {}
 	slot3 = managers.sequence
 	slot6 = self._unit
@@ -194,7 +194,7 @@ CoreUnitSequenceUnitElement._set_trigger_list = function (self)
 
 	return 
 end
-CoreUnitSequenceUnitElement._build_panel = function (self, panel, panel_sizer)
+function CoreUnitSequenceUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -212,7 +212,7 @@ CoreUnitSequenceUnitElement._build_panel = function (self, panel, panel_sizer)
 
 	return 
 end
-CoreUnitSequenceUnitElement.add_to_mission_package = function (self)
+function CoreUnitSequenceUnitElement:add_to_mission_package()
 	slot4 = {
 		name = "core/units/run_sequence_dummy/run_sequence_dummy",
 		category = "units",

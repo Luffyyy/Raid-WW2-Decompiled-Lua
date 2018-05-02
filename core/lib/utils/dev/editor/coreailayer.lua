@@ -36,7 +36,7 @@ if not AiLayer then
 end
 
 AiLayer = slot0
-AiLayer.init = function (self, owner)
+function AiLayer:init(owner)
 	slot8 = "ai_layer"
 
 	AiLayer.super.init(slot3, self, owner, "ai", {
@@ -72,7 +72,7 @@ AiLayer.init = function (self, owner)
 
 	return 
 end
-AiLayer.load = function (self, world_holder, offset)
+function AiLayer:load(world_holder, offset)
 	slot6 = "[AiLayer:load]"
 
 	Application.debug(slot4, Application)
@@ -108,7 +108,7 @@ AiLayer.load = function (self, world_holder, offset)
 
 	return 
 end
-AiLayer.save = function (self, save_params)
+function AiLayer:save(save_params)
 	slot5 = save_params
 
 	AiLayer.super.save(slot3, self)
@@ -178,7 +178,7 @@ AiLayer.save = function (self, save_params)
 
 	return 
 end
-AiLayer._add_project_unit_save_data = function (self, unit, data)
+function AiLayer:_add_project_unit_save_data(unit, data)
 	slot5 = unit
 
 	if unit.name(slot4) == self._nav_surface_unit then
@@ -188,7 +188,7 @@ AiLayer._add_project_unit_save_data = function (self, unit, data)
 
 	return 
 end
-AiLayer.update = function (self, t, dt)
+function AiLayer:update(t, dt)
 	slot7 = dt
 
 	AiLayer.super.update(slot4, self, t)
@@ -220,14 +220,14 @@ AiLayer.update = function (self, t, dt)
 
 	return 
 end
-AiLayer.external_draw = function (self, t, dt)
+function AiLayer:external_draw(t, dt)
 	slot7 = dt
 
 	self._draw(slot4, self, t)
 
 	return 
 end
-AiLayer._draw = function (self, t, dt)
+function AiLayer:_draw(t, dt)
 	slot5 = self._created_units
 
 	for _, unit in ipairs(slot4) do
@@ -309,7 +309,7 @@ AiLayer._draw = function (self, t, dt)
 
 	return 
 end
-AiLayer._draw_surface = function (self, unit, t, dt, a, r, g, b)
+function AiLayer:_draw_surface(unit, t, dt, a, r, g, b)
 	slot12 = t * 10
 	slot12 = 0
 	local rot1 = Rotation(slot9, math.sin(slot11) * 180, 0)
@@ -336,7 +336,7 @@ AiLayer._draw_surface = function (self, unit, t, dt, a, r, g, b)
 
 	return 
 end
-AiLayer._draw_patrol_paths = function (self, t, dt)
+function AiLayer:_draw_patrol_paths(t, dt)
 	if self._only_draw_selected_patrol_path and self._current_patrol_path then
 		slot9 = managers.ai_data
 		slot9 = dt
@@ -354,7 +354,7 @@ AiLayer._draw_patrol_paths = function (self, t, dt)
 
 	return 
 end
-AiLayer._draw_patrol_path = function (self, name, path, t, dt)
+function AiLayer:_draw_patrol_path(name, path, t, dt)
 	local selected_path = name == self._current_patrol_path
 
 	if 0 < #path.points then
@@ -405,7 +405,7 @@ AiLayer._draw_patrol_path = function (self, name, path, t, dt)
 
 	return 
 end
-AiLayer._draw_patrol_point = function (self, unit, first, last, selected_path, t, dt)
+function AiLayer:_draw_patrol_point(unit, first, last, selected_path, t, dt)
 	local selected = unit == self._selected_unit
 	local r = (selected and 0) or (first and 0.5) or (last and 1) or 0.65
 	local g = (selected and 1) or (first and 1) or (last and 0.5) or 0.65
@@ -422,7 +422,7 @@ AiLayer._draw_patrol_point = function (self, unit, first, last, selected_path, t
 
 	return 
 end
-AiLayer.draw_patrol_path_externaly = function (self, name)
+function AiLayer:draw_patrol_path_externaly(name)
 	slot5 = name
 	slot9 = name
 
@@ -430,7 +430,7 @@ AiLayer.draw_patrol_path_externaly = function (self, name)
 
 	return 
 end
-AiLayer.build_panel = function (self, notebook)
+function AiLayer:build_panel(notebook)
 	slot5 = notebook
 
 	AiLayer.super.build_panel(slot3, self)
@@ -665,7 +665,7 @@ AiLayer.build_panel = function (self, notebook)
 
 	return self._ews_panel
 end
-AiLayer._build_ai_settings = function (self)
+function AiLayer:_build_ai_settings()
 	slot6 = "Settings"
 	local graphs_sizer = EWS.StaticBoxSizer(slot2, EWS, self._ews_panel, "VERTICAL")
 	local group_state = {
@@ -692,7 +692,7 @@ AiLayer._build_ai_settings = function (self)
 
 	return graphs_sizer
 end
-AiLayer._build_ai_unit_settings = function (self)
+function AiLayer:_build_ai_unit_settings()
 	slot6 = "Unit settings"
 	local sizer = EWS.StaticBoxSizer(slot2, EWS, self._ews_panel, "VERTICAL")
 	local suspicion_multiplier = {
@@ -766,7 +766,7 @@ AiLayer._build_ai_unit_settings = function (self)
 
 	return sizer
 end
-AiLayer._build_ai_data = function (self)
+function AiLayer:_build_ai_data()
 	slot6 = "Ai Data"
 	local ai_data_sizer = EWS.StaticBoxSizer(slot2, EWS, self._ews_panel, "VERTICAL")
 	slot7 = "Patrol paths"
@@ -826,7 +826,7 @@ AiLayer._build_ai_data = function (self)
 
 	return ai_data_sizer
 end
-AiLayer._build_motion_path_section = function (self)
+function AiLayer:_build_motion_path_section()
 	slot6 = "Motion Paths (Work In Progress)"
 	local motion_paths_sizer = EWS.StaticBoxSizer(slot2, EWS, self._ews_panel, "VERTICAL")
 	slot8 = "BU_EXACTFIT,NO_BORDER"
@@ -943,7 +943,7 @@ AiLayer._build_motion_path_section = function (self)
 
 	return motion_paths_sizer
 end
-AiLayer._set_mop_type = function (self)
+function AiLayer:_set_mop_type()
 	slot3 = self
 	local selected_path = self._selected_motion_path(slot2)
 
@@ -961,7 +961,7 @@ AiLayer._set_mop_type = function (self)
 
 	return 
 end
-AiLayer._set_mop_speed_limit = function (self)
+function AiLayer:_set_mop_speed_limit()
 	local speed_limit = self.motion_path_settings_guis.default_speed_limit.value
 	slot4 = self
 	local selected_path = self._selected_motion_path(slot3)
@@ -980,20 +980,20 @@ AiLayer._set_mop_speed_limit = function (self)
 
 	return 
 end
-AiLayer._delete_motion_path = function (self)
+function AiLayer:_delete_motion_path()
 	slot4 = "AiLayer:_delete_motion_path()"
 
 	Application.debug(slot2, Application)
 
 	return 
 end
-AiLayer._toggle_only_draw_selected_motion_path = function (self, motion_path_toolbar)
+function AiLayer:_toggle_only_draw_selected_motion_path(motion_path_toolbar)
 	slot5 = "ONLY_DRAW_SELECTED_MOTION_PATH"
 	self._only_draw_selected_motion_path = motion_path_toolbar.tool_state(slot3, motion_path_toolbar)
 
 	return 
 end
-AiLayer._update_motion_paths_list = function (self)
+function AiLayer:_update_motion_paths_list()
 	slot3 = self._motion_paths_list
 
 	self._motion_paths_list.clear(slot2)
@@ -1066,7 +1066,7 @@ AiLayer._update_motion_paths_list = function (self)
 
 	return 
 end
-AiLayer._create_motion_paths = function (self)
+function AiLayer:_create_motion_paths()
 	slot3 = managers.motion_path
 
 	managers.motion_path.recreate_paths(slot2)
@@ -1077,7 +1077,7 @@ AiLayer._create_motion_paths = function (self)
 
 	return 
 end
-AiLayer._select_motion_path = function (self)
+function AiLayer:_select_motion_path()
 	local motion_path_name = self._selected_motion_path(slot2)
 	slot5 = motion_path_name
 
@@ -1095,7 +1095,7 @@ AiLayer._select_motion_path = function (self)
 
 	return 
 end
-AiLayer._selected_motion_path = function (self)
+function AiLayer:_selected_motion_path()
 	slot3 = self._motion_paths_list
 	local index = self._motion_paths_list.selected_index(slot2)
 
@@ -1107,13 +1107,13 @@ AiLayer._selected_motion_path = function (self)
 
 	return nil
 end
-AiLayer._toggle_only_draw_selected_patrol_path = function (self, patrol_path_toolbar)
+function AiLayer:_toggle_only_draw_selected_patrol_path(patrol_path_toolbar)
 	slot5 = "ONLY_DRAW_SELECTED_PATH"
 	self._only_draw_selected_patrol_path = patrol_path_toolbar.tool_state(slot3, patrol_path_toolbar)
 
 	return 
 end
-AiLayer._calc_graphs = function (self, params)
+function AiLayer:_calc_graphs(params)
 	local build_type = params.build_type
 
 	if build_type == "all" then
@@ -1188,7 +1188,7 @@ AiLayer._calc_graphs = function (self, params)
 
 	return 
 end
-AiLayer._graphs_done = function (self, vis_graph)
+function AiLayer:_graphs_done(vis_graph)
 	slot5 = "Navigation seqments calculated"
 
 	managers.editor.output(slot3, managers.editor)
@@ -1209,7 +1209,7 @@ AiLayer._graphs_done = function (self, vis_graph)
 
 	return 
 end
-AiLayer._build_visibility_graph = function (self)
+function AiLayer:_build_visibility_graph()
 	slot3 = self._all_visible
 	local all_visible = self._all_visible.get_value(slot2) and true
 	local exclude, include = nil
@@ -1239,14 +1239,14 @@ AiLayer._build_visibility_graph = function (self)
 
 	return 
 end
-AiLayer._visibility_graph_done = function (self)
+function AiLayer:_visibility_graph_done()
 	slot4 = "Visibility graph calculated"
 
 	managers.editor.output(slot2, managers.editor)
 
 	return 
 end
-AiLayer._get_build_settings = function (self, type, build_type)
+function AiLayer:_get_build_settings(type, build_type)
 	local settings = {}
 	slot8 = build_type
 	local units = self._get_units(slot5, self, type)
@@ -1283,7 +1283,7 @@ AiLayer._get_build_settings = function (self, type, build_type)
 
 	return settings
 end
-AiLayer._get_units = function (self, type, build_type)
+function AiLayer:_get_units(type, build_type)
 	local unit_name = self._unit_graph_types[type]
 	local units = {}
 	slot5 = ipairs
@@ -1301,7 +1301,7 @@ AiLayer._get_units = function (self, type, build_type)
 
 	return units
 end
-AiLayer._apply_visualization_options = function (self)
+function AiLayer:_apply_visualization_options()
 	local options = {}
 	slot4 = self._nav_visualization_checkboxes
 
@@ -1316,7 +1316,7 @@ AiLayer._apply_visualization_options = function (self)
 
 	return 
 end
-AiLayer._set_group_state = function (self)
+function AiLayer:_set_group_state()
 	self._ai_settings.group_state = self._ai_settings_guis.group_state.value
 	slot4 = self._ai_settings.group_state
 
@@ -1324,7 +1324,7 @@ AiLayer._set_group_state = function (self)
 
 	return 
 end
-AiLayer._update_settings = function (self)
+function AiLayer:_update_settings()
 	slot3 = self._ai_settings
 
 	for name, value in pairs(slot2) do
@@ -1337,7 +1337,7 @@ AiLayer._update_settings = function (self)
 
 	return 
 end
-AiLayer._clear_graphs = function (self)
+function AiLayer:_clear_graphs()
 	slot7 = "YES_NO,ICON_QUESTION"
 	slot12 = 0
 	local confirm = EWS.message_box(slot2, EWS, Global.frame_panel, "Clear all graphs?", "AI", Vector3(slot9, -1, -1))
@@ -1352,7 +1352,7 @@ AiLayer._clear_graphs = function (self)
 
 	return 
 end
-AiLayer._clear_selected_nav_segment = function (self)
+function AiLayer:_clear_selected_nav_segment()
 	slot7 = "YES_NO,ICON_QUESTION"
 	slot12 = 0
 	local confirm = EWS.message_box(slot2, EWS, Global.frame_panel, "Clear selected graph segment?", "AI", Vector3(slot9, -1, -1))
@@ -1384,7 +1384,7 @@ AiLayer._clear_selected_nav_segment = function (self)
 
 	return 
 end
-AiLayer.set_select_unit = function (self, unit)
+function AiLayer:set_select_unit(unit)
 	slot4 = unit
 
 	if alive(slot3) then
@@ -1429,7 +1429,7 @@ AiLayer.set_select_unit = function (self, unit)
 
 	return 
 end
-AiLayer._add_to_visible_exlude_filter = function (self, unit)
+function AiLayer:_add_to_visible_exlude_filter(unit)
 	slot4 = unit
 
 	if not alive(slot3) then
@@ -1498,7 +1498,7 @@ AiLayer._add_to_visible_exlude_filter = function (self, unit)
 
 	return false
 end
-AiLayer._set_selection_patrol_paths_listbox = function (self, name)
+function AiLayer:_set_selection_patrol_paths_listbox(name)
 	slot5 = self._patrol_paths_list
 
 	for i = 0, self._patrol_paths_list.nr_items(slot4) - 1, 1 do
@@ -1517,7 +1517,7 @@ AiLayer._set_selection_patrol_paths_listbox = function (self, name)
 
 	return 
 end
-AiLayer._create_new_patrol_path = function (self)
+function AiLayer:_create_new_patrol_path()
 	slot12 = 0
 	slot9 = true
 	local name = EWS.get_text_from_user(slot2, EWS, Global.frame_panel, "Enter name for the new patrol path:", "Create patrol path", "new_patrol_path", Vector3(slot9, -1, -1))
@@ -1552,7 +1552,7 @@ AiLayer._create_new_patrol_path = function (self)
 
 	return 
 end
-AiLayer._current_patrol_units = function (self, name)
+function AiLayer:_current_patrol_units(name)
 	local t = {}
 	slot6 = name
 	local path = managers.ai_data.patrol_path(slot4, managers.ai_data)
@@ -1566,7 +1566,7 @@ AiLayer._current_patrol_units = function (self, name)
 
 	return t
 end
-AiLayer._delete_patrol_path = function (self)
+function AiLayer:_delete_patrol_path()
 	slot3 = self
 	local name = self._selected_patrol_path(slot2)
 
@@ -1602,7 +1602,7 @@ AiLayer._delete_patrol_path = function (self)
 
 	return 
 end
-AiLayer._update_patrol_paths_list = function (self)
+function AiLayer:_update_patrol_paths_list()
 	slot3 = self._patrol_paths_list
 
 	self._patrol_paths_list.clear(slot2)
@@ -1617,7 +1617,7 @@ AiLayer._update_patrol_paths_list = function (self)
 
 	return 
 end
-AiLayer._selected_patrol_path = function (self)
+function AiLayer:_selected_patrol_path()
 	slot3 = self._patrol_paths_list
 	local index = self._patrol_paths_list.selected_index(slot2)
 
@@ -1629,7 +1629,7 @@ AiLayer._selected_patrol_path = function (self)
 
 	return nil
 end
-AiLayer._select_patrol_path = function (self)
+function AiLayer:_select_patrol_path()
 	slot3 = self
 	local name = self._selected_patrol_path(slot2)
 
@@ -1644,7 +1644,7 @@ AiLayer._select_patrol_path = function (self)
 
 	return 
 end
-AiLayer.do_spawn_unit = function (self, name, pos, rot)
+function AiLayer:do_spawn_unit(name, pos, rot)
 	slot6 = name
 
 	if Idstring(slot5) == self._patrol_point_unit and not self._current_patrol_path then
@@ -1671,7 +1671,7 @@ AiLayer.do_spawn_unit = function (self, name, pos, rot)
 
 	return unit
 end
-AiLayer._add_patrol_point = function (self, unit)
+function AiLayer:_add_patrol_point(unit)
 	slot4 = self
 	local name = self._selected_patrol_path(slot3)
 
@@ -1685,7 +1685,7 @@ AiLayer._add_patrol_point = function (self, unit)
 
 	return 
 end
-AiLayer._insert = function (self)
+function AiLayer:_insert()
 
 	-- Decompilation error in this vicinity:
 	slot3 = self._selected_unit
@@ -1703,7 +1703,7 @@ AiLayer._insert = function (self)
 
 	return 
 end
-AiLayer.delete_unit = function (self, unit)
+function AiLayer:delete_unit(unit)
 	slot4 = self._created_units
 
 	for _, u in ipairs(slot3) do
@@ -1740,14 +1740,14 @@ AiLayer.delete_unit = function (self, unit)
 
 	return 
 end
-AiLayer.update_unit_settings = function (self)
+function AiLayer:update_unit_settings()
 	slot3 = self
 
 	AiLayer.super.update_unit_settings(slot2)
 
 	return 
 end
-AiLayer._init_ai_settings = function (self)
+function AiLayer:_init_ai_settings()
 	self._ai_settings = {
 		group_state = "raid"
 	}
@@ -1757,7 +1757,7 @@ AiLayer._init_ai_settings = function (self)
 
 	return 
 end
-AiLayer._init_mop_settings = function (self)
+function AiLayer:_init_mop_settings()
 	self._motion_path_settings = {}
 
 	if managers.motion_path then
@@ -1771,7 +1771,7 @@ AiLayer._init_mop_settings = function (self)
 
 	return 
 end
-AiLayer.clear = function (self)
+function AiLayer:clear()
 	slot3 = self
 
 	AiLayer.super.clear(slot2)
@@ -1812,7 +1812,7 @@ AiLayer.clear = function (self)
 
 	return 
 end
-AiLayer.add_triggers = function (self)
+function AiLayer:add_triggers()
 	AiLayer.super.add_triggers(slot2)
 
 	local vc = self._editor_data.virtual_controller
@@ -1823,7 +1823,7 @@ AiLayer.add_triggers = function (self)
 
 	return 
 end
-AiLayer._set_suspicion_mul = function (self)
+function AiLayer:_set_suspicion_mul()
 	slot3 = self._selected_unit
 	self._selected_unit.ai_editor_data(slot2).suspicion_mul = self._ai_unit_settings_guis.suspicion_multiplier.value
 	slot6 = self._selected_unit
@@ -1833,7 +1833,7 @@ AiLayer._set_suspicion_mul = function (self)
 
 	return 
 end
-AiLayer._set_detection_mul = function (self)
+function AiLayer:_set_detection_mul()
 	slot3 = self._selected_unit
 	self._selected_unit.ai_editor_data(slot2).detection_mul = self._ai_unit_settings_guis.detection_multiplier.value
 	slot6 = self._selected_unit
@@ -1843,7 +1843,7 @@ AiLayer._set_detection_mul = function (self)
 
 	return 
 end
-AiLayer._set_barrage_allowed = function (self)
+function AiLayer:_set_barrage_allowed()
 	slot4 = self._ai_unit_settings_guis.barrage_allowed
 	self._selected_unit.ai_editor_data(slot2).barrage_allowed = self._ai_unit_settings_guis.barrage_allowed.get_value(self._selected_unit)
 	slot4 = self._selected_unit.unit_data(slot5).unit_id

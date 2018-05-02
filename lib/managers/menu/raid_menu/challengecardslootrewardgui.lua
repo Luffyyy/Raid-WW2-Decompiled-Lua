@@ -5,7 +5,7 @@ end
 
 ChallengeCardsLootRewardGui = slot0
 ChallengeCardsLootRewardGui.EVENT_KET_STEAM_LOOT_DROPPED = "event_key_steam_loot_dropped"
-ChallengeCardsLootRewardGui.init = function (self, ws, fullscreen_ws, node, component_name)
+function ChallengeCardsLootRewardGui:init(ws, fullscreen_ws, node, component_name)
 	slot11 = component_name
 
 	ChallengeCardsLootRewardGui.super.init(slot6, self, ws, fullscreen_ws, node)
@@ -20,7 +20,7 @@ ChallengeCardsLootRewardGui.init = function (self, ws, fullscreen_ws, node, comp
 
 	return 
 end
-ChallengeCardsLootRewardGui._set_initial_data = function (self)
+function ChallengeCardsLootRewardGui:_set_initial_data()
 	self._node.components.raid_menu_header.set_screen_name(slot2, self._node.components.raid_menu_header)
 
 	slot5 = managers.challenge_cards
@@ -28,7 +28,7 @@ ChallengeCardsLootRewardGui._set_initial_data = function (self)
 
 	return 
 end
-ChallengeCardsLootRewardGui._layout = function (self)
+function ChallengeCardsLootRewardGui:_layout()
 	slot3 = self
 
 	self.bind_controller_inputs(slot2)
@@ -39,7 +39,7 @@ ChallengeCardsLootRewardGui._layout = function (self)
 
 	return 
 end
-ChallengeCardsLootRewardGui._show_loot_list = function (self, loot_list)
+function ChallengeCardsLootRewardGui:_show_loot_list(loot_list)
 	local coord_y = 200
 	local loot_reward_card_params = {
 		x = 0,
@@ -60,17 +60,17 @@ ChallengeCardsLootRewardGui._show_loot_list = function (self, loot_list)
 
 	return 
 end
-ChallengeCardsLootRewardGui.update = function (self, t, dt)
+function ChallengeCardsLootRewardGui:update(t, dt)
 	return 
 end
-ChallengeCardsLootRewardGui._continue_button_on_click = function (self)
+function ChallengeCardsLootRewardGui:_continue_button_on_click()
 	slot3 = managers.raid_menu
 
 	managers.raid_menu.close_menu(slot2)
 
 	return 
 end
-ChallengeCardsLootRewardGui.close = function (self)
+function ChallengeCardsLootRewardGui:close()
 	if self._closing then
 		return 
 	end
@@ -88,14 +88,14 @@ ChallengeCardsLootRewardGui.close = function (self)
 
 	return 
 end
-ChallengeCardsLootRewardGui.on_escape = function (self)
+function ChallengeCardsLootRewardGui:on_escape()
 	slot3 = self
 
 	self._continue_button_on_click(slot2)
 
 	return true
 end
-ChallengeCardsLootRewardGui.bind_controller_inputs = function (self)
+function ChallengeCardsLootRewardGui:bind_controller_inputs()
 	local bindings = {}
 	slot5 = "menu_controller_face_bottom"
 	slot7 = "_continue_button_on_click"

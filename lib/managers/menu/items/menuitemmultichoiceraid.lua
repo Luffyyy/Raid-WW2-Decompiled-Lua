@@ -5,7 +5,7 @@ end
 
 MenuItemMultiChoiceRaid = slot0
 MenuItemMultiChoiceRaid.TYPE = "multi_choice"
-MenuItemMultiChoiceRaid.init = function (self, data_node, parameters)
+function MenuItemMultiChoiceRaid:init(data_node, parameters)
 	slot7 = parameters
 
 	MenuItemMultiChoiceRaid.super.init(slot4, self, data_node)
@@ -14,7 +14,7 @@ MenuItemMultiChoiceRaid.init = function (self, data_node, parameters)
 
 	return 
 end
-MenuItemMultiChoiceRaid.setup_gui = function (self, node, row_item)
+function MenuItemMultiChoiceRaid:setup_gui(node, row_item)
 	local right_align = node._right_align(slot4)
 	slot7 = {
 		w = node.item_panel.w(slot9)
@@ -116,7 +116,7 @@ MenuItemMultiChoiceRaid.setup_gui = function (self, node, row_item)
 
 	return true
 end
-MenuItemMultiChoiceRaid._layout = function (self, node, row_item)
+function MenuItemMultiChoiceRaid:_layout(node, row_item)
 	local safe_rect = managers.gui_data.scaled_size(slot4)
 	local right_align = node._right_align(managers.gui_data)
 	local left_align = node._left_align(node)

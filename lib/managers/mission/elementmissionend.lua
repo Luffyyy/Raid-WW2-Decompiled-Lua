@@ -8,21 +8,21 @@ if not ElementMissionEnd then
 end
 
 ElementMissionEnd = slot0
-ElementMissionEnd.init = function (self, ...)
+function ElementMissionEnd:init(...)
 	slot3 = self
 
 	ElementMissionEnd.super.init(slot2, ...)
 
 	return 
 end
-ElementMissionEnd.client_on_executed = function (self, ...)
+function ElementMissionEnd:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementMissionEnd.on_executed = function (self, instigator)
+function ElementMissionEnd:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

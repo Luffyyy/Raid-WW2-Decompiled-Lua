@@ -12,7 +12,7 @@ if not ElementInstanceInput then
 end
 
 ElementInstanceInput = slot0
-ElementInstanceInput.init = function (self, ...)
+function ElementInstanceInput:init(...)
 	slot3 = self
 
 	ElementInstanceInput.super.init(slot2, ...)
@@ -25,10 +25,10 @@ ElementInstanceInput.init = function (self, ...)
 
 	return 
 end
-ElementInstanceInput.client_on_executed = function (self, ...)
+function ElementInstanceInput:client_on_executed(...)
 	return 
 end
-ElementInstanceInput.on_executed = function (self, instigator)
+function ElementInstanceInput:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -46,23 +46,23 @@ if not ElementInstanceOutput then
 end
 
 ElementInstanceOutput = slot0
-ElementInstanceOutput.init = function (self, ...)
+function ElementInstanceOutput:init(...)
 	slot3 = self
 
 	ElementInstanceOutput.super.init(slot2, ...)
 
 	return 
 end
-ElementInstanceOutput.on_created = function (self)
+function ElementInstanceOutput:on_created()
 	slot6 = self._values.event
 	self._output_elements = managers.world_instance.get_registered_output_event_elements(slot2, managers.world_instance, self._sync_id, self._values.instance_name)
 
 	return 
 end
-ElementInstanceOutput.client_on_executed = function (self, ...)
+function ElementInstanceOutput:client_on_executed(...)
 	return 
 end
-ElementInstanceOutput.on_executed = function (self, instigator)
+function ElementInstanceOutput:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -90,20 +90,20 @@ if not ElementInstanceInputEvent then
 end
 
 ElementInstanceInputEvent = slot0
-ElementInstanceInputEvent.init = function (self, ...)
+function ElementInstanceInputEvent:init(...)
 	slot3 = self
 
 	ElementInstanceInputEvent.super.init(slot2, ...)
 
 	return 
 end
-ElementInstanceInputEvent.on_created = function (self)
+function ElementInstanceInputEvent:on_created()
 	return 
 end
-ElementInstanceInputEvent.client_on_executed = function (self, ...)
+function ElementInstanceInputEvent:client_on_executed(...)
 	return 
 end
-ElementInstanceInputEvent.on_executed = function (self, instigator)
+function ElementInstanceInputEvent:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -153,7 +153,7 @@ if not ElementInstanceOutputEvent then
 end
 
 ElementInstanceOutputEvent = slot0
-ElementInstanceOutputEvent.init = function (self, ...)
+function ElementInstanceOutputEvent:init(...)
 	slot3 = self
 
 	ElementInstanceOutputEvent.super.init(slot2, ...)
@@ -176,10 +176,10 @@ ElementInstanceOutputEvent.init = function (self, ...)
 
 	return 
 end
-ElementInstanceOutputEvent.client_on_executed = function (self, ...)
+function ElementInstanceOutputEvent:client_on_executed(...)
 	return 
 end
-ElementInstanceOutputEvent.on_executed = function (self, instigator)
+function ElementInstanceOutputEvent:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -197,7 +197,7 @@ if not ElementInstancePoint then
 end
 
 ElementInstancePoint = slot0
-ElementInstancePoint.client_on_executed = function (self, ...)
+function ElementInstancePoint:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
@@ -208,7 +208,7 @@ ElementInstancePoint.client_on_executed = function (self, ...)
 
 	return 
 end
-ElementInstancePoint.on_executed = function (self, instigator)
+function ElementInstancePoint:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -223,7 +223,7 @@ ElementInstancePoint.on_executed = function (self, instigator)
 
 	return 
 end
-ElementInstancePoint._create = function (self)
+function ElementInstancePoint:_create()
 	if self._has_created then
 		return 
 	end
@@ -256,13 +256,13 @@ ElementInstancePoint._create = function (self)
 
 	return 
 end
-ElementInstancePoint.save = function (self, data)
+function ElementInstancePoint:save(data)
 	data.has_created = self._has_created
 	data.enabled = self._values.enabled
 
 	return 
 end
-ElementInstancePoint.load = function (self, data)
+function ElementInstancePoint:load(data)
 	if data.has_created then
 		slot4 = self
 
@@ -289,7 +289,7 @@ if not ElementInstanceSetParams then
 end
 
 ElementInstanceSetParams = slot0
-ElementInstanceSetParams.init = function (self, ...)
+function ElementInstanceSetParams:init(...)
 	slot3 = self
 
 	ElementInstanceOutputEvent.super.init(slot2, ...)
@@ -302,14 +302,14 @@ ElementInstanceSetParams.init = function (self, ...)
 
 	return 
 end
-ElementInstanceSetParams.client_on_executed = function (self, ...)
+function ElementInstanceSetParams:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementInstanceSetParams._apply_instance_params = function (self)
+function ElementInstanceSetParams:_apply_instance_params()
 	if self._values.instance then
 		slot6 = self._values.params
 
@@ -326,7 +326,7 @@ ElementInstanceSetParams._apply_instance_params = function (self)
 
 	return 
 end
-ElementInstanceSetParams.on_executed = function (self, instigator)
+function ElementInstanceSetParams:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

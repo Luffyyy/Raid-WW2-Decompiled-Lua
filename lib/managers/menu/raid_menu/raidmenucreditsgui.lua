@@ -11,7 +11,7 @@ RaidMenuCreditsGui = slot0
 RaidMenuCreditsGui.PATH = "gamedata/"
 RaidMenuCreditsGui.FILE_EXTENSION = "credits"
 RaidMenuCreditsGui.INTRO_VIDEO = "movies/vanilla/credits/05_credits_v003"
-RaidMenuCreditsGui.init = function (self, ws, fullscreen_ws, node, component_name)
+function RaidMenuCreditsGui:init(ws, fullscreen_ws, node, component_name)
 	slot7 = managers.music
 
 	managers.music.stop(slot6)
@@ -57,7 +57,7 @@ RaidMenuCreditsGui.init = function (self, ws, fullscreen_ws, node, component_nam
 
 	return 
 end
-RaidMenuCreditsGui._build_credits_panel = function (self, file)
+function RaidMenuCreditsGui:_build_credits_panel(file)
 	slot4 = SystemInfo
 	slot4 = SystemInfo.language(slot3)
 	local lang_key = SystemInfo.language(slot3).key(slot3)
@@ -235,7 +235,7 @@ RaidMenuCreditsGui._build_credits_panel = function (self, file)
 
 	return 
 end
-RaidMenuCreditsGui._show_intro_video = function (self)
+function RaidMenuCreditsGui:_show_intro_video()
 	local video_panel_params = {
 		is_root_panel = true,
 		layer = 100
@@ -312,7 +312,7 @@ RaidMenuCreditsGui._show_intro_video = function (self)
 
 	return 
 end
-RaidMenuCreditsGui._animate_show_press_any_key_prompt = function (self, prompt)
+function RaidMenuCreditsGui:_animate_show_press_any_key_prompt(prompt)
 	local duration = 0.7
 	local t = 0
 	slot6 = 3
@@ -335,7 +335,7 @@ RaidMenuCreditsGui._animate_show_press_any_key_prompt = function (self, prompt)
 
 	return 
 end
-RaidMenuCreditsGui._animate_change_press_any_key_prompt = function (self, prompt)
+function RaidMenuCreditsGui:_animate_change_press_any_key_prompt(prompt)
 	local fade_out_duration = 0.25
 	slot5 = prompt
 	local t = (1 - prompt.alpha(slot4)) * fade_out_duration
@@ -394,7 +394,7 @@ RaidMenuCreditsGui._animate_change_press_any_key_prompt = function (self, prompt
 
 	return 
 end
-RaidMenuCreditsGui.on_controller_hotswap = function (self)
+function RaidMenuCreditsGui:on_controller_hotswap()
 	slot4 = "press_any_key_prompt"
 	local press_any_key_prompt = self._safe_panel.child(slot2, self._safe_panel)
 
@@ -411,14 +411,14 @@ RaidMenuCreditsGui.on_controller_hotswap = function (self)
 
 	return 
 end
-RaidMenuCreditsGui.update = function (self, t, dt)
+function RaidMenuCreditsGui:update(t, dt)
 	if self._playing_intro_video then
 		slot5 = self
 	end
 
 	return 
 end
-RaidMenuCreditsGui.is_playing = function (self)
+function RaidMenuCreditsGui:is_playing()
 	slot3 = self._credits_intro_video
 
 	if alive(slot2) then
@@ -431,7 +431,7 @@ RaidMenuCreditsGui.is_playing = function (self)
 
 	return 
 end
-RaidMenuCreditsGui.is_skipped = function (self)
+function RaidMenuCreditsGui:is_skipped()
 	slot3 = self._controller_list
 
 	for _, controller in ipairs(slot2) do
@@ -444,7 +444,7 @@ RaidMenuCreditsGui.is_skipped = function (self)
 
 	return false
 end
-RaidMenuCreditsGui._skip_video = function (self)
+function RaidMenuCreditsGui:_skip_video()
 	slot4 = MusicManager.CREDITS_MUSIC
 
 	managers.music.post_event(slot2, managers.music)
@@ -483,42 +483,42 @@ RaidMenuCreditsGui._skip_video = function (self)
 
 	return 
 end
-RaidMenuCreditsGui._setup_panels = function (self, node)
+function RaidMenuCreditsGui:_setup_panels(node)
 	slot5 = node
 
 	RaidMenuCreditsGui.super._setup_panels(slot3, self)
 
 	return 
 end
-RaidMenuCreditsGui._create_menu_item = function (self, row_item)
+function RaidMenuCreditsGui:_create_menu_item(row_item)
 	slot5 = row_item
 
 	RaidMenuCreditsGui.super._create_menu_item(slot3, self)
 
 	return 
 end
-RaidMenuCreditsGui._setup_item_panel_parent = function (self, safe_rect)
+function RaidMenuCreditsGui:_setup_item_panel_parent(safe_rect)
 	slot5 = safe_rect
 
 	RaidMenuCreditsGui.super._setup_item_panel_parent(slot3, self)
 
 	return 
 end
-RaidMenuCreditsGui._setup_item_panel = function (self, safe_rect, res)
+function RaidMenuCreditsGui:_setup_item_panel(safe_rect, res)
 	slot7 = res
 
 	RaidMenuCreditsGui.super._setup_item_panel(slot4, self, safe_rect)
 
 	return 
 end
-RaidMenuCreditsGui.resolution_changed = function (self)
+function RaidMenuCreditsGui:resolution_changed()
 	slot3 = self
 
 	RaidMenuCreditsGui.super.resolution_changed(slot2)
 
 	return 
 end
-RaidMenuCreditsGui.set_visible = function (self, visible)
+function RaidMenuCreditsGui:set_visible(visible)
 	slot5 = visible
 
 	RaidMenuCreditsGui.super.set_visible(slot3, self)
@@ -535,7 +535,7 @@ RaidMenuCreditsGui.set_visible = function (self, visible)
 
 	return 
 end
-RaidMenuCreditsGui.close = function (self, ...)
+function RaidMenuCreditsGui:close(...)
 	slot4 = "event_complete_state"
 
 	managers.controller.remove_hotswap_callback(slot2, managers.controller)
@@ -564,44 +564,44 @@ RaidMenuCreditsGui.close = function (self, ...)
 
 	return 
 end
-RaidMenuCreditsGui.mouse_moved = function (self, o, x, y)
+function RaidMenuCreditsGui:mouse_moved(o, x, y)
 	return false
 end
-RaidMenuCreditsGui.mouse_released = function (self, o, button, x, y)
+function RaidMenuCreditsGui:mouse_released(o, button, x, y)
 	return false
 end
-RaidMenuCreditsGui.mouse_pressed = function (self, button, x, y)
+function RaidMenuCreditsGui:mouse_pressed(button, x, y)
 	return false
 end
-RaidMenuCreditsGui.mouse_clicked = function (self, button, x, y)
+function RaidMenuCreditsGui:mouse_clicked(button, x, y)
 	return false
 end
-RaidMenuCreditsGui.mouse_double_click = function (self, o, button, x, y)
+function RaidMenuCreditsGui:mouse_double_click(o, button, x, y)
 	return true
 end
-RaidMenuCreditsGui.confirm_pressed = function (self)
+function RaidMenuCreditsGui:confirm_pressed()
 	return true
 end
-RaidMenuCreditsGui.back_pressed = function (self)
+function RaidMenuCreditsGui:back_pressed()
 	slot3 = managers.raid_menu
 
 	managers.raid_menu.on_escape(slot2)
 
 	return true
 end
-RaidMenuCreditsGui.move_up = function (self)
+function RaidMenuCreditsGui:move_up()
 	return true
 end
-RaidMenuCreditsGui.move_down = function (self)
+function RaidMenuCreditsGui:move_down()
 	return true
 end
-RaidMenuCreditsGui.move_left = function (self)
+function RaidMenuCreditsGui:move_left()
 	return true
 end
-RaidMenuCreditsGui.move_right = function (self)
+function RaidMenuCreditsGui:move_right()
 	return true
 end
-RaidMenuCreditsGui.bind_controller_inputs = function (self)
+function RaidMenuCreditsGui:bind_controller_inputs()
 	local legend = {
 		controller = {
 			"menu_legend_back"

@@ -6,7 +6,7 @@ if not EscortUnitElement then
 end
 
 EscortUnitElement = slot0
-function EscortUnitElement:init(unit)
+EscortUnitElement.init = function (self, unit)
 	slot5 = unit
 
 	EscortUnitElement.super.init(slot3, self)
@@ -40,7 +40,7 @@ function EscortUnitElement:init(unit)
 
 	return 
 end
-function EscortUnitElement:post_init()
+EscortUnitElement.post_init = function (self)
 	slot4 = self._hed.break_point
 
 	self.set_break_point_icon_color(slot2, self)
@@ -49,7 +49,7 @@ function EscortUnitElement:post_init()
 
 	return EscortUnitElement.super.post_init(slot2)
 end
-function EscortUnitElement:_raycast_get_type()
+EscortUnitElement._raycast_get_type = function (self)
 	local unit_type, unit, id = nil
 	slot7 = {
 		ray_type = "editor",
@@ -77,7 +77,7 @@ function EscortUnitElement:_raycast_get_type()
 
 	return 
 end
-function EscortUnitElement:_lmb()
+EscortUnitElement._lmb = function (self)
 	slot3 = self
 	local id, unit, unit_type = self._raycast_get_type(slot2)
 
@@ -106,7 +106,7 @@ function EscortUnitElement:_lmb()
 
 	return 
 end
-function EscortUnitElement:test_element()
+EscortUnitElement.test_element = function (self)
 	slot3 = managers.navigation
 
 	if not managers.navigation.is_data_ready(slot2) then
@@ -160,7 +160,7 @@ function EscortUnitElement:test_element()
 
 	return 
 end
-function EscortUnitElement:stop_test_element()
+EscortUnitElement.stop_test_element = function (self)
 	slot3 = self._test_units
 
 	for _, test_unit in ipairs(slot2) do
@@ -173,7 +173,7 @@ function EscortUnitElement:stop_test_element()
 
 	return 
 end
-function EscortUnitElement:add_triggers(vc)
+EscortUnitElement.add_triggers = function (self, vc)
 	slot5 = Idstring(slot6)
 	slot10 = "_lmb"
 
@@ -181,7 +181,7 @@ function EscortUnitElement:add_triggers(vc)
 
 	return 
 end
-function EscortUnitElement:_build_panel(panel, panel_sizer)
+EscortUnitElement._build_panel = function (self, panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -214,10 +214,10 @@ function EscortUnitElement:_build_panel(panel, panel_sizer)
 
 	return 
 end
-function EscortUnitElement:update_editing()
+EscortUnitElement.update_editing = function (self)
 	return 
 end
-function EscortUnitElement:draw_links(t, dt, selected_unit, all_units)
+EscortUnitElement.draw_links = function (self, t, dt, selected_unit, all_units)
 	slot11 = all_units
 
 	EscortUnitElement.super.draw_links(slot6, self, t, dt, selected_unit)
@@ -312,7 +312,7 @@ function EscortUnitElement:draw_links(t, dt, selected_unit, all_units)
 
 	return 
 end
-function EscortUnitElement:set_break_point_icon_color(is_break_point)
+EscortUnitElement.set_break_point_icon_color = function (self, is_break_point)
 	slot4 = self._icon_script.icon_bitmap
 	slot7 = (is_break_point and "fffc4c4c") or self._iconcolor
 
@@ -320,7 +320,7 @@ function EscortUnitElement:set_break_point_icon_color(is_break_point)
 
 	return 
 end
-function EscortUnitElement:set_element_data(data)
+EscortUnitElement.set_element_data = function (self, data)
 	if data.value == "break_point" then
 		local is_break_point = data.ctrlr.get_value(slot3)
 		slot6 = is_break_point
@@ -336,7 +336,7 @@ function EscortUnitElement:set_element_data(data)
 
 	return EscortUnitElement.super.set_element_data(slot3, self)
 end
-function EscortUnitElement:_base_check_removed_units(all_units)
+EscortUnitElement._base_check_removed_units = function (self, all_units)
 	EscortUnitElement.super._base_check_removed_units(slot3, self)
 
 	slot6 = self._hed.next_points

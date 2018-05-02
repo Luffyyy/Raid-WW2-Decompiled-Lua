@@ -16,7 +16,7 @@ if not ElementRandom then
 end
 
 ElementRandom = slot0
-ElementRandom.init = function (self, ...)
+function ElementRandom:init(...)
 	slot3 = self
 
 	ElementRandom.super.init(slot2, ...)
@@ -26,10 +26,10 @@ ElementRandom.init = function (self, ...)
 
 	return 
 end
-ElementRandom.client_on_executed = function (self, ...)
+function ElementRandom:client_on_executed(...)
 	return 
 end
-ElementRandom.on_executed = function (self, instigator)
+function ElementRandom:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -76,7 +76,7 @@ ElementRandom.on_executed = function (self, instigator)
 
 	return 
 end
-ElementRandom._calc_amount = function (self)
+function ElementRandom:_calc_amount()
 	local amount = self._values.amount or 1
 
 	if self._values.amount_random and 0 < self._values.amount_random then
@@ -86,7 +86,7 @@ ElementRandom._calc_amount = function (self)
 
 	return amount
 end
-ElementRandom._get_random_elements = function (self)
+function ElementRandom:_get_random_elements()
 	local t = {}
 	local rand = math.random(slot3)
 	slot6 = rand

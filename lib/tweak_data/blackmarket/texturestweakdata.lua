@@ -5,7 +5,7 @@
 
 -- Decompilation error in this vicinity:
 slot3 = "PS4"
-BlackMarketTweakData._init_textures = function (self)
+function BlackMarketTweakData:_init_textures()
 	self.textures = {}
 
 	return 

@@ -334,7 +334,7 @@ WarcryManager.get_instance = function ()
 
 
 end
-function WarcryManager:init()
+WarcryManager.init = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-17, warpins: 1 ---
@@ -353,7 +353,7 @@ function WarcryManager:init()
 
 
 end
-function WarcryManager:_setup()
+WarcryManager._setup = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -393,7 +393,7 @@ function WarcryManager:_setup()
 
 
 end
-function WarcryManager:set_warcry_post_effect(ids_effect)
+WarcryManager.set_warcry_post_effect = function (self, ids_effect)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -428,7 +428,7 @@ function WarcryManager:set_warcry_post_effect(ids_effect)
 
 
 end
-function WarcryManager:warcry_post_material()
+WarcryManager.warcry_post_material = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -487,7 +487,7 @@ function WarcryManager:warcry_post_material()
 
 
 end
-function WarcryManager:acquire_warcry(warcry_name)
+WarcryManager.acquire_warcry = function (self, warcry_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -551,7 +551,7 @@ function WarcryManager:acquire_warcry(warcry_name)
 
 
 end
-function WarcryManager:set_active_warcry(warcry)
+WarcryManager.set_active_warcry = function (self, warcry)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -613,7 +613,7 @@ function WarcryManager:set_active_warcry(warcry)
 
 
 end
-function WarcryManager:get_active_warcry()
+WarcryManager.get_active_warcry = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -623,7 +623,7 @@ function WarcryManager:get_active_warcry()
 
 
 end
-function WarcryManager:get_active_warcry_name()
+WarcryManager.get_active_warcry_name = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -633,7 +633,7 @@ function WarcryManager:get_active_warcry_name()
 
 
 end
-function WarcryManager:increase_warcry_level(warcry_name, amount)
+WarcryManager.increase_warcry_level = function (self, warcry_name, amount)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -777,7 +777,7 @@ function WarcryManager:increase_warcry_level(warcry_name, amount)
 
 
 end
-function WarcryManager:warcry_acquired(warcry_name)
+WarcryManager.warcry_acquired = function (self, warcry_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -831,7 +831,7 @@ function WarcryManager:warcry_acquired(warcry_name)
 
 
 end
-function WarcryManager:activate_peer_warcry(peer_id, warcry_type, level)
+WarcryManager.activate_peer_warcry = function (self, peer_id, warcry_type, level)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -845,7 +845,7 @@ function WarcryManager:activate_peer_warcry(peer_id, warcry_type, level)
 
 
 end
-function WarcryManager:deactivate_peer_warcry(peer_id)
+WarcryManager.deactivate_peer_warcry = function (self, peer_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -857,7 +857,7 @@ function WarcryManager:deactivate_peer_warcry(peer_id)
 
 
 end
-function WarcryManager:activate_warcry()
+WarcryManager.activate_warcry = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -986,7 +986,7 @@ function WarcryManager:activate_warcry()
 
 
 end
-function WarcryManager:deactivate_warcry()
+WarcryManager.deactivate_warcry = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -1046,7 +1046,7 @@ function WarcryManager:deactivate_warcry()
 
 
 end
-function WarcryManager:fill_meter_by_value(value, sync)
+WarcryManager.fill_meter_by_value = function (self, value, sync)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -1100,7 +1100,7 @@ function WarcryManager:fill_meter_by_value(value, sync)
 
 
 end
-function WarcryManager:_fill_meter_by_value(value, sync)
+WarcryManager._fill_meter_by_value = function (self, value, sync)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -1212,7 +1212,7 @@ function WarcryManager:_fill_meter_by_value(value, sync)
 
 
 end
-function WarcryManager:add_warcry_comm_wheel_option(index)
+WarcryManager.add_warcry_comm_wheel_option = function (self, index)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-27, warpins: 1 ---
@@ -1236,7 +1236,7 @@ function WarcryManager:add_warcry_comm_wheel_option(index)
 
 
 end
-function WarcryManager:current_meter_percentage()
+WarcryManager.current_meter_percentage = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -1246,7 +1246,7 @@ function WarcryManager:current_meter_percentage()
 
 
 end
-function WarcryManager:_on_meter_full()
+WarcryManager._on_meter_full = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-37, warpins: 1 ---
@@ -1330,7 +1330,7 @@ function WarcryManager:_on_meter_full()
 
 
 end
-function WarcryManager:_deactivate_warcry()
+WarcryManager._deactivate_warcry = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1431,7 +1431,7 @@ function WarcryManager:_deactivate_warcry()
 
 
 end
-function WarcryManager:update(t, dt)
+WarcryManager.update = function (self, t, dt)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1512,7 +1512,7 @@ function WarcryManager:update(t, dt)
 
 
 end
-function WarcryManager:remaining()
+WarcryManager.remaining = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -1522,7 +1522,7 @@ function WarcryManager:remaining()
 
 
 end
-function WarcryManager:duration()
+WarcryManager.duration = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -1532,7 +1532,7 @@ function WarcryManager:duration()
 
 
 end
-function WarcryManager:active()
+WarcryManager.active = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -1542,7 +1542,7 @@ function WarcryManager:active()
 
 
 end
-function WarcryManager:current_meter_value()
+WarcryManager.current_meter_value = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -1552,7 +1552,7 @@ function WarcryManager:current_meter_value()
 
 
 end
-function WarcryManager:meter_full()
+WarcryManager.meter_full = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -1562,7 +1562,7 @@ function WarcryManager:meter_full()
 
 
 end
-function WarcryManager:reset()
+WarcryManager.reset = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1636,7 +1636,7 @@ function WarcryManager:reset()
 
 
 end
-function WarcryManager:clear_active_warcry()
+WarcryManager.clear_active_warcry = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1681,7 +1681,7 @@ function WarcryManager:clear_active_warcry()
 
 
 end
-function WarcryManager:peer_warcry_upgrade_value(peer_id, upgrade_category, upgrade_definition_name, default_value)
+WarcryManager.peer_warcry_upgrade_value = function (self, peer_id, upgrade_category, upgrade_definition_name, default_value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -1840,7 +1840,7 @@ function WarcryManager:peer_warcry_upgrade_value(peer_id, upgrade_category, upgr
 
 
 end
-function WarcryManager:save(data)
+WarcryManager.save = function (self, data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1872,7 +1872,7 @@ function WarcryManager:save(data)
 
 
 end
-function WarcryManager:load(data, version)
+WarcryManager.load = function (self, data, version)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1940,7 +1940,7 @@ function WarcryManager:load(data, version)
 
 
 end
-function WarcryManager:on_simulation_ended()
+WarcryManager.on_simulation_ended = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1952,7 +1952,7 @@ function WarcryManager:on_simulation_ended()
 
 
 end
-function WarcryManager:on_mission_end_callback()
+WarcryManager.on_mission_end_callback = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---

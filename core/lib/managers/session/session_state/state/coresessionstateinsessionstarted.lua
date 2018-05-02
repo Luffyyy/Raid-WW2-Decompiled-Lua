@@ -11,7 +11,7 @@ slot3 = "CoreSessionStateInSessionEnd"
 core.import(slot1, core)
 
 InSessionStarted = InSessionStarted or class()
-InSessionStarted.init = function (self, session)
+function InSessionStarted:init(session)
 	slot4 = session
 
 	assert(slot3)
@@ -23,10 +23,10 @@ InSessionStarted.init = function (self, session)
 
 	return 
 end
-InSessionStarted.destroy = function (self)
+function InSessionStarted:destroy()
 	return 
 end
-InSessionStarted.transition = function (self)
+function InSessionStarted:transition()
 	slot3 = self.session_state._quit_session_requester
 
 	if self.session_state._quit_session_requester.is_requested(slot2) then
@@ -39,7 +39,7 @@ InSessionStarted.transition = function (self)
 
 	return 
 end
-InSessionStarted.end_session = function (self)
+function InSessionStarted:end_session()
 	self._end_session = true
 
 	return 

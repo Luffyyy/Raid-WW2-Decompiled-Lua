@@ -18,12 +18,12 @@ slot5 = tonumber
 
 CoreChangeEnvCutsceneKey.register_serialized_attribute("Environment Change", CoreChangeEnvCutsceneKey, "transition_time", 0)
 
-CoreChangeEnvCutsceneKey.__tostring = function (self)
+function CoreChangeEnvCutsceneKey:__tostring()
 	slot4 = self
 
 	return "Change environment to \"" .. self.name(slot3) .. "\"."
 end
-CoreChangeEnvCutsceneKey.prime = function (self, player)
+function CoreChangeEnvCutsceneKey:prime(player)
 	slot7 = self
 	slot6 = false
 
@@ -31,7 +31,7 @@ CoreChangeEnvCutsceneKey.prime = function (self, player)
 
 	return 
 end
-CoreChangeEnvCutsceneKey.unload = function (self, player)
+function CoreChangeEnvCutsceneKey:unload(player)
 	if self.__previous_environment_name then
 		slot4 = managers.viewport
 		slot5 = self.__previous_environment_name
@@ -41,7 +41,7 @@ CoreChangeEnvCutsceneKey.unload = function (self, player)
 
 	return 
 end
-CoreChangeEnvCutsceneKey.evaluate = function (self, player, fast_forward)
+function CoreChangeEnvCutsceneKey:evaluate(player, fast_forward)
 	if not self.__previous_environment_name then
 		slot5 = managers.environment
 		slot3 = managers.environment.get_current_environment_name(slot4)
@@ -67,19 +67,19 @@ CoreChangeEnvCutsceneKey.evaluate = function (self, player, fast_forward)
 
 	return 
 end
-CoreChangeEnvCutsceneKey.can_evaluate_with_player = function (self, player)
+function CoreChangeEnvCutsceneKey:can_evaluate_with_player(player)
 	return true
 end
-CoreChangeEnvCutsceneKey.is_valid_name = function (self, name)
+function CoreChangeEnvCutsceneKey:is_valid_name(name)
 	slot6 = name
 
 	return Database.has(slot3, Database, "environment")
 end
-CoreChangeEnvCutsceneKey.is_valid_transition_time = function (self, value)
+function CoreChangeEnvCutsceneKey:is_valid_transition_time(value)
 	return value and 0 <= value
 end
 CoreChangeEnvCutsceneKey.control_for_name = CoreCutsceneKeyBase.standard_combo_box_control
-CoreChangeEnvCutsceneKey.refresh_control_for_name = function (self, control)
+function CoreChangeEnvCutsceneKey:refresh_control_for_name(control)
 	slot4 = control
 
 	control.freeze(slot3)

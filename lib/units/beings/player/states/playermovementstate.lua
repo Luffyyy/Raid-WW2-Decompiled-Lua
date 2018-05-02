@@ -1,21 +1,21 @@
 -- WARNING: Error occurred during decompilation.
 --   Code may be incomplete or incorrect.
 PlayerMovementState = PlayerMovementState or class()
-PlayerMovementState.init = function (self, unit)
+function PlayerMovementState:init(unit)
 	self._unit = unit
 
 	return 
 end
-PlayerMovementState.enter = function (self, state_data, enter_data)
+function PlayerMovementState:enter(state_data, enter_data)
 	return 
 end
-PlayerMovementState.exit = function (self, state_data)
+function PlayerMovementState:exit(state_data)
 	return 
 end
-PlayerMovementState.update = function (self, t, dt)
+function PlayerMovementState:update(t, dt)
 	return 
 end
-PlayerMovementState.chk_action_forbidden = function (self, action_type)
+function PlayerMovementState:chk_action_forbidden(action_type)
 	if self._current_action then
 		local unblock_data = self._current_action["unblock_" .. action_type .. "_t"]
 
@@ -25,12 +25,12 @@ PlayerMovementState.chk_action_forbidden = function (self, action_type)
 
 	return 
 end
-PlayerMovementState._reset_delay_action = function (self)
+function PlayerMovementState:_reset_delay_action()
 	self._delay_action = nil
 
 	return 
 end
-PlayerMovementState._set_delay_action = function (self, action_data)
+function PlayerMovementState:_set_delay_action(action_data)
 	if self._delay_action then
 		slot4 = self
 
@@ -41,7 +41,7 @@ PlayerMovementState._set_delay_action = function (self, action_data)
 
 	return 
 end
-PlayerMovementState._reset_current_action = function (self)
+function PlayerMovementState:_reset_current_action()
 	local previous_action = self._current_action
 
 	if previous_action and self["_end_action_" .. previous_action.type] then
@@ -60,7 +60,7 @@ PlayerMovementState._reset_current_action = function (self)
 
 	return 
 end
-PlayerMovementState._set_current_action = function (self, action_data)
+function PlayerMovementState:_set_current_action(action_data)
 	if self._current_action then
 		slot4 = self
 
@@ -71,16 +71,16 @@ PlayerMovementState._set_current_action = function (self, action_data)
 
 	return 
 end
-PlayerMovementState.interaction_blocked = function (self)
+function PlayerMovementState:interaction_blocked()
 	return false
 end
-PlayerMovementState.save = function (self, data)
+function PlayerMovementState:save(data)
 	return 
 end
-PlayerMovementState.pre_destroy = function (self)
+function PlayerMovementState:pre_destroy()
 	return 
 end
-PlayerMovementState.destroy = function (self)
+function PlayerMovementState:destroy()
 	return 
 end
 

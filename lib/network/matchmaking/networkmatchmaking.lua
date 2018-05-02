@@ -8,7 +8,7 @@ NetworkMatchMaking = NetworkMatchMaking or class()
 NetworkMatchMaking.OPEN_SLOTS = 4
 NetworkMatchMaking._BUILD_SEARCH_INTEREST_KEY = "raid_ww2_retail_1_0_18"
 NetworkMatchMaking.RETRY_CONNECT_COUNT = 15
-function NetworkMatchMaking:init()
+NetworkMatchMaking.init = function (self)
 	slot4 = "matchmake = NetworkMatchMaking"
 
 	cat_print(slot2, "lobby")
@@ -23,12 +23,12 @@ function NetworkMatchMaking:init()
 
 	return 
 end
-function NetworkMatchMaking:register_callback(event, callback)
+NetworkMatchMaking.register_callback = function (self, event, callback)
 	self._callback_map[event] = callback
 
 	return 
 end
-function NetworkMatchMaking:_call_callback(name, ...)
+NetworkMatchMaking._call_callback = function (self, name, ...)
 	if self._callback_map[name] then
 		return self._callback_map[name](...)
 	else
@@ -39,26 +39,26 @@ function NetworkMatchMaking:_call_callback(name, ...)
 
 	return 
 end
-function NetworkMatchMaking:_has_callback(name)
+NetworkMatchMaking._has_callback = function (self, name)
 	if self._callback_map[name] then
 		return true
 	end
 
 	return false
 end
-function NetworkMatchMaking:_split_attribute_number(attribute_number, splitter)
+NetworkMatchMaking._split_attribute_number = function (self, attribute_number, splitter)
 	slot6 = attribute_number / splitter
 
 	return attribute_number % splitter, math.floor(slot5)
 end
-function NetworkMatchMaking:destroy_game()
+NetworkMatchMaking.destroy_game = function (self)
 	slot3 = self
 
 	self.leave_game(slot2)
 
 	return 
 end
-function NetworkMatchMaking:_load_globals()
+NetworkMatchMaking._load_globals = function (self)
 
 	-- Decompilation error in this vicinity:
 	if Global.empty and Global.empty.match then
@@ -82,7 +82,7 @@ function NetworkMatchMaking:_load_globals()
 
 	return 
 end
-function NetworkMatchMaking:_save_globals()
+NetworkMatchMaking._save_globals = function (self)
 	if not Global.empty then
 		Global.empty = {}
 	end
@@ -100,12 +100,12 @@ function NetworkMatchMaking:_save_globals()
 
 	return 
 end
-function NetworkMatchMaking:set_join_invite_pending(lobby_id)
+NetworkMatchMaking.set_join_invite_pending = function (self, lobby_id)
 	self._join_invite_pending = lobby_id
 
 	return 
 end
-function NetworkMatchMaking:update()
+NetworkMatchMaking.update = function (self)
 	if self._try_re_enter_lobby then
 		if self._try_re_enter_lobby == "lost" then
 			slot4 = "REQUESTING RE-OPEN LOBBY"
@@ -164,7 +164,7 @@ function NetworkMatchMaking:update()
 
 	return 
 end
-function NetworkMatchMaking:leave_game()
+NetworkMatchMaking.leave_game = function (self)
 	self._server_rpc = nil
 
 	if self.lobby_handler then
@@ -186,7 +186,7 @@ function NetworkMatchMaking:leave_game()
 
 	return 
 end
-function NetworkMatchMaking:get_friends_lobbies()
+NetworkMatchMaking.get_friends_lobbies = function (self)
 	local lobbies = {}
 	local num_updated_lobbies = 0
 
@@ -283,34 +283,34 @@ function NetworkMatchMaking:get_friends_lobbies()
 
 	return 
 end
-function NetworkMatchMaking:search_friends_only()
+NetworkMatchMaking.search_friends_only = function (self)
 	return self._search_friends_only
 end
-function NetworkMatchMaking:distance_filter()
+NetworkMatchMaking.distance_filter = function (self)
 	return self._distance_filter
 end
-function NetworkMatchMaking:set_distance_filter(filter)
+NetworkMatchMaking.set_distance_filter = function (self, filter)
 	self._distance_filter = filter
 
 	return 
 end
-function NetworkMatchMaking:get_lobby_return_count()
+NetworkMatchMaking.get_lobby_return_count = function (self)
 	return self._lobby_return_count
 end
-function NetworkMatchMaking:set_lobby_return_count(lobby_return_count)
+NetworkMatchMaking.set_lobby_return_count = function (self, lobby_return_count)
 	self._lobby_return_count = lobby_return_count
 
 	return 
 end
-function NetworkMatchMaking:lobby_filters()
+NetworkMatchMaking.lobby_filters = function (self)
 	return self._lobby_filters
 end
-function NetworkMatchMaking:set_lobby_filters(filters)
+NetworkMatchMaking.set_lobby_filters = function (self, filters)
 	self._lobby_filters = filters or {}
 
 	return 
 end
-function NetworkMatchMaking:add_lobby_filter(key, value, comparision_type)
+NetworkMatchMaking.add_lobby_filter = function (self, key, value, comparision_type)
 	self._lobby_filters[key] = {
 		key = key,
 		value = value,
@@ -319,18 +319,18 @@ function NetworkMatchMaking:add_lobby_filter(key, value, comparision_type)
 
 	return 
 end
-function NetworkMatchMaking:get_lobby_filter(key)
+NetworkMatchMaking.get_lobby_filter = function (self, key)
 	return (self._lobby_filters[key] and self._lobby_filters[key].value) or false
 end
-function NetworkMatchMaking:difficulty_filter()
+NetworkMatchMaking.difficulty_filter = function (self)
 	return self._difficulty_filter
 end
-function NetworkMatchMaking:set_difficulty_filter(filter)
+NetworkMatchMaking.set_difficulty_filter = function (self, filter)
 	self._difficulty_filter = filter
 
 	return 
 end
-function NetworkMatchMaking:search_lobby(friends_only)
+NetworkMatchMaking.search_lobby = function (self, friends_only)
 	self._search_friends_only = friends_only
 	slot5 = "search_lobby"
 
@@ -440,7 +440,7 @@ function NetworkMatchMaking:search_lobby(friends_only)
 
 	return 
 end
-function NetworkMatchMaking:search_lobby_done()
+NetworkMatchMaking.search_lobby_done = function (self)
 	slot4 = "find_server"
 
 	managers.system_menu.close(slot2, managers.system_menu)
@@ -449,12 +449,12 @@ function NetworkMatchMaking:search_lobby_done()
 
 	return 
 end
-function NetworkMatchMaking:game_owner_name()
+NetworkMatchMaking.game_owner_name = function (self)
 	slot4 = "owner_name"
 
 	return managers.network.matchmake.lobby_handler.get_lobby_data(slot2, managers.network.matchmake.lobby_handler)
 end
-function NetworkMatchMaking:is_server_ok(friends_only, room, attributes_numbers, is_invite)
+NetworkMatchMaking.is_server_ok = function (self, friends_only, room, attributes_numbers, is_invite)
 	slot8 = attributes_numbers[3]
 	local permission = tweak_data.index_to_permission(slot6, tweak_data)
 	slot10 = 1000
@@ -501,7 +501,7 @@ function NetworkMatchMaking:is_server_ok(friends_only, room, attributes_numbers,
 
 	return true
 end
-function NetworkMatchMaking:join_server_with_check(room_id, is_invite)
+NetworkMatchMaking.join_server_with_check = function (self, room_id, is_invite)
 	slot5 = managers.network
 	slot5 = managers.network.session(slot4)
 
@@ -601,7 +601,7 @@ NetworkMatchMaking._handle_chat_message = function (user, message)
 
 	return 
 end
-function NetworkMatchMaking:join_server(room_id, skip_showing_dialog)
+NetworkMatchMaking.join_server = function (self, room_id, skip_showing_dialog)
 	if not skip_showing_dialog then
 		slot5 = managers.menu
 
@@ -900,17 +900,17 @@ function NetworkMatchMaking:join_server(room_id, skip_showing_dialog)
 
 	return 
 end
-function NetworkMatchMaking:send_join_invite(friend)
+NetworkMatchMaking.send_join_invite = function (self, friend)
 	return 
 end
-function NetworkMatchMaking:set_server_attributes(settings)
+NetworkMatchMaking.set_server_attributes = function (self, settings)
 	slot5 = settings
 
 	self.set_attributes(slot3, self)
 
 	return 
 end
-function NetworkMatchMaking:create_lobby(settings)
+NetworkMatchMaking.create_lobby = function (self, settings)
 	self._num_players = nil
 	local dialog_data = {}
 	slot6 = "dialog_creating_lobby_title"
@@ -980,7 +980,7 @@ function NetworkMatchMaking:create_lobby(settings)
 
 	return true
 end
-function NetworkMatchMaking:set_num_players(num)
+NetworkMatchMaking.set_num_players = function (self, num)
 	slot5 = num
 
 	print(slot3, "NetworkMatchMaking:set_num_players")
@@ -996,7 +996,7 @@ function NetworkMatchMaking:set_num_players(num)
 
 	return 
 end
-function NetworkMatchMaking:set_server_state(state)
+NetworkMatchMaking.set_server_state = function (self, state)
 	if self._lobby_attributes then
 		slot5 = state
 		local state_id = tweak_data.server_state_to_index(slot3, tweak_data)
@@ -1017,7 +1017,7 @@ function NetworkMatchMaking:set_server_state(state)
 
 	return 
 end
-function NetworkMatchMaking:set_server_joinable(state)
+NetworkMatchMaking.set_server_joinable = function (self, state)
 	slot5 = state
 
 	print(slot3, "[NetworkMatchMaking:set_server_joinable]")
@@ -1032,15 +1032,15 @@ function NetworkMatchMaking:set_server_joinable(state)
 
 	return 
 end
-function NetworkMatchMaking:is_server_joinable()
+NetworkMatchMaking.is_server_joinable = function (self)
 	return self._server_joinable
 end
-function NetworkMatchMaking:server_state_name()
+NetworkMatchMaking.server_state_name = function (self)
 	slot4 = self._lobby_attributes.state
 
 	return tweak_data.index_to_server_state(slot2, tweak_data)
 end
-function NetworkMatchMaking:set_attributes(settings)
+NetworkMatchMaking.set_attributes = function (self, settings)
 	if not self.lobby_handler then
 		return 
 	end
@@ -1084,7 +1084,7 @@ function NetworkMatchMaking:set_attributes(settings)
 
 	return 
 end
-function NetworkMatchMaking:_lobby_to_numbers(lobby)
+NetworkMatchMaking._lobby_to_numbers = function (self, lobby)
 	slot8 = "level"
 	slot9 = "job_id"
 	slot8 = "difficulty"
@@ -1110,7 +1110,7 @@ function NetworkMatchMaking:_lobby_to_numbers(lobby)
 		tonumber(lobby.key_value(lobby.key_value, lobby))
 	}
 end
-function NetworkMatchMaking:from_host_lobby_re_opened(status)
+NetworkMatchMaking.from_host_lobby_re_opened = function (self, status)
 	slot6 = status
 
 	print(slot3, "[NetworkMatchMaking::from_host_lobby_re_opened]", self._try_re_enter_lobby)

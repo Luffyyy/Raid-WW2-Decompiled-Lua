@@ -1032,7 +1032,7 @@ CoreEnvEditor = slot0
 CoreEnvEditor.TEMPLATE_IDENTIFIER = "template"
 CoreEnvEditor.MIX_MUL = 200
 CoreEnvEditor.REMOVE_DEPRECATED_DURING_LOAD = true
-CoreEnvEditor.init = function (self, env_file_name)
+function CoreEnvEditor:init(env_file_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -1191,7 +1191,7 @@ CoreEnvEditor.init = function (self, env_file_name)
 
 
 end
-CoreEnvEditor.read_mode = function (self)
+function CoreEnvEditor:read_mode()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -1201,7 +1201,7 @@ CoreEnvEditor.read_mode = function (self)
 
 
 end
-CoreEnvEditor.read_templates = function (self)
+function CoreEnvEditor:read_templates()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -1307,7 +1307,7 @@ CoreEnvEditor.read_templates = function (self)
 
 
 end
-CoreEnvEditor.on_check_news = function (self)
+function CoreEnvEditor:on_check_news()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -1321,7 +1321,7 @@ CoreEnvEditor.on_check_news = function (self)
 
 
 end
-CoreEnvEditor.reg_mixer = function (self, widget)
+function CoreEnvEditor:reg_mixer(widget)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -1335,7 +1335,7 @@ CoreEnvEditor.reg_mixer = function (self, widget)
 
 
 end
-CoreEnvEditor.update_mix = function (self, env1, env2, blend)
+function CoreEnvEditor:update_mix(env1, env2, blend)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -1384,7 +1384,7 @@ CoreEnvEditor.update_mix = function (self, env1, env2, blend)
 
 
 end
-CoreEnvEditor.check_news = function (self, new_only)
+function CoreEnvEditor:check_news(new_only)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1504,7 +1504,7 @@ CoreEnvEditor.check_news = function (self, new_only)
 
 
 end
-CoreEnvEditor.feed = function (self, handler, viewport, scene)
+function CoreEnvEditor:feed(handler, viewport, scene)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -1781,7 +1781,7 @@ CoreEnvEditor.feed = function (self, handler, viewport, scene)
 
 
 end
-CoreEnvEditor.set_data_path = function (self, data_path, handler, value)
+function CoreEnvEditor:set_data_path(data_path, handler, value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -1828,7 +1828,7 @@ CoreEnvEditor.set_data_path = function (self, data_path, handler, value)
 
 
 end
-CoreEnvEditor.create_main_frame = function (self)
+function CoreEnvEditor:create_main_frame()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-262, warpins: 1 ---
@@ -1964,7 +1964,7 @@ CoreEnvEditor.create_main_frame = function (self)
 
 
 end
-CoreEnvEditor._get_post_process_effect_name = function (self, post_processor)
+function CoreEnvEditor:_get_post_process_effect_name(post_processor)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -2083,7 +2083,7 @@ CoreEnvEditor._get_post_process_effect_name = function (self, post_processor)
 
 
 end
-CoreEnvEditor.add_post_processors_param = function (self, pro, mod, param, gui)
+function CoreEnvEditor:add_post_processors_param(pro, mod, param, gui)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -2258,7 +2258,7 @@ CoreEnvEditor.add_post_processors_param = function (self, pro, mod, param, gui)
 
 
 end
-CoreEnvEditor.add_underlay_param = function (self, mat, param, gui)
+function CoreEnvEditor:add_underlay_param(mat, param, gui)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -2376,7 +2376,7 @@ CoreEnvEditor.add_underlay_param = function (self, mat, param, gui)
 
 
 end
-CoreEnvEditor.add_sky_param = function (self, param, gui)
+function CoreEnvEditor:add_sky_param(param, gui)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -2407,7 +2407,7 @@ CoreEnvEditor.add_sky_param = function (self, param, gui)
 
 
 end
-CoreEnvEditor.add_colorgrade = function (self, gui)
+function CoreEnvEditor:add_colorgrade(gui)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -2419,7 +2419,7 @@ CoreEnvEditor.add_colorgrade = function (self, gui)
 
 
 end
-CoreEnvEditor.retrive_posteffect_param = function (self, node, pro, mod, param)
+function CoreEnvEditor:retrive_posteffect_param(node, pro, mod, param)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -2599,7 +2599,7 @@ CoreEnvEditor.retrive_posteffect_param = function (self, node, pro, mod, param)
 
 
 end
-CoreEnvEditor.retrive_underlay_param = function (self, node, mat, param)
+function CoreEnvEditor:retrive_underlay_param(node, mat, param)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -2741,7 +2741,7 @@ CoreEnvEditor.retrive_underlay_param = function (self, node, mat, param)
 
 
 end
-CoreEnvEditor.retrive_sky_param = function (self, node, param)
+function CoreEnvEditor:retrive_sky_param(node, param)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -2845,7 +2845,7 @@ CoreEnvEditor.retrive_sky_param = function (self, node, param)
 
 
 end
-CoreEnvEditor.flipp = function (self, ...)
+function CoreEnvEditor:flipp(...)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -2891,7 +2891,7 @@ CoreEnvEditor.flipp = function (self, ...)
 
 
 end
-CoreEnvEditor.add_gui_element = function (self, gui, tab, ...)
+function CoreEnvEditor:add_gui_element(gui, tab, ...)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -2907,7 +2907,7 @@ CoreEnvEditor.add_gui_element = function (self, gui, tab, ...)
 
 
 end
-CoreEnvEditor.create_tab = function (self, tab)
+function CoreEnvEditor:create_tab(tab)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -2964,7 +2964,7 @@ CoreEnvEditor.create_tab = function (self, tab)
 
 
 end
-CoreEnvEditor.build_tab = function (self, tab)
+function CoreEnvEditor:build_tab(tab)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -3015,7 +3015,7 @@ CoreEnvEditor.build_tab = function (self, tab)
 
 
 end
-CoreEnvEditor.get_tab = function (self, tab)
+function CoreEnvEditor:get_tab(tab)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -3044,7 +3044,7 @@ CoreEnvEditor.get_tab = function (self, tab)
 
 
 end
-CoreEnvEditor.add_box = function (self, gui, parent, list, index)
+function CoreEnvEditor:add_box(gui, parent, list, index)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -3118,7 +3118,7 @@ CoreEnvEditor.add_box = function (self, gui, parent, list, index)
 
 
 end
-CoreEnvEditor.set_title = function (self)
+function CoreEnvEditor:set_title()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -3132,7 +3132,7 @@ CoreEnvEditor.set_title = function (self)
 
 
 end
-CoreEnvEditor.value_is_changed = function (self)
+function CoreEnvEditor:value_is_changed()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -3144,7 +3144,7 @@ CoreEnvEditor.value_is_changed = function (self)
 
 
 end
-CoreEnvEditor.add_updator = function (self, upd)
+function CoreEnvEditor:add_updator(upd)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -3158,7 +3158,7 @@ CoreEnvEditor.add_updator = function (self, upd)
 
 
 end
-CoreEnvEditor.get_child = function (self, node, name)
+function CoreEnvEditor:get_child(node, name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -3220,7 +3220,7 @@ CoreEnvEditor.get_child = function (self, node, name)
 
 
 end
-CoreEnvEditor.on_encode_parameters = function (self)
+function CoreEnvEditor:on_encode_parameters()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -3294,7 +3294,7 @@ CoreEnvEditor.on_encode_parameters = function (self)
 
 
 end
-CoreEnvEditor.write_to_disk = function (self, path, new_name)
+function CoreEnvEditor:write_to_disk(path, new_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -3369,7 +3369,7 @@ CoreEnvEditor.write_to_disk = function (self, path, new_name)
 
 
 end
-CoreEnvEditor.write_posteffect = function (self, file)
+function CoreEnvEditor:write_posteffect(file)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -3607,7 +3607,7 @@ CoreEnvEditor.write_posteffect = function (self, file)
 
 
 end
-CoreEnvEditor.write_shadow_params = function (self, file)
+function CoreEnvEditor:write_shadow_params(file)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-16, warpins: 1 ---
@@ -3706,7 +3706,7 @@ CoreEnvEditor.write_shadow_params = function (self, file)
 
 
 end
-CoreEnvEditor.write_underlayeffect = function (self, file)
+function CoreEnvEditor:write_underlayeffect(file)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -3852,7 +3852,7 @@ CoreEnvEditor.write_underlayeffect = function (self, file)
 
 
 end
-CoreEnvEditor.write_sky = function (self, file)
+function CoreEnvEditor:write_sky(file)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -3950,7 +3950,7 @@ CoreEnvEditor.write_sky = function (self, file)
 
 
 end
-CoreEnvEditor.on_close = function (self)
+function CoreEnvEditor:on_close()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -3964,7 +3964,7 @@ CoreEnvEditor.on_close = function (self)
 
 
 end
-CoreEnvEditor.database_load_posteffect = function (self, post_effect_node)
+function CoreEnvEditor:database_load_posteffect(post_effect_node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -4327,7 +4327,7 @@ CoreEnvEditor.database_load_posteffect = function (self, post_effect_node)
 
 
 end
-CoreEnvEditor.database_load_underlay = function (self, underlay_effect_node)
+function CoreEnvEditor:database_load_underlay(underlay_effect_node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -4635,7 +4635,7 @@ CoreEnvEditor.database_load_underlay = function (self, underlay_effect_node)
 
 
 end
-CoreEnvEditor.database_load_sky = function (self, sky_node)
+function CoreEnvEditor:database_load_sky(sky_node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -4912,7 +4912,7 @@ CoreEnvEditor.database_load_sky = function (self, sky_node)
 
 
 end
-CoreEnvEditor.database_load_env = function (self, env_path)
+function CoreEnvEditor:database_load_env(env_path)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-15, warpins: 1 ---
@@ -5072,7 +5072,7 @@ CoreEnvEditor.database_load_env = function (self, env_path)
 
 
 end
-CoreEnvEditor.on_open_file = function (self)
+function CoreEnvEditor:on_open_file()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -5107,7 +5107,7 @@ CoreEnvEditor.on_open_file = function (self)
 
 
 end
-CoreEnvEditor.on_save_file = function (self)
+function CoreEnvEditor:on_save_file()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-17, warpins: 1 ---
@@ -5122,7 +5122,7 @@ CoreEnvEditor.on_save_file = function (self)
 
 
 end
-CoreEnvEditor.on_save_file_as = function (self)
+function CoreEnvEditor:on_save_file_as()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -5162,7 +5162,7 @@ CoreEnvEditor.on_save_file_as = function (self)
 
 
 end
-CoreEnvEditor.on_manager_flush = function (self)
+function CoreEnvEditor:on_manager_flush()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -5193,7 +5193,7 @@ CoreEnvEditor.on_manager_flush = function (self)
 
 
 end
-CoreEnvEditor.destroy = function (self)
+function CoreEnvEditor:destroy()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -5228,7 +5228,7 @@ CoreEnvEditor.destroy = function (self)
 
 
 end
-CoreEnvEditor.close = function (self)
+function CoreEnvEditor:close()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -5302,7 +5302,7 @@ CoreEnvEditor.close = function (self)
 
 
 end
-CoreEnvEditor.set_position = function (self, newpos)
+function CoreEnvEditor:set_position(newpos)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -5316,7 +5316,7 @@ CoreEnvEditor.set_position = function (self, newpos)
 
 
 end
-CoreEnvEditor.update = function (self, t, dt)
+function CoreEnvEditor:update(t, dt)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -5560,7 +5560,7 @@ CoreEnvEditor.update = function (self, t, dt)
 
 
 end
-CoreEnvEditor.step = function (self)
+function CoreEnvEditor:step()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -5797,7 +5797,7 @@ CoreEnvEditor.step = function (self)
 
 
 end
-CoreEnvEditor.on_undo = function (self)
+function CoreEnvEditor:on_undo()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -5831,7 +5831,7 @@ CoreEnvEditor.on_undo = function (self)
 
 
 end
-CoreEnvEditor.on_redo = function (self)
+function CoreEnvEditor:on_redo()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -5865,7 +5865,7 @@ CoreEnvEditor.on_redo = function (self)
 
 
 end
-CoreEnvEditor.get_cursor_look_point = function (self, camera, dist)
+function CoreEnvEditor:get_cursor_look_point(camera, dist)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-24, warpins: 1 ---
@@ -5881,7 +5881,7 @@ CoreEnvEditor.get_cursor_look_point = function (self, camera, dist)
 
 
 end
-CoreEnvEditor.draw_cursor = function (self)
+function CoreEnvEditor:draw_cursor()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -5926,7 +5926,7 @@ CoreEnvEditor.draw_cursor = function (self)
 
 
 end
-CoreEnvEditor.pick_depth = function (self)
+function CoreEnvEditor:pick_depth()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -5987,7 +5987,7 @@ CoreEnvEditor.pick_depth = function (self)
 
 
 end
-CoreEnvEditor.pick_height = function (self)
+function CoreEnvEditor:pick_height()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -6044,7 +6044,7 @@ CoreEnvEditor.pick_height = function (self)
 
 
 end
-CoreEnvEditor.sync = function (self)
+function CoreEnvEditor:sync()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -6624,7 +6624,7 @@ CoreEnvEditor.sync = function (self)
 
 
 end
-CoreEnvEditor.value_database_lookup = function (self, str)
+function CoreEnvEditor:value_database_lookup(str)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-19, warpins: 1 ---

@@ -4,14 +4,14 @@ if not RaidGUIControlMeleeWeaponStats then
 end
 
 RaidGUIControlMeleeWeaponStats = slot0
-RaidGUIControlMeleeWeaponStats.init = function (self, parent, params)
+function RaidGUIControlMeleeWeaponStats:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlMeleeWeaponStats.super.init(slot4, self, parent)
 
 	return 
 end
-RaidGUIControlMeleeWeaponStats._set_default_values = function (self)
+function RaidGUIControlMeleeWeaponStats:_set_default_values()
 	slot7 = true
 	slot7 = true
 	slot7 = true
@@ -37,7 +37,7 @@ RaidGUIControlMeleeWeaponStats._set_default_values = function (self)
 
 	return 
 end
-RaidGUIControlMeleeWeaponStats._get_tabs_params = function (self)
+function RaidGUIControlMeleeWeaponStats:_get_tabs_params()
 	local tabs_params = {
 		{
 			name = "damage",
@@ -63,7 +63,7 @@ RaidGUIControlMeleeWeaponStats._get_tabs_params = function (self)
 
 	return tabs_params
 end
-RaidGUIControlMeleeWeaponStats.set_stats = function (self, damage, knockback, range, charge_time)
+function RaidGUIControlMeleeWeaponStats:set_stats(damage, knockback, range, charge_time)
 	self._values.damage.value = damage
 	self._values.knockback.value = knockback
 	self._values.range.value = range
@@ -81,26 +81,26 @@ RaidGUIControlMeleeWeaponStats.set_stats = function (self, damage, knockback, ra
 
 	return 
 end
-RaidGUIControlMeleeWeaponStats.refresh_data = function (self)
+function RaidGUIControlMeleeWeaponStats:refresh_data()
 	slot4 = "[RaidGUIControlMeleeWeaponStats:refresh_data]"
 
 	Application.trace(slot2, Application)
 
 	return 
 end
-RaidGUIControlMeleeWeaponStats._create_bottom_line = function (self)
+function RaidGUIControlMeleeWeaponStats:_create_bottom_line()
 	return 
 end
-RaidGUIControlMeleeWeaponStats._initial_tab_selected = function (self, tab_idx)
+function RaidGUIControlMeleeWeaponStats:_initial_tab_selected(tab_idx)
 	return 
 end
-RaidGUIControlMeleeWeaponStats._tab_selected = function (self, tab_idx, callback_param)
+function RaidGUIControlMeleeWeaponStats:_tab_selected(tab_idx, callback_param)
 	return 
 end
-RaidGUIControlMeleeWeaponStats._unselect_all = function (self)
+function RaidGUIControlMeleeWeaponStats:_unselect_all()
 	return 
 end
-RaidGUIControlMeleeWeaponStats.set_selected = function (self, value)
+function RaidGUIControlMeleeWeaponStats:set_selected(value)
 	slot5 = "[RaidGUIControlMeleeWeaponStats:set_selected] weapon stats control can't be selected"
 
 	Application.error(slot3, Application)
@@ -109,25 +109,25 @@ RaidGUIControlMeleeWeaponStats.set_selected = function (self, value)
 
 	return 
 end
-RaidGUIControlMeleeWeaponStats.move_up = function (self)
+function RaidGUIControlMeleeWeaponStats:move_up()
 	return 
 end
-RaidGUIControlMeleeWeaponStats.move_down = function (self)
+function RaidGUIControlMeleeWeaponStats:move_down()
 	return 
 end
-RaidGUIControlMeleeWeaponStats.move_left = function (self)
+function RaidGUIControlMeleeWeaponStats:move_left()
 	return 
 end
-RaidGUIControlMeleeWeaponStats.move_right = function (self)
+function RaidGUIControlMeleeWeaponStats:move_right()
 	return 
 end
-RaidGUIControlMeleeWeaponStats.highlight_on = function (self)
+function RaidGUIControlMeleeWeaponStats:highlight_on()
 	return 
 end
-RaidGUIControlMeleeWeaponStats.highlight_off = function (self)
+function RaidGUIControlMeleeWeaponStats:highlight_off()
 	return 
 end
-RaidGUIControlMeleeWeaponStats.mouse_released = function (self, o, button, x, y)
+function RaidGUIControlMeleeWeaponStats:mouse_released(o, button, x, y)
 	return false
 end
 

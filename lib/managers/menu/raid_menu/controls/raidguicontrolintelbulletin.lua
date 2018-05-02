@@ -4,7 +4,7 @@ if not RaidGUIControlIntelBulletin then
 end
 
 RaidGUIControlIntelBulletin = slot0
-RaidGUIControlIntelBulletin.init = function (self, parent, params)
+function RaidGUIControlIntelBulletin:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlIntelBulletin.super.init(slot4, self, parent)
@@ -18,7 +18,7 @@ RaidGUIControlIntelBulletin.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlIntelBulletin._layout = function (self)
+function RaidGUIControlIntelBulletin:_layout()
 	slot4 = {
 		y = 0,
 		x = 0,
@@ -135,7 +135,7 @@ RaidGUIControlIntelBulletin._layout = function (self)
 
 	return 
 end
-RaidGUIControlIntelBulletin.set_data = function (self, item_value)
+function RaidGUIControlIntelBulletin:set_data(item_value)
 	slot6 = item_value
 	self._data = tweak_data.intel.get_item_data(slot3, tweak_data.intel, self._category_name)
 	local text_top_coord = 0
@@ -223,7 +223,7 @@ RaidGUIControlIntelBulletin.set_data = function (self, item_value)
 
 	return 
 end
-RaidGUIControlIntelBulletin.get_data = function (self)
+function RaidGUIControlIntelBulletin:get_data()
 	return self._data
 end
 

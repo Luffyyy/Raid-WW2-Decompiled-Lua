@@ -4,7 +4,7 @@ if not DifficultyUnitElement then
 end
 
 DifficultyUnitElement = slot0
-DifficultyUnitElement.init = function (self, unit)
+function DifficultyUnitElement:init(unit)
 	slot5 = unit
 
 	DifficultyUnitElement.super.init(slot3, self)
@@ -16,7 +16,7 @@ DifficultyUnitElement.init = function (self, unit)
 
 	return 
 end
-DifficultyUnitElement._build_panel = function (self, panel, panel_sizer)
+function DifficultyUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

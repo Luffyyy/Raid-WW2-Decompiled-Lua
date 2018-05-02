@@ -7,7 +7,7 @@ end
 
 WeaponFlashLight = slot0
 WeaponFlashLight.GADGET_TYPE = "flashlight"
-WeaponFlashLight.init = function (self, unit)
+function WeaponFlashLight:init(unit)
 	slot5 = unit
 
 	WeaponFlashLight.super.init(slot3, self)
@@ -68,7 +68,7 @@ WeaponFlashLight.init = function (self, unit)
 
 	return 
 end
-WeaponFlashLight.set_npc = function (self)
+function WeaponFlashLight:set_npc()
 	if self._light_effect then
 		slot3 = World
 		slot4 = self._light_effect
@@ -96,7 +96,7 @@ WeaponFlashLight.set_npc = function (self)
 
 	return 
 end
-WeaponFlashLight._check_state = function (self)
+function WeaponFlashLight:_check_state()
 	slot3 = self
 
 	WeaponFlashLight.super._check_state(slot2)
@@ -124,7 +124,7 @@ WeaponFlashLight._check_state = function (self)
 		return 
 	end
 end
-WeaponFlashLight.destroy = function (self, unit)
+function WeaponFlashLight:destroy(unit)
 	slot5 = unit
 
 	WeaponFlashLight.super.destroy(slot3, self)
@@ -154,7 +154,7 @@ WeaponFlashLight.HALLOWEEN_LAUGHTER = 2
 WeaponFlashLight.HALLOWEEN_FROZEN = 3
 WeaponFlashLight.HALLOWEEN_SPOOC = 4
 WeaponFlashLight.HALLOWEEN_WARP = 5
-WeaponFlashLight.sync_net_event = function (self, event_id)
+function WeaponFlashLight:sync_net_event(event_id)
 
 	-- Decompilation error in this vicinity:
 	slot4 = Application
@@ -190,7 +190,7 @@ WeaponFlashLight.sync_net_event = function (self, event_id)
 
 	return 
 end
-WeaponFlashLight.update = function (self, unit, t, dt)
+function WeaponFlashLight:update(unit, t, dt)
 	slot7 = self._a_flashlight_obj
 
 	self._light.link(slot5, self._light)
@@ -270,14 +270,14 @@ WeaponFlashLight.update = function (self, unit, t, dt)
 
 	return 
 end
-WeaponFlashLight.run_net_event = function (self, event_id)
+function WeaponFlashLight:run_net_event(event_id)
 	slot5 = event_id
 
 	self.sync_net_event(slot3, self)
 
 	return 
 end
-WeaponFlashLight.update_flicker = function (self, t, dt)
+function WeaponFlashLight:update_flicker(t, dt)
 	if self._flicker_t then
 		slot6 = self._flicker_t - dt
 		self._flicker_t = math.max(slot4, 0)
@@ -302,7 +302,7 @@ WeaponFlashLight.update_flicker = function (self, t, dt)
 
 	return 
 end
-WeaponFlashLight.update_laughter = function (self, t, dt)
+function WeaponFlashLight:update_laughter(t, dt)
 	if self._laughter_t then
 		slot6 = self._laughter_t - dt
 		self._laughter_t = math.max(slot4, 0)
@@ -334,7 +334,7 @@ WeaponFlashLight.update_laughter = function (self, t, dt)
 
 	return 
 end
-WeaponFlashLight.update_frozen = function (self, t, dt)
+function WeaponFlashLight:update_frozen(t, dt)
 	if self._frozen_t and self._frozen_t <= t then
 		slot8 = "a_flashlight"
 		local obj = self._unit.get_object(slot4, Idstring(slot7))

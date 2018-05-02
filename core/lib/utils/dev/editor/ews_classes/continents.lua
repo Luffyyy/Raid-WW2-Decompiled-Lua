@@ -1,5 +1,5 @@
 ContinentPanel = ContinentPanel or class()
-ContinentPanel.init = function (self, parent)
+function ContinentPanel:init(parent)
 	slot6 = "VERTICAL"
 
 	self.create_panel(slot3, self, parent)
@@ -32,7 +32,7 @@ ContinentPanel.init = function (self, parent)
 
 	return 
 end
-ContinentPanel.create_toolbar = function (self)
+function ContinentPanel:create_toolbar()
 	slot4 = "VERTICAL"
 	local toolbar_sizer = EWS.BoxSizer(slot2, EWS)
 	slot7 = "TB_FLAT,TB_NODIVIDER,TB_VERTICAL"
@@ -64,7 +64,7 @@ ContinentPanel.create_toolbar = function (self)
 
 	return toolbar_sizer
 end
-ContinentPanel.create_world_setting = function (self)
+function ContinentPanel:create_world_setting()
 	slot4 = "HORIZONTAL"
 	local sizer = EWS.BoxSizer(slot2, EWS)
 	slot7 = "TB_FLAT,TB_NODIVIDER"
@@ -128,10 +128,10 @@ ContinentPanel.create_world_setting = function (self)
 
 	return sizer
 end
-ContinentPanel.panel = function (self)
+function ContinentPanel:panel()
 	return self._panel
 end
-ContinentPanel.create_panel = function (self, parent, orientation)
+function ContinentPanel:create_panel(parent, orientation)
 	slot8 = "TAB_TRAVERSAL,ALWAYS_SHOW_SB"
 	self._panel = EWS.Panel(slot4, EWS, parent, "")
 	slot6 = orientation
@@ -142,7 +142,7 @@ ContinentPanel.create_panel = function (self, parent, orientation)
 
 	return 
 end
-ContinentPanel.create_continent_panel = function (self, parent, orientation)
+function ContinentPanel:create_continent_panel(parent, orientation)
 	slot8 = "VSCROLL,TAB_TRAVERSAL,SIMPLE_BORDER"
 	self._continent_panel = EWS.ScrolledWindow(slot4, EWS, parent, "")
 	slot5 = self._continent_panel
@@ -172,7 +172,7 @@ ContinentPanel.create_continent_panel = function (self, parent, orientation)
 
 	return 
 end
-ContinentPanel.create_continent_dialog = function (self)
+function ContinentPanel:create_continent_dialog()
 	slot12 = 0
 	local name = EWS.get_text_from_user(slot2, EWS, Global.frame_panel, "Enter name for new continent:", "Create new continent", "", Vector3(true, -1, -1))
 
@@ -192,7 +192,7 @@ ContinentPanel.create_continent_dialog = function (self)
 
 	return 
 end
-ContinentPanel.add_continent = function (self, params)
+function ContinentPanel:add_continent(params)
 	slot7 = "TAB_TRAVERSAL"
 	local panel = EWS.Panel(slot3, EWS, self._continent_panel, "")
 	params.panel = panel
@@ -306,10 +306,10 @@ ContinentPanel.add_continent = function (self, params)
 
 	return panel
 end
-ContinentPanel.toggle_visible = function (self, params)
+function ContinentPanel:toggle_visible(params)
 	return 
 end
-ContinentPanel.toggle_locked = function (self, params)
+function ContinentPanel:toggle_locked(params)
 	slot4 = params.continent
 	slot8 = "LOCKED"
 
@@ -321,7 +321,7 @@ ContinentPanel.toggle_locked = function (self, params)
 
 	return 
 end
-ContinentPanel._set_toolbar_colour = function (self, params)
+function ContinentPanel:_set_toolbar_colour(params)
 	slot5 = "LOCKED"
 	local locked = params.toolbar.tool_state(slot3, params.toolbar)
 	slot8 = (locked and 50) or 255
@@ -334,21 +334,21 @@ ContinentPanel._set_toolbar_colour = function (self, params)
 
 	return 
 end
-ContinentPanel.hide_all = function (self, params)
+function ContinentPanel:hide_all(params)
 	slot5 = false
 
 	params.continent.set_visible(slot3, params.continent)
 
 	return 
 end
-ContinentPanel.unhide_all = function (self, params)
+function ContinentPanel:unhide_all(params)
 	slot5 = true
 
 	params.continent.set_visible(slot3, params.continent)
 
 	return 
 end
-ContinentPanel.toggle_enabled_in_simulation = function (self, params)
+function ContinentPanel:toggle_enabled_in_simulation(params)
 	slot5 = "enabled_in_simulation"
 	slot9 = "ENABLED_IN_SIMULATION"
 
@@ -356,7 +356,7 @@ ContinentPanel.toggle_enabled_in_simulation = function (self, params)
 
 	return 
 end
-ContinentPanel.toggle_editor_only = function (self, params)
+function ContinentPanel:toggle_editor_only(params)
 	slot5 = "editor_only"
 	slot9 = "EDITOR_ONLY"
 
@@ -364,7 +364,7 @@ ContinentPanel.toggle_editor_only = function (self, params)
 
 	return 
 end
-ContinentPanel.toggle_button_clicked = function (self, params)
+function ContinentPanel:toggle_button_clicked(params)
 	slot4 = managers.editor
 	slot7 = params.continent
 
@@ -372,7 +372,7 @@ ContinentPanel.toggle_button_clicked = function (self, params)
 
 	return 
 end
-ContinentPanel.update_continent_panel = function (self, continent)
+function ContinentPanel:update_continent_panel(continent)
 	slot4 = self._continent_panels
 
 	for _, params in ipairs(slot3) do
@@ -398,7 +398,7 @@ ContinentPanel.update_continent_panel = function (self, continent)
 
 	return 
 end
-ContinentPanel.set_continent = function (self, continent)
+function ContinentPanel:set_continent(continent)
 	slot4 = self._continent_panels
 
 	for _, params in ipairs(slot3) do
@@ -409,14 +409,14 @@ ContinentPanel.set_continent = function (self, continent)
 
 	return 
 end
-ContinentPanel.delete_continent = function (self)
+function ContinentPanel:delete_continent()
 	slot3 = managers.editor
 
 	managers.editor.delete_continent(slot2)
 
 	return 
 end
-ContinentPanel.destroy_continent = function (self, continent)
+function ContinentPanel:destroy_continent(continent)
 	slot4 = self._continent_panels
 
 	for _, params in ipairs(slot3) do
@@ -431,7 +431,7 @@ ContinentPanel.destroy_continent = function (self, continent)
 
 	return 
 end
-ContinentPanel._destroy_continent = function (self, params)
+function ContinentPanel:_destroy_continent(params)
 	slot5 = params
 
 	if not table.contains(slot3, self._continent_panels) then
@@ -452,7 +452,7 @@ ContinentPanel._destroy_continent = function (self, params)
 
 	return 
 end
-ContinentPanel.destroy_all_continents = function (self)
+function ContinentPanel:destroy_all_continents()
 	slot5 = self._continent_panels
 
 	for _, params in ipairs(clone(slot4)) do
@@ -463,7 +463,7 @@ ContinentPanel.destroy_all_continents = function (self)
 
 	return 
 end
-ContinentPanel.create_world_setting_dialog = function (self)
+function ContinentPanel:create_world_setting_dialog()
 	slot3 = managers.editor
 
 	if not managers.editor.lastfile(slot2) then
@@ -490,7 +490,7 @@ ContinentPanel.create_world_setting_dialog = function (self)
 
 	return 
 end
-ContinentPanel.open_world_setting_dialog = function (self)
+function ContinentPanel:open_world_setting_dialog()
 	slot5 = "World setting (*.world_setting)|*.world_setting"
 	slot8 = managers.editor
 	local path, dir = managers.database.open_file_dialog(slot2, managers.database, Global.frame, managers.editor.get_open_dir(slot7))
@@ -505,7 +505,7 @@ ContinentPanel.open_world_setting_dialog = function (self)
 
 	return 
 end
-ContinentPanel.set_simulation_world_setting_dialog = function (self)
+function ContinentPanel:set_simulation_world_setting_dialog()
 	slot5 = "World setting (*.world_setting)|*.world_setting"
 	slot8 = managers.editor
 	local path, dir = managers.database.open_file_dialog(slot2, managers.database, Global.frame, managers.editor.get_open_dir(slot7))
@@ -519,14 +519,14 @@ ContinentPanel.set_simulation_world_setting_dialog = function (self)
 
 	return 
 end
-ContinentPanel.remove_simulation_world_setting_dialog = function (self)
+function ContinentPanel:remove_simulation_world_setting_dialog()
 	slot4 = nil
 
 	managers.editor.set_simulation_world_setting_path(slot2, managers.editor)
 
 	return 
 end
-ContinentPanel.set_world_setting_path = function (self, path)
+function ContinentPanel:set_world_setting_path(path)
 	slot5 = path or "-"
 
 	self._world_setting_path.set_value(slot3, self._world_setting_path)

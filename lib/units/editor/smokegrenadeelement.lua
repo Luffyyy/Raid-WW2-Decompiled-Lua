@@ -4,7 +4,7 @@ if not SmokeGrenadeElement then
 end
 
 SmokeGrenadeElement = slot0
-SmokeGrenadeElement.init = function (self, unit)
+function SmokeGrenadeElement:init(unit)
 	slot5 = unit
 
 	SmokeGrenadeElement.super.init(slot3, self)
@@ -31,7 +31,7 @@ SmokeGrenadeElement.init = function (self, unit)
 
 	return 
 end
-SmokeGrenadeElement._build_panel = function (self, panel, panel_sizer)
+function SmokeGrenadeElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

@@ -19,7 +19,7 @@ slot3 = "CoreInteractionEditorPropUI"
 core.import(slot1, core)
 
 InteractionEditorUI = InteractionEditorUI or CoreClass.class()
-InteractionEditorUI.init = function (self, owner)
+function InteractionEditorUI:init(owner)
 	slot10 = -1
 	slot11 = 0
 	slot9 = Global.frame
@@ -212,24 +212,24 @@ InteractionEditorUI.init = function (self, owner)
 
 	return 
 end
-InteractionEditorUI.frame = function (self)
+function InteractionEditorUI:frame()
 	return self._main_frame
 end
-InteractionEditorUI.set_position = function (self, pos)
+function InteractionEditorUI:set_position(pos)
 	slot5 = pos
 
 	self._main_frame.set_position(slot3, self._main_frame)
 
 	return 
 end
-InteractionEditorUI.set_title = function (self, text)
+function InteractionEditorUI:set_title(text)
 	slot5 = (text and CoreInteractionEditorConfig.EDITOR_TITLE .. " - " .. text) or CoreInteractionEditorConfig.EDITOR_TITLE
 
 	self._main_frame.set_title(slot3, self._main_frame)
 
 	return 
 end
-InteractionEditorUI.connect_events = function (self)
+function InteractionEditorUI:connect_events()
 	slot10 = "on_new"
 
 	self._main_frame.connect(slot2, self._main_frame, "NEW", "EVT_COMMAND_MENU_SELECTED", callback(slot7, self._owner, self._owner))
@@ -277,7 +277,7 @@ InteractionEditorUI.connect_events = function (self)
 
 	return 
 end
-InteractionEditorUI.create_graph_context_menu = function (self, system)
+function InteractionEditorUI:create_graph_context_menu(system)
 	slot4 = system
 	slot11 = "on_show_graph_context_menu"
 
@@ -341,7 +341,7 @@ InteractionEditorUI.create_graph_context_menu = function (self, system)
 
 	return menu
 end
-InteractionEditorUI.show_graph_context_menu = function (self, system)
+function InteractionEditorUI:show_graph_context_menu(system)
 	slot4 = system
 
 	system.context_menu(slot3).set_enabled(slot3, system.context_menu(slot3), "DELETE_NODE")
@@ -355,7 +355,7 @@ InteractionEditorUI.show_graph_context_menu = function (self, system)
 
 	return 
 end
-InteractionEditorUI.destroy = function (self)
+function InteractionEditorUI:destroy()
 	slot3 = self._main_frame
 
 	if CoreCode.alive(slot2) then
@@ -368,28 +368,28 @@ InteractionEditorUI.destroy = function (self)
 
 	return 
 end
-InteractionEditorUI.clean_prop_panel = function (self)
+function InteractionEditorUI:clean_prop_panel()
 	slot3 = self._prop_panel
 
 	self._prop_panel.clean(slot2)
 
 	return 
 end
-InteractionEditorUI.rebuild_prop_panel = function (self, desc, node)
+function InteractionEditorUI:rebuild_prop_panel(desc, node)
 	slot7 = node
 
 	self._prop_panel.rebuild(slot4, self._prop_panel, desc)
 
 	return 
 end
-InteractionEditorUI.create_nb_page = function (self, caption, select)
+function InteractionEditorUI:create_nb_page(caption, select)
 	slot8 = ""
 	local panel = EWS.Panel(slot4, EWS, self._main_notebook, "")
 	slot10 = select
 
 	return panel, self._main_notebook.add_page(self._main_notebook, self._main_notebook, panel, caption)
 end
-InteractionEditorUI.destroy_nb_page = function (self, id)
+function InteractionEditorUI:destroy_nb_page(id)
 	slot4 = self._main_notebook
 
 	self._main_notebook.freeze(slot3)
@@ -417,34 +417,34 @@ InteractionEditorUI.destroy_nb_page = function (self, id)
 
 	return 
 end
-InteractionEditorUI.current_nb_page = function (self)
+function InteractionEditorUI:current_nb_page()
 	slot3 = self._main_notebook
 
 	return self._main_notebook.get_current_page(slot2)
 end
-InteractionEditorUI.get_nb_page_count = function (self)
+function InteractionEditorUI:get_nb_page_count()
 	slot3 = self._main_notebook
 
 	return self._main_notebook.get_page_count(slot2)
 end
-InteractionEditorUI.set_nb_page = function (self, id)
+function InteractionEditorUI:set_nb_page(id)
 	slot5 = id
 
 	return self._main_notebook.set_page(slot3, self._main_notebook)
 end
-InteractionEditorUI.get_nb_page = function (self, id)
+function InteractionEditorUI:get_nb_page(id)
 	slot5 = id
 
 	return self._main_notebook.get_page(slot3, self._main_notebook)
 end
-InteractionEditorUI.update_nb_page_caption = function (self, id, text)
+function InteractionEditorUI:update_nb_page_caption(id, text)
 	slot7 = text
 
 	self._main_notebook.set_page_text(slot4, self._main_notebook, id)
 
 	return 
 end
-InteractionEditorUI.get_nb_page_by_caption = function (self, text)
+function InteractionEditorUI:get_nb_page_by_caption(text)
 	slot5 = self._main_notebook
 
 	for i = 0, self._main_notebook.get_page_count(slot4) - 1, 1 do
@@ -457,7 +457,7 @@ InteractionEditorUI.get_nb_page_by_caption = function (self, text)
 
 	return 
 end
-InteractionEditorUI.get_nb_page_id = function (self, panel)
+function InteractionEditorUI:get_nb_page_id(panel)
 	slot5 = self._main_notebook
 
 	for i = 0, self._main_notebook.get_page_count(slot4) - 1, 1 do
@@ -470,7 +470,7 @@ InteractionEditorUI.get_nb_page_id = function (self, panel)
 
 	return 
 end
-InteractionEditorUI.set_save_close_option_enabled = function (self, b)
+function InteractionEditorUI:set_save_close_option_enabled(b)
 	slot6 = b
 
 	self._file_menu.set_enabled(slot3, self._file_menu, "SAVE")
@@ -501,7 +501,7 @@ InteractionEditorUI.set_save_close_option_enabled = function (self, b)
 
 	return 
 end
-InteractionEditorUI.want_to_save = function (self, path)
+function InteractionEditorUI:want_to_save(path)
 	slot8 = "ICON_WARNING,YES_DEFAULT,YES_NO,CANCEL"
 	slot13 = -1
 

@@ -8,7 +8,7 @@ if not MenuNodeJukeboxGui then
 end
 
 MenuNodeJukeboxGui = slot0
-MenuNodeJukeboxGui.init = function (self, node, layer, parameters)
+function MenuNodeJukeboxGui:init(node, layer, parameters)
 	parameters.align = "left"
 	parameters._align_line_proportions = 0.5
 	slot9 = parameters
@@ -32,7 +32,7 @@ MenuNodeJukeboxGui.init = function (self, node, layer, parameters)
 
 	return 
 end
-MenuNodeJukeboxGui.close = function (self)
+function MenuNodeJukeboxGui:close()
 	slot3 = self
 
 	MenuNodeJukeboxGui.super.close(slot2)

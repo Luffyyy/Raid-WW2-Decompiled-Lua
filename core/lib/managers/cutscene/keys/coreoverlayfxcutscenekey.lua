@@ -43,10 +43,10 @@ CoreOverlayFXCutsceneKey.register_serialized_attribute(, CoreOverlayFXCutsceneKe
 CoreOverlayFXCutsceneKey.control_for_blend_mode = CoreCutsceneKeyBase.standard_combo_box_control
 slot5 = CoreOverlayFXCutsceneKey.VALID_BLEND_MODES
 CoreOverlayFXCutsceneKey.refresh_control_for_blend_mode = CoreCutsceneKeyBase.standard_combo_box_control_refresh(CoreOverlayFXCutsceneKey, CoreCutsceneKeyBase, "blend_mode")
-CoreOverlayFXCutsceneKey.__tostring = function (self)
+function CoreOverlayFXCutsceneKey:__tostring()
 	return "Trigger overlay effect."
 end
-CoreOverlayFXCutsceneKey.preroll = function (self, player)
+function CoreOverlayFXCutsceneKey:preroll(player)
 	slot4 = self
 
 	if self.fade_in(slot3) == 0 then
@@ -61,7 +61,7 @@ CoreOverlayFXCutsceneKey.preroll = function (self, player)
 
 	return 
 end
-CoreOverlayFXCutsceneKey.skip = function (self, player)
+function CoreOverlayFXCutsceneKey:skip(player)
 	slot5 = self
 	local full_intensity_start = self.time(slot3) + self.fade_in(self)
 	local full_intensity_end = full_intensity_start + self.sustain(self)
@@ -80,7 +80,7 @@ CoreOverlayFXCutsceneKey.skip = function (self, player)
 
 	return 
 end
-CoreOverlayFXCutsceneKey.evaluate = function (self, player, fast_forward)
+function CoreOverlayFXCutsceneKey:evaluate(player, fast_forward)
 	slot7 = self
 
 	function slot6(_, attribute_name)
@@ -96,14 +96,14 @@ CoreOverlayFXCutsceneKey.evaluate = function (self, player, fast_forward)
 
 	return 
 end
-CoreOverlayFXCutsceneKey.revert = function (self, player)
+function CoreOverlayFXCutsceneKey:revert(player)
 	slot4 = self
 
 	self._stop(slot3)
 
 	return 
 end
-CoreOverlayFXCutsceneKey.update_gui = function (self, time, delta_time, player)
+function CoreOverlayFXCutsceneKey:update_gui(time, delta_time, player)
 	if self.__color_picker_dialog then
 		slot8 = delta_time
 
@@ -112,21 +112,21 @@ CoreOverlayFXCutsceneKey.update_gui = function (self, time, delta_time, player)
 
 	return 
 end
-CoreOverlayFXCutsceneKey.is_valid_blend_mode = function (self, value)
+function CoreOverlayFXCutsceneKey:is_valid_blend_mode(value)
 	slot5 = value
 
 	return table.contains(slot3, self.VALID_BLEND_MODES)
 end
-CoreOverlayFXCutsceneKey.is_valid_fade_in = function (self, value)
+function CoreOverlayFXCutsceneKey:is_valid_fade_in(value)
 	return 0 <= value
 end
-CoreOverlayFXCutsceneKey.is_valid_sustain = function (self, value)
+function CoreOverlayFXCutsceneKey:is_valid_sustain(value)
 	return 0 <= value
 end
-CoreOverlayFXCutsceneKey.is_valid_fade_out = function (self, value)
+function CoreOverlayFXCutsceneKey:is_valid_fade_out(value)
 	return 0 <= value
 end
-CoreOverlayFXCutsceneKey.control_for_color = function (self, parent_frame)
+function CoreOverlayFXCutsceneKey:control_for_color(parent_frame)
 	slot6 = ""
 	local control = EWS.ColorWell(slot3, EWS, parent_frame)
 	slot6 = "Open Color Picker"
@@ -148,7 +148,7 @@ CoreOverlayFXCutsceneKey.control_for_color = function (self, parent_frame)
 
 	return control
 end
-CoreOverlayFXCutsceneKey._on_pick_color = function (self, sender)
+function CoreOverlayFXCutsceneKey:_on_pick_color(sender)
 	if self.__color_picker_dialog == nil then
 		slot5 = sender
 		local cutscene_editor_window = self._top_level_window(slot3, self)
@@ -191,7 +191,7 @@ CoreOverlayFXCutsceneKey._on_pick_color = function (self, sender)
 
 	return 
 end
-CoreOverlayFXCutsceneKey._effect_data = function (self)
+function CoreOverlayFXCutsceneKey:_effect_data()
 	slot5 = self
 
 	function slot4(_, attribute_name)
@@ -202,14 +202,14 @@ CoreOverlayFXCutsceneKey._effect_data = function (self)
 
 	return table.remap(slot2, self.attribute_names(slot4))
 end
-CoreOverlayFXCutsceneKey._stop = function (self)
+function CoreOverlayFXCutsceneKey:_stop()
 	slot3 = managers.cutscene
 
 	managers.cutscene.stop_overlay_effect(slot2)
 
 	return 
 end
-CoreOverlayFXCutsceneKey._top_level_window = function (self, window)
+function CoreOverlayFXCutsceneKey:_top_level_window(window)
 
 	-- Decompilation error in this vicinity:
 	slot4 = window

@@ -12,7 +12,7 @@ if not EditLadder then
 end
 
 EditLadder = slot0
-EditLadder.init = function (self, editor)
+function EditLadder:init(editor)
 	slot5 = {
 		name = "Ladder",
 		class = self
@@ -83,7 +83,7 @@ EditLadder.init = function (self, editor)
 
 	return 
 end
-EditLadder.update = function (self, t, dt)
+function EditLadder:update(t, dt)
 	slot5 = self._selected_units
 
 	for _, unit in ipairs(slot4) do
@@ -99,7 +99,7 @@ EditLadder.update = function (self, t, dt)
 
 	return 
 end
-EditLadder._update_width = function (self, params)
+function EditLadder:_update_width(params)
 	slot4 = self._selected_units
 
 	for _, unit in ipairs(slot3) do
@@ -115,7 +115,7 @@ EditLadder._update_width = function (self, params)
 
 	return 
 end
-EditLadder._update_height = function (self, params)
+function EditLadder:_update_height(params)
 	slot4 = self._selected_units
 
 	for _, unit in ipairs(slot3) do
@@ -131,7 +131,7 @@ EditLadder._update_height = function (self, params)
 
 	return 
 end
-EditLadder.is_editable = function (self, unit, units)
+function EditLadder:is_editable(unit, units)
 	slot5 = unit
 
 	if alive(slot4) then

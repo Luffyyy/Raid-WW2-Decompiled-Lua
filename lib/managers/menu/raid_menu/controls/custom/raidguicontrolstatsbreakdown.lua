@@ -20,7 +20,7 @@ RaidGUIControlStatsBreakdown.TABLE_ROW_HEIGHT = 32
 RaidGUIControlStatsBreakdown.TABLE_COLUMN_HEIGHT = 32
 RaidGUIControlStatsBreakdown.TABLE_DESCRIPTION_W_PERCENT = 70
 RaidGUIControlStatsBreakdown.TABLE_VALUE_W_PERCENT = 30
-RaidGUIControlStatsBreakdown.init = function (self, parent, params)
+function RaidGUIControlStatsBreakdown:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlStatsBreakdown.super.init(slot4, self, parent)
@@ -58,10 +58,10 @@ RaidGUIControlStatsBreakdown.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlStatsBreakdown.close = function (self)
+function RaidGUIControlStatsBreakdown:close()
 	return 
 end
-RaidGUIControlStatsBreakdown._create_control_panel = function (self)
+function RaidGUIControlStatsBreakdown:_create_control_panel()
 	local control_params = clone(slot2)
 	control_params.name = control_params.name .. "_customization_panel"
 	slot4 = self._panel
@@ -74,7 +74,7 @@ RaidGUIControlStatsBreakdown._create_control_panel = function (self)
 
 	return 
 end
-RaidGUIControlStatsBreakdown._create_stats_label = function (self)
+function RaidGUIControlStatsBreakdown:_create_stats_label()
 	local stats_label_params = {
 		name = "stats_label",
 		vertical = "center",
@@ -93,7 +93,7 @@ RaidGUIControlStatsBreakdown._create_stats_label = function (self)
 
 	return 
 end
-RaidGUIControlStatsBreakdown._create_breakdown_table = function (self, params)
+function RaidGUIControlStatsBreakdown:_create_breakdown_table(params)
 	local breakdown_table_params = {
 		name = "breakdown_table",
 		use_selector_mark = false,
@@ -134,7 +134,7 @@ RaidGUIControlStatsBreakdown._create_breakdown_table = function (self, params)
 
 	return 
 end
-RaidGUIControlStatsBreakdown._fit_panel = function (self)
+function RaidGUIControlStatsBreakdown:_fit_panel()
 	slot7 = self._breakdown_table
 	slot4 = self._breakdown_table.y(slot5) + self._breakdown_table.h(self._breakdown_table)
 
@@ -142,7 +142,7 @@ RaidGUIControlStatsBreakdown._fit_panel = function (self)
 
 	return 
 end
-RaidGUIControlStatsBreakdown.hide = function (self)
+function RaidGUIControlStatsBreakdown:hide()
 	slot4 = 0
 
 	self._stats_label.set_alpha(slot2, self._stats_label)
@@ -167,7 +167,7 @@ RaidGUIControlStatsBreakdown.hide = function (self)
 
 	return 
 end
-RaidGUIControlStatsBreakdown.fade_in = function (self)
+function RaidGUIControlStatsBreakdown:fade_in()
 	slot3 = self._stats_label
 	slot8 = "_animate_table_fade_in"
 
@@ -175,7 +175,7 @@ RaidGUIControlStatsBreakdown.fade_in = function (self)
 
 	return 
 end
-RaidGUIControlStatsBreakdown._animate_table_fade_in = function (self)
+function RaidGUIControlStatsBreakdown:_animate_table_fade_in()
 	local t = 0
 	local label_duration = 0.4
 	local table_duration = 0.2
@@ -243,7 +243,7 @@ RaidGUIControlStatsBreakdown._animate_table_fade_in = function (self)
 
 	return 
 end
-RaidGUIControlStatsBreakdown._animate_table_row_fade_in = function (self, label, row, delay)
+function RaidGUIControlStatsBreakdown:_animate_table_row_fade_in(label, row, delay)
 	local t = 0
 	local duration = 0.2
 	slot8 = row

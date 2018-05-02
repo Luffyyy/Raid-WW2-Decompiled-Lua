@@ -4,7 +4,7 @@ if not RaidGUIControlTabWeaponStats then
 end
 
 RaidGUIControlTabWeaponStats = slot0
-RaidGUIControlTabWeaponStats.init = function (self, parent, params)
+function RaidGUIControlTabWeaponStats:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlTabWeaponStats.super.init(slot4, self, parent)
@@ -21,7 +21,7 @@ RaidGUIControlTabWeaponStats.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlTabWeaponStats.set_text = function (self, text)
+function RaidGUIControlTabWeaponStats:set_text(text)
 	self._text = text
 	slot5 = text
 
@@ -29,74 +29,74 @@ RaidGUIControlTabWeaponStats.set_text = function (self, text)
 
 	return 
 end
-RaidGUIControlTabWeaponStats.text = function (self)
+function RaidGUIControlTabWeaponStats:text()
 	slot3 = self._label
 
 	return self._label.text(slot2)
 end
-RaidGUIControlTabWeaponStats.set_value = function (self, text)
+function RaidGUIControlTabWeaponStats:set_value(text)
 	slot5 = text
 
 	self._label.set_value(slot3, self._label)
 
 	return 
 end
-RaidGUIControlTabWeaponStats.value = function (self)
+function RaidGUIControlTabWeaponStats:value()
 	slot3 = self._label
 
 	return self._label.value(slot2)
 end
-RaidGUIControlTabWeaponStats.set_value_delta = function (self, text)
+function RaidGUIControlTabWeaponStats:set_value_delta(text)
 	slot5 = text
 
 	self._label.set_value_delta(slot3, self._label)
 
 	return 
 end
-RaidGUIControlTabWeaponStats.value_delta = function (self)
+function RaidGUIControlTabWeaponStats:value_delta()
 	slot3 = self._label
 
 	return self._label.value_delta(slot2)
 end
-RaidGUIControlTabWeaponStats.needs_divider = function (self)
+function RaidGUIControlTabWeaponStats:needs_divider()
 	return false
 end
-RaidGUIControlTabWeaponStats.needs_bottom_line = function (self)
+function RaidGUIControlTabWeaponStats:needs_bottom_line()
 	return false
 end
-RaidGUIControlTabWeaponStats.get_callback_param = function (self)
+function RaidGUIControlTabWeaponStats:get_callback_param()
 	return nil
 end
-RaidGUIControlTabWeaponStats.highlight_on = function (self)
+function RaidGUIControlTabWeaponStats:highlight_on()
 	return 
 end
-RaidGUIControlTabWeaponStats.highlight_off = function (self)
+function RaidGUIControlTabWeaponStats:highlight_off()
 	return 
 end
-RaidGUIControlTabWeaponStats.select = function (self)
+function RaidGUIControlTabWeaponStats:select()
 	self._selected = false
 
 	return 
 end
-RaidGUIControlTabWeaponStats.unselect = function (self)
+function RaidGUIControlTabWeaponStats:unselect()
 	self._selected = false
 
 	return 
 end
-RaidGUIControlTabWeaponStats.mouse_released = function (self, o, button, x, y)
+function RaidGUIControlTabWeaponStats:mouse_released(o, button, x, y)
 	return false
 end
-RaidGUIControlTabWeaponStats.on_mouse_released = function (self, button, x, y)
+function RaidGUIControlTabWeaponStats:on_mouse_released(button, x, y)
 	return false
 end
-RaidGUIControlTabWeaponStats.set_color = function (self, color)
+function RaidGUIControlTabWeaponStats:set_color(color)
 	slot5 = color
 
 	self._label.set_label_color(slot3, self._label)
 
 	return 
 end
-RaidGUIControlTabWeaponStats.set_label_default_color = function (self)
+function RaidGUIControlTabWeaponStats:set_label_default_color()
 	slot3 = self._label
 
 	self._label.set_label_default_color(slot2)

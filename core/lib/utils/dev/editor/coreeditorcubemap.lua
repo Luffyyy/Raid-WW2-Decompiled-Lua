@@ -4,7 +4,7 @@ slot3 = "CoreEditorUtils"
 
 core.import(slot1, core)
 
-CoreEditor.create_projection_light = function (self, type)
+function CoreEditor:create_projection_light(type)
 	local lights = {}
 	local units = {}
 
@@ -174,7 +174,7 @@ CoreEditor.create_projection_light = function (self, type)
 
 	return 
 end
-CoreEditor._create_cube_light = function (self, params)
+function CoreEditor:_create_cube_light(params)
 	if not self._lastdir then
 		return 
 	end
@@ -194,7 +194,7 @@ CoreEditor._create_cube_light = function (self, params)
 
 	return 
 end
-CoreEditor.create_cube_map = function (self, params)
+function CoreEditor:create_cube_map(params)
 	slot7 = 500
 
 	assert(self._vp.push_ref_fov(slot5, self._vp))
@@ -330,7 +330,7 @@ CoreEditor.create_cube_map = function (self, params)
 
 	return 
 end
-CoreEditor.next_cube = function (self)
+function CoreEditor:next_cube()
 	if 0 < #self._cubes_que then
 		slot4 = 1
 		local cube = table.remove(slot2, self._cubes_que)
@@ -363,7 +363,7 @@ CoreEditor.next_cube = function (self)
 
 	return false
 end
-CoreEditor.cube_map_done = function (self)
+function CoreEditor:cube_map_done()
 	slot3 = self
 
 	if self.next_cube(slot2) then

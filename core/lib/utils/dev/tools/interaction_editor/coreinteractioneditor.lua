@@ -28,21 +28,21 @@ if not InteractionEditor then
 end
 
 InteractionEditor = slot0
-InteractionEditor.init = function (self)
+function InteractionEditor:init()
 	slot4 = self
 	self._ui = CoreInteractionEditorUI.InteractionEditorUI.new(slot2, CoreInteractionEditorUI.InteractionEditorUI)
 	self._systems = {}
 
 	return 
 end
-InteractionEditor.set_position = function (self, pos)
+function InteractionEditor:set_position(pos)
 	slot5 = pos
 
 	self._ui.set_position(slot3, self._ui)
 
 	return 
 end
-InteractionEditor.update = function (self, t, dt)
+function InteractionEditor:update(t, dt)
 	slot5 = self._systems
 
 	for _, sys in pairs(slot4) do
@@ -53,10 +53,10 @@ InteractionEditor.update = function (self, t, dt)
 
 	return 
 end
-InteractionEditor.ui = function (self)
+function InteractionEditor:ui()
 	return self._ui
 end
-InteractionEditor.close = function (self)
+function InteractionEditor:close()
 	slot3 = self._systems
 
 	for _, sys in pairs(slot2) do
@@ -72,7 +72,7 @@ InteractionEditor.close = function (self)
 
 	return 
 end
-InteractionEditor.open_system = function (self, path)
+function InteractionEditor:open_system(path)
 	slot4 = self._systems
 
 	for _, sys in pairs(slot3) do
@@ -87,7 +87,7 @@ InteractionEditor.open_system = function (self, path)
 
 	return 
 end
-InteractionEditor.save_system = function (self, sys, path)
+function InteractionEditor:save_system(sys, path)
 	slot3 = assert
 
 	if not sys then
@@ -101,7 +101,7 @@ InteractionEditor.save_system = function (self, sys, path)
 
 	return 
 end
-InteractionEditor.close_system = function (self, sys)
+function InteractionEditor:close_system(sys)
 	if not sys then
 		slot4 = self
 		local system = self.active_system(slot3)
@@ -137,7 +137,7 @@ InteractionEditor.close_system = function (self, sys)
 
 	return 
 end
-InteractionEditor.active_system = function (self)
+function InteractionEditor:active_system()
 	slot3 = self._systems
 
 	for _, sys in pairs(slot2) do
@@ -150,7 +150,7 @@ InteractionEditor.active_system = function (self)
 
 	return 
 end
-InteractionEditor.activate_system = function (self, panel)
+function InteractionEditor:activate_system(panel)
 	slot4 = self._systems
 
 	for _, sys in pairs(slot3) do
@@ -175,7 +175,7 @@ InteractionEditor.activate_system = function (self, panel)
 
 	return 
 end
-InteractionEditor.do_save = function (self, sys)
+function InteractionEditor:do_save(sys)
 	if not sys then
 		slot4 = self
 		local system = self.active_system(slot3)
@@ -198,7 +198,7 @@ InteractionEditor.do_save = function (self, sys)
 
 	return 
 end
-InteractionEditor.do_save_as = function (self, sys)
+function InteractionEditor:do_save_as(sys)
 	if not sys then
 		slot4 = self
 		local system = self.active_system(slot3)
@@ -221,7 +221,7 @@ InteractionEditor.do_save_as = function (self, sys)
 
 	return 
 end
-InteractionEditor.do_save_all = function (self)
+function InteractionEditor:do_save_all()
 	slot3 = self._systems
 
 	for _, system in pairs(slot2) do
@@ -241,7 +241,7 @@ InteractionEditor.do_save_all = function (self)
 
 	return 
 end
-InteractionEditor.undo = function (self, sys)
+function InteractionEditor:undo(sys)
 	if not sys then
 		slot4 = self
 		local system = self.active_system(slot3)
@@ -255,7 +255,7 @@ InteractionEditor.undo = function (self, sys)
 
 	return 
 end
-InteractionEditor.redo = function (self, sys)
+function InteractionEditor:redo(sys)
 	if not sys then
 		slot4 = self
 		local system = self.active_system(slot3)

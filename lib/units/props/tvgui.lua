@@ -1,5 +1,5 @@
 TvGui = TvGui or class()
-TvGui.init = function (self, unit)
+function TvGui:init(unit)
 	self._unit = unit
 	slot5 = self._unit
 
@@ -33,14 +33,14 @@ TvGui.init = function (self, unit)
 
 	return 
 end
-TvGui.add_workspace = function (self, gui_object)
+function TvGui:add_workspace(gui_object)
 	slot7 = gui_object
 	slot12 = 0
 	self._ws = self._new_gui.create_object_workspace(slot3, self._new_gui, 0, 0, Vector3(slot9, 0, 0))
 
 	return 
 end
-TvGui.setup = function (self)
+function TvGui:setup()
 	slot3 = self._ws
 	slot4 = {
 		loop = true,
@@ -56,7 +56,7 @@ TvGui.setup = function (self)
 
 	return 
 end
-TvGui.set_visible = function (self, visible)
+function TvGui:set_visible(visible)
 	slot5 = visible
 
 	self._video_panel.set_visible(slot3, self._video_panel)
@@ -67,21 +67,21 @@ TvGui.set_visible = function (self, visible)
 
 	return 
 end
-TvGui.start = function (self)
+function TvGui:start()
 	slot3 = self._video_panel
 
 	self._video_panel.play(slot2)
 
 	return 
 end
-TvGui.pause = function (self)
+function TvGui:pause()
 	slot3 = self._video_panel
 
 	self._video_panel.pause(slot2)
 
 	return 
 end
-TvGui.stop = function (self)
+function TvGui:stop()
 	slot3 = self._video_panel
 
 	self._video_panel.pause(slot2)
@@ -92,7 +92,7 @@ TvGui.stop = function (self)
 
 	return 
 end
-TvGui.destroy = function (self)
+function TvGui:destroy()
 	slot3 = self._new_gui
 
 	if alive(slot2) then

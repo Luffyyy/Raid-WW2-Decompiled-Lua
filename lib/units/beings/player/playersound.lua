@@ -1,5 +1,5 @@
 PlayerSound = PlayerSound or class()
-PlayerSound.init = function (self, unit)
+function PlayerSound:init(unit)
 	self._unit = unit
 	slot4 = unit
 	slot4 = unit.base(slot3)
@@ -27,10 +27,10 @@ PlayerSound.init = function (self, unit)
 
 	return 
 end
-PlayerSound.destroy = function (self, unit)
+function PlayerSound:destroy(unit)
 	return 
 end
-PlayerSound._play = function (self, sound_name, source_name)
+function PlayerSound:_play(sound_name, source_name)
 	local source = nil
 
 	if source_name then
@@ -44,7 +44,7 @@ PlayerSound._play = function (self, sound_name, source_name)
 
 	return event
 end
-PlayerSound.sound_callback = function (self, instance, event_type, unit, sound_source, label, identifier, position)
+function PlayerSound:sound_callback(instance, event_type, unit, sound_source, label, identifier, position)
 	slot10 = unit
 
 	if not alive(slot9) then
@@ -75,7 +75,7 @@ PlayerSound.sound_callback = function (self, instance, event_type, unit, sound_s
 
 	return 
 end
-PlayerSound.queue_sound = function (self, id, sound_name, source_name, sync)
+function PlayerSound:queue_sound(id, sound_name, source_name, sync)
 	slot8 = {
 		_id = id,
 		_sound = sound_name,
@@ -87,12 +87,12 @@ PlayerSound.queue_sound = function (self, id, sound_name, source_name, sync)
 
 	return 
 end
-PlayerSound.clear_queue = function (self)
+function PlayerSound:clear_queue()
 	self._queue = {}
 
 	return 
 end
-PlayerSound.play = function (self, sound_name, source_name, sync)
+function PlayerSound:play(sound_name, source_name, sync)
 	local event_id = nil
 	slot7 = sound_name
 
@@ -119,7 +119,7 @@ PlayerSound.play = function (self, sound_name, source_name, sync)
 
 	return event
 end
-PlayerSound.stop = function (self, source_name)
+function PlayerSound:stop(source_name)
 	local source = nil
 
 	if source_name then
@@ -134,7 +134,7 @@ PlayerSound.stop = function (self, source_name)
 
 	return 
 end
-PlayerSound.play_footstep = function (self, foot, material_name)
+function PlayerSound:play_footstep(foot, material_name)
 	if self._last_material ~= material_name then
 		self._last_material = material_name
 		slot6 = material_name
@@ -155,7 +155,7 @@ PlayerSound.play_footstep = function (self, foot, material_name)
 
 	return 
 end
-PlayerSound.play_land = function (self, material_name)
+function PlayerSound:play_land(material_name)
 	if self._last_material ~= material_name then
 		self._last_material = material_name
 		slot5 = material_name
@@ -173,14 +173,14 @@ PlayerSound.play_land = function (self, material_name)
 
 	return 
 end
-PlayerSound.play_whizby = function (self, params)
+function PlayerSound:play_whizby(params)
 	slot5 = "whizby"
 
 	self._play(slot3, self)
 
 	return 
 end
-PlayerSound.say = function (self, sound_name, important_say, sync)
+function PlayerSound:say(sound_name, important_say, sync)
 	if self._last_speech and self._speaking and important_say == true then
 		slot6 = self._last_speech
 
@@ -217,10 +217,10 @@ PlayerSound.say = function (self, sound_name, important_say, sync)
 
 	return self._last_speech
 end
-PlayerSound.speaking = function (self)
+function PlayerSound:speaking()
 	return self._speaking
 end
-PlayerSound.set_voice = function (self, voice)
+function PlayerSound:set_voice(voice)
 	slot4 = self._unit
 	slot6 = voice
 
@@ -228,7 +228,7 @@ PlayerSound.set_voice = function (self, voice)
 
 	return 
 end
-PlayerSound.stop_speaking = function (self)
+function PlayerSound:stop_speaking()
 	if self._last_speech and self._speaking then
 		slot3 = self._last_speech
 

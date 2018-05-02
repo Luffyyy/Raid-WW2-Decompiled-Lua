@@ -10,7 +10,7 @@ end
 ElementFeedback = slot0
 slot3 = "effect"
 ElementFeedback.IDS_EFFECT = Idstring(slot2)
-ElementFeedback.init = function (self, ...)
+function ElementFeedback:init(...)
 	slot3 = self
 
 	ElementFeedback.super.init(slot2, ...)
@@ -28,14 +28,14 @@ ElementFeedback.init = function (self, ...)
 
 	return 
 end
-ElementFeedback.client_on_executed = function (self, ...)
+function ElementFeedback:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementFeedback.on_executed = function (self, instigator)
+function ElementFeedback:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -129,7 +129,7 @@ ElementFeedback.on_executed = function (self, instigator)
 
 	return 
 end
-ElementFeedback._check_value = function (self, params, cat, setting, value)
+function ElementFeedback:_check_value(params, cat, setting, value)
 	if not value then
 		return 
 	end
@@ -152,7 +152,7 @@ ElementFeedback._check_value = function (self, params, cat, setting, value)
 
 	return 
 end
-ElementFeedback._calc_multiplier = function (self, player)
+function ElementFeedback:_calc_multiplier(player)
 	if self._values.range == 0 then
 		return 1
 	end

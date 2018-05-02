@@ -9,7 +9,7 @@ RaidGUIControlTabs = slot0
 RaidGUIControlTabs.DEFAULT_HEIGHT = 64
 RaidGUIControlTabs.BOTTOM_LINE_HEIGHT = 5
 RaidGUIControlTabs.ACTIVE_LINE_COLOR = tweak_data.gui.colors.raid_red
-RaidGUIControlTabs.init = function (self, parent, params)
+function RaidGUIControlTabs:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlTabs.super.init(slot4, self, parent)
@@ -74,7 +74,7 @@ RaidGUIControlTabs.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlTabs._create_items = function (self)
+function RaidGUIControlTabs:_create_items()
 	if self._params.tabs_params then
 		slot3 = self._params.tabs_params
 
@@ -90,7 +90,7 @@ RaidGUIControlTabs._create_items = function (self)
 
 	return 
 end
-RaidGUIControlTabs._create_bottom_line = function (self)
+function RaidGUIControlTabs:_create_bottom_line()
 	local bottom_line_params = {
 		name = "bottom_line",
 		x = (self._initial_tab_idx - 1) * self._tab_width
@@ -108,7 +108,7 @@ RaidGUIControlTabs._create_bottom_line = function (self)
 
 	return 
 end
-RaidGUIControlTabs._initial_tab_selected = function (self, tab_idx)
+function RaidGUIControlTabs:_initial_tab_selected(tab_idx)
 	slot4 = self._items
 
 	for tab_index, tab in ipairs(slot3) do
@@ -127,7 +127,7 @@ RaidGUIControlTabs._initial_tab_selected = function (self, tab_idx)
 
 	return 
 end
-RaidGUIControlTabs._tab_selected = function (self, tab_idx, callback_param)
+function RaidGUIControlTabs:_tab_selected(tab_idx, callback_param)
 	slot5 = self
 
 	if self.get_abort_selection(slot4) then
@@ -160,7 +160,7 @@ RaidGUIControlTabs._tab_selected = function (self, tab_idx, callback_param)
 
 	return 
 end
-RaidGUIControlTabs._unselect_all = function (self)
+function RaidGUIControlTabs:_unselect_all()
 	slot3 = self._items
 
 	for _, item in ipairs(slot2) do
@@ -171,15 +171,15 @@ RaidGUIControlTabs._unselect_all = function (self)
 
 	return 
 end
-RaidGUIControlTabs.set_abort_selection = function (self, value)
+function RaidGUIControlTabs:set_abort_selection(value)
 	self._abort_selection = value
 
 	return 
 end
-RaidGUIControlTabs.get_abort_selection = function (self)
+function RaidGUIControlTabs:get_abort_selection()
 	return self._abort_selection
 end
-RaidGUIControlTabs.set_selected = function (self, value)
+function RaidGUIControlTabs:set_selected(value)
 	self._selected = value
 	slot4 = self
 
@@ -195,7 +195,7 @@ RaidGUIControlTabs.set_selected = function (self, value)
 
 	return 
 end
-RaidGUIControlTabs.move_up = function (self)
+function RaidGUIControlTabs:move_up()
 	if self._selected and self._on_menu_move and self._on_menu_move.up then
 		slot4 = self._on_menu_move.up
 		local result, target = self._menu_move_to(slot2, self)
@@ -205,7 +205,7 @@ RaidGUIControlTabs.move_up = function (self)
 
 	return 
 end
-RaidGUIControlTabs.move_down = function (self)
+function RaidGUIControlTabs:move_down()
 	if self._selected and self._on_menu_move and self._on_menu_move.down then
 		slot4 = self._on_menu_move.down
 		local result, target = self._menu_move_to(slot2, self)
@@ -215,7 +215,7 @@ RaidGUIControlTabs.move_down = function (self)
 
 	return 
 end
-RaidGUIControlTabs._move_left = function (self)
+function RaidGUIControlTabs:_move_left()
 	if not self._enabled then
 		return 
 	end
@@ -235,7 +235,7 @@ RaidGUIControlTabs._move_left = function (self)
 
 	return true
 end
-RaidGUIControlTabs._move_right = function (self)
+function RaidGUIControlTabs:_move_right()
 	if not self._enabled then
 		return 
 	end
@@ -253,7 +253,7 @@ RaidGUIControlTabs._move_right = function (self)
 
 	return true
 end
-RaidGUIControlTabs._move_bottom_line = function (self)
+function RaidGUIControlTabs:_move_bottom_line()
 	local duration = 0.2
 	local t = duration - (1 - self._line_movement_t) * duration
 	slot5 = self._bottom_line

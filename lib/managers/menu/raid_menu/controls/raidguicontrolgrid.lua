@@ -9,7 +9,7 @@ RaidGUIControlGrid.DEFAULT_ITEM_PADDING = 16
 RaidGUIControlGrid.PAGING_PANEL_HEIGHT = 25
 RaidGUIControlGrid.PAGING_STEPPER_WIDTH = 100
 RaidGUIControlGrid.SCROLL_STEP = 30
-RaidGUIControlGrid.init = function (self, parent, params)
+function RaidGUIControlGrid:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlGrid.super.init(slot4, self, parent)
@@ -68,10 +68,10 @@ RaidGUIControlGrid.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlGrid.close = function (self)
+function RaidGUIControlGrid:close()
 	return 
 end
-RaidGUIControlGrid._get_data = function (self)
+function RaidGUIControlGrid:_get_data()
 	slot4 = 0
 
 	self._grid_panel.set_y(slot2, self._grid_panel)
@@ -93,7 +93,7 @@ RaidGUIControlGrid._get_data = function (self)
 
 	return 
 end
-RaidGUIControlGrid._create_items = function (self)
+function RaidGUIControlGrid:_create_items()
 	if self._total_items == 0 then
 		return 
 	end
@@ -140,7 +140,7 @@ RaidGUIControlGrid._create_items = function (self)
 
 	return 
 end
-RaidGUIControlGrid._create_item = function (self, item_params, item_data, grid_params)
+function RaidGUIControlGrid:_create_item(item_params, item_data, grid_params)
 	slot10 = grid_params
 	local item = self._grid_panel.create_custom_control(slot5, self._grid_panel, item_params.row_class or RaidGUIControlCardBase, item_params, item_data)
 
@@ -152,7 +152,7 @@ RaidGUIControlGrid._create_item = function (self, item_params, item_data, grid_p
 
 	return item
 end
-RaidGUIControlGrid._delete_items = function (self)
+function RaidGUIControlGrid:_delete_items()
 	self._grid_items = {}
 	self._selected_item = nil
 	slot3 = self._grid_panel
@@ -161,13 +161,13 @@ RaidGUIControlGrid._delete_items = function (self)
 
 	return 
 end
-RaidGUIControlGrid.highlight_on = function (self)
+function RaidGUIControlGrid:highlight_on()
 	return 
 end
-RaidGUIControlGrid.highlight_off = function (self)
+function RaidGUIControlGrid:highlight_off()
 	return 
 end
-RaidGUIControlGrid.refresh_data = function (self)
+function RaidGUIControlGrid:refresh_data()
 	slot3 = self
 
 	self._delete_items(slot2)
@@ -182,7 +182,7 @@ RaidGUIControlGrid.refresh_data = function (self)
 
 	return 
 end
-RaidGUIControlGrid.select_grid_item_by_item = function (self, grid_item, dont_fire_select_callback)
+function RaidGUIControlGrid:select_grid_item_by_item(grid_item, dont_fire_select_callback)
 	if self._selected_item then
 		slot5 = self._selected_item
 
@@ -199,7 +199,7 @@ RaidGUIControlGrid.select_grid_item_by_item = function (self, grid_item, dont_fi
 
 	return 
 end
-RaidGUIControlGrid.select_grid_item_by_key_value = function (self, params)
+function RaidGUIControlGrid:select_grid_item_by_key_value(params)
 	slot4 = self._grid_items
 
 	for grid_item_index, grid_item in ipairs(slot3) do
@@ -222,10 +222,10 @@ RaidGUIControlGrid.select_grid_item_by_key_value = function (self, params)
 
 	return self._selected_item
 end
-RaidGUIControlGrid.selected_grid_item = function (self)
+function RaidGUIControlGrid:selected_grid_item()
 	return self._selected_item
 end
-RaidGUIControlGrid._on_item_clicked_callback = function (self, item_data, key_field_name)
+function RaidGUIControlGrid:_on_item_clicked_callback(item_data, key_field_name)
 	slot6 = {
 		dont_fire_select_callback = true,
 		key = key_field_name,
@@ -242,7 +242,7 @@ RaidGUIControlGrid._on_item_clicked_callback = function (self, item_data, key_fi
 
 	return 
 end
-RaidGUIControlGrid._on_item_double_clicked_callback = function (self, item_data, key_field_name)
+function RaidGUIControlGrid:_on_item_double_clicked_callback(item_data, key_field_name)
 	if self._on_double_click_callback then
 		slot5 = item_data
 
@@ -251,7 +251,7 @@ RaidGUIControlGrid._on_item_double_clicked_callback = function (self, item_data,
 
 	return 
 end
-RaidGUIControlGrid._on_item_selected_callback = function (self, item_idx, item_data)
+function RaidGUIControlGrid:_on_item_selected_callback(item_idx, item_data)
 	if self._on_select_callback then
 		slot6 = item_data
 
@@ -260,7 +260,7 @@ RaidGUIControlGrid._on_item_selected_callback = function (self, item_idx, item_d
 
 	return 
 end
-RaidGUIControlGrid.set_selected = function (self, value, dont_fire_select_callback)
+function RaidGUIControlGrid:set_selected(value, dont_fire_select_callback)
 	self._selected = value
 	slot5 = self
 
@@ -276,7 +276,7 @@ RaidGUIControlGrid.set_selected = function (self, value, dont_fire_select_callba
 
 	return 
 end
-RaidGUIControlGrid._unselect_all = function (self)
+function RaidGUIControlGrid:_unselect_all()
 	self._selected_item = nil
 	self._selected_item_idx = 0
 	slot3 = self._grid_items
@@ -289,7 +289,7 @@ RaidGUIControlGrid._unselect_all = function (self)
 
 	return 
 end
-RaidGUIControlGrid.move_up = function (self)
+function RaidGUIControlGrid:move_up()
 	if self._selected then
 		local new_item_idx = self._selected_item_idx - self._num_horizontal_items
 
@@ -312,7 +312,7 @@ RaidGUIControlGrid.move_up = function (self)
 
 	return 
 end
-RaidGUIControlGrid.move_down = function (self)
+function RaidGUIControlGrid:move_down()
 	if self._selected then
 		local new_item_idx = self._selected_item_idx + self._num_horizontal_items
 
@@ -345,7 +345,7 @@ RaidGUIControlGrid.move_down = function (self)
 
 	return 
 end
-RaidGUIControlGrid.move_left = function (self)
+function RaidGUIControlGrid:move_left()
 	if self._selected then
 		local new_item_idx = self._selected_item_idx - 1
 
@@ -372,7 +372,7 @@ RaidGUIControlGrid.move_left = function (self)
 
 	return 
 end
-RaidGUIControlGrid.move_right = function (self)
+function RaidGUIControlGrid:move_right()
 	if self._selected then
 		local new_item_idx = self._selected_item_idx + 1
 
@@ -399,7 +399,7 @@ RaidGUIControlGrid.move_right = function (self)
 
 	return 
 end
-RaidGUIControlGrid._calculate_selected_item_position = function (self)
+function RaidGUIControlGrid:_calculate_selected_item_position()
 	if not self._selected_item or not self._params.scrollable_area_ref then
 		return 
 	end
@@ -440,7 +440,7 @@ RaidGUIControlGrid._calculate_selected_item_position = function (self)
 
 	return 
 end
-RaidGUIControlGrid.confirm_pressed = function (self)
+function RaidGUIControlGrid:confirm_pressed()
 	return 
 end
 

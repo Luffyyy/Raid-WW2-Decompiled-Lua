@@ -8,7 +8,7 @@ RaidGUIControlButtonLongPrimary.ICON = "btn_primary_256"
 RaidGUIControlButtonLongPrimary.HOVER_ICON = "btn_primary_256_hover"
 RaidGUIControlButtonLongPrimary.W = tweak_data.gui.icons[RaidGUIControlButtonLongPrimary.ICON].texture_rect[3]
 RaidGUIControlButtonLongPrimary.H = tweak_data.gui.icons[RaidGUIControlButtonLongPrimary.ICON].texture_rect[4]
-RaidGUIControlButtonLongPrimary.init = function (self, parent, params)
+function RaidGUIControlButtonLongPrimary:init(parent, params)
 	if not params then
 		slot6 = "Trying to create a long primary button without parameters!"
 

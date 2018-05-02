@@ -43,7 +43,7 @@ local temp_vec3 = Vector3()
 slot14 = CopLogicBase
 CopLogicAttack = class(slot13)
 CopLogicAttack.super = CopLogicBase
-CopLogicAttack.enter = function (data, new_logic_name, enter_params)
+function CopLogicAttack.enter(data, new_logic_name, enter_params)
 	local my_data = {
 		unit = data.unit
 	}
@@ -137,7 +137,7 @@ CopLogicAttack.enter = function (data, new_logic_name, enter_params)
 
 	return 
 end
-CopLogicAttack.exit = function (data, new_logic_name, enter_params)
+function CopLogicAttack.exit(data, new_logic_name, enter_params)
 	slot7 = enter_params
 
 	CopLogicBase.exit(slot4, data, new_logic_name)
@@ -167,7 +167,7 @@ CopLogicAttack.exit = function (data, new_logic_name, enter_params)
 
 	return 
 end
-CopLogicAttack.queued_update = function (data)
+function CopLogicAttack.queued_update(data)
 	local my_data = data.internal_data
 	slot4 = TimerManager
 	slot4 = TimerManager.game(slot3)
@@ -234,7 +234,7 @@ CopLogicAttack.queued_update = function (data)
 
 	return 
 end
-CopLogicAttack._upd_combat_movement = function (data)
+function CopLogicAttack._upd_combat_movement(data)
 	local my_data = data.internal_data
 	local unit = data.unit
 	local t = data.t
@@ -440,7 +440,7 @@ CopLogicAttack._upd_combat_movement = function (data)
 
 	return 
 end
-CopLogicAttack._should_retreat = function (data, focus_enemy)
+function CopLogicAttack._should_retreat(data, focus_enemy)
 	if focus_enemy and focus_enemy.nav_tracker and focus_enemy.verified and focus_enemy.dis < 250 then
 		slot4 = data
 
@@ -451,7 +451,7 @@ CopLogicAttack._should_retreat = function (data, focus_enemy)
 
 	return false
 end
-CopLogicAttack._start_action_move_back = function (data, my_data, focus_enemy, engage)
+function CopLogicAttack._start_action_move_back(data, my_data, focus_enemy, engage)
 	slot6 = data.m_pos
 	local from_pos = mvector3.copy(slot5)
 	local threat_tracker = focus_enemy.nav_tracker
@@ -490,7 +490,7 @@ CopLogicAttack._start_action_move_back = function (data, my_data, focus_enemy, e
 
 	return false
 end
-CopLogicAttack._start_action_move_out_of_the_way = function (data, my_data)
+function CopLogicAttack._start_action_move_out_of_the_way(data, my_data)
 	slot4 = data.unit
 	slot4 = data.unit.movement(slot3)
 	local my_tracker = data.unit.movement(slot3).nav_tracker(slot3)
@@ -518,7 +518,7 @@ CopLogicAttack._start_action_move_out_of_the_way = function (data, my_data)
 
 	return 
 end
-CopLogicAttack._peek_for_pos_sideways = function (data, my_data, from_racker, peek_to_pos, height)
+function CopLogicAttack._peek_for_pos_sideways(data, my_data, from_racker, peek_to_pos, height)
 
 	-- Decompilation error in this vicinity:
 	local unit = data.unit
@@ -565,7 +565,7 @@ CopLogicAttack._peek_for_pos_sideways = function (data, my_data, from_racker, pe
 
 	return nil
 end
-CopLogicAttack._cancel_pathing = function (data, my_data, path_search_id)
+function CopLogicAttack._cancel_pathing(data, my_data, path_search_id)
 	if data.active_searches[path_search_id] then
 		slot6 = path_search_id
 
@@ -578,7 +578,7 @@ CopLogicAttack._cancel_pathing = function (data, my_data, path_search_id)
 
 	return 
 end
-CopLogicAttack._cancel_cover_pathing = function (data, my_data)
+function CopLogicAttack._cancel_cover_pathing(data, my_data)
 	my_data.cover_path = nil
 
 	if not my_data.processing_cover_path then
@@ -594,7 +594,7 @@ CopLogicAttack._cancel_cover_pathing = function (data, my_data)
 
 	return 
 end
-CopLogicAttack._cancel_charge = function (data, my_data)
+function CopLogicAttack._cancel_charge(data, my_data)
 	my_data.charge_pos = nil
 	my_data.charge_path = nil
 
@@ -610,7 +610,7 @@ CopLogicAttack._cancel_charge = function (data, my_data)
 
 	return 
 end
-CopLogicAttack._cancel_expected_pos_path = function (data, my_data)
+function CopLogicAttack._cancel_expected_pos_path(data, my_data)
 	my_data.expected_pos_path = nil
 
 	if not my_data.expected_pos_path_search_id then
@@ -625,7 +625,7 @@ CopLogicAttack._cancel_expected_pos_path = function (data, my_data)
 
 	return 
 end
-CopLogicAttack._request_action_turn_to_enemy = function (data, my_data, my_pos, enemy_pos)
+function CopLogicAttack._request_action_turn_to_enemy(data, my_data, my_pos, enemy_pos)
 	slot6 = data.unit
 	slot6 = data.unit.movement(slot5)
 	slot6 = data.unit.movement(slot5).m_rot(slot5)
@@ -653,7 +653,7 @@ CopLogicAttack._request_action_turn_to_enemy = function (data, my_data, my_pos, 
 
 	return 
 end
-CopLogicAttack._cancel_walking_to_cover = function (data, my_data, skip_action)
+function CopLogicAttack._cancel_walking_to_cover(data, my_data, skip_action)
 	my_data.cover_path = nil
 
 	if my_data.moving_to_cover then
@@ -679,7 +679,7 @@ CopLogicAttack._cancel_walking_to_cover = function (data, my_data, skip_action)
 
 	return 
 end
-CopLogicAttack._request_action_walk_to_cover = function (data, my_data)
+function CopLogicAttack._request_action_walk_to_cover(data, my_data)
 	slot5 = my_data.cover_path
 
 	CopLogicAttack._adjust_path_start_pos(slot3, data)
@@ -725,7 +725,7 @@ CopLogicAttack._request_action_walk_to_cover = function (data, my_data)
 
 	return 
 end
-CopLogicAttack._adjust_path_start_pos = function (data, path)
+function CopLogicAttack._adjust_path_start_pos(data, path)
 	local first_nav_point = path[1]
 	local my_pos = data.m_pos
 
@@ -738,7 +738,7 @@ CopLogicAttack._adjust_path_start_pos = function (data, path)
 
 	return 
 end
-CopLogicAttack._request_action_walk_to_cover_shoot_pos = function (data, my_data, path, speed)
+function CopLogicAttack._request_action_walk_to_cover_shoot_pos(data, my_data, path, speed)
 	slot7 = my_data
 
 	CopLogicAttack._cancel_cover_pathing(slot5, data)
@@ -773,7 +773,7 @@ CopLogicAttack._request_action_walk_to_cover_shoot_pos = function (data, my_data
 
 	return 
 end
-CopLogicAttack._request_action_crouch = function (data)
+function CopLogicAttack._request_action_crouch(data)
 
 	-- Decompilation error in this vicinity:
 	slot3 = data.unit
@@ -787,7 +787,7 @@ CopLogicAttack._request_action_crouch = function (data)
 
 	return res
 end
-CopLogicAttack._request_action_stand = function (data)
+function CopLogicAttack._request_action_stand(data)
 
 	-- Decompilation error in this vicinity:
 	slot3 = data.unit
@@ -801,7 +801,7 @@ CopLogicAttack._request_action_stand = function (data)
 
 	return res
 end
-CopLogicAttack._update_cover = function (data)
+function CopLogicAttack._update_cover(data)
 	local my_data = data.internal_data
 	local cover_release_dis_sq = 10000
 	local best_cover = my_data.best_cover
@@ -855,7 +855,7 @@ CopLogicAttack._update_cover = function (data)
 
 	return 
 end
-CopLogicAttack._find_cover_for_follow = function (data, my_data, threat_pos)
+function CopLogicAttack._find_cover_for_follow(data, my_data, threat_pos)
 
 	-- Decompilation error in this vicinity:
 	slot5 = data.objective.follow_unit
@@ -897,7 +897,7 @@ CopLogicAttack._find_cover_for_follow = function (data, my_data, threat_pos)
 
 	return 
 end
-CopLogicAttack._find_cover = function (data, my_data, threat_pos)
+function CopLogicAttack._find_cover(data, my_data, threat_pos)
 	local want_to_take_cover = my_data.want_to_take_cover
 	local flank_cover = my_data.flank_cover
 	local best_cover = my_data.best_cover
@@ -998,7 +998,7 @@ CopLogicAttack._find_cover = function (data, my_data, threat_pos)
 
 	return 
 end
-CopLogicAttack._verify_cover = function (cover, threat_pos, min_dis, max_dis)
+function CopLogicAttack._verify_cover(cover, threat_pos, min_dis, max_dis)
 	slot8 = threat_pos
 	local threat_dis = mvector3.direction(slot5, temp_vec1, cover[1])
 
@@ -1015,7 +1015,7 @@ CopLogicAttack._verify_cover = function (cover, threat_pos, min_dis, max_dis)
 
 	return true
 end
-CopLogicAttack._verify_follow_cover = function (cover, near_pos, threat_pos, min_dis, max_dis)
+function CopLogicAttack._verify_follow_cover(cover, near_pos, threat_pos, min_dis, max_dis)
 	slot10 = max_dis
 
 	if CopLogicAttack._verify_cover(slot6, cover, threat_pos, min_dis) then
@@ -1028,7 +1028,7 @@ CopLogicAttack._verify_follow_cover = function (cover, near_pos, threat_pos, min
 
 	return 
 end
-CopLogicAttack._chk_covered = function (data, cover_pos, threat_pos, slotmask)
+function CopLogicAttack._chk_covered(data, cover_pos, threat_pos, slotmask)
 	local ray_from = temp_vec1
 	slot8 = math.UP
 
@@ -1066,7 +1066,7 @@ CopLogicAttack._chk_covered = function (data, cover_pos, threat_pos, slotmask)
 
 	return low_ray, high_ray
 end
-CopLogicAttack._process_pathing_results = function (data, my_data)
+function CopLogicAttack._process_pathing_results(data, my_data)
 	if not data.pathing_results then
 		return 
 	end
@@ -1118,7 +1118,7 @@ CopLogicAttack._process_pathing_results = function (data, my_data)
 
 	return 
 end
-CopLogicAttack._upd_enemy_detection = function (data, is_synchronous)
+function CopLogicAttack._upd_enemy_detection(data, is_synchronous)
 	slot4 = managers.groupai
 	slot5 = data.unit
 
@@ -1195,7 +1195,7 @@ CopLogicAttack._upd_enemy_detection = function (data, is_synchronous)
 
 	return 
 end
-CopLogicAttack._find_retreat_position = function (from_pos, threat_pos, threat_head_pos, threat_tracker, max_dist, vis_required)
+function CopLogicAttack._find_retreat_position(from_pos, threat_pos, threat_head_pos, threat_tracker, max_dist, vis_required)
 	local nav_manager = managers.navigation
 	local ct_rays = 5
 	local step = 180 / ct_rays
@@ -1277,7 +1277,7 @@ CopLogicAttack._find_retreat_position = function (from_pos, threat_pos, threat_h
 
 	return nil
 end
-CopLogicAttack._is_threat_visible = function (retreat_pos, threat_pos, threat_head_pos, threat_tracker)
+function CopLogicAttack._is_threat_visible(retreat_pos, threat_pos, threat_head_pos, threat_tracker)
 	local ray_params = {
 		trace = true,
 		pos_from = retreat_pos,
@@ -1307,7 +1307,7 @@ CopLogicAttack._is_threat_visible = function (retreat_pos, threat_pos, threat_he
 
 	return false
 end
-CopLogicAttack.on_action_completed = function (data, action)
+function CopLogicAttack.on_action_completed(data, action)
 	local my_data = data.internal_data
 	slot5 = action
 	local action_type = action.type(slot4)
@@ -1384,7 +1384,7 @@ CopLogicAttack.on_action_completed = function (data, action)
 
 	return 
 end
-CopLogicAttack._upd_aim = function (data, my_data)
+function CopLogicAttack._upd_aim(data, my_data)
 	local shoot, aim, expected_pos = nil
 	local focus_enemy = data.attention_obj
 
@@ -1637,7 +1637,7 @@ CopLogicAttack._upd_aim = function (data, my_data)
 
 	return 
 end
-CopLogicAttack.aim_allow_fire = function (shoot, aim, data, my_data)
+function CopLogicAttack.aim_allow_fire(shoot, aim, data, my_data)
 	local focus_enemy = data.attention_obj
 
 	if shoot then
@@ -1668,9 +1668,9 @@ CopLogicAttack.aim_allow_fire = function (shoot, aim, data, my_data)
 
 	return 
 end
-CopLogicAttack.chk_should_turn = function (data, my_data)
+function CopLogicAttack.chk_should_turn(data, my_data)
 end
-CopLogicAttack._get_cover_offset_pos = function (data, cover_data, threat_pos)
+function CopLogicAttack._get_cover_offset_pos(data, cover_data, threat_pos)
 
 	-- Decompilation error in this vicinity:
 	local threat_vec = threat_pos - cover_data[1][1]
@@ -1718,7 +1718,7 @@ CopLogicAttack._get_cover_offset_pos = function (data, cover_data, threat_pos)
 
 	return ray_params.trace[1]
 end
-CopLogicAttack._find_flank_pos = function (data, my_data, flank_tracker, max_dist)
+function CopLogicAttack._find_flank_pos(data, my_data, flank_tracker, max_dist)
 	slot6 = flank_tracker
 	local pos = flank_tracker.position(slot5)
 	local vec_to_pos = pos - data.m_pos
@@ -1817,14 +1817,14 @@ CopLogicAttack._find_flank_pos = function (data, my_data, flank_tracker, max_dis
 
 	return 
 end
-CopLogicAttack.damage_clbk = function (data, damage_info)
+function CopLogicAttack.damage_clbk(data, damage_info)
 	slot5 = damage_info
 
 	CopLogicBase.damage_clbk(slot3, data)
 
 	return 
 end
-CopLogicAttack.is_available_for_assignment = function (data, new_objective)
+function CopLogicAttack.is_available_for_assignment(data, new_objective)
 	local my_data = data.internal_data
 
 	if my_data.exiting then
@@ -1871,7 +1871,7 @@ CopLogicAttack.is_available_for_assignment = function (data, new_objective)
 
 	return true
 end
-CopLogicAttack._chk_wants_to_take_cover = function (data, my_data)
+function CopLogicAttack._chk_wants_to_take_cover(data, my_data)
 
 	-- Decompilation error in this vicinity:
 	if not data.attention_obj or data.attention_obj.reaction < AIAttentionObject.REACT_COMBAT then
@@ -1890,7 +1890,7 @@ CopLogicAttack._chk_wants_to_take_cover = function (data, my_data)
 
 	return false
 end
-CopLogicAttack._set_best_cover = function (data, my_data, cover_data)
+function CopLogicAttack._set_best_cover(data, my_data, cover_data)
 	local best_cover = my_data.best_cover
 
 	if best_cover then
@@ -1925,7 +1925,7 @@ CopLogicAttack._set_best_cover = function (data, my_data, cover_data)
 
 	return 
 end
-CopLogicAttack._set_nearest_cover = function (my_data, cover_data)
+function CopLogicAttack._set_nearest_cover(my_data, cover_data)
 	local nearest_cover = my_data.nearest_cover
 
 	if nearest_cover then
@@ -1948,10 +1948,10 @@ CopLogicAttack._set_nearest_cover = function (my_data, cover_data)
 
 	return 
 end
-CopLogicAttack._can_move = function (data)
+function CopLogicAttack._can_move(data)
 	return not data.objective or not data.objective.pos or not data.objective.in_place
 end
-CopLogicAttack.queue_update = function (data, my_data, delay)
+function CopLogicAttack.queue_update(data, my_data, delay)
 	local update_delay = delay
 	update_delay = update_delay or (data.important and 0.5) or 2
 	slot11 = true
@@ -1960,7 +1960,7 @@ CopLogicAttack.queue_update = function (data, my_data, delay)
 
 	return 
 end
-CopLogicAttack._get_expected_attention_position = function (data, my_data)
+function CopLogicAttack._get_expected_attention_position(data, my_data)
 	local main_enemy = data.attention_obj
 	local e_nav_tracker = main_enemy.nav_tracker
 
@@ -2114,10 +2114,10 @@ CopLogicAttack._get_expected_attention_position = function (data, my_data)
 
 	return 
 end
-CopLogicAttack._chk_is_right_segment = function (ignore_this, enemy_nav_seg, test_nav_seg)
+function CopLogicAttack._chk_is_right_segment(ignore_this, enemy_nav_seg, test_nav_seg)
 	return enemy_nav_seg == test_nav_seg
 end
-CopLogicAttack.is_advancing = function (data)
+function CopLogicAttack.is_advancing(data)
 	if data.internal_data.moving_to_cover then
 		return data.internal_data.moving_to_cover[1][NavigationManager.COVER_POSITION]
 	end
@@ -2128,19 +2128,19 @@ CopLogicAttack.is_advancing = function (data)
 
 	return 
 end
-CopLogicAttack._get_all_paths = function (data)
+function CopLogicAttack._get_all_paths(data)
 	return {
 		cover_path = data.internal_data.cover_path,
 		flank_path = data.internal_data.flank_path
 	}
 end
-CopLogicAttack._set_verified_paths = function (data, verified_paths)
+function CopLogicAttack._set_verified_paths(data, verified_paths)
 	data.internal_data.cover_path = verified_paths.cover_path
 	data.internal_data.flank_path = verified_paths.flank_path
 
 	return 
 end
-CopLogicAttack._chk_exit_attack_logic = function (data, new_reaction)
+function CopLogicAttack._chk_exit_attack_logic(data, new_reaction)
 	slot4 = data.unit
 	slot5 = "walk"
 
@@ -2167,7 +2167,7 @@ CopLogicAttack._chk_exit_attack_logic = function (data, new_reaction)
 
 	return 
 end
-CopLogicAttack.action_taken = function (data, my_data)
+function CopLogicAttack.action_taken(data, my_data)
 	if not my_data.turning and not my_data.moving_to_cover and not my_data.walking_to_cover_shoot_pos and not my_data.retreating and not my_data.has_old_action then
 		slot4 = data.unit
 		slot5 = "walk"
@@ -2176,7 +2176,7 @@ CopLogicAttack.action_taken = function (data, my_data)
 
 	return slot2
 end
-CopLogicAttack._upd_stop_old_action = function (data, my_data)
+function CopLogicAttack._upd_stop_old_action(data, my_data)
 	slot4 = data.unit
 
 	if data.unit.anim_data(slot3).to_idle then
@@ -2215,7 +2215,7 @@ CopLogicAttack._upd_stop_old_action = function (data, my_data)
 
 	return 
 end
-CopLogicAttack._upd_pose = function (data, my_data)
+function CopLogicAttack._upd_pose(data, my_data)
 	local unit_can_stand = not data.char_tweak.allowed_poses or data.char_tweak.allowed_poses.stand
 	local unit_can_crouch = not data.char_tweak.allowed_poses or data.char_tweak.allowed_poses.crouch
 	local stand_objective = data.objective and data.objective.pose == "stand"
@@ -2242,7 +2242,7 @@ CopLogicAttack._upd_pose = function (data, my_data)
 
 	return 
 end
-CopLogicAttack._exit_non_walkable_area = function (data)
+function CopLogicAttack._exit_non_walkable_area(data)
 
 	-- Decompilation error in this vicinity:
 	local my_data = data.internal_data

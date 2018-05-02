@@ -8,32 +8,32 @@ require(slot1)
 
 local CAMERA_ICON_IMAGE_COUNT = 30
 CoreCutsceneFootage = CoreCutsceneFootage or class()
-CoreCutsceneFootage.init = function (self, cutscene)
+function CoreCutsceneFootage:init(cutscene)
 	self._cutscene = cutscene
 
 	return 
 end
-CoreCutsceneFootage.name = function (self)
+function CoreCutsceneFootage:name()
 	slot3 = self._cutscene
 
 	return self._cutscene.name(slot2)
 end
-CoreCutsceneFootage.controlled_unit_types = function (self)
+function CoreCutsceneFootage:controlled_unit_types()
 	slot3 = self._cutscene
 
 	return self._cutscene.controlled_unit_types(slot2)
 end
-CoreCutsceneFootage.camera_names = function (self)
+function CoreCutsceneFootage:camera_names()
 	slot3 = self._cutscene
 
 	return self._cutscene.camera_names(slot2)
 end
-CoreCutsceneFootage.keys = function (self)
+function CoreCutsceneFootage:keys()
 	slot3 = self._cutscene
 
 	return self._cutscene._all_keys_sorted_by_time(slot2)
 end
-CoreCutsceneFootage.add_clips_to_track = function (self, track, time)
+function CoreCutsceneFootage:add_clips_to_track(track, time)
 	time = time or 0
 	slot5 = track
 
@@ -54,7 +54,7 @@ CoreCutsceneFootage.add_clips_to_track = function (self, track, time)
 
 	return 
 end
-CoreCutsceneFootage.add_cameras_to_list_ctrl = function (self, list_ctrl)
+function CoreCutsceneFootage:add_cameras_to_list_ctrl(list_ctrl)
 	slot4 = list_ctrl
 
 	list_ctrl.freeze(slot3)
@@ -82,7 +82,7 @@ CoreCutsceneFootage.add_cameras_to_list_ctrl = function (self, list_ctrl)
 
 	return 
 end
-CoreCutsceneFootage.create_clip = function (self, start_frame, end_frame, camera)
+function CoreCutsceneFootage:create_clip(start_frame, end_frame, camera)
 	local clip = EWS.SequencerCroppedClip(slot5)
 	slot9 = camera
 	local metadata = core_or_local(EWS, "CutsceneClipMetadata", self)
@@ -116,12 +116,12 @@ CoreCutsceneFootage.create_clip = function (self, start_frame, end_frame, camera
 
 	return clip
 end
-CoreCutsceneFootage.frame_count = function (self)
+function CoreCutsceneFootage:frame_count()
 	slot3 = self._cutscene
 
 	return self._cutscene.frame_count(slot2)
 end
-CoreCutsceneFootage.colour = function (self)
+function CoreCutsceneFootage:colour()
 	if self._colour == nil then
 		local precision = 255
 		local r = 26
@@ -150,7 +150,7 @@ CoreCutsceneFootage.colour = function (self)
 
 	return self._colour
 end
-CoreCutsceneFootage.camera_icon_index = function (self, camera_name, image_count)
+function CoreCutsceneFootage:camera_icon_index(camera_name, image_count)
 	image_count = image_count or CAMERA_ICON_IMAGE_COUNT + 1
 	slot6 = "camera_(.+)"
 	local name_without_prefix = string.match(slot4, camera_name)
@@ -167,7 +167,7 @@ CoreCutsceneFootage.camera_icon_index = function (self, camera_name, image_count
 
 	return icon_index
 end
-CoreCutsceneFootage._camera_cuts = function (self)
+function CoreCutsceneFootage:_camera_cuts()
 	slot3 = self
 	local cuts = self._camera_cut_list(slot2)
 	local index = 0
@@ -179,7 +179,7 @@ CoreCutsceneFootage._camera_cuts = function (self)
 		return unpack(slot1)
 	end
 end
-CoreCutsceneFootage._camera_cut_list = function (self)
+function CoreCutsceneFootage:_camera_cut_list()
 	if self._camera_cut_cache == nil then
 		self._camera_cut_cache = {}
 		slot3 = self._cutscene
@@ -222,7 +222,7 @@ CoreCutsceneFootage._camera_cut_list = function (self)
 
 	return self._camera_cut_cache
 end
-CoreCutsceneFootage.prime_cast = function (self, cast)
+function CoreCutsceneFootage:prime_cast(cast)
 	slot5 = self._cutscene
 
 	cast.prime(slot3, cast)

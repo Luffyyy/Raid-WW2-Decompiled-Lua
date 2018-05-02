@@ -5,7 +5,7 @@
 CriminalsManager = CriminalsManager or class()
 CriminalsManager.MAX_NR_TEAM_AI = 3
 CriminalsManager.MAX_NR_CRIMINALS = 4
-function CriminalsManager:init()
+CriminalsManager.init = function (self)
 	slot3 = self
 
 	self._create_characters(slot2)
@@ -26,7 +26,7 @@ function CriminalsManager:init()
 
 	return 
 end
-function CriminalsManager:sync_teamai_to_peer(peer)
+CriminalsManager.sync_teamai_to_peer = function (self, peer)
 	slot4 = self._characters
 
 	for _, character in ipairs(slot3) do
@@ -40,7 +40,7 @@ function CriminalsManager:sync_teamai_to_peer(peer)
 
 	return 
 end
-function CriminalsManager:_create_characters()
+CriminalsManager._create_characters = function (self)
 	self._characters = {}
 	slot3 = tweak_data.criminals.characters
 
@@ -61,14 +61,14 @@ function CriminalsManager:_create_characters()
 
 	return 
 end
-function CriminalsManager:player_droped_in(params)
+CriminalsManager.player_droped_in = function (self, params)
 	slot5 = "system_player_connected"
 
 	managers.global_state.fire_event(slot3, managers.global_state)
 
 	return 
 end
-function CriminalsManager:player_droped_out(params)
+CriminalsManager.player_droped_out = function (self, params)
 	slot5 = "system_player_disconnected"
 
 	managers.global_state.fire_event(slot3, managers.global_state)
@@ -103,7 +103,7 @@ CriminalsManager.comm_wheel_callout_from_nationality = function (nationality)
 
 	return "brit"
 end
-function CriminalsManager:on_simulation_ended()
+CriminalsManager.on_simulation_ended = function (self)
 	slot3 = self._characters
 
 	for id, data in pairs(slot2) do
@@ -114,13 +114,13 @@ function CriminalsManager:on_simulation_ended()
 
 	return 
 end
-function CriminalsManager:local_character_name()
+CriminalsManager.local_character_name = function (self)
 	return self._local_character
 end
-function CriminalsManager:characters()
+CriminalsManager.characters = function (self)
 	return self._characters
 end
-function CriminalsManager:get_any_unit()
+CriminalsManager.get_any_unit = function (self)
 	slot3 = self._characters
 
 	for id, data in pairs(slot2) do
@@ -139,7 +139,7 @@ function CriminalsManager:get_any_unit()
 
 	return 
 end
-function CriminalsManager:get_valid_player_spawn_pos_rot()
+CriminalsManager.get_valid_player_spawn_pos_rot = function (self)
 	slot3 = managers.network
 	slot3 = managers.network.session(slot2)
 	local server_unit = managers.network.session(slot2).local_peer(slot2).unit(slot2)
@@ -199,7 +199,7 @@ function CriminalsManager:get_valid_player_spawn_pos_rot()
 
 	return nil
 end
-function CriminalsManager:get_valid_player_respawn_pos_rot()
+CriminalsManager.get_valid_player_respawn_pos_rot = function (self)
 	slot3 = managers.network
 	slot3 = managers.network.session(slot2)
 	slot3 = managers.network.session(slot2).local_peer(slot2)
@@ -324,7 +324,7 @@ function CriminalsManager:get_valid_player_respawn_pos_rot()
 
 	return self._last_valid_player_spawn_pos_rot
 end
-function CriminalsManager:_get_unit_pos_rot(unit, check_zipline)
+CriminalsManager._get_unit_pos_rot = function (self, unit, check_zipline)
 	if check_zipline then
 		slot5 = unit
 		slot5 = unit.movement(slot4)
@@ -365,13 +365,13 @@ function CriminalsManager:_get_unit_pos_rot(unit, check_zipline)
 
 	return 
 end
-function CriminalsManager:on_last_valid_player_spawn_point_updated(unit)
+CriminalsManager.on_last_valid_player_spawn_point_updated = function (self, unit)
 	slot6 = true
 	self._last_valid_player_spawn_pos_rot = self._get_unit_pos_rot(slot3, self, unit)
 
 	return 
 end
-function CriminalsManager:_remove(id)
+CriminalsManager._remove = function (self, id)
 	local data = self._characters[id]
 
 	if data.name == self._local_character then
@@ -415,7 +415,7 @@ function CriminalsManager:_remove(id)
 
 	return 
 end
-function CriminalsManager:add_character(name, unit, peer_id, ai)
+CriminalsManager.add_character = function (self, name, unit, peer_id, ai)
 	slot7 = self._characters
 
 	for id, data in pairs(slot6) do
@@ -476,7 +476,7 @@ function CriminalsManager:add_character(name, unit, peer_id, ai)
 
 	return 
 end
-function CriminalsManager:set_unit(name, unit)
+CriminalsManager.set_unit = function (self, name, unit)
 	slot5 = self._characters
 
 	for id, data in pairs(slot4) do
@@ -519,7 +519,7 @@ function CriminalsManager:set_unit(name, unit)
 
 	return 
 end
-function CriminalsManager:set_data(name)
+CriminalsManager.set_data = function (self, name)
 	slot5 = name
 
 	print(slot3, "[CriminalsManager:set_data] name")
@@ -538,7 +538,7 @@ function CriminalsManager:set_data(name)
 
 	return 
 end
-function CriminalsManager:is_taken(name)
+CriminalsManager.is_taken = function (self, name)
 	slot4 = self._characters
 
 	for _, data in pairs(slot3) do
@@ -549,7 +549,7 @@ function CriminalsManager:is_taken(name)
 
 	return false
 end
-function CriminalsManager:character_name_by_peer_id(peer_id)
+CriminalsManager.character_name_by_peer_id = function (self, peer_id)
 	slot4 = self._characters
 
 	for _, data in pairs(slot3) do
@@ -560,13 +560,13 @@ function CriminalsManager:character_name_by_peer_id(peer_id)
 
 	return 
 end
-function CriminalsManager:character_color_id_by_peer_id(peer_id)
+CriminalsManager.character_color_id_by_peer_id = function (self, peer_id)
 	local workname = self.character_workname_by_peer_id(slot3)
 	slot6 = workname
 
 	return self.character_color_id_by_name(peer_id, self)
 end
-function CriminalsManager:character_color_id_by_unit(unit)
+CriminalsManager.character_color_id_by_unit = function (self, unit)
 	local search_key = unit.key(slot3)
 	slot5 = self._characters
 
@@ -586,7 +586,7 @@ function CriminalsManager:character_color_id_by_unit(unit)
 
 	return 
 end
-function CriminalsManager:character_color_id_by_name(name)
+CriminalsManager.character_color_id_by_name = function (self, name)
 	slot4 = self._characters
 
 	for id, data in pairs(slot3) do
@@ -597,7 +597,7 @@ function CriminalsManager:character_color_id_by_name(name)
 
 	return 
 end
-function CriminalsManager:character_data_by_name(name)
+CriminalsManager.character_data_by_name = function (self, name)
 	slot4 = self._characters
 
 	for _, data in pairs(slot3) do
@@ -608,7 +608,7 @@ function CriminalsManager:character_data_by_name(name)
 
 	return 
 end
-function CriminalsManager:character_data_by_peer_id(peer_id)
+CriminalsManager.character_data_by_peer_id = function (self, peer_id)
 	slot4 = self._characters
 
 	for _, data in pairs(slot3) do
@@ -619,7 +619,7 @@ function CriminalsManager:character_data_by_peer_id(peer_id)
 
 	return 
 end
-function CriminalsManager:character_data_by_unit(unit)
+CriminalsManager.character_data_by_unit = function (self, unit)
 	local search_key = unit.key(slot3)
 	slot5 = self._characters
 
@@ -635,7 +635,7 @@ function CriminalsManager:character_data_by_unit(unit)
 
 	return 
 end
-function CriminalsManager:character_static_data_by_name(name)
+CriminalsManager.character_static_data_by_name = function (self, name)
 	slot4 = self._characters
 
 	for _, data in pairs(slot3) do
@@ -646,7 +646,7 @@ function CriminalsManager:character_static_data_by_name(name)
 
 	return 
 end
-function CriminalsManager:character_unit_by_name(name)
+CriminalsManager.character_unit_by_name = function (self, name)
 	slot4 = self._characters
 
 	for _, data in pairs(slot3) do
@@ -657,7 +657,7 @@ function CriminalsManager:character_unit_by_name(name)
 
 	return 
 end
-function CriminalsManager:character_unit_by_peer_id(peer_id)
+CriminalsManager.character_unit_by_peer_id = function (self, peer_id)
 	slot4 = self._characters
 
 	for _, data in pairs(slot3) do
@@ -668,7 +668,7 @@ function CriminalsManager:character_unit_by_peer_id(peer_id)
 
 	return 
 end
-function CriminalsManager:character_index_by_peer_id(peer_id)
+CriminalsManager.character_index_by_peer_id = function (self, peer_id)
 	slot4 = self._characters
 
 	for character_index, data in pairs(slot3) do
@@ -679,7 +679,7 @@ function CriminalsManager:character_index_by_peer_id(peer_id)
 
 	return 
 end
-function CriminalsManager:character_taken_by_name(name)
+CriminalsManager.character_taken_by_name = function (self, name)
 	slot4 = self._characters
 
 	for _, data in pairs(slot3) do
@@ -690,7 +690,7 @@ function CriminalsManager:character_taken_by_name(name)
 
 	return 
 end
-function CriminalsManager:character_peer_id_by_name(name)
+CriminalsManager.character_peer_id_by_name = function (self, name)
 	slot4 = self._characters
 
 	for _, data in pairs(slot3) do
@@ -701,7 +701,7 @@ function CriminalsManager:character_peer_id_by_name(name)
 
 	return 
 end
-function CriminalsManager:character_peer_id_by_unit(unit)
+CriminalsManager.character_peer_id_by_unit = function (self, unit)
 	slot4 = unit
 
 	if type_name(slot3) ~= "Unit" then
@@ -723,7 +723,7 @@ function CriminalsManager:character_peer_id_by_unit(unit)
 
 	return 
 end
-function CriminalsManager:get_free_character_name()
+CriminalsManager.get_free_character_name = function (self)
 	local available = {}
 	slot4 = self._characters
 
@@ -749,7 +749,7 @@ function CriminalsManager:get_free_character_name()
 
 	return 
 end
-function CriminalsManager:get_num_player_criminals()
+CriminalsManager.get_num_player_criminals = function (self)
 	local num = 0
 	slot4 = self._characters
 
@@ -761,7 +761,7 @@ function CriminalsManager:get_num_player_criminals()
 
 	return num
 end
-function CriminalsManager:on_peer_left(peer_id)
+CriminalsManager.on_peer_left = function (self, peer_id)
 	slot4 = self._characters
 
 	for id, data in pairs(slot3) do
@@ -816,7 +816,7 @@ function CriminalsManager:on_peer_left(peer_id)
 
 	return 
 end
-function CriminalsManager:remove_character_by_unit(unit)
+CriminalsManager.remove_character_by_unit = function (self, unit)
 	slot4 = unit
 
 	if type_name(slot3) ~= "Unit" then
@@ -842,7 +842,7 @@ function CriminalsManager:remove_character_by_unit(unit)
 
 	return 
 end
-function CriminalsManager:remove_character_by_peer_id(peer_id)
+CriminalsManager.remove_character_by_peer_id = function (self, peer_id)
 	slot4 = self._characters
 
 	for id, data in pairs(slot3) do
@@ -857,7 +857,7 @@ function CriminalsManager:remove_character_by_peer_id(peer_id)
 
 	return 
 end
-function CriminalsManager:remove_character_by_name(name)
+CriminalsManager.remove_character_by_name = function (self, name)
 	slot4 = self._characters
 
 	for id, data in pairs(slot3) do
@@ -872,7 +872,7 @@ function CriminalsManager:remove_character_by_name(name)
 
 	return 
 end
-function CriminalsManager:character_name_by_unit(unit)
+CriminalsManager.character_name_by_unit = function (self, unit)
 	slot4 = unit
 
 	if type_name(slot3) ~= "Unit" then
@@ -894,7 +894,7 @@ function CriminalsManager:character_name_by_unit(unit)
 
 	return 
 end
-function CriminalsManager:character_name_by_panel_id(panel_id)
+CriminalsManager.character_name_by_panel_id = function (self, panel_id)
 	slot4 = self._characters
 
 	for id, data in pairs(slot3) do
@@ -905,7 +905,7 @@ function CriminalsManager:character_name_by_panel_id(panel_id)
 
 	return 
 end
-function CriminalsManager:character_static_data_by_unit(unit)
+CriminalsManager.character_static_data_by_unit = function (self, unit)
 	slot4 = unit
 
 	if type_name(slot3) ~= "Unit" then
@@ -927,7 +927,7 @@ function CriminalsManager:character_static_data_by_unit(unit)
 
 	return 
 end
-function CriminalsManager:nr_AI_criminals()
+CriminalsManager.nr_AI_criminals = function (self)
 	local nr_AI_criminals = 0
 	slot4 = self._characters
 
@@ -939,7 +939,7 @@ function CriminalsManager:nr_AI_criminals()
 
 	return nr_AI_criminals
 end
-function CriminalsManager:ai_criminals()
+CriminalsManager.ai_criminals = function (self)
 	local ai_criminals = {}
 	slot4 = self._characters
 
@@ -953,7 +953,7 @@ function CriminalsManager:ai_criminals()
 
 	return ai_criminals
 end
-function CriminalsManager:nr_taken_criminals()
+CriminalsManager.nr_taken_criminals = function (self)
 	local nr_taken_criminals = 0
 	slot4 = self._characters
 
@@ -965,7 +965,7 @@ function CriminalsManager:nr_taken_criminals()
 
 	return nr_taken_criminals
 end
-function CriminalsManager:taken_criminal_names()
+CriminalsManager.taken_criminal_names = function (self)
 	local result = {}
 	slot4 = self._characters
 
@@ -979,7 +979,7 @@ function CriminalsManager:taken_criminal_names()
 
 	return result
 end
-function CriminalsManager:is_character_as_AI_level_blocked(name)
+CriminalsManager.is_character_as_AI_level_blocked = function (self, name)
 	if not Global.game_settings.level_id then
 		return false
 	end
@@ -988,12 +988,12 @@ function CriminalsManager:is_character_as_AI_level_blocked(name)
 
 	return (block_AIs and block_AIs[name]) or false
 end
-function CriminalsManager:on_mission_end_callback()
+CriminalsManager.on_mission_end_callback = function (self)
 	Global.game_settings.team_ai = true
 
 	return 
 end
-function CriminalsManager:on_mission_start_callback()
+CriminalsManager.on_mission_start_callback = function (self)
 	local current_save_slot = managers.raid_job.get_current_save_slot(slot2)
 	slot4 = managers.raid_job
 	local operation_save_data = managers.raid_job.get_save_slots(managers.raid_job)[current_save_slot]

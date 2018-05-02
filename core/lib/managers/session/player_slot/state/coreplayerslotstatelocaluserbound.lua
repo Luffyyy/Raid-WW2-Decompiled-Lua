@@ -7,15 +7,15 @@ slot3 = "CorePlayerSlotStateInit"
 core.import(slot1, core)
 
 LocalUserBound = LocalUserBound or class()
-LocalUserBound.init = function (self, local_user)
+function LocalUserBound:init(local_user)
 	self._local_user = local_user
 
 	return 
 end
-LocalUserBound.destroy = function (self)
+function LocalUserBound:destroy()
 	return 
 end
-LocalUserBound.transition = function (self)
+function LocalUserBound:transition()
 	slot3 = self.player_slot._init
 
 	if self.player_slot._init.is_requested(slot2) then

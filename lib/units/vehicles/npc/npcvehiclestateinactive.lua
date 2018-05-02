@@ -4,17 +4,17 @@ if not NpcVehicleStateInactive then
 end
 
 NpcVehicleStateInactive = slot0
-NpcVehicleStateInactive.init = function (self, unit)
+function NpcVehicleStateInactive:init(unit)
 	slot5 = unit
 
 	NpcBaseVehicleState.init(slot3, self)
 
 	return 
 end
-NpcVehicleStateInactive.update = function (self, t, dt)
+function NpcVehicleStateInactive:update(t, dt)
 	return 
 end
-NpcVehicleStateInactive.name = function (self)
+function NpcVehicleStateInactive:name()
 	return NpcVehicleDrivingExt.STATE_INACTIVE
 end
 

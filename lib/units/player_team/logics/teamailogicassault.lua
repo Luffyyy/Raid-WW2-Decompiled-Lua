@@ -18,7 +18,7 @@ TeamAILogicAssault.on_new_objective = TeamAILogicIdle.on_new_objective
 TeamAILogicAssault.on_objective_unit_destroyed = TeamAILogicBase.on_objective_unit_destroyed
 TeamAILogicAssault.is_available_for_assignment = TeamAILogicIdle.is_available_for_assignment
 TeamAILogicAssault.clbk_heat = TeamAILogicIdle.clbk_heat
-TeamAILogicAssault.enter = function (data, new_logic_name, enter_params)
+function TeamAILogicAssault.enter(data, new_logic_name, enter_params)
 	local my_data = {
 		unit = data.unit
 	}
@@ -83,7 +83,7 @@ TeamAILogicAssault.enter = function (data, new_logic_name, enter_params)
 
 	return 
 end
-TeamAILogicAssault.exit = function (data, new_logic_name, enter_params)
+function TeamAILogicAssault.exit(data, new_logic_name, enter_params)
 	slot7 = enter_params
 
 	TeamAILogicBase.exit(slot4, data, new_logic_name)
@@ -108,7 +108,7 @@ TeamAILogicAssault.exit = function (data, new_logic_name, enter_params)
 
 	return 
 end
-TeamAILogicAssault.update = function (data)
+function TeamAILogicAssault.update(data)
 	slot3 = data
 
 	TeamAILogicTravel._upd_ai_perceptors(slot2)
@@ -201,7 +201,7 @@ TeamAILogicAssault.update = function (data)
 
 	return 
 end
-TeamAILogicAssault._upd_enemy_detection = function (data, is_synchronous)
+function TeamAILogicAssault._upd_enemy_detection(data, is_synchronous)
 	slot4 = managers.groupai
 	slot5 = data.unit
 
@@ -309,7 +309,7 @@ TeamAILogicAssault._upd_enemy_detection = function (data, is_synchronous)
 
 	return 
 end
-TeamAILogicAssault.find_enemy_to_mark = function (enemies)
+function TeamAILogicAssault.find_enemy_to_mark(enemies)
 	local best_nmy, best_nmy_wgt = nil
 	slot5 = enemies
 
@@ -322,7 +322,7 @@ TeamAILogicAssault.find_enemy_to_mark = function (enemies)
 
 	return best_nmy
 end
-TeamAILogicAssault.mark_enemy = function (data, criminal, to_mark, play_sound, play_action)
+function TeamAILogicAssault.mark_enemy(data, criminal, to_mark, play_sound, play_action)
 	if play_sound then
 		slot7 = criminal
 		slot10 = to_mark
@@ -359,7 +359,7 @@ TeamAILogicAssault.mark_enemy = function (data, criminal, to_mark, play_sound, p
 
 	return 
 end
-TeamAILogicAssault.on_action_completed = function (data, action)
+function TeamAILogicAssault.on_action_completed(data, action)
 	local my_data = data.internal_data
 	slot5 = action
 	local action_type = action.type(slot4)
@@ -411,17 +411,17 @@ TeamAILogicAssault.on_action_completed = function (data, action)
 
 	return 
 end
-TeamAILogicAssault.damage_clbk = function (data, damage_info)
+function TeamAILogicAssault.damage_clbk(data, damage_info)
 	slot5 = damage_info
 
 	TeamAILogicIdle.damage_clbk(slot3, data)
 
 	return 
 end
-TeamAILogicAssault.death_clbk = function (data, damage_info)
+function TeamAILogicAssault.death_clbk(data, damage_info)
 	return 
 end
-TeamAILogicAssault.on_detected_enemy_destroyed = function (data, enemy_unit)
+function TeamAILogicAssault.on_detected_enemy_destroyed(data, enemy_unit)
 	slot4 = data
 	slot7 = enemy_unit
 
@@ -429,7 +429,7 @@ TeamAILogicAssault.on_detected_enemy_destroyed = function (data, enemy_unit)
 
 	return 
 end
-TeamAILogicAssault._chk_request_combat_chatter = function (data, my_data)
+function TeamAILogicAssault._chk_request_combat_chatter(data, my_data)
 	local focus_enemy = data.attention_obj
 
 	if focus_enemy and focus_enemy.verified and focus_enemy.is_person and AIAttentionObject.REACT_COMBAT <= focus_enemy.reaction then
@@ -437,7 +437,7 @@ TeamAILogicAssault._chk_request_combat_chatter = function (data, my_data)
 
 	return 
 end
-TeamAILogicAssault._chk_exit_attack_logic = function (data, new_reaction)
+function TeamAILogicAssault._chk_exit_attack_logic(data, new_reaction)
 	slot5 = new_reaction
 	local wanted_state = TeamAILogicBase._get_logic_state_from_reaction(slot3, data)
 

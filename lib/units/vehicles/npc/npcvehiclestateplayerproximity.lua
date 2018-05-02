@@ -4,30 +4,30 @@ if not NpcVehicleStatePlayerProximity then
 end
 
 NpcVehicleStatePlayerProximity = slot0
-NpcVehicleStatePlayerProximity.init = function (self, unit)
+function NpcVehicleStatePlayerProximity:init(unit)
 	slot5 = unit
 
 	NpcBaseVehicleState.init(slot3, self)
 
 	return 
 end
-NpcVehicleStatePlayerProximity.on_enter = function (self, npc_driving_ext)
+function NpcVehicleStatePlayerProximity:on_enter(npc_driving_ext)
 	return 
 end
-NpcVehicleStatePlayerProximity.on_exit = function (self, npc_driving_ext)
+function NpcVehicleStatePlayerProximity:on_exit(npc_driving_ext)
 	slot4 = managers.motion_path
 
 	managers.motion_path.reset_player_proximity_distance(slot3)
 
 	return 
 end
-NpcVehicleStatePlayerProximity.update = function (self, t, dt)
+function NpcVehicleStatePlayerProximity:update(t, dt)
 	return 
 end
-NpcVehicleStatePlayerProximity.name = function (self)
+function NpcVehicleStatePlayerProximity:name()
 	return NpcVehicleDrivingExt.STATE_PLAYER_PROXIMITY
 end
-NpcVehicleStatePlayerProximity.change_state = function (self, npc_driving_ext)
+function NpcVehicleStatePlayerProximity:change_state(npc_driving_ext)
 	slot4 = npc_driving_ext
 	local player_unit = npc_driving_ext._get_target_unit(slot3)
 

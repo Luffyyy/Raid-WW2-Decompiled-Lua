@@ -4,7 +4,7 @@ if not ElementEnvironmentAreaOperator then
 end
 
 ElementEnvironmentAreaOperator = slot0
-ElementEnvironmentAreaOperator.init = function (self, ...)
+function ElementEnvironmentAreaOperator:init(...)
 	self._has_executed = false
 	slot3 = self
 
@@ -12,19 +12,19 @@ ElementEnvironmentAreaOperator.init = function (self, ...)
 
 	return 
 end
-ElementEnvironmentAreaOperator.stop_simulation = function (self, ...)
+function ElementEnvironmentAreaOperator:stop_simulation(...)
 	slot3 = self
 
 	ElementEnvironmentAreaOperator.super.destroy(slot2, ...)
 
 	return 
 end
-ElementEnvironmentAreaOperator.save = function (self, data)
+function ElementEnvironmentAreaOperator:save(data)
 	data.has_executed = self._has_executed
 
 	return 
 end
-ElementEnvironmentAreaOperator.load = function (self, data)
+function ElementEnvironmentAreaOperator:load(data)
 	self._has_executed = data.has_executed
 
 	if self._has_executed == true then
@@ -37,14 +37,14 @@ ElementEnvironmentAreaOperator.load = function (self, data)
 
 	return 
 end
-ElementEnvironmentAreaOperator.client_on_executed = function (self, ...)
+function ElementEnvironmentAreaOperator:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementEnvironmentAreaOperator.on_executed = function (self, instigator)
+function ElementEnvironmentAreaOperator:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

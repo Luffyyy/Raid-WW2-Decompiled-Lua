@@ -34,7 +34,7 @@ TextGui.GUI_EVENT_IDS = {
 	timer_resume = 6,
 	number_set = 7
 }
-TextGui.init = function (self, unit)
+function TextGui:init(unit)
 	self._unit = unit
 	self._visible = true
 	self.ROWS = self.ROWS or 2
@@ -82,7 +82,7 @@ TextGui.init = function (self, unit)
 
 	return 
 end
-TextGui.add_workspace = function (self, gui_object)
+function TextGui:add_workspace(gui_object)
 	slot7 = gui_object
 	slot12 = 0
 	self._ws = self._new_gui.create_object_workspace(slot3, self._new_gui, self.WIDTH, self.HEIGHT, Vector3(slot9, 0, 0))
@@ -91,7 +91,7 @@ TextGui.add_workspace = function (self, gui_object)
 
 	return 
 end
-TextGui.setup = function (self)
+function TextGui:setup()
 	slot3 = self._panel
 
 	self._panel.clear(slot2)
@@ -108,7 +108,7 @@ TextGui.setup = function (self)
 
 	return 
 end
-TextGui._create_text_gui = function (self, row)
+function TextGui:_create_text_gui(row)
 	local data = self._texts_data[row]
 	local text_data = data.texts_data[data.iterator]
 
@@ -206,7 +206,7 @@ TextGui._create_text_gui = function (self, row)
 
 	return 
 end
-TextGui.update = function (self, unit, t, dt)
+function TextGui:update(unit, t, dt)
 	if not self._visible then
 		return 
 	end
@@ -260,13 +260,13 @@ TextGui.update = function (self, unit, t, dt)
 
 	return 
 end
-TextGui.set_color_type = function (self, type)
+function TextGui:set_color_type(type)
 	self.COLOR_TYPE = type
 	self.TEXT_COLOR = TextGui.COLORS[self.COLOR_TYPE]
 
 	return 
 end
-TextGui.set_bg_color_type = function (self, type)
+function TextGui:set_bg_color_type(type)
 	self.BG_COLOR_TYPE = type
 	self.BG_COLOR = (self.BG_COLOR_TYPE and TextGui.COLORS[self.BG_COLOR_TYPE]) or nil
 
@@ -298,14 +298,14 @@ TextGui.set_bg_color_type = function (self, type)
 
 	return 
 end
-TextGui.add_once_text = function (self, ...)
+function TextGui:add_once_text(...)
 	slot3 = self
 	local t = self.add_text(slot2, ...)
 	t.once = true
 
 	return 
 end
-TextGui.add_text = function (self, row, text, color_type, font_size, align_h, font)
+function TextGui:add_text(row, text, color_type, font_size, align_h, font)
 	local data = self._texts_data[row]
 	slot11 = {
 		text = text,
@@ -319,19 +319,19 @@ TextGui.add_text = function (self, row, text, color_type, font_size, align_h, fo
 
 	return data.texts_data[#data.texts_data]
 end
-TextGui.set_row_speed = function (self, row, speed)
+function TextGui:set_row_speed(row, speed)
 	local data = self._texts_data[row]
 	data.speed = speed
 
 	return 
 end
-TextGui.set_row_gap = function (self, row, gap)
+function TextGui:set_row_gap(row, gap)
 	local data = self._texts_data[row]
 	data.gap = gap
 
 	return 
 end
-TextGui.clear_row_and_guis = function (self, row)
+function TextGui:clear_row_and_guis(row)
 	local data = self._texts_data[row]
 
 	while 0 < #data.guis do
@@ -348,14 +348,14 @@ TextGui.clear_row_and_guis = function (self, row)
 
 	return 
 end
-TextGui.clear_row = function (self, row)
+function TextGui:clear_row(row)
 	local data = self._texts_data[row]
 	data.texts_data = {}
 	data.iterator = 1
 
 	return 
 end
-TextGui._test = function (self)
+function TextGui:_test()
 	for i = 1, self.ROWS, 1 do
 		slot8 = i
 
@@ -404,7 +404,7 @@ TextGui._test = function (self)
 
 	return 
 end
-TextGui._test2 = function (self)
+function TextGui:_test2()
 	for i = 1, self.ROWS, 1 do
 		slot8 = i
 
@@ -449,7 +449,7 @@ TextGui._test2 = function (self)
 
 	return 
 end
-TextGui._sequence_trigger = function (self, sequence_name)
+function TextGui:_sequence_trigger(sequence_name)
 	slot4 = Network
 
 	if not Network.is_server(slot3) then
@@ -468,7 +468,7 @@ TextGui._sequence_trigger = function (self, sequence_name)
 
 	return 
 end
-TextGui.set_visible = function (self, visible)
+function TextGui:set_visible(visible)
 	self._visible = visible
 
 	if visible then
@@ -483,7 +483,7 @@ TextGui.set_visible = function (self, visible)
 
 	return 
 end
-TextGui.lock_gui = function (self)
+function TextGui:lock_gui()
 	slot4 = self._cull_distance
 
 	self._ws.set_cull_distance(slot2, self._ws)
@@ -494,7 +494,7 @@ TextGui.lock_gui = function (self)
 
 	return 
 end
-TextGui.sync_gui_net_event = function (self, event_id, value)
+function TextGui:sync_gui_net_event(event_id, value)
 	if event_id == TextGui.GUI_EVENT_IDS.syncronize then
 		slot6 = value
 
@@ -527,7 +527,7 @@ TextGui.sync_gui_net_event = function (self, event_id, value)
 
 	return 
 end
-TextGui.destroy = function (self)
+function TextGui:destroy()
 	slot3 = self._new_gui
 
 	if alive(slot2) then
@@ -545,7 +545,7 @@ TextGui.destroy = function (self)
 
 	return 
 end
-TextGui.save = function (self, data)
+function TextGui:save(data)
 	local state = {
 		COLOR_TYPE = self.COLOR_TYPE,
 		BG_COLOR_TYPE = self.BG_COLOR_TYPE,
@@ -555,7 +555,7 @@ TextGui.save = function (self, data)
 
 	return 
 end
-TextGui.load = function (self, data)
+function TextGui:load(data)
 	local state = data.TextGui
 	slot6 = state.COLOR_TYPE
 

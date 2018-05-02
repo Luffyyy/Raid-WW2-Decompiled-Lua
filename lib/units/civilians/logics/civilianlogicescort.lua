@@ -1,6 +1,6 @@
 slot2 = CivilianLogicBase
 CivilianLogicEscort = class(slot1)
-CivilianLogicEscort.enter = function (data, new_logic_name, enter_params)
+function CivilianLogicEscort.enter(data, new_logic_name, enter_params)
 	local my_data = {
 		unit = data.unit
 	}
@@ -97,7 +97,7 @@ CivilianLogicEscort.enter = function (data, new_logic_name, enter_params)
 
 	return 
 end
-CivilianLogicEscort.exit = function (data, new_logic_name, enter_params)
+function CivilianLogicEscort.exit(data, new_logic_name, enter_params)
 	slot7 = enter_params
 
 	CopLogicBase.exit(slot4, data, new_logic_name)
@@ -129,7 +129,7 @@ CivilianLogicEscort.exit = function (data, new_logic_name, enter_params)
 
 	return 
 end
-CivilianLogicEscort.update = function (data)
+function CivilianLogicEscort.update(data)
 	local my_data = data.internal_data
 	local unit = data.unit
 	local objective = data.objective
@@ -288,10 +288,10 @@ CivilianLogicEscort.update = function (data)
 
 	return 
 end
-CivilianLogicEscort.on_intimidated = function (data, amount, aggressor_unit)
+function CivilianLogicEscort.on_intimidated(data, amount, aggressor_unit)
 	return 
 end
-CivilianLogicEscort.on_action_completed = function (data, action)
+function CivilianLogicEscort.on_action_completed(data, action)
 	local my_data = data.internal_data
 	slot5 = action
 	local action_type = action.type(slot4)
@@ -309,7 +309,7 @@ CivilianLogicEscort.on_action_completed = function (data, action)
 
 	return 
 end
-CivilianLogicEscort._upd_pathing = function (data, my_data)
+function CivilianLogicEscort._upd_pathing(data, my_data)
 	if data.pathing_results then
 		local pathing_results = data.pathing_results
 		data.pathing_results = nil
@@ -355,17 +355,17 @@ CivilianLogicEscort._upd_pathing = function (data, my_data)
 
 	return 
 end
-CivilianLogicEscort.on_new_objective = function (data, old_objective)
+function CivilianLogicEscort.on_new_objective(data, old_objective)
 	slot5 = old_objective
 
 	CivilianLogicIdle.on_new_objective(slot3, data)
 
 	return 
 end
-CivilianLogicEscort.damage_clbk = function (data, damage_info)
+function CivilianLogicEscort.damage_clbk(data, damage_info)
 	return 
 end
-CivilianLogicEscort._get_objective_path_data = function (data, my_data)
+function CivilianLogicEscort._get_objective_path_data(data, my_data)
 	local objective = data.objective
 	local path_data = objective.path_data
 	local path_style = objective.path_style
@@ -452,7 +452,7 @@ CivilianLogicEscort._get_objective_path_data = function (data, my_data)
 
 	return 
 end
-CivilianLogicEscort.too_scared_to_move = function (data)
+function CivilianLogicEscort.too_scared_to_move(data)
 	local my_data = data.internal_data
 	local nobody_close = true
 	local min_dis_sq = (data.char_tweak.escort_safe_dist or 1000) + my_data.safe_distance_offset
@@ -514,7 +514,7 @@ CivilianLogicEscort.too_scared_to_move = function (data)
 
 	return 
 end
-CivilianLogicEscort._begin_advance_action = function (data, my_data)
+function CivilianLogicEscort._begin_advance_action(data, my_data)
 	slot5 = my_data.advance_path
 
 	CopLogicAttack._adjust_path_start_pos(slot3, data)
@@ -546,7 +546,7 @@ CivilianLogicEscort._begin_advance_action = function (data, my_data)
 
 	return 
 end
-CivilianLogicEscort._begin_stand_hesitant_action = function (data, my_data)
+function CivilianLogicEscort._begin_stand_hesitant_action(data, my_data)
 	local action = {
 		clamp_to_graph = true,
 		type = "act",
@@ -565,17 +565,17 @@ CivilianLogicEscort._begin_stand_hesitant_action = function (data, my_data)
 
 	return 
 end
-CivilianLogicEscort._get_all_paths = function (data)
+function CivilianLogicEscort._get_all_paths(data)
 	return {
 		advance_path = data.internal_data.advance_path
 	}
 end
-CivilianLogicEscort._set_verified_paths = function (data, verified_paths)
+function CivilianLogicEscort._set_verified_paths(data, verified_paths)
 	data.internal_data.stare_path = verified_paths.stare_path
 
 	return 
 end
-CivilianLogicEscort.on_alert = function ()
+function CivilianLogicEscort.on_alert()
 	return 
 end
 

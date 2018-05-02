@@ -9,21 +9,21 @@ core.import(slot1, core)
 local EMPTY_ROW_XML = "   <Row> %s\n   </Row> "
 local CELL_XML = "    <Cell><Data ss:Type=\"String\">%s</Data></Cell> "
 Row = Row or CoreClass.class()
-Row.init = function (self, ...)
+function Row:init(...)
 	self._vals = {
 		...
 	}
 
 	return 
 end
-Row.add_val = function (self, val)
+function Row:add_val(val)
 	slot5 = val
 
 	table.insert(slot3, self._vals)
 
 	return 
 end
-Row._to_cells_xml = function (self)
+function Row:_to_cells_xml()
 	local cells_xml = ""
 	slot4 = self._vals
 
@@ -34,7 +34,7 @@ Row._to_cells_xml = function (self)
 
 	return cells_xml
 end
-Row.to_xml = function (self, f)
+function Row:to_xml(f)
 	slot4 = f
 	slot7 = EMPTY_ROW_XML
 	slot10 = self
@@ -51,7 +51,7 @@ if not Header1Row then
 end
 
 Header1Row = slot3
-Header1Row.to_xml = function (self, f)
+function Header1Row:to_xml(f)
 	slot4 = f
 	slot7 = EMPTY_HEADER1_ROW_XML
 	slot10 = self
@@ -68,7 +68,7 @@ if not Header2Row then
 end
 
 Header2Row = slot4
-Header2Row.to_xml = function (self, f)
+function Header2Row:to_xml(f)
 	slot4 = f
 	slot7 = EMPTY_HEADER2_ROW_XML
 	slot10 = self

@@ -351,7 +351,7 @@ MenuTitlescreenState.LEGAL_TEXT_FONT_SIZE = tweak_data.gui.font_sizes.size_18
 MenuTitlescreenState.PRESS_ANY_KEY_TEXT_FONT_SIZE = tweak_data.gui.font_sizes.size_32
 MenuTitlescreenState.GAME_LOGO_IMAGE = "raid_logo_big"
 MenuTitlescreenState.GAME_LOGO_CENTER_Y = 640
-function MenuTitlescreenState:init(game_state_machine, setup)
+MenuTitlescreenState.init = function (self, game_state_machine, setup)
 	slot7 = game_state_machine
 
 	GameState.init(slot4, self, "menu_titlescreen")
@@ -386,7 +386,7 @@ slot6 = "X360"
 local is_x360 = SystemInfo.platform(slot4) == Idstring(SystemInfo)
 slot7 = "WIN32"
 local is_win32 = SystemInfo.platform(slot5) == Idstring(SystemInfo)
-function MenuTitlescreenState:setup()
+MenuTitlescreenState.setup = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-75, warpins: 1 ---
@@ -778,7 +778,7 @@ function MenuTitlescreenState:setup()
 
 
 end
-function MenuTitlescreenState:_resolution_scale()
+MenuTitlescreenState._resolution_scale = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-16, warpins: 1 ---
@@ -794,7 +794,7 @@ function MenuTitlescreenState:_resolution_scale()
 
 
 end
-function MenuTitlescreenState:_recalculate_y_for_current_resolution(y)
+MenuTitlescreenState._recalculate_y_for_current_resolution = function (self, y)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -808,7 +808,7 @@ function MenuTitlescreenState:_recalculate_y_for_current_resolution(y)
 
 
 end
-function MenuTitlescreenState:_real_aspect_ratio()
+MenuTitlescreenState._real_aspect_ratio = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -852,7 +852,7 @@ function MenuTitlescreenState:_real_aspect_ratio()
 
 
 end
-function MenuTitlescreenState:_update_pc_xbox_controller_connection(params)
+MenuTitlescreenState._update_pc_xbox_controller_connection = function (self, params)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -938,7 +938,7 @@ function MenuTitlescreenState:_update_pc_xbox_controller_connection(params)
 
 
 end
-function MenuTitlescreenState:at_enter()
+MenuTitlescreenState.at_enter = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1050,7 +1050,7 @@ function MenuTitlescreenState:at_enter()
 
 
 end
-function MenuTitlescreenState:clbk_game_has_music_control(status)
+MenuTitlescreenState.clbk_game_has_music_control = function (self, status)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -1112,7 +1112,7 @@ function MenuTitlescreenState:clbk_game_has_music_control(status)
 
 
 end
-function MenuTitlescreenState:update(t, dt)
+MenuTitlescreenState.update = function (self, t, dt)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1302,7 +1302,7 @@ function MenuTitlescreenState:update(t, dt)
 
 
 end
-function MenuTitlescreenState:get_start_pressed_controller_index()
+MenuTitlescreenState.get_start_pressed_controller_index = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -1438,7 +1438,7 @@ function MenuTitlescreenState:get_start_pressed_controller_index()
 
 
 end
-function MenuTitlescreenState:check_confirm_pressed()
+MenuTitlescreenState.check_confirm_pressed = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -1574,7 +1574,7 @@ function MenuTitlescreenState:check_confirm_pressed()
 
 
 end
-function MenuTitlescreenState:check_user_callback(success)
+MenuTitlescreenState.check_user_callback = function (self, success)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -1641,7 +1641,7 @@ function MenuTitlescreenState:check_user_callback(success)
 
 
 end
-function MenuTitlescreenState:check_storage_callback(success)
+MenuTitlescreenState.check_storage_callback = function (self, success)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -1701,7 +1701,7 @@ function MenuTitlescreenState:check_storage_callback(success)
 
 
 end
-function MenuTitlescreenState:_load_savegames_done()
+MenuTitlescreenState._load_savegames_done = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -1720,7 +1720,7 @@ function MenuTitlescreenState:_load_savegames_done()
 
 
 end
-function MenuTitlescreenState:continue_without_saving_yes_callback()
+MenuTitlescreenState.continue_without_saving_yes_callback = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -1739,7 +1739,7 @@ function MenuTitlescreenState:continue_without_saving_yes_callback()
 
 
 end
-function MenuTitlescreenState:continue_without_saving_no_callback()
+MenuTitlescreenState.continue_without_saving_no_callback = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -1757,7 +1757,7 @@ function MenuTitlescreenState:continue_without_saving_no_callback()
 
 
 end
-function MenuTitlescreenState:check_attract_video()
+MenuTitlescreenState.check_attract_video = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -1810,7 +1810,7 @@ function MenuTitlescreenState:check_attract_video()
 
 
 end
-function MenuTitlescreenState:is_any_input_pressed()
+MenuTitlescreenState.is_any_input_pressed = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -1868,7 +1868,7 @@ function MenuTitlescreenState:is_any_input_pressed()
 
 
 end
-function MenuTitlescreenState:reset_attract_video()
+MenuTitlescreenState.reset_attract_video = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -1917,7 +1917,7 @@ function MenuTitlescreenState:reset_attract_video()
 
 
 end
-function MenuTitlescreenState:is_attract_video_delay_done()
+MenuTitlescreenState.is_attract_video_delay_done = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-16, warpins: 1 ---
@@ -1958,7 +1958,7 @@ function MenuTitlescreenState:is_attract_video_delay_done()
 
 
 end
-function MenuTitlescreenState:play_attract_video()
+MenuTitlescreenState.play_attract_video = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -2075,7 +2075,7 @@ function MenuTitlescreenState:play_attract_video()
 
 
 end
-function MenuTitlescreenState:at_exit()
+MenuTitlescreenState.at_exit = function (self)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -2211,7 +2211,7 @@ function MenuTitlescreenState:at_exit()
 
 
 end
-function MenuTitlescreenState:on_user_changed(old_user_data, user_data)
+MenuTitlescreenState.on_user_changed = function (self, old_user_data, user_data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -2244,7 +2244,7 @@ function MenuTitlescreenState:on_user_changed(old_user_data, user_data)
 
 
 end
-function MenuTitlescreenState:on_storage_changed(old_user_data, user_data)
+MenuTitlescreenState.on_storage_changed = function (self, old_user_data, user_data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -2277,7 +2277,7 @@ function MenuTitlescreenState:on_storage_changed(old_user_data, user_data)
 
 
 end
-function MenuTitlescreenState:_animate_screen_display(background)
+MenuTitlescreenState._animate_screen_display = function (self, background)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-22, warpins: 1 ---
@@ -2518,7 +2518,7 @@ function MenuTitlescreenState:_animate_screen_display(background)
 
 
 end
-function MenuTitlescreenState:_animate_any_key_pressed(background)
+MenuTitlescreenState._animate_any_key_pressed = function (self, background)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---

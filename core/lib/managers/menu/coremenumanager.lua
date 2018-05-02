@@ -23,14 +23,14 @@ slot3 = "CoreMenuRenderer"
 core.import(slot1, core)
 
 Manager = Manager or class()
-Manager.init = function (self)
+function Manager:init()
 	managers.menu = managers.menu or self
 	self._registered_menus = {}
 	self._open_menus = {}
 
 	return 
 end
-Manager.destroy = function (self)
+function Manager:destroy()
 	slot3 = self._open_menus
 
 	for _, menu in ipairs(slot2) do
@@ -44,7 +44,7 @@ Manager.destroy = function (self)
 
 	return 
 end
-Manager.register_menu = function (self, menu)
+function Manager:register_menu(menu)
 	if menu.name and self._registered_menus[menu.name] then
 		return 
 	end
@@ -109,12 +109,12 @@ Manager.register_menu = function (self, menu)
 
 	return 
 end
-Manager.get_menu = function (self, menu_name)
+function Manager:get_menu(menu_name)
 	local menu = self._registered_menus[menu_name]
 
 	return menu
 end
-Manager.open_menu = function (self, menu_name, position, ...)
+function Manager:open_menu(menu_name, position, ...)
 	local menu = self._registered_menus[menu_name]
 
 	if menu then
@@ -184,7 +184,7 @@ Manager.open_menu = function (self, menu_name, position, ...)
 
 	return 
 end
-Manager.close_menu = function (self, menu_name)
+function Manager:close_menu(menu_name)
 	local menu = nil
 
 	if menu_name then
@@ -217,7 +217,7 @@ Manager.close_menu = function (self, menu_name)
 
 	return 
 end
-Manager._menu_closed = function (self, menu_name)
+function Manager:_menu_closed(menu_name)
 	if menu_name then
 		slot4 = self._open_menus
 
@@ -250,10 +250,10 @@ Manager._menu_closed = function (self, menu_name)
 
 	return 
 end
-Manager._node_selected = function (self, menu_name, node)
+function Manager:_node_selected(menu_name, node)
 	return 
 end
-Manager.input_enabled = function (self, enabled)
+function Manager:input_enabled(enabled)
 	self._input_enabled = enabled
 	slot4 = self._open_menus
 
@@ -265,7 +265,7 @@ Manager.input_enabled = function (self, enabled)
 
 	return 
 end
-Manager.update = function (self, t, dt)
+function Manager:update(t, dt)
 	local active_menu = self._open_menus[#self._open_menus]
 
 	if active_menu then

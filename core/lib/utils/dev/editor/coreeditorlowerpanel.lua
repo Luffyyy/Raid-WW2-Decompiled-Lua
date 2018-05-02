@@ -2,7 +2,7 @@ slot3 = "CoreEngineAccess"
 
 core.import(slot1, core)
 
-CoreEditor.build_lower_panel = function (self, parent)
+function CoreEditor:build_lower_panel(parent)
 	self._lower_panel = EWS.Panel(slot3, EWS, Global.frame_panel, "")
 	slot5 = "HORIZONTAL"
 	local lower_sizer = EWS.BoxSizer(slot3, EWS)
@@ -26,7 +26,7 @@ CoreEditor.build_lower_panel = function (self, parent)
 
 	return self._lower_panel
 end
-CoreEditor.add_edit_buttons = function (self, edit_btn_sizer)
+function CoreEditor:add_edit_buttons(edit_btn_sizer)
 	slot5 = " CoreEditor:add_edit_buttons( edit_btn_sizer )"
 
 	cat_print(slot3, "editor")
@@ -42,7 +42,7 @@ CoreEditor.add_edit_buttons = function (self, edit_btn_sizer)
 
 	return 
 end
-CoreEditor.build_info_frame = function (self, parent)
+function CoreEditor:build_info_frame(parent)
 	slot7 = "TAB_TRAVERSAL"
 	self._info_frame = EWS.Panel(slot3, EWS, parent, "Info Frame")
 	slot5 = "HORIZONTAL"
@@ -129,7 +129,7 @@ CoreEditor.build_info_frame = function (self, parent)
 
 	return self._info_frame
 end
-CoreEditor.add_open_unit_file_buttons = function (self)
+function CoreEditor:add_open_unit_file_buttons()
 	self._open_unit_file_buttons = {}
 	slot8 = "world_editor\\unit_file_unit_16x16.png"
 
@@ -240,10 +240,10 @@ CoreEditor.add_open_unit_file_buttons = function (self)
 
 	return 
 end
-CoreEditor._change_unit_info = function (self, notebook)
+function CoreEditor:_change_unit_info(notebook)
 	return 
 end
-CoreEditor.on_open_unit_file = function (self, data)
+function CoreEditor:on_open_unit_file(data)
 	slot6 = self
 
 	if alive(self.selected_unit(slot5)) then
@@ -323,7 +323,7 @@ CoreEditor.on_open_unit_file = function (self, data)
 
 	return 
 end
-CoreEditor.sequence_file = function (self, unit)
+function CoreEditor:sequence_file(unit)
 	slot4 = unit
 
 	if alive(slot3) then
@@ -364,7 +364,7 @@ CoreEditor.sequence_file = function (self, unit)
 
 	return false
 end
-CoreEditor.build_edit_frame = function (self, parent)
+function CoreEditor:build_edit_frame(parent)
 	slot7 = "TAB_TRAVERSAL"
 	self._edit_panel = EWS.Panel(slot3, EWS, parent, "Edit Panel")
 	slot5 = "HORIZONTAL"
@@ -379,7 +379,7 @@ CoreEditor.build_edit_frame = function (self, parent)
 
 	return self._edit_panel, main_sizer
 end
-CoreEditor.show_edit = function (self, data)
+function CoreEditor:show_edit(data)
 	slot4 = self[data.panel]
 	slot8 = data.btn
 
@@ -405,7 +405,7 @@ CoreEditor.show_edit = function (self, data)
 
 	return 
 end
-CoreEditor.check_edit_buttons = function (self)
+function CoreEditor:check_edit_buttons()
 	local value = false
 	slot4 = self._edit_buttons
 
@@ -418,7 +418,7 @@ CoreEditor.check_edit_buttons = function (self)
 
 	return value
 end
-CoreEditor.layout_edit_panel = function (self)
+function CoreEditor:layout_edit_panel()
 	slot3 = self._edit_panel
 
 	self._edit_panel.layout(slot2)
@@ -429,7 +429,7 @@ CoreEditor.layout_edit_panel = function (self)
 
 	return 
 end
-CoreEditor.unit_output = function (self, unit)
+function CoreEditor:unit_output(unit)
 	slot4 = unit
 
 	if alive(slot3) then
@@ -546,7 +546,7 @@ CoreEditor.unit_output = function (self, unit)
 
 	return 
 end
-CoreEditor._unit_materials = function (self, unit)
+function CoreEditor:_unit_materials(unit)
 	local names = {}
 	slot7 = unit
 	slot10 = "material"

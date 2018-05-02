@@ -4,14 +4,14 @@ if not VehicleStateFrozen then
 end
 
 VehicleStateFrozen = slot0
-VehicleStateFrozen.init = function (self, unit)
+function VehicleStateFrozen:init(unit)
 	slot5 = unit
 
 	BaseVehicleState.init(slot3, self)
 
 	return 
 end
-VehicleStateFrozen.enter = function (self, state_data, enter_data)
+function VehicleStateFrozen:enter(state_data, enter_data)
 	slot5 = self._unit
 	slot5 = self._unit.vehicle_driving(slot4)._hit_soundsource
 
@@ -45,13 +45,13 @@ VehicleStateFrozen.enter = function (self, state_data, enter_data)
 
 	return 
 end
-VehicleStateFrozen.allow_exit = function (self)
+function VehicleStateFrozen:allow_exit()
 	return false
 end
-VehicleStateFrozen.stop_vehicle = function (self)
+function VehicleStateFrozen:stop_vehicle()
 	return true
 end
-VehicleStateFrozen.is_vulnerable = function (self)
+function VehicleStateFrozen:is_vulnerable()
 	return false
 end
 

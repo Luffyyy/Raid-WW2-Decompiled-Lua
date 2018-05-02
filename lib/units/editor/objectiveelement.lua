@@ -18,7 +18,7 @@ ObjectiveUnitElement.INSTANCE_VAR_NAMES = {
 		type = "number"
 	}
 }
-ObjectiveUnitElement.init = function (self, unit)
+function ObjectiveUnitElement:init(unit)
 	slot5 = unit
 
 	ObjectiveUnitElement.super.init(slot3, self)
@@ -50,7 +50,7 @@ ObjectiveUnitElement.init = function (self, unit)
 
 	return 
 end
-ObjectiveUnitElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function ObjectiveUnitElement:draw_links(t, dt, selected_unit, all_units)
 	slot10 = selected_unit
 
 	ObjectiveUnitElement.super.draw_links(slot6, self, t, dt)
@@ -76,7 +76,7 @@ ObjectiveUnitElement.draw_links = function (self, t, dt, selected_unit, all_unit
 
 	return 
 end
-ObjectiveUnitElement.get_links_to_unit = function (self, ...)
+function ObjectiveUnitElement:get_links_to_unit(...)
 	slot3 = self
 
 	ObjectiveUnitElement.super.get_links_to_unit(slot2, ...)
@@ -87,10 +87,10 @@ ObjectiveUnitElement.get_links_to_unit = function (self, ...)
 
 	return 
 end
-ObjectiveUnitElement.update_editing = function (self)
+function ObjectiveUnitElement:update_editing()
 	return 
 end
-ObjectiveUnitElement.add_element = function (self)
+function ObjectiveUnitElement:add_element()
 	slot4 = {
 		ray_type = "editor",
 		mask = 10
@@ -118,7 +118,7 @@ ObjectiveUnitElement.add_element = function (self)
 
 	return 
 end
-ObjectiveUnitElement.remove_links = function (self, unit)
+function ObjectiveUnitElement:remove_links(unit)
 	slot4 = self._hed.elements
 
 	for _, id in ipairs(slot3) do
@@ -133,7 +133,7 @@ ObjectiveUnitElement.remove_links = function (self, unit)
 
 	return 
 end
-ObjectiveUnitElement.add_triggers = function (self, vc)
+function ObjectiveUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "add_element"
 
@@ -141,7 +141,7 @@ ObjectiveUnitElement.add_triggers = function (self, vc)
 
 	return 
 end
-ObjectiveUnitElement.update_sub_objectives = function (self)
+function ObjectiveUnitElement:update_sub_objectives()
 	slot3 = {
 		"none"
 	}
@@ -158,7 +158,7 @@ ObjectiveUnitElement.update_sub_objectives = function (self)
 
 	return 
 end
-ObjectiveUnitElement.set_element_data = function (self, params, ...)
+function ObjectiveUnitElement:set_element_data(params, ...)
 	slot5 = params
 
 	ObjectiveUnitElement.super.set_element_data(slot3, self, ...)
@@ -171,7 +171,7 @@ ObjectiveUnitElement.set_element_data = function (self, params, ...)
 
 	return 
 end
-ObjectiveUnitElement._build_panel = function (self, panel, panel_sizer)
+function ObjectiveUnitElement:_build_panel(panel, panel_sizer)
 
 	-- Decompilation error in this vicinity:
 	slot5 = self

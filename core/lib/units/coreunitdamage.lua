@@ -6665,7 +6665,7 @@ end
 CoreInflictUpdator = slot1
 CoreInflictUpdator.INFLICT_UPDATOR_DAMAGE_TYPE_MAP = CoreInflictUpdator.INFLICT_UPDATOR_DAMAGE_TYPE_MAP or {}
 CoreInflictUpdator.MIN_INTERVAL = 0.2
-function CoreInflictUpdator:init(unit, body, body_damage_ext, inflict_element, unit_element)
+CoreInflictUpdator.init = function (self, unit, body, body_damage_ext, inflict_element, unit_element)
 	self._unit = unit
 	self._body = body
 	self._body_damage_ext = body_damage_ext
@@ -6727,15 +6727,15 @@ function CoreInflictUpdator:init(unit, body, body_damage_ext, inflict_element, u
 
 	return 
 end
-function CoreInflictUpdator:is_valid()
+CoreInflictUpdator.is_valid = function (self)
 	return true
 end
-function CoreInflictUpdator:set_damage(damage)
+CoreInflictUpdator.set_damage = function (self, damage)
 	self._damage = damage or self._damage
 
 	return 
 end
-function CoreInflictUpdator:set_interval(interval)
+CoreInflictUpdator.set_interval = function (self, interval)
 	local old_interval = self._interval
 	slot6 = self.MIN_INTERVAL
 	self._interval = math.max(slot4, interval or self._interval)
@@ -6749,12 +6749,12 @@ function CoreInflictUpdator:set_interval(interval)
 
 	return 
 end
-function CoreInflictUpdator:set_instant(instant)
+CoreInflictUpdator.set_instant = function (self, instant)
 	self._instant = not not instant
 
 	return 
 end
-function CoreInflictUpdator:set_enabled(enabled)
+CoreInflictUpdator.set_enabled = function (self, enabled)
 	enabled = not not enabled
 
 	if self._enabled ~= enabled then
@@ -6777,7 +6777,7 @@ function CoreInflictUpdator:set_enabled(enabled)
 
 	return 
 end
-function CoreInflictUpdator:save(data)
+CoreInflictUpdator.save = function (self, data)
 	local state = {}
 	local changed = false
 
@@ -6807,7 +6807,7 @@ function CoreInflictUpdator:save(data)
 
 	return changed
 end
-function CoreInflictUpdator:load(data)
+CoreInflictUpdator.load = function (self, data)
 	local state = data.CoreInflictUpdator
 
 	if state then
@@ -6829,7 +6829,7 @@ function CoreInflictUpdator:load(data)
 
 	return 
 end
-function CoreInflictUpdator:update(t, dt)
+CoreInflictUpdator.update = function (self, t, dt)
 	if self._check_time <= t then
 		slot5 = self._unit
 
@@ -6847,7 +6847,7 @@ function CoreInflictUpdator:update(t, dt)
 
 	return 
 end
-function CoreInflictUpdator:set_attribute(attribute, attribute_value)
+CoreInflictUpdator.set_attribute = function (self, attribute, attribute_value)
 	if attribute_value ~= nil then
 		local func = self._set_attribute_func_map[attribute]
 
@@ -6862,7 +6862,7 @@ function CoreInflictUpdator:set_attribute(attribute, attribute_value)
 
 	return false
 end
-function CoreInflictUpdator:get_attribute(attribute)
+CoreInflictUpdator.get_attribute = function (self, attribute)
 	if attribute then
 		local func = self._get_attribute_func_map[attribute]
 

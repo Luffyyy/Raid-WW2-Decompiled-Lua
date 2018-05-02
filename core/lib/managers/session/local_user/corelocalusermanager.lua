@@ -16,7 +16,7 @@ if not Manager then
 end
 
 Manager = slot0
-Manager.init = function (self, factory, profile_settings_handler, profile_progress_handler, input_manager)
+function Manager:init(factory, profile_settings_handler, profile_progress_handler, input_manager)
 	self._factory = factory
 	self._controller_to_user = {}
 	self._profile_settings_handler = profile_settings_handler
@@ -26,12 +26,12 @@ Manager.init = function (self, factory, profile_settings_handler, profile_progre
 
 	return 
 end
-Manager.has_local_user_with_input_provider_id = function (self, controller)
+function Manager:has_local_user_with_input_provider_id(controller)
 	slot5 = controller
 
 	return self._controller_to_user[controller.key(slot4)] ~= nil
 end
-Manager.debug_bind_primary_input_provider_id = function (self, player_slot)
+function Manager:debug_bind_primary_input_provider_id(player_slot)
 	slot4 = Input
 	local count = Input.num_real_controllers(slot3)
 	local best_controller = nil
@@ -59,7 +59,7 @@ Manager.debug_bind_primary_input_provider_id = function (self, player_slot)
 
 	return self.bind_local_user(slot5, self, player_slot)
 end
-Manager.bind_local_user = function (self, slot, input_provider_id)
+function Manager:bind_local_user(slot, input_provider_id)
 	local input_provider = self._input_manager._create_input_provider_for_controller(slot4, self._input_manager)
 	slot7 = input_provider_id
 	local local_user = self._controller_to_user[input_provider_id.key(input_provider_id)]
@@ -84,7 +84,7 @@ Manager.bind_local_user = function (self, slot, input_provider_id)
 
 	return local_user
 end
-Manager._create_local_user = function (self, input_provider, user_index)
+function Manager:_create_local_user(input_provider, user_index)
 	local local_user_handler = self._factory.create_local_user_handler(slot4)
 	slot12 = self._profile_data_loaded_callback
 	local created_user = CoreLocalUser.User.new(self._factory, CoreLocalUser.User, local_user_handler, input_provider, user_index, self._profile_settings_handler, self._profile_progress_handler)
@@ -92,7 +92,7 @@ Manager._create_local_user = function (self, input_provider, user_index)
 
 	return created_user
 end
-Manager.transition = function (self)
+function Manager:transition()
 	slot3 = self._controller_to_user
 
 	for _, user in pairs(slot2) do
@@ -103,7 +103,7 @@ Manager.transition = function (self)
 
 	return 
 end
-Manager.is_stable_for_loading = function (self)
+function Manager:is_stable_for_loading()
 	slot3 = self._controller_to_user
 
 	for _, user in pairs(slot2) do
@@ -116,10 +116,10 @@ Manager.is_stable_for_loading = function (self)
 
 	return true
 end
-Manager.users = function (self)
+function Manager:users()
 	return self._controller_to_user
 end
-Manager.update = function (self, t, dt)
+function Manager:update(t, dt)
 	slot5 = self._controller_to_user
 
 	for _, user in pairs(slot4) do
@@ -130,7 +130,7 @@ Manager.update = function (self, t, dt)
 
 	return 
 end
-Manager.enter_level_handler = function (self, level_handler)
+function Manager:enter_level_handler(level_handler)
 	slot4 = self._controller_to_user
 
 	for _, user in pairs(slot3) do
@@ -141,7 +141,7 @@ Manager.enter_level_handler = function (self, level_handler)
 
 	return 
 end
-Manager.leave_level_handler = function (self, level_handler)
+function Manager:leave_level_handler(level_handler)
 	slot4 = self._controller_to_user
 
 	for _, user in pairs(slot3) do

@@ -13,7 +13,7 @@ RaidGUIControlBranchingBarSkilltreePath.COLOR_LOCKED = tweak_data.gui.colors.rai
 slot5 = 0.34509803921568627
 slot4 = 0
 RaidGUIControlBranchingBarSkilltreePath.COLOR_DISABLED = Color(slot2, 0.34509803921568627, 0.34509803921568627).with_alpha(slot2, Color(slot2, 0.34509803921568627, 0.34509803921568627))
-RaidGUIControlBranchingBarSkilltreePath.init = function (self, parent, params)
+function RaidGUIControlBranchingBarSkilltreePath:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlBranchingBarSkilltreePath.super.init(slot4, self, parent)
@@ -68,7 +68,7 @@ RaidGUIControlBranchingBarSkilltreePath.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlBranchingBarSkilltreePath._init_state_data = function (self)
+function RaidGUIControlBranchingBarSkilltreePath:_init_state_data()
 	self._state_data = {
 		STATE_ACTIVE = {}
 	}
@@ -110,7 +110,7 @@ RaidGUIControlBranchingBarSkilltreePath._init_state_data = function (self)
 
 	return 
 end
-RaidGUIControlBranchingBarSkilltreePath.set_active = function (self)
+function RaidGUIControlBranchingBarSkilltreePath:set_active()
 	self._state = self.STATE_ACTIVE
 	slot4 = self._state
 
@@ -118,7 +118,7 @@ RaidGUIControlBranchingBarSkilltreePath.set_active = function (self)
 
 	return 
 end
-RaidGUIControlBranchingBarSkilltreePath.set_locked = function (self)
+function RaidGUIControlBranchingBarSkilltreePath:set_locked()
 	self._state = self.STATE_LOCKED
 	slot4 = self._state
 
@@ -126,7 +126,7 @@ RaidGUIControlBranchingBarSkilltreePath.set_locked = function (self)
 
 	return 
 end
-RaidGUIControlBranchingBarSkilltreePath.set_full = function (self)
+function RaidGUIControlBranchingBarSkilltreePath:set_full()
 	self._state = self.STATE_FULL
 	slot4 = self._state
 
@@ -134,7 +134,7 @@ RaidGUIControlBranchingBarSkilltreePath.set_full = function (self)
 
 	return 
 end
-RaidGUIControlBranchingBarSkilltreePath.set_disabled = function (self)
+function RaidGUIControlBranchingBarSkilltreePath:set_disabled()
 	self._state = self.STATE_DISABLED
 	slot4 = self._state
 
@@ -142,7 +142,7 @@ RaidGUIControlBranchingBarSkilltreePath.set_disabled = function (self)
 
 	return 
 end
-RaidGUIControlBranchingBarSkilltreePath.set_progress = function (self, progress)
+function RaidGUIControlBranchingBarSkilltreePath:set_progress(progress)
 	slot5 = progress
 
 	RaidGUIControlBranchingBarSkilltreePath.super.set_progress(slot3, self)
@@ -166,7 +166,7 @@ RaidGUIControlBranchingBarSkilltreePath.set_progress = function (self, progress)
 
 	return 
 end
-RaidGUIControlBranchingBarSkilltreePath.init_to_state = function (self, state)
+function RaidGUIControlBranchingBarSkilltreePath:init_to_state(state)
 	local state_data = self._state_data[state]
 	slot6 = state_data.line_color
 

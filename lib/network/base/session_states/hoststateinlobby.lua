@@ -4,7 +4,7 @@ if not HostStateInLobby then
 end
 
 HostStateInLobby = slot0
-HostStateInLobby.on_join_request_received = function (self, data, peer_name, client_preferred_character, dlcs, xuid, peer_level, gameversion, join_attempt_identifier, auth_ticket, sender)
+function HostStateInLobby:on_join_request_received(data, peer_name, client_preferred_character, dlcs, xuid, peer_level, gameversion, join_attempt_identifier, auth_ticket, sender)
 	slot13 = data.local_peer
 	local my_user_id = data.local_peer.user_id(slot12) or ""
 	slot16 = peer_name
@@ -17,7 +17,7 @@ HostStateInLobby.on_join_request_received = function (self, data, peer_name, cli
 
 	return 
 end
-HostStateInLobby.is_joinable = function (self, data)
+function HostStateInLobby:is_joinable(data)
 	return false
 end
 

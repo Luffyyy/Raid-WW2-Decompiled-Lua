@@ -4,7 +4,7 @@ if not ElementEnvironmentOperator then
 end
 
 ElementEnvironmentOperator = slot0
-ElementEnvironmentOperator.init = function (self, ...)
+function ElementEnvironmentOperator:init(...)
 	self._has_executed = false
 	slot3 = self
 
@@ -12,7 +12,7 @@ ElementEnvironmentOperator.init = function (self, ...)
 
 	return 
 end
-ElementEnvironmentOperator.stop_simulation = function (self, ...)
+function ElementEnvironmentOperator:stop_simulation(...)
 	if self._old_default_environment then
 		managers.viewport.set_default_environment(slot2, managers.viewport, self._old_default_environment, nil)
 	end
@@ -23,19 +23,19 @@ ElementEnvironmentOperator.stop_simulation = function (self, ...)
 
 	return 
 end
-ElementEnvironmentOperator.client_on_executed = function (self, ...)
+function ElementEnvironmentOperator:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementEnvironmentOperator.save = function (self, data)
+function ElementEnvironmentOperator:save(data)
 	data.has_executed = self._has_executed
 
 	return 
 end
-ElementEnvironmentOperator.load = function (self, data)
+function ElementEnvironmentOperator:load(data)
 	self._has_executed = data.has_executed
 
 	if self._has_executed == true then
@@ -47,7 +47,7 @@ ElementEnvironmentOperator.load = function (self, data)
 
 	return 
 end
-ElementEnvironmentOperator.on_executed = function (self, instigator)
+function ElementEnvironmentOperator:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

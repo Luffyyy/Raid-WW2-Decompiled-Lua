@@ -18,7 +18,7 @@ if not WorldCameraLayer then
 end
 
 WorldCameraLayer = slot0
-WorldCameraLayer.init = function (self, owner)
+function WorldCameraLayer:init(owner)
 	slot6 = "world_camera"
 
 	WorldCameraLayer.super.init(slot3, self, owner)
@@ -41,10 +41,10 @@ WorldCameraLayer.init = function (self, owner)
 
 	return 
 end
-WorldCameraLayer.get_layer_name = function (self)
+function WorldCameraLayer:get_layer_name()
 	return "WorldCamera"
 end
-WorldCameraLayer.load = function (self, world_holder, offset)
+function WorldCameraLayer:load(world_holder, offset)
 	slot8 = offset
 
 	world_holder.create_world(slot4, world_holder, "world", self._save_name)
@@ -59,7 +59,7 @@ WorldCameraLayer.load = function (self, world_holder, offset)
 
 	return 
 end
-WorldCameraLayer.save = function (self, save_params)
+function WorldCameraLayer:save(save_params)
 	local file_name = "world_cameras"
 	local t = {
 		single_data_block = true,
@@ -88,7 +88,7 @@ WorldCameraLayer.save = function (self, save_params)
 
 	return 
 end
-WorldCameraLayer.toggle_show_framing_gui = function (self, layer_toolbar, event)
+function WorldCameraLayer:toggle_show_framing_gui(layer_toolbar, event)
 	slot8 = event
 	local visible = layer_toolbar.tool_state(slot4, event.get_id(slot7))
 	self._forced_show_framing_gui = visible
@@ -103,7 +103,7 @@ WorldCameraLayer.toggle_show_framing_gui = function (self, layer_toolbar, event)
 
 	return 
 end
-WorldCameraLayer.set_gui_visible = function (self, visible, external_forced)
+function WorldCameraLayer:set_gui_visible(visible, external_forced)
 	if self._gui_visible ~= visible or self._forced_show_framing_gui then
 		if visible then
 		else
@@ -117,7 +117,7 @@ WorldCameraLayer.set_gui_visible = function (self, visible, external_forced)
 
 	return 
 end
-WorldCameraLayer.update = function (self, t, dt)
+function WorldCameraLayer:update(t, dt)
 	if not managers.worldcamera._current_world_camera and not self._look_through_camera and self._current_world_camera then
 		slot5 = self._current_world_camera
 
@@ -191,7 +191,7 @@ WorldCameraLayer.update = function (self, t, dt)
 
 	return 
 end
-WorldCameraLayer.build_panel = function (self, notebook)
+function WorldCameraLayer:build_panel(notebook)
 	slot5 = "WorldCameraLayer:build_panel"
 
 	cat_print(slot3, "editor")
@@ -871,7 +871,7 @@ WorldCameraLayer.build_panel = function (self, notebook)
 
 	return self._ews_panel
 end
-WorldCameraLayer.build_sequence = function (self)
+function WorldCameraLayer:build_sequence()
 	slot6 = "Sequences"
 	local sequences_sizer = EWS.StaticBoxSizer(slot2, EWS, self._ews_panel, "VERTICAL")
 	slot5 = "HORIZONTAL"
@@ -1057,7 +1057,7 @@ WorldCameraLayer.build_sequence = function (self)
 
 	return 
 end
-WorldCameraLayer.select_camera = function (self)
+function WorldCameraLayer:select_camera()
 	slot3 = self
 	local name = self.selected_camera(slot2)
 	self._current_point = nil
@@ -1126,7 +1126,7 @@ WorldCameraLayer.select_camera = function (self)
 
 	return 
 end
-WorldCameraLayer.create_new = function (self)
+function WorldCameraLayer:create_new()
 	slot12 = 0
 	slot9 = true
 	local name = EWS.get_text_from_user(slot2, EWS, Global.frame_panel, "Enter name for the new camera:", "Create Camera", "new_camera", Vector3(slot9, -1, -1))
@@ -1164,7 +1164,7 @@ WorldCameraLayer.create_new = function (self)
 
 	return 
 end
-WorldCameraLayer.delete_camera = function (self)
+function WorldCameraLayer:delete_camera()
 	slot3 = self
 	local name = self.selected_camera(slot2)
 
@@ -1223,7 +1223,7 @@ WorldCameraLayer.delete_camera = function (self)
 
 	return 
 end
-WorldCameraLayer.test_camera = function (self)
+function WorldCameraLayer:test_camera()
 	slot3 = self
 	local name = self.selected_camera(slot2)
 
@@ -1242,7 +1242,7 @@ WorldCameraLayer.test_camera = function (self)
 
 	return 
 end
-WorldCameraLayer.test_done = function (self)
+function WorldCameraLayer:test_done()
 	slot3 = self
 
 	self.force_editor_state(slot2)
@@ -1256,7 +1256,7 @@ WorldCameraLayer.test_done = function (self)
 
 	return 
 end
-WorldCameraLayer.stop_camera = function (self)
+function WorldCameraLayer:stop_camera()
 	slot3 = managers.worldcamera
 
 	managers.worldcamera.stop_world_camera(slot2)
@@ -1267,7 +1267,7 @@ WorldCameraLayer.stop_camera = function (self)
 
 	return 
 end
-WorldCameraLayer.select_point = function (self)
+function WorldCameraLayer:select_point()
 	local point = self.selected_point(slot2)
 	slot4 = self
 	local name = self.selected_camera(self)
@@ -1280,7 +1280,7 @@ WorldCameraLayer.select_point = function (self)
 
 	return 
 end
-WorldCameraLayer.add_point = function (self)
+function WorldCameraLayer:add_point()
 	slot3 = self
 	local name = self.selected_camera(slot2)
 
@@ -1307,7 +1307,7 @@ WorldCameraLayer.add_point = function (self)
 
 	return 
 end
-WorldCameraLayer.move_point = function (self)
+function WorldCameraLayer:move_point()
 	local point = self.selected_point(slot2)
 	slot4 = self
 	local name = self.selected_camera(self)
@@ -1327,7 +1327,7 @@ WorldCameraLayer.move_point = function (self)
 
 	return 
 end
-WorldCameraLayer.delete_point = function (self)
+function WorldCameraLayer:delete_point()
 	local point = self.selected_point(slot2)
 	slot4 = self
 	local name = self.selected_camera(self)
@@ -1354,7 +1354,7 @@ WorldCameraLayer.delete_point = function (self)
 
 	return 
 end
-WorldCameraLayer.goto_point = function (self)
+function WorldCameraLayer:goto_point()
 	local point = self.selected_point(slot2)
 	slot4 = self
 	local name = self.selected_camera(self)
@@ -1372,7 +1372,7 @@ WorldCameraLayer.goto_point = function (self)
 
 	return 
 end
-WorldCameraLayer.change_acc = function (self, type)
+function WorldCameraLayer:change_acc(type)
 	slot4 = self
 	local name = self.selected_camera(slot3)
 
@@ -1394,7 +1394,7 @@ WorldCameraLayer.change_acc = function (self, type)
 
 	return 
 end
-WorldCameraLayer.set_duration = function (self, params)
+function WorldCameraLayer:set_duration(params)
 	slot4 = self
 	local name = self.selected_camera(slot3)
 
@@ -1407,7 +1407,7 @@ WorldCameraLayer.set_duration = function (self, params)
 
 	return 
 end
-WorldCameraLayer.set_delay = function (self, params)
+function WorldCameraLayer:set_delay(params)
 	slot4 = self
 	local name = self.selected_camera(slot3)
 
@@ -1420,7 +1420,7 @@ WorldCameraLayer.set_delay = function (self, params)
 
 	return 
 end
-WorldCameraLayer.set_dof_padding = function (self, params)
+function WorldCameraLayer:set_dof_padding(params)
 	slot4 = self
 	local name = self.selected_camera(slot3)
 
@@ -1433,7 +1433,7 @@ WorldCameraLayer.set_dof_padding = function (self, params)
 
 	return 
 end
-WorldCameraLayer.set_dof_clamp = function (self, params)
+function WorldCameraLayer:set_dof_clamp(params)
 	slot4 = self
 	local name = self.selected_camera(slot3)
 
@@ -1446,7 +1446,7 @@ WorldCameraLayer.set_dof_clamp = function (self, params)
 
 	return 
 end
-WorldCameraLayer.update_camera_list = function (self)
+function WorldCameraLayer:update_camera_list()
 	slot3 = self._camera_list
 
 	self._camera_list.clear(slot2)
@@ -1469,7 +1469,7 @@ WorldCameraLayer.update_camera_list = function (self)
 
 	return 
 end
-WorldCameraLayer.selected_camera = function (self)
+function WorldCameraLayer:selected_camera()
 	slot3 = self._camera_list
 	local index = self._camera_list.selected_index(slot2)
 
@@ -1481,7 +1481,7 @@ WorldCameraLayer.selected_camera = function (self)
 
 	return nil
 end
-WorldCameraLayer.selected_world_camera = function (self)
+function WorldCameraLayer:selected_world_camera()
 	slot3 = self._camera_list
 	local index = self._camera_list.selected_index(slot2)
 
@@ -1494,7 +1494,7 @@ WorldCameraLayer.selected_world_camera = function (self)
 
 	return nil
 end
-WorldCameraLayer.selected_point = function (self)
+function WorldCameraLayer:selected_point()
 	slot3 = self._point_list
 	local index = self._point_list.selected_index(slot2)
 
@@ -1506,7 +1506,7 @@ WorldCameraLayer.selected_point = function (self)
 
 	return nil
 end
-WorldCameraLayer.look_through_camera = function (self, data, event)
+function WorldCameraLayer:look_through_camera(data, event)
 	slot5 = self._keys_toolbar
 	slot8 = event
 	self._look_through_camera = self._keys_toolbar.tool_state(slot4, event.get_id(slot7))
@@ -1529,7 +1529,7 @@ WorldCameraLayer.look_through_camera = function (self, data, event)
 
 	return 
 end
-WorldCameraLayer.set_time = function (self, data)
+function WorldCameraLayer:set_time(data)
 	slot4 = data.slider
 	self._current_time = data.slider.get_value(slot3) / self._time_precision
 	local floats = math.log10(self._time_precision)
@@ -1540,7 +1540,7 @@ WorldCameraLayer.set_time = function (self, data)
 
 	return 
 end
-WorldCameraLayer.add_key = function (self)
+function WorldCameraLayer:add_key()
 	slot3 = self
 	local camera = self.selected_world_camera(slot2)
 
@@ -1554,7 +1554,7 @@ WorldCameraLayer.add_key = function (self)
 
 	return 
 end
-WorldCameraLayer.delete_key = function (self)
+function WorldCameraLayer:delete_key()
 	slot3 = self
 	local camera = self.selected_world_camera(slot2)
 
@@ -1582,7 +1582,7 @@ WorldCameraLayer.delete_key = function (self)
 
 	return 
 end
-WorldCameraLayer.select_key = function (self)
+function WorldCameraLayer:select_key()
 	slot3 = self
 	slot8 = self._keys
 
@@ -1590,7 +1590,7 @@ WorldCameraLayer.select_key = function (self)
 
 	return 
 end
-WorldCameraLayer.on_key_time = function (self)
+function WorldCameraLayer:on_key_time()
 	slot3 = self
 	local camera = self.selected_world_camera(slot2)
 
@@ -1607,7 +1607,7 @@ WorldCameraLayer.on_key_time = function (self)
 
 	return 
 end
-WorldCameraLayer.on_key_fov = function (self)
+function WorldCameraLayer:on_key_fov()
 	slot3 = self
 	local camera = self.selected_world_camera(slot2)
 
@@ -1624,7 +1624,7 @@ WorldCameraLayer.on_key_fov = function (self)
 
 	return 
 end
-WorldCameraLayer.on_key_near_dof = function (self)
+function WorldCameraLayer:on_key_near_dof()
 	slot3 = self
 	local camera = self.selected_world_camera(slot2)
 
@@ -1643,7 +1643,7 @@ WorldCameraLayer.on_key_near_dof = function (self)
 
 	return 
 end
-WorldCameraLayer.on_key_far_dof = function (self)
+function WorldCameraLayer:on_key_far_dof()
 	slot3 = self
 	local camera = self.selected_world_camera(slot2)
 
@@ -1662,7 +1662,7 @@ WorldCameraLayer.on_key_far_dof = function (self)
 
 	return 
 end
-WorldCameraLayer.on_set_roll = function (self)
+function WorldCameraLayer:on_set_roll()
 	slot3 = self
 	local camera = self.selected_world_camera(slot2)
 
@@ -1676,7 +1676,7 @@ WorldCameraLayer.on_set_roll = function (self)
 
 	return 
 end
-WorldCameraLayer.set_near_dof = function (self)
+function WorldCameraLayer:set_near_dof()
 	slot3 = self
 	local camera = self.selected_world_camera(slot2)
 
@@ -1698,7 +1698,7 @@ WorldCameraLayer.set_near_dof = function (self)
 
 	return 
 end
-WorldCameraLayer.set_far_dof = function (self)
+function WorldCameraLayer:set_far_dof()
 	slot3 = self
 	local camera = self.selected_world_camera(slot2)
 
@@ -1720,7 +1720,7 @@ WorldCameraLayer.set_far_dof = function (self)
 
 	return 
 end
-WorldCameraLayer.populate_keys = function (self, index)
+function WorldCameraLayer:populate_keys(index)
 	slot4 = self._keys
 
 	self._keys.clear(slot3)
@@ -1756,7 +1756,7 @@ WorldCameraLayer.populate_keys = function (self, index)
 
 	return 
 end
-WorldCameraLayer.set_key = function (self, index)
+function WorldCameraLayer:set_key(index)
 	slot4 = self
 	local camera = self.selected_world_camera(slot3)
 
@@ -1790,7 +1790,7 @@ WorldCameraLayer.set_key = function (self, index)
 
 	return 
 end
-WorldCameraLayer.set_key_values = function (self, time, fov, near_dof, far_dof, roll)
+function WorldCameraLayer:set_key_values(time, fov, near_dof, far_dof, roll)
 	slot8 = self._key_types
 
 	for _, ctrl in pairs(slot7) do
@@ -1861,7 +1861,7 @@ WorldCameraLayer.set_key_values = function (self, time, fov, near_dof, far_dof, 
 
 	return 
 end
-WorldCameraLayer.next_key = function (self)
+function WorldCameraLayer:next_key()
 	slot3 = self
 	local camera = self.selected_world_camera(slot2)
 
@@ -1875,7 +1875,7 @@ WorldCameraLayer.next_key = function (self)
 
 	return 
 end
-WorldCameraLayer.prev_key = function (self)
+function WorldCameraLayer:prev_key()
 	slot3 = self
 	local camera = self.selected_world_camera(slot2)
 
@@ -1889,7 +1889,7 @@ WorldCameraLayer.prev_key = function (self)
 
 	return 
 end
-WorldCameraLayer.key_types_set_enabled = function (self, enabled)
+function WorldCameraLayer:key_types_set_enabled(enabled)
 	slot4 = self._key_types
 
 	for _, ctrl in pairs(slot3) do
@@ -1901,14 +1901,14 @@ WorldCameraLayer.key_types_set_enabled = function (self, enabled)
 
 	return 
 end
-WorldCameraLayer.on_select_sequence = function (self)
+function WorldCameraLayer:on_select_sequence()
 	slot3 = self
 
 	self.select_sequence(slot2)
 
 	return 
 end
-WorldCameraLayer.on_create_new_sequence = function (self)
+function WorldCameraLayer:on_create_new_sequence()
 	slot12 = 0
 	slot9 = true
 	local name = EWS.get_text_from_user(slot2, EWS, Global.frame_panel, "Enter name for the new sequence:", "Create Sequence", "new_sequence", Vector3(slot9, -1, -1))
@@ -1946,7 +1946,7 @@ WorldCameraLayer.on_create_new_sequence = function (self)
 
 	return 
 end
-WorldCameraLayer.on_delete_sequence = function (self)
+function WorldCameraLayer:on_delete_sequence()
 	slot3 = self
 	local name = self.selected_sequence_name(slot2)
 
@@ -1966,7 +1966,7 @@ WorldCameraLayer.on_delete_sequence = function (self)
 
 	return 
 end
-WorldCameraLayer.on_test_sequence = function (self)
+function WorldCameraLayer:on_test_sequence()
 	slot3 = self
 	local name = self.selected_sequence_name(slot2)
 
@@ -1986,7 +1986,7 @@ WorldCameraLayer.on_test_sequence = function (self)
 
 	return 
 end
-WorldCameraLayer.sequence_test_done = function (self)
+function WorldCameraLayer:sequence_test_done()
 	slot3 = self
 
 	self.force_editor_state(slot2)
@@ -1997,14 +1997,14 @@ WorldCameraLayer.sequence_test_done = function (self)
 
 	return 
 end
-WorldCameraLayer.on_stop_sequence = function (self)
+function WorldCameraLayer:on_stop_sequence()
 	slot3 = managers.worldcamera
 
 	managers.worldcamera.stop_world_camera(slot2)
 
 	return 
 end
-WorldCameraLayer.on_add_camera_to_sequence = function (self)
+function WorldCameraLayer:on_add_camera_to_sequence()
 	slot3 = self
 	local name = self.selected_sequence_name(slot2)
 
@@ -2030,7 +2030,7 @@ WorldCameraLayer.on_add_camera_to_sequence = function (self)
 
 	return 
 end
-WorldCameraLayer.on_remove_camera_from_sequence = function (self)
+function WorldCameraLayer:on_remove_camera_from_sequence()
 	slot3 = self
 	local name = self.selected_sequence_name(slot2)
 
@@ -2054,7 +2054,7 @@ WorldCameraLayer.on_remove_camera_from_sequence = function (self)
 
 	return 
 end
-WorldCameraLayer.on_move_camera_in_sequence = function (self, dir)
+function WorldCameraLayer:on_move_camera_in_sequence(dir)
 	slot4 = self
 	local name = self.selected_sequence_name(slot3)
 
@@ -2087,7 +2087,7 @@ WorldCameraLayer.on_move_camera_in_sequence = function (self, dir)
 
 	return 
 end
-WorldCameraLayer.on_select_sequence_camera = function (self)
+function WorldCameraLayer:on_select_sequence_camera()
 	slot3 = self
 	local sequence_camera = self.selected_sequence_camera(slot2)
 
@@ -2105,7 +2105,7 @@ WorldCameraLayer.on_select_sequence_camera = function (self)
 
 	return 
 end
-WorldCameraLayer.on_sequence_camera_start = function (self)
+function WorldCameraLayer:on_sequence_camera_start()
 	slot5 = self._camera_sequence_settings.start
 	local value = tonumber(self._camera_sequence_settings.start.get_value(slot4))
 	value = math.clamp(self._camera_sequence_settings.start.get_value, value, 0)
@@ -2123,7 +2123,7 @@ WorldCameraLayer.on_sequence_camera_start = function (self)
 
 	return 
 end
-WorldCameraLayer.on_sequence_camera_stop = function (self)
+function WorldCameraLayer:on_sequence_camera_stop()
 	slot5 = self._camera_sequence_settings.stop
 	local value = tonumber(self._camera_sequence_settings.stop.get_value(slot4))
 	value = math.clamp(self._camera_sequence_settings.stop.get_value, value, 0)
@@ -2141,7 +2141,7 @@ WorldCameraLayer.on_sequence_camera_stop = function (self)
 
 	return 
 end
-WorldCameraLayer.update_sequence_list = function (self)
+function WorldCameraLayer:update_sequence_list()
 	slot3 = self._sequence_list
 
 	self._sequence_list.clear(slot2)
@@ -2156,7 +2156,7 @@ WorldCameraLayer.update_sequence_list = function (self)
 
 	return 
 end
-WorldCameraLayer.select_sequence = function (self)
+function WorldCameraLayer:select_sequence()
 	slot3 = self
 	local name = self.selected_sequence_name(slot2)
 
@@ -2168,7 +2168,7 @@ WorldCameraLayer.select_sequence = function (self)
 
 	return 
 end
-WorldCameraLayer.selected_sequence_name = function (self)
+function WorldCameraLayer:selected_sequence_name()
 	slot3 = self._sequence_list
 	local index = self._sequence_list.selected_index(slot2)
 
@@ -2180,7 +2180,7 @@ WorldCameraLayer.selected_sequence_name = function (self)
 
 	return nil
 end
-WorldCameraLayer.selected_sequence = function (self)
+function WorldCameraLayer:selected_sequence()
 	slot3 = self._sequence_list
 	local index = self._sequence_list.selected_index(slot2)
 
@@ -2193,7 +2193,7 @@ WorldCameraLayer.selected_sequence = function (self)
 
 	return nil
 end
-WorldCameraLayer.selected_sequence_camera_name = function (self)
+function WorldCameraLayer:selected_sequence_camera_name()
 	slot3 = self._sequence_camera_list
 	local index = self._sequence_camera_list.selected_index(slot2)
 
@@ -2205,7 +2205,7 @@ WorldCameraLayer.selected_sequence_camera_name = function (self)
 
 	return nil
 end
-WorldCameraLayer.selected_sequence_camera = function (self)
+function WorldCameraLayer:selected_sequence_camera()
 	slot3 = self._sequence_camera_list
 	local index = self._sequence_camera_list.selected_index(slot2)
 
@@ -2221,7 +2221,7 @@ WorldCameraLayer.selected_sequence_camera = function (self)
 
 	return nil
 end
-WorldCameraLayer.update_sequence_camera_list = function (self, index)
+function WorldCameraLayer:update_sequence_camera_list(index)
 	slot4 = self._sequence_camera_list
 
 	self._sequence_camera_list.clear(slot3)
@@ -2249,10 +2249,10 @@ WorldCameraLayer.update_sequence_camera_list = function (self, index)
 
 	return 
 end
-WorldCameraLayer.deselect = function (self)
+function WorldCameraLayer:deselect()
 	return 
 end
-WorldCameraLayer.add_triggers = function (self)
+function WorldCameraLayer:add_triggers()
 	WorldCameraLayer.super.add_triggers(slot2)
 
 	local vc = self._editor_data.virtual_controller
@@ -2278,7 +2278,7 @@ WorldCameraLayer.add_triggers = function (self)
 
 	return 
 end
-WorldCameraLayer.activate = function (self)
+function WorldCameraLayer:activate()
 	slot4 = "Mission"
 	slot3 = managers.editor.layer(slot2, managers.editor)
 
@@ -2294,7 +2294,7 @@ WorldCameraLayer.activate = function (self)
 
 	return 
 end
-WorldCameraLayer.deactivate = function (self)
+function WorldCameraLayer:deactivate()
 	slot4 = "Mission"
 	slot3 = managers.editor.layer(slot2, managers.editor)
 
@@ -2319,7 +2319,7 @@ WorldCameraLayer.deactivate = function (self)
 
 	return 
 end
-WorldCameraLayer.clear = function (self)
+function WorldCameraLayer:clear()
 	slot3 = self
 
 	WorldCameraLayer.super.clear(slot2)
@@ -2377,7 +2377,7 @@ WorldCameraLayer.clear = function (self)
 
 	return 
 end
-WorldCameraLayer.get_help = function (self, text)
+function WorldCameraLayer:get_help(text)
 	local t = "\t"
 	local n = "\n"
 	text = text .. "Create point:        Right mouse btn" .. n

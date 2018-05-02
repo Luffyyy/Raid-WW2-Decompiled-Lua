@@ -8,21 +8,21 @@ if not ElementTeammateComment then
 end
 
 ElementTeammateComment = slot0
-ElementTeammateComment.init = function (self, ...)
+function ElementTeammateComment:init(...)
 	slot3 = self
 
 	ElementTeammateComment.super.init(slot2, ...)
 
 	return 
 end
-ElementTeammateComment.client_on_executed = function (self, ...)
+function ElementTeammateComment:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementTeammateComment.on_executed = function (self, instigator)
+function ElementTeammateComment:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

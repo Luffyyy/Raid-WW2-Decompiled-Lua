@@ -4,7 +4,7 @@ if not RaidGUIControlIntelOperationalStatus then
 end
 
 RaidGUIControlIntelOperationalStatus = slot0
-RaidGUIControlIntelOperationalStatus.init = function (self, parent, params)
+function RaidGUIControlIntelOperationalStatus:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlIntelOperationalStatus.super.init(slot4, self, parent)
@@ -18,7 +18,7 @@ RaidGUIControlIntelOperationalStatus.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlIntelOperationalStatus._layout = function (self)
+function RaidGUIControlIntelOperationalStatus:_layout()
 	slot4 = {
 		y = 0,
 		x = 0,
@@ -139,7 +139,7 @@ RaidGUIControlIntelOperationalStatus._layout = function (self)
 
 	return 
 end
-RaidGUIControlIntelOperationalStatus.set_data = function (self, item_value)
+function RaidGUIControlIntelOperationalStatus:set_data(item_value)
 	slot6 = item_value
 	self._data = tweak_data.intel.get_item_data(slot3, tweak_data.intel, self._category_name)
 	local text_top_coord = 0
@@ -227,7 +227,7 @@ RaidGUIControlIntelOperationalStatus.set_data = function (self, item_value)
 
 	return 
 end
-RaidGUIControlIntelOperationalStatus.get_data = function (self)
+function RaidGUIControlIntelOperationalStatus:get_data()
 	return self._data
 end
 

@@ -4,7 +4,7 @@ if not RaidGUIControlListActive then
 end
 
 RaidGUIControlListActive = slot0
-RaidGUIControlListActive.init = function (self, parent, params)
+function RaidGUIControlListActive:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlListActive.super.init(slot4, self, parent)
@@ -15,7 +15,7 @@ RaidGUIControlListActive.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlListActive.activate_item_by_value = function (self, item_value)
+function RaidGUIControlListActive:activate_item_by_value(item_value)
 	if self._active_item then
 		slot4 = self._active_item
 
@@ -42,7 +42,7 @@ RaidGUIControlListActive.activate_item_by_value = function (self, item_value)
 
 	return 
 end
-RaidGUIControlListActive.activate_item_by_index = function (self, index)
+function RaidGUIControlListActive:activate_item_by_index(index)
 	slot7 = self._list_items[index]
 	slot5 = self._list_items[index].data(slot6).value
 
@@ -50,10 +50,10 @@ RaidGUIControlListActive.activate_item_by_index = function (self, index)
 
 	return 
 end
-RaidGUIControlListActive.get_active_item = function (self)
+function RaidGUIControlListActive:get_active_item()
 	return self._active_item
 end
-RaidGUIControlListActive.get_active_item_index = function (self)
+function RaidGUIControlListActive:get_active_item_index()
 	if self._active_item and self._list_items then
 		slot3 = self._list_items
 
@@ -66,7 +66,7 @@ RaidGUIControlListActive.get_active_item_index = function (self)
 
 	return nil
 end
-RaidGUIControlListActive._create_item = function (self, item_class, item_params, item_data)
+function RaidGUIControlListActive:_create_item(item_class, item_params, item_data)
 	if self._special_action_callback then
 		item_params.special_action_callback = self._special_action_callback
 	end
@@ -75,7 +75,7 @@ RaidGUIControlListActive._create_item = function (self, item_class, item_params,
 
 	return self._object.create_custom_control(slot5, self._object, item_class, item_params)
 end
-RaidGUIControlListActive.set_selected = function (self, value, dont_trigger_selected_callback)
+function RaidGUIControlListActive:set_selected(value, dont_trigger_selected_callback)
 	self._selected = value
 
 	if self._selected_item and self._selected then

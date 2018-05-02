@@ -6,7 +6,7 @@ if not MenuNodeButtonLayoutGui then
 end
 
 MenuNodeButtonLayoutGui = slot0
-MenuNodeButtonLayoutGui.init = function (self, node, layer, parameters)
+function MenuNodeButtonLayoutGui:init(node, layer, parameters)
 	slot9 = parameters
 
 	MenuNodeButtonLayoutGui.super.init(slot5, self, node, layer)
@@ -17,7 +17,7 @@ MenuNodeButtonLayoutGui.init = function (self, node, layer, parameters)
 
 	return 
 end
-MenuNodeButtonLayoutGui._setup_panels = function (self, node)
+function MenuNodeButtonLayoutGui:_setup_panels(node)
 	slot5 = node
 
 	MenuNodeButtonLayoutGui.super._setup_panels(slot3, self)
@@ -27,7 +27,7 @@ MenuNodeButtonLayoutGui._setup_panels = function (self, node)
 
 	return 
 end
-MenuNodeButtonLayoutGui._setup = function (self)
+function MenuNodeButtonLayoutGui:_setup()
 	slot3 = tweak_data
 	self._coords = tweak_data.get_controller_help_coords(slot2) or {}
 	self._categories = {}
@@ -115,7 +115,7 @@ MenuNodeButtonLayoutGui._setup = function (self)
 
 	return 
 end
-MenuNodeButtonLayoutGui._layout = function (self)
+function MenuNodeButtonLayoutGui:_layout()
 
 	-- Decompilation error in this vicinity:
 	slot3 = managers.viewport
@@ -207,28 +207,28 @@ MenuNodeButtonLayoutGui._layout = function (self)
 
 	return 
 end
-MenuNodeButtonLayoutGui._create_menu_item = function (self, row_item)
+function MenuNodeButtonLayoutGui:_create_menu_item(row_item)
 	slot5 = row_item
 
 	MenuNodeButtonLayoutGui.super._create_menu_item(slot3, self)
 
 	return 
 end
-MenuNodeButtonLayoutGui._setup_item_panel_parent = function (self, safe_rect)
+function MenuNodeButtonLayoutGui:_setup_item_panel_parent(safe_rect)
 	slot5 = safe_rect
 
 	MenuNodeButtonLayoutGui.super._setup_item_panel_parent(slot3, self)
 
 	return 
 end
-MenuNodeButtonLayoutGui._setup_item_panel = function (self, safe_rect, res)
+function MenuNodeButtonLayoutGui:_setup_item_panel(safe_rect, res)
 	slot7 = res
 
 	MenuNodeButtonLayoutGui.super._setup_item_panel(slot4, self, safe_rect)
 
 	return 
 end
-MenuNodeButtonLayoutGui.set_current_category = function (self, category)
+function MenuNodeButtonLayoutGui:set_current_category(category)
 	self._current_category = category
 	slot4 = self
 
@@ -236,7 +236,7 @@ MenuNodeButtonLayoutGui.set_current_category = function (self, category)
 
 	return 
 end
-MenuNodeButtonLayoutGui.resolution_changed = function (self)
+function MenuNodeButtonLayoutGui:resolution_changed()
 	slot3 = self
 
 	MenuNodeButtonLayoutGui.super.resolution_changed(slot2)
@@ -247,7 +247,7 @@ MenuNodeButtonLayoutGui.resolution_changed = function (self)
 
 	return 
 end
-MenuNodeButtonLayoutGui.close = function (self, ...)
+function MenuNodeButtonLayoutGui:close(...)
 	slot3 = self._bg
 	slot4 = self._bg
 

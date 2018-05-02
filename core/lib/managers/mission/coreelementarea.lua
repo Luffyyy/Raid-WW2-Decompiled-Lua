@@ -33,7 +33,7 @@ if not ElementAreaTrigger then
 end
 
 ElementAreaTrigger = slot1
-ElementAreaTrigger.init = function (self, ...)
+function ElementAreaTrigger:init(...)
 	slot3 = self
 
 	ElementAreaTrigger.super.init(slot2, ...)
@@ -72,7 +72,7 @@ ElementAreaTrigger.init = function (self, ...)
 
 	return 
 end
-ElementAreaTrigger.on_script_activated = function (self)
+function ElementAreaTrigger:on_script_activated()
 	self._on_script_activated_done = true
 
 	if self._values.use_shape_element_ids then
@@ -111,17 +111,17 @@ ElementAreaTrigger.on_script_activated = function (self)
 
 	return 
 end
-ElementAreaTrigger._add_shape = function (self, shape)
+function ElementAreaTrigger:_add_shape(shape)
 	slot5 = shape
 
 	table.insert(slot3, self._shapes)
 
 	return 
 end
-ElementAreaTrigger.get_shapes = function (self)
+function ElementAreaTrigger:get_shapes()
 	return self._shapes
 end
-ElementAreaTrigger.is_inside = function (self, pos)
+function ElementAreaTrigger:is_inside(pos)
 	slot4 = self._shapes
 
 	for _, shape in ipairs(slot3) do
@@ -134,7 +134,7 @@ ElementAreaTrigger.is_inside = function (self, pos)
 
 	return false
 end
-ElementAreaTrigger._is_inside = function (self, pos)
+function ElementAreaTrigger:_is_inside(pos)
 	slot5 = pos
 
 	if self.is_inside(slot3, self) then
@@ -160,7 +160,7 @@ ElementAreaTrigger._is_inside = function (self, pos)
 
 	return false
 end
-ElementAreaTrigger.set_enabled = function (self, enabled)
+function ElementAreaTrigger:set_enabled(enabled)
 	if not enabled then
 		slot4 = Network
 
@@ -192,7 +192,7 @@ ElementAreaTrigger.set_enabled = function (self, enabled)
 
 	return 
 end
-ElementAreaTrigger.add_callback = function (self)
+function ElementAreaTrigger:add_callback()
 	if not self._callback then
 		slot8 = "update_area"
 		slot5 = self._values.interval
@@ -201,7 +201,7 @@ ElementAreaTrigger.add_callback = function (self)
 
 	return 
 end
-ElementAreaTrigger.remove_callback = function (self)
+function ElementAreaTrigger:remove_callback()
 	if self._callback then
 		slot4 = self._callback
 
@@ -212,7 +212,7 @@ ElementAreaTrigger.remove_callback = function (self)
 
 	return 
 end
-ElementAreaTrigger.on_executed = function (self, instigator, ...)
+function ElementAreaTrigger:on_executed(instigator, ...)
 	if not self._values.enabled then
 		return 
 	end
@@ -229,7 +229,7 @@ ElementAreaTrigger.on_executed = function (self, instigator, ...)
 
 	return 
 end
-ElementAreaTrigger.instigators = function (self)
+function ElementAreaTrigger:instigators()
 	if self._values.unit_ids then
 		local instigators = {}
 		slot4 = Network
@@ -274,19 +274,19 @@ ElementAreaTrigger.instigators = function (self)
 
 	return instigators
 end
-ElementAreaTrigger.project_instigators = function (self)
+function ElementAreaTrigger:project_instigators()
 	return {}
 end
-ElementAreaTrigger.project_amount_all = function (self)
+function ElementAreaTrigger:project_amount_all()
 	return nil
 end
-ElementAreaTrigger.project_amount_inside = function (self)
+function ElementAreaTrigger:project_amount_inside()
 	return #self._inside
 end
-ElementAreaTrigger.is_instigator_valid = function (self, unit)
+function ElementAreaTrigger:is_instigator_valid(unit)
 	return true
 end
-ElementAreaTrigger.debug_draw = function (self)
+function ElementAreaTrigger:debug_draw()
 	if self._values.instigator == "loot" or self._values.instigator == "unique_loot" then
 		slot3 = self._shapes
 
@@ -311,7 +311,7 @@ ElementAreaTrigger.debug_draw = function (self)
 
 	return 
 end
-ElementAreaTrigger.update_area = function (self)
+function ElementAreaTrigger:update_area()
 	if not self._values.enabled then
 		return 
 	end
@@ -374,7 +374,7 @@ ElementAreaTrigger.update_area = function (self)
 
 	return 
 end
-ElementAreaTrigger.sync_enter_area = function (self, unit)
+function ElementAreaTrigger:sync_enter_area(unit)
 	slot5 = unit
 
 	table.insert(slot3, self._inside)
@@ -387,7 +387,7 @@ ElementAreaTrigger.sync_enter_area = function (self, unit)
 
 	return 
 end
-ElementAreaTrigger.sync_exit_area = function (self, unit)
+function ElementAreaTrigger:sync_exit_area(unit)
 	slot5 = unit
 
 	table.delete(slot3, self._inside)
@@ -400,14 +400,14 @@ ElementAreaTrigger.sync_exit_area = function (self, unit)
 
 	return 
 end
-ElementAreaTrigger.sync_while_in_area = function (self, unit)
+function ElementAreaTrigger:sync_while_in_area(unit)
 	slot5 = unit
 
 	self._check_amount(slot3, self)
 
 	return 
 end
-ElementAreaTrigger._check_amount = function (self, unit)
+function ElementAreaTrigger:_check_amount(unit)
 	if self._values.trigger_on == "on_enter" then
 		slot5 = self
 
@@ -434,7 +434,7 @@ ElementAreaTrigger._check_amount = function (self, unit)
 
 	return 
 end
-ElementAreaTrigger._should_trigger = function (self, unit)
+function ElementAreaTrigger:_should_trigger(unit)
 
 	-- Decompilation error in this vicinity:
 	slot4 = unit
@@ -501,7 +501,7 @@ ElementAreaTrigger._should_trigger = function (self, unit)
 
 	return false
 end
-ElementAreaTrigger._check_instigator_rules = function (self, unit)
+function ElementAreaTrigger:_check_instigator_rules(unit)
 	slot4 = self._rules_elements
 
 	for _, element in ipairs(slot3) do
@@ -514,7 +514,7 @@ ElementAreaTrigger._check_instigator_rules = function (self, unit)
 
 	return true
 end
-ElementAreaTrigger._clean_destroyed_units = function (self)
+function ElementAreaTrigger:_clean_destroyed_units()
 	local i = 1
 	slot4 = self._inside
 
@@ -532,7 +532,7 @@ ElementAreaTrigger._clean_destroyed_units = function (self)
 
 	return 
 end
-ElementAreaTrigger._client_check_state = function (self, unit)
+function ElementAreaTrigger:_client_check_state(unit)
 	slot5 = unit
 	local rule_ok = self._check_instigator_rules(slot3, self)
 	slot8 = unit
@@ -568,7 +568,7 @@ ElementAreaTrigger._client_check_state = function (self, unit)
 
 	return 
 end
-ElementAreaTrigger.operation_set_interval = function (self, interval)
+function ElementAreaTrigger:operation_set_interval(interval)
 	self._values.interval = interval
 	slot4 = self
 
@@ -582,24 +582,24 @@ ElementAreaTrigger.operation_set_interval = function (self, interval)
 
 	return 
 end
-ElementAreaTrigger.operation_set_use_disabled_shapes = function (self, use_disabled_shapes)
+function ElementAreaTrigger:operation_set_use_disabled_shapes(use_disabled_shapes)
 	self._values.use_disabled_shapes = use_disabled_shapes
 
 	return 
 end
-ElementAreaTrigger.operation_clear_inside = function (self)
+function ElementAreaTrigger:operation_clear_inside()
 	self._inside = {}
 
 	return 
 end
-ElementAreaTrigger.save = function (self, data)
+function ElementAreaTrigger:save(data)
 	data.enabled = self._values.enabled
 	data.interval = self._values.interval
 	data.use_disabled_shapes = self._values.use_disabled_shapes
 
 	return 
 end
-ElementAreaTrigger.load = function (self, data)
+function ElementAreaTrigger:load(data)
 	if not self._on_script_activated_done then
 		slot4 = self
 
@@ -625,21 +625,21 @@ if not ElementAreaOperator then
 end
 
 ElementAreaOperator = slot1
-ElementAreaOperator.init = function (self, ...)
+function ElementAreaOperator:init(...)
 	slot3 = self
 
 	ElementAreaOperator.super.init(slot2, ...)
 
 	return 
 end
-ElementAreaOperator.client_on_executed = function (self, ...)
+function ElementAreaOperator:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementAreaOperator.on_executed = function (self, instigator)
+function ElementAreaOperator:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -684,7 +684,7 @@ if not ElementAreaReportTrigger then
 end
 
 ElementAreaReportTrigger = slot1
-ElementAreaReportTrigger.update_area = function (self)
+function ElementAreaReportTrigger:update_area()
 	if not self._values.enabled then
 		return 
 	end
@@ -722,7 +722,7 @@ ElementAreaReportTrigger.update_area = function (self)
 
 	return 
 end
-ElementAreaReportTrigger._check_state = function (self, unit)
+function ElementAreaReportTrigger:_check_state(unit)
 	slot4 = self
 
 	self._clean_destroyed_units(slot3)
@@ -787,7 +787,7 @@ ElementAreaReportTrigger._check_state = function (self, unit)
 
 	return false
 end
-ElementAreaReportTrigger._add_inside = function (self, unit)
+function ElementAreaReportTrigger:_add_inside(unit)
 	slot5 = unit
 
 	table.insert(slot3, self._inside)
@@ -810,7 +810,7 @@ ElementAreaReportTrigger._add_inside = function (self, unit)
 
 	return 
 end
-ElementAreaReportTrigger._check_on_executed_reached_amount = function (self, unit)
+function ElementAreaReportTrigger:_check_on_executed_reached_amount(unit)
 	if self._values.amount == "all" then
 		slot4 = self
 		slot2 = self.project_amount_all(slot3)
@@ -839,7 +839,7 @@ ElementAreaReportTrigger._check_on_executed_reached_amount = function (self, uni
 
 	return 
 end
-ElementAreaReportTrigger._while_inside = function (self, unit)
+function ElementAreaReportTrigger:_while_inside(unit)
 	slot5 = "while_inside"
 
 	if self._has_on_executed_alternative(slot3, self) then
@@ -850,7 +850,7 @@ ElementAreaReportTrigger._while_inside = function (self, unit)
 
 	return 
 end
-ElementAreaReportTrigger._rule_failed = function (self, unit)
+function ElementAreaReportTrigger:_rule_failed(unit)
 	slot5 = "rule_failed"
 
 	if self._has_on_executed_alternative(slot3, self) then
@@ -861,7 +861,7 @@ ElementAreaReportTrigger._rule_failed = function (self, unit)
 
 	return 
 end
-ElementAreaReportTrigger._remove_inside = function (self, unit)
+function ElementAreaReportTrigger:_remove_inside(unit)
 	slot5 = unit
 
 	table.delete(slot3, self._inside)
@@ -882,7 +882,7 @@ ElementAreaReportTrigger._remove_inside = function (self, unit)
 
 	return 
 end
-ElementAreaReportTrigger._remove_inside_by_index = function (self, index)
+function ElementAreaReportTrigger:_remove_inside_by_index(index)
 	slot5 = index
 
 	table.remove(slot3, self._inside)
@@ -903,7 +903,7 @@ ElementAreaReportTrigger._remove_inside_by_index = function (self, index)
 
 	return 
 end
-ElementAreaReportTrigger._clean_destroyed_units = function (self)
+function ElementAreaReportTrigger:_clean_destroyed_units()
 	local i = 1
 	slot4 = self._inside
 
@@ -939,7 +939,7 @@ ElementAreaReportTrigger._clean_destroyed_units = function (self)
 
 	return 
 end
-ElementAreaReportTrigger._client_check_state = function (self, unit)
+function ElementAreaReportTrigger:_client_check_state(unit)
 	slot5 = unit
 	local rule_ok = self._check_instigator_rules(slot3, self)
 	slot8 = unit
@@ -992,28 +992,28 @@ ElementAreaReportTrigger._client_check_state = function (self, unit)
 
 	return 
 end
-ElementAreaReportTrigger.sync_enter_area = function (self, unit)
+function ElementAreaReportTrigger:sync_enter_area(unit)
 	slot5 = unit
 
 	self._add_inside(slot3, self)
 
 	return 
 end
-ElementAreaReportTrigger.sync_exit_area = function (self, unit)
+function ElementAreaReportTrigger:sync_exit_area(unit)
 	slot5 = unit
 
 	self._remove_inside(slot3, self)
 
 	return 
 end
-ElementAreaReportTrigger.sync_while_in_area = function (self, unit)
+function ElementAreaReportTrigger:sync_while_in_area(unit)
 	slot5 = unit
 
 	self._while_inside(slot3, self)
 
 	return 
 end
-ElementAreaReportTrigger.sync_rule_failed = function (self, unit)
+function ElementAreaReportTrigger:sync_rule_failed(unit)
 	slot5 = unit
 
 	self._rule_failed(slot3, self)

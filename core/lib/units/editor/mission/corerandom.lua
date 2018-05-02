@@ -13,14 +13,14 @@ if not RandomUnitElement then
 end
 
 RandomUnitElement = slot0
-RandomUnitElement.init = function (self, ...)
+function RandomUnitElement:init(...)
 	slot3 = self
 
 	CoreRandomUnitElement.init(slot2, ...)
 
 	return 
 end
-CoreRandomUnitElement.init = function (self, unit)
+function CoreRandomUnitElement:init(unit)
 	slot5 = unit
 
 	CoreRandomUnitElement.super.init(slot3, self)
@@ -47,10 +47,10 @@ CoreRandomUnitElement.init = function (self, unit)
 
 	return 
 end
-CoreRandomUnitElement.update_editing = function (self)
+function CoreRandomUnitElement:update_editing()
 	return 
 end
-CoreRandomUnitElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function CoreRandomUnitElement:draw_links(t, dt, selected_unit, all_units)
 	slot10 = selected_unit
 
 	CoreRandomUnitElement.super.draw_links(slot6, self, t, dt)
@@ -74,7 +74,7 @@ CoreRandomUnitElement.draw_links = function (self, t, dt, selected_unit, all_uni
 
 	return 
 end
-CoreRandomUnitElement.add_element = function (self)
+function CoreRandomUnitElement:add_element()
 	slot4 = {
 		ray_type = "editor",
 		mask = 10
@@ -98,7 +98,7 @@ CoreRandomUnitElement.add_element = function (self)
 
 	return 
 end
-CoreRandomUnitElement.add_triggers = function (self, vc)
+function CoreRandomUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "add_element"
 
@@ -106,7 +106,7 @@ CoreRandomUnitElement.add_triggers = function (self, vc)
 
 	return 
 end
-CoreRandomUnitElement.remove_links = function (self, unit)
+function CoreRandomUnitElement:remove_links(unit)
 	if self._hed.counter_id then
 		slot5 = unit
 
@@ -117,28 +117,28 @@ CoreRandomUnitElement.remove_links = function (self, unit)
 
 	return 
 end
-CoreRandomUnitElement._add_counter_filter = function (self, unit)
+function CoreRandomUnitElement:_add_counter_filter(unit)
 	slot5 = "core/units/mission_elements/logic_counter/logic_counter"
 
 	return unit.name(slot3) == Idstring(unit)
 end
-CoreRandomUnitElement._set_counter_id = function (self, unit)
+function CoreRandomUnitElement:_set_counter_id(unit)
 	slot5 = unit
 	self._hed.counter_id = unit.unit_data(slot4).unit_id
 
 	return 
 end
-CoreRandomUnitElement._remove_counter_filter = function (self, unit)
+function CoreRandomUnitElement:_remove_counter_filter(unit)
 	slot5 = unit
 
 	return self._hed.counter_id == unit.unit_data(slot4).unit_id
 end
-CoreRandomUnitElement._remove_counter_id = function (self, unit)
+function CoreRandomUnitElement:_remove_counter_id(unit)
 	self._hed.counter_id = nil
 
 	return 
 end
-CoreRandomUnitElement._build_panel = function (self, panel, panel_sizer)
+function CoreRandomUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

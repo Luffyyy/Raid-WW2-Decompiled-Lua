@@ -10,14 +10,14 @@
 --   Code may be incomplete or incorrect.
 InventoryIconCreator = InventoryIconCreator or class()
 InventoryIconCreator.OPTIONAL = "<optional>"
-InventoryIconCreator.init = function (self)
+function InventoryIconCreator:init()
 	slot3 = self
 
 	self._set_job_settings(slot2)
 
 	return 
 end
-InventoryIconCreator._set_job_settings = function (self)
+function InventoryIconCreator:_set_job_settings()
 	self._job_settings = {}
 	slot7 = 0
 	slot7 = 0
@@ -54,7 +54,7 @@ InventoryIconCreator._set_job_settings = function (self)
 
 	return 
 end
-InventoryIconCreator._create_weapon = function (self, factory_id, blueprint, weapon_skin)
+function InventoryIconCreator:_create_weapon(factory_id, blueprint, weapon_skin)
 	slot6 = self
 
 	self.destroy_items(slot5)
@@ -101,7 +101,7 @@ InventoryIconCreator._create_weapon = function (self, factory_id, blueprint, wea
 
 	return 
 end
-InventoryIconCreator._create_mask = function (self, mask_id, blueprint)
+function InventoryIconCreator:_create_mask(mask_id, blueprint)
 	slot5 = self
 
 	self.destroy_items(slot4)
@@ -133,7 +133,7 @@ InventoryIconCreator._create_mask = function (self, mask_id, blueprint)
 
 	return 
 end
-InventoryIconCreator._create_melee = function (self, melee_id)
+function InventoryIconCreator:_create_melee(melee_id)
 	slot4 = self
 
 	self.destroy_items(slot3)
@@ -155,7 +155,7 @@ InventoryIconCreator._create_melee = function (self, melee_id)
 
 	return 
 end
-InventoryIconCreator._create_throwable = function (self, throwable_id)
+function InventoryIconCreator:_create_throwable(throwable_id)
 	slot4 = self
 
 	self.destroy_items(slot3)
@@ -185,14 +185,14 @@ InventoryIconCreator._create_throwable = function (self, throwable_id)
 
 	return 
 end
-InventoryIconCreator._assemble_completed = function (self, parts, blueprint)
+function InventoryIconCreator:_assemble_completed(parts, blueprint)
 	slot6 = true
 
 	self._weapon_unit.set_moving(slot4, self._weapon_unit)
 
 	return 
 end
-InventoryIconCreator.start_jobs = function (self, jobs)
+function InventoryIconCreator:start_jobs(jobs)
 	self._current_job = 0
 	self._jobs = jobs
 	slot5 = "InventoryIconCreator"
@@ -202,7 +202,7 @@ InventoryIconCreator.start_jobs = function (self, jobs)
 
 	return 
 end
-InventoryIconCreator.start_all_weapons = function (self, test)
+function InventoryIconCreator:start_all_weapons(test)
 	slot8 = "YES_NO,ICON_QUESTION"
 	slot13 = 0
 	local confirm = EWS.message_box(slot3, EWS, Global.frame_panel, "Really, all of them?", "Icon creator", Vector3(slot10, -1, -1))
@@ -244,7 +244,7 @@ InventoryIconCreator.start_all_weapons = function (self, test)
 
 	return 
 end
-InventoryIconCreator.start_all_weapon_skins = function (self)
+function InventoryIconCreator:start_all_weapon_skins()
 	local factory_id = self._ctrlrs.weapon.factory_id.get_value(slot2)
 	slot5 = factory_id
 	local blueprint = managers.weapon_factory.get_default_blueprint_by_factory_id(self._ctrlrs.weapon.factory_id, managers.weapon_factory)
@@ -279,7 +279,7 @@ InventoryIconCreator.start_all_weapon_skins = function (self)
 
 	return 
 end
-InventoryIconCreator.start_one_weapon = function (self)
+function InventoryIconCreator:start_one_weapon()
 	local factory_id = self._ctrlrs.weapon.factory_id.get_value(slot2)
 	slot4 = self._ctrlrs.weapon.weapon_skin
 	local weapon_skin = self._ctrlrs.weapon.weapon_skin.get_value(self._ctrlrs.weapon.factory_id)
@@ -312,7 +312,7 @@ InventoryIconCreator.start_one_weapon = function (self)
 
 	return 
 end
-InventoryIconCreator.preview_one_weapon = function (self)
+function InventoryIconCreator:preview_one_weapon()
 	local factory_id = self._ctrlrs.weapon.factory_id.get_value(slot2)
 	slot4 = self._ctrlrs.weapon.weapon_skin
 	local weapon_skin = self._ctrlrs.weapon.weapon_skin.get_value(self._ctrlrs.weapon.factory_id)
@@ -339,7 +339,7 @@ InventoryIconCreator.preview_one_weapon = function (self)
 
 	return 
 end
-InventoryIconCreator._get_blueprint_from_ui = function (self)
+function InventoryIconCreator:_get_blueprint_from_ui()
 	local blueprint = {}
 	slot4 = self._ctrlrs.weapon
 
@@ -358,7 +358,7 @@ InventoryIconCreator._get_blueprint_from_ui = function (self)
 
 	return blueprint
 end
-InventoryIconCreator._get_all_weapons = function (self)
+function InventoryIconCreator:_get_all_weapons()
 	local weapons = {}
 	slot4 = Global.blackmarket_manager.weapons
 
@@ -374,7 +374,7 @@ InventoryIconCreator._get_all_weapons = function (self)
 
 	return weapons
 end
-InventoryIconCreator._get_weapon_skins = function (self)
+function InventoryIconCreator:_get_weapon_skins()
 	local factory_id = self._ctrlrs.weapon.factory_id.get_value(slot2)
 	local weapon_id = managers.weapon_factory.get_weapon_id_by_factory_id(self._ctrlrs.weapon.factory_id, managers.weapon_factory)
 	local t = {
@@ -394,7 +394,7 @@ InventoryIconCreator._get_weapon_skins = function (self)
 
 	return t
 end
-InventoryIconCreator.start_all_masks = function (self, with_blueprint)
+function InventoryIconCreator:start_all_masks(with_blueprint)
 
 	-- Decompilation error in this vicinity:
 	slot8 = "YES_NO,ICON_QUESTION"
@@ -429,7 +429,7 @@ InventoryIconCreator.start_all_masks = function (self, with_blueprint)
 
 	return 
 end
-InventoryIconCreator.start_one_mask = function (self, with_blueprint)
+function InventoryIconCreator:start_one_mask(with_blueprint)
 
 	-- Decompilation error in this vicinity:
 	slot4 = self._ctrlrs.mask.mask_id
@@ -445,7 +445,7 @@ InventoryIconCreator.start_one_mask = function (self, with_blueprint)
 
 	return 
 end
-InventoryIconCreator.preview_one_mask = function (self, with_blueprint)
+function InventoryIconCreator:preview_one_mask(with_blueprint)
 
 	-- Decompilation error in this vicinity:
 	slot4 = self._ctrlrs.mask.mask_id
@@ -456,7 +456,7 @@ InventoryIconCreator.preview_one_mask = function (self, with_blueprint)
 
 	return 
 end
-InventoryIconCreator._get_mask_blueprint_from_ui = function (self)
+function InventoryIconCreator:_get_mask_blueprint_from_ui()
 	local blueprint = {}
 	slot4 = self._ctrlrs.mask
 
@@ -472,7 +472,7 @@ InventoryIconCreator._get_mask_blueprint_from_ui = function (self)
 
 	return blueprint
 end
-InventoryIconCreator._get_all_masks = function (self)
+function InventoryIconCreator:_get_all_masks()
 	local t = {}
 	slot4 = tweak_data.blackmarket.masks
 
@@ -490,7 +490,7 @@ InventoryIconCreator._get_all_masks = function (self)
 
 	return t
 end
-InventoryIconCreator.start_all_melee = function (self)
+function InventoryIconCreator:start_all_melee()
 	slot7 = "YES_NO,ICON_QUESTION"
 	slot12 = 0
 	local confirm = EWS.message_box(slot2, EWS, Global.frame_panel, "Really, all of them?", "Icon creator", Vector3(slot9, -1, -1))
@@ -516,7 +516,7 @@ InventoryIconCreator.start_all_melee = function (self)
 
 	return 
 end
-InventoryIconCreator.start_one_melee = function (self)
+function InventoryIconCreator:start_one_melee()
 	local melee_id = self._ctrlrs.melee.melee_id.get_value(slot2)
 	slot5 = {
 		{
@@ -528,7 +528,7 @@ InventoryIconCreator.start_one_melee = function (self)
 
 	return 
 end
-InventoryIconCreator.preview_one_melee = function (self)
+function InventoryIconCreator:preview_one_melee()
 	local melee_id = self._ctrlrs.melee.melee_id.get_value(slot2)
 	slot5 = melee_id
 
@@ -536,7 +536,7 @@ InventoryIconCreator.preview_one_melee = function (self)
 
 	return 
 end
-InventoryIconCreator._get_all_melee = function (self)
+function InventoryIconCreator:_get_all_melee()
 	local t = {}
 	slot4 = tweak_data.blackmarket.melee_weapons
 
@@ -558,7 +558,7 @@ InventoryIconCreator._get_all_melee = function (self)
 
 	return t
 end
-InventoryIconCreator.start_all_throwable = function (self)
+function InventoryIconCreator:start_all_throwable()
 	slot7 = "YES_NO,ICON_QUESTION"
 	slot12 = 0
 	local confirm = EWS.message_box(slot2, EWS, Global.frame_panel, "Really, all of them?", "Icon creator", Vector3(slot9, -1, -1))
@@ -584,7 +584,7 @@ InventoryIconCreator.start_all_throwable = function (self)
 
 	return 
 end
-InventoryIconCreator.start_one_throwable = function (self)
+function InventoryIconCreator:start_one_throwable()
 	local throwable_id = self._ctrlrs.throwable.throwable_id.get_value(slot2)
 	slot5 = {
 		{
@@ -596,7 +596,7 @@ InventoryIconCreator.start_one_throwable = function (self)
 
 	return 
 end
-InventoryIconCreator.preview_one_throwable = function (self)
+function InventoryIconCreator:preview_one_throwable()
 	local throwable_id = self._ctrlrs.throwable.throwable_id.get_value(slot2)
 	slot5 = throwable_id
 
@@ -604,7 +604,7 @@ InventoryIconCreator.preview_one_throwable = function (self)
 
 	return 
 end
-InventoryIconCreator._get_all_throwable = function (self)
+function InventoryIconCreator:_get_all_throwable()
 	local t = {}
 	slot4 = tweak_data.projectiles
 
@@ -622,7 +622,7 @@ InventoryIconCreator._get_all_throwable = function (self)
 
 	return t
 end
-InventoryIconCreator._start_job = function (self)
+function InventoryIconCreator:_start_job()
 	self._has_job = true
 	local job = self._jobs[self._current_job]
 
@@ -650,7 +650,7 @@ InventoryIconCreator._start_job = function (self)
 
 	return 
 end
-InventoryIconCreator.check_next_job = function (self)
+function InventoryIconCreator:check_next_job()
 	if self._has_job then
 		return 
 	end
@@ -671,7 +671,7 @@ InventoryIconCreator.check_next_job = function (self)
 
 	return 
 end
-InventoryIconCreator._update = function (self)
+function InventoryIconCreator:_update()
 	if self._steps then
 		slot3 = self
 
@@ -684,7 +684,7 @@ InventoryIconCreator._update = function (self)
 
 	return 
 end
-InventoryIconCreator.start_create = function (self)
+function InventoryIconCreator:start_create()
 	self._old_data = {}
 	slot4 = managers.editor
 	self._old_data.camera_position = managers.editor.camera_position(slot3)
@@ -747,7 +747,7 @@ InventoryIconCreator.start_create = function (self)
 
 	return 
 end
-InventoryIconCreator.end_create = function (self)
+function InventoryIconCreator:end_create()
 	slot5 = self._old_data.camera_rotation
 
 	managers.editor.set_camera(slot2, managers.editor, self._old_data.camera_position)
@@ -787,7 +787,7 @@ InventoryIconCreator.end_create = function (self)
 
 	return 
 end
-InventoryIconCreator._create_backdrop = function (self)
+function InventoryIconCreator:_create_backdrop()
 	slot3 = self
 
 	self._destroy_backdrop(slot2)
@@ -798,7 +798,7 @@ InventoryIconCreator._create_backdrop = function (self)
 
 	return 
 end
-InventoryIconCreator._destroy_backdrop = function (self)
+function InventoryIconCreator:_destroy_backdrop()
 	slot3 = self._backdrop
 
 	if alive(slot2) then
@@ -811,7 +811,7 @@ InventoryIconCreator._destroy_backdrop = function (self)
 
 	return 
 end
-InventoryIconCreator._setup_camera = function (self)
+function InventoryIconCreator:_setup_camera()
 	local job_setting = nil
 
 	if self._jobs[1].factory_id then
@@ -856,7 +856,7 @@ InventoryIconCreator._setup_camera = function (self)
 
 	return 
 end
-InventoryIconCreator._next_step = function (self)
+function InventoryIconCreator:_next_step()
 	self._current_step = self._current_step + 1
 
 	if #self._steps < self._current_step then
@@ -869,7 +869,7 @@ InventoryIconCreator._next_step = function (self)
 
 	return 
 end
-InventoryIconCreator._take_screen_shot_1 = function (self)
+function InventoryIconCreator:_take_screen_shot_1()
 	local name = self._current_texture_name .. "_dif.tga"
 	local path = managers.database.root_path(slot3)
 	slot6 = path .. name
@@ -878,7 +878,7 @@ InventoryIconCreator._take_screen_shot_1 = function (self)
 
 	return 
 end
-InventoryIconCreator._pre_screen_shot_2 = function (self)
+function InventoryIconCreator:_pre_screen_shot_2()
 	slot4 = "empty"
 
 	managers.editor.on_post_processor_effect(slot2, managers.editor)
@@ -893,7 +893,7 @@ InventoryIconCreator._pre_screen_shot_2 = function (self)
 
 	return 
 end
-InventoryIconCreator._take_screen_shot_2 = function (self)
+function InventoryIconCreator:_take_screen_shot_2()
 	local name = self._current_texture_name .. "_dph.tga"
 	local path = managers.database.root_path(slot3)
 	slot6 = path .. name
@@ -902,7 +902,7 @@ InventoryIconCreator._take_screen_shot_2 = function (self)
 
 	return 
 end
-InventoryIconCreator.destroy_items = function (self)
+function InventoryIconCreator:destroy_items()
 	slot3 = self
 
 	self.destroy_weapon(slot2)
@@ -921,7 +921,7 @@ InventoryIconCreator.destroy_items = function (self)
 
 	return 
 end
-InventoryIconCreator.destroy_weapon = function (self)
+function InventoryIconCreator:destroy_weapon()
 	slot3 = self._weapon_unit
 
 	if not alive(slot2) then
@@ -936,7 +936,7 @@ InventoryIconCreator.destroy_weapon = function (self)
 
 	return 
 end
-InventoryIconCreator.destroy_mask = function (self)
+function InventoryIconCreator:destroy_mask()
 	slot3 = self._mask_unit
 
 	if not alive(slot2) then
@@ -951,7 +951,7 @@ InventoryIconCreator.destroy_mask = function (self)
 
 	return 
 end
-InventoryIconCreator.destroy_melee = function (self)
+function InventoryIconCreator:destroy_melee()
 	slot3 = self._melee_unit
 
 	if not alive(slot2) then
@@ -966,7 +966,7 @@ InventoryIconCreator.destroy_melee = function (self)
 
 	return 
 end
-InventoryIconCreator.destroy_throwable = function (self)
+function InventoryIconCreator:destroy_throwable()
 	slot3 = self._throwable_unit
 
 	if not alive(slot2) then
@@ -981,7 +981,7 @@ InventoryIconCreator.destroy_throwable = function (self)
 
 	return 
 end
-InventoryIconCreator.show_ews = function (self)
+function InventoryIconCreator:show_ews()
 	if not self._main_frame then
 		slot3 = self
 
@@ -990,7 +990,7 @@ InventoryIconCreator.show_ews = function (self)
 
 	return 
 end
-InventoryIconCreator.create_ews = function (self)
+function InventoryIconCreator:create_ews()
 	slot3 = self
 
 	self.close_ews(slot2)
@@ -1088,7 +1088,7 @@ InventoryIconCreator.create_ews = function (self)
 
 	return 
 end
-InventoryIconCreator._create_custom_job = function (self, panel, sizer)
+function InventoryIconCreator:_create_custom_job(panel, sizer)
 	self._custom_ctrlrs = {
 		resolution = {}
 	}
@@ -1156,7 +1156,7 @@ InventoryIconCreator._create_custom_job = function (self, panel, sizer)
 
 	return 
 end
-InventoryIconCreator._create_weapons_page = function (self, notebook)
+function InventoryIconCreator:_create_weapons_page(notebook)
 	slot7 = "TAB_TRAVERSAL"
 	local panel = EWS.Panel(slot3, EWS, notebook, "")
 	slot6 = "VERTICAL"
@@ -1252,7 +1252,7 @@ InventoryIconCreator._create_weapons_page = function (self, notebook)
 
 	return panel
 end
-InventoryIconCreator._add_weapon_mods = function (self, params)
+function InventoryIconCreator:_add_weapon_mods(params)
 	local panel = params.panel
 	local sizer = params.sizer
 	slot6 = self._weapon_mods_panel
@@ -1329,7 +1329,7 @@ InventoryIconCreator._add_weapon_mods = function (self, params)
 
 	return 
 end
-InventoryIconCreator._add_weapon_ctrlr = function (self, panel, sizer, name, options, value)
+function InventoryIconCreator:_add_weapon_ctrlr(panel, sizer, name, options, value)
 	local combobox_params = {
 		sizer_proportions = 1,
 		name_proportions = 1,
@@ -1371,7 +1371,7 @@ InventoryIconCreator._add_weapon_ctrlr = function (self, panel, sizer, name, opt
 
 	return ctrlr
 end
-InventoryIconCreator._update_weapon_combobox_text = function (self, param)
+function InventoryIconCreator:_update_weapon_combobox_text(param)
 	local name = param.name
 	slot5 = param.ctrlr
 	local value = param.ctrlr.get_value(slot4)
@@ -1402,14 +1402,14 @@ InventoryIconCreator._update_weapon_combobox_text = function (self, param)
 
 	return 
 end
-InventoryIconCreator._set_weapon_skin = function (self)
+function InventoryIconCreator:_set_weapon_skin()
 	local factory_id = self._ctrlrs.weapon.factory_id.get_value(slot2)
 	slot4 = self._ctrlrs.weapon.weapon_skin
 	local weapon_skin = self._ctrlrs.weapon.weapon_skin.get_value(self._ctrlrs.weapon.factory_id)
 
 	return 
 end
-InventoryIconCreator._update_weapon_skins = function (self)
+function InventoryIconCreator:_update_weapon_skins()
 	local weapon_skin = self._ctrlrs.weapon.weapon_skin
 	slot4 = weapon_skin
 
@@ -1429,7 +1429,7 @@ InventoryIconCreator._update_weapon_skins = function (self)
 
 	return 
 end
-InventoryIconCreator._create_masks_page = function (self, notebook)
+function InventoryIconCreator:_create_masks_page(notebook)
 	slot7 = "TAB_TRAVERSAL"
 	local panel = EWS.Panel(slot3, EWS, notebook, "")
 	slot6 = "VERTICAL"
@@ -1544,7 +1544,7 @@ InventoryIconCreator._create_masks_page = function (self, notebook)
 
 	return panel
 end
-InventoryIconCreator._add_mask_ctrlr = function (self, panel, sizer, name, options, value)
+function InventoryIconCreator:_add_mask_ctrlr(panel, sizer, name, options, value)
 	local combobox_params = {
 		sizer_proportions = 1,
 		name_proportions = 1,
@@ -1586,7 +1586,7 @@ InventoryIconCreator._add_mask_ctrlr = function (self, panel, sizer, name, optio
 
 	return ctrlr
 end
-InventoryIconCreator._update_mask_combobox_text = function (self, params)
+function InventoryIconCreator:_update_mask_combobox_text(params)
 	local name = params.name
 	slot5 = params.ctrlr
 	local value = params.ctrlr.get_value(slot4)
@@ -1619,7 +1619,7 @@ InventoryIconCreator._update_mask_combobox_text = function (self, params)
 
 	return 
 end
-InventoryIconCreator._create_melee_page = function (self, notebook)
+function InventoryIconCreator:_create_melee_page(notebook)
 	slot7 = "TAB_TRAVERSAL"
 	local panel = EWS.Panel(slot3, EWS, notebook, "")
 	slot6 = "VERTICAL"
@@ -1678,7 +1678,7 @@ InventoryIconCreator._create_melee_page = function (self, notebook)
 
 	return panel
 end
-InventoryIconCreator._add_melee_ctrlr = function (self, panel, sizer, name, options, value)
+function InventoryIconCreator:_add_melee_ctrlr(panel, sizer, name, options, value)
 	local combobox_params = {
 		sizer_proportions = 1,
 		name_proportions = 1,
@@ -1720,7 +1720,7 @@ InventoryIconCreator._add_melee_ctrlr = function (self, panel, sizer, name, opti
 
 	return ctrlr
 end
-InventoryIconCreator._update_melee_combobox_text = function (self, params)
+function InventoryIconCreator:_update_melee_combobox_text(params)
 	local name = params.name
 	slot5 = params.ctrlr
 	local value = params.ctrlr.get_value(slot4)
@@ -1744,7 +1744,7 @@ InventoryIconCreator._update_melee_combobox_text = function (self, params)
 
 	return 
 end
-InventoryIconCreator._create_throwable_page = function (self, notebook)
+function InventoryIconCreator:_create_throwable_page(notebook)
 	slot7 = "TAB_TRAVERSAL"
 	local panel = EWS.Panel(slot3, EWS, notebook, "")
 	slot6 = "VERTICAL"
@@ -1803,7 +1803,7 @@ InventoryIconCreator._create_throwable_page = function (self, notebook)
 
 	return panel
 end
-InventoryIconCreator._add_throwable_ctrlr = function (self, panel, sizer, name, options, value)
+function InventoryIconCreator:_add_throwable_ctrlr(panel, sizer, name, options, value)
 	local combobox_params = {
 		sizer_proportions = 1,
 		name_proportions = 1,
@@ -1845,7 +1845,7 @@ InventoryIconCreator._add_throwable_ctrlr = function (self, panel, sizer, name, 
 
 	return ctrlr
 end
-InventoryIconCreator._update_throwable_combobox_text = function (self, params)
+function InventoryIconCreator:_update_throwable_combobox_text(params)
 	local name = params.name
 	slot5 = params.ctrlr
 	local value = params.ctrlr.get_value(slot4)
@@ -1873,7 +1873,7 @@ InventoryIconCreator._update_throwable_combobox_text = function (self, params)
 
 	return 
 end
-InventoryIconCreator.close_ews = function (self)
+function InventoryIconCreator:close_ews()
 	slot3 = self._weapon_mods_panel
 
 	if alive(slot2) then

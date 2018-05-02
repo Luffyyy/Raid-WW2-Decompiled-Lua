@@ -8,7 +8,7 @@ if not CoreEWSTreeCtrlTreeNode then
 end
 
 CoreEWSTreeCtrlTreeNode = slot0
-CoreEWSTreeCtrlTreeNode.init = function (self, ews_tree_ctrl, item_id, checkbox_style)
+function CoreEWSTreeCtrlTreeNode:init(ews_tree_ctrl, item_id, checkbox_style)
 	self._checkbox_style = checkbox_style
 	slot7 = "nil argument supplied as ews_tree_ctrl"
 	self._tree_ctrl = assert(slot5, ews_tree_ctrl)
@@ -20,10 +20,10 @@ CoreEWSTreeCtrlTreeNode.init = function (self, ews_tree_ctrl, item_id, checkbox_
 
 	return 
 end
-CoreEWSTreeCtrlTreeNode.id = function (self)
+function CoreEWSTreeCtrlTreeNode:id()
 	return self._item_id
 end
-CoreEWSTreeCtrlTreeNode.expand = function (self, recurse)
+function CoreEWSTreeCtrlTreeNode:expand(recurse)
 	slot5 = self._item_id
 
 	self._tree_ctrl.expand(slot3, self._tree_ctrl)
@@ -40,7 +40,7 @@ CoreEWSTreeCtrlTreeNode.expand = function (self, recurse)
 
 	return 
 end
-CoreEWSTreeCtrlTreeNode.collapse = function (self, recurse)
+function CoreEWSTreeCtrlTreeNode:collapse(recurse)
 	slot5 = self._item_id
 
 	self._tree_ctrl.collapse(slot3, self._tree_ctrl)
@@ -57,7 +57,7 @@ CoreEWSTreeCtrlTreeNode.collapse = function (self, recurse)
 
 	return 
 end
-CoreEWSTreeCtrlTreeNode.set_selected = function (self, state)
+function CoreEWSTreeCtrlTreeNode:set_selected(state)
 	if state == nil then
 		state = true
 	end
@@ -68,7 +68,7 @@ CoreEWSTreeCtrlTreeNode.set_selected = function (self, state)
 
 	return 
 end
-CoreEWSTreeCtrlTreeNode.state = function (self, state)
+function CoreEWSTreeCtrlTreeNode:state(state)
 	if self._checkbox_style then
 		slot6 = "NORMAL"
 
@@ -79,7 +79,7 @@ CoreEWSTreeCtrlTreeNode.state = function (self, state)
 
 	return 
 end
-CoreEWSTreeCtrlTreeNode.set_state = function (self, state)
+function CoreEWSTreeCtrlTreeNode:set_state(state)
 	if self._checkbox_style then
 		slot5 = state
 
@@ -88,39 +88,39 @@ CoreEWSTreeCtrlTreeNode.set_state = function (self, state)
 
 	return 
 end
-CoreEWSTreeCtrlTreeNode.checkbox_style = function (self)
+function CoreEWSTreeCtrlTreeNode:checkbox_style()
 	return self._checkbox_style
 end
-CoreEWSTreeCtrlTreeNode.set_checkbox_style = function (self, style)
+function CoreEWSTreeCtrlTreeNode:set_checkbox_style(style)
 	self._checkbox_style = style
 
 	return 
 end
-CoreEWSTreeCtrlTreeNode.set_image = function (self, image, item_state)
+function CoreEWSTreeCtrlTreeNode:set_image(image, item_state)
 	slot8 = item_state or "NORMAL"
 
 	self._tree_ctrl.set_item_image(slot4, self._tree_ctrl, self._item_id, image)
 
 	return 
 end
-CoreEWSTreeCtrlTreeNode.get_image = function (self, item_state)
+function CoreEWSTreeCtrlTreeNode:get_image(item_state)
 	slot6 = item_state or "NORMAL"
 
 	return self._tree_ctrl.get_item_image(slot3, self._tree_ctrl, self._item_id)
 end
-CoreEWSTreeCtrlTreeNode._change_state = function (self, state)
+function CoreEWSTreeCtrlTreeNode:_change_state(state)
 	slot7 = "NORMAL"
 
 	self._tree_ctrl.set_item_image(slot3, self._tree_ctrl, self._item_id, state)
 
 	return 
 end
-CoreEWSTreeCtrlTreeNode.text = function (self)
+function CoreEWSTreeCtrlTreeNode:text()
 	slot4 = self._item_id
 
 	return self._tree_ctrl.get_item_text(slot2, self._tree_ctrl)
 end
-CoreEWSTreeCtrlTreeNode.parent = function (self)
+function CoreEWSTreeCtrlTreeNode:parent()
 	slot4 = self._item_id
 	local parent_id = self._tree_ctrl.get_parent(slot2, self._tree_ctrl)
 
@@ -136,7 +136,7 @@ CoreEWSTreeCtrlTreeNode.parent = function (self)
 
 	return 
 end
-CoreEWSTreeCtrlTreeNode.children = function (self)
+function CoreEWSTreeCtrlTreeNode:children()
 	slot6 = self._item_id
 
 	function slot4(child_id)
@@ -147,20 +147,20 @@ CoreEWSTreeCtrlTreeNode.children = function (self)
 
 	return table.collect(slot2, self._tree_ctrl.get_children(slot4, self._tree_ctrl))
 end
-CoreEWSTreeCtrlTreeNode.append = function (self, text)
+function CoreEWSTreeCtrlTreeNode:append(text)
 	slot10 = text
 	slot7 = self._checkbox_style
 
 	return CoreEWSTreeCtrlTreeNode.new(slot3, CoreEWSTreeCtrlTreeNode, self._tree_ctrl, self._tree_ctrl.append(slot7, self._tree_ctrl, self._item_id))
 end
-CoreEWSTreeCtrlTreeNode.remove = function (self)
+function CoreEWSTreeCtrlTreeNode:remove()
 	slot4 = self._item_id
 
 	self._tree_ctrl.remove(slot2, self._tree_ctrl)
 
 	return 
 end
-CoreEWSTreeCtrlTreeNode.has_children = function (self)
+function CoreEWSTreeCtrlTreeNode:has_children()
 	slot6 = self._item_id
 
 	return 0 < table.getn(self._tree_ctrl.get_children(slot4, self._tree_ctrl))

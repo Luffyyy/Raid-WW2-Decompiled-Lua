@@ -4,26 +4,26 @@ core.module(slot1, core)
 
 Done = Done or class()
 Done.DONE = 1
-Done.done = function (self)
+function Done:done()
 	slot4 = Done.DONE
 
 	self._set_response(slot2, self)
 
 	return 
 end
-Done._is_response_value = function (self, value)
+function Done:_is_response_value(value)
 	slot5 = "You can not check a destroyed response object!"
 
 	assert(slot3, not self._is_destroyed)
 
 	return self._response == value
 end
-Done.is_done = function (self)
+function Done:is_done()
 	slot4 = Done.DONE
 
 	return self._is_response_value(slot2, self)
 end
-Done._set_response = function (self, value)
+function Done:_set_response(value)
 	slot5 = "You can not respond to a destroyed response object!"
 
 	assert(slot3, not self._is_destroyed)
@@ -36,7 +36,7 @@ Done._set_response = function (self, value)
 
 	return 
 end
-Done.destroy = function (self)
+function Done:destroy()
 	self._is_destroyed = true
 
 	return 
@@ -49,14 +49,14 @@ end
 
 DoneOrFinished = slot0
 DoneOrFinished.FINISHED = 2
-DoneOrFinished.finished = function (self)
+function DoneOrFinished:finished()
 	slot4 = DoneOrFinished.FINISHED
 
 	self._set_response(slot2, self)
 
 	return 
 end
-DoneOrFinished.is_finished = function (self)
+function DoneOrFinished:is_finished()
 	slot4 = DoneOrFinished.FINISHED
 
 	return self._is_response_value(slot2, self)

@@ -28,13 +28,13 @@ CoreGuiCutsceneKey.control_for_action = CoreCutsceneKeyBase.standard_combo_box_c
 CoreGuiCutsceneKey.control_for_name = CoreCutsceneKeyBase.standard_combo_box_control
 slot5 = CoreGuiCutsceneKey.VALID_ACTIONS
 CoreGuiCutsceneKey.refresh_control_for_action = CoreCutsceneKeyBase.standard_combo_box_control_refresh(CoreGuiCutsceneKey, CoreCutsceneKeyBase, "action")
-CoreGuiCutsceneKey.__tostring = function (self)
+function CoreGuiCutsceneKey:__tostring()
 	slot5 = self
 	slot5 = self
 
 	return string.capitalize(self.action(slot4)) .. " gui \"" .. self.name(slot4) .. "\"."
 end
-CoreGuiCutsceneKey.prime = function (self, player)
+function CoreGuiCutsceneKey:prime(player)
 	slot4 = self
 
 	if self.action(slot3) == "show" then
@@ -51,7 +51,7 @@ CoreGuiCutsceneKey.prime = function (self, player)
 
 	return 
 end
-CoreGuiCutsceneKey.unload = function (self, player)
+function CoreGuiCutsceneKey:unload(player)
 	if player then
 		slot6 = true
 
@@ -60,7 +60,7 @@ CoreGuiCutsceneKey.unload = function (self, player)
 
 	return 
 end
-CoreGuiCutsceneKey.play = function (self, player, undo, fast_forward)
+function CoreGuiCutsceneKey:play(player, undo, fast_forward)
 	if undo then
 		slot7 = {
 			name = self.name(slot9)
@@ -76,12 +76,12 @@ CoreGuiCutsceneKey.play = function (self, player, undo, fast_forward)
 
 	return 
 end
-CoreGuiCutsceneKey.inverse_action = function (self)
+function CoreGuiCutsceneKey:inverse_action()
 	slot3 = self
 
 	return (self.action(slot2) == "show" and "hide") or "show"
 end
-CoreGuiCutsceneKey._perform_action = function (self, action, player)
+function CoreGuiCutsceneKey:_perform_action(action, player)
 	slot8 = self
 	slot7 = action == "show"
 
@@ -89,17 +89,17 @@ CoreGuiCutsceneKey._perform_action = function (self, action, player)
 
 	return 
 end
-CoreGuiCutsceneKey.is_valid_action = function (self, action)
+function CoreGuiCutsceneKey:is_valid_action(action)
 	slot5 = action
 
 	return table.contains(slot3, self.VALID_ACTIONS)
 end
-CoreGuiCutsceneKey.is_valid_name = function (self, name)
+function CoreGuiCutsceneKey:is_valid_name(name)
 	slot6 = name
 
 	return DB.has(slot3, DB, "gui")
 end
-CoreGuiCutsceneKey.refresh_control_for_name = function (self, control)
+function CoreGuiCutsceneKey:refresh_control_for_name(control)
 	slot4 = control
 
 	control.freeze(slot3)

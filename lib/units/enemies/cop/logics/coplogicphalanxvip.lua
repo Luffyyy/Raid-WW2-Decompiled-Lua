@@ -33,7 +33,7 @@ CopLogicPhalanxVip.allowed_transitional_actions = {
 		"crouch"
 	}
 }
-CopLogicPhalanxVip.enter = function (data, new_logic_name, enter_params)
+function CopLogicPhalanxVip.enter(data, new_logic_name, enter_params)
 	print(slot4)
 
 	local my_data = {
@@ -138,7 +138,7 @@ CopLogicPhalanxVip.enter = function (data, new_logic_name, enter_params)
 
 	return 
 end
-CopLogicPhalanxVip.exit = function (data, new_logic_name, enter_params)
+function CopLogicPhalanxVip.exit(data, new_logic_name, enter_params)
 	slot7 = enter_params
 
 	CopLogicBase.exit(slot4, data, new_logic_name)
@@ -173,7 +173,7 @@ CopLogicPhalanxVip.exit = function (data, new_logic_name, enter_params)
 
 	return 
 end
-CopLogicPhalanxVip.queued_update = function (data)
+function CopLogicPhalanxVip.queued_update(data)
 	local my_data = data.internal_data
 	slot4 = data
 	local delay = data.logic._upd_enemy_detection(slot3)
@@ -234,7 +234,7 @@ CopLogicPhalanxVip.queued_update = function (data)
 
 	return 
 end
-CopLogicPhalanxVip.damage_clbk = function (data, damage_info)
+function CopLogicPhalanxVip.damage_clbk(data, damage_info)
 	slot5 = damage_info
 
 	CopLogicBase.damage_clbk(slot3, data)
@@ -245,9 +245,9 @@ CopLogicPhalanxVip.damage_clbk = function (data, damage_info)
 
 	return 
 end
-CopLogicPhalanxVip.chk_should_turn = function (data, my_data)
+function CopLogicPhalanxVip.chk_should_turn(data, my_data)
 end
-CopLogicPhalanxVip.register_in_group_ai = function (unit)
+function CopLogicPhalanxVip.register_in_group_ai(unit)
 	slot3 = managers.groupai
 	slot4 = unit
 
@@ -255,7 +255,7 @@ CopLogicPhalanxVip.register_in_group_ai = function (unit)
 
 	return 
 end
-CopLogicPhalanxVip._chk_should_breakup = function (data)
+function CopLogicPhalanxVip._chk_should_breakup(data)
 
 	-- Decompilation error in this vicinity:
 	local flee_health_ratio = tweak_data.group_ai.phalanx.vip.health_ratio_flee
@@ -269,7 +269,7 @@ CopLogicPhalanxVip._chk_should_breakup = function (data)
 
 	return 
 end
-CopLogicPhalanxVip.breakup = function (remote_call)
+function CopLogicPhalanxVip.breakup(remote_call)
 	slot3 = "CopLogicPhalanxVip.breakup"
 
 	print(slot2)
@@ -340,7 +340,7 @@ CopLogicPhalanxVip.breakup = function (remote_call)
 
 	return 
 end
-CopLogicPhalanxVip._upd_enemy_detection = function (data)
+function CopLogicPhalanxVip._upd_enemy_detection(data)
 	slot3 = managers.groupai
 	slot4 = data.unit
 
@@ -366,7 +366,7 @@ CopLogicPhalanxVip._upd_enemy_detection = function (data)
 
 	return delay
 end
-CopLogicPhalanxVip.on_action_completed = function (data, action)
+function CopLogicPhalanxVip.on_action_completed(data, action)
 	slot4 = action
 	local action_type = action.type(slot3)
 
@@ -394,15 +394,15 @@ CopLogicPhalanxVip.on_action_completed = function (data, action)
 
 	return 
 end
-CopLogicPhalanxVip.is_available_for_assignment = function (data, objective)
+function CopLogicPhalanxVip.is_available_for_assignment(data, objective)
 	return false
 end
-CopLogicPhalanxVip.calc_initial_phalanx_pos = function (own_pos, objective)
+function CopLogicPhalanxVip.calc_initial_phalanx_pos(own_pos, objective)
 	slot4 = managers.groupai
 
 	return managers.groupai.state(slot3)._phalanx_center_pos
 end
-CopLogicPhalanxVip.on_criminal_neutralized = function (data, criminal_key)
+function CopLogicPhalanxVip.on_criminal_neutralized(data, criminal_key)
 	local my_data = data.internal_data
 
 	if my_data.last_violent_attention and my_data.last_violent_attention.u_key == criminal_key then

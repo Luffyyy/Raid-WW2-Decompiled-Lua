@@ -4,7 +4,7 @@ if not RaidGUIControlLabel then
 end
 
 RaidGUIControlLabel = slot0
-RaidGUIControlLabel.init = function (self, parent, params)
+function RaidGUIControlLabel:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlLabel.super.init(slot4, self, parent)
@@ -62,7 +62,7 @@ RaidGUIControlLabel.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlLabel.is_alive = function (self)
+function RaidGUIControlLabel:is_alive()
 	if self._object then
 		slot3 = self._object
 		slot1 = alive(slot2)
@@ -70,110 +70,110 @@ RaidGUIControlLabel.is_alive = function (self)
 
 	return slot1
 end
-RaidGUIControlLabel.set_text = function (self, text)
+function RaidGUIControlLabel:set_text(text)
 	slot5 = text
 
 	self._object.set_text(slot3, self._object)
 
 	return 
 end
-RaidGUIControlLabel.text = function (self)
+function RaidGUIControlLabel:text()
 	slot3 = self._object
 
 	return self._object.text(slot2)
 end
-RaidGUIControlLabel.set_align = function (self, align)
+function RaidGUIControlLabel:set_align(align)
 	slot5 = align
 
 	self._object.set_align(slot3, self._object)
 
 	return 
 end
-RaidGUIControlLabel.color = function (self)
+function RaidGUIControlLabel:color()
 	slot3 = self._object
 
 	self._object.color(slot2)
 
 	return 
 end
-RaidGUIControlLabel.set_color = function (self, color)
+function RaidGUIControlLabel:set_color(color)
 	slot5 = color
 
 	self._object.set_color(slot3, self._object)
 
 	return 
 end
-RaidGUIControlLabel.set_alpha = function (self, alpha)
+function RaidGUIControlLabel:set_alpha(alpha)
 	slot5 = alpha
 
 	self._object.set_alpha(slot3, self._object)
 
 	return 
 end
-RaidGUIControlLabel.set_font = function (self, font)
+function RaidGUIControlLabel:set_font(font)
 	slot5 = font
 
 	self._object.set_font(slot3, self._object)
 
 	return 
 end
-RaidGUIControlLabel.set_font_size = function (self, size)
+function RaidGUIControlLabel:set_font_size(size)
 	slot5 = size
 
 	self._object.set_font_size(slot3, self._object)
 
 	return 
 end
-RaidGUIControlLabel.highlight_on = function (self)
+function RaidGUIControlLabel:highlight_on()
 	return 
 end
-RaidGUIControlLabel.highlight_off = function (self)
+function RaidGUIControlLabel:highlight_off()
 	return 
 end
-RaidGUIControlLabel.center_x = function (self, coord)
+function RaidGUIControlLabel:center_x(coord)
 	slot5 = coord
 
 	return self._object.center_x(slot3, self._object)
 end
-RaidGUIControlLabel.center_y = function (self, coord)
+function RaidGUIControlLabel:center_y(coord)
 	slot5 = coord
 
 	return self._object.center_y(slot3, self._object)
 end
-RaidGUIControlLabel.set_center_x = function (self, coord)
+function RaidGUIControlLabel:set_center_x(coord)
 	slot5 = coord
 
 	self._object.set_center_x(slot3, self._object)
 
 	return 
 end
-RaidGUIControlLabel.set_center_y = function (self, coord)
+function RaidGUIControlLabel:set_center_y(coord)
 	slot5 = coord
 
 	self._object.set_center_y(slot3, self._object)
 
 	return 
 end
-RaidGUIControlLabel.text_rect = function (self)
+function RaidGUIControlLabel:text_rect()
 	slot3 = self._object
 
 	return self._object.text_rect(slot2)
 end
-RaidGUIControlLabel.set_width = function (self, width)
+function RaidGUIControlLabel:set_width(width)
 	slot5 = width
 
 	self._object.set_width(slot3, self._object)
 
 	return 
 end
-RaidGUIControlLabel.set_height = function (self, height)
+function RaidGUIControlLabel:set_height(height)
 	slot5 = height
 
 	self._object.set_height(slot3, self._object)
 
 	return 
 end
-RaidGUIControlLabel.mouse_released = function (self, o, button, x, y)
+function RaidGUIControlLabel:mouse_released(o, button, x, y)
 	return false
 end
 

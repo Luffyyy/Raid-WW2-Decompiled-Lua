@@ -9,7 +9,7 @@ RaidGUIControlScrollGrid.DEFAULT_ITEM_PADDING = 16
 RaidGUIControlScrollGrid.PAGING_PANEL_HEIGHT = 25
 RaidGUIControlScrollGrid.PAGING_STEPPER_WIDTH = 100
 RaidGUIControlScrollGrid.SCROLL_STEP = 30
-RaidGUIControlScrollGrid.init = function (self, parent, params)
+function RaidGUIControlScrollGrid:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlScrollGrid.super.init(slot4, self, parent)
@@ -77,7 +77,7 @@ RaidGUIControlScrollGrid.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlScrollGrid._create_scroll_marker = function (self)
+function RaidGUIControlScrollGrid:_create_scroll_marker()
 	slot4 = {
 		w = 8,
 		y = 0,
@@ -99,7 +99,7 @@ RaidGUIControlScrollGrid._create_scroll_marker = function (self)
 
 	return 
 end
-RaidGUIControlScrollGrid._check_visibility_scroll_marker = function (self)
+function RaidGUIControlScrollGrid:_check_visibility_scroll_marker()
 	slot4 = self._grid_panel
 
 	if self._wrapper_panel.h(slot2) < self._grid_panel.h(self._wrapper_panel) then
@@ -114,7 +114,7 @@ RaidGUIControlScrollGrid._check_visibility_scroll_marker = function (self)
 
 	return 
 end
-RaidGUIControlScrollGrid._move_scroll_marker_location = function (self)
+function RaidGUIControlScrollGrid:_move_scroll_marker_location()
 	slot4 = self._wrapper_panel
 	local height_difference = self._grid_panel.h(slot2) - self._wrapper_panel.h(self._grid_panel)
 
@@ -141,10 +141,10 @@ RaidGUIControlScrollGrid._move_scroll_marker_location = function (self)
 
 	return 
 end
-RaidGUIControlScrollGrid.close = function (self)
+function RaidGUIControlScrollGrid:close()
 	return 
 end
-RaidGUIControlScrollGrid._get_data = function (self)
+function RaidGUIControlScrollGrid:_get_data()
 	slot4 = 0
 
 	self._grid_panel.set_y(slot2, self._grid_panel)
@@ -173,7 +173,7 @@ RaidGUIControlScrollGrid._get_data = function (self)
 
 	return 
 end
-RaidGUIControlScrollGrid._create_items = function (self)
+function RaidGUIControlScrollGrid:_create_items()
 	slot3 = self
 
 	self._check_visibility_scroll_marker(slot2)
@@ -220,7 +220,7 @@ RaidGUIControlScrollGrid._create_items = function (self)
 
 	return 
 end
-RaidGUIControlScrollGrid._create_item = function (self, item_params, item_data, grid_params)
+function RaidGUIControlScrollGrid:_create_item(item_params, item_data, grid_params)
 	slot10 = grid_params
 	local item = self._grid_panel.create_custom_control(slot5, self._grid_panel, item_params.row_class or RaidGUIControlCardBase, item_params, item_data)
 
@@ -232,7 +232,7 @@ RaidGUIControlScrollGrid._create_item = function (self, item_params, item_data, 
 
 	return item
 end
-RaidGUIControlScrollGrid._delete_items = function (self)
+function RaidGUIControlScrollGrid:_delete_items()
 	self._grid_items = {}
 	self._selected_item = nil
 	slot3 = self._grid_panel
@@ -241,7 +241,7 @@ RaidGUIControlScrollGrid._delete_items = function (self)
 
 	return 
 end
-RaidGUIControlScrollGrid._item_selected_callback = function (self, item_idx)
+function RaidGUIControlScrollGrid:_item_selected_callback(item_idx)
 	for i_item_data = 1, #self._grid_items, 1 do
 		if i_item_data == item_idx then
 			slot8 = self._grid_items[i_item_data]
@@ -256,15 +256,15 @@ RaidGUIControlScrollGrid._item_selected_callback = function (self, item_idx)
 
 	return 
 end
-RaidGUIControlScrollGrid.mouse_moved = function (self, o, x, y)
+function RaidGUIControlScrollGrid:mouse_moved(o, x, y)
 	slot9 = y
 
 	return self._grid_panel.mouse_moved(slot5, self._grid_panel, o, x)
 end
-RaidGUIControlScrollGrid.mouse_released = function (self, o, button, x, y)
+function RaidGUIControlScrollGrid:mouse_released(o, button, x, y)
 	return false
 end
-RaidGUIControlScrollGrid.on_mouse_scroll_up = function (self)
+function RaidGUIControlScrollGrid:on_mouse_scroll_up()
 	slot3 = self._grid_panel
 
 	if self._grid_panel.top(slot2) < 0 then
@@ -286,7 +286,7 @@ RaidGUIControlScrollGrid.on_mouse_scroll_up = function (self)
 
 	return 
 end
-RaidGUIControlScrollGrid.on_mouse_scroll_down = function (self)
+function RaidGUIControlScrollGrid:on_mouse_scroll_down()
 	slot4 = self._wrapper_panel
 
 	if self._grid_panel.h(slot2) < self._wrapper_panel.h(self._grid_panel) then
@@ -313,13 +313,13 @@ RaidGUIControlScrollGrid.on_mouse_scroll_down = function (self)
 
 	return 
 end
-RaidGUIControlScrollGrid.highlight_on = function (self)
+function RaidGUIControlScrollGrid:highlight_on()
 	return 
 end
-RaidGUIControlScrollGrid.highlight_off = function (self)
+function RaidGUIControlScrollGrid:highlight_off()
 	return 
 end
-RaidGUIControlScrollGrid.refresh_data = function (self)
+function RaidGUIControlScrollGrid:refresh_data()
 	slot3 = self
 
 	self._delete_items(slot2)
@@ -334,7 +334,7 @@ RaidGUIControlScrollGrid.refresh_data = function (self)
 
 	return 
 end
-RaidGUIControlScrollGrid.select_grid_item_by_item = function (self, grid_item)
+function RaidGUIControlScrollGrid:select_grid_item_by_item(grid_item)
 	if self._selected_item then
 		slot4 = self._selected_item
 
@@ -351,7 +351,7 @@ RaidGUIControlScrollGrid.select_grid_item_by_item = function (self, grid_item)
 
 	return 
 end
-RaidGUIControlScrollGrid.select_grid_item_by_key_value = function (self, params)
+function RaidGUIControlScrollGrid:select_grid_item_by_key_value(params)
 	slot4 = self._grid_items
 
 	for _, grid_item in ipairs(slot3) do
@@ -372,10 +372,10 @@ RaidGUIControlScrollGrid.select_grid_item_by_key_value = function (self, params)
 
 	return self._selected_item
 end
-RaidGUIControlScrollGrid.selected_grid_item = function (self)
+function RaidGUIControlScrollGrid:selected_grid_item()
 	return self._selected_item
 end
-RaidGUIControlScrollGrid.on_mouse_pressed = function (self, button, x, y)
+function RaidGUIControlScrollGrid:on_mouse_pressed(button, x, y)
 	slot8 = y
 
 	if self._scroll_marker.inside(slot5, self._scroll_marker, x) then
@@ -390,7 +390,7 @@ RaidGUIControlScrollGrid.on_mouse_pressed = function (self, button, x, y)
 
 	return 
 end
-RaidGUIControlScrollGrid.on_mouse_released = function (self)
+function RaidGUIControlScrollGrid:on_mouse_released()
 	if self._active then
 		slot4 = self._old_active_control
 
@@ -404,7 +404,7 @@ RaidGUIControlScrollGrid.on_mouse_released = function (self)
 
 	return 
 end
-RaidGUIControlScrollGrid.on_mouse_moved = function (self, o, x, y)
+function RaidGUIControlScrollGrid:on_mouse_moved(o, x, y)
 	if self._active then
 		slot6 = self._panel_scroll_marker
 		local coord_y_from_panel_top = y - self._panel_scroll_marker.world_y(slot5)
@@ -422,14 +422,14 @@ RaidGUIControlScrollGrid.on_mouse_moved = function (self, o, x, y)
 
 	return 
 end
-RaidGUIControlScrollGrid.on_mouse_out = function (self, x, y)
+function RaidGUIControlScrollGrid:on_mouse_out(x, y)
 	slot7 = y
 
 	RaidGUIControlScrollGrid.super.on_mouse_out(slot4, self, x)
 
 	return 
 end
-RaidGUIControlScrollGrid.set_value_by_y_coord = function (self, selected_coord_y)
+function RaidGUIControlScrollGrid:set_value_by_y_coord(selected_coord_y)
 	if selected_coord_y < 0 then
 		selected_coord_y = 0
 	end

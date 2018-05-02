@@ -10,7 +10,7 @@ GlobalStateTriggerElement.ACTIONS = {
 	"on_event",
 	"on_value"
 }
-function GlobalStateTriggerElement:init(unit)
+GlobalStateTriggerElement.init = function (self, unit)
 	slot5 = unit
 
 	GlobalStateTriggerElement.super.init(slot3, self)
@@ -54,7 +54,7 @@ function GlobalStateTriggerElement:init(unit)
 
 	return 
 end
-function GlobalStateTriggerElement:_build_panel(panel, panel_sizer)
+GlobalStateTriggerElement._build_panel = function (self, panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

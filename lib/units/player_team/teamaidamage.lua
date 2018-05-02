@@ -34,7 +34,7 @@ TeamAIDamage._HEALTH_GRANULARITY = CopDamage._HEALTH_GRANULARITY
 TeamAIDamage.set_invulnerable = CopDamage.set_invulnerable
 TeamAIDamage._hurt_severities = CopDamage._hurt_severities
 TeamAIDamage.get_damage_type = CopDamage.get_damage_type
-TeamAIDamage.init = function (self, unit)
+function TeamAIDamage:init(unit)
 	self._unit = unit
 	slot5 = unit
 	self._char_tweak = tweak_data.character[unit.base(slot4)._tweak_table]
@@ -65,7 +65,7 @@ TeamAIDamage.init = function (self, unit)
 
 	return 
 end
-TeamAIDamage.update = function (self, unit, t, dt)
+function TeamAIDamage:update(unit, t, dt)
 	if self._regenerate_t then
 		if self._regenerate_t < t then
 			slot6 = self
@@ -120,7 +120,7 @@ TeamAIDamage.update = function (self, unit, t, dt)
 
 	return 
 end
-TeamAIDamage.damage_melee = function (self, attack_data)
+function TeamAIDamage:damage_melee(attack_data)
 	if self._invulnerable or self._dead or self._fatal or self._arrested_timer then
 		return 
 	end
@@ -164,7 +164,7 @@ TeamAIDamage.damage_melee = function (self, attack_data)
 
 	return result
 end
-TeamAIDamage.force_bleedout = function (self)
+function TeamAIDamage:force_bleedout()
 	local attack_data = {
 		damage = 100000,
 		pos = Vector3(),
@@ -206,7 +206,7 @@ TeamAIDamage.force_bleedout = function (self)
 
 	return 
 end
-TeamAIDamage.damage_bullet = function (self, attack_data)
+function TeamAIDamage:damage_bullet(attack_data)
 	local result = {
 		type = "none",
 		variant = "bullet"
@@ -273,7 +273,7 @@ TeamAIDamage.damage_bullet = function (self, attack_data)
 
 	return result
 end
-TeamAIDamage.damage_explosion = function (self, attack_data)
+function TeamAIDamage:damage_explosion(attack_data)
 	slot4 = self
 
 	if self._cannot_take_damage(slot3) then
@@ -334,7 +334,7 @@ TeamAIDamage.damage_explosion = function (self, attack_data)
 
 	return result
 end
-TeamAIDamage.damage_fire = function (self, attack_data)
+function TeamAIDamage:damage_fire(attack_data)
 	slot4 = self
 
 	if self._cannot_take_damage(slot3) then
@@ -407,7 +407,7 @@ TeamAIDamage.damage_fire = function (self, attack_data)
 
 	return result
 end
-TeamAIDamage.damage_mission = function (self, attack_data)
+function TeamAIDamage:damage_mission(attack_data)
 	if self._dead or (self._invulnerable and not attack_data.forced) then
 		return 
 	end
@@ -444,7 +444,7 @@ TeamAIDamage.damage_mission = function (self, attack_data)
 
 	return result
 end
-TeamAIDamage.damage_tase = function (self, attack_data)
+function TeamAIDamage:damage_tase(attack_data)
 	if attack_data ~= nil then
 		slot5 = attack_data.attacker_unit
 
@@ -516,7 +516,7 @@ TeamAIDamage.damage_tase = function (self, attack_data)
 
 	return damage_info
 end
-TeamAIDamage._apply_damage = function (self, attack_data, result, force)
+function TeamAIDamage:_apply_damage(attack_data, result, force)
 	local damage = attack_data.damage * 0.8
 	slot9 = self._HEALTH_TOTAL
 	damage = math.clamp(slot6, damage, self._HEALTH_TOTAL_PERCENT)
@@ -578,14 +578,14 @@ TeamAIDamage._apply_damage = function (self, attack_data, result, force)
 
 	return damage_percent, health_subtracted
 end
-TeamAIDamage.friendly_fire_hit = function (self)
+function TeamAIDamage:friendly_fire_hit()
 	slot4 = 2
 
 	self.inc_dodge_count(slot2, self)
 
 	return 
 end
-TeamAIDamage.inc_dodge_count = function (self, n)
+function TeamAIDamage:inc_dodge_count(n)
 	slot4 = Application
 	local t = Application.time(slot3)
 
@@ -618,10 +618,10 @@ TeamAIDamage.inc_dodge_count = function (self, n)
 
 	return 
 end
-TeamAIDamage.down_time = function (self)
+function TeamAIDamage:down_time()
 	return self._char_dmg_tweak.DOWNED_TIME
 end
-TeamAIDamage._check_bleed_out = function (self)
+function TeamAIDamage:_check_bleed_out()
 	if self._health <= 0 then
 		self._bleed_out_health = self._HEALTH_BLEEDOUT_INIT
 		self._health = 0
@@ -682,7 +682,7 @@ TeamAIDamage._check_bleed_out = function (self)
 
 	return 
 end
-TeamAIDamage._check_fatal = function (self)
+function TeamAIDamage:_check_fatal()
 	if self._bleed_out_health <= 0 then
 		if not self._bleed_out then
 			slot3 = self._unit
@@ -714,7 +714,7 @@ TeamAIDamage._check_fatal = function (self)
 	return 
 end
 TeamAIDamage.get_paused_counter_name_by_peer = PlayerDamage.get_paused_counter_name_by_peer
-TeamAIDamage.pause_bleed_out = function (self, peer_id)
+function TeamAIDamage:pause_bleed_out(peer_id)
 	self._bleed_out_paused_count = self._bleed_out_paused_count + 1
 	slot6 = "bleed_out"
 
@@ -744,7 +744,7 @@ TeamAIDamage.pause_bleed_out = function (self, peer_id)
 
 	return 
 end
-TeamAIDamage.unpause_bleed_out = function (self, peer_id)
+function TeamAIDamage:unpause_bleed_out(peer_id)
 	self._bleed_out_paused_count = self._bleed_out_paused_count - 1
 	slot6 = nil
 
@@ -769,14 +769,14 @@ TeamAIDamage.unpause_bleed_out = function (self, peer_id)
 
 	return 
 end
-TeamAIDamage.stop_bleedout = function (self)
+function TeamAIDamage:stop_bleedout()
 	slot3 = self
 
 	self._regenerated(slot2)
 
 	return 
 end
-TeamAIDamage.on_arrested = function (self)
+function TeamAIDamage:on_arrested()
 	slot3 = self
 
 	self.stop_bleedout(slot2)
@@ -794,7 +794,7 @@ TeamAIDamage.on_arrested = function (self)
 
 	return 
 end
-TeamAIDamage.pause_arrested_timer = function (self, peer_id)
+function TeamAIDamage:pause_arrested_timer(peer_id)
 	self._arrested_paused_counter = self._arrested_paused_counter + 1
 	slot6 = "arrested"
 
@@ -802,7 +802,7 @@ TeamAIDamage.pause_arrested_timer = function (self, peer_id)
 
 	return 
 end
-TeamAIDamage.unpause_arrested_timer = function (self, peer_id)
+function TeamAIDamage:unpause_arrested_timer(peer_id)
 	self._arrested_paused_counter = self._arrested_paused_counter - 1
 	slot6 = nil
 
@@ -810,7 +810,7 @@ TeamAIDamage.unpause_arrested_timer = function (self, peer_id)
 
 	return 
 end
-TeamAIDamage._on_hurt = function (self)
+function TeamAIDamage:_on_hurt()
 	if self._to_incapacitated_clbk_id then
 		return 
 	end
@@ -839,16 +839,16 @@ TeamAIDamage._on_hurt = function (self)
 
 	return 
 end
-TeamAIDamage.bleed_out = function (self)
+function TeamAIDamage:bleed_out()
 	return self._bleed_out
 end
-TeamAIDamage.fatal = function (self)
+function TeamAIDamage:fatal()
 	return self._fatal
 end
-TeamAIDamage.is_downed = function (self)
+function TeamAIDamage:is_downed()
 	return self._bleed_out or self._fatal
 end
-TeamAIDamage._regenerated = function (self)
+function TeamAIDamage:_regenerated()
 	self._health = self._HEALTH_INIT
 	self._health_ratio = 1
 
@@ -871,10 +871,10 @@ TeamAIDamage._regenerated = function (self)
 
 	return 
 end
-TeamAIDamage._convert_to_health_percentage = function (self, health_abs)
+function TeamAIDamage:_convert_to_health_percentage(health_abs)
 	return 
 end
-TeamAIDamage._clamp_health_percentage = function (self, health_abs)
+function TeamAIDamage:_clamp_health_percentage(health_abs)
 	slot6 = self._HEALTH_TOTAL
 	health_abs = math.clamp(slot3, health_abs, self._HEALTH_TOTAL_PERCENT)
 	slot4 = health_abs / self._HEALTH_TOTAL_PERCENT
@@ -883,7 +883,7 @@ TeamAIDamage._clamp_health_percentage = function (self, health_abs)
 
 	return health_abs, health_percent
 end
-TeamAIDamage._die = function (self)
+function TeamAIDamage:_die()
 	self._dead = true
 	self._revive_reminder_line_t = nil
 
@@ -910,7 +910,7 @@ TeamAIDamage._die = function (self)
 
 	return 
 end
-TeamAIDamage._unregister_unit = function (self)
+function TeamAIDamage:_unregister_unit()
 	slot4 = self._unit
 	local char_name = managers.criminals.character_name_by_unit(slot2, managers.criminals)
 	slot4 = managers.groupai
@@ -938,47 +938,47 @@ TeamAIDamage._unregister_unit = function (self)
 
 	return 
 end
-TeamAIDamage._send_damage_drama = function (self, attack_data, health_subtracted)
+function TeamAIDamage:_send_damage_drama(attack_data, health_subtracted)
 	slot7 = health_subtracted
 
 	PlayerDamage._send_damage_drama(slot4, self, attack_data)
 
 	return 
 end
-TeamAIDamage._call_listeners = function (self, damage_info)
+function TeamAIDamage:_call_listeners(damage_info)
 	slot5 = damage_info
 
 	CopDamage._call_listeners(slot3, self)
 
 	return 
 end
-TeamAIDamage.add_listener = function (self, ...)
+function TeamAIDamage:add_listener(...)
 	slot3 = self
 
 	CopDamage.add_listener(slot2, ...)
 
 	return 
 end
-TeamAIDamage.remove_listener = function (self, key)
+function TeamAIDamage:remove_listener(key)
 	slot5 = key
 
 	CopDamage.remove_listener(slot3, self)
 
 	return 
 end
-TeamAIDamage.get_base_health = function (self)
+function TeamAIDamage:get_base_health()
 	return self._HEALTH_INIT
 end
-TeamAIDamage.health_ratio = function (self)
+function TeamAIDamage:health_ratio()
 	return self._health_ratio
 end
-TeamAIDamage.focus_delay_mul = function (self)
+function TeamAIDamage:focus_delay_mul()
 	return 1
 end
-TeamAIDamage.dead = function (self)
+function TeamAIDamage:dead()
 	return self._dead
 end
-TeamAIDamage.sync_damage_bullet = function (self, attacker_unit, damage, i_body, hit_offset_height)
+function TeamAIDamage:sync_damage_bullet(attacker_unit, damage, i_body, hit_offset_height)
 	slot7 = self
 
 	if self._cannot_take_damage(slot6) then
@@ -1042,7 +1042,7 @@ TeamAIDamage.sync_damage_bullet = function (self, attacker_unit, damage, i_body,
 
 	return 
 end
-TeamAIDamage.sync_damage_explosion = function (self, attacker_unit, damage, i_attack_variant)
+function TeamAIDamage:sync_damage_explosion(attacker_unit, damage, i_attack_variant)
 	slot6 = self
 
 	if self._cannot_take_damage(slot5) then
@@ -1100,7 +1100,7 @@ TeamAIDamage.sync_damage_explosion = function (self, attacker_unit, damage, i_at
 
 	return 
 end
-TeamAIDamage.sync_damage_fire = function (self, attacker_unit, damage, i_attack_variant)
+function TeamAIDamage:sync_damage_fire(attacker_unit, damage, i_attack_variant)
 	slot6 = self
 
 	if self._cannot_take_damage(slot5) then
@@ -1158,7 +1158,7 @@ TeamAIDamage.sync_damage_fire = function (self, attacker_unit, damage, i_attack_
 
 	return 
 end
-TeamAIDamage.sync_damage_melee = function (self, attacker_unit, damage, damage_effect_percent, i_body, hit_offset_height)
+function TeamAIDamage:sync_damage_melee(attacker_unit, damage, damage_effect_percent, i_body, hit_offset_height)
 	slot8 = self
 
 	if self._cannot_take_damage(slot7) then
@@ -1225,20 +1225,20 @@ TeamAIDamage.sync_damage_melee = function (self, attacker_unit, damage, damage_e
 
 	return 
 end
-TeamAIDamage.shoot_pos_mid = function (self, m_pos)
+function TeamAIDamage:shoot_pos_mid(m_pos)
 	slot5 = m_pos
 
 	self._spine2_obj.m_position(slot3, self._spine2_obj)
 
 	return 
 end
-TeamAIDamage.need_revive = function (self)
+function TeamAIDamage:need_revive()
 	return (self._bleed_out or self._fatal) and not self._dead
 end
-TeamAIDamage.arrested = function (self)
+function TeamAIDamage:arrested()
 	return self._arrested_timer
 end
-TeamAIDamage.revive = function (self, reviving_unit)
+function TeamAIDamage:revive(reviving_unit)
 	if self._dead then
 		return 
 	end
@@ -1339,7 +1339,7 @@ TeamAIDamage.revive = function (self, reviving_unit)
 
 	return 
 end
-TeamAIDamage._send_bullet_attack_result = function (self, attack_data, hit_offset_height)
+function TeamAIDamage:_send_bullet_attack_result(attack_data, hit_offset_height)
 
 	-- Decompilation error in this vicinity:
 	if not hit_offset_height then
@@ -1357,7 +1357,7 @@ TeamAIDamage._send_bullet_attack_result = function (self, attack_data, hit_offse
 
 	return 
 end
-TeamAIDamage._send_explosion_attack_result = function (self, attack_data)
+function TeamAIDamage:_send_explosion_attack_result(attack_data)
 
 	-- Decompilation error in this vicinity:
 	local attacker = attack_data.attacker_unit
@@ -1370,7 +1370,7 @@ TeamAIDamage._send_explosion_attack_result = function (self, attack_data)
 
 	return 
 end
-TeamAIDamage._send_fire_attack_result = function (self, attack_data)
+function TeamAIDamage:_send_fire_attack_result(attack_data)
 
 	-- Decompilation error in this vicinity:
 	local attacker = attack_data.attacker_unit
@@ -1383,7 +1383,7 @@ TeamAIDamage._send_fire_attack_result = function (self, attack_data)
 
 	return 
 end
-TeamAIDamage._send_melee_attack_result = function (self, attack_data, hit_offset_height)
+function TeamAIDamage:_send_melee_attack_result(attack_data, hit_offset_height)
 
 	-- Decompilation error in this vicinity:
 	if not hit_offset_height then
@@ -1401,7 +1401,7 @@ TeamAIDamage._send_melee_attack_result = function (self, attack_data, hit_offset
 
 	return 
 end
-TeamAIDamage._send_tase_attack_result = function (self)
+function TeamAIDamage:_send_tase_attack_result()
 	slot3 = self._unit
 	slot4 = "from_server_damage_tase"
 
@@ -1409,7 +1409,7 @@ TeamAIDamage._send_tase_attack_result = function (self)
 
 	return 
 end
-TeamAIDamage.on_tase_ended = function (self)
+function TeamAIDamage:on_tase_ended()
 	if self._tase_effect then
 		slot3 = World
 		slot4 = self._tase_effect
@@ -1458,7 +1458,7 @@ TeamAIDamage.on_tase_ended = function (self)
 
 	return 
 end
-TeamAIDamage.clbk_exit_to_incapacitated = function (self)
+function TeamAIDamage:clbk_exit_to_incapacitated()
 	self._to_incapacitated_clbk_id = nil
 	slot3 = self
 
@@ -1466,7 +1466,7 @@ TeamAIDamage.clbk_exit_to_incapacitated = function (self)
 
 	return 
 end
-TeamAIDamage.on_incapacitated = function (self)
+function TeamAIDamage:on_incapacitated()
 	slot3 = self
 
 	if self._cannot_take_damage(slot2) then
@@ -1479,7 +1479,7 @@ TeamAIDamage.on_incapacitated = function (self)
 
 	return 
 end
-TeamAIDamage._on_incapacitated = function (self)
+function TeamAIDamage:_on_incapacitated()
 	if self._tase_effect then
 		slot3 = World
 		slot4 = self._tase_effect
@@ -1532,7 +1532,7 @@ TeamAIDamage._on_incapacitated = function (self)
 
 	return 
 end
-TeamAIDamage.clbk_exit_to_dead = function (self, from_client_join)
+function TeamAIDamage:clbk_exit_to_dead(from_client_join)
 	self._to_dead_clbk_id = nil
 	slot4 = self
 
@@ -1562,24 +1562,24 @@ TeamAIDamage.clbk_exit_to_dead = function (self, from_client_join)
 
 	return 
 end
-TeamAIDamage.pre_destroy = function (self)
+function TeamAIDamage:pre_destroy()
 	slot3 = self
 
 	self._clear_damage_transition_callbacks(slot2)
 
 	return 
 end
-TeamAIDamage._cannot_take_damage = function (self)
+function TeamAIDamage:_cannot_take_damage()
 	return self._invulnerable or self._dead or self._fatal or self._arrested_timer
 end
-TeamAIDamage.disable = function (self)
+function TeamAIDamage:disable()
 	slot3 = self
 
 	self._clear_damage_transition_callbacks(slot2)
 
 	return 
 end
-TeamAIDamage._clear_damage_transition_callbacks = function (self)
+function TeamAIDamage:_clear_damage_transition_callbacks()
 	if self._to_incapacitated_clbk_id then
 		slot4 = self._to_incapacitated_clbk_id
 
@@ -1598,13 +1598,13 @@ TeamAIDamage._clear_damage_transition_callbacks = function (self)
 
 	return 
 end
-TeamAIDamage.last_suppression_t = function (self)
+function TeamAIDamage:last_suppression_t()
 	return self._last_received_dmg_t
 end
-TeamAIDamage.can_attach_projectiles = function (self)
+function TeamAIDamage:can_attach_projectiles()
 	return false
 end
-TeamAIDamage.save = function (self, data)
+function TeamAIDamage:save(data)
 	if self._arrested_timer then
 		data.char_dmg = data.char_dmg or {}
 		data.char_dmg.arrested = true
@@ -1622,7 +1622,7 @@ TeamAIDamage.save = function (self, data)
 
 	return 
 end
-TeamAIDamage.run_queued_teammate_panel_update = function (self)
+function TeamAIDamage:run_queued_teammate_panel_update()
 	return 
 end
 

@@ -3,7 +3,7 @@
 RaidGUIPanel = RaidGUIPanel or class()
 RaidGUIPanel.ID = 1
 RaidGUIPanel.TYPE = "raid_gui_panel"
-RaidGUIPanel.init = function (self, parent, params)
+function RaidGUIPanel:init(parent, params)
 
 	-- Decompilation error in this vicinity:
 	self._type = self._type or RaidGUIPanel.TYPE
@@ -19,46 +19,46 @@ RaidGUIPanel.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIPanel.get_controls = function (self)
+function RaidGUIPanel:get_controls()
 	return self._controls
 end
-RaidGUIPanel.get_engine_panel = function (self)
+function RaidGUIPanel:get_engine_panel()
 	return self._engine_panel
 end
-RaidGUIPanel.center = function (self)
+function RaidGUIPanel:center()
 	slot3 = self._engine_panel
 
 	return self._engine_panel.center(slot2)
 end
-RaidGUIPanel.center_x = function (self)
+function RaidGUIPanel:center_x()
 	slot3 = self._engine_panel
 
 	return self._engine_panel.center_x(slot2)
 end
-RaidGUIPanel.center_y = function (self)
+function RaidGUIPanel:center_y()
 	slot3 = self._engine_panel
 
 	return self._engine_panel.center_y(slot2)
 end
-RaidGUIPanel.set_top = function (self, value)
+function RaidGUIPanel:set_top(value)
 	slot5 = value
 
 	return self._engine_panel.set_top(slot3, self._engine_panel)
 end
-RaidGUIPanel.set_bottom = function (self, value)
+function RaidGUIPanel:set_bottom(value)
 	slot5 = value
 
 	return self._engine_panel.set_bottom(slot3, self._engine_panel)
 end
-RaidGUIPanel.get_panel = function (self)
+function RaidGUIPanel:get_panel()
 	return self
 end
-RaidGUIPanel.layer = function (self)
+function RaidGUIPanel:layer()
 	slot3 = self._engine_panel
 
 	return self._engine_panel.layer(slot2)
 end
-RaidGUIPanel.close = function (self)
+function RaidGUIPanel:close()
 	slot3 = self._controls
 
 	for _, control in ipairs(slot2) do
@@ -74,7 +74,7 @@ RaidGUIPanel.close = function (self)
 
 	return 
 end
-RaidGUIPanel.clear = function (self)
+function RaidGUIPanel:clear()
 	slot3 = self._controls
 
 	for _, control in ipairs(slot2) do
@@ -90,7 +90,7 @@ RaidGUIPanel.clear = function (self)
 
 	return 
 end
-RaidGUIPanel.child = function (self, control_name)
+function RaidGUIPanel:child(control_name)
 	slot4 = self._engine_panel
 
 	if alive(slot3) then
@@ -103,15 +103,15 @@ RaidGUIPanel.child = function (self, control_name)
 
 	return 
 end
-RaidGUIPanel.children = function (self)
+function RaidGUIPanel:children()
 	slot3 = self._engine_panel
 
 	return self._engine_panel.children(slot2)
 end
-RaidGUIPanel.parent = function (self)
+function RaidGUIPanel:parent()
 	return self._parent
 end
-RaidGUIPanel.remove = function (self, control)
+function RaidGUIPanel:remove(control)
 	local removed = false
 	local i = #self._controls
 
@@ -150,7 +150,7 @@ RaidGUIPanel.remove = function (self, control)
 
 	return 
 end
-RaidGUIPanel.get_max_control_y = function (self)
+function RaidGUIPanel:get_max_control_y()
 	local max_y = 0
 	slot4 = self._controls
 
@@ -165,7 +165,7 @@ RaidGUIPanel.get_max_control_y = function (self)
 
 	return max_y
 end
-RaidGUIPanel.fit_content_height = function (self)
+function RaidGUIPanel:fit_content_height()
 	local max_y = self.get_max_control_y(slot2)
 	slot5 = max_y
 
@@ -173,7 +173,7 @@ RaidGUIPanel.fit_content_height = function (self)
 
 	return 
 end
-RaidGUIPanel.key_press = function (self, callback)
+function RaidGUIPanel:key_press(callback)
 	if callback then
 		slot5 = callback
 
@@ -182,7 +182,7 @@ RaidGUIPanel.key_press = function (self, callback)
 
 	return 
 end
-RaidGUIPanel.key_release = function (self, callback)
+function RaidGUIPanel:key_release(callback)
 	if callback then
 		slot5 = callback
 
@@ -191,7 +191,7 @@ RaidGUIPanel.key_release = function (self, callback)
 
 	return 
 end
-RaidGUIPanel.enter_text = function (self, callback)
+function RaidGUIPanel:enter_text(callback)
 	if callback then
 		slot5 = callback
 
@@ -200,7 +200,7 @@ RaidGUIPanel.enter_text = function (self, callback)
 
 	return 
 end
-RaidGUIPanel.inside = function (self, x, y)
+function RaidGUIPanel:inside(x, y)
 	slot7 = y
 
 	if self._engine_panel.inside(slot4, self._engine_panel, x) then
@@ -210,7 +210,7 @@ RaidGUIPanel.inside = function (self, x, y)
 
 	return slot3
 end
-RaidGUIPanel.mouse_moved = function (self, o, x, y)
+function RaidGUIPanel:mouse_moved(o, x, y)
 	local used = false
 	local pointer = nil
 	slot8 = self._controls
@@ -227,7 +227,7 @@ RaidGUIPanel.mouse_moved = function (self, o, x, y)
 
 	return used, pointer
 end
-RaidGUIPanel.mouse_pressed = function (self, o, button, x, y)
+function RaidGUIPanel:mouse_pressed(o, button, x, y)
 	slot7 = self._controls
 
 	for _, control in ipairs(slot6) do
@@ -241,7 +241,7 @@ RaidGUIPanel.mouse_pressed = function (self, o, button, x, y)
 
 	return false
 end
-RaidGUIPanel.mouse_clicked = function (self, o, button, x, y)
+function RaidGUIPanel:mouse_clicked(o, button, x, y)
 	slot7 = self._controls
 
 	for _, control in ipairs(slot6) do
@@ -255,7 +255,7 @@ RaidGUIPanel.mouse_clicked = function (self, o, button, x, y)
 
 	return false
 end
-RaidGUIPanel.mouse_double_click = function (self, o, button, x, y)
+function RaidGUIPanel:mouse_double_click(o, button, x, y)
 	slot7 = self._controls
 
 	for _, control in ipairs(slot6) do
@@ -279,7 +279,7 @@ RaidGUIPanel.mouse_double_click = function (self, o, button, x, y)
 
 	return false
 end
-RaidGUIPanel.mouse_released = function (self, o, button, x, y)
+function RaidGUIPanel:mouse_released(o, button, x, y)
 	slot7 = self._controls
 
 	for _, control in ipairs(slot6) do
@@ -303,7 +303,7 @@ RaidGUIPanel.mouse_released = function (self, o, button, x, y)
 
 	return false
 end
-RaidGUIPanel.mouse_scroll_up = function (self, o, button, x, y)
+function RaidGUIPanel:mouse_scroll_up(o, button, x, y)
 	slot7 = self._controls
 
 	for _, control in ipairs(slot6) do
@@ -321,7 +321,7 @@ RaidGUIPanel.mouse_scroll_up = function (self, o, button, x, y)
 
 	return false
 end
-RaidGUIPanel.mouse_scroll_down = function (self, o, button, x, y)
+function RaidGUIPanel:mouse_scroll_down(o, button, x, y)
 	slot7 = self._controls
 
 	for _, control in ipairs(slot6) do
@@ -339,14 +339,14 @@ RaidGUIPanel.mouse_scroll_down = function (self, o, button, x, y)
 
 	return false
 end
-RaidGUIPanel.back_pressed = function (self)
+function RaidGUIPanel:back_pressed()
 	slot3 = managers.raid_menu
 
 	managers.raid_menu.on_escape(slot2)
 
 	return 
 end
-RaidGUIPanel.special_btn_pressed = function (self, ...)
+function RaidGUIPanel:special_btn_pressed(...)
 	local component_controls = managers.menu_component._active_controls
 	slot4 = component_controls
 
@@ -369,7 +369,7 @@ RaidGUIPanel.special_btn_pressed = function (self, ...)
 
 	return false
 end
-RaidGUIPanel.move_up = function (self)
+function RaidGUIPanel:move_up()
 	local component_controls = managers.menu_component._active_controls
 	slot4 = component_controls
 
@@ -392,7 +392,7 @@ RaidGUIPanel.move_up = function (self)
 
 	return false
 end
-RaidGUIPanel.move_down = function (self)
+function RaidGUIPanel:move_down()
 	local component_controls = managers.menu_component._active_controls
 	slot4 = component_controls
 
@@ -415,7 +415,7 @@ RaidGUIPanel.move_down = function (self)
 
 	return false
 end
-RaidGUIPanel.move_left = function (self)
+function RaidGUIPanel:move_left()
 	local component_controls = managers.menu_component._active_controls
 	slot4 = component_controls
 
@@ -438,7 +438,7 @@ RaidGUIPanel.move_left = function (self)
 
 	return false
 end
-RaidGUIPanel.move_right = function (self)
+function RaidGUIPanel:move_right()
 	local component_controls = managers.menu_component._active_controls
 	slot4 = component_controls
 
@@ -461,7 +461,7 @@ RaidGUIPanel.move_right = function (self)
 
 	return false
 end
-RaidGUIPanel.scroll_up = function (self)
+function RaidGUIPanel:scroll_up()
 	local component_controls = managers.menu_component._active_controls
 	slot4 = component_controls
 
@@ -484,7 +484,7 @@ RaidGUIPanel.scroll_up = function (self)
 
 	return false
 end
-RaidGUIPanel.scroll_down = function (self)
+function RaidGUIPanel:scroll_down()
 	local component_controls = managers.menu_component._active_controls
 	slot4 = component_controls
 
@@ -507,7 +507,7 @@ RaidGUIPanel.scroll_down = function (self)
 
 	return false
 end
-RaidGUIPanel.scroll_left = function (self)
+function RaidGUIPanel:scroll_left()
 	local component_controls = managers.menu_component._active_controls
 	slot4 = component_controls
 
@@ -530,7 +530,7 @@ RaidGUIPanel.scroll_left = function (self)
 
 	return false
 end
-RaidGUIPanel.scroll_right = function (self)
+function RaidGUIPanel:scroll_right()
 	local component_controls = managers.menu_component._active_controls
 	slot4 = component_controls
 
@@ -553,7 +553,7 @@ RaidGUIPanel.scroll_right = function (self)
 
 	return false
 end
-RaidGUIPanel.special_btn_pressed = function (self, ...)
+function RaidGUIPanel:special_btn_pressed(...)
 	local component_controls = managers.menu_component._active_controls
 	slot4 = component_controls
 
@@ -572,7 +572,7 @@ RaidGUIPanel.special_btn_pressed = function (self, ...)
 
 	return false
 end
-RaidGUIPanel.confirm_pressed = function (self)
+function RaidGUIPanel:confirm_pressed()
 	local component_controls = managers.menu_component._active_controls
 	slot4 = component_controls
 
@@ -591,7 +591,7 @@ RaidGUIPanel.confirm_pressed = function (self)
 
 	return false
 end
-RaidGUIPanel.set_background = function (self, params)
+function RaidGUIPanel:set_background(params)
 	if params.texture then
 		if self._background then
 			slot5 = self._background
@@ -626,14 +626,14 @@ RaidGUIPanel.set_background = function (self, params)
 
 	return 
 end
-RaidGUIPanel.remove_background = function (self)
+function RaidGUIPanel:remove_background()
 	slot4 = self._background
 
 	self.remove(slot2, self)
 
 	return 
 end
-RaidGUIPanel.set_background_color = function (self, color)
+function RaidGUIPanel:set_background_color(color)
 	if self._background then
 		slot5 = color
 
@@ -642,37 +642,37 @@ RaidGUIPanel.set_background_color = function (self, color)
 
 	return 
 end
-RaidGUIPanel.highlight_on = function (self)
+function RaidGUIPanel:highlight_on()
 	return 
 end
-RaidGUIPanel.highlight_off = function (self)
+function RaidGUIPanel:highlight_off()
 	return 
 end
-RaidGUIPanel.show = function (self)
+function RaidGUIPanel:show()
 	slot3 = self._engine_panel
 
 	self._engine_panel.show(slot2)
 
 	return 
 end
-RaidGUIPanel.hide = function (self)
+function RaidGUIPanel:hide()
 	slot3 = self._engine_panel
 
 	self._engine_panel.hide(slot2)
 
 	return 
 end
-RaidGUIPanel.tree_visible = function (self)
+function RaidGUIPanel:tree_visible()
 	slot3 = self._engine_panel
 
 	return self._engine_panel.tree_visible(slot2)
 end
-RaidGUIPanel.set_visible = function (self, flag)
+function RaidGUIPanel:set_visible(flag)
 	slot5 = flag
 
 	return self._engine_panel.set_visible(slot3, self._engine_panel)
 end
-RaidGUIPanel.visible = function (self)
+function RaidGUIPanel:visible()
 	if self._engine_panel.alive then
 		if self._engine_panel.alive then
 			slot3 = self._engine_panel
@@ -692,44 +692,44 @@ RaidGUIPanel.visible = function (self)
 
 	return 
 end
-RaidGUIPanel.text = function (self, params)
+function RaidGUIPanel:text(params)
 	slot6 = params.font_size
 	params.font = tweak_data.gui.get_font_path(slot3, tweak_data.gui, params.font)
 	slot5 = params
 
 	return self._engine_panel.text(slot3, self._engine_panel)
 end
-RaidGUIPanel.rect = function (self, params)
+function RaidGUIPanel:rect(params)
 	slot5 = params
 
 	return self._engine_panel.rect(slot3, self._engine_panel)
 end
-RaidGUIPanel.bitmap = function (self, params)
+function RaidGUIPanel:bitmap(params)
 	slot5 = params
 
 	return self._engine_panel.bitmap(slot3, self._engine_panel)
 end
-RaidGUIPanel.multi_bitmap = function (self, params)
+function RaidGUIPanel:multi_bitmap(params)
 	slot5 = params
 
 	return self._engine_panel.multi_bitmap(slot3, self._engine_panel)
 end
-RaidGUIPanel.gradient = function (self, params)
+function RaidGUIPanel:gradient(params)
 	slot5 = params
 
 	return self._engine_panel.gradient(slot3, self._engine_panel)
 end
-RaidGUIPanel.polyline = function (self, params)
+function RaidGUIPanel:polyline(params)
 	slot5 = params
 
 	return self._engine_panel.polyline(slot3, self._engine_panel)
 end
-RaidGUIPanel.polygon = function (self, params)
+function RaidGUIPanel:polygon(params)
 	slot5 = params
 
 	return self._engine_panel.polygon(slot3, self._engine_panel)
 end
-RaidGUIPanel.video = function (self, params)
+function RaidGUIPanel:video(params)
 	slot6 = params
 	local control = RaidGUIControlVideo.new(slot3, RaidGUIControlVideo, self)
 	slot6 = control
@@ -738,12 +738,12 @@ RaidGUIPanel.video = function (self, params)
 
 	return control
 end
-RaidGUIPanel.unit = function (self, params)
+function RaidGUIPanel:unit(params)
 	slot5 = params
 
 	return self._engine_panel.unit(slot3, self._engine_panel)
 end
-RaidGUIPanel.panel = function (self, params, dont_create_panel)
+function RaidGUIPanel:panel(params, dont_create_panel)
 	slot7 = params
 	local control = RaidGUIPanel.new(slot4, RaidGUIPanel, self)
 
@@ -755,7 +755,7 @@ RaidGUIPanel.panel = function (self, params, dont_create_panel)
 
 	return control
 end
-RaidGUIPanel.label = function (self, params)
+function RaidGUIPanel:label(params)
 	slot6 = params.font_size
 	params.font = tweak_data.gui.get_font_path(slot3, tweak_data.gui, params.font)
 	slot6 = params
@@ -766,7 +766,7 @@ RaidGUIPanel.label = function (self, params)
 
 	return control
 end
-RaidGUIPanel.label_title = function (self, params)
+function RaidGUIPanel:label_title(params)
 	slot6 = params
 	local control = RaidGUIControlLabelTitle.new(slot3, RaidGUIControlLabelTitle, self)
 	slot6 = control
@@ -775,7 +775,7 @@ RaidGUIPanel.label_title = function (self, params)
 
 	return control
 end
-RaidGUIPanel.label_subtitle = function (self, params)
+function RaidGUIPanel:label_subtitle(params)
 	slot6 = params
 	local control = RaidGUIControlLabelSubtitle.new(slot3, RaidGUIControlLabelSubtitle, self)
 	slot6 = control
@@ -784,7 +784,7 @@ RaidGUIPanel.label_subtitle = function (self, params)
 
 	return control
 end
-RaidGUIPanel.label_named_value = function (self, params)
+function RaidGUIPanel:label_named_value(params)
 	slot6 = params
 	local control = RaidGUIControlLabelNamedValue.new(slot3, RaidGUIControlLabelNamedValue, self)
 	slot6 = control
@@ -793,7 +793,7 @@ RaidGUIPanel.label_named_value = function (self, params)
 
 	return control
 end
-RaidGUIPanel.label_named_value_with_delta = function (self, params)
+function RaidGUIPanel:label_named_value_with_delta(params)
 	slot6 = params
 	local control = RaidGUIControlLabelNamedValueWithDelta.new(slot3, RaidGUIControlLabelNamedValueWithDelta, self)
 	slot6 = control
@@ -802,7 +802,7 @@ RaidGUIPanel.label_named_value_with_delta = function (self, params)
 
 	return control
 end
-RaidGUIPanel.button = function (self, params)
+function RaidGUIPanel:button(params)
 	slot6 = params
 	local control = RaidGUIControlButton.new(slot3, RaidGUIControlButton, self)
 	slot6 = control
@@ -811,7 +811,7 @@ RaidGUIPanel.button = function (self, params)
 
 	return control
 end
-RaidGUIPanel.small_button = function (self, params)
+function RaidGUIPanel:small_button(params)
 	slot6 = params
 	local control = RaidGUIControlButtonSmall.new(slot3, RaidGUIControlButtonSmall, self)
 	slot6 = control
@@ -820,7 +820,7 @@ RaidGUIPanel.small_button = function (self, params)
 
 	return control
 end
-RaidGUIPanel.short_primary_button = function (self, params)
+function RaidGUIPanel:short_primary_button(params)
 	slot6 = params
 	local control = RaidGUIControlButtonShortPrimary.new(slot3, RaidGUIControlButtonShortPrimary, self)
 	slot6 = control
@@ -829,7 +829,7 @@ RaidGUIPanel.short_primary_button = function (self, params)
 
 	return control
 end
-RaidGUIPanel.short_primary_gold_button = function (self, params)
+function RaidGUIPanel:short_primary_gold_button(params)
 	slot6 = params
 	local control = RaidGUIControlButtonShortPrimaryGold.new(slot3, RaidGUIControlButtonShortPrimaryGold, self)
 	slot6 = control
@@ -838,7 +838,7 @@ RaidGUIPanel.short_primary_gold_button = function (self, params)
 
 	return control
 end
-RaidGUIPanel.short_primary_button_disabled = function (self, params)
+function RaidGUIPanel:short_primary_button_disabled(params)
 	slot6 = params
 	local control = RaidGUIControlButtonShortPrimaryDisabled.new(slot3, RaidGUIControlButtonShortPrimaryDisabled, self)
 	slot6 = control
@@ -847,7 +847,7 @@ RaidGUIPanel.short_primary_button_disabled = function (self, params)
 
 	return control
 end
-RaidGUIPanel.short_secondary_button = function (self, params)
+function RaidGUIPanel:short_secondary_button(params)
 	slot6 = params
 	local control = RaidGUIControlButtonShortSecondary.new(slot3, RaidGUIControlButtonShortSecondary, self)
 	slot6 = control
@@ -856,7 +856,7 @@ RaidGUIPanel.short_secondary_button = function (self, params)
 
 	return control
 end
-RaidGUIPanel.short_tertiary_button = function (self, params)
+function RaidGUIPanel:short_tertiary_button(params)
 	slot6 = params
 	local control = RaidGUIControlButtonShortTertiary.new(slot3, RaidGUIControlButtonShortTertiary, self)
 	slot6 = control
@@ -865,7 +865,7 @@ RaidGUIPanel.short_tertiary_button = function (self, params)
 
 	return control
 end
-RaidGUIPanel.long_primary_button = function (self, params)
+function RaidGUIPanel:long_primary_button(params)
 	slot6 = params
 	local control = RaidGUIControlButtonLongPrimary.new(slot3, RaidGUIControlButtonLongPrimary, self)
 	slot6 = control
@@ -874,7 +874,7 @@ RaidGUIPanel.long_primary_button = function (self, params)
 
 	return control
 end
-RaidGUIPanel.long_primary_button_disabled = function (self, params)
+function RaidGUIPanel:long_primary_button_disabled(params)
 	slot6 = params
 	local control = RaidGUIControlButtonLongPrimaryDisabled.new(slot3, RaidGUIControlButtonLongPrimaryDisabled, self)
 	slot6 = control
@@ -883,7 +883,7 @@ RaidGUIPanel.long_primary_button_disabled = function (self, params)
 
 	return control
 end
-RaidGUIPanel.long_secondary_button = function (self, params)
+function RaidGUIPanel:long_secondary_button(params)
 	slot6 = params
 	local control = RaidGUIControlButtonLongSecondary.new(slot3, RaidGUIControlButtonLongSecondary, self)
 	slot6 = control
@@ -892,7 +892,7 @@ RaidGUIPanel.long_secondary_button = function (self, params)
 
 	return control
 end
-RaidGUIPanel.long_tertiary_button = function (self, params)
+function RaidGUIPanel:long_tertiary_button(params)
 	slot6 = params
 	local control = RaidGUIControlButtonLongTertiary.new(slot3, RaidGUIControlButtonLongTertiary, self)
 	slot6 = control
@@ -901,7 +901,7 @@ RaidGUIPanel.long_tertiary_button = function (self, params)
 
 	return control
 end
-RaidGUIPanel.info_button = function (self, params)
+function RaidGUIPanel:info_button(params)
 	slot6 = params
 	local control = RaidGUIControlButtonSubtitle.new(slot3, RaidGUIControlButtonSubtitle, self)
 	slot6 = control
@@ -910,7 +910,7 @@ RaidGUIPanel.info_button = function (self, params)
 
 	return control
 end
-RaidGUIPanel.button_weapon_skill = function (self, params)
+function RaidGUIPanel:button_weapon_skill(params)
 	slot6 = params
 	local control = RaidGUIControlButtonWeaponSkill.new(slot3, RaidGUIControlButtonWeaponSkill, self)
 	slot6 = control
@@ -919,7 +919,7 @@ RaidGUIPanel.button_weapon_skill = function (self, params)
 
 	return control
 end
-RaidGUIPanel.toggle_button = function (self, params)
+function RaidGUIPanel:toggle_button(params)
 	slot6 = params
 	local control = RaidGUIControlButtonToggle.new(slot3, RaidGUIControlButtonToggle, self)
 	slot6 = control
@@ -928,7 +928,7 @@ RaidGUIPanel.toggle_button = function (self, params)
 
 	return control
 end
-RaidGUIPanel.switch_button = function (self, params)
+function RaidGUIPanel:switch_button(params)
 	slot6 = params
 	local control = RaidGUIControlButtonSwitch.new(slot3, RaidGUIControlButtonSwitch, self)
 	slot6 = control
@@ -937,7 +937,7 @@ RaidGUIPanel.switch_button = function (self, params)
 
 	return control
 end
-RaidGUIPanel.breadcrumb = function (self, params)
+function RaidGUIPanel:breadcrumb(params)
 	slot6 = params
 	local control = RaidGUIControlBreadcrumb.new(slot3, RaidGUIControlBreadcrumb, self)
 	slot6 = control
@@ -946,7 +946,7 @@ RaidGUIPanel.breadcrumb = function (self, params)
 
 	return control
 end
-RaidGUIPanel.image = function (self, params)
+function RaidGUIPanel:image(params)
 	slot6 = params
 	local control = RaidGUIControlImage.new(slot3, RaidGUIControlImage, self)
 	slot6 = control
@@ -955,7 +955,7 @@ RaidGUIPanel.image = function (self, params)
 
 	return control
 end
-RaidGUIPanel.info_icon = function (self, params)
+function RaidGUIPanel:info_icon(params)
 	slot6 = params
 	local control = RaidGUIControlInfoIcon.new(slot3, RaidGUIControlInfoIcon, self)
 	slot6 = control
@@ -964,7 +964,7 @@ RaidGUIPanel.info_icon = function (self, params)
 
 	return control
 end
-RaidGUIPanel.three_cut_bitmap = function (self, params)
+function RaidGUIPanel:three_cut_bitmap(params)
 	slot6 = params
 	local control = RaidGUIControlThreeCutBitmap.new(slot3, RaidGUIControlThreeCutBitmap, self)
 	slot6 = control
@@ -973,7 +973,7 @@ RaidGUIPanel.three_cut_bitmap = function (self, params)
 
 	return control
 end
-RaidGUIPanel.image_button = function (self, params)
+function RaidGUIPanel:image_button(params)
 	slot6 = params
 	local control = RaidGUIControlImageButton.new(slot3, RaidGUIControlImageButton, self)
 	slot6 = control
@@ -982,7 +982,7 @@ RaidGUIPanel.image_button = function (self, params)
 
 	return control
 end
-RaidGUIPanel.navigation_button = function (self, params)
+function RaidGUIPanel:navigation_button(params)
 	slot6 = params
 	local control = RaidGUIControlNavigationButton.new(slot3, RaidGUIControlNavigationButton, self)
 	slot6 = control
@@ -991,7 +991,7 @@ RaidGUIPanel.navigation_button = function (self, params)
 
 	return control
 end
-RaidGUIPanel.animated_bitmap = function (self, params)
+function RaidGUIPanel:animated_bitmap(params)
 	slot6 = params
 	local control = RaidGUIControlAnimatedBitmap.new(slot3, RaidGUIControlAnimatedBitmap, self)
 	slot6 = control
@@ -1000,7 +1000,7 @@ RaidGUIPanel.animated_bitmap = function (self, params)
 
 	return control
 end
-RaidGUIPanel.list = function (self, params)
+function RaidGUIPanel:list(params)
 	slot6 = params
 	local control = RaidGUIControlList.new(slot3, RaidGUIControlList, self)
 	slot6 = control
@@ -1009,7 +1009,7 @@ RaidGUIPanel.list = function (self, params)
 
 	return control
 end
-RaidGUIPanel.list_active = function (self, params)
+function RaidGUIPanel:list_active(params)
 	slot6 = params
 	local control = RaidGUIControlListActive.new(slot3, RaidGUIControlListActive, self)
 	slot6 = control
@@ -1018,7 +1018,7 @@ RaidGUIPanel.list_active = function (self, params)
 
 	return control
 end
-RaidGUIPanel.stepper = function (self, params)
+function RaidGUIPanel:stepper(params)
 	slot6 = params
 	local control = RaidGUIControlStepper.new(slot3, RaidGUIControlStepper, self)
 	slot6 = control
@@ -1027,7 +1027,7 @@ RaidGUIPanel.stepper = function (self, params)
 
 	return control
 end
-RaidGUIPanel.stepper_simple = function (self, params)
+function RaidGUIPanel:stepper_simple(params)
 	slot6 = params
 	local control = RaidGUIControlStepperSimple.new(slot3, RaidGUIControlStepperSimple, self)
 	slot6 = control
@@ -1036,7 +1036,7 @@ RaidGUIPanel.stepper_simple = function (self, params)
 
 	return control
 end
-RaidGUIPanel.slider = function (self, params)
+function RaidGUIPanel:slider(params)
 	slot6 = params
 	local control = RaidGUIControlSlider.new(slot3, RaidGUIControlSlider, self)
 	slot6 = control
@@ -1045,7 +1045,7 @@ RaidGUIPanel.slider = function (self, params)
 
 	return control
 end
-RaidGUIPanel.slider_simple = function (self, params)
+function RaidGUIPanel:slider_simple(params)
 	slot6 = params
 	local control = RaidGUIControlSliderSimple.new(slot3, RaidGUIControlSliderSimple, self)
 	slot6 = control
@@ -1054,7 +1054,7 @@ RaidGUIPanel.slider_simple = function (self, params)
 
 	return control
 end
-RaidGUIPanel.table = function (self, params)
+function RaidGUIPanel:table(params)
 	slot6 = params
 	local control = RaidGUIControlTable.new(slot3, RaidGUIControlTable, self)
 	slot6 = control
@@ -1063,7 +1063,7 @@ RaidGUIPanel.table = function (self, params)
 
 	return control
 end
-RaidGUIPanel.tabs = function (self, params)
+function RaidGUIPanel:tabs(params)
 	slot6 = params
 	local control = RaidGUIControlTabs.new(slot3, RaidGUIControlTabs, self)
 	slot6 = control
@@ -1072,7 +1072,7 @@ RaidGUIPanel.tabs = function (self, params)
 
 	return control
 end
-RaidGUIPanel.rotate_unit = function (self, params)
+function RaidGUIPanel:rotate_unit(params)
 	slot6 = params
 	local control = RaidGUIControlRotateUnit.new(slot3, RaidGUIControlRotateUnit, self)
 	slot6 = control
@@ -1081,7 +1081,7 @@ RaidGUIPanel.rotate_unit = function (self, params)
 
 	return control
 end
-RaidGUIPanel.progress_bar = function (self, params)
+function RaidGUIPanel:progress_bar(params)
 	slot6 = params
 	local control = RaidGUIControlProgressBar.new(slot3, RaidGUIControlProgressBar, self)
 	slot6 = control
@@ -1090,7 +1090,7 @@ RaidGUIPanel.progress_bar = function (self, params)
 
 	return control
 end
-RaidGUIPanel.progress_bar_simple = function (self, params)
+function RaidGUIPanel:progress_bar_simple(params)
 	slot6 = params
 	local control = RaidGUIControlProgressBarSimple.new(slot3, RaidGUIControlProgressBarSimple, self)
 	slot6 = control
@@ -1099,7 +1099,7 @@ RaidGUIPanel.progress_bar_simple = function (self, params)
 
 	return control
 end
-RaidGUIPanel.branching_progress_bar = function (self, params)
+function RaidGUIPanel:branching_progress_bar(params)
 	slot6 = params
 	local control = RaidGUIControlBranchingProgressBar.new(slot3, RaidGUIControlBranchingProgressBar, self)
 	slot6 = control
@@ -1108,7 +1108,7 @@ RaidGUIPanel.branching_progress_bar = function (self, params)
 
 	return control
 end
-RaidGUIPanel.keybind = function (self, params)
+function RaidGUIPanel:keybind(params)
 	slot6 = params
 	local control = RaidGuiControlKeyBind.new(slot3, RaidGuiControlKeyBind, self)
 	slot6 = control
@@ -1117,7 +1117,7 @@ RaidGUIPanel.keybind = function (self, params)
 
 	return control
 end
-RaidGUIPanel.grid = function (self, params)
+function RaidGUIPanel:grid(params)
 	slot6 = params
 	local control = RaidGUIControlGrid.new(slot3, RaidGUIControlGrid, self)
 	slot6 = control
@@ -1126,7 +1126,7 @@ RaidGUIPanel.grid = function (self, params)
 
 	return control
 end
-RaidGUIPanel.grid_active = function (self, params)
+function RaidGUIPanel:grid_active(params)
 	slot6 = params
 	local control = RaidGUIControlGridActive.new(slot3, RaidGUIControlGridActive, self)
 	slot6 = control
@@ -1135,7 +1135,7 @@ RaidGUIPanel.grid_active = function (self, params)
 
 	return control
 end
-RaidGUIPanel.paged_grid = function (self, params)
+function RaidGUIPanel:paged_grid(params)
 	slot6 = params
 	local control = RaidGUIControlPagedGrid.new(slot3, RaidGUIControlPagedGrid, self)
 	slot6 = control
@@ -1144,7 +1144,7 @@ RaidGUIPanel.paged_grid = function (self, params)
 
 	return control
 end
-RaidGUIPanel.scroll_grid = function (self, params)
+function RaidGUIPanel:scroll_grid(params)
 	slot6 = params
 	local control = RaidGUIControlScrollGrid.new(slot3, RaidGUIControlScrollGrid, self)
 	slot6 = control
@@ -1153,7 +1153,7 @@ RaidGUIPanel.scroll_grid = function (self, params)
 
 	return control
 end
-RaidGUIPanel.paged_grid_character_customization = function (self, params)
+function RaidGUIPanel:paged_grid_character_customization(params)
 	slot6 = params
 	local control = RaidGUIControlPagedGridCharacterCustomization.new(slot3, RaidGUIControlPagedGridCharacterCustomization, self)
 	slot6 = control
@@ -1162,7 +1162,7 @@ RaidGUIPanel.paged_grid_character_customization = function (self, params)
 
 	return control
 end
-RaidGUIPanel.suggested_cards_grid = function (self, params)
+function RaidGUIPanel:suggested_cards_grid(params)
 	slot6 = params
 	local control = RaidGUIControlSuggestedCards.new(slot3, RaidGUIControlSuggestedCards, self)
 	slot6 = control
@@ -1171,7 +1171,7 @@ RaidGUIPanel.suggested_cards_grid = function (self, params)
 
 	return control
 end
-RaidGUIPanel.suggested_cards_grid_large = function (self, params)
+function RaidGUIPanel:suggested_cards_grid_large(params)
 	slot6 = params
 	local control = RaidGUIControlSuggestedCardsLarge.new(slot3, RaidGUIControlSuggestedCardsLarge, self)
 	slot6 = control
@@ -1180,7 +1180,7 @@ RaidGUIPanel.suggested_cards_grid_large = function (self, params)
 
 	return control
 end
-RaidGUIPanel.input_field = function (self, params)
+function RaidGUIPanel:input_field(params)
 	slot6 = params
 	local control = RaidGUIControlInputField.new(slot3, RaidGUIControlInputField, self)
 	slot6 = control
@@ -1189,7 +1189,7 @@ RaidGUIPanel.input_field = function (self, params)
 
 	return control
 end
-RaidGUIPanel.scrollable_area = function (self, params)
+function RaidGUIPanel:scrollable_area(params)
 	slot6 = params
 	local control = RaidGUIControlScrollableArea.new(slot3, RaidGUIControlScrollableArea, self)
 	slot6 = control
@@ -1198,7 +1198,7 @@ RaidGUIPanel.scrollable_area = function (self, params)
 
 	return control
 end
-RaidGUIPanel.scrollbar = function (self, params)
+function RaidGUIPanel:scrollbar(params)
 	slot6 = params
 	local control = RaidGUIControlScrollbar.new(slot3, RaidGUIControlScrollbar, self)
 	slot6 = control
@@ -1207,7 +1207,7 @@ RaidGUIPanel.scrollbar = function (self, params)
 
 	return control
 end
-RaidGUIPanel.legend = function (self, params)
+function RaidGUIPanel:legend(params)
 	slot6 = params
 	local control = RaidGUIControlLegend.new(slot3, RaidGUIControlLegend, self)
 	slot6 = control
@@ -1216,7 +1216,7 @@ RaidGUIPanel.legend = function (self, params)
 
 	return control
 end
-RaidGUIPanel.create_custom_control = function (self, control_class, params, ...)
+function RaidGUIPanel:create_custom_control(control_class, params, ...)
 	slot7 = params
 	local control = control_class.new(slot4, control_class, self, ...)
 	slot7 = control
@@ -1225,7 +1225,7 @@ RaidGUIPanel.create_custom_control = function (self, control_class, params, ...)
 
 	return control
 end
-RaidGUIPanel._add_control = function (self, control)
+function RaidGUIPanel:_add_control(control)
 	slot4 = control
 	local control_layer = control.layer(slot3)
 	local control_index = #self._controls + 1
@@ -1246,155 +1246,155 @@ RaidGUIPanel._add_control = function (self, control)
 
 	return 
 end
-RaidGUIPanel.w = function (self)
+function RaidGUIPanel:w()
 	slot3 = self._engine_panel
 
 	return self._engine_panel.w(slot2)
 end
-RaidGUIPanel.h = function (self)
+function RaidGUIPanel:h()
 	slot3 = self._engine_panel
 
 	return self._engine_panel.h(slot2)
 end
-RaidGUIPanel.animate = function (self, params)
+function RaidGUIPanel:animate(params)
 	slot5 = params
 
 	self._engine_panel.animate(slot3, self._engine_panel)
 
 	return 
 end
-RaidGUIPanel.stop = function (self)
+function RaidGUIPanel:stop()
 	slot3 = self._engine_panel
 
 	self._engine_panel.stop(slot2)
 
 	return 
 end
-RaidGUIPanel.x = function (self)
+function RaidGUIPanel:x()
 	slot3 = self._engine_panel
 
 	return self._engine_panel.x(slot2)
 end
-RaidGUIPanel.y = function (self)
+function RaidGUIPanel:y()
 	slot3 = self._engine_panel
 
 	return self._engine_panel.y(slot2)
 end
-RaidGUIPanel.world_x = function (self)
+function RaidGUIPanel:world_x()
 	slot3 = self._engine_panel
 
 	return self._engine_panel.world_x(slot2)
 end
-RaidGUIPanel.world_y = function (self)
+function RaidGUIPanel:world_y()
 	slot3 = self._engine_panel
 
 	return self._engine_panel.world_y(slot2)
 end
-RaidGUIPanel.size = function (self)
+function RaidGUIPanel:size()
 	slot3 = self._engine_panel
 
 	return self._engine_panel.size(slot2)
 end
-RaidGUIPanel.set_debug = function (self, flag)
+function RaidGUIPanel:set_debug(flag)
 	slot5 = flag
 
 	return self._engine_panel.set_debug(slot3, self._engine_panel)
 end
-RaidGUIPanel.left = function (self)
+function RaidGUIPanel:left()
 	slot3 = self._engine_panel
 
 	return self._engine_panel.left(slot2)
 end
-RaidGUIPanel.right = function (self)
+function RaidGUIPanel:right()
 	slot3 = self._engine_panel
 
 	return self._engine_panel.right(slot2)
 end
-RaidGUIPanel.top = function (self)
+function RaidGUIPanel:top()
 	slot3 = self._engine_panel
 
 	return self._engine_panel.top(slot2)
 end
-RaidGUIPanel.world_top = function (self)
+function RaidGUIPanel:world_top()
 	slot3 = self._engine_panel
 
 	return self._engine_panel.world_top(slot2)
 end
-RaidGUIPanel.bottom = function (self)
+function RaidGUIPanel:bottom()
 	slot3 = self._engine_panel
 
 	return self._engine_panel.bottom(slot2)
 end
-RaidGUIPanel.world_bottom = function (self)
+function RaidGUIPanel:world_bottom()
 	slot3 = self._engine_panel
 
 	return self._engine_panel.world_bottom(slot2)
 end
-RaidGUIPanel.set_center = function (self, x, y)
+function RaidGUIPanel:set_center(x, y)
 	slot7 = y
 
 	return self._engine_panel.set_center(slot4, self._engine_panel, x)
 end
-RaidGUIPanel.set_center_x = function (self, x)
+function RaidGUIPanel:set_center_x(x)
 	slot5 = x
 
 	return self._engine_panel.set_center_x(slot3, self._engine_panel)
 end
-RaidGUIPanel.set_center_y = function (self, y)
+function RaidGUIPanel:set_center_y(y)
 	slot5 = y
 
 	return self._engine_panel.set_center_y(slot3, self._engine_panel)
 end
-RaidGUIPanel.set_right = function (self, right)
+function RaidGUIPanel:set_right(right)
 	slot5 = right
 
 	return self._engine_panel.set_right(slot3, self._engine_panel)
 end
-RaidGUIPanel.set_left = function (self, left)
+function RaidGUIPanel:set_left(left)
 	slot5 = left
 
 	return self._engine_panel.set_left(slot3, self._engine_panel)
 end
-RaidGUIPanel.set_x = function (self, x)
+function RaidGUIPanel:set_x(x)
 	slot5 = x
 
 	return self._engine_panel.set_x(slot3, self._engine_panel)
 end
-RaidGUIPanel.set_y = function (self, y)
+function RaidGUIPanel:set_y(y)
 	slot5 = y
 
 	return self._engine_panel.set_y(slot3, self._engine_panel)
 end
-RaidGUIPanel.set_size = function (self, w, h)
+function RaidGUIPanel:set_size(w, h)
 	slot7 = h
 
 	self._engine_panel.set_size(slot4, self._engine_panel, w)
 
 	return 
 end
-RaidGUIPanel.set_w = function (self, w)
+function RaidGUIPanel:set_w(w)
 	slot5 = w
 
 	return self._engine_panel.set_w(slot3, self._engine_panel)
 end
-RaidGUIPanel.set_h = function (self, h)
+function RaidGUIPanel:set_h(h)
 	slot5 = h
 
 	return self._engine_panel.set_h(slot3, self._engine_panel)
 end
-RaidGUIPanel.alpha = function (self)
+function RaidGUIPanel:alpha()
 	slot3 = self._engine_panel
 
 	return self._engine_panel.alpha(slot2)
 end
-RaidGUIPanel.set_alpha = function (self, alpha)
+function RaidGUIPanel:set_alpha(alpha)
 	slot5 = alpha
 
 	self._engine_panel.set_alpha(slot3, self._engine_panel)
 
 	return 
 end
-RaidGUIPanel.set_rotation = function (self, angle)
+function RaidGUIPanel:set_rotation(angle)
 	slot6 = self._engine_panel
 
 	for i, element in pairs(self._engine_panel.children(slot5)) do
@@ -1427,7 +1427,7 @@ RaidGUIPanel.set_rotation = function (self, angle)
 
 	return 
 end
-RaidGUIPanel.rotate = function (self, angle)
+function RaidGUIPanel:rotate(angle)
 	local current_rotation = self.rotation(slot3)
 	slot6 = current_rotation + angle
 
@@ -1435,10 +1435,10 @@ RaidGUIPanel.rotate = function (self, angle)
 
 	return 
 end
-RaidGUIPanel.rotation = function (self)
+function RaidGUIPanel:rotation()
 	return self._rotation or 0
 end
-RaidGUIPanel.get_position_after_rotation = function (self, element, angle)
+function RaidGUIPanel:get_position_after_rotation(element, angle)
 	local center_x = self.w(slot4) / 2
 	local center_y = self.h(self) / 2
 	slot7 = element
@@ -1453,7 +1453,7 @@ RaidGUIPanel.get_position_after_rotation = function (self, element, angle)
 
 	return new_x, new_y
 end
-RaidGUIPanel.engine_panel_alive = function (self)
+function RaidGUIPanel:engine_panel_alive()
 	slot3 = self._engine_panel
 
 	if alive(slot2) then
@@ -1462,7 +1462,7 @@ RaidGUIPanel.engine_panel_alive = function (self)
 
 	return false
 end
-RaidGUIPanel.scrollable_area_post_setup = function (self, params)
+function RaidGUIPanel:scrollable_area_post_setup(params)
 	return 
 end
 

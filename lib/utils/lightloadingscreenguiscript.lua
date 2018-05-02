@@ -1,5 +1,5 @@
 LightLoadingScreenGuiScript = LightLoadingScreenGuiScript or class()
-function LightLoadingScreenGuiScript:init(scene_gui, res, progress, base_layer, is_win32)
+LightLoadingScreenGuiScript.init = function (self, scene_gui, res, progress, base_layer, is_win32)
 	self._base_layer = base_layer
 	self._is_win32 = is_win32
 	self._scene_gui = scene_gui
@@ -72,7 +72,7 @@ function LightLoadingScreenGuiScript:init(scene_gui, res, progress, base_layer, 
 
 	return 
 end
-function LightLoadingScreenGuiScript:layout_saferect()
+LightLoadingScreenGuiScript.layout_saferect = function (self)
 	local scaled_size = {
 		x = 0,
 		height = 674,
@@ -93,7 +93,7 @@ function LightLoadingScreenGuiScript:layout_saferect()
 
 	return 
 end
-function LightLoadingScreenGuiScript:get_safe_rect()
+LightLoadingScreenGuiScript.get_safe_rect = function (self)
 	local a = (self._is_win32 and 0.032) or 0.075
 	local b = 1 - a * 2
 
@@ -104,7 +104,7 @@ function LightLoadingScreenGuiScript:get_safe_rect()
 		height = b
 	}
 end
-function LightLoadingScreenGuiScript:get_safe_rect_pixels(res)
+LightLoadingScreenGuiScript.get_safe_rect_pixels = function (self, res)
 	slot4 = self
 	local safe_rect_scale = self.get_safe_rect(slot3)
 	local safe_rect_pixels = {
@@ -116,7 +116,7 @@ function LightLoadingScreenGuiScript:get_safe_rect_pixels(res)
 
 	return safe_rect_pixels
 end
-function LightLoadingScreenGuiScript:setup(res, progress)
+LightLoadingScreenGuiScript.setup = function (self, res, progress)
 	self._gui_tweak_data = {
 		upper_saferect_border = 64,
 		border_pad = 8
@@ -159,7 +159,7 @@ function LightLoadingScreenGuiScript:setup(res, progress)
 
 	return 
 end
-function LightLoadingScreenGuiScript:update(progress, dt)
+LightLoadingScreenGuiScript.update = function (self, progress, dt)
 	if self._init_progress < 100 and progress == -1 then
 		self._fake_progress = self._fake_progress + 20 * dt
 
@@ -172,10 +172,10 @@ function LightLoadingScreenGuiScript:update(progress, dt)
 
 	return 
 end
-function LightLoadingScreenGuiScript:set_text(text)
+LightLoadingScreenGuiScript.set_text = function (self, text)
 	return 
 end
-function LightLoadingScreenGuiScript:destroy()
+LightLoadingScreenGuiScript.destroy = function (self)
 	slot3 = self._ws
 
 	if alive(slot2) then
@@ -193,12 +193,12 @@ function LightLoadingScreenGuiScript:destroy()
 
 	return 
 end
-function LightLoadingScreenGuiScript:visible()
+LightLoadingScreenGuiScript.visible = function (self)
 	slot3 = self._ws
 
 	return self._ws.visible(slot2)
 end
-function LightLoadingScreenGuiScript:set_visible(visible, res)
+LightLoadingScreenGuiScript.set_visible = function (self, visible, res)
 	if res then
 		self._res = res
 		slot6 = res

@@ -46,7 +46,7 @@ CivilianBrain._logics = {
 	travel = CivilianLogicTravel,
 	trade = CivilianLogicTrade
 }
-CivilianBrain.init = function (self, unit)
+function CivilianBrain:init(unit)
 	self._unit = unit
 	slot4 = TimerManager
 	self._timer = TimerManager.game(slot3)
@@ -67,7 +67,7 @@ CivilianBrain.init = function (self, unit)
 
 	return 
 end
-CivilianBrain.update = function (self, unit, t, dt)
+function CivilianBrain:update(unit, t, dt)
 	local logic = self._current_logic
 
 	if logic.update then
@@ -81,7 +81,7 @@ CivilianBrain.update = function (self, unit, t, dt)
 
 	return 
 end
-CivilianBrain._reset_logic_data = function (self)
+function CivilianBrain:_reset_logic_data()
 	CopBrain._reset_logic_data(slot2)
 
 	self._logic_data.enemy_slotmask = nil
@@ -94,12 +94,12 @@ CivilianBrain._reset_logic_data = function (self)
 
 	return 
 end
-CivilianBrain.is_available_for_assignment = function (self, objective)
+function CivilianBrain:is_available_for_assignment(objective)
 	slot5 = objective
 
 	return self._current_logic.is_available_for_assignment(slot3, self._logic_data)
 end
-CivilianBrain.cancel_trade = function (self)
+function CivilianBrain:cancel_trade()
 	if not self._active then
 		return 
 	end
@@ -110,7 +110,7 @@ CivilianBrain.cancel_trade = function (self)
 
 	return 
 end
-CivilianBrain.on_rescue_allowed_state = function (self, state)
+function CivilianBrain:on_rescue_allowed_state(state)
 	if self._current_logic.on_rescue_allowed_state then
 		slot5 = state
 
@@ -119,7 +119,7 @@ CivilianBrain.on_rescue_allowed_state = function (self, state)
 
 	return 
 end
-CivilianBrain.wants_rescue = function (self)
+function CivilianBrain:wants_rescue()
 	if self._current_logic.wants_rescue then
 		slot3 = self._logic_data
 
@@ -128,7 +128,7 @@ CivilianBrain.wants_rescue = function (self)
 
 	return 
 end
-CivilianBrain.on_cool_state_changed = function (self, state)
+function CivilianBrain:on_cool_state_changed(state)
 	if self._logic_data then
 		self._logic_data.cool = state
 	end
@@ -176,7 +176,7 @@ CivilianBrain.on_cool_state_changed = function (self, state)
 
 	return 
 end
-CivilianBrain.on_hostage_move_interaction = function (self, interacting_unit, command)
+function CivilianBrain:on_hostage_move_interaction(interacting_unit, command)
 	if not self._logic_data.is_tied then
 		return 
 	end
@@ -390,7 +390,7 @@ CivilianBrain.on_hostage_move_interaction = function (self, interacting_unit, co
 
 	return true
 end
-CivilianBrain.on_hostage_follow_objective_failed = function (self, unit)
+function CivilianBrain:on_hostage_follow_objective_failed(unit)
 	slot4 = unit
 	slot4 = unit.character_damage(slot3)
 
@@ -408,10 +408,10 @@ CivilianBrain.on_hostage_follow_objective_failed = function (self, unit)
 
 	return 
 end
-CivilianBrain.is_tied = function (self)
+function CivilianBrain:is_tied()
 	return self._logic_data.is_tied
 end
-CivilianBrain.save = function (self, save_data)
+function CivilianBrain:save(save_data)
 	slot5 = save_data
 
 	CivilianBrain.super.save(slot3, self)
@@ -424,7 +424,7 @@ CivilianBrain.save = function (self, save_data)
 
 	return 
 end
-CivilianBrain.set_objective = function (self, new_objective)
+function CivilianBrain:set_objective(new_objective)
 	if new_objective and new_objective.type == "free" then
 		slot4 = self._unit
 

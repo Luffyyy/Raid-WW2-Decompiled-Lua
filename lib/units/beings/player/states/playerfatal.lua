@@ -5,14 +5,14 @@ end
 
 PlayerFatal = slot0
 PlayerFatal._update_movement = PlayerBleedOut._update_movement
-PlayerFatal.init = function (self, unit)
+function PlayerFatal:init(unit)
 	slot5 = unit
 
 	PlayerFatal.super.init(slot3, self)
 
 	return 
 end
-PlayerFatal.enter = function (self, state_data, enter_data)
+function PlayerFatal:enter(state_data, enter_data)
 	PlayerFatal.super.enter(slot4, self, state_data)
 
 	slot5 = self
@@ -117,7 +117,7 @@ PlayerFatal.enter = function (self, state_data, enter_data)
 
 	return 
 end
-PlayerFatal._enter = function (self, enter_data)
+function PlayerFatal:_enter(enter_data)
 	local preset = nil
 	slot5 = managers.groupai
 	slot5 = managers.groupai.state(slot4)
@@ -155,7 +155,7 @@ PlayerFatal._enter = function (self, enter_data)
 
 	return 
 end
-PlayerFatal.exit = function (self, state_data, new_state_name)
+function PlayerFatal:exit(state_data, new_state_name)
 	PlayerFatal.super.exit(slot4, self, state_data)
 
 	slot5 = self
@@ -197,17 +197,17 @@ PlayerFatal.exit = function (self, state_data, new_state_name)
 
 	return exit_data
 end
-PlayerFatal.interaction_blocked = function (self)
+function PlayerFatal:interaction_blocked()
 	return true
 end
-PlayerFatal.update = function (self, t, dt)
+function PlayerFatal:update(t, dt)
 	slot7 = dt
 
 	PlayerFatal.super.update(slot4, self, t)
 
 	return 
 end
-PlayerFatal._update_check_actions = function (self, t, dt)
+function PlayerFatal:_update_check_actions(t, dt)
 	slot7 = dt
 	local input = self._get_input(slot4, self, t)
 	slot8 = input
@@ -225,7 +225,7 @@ PlayerFatal._update_check_actions = function (self, t, dt)
 
 	return 
 end
-PlayerFatal._check_action_interact = function (self, t, input)
+function PlayerFatal:_check_action_interact(t, input)
 	if input.btn_interact_press and (not self._intimidate_t or tweak_data.player.movement_state.interaction_delay < t - self._intimidate_t) then
 		self._intimidate_t = t
 		slot11 = true
@@ -239,7 +239,7 @@ PlayerFatal._check_action_interact = function (self, t, input)
 
 	return 
 end
-PlayerFatal._start_action_dead = function (self, t)
+function PlayerFatal:_start_action_dead(t)
 	slot5 = t
 
 	self._interupt_action_running(slot3, self)
@@ -264,7 +264,7 @@ PlayerFatal._start_action_dead = function (self, t)
 
 	return 
 end
-PlayerFatal._end_action_dead = function (self, t)
+function PlayerFatal:_end_action_dead(t)
 	slot4 = self
 
 	if not self._can_stand(slot3) then
@@ -291,7 +291,7 @@ PlayerFatal._end_action_dead = function (self, t)
 
 	return 
 end
-PlayerFatal.pre_destroy = function (self, unit)
+function PlayerFatal:pre_destroy(unit)
 	slot4 = Network
 
 	if Network.is_server(slot3) then
@@ -302,7 +302,7 @@ PlayerFatal.pre_destroy = function (self, unit)
 
 	return 
 end
-PlayerFatal.destroy = function (self)
+function PlayerFatal:destroy()
 	slot3 = Network
 
 	if Network.is_server(slot2) then

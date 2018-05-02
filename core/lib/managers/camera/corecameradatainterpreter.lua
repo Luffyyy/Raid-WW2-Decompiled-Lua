@@ -15,7 +15,7 @@ local mrotation_slerp = mrotation.slerp
 local mrotation_mul = mrotation.multiply
 local mrotation_set_zero = mrotation.set_zero
 CameraDataInterpreter = CameraDataInterpreter or CoreClass.class()
-CameraDataInterpreter.init = function (self, cud)
+function CameraDataInterpreter:init(cud)
 	if cud then
 		self._position = cud._position
 		self._rotation = cud._rotation
@@ -43,7 +43,7 @@ CameraDataInterpreter.init = function (self, cud)
 
 	return 
 end
-CameraDataInterpreter.reset = function (self)
+function CameraDataInterpreter:reset()
 	slot5 = 0
 	self._position = Vector3(slot2, 0, 0)
 	self._rotation = Rotation()
@@ -58,41 +58,41 @@ CameraDataInterpreter.reset = function (self)
 
 	return 
 end
-CameraDataInterpreter.position = function (self)
+function CameraDataInterpreter:position()
 	return self._position
 end
-CameraDataInterpreter.set_position = function (self, position)
+function CameraDataInterpreter:set_position(position)
 	self._position = position
 
 	return 
 end
-CameraDataInterpreter.rotation = function (self)
+function CameraDataInterpreter:rotation()
 	return self._rotation
 end
-CameraDataInterpreter.set_rotation = function (self, rotation)
+function CameraDataInterpreter:set_rotation(rotation)
 	self._rotation = rotation
 
 	return 
 end
-CameraDataInterpreter.set_pivot_position = function (self, position)
+function CameraDataInterpreter:set_pivot_position(position)
 	self._pivot_position = position
 
 	return 
 end
-CameraDataInterpreter.set_pivot_rotation = function (self, rotation)
+function CameraDataInterpreter:set_pivot_rotation(rotation)
 	self._pivot_rotation = rotation
 
 	return 
 end
-CameraDataInterpreter.fov = function (self)
+function CameraDataInterpreter:fov()
 	return self._fov
 end
-CameraDataInterpreter.set_fov = function (self, fov)
+function CameraDataInterpreter:set_fov(fov)
 	self._fov = fov
 
 	return 
 end
-CameraDataInterpreter.dof = function (self)
+function CameraDataInterpreter:dof()
 	return {
 		amount = self._dof_amount,
 		near_min = self._dof_near_min,
@@ -101,7 +101,7 @@ CameraDataInterpreter.dof = function (self)
 		far_max = self._dof_far_max
 	}
 end
-CameraDataInterpreter.set_dof = function (self, amount, near_min, near_max, far_min, far_max)
+function CameraDataInterpreter:set_dof(amount, near_min, near_max, far_min, far_max)
 	self._dof_amount = amount
 	self._dof_near_min = near_min
 	self._dof_near_max = near_max
@@ -110,7 +110,7 @@ CameraDataInterpreter.set_dof = function (self, amount, near_min, near_max, far_
 
 	return 
 end
-CameraDataInterpreter.transform_with = function (self, cud)
+function CameraDataInterpreter:transform_with(cud)
 	if cud._pivot_position then
 		slot6 = self._rotation
 		self._position = self._position + cud._pivot_position.rotate_with(slot4, cud._pivot_position)
@@ -132,7 +132,7 @@ CameraDataInterpreter.transform_with = function (self, cud)
 
 	return 
 end
-CameraDataInterpreter.interpolate_to_target = function (self, cud_target, fraction)
+function CameraDataInterpreter:interpolate_to_target(cud_target, fraction)
 	local position = self._position
 	slot6 = cud_target._position
 	self._position = mvector3_copy(slot5)

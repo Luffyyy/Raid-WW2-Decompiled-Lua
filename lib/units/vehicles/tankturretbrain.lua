@@ -11,7 +11,7 @@ TankTurretBrain = slot0
 local mvec3_dir = mvector3.direction
 local mvec3_dot = mvector3.dot
 local tmp_vec1 = Vector3()
-TankTurretBrain.init = function (self, unit)
+function TankTurretBrain:init(unit)
 	slot5 = unit
 
 	TankTurretBrain.super.init(slot3, self)
@@ -23,7 +23,7 @@ TankTurretBrain.init = function (self, unit)
 
 	return 
 end
-TankTurretBrain.update = function (self, unit, t, dt)
+function TankTurretBrain:update(unit, t, dt)
 	slot6 = self
 
 	if self.is_locked(slot5) then
@@ -58,7 +58,7 @@ TankTurretBrain.update = function (self, unit, t, dt)
 
 	return 
 end
-TankTurretBrain._lock_on = function (self, attention)
+function TankTurretBrain:_lock_on(attention)
 	self._locked_phase = true
 	local delta_t = self._tweak_data.turret.time_before_taking_shot
 	slot5 = TimerManager
@@ -74,10 +74,10 @@ TankTurretBrain._lock_on = function (self, attention)
 
 	return 
 end
-TankTurretBrain.is_locked = function (self, t)
+function TankTurretBrain:is_locked(t)
 	return not not self._locked_phase
 end
-TankTurretBrain._update_target_locked = function (self, t)
+function TankTurretBrain:_update_target_locked(t)
 	if self._locked_t <= t then
 		slot4 = self
 
@@ -86,7 +86,7 @@ TankTurretBrain._update_target_locked = function (self, t)
 
 	return 
 end
-TankTurretBrain._fire_at_locked_position = function (self)
+function TankTurretBrain:_fire_at_locked_position()
 	self._locked_phase = false
 	slot3 = self._unit
 
@@ -102,7 +102,7 @@ TankTurretBrain._fire_at_locked_position = function (self)
 
 	return 
 end
-TankTurretBrain._upd_fire = function (self, t)
+function TankTurretBrain:_upd_fire(t)
 
 	-- Decompilation error in this vicinity:
 	slot4 = self._unit

@@ -41,7 +41,7 @@ ExperienceGui.STATS_W = 560
 ExperienceGui.STATS_H = 160
 ExperienceGui.STATS_CENTER_Y = 750
 ExperienceGui.SINGLE_STAT_W = 256
-ExperienceGui.init = function (self, ws, fullscreen_ws, node, component_name)
+function ExperienceGui:init(ws, fullscreen_ws, node, component_name)
 	self._closing = false
 	slot11 = component_name
 
@@ -61,10 +61,10 @@ ExperienceGui.init = function (self, ws, fullscreen_ws, node, component_name)
 
 	return 
 end
-ExperienceGui._set_initial_data = function (self)
+function ExperienceGui:_set_initial_data()
 	return 
 end
-ExperienceGui._layout = function (self)
+function ExperienceGui:_layout()
 	slot3 = self
 
 	ExperienceGui.super._layout(slot2)
@@ -111,7 +111,7 @@ ExperienceGui._layout = function (self)
 
 	return 
 end
-ExperienceGui._layout_character_base_info = function (self)
+function ExperienceGui:_layout_character_base_info()
 	local base_info_panel_params = {
 		name = "character_base_info_panel",
 		x = 0,
@@ -220,7 +220,7 @@ ExperienceGui._layout_character_base_info = function (self)
 
 	return 
 end
-ExperienceGui._layout_skilltree = function (self)
+function ExperienceGui:_layout_skilltree()
 	if self._skilltrack_panel then
 		slot3 = self._skilltrack_panel
 
@@ -265,7 +265,7 @@ ExperienceGui._layout_skilltree = function (self)
 
 	return 
 end
-ExperienceGui._layout_respec = function (self)
+function ExperienceGui:_layout_respec()
 	local params_respecs = {
 		name = "respec",
 		x = ExperienceGui.RESPEC_X,
@@ -320,7 +320,7 @@ ExperienceGui._layout_respec = function (self)
 
 	return 
 end
-ExperienceGui._layout_skill_details = function (self)
+function ExperienceGui:_layout_skill_details()
 	local params_skill_details = {
 		name = "skill_details",
 		x = ExperienceGui.SKILL_DETAILS_X,
@@ -331,10 +331,10 @@ ExperienceGui._layout_skill_details = function (self)
 
 	return 
 end
-ExperienceGui._layout_character_overview = function (self)
+function ExperienceGui:_layout_character_overview()
 	return 
 end
-ExperienceGui._layout_buttons = function (self)
+function ExperienceGui:_layout_buttons()
 	local apply_button_params = {
 		name = "apply_button",
 		y = 0,
@@ -385,7 +385,7 @@ ExperienceGui._layout_buttons = function (self)
 
 	return 
 end
-ExperienceGui._layout_stats = function (self)
+function ExperienceGui:_layout_stats()
 	local stats_panel_params = {
 		name = "stats_panel",
 		halign = "center",
@@ -474,7 +474,7 @@ ExperienceGui._layout_stats = function (self)
 
 	return 
 end
-ExperienceGui._calculate_respec_visibility = function (self)
+function ExperienceGui:_calculate_respec_visibility()
 	slot3 = self._cost_label
 	slot6 = managers.gold_economy
 
@@ -566,14 +566,14 @@ ExperienceGui._calculate_respec_visibility = function (self)
 
 	return 
 end
-ExperienceGui.on_skill_activated = function (self, button_data)
+function ExperienceGui:on_skill_activated(button_data)
 	slot5 = button_data
 
 	table.insert(slot3, self._activated_skills)
 
 	return 
 end
-ExperienceGui.on_skill_mouse_over = function (self, button_data)
+function ExperienceGui:on_skill_mouse_over(button_data)
 	if button_data.skill_title then
 		local skill_description, color_changes = self._prepare_skill_description(slot3, self)
 		slot13 = button_data.skill_title
@@ -588,7 +588,7 @@ ExperienceGui.on_skill_mouse_over = function (self, button_data)
 
 	return 
 end
-ExperienceGui._prepare_skill_description = function (self, button_data)
+function ExperienceGui:_prepare_skill_description(button_data)
 	local skill = tweak_data.skilltree.skills[button_data.skill]
 	local upgrade_tweak_data = tweak_data.upgrades.definitions[skill.upgrades[1]]
 
@@ -681,14 +681,14 @@ ExperienceGui._prepare_skill_description = function (self, button_data)
 
 	return description, color_changes
 end
-ExperienceGui._prepare_warcry_upgrade_description = function (self, level, warcry_level_increase)
+function ExperienceGui:_prepare_warcry_upgrade_description(level, warcry_level_increase)
 	local active_warcry = managers.warcry.get_active_warcry(slot4)
 	local target_warcry_level = math.round(managers.warcry) + 1
 	slot8 = target_warcry_level
 
 	return active_warcry.get_level_description(level / 10, active_warcry)
 end
-ExperienceGui._upgrade_level_from_selected_skills = function (self, skill, skill_button_level, skill_button_index)
+function ExperienceGui:_upgrade_level_from_selected_skills(skill, skill_button_level, skill_button_index)
 	slot6 = self._skilltrack_progress_bar
 	local selected_nodes = self._skilltrack_progress_bar.get_selected_nodes(slot5)
 	local selected_num = 0
@@ -704,7 +704,7 @@ ExperienceGui._upgrade_level_from_selected_skills = function (self, skill, skill
 
 	return selected_num
 end
-ExperienceGui._prepare_upgrade_stats_type_raw_value_reduction = function (self, string, current_level, pending, upgrade_tweak_data, macros, color_changes)
+function ExperienceGui:_prepare_upgrade_stats_type_raw_value_reduction(string, current_level, pending, upgrade_tweak_data, macros, color_changes)
 	local upgrade_values = tweak_data.upgrades.values[upgrade_tweak_data.upgrade.category][upgrade_tweak_data.upgrade.upgrade]
 	slot11 = "$REDUCTION;"
 	local starting_index = string.find(slot9, string) - 1
@@ -760,7 +760,7 @@ ExperienceGui._prepare_upgrade_stats_type_raw_value_reduction = function (self, 
 
 	return 
 end
-ExperienceGui._prepare_upgrade_stats_type_raw_value_amount = function (self, string, current_level, pending, upgrade_tweak_data, macros, color_changes)
+function ExperienceGui:_prepare_upgrade_stats_type_raw_value_amount(string, current_level, pending, upgrade_tweak_data, macros, color_changes)
 	local upgrade_values = tweak_data.upgrades.values[upgrade_tweak_data.upgrade.category][upgrade_tweak_data.upgrade.upgrade]
 	slot11 = "$AMOUNT;"
 	local starting_index = string.find(slot9, string) - 1
@@ -816,7 +816,7 @@ ExperienceGui._prepare_upgrade_stats_type_raw_value_amount = function (self, str
 
 	return 
 end
-ExperienceGui._prepare_upgrade_stats_type_temporary_reduction = function (self, string, current_level, pending, upgrade_tweak_data, macros, color_changes)
+function ExperienceGui:_prepare_upgrade_stats_type_temporary_reduction(string, current_level, pending, upgrade_tweak_data, macros, color_changes)
 	local upgrade_values = tweak_data.upgrades.values[upgrade_tweak_data.upgrade.category][upgrade_tweak_data.upgrade.upgrade]
 	slot11 = "$PERCENTAGE;"
 	local starting_index = string.find(slot9, string) - 1
@@ -923,7 +923,7 @@ ExperienceGui._prepare_upgrade_stats_type_temporary_reduction = function (self, 
 
 	return 
 end
-ExperienceGui._prepare_upgrade_stats_type_multiplier = function (self, string, current_level, pending, upgrade_tweak_data, macros, color_changes)
+function ExperienceGui:_prepare_upgrade_stats_type_multiplier(string, current_level, pending, upgrade_tweak_data, macros, color_changes)
 	local upgrade_values = tweak_data.upgrades.values[upgrade_tweak_data.upgrade.category][upgrade_tweak_data.upgrade.upgrade]
 	slot11 = "$PERCENTAGE;"
 	local starting_index = string.find(slot9, string) - 1
@@ -979,7 +979,7 @@ ExperienceGui._prepare_upgrade_stats_type_multiplier = function (self, string, c
 
 	return 
 end
-ExperienceGui._prepare_upgrade_stats_type_multiplier_reductive_string = function (self, string, current_level, pending, upgrade_tweak_data, macros, color_changes)
+function ExperienceGui:_prepare_upgrade_stats_type_multiplier_reductive_string(string, current_level, pending, upgrade_tweak_data, macros, color_changes)
 	local upgrade_values = tweak_data.upgrades.values[upgrade_tweak_data.upgrade.category][upgrade_tweak_data.upgrade.upgrade]
 	slot11 = "$PERCENTAGE;"
 	local starting_index = string.find(slot9, string) - 1
@@ -1036,7 +1036,7 @@ ExperienceGui._prepare_upgrade_stats_type_multiplier_reductive_string = function
 
 	return 
 end
-ExperienceGui._prepare_upgrade_stats_type_reductive_multiplier = function (self, string, current_level, pending, upgrade_tweak_data, macros, color_changes)
+function ExperienceGui:_prepare_upgrade_stats_type_reductive_multiplier(string, current_level, pending, upgrade_tweak_data, macros, color_changes)
 	local upgrade_values = tweak_data.upgrades.values[upgrade_tweak_data.upgrade.category][upgrade_tweak_data.upgrade.upgrade]
 	slot11 = "$PERCENTAGE;"
 	local starting_index = string.find(slot9, string) - 1
@@ -1092,7 +1092,7 @@ ExperienceGui._prepare_upgrade_stats_type_reductive_multiplier = function (self,
 
 	return 
 end
-ExperienceGui._refresh_stats = function (self, additional_hover_pending_skill)
+function ExperienceGui:_refresh_stats(additional_hover_pending_skill)
 	local character_class = managers.skilltree.get_character_profile_class(slot3)
 	slot5 = managers.skilltree
 	local applied_skills = managers.skilltree.get_character_skilltree(managers.skilltree)
@@ -1161,7 +1161,7 @@ ExperienceGui._refresh_stats = function (self, additional_hover_pending_skill)
 
 	return 
 end
-ExperienceGui.on_skilltree_selection_changed = function (self)
+function ExperienceGui:on_skilltree_selection_changed()
 	slot3 = self._skilltrack_progress_bar
 	local selected_nodes = self._skilltrack_progress_bar.get_selected_nodes(slot2)
 	local selected_quantity = 0
@@ -1207,7 +1207,7 @@ ExperienceGui.on_skilltree_selection_changed = function (self)
 
 	return 
 end
-ExperienceGui.on_click_apply_callback = function (self, button_data)
+function ExperienceGui:on_click_apply_callback(button_data)
 	slot4 = self._skilltrack_progress_bar
 	local selection_valid = self._skilltrack_progress_bar.is_selection_valid(slot3)
 
@@ -1229,7 +1229,7 @@ ExperienceGui.on_click_apply_callback = function (self, button_data)
 
 	return 
 end
-ExperienceGui.on_click_respec_callback = function (self, button_data)
+function ExperienceGui:on_click_respec_callback(button_data)
 	local dialog_params = {}
 	slot5 = managers.gold_economy
 	dialog_params.gold = managers.gold_economy.respec_cost_string(slot4)
@@ -1241,7 +1241,7 @@ ExperienceGui.on_click_respec_callback = function (self, button_data)
 
 	return 
 end
-ExperienceGui.on_click_clear_callback = function (self, button_data)
+function ExperienceGui:on_click_clear_callback(button_data)
 	slot4 = self._skilltrack_progress_bar
 
 	self._skilltrack_progress_bar.clear_selection(slot3)
@@ -1252,7 +1252,7 @@ ExperienceGui.on_click_clear_callback = function (self, button_data)
 
 	return 
 end
-ExperienceGui.on_skill_acquisition_confirmed = function (self)
+function ExperienceGui:on_skill_acquisition_confirmed()
 	local selected_skills = self._skilltrack_progress_bar.get_selected_nodes(slot2)
 	slot5 = "skill_confirm"
 
@@ -1300,10 +1300,10 @@ ExperienceGui.on_skill_acquisition_confirmed = function (self)
 
 	return 
 end
-ExperienceGui.on_skill_mouse_out = function (self, button_data)
+function ExperienceGui:on_skill_mouse_out(button_data)
 	return 
 end
-ExperienceGui._get_character_skilltree = function (self)
+function ExperienceGui:_get_character_skilltree()
 	slot3 = managers.skilltree
 	local skill_tree = managers.skilltree.get_character_skilltree(slot2)
 	local tree = {}
@@ -1350,12 +1350,12 @@ ExperienceGui._get_character_skilltree = function (self)
 
 	return tree
 end
-ExperienceGui.data_source_branching_progress_bar = function (self)
+function ExperienceGui:data_source_branching_progress_bar()
 	slot3 = self
 
 	return self._get_character_skilltree(slot2)
 end
-ExperienceGui.close = function (self)
+function ExperienceGui:close()
 	if self._closing then
 		return 
 	end
@@ -1380,7 +1380,7 @@ ExperienceGui.close = function (self)
 
 	return 
 end
-ExperienceGui.bind_controller_inputs_initial_state = function (self)
+function ExperienceGui:bind_controller_inputs_initial_state()
 	slot4 = managers.gold_economy
 	local have_enough_money = managers.gold_economy.respec_cost(managers.gold_economy) <= managers.gold_economy.current(slot2)
 	local respec_binding, respec_legend = nil
@@ -1433,7 +1433,7 @@ ExperienceGui.bind_controller_inputs_initial_state = function (self)
 
 	return 
 end
-ExperienceGui.bind_controller_inputs_apply_state = function (self)
+function ExperienceGui:bind_controller_inputs_apply_state()
 	slot4 = managers.gold_economy
 	local have_enough_money = managers.gold_economy.respec_cost(managers.gold_economy) <= managers.gold_economy.current(slot2)
 	local respec_binding, respec_legend = nil
@@ -1493,28 +1493,28 @@ ExperienceGui.bind_controller_inputs_apply_state = function (self)
 
 	return 
 end
-ExperienceGui._on_move_panel_left = function (self)
+function ExperienceGui:_on_move_panel_left()
 	slot3 = self._skilltrack_progress_bar
 
 	self._skilltrack_progress_bar.shoulder_move_left(slot2)
 
 	return 
 end
-ExperienceGui._on_move_panel_right = function (self)
+function ExperienceGui:_on_move_panel_right()
 	slot3 = self._skilltrack_progress_bar
 
 	self._skilltrack_progress_bar.shoulder_move_right(slot2)
 
 	return 
 end
-ExperienceGui._on_apply_selected_skills = function (self)
+function ExperienceGui:_on_apply_selected_skills()
 	slot3 = self
 
 	self.on_click_apply_callback(slot2)
 
 	return 
 end
-ExperienceGui.do_respec = function (self)
+function ExperienceGui:do_respec()
 	slot3 = managers.skilltree
 
 	managers.skilltree.respec(slot2)

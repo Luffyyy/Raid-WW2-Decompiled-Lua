@@ -10,14 +10,14 @@ if not ElementKillZone then
 end
 
 ElementKillZone = slot0
-ElementKillZone.init = function (self, ...)
+function ElementKillZone:init(...)
 	slot3 = self
 
 	ElementKillZone.super.init(slot2, ...)
 
 	return 
 end
-ElementKillZone.on_executed = function (self, instigator)
+function ElementKillZone:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

@@ -4,7 +4,7 @@ if not SpecialEquipmentPickup then
 end
 
 SpecialEquipmentPickup = slot0
-SpecialEquipmentPickup.init = function (self, unit)
+function SpecialEquipmentPickup:init(unit)
 	slot5 = unit
 
 	SpecialEquipmentPickup.super.init(slot3, self)
@@ -15,7 +15,7 @@ SpecialEquipmentPickup.init = function (self, unit)
 
 	return 
 end
-SpecialEquipmentPickup._pickup = function (self, unit)
+function SpecialEquipmentPickup:_pickup(unit)
 	local equipment = unit.equipment(slot3)
 	slot5 = unit
 	slot5 = unit.character_damage(unit)
@@ -61,7 +61,7 @@ SpecialEquipmentPickup._pickup = function (self, unit)
 
 	return false
 end
-SpecialEquipmentPickup.destroy = function (self, ...)
+function SpecialEquipmentPickup:destroy(...)
 	slot4 = self._unit
 
 	managers.occlusion.add_occlusion(slot2, managers.occlusion)

@@ -11,14 +11,14 @@ if not WorldCameraUnitElement then
 end
 
 WorldCameraUnitElement = slot0
-WorldCameraUnitElement.init = function (self, ...)
+function WorldCameraUnitElement:init(...)
 	slot3 = self
 
 	CoreWorldCameraUnitElement.init(slot2, ...)
 
 	return 
 end
-CoreWorldCameraUnitElement.init = function (self, unit)
+function CoreWorldCameraUnitElement:init(unit)
 	slot5 = unit
 
 	MissionElement.init(slot3, self)
@@ -35,7 +35,7 @@ CoreWorldCameraUnitElement.init = function (self, unit)
 
 	return 
 end
-CoreWorldCameraUnitElement.test_element = function (self)
+function CoreWorldCameraUnitElement:test_element()
 	if self._hed.worldcamera_sequence ~= "none" then
 		slot4 = self._hed.worldcamera_sequence
 
@@ -48,7 +48,7 @@ CoreWorldCameraUnitElement.test_element = function (self)
 
 	return 
 end
-CoreWorldCameraUnitElement.selected = function (self)
+function CoreWorldCameraUnitElement:selected()
 	slot3 = self
 
 	MissionElement.selected(slot2)
@@ -81,7 +81,7 @@ CoreWorldCameraUnitElement.selected = function (self)
 
 	return 
 end
-CoreWorldCameraUnitElement._populate_worldcameras = function (self)
+function CoreWorldCameraUnitElement:_populate_worldcameras()
 	slot3 = self._worldcameras
 
 	self._worldcameras.clear(slot2)
@@ -101,7 +101,7 @@ CoreWorldCameraUnitElement._populate_worldcameras = function (self)
 
 	return 
 end
-CoreWorldCameraUnitElement._populate_sequences = function (self)
+function CoreWorldCameraUnitElement:_populate_sequences()
 	slot3 = self._sequences
 
 	self._sequences.clear(slot2)
@@ -121,7 +121,7 @@ CoreWorldCameraUnitElement._populate_sequences = function (self)
 
 	return 
 end
-CoreWorldCameraUnitElement._sorted_worldcameras = function (self)
+function CoreWorldCameraUnitElement:_sorted_worldcameras()
 	local t = {}
 	slot6 = managers.worldcamera
 
@@ -137,7 +137,7 @@ CoreWorldCameraUnitElement._sorted_worldcameras = function (self)
 
 	return t
 end
-CoreWorldCameraUnitElement._sorted_worldcamera_sequences = function (self)
+function CoreWorldCameraUnitElement:_sorted_worldcamera_sequences()
 	local t = {}
 	slot6 = managers.worldcamera
 
@@ -153,7 +153,7 @@ CoreWorldCameraUnitElement._sorted_worldcamera_sequences = function (self)
 
 	return t
 end
-CoreWorldCameraUnitElement.select_camera_btn = function (self)
+function CoreWorldCameraUnitElement:select_camera_btn()
 	slot4 = "Select camera"
 	slot7 = self
 	local dialog = SelectNameModal.new(slot2, SelectNameModal, self._sorted_worldcameras(slot6))
@@ -174,7 +174,7 @@ CoreWorldCameraUnitElement.select_camera_btn = function (self)
 
 	return 
 end
-CoreWorldCameraUnitElement.select_sequence_btn = function (self)
+function CoreWorldCameraUnitElement:select_sequence_btn()
 	slot4 = "Select sequence"
 	slot7 = self
 	local dialog = SelectNameModal.new(slot2, SelectNameModal, self._sorted_worldcamera_sequences(slot6))
@@ -195,7 +195,7 @@ CoreWorldCameraUnitElement.select_sequence_btn = function (self)
 
 	return 
 end
-CoreWorldCameraUnitElement._build_panel = function (self, panel, panel_sizer)
+function CoreWorldCameraUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

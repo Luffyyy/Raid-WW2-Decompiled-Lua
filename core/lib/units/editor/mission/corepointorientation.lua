@@ -11,21 +11,21 @@ if not PointOrientationUnitElement then
 end
 
 PointOrientationUnitElement = slot0
-PointOrientationUnitElement.init = function (self, ...)
+function PointOrientationUnitElement:init(...)
 	slot3 = self
 
 	PointOrientationUnitElement.super.init(slot2, ...)
 
 	return 
 end
-CorePointOrientationUnitElement.init = function (self, unit)
+function CorePointOrientationUnitElement:init(unit)
 	slot5 = unit
 
 	CorePointOrientationUnitElement.super.init(slot3, self)
 
 	return 
 end
-CorePointOrientationUnitElement.update_selected = function (self, ...)
+function CorePointOrientationUnitElement:update_selected(...)
 	slot3 = self
 
 	CorePointOrientationUnitElement.super.update_selected(slot2, ...)
@@ -36,7 +36,7 @@ CorePointOrientationUnitElement.update_selected = function (self, ...)
 
 	return 
 end
-CorePointOrientationUnitElement.update_unselected = function (self, ...)
+function CorePointOrientationUnitElement:update_unselected(...)
 	slot3 = self
 
 	CorePointOrientationUnitElement.super.update_unselected(slot2, ...)
@@ -47,7 +47,7 @@ CorePointOrientationUnitElement.update_unselected = function (self, ...)
 
 	return 
 end
-CorePointOrientationUnitElement._draw_orientation = function (self)
+function CorePointOrientationUnitElement:_draw_orientation()
 	local len = 25
 	local scale = 0.05
 	slot10 = self._unit

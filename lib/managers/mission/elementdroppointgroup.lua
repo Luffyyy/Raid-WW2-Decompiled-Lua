@@ -8,7 +8,7 @@ if not ElementDropPointGroup then
 end
 
 ElementDropPointGroup = slot0
-ElementDropPointGroup.init = function (self, ...)
+function ElementDropPointGroup:init(...)
 	slot3 = self
 
 	ElementDropPointGroup.super.init(slot2, ...)
@@ -21,21 +21,21 @@ ElementDropPointGroup.init = function (self, ...)
 
 	return 
 end
-ElementDropPointGroup.on_script_activated = function (self)
+function ElementDropPointGroup:on_script_activated()
 	slot4 = self._id
 
 	self._mission_script.add_save_state_cb(slot2, self._mission_script)
 
 	return 
 end
-ElementDropPointGroup.client_on_executed = function (self, ...)
+function ElementDropPointGroup:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementDropPointGroup.get_random_drop_point = function (self)
+function ElementDropPointGroup:get_random_drop_point()
 	local eligible_points = {}
 	slot4 = self._values.on_executed
 
@@ -55,7 +55,7 @@ ElementDropPointGroup.get_random_drop_point = function (self)
 
 	return eligible_points[math.random(slot3)]
 end
-ElementDropPointGroup.on_executed = function (self, instigator)
+function ElementDropPointGroup:on_executed(instigator)
 	return 
 
 	if not self._values.enabled then
@@ -72,7 +72,7 @@ ElementDropPointGroup.on_executed = function (self, instigator)
 
 	return 
 end
-ElementDropPointGroup.operation_remove = function (self)
+function ElementDropPointGroup:operation_remove()
 	return 
 end
 

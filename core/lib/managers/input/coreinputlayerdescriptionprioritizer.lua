@@ -7,19 +7,19 @@ slot3 = "CoreInputLayerDescriptionPrioritizer"
 core.module(slot1, core)
 
 Prioritizer = Prioritizer or class()
-Prioritizer.init = function (self)
+function Prioritizer:init()
 	self._layer_descriptions = {}
 
 	return 
 end
-Prioritizer.add_layer_description = function (self, input_layer_description_description)
+function Prioritizer:add_layer_description(input_layer_description_description)
 
 	-- Decompilation error in this vicinity:
 	self._layer_descriptions[input_layer_description_description] = input_layer_description_description
 
 	return 
 end
-Prioritizer.remove_layer_description = function (self, input_layer_description_description)
+function Prioritizer:remove_layer_description(input_layer_description_description)
 	local needs_to_search = self._layer_description == input_layer_description_description
 	slot5 = self._layer_descriptions[input_layer_description_description] ~= nil
 
@@ -36,7 +36,7 @@ Prioritizer.remove_layer_description = function (self, input_layer_description_d
 
 	return 
 end
-Prioritizer.active_layer_description = function (self)
+function Prioritizer:active_layer_description()
 	return self._layer_description
 end
 

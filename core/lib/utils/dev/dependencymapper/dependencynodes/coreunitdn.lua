@@ -21,14 +21,14 @@ if not UnitDependencyNode then
 end
 
 UnitDependencyNode = slot0
-UnitDependencyNode.init = function (self, name, get_dn_cb, database)
+function UnitDependencyNode:init(name, get_dn_cb, database)
 	slot11 = database
 
 	self.super.init(slot5, self, UNIT, "unit", name, get_dn_cb)
 
 	return 
 end
-UnitDependencyNode._walkxml2dependencies = function (self, xmlnode, deps)
+function UnitDependencyNode:_walkxml2dependencies(xmlnode, deps)
 	slot5 = xmlnode
 	local node_name = xmlnode.name(slot4)
 

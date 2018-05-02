@@ -5,7 +5,7 @@ end
 
 LootBagUnitElement = slot0
 LootBagUnitElement.USES_POINT_ORIENTATION = true
-LootBagUnitElement.init = function (self, unit)
+function LootBagUnitElement:init(unit)
 	slot5 = unit
 
 	MissionElement.init(slot3, self)
@@ -19,7 +19,7 @@ LootBagUnitElement.init = function (self, unit)
 
 	return 
 end
-LootBagUnitElement.save = function (self, list)
+function LootBagUnitElement:save(list)
 	if self._hed.push_multiplier ~= 0 then
 		list.spawn_dir = self._hed.spawn_dir
 		list.push_multiplier = self._hed.push_multiplier
@@ -30,7 +30,7 @@ LootBagUnitElement.save = function (self, list)
 
 	return 
 end
-LootBagUnitElement.test_element = function (self)
+function LootBagUnitElement:test_element()
 	local unit_name = "units/vanilla/pickups/pku_gold_bar_bag/pku_gold_bar_bag"
 	local throw_distance_multiplier = 1
 
@@ -58,7 +58,7 @@ LootBagUnitElement.test_element = function (self)
 
 	return 
 end
-LootBagUnitElement.stop_test_element = function (self)
+function LootBagUnitElement:stop_test_element()
 	slot3 = self._test_units
 
 	for _, unit in ipairs(slot2) do
@@ -75,7 +75,7 @@ LootBagUnitElement.stop_test_element = function (self)
 
 	return 
 end
-LootBagUnitElement.update_selected = function (self, time, rel_time)
+function LootBagUnitElement:update_selected(time, rel_time)
 	slot9 = self._unit
 	slot11 = 0.1
 
@@ -83,7 +83,7 @@ LootBagUnitElement.update_selected = function (self, time, rel_time)
 
 	return 
 end
-LootBagUnitElement.update_editing = function (self, time, rel_time)
+function LootBagUnitElement:update_editing(time, rel_time)
 	slot5 = Input
 	local kb = Input.keyboard(slot4)
 	local speed = 60 * rel_time
@@ -142,7 +142,7 @@ LootBagUnitElement.update_editing = function (self, time, rel_time)
 
 	return 
 end
-LootBagUnitElement._build_panel = function (self, panel, panel_sizer)
+function LootBagUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)
@@ -178,7 +178,7 @@ end
 LootBagTriggerUnitElement = slot0
 LootBagTriggerUnitElement.SAVE_UNIT_POSITION = false
 LootBagTriggerUnitElement.SAVE_UNIT_ROTATION = false
-LootBagTriggerUnitElement.init = function (self, unit)
+function LootBagTriggerUnitElement:init(unit)
 	slot5 = unit
 
 	LootBagTriggerUnitElement.super.init(slot3, self)
@@ -195,7 +195,7 @@ LootBagTriggerUnitElement.init = function (self, unit)
 
 	return 
 end
-LootBagTriggerUnitElement.draw_links = function (self, t, dt, selected_unit, all_units)
+function LootBagTriggerUnitElement:draw_links(t, dt, selected_unit, all_units)
 	slot10 = selected_unit
 
 	LootBagTriggerUnitElement.super.draw_links(slot6, self, t, dt)
@@ -221,10 +221,10 @@ LootBagTriggerUnitElement.draw_links = function (self, t, dt, selected_unit, all
 
 	return 
 end
-LootBagTriggerUnitElement.update_editing = function (self)
+function LootBagTriggerUnitElement:update_editing()
 	return 
 end
-LootBagTriggerUnitElement.add_element = function (self)
+function LootBagTriggerUnitElement:add_element()
 	slot4 = {
 		ray_type = "editor",
 		mask = 10
@@ -252,7 +252,7 @@ LootBagTriggerUnitElement.add_element = function (self)
 
 	return 
 end
-LootBagTriggerUnitElement.remove_links = function (self, unit)
+function LootBagTriggerUnitElement:remove_links(unit)
 	slot4 = self._hed.elements
 
 	for _, id in ipairs(slot3) do
@@ -267,7 +267,7 @@ LootBagTriggerUnitElement.remove_links = function (self, unit)
 
 	return 
 end
-LootBagTriggerUnitElement.add_triggers = function (self, vc)
+function LootBagTriggerUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "add_element"
 
@@ -275,7 +275,7 @@ LootBagTriggerUnitElement.add_triggers = function (self, vc)
 
 	return 
 end
-LootBagTriggerUnitElement._build_panel = function (self, panel, panel_sizer)
+function LootBagTriggerUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

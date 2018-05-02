@@ -11,21 +11,21 @@ slot3 = "CorePlayerSlotStateLocalUserDebugBind"
 core.import(slot1, core)
 
 Init = Init or class()
-Init.init = function (self)
+function Init:init()
 	slot3 = self.player_slot._init
 
 	self.player_slot._init.task_started(slot2)
 
 	return 
 end
-Init.destroy = function (self)
+function Init:destroy()
 	slot3 = self.player_slot._init
 
 	self.player_slot._init.task_completed(slot2)
 
 	return 
 end
-Init.transition = function (self)
+function Init:transition()
 	slot3 = self.player_slot._perform_debug_local_user_binding
 
 	if self.player_slot._perform_debug_local_user_binding.is_requested(slot2) then

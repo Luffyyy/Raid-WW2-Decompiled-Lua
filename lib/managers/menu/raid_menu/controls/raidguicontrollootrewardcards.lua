@@ -15,7 +15,7 @@ RaidGUIControlLootRewardCards.TITLE_PADDING_TOP = -14
 RaidGUIControlLootRewardCards.TITLE_FONT_SIZE = tweak_data.gui.font_sizes.size_76
 RaidGUIControlLootRewardCards.TITLE_COLOR = tweak_data.gui.colors.raid_red
 RaidGUIControlLootRewardCards.CARD_DETAILS_Y = 533
-RaidGUIControlLootRewardCards.init = function (self, parent, params)
+function RaidGUIControlLootRewardCards:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlLootRewardCards.super.init(slot4, self, parent)
@@ -29,7 +29,7 @@ RaidGUIControlLootRewardCards.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlLootRewardCards.layout = function (self)
+function RaidGUIControlLootRewardCards:layout()
 	slot4 = {
 		name = "loot_rewards_cards_panel",
 		x = self._params.x,
@@ -55,7 +55,7 @@ RaidGUIControlLootRewardCards.layout = function (self)
 
 	return 
 end
-RaidGUIControlLootRewardCards._create_items = function (self)
+function RaidGUIControlLootRewardCards:_create_items()
 	local horizontal_spacing = 0
 
 	if 1 < RaidGUIControlLootRewardCards.CARD_COUNT then
@@ -91,7 +91,7 @@ RaidGUIControlLootRewardCards._create_items = function (self)
 
 	return 
 end
-RaidGUIControlLootRewardCards._create_title = function (self)
+function RaidGUIControlLootRewardCards:_create_title()
 	local title_panel_params = {
 		name = "title_panel"
 	}
@@ -155,7 +155,7 @@ RaidGUIControlLootRewardCards._create_title = function (self)
 
 	return 
 end
-RaidGUIControlLootRewardCards._create_card_details = function (self)
+function RaidGUIControlLootRewardCards:_create_card_details()
 	local details_panel_params = {
 		alpha = 0,
 		name = "details_panel",
@@ -220,10 +220,10 @@ RaidGUIControlLootRewardCards._create_card_details = function (self)
 
 	return 
 end
-RaidGUIControlLootRewardCards.get_items = function (self)
+function RaidGUIControlLootRewardCards:get_items()
 	return self._items
 end
-RaidGUIControlLootRewardCards.set_cards = function (self, loot_list)
+function RaidGUIControlLootRewardCards:set_cards(loot_list)
 	self._params.loot_list = loot_list
 	slot4 = self
 
@@ -231,10 +231,10 @@ RaidGUIControlLootRewardCards.set_cards = function (self, loot_list)
 
 	return 
 end
-RaidGUIControlLootRewardCards.mouse_released = function (self, o, button, x, y)
+function RaidGUIControlLootRewardCards:mouse_released(o, button, x, y)
 	return false
 end
-RaidGUIControlLootRewardCards.on_card_click = function (self, item_data, revealed)
+function RaidGUIControlLootRewardCards:on_card_click(item_data, revealed)
 	if not revealed then
 		slot8 = item_data.negative_description
 
@@ -243,7 +243,7 @@ RaidGUIControlLootRewardCards.on_card_click = function (self, item_data, reveale
 
 	return 
 end
-RaidGUIControlLootRewardCards.on_card_hover = function (self, item_data, revealed)
+function RaidGUIControlLootRewardCards:on_card_hover(item_data, revealed)
 	if revealed and item_data.key_name ~= self._shown_card_key then
 		slot8 = item_data.negative_description
 
@@ -252,7 +252,7 @@ RaidGUIControlLootRewardCards.on_card_hover = function (self, item_data, reveale
 
 	return 
 end
-RaidGUIControlLootRewardCards.show_card_details = function (self, key_name, positive_description, negative_description)
+function RaidGUIControlLootRewardCards:show_card_details(key_name, positive_description, negative_description)
 	slot6 = self._pack_title
 
 	self._pack_title.stop(slot5)
@@ -264,7 +264,7 @@ RaidGUIControlLootRewardCards.show_card_details = function (self, key_name, posi
 
 	return 
 end
-RaidGUIControlLootRewardCards._animate_show_card_details = function (self, object, key_name, positive_description, negative_description)
+function RaidGUIControlLootRewardCards:_animate_show_card_details(object, key_name, positive_description, negative_description)
 	local fade_out_duration = 0.2
 	local fade_out_object = nil
 	slot9 = self._pack_title
@@ -397,7 +397,7 @@ RaidGUIControlLootRewardCards._animate_show_card_details = function (self, objec
 
 	return 
 end
-RaidGUIControlLootRewardCards.animate_show = function (self)
+function RaidGUIControlLootRewardCards:animate_show()
 	slot3 = self._object
 
 	self._object.stop(slot2)
@@ -409,7 +409,7 @@ RaidGUIControlLootRewardCards.animate_show = function (self)
 
 	return 
 end
-RaidGUIControlLootRewardCards._animate_show = function (self, panel)
+function RaidGUIControlLootRewardCards:_animate_show(panel)
 	local initial_offset = {}
 	local timings = {}
 

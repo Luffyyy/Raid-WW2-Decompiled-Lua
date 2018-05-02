@@ -27,7 +27,7 @@ slot3 = "CoreDebug"
 core.import(slot1, core)
 
 PointPickerPanel = PointPickerPanel or CoreClass.class()
-PointPickerPanel.init = function (self, parent_frame, title)
+function PointPickerPanel:init(parent_frame, title)
 	slot5 = managers.viewport
 
 	assert(slot4)
@@ -52,7 +52,7 @@ PointPickerPanel.init = function (self, parent_frame, title)
 
 	return 
 end
-PointPickerPanel._create_panel = function (self, parent_frame)
+function PointPickerPanel:_create_panel(parent_frame)
 	slot5 = "HORIZONTAL"
 	local panel_sizer = EWS.BoxSizer(slot3, EWS)
 	slot6 = parent_frame
@@ -106,13 +106,13 @@ PointPickerPanel._create_panel = function (self, parent_frame)
 
 	return 
 end
-PointPickerPanel.panel = function (self)
+function PointPickerPanel:panel()
 	return self.__panel
 end
-PointPickerPanel.get_value = function (self)
+function PointPickerPanel:get_value()
 	return self.__current_position
 end
-PointPickerPanel.set_value = function (self, vector)
+function PointPickerPanel:set_value(vector)
 	self.__current_position = vector
 	slot5 = vector
 
@@ -120,7 +120,7 @@ PointPickerPanel.set_value = function (self, vector)
 
 	return 
 end
-PointPickerPanel.update = function (self, time, delta_time)
+function PointPickerPanel:update(time, delta_time)
 	slot5 = self
 
 	if self._text_ctrl_has_focus(slot4) then
@@ -143,12 +143,12 @@ PointPickerPanel.update = function (self, time, delta_time)
 
 	return 
 end
-PointPickerPanel._text_ctrl_has_focus = function (self)
+function PointPickerPanel:_text_ctrl_has_focus()
 
 	-- Decompilation error in this vicinity:
 	slot3 = EWS
 end
-PointPickerPanel._set_text = function (self, vector)
+function PointPickerPanel:_set_text(vector)
 	slot4 = self.__x_textctrl
 	slot8 = vector.x
 
@@ -166,7 +166,7 @@ PointPickerPanel._set_text = function (self, vector)
 
 	return 
 end
-PointPickerPanel._on_picker_toggle = function (self)
+function PointPickerPanel:_on_picker_toggle()
 	slot3 = self.__picker_button
 
 	if self.__picker_button.get_value(slot2) == false then
@@ -189,7 +189,7 @@ PointPickerPanel._on_picker_toggle = function (self)
 
 	return 
 end
-PointPickerPanel._on_picking = function (self, sender, raycast)
+function PointPickerPanel:_on_picking(sender, raycast)
 	if raycast then
 		slot6 = raycast.position
 
@@ -209,7 +209,7 @@ PointPickerPanel._on_picking = function (self, sender, raycast)
 
 	return 
 end
-PointPickerPanel._on_finished_picking = function (self, sender, raycast)
+function PointPickerPanel:_on_finished_picking(sender, raycast)
 	if raycast then
 		slot6 = false
 

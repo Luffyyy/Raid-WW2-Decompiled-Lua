@@ -36,7 +36,7 @@ if not SessionState then
 end
 
 SessionState = slot0
-SessionState.init = function (self, factory, player_slots, game_state)
+function SessionState:init(factory, player_slots, game_state)
 	self._factory = factory
 	slot7 = self
 	self._session_creator = CorePortableSessionCreator.Creator.new(slot5, CorePortableSessionCreator.Creator)
@@ -58,24 +58,24 @@ SessionState.init = function (self, factory, player_slots, game_state)
 
 	return 
 end
-SessionState.transition = function (self)
+function SessionState:transition()
 	slot3 = self._state
 
 	self._state.transition(slot2)
 
 	return 
 end
-SessionState.player_slots = function (self)
+function SessionState:player_slots()
 	return self._player_slots
 end
-SessionState.join_standard_session = function (self)
+function SessionState:join_standard_session()
 	slot3 = self._join_session_requester
 
 	self._join_session_requester.request(slot2)
 
 	return 
 end
-SessionState.start_session = function (self)
+function SessionState:start_session()
 	slot3 = self._state
 	slot3 = self._state.state(slot2)
 
@@ -83,14 +83,14 @@ SessionState.start_session = function (self)
 
 	return 
 end
-SessionState.quit_session = function (self)
+function SessionState:quit_session()
 	slot3 = self._quit_session_requester
 
 	self._quit_session_requester.request(slot2)
 
 	return 
 end
-SessionState.end_session = function (self)
+function SessionState:end_session()
 	slot3 = self._state
 	slot3 = self._state.state(slot2)
 
@@ -98,7 +98,7 @@ SessionState.end_session = function (self)
 
 	return 
 end
-SessionState.session_info = function (self)
+function SessionState:session_info()
 	return self._session_info
 end
 

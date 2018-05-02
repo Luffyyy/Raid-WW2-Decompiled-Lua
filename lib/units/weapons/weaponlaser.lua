@@ -71,7 +71,7 @@ end
 
 WeaponLaser = slot0
 WeaponLaser.GADGET_TYPE = "laser"
-WeaponLaser.init = function (self, unit)
+function WeaponLaser:init(unit)
 	slot5 = unit
 
 	WeaponLaser.super.init(slot3, self)
@@ -225,7 +225,7 @@ end
 local mvec1 = Vector3()
 local mvec2 = Vector3()
 local mvec_l_dir = Vector3()
-WeaponLaser.update = function (self, unit, t, dt)
+function WeaponLaser:update(unit, t, dt)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-44, warpins: 1 ---
@@ -458,7 +458,7 @@ WeaponLaser.update = function (self, unit, t, dt)
 
 
 end
-WeaponLaser._check_state = function (self)
+function WeaponLaser:_check_state()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-34, warpins: 1 ---
@@ -493,7 +493,7 @@ WeaponLaser._check_state = function (self)
 
 
 end
-WeaponLaser.set_npc = function (self)
+function WeaponLaser:set_npc()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -505,7 +505,7 @@ WeaponLaser.set_npc = function (self)
 
 
 end
-WeaponLaser.destroy = function (self, unit)
+function WeaponLaser:destroy(unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -565,7 +565,7 @@ WeaponLaser.destroy = function (self, unit)
 
 
 end
-WeaponLaser.set_color_by_theme = function (self, type)
+function WeaponLaser:set_color_by_theme(type)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -616,7 +616,7 @@ WeaponLaser.set_color_by_theme = function (self, type)
 
 
 end
-WeaponLaser.theme_type = function (self)
+function WeaponLaser:theme_type()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -626,7 +626,7 @@ WeaponLaser.theme_type = function (self)
 
 
 end
-WeaponLaser.set_color = function (self, color)
+function WeaponLaser:set_color(color)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-34, warpins: 1 ---
@@ -652,7 +652,7 @@ WeaponLaser.set_color = function (self, color)
 
 
 end
-WeaponLaser.set_max_distace = function (self, dis)
+function WeaponLaser:set_max_distace(dis)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -664,7 +664,7 @@ WeaponLaser.set_max_distace = function (self, dis)
 
 
 end
-WeaponLaser.add_ray_ignore_unit = function (self, unit)
+function WeaponLaser:add_ray_ignore_unit(unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---

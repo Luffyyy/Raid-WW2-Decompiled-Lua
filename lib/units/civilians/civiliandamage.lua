@@ -10,7 +10,7 @@ if not CivilianDamage then
 end
 
 CivilianDamage = slot0
-CivilianDamage.init = function (self, unit)
+function CivilianDamage:init(unit)
 	slot5 = unit
 
 	CivilianDamage.super.init(slot3, self)
@@ -19,7 +19,7 @@ CivilianDamage.init = function (self, unit)
 
 	return 
 end
-CivilianDamage.die = function (self, variant)
+function CivilianDamage:die(variant)
 	slot4 = self._unit
 	slot6 = 17
 
@@ -69,7 +69,7 @@ CivilianDamage.die = function (self, variant)
 
 	return 
 end
-CivilianDamage._on_damage_received = function (self, damage_info)
+function CivilianDamage:_on_damage_received(damage_info)
 	slot5 = damage_info
 
 	self._call_listeners(slot3, self)
@@ -116,21 +116,21 @@ CivilianDamage._on_damage_received = function (self, damage_info)
 
 	return 
 end
-CivilianDamage.print = function (self, ...)
+function CivilianDamage:print(...)
 	slot3 = "civ_damage"
 
 	cat_print(slot2, ...)
 
 	return 
 end
-CivilianDamage._unregister_from_enemy_manager = function (self, damage_info)
+function CivilianDamage:_unregister_from_enemy_manager(damage_info)
 	slot6 = damage_info
 
 	managers.enemy.on_civilian_died(slot3, managers.enemy, self._unit)
 
 	return 
 end
-CivilianDamage.damage_bullet = function (self, attack_data)
+function CivilianDamage:damage_bullet(attack_data)
 	slot6 = "civ_harmless_bullets"
 
 	if managers.player.has_category_upgrade(slot3, managers.player, "player") then
@@ -145,7 +145,7 @@ CivilianDamage.damage_bullet = function (self, attack_data)
 
 	return CopDamage.damage_bullet(slot3, self)
 end
-CivilianDamage.damage_explosion = function (self, attack_data)
+function CivilianDamage:damage_explosion(attack_data)
 	if attack_data.variant == "explosion" then
 		attack_data.damage = 10
 	end
@@ -154,7 +154,7 @@ CivilianDamage.damage_explosion = function (self, attack_data)
 
 	return CopDamage.damage_explosion(slot3, self)
 end
-CivilianDamage.damage_fire = function (self, attack_data)
+function CivilianDamage:damage_fire(attack_data)
 	if attack_data.variant == "fire" then
 		attack_data.damage = 10
 	end
@@ -163,7 +163,7 @@ CivilianDamage.damage_fire = function (self, attack_data)
 
 	return CopDamage.damage_fire(slot3, self)
 end
-CivilianDamage.damage_melee = function (self, attack_data)
+function CivilianDamage:damage_melee(attack_data)
 	slot6 = "civ_harmless_melee"
 
 	if managers.player.has_category_upgrade(slot3, managers.player, "player") then
@@ -178,7 +178,7 @@ CivilianDamage.damage_melee = function (self, attack_data)
 
 	return CopDamage.damage_melee(slot3, self)
 end
-CivilianDamage.damage_tase = function (self, attack_data)
+function CivilianDamage:damage_tase(attack_data)
 	slot6 = "civ_harmless_melee"
 
 	if managers.player.has_category_upgrade(slot3, managers.player, "player") then

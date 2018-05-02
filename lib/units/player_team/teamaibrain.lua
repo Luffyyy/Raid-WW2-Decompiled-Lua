@@ -49,7 +49,7 @@ else
 	TeamAIBrain._reload_clbks = {}
 end
 
-TeamAIBrain.init = function (self, unit)
+function TeamAIBrain:init(unit)
 	self._unit = unit
 	slot4 = TimerManager
 	self._timer = TimerManager.game(slot3)
@@ -69,7 +69,7 @@ TeamAIBrain.init = function (self, unit)
 
 	return 
 end
-TeamAIBrain.post_init = function (self)
+function TeamAIBrain:post_init()
 	slot3 = self
 
 	self._reset_logic_data(slot2)
@@ -133,10 +133,10 @@ TeamAIBrain.post_init = function (self)
 
 	return 
 end
-TeamAIBrain.current_logic_name = function (self)
+function TeamAIBrain:current_logic_name()
 	return self._current_logic_name
 end
-TeamAIBrain._reset_logic_data = function (self)
+function TeamAIBrain:_reset_logic_data()
 	TeamAIBrain.super._reset_logic_data(slot2)
 
 	self._logic_data.enemy_slotmask = managers.slot.get_mask(self, managers.slot)
@@ -149,7 +149,7 @@ TeamAIBrain._reset_logic_data = function (self)
 
 	return 
 end
-TeamAIBrain.set_spawn_ai = function (self, spawn_ai)
+function TeamAIBrain:set_spawn_ai(spawn_ai)
 	slot5 = spawn_ai
 
 	TeamAIBrain.super.set_spawn_ai(slot3, self)
@@ -165,14 +165,14 @@ TeamAIBrain.set_spawn_ai = function (self, spawn_ai)
 
 	return 
 end
-TeamAIBrain.clbk_damage = function (self, my_unit, damage_info)
+function TeamAIBrain:clbk_damage(my_unit, damage_info)
 	slot6 = damage_info
 
 	self._current_logic.damage_clbk(slot4, self._logic_data)
 
 	return 
 end
-TeamAIBrain.clbk_death = function (self, my_unit, damage_info)
+function TeamAIBrain:clbk_death(my_unit, damage_info)
 	slot7 = damage_info
 
 	TeamAIBrain.super.clbk_death(slot4, self, my_unit)
@@ -183,12 +183,12 @@ TeamAIBrain.clbk_death = function (self, my_unit, damage_info)
 
 	return 
 end
-TeamAIBrain.on_cop_neutralized = function (self, cop_key)
+function TeamAIBrain:on_cop_neutralized(cop_key)
 	slot5 = cop_key
 
 	return self._current_logic.on_cop_neutralized(slot3, self._logic_data)
 end
-TeamAIBrain.on_long_dis_interacted = function (self, amount, other_unit)
+function TeamAIBrain:on_long_dis_interacted(amount, other_unit)
 	slot5 = self._unit
 
 	if self._unit.anim_data(slot4).forced then
@@ -208,21 +208,21 @@ TeamAIBrain.on_long_dis_interacted = function (self, amount, other_unit)
 
 	return self._current_logic.on_long_dis_interacted(slot4, self._logic_data)
 end
-TeamAIBrain.on_recovered = function (self, reviving_unit)
+function TeamAIBrain:on_recovered(reviving_unit)
 	slot5 = reviving_unit
 
 	self._current_logic.on_recovered(slot3, self._logic_data)
 
 	return 
 end
-TeamAIBrain.clbk_heat = function (self)
+function TeamAIBrain:clbk_heat()
 	slot3 = self._logic_data
 
 	self._current_logic.clbk_heat(slot2)
 
 	return 
 end
-TeamAIBrain.pre_destroy = function (self, unit)
+function TeamAIBrain:pre_destroy(unit)
 	slot5 = unit
 
 	TeamAIBrain.super.pre_destroy(slot3, self)
@@ -235,7 +235,7 @@ TeamAIBrain.pre_destroy = function (self, unit)
 
 	return 
 end
-TeamAIBrain.set_active = function (self, state)
+function TeamAIBrain:set_active(state)
 	slot5 = state
 
 	TeamAIBrain.super.set_active(slot3, self)
@@ -253,7 +253,7 @@ TeamAIBrain.set_active = function (self, state)
 
 	return 
 end
-TeamAIBrain._setup_attention_handler = function (self)
+function TeamAIBrain:_setup_attention_handler()
 	slot3 = self
 
 	TeamAIBrain.super._setup_attention_handler(slot2)
@@ -266,7 +266,7 @@ TeamAIBrain._setup_attention_handler = function (self)
 
 	return 
 end
-TeamAIBrain.on_cool_state_changed = function (self, state)
+function TeamAIBrain:on_cool_state_changed(state)
 	if self._logic_data then
 		self._logic_data.cool = state
 	end
@@ -293,10 +293,10 @@ TeamAIBrain.on_cool_state_changed = function (self, state)
 
 	return 
 end
-TeamAIBrain.clbk_attention_notice_sneak = function (self, observer_unit, status)
+function TeamAIBrain:clbk_attention_notice_sneak(observer_unit, status)
 	return 
 end
-TeamAIBrain._chk_enable_bodybag_interaction = function (self)
+function TeamAIBrain:_chk_enable_bodybag_interaction()
 	slot3 = self._unit
 	slot4 = "dead"
 

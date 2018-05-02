@@ -5,7 +5,7 @@
 CopActionTase = CopActionTase or class()
 local temp_vec1 = Vector3()
 local temp_vec2 = Vector3()
-CopActionTase.init = function (self, action_desc, common_data)
+function CopActionTase:init(action_desc, common_data)
 	self._common_data = common_data
 	self._unit = common_data.unit
 	self._ext_movement = common_data.ext_movement
@@ -52,10 +52,10 @@ CopActionTase.init = function (self, action_desc, common_data)
 
 	return true
 end
-CopActionTase.expired = function (self)
+function CopActionTase:expired()
 	return self._expired
 end
-CopActionTase.on_attention = function (self, attention)
+function CopActionTase:on_attention(attention)
 
 	-- Decompilation error in this vicinity:
 	if self._expired then
@@ -193,13 +193,13 @@ CopActionTase.on_attention = function (self, attention)
 
 	return 
 end
-CopActionTase.save = function (self, save_data)
+function CopActionTase:save(save_data)
 	save_data.type = "tase"
 	save_data.body_part = self._body_part
 
 	return 
 end
-CopActionTase.on_exit = function (self)
+function CopActionTase:on_exit()
 	if self._tase_effect then
 		slot3 = World
 		slot4 = self._tase_effect
@@ -274,7 +274,7 @@ CopActionTase.on_exit = function (self)
 
 	return 
 end
-CopActionTase.on_destroy = function (self)
+function CopActionTase:on_destroy()
 	if self._tase_effect then
 		slot3 = World
 		slot4 = self._tase_effect
@@ -292,7 +292,7 @@ CopActionTase.on_destroy = function (self)
 
 	return 
 end
-CopActionTase.update = function (self, t)
+function CopActionTase:update(t)
 	if self._expired then
 		return 
 	end
@@ -436,26 +436,26 @@ CopActionTase.update = function (self, t)
 
 	return 
 end
-CopActionTase.type = function (self)
+function CopActionTase:type()
 	return "tase"
 end
-CopActionTase.fire_taser = function (self)
+function CopActionTase:fire_taser()
 	self._shoot_t = 0
 
 	return 
 end
-CopActionTase.chk_block = function (self, action_type, t)
+function CopActionTase:chk_block(action_type, t)
 	slot7 = t
 
 	return CopActionAct.chk_block(slot4, self, action_type)
 end
-CopActionTase._upd_empty = function (self, t)
+function CopActionTase:_upd_empty(t)
 	return 
 end
-CopActionTase.need_upd = function (self)
+function CopActionTase:need_upd()
 	return true
 end
-CopActionTase.get_husk_interrupt_desc = function (self)
+function CopActionTase:get_husk_interrupt_desc()
 	local action_desc = {
 		block_type = "action",
 		body_part = 3,
@@ -464,7 +464,7 @@ CopActionTase.get_husk_interrupt_desc = function (self)
 
 	return action_desc
 end
-CopActionTase.clbk_malfunction = function (self)
+function CopActionTase:clbk_malfunction()
 	self._malfunction_clbk_id = nil
 
 	if self._expired then

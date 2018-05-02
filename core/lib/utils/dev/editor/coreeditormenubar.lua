@@ -54,7 +54,7 @@ slot3 = "CoreEngineAccess"
 
 core.import(slot1, core)
 
-CoreEditor.build_menubar = function (self)
+function CoreEditor:build_menubar()
 	local menu_bar = EWS.MenuBar(slot2)
 	self._menu_bar = menu_bar
 	slot5 = ""
@@ -1282,7 +1282,7 @@ CoreEditor.build_menubar = function (self)
 
 	return 
 end
-CoreEditor.confirm_on_new = function (self)
+function CoreEditor:confirm_on_new()
 	if Global.running_simulation then
 		slot7 = "YES_NO,CANCEL,ICON_QUESTION"
 		slot12 = 0
@@ -1313,7 +1313,7 @@ CoreEditor.confirm_on_new = function (self)
 
 	return 
 end
-CoreEditor.on_new = function (self)
+function CoreEditor:on_new()
 	slot3 = self
 
 	if self.confirm_on_new(slot2) then
@@ -1339,7 +1339,7 @@ CoreEditor.on_new = function (self)
 
 	return 
 end
-CoreEditor.on_open = function (self)
+function CoreEditor:on_open()
 	slot3 = self
 
 	if self.confirm_on_new(slot2) then
@@ -1371,7 +1371,7 @@ CoreEditor.on_open = function (self)
 
 	return 
 end
-CoreEditor.on_save = function (self)
+function CoreEditor:on_save()
 	if Global.running_simulation then
 		slot4 = "Won't save during simulation."
 
@@ -1402,7 +1402,7 @@ CoreEditor.on_save = function (self)
 
 	return 
 end
-CoreEditor.create_temp_saves = function (self, type)
+function CoreEditor:create_temp_saves(type)
 	slot7 = managers.database
 	slot6 = ""
 	local a = string.gsub(slot3, managers.editor._lastdir, managers.database.base_path(slot6))
@@ -1440,7 +1440,7 @@ CoreEditor.create_temp_saves = function (self, type)
 
 	return d
 end
-CoreEditor.on_saveas = function (self)
+function CoreEditor:on_saveas()
 	if Global.running_simulation then
 		slot4 = "Won't save during simulation."
 
@@ -1466,7 +1466,7 @@ CoreEditor.on_saveas = function (self)
 
 	return 
 end
-CoreEditor.on_saveascopy = function (self)
+function CoreEditor:on_saveascopy()
 	if Global.running_simulation then
 		slot4 = "Won't save during simulation."
 
@@ -1488,7 +1488,7 @@ CoreEditor.on_saveascopy = function (self)
 
 	return 
 end
-CoreEditor.on_load_recent_file = function (self, index)
+function CoreEditor:on_load_recent_file(index)
 	if not self._recent_files[index] then
 		slot5 = "No recent files to load."
 
@@ -1507,7 +1507,7 @@ CoreEditor.on_load_recent_file = function (self, index)
 
 	return 
 end
-CoreEditor.on_close = function (self, custom_data, event_object)
+function CoreEditor:on_close(custom_data, event_object)
 	slot5 = self
 
 	if self.confirm_on_new(slot4) then
@@ -1525,7 +1525,7 @@ CoreEditor.on_close = function (self, custom_data, event_object)
 
 	return 
 end
-CoreEditor.on_enable_all_layers = function (self)
+function CoreEditor:on_enable_all_layers()
 	slot5 = self
 
 	for name, layer in pairs(self.layers(slot4)) do
@@ -1540,7 +1540,7 @@ CoreEditor.on_enable_all_layers = function (self)
 
 	return 
 end
-CoreEditor.on_disable_layers = function (self)
+function CoreEditor:on_disable_layers()
 	slot5 = self
 
 	for name, layer in pairs(self.layers(slot4)) do
@@ -1560,7 +1560,7 @@ CoreEditor.on_disable_layers = function (self)
 
 	return 
 end
-CoreEditor.on_disable_layer = function (self, data)
+function CoreEditor:on_disable_layer(data)
 	slot5 = data.name
 	slot8 = data.id
 	slot5 = not self._disable_layer_menu.is_checked(slot6, self._disable_layer_menu)
@@ -1574,7 +1574,7 @@ CoreEditor.on_disable_layer = function (self, data)
 
 	return 
 end
-CoreEditor.on_hide_layer = function (self, data)
+function CoreEditor:on_hide_layer(data)
 	slot5 = data.name
 	slot4 = self.layer(slot3, self)
 
@@ -1582,7 +1582,7 @@ CoreEditor.on_hide_layer = function (self, data)
 
 	return 
 end
-CoreEditor.on_unhide_layer = function (self, data)
+function CoreEditor:on_unhide_layer(data)
 	slot5 = data.name
 	slot4 = self.layer(slot3, self)
 
@@ -1590,21 +1590,21 @@ CoreEditor.on_unhide_layer = function (self, data)
 
 	return 
 end
-CoreEditor.on_change_layer = function (self, index)
+function CoreEditor:on_change_layer(index)
 	slot5 = index
 
 	self._notebook.set_page(slot3, self._notebook)
 
 	return 
 end
-CoreEditor.on_select_group_by_name = function (self)
+function CoreEditor:on_select_group_by_name()
 	slot5 = "SelectGroupByName"
 
 	self.show_dialog(slot2, self, "select_group_by_name")
 
 	return 
 end
-CoreEditor.group = function (self)
+function CoreEditor:group()
 	slot5 = self._current_layer
 
 	if alive(self._current_layer.selected_unit(slot4)) then
@@ -1624,7 +1624,7 @@ CoreEditor.group = function (self)
 
 	return 
 end
-CoreEditor.ungroup = function (self)
+function CoreEditor:ungroup()
 	slot5 = self._current_layer
 
 	if alive(self._current_layer.selected_unit(slot4)) then
@@ -1643,7 +1643,7 @@ CoreEditor.ungroup = function (self)
 
 	return 
 end
-CoreEditor.save_group = function (self)
+function CoreEditor:save_group()
 	slot5 = self._current_layer
 
 	if alive(self._current_layer.selected_unit(slot4)) then
@@ -1661,14 +1661,14 @@ CoreEditor.save_group = function (self)
 
 	return 
 end
-CoreEditor.load_group = function (self)
+function CoreEditor:load_group()
 	slot3 = self._groups
 
 	self._groups.load_group(slot2)
 
 	return 
 end
-CoreEditor.show_group_presets = function (self)
+function CoreEditor:show_group_presets()
 	slot4 = self._group_presets_path
 
 	if not SystemFS.exists(slot2, SystemFS) then
@@ -1685,7 +1685,7 @@ CoreEditor.show_group_presets = function (self)
 
 	return 
 end
-CoreEditor.dump_group = function (self)
+function CoreEditor:dump_group()
 	slot5 = self._current_layer
 
 	if alive(self._current_layer.selected_unit(slot4)) then
@@ -1704,28 +1704,28 @@ CoreEditor.dump_group = function (self)
 
 	return 
 end
-CoreEditor.on_difficulty = function (self, difficulty)
+function CoreEditor:on_difficulty(difficulty)
 	self._mission_difficulty = difficulty
 
 	return 
 end
-CoreEditor.on_players = function (self, player)
+function CoreEditor:on_players(player)
 	self._mission_player = player
 
 	return 
 end
-CoreEditor.mission_player = function (self)
+function CoreEditor:mission_player()
 	return self._mission_player
 end
-CoreEditor.on_platform = function (self, platform)
+function CoreEditor:on_platform(platform)
 	self._mission_platform = platform
 
 	return 
 end
-CoreEditor.mission_platform = function (self)
+function CoreEditor:mission_platform()
 	return self._mission_platform
 end
-CoreEditor.toggle_info = function (self, data)
+function CoreEditor:toggle_info(data)
 	if data[2] == "INFO OUTPUT" then
 		slot4 = self._outputctrl
 		slot8 = data[2]
@@ -1744,14 +1744,14 @@ CoreEditor.toggle_info = function (self, data)
 
 	return 
 end
-CoreEditor.show_news = function (self)
+function CoreEditor:show_news()
 	slot4 = true
 
 	self._world_editor_news.set_visible(slot2, self._world_editor_news)
 
 	return 
 end
-CoreEditor.change_visualization = function (self, viz)
+function CoreEditor:change_visualization(viz)
 	slot6 = managers.viewport
 
 	for _, vp in ipairs(managers.viewport.viewports(slot5)) do
@@ -1762,7 +1762,7 @@ CoreEditor.change_visualization = function (self, viz)
 
 	return 
 end
-CoreEditor.on_post_processor_effect = function (self, effect)
+function CoreEditor:on_post_processor_effect(effect)
 
 	-- Decompilation error in this vicinity:
 	slot5 = "empty"
@@ -1818,7 +1818,7 @@ CoreEditor.on_post_processor_effect = function (self, effect)
 
 	return 
 end
-CoreEditor.toggle_lock_1280_720 = function (self, data)
+function CoreEditor:toggle_lock_1280_720(data)
 	slot5 = data[2]
 
 	if data[1].is_checked(slot3, data[1]) then
@@ -1834,7 +1834,7 @@ CoreEditor.toggle_lock_1280_720 = function (self, data)
 
 	return 
 end
-CoreEditor.toggle_orthographic = function (self, data)
+function CoreEditor:toggle_orthographic(data)
 	slot5 = data[2]
 	self._orthographic = data[1].is_checked(slot3, data[1])
 	slot5 = self._orthographic
@@ -1843,7 +1843,7 @@ CoreEditor.toggle_orthographic = function (self, data)
 
 	return 
 end
-CoreEditor.toggle_light = function (self, data)
+function CoreEditor:toggle_light(data)
 	slot4 = self._light
 	slot8 = data[2]
 
@@ -1851,13 +1851,13 @@ CoreEditor.toggle_light = function (self, data)
 
 	return 
 end
-CoreEditor.toggle_show_center = function (self, data)
+function CoreEditor:toggle_show_center(data)
 	slot5 = data[2]
 	self._show_center = data[1].is_checked(slot3, data[1])
 
 	return 
 end
-CoreEditor.toggle_show_camera_info = function (self, data)
+function CoreEditor:toggle_show_camera_info(data)
 	slot5 = data[2]
 	self._show_camera_position = data[1].is_checked(slot3, data[1])
 	slot5 = self._show_camera_position
@@ -1866,27 +1866,27 @@ CoreEditor.toggle_show_camera_info = function (self, data)
 
 	return 
 end
-CoreEditor.toggle_draw_marker_ball = function (self, data)
+function CoreEditor:toggle_draw_marker_ball(data)
 	slot5 = data[2]
 	self._layer_draw_marker = data[1].is_checked(slot3, data[1])
 
 	return 
 end
-CoreEditor.on_configuration = function (self)
+function CoreEditor:on_configuration()
 	slot3 = self._configuration
 
 	self._configuration.show_modal(slot2)
 
 	return 
 end
-CoreEditor.on_controller_bindings = function (self)
+function CoreEditor:on_controller_bindings()
 	slot5 = "EditControllerBindings"
 
 	self.show_dialog(slot2, self, "edit_controller_bindings")
 
 	return 
 end
-CoreEditor.on_expert_mode = function (self, data)
+function CoreEditor:on_expert_mode(data)
 	slot5 = data[2]
 	local expert = data[1].is_checked(slot3, data[1])
 	slot6 = not expert
@@ -1903,7 +1903,7 @@ CoreEditor.on_expert_mode = function (self, data)
 
 	return 
 end
-CoreEditor.on_reload_unit = function (self, quick)
+function CoreEditor:on_reload_unit(quick)
 	local names = {}
 
 	if self._current_layer then
@@ -1931,7 +1931,7 @@ CoreEditor.on_reload_unit = function (self, quick)
 
 	return 
 end
-CoreEditor.on_profiler_main = function (self, custom_data, event_object)
+function CoreEditor:on_profiler_main(custom_data, event_object)
 	slot9 = event_object
 	slot7 = not event_object.is_checked(slot8)
 
@@ -1943,7 +1943,7 @@ CoreEditor.on_profiler_main = function (self, custom_data, event_object)
 
 	return 
 end
-CoreEditor.on_profiler_mem = function (self, custom_data, event_object)
+function CoreEditor:on_profiler_mem(custom_data, event_object)
 	slot9 = event_object
 	slot7 = not event_object.is_checked(slot8)
 
@@ -1955,7 +1955,7 @@ CoreEditor.on_profiler_mem = function (self, custom_data, event_object)
 
 	return 
 end
-CoreEditor.on_profiler_d3d = function (self, custom_data, event_object)
+function CoreEditor:on_profiler_d3d(custom_data, event_object)
 	slot9 = event_object
 	slot7 = not event_object.is_checked(slot8)
 
@@ -1967,7 +1967,7 @@ CoreEditor.on_profiler_d3d = function (self, custom_data, event_object)
 
 	return 
 end
-CoreEditor.on_profiler_unit_profiler = function (self, custom_data, event_object)
+function CoreEditor:on_profiler_unit_profiler(custom_data, event_object)
 	slot9 = event_object
 	slot7 = not event_object.is_checked(slot8)
 
@@ -1979,7 +1979,7 @@ CoreEditor.on_profiler_unit_profiler = function (self, custom_data, event_object
 
 	return 
 end
-CoreEditor.on_add_workview = function (self)
+function CoreEditor:on_add_workview()
 	slot12 = 0
 	slot9 = true
 	local name = EWS.get_text_from_user(slot2, EWS, Global.frame_panel, "Enter name for new work view:", "Add work view", "", Vector3(slot9, -1, -1))
@@ -2001,14 +2001,14 @@ CoreEditor.on_add_workview = function (self)
 
 	return 
 end
-CoreEditor.on_show_workview = function (self)
+function CoreEditor:on_show_workview()
 	slot5 = "SelectWorkView"
 
 	self.show_dialog(slot2, self, "workview_by_name")
 
 	return 
 end
-CoreEditor.on_check_duality = function (self)
+function CoreEditor:on_check_duality()
 	local units = {}
 	local collisions = {
 		only_positions = {},
@@ -2095,7 +2095,7 @@ CoreEditor.on_check_duality = function (self)
 
 	return 
 end
-CoreEditor.on_make_screenshot = function (self)
+function CoreEditor:on_make_screenshot()
 	slot4 = "%Y-%m-%d_%H.%M.%S"
 	local name = Application.date(slot2, Application) .. ".tga"
 	slot5 = name
@@ -2108,7 +2108,7 @@ CoreEditor.on_make_screenshot = function (self)
 
 	return 
 end
-CoreEditor.toggle_draw_occluders = function (self, data)
+function CoreEditor:toggle_draw_occluders(data)
 	slot5 = data[2]
 	self._draw_occluders = data[1].is_checked(slot3, data[1])
 
@@ -2121,7 +2121,7 @@ local leveltools_ids = Idstring(function (self, data)
 
 	return 
 end)
-CoreEditor.on_hide_helper_units = function (self, data)
+function CoreEditor:on_hide_helper_units(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -2244,7 +2244,7 @@ CoreEditor.on_hide_helper_units = function (self, data)
 
 
 end
-CoreEditor.toggle_render_effects = function (self, data)
+function CoreEditor:toggle_render_effects(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -2260,7 +2260,7 @@ CoreEditor.toggle_render_effects = function (self, data)
 
 
 end
-CoreEditor.toggle_show_markers = function (self, data)
+function CoreEditor:toggle_show_markers(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -2279,7 +2279,7 @@ CoreEditor.toggle_show_markers = function (self, data)
 
 
 end
-CoreEditor.on_using_the_editor = function (self)
+function CoreEditor:on_using_the_editor()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -2293,7 +2293,7 @@ CoreEditor.on_using_the_editor = function (self)
 
 
 end
-CoreEditor.on_help = function (self)
+function CoreEditor:on_help()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -2307,7 +2307,7 @@ CoreEditor.on_help = function (self)
 
 
 end
-CoreEditor.on_about = function (self)
+function CoreEditor:on_about()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-15, warpins: 1 ---

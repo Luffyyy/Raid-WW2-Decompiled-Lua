@@ -6,7 +6,7 @@ end
 PlayerFoxhole = slot0
 PlayerFoxhole.EXIT_TIMER = 0.4
 PlayerFoxhole._update_movement = PlayerBleedOut._update_movement
-PlayerFoxhole.enter = function (self, state_data, enter_data)
+function PlayerFoxhole:enter(state_data, enter_data)
 	slot7 = enter_data
 
 	PlayerFoxhole.super.enter(slot4, self, state_data)
@@ -49,7 +49,7 @@ PlayerFoxhole.enter = function (self, state_data, enter_data)
 
 	return 
 end
-PlayerFoxhole.exit = function (self, state_data, new_state_name)
+function PlayerFoxhole:exit(state_data, new_state_name)
 	slot7 = new_state_name
 
 	PlayerFoxhole.super.exit(slot4, self, state_data)
@@ -90,7 +90,7 @@ PlayerFoxhole.exit = function (self, state_data, new_state_name)
 
 	return 
 end
-PlayerFoxhole._update_check_actions = function (self, t, dt)
+function PlayerFoxhole:_update_check_actions(t, dt)
 	slot7 = dt
 	local input = self._get_input(slot4, self, t)
 	slot8 = input
@@ -111,7 +111,7 @@ PlayerFoxhole._update_check_actions = function (self, t, dt)
 
 	return 
 end
-PlayerFoxhole._check_action_exit_foxhole = function (self, t, input)
+function PlayerFoxhole:_check_action_exit_foxhole(t, input)
 	if input.btn_interact_press then
 		slot5 = self._ext_movement
 		slot5 = self._ext_movement.foxhole_unit(slot4)
@@ -132,7 +132,7 @@ PlayerFoxhole._check_action_exit_foxhole = function (self, t, input)
 
 	return 
 end
-PlayerFoxhole._start_interaction_exit_foxhole = function (self, t)
+function PlayerFoxhole:_start_interaction_exit_foxhole(t)
 	slot4 = self._ext_movement
 	slot4 = self._ext_movement.foxhole_unit(slot3)
 	slot4 = self._ext_movement.foxhole_unit(slot3).foxhole(slot3)
@@ -151,12 +151,12 @@ PlayerFoxhole._start_interaction_exit_foxhole = function (self, t)
 
 	return 
 end
-PlayerFoxhole._interacting = function (self)
+function PlayerFoxhole:_interacting()
 	slot3 = self
 
 	return PlayerFoxhole.super._interacting(slot2) or self._exit_foxhole_expire_t
 end
-PlayerFoxhole._interupt_action_exit_foxhole = function (self, t, input, complete)
+function PlayerFoxhole:_interupt_action_exit_foxhole(t, input, complete)
 	if self._exit_foxhole_expire_t then
 		self._exit_foxhole_expire_t = nil
 		slot7 = complete
@@ -166,7 +166,7 @@ PlayerFoxhole._interupt_action_exit_foxhole = function (self, t, input, complete
 
 	return 
 end
-PlayerFoxhole._update_action_timers = function (self, t, input)
+function PlayerFoxhole:_update_action_timers(t, input)
 	if self._exit_foxhole_expire_t then
 		local timer = PlayerFoxhole.EXIT_TIMER
 		slot8 = timer
@@ -184,7 +184,7 @@ PlayerFoxhole._update_action_timers = function (self, t, input)
 
 	return 
 end
-PlayerFoxhole._end_action_exit_foxhole = function (self)
+function PlayerFoxhole:_end_action_exit_foxhole()
 	slot4 = true
 
 	managers.hud.hide_progress_timer_bar(slot2, managers.hud)

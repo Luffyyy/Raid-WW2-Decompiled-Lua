@@ -20,7 +20,7 @@ ElementSoundSwitch.SWITCH_VALUES = {
 		type = "ambience"
 	}
 }
-ElementSoundSwitch.init = function (self, ...)
+function ElementSoundSwitch:init(...)
 	self._has_executed = false
 	slot3 = self
 
@@ -28,19 +28,19 @@ ElementSoundSwitch.init = function (self, ...)
 
 	return 
 end
-ElementSoundSwitch.stop_simulation = function (self, ...)
+function ElementSoundSwitch:stop_simulation(...)
 	slot3 = self
 
 	ElementSoundSwitch.super.destroy(slot2, ...)
 
 	return 
 end
-ElementSoundSwitch.save = function (self, data)
+function ElementSoundSwitch:save(data)
 	data.has_executed = self._has_executed
 
 	return 
 end
-ElementSoundSwitch.load = function (self, data)
+function ElementSoundSwitch:load(data)
 	self._has_executed = data.has_executed
 
 	if self._has_executed == true then
@@ -51,14 +51,14 @@ ElementSoundSwitch.load = function (self, data)
 
 	return 
 end
-ElementSoundSwitch.client_on_executed = function (self, ...)
+function ElementSoundSwitch:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementSoundSwitch.on_executed = function (self, instigator)
+function ElementSoundSwitch:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -74,7 +74,7 @@ ElementSoundSwitch.on_executed = function (self, instigator)
 
 	return 
 end
-ElementSoundSwitch._apply_switch = function (self)
+function ElementSoundSwitch:_apply_switch()
 	local switch = ElementSoundSwitch.SWITCH_VALUES[self._values.switch]
 
 	if not switch then

@@ -30,7 +30,7 @@ RaidGUIControlRewardCardPack.ITEM_TYPE_Y = 224
 RaidGUIControlRewardCardPack.ITEM_TYPE_H = 64
 RaidGUIControlRewardCardPack.ITEM_TYPE_FONT_SIZE = tweak_data.gui.font_sizes.size_38
 RaidGUIControlRewardCardPack.ITEM_TYPE_COLOR = tweak_data.gui.colors.raid_white
-RaidGUIControlRewardCardPack.init = function (self, parent, params)
+function RaidGUIControlRewardCardPack:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlRewardCardPack.super.init(slot4, self, parent)
@@ -61,7 +61,7 @@ RaidGUIControlRewardCardPack.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlRewardCardPack._create_panel = function (self)
+function RaidGUIControlRewardCardPack:_create_panel()
 	local panel_params = {
 		visible = false,
 		name = "local_player_card_pack_reward_panel",
@@ -77,7 +77,7 @@ RaidGUIControlRewardCardPack._create_panel = function (self)
 
 	return 
 end
-RaidGUIControlRewardCardPack._create_control_panel = function (self)
+function RaidGUIControlRewardCardPack:_create_control_panel()
 	slot3 = self._params
 	local control_params = clone(slot2)
 	control_params.x = control_params.x
@@ -92,7 +92,7 @@ RaidGUIControlRewardCardPack._create_control_panel = function (self)
 
 	return 
 end
-RaidGUIControlRewardCardPack._create_left_panel = function (self)
+function RaidGUIControlRewardCardPack:_create_left_panel()
 	local left_panel_params = {
 		name = "left_panel",
 		w = RaidGUIControlRewardCardPack.LEFT_PANEL_W
@@ -104,7 +104,7 @@ RaidGUIControlRewardCardPack._create_left_panel = function (self)
 
 	return 
 end
-RaidGUIControlRewardCardPack._create_title = function (self)
+function RaidGUIControlRewardCardPack:_create_title()
 	local title_description_params = {
 		name = "title_description",
 		vertical = "center",
@@ -167,7 +167,7 @@ RaidGUIControlRewardCardPack._create_title = function (self)
 
 	return 
 end
-RaidGUIControlRewardCardPack._create_cards_control = function (self)
+function RaidGUIControlRewardCardPack:_create_cards_control()
 	local cards_control_params = {
 		visible = false,
 		name = "cards_control",
@@ -194,7 +194,7 @@ RaidGUIControlRewardCardPack._create_cards_control = function (self)
 
 	return 
 end
-RaidGUIControlRewardCardPack._create_right_panel = function (self)
+function RaidGUIControlRewardCardPack:_create_right_panel()
 	local right_panel_params = {
 		name = "right_panel"
 	}
@@ -212,7 +212,7 @@ RaidGUIControlRewardCardPack._create_right_panel = function (self)
 
 	return 
 end
-RaidGUIControlRewardCardPack._create_description = function (self)
+function RaidGUIControlRewardCardPack:_create_description()
 	local description_params = {
 		vertical = "top",
 		name = "description",
@@ -236,7 +236,7 @@ RaidGUIControlRewardCardPack._create_description = function (self)
 
 	return 
 end
-RaidGUIControlRewardCardPack._create_item_description_name = function (self)
+function RaidGUIControlRewardCardPack:_create_item_description_name()
 	local item_type_params = {
 		name = "item_type",
 		vertical = "center",
@@ -259,7 +259,7 @@ RaidGUIControlRewardCardPack._create_item_description_name = function (self)
 
 	return 
 end
-RaidGUIControlRewardCardPack.show = function (self)
+function RaidGUIControlRewardCardPack:show()
 	slot3 = self
 
 	RaidGUIControlRewardCardPack.super.show(slot2)
@@ -329,19 +329,19 @@ RaidGUIControlRewardCardPack.show = function (self)
 
 	return 
 end
-RaidGUIControlRewardCardPack.set_cards = function (self, card_list)
+function RaidGUIControlRewardCardPack:set_cards(card_list)
 	slot5 = card_list
 
 	self._cards_control.set_cards(slot3, self._cards_control)
 
 	return 
 end
-RaidGUIControlRewardCardPack.is_selected_card_revealed = function (self)
+function RaidGUIControlRewardCardPack:is_selected_card_revealed()
 end
-RaidGUIControlRewardCardPack.selected_item_idx = function (self)
+function RaidGUIControlRewardCardPack:selected_item_idx()
 	return self._selected_item_idx
 end
-RaidGUIControlRewardCardPack.set_selected = function (self, flag)
+function RaidGUIControlRewardCardPack:set_selected(flag)
 
 	-- Decompilation error in this vicinity:
 	self._selected = flag
@@ -368,7 +368,7 @@ RaidGUIControlRewardCardPack.set_selected = function (self, flag)
 
 	return 
 end
-RaidGUIControlRewardCardPack.move_left = function (self)
+function RaidGUIControlRewardCardPack:move_left()
 	if self._selected then
 		local new_item_idx = self._selected_item_idx - 1
 
@@ -392,7 +392,7 @@ RaidGUIControlRewardCardPack.move_left = function (self)
 
 	return 
 end
-RaidGUIControlRewardCardPack.move_right = function (self)
+function RaidGUIControlRewardCardPack:move_right()
 	if self._selected then
 		local new_item_idx = self._selected_item_idx + 1
 
@@ -416,7 +416,7 @@ RaidGUIControlRewardCardPack.move_right = function (self)
 
 	return 
 end
-RaidGUIControlRewardCardPack.confirm_pressed = function (self)
+function RaidGUIControlRewardCardPack:confirm_pressed()
 	slot3 = self._cards_control
 	local selected_card_item = self._cards_control.get_items(slot2)[self._selected_item_idx]
 

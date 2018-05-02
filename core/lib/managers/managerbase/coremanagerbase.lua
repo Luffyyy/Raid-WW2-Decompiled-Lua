@@ -13,7 +13,7 @@ PRIO_WORLDCAMERA = 30
 PRIO_GAMEPLAY = 40
 PRIO_DEFAULT = PRIO_GAMEPLAY
 ManagerBase = ManagerBase or class()
-ManagerBase.init = function (self, name)
+function ManagerBase:init(name)
 	self.__name = name
 	self.__aos = {}
 	self.__ao2prio = {}
@@ -23,7 +23,7 @@ ManagerBase.init = function (self, name)
 
 	return 
 end
-ManagerBase._add_accessobj = function (self, accessobj, prio)
+function ManagerBase:_add_accessobj(accessobj, prio)
 	slot7 = accessobj
 	slot5 = accessobj.active_requested(slot6) == false
 
@@ -45,7 +45,7 @@ ManagerBase._add_accessobj = function (self, accessobj, prio)
 
 	return 
 end
-ManagerBase._del_accessobj = function (self, accessobj)
+function ManagerBase:_del_accessobj(accessobj)
 	self.__ao2prio[accessobj] = nil
 	slot5 = accessobj
 
@@ -65,16 +65,16 @@ ManagerBase._del_accessobj = function (self, accessobj)
 
 	return 
 end
-ManagerBase._all_ao = function (self)
+function ManagerBase:_all_ao()
 	return self.__aos
 end
-ManagerBase._all_really_active = function (self)
+function ManagerBase:_all_really_active()
 	return self.__really_active
 end
-ManagerBase._all_active_requested = function (self)
+function ManagerBase:_all_active_requested()
 	return self.__active_requested
 end
-ManagerBase._ao_by_name = function (self, name)
+function ManagerBase:_ao_by_name(name)
 	function slot5(ao)
 		slot3 = ao
 
@@ -83,28 +83,28 @@ ManagerBase._ao_by_name = function (self, name)
 
 	return table.find_value(slot3, self.__aos)
 end
-ManagerBase._all_ao_by_prio = function (self, prio)
+function ManagerBase:_all_ao_by_prio(prio)
 	function slot5(ao)
 		return self.__ao2prio[ao] == prio
 	end
 
 	return table.find_all_values(slot3, self.__aos)
 end
-ManagerBase._all_really_active_by_prio = function (self, prio)
+function ManagerBase:_all_really_active_by_prio(prio)
 	function slot5(ao)
 		return self.__ao2prio[ao] == prio
 	end
 
 	return table.find_all_values(slot3, self.__really_active)
 end
-ManagerBase._all_active_requested_by_prio = function (self, prio)
+function ManagerBase:_all_active_requested_by_prio(prio)
 	function slot5(ao)
 		return self.__ao2prio[ao] == prio
 	end
 
 	return table.find_all_values(slot3, self.__active_requested)
 end
-ManagerBase._prioritize_and_activate = function (self)
+function ManagerBase:_prioritize_and_activate()
 	function slot4(ao)
 		slot3 = ao
 
@@ -183,7 +183,7 @@ ManagerBase._prioritize_and_activate = function (self)
 
 	return 
 end
-ManagerBase.end_update = function (self, t, dt)
+function ManagerBase:end_update(t, dt)
 	if self.__changed then
 		local p2aos = {}
 		slot6 = self.__ao2prio

@@ -1,7 +1,7 @@
 -- WARNING: Error occurred during decompilation.
 --   Code may be incomplete or incorrect.
 CoreXMLEditor = CoreXMLEditor or class()
-CoreXMLEditor.init = function (self)
+function CoreXMLEditor:init()
 	self._active_database = ProjectDatabase
 	self._current_prop = {}
 	slot3 = self
@@ -14,14 +14,14 @@ CoreXMLEditor.init = function (self)
 
 	return 
 end
-CoreXMLEditor.on_check_news = function (self)
+function CoreXMLEditor:on_check_news()
 	slot3 = self
 
 	self.check_news(slot2)
 
 	return 
 end
-CoreXMLEditor.check_news = function (self, new_only)
+function CoreXMLEditor:check_news(new_only)
 	local news = nil
 
 	if new_only then
@@ -52,7 +52,7 @@ CoreXMLEditor.check_news = function (self, new_only)
 
 	return 
 end
-CoreXMLEditor.check_open = function (self)
+function CoreXMLEditor:check_open()
 	if open_editor then
 		slot9 = 0
 		slot10 = 0
@@ -78,7 +78,7 @@ CoreXMLEditor.check_open = function (self)
 
 	return false
 end
-CoreXMLEditor.create_main_frame = function (self)
+function CoreXMLEditor:create_main_frame()
 	self._main_frame_table = {}
 	slot10 = 0
 	slot11 = 0
@@ -223,7 +223,7 @@ CoreXMLEditor.create_main_frame = function (self)
 
 	return 
 end
-CoreXMLEditor.on_set_db = function (self, data, event)
+function CoreXMLEditor:on_set_db(data, event)
 	slot7 = false
 
 	self._db_menu.set_checked(slot4, self._db_menu, "DB_PROJECT")
@@ -245,7 +245,7 @@ CoreXMLEditor.on_set_db = function (self, data, event)
 
 	return 
 end
-CoreXMLEditor.on_new = function (self)
+function CoreXMLEditor:on_new()
 	slot3 = self._main_frame_table._edit_text_ctrl
 
 	if self._main_frame_table._edit_text_ctrl.get_value(slot2) ~= "" then
@@ -271,13 +271,13 @@ CoreXMLEditor.on_new = function (self)
 
 	return 
 end
-CoreXMLEditor.on_open = function (self)
+function CoreXMLEditor:on_open()
 	slot7 = self._active_database
 	self._browse = CoreDBDialog.new(slot2, CoreDBDialog, "", self, self.openfile)
 
 	return 
 end
-CoreXMLEditor.on_save = function (self)
+function CoreXMLEditor:on_save()
 	if not self._current_node or not self._current_entry then
 		slot3 = self
 
@@ -317,7 +317,7 @@ CoreXMLEditor.on_save = function (self)
 
 	return 
 end
-CoreXMLEditor.on_save_as = function (self)
+function CoreXMLEditor:on_save_as()
 	local test_node = Node(slot2)
 	slot4 = test_node
 	slot7 = self._main_frame_table._edit_text_ctrl
@@ -363,7 +363,7 @@ CoreXMLEditor.on_save_as = function (self)
 
 	return 
 end
-CoreXMLEditor.openfile = function (self)
+function CoreXMLEditor:openfile()
 	slot3 = self._active_database
 	slot6 = self._browse
 	local node = self._active_database.load_node(slot2, self._browse.get_value(slot5))
@@ -404,7 +404,7 @@ CoreXMLEditor.openfile = function (self)
 
 	return 
 end
-CoreXMLEditor.update_title = function (self)
+function CoreXMLEditor:update_title()
 	if self._current_entry then
 		slot3 = self._current_entry
 	else
@@ -415,7 +415,7 @@ CoreXMLEditor.update_title = function (self)
 
 	return 
 end
-CoreXMLEditor.update = function (self, t, dt)
+function CoreXMLEditor:update(t, dt)
 	if self._browse then
 		slot7 = dt
 
@@ -430,7 +430,7 @@ CoreXMLEditor.update = function (self, t, dt)
 
 	return 
 end
-CoreXMLEditor.set_position = function (self, newpos)
+function CoreXMLEditor:set_position(newpos)
 	if self._main_frame_table and self._main_frame_table._main_frame then
 		slot5 = newpos
 
@@ -439,7 +439,7 @@ CoreXMLEditor.set_position = function (self, newpos)
 
 	return 
 end
-CoreXMLEditor.on_close = function (self)
+function CoreXMLEditor:on_close()
 	slot3 = self
 
 	self.close(slot2)
@@ -450,7 +450,7 @@ CoreXMLEditor.on_close = function (self)
 
 	return 
 end
-CoreXMLEditor.destroy = function (self)
+function CoreXMLEditor:destroy()
 	if self._main_frame_table then
 		slot3 = self._main_frame_table._main_frame
 
@@ -473,7 +473,7 @@ CoreXMLEditor.destroy = function (self)
 
 	return 
 end
-CoreXMLEditor.close = function (self)
+function CoreXMLEditor:close()
 	if self._main_frame_table and self._main_frame_table._main_frame then
 		slot3 = self._main_frame_table._main_frame
 
@@ -493,7 +493,7 @@ CoreXMLEditor.close = function (self)
 	return 
 end
 CoreXMLEditorNewDialog = CoreXMLEditorNewDialog or class()
-CoreXMLEditorNewDialog.init = function (self, p)
+function CoreXMLEditorNewDialog:init(p)
 	slot12 = 0
 	slot13 = 0
 	slot10 = "CAPTION,SYSTEM_MENU"
@@ -558,7 +558,7 @@ CoreXMLEditorNewDialog.init = function (self, p)
 
 	return 
 end
-CoreXMLEditorNewDialog.show_modal = function (self)
+function CoreXMLEditorNewDialog:show_modal()
 	slot4 = "[type]"
 
 	self._type_text_ctrl.set_value(slot2, self._type_text_ctrl)
@@ -579,7 +579,7 @@ CoreXMLEditorNewDialog.show_modal = function (self)
 
 	return self._return_val
 end
-CoreXMLEditorNewDialog.on_set_button = function (self)
+function CoreXMLEditorNewDialog:on_set_button()
 	self._done = true
 	slot3 = self._type_text_ctrl
 	self._type = self._type_text_ctrl.get_value(slot2)
@@ -591,7 +591,7 @@ CoreXMLEditorNewDialog.on_set_button = function (self)
 
 	return 
 end
-CoreXMLEditorNewDialog.on_cancel_button = function (self)
+function CoreXMLEditorNewDialog:on_cancel_button()
 	self._done = true
 	self._return_val = false
 	slot4 = ""
@@ -600,7 +600,7 @@ CoreXMLEditorNewDialog.on_cancel_button = function (self)
 
 	return 
 end
-CoreXMLEditorNewDialog.get_value = function (self)
+function CoreXMLEditorNewDialog:get_value()
 	return self._type, self._name
 end
 

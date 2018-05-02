@@ -16,7 +16,7 @@ function class(...)
 
 	setmetatable(slot3, class_table)
 
-	class_table.new = function (klass, ...)
+	function class_table.new(klass, ...)
 		local object = {}
 		slot5 = class_table
 

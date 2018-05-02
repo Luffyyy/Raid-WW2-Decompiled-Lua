@@ -4,7 +4,7 @@ if not NewNPCFlamethrowerBase then
 end
 
 NewNPCFlamethrowerBase = slot0
-NewNPCFlamethrowerBase.init = function (self, ...)
+function NewNPCFlamethrowerBase:init(...)
 	slot3 = self
 
 	NewNPCFlamethrowerBase.super.init(slot2, ...)
@@ -15,16 +15,16 @@ NewNPCFlamethrowerBase.init = function (self, ...)
 
 	return 
 end
-NewNPCFlamethrowerBase.setup_default = function (self)
+function NewNPCFlamethrowerBase:setup_default()
 	self._use_shell_ejection_effect = false
 	self._use_trails = false
 
 	return 
 end
-NewNPCFlamethrowerBase._spawn_muzzle_effect = function (self, from_pos, direction)
+function NewNPCFlamethrowerBase:_spawn_muzzle_effect(from_pos, direction)
 	return 
 end
-NewNPCFlamethrowerBase.update = function (self, unit, t, dt)
+function NewNPCFlamethrowerBase:update(unit, t, dt)
 	if self._check_shooting_expired and self._check_shooting_expired.check_t < t then
 		self._check_shooting_expired = nil
 		slot9 = "base"
@@ -43,7 +43,7 @@ NewNPCFlamethrowerBase.update = function (self, unit, t, dt)
 
 	return 
 end
-NewNPCFlamethrowerBase.fire_blank = function (self, direction, impact)
+function NewNPCFlamethrowerBase:fire_blank(direction, impact)
 	if not self._check_shooting_expired then
 		slot6 = "fire"
 

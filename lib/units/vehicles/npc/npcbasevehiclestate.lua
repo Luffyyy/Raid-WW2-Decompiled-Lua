@@ -1,46 +1,46 @@
 NpcBaseVehicleState = NpcBaseVehicleState or class()
-NpcBaseVehicleState.init = function (self, unit)
+function NpcBaseVehicleState:init(unit)
 	self._unit = unit
 
 	return 
 end
-NpcBaseVehicleState.on_enter = function (self, npc_driving_ext)
+function NpcBaseVehicleState:on_enter(npc_driving_ext)
 	return 
 end
-NpcBaseVehicleState.on_exit = function (self, npc_driving_ext)
+function NpcBaseVehicleState:on_exit(npc_driving_ext)
 	return 
 end
-NpcBaseVehicleState.update = function (self, t, dt)
+function NpcBaseVehicleState:update(t, dt)
 	return 
 end
-NpcBaseVehicleState.name = function (self)
+function NpcBaseVehicleState:name()
 	return NpcVehicleDrivingExt.STATE_BASE
 end
-NpcBaseVehicleState.calc_steering = function (self, angle)
+function NpcBaseVehicleState:calc_steering(angle)
 	return 0
 end
-NpcBaseVehicleState.calc_distance_threshold = function (self, angle)
+function NpcBaseVehicleState:calc_distance_threshold(angle)
 	return 501
 end
-NpcBaseVehicleState.calc_speed_limit = function (self, path, unit_and_pos)
+function NpcBaseVehicleState:calc_speed_limit(path, unit_and_pos)
 	return 0
 end
-NpcBaseVehicleState.handle_hard_turn = function (self, npc_driving_ext, angle_to_target)
+function NpcBaseVehicleState:handle_hard_turn(npc_driving_ext, angle_to_target)
 	return 
 end
-NpcBaseVehicleState.handle_end_of_the_road = function (self, is_last_checkpoint, unit_and_pos)
+function NpcBaseVehicleState:handle_end_of_the_road(is_last_checkpoint, unit_and_pos)
 	return 
 end
-NpcBaseVehicleState.evasion_maneuvers = function (self, npc_driving_ext, target_steering)
+function NpcBaseVehicleState:evasion_maneuvers(npc_driving_ext, target_steering)
 	return 
 end
-NpcBaseVehicleState.change_state = function (self, npc_driving_ext)
+function NpcBaseVehicleState:change_state(npc_driving_ext)
 	return 
 end
-NpcBaseVehicleState.handle_stuck_vehicle = function (self, npc_driving_ext)
+function NpcBaseVehicleState:handle_stuck_vehicle(npc_driving_ext)
 	return 
 end
-NpcBaseVehicleState.is_maneuvering = function (self)
+function NpcBaseVehicleState:is_maneuvering()
 	return false
 end
 

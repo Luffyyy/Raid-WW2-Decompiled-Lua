@@ -147,7 +147,7 @@ end
 
 NetworkManager.DROPIN_ENABLED = true
 slot3 = "X360"
-function NetworkManager:init()
+NetworkManager.init = function (self)
 	self.OVERWRITEABLE_MSGS = {
 		set_look_dir = {
 			clbk = NetworkManager.clbk_msg_overwrite
@@ -259,7 +259,7 @@ function NetworkManager:init()
 
 	return 
 end
-function NetworkManager:init_finalize()
+NetworkManager.init_finalize = function (self)
 	slot3 = "NetworkManager:init_finalize()"
 
 	print(slot2)
@@ -291,7 +291,7 @@ function NetworkManager:init_finalize()
 
 	return 
 end
-function NetworkManager:_create_lobby()
+NetworkManager._create_lobby = function (self)
 	if self._is_win32 then
 		slot4 = "Online Lobby is PC"
 
@@ -375,7 +375,7 @@ function NetworkManager:_create_lobby()
 
 	return 
 end
-function NetworkManager:ps3_determine_voice(lan)
+NetworkManager.ps3_determine_voice = function (self, lan)
 	local voice = "voice_quiet"
 
 	if lan == true then
@@ -427,13 +427,13 @@ function NetworkManager:ps3_determine_voice(lan)
 
 	return 
 end
-function NetworkManager:session()
+NetworkManager.session = function (self)
 	return self._session
 end
-function NetworkManager:shared_handler_data()
+NetworkManager.shared_handler_data = function (self)
 	return self._shared_handler_data
 end
-function NetworkManager:load()
+NetworkManager.load = function (self)
 	if Global.network then
 		self._network_bound = Global.network.network_bound
 		slot3 = self
@@ -495,7 +495,7 @@ function NetworkManager:load()
 
 	return 
 end
-function NetworkManager:save()
+NetworkManager.save = function (self)
 	if self._started then
 		Global.network = {
 			network_bound = self._network_bound
@@ -531,7 +531,7 @@ function NetworkManager:save()
 
 	return 
 end
-function NetworkManager:update(t, dt)
+NetworkManager.update = function (self, t, dt)
 	if self._stop_next_frame then
 		slot6 = true
 
@@ -568,7 +568,7 @@ function NetworkManager:update(t, dt)
 
 	return 
 end
-function NetworkManager:end_update()
+NetworkManager.end_update = function (self)
 	if self._stop_network then
 		self._stop_next_frame = true
 		self._stop_network = nil
@@ -582,7 +582,7 @@ function NetworkManager:end_update()
 
 	return 
 end
-function NetworkManager:start_network()
+NetworkManager.start_network = function (self)
 	if not self._started then
 		Global.category_print.multiplayer_base = true
 		slot5 = ConnectionNetworkHandler
@@ -611,7 +611,7 @@ function NetworkManager:start_network()
 
 	return 
 end
-function NetworkManager:register_handler(name, handler_class)
+NetworkManager.register_handler = function (self, name, handler_class)
 	if not self._handlers then
 		self._handlers = {}
 		self._shared_handler_data = {}
@@ -626,7 +626,7 @@ function NetworkManager:register_handler(name, handler_class)
 
 	return 
 end
-function NetworkManager:prepare_stop_network(...)
+NetworkManager.prepare_stop_network = function (self, ...)
 	if self._session then
 		slot3 = self._session
 
@@ -641,7 +641,7 @@ function NetworkManager:prepare_stop_network(...)
 
 	return 
 end
-function NetworkManager:stop_network(clean)
+NetworkManager.stop_network = function (self, clean)
 	slot5 = "NetworkRetryJoinAttempt"
 
 	managers.queued_tasks.unqueue(slot3, managers.queued_tasks)
@@ -734,7 +734,7 @@ function NetworkManager:stop_network(clean)
 
 	return 
 end
-function NetworkManager:on_camp_restarted()
+NetworkManager.on_camp_restarted = function (self)
 	local last_world_id = managers.worldcollection._world_id_counter
 	self._synced_worlds_temp = {
 		[last_world_id] = {}
@@ -745,12 +745,12 @@ function NetworkManager:on_camp_restarted()
 
 	return 
 end
-function NetworkManager:queue_stop_network()
+NetworkManager.queue_stop_network = function (self)
 	self._stop_network = true
 
 	return 
 end
-function NetworkManager:is_ready_to_load()
+NetworkManager.is_ready_to_load = function (self)
 	if self._stop_next_frame or self._stop_network then
 		return false
 	end
@@ -773,7 +773,7 @@ function NetworkManager:is_ready_to_load()
 
 	return true
 end
-function NetworkManager:stopping()
+NetworkManager.stopping = function (self)
 	if not self._started then
 		return true
 	end
@@ -784,7 +784,7 @@ function NetworkManager:stopping()
 
 	return false
 end
-function NetworkManager:start_client()
+NetworkManager.start_client = function (self)
 	slot4 = true
 
 	self.stop_network(slot2, self)
@@ -807,7 +807,7 @@ function NetworkManager:start_client()
 
 	return 
 end
-function NetworkManager:discover_hosts(result_cb)
+NetworkManager.discover_hosts = function (self, result_cb)
 	slot5 = true
 
 	self.stop_network(slot3, self)
@@ -829,7 +829,7 @@ function NetworkManager:discover_hosts(result_cb)
 
 	return 
 end
-function NetworkManager:on_discover_host_received(sender)
+NetworkManager.on_discover_host_received = function (self, sender)
 	if Global.game_settings.single_player then
 		return 
 	end
@@ -872,7 +872,7 @@ function NetworkManager:on_discover_host_received(sender)
 
 	return 
 end
-function NetworkManager:on_discover_host_reply(host, host_name, level_name, my_ip, state, difficulty)
+NetworkManager.on_discover_host_reply = function (self, host, host_name, level_name, my_ip, state, difficulty)
 	slot14 = state
 
 	print(slot8, "on_discover_host_reply", host, host_name, level_name, my_ip)
@@ -890,7 +890,7 @@ function NetworkManager:on_discover_host_reply(host, host_name, level_name, my_i
 
 	return 
 end
-function NetworkManager:host_game()
+NetworkManager.host_game = function (self)
 	slot4 = true
 
 	self.stop_network(slot2, self)
@@ -919,7 +919,7 @@ function NetworkManager:host_game()
 
 	return 
 end
-function NetworkManager:join_game_at_host_rpc(host_rpc, result_cb)
+NetworkManager.join_game_at_host_rpc = function (self, host_rpc, result_cb)
 	self._discover_hosts_cb = nil
 
 	if self._session then
@@ -934,7 +934,7 @@ function NetworkManager:join_game_at_host_rpc(host_rpc, result_cb)
 
 	return 
 end
-function NetworkManager:register_spawn_point(id, data, spawner)
+NetworkManager.register_spawn_point = function (self, id, data, spawner)
 	slot7 = "[NetworkManager:register_spawn_point]"
 
 	Application.debug(slot5, Application)
@@ -951,26 +951,26 @@ function NetworkManager:register_spawn_point(id, data, spawner)
 
 	return 
 end
-function NetworkManager:unregister_spawn_point(id)
+NetworkManager.unregister_spawn_point = function (self, id)
 	self._spawn_points[id] = nil
 
 	return 
 end
-function NetworkManager:unregister_all_spawn_points()
+NetworkManager.unregister_all_spawn_points = function (self)
 	self._spawn_points = {}
 	self._session._spawn_point_beanbag = nil
 
 	return 
 end
-function NetworkManager:has_spawn_points()
+NetworkManager.has_spawn_points = function (self)
 	slot3 = self._spawn_points
 
 	return next(slot2)
 end
-function NetworkManager:spawn_point(sp_id)
+NetworkManager.spawn_point = function (self, sp_id)
 	return self._spawn_points[sp_id]
 end
-function NetworkManager:_register_PSN_matchmaking_callbacks()
+NetworkManager._register_PSN_matchmaking_callbacks = function (self)
 	slot5 = "clbk_PSN_event"
 	local gen_clbk = callback(slot2, self, self)
 	slot6 = gen_clbk
@@ -1063,14 +1063,14 @@ function NetworkManager:_register_PSN_matchmaking_callbacks()
 
 	return 
 end
-function NetworkManager:clbk_PSN_event(...)
+NetworkManager.clbk_PSN_event = function (self, ...)
 	slot3 = "[NetworkManager:clbk_PSN_event]"
 
 	print(slot2, inspect(...))
 
 	return 
 end
-function NetworkManager:search_ses()
+NetworkManager.search_ses = function (self)
 	slot4 = "session_search"
 	slot9 = "clbk_search_session"
 
@@ -1089,7 +1089,7 @@ function NetworkManager:search_ses()
 
 	return 
 end
-function NetworkManager:clbk_search_session(search_results)
+NetworkManager.clbk_search_session = function (self, search_results)
 	slot5 = search_results
 
 	print(slot3, "[NetworkManager:clbk_search_session]")
@@ -1131,10 +1131,10 @@ NetworkManager.clbk_msg_overwrite = function (overwrite_data, msg_queue, ...)
 
 	return 
 end
-function NetworkManager:protocol_type()
+NetworkManager.protocol_type = function (self)
 	return self.PROTOCOL_TYPE
 end
-function NetworkManager:set_packet_throttling_enabled(state)
+NetworkManager.set_packet_throttling_enabled = function (self, state)
 	if self._session and self._is_win32 then
 		slot5 = state
 
@@ -1143,7 +1143,7 @@ function NetworkManager:set_packet_throttling_enabled(state)
 
 	return 
 end
-function NetworkManager:on_peer_added(peer, peer_id)
+NetworkManager.on_peer_added = function (self, peer, peer_id)
 
 	-- Decompilation error in this vicinity:
 	slot8 = peer_id
@@ -1174,7 +1174,7 @@ function NetworkManager:on_peer_added(peer, peer_id)
 
 	return 
 end
-function NetworkManager:update_matchmake_attributes()
+NetworkManager.update_matchmake_attributes = function (self)
 	slot3 = self.matchmake
 	slot6 = self
 
@@ -1182,7 +1182,7 @@ function NetworkManager:update_matchmake_attributes()
 
 	return 
 end
-function NetworkManager:get_matchmake_attributes()
+NetworkManager.get_matchmake_attributes = function (self)
 	slot4 = "WIN32"
 	local is_win32 = SystemInfo.platform(slot2) == Idstring(SystemInfo)
 	slot5 = Global.game_settings.difficulty
@@ -1241,7 +1241,7 @@ function NetworkManager:get_matchmake_attributes()
 
 	return attributes
 end
-function NetworkManager:start_matchmake_attributes_update()
+NetworkManager.start_matchmake_attributes_update = function (self)
 	slot3 = Network
 
 	if Network.is_server(slot2) then

@@ -20,7 +20,7 @@ if not StaticsLayer then
 end
 
 StaticsLayer = slot0
-StaticsLayer.init = function (self, owner)
+function StaticsLayer:init(owner)
 	local types = CoreEditorUtils.layer_type(slot3)
 	slot9 = "statics_layer"
 
@@ -30,14 +30,14 @@ StaticsLayer.init = function (self, owner)
 
 	return 
 end
-StaticsLayer.build_panel = function (self, notebook)
+function StaticsLayer:build_panel(notebook)
 	slot5 = notebook
 
 	StaticsLayer.super.build_panel(slot3, self)
 
 	return self._ews_panel, true
 end
-StaticsLayer.add_btns_to_toolbar = function (self, ...)
+function StaticsLayer:add_btns_to_toolbar(...)
 	slot3 = self
 
 	StaticsLayer.super.add_btns_to_toolbar(slot2, ...)
@@ -53,7 +53,7 @@ StaticsLayer.add_btns_to_toolbar = function (self, ...)
 
 	return 
 end
-StaticsLayer._on_gui_move_to_continent = function (self)
+function StaticsLayer:_on_gui_move_to_continent()
 	if #self._selected_units == 0 then
 		return 
 	end
@@ -89,7 +89,7 @@ StaticsLayer._on_gui_move_to_continent = function (self)
 
 	return 
 end
-StaticsLayer.set_enabled = function (self, enabled)
+function StaticsLayer:set_enabled(enabled)
 	if not enabled then
 		slot5 = "Don't want to disable Statics layer since it would cause all dynamics to fall."
 

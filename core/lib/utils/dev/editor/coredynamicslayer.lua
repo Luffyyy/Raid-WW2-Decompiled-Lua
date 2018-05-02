@@ -16,7 +16,7 @@ if not DynamicsLayer then
 end
 
 DynamicsLayer = slot0
-DynamicsLayer.init = function (self, owner)
+function DynamicsLayer:init(owner)
 	local types = CoreEditorUtils.layer_type(slot3)
 	slot9 = "dynamics_layer"
 

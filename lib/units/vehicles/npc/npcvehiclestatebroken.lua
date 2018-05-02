@@ -4,20 +4,20 @@ if not NpcVehicleStateBroken then
 end
 
 NpcVehicleStateBroken = slot0
-NpcVehicleStateBroken.init = function (self, unit)
+function NpcVehicleStateBroken:init(unit)
 	slot5 = unit
 
 	NpcBaseVehicleState.init(slot3, self)
 
 	return 
 end
-NpcVehicleStateBroken.update = function (self, t, dt)
+function NpcVehicleStateBroken:update(t, dt)
 	return 
 end
-NpcVehicleStateBroken.name = function (self)
+function NpcVehicleStateBroken:name()
 	return NpcVehicleDrivingExt.STATE_BROKEN
 end
-NpcVehicleStateBroken.on_enter = function (self)
+function NpcVehicleStateBroken:on_enter()
 	slot3 = "NpcVehicleStateBroken:on_enter()"
 
 	print(slot2)

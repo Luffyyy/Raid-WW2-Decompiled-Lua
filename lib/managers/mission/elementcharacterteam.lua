@@ -10,7 +10,7 @@ if not ElementCharacterTeam then
 end
 
 ElementCharacterTeam = slot0
-ElementCharacterTeam.init = function (self, ...)
+function ElementCharacterTeam:init(...)
 	slot3 = self
 
 	ElementCharacterTeam.super.init(slot2, ...)
@@ -21,7 +21,7 @@ ElementCharacterTeam.init = function (self, ...)
 
 	return 
 end
-ElementCharacterTeam._finalize_values = function (self)
+function ElementCharacterTeam:_finalize_values()
 
 	-- Decompilation error in this vicinity:
 	local values = self._values
@@ -32,7 +32,7 @@ ElementCharacterTeam._finalize_values = function (self)
 
 	return 
 end
-ElementCharacterTeam.on_executed = function (self, instigator)
+function ElementCharacterTeam:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

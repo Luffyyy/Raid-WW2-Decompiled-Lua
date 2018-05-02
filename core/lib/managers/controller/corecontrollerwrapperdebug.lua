@@ -13,7 +13,7 @@ end
 
 ControllerWrapperDebug = slot0
 ControllerWrapperDebug.TYPE = "debug"
-ControllerWrapperDebug.init = function (self, controller_wrapper_list, manager, id, name, default_controller_wrapper, setup)
+function ControllerWrapperDebug:init(controller_wrapper_list, manager, id, name, default_controller_wrapper, setup)
 	self._controller_wrapper_list = controller_wrapper_list
 	self._default_controller_wrapper = default_controller_wrapper
 	slot7 = ControllerWrapperDebug.super.init
@@ -44,7 +44,7 @@ ControllerWrapperDebug.init = function (self, controller_wrapper_list, manager, 
 
 	return 
 end
-ControllerWrapperDebug.destroy = function (self)
+function ControllerWrapperDebug:destroy()
 	slot3 = self
 
 	ControllerWrapperDebug.super.destroy(slot2)
@@ -59,7 +59,7 @@ ControllerWrapperDebug.destroy = function (self)
 
 	return 
 end
-ControllerWrapperDebug.update = function (self, t, dt)
+function ControllerWrapperDebug:update(t, dt)
 	slot7 = dt
 
 	ControllerWrapperDebug.super.update(slot4, self, t)
@@ -74,7 +74,7 @@ ControllerWrapperDebug.update = function (self, t, dt)
 
 	return 
 end
-ControllerWrapperDebug.paused_update = function (self, t, dt)
+function ControllerWrapperDebug:paused_update(t, dt)
 	slot7 = dt
 
 	ControllerWrapperDebug.super.paused_update(slot4, self, t)
@@ -89,7 +89,7 @@ ControllerWrapperDebug.paused_update = function (self, t, dt)
 
 	return 
 end
-ControllerWrapperDebug.connected = function (self, ...)
+function ControllerWrapperDebug:connected(...)
 	slot3 = self._controller_wrapper_list
 
 	for _, controller_wrapper in ipairs(slot2) do
@@ -102,7 +102,7 @@ ControllerWrapperDebug.connected = function (self, ...)
 
 	return false
 end
-ControllerWrapperDebug.rebind_connections = function (self, setup, setup_map)
+function ControllerWrapperDebug:rebind_connections(setup, setup_map)
 	slot5 = self
 
 	ControllerWrapperDebug.super.rebind_connections(slot4)
@@ -125,10 +125,10 @@ ControllerWrapperDebug.rebind_connections = function (self, setup, setup_map)
 
 	return 
 end
-ControllerWrapperDebug.setup = function (self, ...)
+function ControllerWrapperDebug:setup(...)
 	return 
 end
-ControllerWrapperDebug.get_any_input = function (self, ...)
+function ControllerWrapperDebug:get_any_input(...)
 	slot3 = self._controller_wrapper_list
 
 	for _, controller_wrapper in ipairs(slot2) do
@@ -141,7 +141,7 @@ ControllerWrapperDebug.get_any_input = function (self, ...)
 
 	return false
 end
-ControllerWrapperDebug.get_any_input_pressed = function (self, ...)
+function ControllerWrapperDebug:get_any_input_pressed(...)
 	slot3 = self._controller_wrapper_list
 
 	for _, controller_wrapper in ipairs(slot2) do
@@ -154,7 +154,7 @@ ControllerWrapperDebug.get_any_input_pressed = function (self, ...)
 
 	return false
 end
-ControllerWrapperDebug.get_input_pressed = function (self, ...)
+function ControllerWrapperDebug:get_input_pressed(...)
 	slot3 = self._controller_wrapper_list
 
 	for _, controller_wrapper in ipairs(slot2) do
@@ -171,7 +171,7 @@ ControllerWrapperDebug.get_input_pressed = function (self, ...)
 
 	return false
 end
-ControllerWrapperDebug.get_input_bool = function (self, ...)
+function ControllerWrapperDebug:get_input_bool(...)
 	slot3 = self._controller_wrapper_list
 
 	for _, controller_wrapper in ipairs(slot2) do
@@ -188,7 +188,7 @@ ControllerWrapperDebug.get_input_bool = function (self, ...)
 
 	return false
 end
-ControllerWrapperDebug.get_input_float = function (self, ...)
+function ControllerWrapperDebug:get_input_float(...)
 	local input_float = 0
 	slot4 = self._controller_wrapper_list
 
@@ -204,7 +204,7 @@ ControllerWrapperDebug.get_input_float = function (self, ...)
 
 	return input_float
 end
-ControllerWrapperDebug.get_input_axis = function (self, ...)
+function ControllerWrapperDebug:get_input_axis(...)
 	slot5 = 0
 	local input_axis = Vector3(slot2, 0, 0)
 	slot4 = self._controller_wrapper_list
@@ -224,7 +224,7 @@ ControllerWrapperDebug.get_input_axis = function (self, ...)
 
 	return input_axis
 end
-ControllerWrapperDebug.get_connection_map = function (self, ...)
+function ControllerWrapperDebug:get_connection_map(...)
 	local map = {}
 	slot4 = self._controller_wrapper_list
 
@@ -239,7 +239,7 @@ ControllerWrapperDebug.get_connection_map = function (self, ...)
 
 	return map
 end
-ControllerWrapperDebug.connection_exist = function (self, ...)
+function ControllerWrapperDebug:connection_exist(...)
 	slot3 = self._controller_wrapper_list
 
 	for _, controller_wrapper in ipairs(slot2) do
@@ -252,7 +252,7 @@ ControllerWrapperDebug.connection_exist = function (self, ...)
 
 	return false
 end
-ControllerWrapperDebug.set_enabled = function (self, ...)
+function ControllerWrapperDebug:set_enabled(...)
 	slot3 = self._controller_wrapper_list
 
 	for _, controller_wrapper in ipairs(slot2) do
@@ -263,7 +263,7 @@ ControllerWrapperDebug.set_enabled = function (self, ...)
 
 	return 
 end
-ControllerWrapperDebug.enable = function (self, ...)
+function ControllerWrapperDebug:enable(...)
 	slot3 = self._controller_wrapper_list
 
 	for _, controller_wrapper in ipairs(slot2) do
@@ -276,7 +276,7 @@ ControllerWrapperDebug.enable = function (self, ...)
 
 	return 
 end
-ControllerWrapperDebug.disable = function (self, ...)
+function ControllerWrapperDebug:disable(...)
 	slot3 = self._controller_wrapper_list
 
 	for _, controller_wrapper in ipairs(slot2) do
@@ -289,7 +289,7 @@ ControllerWrapperDebug.disable = function (self, ...)
 
 	return 
 end
-ControllerWrapperDebug.add_trigger = function (self, ...)
+function ControllerWrapperDebug:add_trigger(...)
 	slot3 = self._controller_wrapper_list
 
 	for _, controller_wrapper in ipairs(slot2) do
@@ -304,7 +304,7 @@ ControllerWrapperDebug.add_trigger = function (self, ...)
 
 	return 
 end
-ControllerWrapperDebug.add_release_trigger = function (self, ...)
+function ControllerWrapperDebug:add_release_trigger(...)
 	slot3 = self._controller_wrapper_list
 
 	for _, controller_wrapper in ipairs(slot2) do
@@ -319,7 +319,7 @@ ControllerWrapperDebug.add_release_trigger = function (self, ...)
 
 	return 
 end
-ControllerWrapperDebug.remove_trigger = function (self, ...)
+function ControllerWrapperDebug:remove_trigger(...)
 	slot3 = self._controller_wrapper_list
 
 	for _, controller_wrapper in ipairs(slot2) do
@@ -334,7 +334,7 @@ ControllerWrapperDebug.remove_trigger = function (self, ...)
 
 	return 
 end
-ControllerWrapperDebug.clear_triggers = function (self, ...)
+function ControllerWrapperDebug:clear_triggers(...)
 	slot3 = self._controller_wrapper_list
 
 	for _, controller_wrapper in ipairs(slot2) do
@@ -345,7 +345,7 @@ ControllerWrapperDebug.clear_triggers = function (self, ...)
 
 	return 
 end
-ControllerWrapperDebug.reset_cache = function (self, ...)
+function ControllerWrapperDebug:reset_cache(...)
 	slot3 = self._controller_wrapper_list
 
 	for _, controller_wrapper in ipairs(slot2) do
@@ -356,7 +356,7 @@ ControllerWrapperDebug.reset_cache = function (self, ...)
 
 	return 
 end
-ControllerWrapperDebug.restore_triggers = function (self, ...)
+function ControllerWrapperDebug:restore_triggers(...)
 	slot3 = self._controller_wrapper_list
 
 	for _, controller_wrapper in ipairs(slot2) do
@@ -367,7 +367,7 @@ ControllerWrapperDebug.restore_triggers = function (self, ...)
 
 	return 
 end
-ControllerWrapperDebug.clear_connections = function (self, ...)
+function ControllerWrapperDebug:clear_connections(...)
 	slot3 = self._controller_wrapper_list
 
 	for _, controller_wrapper in ipairs(slot2) do
@@ -378,7 +378,7 @@ ControllerWrapperDebug.clear_connections = function (self, ...)
 
 	return 
 end
-ControllerWrapperDebug.get_setup = function (self, ...)
+function ControllerWrapperDebug:get_setup(...)
 	if self._default_controller_wrapper then
 		slot3 = self._default_controller_wrapper
 		slot1 = self._default_controller_wrapper.get_setup(slot2, ...)
@@ -386,7 +386,7 @@ ControllerWrapperDebug.get_setup = function (self, ...)
 
 	return slot1
 end
-ControllerWrapperDebug.get_connection_settings = function (self, ...)
+function ControllerWrapperDebug:get_connection_settings(...)
 	if self._default_controller_wrapper then
 		slot3 = self._default_controller_wrapper
 		slot1 = self._default_controller_wrapper.get_connection_settings(slot2, ...)
@@ -394,7 +394,7 @@ ControllerWrapperDebug.get_connection_settings = function (self, ...)
 
 	return slot1
 end
-ControllerWrapperDebug.get_connection_enabled = function (self, ...)
+function ControllerWrapperDebug:get_connection_enabled(...)
 	slot3 = self._controller_wrapper_list
 
 	for _, controller_wrapper in ipairs(slot2) do
@@ -407,7 +407,7 @@ ControllerWrapperDebug.get_connection_enabled = function (self, ...)
 
 	return false
 end
-ControllerWrapperDebug.set_connection_enabled = function (self, ...)
+function ControllerWrapperDebug:set_connection_enabled(...)
 	slot3 = self._controller_wrapper_list
 
 	for _, controller_wrapper in ipairs(slot2) do

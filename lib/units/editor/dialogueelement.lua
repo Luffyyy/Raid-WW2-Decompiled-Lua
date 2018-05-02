@@ -10,7 +10,7 @@ end
 DialogueUnitElement = slot0
 DialogueUnitElement.SAVE_UNIT_POSITION = false
 DialogueUnitElement.SAVE_UNIT_ROTATION = false
-DialogueUnitElement.init = function (self, unit)
+function DialogueUnitElement:init(unit)
 	slot5 = unit
 
 	DialogueUnitElement.super.init(slot3, self)
@@ -41,13 +41,13 @@ DialogueUnitElement.init = function (self, unit)
 
 	return 
 end
-DialogueUnitElement.new_save_values = function (self, ...)
+function DialogueUnitElement:new_save_values(...)
 
 	-- Decompilation error in this vicinity:
 	slot3 = self
 	local t = DialogueUnitElement.super.new_save_values(slot2, ...)
 end
-DialogueUnitElement.test_element = function (self)
+function DialogueUnitElement:test_element()
 	if self._hed.dialogue == "none" then
 		return 
 	end
@@ -73,7 +73,7 @@ DialogueUnitElement.test_element = function (self)
 
 	return 
 end
-DialogueUnitElement.stop_test_element = function (self)
+function DialogueUnitElement:stop_test_element()
 	slot3 = managers.dialog
 
 	managers.dialog.quit_dialog(slot2)
@@ -88,7 +88,7 @@ DialogueUnitElement.stop_test_element = function (self)
 
 	return 
 end
-DialogueUnitElement._build_panel = function (self, panel, panel_sizer)
+function DialogueUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

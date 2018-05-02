@@ -8,14 +8,14 @@ if not ElementBarrage then
 end
 
 ElementBarrage = slot0
-ElementBarrage.init = function (self, ...)
+function ElementBarrage:init(...)
 	slot3 = self
 
 	ElementBarrage.super.init(slot2, ...)
 
 	return 
 end
-ElementBarrage.on_executed = function (self, instigator)
+function ElementBarrage:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -68,7 +68,7 @@ ElementBarrage.on_executed = function (self, instigator)
 
 	return 
 end
-ElementBarrage.client_on_executed = function (self, ...)
+function ElementBarrage:client_on_executed(...)
 	slot3 = self
 
 	ElementBarrage.super.on_executed(slot2)

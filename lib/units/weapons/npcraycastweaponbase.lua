@@ -16,7 +16,7 @@ NPCRaycastWeaponBase._VOICES = {
 	"c"
 }
 NPCRaycastWeaponBase._next_i_voice = {}
-NPCRaycastWeaponBase.init = function (self, unit)
+function NPCRaycastWeaponBase:init(unit)
 	slot6 = false
 
 	RaycastWeaponBase.super.init(slot3, self, unit)
@@ -148,7 +148,7 @@ NPCRaycastWeaponBase.init = function (self, unit)
 
 	return 
 end
-NPCRaycastWeaponBase.setup = function (self, setup_data)
+function NPCRaycastWeaponBase:setup(setup_data)
 	self._autoaim = setup_data.autoaim
 	self._alert_events = (setup_data.alert_AI and {}) or nil
 	self._alert_size = tweak_data.weapon[self._name_id].alert_size
@@ -163,7 +163,7 @@ NPCRaycastWeaponBase.setup = function (self, setup_data)
 
 	return 
 end
-NPCRaycastWeaponBase.start_autofire = function (self, nr_shots)
+function NPCRaycastWeaponBase:start_autofire(nr_shots)
 	slot5 = nr_shots
 
 	self._sound_autofire_start(slot3, self)
@@ -175,15 +175,15 @@ NPCRaycastWeaponBase.start_autofire = function (self, nr_shots)
 
 	return 
 end
-NPCRaycastWeaponBase.fire_mode = function (self)
+function NPCRaycastWeaponBase:fire_mode()
 	return (tweak_data.weapon[self._name_id].auto and "auto") or "single"
 end
-NPCRaycastWeaponBase.recoil_wait = function (self)
+function NPCRaycastWeaponBase:recoil_wait()
 
 	-- Decompilation error in this vicinity:
 	slot3 = self
 end
-NPCRaycastWeaponBase.stop_autofire = function (self)
+function NPCRaycastWeaponBase:stop_autofire()
 	if not self._shooting then
 		return 
 	end
@@ -196,7 +196,7 @@ NPCRaycastWeaponBase.stop_autofire = function (self)
 
 	return 
 end
-NPCRaycastWeaponBase.singleshot = function (self, ...)
+function NPCRaycastWeaponBase:singleshot(...)
 	slot3 = self
 	local fired = self.fire(slot2, ...)
 
@@ -208,7 +208,7 @@ NPCRaycastWeaponBase.singleshot = function (self, ...)
 
 	return fired
 end
-NPCRaycastWeaponBase.trigger_held = function (self, ...)
+function NPCRaycastWeaponBase:trigger_held(...)
 	local fired = nil
 	slot5 = Application
 
@@ -223,7 +223,7 @@ NPCRaycastWeaponBase.trigger_held = function (self, ...)
 
 	return fired
 end
-NPCRaycastWeaponBase.add_damage_multiplier = function (self, damage_multiplier)
+function NPCRaycastWeaponBase:add_damage_multiplier(damage_multiplier)
 	self._damage = self._damage * damage_multiplier
 
 	return 
@@ -231,7 +231,7 @@ end
 local mto = Vector3()
 local mfrom = Vector3()
 local mspread = Vector3()
-NPCRaycastWeaponBase.fire_blank = function (self, direction, impact)
+function NPCRaycastWeaponBase:fire_blank(direction, impact)
 	local user_unit = self._setup.user_unit
 	slot7 = mfrom
 
@@ -282,7 +282,7 @@ NPCRaycastWeaponBase.fire_blank = function (self, direction, impact)
 
 	return 
 end
-NPCRaycastWeaponBase.destroy = function (self, unit)
+function NPCRaycastWeaponBase:destroy(unit)
 	slot5 = unit
 
 	RaycastWeaponBase.super.pre_destroy(slot3, self)
@@ -295,10 +295,10 @@ NPCRaycastWeaponBase.destroy = function (self, unit)
 
 	return 
 end
-NPCRaycastWeaponBase._get_spread = function (self, user_unit)
+function NPCRaycastWeaponBase:_get_spread(user_unit)
 	return 
 end
-NPCRaycastWeaponBase._sound_autofire_start = function (self, nr_shots)
+function NPCRaycastWeaponBase:_sound_autofire_start(nr_shots)
 	local tweak_sound = tweak_data.weapon[self._name_id].sounds
 
 	if tweak_sound and tweak_sound.autofire_start then
@@ -313,7 +313,7 @@ NPCRaycastWeaponBase._sound_autofire_start = function (self, nr_shots)
 
 	return 
 end
-NPCRaycastWeaponBase._sound_autofire_end = function (self)
+function NPCRaycastWeaponBase:_sound_autofire_end()
 	local tweak_sound = tweak_data.weapon[self._name_id].sounds
 
 	if tweak_sound and tweak_sound.autofire_stop then
@@ -328,7 +328,7 @@ NPCRaycastWeaponBase._sound_autofire_end = function (self)
 
 	return 
 end
-NPCRaycastWeaponBase._sound_singleshot = function (self)
+function NPCRaycastWeaponBase:_sound_singleshot()
 	local tweak_sound = tweak_data.weapon[self._name_id].sounds
 	local sound_name = tweak_sound.single
 
@@ -345,7 +345,7 @@ NPCRaycastWeaponBase._sound_singleshot = function (self)
 	return 
 end
 local mvec_to = Vector3()
-NPCRaycastWeaponBase._fire_raycast = function (self, user_unit, from_pos, direction, dmg_mul, shoot_player, target_unit)
+function NPCRaycastWeaponBase:_fire_raycast(user_unit, from_pos, direction, dmg_mul, shoot_player, target_unit)
 	local enemy_type = ""
 
 	if user_unit then
@@ -448,7 +448,7 @@ NPCRaycastWeaponBase._fire_raycast = function (self, user_unit, from_pos, direct
 
 	return result
 end
-NPCRaycastWeaponBase._spawn_trail_effect = function (self, direction, col_ray)
+function NPCRaycastWeaponBase:_spawn_trail_effect(direction, col_ray)
 	slot6 = self._trail_effect_table.position
 
 	self._obj_fire.m_position(slot4, self._obj_fire)
@@ -471,13 +471,13 @@ NPCRaycastWeaponBase._spawn_trail_effect = function (self, direction, col_ray)
 
 	return 
 end
-NPCRaycastWeaponBase.has_flashlight_on = function (self)
+function NPCRaycastWeaponBase:has_flashlight_on()
 	return (self._flashlight_data and self._flashlight_data.on and true) or false
 end
-NPCRaycastWeaponBase.flashlight_data = function (self)
+function NPCRaycastWeaponBase:flashlight_data()
 	return self._flashlight_data
 end
-NPCRaycastWeaponBase.flashlight_state_changed = function (self)
+function NPCRaycastWeaponBase:flashlight_state_changed()
 	if not self._flashlight_data then
 		return 
 	end
@@ -512,7 +512,7 @@ NPCRaycastWeaponBase.flashlight_state_changed = function (self)
 
 	return 
 end
-NPCRaycastWeaponBase.set_flashlight_enabled = function (self, enabled)
+function NPCRaycastWeaponBase:set_flashlight_enabled(enabled)
 	if not self._flashlight_data then
 		return 
 	end
@@ -544,7 +544,7 @@ NPCRaycastWeaponBase.set_flashlight_enabled = function (self, enabled)
 
 	return 
 end
-NPCRaycastWeaponBase.set_flashlight_light_lod_enabled = function (self, enabled)
+function NPCRaycastWeaponBase:set_flashlight_light_lod_enabled(enabled)
 	if not self._flashlight_data then
 		return 
 	end
@@ -563,7 +563,7 @@ NPCRaycastWeaponBase.set_flashlight_light_lod_enabled = function (self, enabled)
 
 	return 
 end
-NPCRaycastWeaponBase.set_laser_enabled = function (self, state)
+function NPCRaycastWeaponBase:set_laser_enabled(state)
 	return 
 end
 

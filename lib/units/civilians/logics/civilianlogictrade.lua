@@ -1,6 +1,6 @@
 slot2 = CopLogicTrade
 CivilianLogicTrade = class(slot1)
-CivilianLogicTrade._chk_request_action_walk_to_flee_pos = function (data, my_data, end_rot)
+function CivilianLogicTrade._chk_request_action_walk_to_flee_pos(data, my_data, end_rot)
 	local new_action_data = {
 		type = "walk",
 		nav_path = my_data.flee_path,

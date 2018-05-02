@@ -4,7 +4,7 @@ if not RaidGUIControlLootCardDetails then
 end
 
 RaidGUIControlLootCardDetails = slot0
-RaidGUIControlLootCardDetails.init = function (self, parent, params, item_data)
+function RaidGUIControlLootCardDetails:init(parent, params, item_data)
 	slot8 = params
 
 	RaidGUIControlLootCardDetails.super.init(slot5, self, parent)
@@ -80,10 +80,10 @@ RaidGUIControlLootCardDetails.init = function (self, parent, params, item_data)
 
 	return 
 end
-RaidGUIControlLootCardDetails.close = function (self)
+function RaidGUIControlLootCardDetails:close()
 	return 
 end
-RaidGUIControlLootCardDetails._create_empty_card = function (self)
+function RaidGUIControlLootCardDetails:_create_empty_card()
 	local card_back_texture, card_back_texture_rect = managers.challenge_cards.get_cards_back_texture(slot2, managers.challenge_cards)
 	slot6 = {
 		name = "card_empty",
@@ -103,7 +103,7 @@ RaidGUIControlLootCardDetails._create_empty_card = function (self)
 
 	return 
 end
-RaidGUIControlLootCardDetails._create_card_details = function (self)
+function RaidGUIControlLootCardDetails:_create_card_details()
 	slot3 = self._params
 	local card_params = clone(slot2)
 	card_params.x = 0
@@ -258,20 +258,20 @@ RaidGUIControlLootCardDetails._create_card_details = function (self)
 
 	return 
 end
-RaidGUIControlLootCardDetails._switch_card = function (self)
+function RaidGUIControlLootCardDetails:_switch_card()
 	return 
 end
-RaidGUIControlLootCardDetails.set_debug = function (self, value)
+function RaidGUIControlLootCardDetails:set_debug(value)
 	slot5 = value
 
 	self._object.set_debug(slot3, self._object)
 
 	return 
 end
-RaidGUIControlLootCardDetails.revealed = function (self)
+function RaidGUIControlLootCardDetails:revealed()
 	return self._state == "card_details"
 end
-RaidGUIControlLootCardDetails._reveal_card = function (self)
+function RaidGUIControlLootCardDetails:_reveal_card()
 	if self._state == "card_empty" then
 		self._state = "card_details"
 		slot3 = self._card_panel._engine_panel
@@ -290,7 +290,7 @@ RaidGUIControlLootCardDetails._reveal_card = function (self)
 
 	return 
 end
-RaidGUIControlLootCardDetails.on_mouse_released = function (self)
+function RaidGUIControlLootCardDetails:on_mouse_released()
 	if self._params.click_callback then
 		slot4 = self._state == "card_details"
 
@@ -303,14 +303,14 @@ RaidGUIControlLootCardDetails.on_mouse_released = function (self)
 
 	return 
 end
-RaidGUIControlLootCardDetails.confirm_pressed = function (self)
+function RaidGUIControlLootCardDetails:confirm_pressed()
 	slot3 = self
 
 	self.on_mouse_released(slot2)
 
 	return 
 end
-RaidGUIControlLootCardDetails.on_mouse_over = function (self, x, y)
+function RaidGUIControlLootCardDetails:on_mouse_over(x, y)
 	slot7 = y
 
 	RaidGUIControlLootCardDetails.super.on_mouse_over(slot4, self, x)
@@ -331,7 +331,7 @@ RaidGUIControlLootCardDetails.on_mouse_over = function (self, x, y)
 
 	return 
 end
-RaidGUIControlLootCardDetails.on_mouse_out = function (self, x, y)
+function RaidGUIControlLootCardDetails:on_mouse_out(x, y)
 	slot7 = y
 
 	RaidGUIControlLootCardDetails.super.on_mouse_out(slot4, self, x)
@@ -342,14 +342,14 @@ RaidGUIControlLootCardDetails.on_mouse_out = function (self, x, y)
 
 	return 
 end
-RaidGUIControlLootCardDetails._highlight_on = function (self)
+function RaidGUIControlLootCardDetails:_highlight_on()
 	slot4 = true
 
 	self._select_background_panel.set_visible(slot2, self._select_background_panel)
 
 	return 
 end
-RaidGUIControlLootCardDetails._highlight_off = function (self)
+function RaidGUIControlLootCardDetails:_highlight_off()
 	if self._select_background_panel and self._select_background_panel._engine_panel then
 		slot3 = self._select_background_panel._engine_panel
 
@@ -362,7 +362,7 @@ RaidGUIControlLootCardDetails._highlight_off = function (self)
 
 	return 
 end
-RaidGUIControlLootCardDetails.select = function (self)
+function RaidGUIControlLootCardDetails:select()
 	self._selected = true
 
 	if self._params.hover_callback then
@@ -381,7 +381,7 @@ RaidGUIControlLootCardDetails.select = function (self)
 
 	return 
 end
-RaidGUIControlLootCardDetails.unselect = function (self)
+function RaidGUIControlLootCardDetails:unselect()
 	self._selected = false
 	slot3 = self
 
@@ -389,7 +389,7 @@ RaidGUIControlLootCardDetails.unselect = function (self)
 
 	return 
 end
-RaidGUIControlLootCardDetails._animate_reveal_card = function (self)
+function RaidGUIControlLootCardDetails:_animate_reveal_card()
 	self._sound_source.post_event(slot2, self._sound_source)
 
 	local close_duration = 0.25
@@ -455,7 +455,7 @@ RaidGUIControlLootCardDetails._animate_reveal_card = function (self)
 
 	return 
 end
-RaidGUIControlLootCardDetails._animate_show_card = function (self)
+function RaidGUIControlLootCardDetails:_animate_show_card()
 	slot4 = "reward_reveal_card"
 
 	self._sound_source.post_event(slot2, self._sound_source)

@@ -66,7 +66,7 @@ slot5 = {
 
 commands.add(CoreCommandRegistry, commands)
 
-CoreCutsceneBatchOptimizerDialog.init = function (self, parent_window)
+function CoreCutsceneBatchOptimizerDialog:init(parent_window)
 	slot10 = 0
 	slot6 = Vector3(slot7, 100, 500)
 	slot11 = 0
@@ -175,7 +175,7 @@ CoreCutsceneBatchOptimizerDialog.init = function (self, parent_window)
 
 	return 
 end
-CoreCutsceneBatchOptimizerDialog.update = function (self, time, delta_time)
+function CoreCutsceneBatchOptimizerDialog:update(time, delta_time)
 	if not self.__window then
 		return true
 	end
@@ -205,7 +205,7 @@ CoreCutsceneBatchOptimizerDialog.update = function (self, time, delta_time)
 
 	return false
 end
-CoreCutsceneBatchOptimizerDialog._create_menu_bar = function (self)
+function CoreCutsceneBatchOptimizerDialog:_create_menu_bar()
 	local file_menu = commands.wrap_menu(slot2, EWS.Menu(slot5, EWS))
 	slot5 = "NEW_JOB_LIST"
 
@@ -243,7 +243,7 @@ CoreCutsceneBatchOptimizerDialog._create_menu_bar = function (self)
 
 	return menu_bar
 end
-CoreCutsceneBatchOptimizerDialog._create_buttons_panel = function (self, parent)
+function CoreCutsceneBatchOptimizerDialog:_create_buttons_panel(parent)
 	slot5 = parent
 	local panel = EWS.Panel(slot3, EWS)
 	slot6 = "HORIZONTAL"
@@ -275,7 +275,7 @@ CoreCutsceneBatchOptimizerDialog._create_buttons_panel = function (self, parent)
 
 	return panel
 end
-CoreCutsceneBatchOptimizerDialog._destroy = function (self)
+function CoreCutsceneBatchOptimizerDialog:_destroy()
 	slot3 = self.__progress_dialog
 
 	if alive(slot2) then
@@ -306,7 +306,7 @@ CoreCutsceneBatchOptimizerDialog._destroy = function (self)
 
 	return 
 end
-CoreCutsceneBatchOptimizerDialog._progress_message = function (self, project)
+function CoreCutsceneBatchOptimizerDialog:_progress_message(project)
 	if project == nil then
 		slot2 = "Done!"
 	else
@@ -316,7 +316,7 @@ CoreCutsceneBatchOptimizerDialog._progress_message = function (self, project)
 
 	return slot2
 end
-CoreCutsceneBatchOptimizerDialog._open_job_list = function (self, input_path)
+function CoreCutsceneBatchOptimizerDialog:_open_job_list(input_path)
 	local mappings = read_lua_representation_from_path(slot3)
 	slot6 = mappings
 
@@ -326,7 +326,7 @@ CoreCutsceneBatchOptimizerDialog._open_job_list = function (self, input_path)
 
 	return 
 end
-CoreCutsceneBatchOptimizerDialog._save_job_list = function (self, output_path)
+function CoreCutsceneBatchOptimizerDialog:_save_job_list(output_path)
 	local mappings = self.__projects.mappings(slot3)
 	slot6 = output_path
 
@@ -336,7 +336,7 @@ CoreCutsceneBatchOptimizerDialog._save_job_list = function (self, output_path)
 
 	return 
 end
-CoreCutsceneBatchOptimizerDialog._default_mappings_for_all_projects = function (self)
+function CoreCutsceneBatchOptimizerDialog:_default_mappings_for_all_projects()
 	slot4 = "cutscene_project"
 	local project_names = managers.database.list_entries_of_type(slot2, managers.database)
 
@@ -350,27 +350,27 @@ CoreCutsceneBatchOptimizerDialog._default_mappings_for_all_projects = function (
 
 	return mappings
 end
-CoreCutsceneBatchOptimizerDialog._default_optimized_cutscene_name = function (self, project_name)
+function CoreCutsceneBatchOptimizerDialog:_default_optimized_cutscene_name(project_name)
 	slot9 = ""
 	slot7 = ""
 
 	return "optimized_" .. string.gsub(slot4, string.gsub(slot6, project_name, "^story_"), "^optimized_")
 end
-CoreCutsceneBatchOptimizerDialog._request_input_file_from_user = function (self, message, wildcard)
+function CoreCutsceneBatchOptimizerDialog:_request_input_file_from_user(message, wildcard)
 
 	-- Decompilation error in this vicinity:
 	slot13 = "Must supply a wildcard spec. Check wxWidgets docs."
 	local dialog = EWS.FileDialog(slot4, EWS, self.__window, message, "", "", assert("OPEN,FILE_MUST_EXIST", wildcard))
 	slot6 = dialog
 end
-CoreCutsceneBatchOptimizerDialog._request_output_file_from_user = function (self, message, wildcard, default_file)
+function CoreCutsceneBatchOptimizerDialog:_request_output_file_from_user(message, wildcard, default_file)
 
 	-- Decompilation error in this vicinity:
 	slot14 = "Must supply a wildcard spec. Check wxWidgets docs."
 	local dialog = EWS.FileDialog(slot5, EWS, self.__window, message, "", default_file or "", assert("SAVE,OVERWRITE_PROMPT", wildcard))
 	slot7 = dialog
 end
-CoreCutsceneBatchOptimizerDialog._on_export_button_clicked = function (self, sender)
+function CoreCutsceneBatchOptimizerDialog:_on_export_button_clicked(sender)
 	local projects_to_export = self.__projects.mappings(slot3)
 	slot5 = projects_to_export
 
@@ -394,7 +394,7 @@ CoreCutsceneBatchOptimizerDialog._on_export_button_clicked = function (self, sen
 
 	return 
 end
-CoreCutsceneBatchOptimizerDialog._on_new_job_list = function (self)
+function CoreCutsceneBatchOptimizerDialog:_on_new_job_list()
 	slot4 = "clearing"
 	local ok_to_proceed = self._verify_user_intent(slot2, self)
 
@@ -408,7 +408,7 @@ CoreCutsceneBatchOptimizerDialog._on_new_job_list = function (self)
 
 	return ok_to_proceed
 end
-CoreCutsceneBatchOptimizerDialog._on_default_job_list = function (self)
+function CoreCutsceneBatchOptimizerDialog:_on_default_job_list()
 	slot3 = self
 	local ok_to_proceed = self._on_new_job_list(slot2)
 
@@ -421,7 +421,7 @@ CoreCutsceneBatchOptimizerDialog._on_default_job_list = function (self)
 
 	return 
 end
-CoreCutsceneBatchOptimizerDialog._on_open_job_list = function (self)
+function CoreCutsceneBatchOptimizerDialog:_on_open_job_list()
 	slot4 = "opening"
 	local ok_to_proceed = self._verify_user_intent(slot2, self)
 
@@ -438,7 +438,7 @@ CoreCutsceneBatchOptimizerDialog._on_open_job_list = function (self)
 
 	return 
 end
-CoreCutsceneBatchOptimizerDialog._on_save_job_list = function (self)
+function CoreCutsceneBatchOptimizerDialog:_on_save_job_list()
 	if self.__current_job_list_path then
 		slot4 = self.__current_job_list_path
 
@@ -453,7 +453,7 @@ CoreCutsceneBatchOptimizerDialog._on_save_job_list = function (self)
 
 	return 
 end
-CoreCutsceneBatchOptimizerDialog._on_save_job_list_as = function (self)
+function CoreCutsceneBatchOptimizerDialog:_on_save_job_list_as()
 	slot6 = "untitled.boj"
 	local output_path = self._request_output_file_from_user(slot2, self, "Save Job List", JOB_LIST_FILE_SPEC)
 
@@ -465,7 +465,7 @@ CoreCutsceneBatchOptimizerDialog._on_save_job_list_as = function (self)
 
 	return output_path ~= nil
 end
-CoreCutsceneBatchOptimizerDialog._on_exit = function (self)
+function CoreCutsceneBatchOptimizerDialog:_on_exit()
 	slot4 = "closing"
 	local ok_to_proceed = self._verify_user_intent(slot2, self)
 
@@ -477,7 +477,7 @@ CoreCutsceneBatchOptimizerDialog._on_exit = function (self)
 
 	return ok_to_proceed
 end
-CoreCutsceneBatchOptimizerDialog._verify_user_intent = function (self, operation)
+function CoreCutsceneBatchOptimizerDialog:_verify_user_intent(operation)
 	slot6 = self.__projects
 
 	if table.empty(self.__projects.mappings(slot5)) then

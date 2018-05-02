@@ -392,7 +392,7 @@ if not WorldEditor then
 end
 
 WorldEditor = slot0
-WorldEditor.init = function (self, game_state_machine)
+function WorldEditor:init(game_state_machine)
 	slot5 = game_state_machine
 
 	WorldEditor.super.init(slot3, self)
@@ -409,7 +409,7 @@ WorldEditor.init = function (self, game_state_machine)
 
 	return 
 end
-WorldEditor.update = function (self, ...)
+function WorldEditor:update(...)
 	slot3 = self
 
 	WorldEditor.super.update(slot2, ...)
@@ -422,17 +422,17 @@ WorldEditor.update = function (self, ...)
 
 	return 
 end
-WorldEditor.add_tool_updator = function (self, name, updator)
+function WorldEditor:add_tool_updator(name, updator)
 	self._tool_updators[name] = updator
 
 	return 
 end
-WorldEditor.remove_tool_updator = function (self, name)
+function WorldEditor:remove_tool_updator(name)
 	self._tool_updators[name] = nil
 
 	return 
 end
-WorldEditor._init_mission_difficulties = function (self)
+function WorldEditor:_init_mission_difficulties()
 	self._mission_difficulties = {
 		{
 			"difficulty_1",
@@ -455,7 +455,7 @@ WorldEditor._init_mission_difficulties = function (self)
 
 	return 
 end
-WorldEditor._init_mission_players = function (self)
+function WorldEditor:_init_mission_players()
 	self._mission_players = {
 		1,
 		2,
@@ -466,7 +466,7 @@ WorldEditor._init_mission_players = function (self)
 
 	return 
 end
-WorldEditor._project_init_layer_classes = function (self)
+function WorldEditor:_project_init_layer_classes()
 	slot5 = CoreAiLayer.AiLayer
 
 	self.add_layer(slot2, self, "Ai")
@@ -477,12 +477,12 @@ WorldEditor._project_init_layer_classes = function (self)
 
 	return 
 end
-WorldEditor._project_init_slot_masks = function (self)
+function WorldEditor:_project_init_slot_masks()
 	self._go_through_units_before_simulaton_mask = self._go_through_units_before_simulaton_mask + 15
 
 	return 
 end
-WorldEditor.project_prestart_up = function (self, with_mission)
+function WorldEditor:project_prestart_up(with_mission)
 	slot4 = managers.navigation
 
 	managers.navigation.on_simulation_started(slot3)
@@ -497,7 +497,7 @@ WorldEditor.project_prestart_up = function (self, with_mission)
 
 	return 
 end
-WorldEditor.project_run_simulation = function (self, with_mission)
+function WorldEditor:project_run_simulation(with_mission)
 	slot5 = self._mission_difficulty or Global.DEFAULT_DIFFICULTY
 
 	tweak_data.set_difficulty(slot3, tweak_data)
@@ -579,10 +579,10 @@ WorldEditor.project_run_simulation = function (self, with_mission)
 
 	return 
 end
-WorldEditor._project_check_unit = function (self, unit)
+function WorldEditor:_project_check_unit(unit)
 	return 
 end
-WorldEditor.project_stop_simulation = function (self)
+function WorldEditor:project_stop_simulation()
 	slot3 = managers.hud
 
 	managers.hud.on_simulation_ended(slot2)
@@ -702,7 +702,7 @@ WorldEditor.project_stop_simulation = function (self)
 
 	return 
 end
-WorldEditor.project_clear_units = function (self)
+function WorldEditor:project_clear_units()
 	slot3 = managers.groupai
 	slot4 = false
 
@@ -730,13 +730,13 @@ WorldEditor.project_clear_units = function (self)
 
 	return 
 end
-WorldEditor.project_clear_layers = function (self)
+function WorldEditor:project_clear_layers()
 	return 
 end
-WorldEditor.project_recreate_layers = function (self)
+function WorldEditor:project_recreate_layers()
 	return 
 end
-WorldEditor._project_add_left_upper_toolbar_tool = function (self)
+function WorldEditor:_project_add_left_upper_toolbar_tool()
 	slot8 = "world_editor/icon_creator_16x16.png"
 
 	self._left_upper_toolbar.add_tool(slot2, self._left_upper_toolbar, "TB_INVENTORY_ICON_CREATOR", "Icon Creator", CoreEWS.image_path(slot7))
@@ -748,7 +748,7 @@ WorldEditor._project_add_left_upper_toolbar_tool = function (self)
 
 	return 
 end
-WorldEditor._open_inventory_icon_creator = function (self)
+function WorldEditor:_open_inventory_icon_creator()
 	if not self._inventory_icon_creator then
 		slot3 = InventoryIconCreator
 		slot1 = InventoryIconCreator.new(slot2)

@@ -3,10 +3,10 @@ slot3 = "CorePlayerHandler"
 core.module(slot1, core)
 
 Player = Player or class()
-Player.set_avatar = function (self, unit)
+function Player:set_avatar(unit)
 	return 
 end
-Player.release_avatar = function (self)
+function Player:release_avatar()
 	return 
 end
 

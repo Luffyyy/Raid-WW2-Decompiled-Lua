@@ -6,14 +6,14 @@ if not HubElement then
 end
 
 HubElement = slot0
-HubElement.init = function (self, ...)
+function HubElement:init(...)
 	slot3 = self
 
 	CoreHubElement.init(slot2, ...)
 
 	return 
 end
-CoreHubElement.init = function (self, unit)
+function CoreHubElement:init(unit)
 	self._unit = unit
 	slot4 = self._unit
 	self._hed = self._unit.hub_element_data(slot3)
@@ -39,7 +39,7 @@ CoreHubElement.init = function (self, unit)
 
 	return 
 end
-CoreHubElement._createicon = function (self)
+function CoreHubElement:_createicon()
 	local iconsize = 128
 
 	if Global.iconsize then
@@ -94,7 +94,7 @@ CoreHubElement._createicon = function (self)
 
 	return 
 end
-CoreHubElement._create_panel = function (self)
+function CoreHubElement:_create_panel()
 	if self._panel then
 		return 
 	end
@@ -104,12 +104,12 @@ CoreHubElement._create_panel = function (self)
 
 	return 
 end
-CoreHubElement._build_panel = function (self)
+function CoreHubElement:_build_panel()
 	self._panel = nil
 
 	return 
 end
-CoreHubElement.panel = function (self, id, parent, parent_sizer)
+function CoreHubElement:panel(id, parent, parent_sizer)
 	if id then
 		if self._panels[id] then
 			return self._panels[id]
@@ -134,7 +134,7 @@ CoreHubElement.panel = function (self, id, parent, parent_sizer)
 
 	return self._panel
 end
-CoreHubElement._add_panel = function (self, parent, parent_sizer)
+function CoreHubElement:_add_panel(parent, parent_sizer)
 	slot8 = "TAB_TRAVERSAL"
 	local panel = EWS.Panel(slot4, EWS, parent, "")
 	slot7 = "VERTICAL"
@@ -171,7 +171,7 @@ CoreHubElement._add_panel = function (self, parent, parent_sizer)
 
 	return panel, panel_sizer
 end
-CoreHubElement.add_help_text = function (self, data)
+function CoreHubElement:add_help_text(data)
 	if data.panel and data.sizer then
 		slot11 = "TE_MULTILINE,TE_READONLY,TE_WORDWRAP,TE_CENTRE"
 		slot8 = "EXPAND,TOP,BOTTOM"
@@ -181,7 +181,7 @@ CoreHubElement.add_help_text = function (self, data)
 
 	return 
 end
-CoreHubElement.set_element_data = function (self, data)
+function CoreHubElement:set_element_data(data)
 	if data.callback then
 		local he = self._unit.hub_element(slot3)
 		slot7 = data.params
@@ -198,34 +198,34 @@ CoreHubElement.set_element_data = function (self, data)
 
 	return 
 end
-CoreHubElement.selected = function (self)
+function CoreHubElement:selected()
 	return 
 end
-CoreHubElement.update_selected = function (self)
+function CoreHubElement:update_selected()
 	return 
 end
-CoreHubElement.update_unselected = function (self)
+function CoreHubElement:update_unselected()
 	return 
 end
-CoreHubElement.begin_editing = function (self)
+function CoreHubElement:begin_editing()
 	return 
 end
-CoreHubElement.end_editing = function (self)
+function CoreHubElement:end_editing()
 	return 
 end
-CoreHubElement.clone_data = function (self)
+function CoreHubElement:clone_data()
 	return 
 end
-CoreHubElement.layer_finished = function (self)
+function CoreHubElement:layer_finished()
 	return 
 end
-CoreHubElement.action_type = function (self)
+function CoreHubElement:action_type()
 	return self._action_type or self._type
 end
-CoreHubElement.trigger_type = function (self)
+function CoreHubElement:trigger_type()
 	return self._trigger_type or self._type
 end
-CoreHubElement.save_mission_action = function (self, file, t, hub, dont_save_values)
+function CoreHubElement:save_mission_action(file, t, hub, dont_save_values)
 	slot7 = self
 	local type = self.action_type(slot6)
 
@@ -255,7 +255,7 @@ CoreHubElement.save_mission_action = function (self, file, t, hub, dont_save_val
 
 	return 
 end
-CoreHubElement.save_mission_action_enemy = function (self, file, t, hub)
+function CoreHubElement:save_mission_action_enemy(file, t, hub)
 	slot6 = hub
 	slot7 = self._unit
 	local ha = hub.hub_element(slot5).get_hub_action(slot5, hub.hub_element(slot5))
@@ -291,14 +291,14 @@ CoreHubElement.save_mission_action_enemy = function (self, file, t, hub)
 
 	return 
 end
-CoreHubElement.save_data = function (self, file, t)
+function CoreHubElement:save_data(file, t)
 	slot7 = t
 
 	self.save_values(slot4, self, file)
 
 	return 
 end
-CoreHubElement.save_values = function (self, file, t)
+function CoreHubElement:save_values(file, t)
 	t = t .. "\t"
 	slot6 = t .. "<values>"
 
@@ -318,7 +318,7 @@ CoreHubElement.save_values = function (self, file, t)
 
 	return 
 end
-CoreHubElement.save_value = function (self, file, t, name)
+function CoreHubElement:save_value(file, t, name)
 	t = t .. "\t"
 	slot6 = file
 	slot12 = self._unit
@@ -327,7 +327,7 @@ CoreHubElement.save_value = function (self, file, t, name)
 
 	return 
 end
-CoreHubElement.save_mission_trigger = function (self, file, t, hub)
+function CoreHubElement:save_mission_trigger(file, t, hub)
 	if 0 < #self._mission_trigger_values then
 		slot6 = self
 		local type = self.trigger_type(slot5)
@@ -357,15 +357,15 @@ CoreHubElement.save_mission_trigger = function (self, file, t, hub)
 
 	return 
 end
-CoreHubElement.name = function (self)
+function CoreHubElement:name()
 	slot3 = self._unit
 
 	return self._unit.name(slot2) .. self._ud.unit_id
 end
-CoreHubElement.load_data = function (self, data)
+function CoreHubElement:load_data(data)
 	return 
 end
-CoreHubElement.get_color = function (self, type)
+function CoreHubElement:get_color(type)
 	if type then
 		if type == "activate" or type == "enable" then
 			return 0, 1, 0
@@ -376,7 +376,7 @@ CoreHubElement.get_color = function (self, type)
 
 	return 0, 1, 0
 end
-CoreHubElement.draw_connections_selected = function (self)
+function CoreHubElement:draw_connections_selected()
 	slot3 = self._hed.hubs
 
 	for _, hub in ipairs(slot2) do
@@ -390,10 +390,10 @@ CoreHubElement.draw_connections_selected = function (self)
 
 	return 
 end
-CoreHubElement.draw_connections_unselected = function (self)
+function CoreHubElement:draw_connections_unselected()
 	return 
 end
-CoreHubElement.draw_arrow = function (self, from, to, r, g, b, thick)
+function CoreHubElement:draw_arrow(from, to, r, g, b, thick)
 	slot14 = b
 
 	self._arrow_brush.set_color(slot8, Color(slot11, r, g))
@@ -439,42 +439,42 @@ CoreHubElement.draw_arrow = function (self, from, to, r, g, b, thick)
 
 	return 
 end
-CoreHubElement.clear = function (self)
+function CoreHubElement:clear()
 	return 
 end
-CoreHubElement.action_types = function (self)
+function CoreHubElement:action_types()
 	return self._action_types
 end
-CoreHubElement.timeline_color = function (self)
+function CoreHubElement:timeline_color()
 	return self._timeline_color
 end
-CoreHubElement.add_triggers = function (self)
+function CoreHubElement:add_triggers()
 	return 
 end
-CoreHubElement.clear_triggers = function (self)
+function CoreHubElement:clear_triggers()
 	return 
 end
-CoreHubElement.widget_affect_object = function (self)
+function CoreHubElement:widget_affect_object()
 	return nil
 end
-CoreHubElement.use_widget_position = function (self)
+function CoreHubElement:use_widget_position()
 	return nil
 end
-CoreHubElement.set_enabled = function (self)
+function CoreHubElement:set_enabled()
 	return 
 end
-CoreHubElement.set_disabled = function (self)
+function CoreHubElement:set_disabled()
 	return 
 end
-CoreHubElement.set_update_selected_on = function (self, value)
+function CoreHubElement:set_update_selected_on(value)
 	self._update_selected_on = value
 
 	return 
 end
-CoreHubElement.update_selected_on = function (self)
+function CoreHubElement:update_selected_on()
 	return self._update_selected_on
 end
-CoreHubElement.destroy = function (self)
+function CoreHubElement:destroy()
 	if self._panel then
 		slot3 = self._panel
 		self._panel.extension(slot2).alive = false

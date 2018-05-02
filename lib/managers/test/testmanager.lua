@@ -17,13 +17,13 @@ local tests = {
 }
 local active_tests = {}
 local utils = nil
-TestManager.init = function (self)
+function TestManager:init()
 	slot3 = TestUtilities
 	self.utils = TestUtilities.new(slot2)
 
 	return 
 end
-TestManager.update = function (self, t, dt)
+function TestManager:update(t, dt)
 	slot5 = active_tests
 
 	for test, value in pairs(slot4) do
@@ -34,7 +34,7 @@ TestManager.update = function (self, t, dt)
 
 	return 
 end
-TestManager.toggleTest = function (self, test_name)
+function TestManager:toggleTest(test_name)
 	if tests[test_name] then
 		if active_tests[test_name] then
 			active_tests[test_name].toggleTest()

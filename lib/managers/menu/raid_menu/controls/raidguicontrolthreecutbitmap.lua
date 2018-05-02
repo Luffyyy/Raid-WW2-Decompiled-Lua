@@ -5,7 +5,7 @@ end
 
 RaidGUIControlThreeCutBitmap = slot0
 RaidGUIControlThreeCutBitmap.CENTER_OVERFLOW = 1
-RaidGUIControlThreeCutBitmap.init = function (self, parent, params)
+function RaidGUIControlThreeCutBitmap:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlThreeCutBitmap.super.init(slot4, self, parent)
@@ -28,7 +28,7 @@ RaidGUIControlThreeCutBitmap.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlThreeCutBitmap._create_panel = function (self)
+function RaidGUIControlThreeCutBitmap:_create_panel()
 	slot3 = self._params
 	local three_cut_params = clone(slot2)
 	three_cut_params.name = three_cut_params.name .. "_three_cut_bitmap"
@@ -47,7 +47,7 @@ RaidGUIControlThreeCutBitmap._create_panel = function (self)
 
 	return 
 end
-RaidGUIControlThreeCutBitmap._layout_parts = function (self)
+function RaidGUIControlThreeCutBitmap:_layout_parts()
 	slot3 = self
 	self._h = self.h(slot2)
 	local left_texture_rect = {
@@ -121,7 +121,7 @@ RaidGUIControlThreeCutBitmap._layout_parts = function (self)
 
 	return 
 end
-RaidGUIControlThreeCutBitmap.set_color = function (self, color)
+function RaidGUIControlThreeCutBitmap:set_color(color)
 	slot5 = color
 
 	self._left.set_color(slot3, self._left)
@@ -136,12 +136,12 @@ RaidGUIControlThreeCutBitmap.set_color = function (self, color)
 
 	return 
 end
-RaidGUIControlThreeCutBitmap.color = function (self)
+function RaidGUIControlThreeCutBitmap:color()
 	slot3 = self._left
 
 	return self._left.color(slot2)
 end
-RaidGUIControlThreeCutBitmap.set_w = function (self, w)
+function RaidGUIControlThreeCutBitmap:set_w(w)
 	slot5 = w
 
 	self._object.set_w(slot3, self._object)
@@ -177,10 +177,10 @@ RaidGUIControlThreeCutBitmap.set_w = function (self, w)
 
 	return 
 end
-RaidGUIControlThreeCutBitmap.mouse_released = function (self, o, button, x, y)
+function RaidGUIControlThreeCutBitmap:mouse_released(o, button, x, y)
 	return false
 end
-RaidGUIControlThreeCutBitmap.h = function (self)
+function RaidGUIControlThreeCutBitmap:h()
 	local height = tweak_data.gui.icons[self._params.left].texture_rect[4]
 
 	if height < tweak_data.gui.icons[self._params.center].texture_rect[4] then

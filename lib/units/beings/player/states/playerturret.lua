@@ -6,14 +6,14 @@ if not PlayerTurret then
 end
 
 PlayerTurret = slot0
-PlayerTurret.init = function (self, unit)
+function PlayerTurret:init(unit)
 	slot5 = unit
 
 	PlayerTurret.super.init(slot3, self)
 
 	return 
 end
-PlayerTurret.enter = function (self, state_data, enter_data)
+function PlayerTurret:enter(state_data, enter_data)
 	slot7 = enter_data
 
 	PlayerTurret.super.enter(slot4, self, state_data)
@@ -98,7 +98,7 @@ PlayerTurret.enter = function (self, state_data, enter_data)
 
 	return 
 end
-PlayerTurret._enter = function (self, enter_data)
+function PlayerTurret:_enter(enter_data)
 	if self._unit then
 		slot4 = self._unit
 
@@ -110,10 +110,10 @@ PlayerTurret._enter = function (self, enter_data)
 
 	return 
 end
-PlayerTurret.get_camera_speed_limit = function (self)
+function PlayerTurret:get_camera_speed_limit()
 	return self._camera_speed_limit
 end
-PlayerTurret._init_locators = function (self)
+function PlayerTurret:_init_locators()
 	slot3 = managers.player
 	self._turret_unit = managers.player.get_turret_unit(slot2)
 
@@ -160,7 +160,7 @@ PlayerTurret._init_locators = function (self)
 
 	return 
 end
-PlayerTurret._hide_hud_prompts = function (self)
+function PlayerTurret:_hide_hud_prompts()
 	slot3 = managers.player
 	slot3 = managers.player.local_player(slot2)
 	slot3 = managers.player.local_player(slot2).inventory(slot2)
@@ -191,7 +191,7 @@ PlayerTurret._hide_hud_prompts = function (self)
 
 	return 
 end
-PlayerTurret._show_hud_prompts = function (self)
+function PlayerTurret:_show_hud_prompts()
 	if self._out_of_ammo_prompt_hidden then
 		slot4 = "hud_no_ammo_prompt"
 		slot10 = "hint_no_ammo"
@@ -213,7 +213,7 @@ PlayerTurret._show_hud_prompts = function (self)
 
 	return 
 end
-PlayerTurret.exit = function (self, state_data, new_state_name)
+function PlayerTurret:exit(state_data, new_state_name)
 	slot7 = new_state_name
 
 	PlayerTurret.super.exit(slot4, self, state_data or self._state_data)
@@ -333,7 +333,7 @@ PlayerTurret.exit = function (self, state_data, new_state_name)
 
 	return 
 end
-PlayerTurret._husk_turret_data = function (self)
+function PlayerTurret:_husk_turret_data()
 	slot3 = managers.network
 	slot4 = self._unit
 	local peer_id = managers.network.session(slot2).peer_by_unit(slot2, managers.network.session(slot2)).id(slot2)
@@ -361,7 +361,7 @@ PlayerTurret._husk_turret_data = function (self)
 
 	return 
 end
-PlayerTurret.update = function (self, t, dt)
+function PlayerTurret:update(t, dt)
 	slot7 = dt
 
 	PlayerTurret.super.update(slot4, self, t)
@@ -422,10 +422,10 @@ PlayerTurret.update = function (self, t, dt)
 
 	return 
 end
-PlayerTurret.set_tweak_data = function (self, name)
+function PlayerTurret:set_tweak_data(name)
 	return 
 end
-PlayerTurret._update_check_actions = function (self, t, dt)
+function PlayerTurret:_update_check_actions(t, dt)
 	local input = self._get_input(slot4)
 	slot9 = input
 
@@ -449,7 +449,7 @@ PlayerTurret._update_check_actions = function (self, t, dt)
 
 	return 
 end
-PlayerTurret._check_action_exit_turret = function (self, t, input)
+function PlayerTurret:_check_action_exit_turret(t, input)
 	if input.btn_interact_press then
 		slot6 = t
 
@@ -464,14 +464,14 @@ PlayerTurret._check_action_exit_turret = function (self, t, input)
 
 	return 
 end
-PlayerTurret._start_action_exit_turret = function (self, t)
+function PlayerTurret:_start_action_exit_turret(t)
 	slot4 = self
 
 	self._end_action_exit_turret(slot3)
 
 	return 
 end
-PlayerTurret._interupt_action_exit_turret = function (self)
+function PlayerTurret:_interupt_action_exit_turret()
 	if self._exit_turret_expire_t then
 		self._exit_turret_expire_t = nil
 		slot3 = managers.hud
@@ -485,7 +485,7 @@ PlayerTurret._interupt_action_exit_turret = function (self)
 
 	return 
 end
-PlayerTurret._update_action_timers = function (self, t, dt)
+function PlayerTurret:_update_action_timers(t, dt)
 	if self._exit_turret_expire_t then
 		slot7 = self._exit_turret_timer
 
@@ -502,7 +502,7 @@ PlayerTurret._update_action_timers = function (self, t, dt)
 
 	return 
 end
-PlayerTurret._end_action_exit_turret = function (self)
+function PlayerTurret:_end_action_exit_turret()
 	if self._turret_weapon._moving then
 		slot3 = self._turret_weapon
 
@@ -524,10 +524,10 @@ PlayerTurret._end_action_exit_turret = function (self)
 
 	return 
 end
-PlayerTurret.interaction_blocked = function (self)
+function PlayerTurret:interaction_blocked()
 	return true
 end
-PlayerTurret._announce_cooldown = function (self)
+function PlayerTurret:_announce_cooldown()
 	slot6 = managers.network
 	slot6 = managers.network.session(slot5)
 	slot4 = managers.network.session(slot5).local_peer(slot5)._id
@@ -550,12 +550,12 @@ PlayerTurret._announce_cooldown = function (self)
 
 	return 
 end
-PlayerTurret._enable_announcing = function (self)
+function PlayerTurret:_enable_announcing()
 	self._announce_shooting = false
 
 	return 
 end
-PlayerTurret._check_action_primary_attack = function (self, t, input)
+function PlayerTurret:_check_action_primary_attack(t, input)
 	if not self._turret_weapon then
 		return 
 	end
@@ -627,7 +627,7 @@ PlayerTurret._check_action_primary_attack = function (self, t, input)
 
 	return 
 end
-PlayerTurret._check_stop_shooting = function (self)
+function PlayerTurret:_check_stop_shooting()
 	if self._shooting then
 		slot3 = self._equipped_unit
 		slot3 = self._equipped_unit.base(slot2)
@@ -665,19 +665,19 @@ PlayerTurret._check_stop_shooting = function (self)
 
 	return 
 end
-PlayerTurret._check_step = function (self, t)
+function PlayerTurret:_check_step(t)
 	return 
 end
-PlayerTurret._check_action_reload = function (self, t, input)
+function PlayerTurret:_check_action_reload(t, input)
 	return 
 end
-PlayerTurret._check_action_run = function (self, ...)
+function PlayerTurret:_check_action_run(...)
 	return 
 end
-PlayerTurret._check_use_item = function (self, t, input)
+function PlayerTurret:_check_use_item(t, input)
 	return 
 end
-PlayerTurret._check_change_weapon = function (self, t, input)
+function PlayerTurret:_check_change_weapon(t, input)
 	local new_action = nil
 	local action_wanted = input.btn_switch_weapon_press
 
@@ -707,7 +707,7 @@ PlayerTurret._check_change_weapon = function (self, t, input)
 
 	return new_action
 end
-PlayerTurret._check_action_equip = function (self, t, input)
+function PlayerTurret:_check_action_equip(t, input)
 	local new_action = nil
 	local selection_wanted = input.btn_primary_choice
 
@@ -750,7 +750,7 @@ PlayerTurret._check_action_equip = function (self, t, input)
 
 	return new_action
 end
-PlayerTurret._check_action_jump = function (self, t, input)
+function PlayerTurret:_check_action_jump(t, input)
 	local new_action = nil
 	local action_wanted = input.btn_jump_press
 
@@ -782,19 +782,19 @@ PlayerTurret._check_action_jump = function (self, t, input)
 
 	return new_action
 end
-PlayerTurret._check_action_steelsight = function (self, t, input)
+function PlayerTurret:_check_action_steelsight(t, input)
 	return 
 end
-PlayerTurret._update_movement = function (self, t, dt)
+function PlayerTurret:_update_movement(t, dt)
 	return 
 end
-PlayerTurret._get_max_walk_speed = function (self, ...)
+function PlayerTurret:_get_max_walk_speed(...)
 	return 0
 end
-PlayerTurret._get_walk_headbob = function (self, ...)
+function PlayerTurret:_get_walk_headbob(...)
 	return 0
 end
-PlayerTurret._postion_player = function (self)
+function PlayerTurret:_postion_player()
 	slot3 = self._unit
 	self._player_original_position = self._unit.position(slot2)
 	local rot = self._turret_unit.rotation(slot2)
@@ -836,7 +836,7 @@ PlayerTurret._postion_player = function (self)
 
 	return 
 end
-PlayerTurret._reposition_player = function (self)
+function PlayerTurret:_reposition_player()
 	slot3 = managers.raid_job
 
 	if not managers.raid_job.current_level_id(slot2) then
@@ -861,13 +861,13 @@ PlayerTurret._reposition_player = function (self)
 
 	return 
 end
-PlayerTurret.pre_destroy = function (self, unit)
+function PlayerTurret:pre_destroy(unit)
 	return 
 end
-PlayerTurret.destroy = function (self)
+function PlayerTurret:destroy()
 	return 
 end
-PlayerTurret._debug_draw_positions = function (self)
+function PlayerTurret:_debug_draw_positions()
 	slot7 = self._turret_unit
 	slot9 = self._turret_unit
 	slot9 = self._turret_unit.rotation(slot8)

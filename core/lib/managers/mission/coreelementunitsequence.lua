@@ -22,7 +22,7 @@ if not ElementUnitSequence then
 end
 
 ElementUnitSequence = slot0
-ElementUnitSequence.init = function (self, ...)
+function ElementUnitSequence:init(...)
 	slot3 = self
 
 	ElementUnitSequence.super.init(slot2, ...)
@@ -36,21 +36,21 @@ ElementUnitSequence.init = function (self, ...)
 
 	return 
 end
-ElementUnitSequence.on_script_activated = function (self)
+function ElementUnitSequence:on_script_activated()
 	slot4 = self._id
 
 	self._mission_script.add_save_state_cb(slot2, self._mission_script)
 
 	return 
 end
-ElementUnitSequence.client_on_executed = function (self, ...)
+function ElementUnitSequence:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementUnitSequence.on_executed = function (self, instigator)
+function ElementUnitSequence:on_executed(instigator)
 
 	-- Decompilation error in this vicinity:
 	slot4 = self._unit
@@ -72,14 +72,14 @@ ElementUnitSequence.on_executed = function (self, instigator)
 
 	return 
 end
-ElementUnitSequence.destroy = function (self)
+function ElementUnitSequence:destroy()
 	slot4 = 0
 
 	self._unit.set_slot(slot2, self._unit)
 
 	return 
 end
-ElementUnitSequence.stop_simulation = function (self, ...)
+function ElementUnitSequence:stop_simulation(...)
 	slot3 = self
 
 	self.destroy(slot2)

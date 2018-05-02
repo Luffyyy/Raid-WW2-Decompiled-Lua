@@ -110,7 +110,7 @@ string.pretty = function (s, capitalize)
 	slot6 = " "
 	local pretty = string.gsub(slot3, s, "%W")
 end
-function string:rep(n)
+string.rep = function (self, n)
 	local out = ""
 
 	for i = 1, n, 1 do
@@ -119,7 +119,7 @@ function string:rep(n)
 
 	return out
 end
-function string:left(n)
+string.left = function (self, n)
 	slot8 = self
 	slot6 = n - self.len(slot7)
 

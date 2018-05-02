@@ -8,7 +8,7 @@ if not IngameFatalState then
 end
 
 IngameFatalState = slot0
-function IngameFatalState:init(game_state_machine)
+IngameFatalState.init = function (self, game_state_machine)
 	slot6 = game_state_machine
 
 	IngameFatalState.super.init(slot3, self, "ingame_fatal")
@@ -34,7 +34,7 @@ IngameFatalState.on_local_player_dead = function ()
 
 	return 
 end
-function IngameFatalState:update(t, dt)
+IngameFatalState.update = function (self, t, dt)
 	local player = managers.player.player_unit(slot4)
 	slot6 = player
 
@@ -83,7 +83,7 @@ function IngameFatalState:update(t, dt)
 
 	return 
 end
-function IngameFatalState:at_enter()
+IngameFatalState.at_enter = function (self)
 	local players = managers.player.players(slot2)
 	slot4 = players
 
@@ -130,7 +130,7 @@ function IngameFatalState:at_enter()
 
 	return 
 end
-function IngameFatalState:at_exit()
+IngameFatalState.at_exit = function (self)
 	slot3 = managers.player
 	local player = managers.player.player_unit(slot2)
 

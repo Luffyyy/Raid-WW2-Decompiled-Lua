@@ -4,7 +4,7 @@ if not CorpseCarryData then
 end
 
 CorpseCarryData = slot0
-CorpseCarryData.init = function (self, ...)
+function CorpseCarryData:init(...)
 	slot3 = self
 
 	CorpseCarryData.super.init(slot2, ...)
@@ -29,7 +29,7 @@ CorpseCarryData.init = function (self, ...)
 
 	return 
 end
-CorpseCarryData.on_thrown = function (self)
+function CorpseCarryData:on_thrown()
 	if not self._dismembered_parts then
 		slot3 = managers.player
 		slot6 = self
@@ -57,7 +57,7 @@ CorpseCarryData.on_thrown = function (self)
 
 	return 
 end
-CorpseCarryData._dismember = function (self, part_name, decal_name)
+function CorpseCarryData:_dismember(part_name, decal_name)
 	slot5 = self._unit
 	slot6 = part_name
 
@@ -91,7 +91,7 @@ CorpseCarryData._dismember = function (self, part_name, decal_name)
 
 	return 
 end
-CarryData.on_pickup = function (self)
+function CarryData:on_pickup()
 	if self._dismembered_parts then
 		slot6 = self
 		slot5 = self._dismembered_parts

@@ -66,20 +66,20 @@ CoreSpawnUnitCutsceneKey.control_for_unit_type = CoreSetupCutsceneKeyBase.standa
 CoreSpawnUnitCutsceneKey.control_for_divider = CoreSetupCutsceneKeyBase.standard_divider_control
 CoreSpawnUnitCutsceneKey.control_for_parent_unit_name = CoreSetupCutsceneKeyBase.standard_combo_box_control
 CoreSpawnUnitCutsceneKey.control_for_parent_object_name = CoreSetupCutsceneKeyBase.standard_combo_box_control
-CoreSpawnUnitCutsceneKey.__tostring = function (self)
+function CoreSpawnUnitCutsceneKey:__tostring()
 	slot4 = self.unit_type(slot5)
 	slot7 = self
 
 	return string.format(slot2, "Spawn %s named \"%s\".", self.name(self))
 end
-CoreSpawnUnitCutsceneKey.prime = function (self, player)
+function CoreSpawnUnitCutsceneKey:prime(player)
 	slot4 = self
 
 	self._spawn_unit(slot3)
 
 	return 
 end
-CoreSpawnUnitCutsceneKey.unload = function (self, player)
+function CoreSpawnUnitCutsceneKey:unload(player)
 	if self._cast then
 		slot4 = self
 
@@ -88,14 +88,14 @@ CoreSpawnUnitCutsceneKey.unload = function (self, player)
 
 	return 
 end
-CoreSpawnUnitCutsceneKey.play = function (self, player, undo, fast_forward)
+function CoreSpawnUnitCutsceneKey:play(player, undo, fast_forward)
 	slot6 = self
 
 	self._reparent_unit(slot5)
 
 	return 
 end
-CoreSpawnUnitCutsceneKey.is_valid_unit_category = function (self, unit_category)
+function CoreSpawnUnitCutsceneKey:is_valid_unit_category(unit_category)
 	slot4 = Application
 
 	if not Application.ews_enabled(slot3) then
@@ -118,7 +118,7 @@ CoreSpawnUnitCutsceneKey.is_valid_unit_category = function (self, unit_category)
 
 	return 
 end
-CoreSpawnUnitCutsceneKey.is_valid_unit_type = function (self, unit_type)
+function CoreSpawnUnitCutsceneKey:is_valid_unit_type(unit_type)
 	if unit_type ~= nil then
 		slot6 = unit_type
 		slot2 = DB.has(slot3, DB, "unit")
@@ -132,7 +132,7 @@ CoreSpawnUnitCutsceneKey.is_valid_unit_type = function (self, unit_type)
 
 	return slot2
 end
-CoreSpawnUnitCutsceneKey.is_valid_name = function (self, name)
+function CoreSpawnUnitCutsceneKey:is_valid_name(name)
 
 	-- Decompilation error in this vicinity:
 	slot6 = true
@@ -140,7 +140,7 @@ CoreSpawnUnitCutsceneKey.is_valid_name = function (self, name)
 
 	return existing_unit == nil or existing_unit == self._spawned_unit
 end
-CoreSpawnUnitCutsceneKey.control_for_database_browser_button = function (self, parent_frame)
+function CoreSpawnUnitCutsceneKey:control_for_database_browser_button(parent_frame)
 	local button = EWS.Button(slot3, EWS, parent_frame, "Pick From Database Browser", "")
 	slot11 = "_on_database_browser_button_clicked"
 	slot8 = button
@@ -149,7 +149,7 @@ CoreSpawnUnitCutsceneKey.control_for_database_browser_button = function (self, p
 
 	return button
 end
-CoreSpawnUnitCutsceneKey.refresh_control_for_unit_category = function (self, control)
+function CoreSpawnUnitCutsceneKey:refresh_control_for_unit_category(control)
 	slot4 = control
 
 	control.freeze(slot3)
@@ -180,7 +180,7 @@ CoreSpawnUnitCutsceneKey.refresh_control_for_unit_category = function (self, con
 
 	return 
 end
-CoreSpawnUnitCutsceneKey.refresh_control_for_unit_type = function (self, control)
+function CoreSpawnUnitCutsceneKey:refresh_control_for_unit_type(control)
 	slot4 = control
 
 	control.freeze(slot3)
@@ -212,7 +212,7 @@ CoreSpawnUnitCutsceneKey.refresh_control_for_unit_type = function (self, control
 
 	return 
 end
-CoreSpawnUnitCutsceneKey.refresh_control_for_parent_unit_name = function (self, control)
+function CoreSpawnUnitCutsceneKey:refresh_control_for_parent_unit_name(control)
 	slot4 = control
 
 	control.freeze(slot3)
@@ -256,7 +256,7 @@ CoreSpawnUnitCutsceneKey.refresh_control_for_parent_unit_name = function (self, 
 
 	return 
 end
-CoreSpawnUnitCutsceneKey.refresh_control_for_parent_object_name = function (self, control)
+function CoreSpawnUnitCutsceneKey:refresh_control_for_parent_object_name(control)
 	slot4 = control
 
 	control.freeze(slot3)
@@ -300,7 +300,7 @@ CoreSpawnUnitCutsceneKey.refresh_control_for_parent_object_name = function (self
 
 	return 
 end
-CoreSpawnUnitCutsceneKey.on_attribute_changed = function (self, attribute_name, value, previous_value)
+function CoreSpawnUnitCutsceneKey:on_attribute_changed(attribute_name, value, previous_value)
 	slot6 = self._cast
 
 	assert(slot5)
@@ -336,7 +336,7 @@ CoreSpawnUnitCutsceneKey.on_attribute_changed = function (self, attribute_name, 
 
 	return 
 end
-CoreSpawnUnitCutsceneKey._spawn_unit = function (self)
+function CoreSpawnUnitCutsceneKey:_spawn_unit()
 	slot3 = self
 
 	if self.is_valid(slot2) and self._cast then
@@ -355,7 +355,7 @@ CoreSpawnUnitCutsceneKey._spawn_unit = function (self)
 
 	return 
 end
-CoreSpawnUnitCutsceneKey._delete_unit = function (self)
+function CoreSpawnUnitCutsceneKey:_delete_unit()
 	slot3 = self
 
 	if self.is_valid(slot2) and self._cast then
@@ -367,7 +367,7 @@ CoreSpawnUnitCutsceneKey._delete_unit = function (self)
 
 	return 
 end
-CoreSpawnUnitCutsceneKey._reparent_unit = function (self)
+function CoreSpawnUnitCutsceneKey:_reparent_unit()
 	if self._spawned_unit then
 		slot3 = self._spawned_unit
 
@@ -409,7 +409,7 @@ CoreSpawnUnitCutsceneKey._reparent_unit = function (self)
 
 	return 
 end
-CoreSpawnUnitCutsceneKey.update_gui = function (self, time, delta_time)
+function CoreSpawnUnitCutsceneKey:update_gui(time, delta_time)
 	if self._database_browser then
 		slot7 = delta_time
 
@@ -433,7 +433,7 @@ CoreSpawnUnitCutsceneKey.update_gui = function (self, time, delta_time)
 
 	return 
 end
-CoreSpawnUnitCutsceneKey._on_database_browser_button_clicked = function (self, button)
+function CoreSpawnUnitCutsceneKey:_on_database_browser_button_clicked(button)
 	slot4 = button
 	self._cutscene_editor_window = button.parent(slot3)
 
@@ -455,7 +455,7 @@ CoreSpawnUnitCutsceneKey._on_database_browser_button_clicked = function (self, b
 
 	return 
 end
-CoreSpawnUnitCutsceneKey._on_database_browser_entry_selected = function (self)
+function CoreSpawnUnitCutsceneKey:_on_database_browser_entry_selected()
 	if self._database_browser then
 		slot3 = self._database_browser
 		local selected_entry = self._database_browser.get_value(slot2)

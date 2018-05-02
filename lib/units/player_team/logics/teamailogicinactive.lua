@@ -1,6 +1,6 @@
 slot2 = TeamAILogicBase
 TeamAILogicInactive = class(slot1)
-TeamAILogicInactive.enter = function (data, new_logic_name, enter_params)
+function TeamAILogicInactive.enter(data, new_logic_name, enter_params)
 	local my_data = {}
 	slot9 = my_data
 
@@ -38,7 +38,7 @@ TeamAILogicInactive.enter = function (data, new_logic_name, enter_params)
 
 	return 
 end
-TeamAILogicInactive.exit = function (data, new_logic_name, enter_params)
+function TeamAILogicInactive.exit(data, new_logic_name, enter_params)
 	slot7 = enter_params
 
 	TeamAILogicBase.exit(slot4, data, new_logic_name)
@@ -55,7 +55,7 @@ TeamAILogicInactive.exit = function (data, new_logic_name, enter_params)
 
 	return 
 end
-TeamAILogicInactive.is_available_for_assignment = function (data)
+function TeamAILogicInactive.is_available_for_assignment(data)
 	return false
 end
 

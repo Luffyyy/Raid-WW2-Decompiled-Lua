@@ -11,21 +11,21 @@ if not DeprecatedHubElement then
 end
 
 DeprecatedHubElement = slot0
-DeprecatedHubElement.init = function (self, ...)
+function DeprecatedHubElement:init(...)
 	slot3 = self
 
 	CoreDeprecatedHubElement.init(slot2, ...)
 
 	return 
 end
-CoreDeprecatedHubElement.init = function (self, unit)
+function CoreDeprecatedHubElement:init(unit)
 	slot5 = unit
 
 	HubElement.init(slot3, self)
 
 	return 
 end
-CoreDeprecatedHubElement._build_panel = function (self, panel, panel_sizer)
+function CoreDeprecatedHubElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

@@ -4,22 +4,22 @@ if not MoveObjectInteractionExt then
 end
 
 MoveObjectInteractionExt = slot0
-function MoveObjectInteractionExt:interact_distance(...)
+MoveObjectInteractionExt.interact_distance = function (self, ...)
 	slot3 = self
 
 	return MoveObjectInteractionExt.super.interact_distance(slot2, ...)
 end
-function MoveObjectInteractionExt:can_select(player)
+MoveObjectInteractionExt.can_select = function (self, player)
 	slot5 = player
 
 	return MoveObjectInteractionExt.super.can_select(slot3, self)
 end
-function MoveObjectInteractionExt:check_interupt()
+MoveObjectInteractionExt.check_interupt = function (self)
 	slot3 = self
 
 	return MoveObjectInteractionExt.super.check_interupt(slot2)
 end
-function MoveObjectInteractionExt:interact(player)
+MoveObjectInteractionExt.interact = function (self, player)
 	slot5 = player
 
 	MoveObjectInteractionExt.super.super.interact(slot3, self)
@@ -37,14 +37,14 @@ function MoveObjectInteractionExt:interact(player)
 
 	return 
 end
-function MoveObjectInteractionExt:sync_interacted(peer, player, status, skip_alive_check)
+MoveObjectInteractionExt.sync_interacted = function (self, peer, player, status, skip_alive_check)
 	if not self._active then
 		return 
 	end
 
 	return 
 end
-function MoveObjectInteractionExt:set_contour(color, opacity)
+MoveObjectInteractionExt.set_contour = function (self, color, opacity)
 	return 
 end
 

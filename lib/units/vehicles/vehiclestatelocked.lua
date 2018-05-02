@@ -4,14 +4,14 @@ if not VehicleStateLocked then
 end
 
 VehicleStateLocked = slot0
-VehicleStateLocked.init = function (self, unit)
+function VehicleStateLocked:init(unit)
 	slot5 = unit
 
 	BaseVehicleState.init(slot3, self)
 
 	return 
 end
-VehicleStateLocked.enter = function (self, state_data, enter_data)
+function VehicleStateLocked:enter(state_data, enter_data)
 	slot5 = self._unit
 	slot5 = self._unit.vehicle_driving(slot4)
 
@@ -33,13 +33,13 @@ VehicleStateLocked.enter = function (self, state_data, enter_data)
 
 	return 
 end
-VehicleStateLocked.allow_exit = function (self)
+function VehicleStateLocked:allow_exit()
 	return true
 end
-VehicleStateLocked.stop_vehicle = function (self)
+function VehicleStateLocked:stop_vehicle()
 	return true
 end
-VehicleStateLocked.is_vulnerable = function (self)
+function VehicleStateLocked:is_vulnerable()
 	return false
 end
 

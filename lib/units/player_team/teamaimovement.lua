@@ -6,7 +6,7 @@ end
 TeamAIMovement = slot0
 TeamAIMovement._char_name_to_index = HuskPlayerMovement._char_name_to_index
 TeamAIMovement._char_model_names = HuskPlayerMovement._char_model_names
-TeamAIMovement._post_init = function (self)
+function TeamAIMovement:_post_init()
 	slot3 = managers.groupai
 	slot3 = managers.groupai.state(slot2)
 
@@ -46,20 +46,20 @@ TeamAIMovement._post_init = function (self)
 
 	return 
 end
-TeamAIMovement.set_character_anim_variables = function (self)
+function TeamAIMovement:set_character_anim_variables()
 	slot3 = self
 
 	HuskPlayerMovement.set_character_anim_variables(slot2)
 
 	return 
 end
-TeamAIMovement.check_visual_equipment = function (self)
+function TeamAIMovement:check_visual_equipment()
 	return 
 end
-TeamAIMovement.m_detect_pos = function (self)
+function TeamAIMovement:m_detect_pos()
 	return self._m_head_pos
 end
-TeamAIMovement.set_position = function (self, pos)
+function TeamAIMovement:set_position(pos)
 	slot5 = pos
 
 	CopMovement.set_position(slot3, self)
@@ -70,7 +70,7 @@ TeamAIMovement.set_position = function (self, pos)
 
 	return 
 end
-TeamAIMovement.set_m_pos = function (self, pos)
+function TeamAIMovement:set_m_pos(pos)
 	slot5 = pos
 
 	CopMovement.set_m_pos(slot3, self)
@@ -81,7 +81,7 @@ TeamAIMovement.set_m_pos = function (self, pos)
 
 	return 
 end
-TeamAIMovement._upd_location = function (self)
+function TeamAIMovement:_upd_location()
 	slot3 = self._nav_tracker
 	local nav_seg_id = self._nav_tracker.nav_segment(slot2)
 
@@ -95,12 +95,12 @@ TeamAIMovement._upd_location = function (self)
 
 	return 
 end
-TeamAIMovement.get_location_id = function (self)
+function TeamAIMovement:get_location_id()
 	slot4 = self._standing_nav_seg_id
 
 	return managers.navigation.get_nav_seg_metadata(slot2, managers.navigation).location_id
 end
-TeamAIMovement.on_cuffed = function (self)
+function TeamAIMovement:on_cuffed()
 	slot3 = self._unit
 	slot4 = "surrender"
 
@@ -118,7 +118,7 @@ TeamAIMovement.on_cuffed = function (self)
 
 	return 
 end
-TeamAIMovement.on_discovered = function (self)
+function TeamAIMovement:on_discovered()
 	if self._cool then
 		slot3 = self
 
@@ -127,7 +127,7 @@ TeamAIMovement.on_discovered = function (self)
 
 	return 
 end
-TeamAIMovement.on_tase_ended = function (self)
+function TeamAIMovement:on_tase_ended()
 	slot3 = self._unit
 	slot3 = self._unit.character_damage(slot2)
 
@@ -135,20 +135,20 @@ TeamAIMovement.on_tase_ended = function (self)
 
 	return 
 end
-TeamAIMovement.tased = function (self)
+function TeamAIMovement:tased()
 	slot3 = self._unit
 
 	return self._unit.anim_data(slot2).tased
 end
-TeamAIMovement.cool = function (self)
+function TeamAIMovement:cool()
 	return self._cool
 end
-TeamAIMovement.downed = function (self)
+function TeamAIMovement:downed()
 	slot3 = self._unit
 
 	return self._unit.interaction(slot2)._active
 end
-TeamAIMovement.set_cool = function (self, state)
+function TeamAIMovement:set_cool(state)
 	if state then
 		state = true
 	else
@@ -209,7 +209,7 @@ TeamAIMovement.set_cool = function (self, state)
 
 	return 
 end
-TeamAIMovement.heat_clbk = function (self, state)
+function TeamAIMovement:heat_clbk(state)
 	if self._cool and not state then
 		slot4 = self
 
@@ -218,7 +218,7 @@ TeamAIMovement.heat_clbk = function (self, state)
 
 	return 
 end
-TeamAIMovement._switch_to_not_cool = function (self, instant)
+function TeamAIMovement:_switch_to_not_cool(instant)
 	slot4 = Network
 
 	if not Network.is_server(slot3) then
@@ -257,7 +257,7 @@ TeamAIMovement._switch_to_not_cool = function (self, instant)
 
 	return 
 end
-TeamAIMovement._switch_to_not_cool_clbk_func = function (self)
+function TeamAIMovement:_switch_to_not_cool_clbk_func()
 	if self._switch_to_not_cool_clbk_id and self._cool then
 		self._switch_to_not_cool_clbk_id = nil
 		self._cool = false
@@ -304,13 +304,13 @@ TeamAIMovement._switch_to_not_cool_clbk_func = function (self)
 
 	return 
 end
-TeamAIMovement.zipline_unit = function (self)
+function TeamAIMovement:zipline_unit()
 	return nil
 end
-TeamAIMovement.current_state_name = function (self)
+function TeamAIMovement:current_state_name()
 	return nil
 end
-TeamAIMovement.pre_destroy = function (self)
+function TeamAIMovement:pre_destroy()
 	if self._heat_listener_clbk then
 		slot3 = managers.groupai
 		slot4 = self._heat_listener_clbk

@@ -8,14 +8,14 @@ if not ElementAIRemove then
 end
 
 ElementAIRemove = slot0
-ElementAIRemove.init = function (self, ...)
+function ElementAIRemove:init(...)
 	slot3 = self
 
 	ElementAIRemove.super.init(slot2, ...)
 
 	return 
 end
-ElementAIRemove.on_executed = function (self, instigator)
+function ElementAIRemove:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

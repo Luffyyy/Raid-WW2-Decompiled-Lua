@@ -4,7 +4,7 @@ if not EnableUnitUnitElement then
 end
 
 EnableUnitUnitElement = slot0
-EnableUnitUnitElement.init = function (self, unit)
+function EnableUnitUnitElement:init(unit)
 	slot5 = unit
 
 	EnableUnitUnitElement.super.init(slot3, self)
@@ -17,7 +17,7 @@ EnableUnitUnitElement.init = function (self, unit)
 
 	return 
 end
-EnableUnitUnitElement.layer_finished = function (self)
+function EnableUnitUnitElement:layer_finished()
 	slot3 = self
 
 	MissionElement.layer_finished(slot2)
@@ -37,7 +37,7 @@ EnableUnitUnitElement.layer_finished = function (self)
 
 	return 
 end
-EnableUnitUnitElement.load_unit = function (self, unit)
+function EnableUnitUnitElement:load_unit(unit)
 	if unit then
 		slot5 = unit
 		self._units[unit.unit_data(slot4).unit_id] = unit
@@ -45,7 +45,7 @@ EnableUnitUnitElement.load_unit = function (self, unit)
 
 	return 
 end
-EnableUnitUnitElement.update_selected = function (self)
+function EnableUnitUnitElement:update_selected()
 	slot3 = self._hed.unit_ids
 
 	for _, id in pairs(slot2) do
@@ -91,7 +91,7 @@ EnableUnitUnitElement.update_selected = function (self)
 
 	return 
 end
-EnableUnitUnitElement.update_unselected = function (self, t, dt, selected_unit, all_units)
+function EnableUnitUnitElement:update_unselected(t, dt, selected_unit, all_units)
 	slot7 = self._hed.unit_ids
 
 	for _, id in pairs(slot6) do
@@ -122,7 +122,7 @@ EnableUnitUnitElement.update_unselected = function (self, t, dt, selected_unit, 
 
 	return 
 end
-EnableUnitUnitElement.draw_links_unselected = function (self, ...)
+function EnableUnitUnitElement:draw_links_unselected(...)
 	slot3 = self
 
 	EnableUnitUnitElement.super.draw_links_unselected(slot2, ...)
@@ -148,7 +148,7 @@ EnableUnitUnitElement.draw_links_unselected = function (self, ...)
 
 	return 
 end
-EnableUnitUnitElement.update_editing = function (self)
+function EnableUnitUnitElement:update_editing()
 	slot4 = {
 		ray_type = "body editor",
 		sample = true,
@@ -165,7 +165,7 @@ EnableUnitUnitElement.update_editing = function (self)
 
 	return 
 end
-EnableUnitUnitElement.select_unit = function (self)
+function EnableUnitUnitElement:select_unit()
 	slot4 = {
 		ray_type = "body editor",
 		sample = true,
@@ -191,7 +191,7 @@ EnableUnitUnitElement.select_unit = function (self)
 
 	return 
 end
-EnableUnitUnitElement._remove_unit = function (self, unit)
+function EnableUnitUnitElement:_remove_unit(unit)
 	slot5 = unit
 	self._units[unit.unit_data(slot4).unit_id] = nil
 	slot7 = unit
@@ -201,7 +201,7 @@ EnableUnitUnitElement._remove_unit = function (self, unit)
 
 	return 
 end
-EnableUnitUnitElement._add_unit = function (self, unit)
+function EnableUnitUnitElement:_add_unit(unit)
 	slot5 = unit
 	self._units[unit.unit_data(slot4).unit_id] = unit
 	slot7 = unit
@@ -211,7 +211,7 @@ EnableUnitUnitElement._add_unit = function (self, unit)
 
 	return 
 end
-EnableUnitUnitElement.add_triggers = function (self, vc)
+function EnableUnitUnitElement:add_triggers(vc)
 	slot5 = Idstring(slot6)
 	slot10 = "select_unit"
 
@@ -219,7 +219,7 @@ EnableUnitUnitElement.add_triggers = function (self, vc)
 
 	return 
 end
-EnableUnitUnitElement.add_unit_list_btn = function (self)
+function EnableUnitUnitElement:add_unit_list_btn()
 	local function f(unit)
 		slot4 = unit
 
@@ -249,7 +249,7 @@ EnableUnitUnitElement.add_unit_list_btn = function (self)
 
 	return 
 end
-EnableUnitUnitElement.remove_unit_list_btn = function (self)
+function EnableUnitUnitElement:remove_unit_list_btn()
 	local function f(unit)
 		slot4 = unit
 
@@ -271,7 +271,7 @@ EnableUnitUnitElement.remove_unit_list_btn = function (self)
 
 	return 
 end
-EnableUnitUnitElement._build_panel = function (self, panel, panel_sizer)
+function EnableUnitUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

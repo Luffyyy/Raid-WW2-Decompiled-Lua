@@ -5,24 +5,24 @@ end
 
 WeaponSecondSight = slot0
 WeaponSecondSight.GADGET_TYPE = "second_sight"
-WeaponSecondSight.init = function (self, unit)
+function WeaponSecondSight:init(unit)
 	slot5 = unit
 
 	WeaponSecondSight.super.init(slot3, self)
 
 	return 
 end
-WeaponSecondSight._check_state = function (self, ...)
+function WeaponSecondSight:_check_state(...)
 	slot3 = self
 
 	WeaponSecondSight.super._check_state(slot2, ...)
 
 	return 
 end
-WeaponSecondSight.toggle_requires_stance_update = function (self)
+function WeaponSecondSight:toggle_requires_stance_update()
 	return true
 end
-WeaponSecondSight.destroy = function (self, unit)
+function WeaponSecondSight:destroy(unit)
 	slot5 = unit
 
 	WeaponSecondSight.super.destroy(slot3, self)

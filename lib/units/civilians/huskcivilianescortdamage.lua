@@ -12,7 +12,7 @@ HuskCivilianEscortDamage.damage_tase = CivilianEscortDamage.damage_tase
 HuskCivilianEscortDamage._escort_damage = CivilianEscortDamage._escort_damage
 HuskCivilianEscortDamage._on_damage_received = CivilianDamage._on_damage_received
 HuskCivilianEscortDamage.grace_period = CivilianEscortDamage.grace_period
-HuskCivilianEscortDamage.init = function (self, ...)
+function HuskCivilianEscortDamage:init(...)
 	slot3 = self
 
 	HuskCivilianEscortDamage.super.init(slot2, ...)
@@ -22,7 +22,7 @@ HuskCivilianEscortDamage.init = function (self, ...)
 
 	return 
 end
-HuskCivilianEscortDamage._apply_damage_to_health = function (self, damage)
+function HuskCivilianEscortDamage:_apply_damage_to_health(damage)
 	slot5 = damage
 
 	HuskCivilianEscortDamage.super._apply_damage_to_health(slot3, self)
@@ -38,7 +38,7 @@ HuskCivilianEscortDamage._apply_damage_to_health = function (self, damage)
 
 	return 
 end
-HuskCivilianEscortDamage.die = function (self)
+function HuskCivilianEscortDamage:die()
 	slot3 = self
 
 	HuskCivilianEscortDamage.super.die(slot2)

@@ -12,21 +12,21 @@ if not ElementWorldCamera then
 end
 
 ElementWorldCamera = slot0
-ElementWorldCamera.init = function (self, ...)
+function ElementWorldCamera:init(...)
 	slot3 = self
 
 	ElementWorldCamera.super.init(slot2, ...)
 
 	return 
 end
-ElementWorldCamera.client_on_executed = function (self, ...)
+function ElementWorldCamera:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementWorldCamera.on_executed = function (self, instigator)
+function ElementWorldCamera:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -62,7 +62,7 @@ if not ElementWorldCameraTrigger then
 end
 
 ElementWorldCameraTrigger = slot0
-ElementWorldCameraTrigger.init = function (self, ...)
+function ElementWorldCameraTrigger:init(...)
 	slot3 = self
 
 	ElementWorldCameraTrigger.super.init(slot2, ...)
@@ -81,7 +81,7 @@ ElementWorldCameraTrigger.init = function (self, ...)
 
 	return 
 end
-ElementWorldCameraTrigger.on_executed = function (self, instigator)
+function ElementWorldCameraTrigger:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

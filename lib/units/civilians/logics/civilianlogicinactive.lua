@@ -6,7 +6,7 @@ require(slot1)
 
 slot2 = CopLogicInactive
 CivilianLogicInactive = class(slot1)
-CivilianLogicInactive.on_enemy_weapons_hot = function (data)
+function CivilianLogicInactive.on_enemy_weapons_hot(data)
 	slot3 = data.unit
 	slot4 = nil
 
@@ -14,7 +14,7 @@ CivilianLogicInactive.on_enemy_weapons_hot = function (data)
 
 	return 
 end
-CivilianLogicInactive._register_attention = function (data, my_data)
+function CivilianLogicInactive._register_attention(data, my_data)
 	slot4 = data.unit
 	slot4 = data.unit.character_damage(slot3)
 
@@ -30,7 +30,7 @@ CivilianLogicInactive._register_attention = function (data, my_data)
 
 	return 
 end
-CivilianLogicInactive._set_interaction = function (data, my_data)
+function CivilianLogicInactive._set_interaction(data, my_data)
 	slot4 = data.unit
 	slot4 = data.unit.character_damage(slot3)
 

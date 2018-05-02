@@ -4,7 +4,7 @@ if not WaypointUnitElement then
 end
 
 WaypointUnitElement = slot0
-WaypointUnitElement.init = function (self, unit)
+function WaypointUnitElement:init(unit)
 	slot5 = unit
 
 	WaypointUnitElement.super.init(slot3, self)
@@ -136,14 +136,14 @@ WaypointUnitElement.init = function (self, unit)
 
 	return 
 end
-WaypointUnitElement._add_wp_options = function (self)
+function WaypointUnitElement:_add_wp_options()
 	self._text_options = {
 		"debug_none"
 	}
 
 	return 
 end
-WaypointUnitElement._set_text = function (self)
+function WaypointUnitElement:_set_text()
 	slot3 = self._text
 	slot7 = self._hed.text_id
 
@@ -151,7 +151,7 @@ WaypointUnitElement._set_text = function (self)
 
 	return 
 end
-WaypointUnitElement.set_element_data = function (self, params, ...)
+function WaypointUnitElement:set_element_data(params, ...)
 	slot5 = params
 
 	WaypointUnitElement.super.set_element_data(slot3, self, ...)
@@ -164,7 +164,7 @@ WaypointUnitElement.set_element_data = function (self, params, ...)
 
 	return 
 end
-WaypointUnitElement.update_selected = function (self, t, dt, selected_unit, all_units)
+function WaypointUnitElement:update_selected(t, dt, selected_unit, all_units)
 	slot7 = self
 	local shape = self.get_shape(slot6)
 	local color = self._hed.color
@@ -177,7 +177,7 @@ WaypointUnitElement.update_selected = function (self, t, dt, selected_unit, all_
 
 	return 
 end
-WaypointUnitElement.get_shape = function (self)
+function WaypointUnitElement:get_shape()
 	if not self._square_shape then
 		slot3 = self
 
@@ -186,7 +186,7 @@ WaypointUnitElement.get_shape = function (self)
 
 	return (self._hed.map_display == "square" and self._square_shape) or (self._hed.map_display == "circle" and self._circle_shape)
 end
-WaypointUnitElement.clone_data = function (self, ...)
+function WaypointUnitElement:clone_data(...)
 	slot3 = self
 
 	WaypointUnitElement.super.clone_data(slot2, ...)
@@ -197,7 +197,7 @@ WaypointUnitElement.clone_data = function (self, ...)
 
 	return 
 end
-WaypointUnitElement._create_shapes = function (self)
+function WaypointUnitElement:_create_shapes()
 	slot4 = {
 		height = 200,
 		width = self._hed.width,
@@ -219,7 +219,7 @@ WaypointUnitElement._create_shapes = function (self)
 
 	return 
 end
-WaypointUnitElement._recreate_shapes = function (self)
+function WaypointUnitElement:_recreate_shapes()
 	self._square_shape = nil
 	self._circle_shape = nil
 	slot3 = self
@@ -228,7 +228,7 @@ WaypointUnitElement._recreate_shapes = function (self)
 
 	return 
 end
-WaypointUnitElement._set_shape_type = function (self)
+function WaypointUnitElement:_set_shape_type()
 	local display_type = self._hed.map_display
 	slot5 = display_type == "circle" or display_type == "square"
 
@@ -279,7 +279,7 @@ WaypointUnitElement._set_shape_type = function (self)
 
 	return 
 end
-WaypointUnitElement.set_shape_property = function (self, params)
+function WaypointUnitElement:set_shape_property(params)
 	slot6 = self._hed[params.value]
 
 	self._square_shape.set_property(slot3, self._square_shape, params.property)
@@ -290,7 +290,7 @@ WaypointUnitElement.set_shape_property = function (self, params)
 
 	return 
 end
-WaypointUnitElement.set_element_data = function (self, params, ...)
+function WaypointUnitElement:set_element_data(params, ...)
 	slot5 = params
 
 	WaypointUnitElement.super.set_element_data(slot3, self, ...)
@@ -317,7 +317,7 @@ WaypointUnitElement.set_element_data = function (self, params, ...)
 
 	return 
 end
-WaypointUnitElement._on_color_changed = function (self)
+function WaypointUnitElement:_on_color_changed()
 	slot3 = self.__color_picker_dialog
 	local color = self.__color_picker_dialog.color(slot2)
 	self._hed.color = {
@@ -331,7 +331,7 @@ WaypointUnitElement._on_color_changed = function (self)
 
 	return 
 end
-WaypointUnitElement._split_string = function (self, inputstr, sep)
+function WaypointUnitElement:_split_string(inputstr, sep)
 	if sep == nil then
 		sep = "%s"
 	end
@@ -347,7 +347,7 @@ WaypointUnitElement._split_string = function (self, inputstr, sep)
 
 	return t
 end
-WaypointUnitElement.scale_slider = function (self, panel, sizer, number_ctrlr_params, value, name)
+function WaypointUnitElement:scale_slider(panel, sizer, number_ctrlr_params, value, name)
 	slot9 = "HORIZONTAL"
 	local slider_sizer = EWS.BoxSizer(slot7, EWS)
 	slot16 = "ALIGN_LEFT"
@@ -403,7 +403,7 @@ WaypointUnitElement.scale_slider = function (self, panel, sizer, number_ctrlr_pa
 
 	return 
 end
-WaypointUnitElement.set_size = function (self, params)
+function WaypointUnitElement:set_size(params)
 	slot5 = params.ctrlr
 	local value = (self._hed[params.value] * params.ctrlr.get_value(slot4)) / 100
 
@@ -425,7 +425,7 @@ WaypointUnitElement.set_size = function (self, params)
 
 	return 
 end
-WaypointUnitElement.size_release = function (self, params)
+function WaypointUnitElement:size_release(params)
 	self._hed[params.value] = params.number_ctrlr_params.value
 	slot5 = 100
 
@@ -433,7 +433,7 @@ WaypointUnitElement.size_release = function (self, params)
 
 	return 
 end
-WaypointUnitElement._build_panel = function (self, panel, panel_sizer)
+function WaypointUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

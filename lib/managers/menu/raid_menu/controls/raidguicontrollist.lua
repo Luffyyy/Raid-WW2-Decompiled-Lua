@@ -5,7 +5,7 @@ end
 
 RaidGUIControlList = slot0
 RaidGUIControlList.DIVIDER_HEIGHT = 2
-RaidGUIControlList.init = function (self, parent, params)
+function RaidGUIControlList:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlList.super.init(slot4, self, parent)
@@ -30,32 +30,32 @@ RaidGUIControlList.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlList.scrollable_area_post_setup = function (self, params)
+function RaidGUIControlList:scrollable_area_post_setup(params)
 	slot4 = self
 
 	self._reposition_selected_item(slot3)
 
 	return 
 end
-RaidGUIControlList.set_abort_selection = function (self, value)
+function RaidGUIControlList:set_abort_selection(value)
 	self._abort_selection = value
 
 	return 
 end
-RaidGUIControlList.get_abort_selection = function (self)
+function RaidGUIControlList:get_abort_selection()
 	return self._abort_selection
 end
-RaidGUIControlList.close = function (self)
+function RaidGUIControlList:close()
 	slot3 = self
 
 	self._delete_items(slot2)
 
 	return 
 end
-RaidGUIControlList.get_data = function (self)
+function RaidGUIControlList:get_data()
 	return self._list_data
 end
-RaidGUIControlList._create_list_panel = function (self)
+function RaidGUIControlList:_create_list_panel()
 	slot3 = self._params
 	local list_params = clone(slot2)
 	list_params.name = list_params.name .. "_list"
@@ -64,7 +64,7 @@ RaidGUIControlList._create_list_panel = function (self)
 
 	return 
 end
-RaidGUIControlList._create_items = function (self)
+function RaidGUIControlList:_create_items()
 	self._list_data = self._data_source_callback()
 
 	if not self._list_data then
@@ -151,12 +151,12 @@ RaidGUIControlList._create_items = function (self)
 
 	return 
 end
-RaidGUIControlList._create_item = function (self, item_class, item_params, item_data)
+function RaidGUIControlList:_create_item(item_class, item_params, item_data)
 	slot9 = item_data
 
 	return self._object.create_custom_control(slot5, self._object, item_class, item_params)
 end
-RaidGUIControlList._delete_items = function (self)
+function RaidGUIControlList:_delete_items()
 	if self._list_items then
 		slot3 = self._list_items
 
@@ -176,7 +176,7 @@ RaidGUIControlList._delete_items = function (self)
 
 	return 
 end
-RaidGUIControlList.mouse_moved = function (self, o, x, y)
+function RaidGUIControlList:mouse_moved(o, x, y)
 	slot8 = y
 
 	if not self.inside(slot5, self, x) then
@@ -212,13 +212,13 @@ RaidGUIControlList.mouse_moved = function (self, o, x, y)
 
 	return used, pointer
 end
-RaidGUIControlList.highlight_on = function (self)
+function RaidGUIControlList:highlight_on()
 	return 
 end
-RaidGUIControlList.highlight_off = function (self)
+function RaidGUIControlList:highlight_off()
 	return 
 end
-RaidGUIControlList.selected_item = function (self)
+function RaidGUIControlList:selected_item()
 	if self._selected_item then
 		slot3 = self._selected_item
 
@@ -229,7 +229,7 @@ RaidGUIControlList.selected_item = function (self)
 
 	return 
 end
-RaidGUIControlList._select_item = function (self, item, dont_trigger_selected_callback)
+function RaidGUIControlList:_select_item(item, dont_trigger_selected_callback)
 	if self._selected_item then
 		slot5 = self._selected_item
 
@@ -256,7 +256,7 @@ RaidGUIControlList._select_item = function (self, item, dont_trigger_selected_ca
 
 	return 
 end
-RaidGUIControlList._reposition_selected_item = function (self)
+function RaidGUIControlList:_reposition_selected_item()
 	if self._params.scrollable_area_ref and self._selected_item then
 		self._inner_panel = self._params.scrollable_area_ref._inner_panel
 		self._outer_panel = self._params.scrollable_area_ref._object
@@ -291,7 +291,7 @@ RaidGUIControlList._reposition_selected_item = function (self)
 
 	return 
 end
-RaidGUIControlList.click_item = function (self, item_index)
+function RaidGUIControlList:click_item(item_index)
 	if self._list_items[item_index] then
 		slot4 = self._list_items[item_index]
 		slot7 = "0"
@@ -301,7 +301,7 @@ RaidGUIControlList.click_item = function (self, item_index)
 
 	return 
 end
-RaidGUIControlList.select_item_by_index = function (self, item_index, dont_trigger_selected_callback, regaining_focus)
+function RaidGUIControlList:select_item_by_index(item_index, dont_trigger_selected_callback, regaining_focus)
 	local new_item = self._list_items[item_index]
 
 	if self._selected_item == new_item and not regaining_focus then
@@ -329,7 +329,7 @@ RaidGUIControlList.select_item_by_index = function (self, item_index, dont_trigg
 
 	return 
 end
-RaidGUIControlList.select_item_by_value = function (self, item_value)
+function RaidGUIControlList:select_item_by_value(item_value)
 	if self._selected_item then
 		slot4 = self._selected_item
 
@@ -363,7 +363,7 @@ RaidGUIControlList.select_item_by_value = function (self, item_value)
 
 	return 
 end
-RaidGUIControlList.on_item_clicked = function (self, button, item, data, skip_select)
+function RaidGUIControlList:on_item_clicked(button, item, data, skip_select)
 	slot7 = self
 
 	if self.get_abort_selection(slot6) then
@@ -386,7 +386,7 @@ RaidGUIControlList.on_item_clicked = function (self, button, item, data, skip_se
 
 	return 
 end
-RaidGUIControlList.on_item_double_clicked = function (self, button, item, data, skip_select)
+function RaidGUIControlList:on_item_double_clicked(button, item, data, skip_select)
 	slot7 = self
 
 	if self.get_abort_selection(slot6) then
@@ -411,7 +411,7 @@ RaidGUIControlList.on_item_double_clicked = function (self, button, item, data, 
 
 	return 
 end
-RaidGUIControlList.on_item_selected = function (self, item, data)
+function RaidGUIControlList:on_item_selected(item, data)
 	slot5 = self
 
 	if self.get_abort_selection(slot4) then
@@ -430,7 +430,7 @@ RaidGUIControlList.on_item_selected = function (self, item, data)
 
 	return 
 end
-RaidGUIControlList.refresh_data = function (self)
+function RaidGUIControlList:refresh_data()
 	local cached_selected_value = self._selected
 	slot4 = self
 
@@ -444,7 +444,7 @@ RaidGUIControlList.refresh_data = function (self)
 
 	return 
 end
-RaidGUIControlList.set_selected = function (self, value, dont_trigger_selected_callback)
+function RaidGUIControlList:set_selected(value, dont_trigger_selected_callback)
 	if self._selected_item and self._selected then
 		slot5 = self._selected_item
 
@@ -478,10 +478,10 @@ RaidGUIControlList.set_selected = function (self, value, dont_trigger_selected_c
 
 	return 
 end
-RaidGUIControlList.selected_item_index = function (self)
+function RaidGUIControlList:selected_item_index()
 	return self._selected_item_idx
 end
-RaidGUIControlList.move_up = function (self)
+function RaidGUIControlList:move_up()
 	slot3 = self
 
 	if self.get_abort_selection(slot2) then
@@ -500,7 +500,7 @@ RaidGUIControlList.move_up = function (self)
 
 	return 
 end
-RaidGUIControlList.select_previous_row = function (self)
+function RaidGUIControlList:select_previous_row()
 	slot3 = self
 
 	if self._previous_row_idx(slot2) then
@@ -517,7 +517,7 @@ RaidGUIControlList.select_previous_row = function (self)
 
 	return 
 end
-RaidGUIControlList.move_down = function (self)
+function RaidGUIControlList:move_down()
 	slot3 = self
 
 	if self.get_abort_selection(slot2) then
@@ -543,7 +543,7 @@ RaidGUIControlList.move_down = function (self)
 
 	return 
 end
-RaidGUIControlList.select_next_row = function (self)
+function RaidGUIControlList:select_next_row()
 	slot3 = self
 
 	if self._next_row_idx(slot2) then
@@ -560,7 +560,7 @@ RaidGUIControlList.select_next_row = function (self)
 
 	return 
 end
-RaidGUIControlList.confirm_pressed = function (self)
+function RaidGUIControlList:confirm_pressed()
 	if self._selected and self._selected_item then
 		slot3 = self._selected_item
 
@@ -571,10 +571,10 @@ RaidGUIControlList.confirm_pressed = function (self)
 
 	return 
 end
-RaidGUIControlList.special_btn_pressed = function (self, ...)
+function RaidGUIControlList:special_btn_pressed(...)
 	return 
 end
-RaidGUIControlList._previous_row_idx = function (self)
+function RaidGUIControlList:_previous_row_idx()
 	self._new_selected_item_idx = self._selected_item_idx - 1
 
 	if self._new_selected_item_idx <= 0 then
@@ -615,7 +615,7 @@ RaidGUIControlList._previous_row_idx = function (self)
 
 	return false
 end
-RaidGUIControlList._next_row_idx = function (self)
+function RaidGUIControlList:_next_row_idx()
 	self._new_selected_item_idx = self._selected_item_idx + 1
 
 	if #self._list_items < self._new_selected_item_idx then

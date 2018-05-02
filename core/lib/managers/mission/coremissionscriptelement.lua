@@ -23,19 +23,19 @@ slot3 = "CoreClass"
 core.import(slot1, core)
 
 MissionScriptElement = MissionScriptElement or class()
-MissionScriptElement.save = function (self, data)
+function MissionScriptElement:save(data)
 	data.enabled = self._values.enabled
 
 	return 
 end
-MissionScriptElement.load = function (self, data)
+function MissionScriptElement:load(data)
 	slot5 = data.enabled
 
 	self.set_enabled(slot3, self)
 
 	return 
 end
-MissionScriptElement.init = function (self, mission_script, data)
+function MissionScriptElement:init(mission_script, data)
 	self._mission_script = mission_script
 	self._id = data.id
 	self._editor_name = data.editor_name
@@ -45,10 +45,10 @@ MissionScriptElement.init = function (self, mission_script, data)
 
 	return 
 end
-MissionScriptElement.on_created = function (self)
+function MissionScriptElement:on_created()
 	return 
 end
-MissionScriptElement.on_script_activated = function (self)
+function MissionScriptElement:on_script_activated()
 	if self._values.rules_elements then
 		self._rules_elements = {}
 		slot3 = self._values.rules_elements
@@ -68,24 +68,24 @@ MissionScriptElement.on_script_activated = function (self)
 
 	return 
 end
-MissionScriptElement.get_mission_element = function (self, id)
+function MissionScriptElement:get_mission_element(id)
 	slot5 = id
 
 	return self._mission_script.element(slot3, self._mission_script)
 end
-MissionScriptElement.editor_name = function (self)
+function MissionScriptElement:editor_name()
 	return self._editor_name
 end
-MissionScriptElement.id = function (self)
+function MissionScriptElement:id()
 	return self._id
 end
-MissionScriptElement._unique_string_id = function (self)
+function MissionScriptElement:_unique_string_id()
 	return "" .. self._sync_id .. "_" .. self._id
 end
-MissionScriptElement.values = function (self)
+function MissionScriptElement:values()
 	return self._values
 end
-MissionScriptElement.value = function (self, name)
+function MissionScriptElement:value(name)
 	if self._values.instance_name and self._values.instance_var_names and self._values.instance_var_names[name] then
 		slot7 = self._values.instance_var_names[name]
 		local value = managers.world_instance.get_instance_param(slot3, managers.world_instance, self._sync_id, self._values.instance_name)
@@ -97,7 +97,7 @@ MissionScriptElement.value = function (self, name)
 
 	return self._values[name]
 end
-MissionScriptElement.get_random_table_value = function (self, value)
+function MissionScriptElement:get_random_table_value(value)
 	slot4 = value
 
 	if tonumber(slot3) then
@@ -108,10 +108,10 @@ MissionScriptElement.get_random_table_value = function (self, value)
 
 	return (value[1] + math.random(slot4)) - 1
 end
-MissionScriptElement.enabled = function (self)
+function MissionScriptElement:enabled()
 	return self._values.enabled
 end
-MissionScriptElement._check_instigator = function (self, instigator)
+function MissionScriptElement:_check_instigator(instigator)
 	slot4 = instigator
 
 	if CoreClass.type_name(slot3) == "Unit" then
@@ -122,7 +122,7 @@ MissionScriptElement._check_instigator = function (self, instigator)
 
 	return managers.player.player_unit(slot3)
 end
-MissionScriptElement.on_executed = function (self, instigator, alternative, skip_execute_on_executed)
+function MissionScriptElement:on_executed(instigator, alternative, skip_execute_on_executed)
 	if not self._values.enabled then
 		return 
 	end
@@ -158,7 +158,7 @@ MissionScriptElement.on_executed = function (self, instigator, alternative, skip
 
 	return 
 end
-MissionScriptElement._calc_base_delay = function (self)
+function MissionScriptElement:_calc_base_delay()
 	if not self._values.base_delay_rand then
 		return self._values.base_delay
 	end
@@ -167,7 +167,7 @@ MissionScriptElement._calc_base_delay = function (self)
 
 	return self._values.base_delay + math.rand(slot3)
 end
-MissionScriptElement._trigger_execute_on_executed = function (self, instigator, alternative)
+function MissionScriptElement:_trigger_execute_on_executed(instigator, alternative)
 	slot5 = self
 	local base_delay = self._calc_base_delay(slot4)
 
@@ -190,7 +190,7 @@ MissionScriptElement._trigger_execute_on_executed = function (self, instigator, 
 
 	return 
 end
-MissionScriptElement._print_debug_on_executed = function (self, instigator)
+function MissionScriptElement:_print_debug_on_executed(instigator)
 	slot4 = self
 
 	if self.is_debug(slot3) then
@@ -204,7 +204,7 @@ MissionScriptElement._print_debug_on_executed = function (self, instigator)
 
 	return 
 end
-MissionScriptElement._print_debug = function (self, debug, instigator)
+function MissionScriptElement:_print_debug(debug, instigator)
 	slot5 = self
 
 	if self.is_debug(slot4) then
@@ -215,7 +215,7 @@ MissionScriptElement._print_debug = function (self, debug, instigator)
 
 	return 
 end
-MissionScriptElement._reduce_trigger_times = function (self)
+function MissionScriptElement:_reduce_trigger_times()
 	if 0 < self._values.trigger_times then
 		self._values.trigger_times = self._values.trigger_times - 1
 
@@ -226,14 +226,14 @@ MissionScriptElement._reduce_trigger_times = function (self)
 
 	return 
 end
-MissionScriptElement._execute_on_executed = function (self, params)
+function MissionScriptElement:_execute_on_executed(params)
 	slot5 = params
 
 	self.execute_on_executed(slot3, self)
 
 	return 
 end
-MissionScriptElement._calc_element_delay = function (self, params)
+function MissionScriptElement:_calc_element_delay(params)
 	if not params.delay_rand then
 		return params.delay
 	end
@@ -242,7 +242,7 @@ MissionScriptElement._calc_element_delay = function (self, params)
 
 	return params.delay + math.rand(slot4)
 end
-MissionScriptElement.execute_on_executed = function (self, execute_params)
+function MissionScriptElement:execute_on_executed(execute_params)
 	slot4 = self._values.on_executed
 
 	for _, params in ipairs(slot3) do
@@ -276,14 +276,14 @@ MissionScriptElement.execute_on_executed = function (self, execute_params)
 
 	return 
 end
-MissionScriptElement.on_execute_element = function (self, element, instigator)
+function MissionScriptElement:on_execute_element(element, instigator)
 	slot6 = instigator
 
 	element.on_executed(slot4, element)
 
 	return 
 end
-MissionScriptElement._has_on_executed_alternative = function (self, alternative)
+function MissionScriptElement:_has_on_executed_alternative(alternative)
 	slot4 = self._values.on_executed
 
 	for _, params in ipairs(slot3) do
@@ -294,20 +294,20 @@ MissionScriptElement._has_on_executed_alternative = function (self, alternative)
 
 	return false
 end
-MissionScriptElement.set_enabled = function (self, enabled)
+function MissionScriptElement:set_enabled(enabled)
 	self._values.enabled = enabled
 
 	return 
 end
-MissionScriptElement.on_toggle = function (self, value)
+function MissionScriptElement:on_toggle(value)
 	return 
 end
-MissionScriptElement.set_trigger_times = function (self, trigger_times)
+function MissionScriptElement:set_trigger_times(trigger_times)
 	self._values.trigger_times = trigger_times
 
 	return 
 end
-MissionScriptElement.is_debug = function (self)
+function MissionScriptElement:is_debug()
 	if not self._values.debug then
 		slot3 = self._mission_script
 		slot1 = self._mission_script.is_debug(slot2)
@@ -315,10 +315,10 @@ MissionScriptElement.is_debug = function (self)
 
 	return slot1
 end
-MissionScriptElement.stop_simulation = function (self, ...)
+function MissionScriptElement:stop_simulation(...)
 	return 
 end
-MissionScriptElement.operation_add = function (self)
+function MissionScriptElement:operation_add()
 	slot3 = Application
 
 	if Application.editor(slot2) then
@@ -330,7 +330,7 @@ MissionScriptElement.operation_add = function (self)
 
 	return 
 end
-MissionScriptElement.operation_remove = function (self)
+function MissionScriptElement:operation_remove()
 	slot3 = Application
 
 	if Application.editor(slot2) then
@@ -342,7 +342,7 @@ MissionScriptElement.operation_remove = function (self)
 
 	return 
 end
-MissionScriptElement.apply_job_value = function (self)
+function MissionScriptElement:apply_job_value()
 	slot3 = Application
 
 	if Application.editor(slot2) then
@@ -354,7 +354,7 @@ MissionScriptElement.apply_job_value = function (self)
 
 	return 
 end
-MissionScriptElement.set_synced_orientation_element_index = function (self, orientation_element_index)
+function MissionScriptElement:set_synced_orientation_element_index(orientation_element_index)
 	if orientation_element_index and 0 < orientation_element_index then
 		self._synced_orientation_element_index = orientation_element_index
 	else
@@ -363,7 +363,7 @@ MissionScriptElement.set_synced_orientation_element_index = function (self, orie
 
 	return 
 end
-MissionScriptElement.get_orientation_by_index = function (self, index)
+function MissionScriptElement:get_orientation_by_index(index)
 	if not index or index == 0 then
 		return self._values.position, self._values.rotation
 	end
@@ -382,7 +382,7 @@ MissionScriptElement.get_orientation_by_index = function (self, index)
 
 	return element.get_orientation_by_index(slot5, element)
 end
-MissionScriptElement.get_orientation_index = function (self)
+function MissionScriptElement:get_orientation_index()
 	if self._values.orientation_elements and 0 < #self._values.orientation_elements then
 		if not self._unused_orientation_indices then
 			self._unused_orientation_indices = {}
@@ -446,7 +446,7 @@ MissionScriptElement.get_orientation_index = function (self)
 
 	return 
 end
-MissionScriptElement.get_orientation = function (self, use_last_orientation_index)
+function MissionScriptElement:get_orientation(use_last_orientation_index)
 	local index = use_last_orientation_index and self._last_orientation_index
 
 	if not index and not self._synced_orientation_element_index then
@@ -460,13 +460,13 @@ MissionScriptElement.get_orientation = function (self, use_last_orientation_inde
 
 	return pos, rot
 end
-MissionScriptElement.debug_draw = function (self)
+function MissionScriptElement:debug_draw()
 	return 
 end
-MissionScriptElement.pre_destroy = function (self)
+function MissionScriptElement:pre_destroy()
 	return 
 end
-MissionScriptElement.destroy = function (self)
+function MissionScriptElement:destroy()
 	return 
 end
 

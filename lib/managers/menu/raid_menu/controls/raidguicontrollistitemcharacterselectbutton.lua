@@ -7,7 +7,7 @@ RaidGUIControlListItemCharacterSelectButton = slot0
 RaidGUIControlListItemCharacterSelectButton.BUTTON_TYPE_CUSTOMIZE = "button_customize"
 RaidGUIControlListItemCharacterSelectButton.BUTTON_TYPE_DELETE = "button_delete"
 RaidGUIControlListItemCharacterSelectButton.BUTTON_TYPE_CREATE = "button_create"
-RaidGUIControlListItemCharacterSelectButton.init = function (self, parent, params)
+function RaidGUIControlListItemCharacterSelectButton:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlListItemCharacterSelectButton.super.init(slot4, self, parent)
@@ -59,7 +59,7 @@ RaidGUIControlListItemCharacterSelectButton.init = function (self, parent, param
 
 	return 
 end
-RaidGUIControlListItemCharacterSelectButton.set_button = function (self, button_type)
+function RaidGUIControlListItemCharacterSelectButton:set_button(button_type)
 	if button_type == RaidGUIControlListItemCharacterSelectButton.BUTTON_TYPE_CUSTOMIZE then
 		slot5 = tweak_data.gui.icons.list_btn_ico_customize.texture
 
@@ -109,7 +109,7 @@ RaidGUIControlListItemCharacterSelectButton.set_button = function (self, button_
 
 	return 
 end
-RaidGUIControlListItemCharacterSelectButton.highlight_on = function (self)
+function RaidGUIControlListItemCharacterSelectButton:highlight_on()
 	slot4 = tweak_data.gui.icons.btn_list_rect_hover.texture
 
 	self._background.set_image(slot2, self._background)
@@ -120,7 +120,7 @@ RaidGUIControlListItemCharacterSelectButton.highlight_on = function (self)
 
 	return 
 end
-RaidGUIControlListItemCharacterSelectButton.highlight_off = function (self)
+function RaidGUIControlListItemCharacterSelectButton:highlight_off()
 	slot4 = tweak_data.gui.icons.btn_list_rect.texture
 
 	self._background.set_image(slot2, self._background)
@@ -131,12 +131,12 @@ RaidGUIControlListItemCharacterSelectButton.highlight_off = function (self)
 
 	return 
 end
-RaidGUIControlListItemCharacterSelectButton.mouse_released = function (self, o, button, x, y)
+function RaidGUIControlListItemCharacterSelectButton:mouse_released(o, button, x, y)
 	slot7 = self
 
 	return self.on_mouse_released(slot6)
 end
-RaidGUIControlListItemCharacterSelectButton.on_mouse_released = function (self)
+function RaidGUIControlListItemCharacterSelectButton:on_mouse_released()
 	if self._special_action_callback then
 		slot4 = self._button_type
 

@@ -8,14 +8,14 @@ if not ElementVariableSet then
 end
 
 ElementVariableSet = slot0
-ElementVariableSet.init = function (self, ...)
+function ElementVariableSet:init(...)
 	slot3 = self
 
 	ElementVariableSet.super.init(slot2, ...)
 
 	return 
 end
-ElementVariableSet.on_executed = function (self, instigator)
+function ElementVariableSet:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -26,7 +26,7 @@ ElementVariableSet.on_executed = function (self, instigator)
 
 	return 
 end
-ElementVariableSet.client_on_executed = function (self, ...)
+function ElementVariableSet:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)

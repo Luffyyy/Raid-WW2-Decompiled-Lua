@@ -1,4 +1,4 @@
-CoreEditor.build_left_toolbar = function (self)
+function CoreEditor:build_left_toolbar()
 	local icons_path = managers.database.base_path(slot2) .. "core\\lib\\utils\\dev\\editor\\icons\\"
 	slot7 = ""
 	local left_upper_panel = EWS.Panel(managers.database, EWS, Global.frame_panel, "")
@@ -200,24 +200,24 @@ CoreEditor.build_left_toolbar = function (self)
 
 	return 
 end
-CoreEditor._project_add_left_upper_toolbar_tool = function (self)
+function CoreEditor:_project_add_left_upper_toolbar_tool()
 	return 
 end
-CoreEditor.show_edit_unit = function (self)
+function CoreEditor:show_edit_unit()
 	slot5 = "EditUnitDialog"
 
 	self.show_dialog(slot2, self, "edit_unit")
 
 	return 
 end
-CoreEditor.on_open_tool = function (self, tool)
+function CoreEditor:on_open_tool(tool)
 	slot5 = tool
 
 	managers.toolhub.open(slot3, managers.toolhub)
 
 	return 
 end
-CoreEditor.on_output_help = function (self)
+function CoreEditor:on_output_help()
 	local text = "\n"
 	slot4 = self
 	slot8 = text
@@ -226,7 +226,7 @@ CoreEditor.on_output_help = function (self)
 
 	return 
 end
-CoreEditor.on_list_units = function (self)
+function CoreEditor:on_list_units()
 	slot4 = "all"
 	local units = World.find_units_quick(slot2, World)
 	local amount = {}
@@ -278,7 +278,7 @@ CoreEditor.on_list_units = function (self)
 
 	return 
 end
-CoreEditor.on_open_world_folder = function (self)
+function CoreEditor:on_open_world_folder()
 	if self._opendir then
 		slot3 = "explorer " .. self._opendir
 
@@ -287,7 +287,7 @@ CoreEditor.on_open_world_folder = function (self)
 
 	return 
 end
-CoreEditor._frustum_freeze_toggle = function (self, a, event)
+function CoreEditor:_frustum_freeze_toggle(a, event)
 	slot5 = self._left_upper_toolbar
 	slot8 = event
 	local state = self._left_upper_toolbar.tool_state(slot4, event.get_id(slot7))
@@ -306,7 +306,7 @@ CoreEditor._frustum_freeze_toggle = function (self, a, event)
 
 	return 
 end
-CoreEditor._interupt_frustum_freeze = function (self)
+function CoreEditor:_interupt_frustum_freeze()
 	slot3 = self._camera_controller
 
 	if not self._camera_controller.frustum_frozen(slot2) then

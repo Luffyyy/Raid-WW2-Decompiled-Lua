@@ -8,21 +8,21 @@ if not ElementLookAtTrigger then
 end
 
 ElementLookAtTrigger = slot0
-ElementLookAtTrigger.init = function (self, ...)
+function ElementLookAtTrigger:init(...)
 	slot3 = self
 
 	ElementLookAtTrigger.super.init(slot2, ...)
 
 	return 
 end
-ElementLookAtTrigger.on_script_activated = function (self)
+function ElementLookAtTrigger:on_script_activated()
 	slot3 = self
 
 	self.add_callback(slot2)
 
 	return 
 end
-ElementLookAtTrigger.set_enabled = function (self, enabled)
+function ElementLookAtTrigger:set_enabled(enabled)
 	slot5 = enabled
 
 	ElementLookAtTrigger.super.set_enabled(slot3, self)
@@ -35,7 +35,7 @@ ElementLookAtTrigger.set_enabled = function (self, enabled)
 
 	return 
 end
-ElementLookAtTrigger.add_callback = function (self)
+function ElementLookAtTrigger:add_callback()
 	if not self._callback then
 		slot8 = "update_lookat"
 		slot5 = self._values.interval
@@ -44,7 +44,7 @@ ElementLookAtTrigger.add_callback = function (self)
 
 	return 
 end
-ElementLookAtTrigger.remove_callback = function (self)
+function ElementLookAtTrigger:remove_callback()
 	if self._callback then
 		slot4 = self._callback
 
@@ -55,7 +55,7 @@ ElementLookAtTrigger.remove_callback = function (self)
 
 	return 
 end
-ElementLookAtTrigger.on_executed = function (self, instigator)
+function ElementLookAtTrigger:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -72,7 +72,7 @@ ElementLookAtTrigger.on_executed = function (self, instigator)
 
 	return 
 end
-ElementLookAtTrigger.update_lookat = function (self)
+function ElementLookAtTrigger:update_lookat()
 	if not self._values.enabled then
 		return 
 	end

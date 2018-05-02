@@ -9,7 +9,7 @@ slot3 = "CoreClass"
 core.import(slot1, core)
 
 SubtitleSequencePlayer = SubtitleSequencePlayer or CoreClass.class()
-SubtitleSequencePlayer.init = function (self, sequence, presenter)
+function SubtitleSequencePlayer:init(sequence, presenter)
 	slot6 = "Invalid sequence."
 
 	assert(slot4, sequence)
@@ -24,12 +24,12 @@ SubtitleSequencePlayer.init = function (self, sequence, presenter)
 
 	return 
 end
-SubtitleSequencePlayer.is_done = function (self)
+function SubtitleSequencePlayer:is_done()
 	slot4 = self.__sequence
 
 	return self.__sequence.duration(slot3) <= (self.__time or 0)
 end
-SubtitleSequencePlayer.update = function (self, time, delta_time)
+function SubtitleSequencePlayer:update(time, delta_time)
 	self.__time = (self.__time or 0) + delta_time
 	slot6 = self.__time
 
@@ -37,7 +37,7 @@ SubtitleSequencePlayer.update = function (self, time, delta_time)
 
 	return 
 end
-SubtitleSequencePlayer.evaluate_at_time = function (self, time)
+function SubtitleSequencePlayer:evaluate_at_time(time)
 	if time ~= self._last_evaluated_time then
 		slot6 = self.__sequence
 

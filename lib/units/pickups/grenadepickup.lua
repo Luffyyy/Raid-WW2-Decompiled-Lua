@@ -6,7 +6,7 @@ if not GrenadePickup then
 end
 
 GrenadePickup = slot0
-GrenadePickup.init = function (self, unit)
+function GrenadePickup:init(unit)
 	slot5 = unit
 
 	GrenadePickup.super.init(slot3, self)
@@ -17,7 +17,7 @@ GrenadePickup.init = function (self, unit)
 
 	return 
 end
-GrenadePickup._pickup = function (self, unit)
+function GrenadePickup:_pickup(unit)
 	if self._picked_up then
 		return 
 	end
@@ -91,7 +91,7 @@ GrenadePickup._pickup = function (self, unit)
 
 	return false
 end
-GrenadePickup.register_grenades = function (self, gained_grenades, peer)
+function GrenadePickup:register_grenades(gained_grenades, peer)
 
 	-- Decompilation error in this vicinity:
 	local player = managers.player.local_player(slot4)
@@ -110,7 +110,7 @@ GrenadePickup.register_grenades = function (self, gained_grenades, peer)
 
 	return 
 end
-GrenadePickup.get_pickup_type = function (self)
+function GrenadePickup:get_pickup_type()
 	return "grenade"
 end
 

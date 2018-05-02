@@ -8,17 +8,17 @@ if not ElementDifficulty then
 end
 
 ElementDifficulty = slot0
-ElementDifficulty.init = function (self, ...)
+function ElementDifficulty:init(...)
 	slot3 = self
 
 	ElementDifficulty.super.init(slot2, ...)
 
 	return 
 end
-ElementDifficulty.client_on_executed = function (self, ...)
+function ElementDifficulty:client_on_executed(...)
 	return 
 end
-ElementDifficulty.on_executed = function (self, instigator)
+function ElementDifficulty:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

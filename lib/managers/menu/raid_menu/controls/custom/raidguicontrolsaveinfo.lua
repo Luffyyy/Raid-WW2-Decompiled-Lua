@@ -5,7 +5,7 @@ end
 
 RaidGUIControlSaveInfo = slot0
 RaidGUIControlSaveInfo.DOG_TAG_LABEL_X = 76
-RaidGUIControlSaveInfo.init = function (self, parent, params)
+function RaidGUIControlSaveInfo:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlSaveInfo.super.init(slot4, self, parent)
@@ -33,7 +33,7 @@ RaidGUIControlSaveInfo.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlSaveInfo._create_panel = function (self)
+function RaidGUIControlSaveInfo:_create_panel()
 	slot3 = self._params
 	local panel_params = clone(slot2)
 	panel_params.name = panel_params.name .. "_panel"
@@ -65,7 +65,7 @@ RaidGUIControlSaveInfo._create_panel = function (self)
 
 	return 
 end
-RaidGUIControlSaveInfo._create_info_icons = function (self)
+function RaidGUIControlSaveInfo:_create_info_icons()
 	local info_icons_panel_params = {
 		name = "info_icons_panel",
 		h = 96,
@@ -144,7 +144,7 @@ RaidGUIControlSaveInfo._create_info_icons = function (self)
 
 	return 
 end
-RaidGUIControlSaveInfo._create_separator = function (self)
+function RaidGUIControlSaveInfo:_create_separator()
 	local separator_params = {
 		name = "separator",
 		h = 2,
@@ -158,7 +158,7 @@ RaidGUIControlSaveInfo._create_separator = function (self)
 
 	return 
 end
-RaidGUIControlSaveInfo._create_peer_details_title = function (self)
+function RaidGUIControlSaveInfo:_create_peer_details_title()
 	local peer_details_title_params = {
 		name = "peer_details_title",
 		h = 32,
@@ -180,7 +180,7 @@ RaidGUIControlSaveInfo._create_peer_details_title = function (self)
 
 	return 
 end
-RaidGUIControlSaveInfo._create_peer_details = function (self)
+function RaidGUIControlSaveInfo:_create_peer_details()
 	local peer_info_panel_params = {
 		name = "peer_info_panel",
 		h = 512,
@@ -213,7 +213,7 @@ RaidGUIControlSaveInfo._create_peer_details = function (self)
 
 	return 
 end
-RaidGUIControlSaveInfo.set_save_info = function (self, slot_index)
+function RaidGUIControlSaveInfo:set_save_info(slot_index)
 	slot4 = managers.raid_job
 	local save_slot = managers.raid_job.get_save_slots(slot3)[slot_index]
 
@@ -351,49 +351,49 @@ RaidGUIControlSaveInfo.set_save_info = function (self, slot_index)
 
 	return 
 end
-RaidGUIControlSaveInfo.set_left = function (self, left)
+function RaidGUIControlSaveInfo:set_left(left)
 	slot5 = left
 
 	self._object.set_left(slot3, self._object)
 
 	return 
 end
-RaidGUIControlSaveInfo.set_right = function (self, right)
+function RaidGUIControlSaveInfo:set_right(right)
 	slot5 = right
 
 	self._object.set_right(slot3, self._object)
 
 	return 
 end
-RaidGUIControlSaveInfo.set_top = function (self, top)
+function RaidGUIControlSaveInfo:set_top(top)
 	slot5 = top
 
 	self._object.set_top(slot3, self._object)
 
 	return 
 end
-RaidGUIControlSaveInfo.set_bottom = function (self, bottom)
+function RaidGUIControlSaveInfo:set_bottom(bottom)
 	slot5 = bottom
 
 	self._object.set_bottom(slot3, self._object)
 
 	return 
 end
-RaidGUIControlSaveInfo.set_center_x = function (self, center_x)
+function RaidGUIControlSaveInfo:set_center_x(center_x)
 	slot5 = center_x
 
 	self._object.set_center_x(slot3, self._object)
 
 	return 
 end
-RaidGUIControlSaveInfo.set_center_y = function (self, center_y)
+function RaidGUIControlSaveInfo:set_center_y(center_y)
 	slot5 = center_y
 
 	self._object.set_center_y(slot3, self._object)
 
 	return 
 end
-RaidGUIControlSaveInfo.close = function (self)
+function RaidGUIControlSaveInfo:close()
 	return 
 end
 

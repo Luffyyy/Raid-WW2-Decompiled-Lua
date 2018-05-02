@@ -7,31 +7,31 @@ slot3 = "CoreSession"
 core.import(slot1, core)
 
 Session = Session or class()
-Session.init = function (self)
+function Session:init()
 	return 
 end
-Session.delete_session = function (self)
+function Session:delete_session()
 	slot4 = "FakeSession: delete_session"
 
 	cat_print(slot2, "debug")
 
 	return 
 end
-Session.start_session = function (self)
+function Session:start_session()
 	slot4 = "FakeSession: start_session"
 
 	cat_print(slot2, "debug")
 
 	return 
 end
-Session.end_session = function (self)
+function Session:end_session()
 	slot4 = "FakeSession: end_session"
 
 	cat_print(slot2, "debug")
 
 	return 
 end
-Session.join_local_user = function (self, local_user)
+function Session:join_local_user(local_user)
 	slot8 = local_user
 	slot5 = "FakeSession: Local user:'" .. local_user.gamer_name(slot7) .. "' joined!"
 
@@ -39,7 +39,7 @@ Session.join_local_user = function (self, local_user)
 
 	return 
 end
-Session.join_remote_user = function (self, remote_user)
+function Session:join_remote_user(remote_user)
 	slot8 = remote_user
 	slot5 = "FakeSession: Remote user:'" .. remote_user.gamer_name(slot7) .. "' joined!"
 

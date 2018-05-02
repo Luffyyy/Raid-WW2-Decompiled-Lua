@@ -1,10 +1,10 @@
 MaterialControl = MaterialControl or class()
-MaterialControl.init = function (self, unit)
+function MaterialControl:init(unit)
 	self._unit = unit
 
 	return 
 end
-MaterialControl.save = function (self, save_data)
+function MaterialControl:save(save_data)
 	local data = {}
 	slot8 = "material"
 	local materials = self._unit.get_objects_by_type(slot4, Idstring(slot7))
@@ -25,7 +25,7 @@ MaterialControl.save = function (self, save_data)
 
 	return 
 end
-MaterialControl.load = function (self, load_data)
+function MaterialControl:load(load_data)
 	local data = load_data.material_control
 
 	if not data then
@@ -62,7 +62,7 @@ MaterialControl.load = function (self, load_data)
 
 	return 
 end
-MaterialControl.play = function (self, material_name, speed)
+function MaterialControl:play(material_name, speed)
 	slot8 = "material"
 	local materials = self._unit.get_objects_by_type(slot4, Idstring(slot7))
 	local material_id = Idstring(self._unit)
@@ -80,7 +80,7 @@ MaterialControl.play = function (self, material_name, speed)
 
 	return 
 end
-MaterialControl.stop = function (self, material_name)
+function MaterialControl:stop(material_name)
 	slot7 = "material"
 	local materials = self._unit.get_objects_by_type(slot3, Idstring(slot6))
 	local material_id = Idstring(self._unit)
@@ -98,7 +98,7 @@ MaterialControl.stop = function (self, material_name)
 
 	return 
 end
-MaterialControl.pause = function (self, material_name)
+function MaterialControl:pause(material_name)
 	slot7 = "material"
 	local materials = self._unit.get_objects_by_type(slot3, Idstring(slot6))
 	local material_id = Idstring(self._unit)
@@ -116,7 +116,7 @@ MaterialControl.pause = function (self, material_name)
 
 	return 
 end
-MaterialControl.set_time = function (self, material_name, time)
+function MaterialControl:set_time(material_name, time)
 	slot8 = "material"
 	local materials = self._unit.get_objects_by_type(slot4, Idstring(slot7))
 	local material_id = Idstring(self._unit)

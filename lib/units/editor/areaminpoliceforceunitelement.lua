@@ -4,7 +4,7 @@ if not AreaMinPoliceForceUnitElement then
 end
 
 AreaMinPoliceForceUnitElement = slot0
-AreaMinPoliceForceUnitElement.init = function (self, unit)
+function AreaMinPoliceForceUnitElement:init(unit)
 	slot5 = unit
 
 	AreaMinPoliceForceUnitElement.super.init(slot3, self)
@@ -16,7 +16,7 @@ AreaMinPoliceForceUnitElement.init = function (self, unit)
 
 	return 
 end
-AreaMinPoliceForceUnitElement._build_panel = function (self, panel, panel_sizer)
+function AreaMinPoliceForceUnitElement:_build_panel(panel, panel_sizer)
 	slot5 = self
 
 	self._create_panel(slot4)

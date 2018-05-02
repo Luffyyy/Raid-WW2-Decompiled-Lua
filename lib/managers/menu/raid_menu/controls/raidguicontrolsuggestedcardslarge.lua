@@ -6,7 +6,7 @@ if not RaidGUIControlSuggestedCardsLarge then
 end
 
 RaidGUIControlSuggestedCardsLarge = slot0
-RaidGUIControlSuggestedCardsLarge.init = function (self, parent, params)
+function RaidGUIControlSuggestedCardsLarge:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlSuggestedCardsLarge.super.init(slot4, self, parent)
@@ -25,7 +25,7 @@ RaidGUIControlSuggestedCardsLarge.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlSuggestedCardsLarge.layout = function (self)
+function RaidGUIControlSuggestedCardsLarge:layout()
 	slot5 = true
 	self._suggested_cards_panel = self._panel.panel(slot2, self._panel, {
 		name = "suggested_cards_panel_large_" .. self._name,
@@ -41,7 +41,7 @@ RaidGUIControlSuggestedCardsLarge.layout = function (self)
 
 	return 
 end
-RaidGUIControlSuggestedCardsLarge._create_items = function (self)
+function RaidGUIControlSuggestedCardsLarge:_create_items()
 	local item_data = {}
 	local item_params = {}
 	slot5 = (self._params.w - RaidGUIControlSuggestedCards.PLAYERS_COUNT * self._selected_marker_w) / (RaidGUIControlSuggestedCards.PLAYERS_COUNT - 1)
@@ -75,14 +75,14 @@ RaidGUIControlSuggestedCardsLarge._create_items = function (self)
 
 	return 
 end
-RaidGUIControlSuggestedCardsLarge._item_selected_callback = function (self, item_idx)
+function RaidGUIControlSuggestedCardsLarge:_item_selected_callback(item_idx)
 	slot5 = item_idx
 
 	self.select_item(slot3, self)
 
 	return 
 end
-RaidGUIControlSuggestedCardsLarge._delete_items = function (self)
+function RaidGUIControlSuggestedCardsLarge:_delete_items()
 	slot3 = self._suggested_cards_panel._controls
 
 	for slot4, slot5 in pairs(slot2) do
@@ -94,7 +94,7 @@ RaidGUIControlSuggestedCardsLarge._delete_items = function (self)
 
 	return 
 end
-RaidGUIControlSuggestedCardsLarge.refresh_data = function (self)
+function RaidGUIControlSuggestedCardsLarge:refresh_data()
 	slot3 = self
 
 	self._delete_items(slot2)
@@ -105,7 +105,7 @@ RaidGUIControlSuggestedCardsLarge.refresh_data = function (self)
 
 	return 
 end
-RaidGUIControlSuggestedCardsLarge.mouse_released = function (self, o, button, x, y)
+function RaidGUIControlSuggestedCardsLarge:mouse_released(o, button, x, y)
 	slot7 = self._grid_items
 
 	for _, grid_item in ipairs(slot6) do
@@ -123,7 +123,7 @@ RaidGUIControlSuggestedCardsLarge.mouse_released = function (self, o, button, x,
 
 	return false
 end
-RaidGUIControlSuggestedCardsLarge.mouse_moved = function (self, o, x, y)
+function RaidGUIControlSuggestedCardsLarge:mouse_moved(o, x, y)
 	if self._grid_items then
 		for i = 1, #self._grid_items, 1 do
 			slot13 = y
@@ -135,7 +135,7 @@ RaidGUIControlSuggestedCardsLarge.mouse_moved = function (self, o, x, y)
 
 	return false
 end
-RaidGUIControlSuggestedCardsLarge.move_selection_right = function (self)
+function RaidGUIControlSuggestedCardsLarge:move_selection_right()
 	local index = self._selected_item._params.item_idx
 	local start_index = index
 
@@ -162,7 +162,7 @@ RaidGUIControlSuggestedCardsLarge.move_selection_right = function (self)
 
 	return 
 end
-RaidGUIControlSuggestedCardsLarge.move_selection_left = function (self)
+function RaidGUIControlSuggestedCardsLarge:move_selection_left()
 	local index = self._selected_item._params.item_idx
 	local start_index = index
 
@@ -189,7 +189,7 @@ RaidGUIControlSuggestedCardsLarge.move_selection_left = function (self)
 
 	return 
 end
-RaidGUIControlSuggestedCardsLarge.select_first_available_item = function (self)
+function RaidGUIControlSuggestedCardsLarge:select_first_available_item()
 	for i_item_data = 1, #self._grid_items, 1 do
 		slot8 = i_item_data
 		local selected_item = self.select_item(slot6, self)
@@ -201,7 +201,7 @@ RaidGUIControlSuggestedCardsLarge.select_first_available_item = function (self)
 
 	return 
 end
-RaidGUIControlSuggestedCardsLarge.select_item = function (self, item_idx)
+function RaidGUIControlSuggestedCardsLarge:select_item(item_idx)
 
 	-- Decompilation error in this vicinity:
 	for i_item_data = 1, #self._grid_items, 1 do
@@ -220,10 +220,10 @@ RaidGUIControlSuggestedCardsLarge.select_item = function (self, item_idx)
 
 	return self._selected_item
 end
-RaidGUIControlSuggestedCardsLarge.selected_item = function (self)
+function RaidGUIControlSuggestedCardsLarge:selected_item()
 	return self._selected_item
 end
-RaidGUIControlSuggestedCardsLarge.lock_selected_grid_item = function (self)
+function RaidGUIControlSuggestedCardsLarge:lock_selected_grid_item()
 	if self._selected_item then
 		self._locked_item = self._selected_item
 		slot3 = self._locked_item
@@ -233,7 +233,7 @@ RaidGUIControlSuggestedCardsLarge.lock_selected_grid_item = function (self)
 
 	return 
 end
-RaidGUIControlSuggestedCardsLarge.unlock_grid_item = function (self)
+function RaidGUIControlSuggestedCardsLarge:unlock_grid_item()
 	if self._locked_item then
 		slot3 = self._locked_item
 
@@ -244,7 +244,7 @@ RaidGUIControlSuggestedCardsLarge.unlock_grid_item = function (self)
 
 	return 
 end
-RaidGUIControlSuggestedCardsLarge.locked_grid_item = function (self)
+function RaidGUIControlSuggestedCardsLarge:locked_grid_item()
 	return self._locked_item
 end
 

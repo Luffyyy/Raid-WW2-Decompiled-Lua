@@ -16,14 +16,14 @@ UnlockManager.get_instance = function ()
 
 	return Global.unlock_manager
 end
-function UnlockManager:init()
+UnlockManager.init = function (self)
 	slot3 = self
 
 	self.reset(slot2)
 
 	return 
 end
-function UnlockManager:reset()
+UnlockManager.reset = function (self)
 	self._categories = {
 		[UnlockManager.SLOT_CHARACTER] = {},
 		[UnlockManager.SLOT_PROFILE] = {}
@@ -31,7 +31,7 @@ function UnlockManager:reset()
 
 	return 
 end
-function UnlockManager:unlock(category, identifiers)
+UnlockManager.unlock = function (self, category, identifiers)
 	if not self._categories[category.slot][category.identifier] then
 		self._categories[category.slot][category.identifier] = {}
 	end
@@ -49,7 +49,7 @@ function UnlockManager:unlock(category, identifiers)
 
 	return 
 end
-function UnlockManager:is_unlocked(category, identifiers)
+UnlockManager.is_unlocked = function (self, category, identifiers)
 	local result = false
 
 	if not self._categories[category.slot][category.identifier] then
@@ -72,7 +72,7 @@ function UnlockManager:is_unlocked(category, identifiers)
 
 	return result
 end
-function UnlockManager:save_profile_slot(data)
+UnlockManager.save_profile_slot = function (self, data)
 	local state = {
 		version = UnlockManager.PROFILE_VERSION,
 		profile_unlocks = self._categories[UnlockManager.SLOT_PROFILE]
@@ -81,7 +81,7 @@ function UnlockManager:save_profile_slot(data)
 
 	return 
 end
-function UnlockManager:load_profile_slot(data)
+UnlockManager.load_profile_slot = function (self, data)
 	local state = data.UnlockManager
 
 	if not state then

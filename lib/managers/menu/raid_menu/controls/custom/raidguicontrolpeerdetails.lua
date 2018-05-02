@@ -15,7 +15,7 @@ RaidGUIControlPeerDetails.CLASS_ICON_PADDING_LEFT = 5
 RaidGUIControlPeerDetails.ICON_TITLE_FONT_SIZE = 38
 RaidGUIControlPeerDetails.ICON_FONT_SIZE = 14
 RaidGUIControlPeerDetails.LEVEL_W = 64
-RaidGUIControlPeerDetails.init = function (self, parent, params)
+function RaidGUIControlPeerDetails:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlPeerDetails.super.init(slot4, self, parent)
@@ -48,7 +48,7 @@ RaidGUIControlPeerDetails.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlPeerDetails._create_panel = function (self)
+function RaidGUIControlPeerDetails:_create_panel()
 	local panel_params = clone(slot2)
 	panel_params.name = panel_params.name .. "_panel"
 	slot4 = self._panel
@@ -62,7 +62,7 @@ RaidGUIControlPeerDetails._create_panel = function (self)
 
 	return 
 end
-RaidGUIControlPeerDetails._create_profile_name = function (self)
+function RaidGUIControlPeerDetails:_create_profile_name()
 	local profile_name_params = {
 		name = "profile_name",
 		h = 32,
@@ -82,7 +82,7 @@ RaidGUIControlPeerDetails._create_profile_name = function (self)
 
 	return 
 end
-RaidGUIControlPeerDetails._create_profile_details = function (self)
+function RaidGUIControlPeerDetails:_create_profile_details()
 	local class_icon_params = {
 		name = "class_icon",
 		texture = tweak_data.gui.icons.ico_class_infiltrator.texture,
@@ -134,7 +134,7 @@ RaidGUIControlPeerDetails._create_profile_details = function (self)
 
 	return 
 end
-RaidGUIControlPeerDetails.set_profile_name = function (self, name)
+function RaidGUIControlPeerDetails:set_profile_name(name)
 	slot4 = self._profile_name
 	slot7 = name
 
@@ -142,7 +142,7 @@ RaidGUIControlPeerDetails.set_profile_name = function (self, name)
 
 	return 
 end
-RaidGUIControlPeerDetails.set_class = function (self, character_class)
+function RaidGUIControlPeerDetails:set_class(character_class)
 	slot5 = tweak_data.gui.icons["ico_class_" .. character_class].texture
 
 	self._class_icon.set_image(slot3, self._class_icon)
@@ -154,7 +154,7 @@ RaidGUIControlPeerDetails.set_class = function (self, character_class)
 
 	return 
 end
-RaidGUIControlPeerDetails.set_nationality = function (self, nationality)
+function RaidGUIControlPeerDetails:set_nationality(nationality)
 	local params = {
 		icon_h = 48,
 		text_size = RaidGUIControlPeerDetails.ICON_FONT_SIZE
@@ -166,7 +166,7 @@ RaidGUIControlPeerDetails.set_nationality = function (self, nationality)
 
 	return 
 end
-RaidGUIControlPeerDetails.set_level = function (self, level)
+function RaidGUIControlPeerDetails:set_level(level)
 	slot4 = self._level_text
 	slot7 = level
 
@@ -174,7 +174,7 @@ RaidGUIControlPeerDetails.set_level = function (self, level)
 
 	return 
 end
-RaidGUIControlPeerDetails.close = function (self)
+function RaidGUIControlPeerDetails:close()
 	return 
 end
 

@@ -13,14 +13,14 @@ EventSystemManager.get_instance = function ()
 
 	return Global.event_manager
 end
-function EventSystemManager:init()
+EventSystemManager.init = function (self)
 	slot3 = self
 
 	self.reset(slot2)
 
 	return 
 end
-function EventSystemManager:reset()
+EventSystemManager.reset = function (self)
 	self._last_login_utc = 0
 	self._last_login_day = 0
 	self._last_login_year = 0
@@ -28,7 +28,7 @@ function EventSystemManager:reset()
 
 	return 
 end
-function EventSystemManager:save_profile_slot(data)
+EventSystemManager.save_profile_slot = function (self, data)
 	local state = {
 		version = EventSystemManager.VERSION,
 		consecutive_logins = self._consecutive_logins,
@@ -40,7 +40,7 @@ function EventSystemManager:save_profile_slot(data)
 
 	return 
 end
-function EventSystemManager:load_profile_slot(data)
+EventSystemManager.load_profile_slot = function (self, data)
 	local state = data.EventSystemManager
 
 	if not state then
@@ -57,7 +57,7 @@ function EventSystemManager:load_profile_slot(data)
 
 	return 
 end
-function EventSystemManager:on_camp_entered()
+EventSystemManager.on_camp_entered = function (self)
 	local server_time = Steam.server_time(slot2)
 	slot5 = server_time
 	local time_table = os.date(Steam, "!*t")
@@ -93,10 +93,10 @@ function EventSystemManager:on_camp_entered()
 
 	return 
 end
-function EventSystemManager:consecutive_logins()
+EventSystemManager.consecutive_logins = function (self)
 	return self._consecutive_logins
 end
-function EventSystemManager:_fire_daily_event()
+EventSystemManager._fire_daily_event = function (self)
 	self._consecutive_logins = self._consecutive_logins + 1
 
 	if #tweak_data.events.active_duty_bonus_rewards < self._consecutive_logins then

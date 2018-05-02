@@ -34,7 +34,7 @@ if not BrushLayer then
 end
 
 BrushLayer = slot0
-BrushLayer.init = function (self, owner, dont_load_unit_map)
+function BrushLayer:init(owner, dont_load_unit_map)
 	BrushLayer.super.init(slot4, self, owner)
 
 	self._brush_names = {}
@@ -70,7 +70,7 @@ BrushLayer.init = function (self, owner, dont_load_unit_map)
 
 	return 
 end
-BrushLayer.load = function (self, world_holder, offset)
+function BrushLayer:load(world_holder, offset)
 	slot8 = offset
 
 	world_holder.create_world(slot4, world_holder, "world", self._save_name)
@@ -79,7 +79,7 @@ BrushLayer.load = function (self, world_holder, offset)
 
 	return 
 end
-BrushLayer.save = function (self, save_params)
+function BrushLayer:save(save_params)
 	local file_name = "massunit"
 	local t = {
 		single_data_block = true,
@@ -102,7 +102,7 @@ BrushLayer.save = function (self, save_params)
 
 	return 
 end
-BrushLayer._save_brushfile = function (self, path)
+function BrushLayer:_save_brushfile(path)
 	slot5 = path
 
 	MassUnitManager.save(slot3, MassUnitManager)
@@ -129,7 +129,7 @@ BrushLayer._save_brushfile = function (self, path)
 
 	return 
 end
-BrushLayer.reposition_all = function (self)
+function BrushLayer:reposition_all()
 	slot4 = "Reposition all brushes:"
 
 	managers.editor.output(slot2, managers.editor)
@@ -227,7 +227,7 @@ BrushLayer.reposition_all = function (self)
 
 	return 
 end
-BrushLayer.reload = function (self)
+function BrushLayer:reload()
 	slot3 = self._unit_map
 
 	for name, unit in pairs(slot2) do
@@ -237,7 +237,7 @@ BrushLayer.reload = function (self)
 
 	return 
 end
-BrushLayer.clear_all = function (self)
+function BrushLayer:clear_all()
 	slot7 = "YES_NO,ICON_QUESTION"
 	slot12 = 0
 	local confirm = EWS.message_box(slot2, EWS, Global.frame_panel, "This will delete all brushes in this level, are you sure?", "Brush", Vector3(slot9, -1, -1))
@@ -254,7 +254,7 @@ BrushLayer.clear_all = function (self)
 
 	return 
 end
-BrushLayer.clear_unit = function (self)
+function BrushLayer:clear_unit()
 	slot7 = "YES_NO,ICON_QUESTION"
 	slot12 = 0
 	local confirm = EWS.message_box(slot2, EWS, Global.frame_panel, "This will delete all selected brushes in this level, are you sure?", "Brush", Vector3(slot9, -1, -1))
@@ -276,7 +276,7 @@ BrushLayer.clear_unit = function (self)
 
 	return 
 end
-BrushLayer.clear_units_by_name = function (self, name)
+function BrushLayer:clear_units_by_name(name)
 	slot8 = "YES_NO,ICON_QUESTION"
 	slot13 = 0
 	local confirm = EWS.message_box(slot3, EWS, Global.frame_panel, "This will delete all " .. name .. " brushes in this level, are you sure?", "Brush", Vector3(slot10, -1, -1))
@@ -294,7 +294,7 @@ BrushLayer.clear_units_by_name = function (self, name)
 
 	return 
 end
-BrushLayer._on_amount_updated = function (self)
+function BrushLayer:_on_amount_updated()
 	slot3 = self
 	local brush_stats, total = self.get_brush_stats(slot2)
 	slot6 = "Units Total: " .. total.amount
@@ -317,7 +317,7 @@ BrushLayer._on_amount_updated = function (self)
 
 	return 
 end
-BrushLayer.set_visibility = function (self, cb)
+function BrushLayer:set_visibility(cb)
 	slot4 = cb
 	self._visible = cb.get_value(slot3)
 	slot5 = self._visible
@@ -326,10 +326,10 @@ BrushLayer.set_visibility = function (self, cb)
 
 	return 
 end
-BrushLayer.select = function (self)
+function BrushLayer:select()
 	return 
 end
-BrushLayer.spray_units = function (self)
+function BrushLayer:spray_units()
 	if not self._visible then
 		return 
 	end
@@ -342,14 +342,14 @@ BrushLayer.spray_units = function (self)
 
 	return 
 end
-BrushLayer.spray_units_release = function (self)
+function BrushLayer:spray_units_release()
 	if self._spraying then
 		self._spraying = false
 	end
 
 	return 
 end
-BrushLayer.erase_units = function (self)
+function BrushLayer:erase_units()
 	if not self._visible then
 		return 
 	end
@@ -362,14 +362,14 @@ BrushLayer.erase_units = function (self)
 
 	return 
 end
-BrushLayer.erase_units_release = function (self)
+function BrushLayer:erase_units_release()
 	if self._erasing then
 		self._erasing = false
 	end
 
 	return 
 end
-BrushLayer.update = function (self, time, rel_time)
+function BrushLayer:update(time, rel_time)
 	if self._amount_dirty then
 		self._amount_dirty = nil
 		slot5 = self
@@ -522,7 +522,7 @@ BrushLayer.update = function (self, time, rel_time)
 
 	return 
 end
-BrushLayer._draw_unit_orientations = function (self)
+function BrushLayer:_draw_unit_orientations()
 	local brush_stats = self.get_brush_stats(slot2)
 	slot4 = brush_stats
 
@@ -536,7 +536,7 @@ BrushLayer._draw_unit_orientations = function (self)
 
 	return 
 end
-BrushLayer.add_brush_header = function (self, name)
+function BrushLayer:add_brush_header(name)
 	if not self._brush_types[name] then
 		local header = BrushHeader.new(slot3)
 		slot6 = name
@@ -552,7 +552,7 @@ BrushLayer.add_brush_header = function (self, name)
 
 	return 
 end
-BrushLayer.create_brush = function (self, ray)
+function BrushLayer:create_brush(ray)
 	if 0 < #self._brush_names and ray then
 
 		-- Decompilation error in this vicinity:
@@ -608,7 +608,7 @@ BrushLayer.create_brush = function (self, ray)
 
 	return 
 end
-BrushLayer.build_panel = function (self, notebook)
+function BrushLayer:build_panel(notebook)
 	slot5 = "BrushLayer:build_panel"
 
 	cat_print(slot3, "editor")
@@ -949,7 +949,7 @@ BrushLayer.build_panel = function (self, notebook)
 
 	return self._ews_panel
 end
-BrushLayer.show_create_brush = function (self, data)
+function BrushLayer:show_create_brush(data)
 	if 0 < #self._brush_names then
 		slot13 = 0
 		local name = EWS.get_text_from_user(slot3, EWS, Global.frame_panel, "Enter name for the new brush configuration:", "Create brush", "new_brush", Vector3(true, -1, -1))
@@ -991,7 +991,7 @@ BrushLayer.show_create_brush = function (self, data)
 
 	return 
 end
-BrushLayer.hide_create_brush = function (self, data)
+function BrushLayer:hide_create_brush(data)
 	slot4 = data.dialog
 
 	data.dialog.end_modal(slot3)
@@ -1000,7 +1000,7 @@ BrushLayer.hide_create_brush = function (self, data)
 
 	return 
 end
-BrushLayer.remove_brush = function (self, brushes)
+function BrushLayer:remove_brush(brushes)
 	slot4 = brushes
 	local i = brushes.selected_index(slot3)
 
@@ -1021,7 +1021,7 @@ BrushLayer.remove_brush = function (self, brushes)
 
 	return 
 end
-BrushLayer.save_brushes = function (self)
+function BrushLayer:save_brushes()
 	slot6 = managers.database
 	local f = SystemFS.open(slot2, SystemFS, managers.database.base_path("w") .. self._brushed_path .. ".xml")
 	slot5 = "<brushes>"
@@ -1062,7 +1062,7 @@ BrushLayer.save_brushes = function (self)
 
 	return 
 end
-BrushLayer.load_brushes = function (self)
+function BrushLayer:load_brushes()
 	slot5 = self._brushed_path
 
 	if DB.has(slot2, DB, "xml") then
@@ -1088,7 +1088,7 @@ BrushLayer.load_brushes = function (self)
 
 	return 
 end
-BrushLayer.create_slider = function (self, name, value, s_value, e_value, default_value)
+function BrushLayer:create_slider(name, value, s_value, e_value, default_value)
 	local slider_sizer = EWS.BoxSizer(slot7, EWS)
 	slot16 = "ALIGN_LEFT"
 
@@ -1139,7 +1139,7 @@ BrushLayer.create_slider = function (self, name, value, s_value, e_value, defaul
 
 	return slider_sizer
 end
-BrushLayer.set_unit_name = function (self, units)
+function BrushLayer:set_unit_name(units)
 	self._brush_names = {}
 	local selected = units.selected_items(slot3)
 	slot5 = selected
@@ -1163,7 +1163,7 @@ BrushLayer.set_unit_name = function (self, units)
 
 	return 
 end
-BrushLayer.select_brush = function (self, data)
+function BrushLayer:select_brush(data)
 	self._brush_names = {}
 	slot4 = data.brushes
 	local i = data.brushes.selected_index(slot3)
@@ -1183,18 +1183,18 @@ BrushLayer.select_brush = function (self, data)
 
 	return 
 end
-BrushLayer.update_slider = function (self, data)
+function BrushLayer:update_slider(data)
 	self[data.value] = data.slider_params.value
 
 	return 
 end
-BrushLayer._on_gui_open_debug_list = function (self)
+function BrushLayer:_on_gui_open_debug_list()
 	slot3 = _G.BrushLayerDebug
 	self._debug_list = _G.BrushLayerDebug.new(slot2)
 
 	return 
 end
-BrushLayer.get_brush_stats = function (self)
+function BrushLayer:get_brush_stats()
 	local brush_stats = {}
 	local total = {
 		unique = 0,
@@ -1222,7 +1222,7 @@ BrushLayer.get_brush_stats = function (self)
 
 	return brush_stats, total
 end
-BrushLayer.activate = function (self, ...)
+function BrushLayer:activate(...)
 	slot3 = self
 
 	BrushLayer.super.activate(slot2, ...)
@@ -1237,7 +1237,7 @@ BrushLayer.activate = function (self, ...)
 
 	return 
 end
-BrushLayer.deactivate = function (self, ...)
+function BrushLayer:deactivate(...)
 	slot3 = self
 
 	BrushLayer.super.deactivate(slot2, ...)
@@ -1252,7 +1252,7 @@ BrushLayer.deactivate = function (self, ...)
 
 	return 
 end
-BrushLayer.clear = function (self)
+function BrushLayer:clear()
 	slot3 = MassUnitManager
 
 	MassUnitManager.delete_all_units(slot2)
@@ -1261,7 +1261,7 @@ BrushLayer.clear = function (self)
 
 	return 
 end
-BrushLayer.add_triggers = function (self)
+function BrushLayer:add_triggers()
 	local vc = self._editor_data.virtual_controller
 	slot5 = Idstring(slot6)
 	slot10 = "spray_units"
@@ -1285,7 +1285,7 @@ BrushLayer.add_triggers = function (self)
 
 	return 
 end
-BrushLayer.get_help = function (self, text)
+function BrushLayer:get_help(text)
 	local t = "\t"
 	local n = "\n"
 	text = text .. "Spawn brush:   Point and hold down left mouse button" .. n
@@ -1293,17 +1293,17 @@ BrushLayer.get_help = function (self, text)
 
 	return text
 end
-BrushLayer.get_layer_name = function (self)
+function BrushLayer:get_layer_name()
 	return "Props brush"
 end
 BrushHeader = BrushHeader or class()
-BrushHeader.init = function (self)
+function BrushHeader:init()
 	self._name = ""
 	self._distance = 0
 
 	return 
 end
-BrushHeader.set_name = function (self, name)
+function BrushHeader:set_name(name)
 	self._name = name
 
 	if self._name then
@@ -1318,7 +1318,7 @@ BrushHeader.set_name = function (self, name)
 
 	return 
 end
-BrushHeader.setup_brush_distance = function (self)
+function BrushHeader:setup_brush_distance()
 	if self._name then
 		slot5 = self._name
 		slot3 = CoreEngineAccess._editor_unit_data(self._name.id(slot4))
@@ -1340,10 +1340,10 @@ BrushHeader.setup_brush_distance = function (self)
 
 	return 
 end
-BrushHeader.get_spawn_dist = function (self)
+function BrushHeader:get_spawn_dist()
 	return self._distance
 end
-BrushHeader.spawn_brush = function (self, position, rotation)
+function BrushHeader:spawn_brush(position, rotation)
 	slot6 = self
 	position = position + rotation.z(slot4) * self.get_spawn_dist(rotation)
 	slot8 = self._name

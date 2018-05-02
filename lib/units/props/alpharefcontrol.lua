@@ -1,7 +1,7 @@
 AlphaRefControl = AlphaRefControl or class()
 slot2 = "alpha_ref"
 local ids_alpha_ref = Idstring(slot1)
-AlphaRefControl.init = function (self, unit)
+function AlphaRefControl:init(unit)
 	self._unit = unit
 	self._materials = {}
 	slot7 = "material"
@@ -43,7 +43,7 @@ AlphaRefControl.init = function (self, unit)
 
 	return 
 end
-AlphaRefControl.update = function (self, unit, t, dt)
+function AlphaRefControl:update(unit, t, dt)
 	slot6 = self._materials
 
 	for _, data in pairs(slot5) do
@@ -60,7 +60,7 @@ AlphaRefControl.update = function (self, unit, t, dt)
 
 	return 
 end
-AlphaRefControl.play = function (self, material_name, speed)
+function AlphaRefControl:play(material_name, speed)
 	local ids_material_name = Idstring(slot4)
 	slot6 = self._materials
 
@@ -77,7 +77,7 @@ AlphaRefControl.play = function (self, material_name, speed)
 
 	return 
 end
-AlphaRefControl.stop = function (self, material_name)
+function AlphaRefControl:stop(material_name)
 	local ids_material_name = Idstring(slot3)
 	slot5 = self._materials
 
@@ -94,7 +94,7 @@ AlphaRefControl.stop = function (self, material_name)
 
 	return 
 end
-AlphaRefControl.pause = function (self, material_name)
+function AlphaRefControl:pause(material_name)
 	local ids_material_name = Idstring(slot3)
 	slot5 = self._materials
 
@@ -110,7 +110,7 @@ AlphaRefControl.pause = function (self, material_name)
 
 	return 
 end
-AlphaRefControl.set_alpha_ref = function (self, material_name, alpha_ref)
+function AlphaRefControl:set_alpha_ref(material_name, alpha_ref)
 	local ids_material_name = Idstring(slot4)
 	slot6 = self._materials
 

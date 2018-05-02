@@ -4,7 +4,7 @@ if not RaidGUIControlLabelTitle then
 end
 
 RaidGUIControlLabelTitle = slot0
-RaidGUIControlLabelTitle.init = function (self, parent, params)
+function RaidGUIControlLabelTitle:init(parent, params)
 	params.font = tweak_data.gui.fonts.din_compressed
 	params.font_size = tweak_data.gui.font_sizes.size_56
 	params.color = tweak_data.gui.colors.raid_red

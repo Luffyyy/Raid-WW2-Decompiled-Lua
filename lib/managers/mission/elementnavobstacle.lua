@@ -8,7 +8,7 @@ if not ElementNavObstacle then
 end
 
 ElementNavObstacle = slot0
-ElementNavObstacle.init = function (self, ...)
+function ElementNavObstacle:init(...)
 	slot3 = self
 
 	ElementDisableUnit.super.init(slot2, ...)
@@ -17,7 +17,7 @@ ElementNavObstacle.init = function (self, ...)
 
 	return 
 end
-ElementNavObstacle.on_script_activated = function (self)
+function ElementNavObstacle:on_script_activated()
 	if not self._values.obstacle_list then
 		self._values.obstacle_list = {
 			{
@@ -64,7 +64,7 @@ ElementNavObstacle.on_script_activated = function (self)
 
 	return 
 end
-ElementNavObstacle._load_unit = function (self, obj_name, unit)
+function ElementNavObstacle:_load_unit(obj_name, unit)
 	slot6 = {
 		unit = unit,
 		obj_name = obj_name
@@ -74,14 +74,14 @@ ElementNavObstacle._load_unit = function (self, obj_name, unit)
 
 	return 
 end
-ElementNavObstacle.client_on_executed = function (self, ...)
+function ElementNavObstacle:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementNavObstacle.on_executed = function (self, instigator)
+function ElementNavObstacle:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end
@@ -120,13 +120,13 @@ ElementNavObstacle.on_executed = function (self, instigator)
 
 	return 
 end
-ElementNavObstacle.save = function (self, data)
+function ElementNavObstacle:save(data)
 	data.save_me = true
 	data.enabled = self._values.enabled
 
 	return 
 end
-ElementNavObstacle.load = function (self, data)
+function ElementNavObstacle:load(data)
 	if not self._has_fetched_units then
 		slot4 = self
 

@@ -26,7 +26,7 @@ if not AimCameraNode then
 end
 
 AimCameraNode = slot9
-AimCameraNode.init = function (self, settings)
+function AimCameraNode:init(settings)
 	slot5 = settings
 
 	AimCameraNode.super.init(slot3, self)
@@ -35,7 +35,7 @@ AimCameraNode.init = function (self, settings)
 
 	return 
 end
-AimCameraNode.compile_settings = function (xml_node, settings)
+function AimCameraNode.compile_settings(xml_node, settings)
 	slot5 = settings
 
 	AimCameraNode.super.compile_settings(slot3, xml_node)
@@ -51,12 +51,12 @@ AimCameraNode.compile_settings = function (xml_node, settings)
 
 	return 
 end
-AimCameraNode.set_eye_target_position = function (self, position)
+function AimCameraNode:set_eye_target_position(position)
 	self._eye_target_position = position
 
 	return 
 end
-AimCameraNode.update = function (self, t, dt, in_data, out_data)
+function AimCameraNode:update(t, dt, in_data, out_data)
 	local eye_target_position = self._eye_target_position
 
 	if not eye_target_position then
@@ -122,7 +122,7 @@ AimCameraNode.update = function (self, t, dt, in_data, out_data)
 
 	return 
 end
-AimCameraNode._update_pitch_offset = function (self, parent_position, parent_rotation)
+function AimCameraNode:_update_pitch_offset(parent_position, parent_rotation)
 	slot5 = self
 	local current_position = parent_position + self.local_position(slot4).rotate_with(slot4, self.local_position(slot4))
 	local current_position_to_eye_target = self._camera_data.eye_target_position - current_position

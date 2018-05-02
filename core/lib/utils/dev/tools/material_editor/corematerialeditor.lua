@@ -571,7 +571,7 @@ slot3 = "help_16x16.png"
 CoreMaterialEditor.PROBLEM_SOLVER_ICON = CoreEWS.image_path(slot2)
 CoreMaterialEditor.RENDER_TEMPLATE_PATH = "settings/render_templates"
 CoreMaterialEditor.SHADER_LIB_PATH = "settings/shader_libs"
-CoreMaterialEditor.init = function (self)
+function CoreMaterialEditor:init()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-82, warpins: 1 ---
@@ -629,7 +629,7 @@ CoreMaterialEditor.init = function (self)
 
 
 end
-CoreMaterialEditor.update = function (self, t, dt)
+function CoreMaterialEditor:update(t, dt)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -735,7 +735,7 @@ CoreMaterialEditor.update = function (self, t, dt)
 
 
 end
-CoreMaterialEditor.set_position = function (self, pos)
+function CoreMaterialEditor:set_position(pos)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -768,7 +768,7 @@ CoreMaterialEditor.set_position = function (self, pos)
 
 
 end
-CoreMaterialEditor.destroy = function (self)
+function CoreMaterialEditor:destroy()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -782,7 +782,7 @@ CoreMaterialEditor.destroy = function (self)
 
 
 end
-CoreMaterialEditor.version_check = function (self, path, node, show_popup)
+function CoreMaterialEditor:version_check(path, node, show_popup)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -845,7 +845,7 @@ CoreMaterialEditor.version_check = function (self, path, node, show_popup)
 
 
 end
-CoreMaterialEditor.close = function (self)
+function CoreMaterialEditor:close()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -884,7 +884,7 @@ CoreMaterialEditor.close = function (self)
 
 
 end
-CoreMaterialEditor._on_change_remote_server = function (self)
+function CoreMaterialEditor:_on_change_remote_server()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -947,7 +947,7 @@ CoreMaterialEditor._on_change_remote_server = function (self)
 
 
 end
-CoreMaterialEditor._on_close = function (self)
+function CoreMaterialEditor:_on_close()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -988,7 +988,7 @@ CoreMaterialEditor._on_close = function (self)
 
 
 end
-CoreMaterialEditor._on_check_news = function (self)
+function CoreMaterialEditor:_on_check_news()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -1002,7 +1002,7 @@ CoreMaterialEditor._on_check_news = function (self)
 
 
 end
-CoreMaterialEditor._on_new = function (self)
+function CoreMaterialEditor:_on_new()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -1059,7 +1059,7 @@ CoreMaterialEditor._on_new = function (self)
 
 
 end
-CoreMaterialEditor._on_open = function (self)
+function CoreMaterialEditor:_on_open()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -1131,7 +1131,7 @@ CoreMaterialEditor._on_open = function (self)
 
 
 end
-CoreMaterialEditor._on_save = function (self)
+function CoreMaterialEditor:_on_save()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-18, warpins: 1 ---
@@ -1150,7 +1150,7 @@ CoreMaterialEditor._on_save = function (self)
 
 
 end
-CoreMaterialEditor._on_save_as = function (self)
+function CoreMaterialEditor:_on_save_as()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -1248,7 +1248,7 @@ CoreMaterialEditor._on_save_as = function (self)
 
 
 end
-CoreMaterialEditor._on_save_global = function (self)
+function CoreMaterialEditor:_on_save_global()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-22, warpins: 1 ---
@@ -1268,7 +1268,7 @@ CoreMaterialEditor._on_save_global = function (self)
 
 
 end
-CoreMaterialEditor._on_reload = function (self)
+function CoreMaterialEditor:_on_reload()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -1300,7 +1300,7 @@ CoreMaterialEditor._on_reload = function (self)
 
 
 end
-CoreMaterialEditor._on_rebuild = function (self)
+function CoreMaterialEditor:_on_rebuild()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -1372,7 +1372,7 @@ CoreMaterialEditor._on_rebuild = function (self)
 
 
 end
-CoreMaterialEditor._on_edit_global = function (self)
+function CoreMaterialEditor:_on_edit_global()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-15, warpins: 1 ---
@@ -1420,7 +1420,7 @@ CoreMaterialEditor._on_edit_global = function (self)
 
 
 end
-CoreMaterialEditor._on_feedback = function (self)
+function CoreMaterialEditor:_on_feedback()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -1432,7 +1432,7 @@ CoreMaterialEditor._on_feedback = function (self)
 
 
 end
-CoreMaterialEditor._on_parent_combo_box_change = function (self)
+function CoreMaterialEditor:_on_parent_combo_box_change()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -1481,7 +1481,7 @@ CoreMaterialEditor._on_parent_combo_box_change = function (self)
 
 
 end
-CoreMaterialEditor._on_compile_btn = function (self)
+function CoreMaterialEditor:_on_compile_btn()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -1571,7 +1571,7 @@ CoreMaterialEditor._on_compile_btn = function (self)
 
 
 end
-CoreMaterialEditor._on_material_selected = function (self, data, event)
+function CoreMaterialEditor:_on_material_selected(data, event)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -1631,7 +1631,7 @@ CoreMaterialEditor._on_material_selected = function (self, data, event)
 
 
 end
-CoreMaterialEditor._on_add_material = function (self, default_name)
+function CoreMaterialEditor:_on_add_material(default_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-16, warpins: 1 ---
@@ -1712,7 +1712,7 @@ CoreMaterialEditor._on_add_material = function (self, default_name)
 
 
 end
-CoreMaterialEditor._on_copy_material = function (self)
+function CoreMaterialEditor:_on_copy_material()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -1725,7 +1725,7 @@ CoreMaterialEditor._on_copy_material = function (self)
 
 
 end
-CoreMaterialEditor._on_paste_as_material = function (self)
+function CoreMaterialEditor:_on_paste_as_material()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-23, warpins: 1 ---
@@ -1819,7 +1819,7 @@ CoreMaterialEditor._on_paste_as_material = function (self)
 
 
 end
-CoreMaterialEditor._on_rename_material = function (self, default_name)
+function CoreMaterialEditor:_on_rename_material(default_name)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-16, warpins: 1 ---
@@ -1889,7 +1889,7 @@ CoreMaterialEditor._on_rename_material = function (self, default_name)
 
 
 end
-CoreMaterialEditor._on_remove_material = function (self)
+function CoreMaterialEditor:_on_remove_material()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -1932,7 +1932,7 @@ CoreMaterialEditor._on_remove_material = function (self)
 
 
 end
-CoreMaterialEditor._on_shader_combobox_selected = function (self)
+function CoreMaterialEditor:_on_shader_combobox_selected()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-16, warpins: 1 ---
@@ -1955,7 +1955,7 @@ CoreMaterialEditor._on_shader_combobox_selected = function (self)
 
 
 end
-CoreMaterialEditor._on_shader_option_chaged = function (self, define_struct, data)
+function CoreMaterialEditor:_on_shader_option_chaged(define_struct, data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -2061,7 +2061,7 @@ CoreMaterialEditor._on_shader_option_chaged = function (self, define_struct, dat
 
 
 end
-CoreMaterialEditor._load_shaders = function (self, load_only)
+function CoreMaterialEditor:_load_shaders(load_only)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -2288,7 +2288,7 @@ CoreMaterialEditor._load_shaders = function (self, load_only)
 
 
 end
-CoreMaterialEditor._save_current = function (self)
+function CoreMaterialEditor:_save_current()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -2348,7 +2348,7 @@ CoreMaterialEditor._save_current = function (self)
 
 
 end
-CoreMaterialEditor._save_to_disk = function (self, path)
+function CoreMaterialEditor:_save_to_disk(path)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -2452,7 +2452,7 @@ CoreMaterialEditor._save_to_disk = function (self, path)
 
 
 end
-CoreMaterialEditor._save_global_to_disk = function (self, recompile)
+function CoreMaterialEditor:_save_global_to_disk(recompile)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -2516,7 +2516,7 @@ CoreMaterialEditor._save_global_to_disk = function (self, recompile)
 
 
 end
-CoreMaterialEditor._data_diff = function (self)
+function CoreMaterialEditor:_data_diff()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -2556,7 +2556,7 @@ CoreMaterialEditor._data_diff = function (self)
 
 
 end
-CoreMaterialEditor._reset_diff = function (self)
+function CoreMaterialEditor:_reset_diff()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -2568,7 +2568,7 @@ CoreMaterialEditor._reset_diff = function (self)
 
 
 end
-CoreMaterialEditor._ok_by_law = function (self, node)
+function CoreMaterialEditor:_ok_by_law(node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -2644,7 +2644,7 @@ CoreMaterialEditor._ok_by_law = function (self, node)
 
 
 end
-CoreMaterialEditor._is_options_valid_by_law = function (self)
+function CoreMaterialEditor:_is_options_valid_by_law()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -2733,7 +2733,7 @@ CoreMaterialEditor._is_options_valid_by_law = function (self)
 
 
 end
-CoreMaterialEditor._load_shader_options = function (self)
+function CoreMaterialEditor:_load_shader_options()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-23, warpins: 1 ---
@@ -2759,7 +2759,7 @@ CoreMaterialEditor._load_shader_options = function (self)
 
 
 end
-CoreMaterialEditor._find_render_template = function (self)
+function CoreMaterialEditor:_find_render_template()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -2898,7 +2898,7 @@ CoreMaterialEditor._find_render_template = function (self)
 
 
 end
-CoreMaterialEditor._clean_parameters = function (self)
+function CoreMaterialEditor:_clean_parameters()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -3045,7 +3045,7 @@ CoreMaterialEditor._clean_parameters = function (self)
 
 
 end
-CoreMaterialEditor._update_interface_after_material_list_change = function (self, listbox_select_material)
+function CoreMaterialEditor:_update_interface_after_material_list_change(listbox_select_material)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-29, warpins: 1 ---
@@ -3078,7 +3078,7 @@ CoreMaterialEditor._update_interface_after_material_list_change = function (self
 
 
 end
-CoreMaterialEditor._create_new_material_config = function (self, path)
+function CoreMaterialEditor:_create_new_material_config(path)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-18, warpins: 1 ---
@@ -3101,7 +3101,7 @@ CoreMaterialEditor._create_new_material_config = function (self, path)
 
 
 end
-CoreMaterialEditor._load_node = function (self, path, node)
+function CoreMaterialEditor:_load_node(path, node)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -3183,7 +3183,7 @@ CoreMaterialEditor._load_node = function (self, path, node)
 
 
 end
-CoreMaterialEditor._update_output = function (self)
+function CoreMaterialEditor:_update_output()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -3231,7 +3231,7 @@ CoreMaterialEditor._update_output = function (self)
 
 
 end
-CoreMaterialEditor._layout_all = function (self)
+function CoreMaterialEditor:_layout_all()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -3245,7 +3245,7 @@ CoreMaterialEditor._layout_all = function (self)
 
 
 end
-CoreMaterialEditor._layout_output = function (self)
+function CoreMaterialEditor:_layout_output()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -3264,7 +3264,7 @@ CoreMaterialEditor._layout_output = function (self)
 
 
 end
-CoreMaterialEditor._set_shader_options = function (self, options)
+function CoreMaterialEditor:_set_shader_options(options)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -3356,7 +3356,7 @@ CoreMaterialEditor._set_shader_options = function (self, options)
 
 
 end
-CoreMaterialEditor._load_material_list = function (self, listbox_select_material)
+function CoreMaterialEditor:_load_material_list(listbox_select_material)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -3442,7 +3442,7 @@ CoreMaterialEditor._load_material_list = function (self, listbox_select_material
 
 
 end
-CoreMaterialEditor._check_loaded_shader_sources = function (self, t, s)
+function CoreMaterialEditor:_check_loaded_shader_sources(t, s)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -3498,7 +3498,7 @@ CoreMaterialEditor._check_loaded_shader_sources = function (self, t, s)
 
 
 end
-CoreMaterialEditor._load_shader_sources = function (self)
+function CoreMaterialEditor:_load_shader_sources()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -3517,7 +3517,7 @@ CoreMaterialEditor._load_shader_sources = function (self)
 
 
 end
-CoreMaterialEditor._load_shader_sources_from_db = function (self, t)
+function CoreMaterialEditor:_load_shader_sources_from_db(t)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -3608,7 +3608,7 @@ CoreMaterialEditor._load_shader_sources_from_db = function (self, t)
 
 
 end
-CoreMaterialEditor._load_shader_dropdown = function (self)
+function CoreMaterialEditor:_load_shader_dropdown()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -3733,7 +3733,7 @@ CoreMaterialEditor._load_shader_dropdown = function (self)
 
 
 end
-CoreMaterialEditor._load_parent_dropdown = function (self)
+function CoreMaterialEditor:_load_parent_dropdown()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-17, warpins: 1 ---

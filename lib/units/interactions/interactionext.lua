@@ -2642,7 +2642,7 @@ BaseInteractionExt.INFO_IDS = {
 }
 BaseInteractionExt.INTERACTION_TYPE = {}
 BaseInteractionExt.INTERACTION_TYPE.locator_based = "locator_based"
-BaseInteractionExt.init = function (self, unit)
+function BaseInteractionExt:init(unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-22, warpins: 1 ---
@@ -2805,7 +2805,7 @@ local ids_material = Idstring(function (self, unit)
 
 
 end)
-BaseInteractionExt.refresh_material = function (self)
+function BaseInteractionExt:refresh_material()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -2869,7 +2869,7 @@ BaseInteractionExt.refresh_material = function (self)
 
 
 end
-BaseInteractionExt.external_upd_interaction_topology = function (self)
+function BaseInteractionExt:external_upd_interaction_topology()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -2883,7 +2883,7 @@ BaseInteractionExt.external_upd_interaction_topology = function (self)
 
 
 end
-BaseInteractionExt._upd_interaction_topology = function (self)
+function BaseInteractionExt:_upd_interaction_topology()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -2977,7 +2977,7 @@ BaseInteractionExt._upd_interaction_topology = function (self)
 
 
 end
-BaseInteractionExt.set_tweak_data = function (self, id)
+function BaseInteractionExt:set_tweak_data(id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -3121,7 +3121,7 @@ BaseInteractionExt.set_tweak_data = function (self, id)
 
 
 end
-BaseInteractionExt.set_dirty = function (self, dirty)
+function BaseInteractionExt:set_dirty(dirty)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -3133,7 +3133,7 @@ BaseInteractionExt.set_dirty = function (self, dirty)
 
 
 end
-BaseInteractionExt.dirty = function (self)
+function BaseInteractionExt:dirty()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -3143,7 +3143,7 @@ BaseInteractionExt.dirty = function (self)
 
 
 end
-BaseInteractionExt.interact_position = function (self)
+function BaseInteractionExt:interact_position()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -3157,7 +3157,7 @@ BaseInteractionExt.interact_position = function (self)
 
 
 end
-BaseInteractionExt.interact_axis = function (self)
+function BaseInteractionExt:interact_axis()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -3171,7 +3171,7 @@ BaseInteractionExt.interact_axis = function (self)
 
 
 end
-BaseInteractionExt._setup_ray_objects = function (self)
+function BaseInteractionExt:_setup_ray_objects()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -3255,7 +3255,7 @@ BaseInteractionExt._setup_ray_objects = function (self)
 
 
 end
-BaseInteractionExt.ray_objects = function (self)
+function BaseInteractionExt:ray_objects()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -3265,7 +3265,7 @@ BaseInteractionExt.ray_objects = function (self)
 
 
 end
-BaseInteractionExt.self_blocking = function (self)
+function BaseInteractionExt:self_blocking()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -3275,7 +3275,7 @@ BaseInteractionExt.self_blocking = function (self)
 
 
 end
-BaseInteractionExt._update_interact_position = function (self)
+function BaseInteractionExt:_update_interact_position()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -3314,7 +3314,7 @@ BaseInteractionExt._update_interact_position = function (self)
 
 
 end
-BaseInteractionExt.refresh_interact_position = function (self)
+function BaseInteractionExt:refresh_interact_position()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -3334,7 +3334,7 @@ BaseInteractionExt.refresh_interact_position = function (self)
 
 
 end
-BaseInteractionExt._update_interact_axis = function (self)
+function BaseInteractionExt:_update_interact_axis()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -3390,7 +3390,7 @@ BaseInteractionExt._update_interact_axis = function (self)
 
 
 end
-BaseInteractionExt.interact_distance = function (self)
+function BaseInteractionExt:interact_distance()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -3419,7 +3419,7 @@ BaseInteractionExt.interact_distance = function (self)
 
 
 end
-BaseInteractionExt.interact_dont_interupt_on_distance = function (self)
+function BaseInteractionExt:interact_dont_interupt_on_distance()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -3448,7 +3448,7 @@ BaseInteractionExt.interact_dont_interupt_on_distance = function (self)
 
 
 end
-BaseInteractionExt.update = function (self, distance_to_player)
+function BaseInteractionExt:update(distance_to_player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-1, warpins: 1 ---
@@ -3498,7 +3498,7 @@ FLOW; TARGET BLOCK #3
 
 -- Decompilation error in this vicinity:
 --- BLOCK #3 112-219, warpins: 2 ---
-BaseInteractionExt._btn_interact = function (self)
+function BaseInteractionExt:_btn_interact()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -3532,7 +3532,7 @@ BaseInteractionExt._btn_interact = function (self)
 
 
 end
-BaseInteractionExt.can_select = function (self, player)
+function BaseInteractionExt:can_select(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -3744,7 +3744,7 @@ BaseInteractionExt.can_select = function (self, player)
 
 
 end
-BaseInteractionExt.selected = function (self, player)
+function BaseInteractionExt:selected(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -3799,7 +3799,7 @@ BaseInteractionExt.selected = function (self, player)
 
 
 end
-BaseInteractionExt._show_interaction_text = function (self, custom_text_id)
+function BaseInteractionExt:_show_interaction_text(custom_text_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -4045,7 +4045,7 @@ BaseInteractionExt._show_interaction_text = function (self, custom_text_id)
 
 
 end
-BaseInteractionExt._add_string_macros = function (self, macros)
+function BaseInteractionExt:_add_string_macros(macros)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -4058,7 +4058,7 @@ BaseInteractionExt._add_string_macros = function (self, macros)
 
 
 end
-BaseInteractionExt.unselect = function (self)
+function BaseInteractionExt:unselect()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -4168,7 +4168,7 @@ BaseInteractionExt.unselect = function (self)
 
 
 end
-BaseInteractionExt._has_required_upgrade = function (self, movement_state)
+function BaseInteractionExt:_has_required_upgrade(movement_state)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -4220,7 +4220,7 @@ BaseInteractionExt._has_required_upgrade = function (self, movement_state)
 
 
 end
-BaseInteractionExt._has_required_deployable = function (self)
+function BaseInteractionExt:_has_required_deployable()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -4251,7 +4251,7 @@ BaseInteractionExt._has_required_deployable = function (self)
 
 
 end
-BaseInteractionExt._allowed_in_movement_state = function (self, movement_state)
+function BaseInteractionExt:_allowed_in_movement_state(movement_state)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -4280,7 +4280,7 @@ BaseInteractionExt._allowed_in_movement_state = function (self, movement_state)
 
 
 end
-BaseInteractionExt._is_in_required_state = function (self, movement_state)
+function BaseInteractionExt:_is_in_required_state(movement_state)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -4327,7 +4327,7 @@ BaseInteractionExt._is_in_required_state = function (self, movement_state)
 
 
 end
-BaseInteractionExt._interact_say = function (self, data)
+function BaseInteractionExt:_interact_say(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -4345,7 +4345,7 @@ BaseInteractionExt._interact_say = function (self, data)
 
 
 end
-BaseInteractionExt.interact_start = function (self, player, locator)
+function BaseInteractionExt:interact_start(player, locator)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -4708,7 +4708,7 @@ BaseInteractionExt.interact_start = function (self, player, locator)
 
 
 end
-BaseInteractionExt._timer_value = function (self)
+function BaseInteractionExt:_timer_value()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -4718,7 +4718,7 @@ BaseInteractionExt._timer_value = function (self)
 
 
 end
-BaseInteractionExt._get_timer = function (self)
+function BaseInteractionExt:_get_timer()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -4925,7 +4925,7 @@ BaseInteractionExt._get_timer = function (self)
 
 
 end
-BaseInteractionExt._get_modified_timer = function (self)
+function BaseInteractionExt:_get_modified_timer()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -4958,7 +4958,7 @@ BaseInteractionExt._get_modified_timer = function (self)
 
 
 end
-BaseInteractionExt.check_interupt = function (self)
+function BaseInteractionExt:check_interupt()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -4968,7 +4968,7 @@ BaseInteractionExt.check_interupt = function (self)
 
 
 end
-BaseInteractionExt.interact_interupt = function (self, player, complete)
+function BaseInteractionExt:interact_interupt(player, complete)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -5048,7 +5048,7 @@ BaseInteractionExt.interact_interupt = function (self, player, complete)
 
 
 end
-BaseInteractionExt._post_event = function (self, player, sound_type, tweak_data_id)
+function BaseInteractionExt:_post_event(player, sound_type, tweak_data_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -5143,7 +5143,7 @@ BaseInteractionExt._post_event = function (self, player, sound_type, tweak_data_
 
 
 end
-BaseInteractionExt._at_interact_start = function (self)
+function BaseInteractionExt:_at_interact_start()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -5155,7 +5155,7 @@ BaseInteractionExt._at_interact_start = function (self)
 
 
 end
-BaseInteractionExt._at_interact_interupt = function (self, player, complete)
+function BaseInteractionExt:_at_interact_interupt(player, complete)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -5167,7 +5167,7 @@ BaseInteractionExt._at_interact_interupt = function (self, player, complete)
 
 
 end
-BaseInteractionExt.interact = function (self, player)
+function BaseInteractionExt:interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-19, warpins: 1 ---
@@ -5207,7 +5207,7 @@ BaseInteractionExt.interact = function (self, player)
 
 
 end
-BaseInteractionExt.can_interact = function (self, player)
+function BaseInteractionExt:can_interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -5440,7 +5440,7 @@ BaseInteractionExt.can_interact = function (self, player)
 
 
 end
-BaseInteractionExt._interact_blocked = function (self, player)
+function BaseInteractionExt:_interact_blocked(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -5450,7 +5450,7 @@ BaseInteractionExt._interact_blocked = function (self, player)
 
 
 end
-BaseInteractionExt.active = function (self)
+function BaseInteractionExt:active()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -5460,7 +5460,7 @@ BaseInteractionExt.active = function (self)
 
 
 end
-BaseInteractionExt.set_active = function (self, active, sync)
+function BaseInteractionExt:set_active(active, sync)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -5758,7 +5758,7 @@ BaseInteractionExt.set_active = function (self, active, sync)
 
 
 end
-BaseInteractionExt._set_active_contour_opacity = function (self)
+function BaseInteractionExt:_set_active_contour_opacity()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -5768,7 +5768,7 @@ BaseInteractionExt._set_active_contour_opacity = function (self)
 
 
 end
-BaseInteractionExt.set_outline_flash_state = function (self, state, sync)
+function BaseInteractionExt:set_outline_flash_state(state, sync)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -5884,7 +5884,7 @@ local ids_contour_color = Idstring(function (self, state, sync)
 end)
 slot5 = "contour_opacity"
 local ids_contour_opacity = Idstring("contour_color")
-BaseInteractionExt.set_contour = function (self, color, opacity)
+function BaseInteractionExt:set_contour(color, opacity)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -6010,7 +6010,7 @@ BaseInteractionExt.set_contour = function (self, color, opacity)
 
 
 end
-BaseInteractionExt.set_contour_override = function (self, state)
+function BaseInteractionExt:set_contour_override(state)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -6022,7 +6022,7 @@ BaseInteractionExt.set_contour_override = function (self, state)
 
 
 end
-BaseInteractionExt.save = function (self, data)
+function BaseInteractionExt:save(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -6089,7 +6089,7 @@ BaseInteractionExt.save = function (self, data)
 
 
 end
-BaseInteractionExt.load = function (self, data)
+function BaseInteractionExt:load(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -6157,7 +6157,7 @@ BaseInteractionExt.load = function (self, data)
 
 
 end
-BaseInteractionExt.remove_interact = function (self)
+function BaseInteractionExt:remove_interact()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -6177,7 +6177,7 @@ BaseInteractionExt.remove_interact = function (self)
 
 
 end
-BaseInteractionExt.destroy = function (self)
+function BaseInteractionExt:destroy()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-16, warpins: 1 ---
@@ -6349,7 +6349,7 @@ FLOW; TARGET BLOCK #4
 -- Decompilation error in this vicinity:
 --- BLOCK #4 223-238, warpins: 2 ---
 UseInteractionExt = slot4
-UseInteractionExt.unselect = function (self)
+function UseInteractionExt:unselect()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -6367,7 +6367,7 @@ UseInteractionExt.unselect = function (self)
 
 
 end
-UseInteractionExt.interact = function (self, player)
+function UseInteractionExt:interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -6558,7 +6558,7 @@ UseInteractionExt.interact = function (self, player)
 
 
 end
-UseInteractionExt.sync_interacted = function (self, peer, player, status, skip_alive_check)
+function UseInteractionExt:sync_interacted(peer, player, status, skip_alive_check)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -6654,7 +6654,7 @@ UseInteractionExt.sync_interacted = function (self, peer, player, status, skip_a
 
 
 end
-UseInteractionExt.destroy = function (self)
+function UseInteractionExt:destroy()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -6690,7 +6690,7 @@ FLOW; TARGET BLOCK #5
 -- Decompilation error in this vicinity:
 --- BLOCK #5 242-251, warpins: 2 ---
 LootCrateInteractionExt = slot4
-LootCrateInteractionExt._interact_blocked = function (self, player)
+function LootCrateInteractionExt:_interact_blocked(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -6700,7 +6700,7 @@ LootCrateInteractionExt._interact_blocked = function (self, player)
 
 
 end
-LootCrateInteractionExt.interact = function (self, player)
+function LootCrateInteractionExt:interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -6825,7 +6825,7 @@ FLOW; TARGET BLOCK #6
 -- Decompilation error in this vicinity:
 --- BLOCK #6 255-267, warpins: 2 ---
 LootDropInteractionExt = slot4
-LootDropInteractionExt.interact = function (self, player)
+function LootDropInteractionExt:interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -6883,7 +6883,7 @@ LootDropInteractionExt.interact = function (self, player)
 
 
 end
-LootDropInteractionExt.sync_interacted = function (self, ...)
+function LootDropInteractionExt:sync_interacted(...)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -6920,7 +6920,7 @@ LootDropInteractionExt.sync_interacted = function (self, ...)
 
 
 end
-LootDropInteractionExt._spawn_loot = function (self)
+function LootDropInteractionExt:_spawn_loot()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-52, warpins: 1 ---
@@ -6976,7 +6976,7 @@ FLOW; TARGET BLOCK #7
 -- Decompilation error in this vicinity:
 --- BLOCK #7 271-286, warpins: 2 ---
 SpecialLootCrateInteractionExt = slot4
-SpecialLootCrateInteractionExt._interact_blocked = function (self, player)
+function SpecialLootCrateInteractionExt:_interact_blocked(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -6986,7 +6986,7 @@ SpecialLootCrateInteractionExt._interact_blocked = function (self, player)
 
 
 end
-SpecialLootCrateInteractionExt.interact = function (self, player)
+function SpecialLootCrateInteractionExt:interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -7063,7 +7063,7 @@ SpecialLootCrateInteractionExt.interact = function (self, player)
 
 
 end
-SpecialLootCrateInteractionExt.special_interaction_done = function (self)
+function SpecialLootCrateInteractionExt:special_interaction_done()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-17, warpins: 1 ---
@@ -7082,7 +7082,7 @@ SpecialLootCrateInteractionExt.special_interaction_done = function (self)
 
 
 end
-SpecialLootCrateInteractionExt.set_special_interaction_done = function (self)
+function SpecialLootCrateInteractionExt:set_special_interaction_done()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -7117,7 +7117,7 @@ FLOW; TARGET BLOCK #8
 -- Decompilation error in this vicinity:
 --- BLOCK #8 290-299, warpins: 2 ---
 PickupInteractionExt = slot4
-PickupInteractionExt._interact_blocked = function (self, player)
+function PickupInteractionExt:_interact_blocked(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -7127,7 +7127,7 @@ PickupInteractionExt._interact_blocked = function (self, player)
 
 
 end
-PickupInteractionExt.interact = function (self, player)
+function PickupInteractionExt:interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -7189,7 +7189,7 @@ FLOW; TARGET BLOCK #9
 -- Decompilation error in this vicinity:
 --- BLOCK #9 303-318, warpins: 2 ---
 HealthPickupInteractionExt = slot4
-HealthPickupInteractionExt._interact_blocked = function (self, player)
+function HealthPickupInteractionExt:_interact_blocked(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -7202,7 +7202,7 @@ HealthPickupInteractionExt._interact_blocked = function (self, player)
 
 
 end
-HealthPickupInteractionExt.selected = function (self, player)
+function HealthPickupInteractionExt:selected(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -7268,7 +7268,7 @@ HealthPickupInteractionExt.selected = function (self, player)
 
 
 end
-HealthPickupInteractionExt.unselect = function (self)
+function HealthPickupInteractionExt:unselect()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -7286,7 +7286,7 @@ HealthPickupInteractionExt.unselect = function (self)
 
 
 end
-HealthPickupInteractionExt.interact = function (self, player)
+function HealthPickupInteractionExt:interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -7343,7 +7343,7 @@ FLOW; TARGET BLOCK #10
 -- Decompilation error in this vicinity:
 --- BLOCK #10 322-337, warpins: 2 ---
 AmmoPickupInteractionExt = slot4
-AmmoPickupInteractionExt.selected = function (self, player)
+function AmmoPickupInteractionExt:selected(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -7409,7 +7409,7 @@ AmmoPickupInteractionExt.selected = function (self, player)
 
 
 end
-AmmoPickupInteractionExt.unselect = function (self)
+function AmmoPickupInteractionExt:unselect()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -7427,7 +7427,7 @@ AmmoPickupInteractionExt.unselect = function (self)
 
 
 end
-AmmoPickupInteractionExt._interact_blocked = function (self, player)
+function AmmoPickupInteractionExt:_interact_blocked(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -7440,7 +7440,7 @@ AmmoPickupInteractionExt._interact_blocked = function (self, player)
 
 
 end
-AmmoPickupInteractionExt.interact = function (self, player)
+function AmmoPickupInteractionExt:interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -7497,7 +7497,7 @@ FLOW; TARGET BLOCK #11
 -- Decompilation error in this vicinity:
 --- BLOCK #11 341-356, warpins: 2 ---
 GrenadePickupInteractionExt = slot4
-GrenadePickupInteractionExt.selected = function (self, player)
+function GrenadePickupInteractionExt:selected(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -7553,7 +7553,7 @@ GrenadePickupInteractionExt.selected = function (self, player)
 
 
 end
-GrenadePickupInteractionExt.unselect = function (self)
+function GrenadePickupInteractionExt:unselect()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -7571,7 +7571,7 @@ GrenadePickupInteractionExt.unselect = function (self)
 
 
 end
-GrenadePickupInteractionExt._interact_blocked = function (self, player)
+function GrenadePickupInteractionExt:_interact_blocked(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -7583,7 +7583,7 @@ GrenadePickupInteractionExt._interact_blocked = function (self, player)
 
 
 end
-GrenadePickupInteractionExt.interact = function (self, player)
+function GrenadePickupInteractionExt:interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -7640,7 +7640,7 @@ FLOW; TARGET BLOCK #12
 -- Decompilation error in this vicinity:
 --- BLOCK #12 360-369, warpins: 2 ---
 DropInteractionExt = slot4
-DropInteractionExt._interact_blocked = function (self, player)
+function DropInteractionExt:_interact_blocked(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -7650,7 +7650,7 @@ DropInteractionExt._interact_blocked = function (self, player)
 
 
 end
-DropInteractionExt.interact = function (self, player)
+function DropInteractionExt:interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -7713,7 +7713,7 @@ FLOW; TARGET BLOCK #13
 -- Decompilation error in this vicinity:
 --- BLOCK #13 373-385, warpins: 2 ---
 MultipleChoiceInteractionExt = slot4
-MultipleChoiceInteractionExt.can_interact = function (self, player)
+function MultipleChoiceInteractionExt:can_interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -7937,7 +7937,7 @@ MultipleChoiceInteractionExt.can_interact = function (self, player)
 
 
 end
-MultipleChoiceInteractionExt.interact = function (self, player)
+function MultipleChoiceInteractionExt:interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -8089,7 +8089,7 @@ MultipleChoiceInteractionExt.interact = function (self, player)
 
 
 end
-MultipleChoiceInteractionExt.sync_net_event = function (self, event_id, player)
+function MultipleChoiceInteractionExt:sync_net_event(event_id, player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -8147,7 +8147,7 @@ FLOW; TARGET BLOCK #14
 -- Decompilation error in this vicinity:
 --- BLOCK #14 389-407, warpins: 2 ---
 ECMJammerInteractionExt = slot4
-ECMJammerInteractionExt.interact = function (self, player)
+function ECMJammerInteractionExt:interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -8191,7 +8191,7 @@ ECMJammerInteractionExt.interact = function (self, player)
 
 
 end
-ECMJammerInteractionExt.can_interact = function (self, player)
+function ECMJammerInteractionExt:can_interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -8243,7 +8243,7 @@ ECMJammerInteractionExt.can_interact = function (self, player)
 
 
 end
-ECMJammerInteractionExt.selected = function (self, player)
+function ECMJammerInteractionExt:selected(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -8299,7 +8299,7 @@ ECMJammerInteractionExt.selected = function (self, player)
 
 
 end
-ECMJammerInteractionExt.unselect = function (self)
+function ECMJammerInteractionExt:unselect()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -8318,7 +8318,7 @@ ECMJammerInteractionExt.unselect = function (self)
 
 
 end
-ECMJammerInteractionExt.set_active = function (self, active, sync, ...)
+function ECMJammerInteractionExt:set_active(active, sync, ...)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-16, warpins: 1 ---
@@ -8359,7 +8359,7 @@ FLOW; TARGET BLOCK #15
 -- Decompilation error in this vicinity:
 --- BLOCK #15 411-447, warpins: 2 ---
 ReviveInteractionExt = slot4
-ReviveInteractionExt.init = function (self, unit, ...)
+function ReviveInteractionExt:init(unit, ...)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -8375,7 +8375,7 @@ ReviveInteractionExt.init = function (self, unit, ...)
 
 
 end
-ReviveInteractionExt._at_interact_start = function (self, player, timer)
+function ReviveInteractionExt:_at_interact_start(player, timer)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -8439,7 +8439,7 @@ ReviveInteractionExt._at_interact_start = function (self, player, timer)
 
 
 end
-ReviveInteractionExt._at_interact_start_revive = function (self, player, timer)
+function ReviveInteractionExt:_at_interact_start_revive(player, timer)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -8512,7 +8512,7 @@ ReviveInteractionExt._at_interact_start_revive = function (self, player, timer)
 
 
 end
-ReviveInteractionExt._at_interact_start_free = function (self, player)
+function ReviveInteractionExt:_at_interact_start_free(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -8561,7 +8561,7 @@ ReviveInteractionExt._at_interact_start_free = function (self, player)
 
 
 end
-ReviveInteractionExt._at_interact_interupt = function (self, player, complete)
+function ReviveInteractionExt:_at_interact_interupt(player, complete)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -8644,7 +8644,7 @@ ReviveInteractionExt._at_interact_interupt = function (self, player, complete)
 
 
 end
-ReviveInteractionExt._at_interact_interupt_revive = function (self, player)
+function ReviveInteractionExt:_at_interact_interupt_revive(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -8716,7 +8716,7 @@ ReviveInteractionExt._at_interact_interupt_revive = function (self, player)
 
 
 end
-ReviveInteractionExt._at_interact_interupt_free = function (self, player)
+function ReviveInteractionExt:_at_interact_interupt_free(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -8765,7 +8765,7 @@ ReviveInteractionExt._at_interact_interupt_free = function (self, player)
 
 
 end
-ReviveInteractionExt.set_waypoint_paused = function (self, paused)
+function ReviveInteractionExt:set_waypoint_paused(paused)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -8834,7 +8834,7 @@ ReviveInteractionExt.set_waypoint_paused = function (self, paused)
 
 
 end
-ReviveInteractionExt.get_waypoint_time = function (self)
+function ReviveInteractionExt:get_waypoint_time()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -8946,7 +8946,7 @@ FLOW; TARGET BLOCK #17
 
 -- Decompilation error in this vicinity:
 --- BLOCK #17 451-468, warpins: 2 ---
-ReviveInteractionExt.set_active = function (self, active, sync, down_time)
+function ReviveInteractionExt:set_active(active, sync, down_time)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-15, warpins: 1 ---
@@ -9366,7 +9366,7 @@ ReviveInteractionExt.set_active = function (self, active, sync, down_time)
 
 
 end
-ReviveInteractionExt.unselect = function (self)
+function ReviveInteractionExt:unselect()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -9384,7 +9384,7 @@ ReviveInteractionExt.unselect = function (self)
 
 
 end
-ReviveInteractionExt.interact = function (self, reviving_unit)
+function ReviveInteractionExt:interact(reviving_unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -9656,7 +9656,7 @@ ReviveInteractionExt.interact = function (self, reviving_unit)
 
 
 end
-ReviveInteractionExt.save = function (self, data)
+function ReviveInteractionExt:save(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -9675,7 +9675,7 @@ ReviveInteractionExt.save = function (self, data)
 
 
 end
-ReviveInteractionExt.load = function (self, data)
+function ReviveInteractionExt:load(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -9735,7 +9735,7 @@ FLOW; TARGET BLOCK #18
 -- Decompilation error in this vicinity:
 --- BLOCK #18 472-487, warpins: 2 ---
 GageAssignmentInteractionExt = slot5
-GageAssignmentInteractionExt.init = function (self, unit)
+function GageAssignmentInteractionExt:init(unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -9749,7 +9749,7 @@ GageAssignmentInteractionExt.init = function (self, unit)
 
 
 end
-GageAssignmentInteractionExt._interact_blocked = function (self, player)
+function GageAssignmentInteractionExt:_interact_blocked(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -9816,7 +9816,7 @@ GageAssignmentInteractionExt._interact_blocked = function (self, player)
 
 
 end
-GageAssignmentInteractionExt.can_select = function (self, player)
+function GageAssignmentInteractionExt:can_select(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -9828,7 +9828,7 @@ GageAssignmentInteractionExt.can_select = function (self, player)
 
 
 end
-GageAssignmentInteractionExt.interact = function (self, player)
+function GageAssignmentInteractionExt:interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -9902,7 +9902,7 @@ FLOW; TARGET BLOCK #19
 -- Decompilation error in this vicinity:
 --- BLOCK #19 491-500, warpins: 2 ---
 AmmoBagInteractionExt = slot5
-AmmoBagInteractionExt._interact_blocked = function (self, player)
+function AmmoBagInteractionExt:_interact_blocked(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -9915,7 +9915,7 @@ AmmoBagInteractionExt._interact_blocked = function (self, player)
 
 
 end
-AmmoBagInteractionExt.interact = function (self, player)
+function AmmoBagInteractionExt:interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-24, warpins: 1 ---
@@ -9996,7 +9996,7 @@ FLOW; TARGET BLOCK #20
 -- Decompilation error in this vicinity:
 --- BLOCK #20 504-513, warpins: 2 ---
 GrenadeCrateInteractionExt = slot5
-GrenadeCrateInteractionExt._interact_blocked = function (self, player)
+function GrenadeCrateInteractionExt:_interact_blocked(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -10008,7 +10008,7 @@ GrenadeCrateInteractionExt._interact_blocked = function (self, player)
 
 
 end
-GrenadeCrateInteractionExt.interact = function (self, player)
+function GrenadeCrateInteractionExt:interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-15, warpins: 1 ---
@@ -10047,7 +10047,7 @@ FLOW; TARGET BLOCK #21
 -- Decompilation error in this vicinity:
 --- BLOCK #21 517-526, warpins: 2 ---
 BodyBagsBagInteractionExt = slot5
-BodyBagsBagInteractionExt._interact_blocked = function (self, player)
+function BodyBagsBagInteractionExt:_interact_blocked(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -10059,7 +10059,7 @@ BodyBagsBagInteractionExt._interact_blocked = function (self, player)
 
 
 end
-BodyBagsBagInteractionExt.interact = function (self, player)
+function BodyBagsBagInteractionExt:interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-15, warpins: 1 ---
@@ -10098,7 +10098,7 @@ FLOW; TARGET BLOCK #22
 -- Decompilation error in this vicinity:
 --- BLOCK #22 530-539, warpins: 2 ---
 DoctorBagBaseInteractionExt = slot5
-DoctorBagBaseInteractionExt._interact_blocked = function (self, player)
+function DoctorBagBaseInteractionExt:_interact_blocked(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -10163,7 +10163,7 @@ DoctorBagBaseInteractionExt._interact_blocked = function (self, player)
 
 
 end
-DoctorBagBaseInteractionExt.interact = function (self, player)
+function DoctorBagBaseInteractionExt:interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-16, warpins: 1 ---
@@ -10203,7 +10203,7 @@ FLOW; TARGET BLOCK #23
 -- Decompilation error in this vicinity:
 --- BLOCK #23 543-552, warpins: 2 ---
 C4BagInteractionExt = slot5
-C4BagInteractionExt._interact_blocked = function (self, player)
+function C4BagInteractionExt:_interact_blocked(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -10215,7 +10215,7 @@ C4BagInteractionExt._interact_blocked = function (self, player)
 
 
 end
-C4BagInteractionExt.interact = function (self, player)
+function C4BagInteractionExt:interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-15, warpins: 1 ---
@@ -10257,7 +10257,7 @@ FLOW; TARGET BLOCK #24
 -- Decompilation error in this vicinity:
 --- BLOCK #24 556-568, warpins: 2 ---
 MultipleEquipmentBagInteractionExt = slot5
-MultipleEquipmentBagInteractionExt._interact_blocked = function (self, player)
+function MultipleEquipmentBagInteractionExt:_interact_blocked(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -10289,7 +10289,7 @@ MultipleEquipmentBagInteractionExt._interact_blocked = function (self, player)
 
 
 end
-MultipleEquipmentBagInteractionExt.interact = function (self, player)
+function MultipleEquipmentBagInteractionExt:interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -10409,7 +10409,7 @@ MultipleEquipmentBagInteractionExt.interact = function (self, player)
 
 
 end
-MultipleEquipmentBagInteractionExt.sync_interacted = function (self, peer, player, amount_wanted)
+function MultipleEquipmentBagInteractionExt:sync_interacted(peer, player, amount_wanted)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -10661,7 +10661,7 @@ FLOW; TARGET BLOCK #25
 -- Decompilation error in this vicinity:
 --- BLOCK #25 572-581, warpins: 2 ---
 VeilInteractionExt = slot5
-VeilInteractionExt._interact_blocked = function (self, player)
+function VeilInteractionExt:_interact_blocked(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -10673,7 +10673,7 @@ VeilInteractionExt._interact_blocked = function (self, player)
 
 
 end
-VeilInteractionExt.interact = function (self, player)
+function VeilInteractionExt:interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-15, warpins: 1 ---
@@ -10715,7 +10715,7 @@ FLOW; TARGET BLOCK #26
 -- Decompilation error in this vicinity:
 --- BLOCK #26 585-597, warpins: 2 ---
 VeilTakeInteractionExt = slot5
-VeilTakeInteractionExt._interact_blocked = function (self, player)
+function VeilTakeInteractionExt:_interact_blocked(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -10727,7 +10727,7 @@ VeilTakeInteractionExt._interact_blocked = function (self, player)
 
 
 end
-VeilTakeInteractionExt.interact = function (self, player)
+function VeilTakeInteractionExt:interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-22, warpins: 1 ---
@@ -10772,7 +10772,7 @@ VeilTakeInteractionExt.interact = function (self, player)
 
 
 end
-VeilTakeInteractionExt.sync_interacted = function (self)
+function VeilTakeInteractionExt:sync_interacted()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -10833,7 +10833,7 @@ FLOW; TARGET BLOCK #27
 -- Decompilation error in this vicinity:
 --- BLOCK #27 601-607, warpins: 2 ---
 SmallLootInteractionExt = slot5
-SmallLootInteractionExt.interact = function (self, player)
+function SmallLootInteractionExt:interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -10879,7 +10879,7 @@ FLOW; TARGET BLOCK #28
 -- Decompilation error in this vicinity:
 --- BLOCK #28 611-617, warpins: 2 ---
 MoneyWrapInteractionExt = slot5
-MoneyWrapInteractionExt.interact = function (self, player)
+function MoneyWrapInteractionExt:interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-16, warpins: 1 ---
@@ -10920,7 +10920,7 @@ FLOW; TARGET BLOCK #29
 -- Decompilation error in this vicinity:
 --- BLOCK #29 621-627, warpins: 2 ---
 DiamondInteractionExt = slot5
-DiamondInteractionExt.interact = function (self, player)
+function DiamondInteractionExt:interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-15, warpins: 1 ---
@@ -10961,7 +10961,7 @@ FLOW; TARGET BLOCK #30
 -- Decompilation error in this vicinity:
 --- BLOCK #30 631-646, warpins: 2 ---
 ZipLineInteractionExt = slot5
-ZipLineInteractionExt.can_select = function (self, player)
+function ZipLineInteractionExt:can_select(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -10973,7 +10973,7 @@ ZipLineInteractionExt.can_select = function (self, player)
 
 
 end
-ZipLineInteractionExt.check_interupt = function (self)
+function ZipLineInteractionExt:check_interupt()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -11007,7 +11007,7 @@ ZipLineInteractionExt.check_interupt = function (self)
 
 
 end
-ZipLineInteractionExt._interact_blocked = function (self, player)
+function ZipLineInteractionExt:_interact_blocked(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -11094,7 +11094,7 @@ ZipLineInteractionExt._interact_blocked = function (self, player)
 
 
 end
-ZipLineInteractionExt.interact = function (self, player)
+function ZipLineInteractionExt:interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-19, warpins: 1 ---
@@ -11139,7 +11139,7 @@ FLOW; TARGET BLOCK #31
 -- Decompilation error in this vicinity:
 --- BLOCK #31 650-680, warpins: 2 ---
 IntimitateInteractionExt = slot5
-IntimitateInteractionExt.init = function (self, unit, ...)
+function IntimitateInteractionExt:init(unit, ...)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -11155,7 +11155,7 @@ IntimitateInteractionExt.init = function (self, unit, ...)
 
 
 end
-IntimitateInteractionExt.unselect = function (self)
+function IntimitateInteractionExt:unselect()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -11173,7 +11173,7 @@ IntimitateInteractionExt.unselect = function (self)
 
 
 end
-IntimitateInteractionExt.interact = function (self, player)
+function IntimitateInteractionExt:interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -11802,7 +11802,7 @@ IntimitateInteractionExt.interact = function (self, player)
 
 
 end
-IntimitateInteractionExt._at_interact_start = function (self, player, timer)
+function IntimitateInteractionExt:_at_interact_start(player, timer)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -11933,7 +11933,7 @@ IntimitateInteractionExt._at_interact_start = function (self, player, timer)
 
 
 end
-IntimitateInteractionExt._at_interact_interupt = function (self, player, complete)
+function IntimitateInteractionExt:_at_interact_interupt(player, complete)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -12069,7 +12069,7 @@ IntimitateInteractionExt._at_interact_interupt = function (self, player, complet
 
 
 end
-IntimitateInteractionExt.sync_interacted = function (self, peer, player, status, skip_alive_check)
+function IntimitateInteractionExt:sync_interacted(peer, player, status, skip_alive_check)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-4, warpins: 1 ---
@@ -12626,7 +12626,7 @@ IntimitateInteractionExt.sync_interacted = function (self, peer, player, status,
 
 
 end
-IntimitateInteractionExt._interact_blocked = function (self, player)
+function IntimitateInteractionExt:_interact_blocked(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -12870,7 +12870,7 @@ IntimitateInteractionExt._interact_blocked = function (self, player)
 
 
 end
-IntimitateInteractionExt._is_in_required_state = function (self, player)
+function IntimitateInteractionExt:_is_in_required_state(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -12913,7 +12913,7 @@ IntimitateInteractionExt._is_in_required_state = function (self, player)
 
 
 end
-IntimitateInteractionExt.on_interacting_unit_destroyed = function (self, peer, player)
+function IntimitateInteractionExt:on_interacting_unit_destroyed(peer, player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -12949,7 +12949,7 @@ FLOW; TARGET BLOCK #32
 -- Decompilation error in this vicinity:
 --- BLOCK #32 684-710, warpins: 2 ---
 CarryInteractionExt = slot5
-CarryInteractionExt._interact_blocked = function (self, player)
+function CarryInteractionExt:_interact_blocked(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -13007,7 +13007,7 @@ CarryInteractionExt._interact_blocked = function (self, player)
 
 
 end
-CarryInteractionExt.can_select = function (self, player)
+function CarryInteractionExt:can_select(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -13079,7 +13079,7 @@ CarryInteractionExt.can_select = function (self, player)
 
 
 end
-CarryInteractionExt.interact = function (self, player)
+function CarryInteractionExt:interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -13161,7 +13161,7 @@ CarryInteractionExt.interact = function (self, player)
 
 
 end
-CarryInteractionExt.sync_interacted = function (self, peer, player, status, skip_alive_check)
+function CarryInteractionExt:sync_interacted(peer, player, status, skip_alive_check)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -13375,7 +13375,7 @@ CarryInteractionExt.sync_interacted = function (self, peer, player, status, skip
 
 
 end
-CarryInteractionExt._get_modified_timer = function (self)
+function CarryInteractionExt:_get_modified_timer()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -13430,7 +13430,7 @@ CarryInteractionExt._get_modified_timer = function (self)
 
 
 end
-CarryInteractionExt.register_collision_callbacks = function (self)
+function CarryInteractionExt:register_collision_callbacks()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-24, warpins: 1 ---
@@ -13489,7 +13489,7 @@ CarryInteractionExt.register_collision_callbacks = function (self)
 
 
 end
-CarryInteractionExt._collision_callback = function (self, tag, unit, body, other_unit, other_body, position, normal, velocity, ...)
+function CarryInteractionExt:_collision_callback(tag, unit, body, other_unit, other_body, position, normal, velocity, ...)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -13616,7 +13616,7 @@ FLOW; TARGET BLOCK #33
 -- Decompilation error in this vicinity:
 --- BLOCK #33 714-726, warpins: 2 ---
 LootBankInteractionExt = slot5
-LootBankInteractionExt._interact_blocked = function (self, player)
+function LootBankInteractionExt:_interact_blocked(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -13628,7 +13628,7 @@ LootBankInteractionExt._interact_blocked = function (self, player)
 
 
 end
-LootBankInteractionExt.interact = function (self, player)
+function LootBankInteractionExt:interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -13681,7 +13681,7 @@ LootBankInteractionExt.interact = function (self, player)
 
 
 end
-LootBankInteractionExt.sync_interacted = function (self, peer, player, status, skip_alive_check)
+function LootBankInteractionExt:sync_interacted(peer, player, status, skip_alive_check)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -13740,7 +13740,7 @@ FLOW; TARGET BLOCK #34
 -- Decompilation error in this vicinity:
 --- BLOCK #34 730-761, warpins: 2 ---
 EventIDInteractionExt = slot5
-EventIDInteractionExt.show_blocked_hint = function (self, player, skip_hint)
+function EventIDInteractionExt:show_blocked_hint(player, skip_hint)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -13793,7 +13793,7 @@ EventIDInteractionExt.show_blocked_hint = function (self, player, skip_hint)
 
 
 end
-EventIDInteractionExt._interact_blocked = function (self, player)
+function EventIDInteractionExt:_interact_blocked(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -13846,7 +13846,7 @@ EventIDInteractionExt._interact_blocked = function (self, player)
 
 
 end
-EventIDInteractionExt.interact_start = function (self, player)
+function EventIDInteractionExt:interact_start(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -14063,7 +14063,7 @@ EventIDInteractionExt.interact_start = function (self, player)
 
 
 end
-EventIDInteractionExt._add_string_macros = function (self, macros)
+function EventIDInteractionExt:_add_string_macros(macros)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-11, warpins: 1 ---
@@ -14123,7 +14123,7 @@ EventIDInteractionExt._add_string_macros = function (self, macros)
 
 
 end
-EventIDInteractionExt.interact = function (self, player)
+function EventIDInteractionExt:interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -14192,7 +14192,7 @@ EventIDInteractionExt.interact = function (self, player)
 
 
 end
-EventIDInteractionExt.can_interact = function (self, player)
+function EventIDInteractionExt:can_interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -14268,7 +14268,7 @@ EventIDInteractionExt.can_interact = function (self, player)
 
 
 end
-EventIDInteractionExt.selected = function (self, player)
+function EventIDInteractionExt:selected(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -14314,7 +14314,7 @@ EventIDInteractionExt.selected = function (self, player)
 
 
 end
-EventIDInteractionExt.unselect = function (self)
+function EventIDInteractionExt:unselect()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -14352,7 +14352,7 @@ EventIDInteractionExt.unselect = function (self)
 
 
 end
-EventIDInteractionExt.sync_net_event = function (self, event_id, peer)
+function EventIDInteractionExt:sync_net_event(event_id, peer)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -14427,7 +14427,7 @@ FLOW; TARGET BLOCK #35
 -- Decompilation error in this vicinity:
 --- BLOCK #35 765-780, warpins: 2 ---
 SpecialEquipmentInteractionExt = slot5
-SpecialEquipmentInteractionExt._interact_blocked = function (self, player)
+function SpecialEquipmentInteractionExt:_interact_blocked(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -14470,7 +14470,7 @@ SpecialEquipmentInteractionExt._interact_blocked = function (self, player)
 
 
 end
-SpecialEquipmentInteractionExt.interact = function (self, player)
+function SpecialEquipmentInteractionExt:interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-18, warpins: 1 ---
@@ -14550,7 +14550,7 @@ SpecialEquipmentInteractionExt.interact = function (self, player)
 
 
 end
-SpecialEquipmentInteractionExt.selected = function (self, player)
+function SpecialEquipmentInteractionExt:selected(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -14592,7 +14592,7 @@ SpecialEquipmentInteractionExt.selected = function (self, player)
 
 
 end
-SpecialEquipmentInteractionExt.sync_interacted = function (self, peer, player, status, skip_alive_check)
+function SpecialEquipmentInteractionExt:sync_interacted(peer, player, status, skip_alive_check)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -14711,7 +14711,7 @@ FLOW; TARGET BLOCK #36
 -- Decompilation error in this vicinity:
 --- BLOCK #36 784-793, warpins: 2 ---
 AccessCameraInteractionExt = slot5
-AccessCameraInteractionExt._interact_blocked = function (self, player)
+function AccessCameraInteractionExt:_interact_blocked(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -14721,7 +14721,7 @@ AccessCameraInteractionExt._interact_blocked = function (self, player)
 
 
 end
-AccessCameraInteractionExt.interact = function (self, player)
+function AccessCameraInteractionExt:interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -14761,7 +14761,7 @@ FLOW; TARGET BLOCK #37
 -- Decompilation error in this vicinity:
 --- BLOCK #37 797-832, warpins: 2 ---
 MissionElementInteractionExt = slot5
-MissionElementInteractionExt.set_mission_element = function (self, mission_element)
+function MissionElementInteractionExt:set_mission_element(mission_element)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -14773,7 +14773,7 @@ MissionElementInteractionExt.set_mission_element = function (self, mission_eleme
 
 
 end
-MissionElementInteractionExt._timer_value = function (self, ...)
+function MissionElementInteractionExt:_timer_value(...)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -14804,7 +14804,7 @@ MissionElementInteractionExt._timer_value = function (self, ...)
 
 
 end
-MissionElementInteractionExt.set_override_timer_value = function (self, override_timer_value)
+function MissionElementInteractionExt:set_override_timer_value(override_timer_value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -14816,7 +14816,7 @@ MissionElementInteractionExt.set_override_timer_value = function (self, override
 
 
 end
-MissionElementInteractionExt.sync_net_event = function (self, event_id, peer)
+function MissionElementInteractionExt:sync_net_event(event_id, peer)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -14892,7 +14892,7 @@ MissionElementInteractionExt.sync_net_event = function (self, event_id, peer)
 
 
 end
-MissionElementInteractionExt._at_interact_start = function (self, player, ...)
+function MissionElementInteractionExt:_at_interact_start(player, ...)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -14941,7 +14941,7 @@ MissionElementInteractionExt._at_interact_start = function (self, player, ...)
 
 
 end
-MissionElementInteractionExt._at_interact_interupt = function (self, player, complete)
+function MissionElementInteractionExt:_at_interact_interupt(player, complete)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -14999,7 +14999,7 @@ MissionElementInteractionExt._at_interact_interupt = function (self, player, com
 
 
 end
-MissionElementInteractionExt.interact = function (self, player, ...)
+function MissionElementInteractionExt:interact(player, ...)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -15036,7 +15036,7 @@ MissionElementInteractionExt.interact = function (self, player, ...)
 
 
 end
-MissionElementInteractionExt.sync_interacted = function (self, peer, player, ...)
+function MissionElementInteractionExt:sync_interacted(peer, player, ...)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-15, warpins: 1 ---
@@ -15082,7 +15082,7 @@ MissionElementInteractionExt.sync_interacted = function (self, peer, player, ...
 
 
 end
-MissionElementInteractionExt.save = function (self, data)
+function MissionElementInteractionExt:save(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-13, warpins: 1 ---
@@ -15101,7 +15101,7 @@ MissionElementInteractionExt.save = function (self, data)
 
 
 end
-MissionElementInteractionExt.load = function (self, data)
+function MissionElementInteractionExt:load(data)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -15143,7 +15143,7 @@ FLOW; TARGET BLOCK #38
 -- Decompilation error in this vicinity:
 --- BLOCK #38 836-882, warpins: 2 ---
 DrivingInteractionExt = slot5
-DrivingInteractionExt.init = function (self, unit)
+function DrivingInteractionExt:init(unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -15157,7 +15157,7 @@ DrivingInteractionExt.init = function (self, unit)
 
 
 end
-DrivingInteractionExt._timer_value = function (self, ...)
+function DrivingInteractionExt:_timer_value(...)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -15188,7 +15188,7 @@ DrivingInteractionExt._timer_value = function (self, ...)
 
 
 end
-DrivingInteractionExt.set_override_timer_value = function (self, override_timer_value)
+function DrivingInteractionExt:set_override_timer_value(override_timer_value)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -15200,7 +15200,7 @@ DrivingInteractionExt.set_override_timer_value = function (self, override_timer_
 
 
 end
-DrivingInteractionExt.interact = function (self, player, locator)
+function DrivingInteractionExt:interact(player, locator)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -15327,7 +15327,7 @@ DrivingInteractionExt.interact = function (self, player, locator)
 
 
 end
-DrivingInteractionExt._add_string_macros = function (self, macros)
+function DrivingInteractionExt:_add_string_macros(macros)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -15343,7 +15343,7 @@ DrivingInteractionExt._add_string_macros = function (self, macros)
 
 
 end
-DrivingInteractionExt.selected = function (self, player, locator)
+function DrivingInteractionExt:selected(player, locator)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -15532,7 +15532,7 @@ DrivingInteractionExt.selected = function (self, player, locator)
 
 
 end
-DrivingInteractionExt.can_select = function (self, player, locator)
+function DrivingInteractionExt:can_select(player, locator)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -15600,7 +15600,7 @@ DrivingInteractionExt.can_select = function (self, player, locator)
 
 
 end
-DrivingInteractionExt.can_interact = function (self, player)
+function DrivingInteractionExt:can_interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -15697,7 +15697,7 @@ DrivingInteractionExt.can_interact = function (self, player)
 
 
 end
-DrivingInteractionExt._post_event = function (self, player, sound_type, tweak_data_id)
+function DrivingInteractionExt:_post_event(player, sound_type, tweak_data_id)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -15826,7 +15826,7 @@ DrivingInteractionExt._post_event = function (self, player, sound_type, tweak_da
 
 
 end
-DrivingInteractionExt._set_active_contour_opacity = function (self)
+function DrivingInteractionExt:_set_active_contour_opacity()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -15887,7 +15887,7 @@ DrivingInteractionExt._set_active_contour_opacity = function (self)
 
 
 end
-DrivingInteractionExt.interact_distance = function (self)
+function DrivingInteractionExt:interact_distance()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -15919,7 +15919,7 @@ DrivingInteractionExt.interact_distance = function (self)
 
 
 end
-DrivingInteractionExt._setup_ray_objects = function (self)
+function DrivingInteractionExt:_setup_ray_objects()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -16065,7 +16065,7 @@ FLOW; TARGET BLOCK #39
 -- Decompilation error in this vicinity:
 --- BLOCK #39 886-901, warpins: 2 ---
 MainMenuInteractionExt = slot5
-MainMenuInteractionExt.init = function (self, unit)
+function MainMenuInteractionExt:init(unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -16111,7 +16111,7 @@ MainMenuInteractionExt.init = function (self, unit)
 
 
 end
-MainMenuInteractionExt.can_select = function (self, player, locator)
+function MainMenuInteractionExt:can_select(player, locator)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -16142,7 +16142,7 @@ MainMenuInteractionExt.can_select = function (self, player, locator)
 
 
 end
-MainMenuInteractionExt.interact = function (self, player)
+function MainMenuInteractionExt:interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-14, warpins: 1 ---
@@ -16265,7 +16265,7 @@ MainMenuInteractionExt.interact = function (self, player)
 
 
 end
-MainMenuInteractionExt.selected = function (self, player)
+function MainMenuInteractionExt:selected(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-3, warpins: 1 ---
@@ -16575,7 +16575,7 @@ FLOW; TARGET BLOCK #40
 -- Decompilation error in this vicinity:
 --- BLOCK #40 905-911, warpins: 2 ---
 SpotterFlareInteractionExt = slot5
-SpotterFlareInteractionExt.interact = function (self, player)
+function SpotterFlareInteractionExt:interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-29, warpins: 1 ---
@@ -16622,7 +16622,7 @@ FLOW; TARGET BLOCK #41
 -- Decompilation error in this vicinity:
 --- BLOCK #41 915-928, warpins: 2 ---
 GreedItemInteractionExt = slot5
-GreedItemInteractionExt.interact = function (self, player)
+function GreedItemInteractionExt:interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-37, warpins: 1 ---
@@ -16651,7 +16651,7 @@ GreedItemInteractionExt.interact = function (self, player)
 
 
 end
-GreedItemInteractionExt.on_peer_interacted = function (self, amount)
+function GreedItemInteractionExt:on_peer_interacted(amount)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-8, warpins: 1 ---
@@ -16665,7 +16665,7 @@ GreedItemInteractionExt.on_peer_interacted = function (self, amount)
 
 
 end
-GreedItemInteractionExt.can_select = function (self)
+function GreedItemInteractionExt:can_select()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -16697,7 +16697,7 @@ FLOW; TARGET BLOCK #42
 -- Decompilation error in this vicinity:
 --- BLOCK #42 932-963, warpins: 2 ---
 GreedCacheItemInteractionExt = slot5
-GreedCacheItemInteractionExt.init = function (self, unit)
+function GreedCacheItemInteractionExt:init(unit)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -16711,7 +16711,7 @@ GreedCacheItemInteractionExt.init = function (self, unit)
 
 
 end
-GreedCacheItemInteractionExt.interact = function (self, player)
+function GreedCacheItemInteractionExt:interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-6, warpins: 1 ---
@@ -16826,7 +16826,7 @@ GreedCacheItemInteractionExt.interact = function (self, player)
 
 
 end
-GreedCacheItemInteractionExt.on_peer_interacted = function (self, amount)
+function GreedCacheItemInteractionExt:on_peer_interacted(amount)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-15, warpins: 1 ---
@@ -16843,7 +16843,7 @@ GreedCacheItemInteractionExt.on_peer_interacted = function (self, amount)
 
 
 end
-GreedCacheItemInteractionExt.special_interaction_done = function (self)
+function GreedCacheItemInteractionExt:special_interaction_done()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-22, warpins: 1 ---
@@ -16867,7 +16867,7 @@ GreedCacheItemInteractionExt.special_interaction_done = function (self)
 
 
 end
-GreedCacheItemInteractionExt.set_special_interaction_done = function (self)
+function GreedCacheItemInteractionExt:set_special_interaction_done()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -16886,7 +16886,7 @@ GreedCacheItemInteractionExt.set_special_interaction_done = function (self)
 
 
 end
-GreedCacheItemInteractionExt.can_select = function (self)
+function GreedCacheItemInteractionExt:can_select()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-10, warpins: 1 ---
@@ -16927,7 +16927,7 @@ GreedCacheItemInteractionExt.can_select = function (self)
 
 
 end
-GreedCacheItemInteractionExt.unselect = function (self)
+function GreedCacheItemInteractionExt:unselect()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-5, warpins: 1 ---
@@ -16941,7 +16941,7 @@ GreedCacheItemInteractionExt.unselect = function (self)
 
 
 end
-GreedCacheItemInteractionExt._show_interaction_text = function (self)
+function GreedCacheItemInteractionExt:_show_interaction_text()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -16986,7 +16986,7 @@ GreedCacheItemInteractionExt._show_interaction_text = function (self)
 
 
 end
-GreedCacheItemInteractionExt._timer_value = function (self)
+function GreedCacheItemInteractionExt:_timer_value()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-9, warpins: 1 ---
@@ -17052,7 +17052,7 @@ FLOW; TARGET BLOCK #43
 -- Decompilation error in this vicinity:
 --- BLOCK #43 967-980, warpins: 2 ---
 ConsumableMissionInteractionExt = slot5
-ConsumableMissionInteractionExt.interact = function (self, player)
+function ConsumableMissionInteractionExt:interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-21, warpins: 1 ---
@@ -17134,7 +17134,7 @@ ConsumableMissionInteractionExt.interact = function (self, player)
 
 
 end
-ConsumableMissionInteractionExt.can_interact = function (self, player)
+function ConsumableMissionInteractionExt:can_interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-7, warpins: 1 ---
@@ -17167,7 +17167,7 @@ ConsumableMissionInteractionExt.can_interact = function (self, player)
 
 
 end
-ConsumableMissionInteractionExt.on_load_complete = function (self)
+function ConsumableMissionInteractionExt:on_load_complete()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-21, warpins: 1 ---
@@ -17206,7 +17206,7 @@ FLOW; TARGET BLOCK #44
 -- Decompilation error in this vicinity:
 --- BLOCK #44 984-990, warpins: 2 ---
 FoxholeInteractionExt = slot5
-FoxholeInteractionExt.interact = function (self, player)
+function FoxholeInteractionExt:interact(player)
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-12, warpins: 1 ---
@@ -17306,7 +17306,7 @@ FLOW; TARGET BLOCK #45
 -- Decompilation error in this vicinity:
 --- BLOCK #45 994-1005, warpins: 2 ---
 DummyInteractionExt = slot5
-DummyInteractionExt.interact_start = function (self)
+function DummyInteractionExt:interact_start()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -17316,7 +17316,7 @@ DummyInteractionExt.interact_start = function (self)
 
 
 end
-DummyInteractionExt.can_select = function (self)
+function DummyInteractionExt:can_select()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---
@@ -17326,7 +17326,7 @@ DummyInteractionExt.can_select = function (self)
 
 
 end
-DummyInteractionExt.can_interact = function (self)
+function DummyInteractionExt:can_interact()
 
 	-- Decompilation error in this vicinity:
 	--- BLOCK #0 1-2, warpins: 1 ---

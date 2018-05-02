@@ -7,7 +7,7 @@ slot3 = "CoreEditorUtils"
 core.import(slot1, core)
 
 EditGui = EditGui or class()
-EditGui.init = function (self, parent, toolbar, btn, name)
+function EditGui:init(parent, toolbar, btn, name)
 	slot10 = "TAB_TRAVERSAL"
 	self._panel = EWS.Panel(slot6, EWS, parent, "")
 	slot10 = name
@@ -27,7 +27,7 @@ EditGui.init = function (self, parent, toolbar, btn, name)
 
 	return 
 end
-EditGui.has = function (self, unit)
+function EditGui:has(unit)
 	slot4 = unit
 
 	if alive(slot3) then
@@ -41,7 +41,7 @@ EditGui.has = function (self, unit)
 
 	return 
 end
-EditGui.disable = function (self)
+function EditGui:disable()
 	self._ctrls.unit = nil
 	slot5 = false
 
@@ -57,7 +57,7 @@ EditGui.disable = function (self)
 
 	return 
 end
-EditGui.set_visible = function (self, vis)
+function EditGui:set_visible(vis)
 	self._visible = vis
 	slot5 = vis
 
@@ -69,10 +69,10 @@ EditGui.set_visible = function (self, vis)
 
 	return 
 end
-EditGui.visible = function (self)
+function EditGui:visible()
 	return self._visible
 end
-EditGui.get_panel = function (self)
+function EditGui:get_panel()
 	return self._panel
 end
 

@@ -9,14 +9,14 @@ PlayerBipod = slot0
 PlayerBipod.target_tilt = -5
 PlayerBipod._shoulder_pos = nil
 PlayerBipod._camera_pos = nil
-PlayerBipod.init = function (self, unit)
+function PlayerBipod:init(unit)
 	slot5 = unit
 
 	PlayerBipod.super.init(slot3, self)
 
 	return 
 end
-PlayerBipod.set_camera_positions = function (self, bipod_pos, camera_pos)
+function PlayerBipod:set_camera_positions(bipod_pos, camera_pos)
 	slot7 = bipod_pos.z
 	self._shoulder_pos = Vector3(slot4, bipod_pos.x, bipod_pos.y)
 	slot7 = camera_pos.z
@@ -24,14 +24,14 @@ PlayerBipod.set_camera_positions = function (self, bipod_pos, camera_pos)
 
 	return 
 end
-PlayerBipod.enter = function (self, state_data, enter_data)
+function PlayerBipod:enter(state_data, enter_data)
 	slot7 = enter_data
 
 	PlayerBipod.super.enter(slot4, self, state_data)
 
 	return 
 end
-PlayerBipod._enter = function (self, enter_data)
+function PlayerBipod:_enter(enter_data)
 	slot4 = managers.player
 	local player = managers.player.player_unit(slot3)
 
@@ -106,7 +106,7 @@ PlayerBipod._enter = function (self, enter_data)
 
 	return 
 end
-PlayerBipod.exit = function (self, state_data, new_state_name)
+function PlayerBipod:exit(state_data, new_state_name)
 	slot7 = new_state_name
 
 	PlayerBipod.super.exit(slot4, self, state_data or self._state_data)
@@ -172,7 +172,7 @@ PlayerBipod.exit = function (self, state_data, new_state_name)
 
 	return exit_data
 end
-PlayerBipod._husk_bipod_data = function (self)
+function PlayerBipod:_husk_bipod_data()
 	slot3 = managers.network
 	slot4 = self._unit
 	local peer_id = managers.network.session(slot2).peer_by_unit(slot2, managers.network.session(slot2)).id(slot2)
@@ -212,7 +212,7 @@ PlayerBipod._husk_bipod_data = function (self)
 
 	return 
 end
-PlayerBipod.update = function (self, t, dt)
+function PlayerBipod:update(t, dt)
 	slot7 = dt
 
 	PlayerBipod.super.update(slot4, self, t)
@@ -239,10 +239,10 @@ PlayerBipod.update = function (self, t, dt)
 
 	return 
 end
-PlayerBipod.set_tweak_data = function (self, name)
+function PlayerBipod:set_tweak_data(name)
 	return 
 end
-PlayerBipod._update_check_actions = function (self, t, dt)
+function PlayerBipod:_update_check_actions(t, dt)
 	slot7 = dt
 	local input = self._get_input(slot4, self, t)
 	slot6 = self
@@ -349,13 +349,13 @@ PlayerBipod._update_check_actions = function (self, t, dt)
 
 	return 
 end
-PlayerBipod.interaction_blocked = function (self)
+function PlayerBipod:interaction_blocked()
 	return true
 end
-PlayerBipod._check_step = function (self, t)
+function PlayerBipod:_check_step(t)
 	return 
 end
-PlayerBipod._check_action_reload = function (self, t, input)
+function PlayerBipod:_check_action_reload(t, input)
 	local new_action = nil
 	local action_wanted = input.btn_reload_press
 
@@ -382,7 +382,7 @@ PlayerBipod._check_action_reload = function (self, t, input)
 
 	return new_action
 end
-PlayerBipod._check_action_unmount_bipod = function (self, t, input)
+function PlayerBipod:_check_action_unmount_bipod(t, input)
 	if not input.btn_deploy_bipod then
 		return false
 	end
@@ -393,7 +393,7 @@ PlayerBipod._check_action_unmount_bipod = function (self, t, input)
 
 	return true
 end
-PlayerBipod._unmount_bipod = function (self)
+function PlayerBipod:_unmount_bipod()
 	local weapon = self._equipped_unit.base(slot2)
 	slot6 = weapon._parts
 	local bipod_part = managers.weapon_factory.get_parts_from_weapon_by_perk(self._equipped_unit, managers.weapon_factory, "bipod")
@@ -415,7 +415,7 @@ PlayerBipod._unmount_bipod = function (self)
 
 	return 
 end
-PlayerBipod._check_action_jump = function (self, t, input)
+function PlayerBipod:_check_action_jump(t, input)
 	if input.btn_jump_press then
 		slot5 = self
 
@@ -435,7 +435,7 @@ PlayerBipod._check_action_jump = function (self, t, input)
 
 	return false
 end
-PlayerBipod._check_action_run = function (self, t, input)
+function PlayerBipod:_check_action_run(t, input)
 	slot6 = "move"
 	local move = self._controller.get_input_axis(slot4, self._controller)
 
@@ -458,7 +458,7 @@ PlayerBipod._check_action_run = function (self, t, input)
 
 	return false
 end
-PlayerBipod._check_change_weapon = function (self, t, input)
+function PlayerBipod:_check_change_weapon(t, input)
 	if input.btn_switch_weapon_press or input.btn_primary_choice == 1 then
 		slot5 = self
 
@@ -482,7 +482,7 @@ PlayerBipod._check_change_weapon = function (self, t, input)
 
 	return false
 end
-PlayerBipod._check_use_item = function (self, t, input)
+function PlayerBipod:_check_use_item(t, input)
 	if input.btn_use_item_press then
 		slot5 = self
 
@@ -502,7 +502,7 @@ PlayerBipod._check_use_item = function (self, t, input)
 
 	return false
 end
-PlayerBipod._check_action_throw_grenade = function (self, t, input)
+function PlayerBipod:_check_action_throw_grenade(t, input)
 	if PlayerBase.USE_GRENADES then
 		slot5 = self._unit
 		slot5 = self._unit.base(slot4)
@@ -538,7 +538,7 @@ PlayerBipod._check_action_throw_grenade = function (self, t, input)
 
 	return false
 end
-PlayerBipod._check_action_throw_projectile = function (self, t, input)
+function PlayerBipod:_check_action_throw_projectile(t, input)
 	if PlayerBase.USE_GRENADES then
 		slot5 = managers.player
 	else
@@ -564,7 +564,7 @@ PlayerBipod._check_action_throw_projectile = function (self, t, input)
 
 	return false
 end
-PlayerBipod._check_action_equip = function (self, t, input)
+function PlayerBipod:_check_action_equip(t, input)
 	local new_action = nil
 	local selection_wanted = input.btn_primary_choice
 
@@ -603,28 +603,28 @@ PlayerBipod._check_action_equip = function (self, t, input)
 
 	return new_action
 end
-PlayerBipod._check_action_steelsight = function (self, t, input)
+function PlayerBipod:_check_action_steelsight(t, input)
 	return 
 end
-PlayerBipod._update_movement = function (self, t, dt)
+function PlayerBipod:_update_movement(t, dt)
 	return 
 end
-PlayerBipod._start_action_jump = function (self, ...)
+function PlayerBipod:_start_action_jump(...)
 	return 
 end
-PlayerBipod._perform_jump = function (self, jump_vec)
+function PlayerBipod:_perform_jump(jump_vec)
 	return 
 end
-PlayerBipod._get_max_walk_speed = function (self, ...)
+function PlayerBipod:_get_max_walk_speed(...)
 	return 
 end
-PlayerBipod._get_walk_headbob = function (self, ...)
+function PlayerBipod:_get_walk_headbob(...)
 	return 0
 end
-PlayerBipod.pre_destroy = function (self, unit)
+function PlayerBipod:pre_destroy(unit)
 	return 
 end
-PlayerBipod.destroy = function (self)
+function PlayerBipod:destroy()
 	return 
 end
 

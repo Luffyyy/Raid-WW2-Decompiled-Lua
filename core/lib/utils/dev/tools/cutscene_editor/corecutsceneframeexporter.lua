@@ -8,7 +8,7 @@ if not CoreCutsceneFrameExporter then
 end
 
 CoreCutsceneFrameExporter = slot0
-CoreCutsceneFrameExporter.init = function (self, parent_window, cutscene_editor, start_frame, end_frame, collection_name)
+function CoreCutsceneFrameExporter:init(parent_window, cutscene_editor, start_frame, end_frame, collection_name)
 	slot12 = end_frame
 
 	self.super.init(slot7, self, parent_window, cutscene_editor, start_frame)
@@ -18,7 +18,7 @@ CoreCutsceneFrameExporter.init = function (self, parent_window, cutscene_editor,
 
 	return 
 end
-CoreCutsceneFrameExporter.begin = function (self)
+function CoreCutsceneFrameExporter:begin()
 	slot3 = self
 
 	self.super.begin(slot2)
@@ -55,12 +55,12 @@ CoreCutsceneFrameExporter.begin = function (self)
 
 	return 
 end
-CoreCutsceneFrameExporter._progress_message = function (self, frame)
+function CoreCutsceneFrameExporter:_progress_message(frame)
 	slot6 = frame
 
 	return "Writing image " .. self._image_file_name(slot4, self)
 end
-CoreCutsceneFrameExporter._visit_frame = function (self, frame)
+function CoreCutsceneFrameExporter:_visit_frame(frame)
 	slot5 = self.__collection_name
 	slot9 = frame
 	local file_path = string.format(slot3, "/frames/%s/%s", self._image_file_name(slot7, self))
@@ -70,7 +70,7 @@ CoreCutsceneFrameExporter._visit_frame = function (self, frame)
 
 	return 
 end
-CoreCutsceneFrameExporter._cleanup = function (self)
+function CoreCutsceneFrameExporter:_cleanup()
 	slot3 = self
 
 	self._enable_visual_aids(slot2)
@@ -81,12 +81,12 @@ CoreCutsceneFrameExporter._cleanup = function (self)
 
 	return 
 end
-CoreCutsceneFrameExporter._image_file_name = function (self, frame)
+function CoreCutsceneFrameExporter:_image_file_name(frame)
 	slot5 = frame
 
 	return string.format(slot3, "%08i.tga")
 end
-CoreCutsceneFrameExporter._enable_visual_aids = function (self)
+function CoreCutsceneFrameExporter:_enable_visual_aids()
 	if self.__cutscene_editor_camera_was_enabled ~= nil then
 		slot4 = self.__cutscene_editor_camera_was_enabled
 
@@ -115,7 +115,7 @@ CoreCutsceneFrameExporter._enable_visual_aids = function (self)
 
 	return 
 end
-CoreCutsceneFrameExporter._disable_visual_aids = function (self)
+function CoreCutsceneFrameExporter:_disable_visual_aids()
 	slot3 = self.__cutscene_editor
 	self.__cutscene_editor_camera_was_enabled = self.__cutscene_editor.cutscene_camera_enabled(slot2)
 	slot4 = true

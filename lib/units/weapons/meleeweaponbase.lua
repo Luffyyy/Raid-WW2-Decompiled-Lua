@@ -9,23 +9,23 @@ MeleeWeaponBase.EVENT_IDS = {
 }
 local mvec1 = Vector3()
 local mvec2 = Vector3()
-MeleeWeaponBase.setup = function (self, unit, t, dt)
+function MeleeWeaponBase:setup(unit, t, dt)
 	return 
 end
-MeleeWeaponBase.update = function (self, unit, t, dt)
+function MeleeWeaponBase:update(unit, t, dt)
 	slot9 = dt
 
 	MeleeWeaponBase.super.update(slot5, self, unit, t)
 
 	return 
 end
-MeleeWeaponBase.get_name_id = function (self)
+function MeleeWeaponBase:get_name_id()
 	return self.name_id
 end
-MeleeWeaponBase.is_melee_weapon = function (self)
+function MeleeWeaponBase:is_melee_weapon()
 	return true
 end
-MeleeWeaponBase.get_use_data = function (self, character_setup)
+function MeleeWeaponBase:get_use_data(character_setup)
 	local use_data = {
 		equip = {
 			align_place = "right_hand"
@@ -39,7 +39,7 @@ MeleeWeaponBase.get_use_data = function (self, character_setup)
 
 	return use_data
 end
-MeleeWeaponBase.tweak_data_anim_play = function (self, anim, ...)
+function MeleeWeaponBase:tweak_data_anim_play(anim, ...)
 	slot4 = self
 	local animations = self.weapon_tweak_data(slot3).animations
 
@@ -53,7 +53,7 @@ MeleeWeaponBase.tweak_data_anim_play = function (self, anim, ...)
 
 	return false
 end
-MeleeWeaponBase.anim_play = function (self, anim, speed_multiplier)
+function MeleeWeaponBase:anim_play(anim, speed_multiplier)
 	if anim then
 		slot5 = self._unit
 		slot8 = anim
@@ -72,7 +72,7 @@ MeleeWeaponBase.anim_play = function (self, anim, speed_multiplier)
 
 	return 
 end
-MeleeWeaponBase.tweak_data_anim_stop = function (self, anim, ...)
+function MeleeWeaponBase:tweak_data_anim_stop(anim, ...)
 	slot4 = self
 	local animations = self.weapon_tweak_data(slot3).animations
 
@@ -87,7 +87,7 @@ MeleeWeaponBase.tweak_data_anim_stop = function (self, anim, ...)
 
 	return false
 end
-MeleeWeaponBase.anim_stop = function (self, anim)
+function MeleeWeaponBase:anim_stop(anim)
 	slot4 = self._unit
 	slot7 = anim
 
@@ -95,94 +95,94 @@ MeleeWeaponBase.anim_stop = function (self, anim)
 
 	return 
 end
-MeleeWeaponBase.ammo_info = function (self)
+function MeleeWeaponBase:ammo_info()
 	return 
 end
-MeleeWeaponBase.add_ammo = function (self, ratio, add_amount_override, add_amount_multiplier)
+function MeleeWeaponBase:add_ammo(ratio, add_amount_override, add_amount_multiplier)
 	return false, 0
 end
-MeleeWeaponBase.add_ammo_from_bag = function (self, available)
+function MeleeWeaponBase:add_ammo_from_bag(available)
 	return 0
 end
-MeleeWeaponBase.on_equip = function (self)
+function MeleeWeaponBase:on_equip()
 	return 
 end
-MeleeWeaponBase.on_unequip = function (self)
+function MeleeWeaponBase:on_unequip()
 	return 
 end
-MeleeWeaponBase.on_enabled = function (self)
+function MeleeWeaponBase:on_enabled()
 	self._enabled = true
 
 	return 
 end
-MeleeWeaponBase.on_disabled = function (self)
+function MeleeWeaponBase:on_disabled()
 	self._enabled = false
 
 	return 
 end
-MeleeWeaponBase.enabled = function (self)
+function MeleeWeaponBase:enabled()
 	return self._enabled
 end
-MeleeWeaponBase.get_stance_id = function (self)
+function MeleeWeaponBase:get_stance_id()
 	slot3 = self
 
 	return self.weapon_tweak_data(slot2).stance
 end
-MeleeWeaponBase.transition_duration = function (self)
+function MeleeWeaponBase:transition_duration()
 	slot3 = self
 
 	return self.weapon_tweak_data(slot2).transition_duration
 end
-MeleeWeaponBase.enter_steelsight_speed_multiplier = function (self)
+function MeleeWeaponBase:enter_steelsight_speed_multiplier()
 	return 1
 end
-MeleeWeaponBase.exit_run_speed_multiplier = function (self)
+function MeleeWeaponBase:exit_run_speed_multiplier()
 	slot3 = self
 
 	return self.weapon_tweak_data(slot2).exit_run_speed_multiplier
 end
-MeleeWeaponBase.weapon_tweak_data = function (self)
+function MeleeWeaponBase:weapon_tweak_data()
 	return tweak_data.blackmarket.melee_weapons[self.name_id]
 end
-MeleeWeaponBase.weapon_hold = function (self)
+function MeleeWeaponBase:weapon_hold()
 	slot3 = self
 
 	return self.weapon_tweak_data(slot2).weapon_hold
 end
-MeleeWeaponBase.selection_index = function (self)
+function MeleeWeaponBase:selection_index()
 	return PlayerInventory.SLOT_4
 end
-MeleeWeaponBase.has_range_distance_scope = function (self)
+function MeleeWeaponBase:has_range_distance_scope()
 	return false
 end
-MeleeWeaponBase.movement_penalty = function (self)
+function MeleeWeaponBase:movement_penalty()
 	slot3 = self
 
 	return self.weapon_tweak_data(slot2).weapon_movement_penalty or 1
 end
-MeleeWeaponBase.set_visibility_state = function (self, state)
+function MeleeWeaponBase:set_visibility_state(state)
 	slot5 = state
 
 	self._unit.set_visible(slot3, self._unit)
 
 	return 
 end
-MeleeWeaponBase.start_shooting_allowed = function (self)
+function MeleeWeaponBase:start_shooting_allowed()
 	return true
 end
-MeleeWeaponBase.save = function (self, data)
+function MeleeWeaponBase:save(data)
 	return 
 end
-MeleeWeaponBase.load = function (self, data)
+function MeleeWeaponBase:load(data)
 	return 
 end
-MeleeWeaponBase.uses_ammo = function (self)
+function MeleeWeaponBase:uses_ammo()
 	return false
 end
-MeleeWeaponBase.replenish = function (self)
+function MeleeWeaponBase:replenish()
 	return 
 end
-MeleeWeaponBase.get_aim_assist = function (self)
+function MeleeWeaponBase:get_aim_assist()
 	return 
 end
 

@@ -1,5 +1,5 @@
 Loot = Loot or class()
-Loot.init = function (self, unit)
+function Loot:init(unit)
 	self._unit = unit
 	self._value = 0
 	slot7 = "loot_drop"
@@ -8,15 +8,15 @@ Loot.init = function (self, unit)
 
 	return 
 end
-Loot.set_value = function (self, value)
+function Loot:set_value(value)
 	self._value = value
 
 	return 
 end
-Loot.value = function (self)
+function Loot:value()
 	return self._value
 end
-Loot.on_load_complete = function (self)
+function Loot:on_load_complete()
 	slot6 = self._unit
 	slot4 = self._unit.unit_data(slot5).unit_id
 	local world_id = managers.worldcollection.get_worlddefinition_by_unit_id(slot2, managers.worldcollection).world_id(slot2)

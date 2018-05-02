@@ -14,21 +14,21 @@ if not ElementActivateScript then
 end
 
 ElementActivateScript = slot0
-ElementActivateScript.init = function (self, ...)
+function ElementActivateScript:init(...)
 	slot3 = self
 
 	ElementActivateScript.super.init(slot2, ...)
 
 	return 
 end
-ElementActivateScript.client_on_executed = function (self, ...)
+function ElementActivateScript:client_on_executed(...)
 	slot3 = self
 
 	self.on_executed(slot2, ...)
 
 	return 
 end
-ElementActivateScript.on_executed = function (self, instigator)
+function ElementActivateScript:on_executed(instigator)
 	if not self._values.enabled then
 		return 
 	end

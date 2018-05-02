@@ -11,21 +11,21 @@ slot3 = "CorePlayerSlotStateInit"
 core.import(slot1, core)
 
 DetectLocalUser = DetectLocalUser or class()
-DetectLocalUser.init = function (self)
+function DetectLocalUser:init()
 	slot3 = self.player_slot._perform_local_user_binding
 
 	self.player_slot._perform_local_user_binding.task_started(slot2)
 
 	return 
 end
-DetectLocalUser.destroy = function (self)
+function DetectLocalUser:destroy()
 	slot3 = self.player_slot._perform_local_user_binding
 
 	self.player_slot._perform_local_user_binding.task_completed(slot2)
 
 	return 
 end
-DetectLocalUser.transition = function (self)
+function DetectLocalUser:transition()
 	slot3 = self.player_slot._init
 
 	if self.player_slot._init.is_requested(slot2) then

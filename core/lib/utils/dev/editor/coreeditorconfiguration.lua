@@ -1,4 +1,4 @@
-CoreEditor.build_configuration = function (self)
+function CoreEditor:build_configuration()
 	self._config = {}
 	local frame_size_height = 200
 	local frame_size_width = 300
@@ -295,7 +295,7 @@ CoreEditor.build_configuration = function (self)
 
 	return 
 end
-CoreEditor.on_configuration_ok = function (self)
+function CoreEditor:on_configuration_ok()
 	slot3 = self
 
 	self.on_configuration_apply(slot2)
@@ -306,7 +306,7 @@ CoreEditor.on_configuration_ok = function (self)
 
 	return 
 end
-CoreEditor.on_configuration_cancel = function (self)
+function CoreEditor:on_configuration_cancel()
 	slot3 = self._config
 
 	for value, data in pairs(slot2) do
@@ -322,7 +322,7 @@ CoreEditor.on_configuration_cancel = function (self)
 
 	return 
 end
-CoreEditor.on_configuration_apply = function (self)
+function CoreEditor:on_configuration_apply()
 	slot3 = self._config
 
 	for value, data in pairs(slot2) do

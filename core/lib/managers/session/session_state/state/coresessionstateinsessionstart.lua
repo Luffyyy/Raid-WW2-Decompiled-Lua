@@ -7,7 +7,7 @@ slot3 = "CoreSessionStateInSessionStarted"
 core.import(slot1, core)
 
 InSessionStart = InSessionStart or class()
-InSessionStart.init = function (self, session)
+function InSessionStart:init(session)
 	slot4 = session
 
 	assert(slot3)
@@ -16,10 +16,10 @@ InSessionStart.init = function (self, session)
 
 	return 
 end
-InSessionStart.destroy = function (self)
+function InSessionStart:destroy()
 	return 
 end
-InSessionStart.transition = function (self)
+function InSessionStart:transition()
 	return CoreSessionStateInSessionStarted.Started, self._session
 end
 

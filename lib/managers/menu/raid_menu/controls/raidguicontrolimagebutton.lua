@@ -5,7 +5,7 @@ end
 
 RaidGUIControlImageButton = slot0
 RaidGUIControlImageButton.DISABLED_COLOR = tweak_data.gui.colors.raid_dark_grey
-RaidGUIControlImageButton.init = function (self, parent, params)
+function RaidGUIControlImageButton:init(parent, params)
 	slot7 = params
 
 	RaidGUIControlImageButton.super.init(slot4, self, parent)
@@ -44,7 +44,7 @@ RaidGUIControlImageButton.init = function (self, parent, params)
 
 	return 
 end
-RaidGUIControlImageButton._create_highlight_image = function (self)
+function RaidGUIControlImageButton:_create_highlight_image()
 	self._highlight_texture = self._params.highlight_texture
 	self._highlight_texture_rect = self._params.highlight_texture_rect
 
@@ -62,7 +62,7 @@ RaidGUIControlImageButton._create_highlight_image = function (self)
 
 	return 
 end
-RaidGUIControlImageButton.highlight_on = function (self)
+function RaidGUIControlImageButton:highlight_on()
 	if self._params.no_highlight then
 		return 
 	end
@@ -96,7 +96,7 @@ RaidGUIControlImageButton.highlight_on = function (self)
 
 	return 
 end
-RaidGUIControlImageButton.highlight_off = function (self)
+function RaidGUIControlImageButton:highlight_off()
 	self._highlighted = false
 
 	if not self._enabled then
@@ -126,7 +126,7 @@ RaidGUIControlImageButton.highlight_off = function (self)
 
 	return 
 end
-RaidGUIControlImageButton.on_mouse_pressed = function (self, button)
+function RaidGUIControlImageButton:on_mouse_pressed(button)
 	if not self._enabled then
 		return 
 	end
@@ -149,7 +149,7 @@ RaidGUIControlImageButton.on_mouse_pressed = function (self, button)
 
 	return 
 end
-RaidGUIControlImageButton.mouse_released = function (self, o, button, x, y)
+function RaidGUIControlImageButton:mouse_released(o, button, x, y)
 	if not self._enabled then
 		return 
 	end
@@ -166,7 +166,7 @@ RaidGUIControlImageButton.mouse_released = function (self, o, button, x, y)
 
 	return true
 end
-RaidGUIControlImageButton.on_mouse_released = function (self, button)
+function RaidGUIControlImageButton:on_mouse_released(button)
 	if self._active_click_animation then
 		slot5 = self._active_click_animation
 
@@ -182,7 +182,7 @@ RaidGUIControlImageButton.on_mouse_released = function (self, button)
 
 	return 
 end
-RaidGUIControlImageButton.set_enabled = function (self, enabled)
+function RaidGUIControlImageButton:set_enabled(enabled)
 	slot5 = enabled
 
 	RaidGUIControlImageButton.super.set_enabled(slot3, self)
@@ -205,7 +205,7 @@ RaidGUIControlImageButton.set_enabled = function (self, enabled)
 
 	return 
 end
-RaidGUIControlImageButton._animate_highlight_on = function (self)
+function RaidGUIControlImageButton:_animate_highlight_on()
 	self._highlight_animation_t = self._highlight_animation_t or 0
 	local duration = 0.2
 	local t = self._highlight_animation_t * duration
@@ -234,7 +234,7 @@ RaidGUIControlImageButton._animate_highlight_on = function (self)
 
 	return 
 end
-RaidGUIControlImageButton._animate_highlight_off = function (self)
+function RaidGUIControlImageButton:_animate_highlight_off()
 	self._highlight_animation_t = self._highlight_animation_t or 0
 	local duration = 0.2
 	local t = (1 - self._highlight_animation_t) * duration
@@ -263,7 +263,7 @@ RaidGUIControlImageButton._animate_highlight_off = function (self)
 
 	return 
 end
-RaidGUIControlImageButton._animate_press = function (self)
+function RaidGUIControlImageButton:_animate_press()
 	local t = 0
 	local original_w = self._w
 	local original_h = self._h
@@ -305,7 +305,7 @@ RaidGUIControlImageButton._animate_press = function (self)
 
 	return 
 end
-RaidGUIControlImageButton._animate_release = function (self)
+function RaidGUIControlImageButton:_animate_release()
 	local t = 0
 	local duration = 0.25
 	local target_w = self._w

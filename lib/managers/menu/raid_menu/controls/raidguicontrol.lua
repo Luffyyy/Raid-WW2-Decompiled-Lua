@@ -4,7 +4,7 @@
 --   Code may be incomplete or incorrect.
 RaidGUIControl = RaidGUIControl or class()
 RaidGUIControl.ID = 1
-RaidGUIControl.init = function (self, parent, params)
+function RaidGUIControl:init(parent, params)
 	self._type = self._type or "raid_gui_control"
 	self._control_id = RaidGUIControl.ID
 	RaidGUIControl.ID = RaidGUIControl.ID + 1
@@ -42,15 +42,15 @@ RaidGUIControl.init = function (self, parent, params)
 		return 
 	end
 end
-RaidGUIControl.name = function (self)
+function RaidGUIControl:name()
 	return self._params.name
 end
-RaidGUIControl.set_param_value = function (self, param_name, param_value)
+function RaidGUIControl:set_param_value(param_name, param_value)
 	self._params[param_name] = param_value
 
 	return 
 end
-RaidGUIControl.create_border = function (self)
+function RaidGUIControl:create_border()
 	if not self._object then
 		return 
 	end
@@ -161,7 +161,7 @@ RaidGUIControl.create_border = function (self)
 
 	return 
 end
-RaidGUIControl.remove_border = function (self)
+function RaidGUIControl:remove_border()
 	if self._object then
 		slot3 = self._border_left
 		slot4 = self._border_left
@@ -191,10 +191,10 @@ RaidGUIControl.remove_border = function (self)
 
 	return 
 end
-RaidGUIControl.close = function (self)
+function RaidGUIControl:close()
 	return 
 end
-RaidGUIControl.translate = function (self, text, upper_case_flag, additional_macros)
+function RaidGUIControl:translate(text, upper_case_flag, additional_macros)
 	local button_macros = nil
 
 	if additional_macros then
@@ -220,7 +220,7 @@ RaidGUIControl.translate = function (self, text, upper_case_flag, additional_mac
 
 	return result
 end
-RaidGUIControl._show_dialog_error_msg = function (self, error_title, error_msg)
+function RaidGUIControl:_show_dialog_error_msg(error_title, error_msg)
 	local dialog_data = {
 		title = error_title,
 		text = error_msg
@@ -231,7 +231,7 @@ RaidGUIControl._show_dialog_error_msg = function (self, error_title, error_msg)
 	dialog_data.button_list = {
 		ok_button
 	}
-	ok_button.callback_func = function ()
+	function ok_button.callback_func()
 		return 
 	end
 	slot8 = dialog_data
@@ -240,7 +240,7 @@ RaidGUIControl._show_dialog_error_msg = function (self, error_title, error_msg)
 
 	return 
 end
-RaidGUIControl.inside = function (self, x, y)
+function RaidGUIControl:inside(x, y)
 	if self._object then
 		slot7 = y
 
@@ -252,7 +252,7 @@ RaidGUIControl.inside = function (self, x, y)
 
 	return slot3
 end
-RaidGUIControl.mouse_moved = function (self, o, x, y)
+function RaidGUIControl:mouse_moved(o, x, y)
 	slot8 = y
 
 	if self.inside(slot5, self, x) then
@@ -277,7 +277,7 @@ RaidGUIControl.mouse_moved = function (self, o, x, y)
 
 	return false
 end
-RaidGUIControl.mouse_pressed = function (self, o, button, x, y)
+function RaidGUIControl:mouse_pressed(o, button, x, y)
 	slot9 = y
 
 	if self.inside(slot6, self, x) then
@@ -288,7 +288,7 @@ RaidGUIControl.mouse_pressed = function (self, o, button, x, y)
 
 	return false
 end
-RaidGUIControl.mouse_clicked = function (self, o, button, x, y)
+function RaidGUIControl:mouse_clicked(o, button, x, y)
 	slot9 = y
 
 	if self.inside(slot6, self, x) then
@@ -299,7 +299,7 @@ RaidGUIControl.mouse_clicked = function (self, o, button, x, y)
 
 	return false
 end
-RaidGUIControl.mouse_released = function (self, o, button, x, y)
+function RaidGUIControl:mouse_released(o, button, x, y)
 	slot9 = y
 
 	if self.inside(slot6, self, x) then
@@ -310,7 +310,7 @@ RaidGUIControl.mouse_released = function (self, o, button, x, y)
 
 	return false
 end
-RaidGUIControl.mouse_scroll_up = function (self, o, button, x, y)
+function RaidGUIControl:mouse_scroll_up(o, button, x, y)
 	slot9 = y
 
 	if self.inside(slot6, self, x) then
@@ -321,7 +321,7 @@ RaidGUIControl.mouse_scroll_up = function (self, o, button, x, y)
 
 	return false
 end
-RaidGUIControl.mouse_scroll_down = function (self, o, button, x, y)
+function RaidGUIControl:mouse_scroll_down(o, button, x, y)
 	slot9 = y
 
 	if self.inside(slot6, self, x) then
@@ -332,7 +332,7 @@ RaidGUIControl.mouse_scroll_down = function (self, o, button, x, y)
 
 	return false
 end
-RaidGUIControl.mouse_double_click = function (self, o, button, x, y)
+function RaidGUIControl:mouse_double_click(o, button, x, y)
 	slot9 = y
 
 	if self.inside(slot6, self, x) and self.on_double_click then
@@ -343,10 +343,10 @@ RaidGUIControl.mouse_double_click = function (self, o, button, x, y)
 
 	return false
 end
-RaidGUIControl.on_mouse_moved = function (self, o, x, y)
+function RaidGUIControl:on_mouse_moved(o, x, y)
 	return 
 end
-RaidGUIControl.on_mouse_over = function (self, x, y)
+function RaidGUIControl:on_mouse_over(x, y)
 	self._mouse_inside = true
 	slot5 = self
 
@@ -360,7 +360,7 @@ RaidGUIControl.on_mouse_over = function (self, x, y)
 
 	return 
 end
-RaidGUIControl.on_mouse_out = function (self, x, y)
+function RaidGUIControl:on_mouse_out(x, y)
 	self._mouse_inside = false
 	slot5 = self
 
@@ -374,25 +374,25 @@ RaidGUIControl.on_mouse_out = function (self, x, y)
 
 	return 
 end
-RaidGUIControl.on_mouse_pressed = function (self)
+function RaidGUIControl:on_mouse_pressed()
 	return false
 end
-RaidGUIControl.on_mouse_clicked = function (self)
+function RaidGUIControl:on_mouse_clicked()
 	return false
 end
-RaidGUIControl.on_mouse_released = function (self)
+function RaidGUIControl:on_mouse_released()
 	return false
 end
-RaidGUIControl.on_mouse_double_click = function (self)
+function RaidGUIControl:on_mouse_double_click()
 	return false
 end
-RaidGUIControl.on_mouse_scroll_up = function (self)
+function RaidGUIControl:on_mouse_scroll_up()
 	return false
 end
-RaidGUIControl.on_mouse_scroll_down = function (self)
+function RaidGUIControl:on_mouse_scroll_down()
 	return false
 end
-RaidGUIControl.highlight_on = function (self)
+function RaidGUIControl:highlight_on()
 	if self._object and self._object.highlight_on then
 		slot3 = self._object
 
@@ -401,7 +401,7 @@ RaidGUIControl.highlight_on = function (self)
 
 	return 
 end
-RaidGUIControl.highlight_off = function (self)
+function RaidGUIControl:highlight_off()
 	if self._object and self._object.highlight_off then
 		slot3 = self._object
 
@@ -410,78 +410,78 @@ RaidGUIControl.highlight_off = function (self)
 
 	return 
 end
-RaidGUIControl.show = function (self)
+function RaidGUIControl:show()
 	slot3 = self._object
 
 	self._object.show(slot2)
 
 	return 
 end
-RaidGUIControl.hide = function (self)
+function RaidGUIControl:hide()
 	slot3 = self._object
 
 	self._object.hide(slot2)
 
 	return 
 end
-RaidGUIControl.center_x = function (self)
+function RaidGUIControl:center_x()
 	slot3 = self._object
 
 	return self._object.center_x(slot2)
 end
-RaidGUIControl.center_y = function (self)
+function RaidGUIControl:center_y()
 	slot3 = self._object
 
 	return self._object.center_y(slot2)
 end
-RaidGUIControl.set_center_x = function (self, x)
+function RaidGUIControl:set_center_x(x)
 	slot5 = x
 
 	self._object.set_center_x(slot3, self._object)
 
 	return 
 end
-RaidGUIControl.set_center_y = function (self, y)
+function RaidGUIControl:set_center_y(y)
 	slot5 = y
 
 	self._object.set_center_y(slot3, self._object)
 
 	return 
 end
-RaidGUIControl.set_center = function (self, x, y)
+function RaidGUIControl:set_center(x, y)
 	slot7 = y
 
 	self._object.set_center(slot4, self._object, x)
 
 	return 
 end
-RaidGUIControl.rotate = function (self, angle)
+function RaidGUIControl:rotate(angle)
 	slot5 = angle
 
 	self._object.rotate(slot3, self._object)
 
 	return 
 end
-RaidGUIControl.set_rotation = function (self, angle)
+function RaidGUIControl:set_rotation(angle)
 	slot5 = angle
 
 	self._object.set_rotation(slot3, self._object)
 
 	return 
 end
-RaidGUIControl.rotation = function (self)
+function RaidGUIControl:rotation()
 	slot3 = self._object
 
 	return self._object.rotation(slot2)
 end
-RaidGUIControl.set_visible = function (self, visible)
+function RaidGUIControl:set_visible(visible)
 	slot5 = visible
 
 	self._object.set_visible(slot3, self._object)
 
 	return 
 end
-RaidGUIControl.visible = function (self)
+function RaidGUIControl:visible()
 	if self._object.alive then
 		if self._object.alive then
 			slot3 = self._object
@@ -501,15 +501,15 @@ RaidGUIControl.visible = function (self)
 
 	return 
 end
-RaidGUIControl.set_selectable = function (self, value)
+function RaidGUIControl:set_selectable(value)
 	self._selectable = value
 
 	return 
 end
-RaidGUIControl.selectable = function (self)
+function RaidGUIControl:selectable()
 	return self._selectable
 end
-RaidGUIControl.set_alpha = function (self, alpha)
+function RaidGUIControl:set_alpha(alpha)
 	if self._object.set_alpha then
 		slot5 = alpha
 
@@ -518,7 +518,7 @@ RaidGUIControl.set_alpha = function (self, alpha)
 
 	return 
 end
-RaidGUIControl.alpha = function (self)
+function RaidGUIControl:alpha()
 	if self._object.alpha then
 		slot3 = self._object
 
@@ -527,123 +527,123 @@ RaidGUIControl.alpha = function (self)
 
 	return nil
 end
-RaidGUIControl.set_x = function (self, x)
+function RaidGUIControl:set_x(x)
 	slot5 = x
 
 	self._object.set_x(slot3, self._object)
 
 	return 
 end
-RaidGUIControl.set_top = function (self, value)
+function RaidGUIControl:set_top(value)
 	slot5 = value
 
 	self._object.set_top(slot3, self._object)
 
 	return 
 end
-RaidGUIControl.set_bottom = function (self, value)
+function RaidGUIControl:set_bottom(value)
 	slot5 = value
 
 	self._object.set_bottom(slot3, self._object)
 
 	return 
 end
-RaidGUIControl.set_right = function (self, value)
+function RaidGUIControl:set_right(value)
 	slot5 = value
 
 	self._object.set_right(slot3, self._object)
 
 	return 
 end
-RaidGUIControl.set_left = function (self, value)
+function RaidGUIControl:set_left(value)
 	slot5 = value
 
 	self._object.set_left(slot3, self._object)
 
 	return 
 end
-RaidGUIControl.set_y = function (self, y)
+function RaidGUIControl:set_y(y)
 	slot5 = y
 
 	self._object.set_y(slot3, self._object)
 
 	return 
 end
-RaidGUIControl.set_w = function (self, w)
+function RaidGUIControl:set_w(w)
 	slot5 = w
 
 	self._object.set_w(slot3, self._object)
 
 	return 
 end
-RaidGUIControl.set_h = function (self, h)
+function RaidGUIControl:set_h(h)
 	slot5 = h
 
 	self._object.set_h(slot3, self._object)
 
 	return 
 end
-RaidGUIControl.w = function (self)
+function RaidGUIControl:w()
 	slot3 = self._object
 
 	return self._object.w(slot2)
 end
-RaidGUIControl.h = function (self)
+function RaidGUIControl:h()
 	slot3 = self._object
 
 	return self._object.h(slot2)
 end
-RaidGUIControl.x = function (self)
+function RaidGUIControl:x()
 	slot3 = self._object
 
 	return self._object.x(slot2)
 end
-RaidGUIControl.y = function (self)
+function RaidGUIControl:y()
 	slot3 = self._object
 
 	return self._object.y(slot2)
 end
-RaidGUIControl.world_x = function (self)
+function RaidGUIControl:world_x()
 	slot3 = self._object
 
 	return self._object.world_x(slot2)
 end
-RaidGUIControl.world_y = function (self)
+function RaidGUIControl:world_y()
 	slot3 = self._object
 
 	return self._object.world_y(slot2)
 end
-RaidGUIControl.layer = function (self)
+function RaidGUIControl:layer()
 	slot3 = self._object
 
 	return self._object.layer(slot2)
 end
-RaidGUIControl.set_layer = function (self, layer)
+function RaidGUIControl:set_layer(layer)
 	slot5 = layer
 
 	return self._object._engine_panel.set_layer(slot3, self._object._engine_panel)
 end
-RaidGUIControl.left = function (self)
+function RaidGUIControl:left()
 	slot3 = self._object
 
 	return self._object.left(slot2)
 end
-RaidGUIControl.right = function (self)
+function RaidGUIControl:right()
 	slot3 = self._object
 
 	return self._object.right(slot2)
 end
-RaidGUIControl.top = function (self)
+function RaidGUIControl:top()
 	slot3 = self._object
 
 	return self._object.top(slot2)
 end
-RaidGUIControl.bottom = function (self)
+function RaidGUIControl:bottom()
 	slot3 = self._object
 
 	return self._object.bottom(slot2)
 end
-RaidGUIControl.set_selected = function (self, value)
+function RaidGUIControl:set_selected(value)
 	self._selected = value
 
 	if self._selected then
@@ -658,10 +658,10 @@ RaidGUIControl.set_selected = function (self, value)
 
 	return 
 end
-RaidGUIControl.is_selected = function (self)
+function RaidGUIControl:is_selected()
 	return self._selected
 end
-RaidGUIControl.move_up = function (self)
+function RaidGUIControl:move_up()
 	if self._selected and self._on_menu_move and self._on_menu_move.up then
 		slot5 = "up"
 
@@ -670,7 +670,7 @@ RaidGUIControl.move_up = function (self)
 
 	return 
 end
-RaidGUIControl.move_down = function (self)
+function RaidGUIControl:move_down()
 	if self._selected and self._on_menu_move and self._on_menu_move.down then
 		slot5 = "down"
 
@@ -679,7 +679,7 @@ RaidGUIControl.move_down = function (self)
 
 	return 
 end
-RaidGUIControl.move_left = function (self)
+function RaidGUIControl:move_left()
 	if self._selected and self._on_menu_move and self._on_menu_move.left then
 		slot5 = "left"
 
@@ -688,7 +688,7 @@ RaidGUIControl.move_left = function (self)
 
 	return 
 end
-RaidGUIControl.move_right = function (self)
+function RaidGUIControl:move_right()
 	if self._selected and self._on_menu_move and self._on_menu_move.right then
 		slot5 = "right"
 
@@ -697,27 +697,27 @@ RaidGUIControl.move_right = function (self)
 
 	return 
 end
-RaidGUIControl.scroll_up = function (self)
+function RaidGUIControl:scroll_up()
 	return false
 end
-RaidGUIControl.scroll_down = function (self)
+function RaidGUIControl:scroll_down()
 	return false
 end
-RaidGUIControl.scroll_left = function (self)
+function RaidGUIControl:scroll_left()
 	return false
 end
-RaidGUIControl.scroll_right = function (self)
+function RaidGUIControl:scroll_right()
 	return false
 end
-RaidGUIControl.special_btn_pressed = function (self, ...)
+function RaidGUIControl:special_btn_pressed(...)
 	return 
 end
-RaidGUIControl.set_menu_move_controls = function (self, controls)
+function RaidGUIControl:set_menu_move_controls(controls)
 	self._on_menu_move = controls
 
 	return 
 end
-RaidGUIControl._menu_move_to = function (self, target_control_name, direction)
+function RaidGUIControl:_menu_move_to(target_control_name, direction)
 	local component_controls = managers.menu_component._active_controls
 	slot6 = component_controls
 
@@ -741,7 +741,7 @@ RaidGUIControl._menu_move_to = function (self, target_control_name, direction)
 
 	return nil, target_control_name
 end
-RaidGUIControl._find_next_visible_control = function (self, control_ref, direction)
+function RaidGUIControl:_find_next_visible_control(control_ref, direction)
 	local next_control_name = control_ref and control_ref._on_menu_move and control_ref._on_menu_move[direction]
 
 	if next_control_name then
@@ -754,10 +754,10 @@ RaidGUIControl._find_next_visible_control = function (self, control_ref, directi
 
 	return 
 end
-RaidGUIControl.confirm_pressed = function (self)
+function RaidGUIControl:confirm_pressed()
 	return 
 end
-RaidGUIControl.check_item_availability = function (self, item, availability_flags)
+function RaidGUIControl:check_item_availability(item, availability_flags)
 	if not availability_flags then
 		return true
 	end
@@ -782,13 +782,13 @@ RaidGUIControl.check_item_availability = function (self, item, availability_flag
 
 	return result
 end
-RaidGUIControl.scrollable_area_post_setup = function (self, params)
+function RaidGUIControl:scrollable_area_post_setup(params)
 	return 
 end
-RaidGUIControl.enabled = function (self)
+function RaidGUIControl:enabled()
 	return self._enabled
 end
-RaidGUIControl.set_enabled = function (self, enabled)
+function RaidGUIControl:set_enabled(enabled)
 	self._enabled = enabled
 
 	return 

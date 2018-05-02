@@ -8,10 +8,10 @@ core.import(slot1, core)
 
 Renderer = Renderer or class()
 Renderer.border_height = 44
-Renderer.preload = function (self)
+function Renderer:preload()
 	return 
 end
-Renderer.init = function (self, logic, parameters)
+function Renderer:init(logic, parameters)
 	parameters = parameters or {}
 	self._logic = logic
 	slot6 = "renderer_show_node"
@@ -87,12 +87,12 @@ Renderer.init = function (self, logic, parameters)
 
 	return 
 end
-Renderer._scaled_size = function (self)
+function Renderer:_scaled_size()
 	slot3 = managers.gui_data
 
 	return managers.gui_data.scaled_size(slot2)
 end
-Renderer.open = function (self, ...)
+function Renderer:open(...)
 	slot4 = self.ws
 
 	managers.gui_data.layout_workspace(slot2, managers.gui_data)
@@ -116,10 +116,10 @@ Renderer.open = function (self, ...)
 
 	return 
 end
-Renderer.is_open = function (self)
+function Renderer:is_open()
 	return self._open
 end
-Renderer.show_node = function (self, node, parameters)
+function Renderer:show_node(node, parameters)
 	local layer = self._base_layer
 	slot6 = self
 	local previous_node_gui = self.active_node_gui(slot5)
@@ -160,7 +160,7 @@ Renderer.show_node = function (self, node, parameters)
 
 	return 
 end
-Renderer.refresh_node_stack = function (self, parameters)
+function Renderer:refresh_node_stack(parameters)
 	slot4 = self._node_gui_stack
 
 	for i, node_gui in ipairs(slot3) do
@@ -182,7 +182,7 @@ Renderer.refresh_node_stack = function (self, parameters)
 
 	return 
 end
-Renderer.refresh_node = function (self, node, parameters)
+function Renderer:refresh_node(node, parameters)
 	local layer = self._base_layer
 	local node_gui = self.active_node_gui(slot5)
 	slot9 = parameters
@@ -191,7 +191,7 @@ Renderer.refresh_node = function (self, node, parameters)
 
 	return 
 end
-Renderer.highlight_item = function (self, item, mouse_over)
+function Renderer:highlight_item(item, mouse_over)
 	slot5 = self
 	local active_node_gui = self.active_node_gui(slot4)
 
@@ -203,7 +203,7 @@ Renderer.highlight_item = function (self, item, mouse_over)
 
 	return 
 end
-Renderer.fade_item = function (self, item)
+function Renderer:fade_item(item)
 	slot4 = self
 	local active_node_gui = self.active_node_gui(slot3)
 
@@ -215,7 +215,7 @@ Renderer.fade_item = function (self, item)
 
 	return 
 end
-Renderer.trigger_item = function (self, item)
+function Renderer:trigger_item(item)
 	slot4 = self
 	local node_gui = self.active_node_gui(slot3)
 
@@ -227,7 +227,7 @@ Renderer.trigger_item = function (self, item)
 
 	return 
 end
-Renderer.navigate_back = function (self)
+function Renderer:navigate_back()
 	slot3 = self
 	local active_node_gui = self.active_node_gui(slot2)
 
@@ -252,7 +252,7 @@ Renderer.navigate_back = function (self)
 
 	return 
 end
-Renderer.node_item_dirty = function (self, node, item)
+function Renderer:node_item_dirty(node, item)
 	local node_name = node.parameters(slot4).name
 	slot6 = self._node_gui_stack
 
@@ -266,7 +266,7 @@ Renderer.node_item_dirty = function (self, node, item)
 
 	return 
 end
-Renderer.update = function (self, t, dt)
+function Renderer:update(t, dt)
 	slot6 = dt
 
 	self.update_input_timer(slot4, self)
@@ -281,7 +281,7 @@ Renderer.update = function (self, t, dt)
 
 	return 
 end
-Renderer.update_input_timer = function (self, dt)
+function Renderer:update_input_timer(dt)
 	if 0 < self._timer then
 		self._timer = self._timer - dt
 
@@ -294,10 +294,10 @@ Renderer.update_input_timer = function (self, dt)
 
 	return 
 end
-Renderer.active_node_gui = function (self)
+function Renderer:active_node_gui()
 	return self._node_gui_stack[#self._node_gui_stack]
 end
-Renderer.disable_input = function (self, time)
+function Renderer:disable_input(time)
 	self._timer = time
 	slot5 = false
 
@@ -305,7 +305,7 @@ Renderer.disable_input = function (self, time)
 
 	return 
 end
-Renderer.close = function (self)
+function Renderer:close()
 	slot3 = self._fullscreen_ws
 
 	self._fullscreen_ws.hide(slot2)
@@ -345,7 +345,7 @@ Renderer.close = function (self)
 
 	return 
 end
-Renderer.hide = function (self)
+function Renderer:hide()
 	slot3 = self
 	local active_node_gui = self.active_node_gui(slot2)
 
@@ -357,7 +357,7 @@ Renderer.hide = function (self)
 
 	return 
 end
-Renderer.show = function (self)
+function Renderer:show()
 	slot3 = self
 	local active_node_gui = self.active_node_gui(slot2)
 
@@ -369,7 +369,7 @@ Renderer.show = function (self)
 
 	return 
 end
-Renderer._layout_main_panel = function (self)
+function Renderer:_layout_main_panel()
 	local scaled_size = self._scaled_size(slot2)
 	slot8 = scaled_size.height
 
@@ -382,7 +382,7 @@ Renderer._layout_main_panel = function (self)
 
 	return 
 end
-Renderer.resolution_changed = function (self)
+function Renderer:resolution_changed()
 	local res = RenderSettings.resolution
 	slot5 = self.ws
 
@@ -406,7 +406,7 @@ Renderer.resolution_changed = function (self)
 
 	return 
 end
-Renderer.selected_node = function (self)
+function Renderer:selected_node()
 	local stack = self._node_gui_stack
 
 	return stack[#stack]
